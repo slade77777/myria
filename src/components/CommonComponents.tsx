@@ -4,11 +4,11 @@ import Textarea from "./Textarea";
 
 const CommonComponents: React.FC = () => {
   return (
-    <div className="grid gap-10 justify-items-start p-10 bg-brand-deep-blue text-white">
-      <p className="heading-massive">
+    <div className="grid gap-10 p-10 text-white justify-items-start bg-brand-deep-blue">
+      <p className="heading-lg md:heading-massive">
         Massive Heading Brutal Type Extra Bold 60px 115% Line Spacing
       </p>
-      <p className="heading-lg">
+      <p className="heading-md md:heading-lg">
         Large Heading Brutal Type Extra Bold 40px 125% Line Spacing
       </p>
       <p className="heading-md">

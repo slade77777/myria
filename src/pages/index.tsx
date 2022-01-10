@@ -6,9 +6,9 @@ import Image from "next/image";
 import JoinTheRevolution from "../components/JoinTheRevolution";
 import Footer from "../components/Footer";
 import ExperenceLogos from "../components/ExperienceLogos";
+import { paddingX } from "../utils";
 
 const Home = () => {
-  const paddingX = "px-6 md:px-[48px] xl:px-[64px]";
   return (
     <div className="text-brand-white bg-dark">
       <section
@@ -18,7 +18,7 @@ const Home = () => {
         }}
         className={clsx(
           paddingX,
-          "flex flex-col items-center justify-center min-h-screen bg-[url('/images/home/header-bg.png')] bg-cover"
+          "flex flex-col items-center justify-center min-h-[926px] md:min-h-screen bg-[url('/images/home/header-bg.png')] bg-cover bg-center"
         )}
       >
         <div className="max-w-[607px] text-center">
@@ -164,22 +164,16 @@ const Home = () => {
           <ExperenceLogos />
         </div>
       </section>
-      <section className={clsx(paddingX, "mt-[122px] md:mt-[168px]")}>
+      <section
+        className={clsx(
+          paddingX,
+          "mt-[122px] md:mt-[168px] mb-[156px] md:mb-[168px]"
+        )}
+      >
         <div className="mx-auto max-w-content">
           <JoinTheRevolution />
         </div>
       </section>
-      <section
-        className={clsx(
-          paddingX,
-          "mt-[156px] md:mt-[168px] mb-[149px] md:pb-[112px]"
-        )}
-      >
-        <div className="mx-auto max-w-content">
-          <Footer />
-        </div>
-      </section>
-      <section className="h-[100px]"></section>
     </div>
   );
 };

@@ -144,7 +144,7 @@ module.exports = {
           padding: "12px 16px",
           fontSize: 16,
           lineHeight: 1.5,
-          color: "#97AAB5",
+          color: theme("colors.light"),
           border: "1px solid currentColor",
           borderRadius: 8,
           outline: "none",
