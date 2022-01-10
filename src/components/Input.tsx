@@ -20,13 +20,15 @@ const Input: React.FC<Props & React.HTMLProps<HTMLInputElement>> = ({
         })}
         {...props}
       />
-      <span
-        className={clsx("text-[14px] leading-[1.5]", {
-          "text-[#F37272]": error,
-        })}
-      >
-        This is an error validation message
-      </span>
+      {error && (
+        <span
+          className={clsx("text-[14px] leading-[1.5]", {
+            "text-[#F37272]": error,
+          })}
+        >
+          {helperText}
+        </span>
+      )}
     </div>
   );
 };
