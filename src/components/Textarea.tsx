@@ -4,20 +4,33 @@ import clsx from "clsx";
 type Props = {
   helperText?: string;
   error?: boolean;
+  containerClassName?: string;
 };
 
 const Textarea: React.FC<Props & React.HTMLProps<HTMLTextAreaElement>> = ({
   className,
   helperText,
   error,
+  containerClassName,
   ...props
 }) => {
   return (
-    <div className="grid gap-[7px]">
-      <textarea className={clsx(className, "input")} {...props} />
-      <span className="text-[14px] leading-[1.5]">
-        This is an error validation message
-      </span>
+    <div className={containerClassName}>
+      <textarea
+        className={clsx(className, "input block w-full", {
+          "border-[#F37272]": error,
+        })}
+        {...props}
+      />
+      {error && (
+        <p
+          className={clsx("text-[14px] leading-[1.5] mt-[7px]", {
+            "text-[#F37272]": error,
+          })}
+        >
+          {helperText}
+        </p>
+      )}
     </div>
   );
 };

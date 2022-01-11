@@ -78,6 +78,10 @@ const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
             );
           }
         })}
+        <li className="mt-[48px] sm:mt-[62px] grid sm:grid-cols-2 gap-y-6 gap-x-4">
+          <button className="btn-lg btn-primary">Sign up</button>
+          <button className="btn-lg btn-secondary">Log in</button>
+        </li>
       </ul>
     </div>
   );

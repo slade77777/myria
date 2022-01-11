@@ -1,4 +1,7 @@
 import React from "react";
+import CardWithIcon from "./CardWithIcon";
+import GetInTouch from "./GetInTouch";
+import StarIcon from "./icons/StarIcon";
 import Input from "./Input";
 import Textarea from "./Textarea";
 
@@ -50,6 +53,10 @@ const CommonComponents: React.FC = () => {
       </a>
       <Input error={true} placeholder="johndoe@gmail.com" />
       <Textarea placeholder="johndoe@gmail.com" />
+      <GetInTouch />
+      <CardWithIcon icon={<StarIcon />}>
+        <h2 className="heading-sm">Myria ecosystem fund</h2>
+      </CardWithIcon>
     </div>
   );
 };

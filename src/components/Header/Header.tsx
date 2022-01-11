@@ -66,10 +66,10 @@ export const headerHeight = 112;
 const Header: React.FC = () => {
   return (
     <div className="absolute top-0 z-10 w-full">
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <DesktopHeader />
       </div>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <MobileHeader />
       </div>
     </div>

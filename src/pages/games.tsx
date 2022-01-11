@@ -32,7 +32,7 @@ const Games: React.FC = () => {
           />
         </div>
         <div className="w-full mx-auto max-w-content ">
-          <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[164px] text-center">
+          <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] text-center">
             Our games
           </h1>
           <div className="mt-[100px] md:mt-[180px]">

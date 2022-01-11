@@ -10,7 +10,7 @@ const DesktopHeader: React.FC = () => {
         style={{
           height: headerHeight,
         }}
-        className="py-4 px-[54px] flex items-center justify-between"
+        className="py-4 lg:px-4 xl:px-[54px] flex items-center justify-between"
       >
         <div className="w-full max-w-[164px]">
           <Logo />
