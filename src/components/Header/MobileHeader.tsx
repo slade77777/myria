@@ -6,6 +6,7 @@ import MenuIcon from "../icons/MenuIcon";
 import { links, headerHeight } from "./Header";
 import { Disclosure } from "@headlessui/react";
 import clsx from "clsx";
+import Link from "next/link";
 
 const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
   return (
@@ -31,37 +32,34 @@ const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
                 <Disclosure>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button as="div">
-                        <div
-                          className={clsx(
-                            "hover:text-brand-gold flex items-center justify-between hover:cursor-pointer",
-                            {
-                              "text-brand-gold": open,
-                            }
-                          )}
+                      <Disclosure.Button
+                        as="div"
+                        className={clsx(
+                          "hover:text-brand-gold flex items-center justify-between hover:cursor-pointer",
+                          {
+                            "text-brand-gold": open,
+                          }
+                        )}
+                      >
+                        <span>{item.text}</span>
+                        <i
+                          className={clsx({
+                            "rotate-180": open,
+                          })}
                         >
-                          <span>{item.text}</span>
-                          <i
-                            className={clsx({
-                              "rotate-180": open,
-                            })}
-                          >
-                            <ChevronDownIcon />
-                          </i>
-                        </div>
+                          <ChevronDownIcon />
+                        </i>
                       </Disclosure.Button>
-                      <Disclosure.Panel>
-                        <div className="">
-                          <ul className="text-[16px] bg-dark px-6 pt-6 rounded-lg whitespace-nowrap grid gap-6">
-                            {item.children!.map((link, idx) => (
-                              <li key={idx}>
-                                <a href={link.url} className="text-brand-gold">
-                                  {link.text}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                      <Disclosure.Panel as="div">
+                        <ul className="text-[16px] bg-dark px-6 pt-6 rounded-lg whitespace-nowrap grid gap-6">
+                          {item.children!.map((link, idx) => (
+                            <li key={idx}>
+                              <Link href={link.url as string}>
+                                <a className="text-brand-gold">{link.text}</a>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </Disclosure.Panel>
                     </>
                   )}
@@ -71,9 +69,9 @@ const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
           } else {
             return (
               <li key={idx}>
-                <a href={item.url} className="hover:text-brand-gold">
-                  {item.text}
-                </a>
+                <Link href={item.url as string}>
+                  <a className="hover:text-brand-gold">{item.text}</a>
+                </Link>
               </li>
             );
           }

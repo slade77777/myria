@@ -123,11 +123,20 @@ module.exports = {
             backgroundColor: "#ccc",
           },
         },
-        ".btn-blue": {
+        ".btn-light-blue": {
           backgroundColor: theme("colors.brand-light-blue"),
           color: "#000",
           "&:hover": {
             backgroundColor: theme("colors.brand-mid-blue"),
+          },
+        },
+        ".btn-dark-blue": {
+          backgroundColor: theme("colors.brand-deep-blue"),
+          color: "rgba(255, 255, 255, 0.5)",
+
+          "&:hover, &.active": {
+            backgroundColor: theme("colors.brand-dark-blue"),
+            color: "#fff",
           },
         },
         ".link": {

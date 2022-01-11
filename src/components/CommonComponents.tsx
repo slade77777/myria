@@ -1,5 +1,6 @@
 import React from "react";
 import CardWithIcon from "./CardWithIcon";
+import Careers from "./Careers";
 import GetInTouch from "./GetInTouch";
 import StarIcon from "./icons/StarIcon";
 import Input from "./Input";
@@ -47,7 +48,7 @@ const CommonComponents: React.FC = () => {
       <button className=" btn-lg btn-secondary">Hello world</button>
       <button className=" btn-sm btn-secondary">Log in</button>
       <button className=" btn-lg btn-white">Hello world</button>
-      <button className=" btn-lg btn-blue">Hello world</button>
+      <button className=" btn-lg btn-light-blue">Hello world</button>
       <a href="#" className="link">
         Hello world
       </a>
@@ -57,6 +58,7 @@ const CommonComponents: React.FC = () => {
       <CardWithIcon icon={<StarIcon />}>
         <h2 className="heading-sm">Myria ecosystem fund</h2>
       </CardWithIcon>
+      <Careers />
     </div>
   );
 };

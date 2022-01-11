@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 import Logo from "../icons/Logo";
@@ -31,12 +32,11 @@ const DesktopHeader: React.FC = () => {
                       <ul className="bg-dark px-6 py-4 pr-[63px] rounded-lg whitespace-nowrap grid gap-6">
                         {item.children.map((link, idx) => (
                           <li key={idx}>
-                            <a
-                              href={link.url}
-                              className="hover:text-brand-gold"
-                            >
-                              {link.text}
-                            </a>
+                            <Link href={link.url as string}>
+                              <a className="hover:text-brand-gold">
+                                {link.text}
+                              </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -46,9 +46,9 @@ const DesktopHeader: React.FC = () => {
               } else {
                 return (
                   <li key={idx}>
-                    <a href={item.url} className="hover:text-brand-gold">
-                      {item.text}
-                    </a>
+                    <Link href={item.url as string}>
+                      <a className="hover:text-brand-gold">{item.text}</a>
+                    </Link>
                   </li>
                 );
               }

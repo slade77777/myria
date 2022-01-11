@@ -10,7 +10,7 @@ const Games: React.FC = () => {
   const paddingX = "px-6 md:px-[48px] xl:px-[64px]";
 
   return (
-    <div className="text-brand-white bg-dark">
+    <div>
       <section
         style={{
           paddingTop: headerHeight,
@@ -79,7 +79,7 @@ const Games: React.FC = () => {
               layout="responsive"
             />
           </div>
-          <div className="xl:pl-[100px] text-center md:text-left md:order-[0]">
+          <div className="xl:pl-[100px] text-center md:text-left md:order-[-1]">
             <h2 className="heading-sm md:heading-md">
               Buy limited founding NFTs
             </h2>

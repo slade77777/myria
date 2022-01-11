@@ -10,7 +10,7 @@ import { paddingX } from "../utils";
 
 const Home = () => {
   return (
-    <div className="text-brand-white bg-dark">
+    <div>
       <section
         style={{
           paddingTop: headerHeight,

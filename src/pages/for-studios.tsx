@@ -32,7 +32,7 @@ const data = [
 
 const Games: React.FC = () => {
   return (
-    <div className="text-brand-white bg-dark">
+    <div>
       <section
         style={{
           paddingTop: headerHeight,

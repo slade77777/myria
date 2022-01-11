@@ -18,29 +18,29 @@ export const links: NavItem[] = [
     children: [
       {
         text: "Our team",
-        url: "/",
+        url: "/about-us",
       },
       {
         text: "For gamers",
-        url: "/",
+        url: "/for-gamers",
       },
       {
-        text: "For studio",
-        url: "/",
+        text: "For studios",
+        url: "/for-studios",
       },
     ],
   },
   {
     text: "Games",
-    url: "/",
+    url: "/games",
   },
   {
     text: "Nodes",
-    url: "/",
+    url: "/nodes",
   },
   {
     text: "Store",
-    url: "/",
+    url: "/store",
   },
   {
     text: "Community",
