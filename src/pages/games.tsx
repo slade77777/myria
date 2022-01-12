@@ -5,10 +5,9 @@ import { headerHeight } from "../components/Header";
 import Input from "../components/Input";
 import JoinTheRevolution from "../components/JoinTheRevolution";
 import OurGames from "../components/OurGames";
+import { paddingX } from "../utils";
 
 const Games: React.FC = () => {
-  const paddingX = "px-6 md:px-[48px] xl:px-[64px]";
-
   return (
     <div>
       <section

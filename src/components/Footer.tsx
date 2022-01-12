@@ -143,7 +143,7 @@ const Footer: React.FC = () => {
                     <a
                       href={item.link}
                       key={idx}
-                      className="text-[16px] leading-[1.23]"
+                      className="text-[16px] leading-[1.23] hover:text-[#F5B941]"
                     >
                       {item.label}
                     </a>
