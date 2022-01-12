@@ -13,9 +13,11 @@ const DesktopHeader: React.FC = () => {
         }}
         className="py-4 lg:px-4 xl:px-[54px] flex items-center justify-between"
       >
-        <div className="w-full max-w-[164px]">
-          <Logo />
-        </div>
+        <Link href="/">
+          <a className="w-full max-w-[164px]">
+            <Logo />
+          </a>
+        </Link>
         <div className="flex items-center ml-4">
           <ul className="text-[14px] leading-[1.25] uppercase font-medium grid grid-flow-col gap-[38px] items-center mr-auto text-brand-white">
             {links.map((item, idx) => {

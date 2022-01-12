@@ -4,7 +4,6 @@ import DiscordIcon from "../components/icons/DiscordIcon";
 import OurGames from "../components/OurGames";
 import Image from "next/image";
 import JoinTheRevolution from "../components/JoinTheRevolution";
-import Footer from "../components/Footer";
 import ExperenceLogos from "../components/ExperienceLogos";
 import { paddingX } from "../utils";
 
@@ -18,9 +17,17 @@ const Home = () => {
         }}
         className={clsx(
           paddingX,
-          "flex flex-col items-center justify-center min-h-[926px] md:min-h-screen bg-[url('/images/home/header-bg.png')] bg-cover bg-center"
+          "flex flex-col items-center justify-center min-h-[926px] relative isolate md:min-h-screen "
         )}
       >
+        <div className="absolute top left-0 h-full w-full z-[-1]">
+          <Image
+            src="/images/home/header-bg.png"
+            alt=""
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <div className="max-w-[607px] text-center">
           <h1 className="heading-lg md:heading-massive text-brand-white">
             Connecting the world through{" "}
@@ -48,7 +55,14 @@ const Home = () => {
           paddingX
         )}
       >
-        <div className="absolute inset-0 z-[-1] bg-[url('/images/home/blockchain-bg.png')] bg-center bg-cover" />
+        <div className="absolute inset-0 z-[-1]">
+          <Image
+            src="/images/home/blockchain-bg.png"
+            alt=""
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
           <div>
             <Image
@@ -125,7 +139,15 @@ const Home = () => {
       </section>
       <section className={clsx(paddingX, "mt-[152px] md:mt-[128px]")}>
         <div className="max-w-content mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-[32px]">
-          <div className="p-[32px] md:p-10 bg-cover bg-center bg-[url('/images/home/for-gamers.png')] h-[470px] md:h-[540px] bg-brand-deep-blue rounded-[20px]">
+          <div className="relative isolate p-[32px] md:p-10 h-[470px] md:h-[540px] bg-brand-deep-blue rounded-[20px]">
+            <div className="absolute inset-0 z-[-1]">
+              <Image
+                src="/images/home/for-gamers.png"
+                alt=""
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
             <h2 className="heading-md md:heading-lg">For Gamers</h2>
             <p className="mt-4 md:mt-6 body md:body-lg max-w-[284px] text-light">
               Discover the best games built on the blockchain
@@ -134,7 +156,15 @@ const Home = () => {
               Learn more
             </button>
           </div>
-          <div className="p-[32px] md:p-10 bg-cover bg-center bg-[url('/images/home/for-studios.png')] h-[470px] md:h-[540px] bg-brand-deep-blue rounded-[20px]">
+          <div className="relative isolate p-[32px] md:p-10 h-[470px] md:h-[540px] bg-brand-deep-blue rounded-[20px]">
+            <div className="absolute inset-0 z-[-1]">
+              <Image
+                src="/images/home/for-studios.png"
+                alt=""
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
             <h2 className="heading-md md:heading-lg">For Studios</h2>
             <p className="mt-4 md:mt-6 body md:body-lg max-w-[310px] text-light">
               Myria helps studios join the blockchain revolution

@@ -94,9 +94,11 @@ const MobileHeader: React.FC = () => {
   return (
     <header>
       <nav className="py-[40px] px-[24px] flex items-center justify-between">
-        <div className="w-full max-w-[164px]">
-          <Logo />
-        </div>
+        <Link href="/">
+          <a className="w-full max-w-[164px]">
+            <Logo />
+          </a>
+        </Link>
         <button onClick={toggleMenu}>
           <MenuIcon />
         </button>
