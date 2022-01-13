@@ -122,9 +122,7 @@ const Careers: React.FC = () => {
                       as="div"
                       className="flex items-center justify-between cursor-pointer"
                     >
-                      <h3 className="leading-[1.5] text-[24px] font-medium">
-                        {pos.title}
-                      </h3>
+                      <h3 className="heading-list">{pos.title}</h3>
                       <i
                         className={clsx({
                           "rotate-180": open,

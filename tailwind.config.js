@@ -43,6 +43,11 @@ module.exports = {
           lineHeight: 1.3,
           fontWeight: 500,
         },
+        ".heading-list": {
+          fontSize: 24,
+          lineHeight: 1.5,
+          fontWeight: 500,
+        },
         ".heading-sm-mobile": {
           fontSize: 18,
           lineHeight: 1.25,
