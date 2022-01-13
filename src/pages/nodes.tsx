@@ -1,7 +1,7 @@
-import { Disclosure } from "@headlessui/react";
 import clsx from "clsx";
 import React from "react";
 import CardWithIcon from "../components/CardWithIcon";
+import Collapse from "../components/Collapse";
 import { headerHeight } from "../components/Header";
 import ChartIcon from "../components/icons/ChartIcon";
 import ChevronDownIcon from "../components/icons/ChevronDownIcon";
@@ -162,29 +162,32 @@ const Nodes: React.FC = () => {
           {questions.map((item, idx) => (
             <React.Fragment key={idx}>
               <div className="mt-6">
-                <Disclosure>
+                <Collapse asChild>
                   {({ open }) => (
-                    <>
-                      <Disclosure.Button
-                        as="div"
-                        className="flex items-center justify-between cursor-pointer"
-                      >
-                        <h3 className="heading-list">{item.title}</h3>
-                        <i
-                          className={clsx("w-[24px]", {
-                            "rotate-180": open,
-                          })}
-                        >
-                          <ChevronDownIcon />
-                        </i>
-                      </Disclosure.Button>
-
-                      <Disclosure.Panel as="div" className="pb-2">
-                        <p className="mt-6 body text-light">{item.content}</p>
-                      </Disclosure.Panel>
-                    </>
+                    <div>
+                      <Collapse.Trigger asChild>
+                        <div className="flex items-center justify-between cursor-pointer">
+                          <h3 className="heading-list">{item.title}</h3>
+                          <i
+                            className={clsx(
+                              "w-[24px] transition duration-300",
+                              {
+                                "rotate-180": open,
+                              }
+                            )}
+                          >
+                            <ChevronDownIcon />
+                          </i>
+                        </div>
+                      </Collapse.Trigger>
+                      <Collapse.Content>
+                        <div className="pb-2">
+                          <p className="mt-6 body text-light">{item.content}</p>
+                        </div>
+                      </Collapse.Content>
+                    </div>
                   )}
-                </Disclosure>
+                </Collapse>
               </div>
               <div className="w-full h-[1px] bg-white opacity-20 mt-6" />
             </React.Fragment>

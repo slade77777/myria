@@ -2,6 +2,7 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  safelist: ["animate-slide-up", "animate-slide-down"],
   theme: {
     extend: {
       colors: {
@@ -18,11 +19,35 @@ module.exports = {
       maxWidth: {
         content: 1264,
       },
+      keyframes: {
+        slideDown: {
+          from: { height: 0 },
+          to: { height: "var(--height)" },
+        },
+        slideUp: {
+          from: { height: "var(--height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "slide-up": "slideUp 300ms",
+        "slide-down": "slideDown 300ms",
+      },
     },
   },
   plugins: [
     plugin(function ({ addComponents, theme }) {
       addComponents({
+        ".collapse-content": {
+          "--height": "var(--radix-collapsible-content-height)",
+          overflow: "hidden",
+          '&[data-state="open"]': {
+            animation: theme("animation.slide-down"),
+          },
+          '&[data-state="closed"]': {
+            animation: theme("animation.slide-up"),
+          },
+        },
         ".heading-massive": {
           fontSize: 60,
           lineHeight: 1.15,

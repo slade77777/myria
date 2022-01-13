@@ -1,6 +1,6 @@
-import { Disclosure, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import React, { useState } from "react";
+import Collapse from "./Collapse";
 import ChevronDownIcon from "./icons/ChevronDownIcon";
 
 const mockData = [
@@ -115,32 +115,34 @@ const Careers: React.FC = () => {
         {positions.map((pos) => (
           <React.Fragment key={pos.id}>
             <div className="mt-6">
-              <Disclosure>
+              <Collapse asChild>
                 {({ open }) => (
-                  <>
-                    <Disclosure.Button
-                      as="div"
-                      className="flex items-center justify-between cursor-pointer"
-                    >
-                      <h3 className="heading-list">{pos.title}</h3>
-                      <i
-                        className={clsx("w-[24px]", {
-                          "rotate-180": open,
-                        })}
-                      >
-                        <ChevronDownIcon />
-                      </i>
-                    </Disclosure.Button>
-
-                    <Disclosure.Panel as="div" className="pb-2">
-                      <p className="mt-6 body text-light">{pos.description}</p>
-                      <button className="mt-6 btn-lg btn-primary">
-                        APPLY NOW
-                      </button>
-                    </Disclosure.Panel>
-                  </>
+                  <div>
+                    <Collapse.Trigger asChild>
+                      <div className="flex items-center justify-between cursor-pointer">
+                        <h3 className="heading-list">{pos.title}</h3>
+                        <i
+                          className={clsx("w-[24px] transition duration-300", {
+                            "rotate-180": open,
+                          })}
+                        >
+                          <ChevronDownIcon />
+                        </i>
+                      </div>
+                    </Collapse.Trigger>
+                    <Collapse.Content>
+                      <div className="pb-2">
+                        <p className="mt-6 body text-light">
+                          {pos.description}
+                        </p>
+                        <button className="mt-6 btn-lg btn-primary">
+                          APPLY NOW
+                        </button>
+                      </div>
+                    </Collapse.Content>
+                  </div>
                 )}
-              </Disclosure>
+              </Collapse>
             </div>
             <div className="w-full h-[1px] bg-white opacity-20 mt-6" />
           </React.Fragment>

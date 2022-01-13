@@ -4,11 +4,13 @@ import CloseIcon from "../icons/CloseIcon";
 import Logo from "../icons/Logo";
 import MenuIcon from "../icons/MenuIcon";
 import { links, headerHeight } from "./Header";
-import { Disclosure } from "@headlessui/react";
 import clsx from "clsx";
 import Link from "next/link";
+import Collapse from "../Collapse";
 
 const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="flex flex-col fixed h-full top-0 left-0 overflow-auto z-10 w-full bg-[#050E15]">
       <nav
@@ -29,28 +31,32 @@ const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
           if (item.children) {
             return (
               <li key={idx} className="">
-                <Disclosure>
+                <Collapse asChild>
                   {({ open }) => (
-                    <>
-                      <Disclosure.Button
-                        as="div"
-                        className={clsx(
-                          "hover:text-brand-gold flex items-center justify-between hover:cursor-pointer",
-                          {
-                            "text-brand-gold": open,
-                          }
-                        )}
-                      >
-                        <span>{item.text}</span>
-                        <i
-                          className={clsx("w-[24px]", {
-                            "rotate-180": open,
-                          })}
+                    <div>
+                      <Collapse.Trigger asChild>
+                        <div
+                          className={clsx(
+                            "hover:text-brand-gold flex items-center justify-between hover:cursor-pointer",
+                            {
+                              "text-brand-gold": open,
+                            }
+                          )}
                         >
-                          <ChevronDownIcon />
-                        </i>
-                      </Disclosure.Button>
-                      <Disclosure.Panel as="div">
+                          <span>{item.text}</span>
+                          <i
+                            className={clsx(
+                              "w-[24px] transition duration-300",
+                              {
+                                "rotate-180": open,
+                              }
+                            )}
+                          >
+                            <ChevronDownIcon />
+                          </i>
+                        </div>
+                      </Collapse.Trigger>
+                      <Collapse.Content className="collapse-content">
                         <ul className="text-[16px] bg-dark px-6 pt-6 rounded-lg whitespace-nowrap grid gap-6">
                           {item.children!.map((link, idx) => (
                             <li key={idx}>
@@ -60,10 +66,10 @@ const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
                             </li>
                           ))}
                         </ul>
-                      </Disclosure.Panel>
-                    </>
+                      </Collapse.Content>
+                    </div>
                   )}
-                </Disclosure>
+                </Collapse>
               </li>
             );
           } else {
