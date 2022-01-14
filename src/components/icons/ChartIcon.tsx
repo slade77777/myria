@@ -2,13 +2,7 @@ import React from "react";
 
 const ChartIcon: React.FC = () => {
   return (
-    <svg
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_iiiii_654_7399)">
         <path
           d="M34.8559 11.863C34.8559 9.54142 36.7563 7.61652 39.034 8.06545C47.5483 9.74357 54.2564 16.4517 55.9345 24.966C56.3835 27.2437 54.4586 29.1441 52.137 29.1441H39.0594C36.7379 29.1441 34.8559 27.2622 34.8559 24.9406V11.863Z"

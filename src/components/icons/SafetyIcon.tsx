@@ -2,26 +2,20 @@ import React from "react";
 
 const SafetyIcon: React.FC = () => {
   return (
-    <svg
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g filter="url(#filter0_iiiii_654_7529)">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g filter="url(#filter0_iiiii_654_6228)">
         <path
-          d="M28.38 9.04943C23.2788 12.6729 15.5885 15.3196 11.3006 16.0963C10.5103 16.2394 9.84716 16.8011 9.68935 17.5817C7.48639 28.479 9.72503 45.9111 28.9082 55.3324C30.7179 56.2212 32.8597 56.2218 34.6721 55.3385C54.0014 45.9178 57.0054 28.4785 53.9941 17.5791C53.7789 16.8001 53.0481 16.2954 52.2349 16.2436C45.3322 15.8041 39.0343 12.1372 35.165 9.09286C33.2907 7.61816 30.3252 7.66775 28.38 9.04943Z"
-          fill="url(#paint0_linear_654_7529)"
+          d="M14.19 4.52471C11.6394 6.33647 7.79427 7.65978 5.6503 8.04814C5.25516 8.11971 4.92358 8.40054 4.84468 8.79085C3.74319 14.2395 4.86252 22.9556 14.4541 27.6662C15.359 28.1106 16.4298 28.1109 17.336 27.6692C27.0007 22.9589 28.5027 14.2393 26.9971 8.78953C26.8895 8.40007 26.524 8.1477 26.1174 8.12181C22.6661 7.90205 19.5171 6.06859 17.5825 4.54643C16.6454 3.80908 15.1626 3.83387 14.19 4.52471Z"
+          fill="url(#paint0_linear_654_6228)"
         />
       </g>
       <defs>
         <filter
-          id="filter0_iiiii_654_7529"
-          x="5"
-          y="4"
-          width="52"
-          height="54"
+          id="filter0_iiiii_654_6228"
+          x="0.5"
+          y="0"
+          width="29"
+          height="30"
           filterUnits="userSpaceOnUse"
           colorInterpolationFilters="sRGB"
         >
@@ -43,12 +37,12 @@ const SafetyIcon: React.FC = () => {
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
           <feColorMatrix
             type="matrix"
-            values="0 0 0 0 0.938667 0 0 0 0 1 0 0 0 0 0.808333 0 0 0 0.4 0"
+            values="0 0 0 0 1 0 0 0 0 0.980833 0 0 0 0 0.808333 0 0 0 0.4 0"
           />
           <feBlend
             mode="normal"
             in2="shape"
-            result="effect1_innerShadow_654_7529"
+            result="effect1_innerShadow_654_6228"
           />
           <feColorMatrix
             in="SourceAlpha"
@@ -61,12 +55,12 @@ const SafetyIcon: React.FC = () => {
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
           <feColorMatrix
             type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0.583333 0 0 0 0 0.163333 0 0 0 0.2 0"
+            values="0 0 0 0 0.558333 0 0 0 0 0.504128 0 0 0 0 0.0162847 0 0 0 0.2 0"
           />
           <feBlend
             mode="normal"
-            in2="effect1_innerShadow_654_7529"
-            result="effect2_innerShadow_654_7529"
+            in2="effect1_innerShadow_654_6228"
+            result="effect2_innerShadow_654_6228"
           />
           <feColorMatrix
             in="SourceAlpha"
@@ -79,12 +73,12 @@ const SafetyIcon: React.FC = () => {
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
           <feColorMatrix
             type="matrix"
-            values="0 0 0 0 0.873417 0 0 0 0 1 0 0 0 0 0.795833 0 0 0 0.4 0"
+            values="0 0 0 0 1 0 0 0 0 0.992917 0 0 0 0 0.929167 0 0 0 0.4 0"
           />
           <feBlend
             mode="normal"
-            in2="effect2_innerShadow_654_7529"
-            result="effect3_innerShadow_654_7529"
+            in2="effect2_innerShadow_654_6228"
+            result="effect3_innerShadow_654_6228"
           />
           <feColorMatrix
             in="SourceAlpha"
@@ -97,12 +91,12 @@ const SafetyIcon: React.FC = () => {
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
           <feColorMatrix
             type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0.304167 0 0 0 0 0.231167 0 0 0 0.2 0"
+            values="0 0 0 0 0.304167 0 0 0 0 0.23725 0 0 0 0 0 0 0 0 0.2 0"
           />
           <feBlend
             mode="normal"
-            in2="effect3_innerShadow_654_7529"
-            result="effect4_innerShadow_654_7529"
+            in2="effect3_innerShadow_654_6228"
+            result="effect4_innerShadow_654_6228"
           />
           <feColorMatrix
             in="SourceAlpha"
@@ -115,24 +109,24 @@ const SafetyIcon: React.FC = () => {
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
           <feColorMatrix
             type="matrix"
-            values="0 0 0 0 0.105882 0 0 0 0 0.984314 0 0 0 0 0.457255 0 0 0 0.2 0"
+            values="0 0 0 0 1 0 0 0 0 0.854667 0 0 0 0 0.0916666 0 0 0 0.2 0"
           />
           <feBlend
             mode="normal"
-            in2="effect4_innerShadow_654_7529"
-            result="effect5_innerShadow_654_7529"
+            in2="effect4_innerShadow_654_6228"
+            result="effect5_innerShadow_654_6228"
           />
         </filter>
         <linearGradient
-          id="paint0_linear_654_7529"
-          x1="32"
-          y1="8"
-          x2="32"
-          y2="56"
+          id="paint0_linear_654_6228"
+          x1="14.3229"
+          y1="4"
+          x2="14.3229"
+          y2="28"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#97EB0E" />
-          <stop offset="1" stopColor="#19B90B" />
+          <stop stopColor="#FFE926" />
+          <stop offset="1" stopColor="#FDAB0C" />
         </linearGradient>
       </defs>
     </svg>

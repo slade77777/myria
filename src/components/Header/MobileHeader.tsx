@@ -20,7 +20,7 @@ const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
         <div className="w-full max-w-[164px]">
           <Logo />
         </div>
-        <button onClick={onClose}>
+        <button onClick={onClose} className="w-[32px]">
           <CloseIcon />
         </button>
       </nav>
@@ -43,7 +43,7 @@ const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
                       >
                         <span>{item.text}</span>
                         <i
-                          className={clsx({
+                          className={clsx("w-[24px]", {
                             "rotate-180": open,
                           })}
                         >
@@ -99,7 +99,7 @@ const MobileHeader: React.FC = () => {
             <Logo />
           </a>
         </Link>
-        <button onClick={toggleMenu}>
+        <button onClick={toggleMenu} className="w-[32px]">
           <MenuIcon />
         </button>
       </nav>

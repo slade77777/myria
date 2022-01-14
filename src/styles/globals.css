@@ -38,3 +38,7 @@
   box-sizing: border-box;
   font-family: "Brutal Type", sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}

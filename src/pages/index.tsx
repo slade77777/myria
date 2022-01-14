@@ -6,6 +6,7 @@ import Image from "next/image";
 import JoinTheRevolution from "../components/JoinTheRevolution";
 import ExperenceLogos from "../components/ExperienceLogos";
 import { paddingX } from "../utils";
+import ArrowDownIcon from "../components/icons/ArrowDownIcon";
 
 const Home = () => {
   return (
@@ -21,12 +22,14 @@ const Home = () => {
         )}
       >
         <div className="absolute top left-0 h-full w-full z-[-1]">
-          <Image
-            src="/images/home/header-bg.png"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
+          <div className="relative w-full h-full ">
+            <Image
+              src="/images/home/header-bg.png"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
         <div className="max-w-[607px] text-center">
           <h1 className="heading-lg md:heading-massive text-brand-white">
@@ -38,12 +41,22 @@ const Home = () => {
             and creators.
           </h3>
           <button className="mt-[38px] btn-icon md:btn-icon btn-primary flex items-center mx-auto">
-            <DiscordIcon />
+            <span className="w-[30px]">
+              <DiscordIcon />
+            </span>
             <span>JOIN DISCORD</span>
           </button>
+          <a
+            href="#our-games"
+            className="md:hidden flex items-center justify-center mt-[237px] bg-[#96C5DF] w-[64px] h-[64px] rounded-full mx-auto bg-opacity-20"
+          >
+            <span className="w-[40px]">
+              <ArrowDownIcon />
+            </span>
+          </a>
         </div>
       </section>
-      <section className={clsx("pt-[14px]", paddingX)}>
+      <section id="our-games" className={clsx("pt-[14px]", paddingX)}>
         <h2 className="text-center heading-md md:heading-lg">Our games</h2>
         <div className="mt-10 md:mt-[58px] max-w-content mx-auto">
           <OurGames />
@@ -126,7 +139,9 @@ const Home = () => {
               </div>
               <div className="justify-center md:justify-start flex items-center mt-[60px]">
                 <button className="flex items-center btn-icon btn-white">
-                  <DiscordIcon />
+                  <span className="w-[30px]">
+                    <DiscordIcon />
+                  </span>
                   <span>JOIN DISCORD</span>
                 </button>
                 <button className="btn-lg btn-primary ml-4 md:ml-[31px]">

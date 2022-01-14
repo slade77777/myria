@@ -27,7 +27,7 @@ const DesktopHeader: React.FC = () => {
                 <li key={idx} className="relative group">
                   <div className="flex items-center hover:text-brand-gold hover:cursor-pointer">
                     {item.text}
-                    <i>
+                    <i className="w-[24px]">
                       <ChevronDownIcon />
                     </i>
                   </div>

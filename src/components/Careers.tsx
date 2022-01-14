@@ -124,7 +124,7 @@ const Careers: React.FC = () => {
                     >
                       <h3 className="heading-list">{pos.title}</h3>
                       <i
-                        className={clsx({
+                        className={clsx("w-[24px]", {
                           "rotate-180": open,
                         })}
                       >

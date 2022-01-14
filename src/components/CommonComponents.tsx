@@ -55,7 +55,13 @@ const CommonComponents: React.FC = () => {
       <Input error={true} placeholder="johndoe@gmail.com" />
       <Textarea placeholder="johndoe@gmail.com" />
       <GetInTouch />
-      <CardWithIcon icon={<StarIcon />}>
+      <CardWithIcon
+        icon={
+          <div className="w-[64px]">
+            <StarIcon />
+          </div>
+        }
+      >
         <h2 className="heading-sm">Myria ecosystem fund</h2>
       </CardWithIcon>
       <Careers />

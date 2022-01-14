@@ -13,33 +13,57 @@ import LinkedinWithBackgroundIcon from "../components/icons/LinkedinWithBackgrou
 
 const values = [
   {
-    icon: <UserIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <UserIcon />
+      </div>
+    ),
     title: "Play to win",
     description: "We set big goals and play hard to be market leaders",
   },
   {
-    icon: <ChartIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <ChartIcon />
+      </div>
+    ),
     title: "Win as a team",
     description: "We believe in collaboration and win big as a team",
   },
   {
-    icon: <StarIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <StarIcon />
+      </div>
+    ),
     title: "Open communication",
     description: "We believe in open, transparent communication",
   },
   {
-    icon: <UserIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <UserIcon />
+      </div>
+    ),
     title: "Inclusivity",
     description:
       "We celebrate diversity with a global team and seek to hear all voices",
   },
   {
-    icon: <ChartIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <ChartIcon />
+      </div>
+    ),
     title: "Be game changers",
     description: "We question everything to find new ways to innovate",
   },
   {
-    icon: <StarIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <StarIcon />
+      </div>
+    ),
     title: "Have an impact",
     description:
       "We want to be a gateway to onboard the world onto the blockchain",
@@ -98,12 +122,14 @@ const Careers: React.FC = () => {
           }}
           className="absolute left-0 h-[783px] w-full z-[-1]"
         >
-          <Image
-            src="/images/careers/header-bg.png"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
+          <div className="relative w-full h-full ">
+            <Image
+              src="/images/careers/header-bg.png"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
         <div className="w-full mx-auto max-w-content">
           <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
@@ -180,12 +206,12 @@ const Careers: React.FC = () => {
                 </p>
                 <div className="grid grid-flow-col justify-center gap-6 mt-[32px] opacity-50">
                   {person.socials.twitter && (
-                    <a href={person.socials.twitter}>
+                    <a href={person.socials.twitter} className="w-[24px]">
                       <TwitterWithBackgroundIcon />
                     </a>
                   )}
                   {person.socials.twitter && (
-                    <a href={person.socials.linkedin}>
+                    <a href={person.socials.linkedin} className="w-[24px]">
                       <LinkedinWithBackgroundIcon />
                     </a>
                   )}

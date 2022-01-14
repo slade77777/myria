@@ -2,13 +2,7 @@ import React from "react";
 
 const FolderIcon: React.FC = () => {
   return (
-    <svg
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_iiiii_654_7523)">
         <path
           d="M56 42V26C56 21.5817 52.4183 18 48 18L34.6667 18C32.9357 18 31.2514 17.4386 29.8667 16.4L28.8 15.6C27.4152 14.5614 25.731 14 24 14L16 14C11.5817 14 8 17.5817 8 22L8 42C8 46.4183 11.5817 50 16 50H48C52.4183 50 56 46.4183 56 42Z"

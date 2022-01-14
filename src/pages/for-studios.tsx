@@ -11,19 +11,31 @@ import { paddingX } from "../utils";
 
 const data = [
   {
-    icon: <ChartIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <ChartIcon />
+      </div>
+    ),
     title: "Blockchain platform for game studios",
     description:
       "We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming. ",
   },
   {
-    icon: <UserIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <UserIcon />
+      </div>
+    ),
     title: "Myria ecosystem fund",
     description:
       "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain.",
   },
   {
-    icon: <StarIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <StarIcon />
+      </div>
+    ),
     title: "Education and support",
     description:
       "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain. ",
@@ -46,12 +58,14 @@ const Games: React.FC = () => {
           }}
           className="absolute left-0 h-[783px] w-full z-[-1]"
         >
-          <Image
-            src="/images/for-studios/header-bg.png"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
+          <div className="relative w-full h-full ">
+            <Image
+              src="/images/for-studios/header-bg.png"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
         <div className="w-full mx-auto max-w-content ">
           <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">

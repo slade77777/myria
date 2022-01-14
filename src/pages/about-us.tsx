@@ -122,12 +122,14 @@ const AboutUs: React.FC = () => {
           }}
           className="absolute left-0 h-[783px] w-full z-[-1]"
         >
-          <Image
-            src="/images/about-us/header-bg.png"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
+          <div className="relative w-full h-full ">
+            <Image
+              src="/images/about-us/header-bg.png"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
         <div className="w-full mx-auto max-w-content ">
           <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
@@ -165,12 +167,12 @@ const AboutUs: React.FC = () => {
                 </p>
                 <div className="grid grid-flow-col justify-center gap-6 mt-[35px] opacity-50">
                   {person.socials.twitter && (
-                    <a href={person.socials.twitter}>
+                    <a href={person.socials.twitter} className="w-[24px]">
                       <TwitterWithBackgroundIcon />
                     </a>
                   )}
                   {person.socials.twitter && (
-                    <a href={person.socials.linkedin}>
+                    <a href={person.socials.linkedin} className="w-[24px]">
                       <LinkedinWithBackgroundIcon />
                     </a>
                   )}

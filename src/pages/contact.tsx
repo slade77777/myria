@@ -13,7 +13,7 @@ import TwitterIcon from "../components/icons/TwitterIcon";
 import YoutubeIcon from "../components/icons/YoutubeIcon";
 import { paddingX } from "../utils";
 
-const AboutUs: React.FC = () => {
+const Contact: React.FC = () => {
   return (
     <div>
       <section
@@ -29,12 +29,14 @@ const AboutUs: React.FC = () => {
           }}
           className="absolute left-0 h-[783px] w-full z-[-1]"
         >
-          <Image
-            src="/images/contact/header-bg.png"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
+          <div className="relative w-full h-full ">
+            <Image
+              src="/images/contact/header-bg.png"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
         <div className="w-full mx-auto max-w-content ">
           <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
@@ -44,7 +46,9 @@ const AboutUs: React.FC = () => {
             href="mailto:hello@myria.com"
             className="flex items-center justify-center mt-[35px]"
           >
-            <MailIcon />
+            <span className="w-[32px]">
+              <MailIcon />
+            </span>
             <p className="ml-2 text-center body md:body-lg">hello@myria.com</p>
           </a>
         </div>
@@ -84,4 +88,4 @@ const AboutUs: React.FC = () => {
   );
 };
 
-export default AboutUs;
+export default Contact;

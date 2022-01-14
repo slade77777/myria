@@ -2,13 +2,7 @@ import React from "react";
 
 const UserIcon: React.FC = () => {
   return (
-    <svg
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_iiiii_654_7393)">
         <path
           d="M43.0002 19C43.0002 25.0751 38.0753 30 32.0002 30C25.925 30 21.0002 25.0751 21.0002 19C21.0002 12.9249 25.925 8 32.0002 8C38.0753 8 43.0002 12.9249 43.0002 19Z"

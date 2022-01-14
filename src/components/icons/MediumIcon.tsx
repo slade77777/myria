@@ -2,13 +2,7 @@ import React from "react";
 
 const MediumIcon: React.FC = () => {
   return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M17.2296 16.3062C17.2296 20.5482 13.8203 23.9871 9.61494 23.9871C5.40957 23.9871 2 20.5474 2 16.3062C2 12.0649 5.40931 8.625 9.61494 8.625C13.8206 8.625 17.2296 12.0641 17.2296 16.3062Z"
         fill="currentColor"

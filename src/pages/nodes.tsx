@@ -11,19 +11,31 @@ import { paddingX } from "../utils";
 
 const rewards = [
   {
-    icon: <UserIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <UserIcon />
+      </div>
+    ),
     title: "Daily $MYRIA token rewards",
     description:
       "Myria node operators will receive daily $MYRIA token rewards for the nodes work. ",
   },
   {
-    icon: <ChartIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <ChartIcon />
+      </div>
+    ),
     title: "Voting rights",
     description:
       "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse.",
   },
   {
-    icon: <StarIcon />,
+    icon: (
+      <div className="w-[64px]">
+        <StarIcon />
+      </div>
+    ),
     title: "Exclusive NFTs",
     description:
       "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.",
@@ -159,7 +171,7 @@ const Nodes: React.FC = () => {
                       >
                         <h3 className="heading-list">{item.title}</h3>
                         <i
-                          className={clsx({
+                          className={clsx("w-[24px]", {
                             "rotate-180": open,
                           })}
                         >

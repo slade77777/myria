@@ -23,12 +23,14 @@ const Games: React.FC = () => {
           }}
           className="absolute left-0 h-[783px] w-full z-[-1]"
         >
-          <Image
-            src="/images/games/header-bg.png"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
+          <div className="relative w-full h-full ">
+            <Image
+              src="/images/games/header-bg.png"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
         <div className="w-full mx-auto max-w-content ">
           <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] text-center">
