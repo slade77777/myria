@@ -8,16 +8,32 @@ import clsx from "clsx";
 import Link from "next/link";
 import Collapse from "../Collapse";
 
-const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
-  const [open, setOpen] = useState(false);
-
+const HeaderOverlay = ({
+  onClose,
+  open,
+}: {
+  onClose: () => void;
+  open: boolean;
+}) => {
   return (
-    <div className="flex flex-col fixed h-full top-0 left-0 overflow-auto z-10 w-full bg-[#050E15]">
+    <div
+      className={clsx(
+        "transition invisible duration-700 flex flex-col fixed h-full top-0 left-0 overflow-auto z-10 w-full",
+        {
+          "!visible": open,
+        }
+      )}
+    >
       <nav
         style={{
           height: headerHeight,
         }}
-        className="py-4 flex items-center justify-between px-[24px] "
+        className={clsx(
+          "invisible py-4 flex items-center justify-between px-[24px] flex-shrink-0  bg-[#050E15]",
+          {
+            "!visible": open,
+          }
+        )}
       >
         <div className="w-full max-w-[164px]">
           <Logo />
@@ -26,7 +42,17 @@ const HeaderOverlay = ({ onClose }: { onClose: () => void }) => {
           <CloseIcon />
         </button>
       </nav>
-      <ul className="pb-4 text-white px-[24px] mt-2 grid gap-[33px] content-start text-[18px] leading-[1.25] uppercase font-medium flex-grow overflow-auto">
+      <ul
+        style={{
+          overscrollBehavior: "contain",
+        }}
+        className={clsx(
+          "translate-x-full duration-500 pb-4 text-white px-[24px] pt-2 grid gap-[33px] content-start text-[18px] leading-[1.25] uppercase font-medium flex-grow overflow-auto  bg-[#050E15]",
+          {
+            "!translate-x-0": open,
+          }
+        )}
+      >
         {links.map((item, idx) => {
           if (item.children) {
             return (
@@ -109,7 +135,7 @@ const MobileHeader: React.FC = () => {
           <MenuIcon />
         </button>
       </nav>
-      {openMenu && <HeaderOverlay onClose={toggleMenu} />}
+      <HeaderOverlay onClose={toggleMenu} open={openMenu} />
     </header>
   );
 };
