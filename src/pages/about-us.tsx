@@ -6,6 +6,7 @@ import ExperenceLogos from "../components/ExperienceLogos";
 import { headerHeight } from "../components/Header";
 import LinkedinWithBackgroundIcon from "../components/icons/LinkedinWithBackgroundIcon";
 import TwitterWithBackgroundIcon from "../components/icons/TwitterWithBackgroundIcon";
+import Page from "../components/Page";
 import { paddingX } from "../utils";
 
 type Person = {
@@ -108,90 +109,92 @@ const data: Person[] = [
 ];
 const AboutUs: React.FC = () => {
   return (
-    <div>
-      <section
-        style={{
-          paddingTop: headerHeight,
-          backgroundPositionY: headerHeight,
-        }}
-        className={clsx(paddingX, "relative isolate md:min-h-screen ")}
-      >
-        <div
+    <Page>
+      <div>
+        <section
           style={{
-            top: headerHeight,
+            paddingTop: headerHeight,
+            backgroundPositionY: headerHeight,
           }}
-          className="absolute left-0 h-[783px] w-full z-[-1]"
+          className={clsx(paddingX, "relative isolate md:min-h-screen ")}
         >
-          <div className="relative w-full h-full ">
-            <Image
-              src="/images/header-bg.png"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-            />
+          <div
+            style={{
+              top: headerHeight,
+            }}
+            className="absolute left-0 h-[783px] w-full z-[-1]"
+          >
+            <div className="relative w-full h-full ">
+              <Image
+                src="/images/header-bg.png"
+                alt=""
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
           </div>
-        </div>
-        <div className="w-full mx-auto max-w-content ">
-          <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
-            Our Vision
-          </h1>
-          <p className="heading-sm max-w-[632px] mx-auto mt-[32px] text-center">
-            Myria is a community driven platform that empowers gamers, studios,
-            and creators.
+          <div className="w-full mx-auto max-w-content ">
+            <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
+              Our Vision
+            </h1>
+            <p className="heading-sm max-w-[632px] mx-auto mt-[32px] text-center">
+              Myria is a community driven platform that empowers gamers,
+              studios, and creators.
+            </p>
+          </div>
+          <div className="mt-[196px]">
+            <h3 className="text-center heading-sm md:heading-md">
+              Our Experience
+            </h3>
+            <div className="mt-[60px]">
+              <ExperenceLogos />
+            </div>
+          </div>
+        </section>
+        <section className={clsx(paddingX, "mt-[175px]")}>
+          <div className="mx-auto max-w-content">
+            <h3 className="text-center heading-sm md:heading-md">
+              Led by industry experts
+            </h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 mt-[78px] gap-x-[31px] gap-y-[35px]">
+              {data.map((person, idx) => (
+                <article
+                  key={idx}
+                  className="text-center flex flex-col rounded-[20px] md:pt-[50px] md:pb-[40px] p-[32px] bg-brand-deep-blue"
+                >
+                  <p className="body-lg">{person.name}</p>
+                  <p className="mt-4 font-bold body">{person.position}</p>
+                  <p className="mt-6 mb-auto body-sm text-light">
+                    {person.description}
+                  </p>
+                  <div className="grid grid-flow-col justify-center gap-6 mt-[35px] opacity-50">
+                    {person.socials.twitter && (
+                      <a href={person.socials.twitter} className="w-[24px]">
+                        <TwitterWithBackgroundIcon />
+                      </a>
+                    )}
+                    {person.socials.twitter && (
+                      <a href={person.socials.linkedin} className="w-[24px]">
+                        <LinkedinWithBackgroundIcon />
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className={clsx(paddingX, "mt-[232px] mb-[273px]")}>
+          <h3 className="text-center heading-sm md:heading-md">Careers</h3>
+          <p className="text-center body md:body-lg mt-[38px]">
+            Join our team of 60+ to forge to future of blockchain gaming
           </p>
-        </div>
-        <div className="mt-[196px]">
-          <h3 className="text-center heading-sm md:heading-md">
-            Our Experience
-          </h3>
-          <div className="mt-[60px]">
-            <ExperenceLogos />
+          <div className="mt-[62px] max-w-[966px] mx-auto">
+            <Careers />
           </div>
-        </div>
-      </section>
-      <section className={clsx(paddingX, "mt-[175px]")}>
-        <div className="mx-auto max-w-content">
-          <h3 className="text-center heading-sm md:heading-md">
-            Led by industry experts
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 mt-[78px] gap-x-[31px] gap-y-[35px]">
-            {data.map((person, idx) => (
-              <article
-                key={idx}
-                className="text-center flex flex-col rounded-[20px] md:pt-[50px] md:pb-[40px] p-[32px] bg-brand-deep-blue"
-              >
-                <p className="body-lg">{person.name}</p>
-                <p className="mt-4 font-bold body">{person.position}</p>
-                <p className="mt-6 mb-auto body-sm text-light">
-                  {person.description}
-                </p>
-                <div className="grid grid-flow-col justify-center gap-6 mt-[35px] opacity-50">
-                  {person.socials.twitter && (
-                    <a href={person.socials.twitter} className="w-[24px]">
-                      <TwitterWithBackgroundIcon />
-                    </a>
-                  )}
-                  {person.socials.twitter && (
-                    <a href={person.socials.linkedin} className="w-[24px]">
-                      <LinkedinWithBackgroundIcon />
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className={clsx(paddingX, "mt-[232px] mb-[273px]")}>
-        <h3 className="text-center heading-sm md:heading-md">Careers</h3>
-        <p className="text-center body md:body-lg mt-[38px]">
-          Join our team of 60+ to forge to future of blockchain gaming
-        </p>
-        <div className="mt-[62px] max-w-[966px] mx-auto">
-          <Careers />
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </Page>
   );
 };
 

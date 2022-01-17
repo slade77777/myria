@@ -7,6 +7,7 @@ import { headerHeight } from "../components/Header";
 import ChartIcon from "../components/icons/ChartIcon";
 import StarIcon from "../components/icons/StarIcon";
 import UserIcon from "../components/icons/UserIcon";
+import Page from "../components/Page";
 import { paddingX } from "../utils";
 
 const data = [
@@ -44,64 +45,66 @@ const data = [
 
 const Games: React.FC = () => {
   return (
-    <div>
-      <section
-        style={{
-          paddingTop: headerHeight,
-          backgroundPositionY: headerHeight,
-        }}
-        className={clsx(paddingX, "relative isolate md:min-h-screen ")}
-      >
-        <div
+    <Page>
+      <div>
+        <section
           style={{
-            top: headerHeight,
+            paddingTop: headerHeight,
+            backgroundPositionY: headerHeight,
           }}
-          className="absolute left-0 h-[783px] w-full z-[-1]"
+          className={clsx(paddingX, "relative isolate md:min-h-screen ")}
         >
-          <div className="relative w-full h-full ">
-            <Image
-              src="/images/header-bg.png"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-            />
+          <div
+            style={{
+              top: headerHeight,
+            }}
+            className="absolute left-0 h-[783px] w-full z-[-1]"
+          >
+            <div className="relative w-full h-full ">
+              <Image
+                src="/images/header-bg.png"
+                alt=""
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
           </div>
-        </div>
-        <div className="w-full mx-auto max-w-content ">
-          <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
-            Blockchain infrastructure for Game Studios
-          </h1>
-          <p className="heading-sm max-w-[672px] mx-auto mt-[32px] text-center">
-            An end-to-end solution for token-based game economies and NFTs that
-            benefits the community
-          </p>
-        </div>
-        <h2 className="heading-md mt-[252px] text-center">What we do</h2>
-        <div className="grid md:grid-cols-4 xl:grid-cols-3  gap-y-[78px] gap-x-[32px] mx-auto max-w-content mt-[92px]">
-          {data.map((item, idx) => (
-            <CardWithIcon
-              key={idx}
-              icon={item.icon}
-              className={clsx("md:col-span-2 xl:col-span-1", {
-                "md:col-start-2": idx === 2,
-              })}
-            >
-              <h3 className="heading-sm md:heading-md max-w-[314px] mx-auto">
-                {item.title}
-              </h3>
-              <p className="mt-6 body-sm md:body mb-[62px]">
-                {item.description}
-              </p>
-            </CardWithIcon>
-          ))}
-        </div>
-      </section>
-      <section className={clsx(paddingX, "mt-[120px] mb-[200px]")}>
-        <div className="mx-auto max-w-content">
-          <GetInTouch />
-        </div>
-      </section>
-    </div>
+          <div className="w-full mx-auto max-w-content ">
+            <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
+              Blockchain infrastructure for Game Studios
+            </h1>
+            <p className="heading-sm max-w-[672px] mx-auto mt-[32px] text-center">
+              An end-to-end solution for token-based game economies and NFTs
+              that benefits the community
+            </p>
+          </div>
+          <h2 className="heading-md mt-[252px] text-center">What we do</h2>
+          <div className="grid md:grid-cols-4 xl:grid-cols-3  gap-y-[78px] gap-x-[32px] mx-auto max-w-content mt-[92px]">
+            {data.map((item, idx) => (
+              <CardWithIcon
+                key={idx}
+                icon={item.icon}
+                className={clsx("md:col-span-2 xl:col-span-1", {
+                  "md:col-start-2": idx === 2,
+                })}
+              >
+                <h3 className="heading-sm md:heading-md max-w-[314px] mx-auto">
+                  {item.title}
+                </h3>
+                <p className="mt-6 body-sm md:body mb-[62px]">
+                  {item.description}
+                </p>
+              </CardWithIcon>
+            ))}
+          </div>
+        </section>
+        <section className={clsx(paddingX, "mt-[120px] mb-[200px]")}>
+          <div className="mx-auto max-w-content">
+            <GetInTouch />
+          </div>
+        </section>
+      </div>
+    </Page>
   );
 };
 
