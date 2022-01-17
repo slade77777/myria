@@ -124,7 +124,7 @@ const AboutUs: React.FC = () => {
         >
           <div className="relative w-full h-full ">
             <Image
-              src="/images/about-us/header-bg.png"
+              src="/images/header-bg.png"
               alt=""
               layout="fill"
               objectFit="cover"
