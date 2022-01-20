@@ -56,7 +56,7 @@ const ComingSoon: React.FC = () => {
           </div>
           <div className="mt-[90px] grid grid-flow-col gap-[36px] justify-center">
             {links.map((item, idx) => (
-              <a key={idx} href={item.link} className="w-[32px]">
+              <a target="_blank" key={idx} href={item.link} className="w-[32px]" rel="noreferrer">
                 {item.icon}
               </a>
             ))}
