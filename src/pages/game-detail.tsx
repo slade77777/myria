@@ -20,7 +20,12 @@ export type Asset = {
 const assets: Asset[] = [
   {
     type: "video",
-    src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    image: "/images/game-detail/metarush-bg.png",
+  },
+  {
+    type: "video",
+    src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     image: "/images/game-detail/metarush-bg.png",
   },
   {
