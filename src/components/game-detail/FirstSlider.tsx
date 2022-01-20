@@ -8,6 +8,7 @@ import ChevronLeftIcon from "../icons/ChevronLeftIcon";
 import ChevronRightIcon from "../icons/ChevronRightIcon";
 import { Asset } from "../../pages/game-detail";
 import Video from "../Video";
+import { useAutoPlayInGameDetail } from "../../valtio/autoPlayInGameDetail";
 
 const Arrow: React.FC<CustomArrowProps & { position: "left" | "right" }> = ({
   onClick,
@@ -64,27 +65,44 @@ const FirstSlider: React.FC<Props> = ({
     }
   }, [currentSlide]);
 
-  const [autoPlay, setAutoPlay] = useState(true);
+  const autoPlay = useAutoPlayInGameDetail();
 
   return (
-    <Slider ref={sliderRef} {...settings} className="relative group">
-      {assets.map((a, idx) => (
-        <div key={idx}>
-          {a.type === "video" ? (
-            <div className="aspect-[16/9]">
-              <Video
+    <>
+      <Slider ref={sliderRef} {...settings} className="relative group">
+        {assets.map((a, idx) => (
+          <div
+            key={idx}
+            className="pt-[calc(9/16*100%)] relative rounded-[5px] overflow-hidden"
+          >
+            {a.type === "video" ? (
+              <div className="absolute top-0 left-0 w-full h-full">
+                <Video
+                  options={{
+                    aspectRatio: "16:9",
+                    autoplay: false,
+                    muted: true,
+                    poster: a.image,
+                    sources: [
+                      {
+                        src: a.src,
+                      },
+                    ],
+                  }}
+                  isVisible={currentSlide == idx}
+                />
+              </div>
+            ) : (
+              <img
                 src={a.src}
-                poster={a.image}
-                autoPlay={autoPlay}
-                setAutoPlay={setAutoPlay}
+                alt=""
+                className="absolute top-0 left-0 object-cover w-full h-full"
               />
-            </div>
-          ) : (
-            <img src={a.src} alt="" />
-          )}
-        </div>
-      ))}
-    </Slider>
+            )}
+          </div>
+        ))}
+      </Slider>
+    </>
   );
 };
 

@@ -88,7 +88,7 @@ const SecondSlider: React.FC<Props> = ({
             )}
           >
             {currentSlide !== idx && (
-              <div className="absolute z-[3] inset-0 bg-black opacity-40" />
+              <div className="absolute z-[3] inset-0 bg-black opacity-40 hover:opacity-0" />
             )}
             {a.type == "video" && (
               <span className="absolute z-[2] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[13px]">

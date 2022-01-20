@@ -1,89 +1,91 @@
-import React, { useRef } from "react";
-import {
-  Player,
-  Settings,
-  Video as VMVideo,
-  Controls,
-  ControlSpacer,
-  PlaybackControl,
-  TimeProgress,
-  Scrim,
-  Ui,
-  ControlGroup,
-  ScrubberControl,
-  VolumeControl,
-  FullscreenControl,
-  ClickToPlay,
-  SettingsControl,
-  MenuItem,
-  MenuRadioGroup,
-  Submenu,
-  MenuRadio,
-} from "@vime/react";
-import "@vime/core/themes/default.css";
+import { useEffect, useRef, useState } from "react";
+import videojs from "video.js";
+import { useAutoPlayInGameDetail } from "../../valtio/autoPlayInGameDetail";
+import "./Setting";
+import styles from "./styles.module.css";
 
-export type VideoProps = {
-  src: string;
-  poster?: string;
-  autoPlay: boolean;
-  setAutoPlay: (autoPlay: boolean) => void;
+export type VideoOptions = videojs.PlayerOptions;
+
+type VideoProps = {
+  options: VideoOptions;
+  isVisible: boolean;
+};
+
+const defaultOptions: VideoOptions = {
+  controls: true,
+  responsive: true,
+  bigPlayButton: false,
+  controlBar: {
+    pictureInPictureToggle: false,
+    customControlSpacer: true,
+    timeDivider: true,
+    durationDisplay: true,
+    currentTimeDisplay: true,
+    remainingTimeDisplay: false,
+    liveDisplay: false,
+    seekToLive: false,
+  },
+  poster: "https://picsum.photos/600/300",
 };
 
 const Video: React.FC<VideoProps> = ({
-  src,
-  poster,
-  autoPlay,
-  setAutoPlay,
+  options,
+  // autoPlay,
+  isVisible,
 }) => {
-  const onValueChange = (event: Event) => {
-    const radio = event.target as HTMLVmMenuRadioElement;
-    setAutoPlay(radio.value === "none" ? false : true);
-  };
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const playerRef = useRef<videojs.Player | null>(null);
 
-  const playerRef = useRef<HTMLVmPlayerElement | null>(null);
+  const autoPlay = useAutoPlayInGameDetail();
+
+  useEffect(() => {
+    if (playerRef.current) {
+      return;
+    }
+    if (!videoRef.current) {
+      return;
+    }
+
+    videojs(videoRef.current, {
+      ...defaultOptions,
+      ...options,
+    }).ready(function () {
+      playerRef.current = this;
+      if (autoPlay && isVisible) {
+        playerRef.current?.play();
+      }
+
+      const component =
+        this.getChild("controlBar")?.addChild("ControlBarSettings");
+      component?.addClass("vjs-control");
+      component?.addClass("vjs-settings");
+    });
+  }, [options, autoPlay, isVisible]);
+
+  useEffect(() => {
+    return () => {
+      playerRef.current?.dispose();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (autoPlay && isVisible && playerRef.current) {
+      playerRef.current.play();
+    }
+  }, [autoPlay, isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) {
+      playerRef.current?.pause();
+    }
+  }, [isVisible]);
 
   return (
-    <Player
-      ref={playerRef}
-      autoplay={autoPlay}
-      style={{ "--vm-controls-padding": "10px 30px" } as any}
-    >
-      <VMVideo crossOrigin="" poster={poster}>
-        <source data-src={src} type="video/mp4" />
-      </VMVideo>
-      <Ui>
-        <Scrim />
-        <ClickToPlay />
-        <Controls fullWidth>
-          <ControlGroup>
-            <ScrubberControl />
-          </ControlGroup>
-
-          <ControlGroup space="top">
-            <PlaybackControl hideTooltip />
-            <VolumeControl hideTooltip />
-            <TimeProgress />
-            <ControlSpacer />
-            <SettingsControl />
-            <FullscreenControl hideTooltip />
-          </ControlGroup>
-        </Controls>
-        <Settings>
-          <Submenu
-            label="Autoplay"
-            hint={autoPlay ? "Applies to all videos" : "None"}
-          >
-            <MenuRadioGroup
-              value={autoPlay ? "all" : "none"}
-              onVmCheck={onValueChange}
-            >
-              <MenuRadio label="None" value="none" />
-              <MenuRadio label="Applies to all videos" value="all" />
-            </MenuRadioGroup>
-          </Submenu>
-        </Settings>
-      </Ui>
-    </Player>
+    <div className={styles.container}>
+      <div data-vjs-player="true">
+        <video ref={videoRef} className="video-js" />
+      </div>
+    </div>
   );
 };
 

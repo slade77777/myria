@@ -3,32 +3,32 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Brutal Type";
-  src: url("/fonts/BrutalType/BrutalType-Regular.otf");
+  font-family: 'Brutal Type';
+  src: url('/fonts/BrutalType/BrutalType-Regular.otf');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Brutal Type";
-  src: url("/fonts/BrutalType/BrutalType-Medium.otf");
+  font-family: 'Brutal Type';
+  src: url('/fonts/BrutalType/BrutalType-Medium.otf');
   font-style: normal;
   font-weight: 500;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Brutal Type";
-  src: url("/fonts/BrutalType/BrutalType-Bold.otf");
+  font-family: 'Brutal Type';
+  src: url('/fonts/BrutalType/BrutalType-Bold.otf');
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Brutal Type";
-  src: url("/fonts/BrutalType/BrutalType-ExtraBold.otf");
+  font-family: 'Brutal Type';
+  src: url('/fonts/BrutalType/BrutalType-ExtraBold.otf');
   font-style: normal;
   font-weight: 800;
   font-display: swap;
@@ -36,7 +36,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Brutal Type", sans-serif;
+  font-family: 'Brutal Type', sans-serif;
 }
 
 html {
