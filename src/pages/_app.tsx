@@ -1,11 +1,13 @@
 import 'video.js/dist/video-js.css';
 import '../styles/globals.css';
 
-import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 
+import { useGA } from 'src/lib/ga';
+
 function App({ Component, pageProps }: AppProps) {
+  useGA();
   return (
     <>
       <DefaultSeo
