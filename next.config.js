@@ -4,4 +4,8 @@ module.exports = {
   eslint: {
     dirs: ['src']
   },
+  images: {
+    loader: 'akamai',
+    path: '',
+  }
 }
