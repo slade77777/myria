@@ -31,5 +31,7 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+        env:
+         NEXT_PUBLIC_GOOGLE_ANALYTICS: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS }}
       - name: Deploy
         run: aws s3 sync ./out s3://website-dapp
