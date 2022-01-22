@@ -14,19 +14,19 @@ const links = [
       [
         {
           label: 'Metarush',
-          link: '/'
+          link: '/game-detail'
         },
         {
           label: 'Metakart',
-          link: '/'
+          link: '/game-detail'
         },
         {
           label: 'Blocks Royale',
-          link: '/'
+          link: '/game-detail'
         },
         {
           label: 'Starstrike Legends',
-          link: '/'
+          link: '/gamde-detail'
         }
       ]
     ]
@@ -37,19 +37,19 @@ const links = [
       [
         {
           label: 'Nodes',
-          link: '/'
+          link: '/nodes'
         },
         {
           label: 'Ecosystem',
-          link: '/'
+          link: '/ecosystem'
         },
         {
           label: 'Store',
-          link: '/'
+          link: '/store'
         },
         {
           label: 'For Studios',
-          link: '/'
+          link: '/for-studios'
         },
         {
           label: 'Morphing NFTs',
@@ -64,7 +64,7 @@ const links = [
       [
         {
           label: 'About',
-          link: '/'
+          link: '/about-us'
         },
         {
           label: 'Whitepaper',
@@ -78,7 +78,7 @@ const links = [
       [
         {
           label: 'Careers',
-          link: '/'
+          link: '/careers'
         },
         {
           label: 'News',
@@ -86,7 +86,7 @@ const links = [
         },
         {
           label: 'Contact Us',
-          link: '/'
+          link: '/contact'
         }
       ]
     ]
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-10 md:mt-[48px] grid grid-flow-col gap-4 sm:gap-6 justify-start">
           {socials.map((item, idx) => (
-            <a href={item.link} key={idx} className="w-[32px]">
+            <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
               {item.icon}
             </a>
           ))}

@@ -1,10 +1,12 @@
 import React from 'react';
+import { socialLinks } from 'src/configs';
 import DesktopHeader from './DesktopHeader';
 import MobileHeader from './MobileHeader';
 
 type NavItem = {
   text: string;
   url?: string;
+  target?: '_blank';
   children?: NavItem[];
 };
 
@@ -38,15 +40,18 @@ export const links: NavItem[] = [
     children: [
       {
         text: 'Discord',
-        url: '/'
+        url: socialLinks.discord,
+        target: '_blank'
       },
       {
         text: 'Twitter',
-        url: '/'
+        url: socialLinks.twitter,
+        target: '_blank'
       },
       {
         text: 'Instagram',
-        url: '/'
+        url: socialLinks.instagram,
+        target: '_blank'
       }
     ]
   }

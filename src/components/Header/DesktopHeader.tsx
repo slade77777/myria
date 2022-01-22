@@ -40,7 +40,9 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
                       {item.children.map((link, idx) => (
                         <li key={idx}>
                           <Link href={link.url as string}>
-                            <a className="hover:text-brand-gold">{link.text}</a>
+                            <a target={link.target} className="hover:text-brand-gold">
+                              {link.text}
+                            </a>
                           </Link>
                         </li>
                       ))}

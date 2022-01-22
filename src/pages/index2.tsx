@@ -9,6 +9,7 @@ import { paddingX } from '../utils';
 import ArrowDownIcon from '../components/icons/ArrowDownIcon';
 import Page from '../components/Page';
 import Link from 'next/link';
+import { socialLinks } from 'src/configs';
 
 const Home = () => {
   return (
@@ -17,12 +18,16 @@ const Home = () => {
         <p className="text-[14px] leading-[1.23] font-medium ">
           <span className="font-bold">$MYRIA</span> Token Sale and Node Sale coming soon!
         </p>
-        <button className="flex items-center mt-6 md:mt-0 md:ml-6 btn-icon btn-white">
+        <a
+          href={socialLinks.discord}
+          target="_blank"
+          className="flex items-center mt-6 md:mt-0 md:ml-6 btn-icon btn-white"
+          rel="noreferrer">
           <span className="w-[30px]">
             <DiscordIcon />
           </span>
           <span>JOIN DISCORD</span>
-        </button>
+        </a>
       </div>
       <Page action="join-discord">
         <div>
@@ -51,12 +56,16 @@ const Home = () => {
               <h3 className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
                 Myria is a community driven platform that empowers gamers, studios, and creators.
               </h3>
-              <button className="mt-[38px] btn-icon md:btn-icon btn-primary flex items-center mx-auto">
+              <a
+                href={socialLinks.discord}
+                target="_blank"
+                className="mt-[38px] btn-icon btn-primary inline-flex items-center mx-auto"
+                rel="noreferrer">
                 <span className="w-[30px]">
                   <DiscordIcon />
                 </span>
                 <span>JOIN DISCORD</span>
-              </button>
+              </a>
               <a
                 href="#our-games"
                 className="md:hidden flex items-center justify-center mt-[237px] bg-[#96C5DF] w-[64px] h-[64px] rounded-full mx-auto bg-opacity-20">

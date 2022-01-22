@@ -82,7 +82,9 @@ const HeaderOverlay = ({
                           {item.children!.map((link, idx) => (
                             <li key={idx}>
                               <Link href={link.url as string}>
-                                <a className="text-brand-gold">{link.text}</a>
+                                <a target={link.target} className="text-brand-gold">
+                                  {link.text}
+                                </a>
                               </Link>
                             </li>
                           ))}
