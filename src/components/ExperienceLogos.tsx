@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 const ExperenceLogos: React.FC = () => {
   return (
@@ -10,12 +10,7 @@ const ExperenceLogos: React.FC = () => {
             <Image src="/images/unisoft.png" alt="" width={131} height={41} />
           </div>
           <div>
-            <Image
-              src="/images/activision.png"
-              alt=""
-              width={131}
-              height={32}
-            />
+            <Image src="/images/activision.png" alt="" width={131} height={32} />
           </div>
           <div>
             <Image src="/images/ea.png" alt="" width={44} height={46} />
@@ -31,28 +26,18 @@ const ExperenceLogos: React.FC = () => {
         </div>
         <div className="grid gap-10 justify-center grid-cols-[repeat(3,auto)] items-center">
           <div>
-            <Image
-              src="/images/warner-bros.png"
-              alt=""
-              width={52}
-              height={54}
-            />
+            <Image src="/images/warner-bros.png" alt="" width={52} height={54} />
           </div>
           <div>
             <Image src="/images/gameloft.png" alt="" width={66} height={46} />
           </div>
           <div>
-            <Image src="/images/alibaba.png" alt="" width={106} height={67} />
+            <Image src="/images/emi.png" alt="" width={106} height={67} />
           </div>
         </div>
         <div className="grid gap-10 justify-center grid-cols-[repeat(2,auto)] items-center">
           <div>
-            <Image
-              src="/images/greenpanda.png"
-              alt=""
-              width={137}
-              height={26}
-            />
+            <Image src="/images/greenpanda.png" alt="" width={137} height={26} />
           </div>
           <div>
             <Image src="/images/tencent.png" alt="" width={132} height={24} />
@@ -65,12 +50,7 @@ const ExperenceLogos: React.FC = () => {
             <Image src="/images/unisoft.png" alt="" width={216} height={69} />
           </div>
           <div>
-            <Image
-              src="/images/activision.png"
-              alt=""
-              width={216}
-              height={52}
-            />
+            <Image src="/images/activision.png" alt="" width={216} height={52} />
           </div>
           <div>
             <Image src="/images/ea.png" alt="" width={71} height={76} />
@@ -79,12 +59,7 @@ const ExperenceLogos: React.FC = () => {
             <Image src="/images/blizzard.png" alt="" width={185} height={97} />
           </div>
           <div>
-            <Image
-              src="/images/warner-bros.png"
-              alt=""
-              width={86}
-              height={90}
-            />
+            <Image src="/images/warner-bros.png" alt="" width={86} height={90} />
           </div>
         </div>
         <div className="mt-[70px] grid sm:gap-[30px] lg:gap-[50px] xl:gap-[76px] justify-between grid-cols-[repeat(5,auto)] items-center">
@@ -92,23 +67,13 @@ const ExperenceLogos: React.FC = () => {
             <Image src="/images/crypto.png" alt="" width={274} height={52.6} />
           </div>
           <div>
-            <Image
-              src="/images/gameloft.png"
-              alt=""
-              width={109.33}
-              height={77.33}
-            />
+            <Image src="/images/gameloft.png" alt="" width={109.33} height={77.33} />
           </div>
           <div>
-            <Image src="/images/alibaba.png" alt="" width={174} height={78} />
+            <Image src="/images/emi.png" alt="" width={174} height={62} />
           </div>
           <div>
-            <Image
-              src="/images/greenpanda.png"
-              alt=""
-              width={227}
-              height={44}
-            />
+            <Image src="/images/greenpanda.png" alt="" width={227} height={44} />
           </div>
           <div>
             <Image src="/images/tencent.png" alt="" width={218} height={41} />

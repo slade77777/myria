@@ -1,6 +1,6 @@
-import React from "react";
-import DesktopHeader from "./DesktopHeader";
-import MobileHeader from "./MobileHeader";
+import React from 'react';
+import DesktopHeader from './DesktopHeader';
+import MobileHeader from './MobileHeader';
 
 type NavItem = {
   text: string;
@@ -10,67 +10,60 @@ type NavItem = {
 
 export const links: NavItem[] = [
   {
-    text: "Home",
-    url: "/",
+    text: 'Home',
+    url: '/'
   },
   {
-    text: "About",
+    text: 'About',
+    url: '/about-us'
+  },
+  {
+    text: 'Ecosystem',
+    url: '/ecosystem'
+  },
+  {
+    text: 'Games',
+    url: '/games'
+  },
+  {
+    text: 'Nodes',
+    url: '/nodes'
+  },
+  {
+    text: 'Store',
+    url: '/store'
+  },
+  {
+    text: 'Community',
     children: [
       {
-        text: "Our team",
-        url: "/about-us",
+        text: 'Discord',
+        url: '/'
       },
       {
-        text: "For gamers",
-        url: "/for-gamers",
+        text: 'Twitter',
+        url: '/'
       },
       {
-        text: "For studios",
-        url: "/for-studios",
-      },
-    ],
-  },
-  {
-    text: "Games",
-    url: "/games",
-  },
-  {
-    text: "Nodes",
-    url: "/nodes",
-  },
-  {
-    text: "Store",
-    url: "/store",
-  },
-  {
-    text: "Community",
-    children: [
-      {
-        text: "Our team",
-        url: "/",
-      },
-      {
-        text: "For gamers",
-        url: "/",
-      },
-      {
-        text: "For studio",
-        url: "/",
-      },
-    ],
-  },
+        text: 'Instagram',
+        url: '/'
+      }
+    ]
+  }
 ];
 
 export const headerHeight = 112;
 
-const Header: React.FC = () => {
+export type Action = 'login' | 'join-discord';
+
+const Header: React.FC<{ action?: Action }> = ({ action = 'login' }) => {
   return (
     <div className="absolute top-0 z-10 w-full">
       <div className="hidden lg:block">
-        <DesktopHeader />
+        <DesktopHeader action={action} />
       </div>
       <div className="lg:hidden">
-        <MobileHeader />
+        <MobileHeader action={action} />
       </div>
     </div>
   );

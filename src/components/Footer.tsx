@@ -1,94 +1,115 @@
-import clsx from "clsx";
-import React from "react";
-import BookIcon from "./icons/BookIcon";
-import DiscordIcon from "./icons/DiscordIcon";
-import InstagramIcon from "./icons/InstagramIcon";
-import Logo from "./icons/Logo";
-import MediumIcon from "./icons/MediumIcon";
-import TelegramIcon from "./icons/TelegramIcon";
-import TwitterIcon from "./icons/TwitterIcon";
-import YoutubeIcon from "./icons/YoutubeIcon";
+import clsx from 'clsx';
+import React from 'react';
+import { socialLinks } from '../configs';
+import DiscordIcon from './icons/DiscordIcon';
+import InstagramIcon from './icons/InstagramIcon';
+import Logo from './icons/Logo';
+import MediumIcon from './icons/MediumIcon';
+import TwitterIcon from './icons/TwitterIcon';
 
 const links = [
   {
-    title: "Games",
+    title: 'Games',
     blocks: [
       [
         {
-          label: "Metarush",
-          link: "/",
+          label: 'Metarush',
+          link: '/'
         },
         {
-          label: "Metakart",
-          link: "/",
+          label: 'Metakart',
+          link: '/'
         },
         {
-          label: "Blocks Royale",
-          link: "/",
+          label: 'Blocks Royale',
+          link: '/'
         },
         {
-          label: "Starstrike Legends",
-          link: "/",
-        },
-      ],
-    ],
+          label: 'Starstrike Legends',
+          link: '/'
+        }
+      ]
+    ]
   },
   {
-    title: "Ecosystem",
+    title: 'Ecosystem',
     blocks: [
       [
         {
-          label: "Nodes",
-          link: "/",
+          label: 'Nodes',
+          link: '/'
         },
         {
-          label: "Marketplace",
-          link: "/",
+          label: 'Ecosystem',
+          link: '/'
         },
         {
-          label: "Store",
-          link: "/",
+          label: 'Store',
+          link: '/'
         },
         {
-          label: "FAQ",
-          link: "/",
+          label: 'For Studios',
+          link: '/'
         },
-      ],
-    ],
+        {
+          label: 'Morphing NFTs',
+          link: '/'
+        }
+      ]
+    ]
   },
   {
-    title: "About Us",
+    title: 'About Us',
     blocks: [
       [
         {
-          label: "About",
-          link: "/",
+          label: 'About',
+          link: '/'
         },
         {
-          label: "Whitepaper",
-          link: "/",
+          label: 'Whitepaper',
+          link: '/'
         },
         {
-          label: "Team",
-          link: "/",
-        },
+          label: 'Team',
+          link: '/'
+        }
       ],
       [
         {
-          label: "Careers",
-          link: "/",
+          label: 'Careers',
+          link: '/'
         },
         {
-          label: "News",
-          link: "/",
+          label: 'News',
+          link: '/'
         },
         {
-          label: "Contact Us",
-          link: "/",
-        },
-      ],
-    ],
+          label: 'Contact Us',
+          link: '/'
+        }
+      ]
+    ]
+  }
+];
+
+const socials = [
+  {
+    icon: <DiscordIcon />,
+    link: socialLinks.discord
   },
+  {
+    icon: <TwitterIcon />,
+    link: socialLinks.twitter
+  },
+  {
+    icon: <MediumIcon />,
+    link: socialLinks.medium
+  },
+  {
+    icon: <InstagramIcon />,
+    link: socialLinks.instagram
+  }
 ];
 const Footer: React.FC = () => {
   return (
@@ -98,27 +119,11 @@ const Footer: React.FC = () => {
           <Logo />
         </div>
         <div className="mt-10 md:mt-[48px] grid grid-flow-col gap-4 sm:gap-6 justify-start">
-          <a href="#" className="w-[32px]">
-            <DiscordIcon />
-          </a>
-          <a href="#" className="w-[32px]">
-            <TelegramIcon />
-          </a>
-          <a href="#" className="w-[32px]">
-            <TwitterIcon />
-          </a>
-          <a href="#" className="w-[32px]">
-            <MediumIcon />
-          </a>
-          <a href="#" className="w-[32px]">
-            <YoutubeIcon />
-          </a>
-          <a href="#" className="w-[32px]">
-            <InstagramIcon />
-          </a>
-          <a href="#" className="w-[32px]">
-            <BookIcon />
-          </a>
+          {socials.map((item, idx) => (
+            <a href={item.link} key={idx} className="w-[32px]">
+              {item.icon}
+            </a>
+          ))}
         </div>
       </div>
       <div className="row-span-2 grid grid-cols-2 md:grid-cols-[auto_auto_auto] gap-y-[32px] gap-10 md:gap-[77px] justify-start">
@@ -126,25 +131,20 @@ const Footer: React.FC = () => {
           <div
             key={idx}
             className={clsx({
-              "col-span-2 md:col-span-1": idx === 2,
-            })}
-          >
-            <h3 className="font-extrabold text-[24px] leading-[1.24]">
-              {item.title}
-            </h3>
+              'col-span-2 md:col-span-1': idx === 2
+            })}>
+            <h3 className="font-extrabold text-[24px] leading-[1.24]">{item.title}</h3>
             <div
-              className={clsx("grid gap-y-4 mt-6", {
-                "grid-cols-2 gap-x-10 md:grid-cols-1": idx === 2,
-              })}
-            >
+              className={clsx('grid gap-y-4 mt-6', {
+                'grid-cols-2 gap-x-10 md:grid-cols-1': idx === 2
+              })}>
               {item.blocks.map((block, idx) => (
-                <div key={idx} className={clsx("grid gap-y-4")}>
+                <div key={idx} className={clsx('grid gap-y-4')}>
                   {block.map((item, idx) => (
                     <a
                       href={item.link}
                       key={idx}
-                      className="text-[16px] leading-[1.23] hover:text-[#F5B941]"
-                    >
+                      className="text-[16px] leading-[1.23] hover:text-[#F5B941]">
                       {item.label}
                     </a>
                   ))}

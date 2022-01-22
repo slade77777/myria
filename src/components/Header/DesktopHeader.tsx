@@ -1,18 +1,22 @@
-import Link from "next/link";
-import React from "react";
-import ChevronDownIcon from "../icons/ChevronDownIcon";
-import Logo from "../icons/Logo";
-import { links, headerHeight } from "./Header";
+import Link from 'next/link';
+import React from 'react';
+import { socialLinks } from '../../configs';
+import ChevronDownIcon from '../icons/ChevronDownIcon';
+import Logo from '../icons/Logo';
+import { links, headerHeight, Action } from './Header';
 
-const DesktopHeader: React.FC = () => {
+type Props = {
+  action: Action;
+};
+
+const DesktopHeader: React.FC<Props> = ({ action }) => {
   return (
     <header>
       <nav
         style={{
-          height: headerHeight,
+          height: headerHeight
         }}
-        className="py-4 lg:px-4 xl:px-[54px] flex items-center justify-between"
-      >
+        className="py-4 lg:px-4 xl:px-[54px] flex items-center justify-between">
         <div className="flex items-center w-[220px]">
           <Link href="/">
             <a className="w-full max-w-[164px]">
@@ -55,9 +59,22 @@ const DesktopHeader: React.FC = () => {
             }
           })}
         </ul>
-        <div className="flex items-center">
-          <button className="btn-sm btn-primary">Sign up</button>
-          <button className="btn-sm btn-secondary ml-[21px]">Log in</button>
+        <div className="flex items-center w-[220px] justify-end flex-shrink-0">
+          {action === 'login' && (
+            <>
+              <button className="btn-sm btn-primary">Sign up</button>
+              <button className="btn-sm btn-secondary ml-[21px]">Log in</button>
+            </>
+          )}
+          {action === 'join-discord' && (
+            <a
+              className="btn-sm btn-secondary"
+              href={socialLinks.discord}
+              target="_blank"
+              rel="noreferrer">
+              JOIN DISCORD
+            </a>
+          )}
         </div>
       </nav>
     </header>
