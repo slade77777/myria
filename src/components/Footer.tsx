@@ -1,11 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
-import { socialLinks } from '../configs';
-import DiscordIcon from './icons/DiscordIcon';
-import InstagramIcon from './icons/InstagramIcon';
+
 import Logo from './icons/Logo';
-import MediumIcon from './icons/MediumIcon';
-import TwitterIcon from './icons/TwitterIcon';
+import Socials from './Social';
 
 const links = [
   {
@@ -93,24 +90,6 @@ const links = [
   }
 ];
 
-const socials = [
-  {
-    icon: <DiscordIcon />,
-    link: socialLinks.discord
-  },
-  {
-    icon: <TwitterIcon />,
-    link: socialLinks.twitter
-  },
-  {
-    icon: <MediumIcon />,
-    link: socialLinks.medium
-  },
-  {
-    icon: <InstagramIcon />,
-    link: socialLinks.instagram
-  }
-];
 const Footer: React.FC = () => {
   return (
     <footer className="grid lg:grid-cols-[max-content_1fr] lg:grid-rows-[auto_auto] lg:gap-x-[100px] xl:gap-x-[281px] gap-y-[34px] md:gap-y-[50px]">
@@ -119,7 +98,7 @@ const Footer: React.FC = () => {
           <Logo />
         </div>
         <div className="mt-10 md:mt-[48px] grid grid-flow-col gap-4 sm:gap-6 justify-start">
-          {socials.map((item, idx) => (
+          {Socials.map((item, idx) => (
             <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
               {item.icon}
             </a>

@@ -18,7 +18,7 @@ const Home = () => {
         <p className="text-[14px] leading-[1.23] font-medium ">
           <span className="font-bold">$MYRIA</span> Token Sale and Node Sale coming soon!
         </p>
-        <a className="flex items-center mt-6 md:mt-0 md:ml-6 btn-icon btn-white" href={socialLinks.discord} target="_blank">
+        <a className="flex items-center mt-6 md:mt-0 md:ml-6 btn-icon btn-white" href={socialLinks.discord} target="_blank" rel="noreferrer">
           <span className="w-[30px]">
             <DiscordIcon />
           </span>
@@ -52,7 +52,7 @@ const Home = () => {
               <h3 className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
                 Myria is a community driven platform that empowers gamers, studios, and creators.
               </h3>
-              <a className="mt-[38px] btn-icon md:btn-icon btn-primary !inline-flex items-center mx-auto" href={socialLinks.discord} target="_blank">
+              <a className="mt-[38px] btn-icon md:btn-icon btn-primary !inline-flex items-center mx-auto" href={socialLinks.discord} target="_blank" rel="noreferrer">
                 <span className="w-[30px]">
                   <DiscordIcon />
                 </span>
