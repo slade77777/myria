@@ -51,7 +51,7 @@ const Home = () => {
               <h3 className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
                 Myria is a community driven platform that empowers gamers, studios, and creators.
               </h3>
-              <button className="mt-[38px] btn-icon md:btn-icon btn-primary flex items-center mx-auto">
+              <button className="mt-[38px] btn-icon md:btn-icon btn-primary !flex items-center mx-auto">
                 <span className="w-[30px]">
                   <DiscordIcon />
                 </span>
