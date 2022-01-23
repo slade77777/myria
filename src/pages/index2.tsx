@@ -1,14 +1,14 @@
 import clsx from 'clsx';
-import Link from 'next/link';
-import Image from 'next/image';
 import { headerHeight } from '../components/Header';
 import DiscordIcon from '../components/icons/DiscordIcon';
 import OurGames from '../components/OurGames';
+import Image from 'next/image';
 import JoinTheRevolution from '../components/JoinTheRevolution';
 import ExperenceLogos from '../components/ExperienceLogos';
 import { paddingX } from '../utils';
 import ArrowDownIcon from '../components/icons/ArrowDownIcon';
 import Page from '../components/Page';
+import Link from 'next/link';
 import { socialLinks } from 'src/configs';
 
 const Home = () => {
@@ -18,7 +18,11 @@ const Home = () => {
         <p className="text-[14px] leading-[1.23] font-medium ">
           <span className="font-bold">$MYRIA</span> Token Sale and Node Sale coming soon!
         </p>
-        <a className="flex items-center mt-6 md:mt-0 md:ml-6 btn-icon btn-white" href={socialLinks.discord} target="_blank" rel="noreferrer">
+        <a
+          href={socialLinks.discord}
+          target="_blank"
+          className="flex items-center mt-6 md:mt-0 md:ml-6 btn-icon btn-white"
+          rel="noreferrer">
           <span className="w-[30px]">
             <DiscordIcon />
           </span>
@@ -52,7 +56,11 @@ const Home = () => {
               <h3 className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
                 Myria is a community driven platform that empowers gamers, studios, and creators.
               </h3>
-              <a className="mt-[38px] btn-icon md:btn-icon btn-primary !inline-flex items-center mx-auto" href={socialLinks.discord} target="_blank" rel="noreferrer">
+              <a
+                href={socialLinks.discord}
+                target="_blank"
+                className="mt-[38px] btn-icon btn-primary inline-flex items-center mx-auto"
+                rel="noreferrer">
                 <span className="w-[30px]">
                   <DiscordIcon />
                 </span>
@@ -219,12 +227,12 @@ const Home = () => {
                     </p>
                   </div>
                   <div className="justify-center md:justify-start flex items-center mt-[60px]">
-                    <a className="flex items-center btn-icon btn-white" href={socialLinks.discord}>
+                    <button className="flex items-center btn-icon btn-white">
                       <span className="w-[30px]">
                         <DiscordIcon />
                       </span>
                       <span>JOIN DISCORD</span>
-                    </a>
+                    </button>
                     <button className="btn-lg btn-primary ml-4 md:ml-[31px]">RUN A NODE</button>
                   </div>
                 </div>

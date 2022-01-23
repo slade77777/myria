@@ -1,6 +1,6 @@
-import clsx from "clsx";
-import Image from "next/image";
-import React from "react";
+import clsx from 'clsx';
+import Image from 'next/image';
+import React from 'react';
 
 const Backdrop = () => {
   return (
@@ -27,10 +27,10 @@ const data = [
         />
       </div>
     ),
-    background: "/images/our-games/metarush-bg.png",
-    title: "A multiplayer obstacle course game",
-    link: "/",
-    layout: "row",
+    background: '/images/our-games/metarush-bg.png',
+    title: 'A multiplayer obstacle course game',
+    link: '/',
+    layout: 'row'
   },
   {
     logo: (
@@ -44,10 +44,10 @@ const data = [
         />
       </div>
     ),
-    background: "/images/our-games/block-royale-bg.png",
-    title: "A battle-royale shooter game",
-    link: "/",
-    layout: "col",
+    background: '/images/our-games/block-royale-bg.png',
+    title: 'A battle-royale shooter game',
+    link: '/',
+    layout: 'col'
   },
   {
     logo: (
@@ -61,28 +61,28 @@ const data = [
         />
       </div>
     ),
-    background: "/images/our-games/metakart-bg.png",
-    title: "A multiplayer go-kart racing game",
-    link: "/",
-    layout: "row",
+    background: '/images/our-games/metakart-bg.png',
+    title: 'A multiplayer go-kart racing game',
+    link: '/',
+    layout: 'row'
   },
   {
     logo: (
-      <div className="w-full max-w-[148px]">
+      <div className="w-full max-w-[245px]">
         <Image
-          src="/images/our-games/aegis.png"
+          src="/images/our-games/starstrike.png"
           alt="metakart"
           layout="responsive"
-          width={148}
-          height={51}
+          width={245}
+          height={78}
         />
       </div>
     ),
-    background: "/images/our-games/aegis-bg.png",
-    title: "An objective-based shooter game",
-    link: "/",
-    layout: "row",
-  },
+    background: '/images/our-games/starstrike-bg.png',
+    title: 'An objective-based shooter game',
+    link: '/',
+    layout: 'row'
+  }
 ] as const;
 
 const OurGames: React.FC = () => {
@@ -93,19 +93,16 @@ const OurGames: React.FC = () => {
           <div
             key={idx}
             style={{
-              backgroundImage: `url("${item.background}")`,
+              backgroundImage: `url("${item.background}")`
             }}
-            className="overflow-hidden relative isolate h-[342px] flex justify-between items-end bg-cover bg-center rounded-[20px]"
-          >
+            className="overflow-hidden relative isolate h-[342px] flex justify-between items-end bg-cover bg-center rounded-[20px]">
             <div
               className={clsx(
-                "mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6",
+                'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',
                 {
-                  "xl:grid-cols-[126px_auto] gap-x-[21px] xl:items-end":
-                    item.layout === "col",
+                  'xl:grid-cols-[126px_auto] gap-x-[21px] xl:items-end': item.layout === 'col'
                 }
-              )}
-            >
+              )}>
               {item.logo}
               <p className="text-[20px] md:text-[16px] xl:text-[20px] text-center xl:text-left leading-[1.15] font-extrabold md:max-w-[194px] xl:max-w-none">
                 {item.title}
