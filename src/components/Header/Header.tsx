@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import { socialLinks } from 'src/configs';
 import DesktopHeader from './DesktopHeader';
@@ -61,9 +62,12 @@ export const headerHeight = 112;
 
 export type Action = 'login' | 'join-discord';
 
-const Header: React.FC<{ action?: Action }> = ({ action = 'login' }) => {
+const Header: React.FC<{ action?: Action; className?: string }> = ({
+  action = 'login',
+  className
+}) => {
   return (
-    <div className="absolute top-0 z-10 w-full">
+    <div className={clsx('absolute top-0 z-10 w-full', className)}>
       <div className="hidden lg:block">
         <DesktopHeader action={action} />
       </div>

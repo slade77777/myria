@@ -7,6 +7,7 @@ import { links, headerHeight, Action } from './Header';
 
 type Props = {
   action: Action;
+  className?: string;
 };
 
 const DesktopHeader: React.FC<Props> = ({ action }) => {
