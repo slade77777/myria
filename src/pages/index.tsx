@@ -11,7 +11,7 @@ import Page from '../components/Page';
 import Link from 'next/link';
 import { socialLinks } from 'src/configs';
 
-const Home = () => {
+const Index = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center p-4 text-center md:py-2 md:text-left md:flex-row bg-brand-light-blue">
@@ -299,4 +299,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Index;
