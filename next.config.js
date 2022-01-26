@@ -20,8 +20,8 @@ const moduleExports = {
     dirs: ['src']
   },
   images: {
-    loader: 'akamai',
-    path: '',
+    loader: 'imgix',
+    path: 'https://sony.imgix.net',
   }
 }
 
