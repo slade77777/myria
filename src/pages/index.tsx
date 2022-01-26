@@ -24,15 +24,14 @@ const Index = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center p-4 text-center md:py-2 md:text-left md:flex-row bg-brand-light-blue">
-        <p className="text-[14px] leading-[1.23] font-medium " data-aos="fade-up">
+        <p className="text-[14px] leading-[1.23] font-medium ">
           <span className="font-bold">$MYRIA</span> Token Sale and Node Sale coming soon!
         </p>
         <a
           href={socialLinks.discord}
           target="_blank"
           className="flex items-center mt-4 md:mt-0 md:ml-6 btn-icon-sm text-[12px] px-4 btn-white"
-          rel="noreferrer"
-          data-aos="fade-up">
+          rel="noreferrer">
           <span className="w-[16px]">
             <DiscordIcon />
           </span>
@@ -61,10 +60,13 @@ const Index = () => {
             </div>
             <div className="max-w-[607px] text-center">
               <h1 data-aos="fade-up" className="heading-lg md:heading-massive text-brand-white">
-                Connecting the world through <span className=" text-brand-gold">play</span>
+                Connecting the world through{' '}
+                <span className="aos-text-slide-right [--animated-color:#F5B941]">play</span>
               </h1>
               <h3 data-aos="fade-up" className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
-                Myria is a community driven platform that empowers gamers, studios, and creators.
+                <span className="aos-text-slide-right ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
+                  Myria is a community driven platform that empowers gamers, studios, and creators.
+                </span>
               </h3>
               <a
                 data-aos="fade-up"
@@ -108,7 +110,7 @@ const Index = () => {
               />
             </div>
             <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
-              <div>
+              <div data-aos="fade-up">
                 <Image
                   src="/images/home/character-circle.png"
                   alt=""
@@ -153,7 +155,7 @@ const Index = () => {
                   LEARN MORE
                 </button>
               </div>
-              <div className="order-[-1] md:order-1">
+              <div data-aos="fade-up" className="order-[-1] md:order-1">
                 <Image
                   src="/images/home/cowboys.png"
                   alt=""
@@ -170,7 +172,7 @@ const Index = () => {
               paddingX
             )}>
             <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
-              <div>
+              <div data-aos="fade-up">
                 <Image
                   src="/images/home/tacoguy.png"
                   alt=""
@@ -328,7 +330,7 @@ const Index = () => {
             <h2 data-aos="fade-up" className="text-center heading-md md:heading-lg">
               Our Experience
             </h2>
-            <div className="mt-[59px]">
+            <div data-aos="fade-up" className="mt-[59px]">
               <ExperenceLogos />
             </div>
           </section>

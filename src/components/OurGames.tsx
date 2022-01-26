@@ -91,6 +91,7 @@ const OurGames: React.FC = () => {
       {data.map((item, idx) => {
         return (
           <div
+            data-aos="fade-up"
             key={idx}
             style={{
               backgroundImage: `url("${item.background}")`
