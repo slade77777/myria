@@ -1,81 +1,81 @@
-import clsx from "clsx";
-import React, { useState } from "react";
-import Collapse from "./Collapse";
-import ChevronDownIcon from "./icons/ChevronDownIcon";
+import clsx from 'clsx';
+import React, { useState } from 'react';
+import Collapse from './Collapse';
+import ChevronDownIcon from './icons/ChevronDownIcon';
 
 const mockData = [
   {
-    id: "1",
-    title: "PROGRAMMERS",
+    id: '1',
+    title: 'DEVELOPMENT',
     jobs: [
       {
-        id: "1",
-        title: "Senior Gameplay Programmer",
+        id: '1',
+        title: 'Senior Gameplay Programmer',
         description:
-          "Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.",
-      },
-    ],
+          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
+      }
+    ]
   },
   {
-    id: "2",
-    title: "ARTISTS",
+    id: '2',
+    title: 'CREATIVE',
     jobs: [
       {
-        id: "2",
-        title: "Senior Engine Developer",
+        id: '2',
+        title: 'Senior Engine Developer',
         description:
-          "Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.",
-      },
-    ],
+          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
+      }
+    ]
   },
   {
-    id: "3",
-    title: "GAME DESIGN",
+    id: '3',
+    title: 'PRODUCT',
     jobs: [
       {
-        id: "13",
-        title: "Game Tools Programmer",
+        id: '13',
+        title: 'Game Tools Programmer',
         description:
-          "Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.",
-      },
-    ],
+          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
+      }
+    ]
   },
   {
-    id: "4",
-    title: "MARKETING",
+    id: '4',
+    title: 'MARKETING',
     jobs: [
       {
-        id: "14",
-        title: "Devops",
+        id: '14',
+        title: 'Devops',
         description:
-          "Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.",
-      },
-    ],
+          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
+      }
+    ]
   },
   {
-    id: "5",
-    title: "PRODUCERS",
+    id: '5',
+    title: 'OTHERS',
     jobs: [
       {
-        id: "15",
-        title: "Lead Blockchain Dev",
+        id: '15',
+        title: 'Lead Blockchain Dev',
         description:
-          "Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.",
+          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
       },
       {
-        id: "16",
-        title: "Web Developer",
+        id: '16',
+        title: 'Web Developer',
         description:
-          "Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.",
+          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
       },
       {
-        id: "17",
-        title: "Concept Artist",
+        id: '17',
+        title: 'Concept Artist',
         description:
-          "Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.",
-      },
-    ],
-  },
+          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
+      }
+    ]
+  }
 ];
 const Careers: React.FC = () => {
   const [data] = useState(mockData);
@@ -91,10 +91,9 @@ const Careers: React.FC = () => {
           onClick={() => {
             setSelectedJob(null);
           }}
-          className={clsx("mx-2 my-2 btn-lg btn-dark-blue", {
-            active: selectedJob === null,
-          })}
-        >
+          className={clsx('mx-2 my-2 btn-lg btn-dark-blue', {
+            active: selectedJob === null
+          })}>
           All positions
         </button>
         {data.map((item) => (
@@ -103,10 +102,9 @@ const Careers: React.FC = () => {
               setSelectedJob(item.id);
             }}
             key={item.id}
-            className={clsx("mx-2 my-2 btn-lg btn-dark-blue", {
-              active: selectedJob === item.id,
-            })}
-          >
+            className={clsx('mx-2 my-2 btn-lg btn-dark-blue', {
+              active: selectedJob === item.id
+            })}>
             {item.title}
           </button>
         ))}
@@ -122,22 +120,17 @@ const Careers: React.FC = () => {
                       <div className="flex items-center justify-between cursor-pointer">
                         <h3 className="heading-list">{pos.title}</h3>
                         <i
-                          className={clsx("w-[24px] transition duration-300", {
-                            "rotate-180": open,
-                          })}
-                        >
+                          className={clsx('w-[24px] transition duration-300', {
+                            'rotate-180': open
+                          })}>
                           <ChevronDownIcon />
                         </i>
                       </div>
                     </Collapse.Trigger>
                     <Collapse.Content>
                       <div className="pb-2">
-                        <p className="mt-6 body text-light">
-                          {pos.description}
-                        </p>
-                        <button className="mt-6 btn-lg btn-primary">
-                          APPLY NOW
-                        </button>
+                        <p className="mt-6 body text-light">{pos.description}</p>
+                        <button className="mt-6 btn-lg btn-primary">APPLY NOW</button>
                       </div>
                     </Collapse.Content>
                   </div>
