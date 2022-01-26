@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
-  safelist: ['animate-slide-up', 'animate-slide-down'],
+  safelist: ['animate-slide-up', 'animate-slide-down', 'animate-slide-out'],
   theme: {
     extend: {
       colors: {
@@ -27,17 +27,39 @@ module.exports = {
         slideUp: {
           from: { height: 'var(--height)' },
           to: { height: 0 }
+        },
+        slideOut: {
+          '0%': {
+            backgroundPosition: '100%'
+          },
+          '100%': {
+            backgroundPosition: '0%'
+          }
         }
       },
       animation: {
         'slide-up': 'slideUp 300ms',
-        'slide-down': 'slideDown 300ms'
+        'slide-down': 'slideDown 300ms',
+        'slide-out': 'slideOut 1.5s cubic-bezier(0.85,0,0.15,1) forwards'
       }
     }
   },
   plugins: [
     plugin(function ({ addComponents, theme }) {
       addComponents({
+        '.aos-text-slide-right': {
+          '--animated-color': theme('colors.brand-light-blue'),
+          '--current-color': 'white',
+          backgroundImage:
+            'linear-gradient(to right, var(--animated-color) 50%, var(--current-color) 50% 100%)',
+          backgroundSize: '200%',
+          backgroundPosition: '100%',
+          color: 'transparent',
+          backgroundClip: 'text',
+          '.aos-animate &': {
+            animation: theme('animation.slide-out')
+          }
+        },
         '.collapse-content': {
           '--height': 'var(--radix-collapsible-content-height)',
           overflow: 'hidden',
