@@ -8,7 +8,7 @@ const JoinTheRevolution: React.FC = () => {
         alt=""
         className="absolute top-0 right-0 h-full z-[-1]"
       />
-      <p className="hidden md:block caption">join the revolution</p>
+      <p className="hidden md:block caption text-brand-light-blue">join the revolution</p>
       <h2 className="md:mt-4 heading-md md:heading-lg">We’re hiring, join the future of gaming</h2>
       <p className="mt-4 md:mt-6 max-w-[616px] body text-light">
         If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring
