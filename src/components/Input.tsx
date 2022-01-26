@@ -1,39 +1,37 @@
-import React from "react";
-import clsx from "clsx";
+import React from 'react';
+import clsx from 'clsx';
 
 type Props = {
-  helperText?: string;
+  errorText?: string;
   error?: boolean;
   containerClassName?: string;
 };
 
-const Input: React.FC<Props & React.HTMLProps<HTMLInputElement>> = ({
-  className,
-  helperText,
-  error,
-  containerClassName,
-  ...props
-}) => {
-  return (
-    <div className={containerClassName}>
-      <input
-        className={clsx(className, "input block w-full", {
-          "border-[#F37272]": error,
-        })}
-        type="text"
-        {...props}
-      />
-      {error && (
-        <p
-          className={clsx("text-[14px] leading-[1.5] mt-[7px]", {
-            "text-[#F37272]": error,
+const Input = React.forwardRef<HTMLInputElement, Props & React.HTMLProps<HTMLInputElement>>(
+  ({ className, errorText, error, containerClassName, ...props }, ref) => {
+    return (
+      <div className={containerClassName}>
+        <input
+          className={clsx(className, 'input block w-full', {
+            'border-[#F37272]': error
           })}
-        >
-          {helperText}
-        </p>
-      )}
-    </div>
-  );
-};
+          type="text"
+          ref={ref}
+          {...props}
+        />
+        {error && (
+          <p
+            className={clsx('text-[14px] leading-[1.5] mt-[7px]', {
+              'text-[#F37272]': error
+            })}>
+            {errorText}
+          </p>
+        )}
+      </div>
+    );
+  }
+);
+
+Input.displayName = 'Input';
 
 export default Input;

@@ -11,6 +11,7 @@ import { socialLinks } from '../../configs';
 
 type Props = {
   action: Action;
+  className?: string;
 };
 
 const HeaderOverlay = ({
@@ -39,7 +40,7 @@ const HeaderOverlay = ({
         <div className="w-full max-w-[164px]">
           <Logo />
         </div>
-        <button onClick={onClose} className="w-[32px]">
+        <button onClick={onClose} className="w-[32px] text-white">
           <CloseIcon />
         </button>
       </nav>

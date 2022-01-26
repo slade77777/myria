@@ -1,38 +1,37 @@
-import React from "react";
-import clsx from "clsx";
+import React from 'react';
+import clsx from 'clsx';
 
 type Props = {
-  helperText?: string;
+  errorText?: string;
   error?: boolean;
   containerClassName?: string;
 };
 
-const Textarea: React.FC<Props & React.HTMLProps<HTMLTextAreaElement>> = ({
-  className,
-  helperText,
-  error,
-  containerClassName,
-  ...props
-}) => {
+const Textarea = React.forwardRef<
+  HTMLTextAreaElement,
+  Props & React.HTMLProps<HTMLTextAreaElement>
+>(({ className, errorText, error, containerClassName, ...props }, ref) => {
   return (
     <div className={containerClassName}>
       <textarea
-        className={clsx(className, "input block w-full", {
-          "border-[#F37272]": error,
+        className={clsx(className, 'input block w-full', {
+          'border-[#F37272]': error
         })}
         {...props}
+        ref={ref}
       />
       {error && (
         <p
-          className={clsx("text-[14px] leading-[1.5] mt-[7px]", {
-            "text-[#F37272]": error,
-          })}
-        >
-          {helperText}
+          className={clsx('text-[14px] leading-[1.5] mt-[7px]', {
+            'text-[#F37272]': error
+          })}>
+          {errorText}
         </p>
       )}
     </div>
   );
-};
+});
+
+Textarea.displayName = 'Textarea';
 
 export default Textarea;
