@@ -32,7 +32,7 @@ const ExperenceLogos: React.FC = () => {
             <Image src="/images/gameloft.png" alt="" width={66} height={46} />
           </div>
           <div>
-            <Image src="/images/emi.png" alt="" width={106} height={67} />
+            <Image src="/images/epic.png" alt="" width={96} height={111} />
           </div>
         </div>
         <div className="grid gap-10 justify-center grid-cols-[repeat(2,auto)] items-center">
@@ -70,7 +70,7 @@ const ExperenceLogos: React.FC = () => {
             <Image src="/images/gameloft.png" alt="" width={109.33} height={77.33} />
           </div>
           <div>
-            <Image src="/images/emi.png" alt="" width={174} height={62} />
+            <Image src="/images/epic.png" alt="" width={96} height={111} />
           </div>
           <div>
             <Image src="/images/greenpanda.png" alt="" width={227} height={44} />

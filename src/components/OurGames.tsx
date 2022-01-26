@@ -7,7 +7,7 @@ const Backdrop = () => {
     <svg viewBox="0 0 616 105" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         opacity="0.7"
-        d="M0 0L616 16V85C616 96.0457 607.046 105 596 105H20C8.95431 105 0 96.0457 0 85V0Z"
+        d="M0 0L616 16V93C616 99.6274 610.627 105 604 105H12C5.37259 105 0 99.6274 0 93V0Z"
         fill="#050E15"
       />
     </svg>
@@ -95,7 +95,7 @@ const OurGames: React.FC = () => {
             style={{
               backgroundImage: `url("${item.background}")`
             }}
-            className="overflow-hidden relative isolate h-[342px] flex justify-between items-end bg-cover bg-center rounded-[20px]">
+            className="transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[342px] flex justify-between items-end bg-cover bg-center rounded-[12px]">
             <div
               className={clsx(
                 'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',
@@ -111,7 +111,7 @@ const OurGames: React.FC = () => {
             <button className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap">
               Learn more
             </button>
-            <div className="absolute z-[-1] min-w-[616px] -translate-x-1/2 w-[calc(100%+2px)] bottom-0 left-1/2">
+            <div className="absolute z-[-1] min-w-[616px] -translate-x-1/2 w-[calc(100%+5px)] bottom-0 left-1/2">
               <Backdrop />
             </div>
           </div>

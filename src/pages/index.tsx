@@ -21,12 +21,12 @@ const Index = () => {
         <a
           href={socialLinks.discord}
           target="_blank"
-          className="flex items-center mt-6 md:mt-0 md:ml-6 btn-icon btn-white"
+          className="flex items-center mt-4 md:mt-0 md:ml-6 btn-icon-sm text-[12px] px-4 btn-white"
           rel="noreferrer">
-          <span className="w-[30px]">
+          <span className="w-[16px]">
             <DiscordIcon />
           </span>
-          <span>JOIN DISCORD</span>
+          <span className="ml-1">JOIN DISCORD</span>
         </a>
       </div>
       <Page action="join-discord">
