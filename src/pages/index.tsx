@@ -59,17 +59,24 @@ const Index = () => {
               </div>
             </div>
             <div className="max-w-[607px] text-center">
-              <h1 data-aos="fade-up" className="heading-lg md:heading-massive text-brand-white">
+              <h1
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                className="heading-lg md:heading-massive text-brand-white">
                 Connecting the world through{' '}
                 <span className="aos-text-slide-right [--animated-color:#F5B941]">play</span>
               </h1>
-              <h3 data-aos="fade-up" className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
+              <h3
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
                 <span className="aos-text-slide-right ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
                   Myria is a community driven platform that empowers gamers, studios, and creators.
                 </span>
               </h3>
               <a
                 data-aos="fade-up"
+                data-aos-duration="3000"
                 href={socialLinks.discord}
                 target="_blank"
                 className="mt-[38px] btn-icon btn-primary inline-flex items-center mx-auto"
