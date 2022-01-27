@@ -71,7 +71,7 @@ const Index = () => {
                 data-aos-duration="2000"
                 className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
                 <span className="aos-text-slide-right ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
-                  Myria is a community driven platform that empowers gamers, studios, and creators.
+                  Myria is a blockchain gaming ecosystem powered by the Myria blockchain.
                 </span>
               </h3>
               <a
@@ -178,7 +178,7 @@ const Index = () => {
               'mt-[100px] md:mt-0 md:min-h-[629px] flex items-center justify-center relative isolate',
               paddingX
             )}>
-            <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
+            <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-[53px] gap-x-[83px]">
               <div data-aos="fade-up">
                 <Image
                   src="/images/home/tacoguy.png"
@@ -188,18 +188,23 @@ const Index = () => {
                   height={1206}
                 />
               </div>
-              <div className="text-center md:text-left">
-                <h2 data-aos="fade-up" className="heading-md md:heading-lg text-[#FFFDFD]">
-                  Powered and governed by <span className="aos-text-slide-right">$MYRIA</span>
-                </h2>
-                <p data-aos="fade-up" className="mt-10 body text-light">
-                  $MYRIA is the native governance and utility token that encapsulates the Myria
-                  ecosystem. Players will be able to use $MYRIA to buy, trade, upgrade, vote and
-                  more!
-                </p>
-                <button data-aos="fade-up" className="btn-lg btn-primary mt-[70px]">
-                  TOKEN SALE COMING SOON
-                </button>
+              <div className="relative flex flex-col justify-center overflow-hidden text-center md:text-left">
+                <div className="relative isolate ">
+                  <h2 data-aos="fade-up" className="heading-md md:heading-lg text-[#FFFDFD]">
+                    Powered and governed by <span className="aos-text-slide-right">$MYRIA</span>
+                  </h2>
+                  <p data-aos="fade-up" className="mt-10 body text-light">
+                    $MYRIA is the native governance and utility token that encapsulates the Myria
+                    ecosystem. Players will be able to use $MYRIA to buy, trade, upgrade, vote and
+                    more!
+                  </p>
+                  <button data-aos="fade-up" className="btn-lg btn-primary mt-[70px] mr-auto">
+                    TOKEN SALE COMING SOON
+                  </button>
+                  <div className="absolute z-[-1] top-[-40px] right-0">
+                    <Image src="/images/home/coins-bg.png" alt="" width={262} height={510} />
+                  </div>
+                </div>
               </div>
             </div>
           </section>

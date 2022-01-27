@@ -37,8 +37,8 @@ const Ecosystem: React.FC = () => {
                 src="/images/ecosystem/header-bg.png"
                 alt=""
                 layout="fill"
-                objectFit="contain"
-                objectPosition="top"
+                objectFit="cover"
+                objectPosition="center"
               />
             </div>
           </div>
@@ -66,23 +66,23 @@ const Ecosystem: React.FC = () => {
           )}>
           <div className="mx-auto max-w-content ">
             <div className="lg:w-1/2">
-              <h3 className="heading-sm md:heading-md">Pupose-built infrastructure</h3>
+              <h3 className="heading-sm md:heading-md">Purpose-built infrastructure</h3>
               <p className="mt-6 body-sm text-light">
                 The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for gaming.
                 Our team have developed proprietary technology to make the gaming and trading
                 experience seamless, including a decentralized exchange, marketplace, and
                 cryptocurrency wallet.
               </p>
-              <button className="hidden mt-10 md:inline-flex btn-lg btn-primary">
-                Button IF WE NEED IT
-              </button>
             </div>
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[96px] md:mt-0')}>
           <div className=" rounded-[12px] sm:rounded-none bg-brand-deep-blue p-[32px] sm:p-0 sm:bg-transparent min-h-[427px] sm:min-h-0 bg-cover bg-[url('/images/ecosystem/map-bg.png')] sm:bg-none">
             <h2 className="text-left sm:text-center heading-md">Myria Blockchain Ecosystem Map</h2>
-            <a href="#" className="btn-lg btn-primary mt-[32px] sm:hidden">
+            <a
+              href="/blockchain-map"
+              target="_blank"
+              className="btn-lg btn-primary mt-[32px] sm:hidden">
               view now
             </a>
             <div className="mx-auto max-w-content mt-[105px] hidden sm:block">

@@ -29,7 +29,7 @@ const data = [
     ),
     background: '/images/our-games/metarush-bg.png',
     title: 'A multiplayer obstacle course game',
-    link: '/',
+    link: '/game-detail/metarush',
     layout: 'row'
   },
   {
@@ -46,24 +46,24 @@ const data = [
     ),
     background: '/images/our-games/block-royale-bg.png',
     title: 'A battle-royale shooter game',
-    link: '/',
+    link: '/game-detail/block-royale',
     layout: 'col'
   },
   {
     logo: (
-      <div className="w-full max-w-[242px]">
+      <div className="w-full max-w-[364px]">
         <Image
           src="/images/our-games/metakart.png"
           alt="metakart"
           layout="responsive"
-          width={242}
-          height={51}
+          width={364}
+          height={45}
         />
       </div>
     ),
     background: '/images/our-games/metakart-bg.png',
     title: 'A multiplayer go-kart racing game',
-    link: '/',
+    link: '/game-detail/metakart',
     layout: 'row'
   },
   {
@@ -80,7 +80,7 @@ const data = [
     ),
     background: '/images/our-games/starstrike-bg.png',
     title: 'An objective-based shooter game',
-    link: '/',
+    link: '/game-detail/starstrike',
     layout: 'row'
   }
 ] as const;
@@ -109,9 +109,13 @@ const OurGames: React.FC = () => {
                 {item.title}
               </p>
             </div>
-            <button className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap">
+            <a
+              href={item.link}
+              target="_blank"
+              className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap"
+              rel="noreferrer">
               Learn more
-            </button>
+            </a>
             <div className="absolute z-[-1] min-w-[616px] -translate-x-1/2 w-[calc(100%+5px)] bottom-0 left-1/2">
               <Backdrop />
             </div>

@@ -36,7 +36,7 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
                       <ChevronDownIcon />
                     </i>
                   </div>
-                  <div className="absolute hidden pt-4 group-hover:block -left-1/2 top-full">
+                  <div className="absolute left-0 hidden pt-4 -translate-x-6 group-hover:block top-full">
                     <ul className="bg-dark px-6 py-4 pr-[63px] rounded-lg whitespace-nowrap grid gap-6">
                       {item.children.map((link, idx) => (
                         <li key={idx}>

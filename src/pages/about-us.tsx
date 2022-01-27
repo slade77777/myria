@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 import LoveIcon from 'src/components/icons/LoveIcon';
+import RadioIcon from 'src/components/icons/RadioIcon';
 import SafetyIcon from 'src/components/icons/SafetyIcon';
 import UserIcon from 'src/components/icons/UserIcon';
 import JoinTheRevolution from 'src/components/JoinTheRevolution';
-import Careers from '../components/Careers';
 import ExperenceLogos from '../components/ExperienceLogos';
 import { headerHeight } from '../components/Header';
 import LinkedinWithBackgroundIcon from '../components/icons/LinkedinWithBackgroundIcon';
@@ -158,6 +158,16 @@ const principles = [
   {
     icon: (
       <div className="w-[32px]">
+        <RadioIcon />
+      </div>
+    ),
+    title: 'Free to play',
+    description:
+      'We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse.'
+  },
+  {
+    icon: (
+      <div className="w-[32px]">
         <SafetyIcon />
       </div>
     ),
@@ -221,9 +231,9 @@ const AboutUs: React.FC = () => {
               Our Vision
             </h1>
             <p className="heading-sm max-w-[875px] mx-auto mt-[37px] text-center">
-              Unlocking the power of play through blockchain, enabling economic access and
-              ownership, and driving a new era of opportunity, growth and freedom for every human on
-              Earth.
+              Enhancing the power of play through blockchain, enabling economic access and
+              ownership, and driving a new era of opportunity, exploration and freedom for every
+              human on Earth.
             </p>
           </div>
           <div className="w-full mx-auto max-w-content mt-[65px] grid md:grid-cols-2 gap-[36px] md:gap-[48px] items-center">

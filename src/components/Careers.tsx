@@ -1,87 +1,14 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
+import useCareerCategories from 'src/hooks/useCareerCategories';
 import Collapse from './Collapse';
 import ChevronDownIcon from './icons/ChevronDownIcon';
 
-const mockData = [
-  {
-    id: '1',
-    title: 'DEVELOPMENT',
-    jobs: [
-      {
-        id: '1',
-        title: 'Senior Gameplay Programmer',
-        description:
-          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
-      }
-    ]
-  },
-  {
-    id: '2',
-    title: 'CREATIVE',
-    jobs: [
-      {
-        id: '2',
-        title: 'Senior Engine Developer',
-        description:
-          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
-      }
-    ]
-  },
-  {
-    id: '3',
-    title: 'PRODUCT',
-    jobs: [
-      {
-        id: '13',
-        title: 'Game Tools Programmer',
-        description:
-          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
-      }
-    ]
-  },
-  {
-    id: '4',
-    title: 'MARKETING',
-    jobs: [
-      {
-        id: '14',
-        title: 'Devops',
-        description:
-          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
-      }
-    ]
-  },
-  {
-    id: '5',
-    title: 'OTHERS',
-    jobs: [
-      {
-        id: '15',
-        title: 'Lead Blockchain Dev',
-        description:
-          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
-      },
-      {
-        id: '16',
-        title: 'Web Developer',
-        description:
-          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
-      },
-      {
-        id: '17',
-        title: 'Concept Artist',
-        description:
-          'Validators form the backbone of Myria’s network. By processing transactions and participating in consensus, each validator helps make Solana the most high-performance blockchain network in the world.'
-      }
-    ]
-  }
-];
 const Careers: React.FC = () => {
-  const [data] = useState(mockData);
-  const [selectedJob, setSelectedJob] = useState<null | string>(null);
-  const positions = data
-    .filter((item) => !selectedJob || selectedJob == item.id)
+  const categories = useCareerCategories();
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const positions = categories
+    .filter((item) => !selectedCategory || selectedCategory == item.id)
     .flatMap((item) => item.jobs);
 
   return (
@@ -89,23 +16,23 @@ const Careers: React.FC = () => {
       <div className="flex flex-wrap -mx-3 -mt-3">
         <button
           onClick={() => {
-            setSelectedJob(null);
+            setSelectedCategory(null);
           }}
           className={clsx('mx-2 my-2 btn-lg btn-dark-blue', {
-            active: selectedJob === null
+            active: selectedCategory === null
           })}>
           All positions
         </button>
-        {data.map((item) => (
+        {categories.map((item) => (
           <button
             onClick={() => {
-              setSelectedJob(item.id);
+              setSelectedCategory(item.id);
             }}
             key={item.id}
             className={clsx('mx-2 my-2 btn-lg btn-dark-blue', {
-              active: selectedJob === item.id
+              active: selectedCategory === item.id
             })}>
-            {item.title}
+            {item.label}
           </button>
         ))}
       </div>
@@ -118,7 +45,7 @@ const Careers: React.FC = () => {
                   <div>
                     <Collapse.Trigger asChild>
                       <div className="flex items-center justify-between cursor-pointer">
-                        <h3 className="heading-list">{pos.title}</h3>
+                        <h3 className="heading-list">{pos.label}</h3>
                         <i
                           className={clsx('w-[24px] transition duration-300', {
                             'rotate-180': open
@@ -130,7 +57,13 @@ const Careers: React.FC = () => {
                     <Collapse.Content>
                       <div className="pb-2">
                         <p className="mt-6 body text-light">{pos.description}</p>
-                        <button className="mt-6 btn-lg btn-primary">APPLY NOW</button>
+                        <a
+                          target="_blank"
+                          href={pos.link}
+                          className="mt-6 btn-lg btn-primary"
+                          rel="noreferrer">
+                          APPLY NOW
+                        </a>
                       </div>
                     </Collapse.Content>
                   </div>
