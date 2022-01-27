@@ -13,8 +13,22 @@ import { socialLinks } from 'src/configs';
 import AOS from 'aos';
 import { useEffect } from 'react';
 import 'aos/dist/aos.css';
+import { useAnimation, motion } from 'framer-motion';
 
 const Index = () => {
+  const imgAnimation = useAnimation();
+
+  const handleMouseMove = (e: any) => {
+    const { clientX, clientY } = e;
+    const moveX = clientX - window.innerWidth / 2;
+    const moveY = clientY - window.innerHeight / 2;
+    const offsetFactor = 35;
+    imgAnimation.start({
+      x: -moveX / offsetFactor,
+      y: -moveY / offsetFactor
+    });
+  };
+
   useEffect(() => {
     AOS.init({
       duration: 1000
@@ -49,16 +63,21 @@ const Index = () => {
               paddingX,
               'flex flex-col items-center justify-center min-h-[809px] relative isolate md:min-h-screen '
             )}>
-            <div
+            <motion.div
+              animate={imgAnimation}
+              onMouseMove={(e) => handleMouseMove(e)}
               style={{
                 top: headerHeight
               }}
               className="absolute left-0 w-full z-[-1]">
-              <div className="relative w-full h-[697px] ">
+              <div className="relative w-full h-[697px]" data-depth="0.2">
                 <Image src="/images/home/header-bg.png" alt="" layout="fill" objectFit="contain" />
               </div>
-            </div>
-            <div className="max-w-[607px] text-center">
+            </motion.div>
+
+            <motion.div
+              className="max-w-[607px] text-center"
+              onMouseMove={(e) => handleMouseMove(e)}>
               <h1
                 data-aos="fade-up"
                 data-aos-duration="1000"
@@ -93,7 +112,7 @@ const Index = () => {
                   <ArrowDownIcon />
                 </span>
               </a>
-            </div>
+            </motion.div>
           </section>
           <section id="our-games" className={clsx('pt-[14px]', paddingX)}>
             <h2 data-aos="fade-up" className="text-center heading-md md:heading-lg">
