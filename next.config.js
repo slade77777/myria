@@ -19,6 +19,7 @@ const moduleExports = {
   eslint: {
     dirs: ['src']
   },
+  trailingSlash: true,
   images: {
     loader: 'imgix',
     path: 'https://sony.imgix.net',
