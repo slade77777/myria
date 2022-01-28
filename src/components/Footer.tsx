@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import { socialLinks } from 'src/configs';
 
 import Logo from './icons/Logo';
 import Socials from './Social';
@@ -50,7 +51,7 @@ const links = [
         },
         {
           label: 'Morphing NFTs',
-          link: '/'
+          link: '/interoperability'
         }
       ]
     ]
@@ -64,12 +65,12 @@ const links = [
           link: '/about-us'
         },
         {
-          label: 'Whitepaper',
+          label: 'Whitepaper (Coming soon)',
           link: '/'
         },
         {
           label: 'Team',
-          link: '/'
+          link: '/about-us'
         }
       ],
       [
@@ -79,7 +80,8 @@ const links = [
         },
         {
           label: 'News',
-          link: '/'
+          link: socialLinks.medium,
+          external: true,
         },
         {
           label: 'Contact Us',
@@ -122,6 +124,7 @@ const Footer: React.FC = () => {
                   {block.map((item, idx) => (
                     <a
                       href={item.link}
+                      target={item.external ? "_blank" : "_self"}
                       key={idx}
                       className="text-[16px] leading-[1.23] hover:text-[#F5B941]">
                       {item.label}
