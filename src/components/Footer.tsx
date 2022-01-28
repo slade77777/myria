@@ -43,7 +43,8 @@ const links = [
         },
         {
           label: 'Store',
-          link: '/store'
+          link: '/store',
+          inactive: true,
         },
         {
           label: 'For Studios',
@@ -122,13 +123,18 @@ const Footer: React.FC = () => {
               {item.blocks.map((block, idx) => (
                 <div key={idx} className={clsx('grid gap-y-4')}>
                   {block.map((item, idx) => (
-                    <a
+                    !item.inactive ? <a
                       href={item.link}
                       target={item.external ? "_blank" : "_self"}
                       key={idx}
                       className="text-[16px] leading-[1.23] hover:text-[#F5B941]">
                       {item.label}
-                    </a>
+                    </a> : <div className='flex items-center'>
+                      <p className="hover:text-brand-gold hover:cursor-pointer mr-[7px]">{item.label}</p>
+                      <div className='font-extrabold text-[6px] rounded-sm px-[3px] py-[1px] h-3 bg-brand-light-blue/40 bg-opacity-4 border-[0.5px] border-brand-light-blue'>
+                        Soon!
+                      </div>
+                    </div>
                   ))}
                 </div>
               ))}

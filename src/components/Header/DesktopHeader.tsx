@@ -27,6 +27,19 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
         </div>
         <ul className="text-[14px] leading-[1.25] uppercase font-medium grid grid-flow-col gap-[38px] items-center mx-auto text-brand-white">
           {links.map((item, idx) => {
+            if(item.inactive) {
+              return (
+                <li key={idx}>
+                  <div className='relative'>
+                    <a className="hover:text-brand-gold hover:cursor-pointer">{item.text}</a>
+                    <div className='font-extrabold text-[6px] rounded-sm absolute -top-[9px] p-[3px] pb-[1px] -right-6 bg-brand-light-blue/40 bg-opacity-4 border-[0.5px] border-brand-light-blue'>
+                      Soon!
+                    </div>
+                  </div>
+                </li>
+              );
+            }
+            
             if (item.children) {
               return (
                 <li key={idx} className="relative group">
