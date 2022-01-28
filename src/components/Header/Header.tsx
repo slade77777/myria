@@ -63,7 +63,7 @@ export const headerHeight = 112;
 export type Action = 'login' | 'join-discord';
 
 const Header: React.FC<{ action?: Action; className?: string }> = ({
-  action = 'login',
+  action = 'join-discord',
   className
 }) => {
   return (
