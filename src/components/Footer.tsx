@@ -43,7 +43,8 @@ const links = [
         },
         {
           label: 'Store',
-          link: '/store'
+          link: '/store',
+          inactive: true
         },
         {
           label: 'For Studios',
@@ -81,7 +82,7 @@ const links = [
         {
           label: 'News',
           link: socialLinks.medium,
-          external: true,
+          external: true
         },
         {
           label: 'Contact Us',
@@ -121,15 +122,27 @@ const Footer: React.FC = () => {
               })}>
               {item.blocks.map((block, idx) => (
                 <div key={idx} className={clsx('grid gap-y-4')}>
-                  {block.map((item, idx) => (
-                    <a
-                      href={item.link}
-                      target={item.external ? "_blank" : "_self"}
-                      key={idx}
-                      className="text-[16px] leading-[1.23] hover:text-[#F5B941]">
-                      {item.label}
-                    </a>
-                  ))}
+                  {block.map((item: any, idx) =>
+                    !item?.inactive ? (
+                      <a
+                        href={item.link}
+                        target={item?.external ? '_blank' : '_self'}
+                        key={idx}
+                        rel="noreferrer"
+                        className="text-[16px] leading-[1.23] hover:text-[#F5B941]">
+                        {item.label}
+                      </a>
+                    ) : (
+                      <div className="flex items-center">
+                        <p className="hover:cursor-not-allowed mr-[7px]">
+                          {item.label}
+                        </p>
+                        <div className="font-extrabold text-[6px] rounded-sm px-[3px] py-[1px] h-3 bg-brand-light-blue/40 bg-opacity-4 border-[0.5px] border-brand-light-blue">
+                          Soon!
+                        </div>
+                      </div>
+                    )
+                  )}
                 </div>
               ))}
             </div>
