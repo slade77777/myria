@@ -33,7 +33,7 @@ const GetInTouch: React.FC = () => {
   const onSubmit = (data: IFormInputs) => console.log(data);
 
   return (
-    <div className="rounded-[20px] bg-[url('/images/get-in-touch/panel.png')] bg-cover bg-center md:py-[64px] p-[32px] w-full">
+    <div className="rounded-[20px] bg-[url('/images/get-in-touch/panel.png')] bg-cover bg-center md:py-[64px] p-[32px] md:px-[100px] lg:px-[216px] w-full">
       <h2 className="text-center heading-sm md:heading-md">Get in touch</h2>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="grid md:grid-cols-2 gap-[32px] gap-x-[28px] mt-[48px]">
