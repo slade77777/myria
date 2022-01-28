@@ -105,7 +105,7 @@ const games: Record<
       },
       {
         label: 'Platform',
-        value: 'WEB'
+        value: 'WEB, IOS, ANDROID'
       },
       {
         label: 'Genre',
@@ -183,7 +183,7 @@ const games: Record<
       },
       {
         label: 'Platform',
-        value: 'WEB, PC, IOS, ANDROID'
+        value: 'WEB, IOS, ANDROID'
       },
       {
         label: 'Genre',
@@ -258,7 +258,7 @@ const games: Record<
       },
       {
         label: 'Platform',
-        value: 'PC, IOS, ANDROID'
+        value: 'PC, MAC, IOS, ANDROID'
       },
       {
         label: 'Genre',
