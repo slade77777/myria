@@ -134,7 +134,7 @@ const Footer: React.FC = () => {
                       </a>
                     ) : (
                       <div className="flex items-center">
-                        <p className="hover:text-brand-gold hover:cursor-pointer mr-[7px]">
+                        <p className="hover:cursor-not-allowed mr-[7px]">
                           {item.label}
                         </p>
                         <div className="font-extrabold text-[6px] rounded-sm px-[3px] py-[1px] h-3 bg-brand-light-blue/40 bg-opacity-4 border-[0.5px] border-brand-light-blue">
