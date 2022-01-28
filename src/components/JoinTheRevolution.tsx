@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 type Props = {
@@ -16,9 +17,11 @@ const JoinTheRevolution: React.FC<Props> = ({ textAnimation }) => {
         If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring
         the world for the best and brightest to join our rapidly growing company.
       </p>
-      <button data-aos={textAnimation} className="mt-[9px] md:mt-10 btn-lg btn-primary">
-        JOIN THE TEAM
-      </button>
+      <Link href={'/careers'}>
+        <button data-aos={textAnimation} className="mt-[9px] md:mt-10 btn-lg btn-primary">
+          JOIN THE TEAM
+        </button>
+      </Link>
       <img
         src="/images/join-the-revolution/character.png"
         alt=""

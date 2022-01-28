@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Backdrop = () => {
@@ -109,13 +110,11 @@ const OurGames: React.FC = () => {
                 {item.title}
               </p>
             </div>
-            <a
-              href={item.link}
-              target="_blank"
-              className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap"
-              rel="noreferrer">
-              Learn more
-            </a>
+            <Link href={item.link}>
+              <button className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap">
+                Learn more
+              </button>
+            </Link>
             <div className="absolute z-[-1] min-w-[616px] -translate-x-1/2 w-[calc(100%+5px)] bottom-0 left-1/2">
               <Backdrop />
             </div>
