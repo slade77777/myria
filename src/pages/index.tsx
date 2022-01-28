@@ -62,22 +62,32 @@ const Index = () => {
             }}
             className={clsx(
               paddingX,
-              'flex flex-col items-center justify-center min-h-[809px] relative isolate md:min-h-screen '
+              'flex flex-col items-center md:justify-center min-h-[900px] relative isolate md:min-h-screen '
             )}>
+            <div className="md:hidden absolute left-0 w-full z-[-1]">
+              <div className="relative w-full h-[815px]">
+                <Image
+                  src="/images/home/header-bg-mobile.png"
+                  alt=""
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+            </div>
             <motion.div
               animate={imgAnimation}
               onMouseMove={(e) => handleMouseMove(e)}
               style={{
                 top: headerHeight
               }}
-              className="absolute left-0 w-full z-[-1]">
+              className="hidden md:block absolute left-0 w-full z-[-1]">
               <div className="relative w-full h-[697px]" data-depth="0.2">
                 <Image src="/images/home/header-bg.png" alt="" layout="fill" objectFit="contain" />
               </div>
             </motion.div>
 
             <motion.div
-              className="max-w-[607px] text-center"
+              className="max-w-[607px] text-center mt-[50px] md:mt-0"
               onMouseMove={(e) => handleMouseMove(e)}>
               <h1
                 data-aos="fade-up"
@@ -106,13 +116,13 @@ const Index = () => {
                 </span>
                 <span>JOIN DISCORD</span>
               </a>
-              <a
+              {/* <a
                 href="#our-games"
                 className="md:hidden flex items-center justify-center mt-[237px] bg-[#96C5DF] w-[64px] h-[64px] rounded-full mx-auto bg-opacity-20">
                 <span className="w-[40px]">
                   <ArrowDownIcon />
                 </span>
-              </a>
+              </a> */}
             </motion.div>
           </section>
           <section id="our-games" className={clsx('pt-[14px]', paddingX)}>
@@ -128,7 +138,7 @@ const Index = () => {
               'overflow-hidden md:pt-[300px] pb-6 mt-[100px] md:mt-0 md:min-h-[944px] flex items-start justify-center relative isolate',
               paddingX
             )}>
-            <div className="absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1]">
+            <div className="hidden md:block absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1]">
               <Image
                 src="/images/home/blockchain-bg.png"
                 alt=""
@@ -158,9 +168,9 @@ const Index = () => {
                   the Myriaverse.
                 </p>
                 <Link href="/ecosystem">
-                  <button data-aos="fade-up" className="btn-lg btn-primary mt-[38px]">
+                  <a data-aos="fade-up" className="btn-lg btn-primary mt-[38px]">
                     READ ABOUT OUR ECOSYSTEM
-                  </button>
+                  </a>
                 </Link>
               </div>
             </div>
@@ -181,19 +191,24 @@ const Index = () => {
                   own your digital assets and collectibles.
                 </p>
                 <Link href={'/interoperability'}>
-                  <button data-aos="fade-up" className="btn-lg btn-primary mt-[45px]">
+                  <a data-aos="fade-up" className="btn-lg btn-primary mt-[45px]">
                     LEARN MORE
-                  </button>
+                  </a>
                 </Link>
               </div>
               <div data-aos="fade-up" className="order-[-1] md:order-1">
-                <Image
-                  src="/images/home/cowboys.png"
-                  alt=""
-                  layout="responsive"
-                  width={922}
-                  height={1490}
-                />
+                <div className="hidden md:block">
+                  <Image
+                    src="/images/home/cowboys.png"
+                    alt=""
+                    layout="responsive"
+                    width={922}
+                    height={1490}
+                  />
+                </div>
+                <div className="flex justify-center md:hidden">
+                  <Image src="/images/home/cowboys.png" alt="" width={233} height={377} />
+                </div>
               </div>
             </div>
           </section>
@@ -204,13 +219,18 @@ const Index = () => {
             )}>
             <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-[53px] gap-x-[83px]">
               <div data-aos="fade-up">
-                <Image
-                  src="/images/home/tacoguy.png"
-                  alt=""
-                  layout="responsive"
-                  width={804}
-                  height={1206}
-                />
+                <div className="hidden md:block">
+                  <Image
+                    src="/images/home/tacoguy.png"
+                    alt=""
+                    layout="responsive"
+                    width={804}
+                    height={1206}
+                  />
+                </div>
+                <div className="flex justify-center md:hidden">
+                  <Image src="/images/home/tacoguy.png" alt="" width={254} height={382} />
+                </div>
               </div>
               <div className="relative flex flex-col justify-center overflow-hidden text-center md:text-left">
                 <div className="relative isolate ">
@@ -225,7 +245,7 @@ const Index = () => {
                   <button data-aos="fade-up" className="btn-lg btn-primary mt-[70px] mr-auto">
                     TOKEN SALE COMING SOON
                   </button>
-                  <div className="absolute z-[-1] top-[-40px] right-0">
+                  <div className="hidden md:block absolute z-[-1] top-[-40px] right-0">
                     <Image src="/images/home/coins-bg.png" alt="" width={262} height={510} />
                   </div>
                 </div>
@@ -234,11 +254,19 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'mt-[100px] py-4 md:min-h-[849px] flex items-center justify-center relative isolate',
+              'mt-[100px] py-4 min-h-[760px] items-end md:min-h-[849px] flex md:items-center justify-center relative isolate',
               paddingX
             )}>
-            <div className="absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1]">
+            <div className="hidden md:block absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1]">
               <Image src="/images/home/myriaverse.png" alt="" layout="fill" objectFit="cover" />
+            </div>
+            <div className="md:hidden absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1]">
+              <Image
+                src="/images/home/myriaverse-mobile.png"
+                alt=""
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
             <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
               <div className="text-center md:text-left">
@@ -278,7 +306,7 @@ const Index = () => {
                   <h2 data-aos="fade-up" className="mt-4 heading-md md:heading-lg">
                     Join the thriving Myria ecosystem{' '}
                   </h2>
-                  <div className="max-w-[616px] mt-6 text-light body-sm md:body-lg">
+                  <div className="max-w-[616px] mt-6 text-light body-sm md:body">
                     <p data-aos="fade-up" className="">
                       Get the latest updates on our games, token and NFT releases, play-to-earn
                       mechanics, and have the opportunity to access alpha gameplay.
@@ -301,9 +329,9 @@ const Index = () => {
                       <span>JOIN DISCORD</span>
                     </a>
                     <Link href="/nodes">
-                    <button data-aos="fade-up" className="btn-lg btn-primary ml-4 md:ml-[31px]">
-                      RUN A NODE
-                    </button>
+                      <a data-aos="fade-up" className="btn-lg btn-primary ml-4 md:ml-[31px]">
+                        RUN A NODE
+                      </a>
                     </Link>
                   </div>
                 </div>
@@ -321,7 +349,7 @@ const Index = () => {
                 </h2>
                 <p
                   data-aos="fade-up"
-                  className="mt-4 md:mt-6 body md:body-lg max-w-[284px] text-light">
+                  className="mt-4 md:mt-6 body md:body max-w-[284px] text-light">
                   Discover the best games built on the blockchain
                 </p>
                 <Link href="/games">
@@ -344,7 +372,7 @@ const Index = () => {
                 </h2>
                 <p
                   data-aos="fade-up"
-                  className="mt-4 md:mt-6 body md:body-lg max-w-[310px] text-light">
+                  className="mt-4 md:mt-6 body md:body max-w-[310px] text-light">
                   Myria helps studios join the blockchain revolution
                 </p>
                 <Link href="/for-studios">
