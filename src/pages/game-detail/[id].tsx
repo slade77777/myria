@@ -62,7 +62,7 @@ const games: Record<
         type: 'image',
         src: '/images/game-detail/metarush/2.png'
       },
-      
+
       {
         type: 'image',
         src: '/images/game-detail/metarush/1.png'
@@ -376,15 +376,13 @@ const GameDetail: React.FC = () => {
                     assets={assets}
                   />
                 </div>
-                {assets.length > 1 && (
-                  <div className="mt-6">
-                    <SecondSlider
-                      currentSlide={currentSlide}
-                      setCurrentSlide={setCurrentSlide}
-                      assets={assets}
-                    />
-                  </div>
-                )}
+                <div className="mt-6">
+                  <SecondSlider
+                    currentSlide={currentSlide}
+                    setCurrentSlide={setCurrentSlide}
+                    assets={assets}
+                  />
+                </div>
                 <div className="">
                   <p className="mt-[70px] body-lg">{description}</p>
                   {image && (

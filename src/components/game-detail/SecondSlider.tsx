@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Slider, { Settings, CustomArrowProps } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -37,28 +37,37 @@ type Props = {
 };
 
 const SecondSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets }) => {
+  const SLIDE_WIDTH = 126;
+  const PADDING_X = 40;
   const sliderRef = useRef<Slider | null>(null);
 
+  const [slidesToShow, setSlidesToShow] = useState(1);
+
+  const containerRef = useRef<HTMLDivElement>(null);
   const settings = useMemo<Settings>(
     () => ({
       dots: false,
       infinite: true,
-      slidesToShow: assets.length > 6 ? 6 : assets.length,
+      variableWidth: true,
+      slidesToShow: slidesToShow,
       slidesToScroll: 1,
       prevArrow: <Arrow position="left" />,
-      nextArrow: <Arrow position="right" />,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1
-          }
-        }
-      ]
+      nextArrow: <Arrow position="right" />
     }),
-    [assets]
+    [slidesToShow]
   );
+
+  useEffect(() => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    const numberOfSlides = Math.floor(
+      (containerRef.current.getBoundingClientRect().width - PADDING_X * 2) / SLIDE_WIDTH
+    );
+
+    setSlidesToShow(Math.min(assets.length, numberOfSlides));
+  }, [assets.length]);
 
   useEffect(() => {
     if (sliderRef.current) {
@@ -67,34 +76,50 @@ const SecondSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets }
   }, [currentSlide]);
 
   return (
-    <Slider ref={sliderRef} {...settings} className="relative group px-[40px]">
-      {assets.map((a, idx) => (
-        <div className="px-2 !inline-flex justify-center items-center" key={idx}>
-          <button
-            onClick={() => setCurrentSlide(idx)}
-            className={clsx(
-              'h-[73px] w-full relative rounded-[5px] border border-transparent overflow-hidden',
-              {
-                '!border-white': currentSlide == idx
-              }
-            )}>
-            {currentSlide !== idx && (
-              <div className="absolute z-[3] inset-0 bg-black opacity-40 hover:opacity-0" />
-            )}
-            {a.type == 'video' && (
-              <span className="absolute z-[2] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[13px]">
-                <PlayIcon />
-              </span>
-            )}
-            <img
-              className="absolute h-full w-full z-[1] object-cover top-0 left-0"
-              src={a.type == 'video' ? a.image : a.src}
-              alt=""
-            />
-          </button>
-        </div>
-      ))}
-    </Slider>
+    <div ref={containerRef}>
+      <div
+        style={
+          {
+            width: assets.length * SLIDE_WIDTH + PADDING_X * 2,
+            '--paddingX': `${PADDING_X}px`
+          } as React.CSSProperties
+        }
+        className="max-w-full mx-auto">
+        <Slider ref={sliderRef} {...settings} className="relative group px-[var(--paddingX)]">
+          {assets.map((a, idx) => (
+            <div
+              style={{
+                width: 126
+              }}
+              className="px-2 !inline-flex justify-center items-center"
+              key={idx}>
+              <button
+                onClick={() => setCurrentSlide(idx)}
+                className={clsx(
+                  'w-full h-[73px] relative rounded-[5px] border border-transparent overflow-hidden',
+                  {
+                    '!border-white': currentSlide == idx
+                  }
+                )}>
+                {currentSlide !== idx && (
+                  <div className="absolute z-[3] inset-0 bg-black opacity-40 hover:opacity-0" />
+                )}
+                {a.type == 'video' && (
+                  <span className="absolute z-[2] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[13px]">
+                    <PlayIcon />
+                  </span>
+                )}
+                <img
+                  className="absolute h-full w-full z-[1] object-cover top-0 left-0"
+                  src={a.type == 'video' ? a.image : a.src}
+                  alt=""
+                />
+              </button>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </div>
   );
 };
 
