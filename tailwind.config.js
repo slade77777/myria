@@ -73,7 +73,7 @@ module.exports = {
         '.heading-massive': {
           fontSize: 60,
           lineHeight: 1.15,
-          fontWeight: 800
+          fontWeight: 700
         },
         '.heading-lg': {
           fontSize: 40,
