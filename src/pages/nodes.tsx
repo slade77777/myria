@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import Subscribe from 'src/components/Subscribe';
 import CardWithIcon from '../components/CardWithIcon';
 import Collapse from '../components/Collapse';
 import { headerHeight } from '../components/Header';
@@ -192,6 +193,11 @@ const Nodes: React.FC = () => {
               </p>
               <button className="btn-lg btn-primary mt-[32px]">BUY A NODE</button>
             </div>
+          </div>
+        </section>
+        <section className={clsx(paddingX, 'mb-[124px]')}>
+          <div className="mx-auto max-w-content">
+            <Subscribe />
           </div>
         </section>
       </div>

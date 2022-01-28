@@ -14,6 +14,7 @@ import AOS from 'aos';
 import { useEffect } from 'react';
 import 'aos/dist/aos.css';
 import { useAnimation, motion } from 'framer-motion';
+import Subscribe from 'src/components/Subscribe';
 
 const Index = () => {
   const imgAnimation = useAnimation();
@@ -376,9 +377,14 @@ const Index = () => {
               <ExperenceLogos />
             </div>
           </section>
-          <section className={clsx(paddingX, 'mt-[122px] md:mt-[168px] mb-[156px] md:mb-[168px]')}>
+          <section className={clsx(paddingX, 'mt-[122px] md:mt-[168px]')}>
             <div className="mx-auto max-w-content">
               <JoinTheRevolution textAnimation="fade-up" />
+            </div>
+          </section>
+          <section className={clsx(paddingX, 'mt-[64px] mb-[156px] md:mb-[168px]')}>
+            <div className="mx-auto max-w-content">
+              <Subscribe />
             </div>
           </section>
         </div>

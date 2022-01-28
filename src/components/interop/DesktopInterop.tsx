@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useEffect, useState, useRef } from 'react';
 import PlayCircleIcon from 'src/components/icons/PlayCircleIcon';
 import Video from 'src/components/Video';
+import Subscribe from 'src/components/Subscribe';
 import { headerHeight } from '../Header';
 import Page from '../Page';
 import { paddingX } from '../../utils';
@@ -406,8 +407,8 @@ const DesktopInterop: React.FC = () => {
               <Image
                 src="/images/interoperability/cowboy-cartoon-separate.png"
                 alt=""
-                width={454}
-                height={790}
+                width={597}
+                height={336}
               />
             </div>
             <div className="max-w-[607px] text-center mt-[27px] mb-[40px] elMorphing-text">
@@ -422,12 +423,15 @@ const DesktopInterop: React.FC = () => {
               <Image
                 src="/images/interoperability/cowboy-human-separate.png"
                 alt=""
-                width={648}
-                height={1438}
+                width={334}
+                height={612}
               />
             </div>
           </div>
         </section>
+        <div className="mb-[107px] mt-[96px]">
+        <Subscribe/>
+        </div>
       </div>
     </Page>
   );
