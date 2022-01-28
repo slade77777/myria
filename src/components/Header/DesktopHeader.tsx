@@ -63,13 +63,13 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
           })}
         </ul>
         <div className="flex items-center w-[220px] justify-end flex-shrink-0">
-          {action === 'login' && (
+          {/* {action === 'login' && (
             <>
               <button className="btn-sm btn-primary">Sign up</button>
               <button className="btn-sm btn-secondary ml-[21px]">Log in</button>
             </>
-          )}
-          {action === 'join-discord' && (
+          )} */}
+          {/* {action === 'join-discord' && ( */}
             <a
               className="btn-sm btn-secondary"
               href={socialLinks.discord}
@@ -77,7 +77,7 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
               rel="noreferrer">
               JOIN DISCORD
             </a>
-          )}
+          {/* )} */}
         </div>
       </nav>
     </header>
