@@ -156,9 +156,11 @@ const Index = () => {
                   that carry across each game world, and Myria tokens and NFTs can be used across
                   the Myriaverse.
                 </p>
-                <button data-aos="fade-up" className="btn-lg btn-primary mt-[38px]">
-                  READ ABOUT OUR ECOSYSTEM
-                </button>
+                <Link href="/ecosystem">
+                  <button data-aos="fade-up" className="btn-lg btn-primary mt-[38px]">
+                    READ ABOUT OUR ECOSYSTEM
+                  </button>
+                </Link>
               </div>
             </div>
           </section>
@@ -177,9 +179,11 @@ const Index = () => {
                   able to utilize their NFTs across different avatars, games and metaverses. Truly
                   own your digital assets and collectibles.
                 </p>
-                <button data-aos="fade-up" className="btn-lg btn-primary mt-[45px]">
-                  LEARN MORE
-                </button>
+                <Link href={'/interoperability'}>
+                  <button data-aos="fade-up" className="btn-lg btn-primary mt-[45px]">
+                    LEARN MORE
+                  </button>
+                </Link>
               </div>
               <div data-aos="fade-up" className="order-[-1] md:order-1">
                 <Image
@@ -284,15 +288,22 @@ const Index = () => {
                     </p>
                   </div>
                   <div className="justify-center md:justify-start flex items-center mt-[60px]">
-                    <button data-aos="fade-up" className="flex items-center btn-icon btn-white">
+                    <a
+                      data-aos="fade-up"
+                      className="flex items-center btn-icon btn-white"
+                      href={socialLinks.discord}
+                      target="_blank"
+                      rel="noreferrer">
                       <span className="w-[30px]">
                         <DiscordIcon />
                       </span>
                       <span>JOIN DISCORD</span>
-                    </button>
+                    </a>
+                    <Link href="/nodes">
                     <button data-aos="fade-up" className="btn-lg btn-primary ml-4 md:ml-[31px]">
                       RUN A NODE
                     </button>
+                    </Link>
                   </div>
                 </div>
               </div>

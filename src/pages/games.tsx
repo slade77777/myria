@@ -27,7 +27,7 @@ const Games: React.FC = () => {
               Our games
             </h1>
             <div className="mt-[100px] md:mt-[180px]">
-              <OurGames />
+              <OurGames btnLabel='Releasing soon' />
             </div>
             <div className="flex justify-end">
               <div className="mt-[32px] py-[23px] px-[38px] text-right bg-brand-deep-blue rounded-[20px]">

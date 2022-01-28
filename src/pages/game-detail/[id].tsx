@@ -56,15 +56,16 @@ const games: Record<
     assets: [
       {
         type: 'image',
-        src: '/images/game-detail/metarush/1.png'
+        src: '/images/game-detail/metarush/3.png'
       },
       {
         type: 'image',
         src: '/images/game-detail/metarush/2.png'
       },
+      
       {
         type: 'image',
-        src: '/images/game-detail/metarush/3.png'
+        src: '/images/game-detail/metarush/1.png'
       },
       {
         type: 'image',

@@ -86,7 +86,7 @@ const data = [
   }
 ] as const;
 
-const OurGames: React.FC = () => {
+const OurGames: React.FC<{ btnLabel?: string }> = ({ btnLabel = 'Learn more' }) => {
   return (
     <div className="grid md:grid-cols-2 gap-[24px] md:gap-[32px] text-brand-white">
       {data.map((item, idx) => {
@@ -112,7 +112,7 @@ const OurGames: React.FC = () => {
             </div>
             <Link href={item.link}>
               <button className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap">
-                Learn more
+                {btnLabel}
               </button>
             </Link>
             <div className="absolute z-[-1] min-w-[616px] -translate-x-1/2 w-[calc(100%+5px)] bottom-0 left-1/2">

@@ -108,7 +108,7 @@ const Nodes: React.FC = () => {
               <p className="mt-[32px] heading-sm max-w-[518px] mx-auto">
                 Decentralize the network by providing computing resources
               </p>
-              <button className="mt-[38px] btn-lg btn-primary">BUY NOW</button>
+              <button className="mt-[38px] btn-lg btn-primary">Pre register now</button>
             </section>
             <section className="mt-[100px]">
               <div className="max-w-[715px]">
@@ -133,7 +133,7 @@ const Nodes: React.FC = () => {
                         <a
                           href={item.learnMore}
                           className="inline-block mt-[22px] btn-lg btn-primary">
-                          Learn more
+                          Releasing soon
                         </a>
                       )}
                     </div>
