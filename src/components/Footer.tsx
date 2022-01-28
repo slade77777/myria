@@ -19,7 +19,7 @@ const links = [
           link: '/game-detail'
         },
         {
-          label: 'Blocks Royale',
+          label: 'Block Royale',
           link: '/game-detail'
         },
         {
