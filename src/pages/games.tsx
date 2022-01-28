@@ -81,12 +81,12 @@ const Games: React.FC = () => {
             </div>
           </div>
         </section>
-        <section className={clsx(paddingX, 'mt-[218px]')}>
+        <section className={clsx(paddingX, 'mt-[150px]')}>
           <div className="mx-auto max-w-content">
             <JoinTheRevolution />
           </div>
         </section>
-        <section className={clsx(paddingX, 'mt-[168px] mb-[156px] md:mb-[180px]')}>
+        <section className={clsx(paddingX, 'mt-[32px] mb-[156px] md:mt-[54px]')}>
           <Subscribe />
         </section>
       </div>
