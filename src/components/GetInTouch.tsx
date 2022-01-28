@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from './Input';
 import Textarea from './Textarea';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import apiClient from 'src/client';
+import CircleCheck from './icons/CircleCheck';
 
 interface IFormInputs {
   name: string;
@@ -23,6 +24,8 @@ const schema = yup
   .required();
 
 const GetInTouch: React.FC = () => {
+  const [error, setError] = useState('');
+  const [success, setIsSubmitSuccess] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -31,8 +34,23 @@ const GetInTouch: React.FC = () => {
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = (data: IFormInputs) => {
-    apiClient.post('/contact-us', data)
+  const onSubmit = async (data: IFormInputs) => {
+    try {
+      setError('');
+      setIsSubmitSuccess(false);
+
+      await apiClient
+        .post('/contact-us', data)
+        .then(() => setIsSubmitSuccess(true))
+        .catch((error) => {
+          setError(error.message);
+          setIsSubmitSuccess(false);
+        });
+
+    } catch (error: any) {
+      setError(error?.message);
+      setIsSubmitSuccess(false);
+    }
   };
 
   return (
@@ -68,10 +86,19 @@ const GetInTouch: React.FC = () => {
             error={!!errors.message}
             errorText={errors.message?.message}
           />
+          {success && (
+            <p className="flex items-center text-xs leading-[15px] text-white">
+              <CircleCheck />
+              <span className="ml-1">
+                Thank you for message. We will be in touch within 24-48 hours!
+              </span>
+            </p>
+          )}
+          {error && <p className="text-xs leading-[15px] text-[#F37272]">{error}</p>}
         </div>
         <div className="flex justify-end mt-6">
           <button disabled={isSubmitting} className="btn-lg btn-primary">
-            Submit
+            {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         </div>
       </form>
