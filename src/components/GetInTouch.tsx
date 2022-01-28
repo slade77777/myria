@@ -29,6 +29,7 @@ const GetInTouch: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting }
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
@@ -46,7 +47,7 @@ const GetInTouch: React.FC = () => {
           setError(error.message);
           setIsSubmitSuccess(false);
         });
-
+      reset();
     } catch (error: any) {
       setError(error?.message);
       setIsSubmitSuccess(false);

@@ -23,6 +23,7 @@ const Subscribe: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting }
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
@@ -34,12 +35,13 @@ const Subscribe: React.FC = () => {
       setIsSubmitSuccess(false);
 
       await apiClient
-        .put('/subcription', data)
+        .put('/subscription', data)
         .then(() => setIsSubmitSuccess(true))
         .catch((error) => {
           setError(error.message);
           setIsSubmitSuccess(false);
         });
+        reset();
     } catch (error: any) {
       setError(error?.message);
       setIsSubmitSuccess(false);
