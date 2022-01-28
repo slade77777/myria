@@ -19,17 +19,10 @@ function App({ Component, pageProps }: AppProps) {
           locale: 'en',
           images: [
             {
-              url: 'https://myria.com/seo/metarush.png',
-              alt: 'Metarush',
+              url: 'https://myria.com/seo/defaultImage.png',
+              alt: 'Game NFT',
               type: 'image/png'
-            },
-            {
-              url: 'https://myria.com/seo/block_royale.png',
-              alt: 'Block royale',
-              type: 'image/png'
-            },
-            { url: 'https://myria.com/seo/metakart.png', alt: 'Metakart', type: 'image/png' },
-            { url: 'https://myria.com/seo/startstrike.png', alt: 'Startstrike', type: 'image/png' }
+            }
           ],
           title: 'Myria | Connecting the world through play',
           description: 'Myria is a blockchain gaming ecosystem powered by the Myria blockchain.',

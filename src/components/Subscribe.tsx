@@ -1,7 +1,20 @@
-import React from 'react';
+import Axios from "axios";
+import React, { useState } from 'react';
+import apiClient from "src/client";
 import Input from './Input';
 
 const Subscribe: React.FC = () => {
+  const [email, setEmail] = useState('');
+
+  const onChange = (e: any) => {
+    setEmail(e.target.value);
+  }
+
+  const onSubmit = () => {
+    apiClient.put('/subcription', {
+      email
+    })
+  }
   return (
     <div
       style={{
@@ -15,8 +28,8 @@ const Subscribe: React.FC = () => {
           promotions.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] mt-10 gap-4">
-          <Input placeholder="Enter your email address" />
-          <button className="btn-lg btn-primary">SUBMIT</button>
+          <Input placeholder="Enter your email address" onChange={onChange}/>
+          <button className="btn-lg btn-primary" onClick={onSubmit}>SUBMIT</button>
         </div>
       </div>
     </div>

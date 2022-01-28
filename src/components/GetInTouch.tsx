@@ -4,6 +4,7 @@ import Textarea from './Textarea';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import apiClient from 'src/client';
 
 interface IFormInputs {
   name: string;
@@ -30,7 +31,9 @@ const GetInTouch: React.FC = () => {
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = (data: IFormInputs) => console.log(data);
+  const onSubmit = (data: IFormInputs) => {
+    apiClient.post('/contact-us', data)
+  };
 
   return (
     <div className="rounded-[20px] bg-[url('/images/get-in-touch/panel.png')] bg-cover bg-center md:py-[64px] p-[32px] md:px-[100px] lg:px-[216px] w-full">
