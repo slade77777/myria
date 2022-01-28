@@ -12,7 +12,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const video = {
-  src: 'https://assets.contentstack.io/v3/assets/blt1d37b8e155757b13/blta62df75337fb6aa7/6166e691dd1cf90b821def45/Key_Feature_Video_1_1.mp4',
+  src: '/videos/interoperability/1643212473287896.mp4',
   image: '/images/game-detail/metarush-bg.png',
   youtube: 'https://www.youtube.com/watch?v=YqgCESVWNNI'
 };
@@ -275,7 +275,7 @@ const DesktopInterop: React.FC = () => {
                       loop: true
                     }}
                   />
-                  <button
+                  {/* <button
                     onClick={() => setOpenVideo(true)}
                     className="absolute top-0 flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50">
                     <span className="w-[122px] transition duration-300 group-hover:scale-[0.8] text-brand-gold group-hover:text-brand-light-blue">
@@ -284,7 +284,16 @@ const DesktopInterop: React.FC = () => {
                     <p className="uppercase text-[20px] font-extrabold mt-[28px] group-hover:text-brand-light-blue">
                       Play video
                     </p>
-                  </button>
+                  </button> */}
+                  <a
+                    className="cursor-not-allowed absolute top-0 flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50">
+                    <span className="w-[122px] transition duration-300 group-hover:scale-[0.8] text-brand-gold group-hover:text-brand-light-blue">
+                      <PlayCircleIcon />
+                    </span>
+                    <p className="uppercase text-[20px] font-extrabold mt-[28px] group-hover:text-brand-light-blue">
+                      Trailer Coming Soon
+                    </p>
+                  </a>
                 </div>
               </div>
             </div>
