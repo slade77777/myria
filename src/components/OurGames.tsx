@@ -97,7 +97,7 @@ const OurGames: React.FC = () => {
             style={{
               backgroundImage: `url("${item.background}")`
             }}
-            className="transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[342px] flex justify-between items-end bg-cover bg-center rounded-[12px]">
+            className="transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[342px] flex justify-between items-end bg-cover bg-center rounded-lg">
             <div
               className={clsx(
                 'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',
