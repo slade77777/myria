@@ -89,7 +89,7 @@ const MobileInterop: React.FC = () => {
                       loop: true
                     }}
                   />
-                  <button
+                  {/* <button
                     onClick={() => setOpenVideo(true)}
                     className="absolute top-0 flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50">
                     <span className="w-[122px] transition duration-300 group-hover:scale-[0.8] text-brand-gold group-hover:text-brand-light-blue">
@@ -98,7 +98,15 @@ const MobileInterop: React.FC = () => {
                     <p className="uppercase text-[20px] font-extrabold mt-[28px] group-hover:text-brand-light-blue">
                       Play video
                     </p>
-                  </button>
+                  </button> */}
+                  <a className="absolute top-0 flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50 cursor-not-allowed">
+                    <span className="w-[122px] transition duration-300 group-hover:scale-[0.8] text-brand-gold group-hover:text-brand-light-blue">
+                      <PlayCircleIcon />
+                    </span>
+                    <p className="uppercase text-[20px] font-extrabold mt-[28px] group-hover:text-brand-light-blue">
+                      Trailer Coming Soon
+                    </p>
+                  </a>
                 </div>
               </div>
             </div>
