@@ -13,7 +13,7 @@ const JoinTheRevolution: React.FC<Props> = ({ textAnimation }) => {
       <h2 data-aos={textAnimation} className="md:mt-4 heading-md md:heading-lg">
         We’re hiring, join the future of gaming
       </h2>
-      <p data-aos={textAnimation} className="mt-4 md:mt-6 max-w-[616px] body text-light">
+      <p data-aos={textAnimation} className="mt-4 md:mt-6 max-w-[616px] body-sm text-light">
         If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring
         the world for the best and brightest to join our rapidly growing company.
       </p>

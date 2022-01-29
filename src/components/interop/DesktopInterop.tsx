@@ -300,7 +300,7 @@ const DesktopInterop: React.FC = () => {
             </div>
           </div>
         </section>
-        <section className={clsx(paddingX, 'mt-[88px]')} ref={el}>
+        <section className={clsx(paddingX, 'xl:px-[196px] mt-[88px]')} ref={el}>
           <div className="gsap-total-how-word flex gap-[26px]">
             <div className="min-w-[500px]">
               <div className="gsap-wrap-text-how-work">
@@ -361,7 +361,7 @@ const DesktopInterop: React.FC = () => {
                         src="/images/interoperability/Vortex@2x.png"
                         alt=""
                         width={1757}
-                        height={1368}
+                        height={1757}
                         layout="responsive"
                       />
                     </div>
@@ -370,7 +370,7 @@ const DesktopInterop: React.FC = () => {
                         src="/images/interoperability/Hat@2x.png"
                         alt=""
                         width={1757}
-                        height={1368}
+                        height={1757}
                         layout="responsive"
                         className="absolute top-0 w-full scale-75 object-contain"
                       />
@@ -380,9 +380,9 @@ const DesktopInterop: React.FC = () => {
                         src="/images/interoperability/Cowboy Human@2x.png"
                         alt=""
                         width={1757}
-                        height={1368}
+                        height={1757}
                         layout="responsive"
-                        className="absolute top-0 w-full scale-90 object-contain"
+                        className="absolute top-0 w-full scale-90 object-contain rounded-[50%]"
                       />
                     </div>
                     <div className="absolute top-0 w-full gsap-img-cartoon">
@@ -390,7 +390,7 @@ const DesktopInterop: React.FC = () => {
                         src="/images/interoperability/Cowboy Cartoon@2x.png"
                         alt=""
                         width={1757}
-                        height={1368}
+                        height={1757}
                         layout="responsive"
                         className="absolute top-0 w-full scale-90 object-contain"
                       />

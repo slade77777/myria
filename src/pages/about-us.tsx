@@ -29,8 +29,8 @@ const data: Person[] = [
     description:
       'Andrew has been a tech executive in the gaming industry with a career spanning over 27 years. He has worked with some of the most recognizable names in the industry, including Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway. ',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: '',
+      linkedin: 'https://www.linkedin.com/in/andrewsilber'
     }
   },
   {
@@ -39,8 +39,8 @@ const data: Person[] = [
     description:
       'A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain P2E platform. ',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: 'https://twitter.com/gooseara',
+      linkedin: ''
     }
   },
   {
@@ -49,8 +49,8 @@ const data: Person[] = [
     description:
       'Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network.',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: '',
+      linkedin: 'https://www.linkedin.com/in/brendan-d-4ba3b698'
     }
   },
   {
@@ -59,18 +59,18 @@ const data: Person[] = [
     description:
       'Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads.',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: 'https://twitter.com/IvanFortunov',
+      linkedin: 'https://www.linkedin.com/in/fortunov/'
     }
   },
   {
-    name: 'Jem Law',
-    position: 'General Manager',
+    name: 'Lucas Bean',
+    position: '-',
     description:
-      'Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies.',
+      '-',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: '',
+      linkedin: 'https://www.linkedin.com/in/lucasbean/'
     }
   },
   {
@@ -79,18 +79,18 @@ const data: Person[] = [
     description:
       'A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com.  ',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: 'https://twitter.com/0xMetaFrog',
+      linkedin: ''
     }
   },
   {
-    name: 'Antonio Molina',
-    position: 'Game Producer',
+    name: 'Jem Law',
+    position: 'General Manager',
     description:
-      'With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more. ',
+      'Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies.',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: '',
+      linkedin: 'https://www.linkedin.com/in/jemimalaw/'
     }
   },
   {
@@ -99,18 +99,8 @@ const data: Person[] = [
     description:
       'AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others. ',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
-    }
-  },
-  {
-    name: 'Brock',
-    position: 'Product Lead - Blockchain',
-    description:
-      'Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth. ',
-    socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: 'https://twitter.com/ajdimarucot',
+      linkedin: 'https://linkedin.com/in/ajdimarucot'
     }
   },
   {
@@ -119,30 +109,20 @@ const data: Person[] = [
     description:
       'Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more.',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: 'https://twitter.com/Lennicus',
+      linkedin: 'https://www.linkedin.com/in/craiglstanford/'
     }
   },
   {
-    name: 'x',
-    position: 'x',
+    name: 'Antonio Molina',
+    position: 'Game Producer',
     description:
-      'Brock is an entreprCraig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more.',
+      'With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more. ',
     socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
+      twitter: '',
+      linkedin: 'https://www.linkedin.com/in/antoniomolina34/'
     }
   },
-  {
-    name: 'Kidono Huang',
-    position: 'Partner Lead',
-    description:
-      'Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more.',
-    socials: {
-      twitter: 'https://abc.com',
-      linkedin: 'https://abc.com'
-    }
-  }
 ];
 
 const principles = [
@@ -281,8 +261,8 @@ const AboutUs: React.FC = () => {
               {data.map((person, idx) => (
                 <article
                   key={idx}
-                  className="text-center flex flex-col rounded-[20px] md:pt-[50px] md:pb-[40px] p-[32px] bg-brand-deep-blue">
-                  <p className="body-lg">{person.name}</p>
+                  className="lg:last:[grid-column:span_1/-2] text-center flex flex-col rounded-[20px] md:pt-[50px] md:pb-[40px] p-[32px] bg-brand-deep-blue">
+                  <p className="body-lg font-bold ">{person.name}</p>
                   <p className="mt-4 font-bold body">{person.position}</p>
                   <p className="mt-6 mb-auto body-sm text-light">{person.description}</p>
                   <div className="grid grid-flow-col justify-center gap-6 mt-[35px] opacity-50">
@@ -291,7 +271,7 @@ const AboutUs: React.FC = () => {
                         <TwitterWithBackgroundIcon />
                       </a>
                     )}
-                    {person.socials.twitter && (
+                    {person.socials.linkedin && (
                       <a href={person.socials.linkedin} className="w-[24px]">
                         <LinkedinWithBackgroundIcon />
                       </a>
