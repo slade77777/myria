@@ -305,8 +305,8 @@ const Index = () => {
             <div className="md:hidden [grid-area:1/1/-1/-1]">
               <Image src="/images/home/globe.png" width={856} height={1034} alt="" />
             </div>
-            <div className="hidden md:block [grid-area:1/1/-1/-1] pointer-events-none">
-              <Video
+            <div className="hidden md:flex [grid-area:1/1/-1/-1] pointer-events-none justify-end">
+              {/* <Video
                 isVisible={true}
                 options={{
                   sources: [
@@ -322,7 +322,16 @@ const Index = () => {
                   controlBar: false,
                   loop: true
                 }}
-              />
+              /> */}
+              <div className="w-[700px]">
+                <Image
+                  src="/images/home/globe-desktop.png"
+                  width={1001}
+                  height={1172}
+                  alt=""
+                  layout="intrinsic"
+                />
+              </div>
             </div>
             <div
               className={clsx(
@@ -425,9 +434,9 @@ const Index = () => {
               vision of revolutionizing gaming with blockchain technology.{' '}
             </p>
             <Link href={'/about-us'}>
-              <button data-aos="fade-up" className="flex mx-auto mt-10 btn-lg btn-primary">
+              <a data-aos="fade-up" className="flex mx-auto mt-10 btn-lg btn-primary">
                 MEET THE TEAM
-              </button>
+              </a>
             </Link>
           </section>
           <section className={clsx(paddingX, 'mt-[123px] md:mt-[152px]')}>
