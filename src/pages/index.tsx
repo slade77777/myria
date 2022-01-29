@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import { useAnimation, motion } from 'framer-motion';
 import Subscribe from 'src/components/Subscribe';
 import 'aos/dist/aos.css';
+import Video from 'src/components/Video';
 
 const Index = () => {
   const imgAnimation = useAnimation();
@@ -304,15 +305,25 @@ const Index = () => {
             <div className="md:hidden [grid-area:1/1/-1/-1]">
               <Image src="/images/home/globe.png" width={856} height={1034} alt="" />
             </div>
-            <video
-              controls={false}
-              autoPlay
-              muted
-              loop
-              className=" hidden md:block h-full w-full [grid-area:1/1/-1/-1]">
-              <source src="/images/home/video-bg.mp4" type="video/mp4" />
-              Your browser does not support HTML5 video.
-            </video>
+            <div className="hidden md:block [grid-area:1/1/-1/-1]">
+              <Video
+                isVisible={true}
+                options={{
+                  sources: [
+                    {
+                      src: '/images/home/video-bg.mp4'
+                    }
+                  ],
+                  aspectRatio: '16:9',
+                  autoplay: true,
+                  muted: true,
+                  poster: '',
+                  responsive: true,
+                  controlBar: false,
+                  loop: true
+                }}
+              />
+            </div>
             <div
               className={clsx(
                 paddingX,
