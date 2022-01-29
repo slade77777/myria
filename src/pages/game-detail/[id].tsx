@@ -126,7 +126,7 @@ const games: Record<
     description:
       'Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse.',
     logo: '/images/game-detail/metakart/logo.png',
-    logoMobile: '/images/game-detail/metakart/logo.png',
+    logoMobile: '/images/game-detail/metakart/logo-alt.png',
     image: {
       src: '/images/game-detail/metakart/1.png',
       width: 927,
@@ -205,7 +205,7 @@ const games: Record<
     description:
       'Eliminate your opponents in this fast-paced-action-packed-survival game, to achieve victory and claim the spoils of war. There can be only one hero or team standing when the crimson curtain hits the ground. ',
     logo: '/images/game-detail/block-royale/logo.png',
-    logoMobile: '/images/game-detail/block-royale/logo.png',
+    logoMobile: '/images/game-detail/block-royale/logo-alt.png',
     image: {
       src: '/images/game-detail/block-royale/3.png',
       width: 905,
@@ -281,7 +281,7 @@ const games: Record<
     description:
       'Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning.',
     logo: '/images/game-detail/starstrike/logo.png',
-    logoMobile: '/images/game-detail/starstrike/logo.png',
+    logoMobile: '/images/game-detail/starstrike/logo-alt.png',
     assets: [
       {
         type: 'image',
