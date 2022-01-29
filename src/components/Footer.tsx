@@ -12,19 +12,19 @@ const links = [
       [
         {
           label: 'Metarush',
-          link: '/game-detail'
+          link: '/metarush'
         },
         {
           label: 'Metakart',
-          link: '/game-detail'
+          link: '/metakart'
         },
         {
           label: 'Block Royale',
-          link: '/game-detail'
+          link: '/block-royale'
         },
         {
           label: 'Starstrike Legends',
-          link: '/gamde-detail'
+          link: '/starstrike'
         }
       ]
     ]
