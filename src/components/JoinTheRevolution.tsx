@@ -18,9 +18,9 @@ const JoinTheRevolution: React.FC<Props> = ({ textAnimation }) => {
         the world for the best and brightest to join our rapidly growing company.
       </p>
       <Link href={'/careers'}>
-        <button data-aos={textAnimation} className="mt-[9px] md:mt-10 btn-lg btn-primary">
+        <a data-aos={textAnimation} className="mt-[9px] md:mt-10 btn-lg btn-primary">
           JOIN THE TEAM
-        </button>
+        </a>
       </Link>
       <img
         src="/images/join-the-revolution/character.png"

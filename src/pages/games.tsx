@@ -27,7 +27,7 @@ const Games: React.FC = () => {
               Our games
             </h1>
             <div className="mt-[100px] md:mt-[180px]">
-              <OurGames btnLabel='Releasing soon' />
+              <OurGames />
             </div>
             <div className="flex justify-end">
               <div className="mt-[32px] py-[23px] px-[38px] text-right bg-brand-deep-blue rounded-[20px]">
@@ -77,7 +77,7 @@ const Games: React.FC = () => {
                 skins. These items will never be made available to the public again and will forever
                 commemorate holders as pioneers in the Myriaverse.
               </p>
-              <button className="mt-10 btn-lg btn-primary">Learn more</button>
+              <button className="mt-10 btn-lg btn-primary">Releasing soon</button>
             </div>
           </div>
         </section>

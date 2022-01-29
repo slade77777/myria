@@ -376,7 +376,7 @@ const Index = () => {
                   Myria helps studios join the blockchain revolution
                 </p>
                 <Link href="/for-studios">
-                  <a data-aos="fade-up" className="mt-6 md:mt-10 btn-lg btn-primary">
+                  <a data-aos="fade-up" className="mt-6 md:mt-10 btn-lg btn-light-blue">
                     Learn more
                   </a>
                 </Link>

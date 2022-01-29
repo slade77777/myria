@@ -91,34 +91,33 @@ const OurGames: React.FC<{ btnLabel?: string }> = ({ btnLabel = 'Learn more' }) 
     <div className="grid md:grid-cols-2 gap-[24px] md:gap-[32px] text-brand-white">
       {data.map((item, idx) => {
         return (
-          <div
-            data-aos="fade-up"
-            key={idx}
-            style={{
-              backgroundImage: `url("${item.background}")`
-            }}
-            className="transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[210px] md:h-[342px] flex justify-between items-end bg-cover bg-center rounded-lg">
-            <div
-              className={clsx(
-                'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',
-                {
-                  'xl:grid-cols-[126px_auto] gap-x-[21px] xl:items-end': item.layout === 'col'
-                }
-              )}>
-              {item.logo}
-              <p className="text-[20px] md:text-[16px] xl:text-[20px] text-center xl:text-left leading-[1.15] font-extrabold md:max-w-[194px] xl:max-w-none">
-                {item.title}
-              </p>
-            </div>
-            <Link href={item.link}>
-              <a className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap">
+          <Link href={item.link} key={idx}>
+            <a
+              data-aos="fade-up"
+              style={{
+                backgroundImage: `url("${item.background}")`
+              }}
+              className="transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[210px] md:h-[342px] flex justify-between items-end bg-cover bg-center rounded-lg">
+              <div
+                className={clsx(
+                  'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',
+                  {
+                    'xl:grid-cols-[126px_auto] gap-x-[21px] xl:items-end': item.layout === 'col'
+                  }
+                )}>
+                {item.logo}
+                <p className="text-[20px] md:text-[16px] xl:text-[20px] text-center xl:text-left leading-[1.15] md:max-w-[194px] xl:max-w-none">
+                  {item.title}
+                </p>
+              </div>
+              <button className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap">
                 {btnLabel}
-              </a>
-            </Link>
-            <div className="absolute z-[-1] min-w-[500px] md:min-w-[616px] -translate-x-1/2 w-[calc(100%+5px)] bottom-0 left-1/2">
-              <Backdrop />
-            </div>
-          </div>
+              </button>
+              <div className="absolute z-[-1] min-w-[500px] md:min-w-[616px] -translate-x-1/2 w-[calc(100%+5px)] bottom-0 left-1/2">
+                <Backdrop />
+              </div>
+            </a>
+          </Link>
         );
       })}
     </div>
