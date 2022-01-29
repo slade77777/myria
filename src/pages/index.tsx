@@ -12,9 +12,9 @@ import Link from 'next/link';
 import { socialLinks } from 'src/configs';
 import AOS from 'aos';
 import { useEffect } from 'react';
-import 'aos/dist/aos.css';
 import { useAnimation, motion } from 'framer-motion';
 import Subscribe from 'src/components/Subscribe';
+import 'aos/dist/aos.css';
 
 const Index = () => {
   const imgAnimation = useAnimation();
@@ -32,7 +32,12 @@ const Index = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000
+      duration: 1000,
+      once: true,
+      disable: function () {
+        const maxWidth = 768;
+        return window.innerWidth < maxWidth;
+      }
     });
   }, []);
 
@@ -289,7 +294,15 @@ const Index = () => {
             className={clsx(
               'mt-[130px] md:mt-0 md:min-h-[790px] grid grid-cols-1 grid-rows-1 items-center justify-center py-10 relative isolate'
             )}>
-            <video autoPlay muted loop className="h-full w-full [grid-area:1/1/-1/-1]">
+            <div className="md:hidden [grid-area:1/1/-1/-1]">
+              <Image src="/images/home/globe.png" width={856} height={1034} alt="" />
+            </div>
+            <video
+              controls={false}
+              autoPlay
+              muted
+              loop
+              className=" hidden md:block h-full w-full [grid-area:1/1/-1/-1]">
               <source src="/images/home/video-bg.mp4" type="video/mp4" />
               Your browser does not support HTML5 video.
             </video>
@@ -340,7 +353,7 @@ const Index = () => {
           </section>
           <section className={clsx(paddingX, 'mt-[152px] md:mt-[128px]')}>
             <div className="max-w-content mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-[32px]">
-              <div className="relative isolate p-[32px] md:p-10 h-[470px] md:h-[540px] bg-brand-deep-blue rounded-[20px]">
+              <div className="relative isolate p-[32px] md:p-10 h-[470px] md:h-[540px] bg-brand-deep-blue rounded-[20px] overflow-hidden">
                 <div className="absolute inset-0 z-[-1]">
                   <Image src="/images/home/for-gamers.png" alt="" layout="fill" objectFit="cover" />
                 </div>
@@ -358,7 +371,7 @@ const Index = () => {
                   </a>
                 </Link>
               </div>
-              <div className="relative isolate p-[32px] md:p-10 h-[470px] md:h-[540px] bg-brand-deep-blue rounded-[20px]">
+              <div className="relative isolate p-[32px] md:p-10 h-[470px] md:h-[540px] bg-brand-deep-blue rounded-[20px] overflow-hidden">
                 <div className="absolute inset-0 z-[-1]">
                   <Image
                     src="/images/home/for-studios.png"
