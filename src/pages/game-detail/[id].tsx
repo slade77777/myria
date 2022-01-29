@@ -22,6 +22,7 @@ export type Asset = {
 const games: Record<
   string,
   {
+    headerBg: string;
     title: string;
     description: string;
     logo: string;
@@ -43,6 +44,7 @@ const games: Record<
   }
 > = {
   metarush: {
+    headerBg: '/images/game-detail/header-bg-1.png',
     title: 'Metarush',
     description:
       'Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse.',
@@ -119,6 +121,7 @@ const games: Record<
     ]
   },
   metakart: {
+    headerBg: '/images/game-detail/header-bg-2.png',
     title: 'Metakart',
     description:
       'Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse.',
@@ -197,6 +200,7 @@ const games: Record<
     ]
   },
   'block-royale': {
+    headerBg: '/images/game-detail/header-bg-3.png',
     title: 'Block Royale',
     description:
       'Eliminate your opponents in this fast-paced-action-packed-survival game, to achieve victory and claim the spoils of war. There can be only one hero or team standing when the crimson curtain hits the ground. ',
@@ -272,6 +276,7 @@ const games: Record<
     ]
   },
   starstrike: {
+    headerBg: '/images/game-detail/header-bg-4.png',
     title: 'Starstrike Legends',
     description:
       'Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning.',
@@ -341,28 +346,18 @@ const GameDetail: React.FC = () => {
   }
 
   const game = games[id];
-  const { title, assets, logo, logoMobile, content, info, image, description } = game;
+  const { title, assets, logo, logoMobile, content, info, image, description, headerBg } = game;
   return (
     <Page>
       <div>
         <section
           style={{
-            paddingTop: headerHeight,
-            backgroundPositionY: headerHeight
+            paddingTop: headerHeight
           }}
           className={clsx(paddingX, 'relative isolate md:min-h-screen mb-[120px] ')}>
-          <div
-            style={{
-              top: headerHeight
-            }}
-            className="absolute left-0 h-[809px] w-full z-[-1]">
+          <div className="absolute left-0 h-[809px] w-full z-[-1]">
             <div className="relative w-full h-full ">
-              <Image
-                src="/images/game-detail/header-bg.png"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-              />
+              <Image src={headerBg} alt="" layout="fill" objectFit="cover" />
             </div>
           </div>
           <div className="w-full mx-auto mt-10 max-w-content">
