@@ -304,15 +304,12 @@ const Index = () => {
             <div className="md:hidden [grid-area:1/1/-1/-1]">
               <Image src="/images/home/globe.png" width={856} height={1034} alt="" />
             </div>
-            <video
-              controls={false}
-              autoPlay
-              muted
-              loop
-              className=" hidden md:block h-full w-full [grid-area:1/1/-1/-1]">
-              <source src="/images/home/video-bg.mp4" type="video/mp4" />
-              Your browser does not support HTML5 video.
-            </video>
+            <div className="hidden md:block [grid-area:1/1/-1/-1]">
+              <video controls={false} autoPlay muted loop className="w-full h-full">
+                <source src="/images/home/video-bg.mp4" type="video/mp4" />
+                Your browser does not support HTML5 video.
+              </video>
+            </div>
             <div
               className={clsx(
                 paddingX,
