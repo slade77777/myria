@@ -65,7 +65,7 @@ const data: Person[] = [
   },
   {
     name: 'Lucas Bean',
-    position: '-',
+    position: 'Head of Marketing',
     description:
       'Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and have founded multiple ventures, including Engage:BDR that is now a public listed company.',
     socials: {
