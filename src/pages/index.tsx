@@ -67,10 +67,10 @@ const Index = () => {
             }}
             className={clsx(
               paddingX,
-              'flex flex-col items-center md:justify-center min-h-[900px] relative isolate md:min-h-screen '
+              'flex flex-col items-center md:justify-center min-h-[900px] overflow-hidden relative isolate md:min-h-screen '
             )}>
             <div className="md:hidden absolute left-0 w-full z-[-1]">
-              <div className="relative w-full h-[815px]">
+              <div className="relative w-full h-[815px] overflow-hidden">
                 <Image
                   src="/images/home/header-bg-mobile.png"
                   alt=""
@@ -99,13 +99,15 @@ const Index = () => {
                 data-aos-duration="1000"
                 className="heading-lg md:heading-massive text-brand-white">
                 Connecting the world through{' '}
-                <span className="aos-text-slide-right [--animated-color:#F5B941]">play</span>
+                <span className=" text-brand-gold aos-text-slide-right [--animated-color:#F5B941]">
+                  play
+                </span>
               </h1>
               <h3
                 data-aos="fade-up"
                 data-aos-duration="2000"
                 className="heading-sm-mobile md:heading-sm mt-6 md:mt-[32px]">
-                <span className="aos-text-slide-right ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
+                <span className="text-white aos-text-slide-right ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
                   Myria is a blockchain gaming ecosystem powered by the Myria blockchain.
                 </span>
               </h3>
@@ -163,8 +165,11 @@ const Index = () => {
               </div>
               <div className="text-center md:text-left">
                 <h2 data-aos="fade-up" className="heading-md md:heading-lg text-[#FFFDFD]">
-                  A <span className="aos-text-slide-right">decentralized ecosystem</span> of
-                  blockchain games and worlds
+                  A{' '}
+                  <span className=" text-brand-light-blue aos-text-slide-right">
+                    decentralized ecosystem
+                  </span>{' '}
+                  of blockchain games and worlds
                 </h2>
                 <p data-aos="fade-up" className="mt-[38px] body text-light">
                   Our range of free-to-play AAA games spans across an entire interconnected
@@ -188,7 +193,8 @@ const Index = () => {
             <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
               <div className="text-center md:text-left">
                 <h2 data-aos="fade-up" className="heading-md md:heading-lg text-[#FFFDFD]">
-                  <span className="aos-text-slide-right">Interoperable</span> & Interconnected NFTs
+                  <span className=" text-brand-light-blue aos-text-slide-right">Interoperable</span>{' '}
+                  & Interconnected NFTs
                 </h2>
                 <p data-aos="fade-up" className="mt-6 body text-light">
                   Morphing interoperable NFTs is the new standard created by Myria. Players will be
@@ -240,7 +246,8 @@ const Index = () => {
               <div className="relative flex flex-col justify-center overflow-hidden text-center md:text-left">
                 <div className="relative isolate ">
                   <h2 data-aos="fade-up" className="heading-md md:heading-lg text-[#FFFDFD]">
-                    Powered and governed by <span className="aos-text-slide-right">$MYRIA</span>
+                    Powered and governed by{' '}
+                    <span className=" text-brand-light-blue aos-text-slide-right">$MYRIA</span>
                   </h2>
                   <p data-aos="fade-up" className="mt-10 body text-light">
                     $MYRIA is the native governance and utility token that encapsulates the Myria

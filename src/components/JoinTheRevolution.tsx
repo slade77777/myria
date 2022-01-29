@@ -25,7 +25,7 @@ const JoinTheRevolution: React.FC<Props> = ({ textAnimation }) => {
       <img
         src="/images/join-the-revolution/character.png"
         alt=""
-        className="md:absolute top-0 right-0 h-full z-[-1]"
+        className="md:absolute top-0 right-0 md:h-full z-[-1]"
       />
     </div>
   );

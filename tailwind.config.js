@@ -54,9 +54,9 @@ module.exports = {
             'linear-gradient(to right, var(--animated-color) 50%, var(--current-color) 50% 100%)',
           backgroundSize: '200%',
           backgroundPosition: '100%',
-          color: 'transparent',
           backgroundClip: 'text',
           '.aos-animate &': {
+            color: 'transparent!important',
             animation: theme('animation.slide-out')
           }
         },
