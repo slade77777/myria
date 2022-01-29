@@ -267,12 +267,12 @@ const AboutUs: React.FC = () => {
                   <p className="mt-6 mb-auto body-sm text-light">{person.description}</p>
                   <div className="grid grid-flow-col justify-center gap-6 mt-[35px] opacity-50">
                     {person.socials.twitter && (
-                      <a href={person.socials.twitter} className="w-[24px]">
+                      <a href={person.socials.twitter} className="w-[24px]" target="_blank" rel="noreferrer">
                         <TwitterWithBackgroundIcon />
                       </a>
                     )}
                     {person.socials.linkedin && (
-                      <a href={person.socials.linkedin} className="w-[24px]">
+                      <a href={person.socials.linkedin} className="w-[24px]" target="_blank" rel="noreferrer">
                         <LinkedinWithBackgroundIcon />
                       </a>
                     )}
