@@ -10,7 +10,7 @@ import ReactPlayer from 'react-player';
 import CloseIcon from 'src/components/icons/CloseIcon';
 
 const video = {
-  src: 'https://assets.contentstack.io/v3/assets/blt1d37b8e155757b13/blta62df75337fb6aa7/6166e691dd1cf90b821def45/Key_Feature_Video_1_1.mp4',
+  src: '/videos/interoperability/video.mp4',
   image: '/images/game-detail/metarush-bg.png',
   youtube: 'https://www.youtube.com/watch?v=YqgCESVWNNI'
 };

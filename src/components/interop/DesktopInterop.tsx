@@ -13,7 +13,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const video = {
-  src: '/videos/interoperability/1643212473287896.mp4',
+  src: '/videos/interoperability/video.mp4',
   image: '/images/game-detail/metarush-bg.png',
   youtube: 'https://www.youtube.com/watch?v=YqgCESVWNNI'
 };
@@ -286,8 +286,7 @@ const DesktopInterop: React.FC = () => {
                       Play video
                     </p>
                   </button> */}
-                  <a
-                    className="cursor-not-allowed absolute top-0 flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50">
+                  <a className="absolute top-0 flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50 cursor-not-allowed">
                     <span className="w-[122px] transition duration-300 group-hover:scale-[0.8] text-brand-gold group-hover:text-brand-light-blue">
                       <PlayCircleIcon />
                     </span>
@@ -354,7 +353,7 @@ const DesktopInterop: React.FC = () => {
             </div>
             <div className="min-w-[500px]">
               <div className="gsap-wrap-image-how-work">
-                <div className="gsap-image-how-work-item w-full image-content">
+                <div className="w-full gsap-image-how-work-item image-content">
                   <div className="relative w-full h-full min-h-[200px]">
                     <div className="absolute top-0 w-full">
                       <Image
@@ -372,7 +371,7 @@ const DesktopInterop: React.FC = () => {
                         width={1757}
                         height={1757}
                         layout="responsive"
-                        className="absolute top-0 w-full scale-75 object-contain"
+                        className="absolute top-0 object-contain w-full scale-75"
                       />
                     </div>
                     <div className="absolute top-0 w-full gsap-img-human">
@@ -392,7 +391,7 @@ const DesktopInterop: React.FC = () => {
                         width={1757}
                         height={1757}
                         layout="responsive"
-                        className="absolute top-0 w-full scale-90 object-contain"
+                        className="absolute top-0 object-contain w-full scale-90"
                       />
                     </div>
                   </div>
@@ -430,7 +429,7 @@ const DesktopInterop: React.FC = () => {
           </div>
         </section>
         <div className="mb-[107px] mt-[96px]">
-        <Subscribe/>
+          <Subscribe />
         </div>
       </div>
     </Page>
