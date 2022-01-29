@@ -305,7 +305,7 @@ const Index = () => {
             <div className="md:hidden [grid-area:1/1/-1/-1]">
               <Image src="/images/home/globe.png" width={856} height={1034} alt="" />
             </div>
-            <div className="hidden md:block [grid-area:1/1/-1/-1]">
+            <div className="hidden md:block [grid-area:1/1/-1/-1] pointer-events-none">
               <Video
                 isVisible={true}
                 options={{

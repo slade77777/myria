@@ -11,7 +11,7 @@ import CloseIcon from 'src/components/icons/CloseIcon';
 
 const video = {
   src: '/videos/interoperability/video.mp4',
-  image: '/images/game-detail/metarush-bg.png',
+  image: '/images/interoperability/video-poster.png',
   youtube: 'https://www.youtube.com/watch?v=YqgCESVWNNI'
 };
 
@@ -33,7 +33,7 @@ const MobileInterop: React.FC = () => {
           top: headerHeight,
           display: openVideo ? 'block' : 'none'
         }}
-        className={clsx('fixed z-[20] bottom-0 w-full bg-black bg-opacity-50 md:px-16 pb-10')}>
+        className={clsx('fixed z-[20] bottom-0 w-full bg-black bg-opacity-50 pb-10')}>
         <ReactPlayer width="100%" height="100%" url={video.youtube} playing={openVideo} />
         <button className="flex absolute z-[1] top-4 right-4 w-[50px] h-[50px] items-center justify-center bg-brand-gold">
           <span className="w-[32px] text-white" onClick={() => setOpenVideo(false)}>
@@ -47,7 +47,7 @@ const MobileInterop: React.FC = () => {
             paddingTop: headerHeight,
             backgroundPositionY: headerHeight
           }}
-          className={clsx(paddingX, 'relative isolate md:min-h-screen ')}>
+          className={clsx(paddingX, 'relative isolate ')}>
           <div
             style={{
               top: headerHeight
@@ -63,17 +63,17 @@ const MobileInterop: React.FC = () => {
             </div>
           </div>
           <div className="w-full mx-auto max-w-content ">
-            <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[180px] max-w-[607px] mx-auto text-center">
+            <h1 className="heading-lg text-brand-white mt-[150px] max-w-[607px] mx-auto text-center">
               The world’s first Morphing NFTs™
             </h1>
           </div>
           <div className="max-w-[630px] mx-auto mt-[111px]">
             <div className="relative isolate group">
-              <div className=" bg-brand-gold group-hover:bg-brand-light-blue absolute inset-0 z-[-1] transtion duration-300 translate-x-[12px] group-hover:translate-x-[16px] group-hover:translate-y-[-18px] translate-y-[-14px]" />
+              <div className=" bg-brand-gold group-hover:bg-brand-light-blue absolute inset-0 z-[-1] transtion duration-300 translate-x-[5px] group-hover:translate-x-[7px] group-hover:translate-y-[-8px] translate-y-[-6px]" />
               <div className="p-[11px] bg-brand-gold">
                 <div className="relative">
                   <Video
-                    isVisible={true}
+                    isVisible={false}
                     options={{
                       sources: [
                         {
@@ -81,7 +81,7 @@ const MobileInterop: React.FC = () => {
                         }
                       ],
                       aspectRatio: '16:9',
-                      autoplay: true,
+                      autoplay: false,
                       muted: true,
                       poster: video.image,
                       responsive: true,
@@ -100,12 +100,14 @@ const MobileInterop: React.FC = () => {
                     </p>
                   </button> */}
                   <a className="absolute top-0 flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50 cursor-not-allowed">
-                    <span className="w-[122px] transition duration-300 group-hover:scale-[0.8] text-brand-gold group-hover:text-brand-light-blue">
-                      <PlayCircleIcon />
-                    </span>
-                    <p className="uppercase text-[20px] font-extrabold mt-[28px] group-hover:text-brand-light-blue">
-                      Trailer Coming Soon
-                    </p>
+                    <div className="flex flex-col items-center translate-y-[20px]">
+                      <span className="w-[73px] transition duration-300 group-hover:scale-[0.8] text-brand-gold group-hover:text-brand-light-blue">
+                        <PlayCircleIcon />
+                      </span>
+                      <p className="uppercase text-[20px] font-extrabold mt-[15px] group-hover:text-brand-light-blue">
+                        Trailer Coming Soon
+                      </p>
+                    </div>
                   </a>
                 </div>
               </div>
@@ -113,24 +115,22 @@ const MobileInterop: React.FC = () => {
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[88px] ')}>
-          <div className="grid items-center gap-[26px] md:gap-[99px] mx-auto md:grid-cols-2 max-w-content">
-            <div>
+          <div className="grid items-center gap-[26px] mx-auto max-w-content">
+            <div className="w-[300px] mx-auto">
               <Image
                 src="/images/interoperability/hat.png"
                 alt=""
-                width={1757}
-                height={1368}
+                width={1268}
+                height={1306}
                 layout="responsive"
               />
             </div>
-            <div className="text-center md:text-left md:order-[-1]">
-              <p className="text-[14px] md:text-[26px] leading-[1.25] text-brand-light-blue font-extrabold md:font-bold">
+            <div className="text-center">
+              <p className="uppercase text-[14px] leading-[1.25] text-brand-light-blue font-extrabold">
                 How it works
               </p>
-              <h2 className="heading-md md:text-[50px] mt-2 md:mt-[17px]">
-                The new standard for interoperable NFTs
-              </h2>
-              <p className="mt-6 md:mt-[17px] body-sm md:body text-light">
+              <h2 className="mt-2 heading-md">The new standard for interoperable NFTs</h2>
+              <p className="mt-6 body-sm text-light">
                 At Myria, we believe NFTs should not only endow players with verifiable ownerships,
                 but also allow players to take their NFTs from one game to another.
               </p>
@@ -138,30 +138,66 @@ const MobileInterop: React.FC = () => {
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[88px] ')}>
-          <div className="flex flex-col-reverse items-center justify-center md:flex-row">
-            <div className="md:self-end">
+          <div className="grid items-center gap-[26px] mx-auto max-w-content">
+            <div className="w-[300px] mx-auto">
               <Image
-                src="/images/interoperability/cowboy-cartoon-separate.png"
+                src="/images/interoperability/cowboy-human.png"
                 alt=""
-                width={454}
-                height={790}
+                width={1268}
+                height={1306}
+                layout="responsive"
               />
             </div>
-            <div className="max-w-[607px] text-center mt-[27px] mb-[40px]">
-              <h1 className="heading-lg lg:heading-massive text-brand-light-blue">
-                Morphing NFTs™
-              </h1>
-              <p className="heading-massive lg:text-[70px] font-bold">
-                Own your metaverse identity
+            <div className="text-center">
+              <p className="uppercase text-[14px] leading-[1.25] text-brand-light-blue font-extrabold">
+                How it works
+              </p>
+              <h2 className="mt-2 heading-md">Own your metaverse identity. Anywhere. Any game.</h2>
+              <p className="mt-6 body-sm text-light">
+                Your NFT is your digital identity. Take your NFT with you on your metaverse
+                explorations. Equip and level up in different games and worlds. Truly own your
+                metaverse identity with Myria.
               </p>
             </div>
-            <div>
+          </div>
+        </section>
+        <section className={clsx(paddingX, 'mt-[88px] ')}>
+          <div className="grid items-center gap-[26px] mx-auto max-w-content">
+            <div className="w-[300px] mx-auto">
               <Image
-                src="/images/interoperability/cowboy-human-separate.png"
+                src="/images/interoperability/cowboy-cartoon.png"
                 alt=""
-                width={648}
-                height={1438}
+                width={1268}
+                height={1306}
+                layout="responsive"
               />
+            </div>
+            <div className="text-center">
+              <p className="uppercase text-[14px] leading-[1.25] text-brand-light-blue font-extrabold">
+                How it works
+              </p>
+              <h2 className="mt-2 heading-md">Morphing NFTs™ that adapts to your avatars</h2>
+              <p className="mt-6 body-sm text-light">
+                No matter the shape and size of your avatar, use the same NFT on them all. Buy once,
+                use on any character. Designed to be interoperable.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section className={clsx(paddingX, 'mt-[64px] mb-[66px]')}>
+          <div className="grid items-center mx-auto max-w-content">
+            <div className="w-[200px] mx-auto">
+              <Image
+                src="/images/interoperability/2character.png"
+                alt=""
+                width={698}
+                height={1148}
+                layout="responsive"
+              />
+            </div>
+            <div className="max-w-[607px] text-center mt-[57px]">
+              <h1 className="heading-lg text-brand-light-blue">Morphing NFTs™</h1>
+              <p className="font-bold heading-lg mt-[31px]">Own your metaverse identity</p>
             </div>
           </div>
         </section>

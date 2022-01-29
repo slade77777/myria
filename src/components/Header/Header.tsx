@@ -9,7 +9,7 @@ type NavItem = {
   url?: string;
   target?: '_blank';
   children?: NavItem[];
-  inactive?: boolean,
+  inactive?: boolean;
 };
 
 export const links: NavItem[] = [
@@ -19,7 +19,24 @@ export const links: NavItem[] = [
   },
   {
     text: 'About',
-    url: '/about-us'
+    children: [
+      {
+        text: 'Our vision',
+        url: '/about-us'
+      },
+      {
+        text: 'Our team',
+        url: '/about-us'
+      },
+      {
+        text: 'Morphing NFTs',
+        url: '/interoperability'
+      },
+      {
+        text: 'Careers',
+        url: '/careers'
+      }
+    ]
   },
   {
     text: 'Ecosystem',
@@ -36,7 +53,7 @@ export const links: NavItem[] = [
   {
     text: 'Store',
     url: '/store',
-    inactive: true,
+    inactive: true
   },
   {
     text: 'Community',

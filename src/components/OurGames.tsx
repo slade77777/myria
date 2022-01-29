@@ -20,11 +20,11 @@ const data = [
     logo: (
       <div className="w-[225px] md:w-[288px]">
         <Image
-          src="/images/our-games/metarush.png"
+          src="/images/our-games/metarush_updated.png"
           alt="metarush"
           layout="responsive"
-          width={865}
-          height={145}
+          width={926}
+          height={177}
         />
       </div>
     ),
@@ -40,19 +40,19 @@ const data = [
           src="/images/our-games/block-royale.png"
           alt="block-royale"
           layout="responsive"
-          width={378}
-          height={339}
+          width={138}
+          height={122}
         />
       </div>
     ),
     background: '/images/our-games/block-royale-bg.png',
     title: 'A battle-royale shooter game',
     link: '/game-detail/block-royale',
-    layout: 'col'
+    layout: 'row'
   },
   {
     logo: (
-      <div className="w-[224px] md:w-[332px]">
+      <div className="w-[224px] md:w-[300px]">
         <Image
           src="/images/our-games/metakart.png"
           alt="metakart"
@@ -71,11 +71,11 @@ const data = [
     logo: (
       <div className="w-[187px] md:w-[245px]">
         <Image
-          src="/images/our-games/starstrike.png"
+          src="/images/our-games/starstrike_updated.png"
           alt="metakart"
           layout="responsive"
-          width={245}
-          height={78}
+          width={685}
+          height={153}
         />
       </div>
     ),
@@ -102,11 +102,12 @@ const OurGames: React.FC<{ btnLabel?: string }> = ({ btnLabel = 'Learn more' }) 
                 className={clsx(
                   'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',
                   {
-                    'xl:grid-cols-[126px_auto] gap-x-[21px] xl:items-end': item.layout === 'col'
+                    'xl:grid-cols-[126px_auto] gap-x-[21px] xl:items-end':
+                      (item.layout as any) === 'col'
                   }
                 )}>
                 {item.logo}
-                <p className="text-[20px] md:text-[16px] xl:text-[20px] text-center xl:text-left leading-[1.15] md:max-w-[194px] xl:max-w-none">
+                <p className=" font-bold text-[20px] md:text-[16px] xl:text-[20px] text-center xl:text-left leading-[1.15] md:max-w-[194px] xl:max-w-none">
                   {item.title}
                 </p>
               </div>

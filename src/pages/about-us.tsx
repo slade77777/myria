@@ -67,7 +67,7 @@ const data: Person[] = [
     name: 'Lucas Bean',
     position: 'Head of Marketing',
     description:
-      'Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and have founded multiple ventures, including Engage:BDR that is now a public listed company.',
+      'Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and has founded multiple ventures, including Engage:BDR that is now a public listed company.',
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/lucasbean/'
@@ -283,7 +283,7 @@ const AboutUs: React.FC = () => {
                 <article
                   key={idx}
                   className="text-center flex flex-col rounded-[20px] md:pt-[50px] md:pb-[40px] p-[32px] bg-brand-deep-blue">
-                  <p className="body-lg font-bold ">{person.name}</p>
+                  <p className="font-bold body-lg ">{person.name}</p>
                   <p className="mt-4 font-bold body">{person.position}</p>
                   <p className="mt-6 mb-auto body-sm text-light">{person.description}</p>
                   <div className="grid grid-flow-col justify-center gap-6 mt-[35px] opacity-50">

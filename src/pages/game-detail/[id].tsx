@@ -47,7 +47,7 @@ const games: Record<
     headerBg: '/images/game-detail/header-bg-1.png',
     title: 'Metarush',
     description:
-      'Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse.',
+      'A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory.',
     logo: '/images/game-detail/metarush/logo.png',
     logoMobile: '/images/game-detail/metarush/logo-alt.png',
     image: {
