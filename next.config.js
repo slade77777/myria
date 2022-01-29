@@ -22,7 +22,7 @@ const moduleExports = {
   trailingSlash: true,
   images: {
     loader: 'imgix',
-    path: 'https://sony.imgix.net',
+    path: 'https://myria.imgix.net',
   }
 }
 
