@@ -361,7 +361,7 @@ const GameDetail: React.FC = () => {
             </div>
           </div>
           <div className="w-full mx-auto mt-10 max-w-content">
-            <h3 className="font-extrabold heading-lg">{title}</h3>
+            <h3 className="font-extrabold text-center md:text-left heading-lg">{title}</h3>
             <div className="flex flex-col lg:flex-row mt-[32px] lg:items-start">
               <div className="lg:w-[calc((100%-32px)*0.675)]">
                 <div>
