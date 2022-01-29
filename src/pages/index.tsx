@@ -413,9 +413,11 @@ const Index = () => {
               Myria has been built by an all-star team of over 100 people, united with a common
               vision of revolutionizing gaming with blockchain technology.{' '}
             </p>
-            <button data-aos="fade-up" className="flex mx-auto mt-10 btn-lg btn-primary">
-              MEET THE TEAM
-            </button>
+            <Link href={'/about-us'}>
+              <button data-aos="fade-up" className="flex mx-auto mt-10 btn-lg btn-primary">
+                MEET THE TEAM
+              </button>
+            </Link>
           </section>
           <section className={clsx(paddingX, 'mt-[123px] md:mt-[152px]')}>
             <h2 data-aos="fade-up" className="text-center heading-md md:heading-lg">

@@ -67,7 +67,7 @@ const data: Person[] = [
     name: 'Lucas Bean',
     position: '-',
     description:
-      '-',
+      'Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and have founded multiple ventures, including Engage:BDR that is now a public listed company.',
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/lucasbean/'
@@ -104,6 +104,17 @@ const data: Person[] = [
     }
   },
   {
+    name: 'Brock',
+    position: 'Product Lead - Blockchain',
+    description:
+      'Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth. ',
+    socials: {
+      twitter: '',
+      linkedin: ''
+    }
+  },
+
+  {
     name: 'Craig Stanford',
     position: 'UI/UX Lead',
     description:
@@ -123,6 +134,16 @@ const data: Person[] = [
       linkedin: 'https://www.linkedin.com/in/antoniomolina34/'
     }
   },
+  {
+    name: 'Kidono Huang',
+    position: 'Partner Lead',
+    description:
+      'Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more.',
+    socials: {
+      twitter: '',
+      linkedin: ''
+    }
+  }
 ];
 
 const principles = [
@@ -261,18 +282,26 @@ const AboutUs: React.FC = () => {
               {data.map((person, idx) => (
                 <article
                   key={idx}
-                  className="lg:last:[grid-column:span_1/-2] text-center flex flex-col rounded-[20px] md:pt-[50px] md:pb-[40px] p-[32px] bg-brand-deep-blue">
+                  className="text-center flex flex-col rounded-[20px] md:pt-[50px] md:pb-[40px] p-[32px] bg-brand-deep-blue">
                   <p className="body-lg font-bold ">{person.name}</p>
                   <p className="mt-4 font-bold body">{person.position}</p>
                   <p className="mt-6 mb-auto body-sm text-light">{person.description}</p>
                   <div className="grid grid-flow-col justify-center gap-6 mt-[35px] opacity-50">
                     {person.socials.twitter && (
-                      <a href={person.socials.twitter} className="w-[24px]" target="_blank" rel="noreferrer">
+                      <a
+                        href={person.socials.twitter}
+                        className="w-[24px]"
+                        target="_blank"
+                        rel="noreferrer">
                         <TwitterWithBackgroundIcon />
                       </a>
                     )}
                     {person.socials.linkedin && (
-                      <a href={person.socials.linkedin} className="w-[24px]" target="_blank" rel="noreferrer">
+                      <a
+                        href={person.socials.linkedin}
+                        className="w-[24px]"
+                        target="_blank"
+                        rel="noreferrer">
                         <LinkedinWithBackgroundIcon />
                       </a>
                     )}
