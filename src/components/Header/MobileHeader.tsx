@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import CloseIcon from '../icons/CloseIcon';
 import Logo from '../icons/Logo';
@@ -14,15 +14,21 @@ type Props = {
   className?: string;
 };
 
-const HeaderOverlay = ({
-  onClose,
-  open,
-  action
-}: { onClose: () => void; open: boolean } & Props) => {
+type OverlayProps = {
+  onClose: () => void;
+  open: boolean;
+  top: number;
+};
+
+const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => {
   return (
     <div
+      style={{
+        height: `calc(100vh - ${top}px)`,
+        top
+      }}
       className={clsx(
-        'transition invisible duration-700 flex flex-col fixed h-full top-0 left-0 overflow-auto z-10 w-full',
+        'transition invisible duration-700 flex flex-col fixed left-0 overflow-auto z-10 w-full',
         {
           '!visible': open
         }
@@ -58,9 +64,9 @@ const HeaderOverlay = ({
           if (item.inactive) {
             return (
               <li key={idx}>
-                <div className='relative w-fit'>
+                <div className="relative w-fit">
                   <a className="hover:text-brand-gold hover:cursor-pointer">{item.text}</a>
-                  <div className='font-extrabold text-[6px] rounded-sm absolute -top-[9px] p-[3px] -right-6 bg-brand-light-blue/40 bg-opacity-4 border-[0.5px] border-brand-light-blue'>
+                  <div className="font-extrabold text-[6px] rounded-sm absolute -top-[9px] p-[3px] -right-6 bg-brand-light-blue/40 bg-opacity-4 border-[0.5px] border-brand-light-blue">
                     Soon!
                   </div>
                 </div>
@@ -146,10 +152,21 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
   const toggleMenu = () => {
     setOpenMenu((o) => !o);
   };
+  const navRef = useRef<HTMLElement>(null);
+
+  const top = navRef.current?.getBoundingClientRect().top ?? 0;
+
+  useEffect(() => {
+    if (openMenu) {
+      document.querySelector('body')!.style.overflow = 'hidden';
+    } else {
+      document.querySelector('body')!.style.overflow = 'unset';
+    }
+  }, [openMenu]);
 
   return (
     <header>
-      <nav className="py-[40px] px-[24px] flex items-center justify-between">
+      <nav ref={navRef} className="py-[40px] px-[24px] flex items-center justify-between">
         <Link href="/">
           <a className="w-full max-w-[164px]">
             <Logo />
@@ -159,7 +176,7 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
           <MenuIcon />
         </button>
       </nav>
-      <HeaderOverlay action={action} onClose={toggleMenu} open={openMenu} />
+      <HeaderOverlay top={top} action={action} onClose={toggleMenu} open={openMenu} />
     </header>
   );
 };
