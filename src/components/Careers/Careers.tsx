@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import useCareerCategories from 'src/hooks/useCareerCategories';
-import Collapse from './Collapse';
-import ChevronDownIcon from './icons/ChevronDownIcon';
+import Collapse from '../Collapse';
+import ChevronDownIcon from '../icons/ChevronDownIcon';
+import ReactMarkdown from 'react-markdown';
+import styles from './styles.module.css';
 
 const Careers: React.FC = () => {
   const categories = useCareerCategories();
@@ -56,7 +58,9 @@ const Careers: React.FC = () => {
                     </Collapse.Trigger>
                     <Collapse.Content>
                       <div className="pb-2">
-                        <p className="mt-6 body text-light">{pos.description}</p>
+                        <div className={clsx('mt-6 body text-light', styles.markdownContainer)}>
+                          <ReactMarkdown>{pos.description}</ReactMarkdown>
+                        </div>
                         <a
                           target="_blank"
                           href={pos.link}
