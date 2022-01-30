@@ -18,16 +18,32 @@ import 'aos/dist/aos.css';
 import Video from 'src/components/Video';
 
 const Index = () => {
-  const imgAnimation = useAnimation();
+  const img1Animation = useAnimation();
+  const img2Animation = useAnimation();
+  const img3Animation = useAnimation();
+  const img4Animation = useAnimation();
 
   const handleMouseMove = (e: any) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
-    const offsetFactor = 35;
-    imgAnimation.start({
-      x: -moveX / offsetFactor,
-      y: -moveY / offsetFactor
+    const offsetFactor = 5;
+
+    img1Animation.start({
+      x: -moveX / (offsetFactor + 15),
+      y: -moveY / (offsetFactor + 15)
+    });
+    img2Animation.start({
+      x: -moveX / (offsetFactor + 7),
+      y: -moveY / (offsetFactor + 7)
+    });
+    img3Animation.start({
+      x: -moveX / (offsetFactor + 15),
+      y: -moveY / (offsetFactor + 15)
+    });
+    img4Animation.start({
+      x: -moveX / (offsetFactor + 7),
+      y: -moveY / (offsetFactor + 7)
     });
   };
 
@@ -61,14 +77,15 @@ const Index = () => {
       </div>
       <Page action="join-discord">
         <div>
-          <section
+          <motion.div
+            onMouseMove={(e) => handleMouseMove(e)}
             style={{
               paddingTop: headerHeight,
               paddingBottom: headerHeight
             }}
             className={clsx(
               paddingX,
-              'flex flex-col items-center md:justify-center min-h-[900px] overflow-hidden relative isolate md:min-h-screen '
+              'flex flex-col items-center md:justify-center min-h-[900px] overflow-hidden relative isolate md:min-h-[789px] '
             )}>
             <div className="md:hidden absolute left-0 w-full z-[-1]">
               <div className="relative w-full h-[815px] overflow-hidden">
@@ -80,21 +97,32 @@ const Index = () => {
                 />
               </div>
             </div>
-            <motion.div
-              animate={imgAnimation}
-              onMouseMove={(e) => handleMouseMove(e)}
+            <div
               style={{
-                top: headerHeight
+                background: 'radial-gradient(50% 50% at 50% 50%, #022138 0%, #050E15 100%)'
               }}
-              className="hidden md:block absolute left-0 w-full z-[-1]">
-              <div className="relative w-full h-[697px]" data-depth="0.2">
-                <Image src="/images/home/header-bg.png" alt="" layout="fill" objectFit="contain" />
-              </div>
-            </motion.div>
+              className="hidden md:block absolute left-0 w-full z-[-1] h-[697px]">
+              <motion.div animate={img1Animation} className="absolute bottom-0 left-0 w-[394px]">
+                <Image src="/images/home/char1.png" alt="" width={651} height={947} />
+              </motion.div>
+              <motion.div
+                animate={img2Animation}
+                className="absolute bottom-0 left-[50px] w-[400px]">
+                <Image src="/images/home/char2.png" alt="" width={446} height={561} />
+              </motion.div>
+              <motion.div
+                animate={img3Animation}
+                className="absolute bottom-[15px] right-[90px] w-[643px]">
+                <Image src="/images/home/char3.png" alt="" width={643} height={362} />
+              </motion.div>
+              <motion.div
+                animate={img4Animation}
+                className="absolute bottom-[10px] right-[10px] w-[310px]">
+                <Image src="/images/home/char4.png" alt="" width={570} height={766} />
+              </motion.div>
+            </div>
 
-            <motion.div
-              className="max-w-[607px] text-center mt-[50px] md:mt-0"
-              onMouseMove={(e) => handleMouseMove(e)}>
+            <div className="max-w-[607px] text-center mt-[50px] md:mt-0">
               <h1
                 data-aos="fade-up"
                 data-aos-duration="1000"
@@ -131,8 +159,8 @@ const Index = () => {
                   <ArrowDownIcon />
                 </span>
               </a> */}
-            </motion.div>
-          </section>
+            </div>
+          </motion.div>
           <section id="our-games" className={clsx('pt-[14px]', paddingX)}>
             <h2 data-aos="fade-up" className="text-center heading-md md:heading-lg">
               Our games
