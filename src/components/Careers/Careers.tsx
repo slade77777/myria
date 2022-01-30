@@ -15,12 +15,12 @@ const Careers: React.FC = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap -mx-3 -mt-3">
+      <div className="flex -mx-3 -mt-3 overflow-auto">
         <button
           onClick={() => {
             setSelectedCategory(null);
           }}
-          className={clsx('mx-2 my-2 btn-lg btn-dark-blue', {
+          className={clsx('mx-2 my-2 btn-lg btn-dark-blue flex-shrink-0 whitespace-nowrap', {
             active: selectedCategory === null
           })}>
           All positions
@@ -31,14 +31,14 @@ const Careers: React.FC = () => {
               setSelectedCategory(item.id);
             }}
             key={item.id}
-            className={clsx('mx-2 my-2 btn-lg btn-dark-blue', {
+            className={clsx('mx-2 my-2 btn-lg btn-dark-blue flex-shrink-0 whitespace-nowrap', {
               active: selectedCategory === item.id
             })}>
             {item.label}
           </button>
         ))}
       </div>
-      <div className="lg:px-[70px] mt-[56px]">
+      <div className="mt-[56px]">
         {positions.map((pos) => (
           <React.Fragment key={pos.id}>
             <div className="mt-6">
@@ -58,7 +58,11 @@ const Careers: React.FC = () => {
                     </Collapse.Trigger>
                     <Collapse.Content>
                       <div className="pb-2">
-                        <div className={clsx('mt-6 body text-light', styles.markdownContainer)}>
+                        <div
+                          className={clsx(
+                            'mt-6 body text-[16px] text-light',
+                            styles.markdownContainer
+                          )}>
                           <ReactMarkdown>{pos.description}</ReactMarkdown>
                         </div>
                         <a

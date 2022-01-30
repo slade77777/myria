@@ -19,7 +19,7 @@ const Careers: React.FC = () => {
             <p className="mt-[50px] body md:body-lg text-center">
               Join our team of 60+ to forge to future of blockchain gaming
             </p>
-            <div className="mt-[60px] max-w-content mx-auto">
+            <div className="mt-[60px] max-w-[923px] mx-auto">
               <CareersSection />
             </div>
           </div>
