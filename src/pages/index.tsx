@@ -423,7 +423,7 @@ const Index = () => {
               </div>
             </div>
           </section>
-          <section className={clsx(paddingX, 'mt-[168px] hidden md:block')}>
+          <section className={clsx(paddingX, 'mt-[168px] hidden md:flex flex-col')}>
             <h1 data-aos="fade-up" className="heading-massive max-w-[1024px] text-center mx-auto">
               Founded by leading gaming and blockchain industry veterans
             </h1>
