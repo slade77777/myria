@@ -66,7 +66,11 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
               <li key={idx}>
                 <div className="relative w-fit">
                   <a className="hover:text-brand-gold hover:cursor-pointer">{item.text}</a>
-                  <div className="font-extrabold text-[6px] rounded-sm absolute -top-[9px] p-[3px] -right-6 bg-brand-light-blue/40 bg-opacity-4 border-[0.5px] border-brand-light-blue">
+                  <div
+                    style={{
+                      boxShadow: '0 0 0 0.5px #9AC9E3'
+                    }}
+                    className="font-extrabold text-[6px] rounded-sm absolute -top-[9px] p-[3px] -right-6 bg-brand-light-blue/40 bg-opacity-4">
                     Soon!
                   </div>
                 </div>
