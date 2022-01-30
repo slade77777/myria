@@ -45,7 +45,7 @@ const data = [
         />
       </div>
     ),
-    background: '/images/our-games/block-royale-bg.png',
+    background: '/images/our-games/block-royale-bg_updated.png',
     title: 'A battle-royale shooter game',
     link: '/game-detail/block-royale',
     layout: 'row'
