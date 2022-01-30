@@ -44,15 +44,10 @@ const MobileInterop: React.FC = () => {
       <div>
         <section
           style={{
-            paddingTop: headerHeight,
-            backgroundPositionY: headerHeight
+            paddingTop: headerHeight
           }}
           className={clsx(paddingX, 'relative isolate ')}>
-          <div
-            style={{
-              top: headerHeight
-            }}
-            className="absolute left-0 h-[783px] w-full z-[-1]">
+          <div className="absolute left-0 h-[650px] w-full z-[-1]">
             <div className="relative w-full h-full ">
               <Image
                 src="/images/interoperability/header-bg.png"
@@ -118,10 +113,10 @@ const MobileInterop: React.FC = () => {
           <div className="grid items-center gap-[26px] mx-auto max-w-content">
             <div className="w-[300px] mx-auto">
               <Image
-                src="/images/interoperability/hat.png"
+                src="/images/interoperability/hat2.png"
                 alt=""
-                width={1268}
-                height={1306}
+                width={634}
+                height={648}
                 layout="responsive"
               />
             </div>
