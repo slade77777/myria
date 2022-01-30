@@ -313,8 +313,7 @@ const DesktopInterop: React.FC = () => {
                     </h2>
                     <p className="mt-6 md:mt-[17px] body-sm md:body text-light">
                       At Myria, we believe NFTs should not only endow players with verifiable
-                      ownerships, but also allow players to take their NFTs from one game to
-                      another.
+                      ownership, but also allow players to take their NFTs from one game to another.
                     </p>
                   </div>
                 </div>
@@ -341,7 +340,7 @@ const DesktopInterop: React.FC = () => {
                       How it works
                     </p>
                     <h2 className="heading-md md:text-[50px] mt-2 md:mt-[17px]">
-                      Morphing NFTs™ that adapts to your avatars
+                      Morphing NFTs™ that adapt to your avatars
                     </h2>
                     <p className="mt-6 md:mt-[17px] body-sm md:body text-light">
                       No matter the shape and size of your avatar, use the same NFT on them all. Buy

@@ -131,7 +131,7 @@ const MobileInterop: React.FC = () => {
               </p>
               <h2 className="mt-2 heading-md">The new standard for interoperable NFTs</h2>
               <p className="mt-6 body-sm text-light">
-                At Myria, we believe NFTs should not only endow players with verifiable ownerships,
+                At Myria, we believe NFTs should not only endow players with verifiable ownership,
                 but also allow players to take their NFTs from one game to another.
               </p>
             </div>
@@ -176,7 +176,7 @@ const MobileInterop: React.FC = () => {
               <p className="uppercase text-[14px] leading-[1.25] text-brand-light-blue font-extrabold">
                 How it works
               </p>
-              <h2 className="mt-2 heading-md">Morphing NFTs™ that adapts to your avatars</h2>
+              <h2 className="mt-2 heading-md">Morphing NFTs™ that adapt to your avatars</h2>
               <p className="mt-6 body-sm text-light">
                 No matter the shape and size of your avatar, use the same NFT on them all. Buy once,
                 use on any character. Designed to be interoperable.
