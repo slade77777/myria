@@ -401,13 +401,15 @@ const DesktopInterop: React.FC = () => {
         </section>
         <section className={clsx(paddingX, '-translate-y-[10%]')} ref={elMorphing}>
           <div className="flex flex-col-reverse items-center justify-center md:flex-row elMorphing">
-            <div className="md:self-end translate-x-[140%] elMorphing-img">
-              <Image
-                src="/images/interoperability/cowboy-cartoon-separate.png"
-                alt=""
-                width={597}
-                height={336}
-              />
+            <div className="md:self-end translate-x-[140%] elMorphing-img w-[334px] overflow-hidden">
+              <div className="-translate-x-1/4 w-[600px]">
+                <Image
+                  src="/images/interoperability/cowboy-cartoon-separate.png"
+                  alt=""
+                  width={597}
+                  height={336}
+                />
+              </div>
             </div>
             <div className="max-w-[607px] text-center mt-[27px] mb-[40px] elMorphing-text">
               <h1 className="heading-lg lg:heading-massive text-brand-light-blue">
@@ -417,7 +419,7 @@ const DesktopInterop: React.FC = () => {
                 Own your metaverse identity
               </p>
             </div>
-            <div className="-translate-x-[115%] elMorphing-img">
+            <div className="-translate-x-[115%] elMorphing-img w-[334px]">
               <Image
                 src="/images/interoperability/cowboy-human-separate.png"
                 alt=""
