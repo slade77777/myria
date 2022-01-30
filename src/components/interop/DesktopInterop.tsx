@@ -41,7 +41,7 @@ const DesktopInterop: React.FC = () => {
       scrollTrigger: {
         trigger: element('.gsap-total-how-word')[0],
         start: 'top+=300 bottom-=200',
-        end: 'top+=600 top+=200',
+        end: 'top+=800 top+=200',
         scrub: 1
       }
     });
@@ -74,8 +74,8 @@ const DesktopInterop: React.FC = () => {
     const tl_howWork_text_center = gsap.timeline({
       scrollTrigger: {
         trigger: element('.gsap-total-how-word')[0],
-        start: 'top+=630 bottom-=200',
-        end: 'top+=900 top+=200',
+        start: 'top+=850 bottom-=200',
+        end: 'top+=1450 top+=200',
         scrub: 1
       }
     });
@@ -116,8 +116,8 @@ const DesktopInterop: React.FC = () => {
     const tl_howWork_text_bottom = gsap.timeline({
       scrollTrigger: {
         trigger: element('.gsap-total-how-word')[0],
-        start: 'top+=1100 bottom-=200',
-        end: 'top+=1200 center',
+        start: 'top+=1500 bottom-=200',
+        end: 'top+=2100 center',
         scrub: 1
       }
     });
@@ -170,7 +170,7 @@ const DesktopInterop: React.FC = () => {
       scrollTrigger: {
         trigger: element('.gsap-wrap-image-how-work')[0],
         start: 'center+=350 center+=200',
-        end: '+=1143',
+        end: '+=1700',
         pin: true,
         scrub: 1
       }
@@ -179,7 +179,7 @@ const DesktopInterop: React.FC = () => {
       scrollTrigger: {
         trigger: element('.gsap-wrap-text-how-work')[0],
         start: 'center+=200 bottom-=200',
-        end: '+=1000',
+        end: '+=1558',
         pin: true,
         scrub: 1
       }
