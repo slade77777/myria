@@ -85,7 +85,7 @@ const data: Person[] = [
   },
   {
     name: 'Jem Law',
-    position: 'General Manager',
+    position: 'Marketing Manager',
     description:
       'Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies.',
     socials: {

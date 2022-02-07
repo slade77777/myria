@@ -458,7 +458,7 @@ const Index = () => {
             <p
               data-aos="fade-up"
               className="max-w-[717px] text-center mx-auto body-lg mt-[32px] text-light">
-              Myria has been built by an all-star team of over 100 people, united with a common
+              Myria has been built by an all-star team of over 60+ people, united with a common
               vision of revolutionizing gaming with blockchain technology.{' '}
             </p>
             <Link href={'/about-us'}>
