@@ -9,6 +9,7 @@ import ChevronRightIcon from '../icons/ChevronRightIcon';
 import { Asset } from '../../pages/game-detail/[id]';
 import Video from '../Video';
 import { useAutoPlayInGameDetail } from '../../valtio/autoPlayInGameDetail';
+import Image from 'next/image';
 
 const Arrow: React.FC<CustomArrowProps & { position: 'left' | 'right' }> = ({
   onClick,
@@ -85,11 +86,7 @@ const FirstSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets })
                 />
               </div>
             ) : (
-              <img
-                src={a.src}
-                alt=""
-                className="absolute top-0 left-0 object-cover w-full h-full"
-              />
+              <Image src={a.src} alt="" objectFit="cover" layout="fill" />
             )}
           </div>
         ))}

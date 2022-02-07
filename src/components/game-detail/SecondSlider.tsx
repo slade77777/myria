@@ -8,6 +8,7 @@ import ChevronLeftIcon from '../icons/ChevronLeftIcon';
 import ChevronRightIcon from '../icons/ChevronRightIcon';
 import { Asset } from '../../pages/game-detail/[id]';
 import PlayIcon from '../icons/PlayIcon';
+import Image from 'next/image';
 
 const Arrow: React.FC<CustomArrowProps & { position: 'left' | 'right' }> = ({
   onClick,
@@ -109,10 +110,17 @@ const SecondSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets }
                     <PlayIcon />
                   </span>
                 )}
-                <img
+                {/* <img
                   className="absolute h-full w-full z-[1] object-cover top-0 left-0"
                   src={a.type == 'video' ? a.image : a.src}
                   alt=""
+                /> */}
+                <Image
+                  src={a.type == 'video' ? (a.image as string) : a.src}
+                  alt=""
+                  layout="fill"
+                  objectFit="cover"
+                  quality={10}
                 />
               </button>
             </div>

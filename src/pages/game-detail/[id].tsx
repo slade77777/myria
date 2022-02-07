@@ -381,7 +381,7 @@ const GameDetail: React.FC = () => {
                 <div className="">
                   <p className="mt-[70px] body-lg">{description}</p>
                   {image && (
-                    <div className="mt-[84px] rounded-[5px] overflow-hidden">
+                    <div className="flex mt-[84px] rounded-[5px] overflow-hidden">
                       <Image src={image.src} alt="" width={image.width} height={image.height} />
                     </div>
                   )}
