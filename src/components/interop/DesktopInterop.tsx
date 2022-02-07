@@ -40,8 +40,8 @@ const DesktopInterop: React.FC = () => {
     const tl_howWork_text_top = gsap.timeline({
       scrollTrigger: {
         trigger: element('.gsap-total-how-word')[0],
-        start: 'top+=300 bottom-=200',
-        end: 'top+=800 top+=200',
+        start: 'top+=300 bottom',
+        end: 'center top',
         scrub: 1
       }
     });
@@ -50,12 +50,12 @@ const DesktopInterop: React.FC = () => {
       .fromTo(
         element('.gsap-text-how-work-1'),
         {
-          opacity: 0,
+          opacity: 1,
           y: 400
         },
         {
           opacity: 1,
-          y: 200
+          y: 50
         }
       )
       .to(element('.gsap-text-how-work-1'), {
@@ -65,8 +65,7 @@ const DesktopInterop: React.FC = () => {
       .to(
         element('.gsap-img-hat'),
         {
-          opacity: 0,
-          y: -200
+          opacity: 0
         },
         '>-0.5'
       );
@@ -74,8 +73,8 @@ const DesktopInterop: React.FC = () => {
     const tl_howWork_text_center = gsap.timeline({
       scrollTrigger: {
         trigger: element('.gsap-total-how-word')[0],
-        start: 'top+=850 bottom-=200',
-        end: 'top+=1450 top+=200',
+        start: 'center+=350 bottom',
+        end: 'center+=500 top',
         scrub: 1
       }
     });
@@ -89,26 +88,24 @@ const DesktopInterop: React.FC = () => {
         },
         {
           opacity: 1,
-          y: 0
+          y: -200
         }
       )
       .from(
         element('.gsap-img-human'),
         {
-          opacity: 0,
-          y: 200
+          opacity: 0
         },
         '>-0.5'
       )
       .to(element('.gsap-text-how-work-2'), {
         opacity: 0,
-        y: -200
+        y: -400
       })
       .to(
         element('.gsap-img-human'),
         {
-          opacity: 0,
-          y: -200
+          opacity: 0
         },
         '>-0.5'
       );
@@ -116,8 +113,8 @@ const DesktopInterop: React.FC = () => {
     const tl_howWork_text_bottom = gsap.timeline({
       scrollTrigger: {
         trigger: element('.gsap-total-how-word')[0],
-        start: 'top+=1500 bottom-=200',
-        end: 'top+=2100 center',
+        start: 'center+=750 bottom',
+        end: 'center+=950 top',
         scrub: 1
       }
     });
@@ -127,18 +124,17 @@ const DesktopInterop: React.FC = () => {
         element('.gsap-text-how-work-3'),
         {
           opacity: 0,
-          y: 0
+          y: 250
         },
         {
           opacity: 1,
-          y: -300
+          y: -550
         }
       )
       .from(
         element('.gsap-img-cartoon'),
         {
-          opacity: 0,
-          y: 200
+          opacity: 0
         },
         '>-0.5'
       );
@@ -146,8 +142,8 @@ const DesktopInterop: React.FC = () => {
     const tl_animation_image = gsap.timeline({
       scrollTrigger: {
         trigger: element('.gsap-total-how-word')[0],
-        start: 'center-=100 bottom',
-        end: 'center center',
+        start: 'top+=200 bottom',
+        end: 'top+=200 top+=200',
         scrub: 1
       }
     });
@@ -169,17 +165,18 @@ const DesktopInterop: React.FC = () => {
     gsap.timeline({
       scrollTrigger: {
         trigger: element('.gsap-wrap-image-how-work')[0],
-        start: 'center+=350 center+=200',
-        end: '+=1700',
+        start: 'top+=350 center+=130',
+        end: '+=1500',
         pin: true,
         scrub: 1
       }
     });
+
     gsap.timeline({
       scrollTrigger: {
         trigger: element('.gsap-wrap-text-how-work')[0],
-        start: 'center+=200 bottom-=200',
-        end: '+=1558',
+        start: 'top+=350 bottom-=200',
+        end: '+=1500',
         pin: true,
         scrub: 1
       }
@@ -192,10 +189,9 @@ const DesktopInterop: React.FC = () => {
     const tl_elementMorphing = gsap.timeline({
       scrollTrigger: {
         trigger: elementMorphing('.elMorphing')[0],
-        start: 'top+=200 bottom',
-        end: 'center center+=100',
+        start: 'top bottom',
+        end: 'bottom-=20 center+=250',
         scrub: 1
-        // markers: true
       }
     });
 
@@ -302,7 +298,7 @@ const DesktopInterop: React.FC = () => {
         <section className={clsx(paddingX, 'xl:px-[196px] mt-[88px]')} ref={el}>
           <div className="gsap-total-how-word flex gap-[26px]">
             <div className="min-w-[500px]">
-              <div className="gsap-wrap-text-how-work">
+              <div className="gsap-wrap-text-how-work h-[700px]">
                 <div className="grid items-center gap-[26px] md:gap-[99px] mx-auto max-w-content">
                   <div className="text-center md:text-left md:order-[-1] gsap-text-how-work-1">
                     <p className="text-[14px] md:text-[26px] leading-[1.25] text-brand-light-blue font-extrabold md:font-bold">
@@ -351,7 +347,7 @@ const DesktopInterop: React.FC = () => {
               </div>
             </div>
             <div className="min-w-[500px]">
-              <div className="gsap-wrap-image-how-work">
+              <div className="gsap-wrap-image-how-work h-[700px]">
                 <div className="w-full gsap-image-how-work-item image-content">
                   <div className="relative w-full h-full min-h-[200px]">
                     <div className="absolute top-0 w-full">
