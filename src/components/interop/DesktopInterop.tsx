@@ -1,16 +1,16 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import PlayCircleIcon from 'src/components/icons/PlayCircleIcon';
 import Video from 'src/components/Video';
 import Subscribe from 'src/components/Subscribe';
-import { headerHeight } from '../Header';
-import Page from '../Page';
-import { paddingX } from '../../utils';
 import ReactPlayer from 'react-player';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import Page from 'src/components/Page';
+import { headerHeight } from 'src/components/Header';
+import { paddingX } from 'src/utils';
 
 const video = {
   src: '/videos/interoperability/video.mp4',
@@ -34,151 +34,83 @@ const DesktopInterop: React.FC = () => {
     }
   }, [openVideo]);
 
-  useEffect(() => {
-    let element = gsap.utils.selector(el.current);
-
-    const tl_howWork_text_top = gsap.timeline({
+  useLayoutEffect(() => {
+    gsap.timeline({
       scrollTrigger: {
-        trigger: element('.gsap-total-how-word')[0],
-        start: 'top+=300 bottom',
-        end: 'center top',
-        scrub: 1
+        trigger: '.gsap-image-container',
+        start: 'top top',
+        endTrigger: '.gsap-text-how-work-container',
+        end: 'bottom bottom',
+        scrub: true,
+        pin: true,
+        pinSpacing: false
       }
     });
 
-    tl_howWork_text_top
-      .fromTo(
-        element('.gsap-text-how-work-1'),
-        {
-          opacity: 1,
-          y: 400
-        },
-        {
-          opacity: 1,
-          y: 50
-        }
-      )
-      .to(element('.gsap-text-how-work-1'), {
-        opacity: 0,
-        y: -200
-      })
-      .to(
-        element('.gsap-img-hat'),
-        {
-          opacity: 0
-        },
-        '>-0.5'
-      );
-
-    const tl_howWork_text_center = gsap.timeline({
+    const tl_img = gsap.timeline({
       scrollTrigger: {
-        trigger: element('.gsap-total-how-word')[0],
-        start: 'center+=350 bottom',
-        end: 'center+=500 top',
-        scrub: 1
+        trigger: '.gsap-image',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
       }
     });
-
-    tl_howWork_text_center
-      .fromTo(
-        element('.gsap-text-how-work-2'),
-        {
-          opacity: 0,
-          y: 250
-        },
-        {
-          opacity: 1,
-          y: -200
-        }
-      )
-      .from(
-        element('.gsap-img-human'),
-        {
-          opacity: 0
-        },
-        '>-0.5'
-      )
-      .to(element('.gsap-text-how-work-2'), {
-        opacity: 0,
-        y: -400
-      })
-      .to(
-        element('.gsap-img-human'),
-        {
-          opacity: 0
-        },
-        '>-0.5'
-      );
-
-    const tl_howWork_text_bottom = gsap.timeline({
-      scrollTrigger: {
-        trigger: element('.gsap-total-how-word')[0],
-        start: 'center+=750 bottom',
-        end: 'center+=950 top',
-        scrub: 1
-      }
-    });
-
-    tl_howWork_text_bottom
-      .fromTo(
-        element('.gsap-text-how-work-3'),
-        {
-          opacity: 0,
-          y: 250
-        },
-        {
-          opacity: 1,
-          y: -550
-        }
-      )
-      .from(
-        element('.gsap-img-cartoon'),
-        {
-          opacity: 0
-        },
-        '>-0.5'
-      );
-
-    const tl_animation_image = gsap.timeline({
-      scrollTrigger: {
-        trigger: element('.gsap-total-how-word')[0],
-        start: 'top+=200 bottom',
-        end: 'top+=200 top+=200',
-        scrub: 1
-      }
-    });
-
-    tl_animation_image.fromTo(
-      element('.gsap-image-how-work-item'),
+    tl_img.fromTo(
+      '.gsap-image',
       {
-        scale: 2.5,
-        x: '-80%',
-        y: '20%'
+        width: '100%'
       },
       {
-        scale: 1,
-        x: 0,
-        y: '0%'
+        width: '50%'
       }
     );
+  }, []);
 
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: element('.gsap-wrap-image-how-work')[0],
-        start: 'top+=350 center+=130',
-        end: '+=1500',
-        pin: true,
-        scrub: 1
-      }
-    });
+  useLayoutEffect(() => {
+    const targets = ['.gsap-text-how-work-1', '.gsap-text-how-work-2', '.gsap-text-how-work-3'];
+    gsap.set('.gsap-img-2, .gsap-img-3', { opacity: 0 });
 
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: element('.gsap-wrap-text-how-work')[0],
-        start: 'top+=350 bottom-=200',
-        end: '+=1500',
-        pin: true,
-        scrub: 1
+    targets.forEach((target, idx) => {
+      gsap.set(target, { opacity: 0 });
+      const tl_text_bottom = gsap.timeline({
+        scrollTrigger: {
+          trigger: target,
+          start: 'top bottom-=200',
+          end: 'center center',
+          scrub: true,
+          toggleActions: 'restart pause resume pause'
+        }
+      });
+
+      tl_text_bottom.fromTo(
+        target,
+        {
+          opacity: 0,
+          ease: 'slow(0.7, 0.7, false)'
+        },
+        {
+          opacity: 1,
+          ease: 'slow(0.7, 0.7, false)'
+        }
+      );
+
+      const tl_text_top = gsap.timeline({
+        scrollTrigger: {
+          trigger: target,
+          start: 'top top',
+          scrub: true
+        }
+      });
+
+      tl_text_top.to(target, {
+        opacity: 0
+      });
+
+      if (idx !== targets.length - 1) {
+        tl_text_top.to(`.gsap-img-${idx + 2}`, {
+          opacity: 1,
+          duration: 0.3
+        });
       }
     });
   }, []);
@@ -216,9 +148,9 @@ const DesktopInterop: React.FC = () => {
           top: headerHeight,
           display: openVideo ? 'block' : 'none'
         }}
-        className={clsx('fixed z-[20] bottom-0 w-full bg-black bg-opacity-50 md:px-16 pb-10')}>
+        className={clsx('fixed bottom-0 z-[20] w-full bg-black bg-opacity-50 pb-10 md:px-16')}>
         <ReactPlayer width="100%" height="100%" url={video.youtube} playing={openVideo} />
-        <button className="flex absolute z-[1] top-4 right-4 w-[50px] h-[50px] items-center justify-center bg-brand-gold">
+        <button className="absolute top-4 right-4 z-[1] flex h-[50px] w-[50px] items-center justify-center bg-brand-gold">
           <span className="w-[32px] text-white" onClick={() => setOpenVideo(false)}>
             <CloseIcon />
           </span>
@@ -235,8 +167,8 @@ const DesktopInterop: React.FC = () => {
             style={{
               top: headerHeight
             }}
-            className="absolute left-0 h-[783px] w-full z-[-1]">
-            <div className="relative w-full h-full ">
+            className="absolute left-0 z-[-1] h-[783px] w-full">
+            <div className="relative h-full w-full ">
               <Image
                 src="/images/interoperability/header-bg.png"
                 alt=""
@@ -245,15 +177,15 @@ const DesktopInterop: React.FC = () => {
               />
             </div>
           </div>
-          <div className="w-full mx-auto max-w-content ">
-            <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[180px] max-w-[607px] mx-auto text-center">
+          <div className="mx-auto w-full max-w-content ">
+            <h1 className="heading-lg mx-auto mt-[50px] max-w-[607px] text-center text-brand-white md:heading-massive md:mt-[180px]">
               The world’s first Morphing NFTs™
             </h1>
           </div>
-          <div className="max-w-[630px] mx-auto mt-[111px]">
-            <div className="relative isolate group">
-              <div className=" bg-brand-gold group-hover:bg-brand-light-blue absolute inset-0 z-[-1] transtion duration-300 translate-x-[12px] group-hover:translate-x-[16px] group-hover:translate-y-[-18px] translate-y-[-14px]" />
-              <div className="p-[11px] bg-brand-gold">
+          <div className="mx-auto mt-[111px] max-w-[630px]">
+            <div className="group relative isolate">
+              <div className=" transtion absolute inset-0 z-[-1] translate-x-[12px] translate-y-[-14px] bg-brand-gold duration-300 group-hover:translate-x-[16px] group-hover:translate-y-[-18px] group-hover:bg-brand-light-blue" />
+              <div className="bg-brand-gold p-[11px]">
                 <div className="relative">
                   <Video
                     isVisible={true}
@@ -282,11 +214,11 @@ const DesktopInterop: React.FC = () => {
                       Play video
                     </p>
                   </button> */}
-                  <a className="absolute top-0 flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50 cursor-not-allowed">
-                    <span className="w-[122px] transition duration-300 group-hover:scale-[0.8] text-brand-gold group-hover:text-brand-light-blue">
+                  <a className="absolute top-0 flex h-full w-full cursor-not-allowed flex-col items-center justify-center bg-black bg-opacity-50">
+                    <span className="w-[122px] text-brand-gold transition duration-300 group-hover:scale-[0.8] group-hover:text-brand-light-blue">
                       <PlayCircleIcon />
                     </span>
-                    <p className="uppercase text-[20px] font-extrabold mt-[28px] group-hover:text-brand-light-blue">
+                    <p className="mt-[28px] text-[20px] font-extrabold uppercase group-hover:text-brand-light-blue">
                       Trailer Coming Soon
                     </p>
                   </a>
@@ -295,99 +227,87 @@ const DesktopInterop: React.FC = () => {
             </div>
           </div>
         </section>
-        <section className={clsx(paddingX, 'xl:px-[196px] mt-[88px]')} ref={el}>
-          <div className="gsap-total-how-word flex gap-[26px]">
-            <div className="min-w-[500px]">
-              <div className="gsap-wrap-text-how-work h-[700px]">
-                <div className="grid items-center gap-[26px] md:gap-[99px] mx-auto max-w-content">
-                  <div className="text-center md:text-left md:order-[-1] gsap-text-how-work-1">
-                    <p className="text-[14px] md:text-[26px] leading-[1.25] text-brand-light-blue font-extrabold md:font-bold">
-                      How it works
-                    </p>
-                    <h2 className="heading-md md:text-[50px] mt-2 md:mt-[17px]">
-                      The new standard for interoperable NFTs
-                    </h2>
-                    <p className="mt-6 md:mt-[17px] body-sm md:body text-light">
-                      At Myria, we believe NFTs should not only endow players with verifiable
-                      ownership, but also allow players to take their NFTs from one game to another.
-                    </p>
-                  </div>
+        <section className={clsx(paddingX, 'mt-[88px]')} ref={el}>
+          <div className=" mx-auto max-w-content">
+            <div className="gsap-image-container flex justify-end ">
+              <div className="gsap-image relative grid h-screen w-full">
+                <div className="2 3tems-center z-[1] flex justify-end [grid-area:1/1/-1/-1]">
+                  <img
+                    src="/images/interoperability/hat3.png"
+                    alt=""
+                    width={1268}
+                    height={1306}
+                    className="w-full object-contain"
+                  />
                 </div>
-
-                <div className="grid items-center gap-[26px] md:gap-[99px] mx-auto max-w-content">
-                  <div className="text-center md:text-left md:order-[-1] gsap-text-how-work-2">
-                    <p className="text-[14px] md:text-[26px] leading-[1.25] text-brand-light-blue font-extrabold md:font-bold">
-                      How it works
-                    </p>
-                    <h2 className="heading-md md:text-[50px] mt-2 md:mt-[17px]">
-                      Own your metaverse identity. Anywhere. Any game.
-                    </h2>
-                    <p className="mt-6 md:mt-[17px] body-sm md:body text-light">
-                      Your NFT is your digital identity. Take your NFT with you on your metaverse
-                      explorations. Equip and level up in different games and worlds. Truly own your
-                      metaverse identity with Myria.
-                    </p>
-                  </div>
+                <div className="gsap-img-2 z-[1] flex items-center justify-end [grid-area:1/1/-1/-1]">
+                  <img
+                    src="/images/interoperability/cowboy-cartoon.png"
+                    alt=""
+                    width={1268}
+                    height={1306}
+                    className="w-full object-contain"
+                  />
                 </div>
-
-                <div className="grid items-center gap-[26px] md:gap-[99px] mx-auto max-w-content">
-                  <div className="text-center md:text-left md:order-[-1] gsap-text-how-work-3">
-                    <p className="text-[14px] md:text-[26px] leading-[1.25] text-brand-light-blue font-extrabold md:font-bold">
-                      How it works
-                    </p>
-                    <h2 className="heading-md md:text-[50px] mt-2 md:mt-[17px]">
-                      Morphing NFTs™ that adapt to your avatars
-                    </h2>
-                    <p className="mt-6 md:mt-[17px] body-sm md:body text-light">
-                      No matter the shape and size of your avatar, use the same NFT on them all. Buy
-                      once, use on any character. Designed to be interoperable.
-                    </p>
-                  </div>
+                <div className="gsap-img-3 z-[1] flex items-center justify-end [grid-area:1/1/-1/-1]">
+                  <img
+                    src="/images/interoperability/cowboy-human.png"
+                    alt=""
+                    width={1268}
+                    height={1306}
+                    className="w-full object-contain"
+                  />
                 </div>
               </div>
             </div>
-            <div className="min-w-[500px]">
-              <div className="gsap-wrap-image-how-work h-[700px]">
-                <div className="w-full gsap-image-how-work-item image-content">
-                  <div className="relative w-full h-full min-h-[200px]">
-                    <div className="absolute top-0 w-full">
-                      <Image
-                        src="/images/interoperability/Vortex@2x.png"
-                        alt=""
-                        width={1757}
-                        height={1757}
-                        layout="responsive"
-                      />
+
+            <div className="grid grid-cols-2 items-center gap-[26px] overflow-hidden">
+              <div className="">
+                <div className="gsap-text-how-work-container pb-[250px]">
+                  <div className="gsap-text-how-work-1 mx-auto mt-[500px] grid max-w-content items-center gap-[26px] md:gap-[99px]">
+                    <div className="text-center md:order-[-1] md:text-left">
+                      <p className="text-[14px] font-extrabold leading-[1.25] text-brand-light-blue md:text-[26px] md:font-bold">
+                        How it works
+                      </p>
+                      <h2 className="heading-md mt-2 md:mt-[17px] md:text-[50px]">
+                        The new standard for interoperable NFTs
+                      </h2>
+                      <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
+                        At Myria, we believe NFTs should not only endow players with verifiable
+                        ownership, but also allow players to take their NFTs from one game to
+                        another.
+                      </p>
                     </div>
-                    <div className="absolute top-0 w-full gsap-img-hat">
-                      <Image
-                        src="/images/interoperability/Hat@2x.png"
-                        alt=""
-                        width={1757}
-                        height={1757}
-                        layout="responsive"
-                        className="absolute top-0 object-contain w-full scale-75"
-                      />
+                  </div>
+
+                  <div className="gsap-text-how-work-2 mx-auto mt-[300px] grid max-w-content items-center gap-[26px] md:gap-[99px]">
+                    <div className="text-center md:order-[-1] md:text-left">
+                      <p className="text-[14px] font-extrabold leading-[1.25] text-brand-light-blue md:text-[26px] md:font-bold">
+                        How it works
+                      </p>
+                      <h2 className="heading-md mt-2 md:mt-[17px] md:text-[50px]">
+                        Own your metaverse identity. Anywhere. Any game.
+                      </h2>
+                      <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
+                        Your NFT is your digital identity. Take your NFT with you on your metaverse
+                        explorations. Equip and level up in different games and worlds. Truly own
+                        your metaverse identity with Myria.
+                      </p>
                     </div>
-                    <div className="absolute top-0 w-full gsap-img-human">
-                      <Image
-                        src="/images/interoperability/Cowboy Human@2x.png"
-                        alt=""
-                        width={1757}
-                        height={1757}
-                        layout="responsive"
-                        className="absolute top-0 w-full scale-90 object-contain rounded-[50%]"
-                      />
-                    </div>
-                    <div className="absolute top-0 w-full gsap-img-cartoon">
-                      <Image
-                        src="/images/interoperability/Cowboy Cartoon@2x.png"
-                        alt=""
-                        width={1757}
-                        height={1757}
-                        layout="responsive"
-                        className="absolute top-0 object-contain w-full scale-90"
-                      />
+                  </div>
+
+                  <div className="gsap-text-how-work-3 mx-auto mt-[300px] grid max-w-content items-center gap-[26px] md:gap-[99px]">
+                    <div className="text-center md:order-[-1] md:text-left">
+                      <p className="text-[14px] font-extrabold leading-[1.25] text-brand-light-blue md:text-[26px] md:font-bold">
+                        How it works
+                      </p>
+                      <h2 className="heading-md mt-2 md:mt-[17px] md:text-[50px]">
+                        Morphing NFTs™ that adapt to your avatars
+                      </h2>
+                      <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
+                        No matter the shape and size of your avatar, use the same NFT on them all.
+                        Buy once, use on any character. Designed to be interoperable.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -395,10 +315,10 @@ const DesktopInterop: React.FC = () => {
             </div>
           </div>
         </section>
-        <section className={clsx(paddingX, '-translate-y-[10%]')} ref={elMorphing}>
-          <div className="flex flex-col-reverse items-center justify-center md:flex-row elMorphing">
-            <div className="md:self-end translate-x-[140%] elMorphing-img w-[334px] overflow-hidden">
-              <div className="-translate-x-1/4 w-[600px]">
+        <section className={clsx(paddingX, 'mt-[100px]')} ref={elMorphing}>
+          <div className="elMorphing flex flex-col-reverse items-center justify-center md:flex-row">
+            <div className="elMorphing-img w-[334px] translate-x-[140%] overflow-hidden md:self-end">
+              <div className="w-[600px] -translate-x-1/4">
                 <Image
                   src="/images/interoperability/cowboy-cartoon-separate.png"
                   alt=""
@@ -407,15 +327,15 @@ const DesktopInterop: React.FC = () => {
                 />
               </div>
             </div>
-            <div className="max-w-[607px] text-center mt-[27px] mb-[40px] elMorphing-text">
-              <h1 className="heading-lg lg:heading-massive text-brand-light-blue">
+            <div className="elMorphing-text mt-[27px] mb-[40px] max-w-[607px] text-center">
+              <h1 className="heading-lg text-brand-light-blue lg:heading-massive">
                 Morphing NFTs™
               </h1>
-              <p className="heading-massive lg:text-[70px] font-bold">
+              <p className="heading-massive font-bold lg:text-[70px]">
                 Own your metaverse identity
               </p>
             </div>
-            <div className="-translate-x-[115%] elMorphing-img w-[334px]">
+            <div className="elMorphing-img w-[334px] -translate-x-[115%]">
               <Image
                 src="/images/interoperability/cowboy-human-separate.png"
                 alt=""
