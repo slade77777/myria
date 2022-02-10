@@ -88,16 +88,15 @@ const data = [
 
 const OurGames: React.FC<{ btnLabel?: string }> = ({ btnLabel = 'Learn more' }) => {
   return (
-    <div className="grid md:grid-cols-2 gap-[24px] md:gap-[32px] text-brand-white">
+    <div className="grid md:grid-cols-2 gap-[24px] md:gap-[32px] text-brand-white gsap-our-games-container">
       {data.map((item, idx) => {
         return (
           <Link href={item.link} key={idx}>
             <a
-              data-aos="fade-up"
               style={{
                 backgroundImage: `url("${item.background}")`
               }}
-              className="transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[211px] md:h-[342px] flex justify-between items-end bg-cover bg-center rounded-lg">
+              className="hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[211px] md:h-[342px] flex justify-between items-end bg-cover bg-center rounded-lg gsap-our-games">
               <div
                 className={clsx(
                   'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',
