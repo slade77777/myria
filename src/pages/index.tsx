@@ -11,10 +11,13 @@ import Page from '../components/Page';
 import Link from 'next/link';
 import { socialLinks } from 'src/configs';
 import AOS from 'aos';
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useAnimation, motion } from 'framer-motion';
 import Subscribe from 'src/components/Subscribe';
 import 'aos/dist/aos.css';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { CustomEase } from 'gsap/dist/CustomEase';
 import Video from 'src/components/Video';
 
 const Index = () => {
@@ -22,6 +25,84 @@ const Index = () => {
   const img2Animation = useAnimation();
   const img3Animation = useAnimation();
   const img4Animation = useAnimation();
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(CustomEase);
+
+  useLayoutEffect(() => {
+    const targets = [
+      '.gsap-image-parallax-container-1',
+      '.gsap-image-parallax-container-2',
+      '.gsap-image-parallax-container-3'
+    ];
+    targets.forEach((target) => {
+      let tl_foreground_parallax = gsap.timeline({
+        scrollTrigger: {
+          trigger: target,
+          start: 'top bottom',
+          scrub: 2
+        }
+      });
+
+      tl_foreground_parallax.fromTo(
+        `${target} .gsap-image-parallax`,
+        {
+          y: '200px',
+          ease: 'slow'
+        },
+        {
+          y: '-150px',
+          ease: 'slow'
+        }
+      );
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    gsap.set('.gsap-bg-parallax', {
+      transform: 'matrix(1.2, 0, 0, 1.2, 0, 472)'
+    });
+
+    gsap.to('.gsap-bg-parallax', {
+      transform: 'matrix(1, 0, 0, 1, 0, 0)',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.gsap-bg-parallax-container',
+        scrub: true,
+        end: 'bottom top+=100'
+      }
+    });
+
+    gsap.from('.gsap-text-fade-in', {
+      opacity: 0,
+      transform: 'scale(0.7)',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.gsap-bg-parallax-container',
+        scrub: true,
+        start: 'bottom bottom',
+        end: 'bottom+=100 top+=200'
+      }
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    const tl_our_games = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.gsap-our-games-container',
+        start: 'top 80%',
+        end: 'bottom top'
+      }
+    });
+
+    tl_our_games.from('.gsap-our-games', {
+      xPercent: '100',
+      opacity: 0,
+      stagger: 0.3,
+      ease: 'back',
+      duration: 2
+    });
+  }, []);
 
   const handleMouseMove = (e: any) => {
     const { clientX, clientY } = e;
@@ -182,8 +263,8 @@ const Index = () => {
                 objectFit="contain"
               />
             </div>
-            <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
-              <div data-aos="fade-up">
+            <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px] gsap-image-parallax-container-1">
+              <div className="gsap-image-parallax">
                 <Image
                   src="/images/home/character-circle.png"
                   alt=""
@@ -216,7 +297,7 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'mt-[100px] md:mt-0 md:min-h-[745px] flex items-center justify-center relative isolate',
+              'mt-[100px] md:mt-0 md:min-h-[745px] flex items-center justify-center relative isolate z-10 bg-dark',
               paddingX
             )}>
             <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
@@ -236,8 +317,8 @@ const Index = () => {
                   </a>
                 </Link>
               </div>
-              <div data-aos="fade-up" className="order-[-1] md:order-1">
-                <div className="hidden md:block">
+              <div className="order-[-1] md:order-1 gsap-image-parallax-container-2">
+                <div className="hidden md:block gsap-image-parallax">
                   <Image
                     src="/images/home/cowboys.png"
                     alt=""
@@ -254,12 +335,12 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'mt-[100px] md:mt-0 md:min-h-[629px] flex items-center justify-center relative isolate',
+              'pt-[100px] md:pt-0 md:min-h-[629px] flex items-center justify-center relative isolate z-10 bg-dark pb-[100px]',
               paddingX
             )}>
             <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-[53px] gap-x-[83px]">
-              <div data-aos="fade-up">
-                <div className="hidden md:block">
+              <div className="gsap-image-parallax-container-3">
+                <div className="hidden md:block gsap-image-parallax">
                   <Image
                     src="/images/home/tacoguy.png"
                     alt=""
@@ -293,39 +374,40 @@ const Index = () => {
               </div>
             </div>
           </section>
-          <section
-            className={clsx(
-              'mt-[100px] py-4 min-h-[760px] items-end md:min-h-[849px] flex md:items-center justify-center relative isolate',
-              paddingX
-            )}>
-            <div className="hidden md:block absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1]">
-              <Image src="/images/home/myriaverse.png" alt="" layout="fill" objectFit="cover" />
-            </div>
-            <div className="md:hidden absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1]">
-              <Image
-                src="/images/home/myriaverse-mobile.png"
-                alt=""
-                layout="fill"
-                objectFit="cover"
+          <div className="relative h-[200vh] mt-[-100vh]">
+            <section
+              className={clsx(
+                'overflow-hidden py-4 h-screen items-end flex md:items-center justify-center isolate gsap-bg-parallax-container sticky top-0',
+                paddingX
+              )}>
+              <div
+                className="gsap-bg-parallax hidden md:block absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1] bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: 'url(/images/home/myriaverse.png)' }}
               />
-            </div>
-            <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px]">
-              <div className="text-center md:text-left">
-                <h2 data-aos="fade-up" className="heading-md md:heading-lg text-[#FFFDFD]">
-                  Unified through the Myriaverse
-                </h2>
-                <p data-aos="fade-up" className="mt-[51px] body text-light">
-                  Myriaverse is the wider social metaverse connecting players, communities and
-                  guilds. Players will be able to quest, explore, craft, invest and so much more.
-                  The ever expanding Myriaverse is a virtual society and economy that offers
-                  bountiful earning opportunities for the brave adventurer.
-                </p>
-                <button data-aos="fade-up" className="btn-lg btn-primary mt-[51px]">
-                  More details coming soon
-                </button>
+              <div className="md:hidden absolute h-full w-full md:w-[90%] top-0 right-0 z-[-1]">
+                <Image
+                  src="/images/home/myriaverse-mobile.png"
+                  alt=""
+                  layout="fill"
+                  objectFit="cover"
+                />
               </div>
-            </div>
-          </section>
+              <div className="max-w-content w-full mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-y-[53px] gap-x-[83px] gsap-text-fade-in">
+                <div className="text-center md:text-left">
+                  <h2 className="heading-md md:heading-lg text-[#FFFDFD]">
+                    Unified through the Myriaverse
+                  </h2>
+                  <p className="mt-[51px] body text-light">
+                    Myriaverse is the wider social metaverse connecting players, communities and
+                    guilds. Players will be able to quest, explore, craft, invest and so much more.
+                    The ever expanding Myriaverse is a virtual society and economy that offers
+                    bountiful earning opportunities for the brave adventurer.
+                  </p>
+                  <button className="btn-lg btn-primary mt-[51px]">More details coming soon</button>
+                </div>
+              </div>
+            </section>
+          </div>
           <section
             className={clsx(
               'mt-[130px] md:mt-0 md:min-h-[790px] grid grid-cols-1 grid-rows-1 items-center justify-center py-10 relative isolate'
