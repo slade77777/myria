@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:{"Token Sale and Node Sale coming soon!":"Token Sale and Node Sale coming soon!"}};

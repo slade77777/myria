@@ -5,6 +5,7 @@ import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 
 import { useGA } from 'src/lib/ga';
+import LanguageProvider from 'src/context/LanguageContext';
 
 function App({ Component, pageProps }: AppProps) {
   useGA();
@@ -35,8 +36,10 @@ function App({ Component, pageProps }: AppProps) {
           cardType: 'summary_large_image'
         }}
       />
-     
-      <Component {...pageProps} />
+
+      <LanguageProvider>
+        <Component {...pageProps} />
+      </LanguageProvider>
     </>
   );
 }

@@ -19,6 +19,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { CustomEase } from 'gsap/dist/CustomEase';
 import Video from 'src/components/Video';
+import { Trans } from '@lingui/macro';
 
 const Index = () => {
   const img1Animation = useAnimation();
@@ -160,7 +161,8 @@ const Index = () => {
     <>
       <div className="flex flex-col items-center justify-center bg-brand-light-blue p-4 text-center md:flex-row md:py-2 md:text-left">
         <p className="text-[14px] font-medium leading-[1.23] ">
-          <span className="font-bold">$MYRIA</span> Token Sale and Node Sale coming soon!
+          <span className="font-bold">$MYRIA</span>{' '}
+          <Trans>Token Sale and Node Sale coming soon!</Trans>
         </p>
         <a
           href={socialLinks.discord}
