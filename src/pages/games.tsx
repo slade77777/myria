@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
@@ -31,7 +32,7 @@ const Games: React.FC = () => {
             </div>
             <div className="flex justify-end">
               <div className="mt-[32px] py-[23px] px-[38px] text-right bg-brand-deep-blue rounded-[20px]">
-                <p className="body-md md:body-lg">More games coming soon...</p>
+                <p className="body-md md:body-lg"><Trans>More games coming soon...</Trans></p>
               </div>
             </div>
           </div>
@@ -48,13 +49,13 @@ const Games: React.FC = () => {
               />
             </div>
             <div className="xl:pr-[100px] text-center md:text-left">
-              <h2 className="heading-sm md:heading-md">Start playing and earning rewards</h2>
+              <h2 className="heading-sm md:heading-md"><Trans>Start playing and earning rewards</Trans></h2>
               <p className="mt-6 body text-light">
-                Our games offer a range of play and earn mechanics that reward players with
-                cryptocurrency and NFTs.
+                <Trans>Our games offer a range of play and earn mechanics that reward players with
+                cryptocurrency and NFTs.</Trans>
               </p>
               <p className="mt-6 body text-light">
-                Unlike most blockchain games, all of our games are free-to-play.
+                <Trans>Unlike most blockchain games, all of our games are free-to-play.</Trans>
               </p>
             </div>
           </div>
@@ -71,13 +72,13 @@ const Games: React.FC = () => {
               />
             </div>
             <div className="xl:pl-[100px] text-center md:text-left md:order-[-1]">
-              <h2 className="heading-sm md:heading-md">Buy limited founding NFTs</h2>
+              <h2 className="heading-sm md:heading-md"><Trans>Buy limited founding NFTs</Trans></h2>
               <p className="mt-[38px] body text-light">
-                Myria are releasing limited drops of exclusive founding Myria land, avatars, and
+                <Trans>Myria are releasing limited drops of exclusive founding Myria land, avatars, and
                 skins. These items will never be made available to the public again and will forever
-                commemorate holders as pioneers in the Myriaverse.
+                commemorate holders as pioneers in the Myriaverse.</Trans>
               </p>
-              <button className="mt-10 btn-lg btn-primary">Releasing soon</button>
+              <button className="mt-10 btn-lg btn-primary"><Trans>Releasing soon</Trans></button>
             </div>
           </div>
         </section>

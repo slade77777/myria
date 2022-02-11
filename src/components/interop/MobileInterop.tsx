@@ -8,6 +8,7 @@ import Page from '../Page';
 import { paddingX } from '../../utils';
 import ReactPlayer from 'react-player';
 import CloseIcon from 'src/components/icons/CloseIcon';
+import { Trans } from '@lingui/macro';
 
 const video = {
   src: '/videos/interoperability/video.mp4',
@@ -59,7 +60,7 @@ const MobileInterop: React.FC = () => {
           </div>
           <div className="mx-auto w-full max-w-content ">
             <h1 className="heading-lg mx-auto mt-[150px] max-w-[607px] text-center text-brand-white">
-              The world’s first Morphing NFTs™
+              <Trans>The world’s first Morphing NFTs™</Trans>
             </h1>
           </div>
           <div className="mx-auto mt-[111px] max-w-[630px]">
@@ -100,7 +101,7 @@ const MobileInterop: React.FC = () => {
                         <PlayCircleIcon />
                       </span>
                       <p className="mt-[15px] text-[20px] font-extrabold uppercase group-hover:text-brand-light-blue">
-                        Trailer Coming Soon
+                        <Trans>Trailer Coming Soon</Trans>
                       </p>
                     </div>
                   </a>
@@ -122,12 +123,12 @@ const MobileInterop: React.FC = () => {
             </div>
             <div className="text-center">
               <p className="text-[14px] font-extrabold uppercase leading-[1.25] text-brand-light-blue">
-                How it works
+                <Trans>How it works</Trans>
               </p>
-              <h2 className="heading-md mt-2">The new standard for interoperable NFTs</h2>
+              <h2 className="heading-md mt-2"><Trans>The new standard for interoperable NFTs</Trans></h2>
               <p className="body-sm mt-6 text-light">
-                At Myria, we believe NFTs should not only endow players with verifiable ownership,
-                but also allow players to take their NFTs from one game to another.
+                <Trans>At Myria, we believe NFTs should not only endow players with verifiable ownership,
+                but also allow players to take their NFTs from one game to another.</Trans>
               </p>
             </div>
           </div>
@@ -145,13 +146,13 @@ const MobileInterop: React.FC = () => {
             </div>
             <div className="text-center">
               <p className="text-[14px] font-extrabold uppercase leading-[1.25] text-brand-light-blue">
-                How it works
+                <Trans>How it works</Trans>
               </p>
-              <h2 className="heading-md mt-2">Own your metaverse identity. Anywhere. Any game.</h2>
+              <h2 className="heading-md mt-2"><Trans>Own your metaverse identity. Anywhere. Any game.</Trans></h2>
               <p className="body-sm mt-6 text-light">
-                Your NFT is your digital identity. Take your NFT with you on your metaverse
+                <Trans>Your NFT is your digital identity. Take your NFT with you on your metaverse
                 explorations. Equip and level up in different games and worlds. Truly own your
-                metaverse identity with Myria.
+                metaverse identity with Myria.</Trans>
               </p>
             </div>
           </div>
@@ -169,12 +170,12 @@ const MobileInterop: React.FC = () => {
             </div>
             <div className="text-center">
               <p className="text-[14px] font-extrabold uppercase leading-[1.25] text-brand-light-blue">
-                How it works
+                <Trans>How it works</Trans>
               </p>
-              <h2 className="heading-md mt-2">Morphing NFTs™ that adapt to your avatars</h2>
+              <h2 className="heading-md mt-2"><Trans>Morphing NFTs™ that adapt to your avatars</Trans></h2>
               <p className="body-sm mt-6 text-light">
-                No matter the shape and size of your avatar, use the same NFT on them all. Buy once,
-                use on any character. Designed to be interoperable.
+                <Trans>No matter the shape and size of your avatar, use the same NFT on them all. Buy once,
+                use on any character. Designed to be interoperable.</Trans>
               </p>
             </div>
           </div>
@@ -191,8 +192,8 @@ const MobileInterop: React.FC = () => {
               />
             </div>
             <div className="mt-[57px] max-w-[607px] text-center">
-              <h1 className="heading-lg text-brand-light-blue">Morphing NFTs™</h1>
-              <p className="heading-lg mt-[31px] font-bold">Own your metaverse identity</p>
+              <h1 className="heading-lg text-brand-light-blue"><Trans>Morphing NFTs™</Trans></h1>
+              <p className="heading-lg mt-[31px] font-bold"><Trans>Own your metaverse identity</Trans></p>
             </div>
           </div>
         </section>

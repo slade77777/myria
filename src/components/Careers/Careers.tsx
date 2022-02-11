@@ -5,6 +5,7 @@ import Collapse from '../Collapse';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import ReactMarkdown from 'react-markdown';
 import styles from './styles.module.css';
+import { Trans } from '@lingui/macro';
 
 const Careers: React.FC = () => {
   const categories = useCareerCategories();
@@ -23,7 +24,7 @@ const Careers: React.FC = () => {
           className={clsx('mx-2 my-2 btn-lg btn-dark-blue flex-shrink-0 whitespace-nowrap', {
             active: selectedCategory === null
           })}>
-          All positions
+          <Trans>All positions</Trans>
         </button>
         {categories.map((item) => (
           <button
@@ -70,7 +71,7 @@ const Careers: React.FC = () => {
                           href={pos.link}
                           className="mt-6 btn-lg btn-primary"
                           rel="noreferrer">
-                          APPLY NOW
+                          <Trans>APPLY NOW</Trans>
                         </a>
                       </div>
                     </Collapse.Content>

@@ -6,6 +6,7 @@ import CircleCheck from './icons/CircleCheck';
 import Input from './Input';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { t, Trans } from '@lingui/macro';
 
 interface IFormInputs {
   email: string;
@@ -13,7 +14,7 @@ interface IFormInputs {
 
 const schema = yup
   .object({
-    email: yup.string().email('Invalid email!').required('Email is required!')
+    email: yup.string().email(t`Invalid email!`).required(t`Email is required!`)
   })
   .required();
 
@@ -41,7 +42,7 @@ const Subscribe: React.FC = () => {
           setError(error.message);
           setIsSubmitSuccess(false);
         });
-        reset();
+      reset();
     } catch (error: any) {
       setError(error?.message);
       setIsSubmitSuccess(false);
@@ -53,15 +54,19 @@ const Subscribe: React.FC = () => {
       style={{
         boxShadow: '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
       }}
-      className="max-w-content mx-auto bg-[url('/images/games/panel.png')] bg-cover bg-center rounded-[20px] flex flex-col items-center md:py-[158px] p-[32px]">
-      <h2 className="text-center heading-sm md:heading-md">Pre register to stay up to date</h2>
-      <div className="max-w-[585px] w-full mt-6 ">
-        <p className="text-center body text-light">
-          Sign up to our newsletter to for development updates, token and NFT drops, and exclusive
-          promotions.
+      className="mx-auto flex max-w-content flex-col items-center rounded-[20px] bg-[url('/images/games/panel.png')] bg-cover bg-center p-[32px] md:py-[158px]">
+      <h2 className="heading-sm text-center md:heading-md">
+        <Trans>Pre register to stay up to date</Trans>
+      </h2>
+      <div className="mt-6 w-full max-w-[585px] ">
+        <p className="body text-center text-light">
+          <Trans>
+            Sign up to our newsletter to for development updates, token and NFT drops, and exclusive
+            promotions.
+          </Trans>
         </p>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] mt-10 gap-4">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_auto]">
             <Input
               placeholder="Enter your email address"
               {...register('email')}
@@ -70,15 +75,17 @@ const Subscribe: React.FC = () => {
               containerClassName="relative"
               message={
                 success ? (
-                  <p className="flex items-center text-xs leading-[15px] text-white absolute bottom-[-20px]">
+                  <p className="absolute bottom-[-20px] flex items-center text-xs leading-[15px] text-white">
                     <CircleCheck />
-                    <span className="ml-1">Thank you for subscribing!</span>
+                    <span className="ml-1">
+                      <Trans>Thank you for subscribing!</Trans>
+                    </span>
                   </p>
                 ) : null
               }
             />
             <button className="btn-lg btn-primary" disabled={isSubmitting}>
-              SUBMIT
+              <Trans>SUBMIT</Trans>
             </button>
           </div>
         </form>

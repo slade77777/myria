@@ -1,3 +1,4 @@
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import { socialLinks } from 'src/configs';
@@ -34,24 +35,24 @@ const links = [
     blocks: [
       [
         {
-          label: 'Nodes',
+          label: t`Nodes`,
           link: '/nodes'
         },
         {
-          label: 'Ecosystem',
+          label: t`Ecosystem`,
           link: '/ecosystem'
         },
         {
-          label: 'Store',
+          label: t`Store`,
           link: '/store',
           inactive: true
         },
         {
-          label: 'For Studios',
+          label: t`For Studios`,
           link: '/for-studios'
         },
         {
-          label: 'Morphing NFTs',
+          label: t`Morphing NFTs`,
           link: '/interoperability'
         }
       ]
@@ -62,31 +63,31 @@ const links = [
     blocks: [
       [
         {
-          label: 'About',
+          label: t`About`,
           link: '/about-us'
         },
         {
-          label: 'Whitepaper (Coming soon)',
+          label: t`Whitepaper (Coming soon)`,
           link: '/',
           disabled: true
         },
         {
-          label: 'Team',
+          label: t`Team`,
           link: '/about-us'
         }
       ],
       [
         {
-          label: 'Careers',
+          label: t`Careers`,
           link: '/careers'
         },
         {
-          label: 'News',
+          label: t`News`,
           link: socialLinks.medium,
           external: true
         },
         {
-          label: 'Contact Us',
+          label: t`Contact Us`,
           link: '/contact'
         }
       ]
@@ -156,7 +157,7 @@ const Footer: React.FC = () => {
       </div>
       <div className="text-[16px] leading-[1.5] mt-[14px] md:mt-0">
         <p>© Copyright 2022 Myria</p>
-        <p>Terms | Privacy</p>
+        <p><Trans>Terms | Privacy</Trans></p>
       </div>
     </footer>
   );

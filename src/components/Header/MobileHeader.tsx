@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import Collapse from '../Collapse';
 import { socialLinks } from '../../configs';
+import { Trans } from '@lingui/macro';
 
 type Props = {
   action: Action;
@@ -142,7 +143,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
               target="_blank"
               className="col-span-2 text-center btn-lg btn-secondary"
               rel="noreferrer">
-              JOIN DISCORD
+              <Trans>JOIN DISCORD</Trans>
             </a>
           )}
         </li>

@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
@@ -28,7 +29,7 @@ const Contact: React.FC = () => {
           </div>
           <div className="w-full mx-auto max-w-content ">
             <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
-              Contact us
+              <Trans>Contact us</Trans>
             </h1>
             <a href="mailto:hello@myria.com" className="flex items-center justify-center mt-[35px]">
               <span className="w-[32px]">
@@ -42,7 +43,7 @@ const Contact: React.FC = () => {
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[83px] mb-[145px]')}>
-          <h3 className="text-center heading-sm md:heading-md">Connect with us</h3>
+          <h3 className="text-center heading-sm md:heading-md"><Trans>Connect with us</Trans></h3>
           <div className="mt-[48px] grid grid-flow-col gap-4 md:gap-[69px] justify-center">
             {Socials.map((s) => (
               <a

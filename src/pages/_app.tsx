@@ -6,27 +6,28 @@ import type { AppProps } from 'next/app';
 
 import { useGA } from 'src/lib/ga';
 import LanguageProvider from 'src/context/LanguageContext';
+import { t } from '@lingui/macro';
 
 function App({ Component, pageProps }: AppProps) {
   useGA();
   return (
     <>
       <DefaultSeo
-        title={'Connecting the world through play'}
-        description="Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
-        titleTemplate={'Myria | %s'}
+        title={t`Connecting the world through play`}
+        description={t`Myria is a blockchain gaming ecosystem powered by the Myria blockchain.`}
+        titleTemplate={t`Myria | %s`}
         openGraph={{
           type: 'website',
           locale: 'en',
           images: [
             {
               url: 'https://myria.com/seo/defaultImage.png',
-              alt: 'Game NFT',
+              alt: t`Game NFT`,
               type: 'image/png'
             }
           ],
-          title: 'Myria | Connecting the world through play',
-          description: 'Myria is a blockchain gaming ecosystem powered by the Myria blockchain.',
+          title: t`Myria | Connecting the world through play`,
+          description: t`Myria is a blockchain gaming ecosystem powered by the Myria blockchain.`,
           url: 'https://myria.com',
           site_name: 'Myria'
         }}

@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import { socialLinks } from '../configs';
 import DiscordIcon from './icons/DiscordIcon';
@@ -42,9 +43,9 @@ const ComingSoon: React.FC = () => {
         </div>
         <div>
           <div className="max-w-[607px] mx-auto text-center mt-[189px]">
-            <h1 className="heading-lg md:heading-massive text-brand-white">Coming Soon</h1>
+            <h1 className="heading-lg md:heading-massive text-brand-white"><Trans>Coming Soon</Trans></h1>
             <h3 className="mt-6 heading-sm-mobile md:heading-sm md:mt-10">
-              Myria is a blockchain gaming ecosystem powered by the Myria blockchain.
+              <Trans>Myria is a blockchain gaming ecosystem powered by the Myria blockchain.</Trans>
             </h3>
             <div className="text-center">
               <a
@@ -55,7 +56,7 @@ const ComingSoon: React.FC = () => {
                 <span className="w-[30px]">
                   <DiscordIcon />
                 </span>
-                <span>JOIN DISCORD</span>
+                <span><Trans>JOIN DISCORD</Trans></span>
               </a>
             </div>
             <div className="mt-[90px] grid grid-flow-col gap-[36px] justify-center">

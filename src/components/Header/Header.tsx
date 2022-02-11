@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import { socialLinks } from 'src/configs';
@@ -14,49 +15,49 @@ type NavItem = {
 
 export const links: NavItem[] = [
   {
-    text: 'Home',
+    text: t`Home`,
     url: '/'
   },
   {
-    text: 'About',
+    text: t`About`,
     children: [
       {
-        text: 'Our vision',
+        text: t`Our vision`,
         url: '/about-us'
       },
       {
-        text: 'Our team',
+        text: t`Our team`,
         url: '/about-us'
       },
       {
-        text: 'Morphing NFTs',
+        text: t`Morphing NFTs`,
         url: '/interoperability'
       },
       {
-        text: 'Careers',
+        text: t`Careers`,
         url: '/careers'
       }
     ]
   },
   {
-    text: 'Ecosystem',
+    text: t`Ecosystem`,
     url: '/ecosystem'
   },
   {
-    text: 'Games',
+    text: t`Games`,
     url: '/games'
   },
   {
-    text: 'Nodes',
+    text: t`Nodes`,
     url: '/nodes'
   },
   {
-    text: 'Store',
+    text: t`Store`,
     url: '/store',
     inactive: true
   },
   {
-    text: 'Community',
+    text: t`Community`,
     children: [
       {
         text: 'Discord',
