@@ -17,8 +17,12 @@ const principles = [
         <LoveIcon />
       </div>
     ),
-    title: t`Gameplay first`,
-    description: t`Myria develops fun AAA games that are enhanced by the blockchain, not vice versa. `
+    title: <Trans>Gameplay first</Trans>,
+    description: (
+      <Trans>
+        Myria develops fun AAA games that are enhanced by the blockchain, not vice versa.{' '}
+      </Trans>
+    )
   },
   {
     icon: (
@@ -26,8 +30,12 @@ const principles = [
         <SafetyIcon />
       </div>
     ),
-    title: t`Empowering players`,
-    description: t`We believe players should have true verifiable ownership and control over in-game assets. `
+    title: <Trans>Empowering players</Trans>,
+    description: (
+      <Trans>
+        We believe players should have true verifiable ownership and control over in-game assets.{' '}
+      </Trans>
+    )
   },
   {
     icon: (
@@ -35,8 +43,13 @@ const principles = [
         <UserIcon />
       </div>
     ),
-    title: t`Powered by the community`,
-    description: t`Myria is supported by a network of community-powered nodes, who receive rewards for their contributions. `
+    title: <Trans>Powered by the community</Trans>,
+    description: (
+      <Trans>
+        Myria is supported by a network of community-powered nodes, who receive rewards for their
+        contributions.{' '}
+      </Trans>
+    )
   }
 ];
 

@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro';
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ const data = [
       </div>
     ),
     background: '/images/our-games/metarush-bg.png',
-    title: t`A multiplayer obstacle course game`,
+    title: <Trans>A multiplayer obstacle course game</Trans>,
     link: '/game-detail/metarush',
     layout: 'row'
   },
@@ -47,7 +47,7 @@ const data = [
       </div>
     ),
     background: '/images/our-games/block-royale-bg_updated.png',
-    title: t`A battle-royale shooter game`,
+    title: <Trans>A battle-royale shooter game</Trans>,
     link: '/game-detail/block-royale',
     layout: 'row'
   },
@@ -64,7 +64,7 @@ const data = [
       </div>
     ),
     background: '/images/our-games/metakart-bg.png',
-    title: t`A multiplayer go-kart racing game`,
+    title: <Trans>A multiplayer go-kart racing game</Trans>,
     link: '/game-detail/metakart',
     layout: 'row'
   },
@@ -81,7 +81,7 @@ const data = [
       </div>
     ),
     background: '/images/our-games/starstrike-bg.png',
-    title: t`An objective-based shooter game`,
+    title: <Trans>An objective-based shooter game</Trans>,
     link: '/game-detail/starstrike',
     layout: 'row'
   }

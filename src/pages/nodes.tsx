@@ -19,8 +19,8 @@ const rewards = [
         <UserIcon />
       </div>
     ),
-    title: t`Daily $MYRIA token rewards`,
-    description: t`Myria node operators will receive daily $MYRIA token rewards for the nodes work. `
+    title: <Trans>Daily $MYRIA token rewards</Trans>,
+    description: <Trans>Myria node operators will receive daily $MYRIA token rewards for the nodes work. </Trans>,
   },
   {
     icon: (
@@ -28,9 +28,9 @@ const rewards = [
         <ChartIcon />
       </div>
     ),
-    title: t`Voting rights`,
+    title: <Trans>Voting rights</Trans>,
     description:
-      t`Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse`
+      <Trans>Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse</Trans>,
   },
   {
     icon: (
@@ -38,55 +38,48 @@ const rewards = [
         <StarIcon />
       </div>
     ),
-    title: t`Exclusive NFTs`,
+    title: <Trans>Exclusive NFTs</Trans>,
     description:
-      t`Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.`,
+      <Trans>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</Trans>,
     learnMore: '/'
   }
 ];
 
 const questions = [
   {
-    title: t`What is a Myria node?`,
-    content: `In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.
-    `
+    title: <Trans>What is a Myria node?</Trans>,
+    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
+    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
   },
   {
-    title: t`How can I become a Myria node operator?`,
-    content: `In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.
-    `
+    title: <Trans>How can I become a Myria node operator?</Trans>,
+    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
+    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
   },
   {
-    title: t`What rewards do Myria node operators receive?`,
-    content: `In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.
-    `
+    title: <Trans>What rewards do Myria node operators receive?</Trans>,
+    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
+    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
   },
   {
-    title: t`What are the software and hardware requirements to run a node?`,
-    content: `In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.
-    `
+    title: <Trans>What are the software and hardware requirements to run a node?</Trans>,
+    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
+    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
   },
   {
-    title: t`When will Myria node licenses be sold?`,
-    content: `In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.
-    `
+    title: <Trans>When will Myria node licenses be sold?</Trans>,
+    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
+    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
   },
   {
-    title: t`How much will a Myria node license cost?`,
-    content: `In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.
-    `
+    title: <Trans>How much will a Myria node license cost?</Trans>,
+    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
+    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
   },
   {
-    title: t`How many Myria node licenses will be released?`,
-    content: `In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.
-    `
+    title: <Trans>How many Myria node licenses will be released?</Trans>,
+    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
+    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
   }
 ];
 const Nodes: React.FC = () => {

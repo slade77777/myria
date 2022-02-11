@@ -16,8 +16,8 @@ import { paddingX } from '../utils';
 
 type Person = {
   name: string;
-  position: string;
-  description: string;
+  position: JSX.Element;
+  description: JSX.Element;
   socials: {
     twitter?: string;
     linkedin?: string;
@@ -26,9 +26,9 @@ type Person = {
 const data: Person[] = [
   {
     name: 'Andrew Silber',
-    position: t`Co-Founder - CTO`,
+    position: <Trans>Co-Founder - CTO</Trans>,
     description:
-      t`Andrew has been a tech executive in the gaming industry with a career spanning over 27 years. He has worked with some of the most recognizable names in the industry, including Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway. `,
+      <Trans>Andrew has been a tech executive in the gaming industry with a career spanning over 27 years. He has worked with some of the most recognizable names in the industry, including Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway. </Trans>,
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/andrewsilber'
@@ -36,9 +36,9 @@ const data: Person[] = [
   },
   {
     name: 'goose.eth',
-    position: t`Co-Founder - Project Lead`,
+    position: <Trans>Co-Founder - Project Lead</Trans>,
     description:
-      t`A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain P2E platform. `,
+      <Trans>A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain P2E platform. </Trans>,
     socials: {
       twitter: 'https://twitter.com/gooseara',
       linkedin: ''
@@ -46,9 +46,9 @@ const data: Person[] = [
   },
   {
     name: 'Brendan Duhamel',
-    position: t`Head of Blockchain`,
+    position: <Trans>Head of Blockchain</Trans>,
     description:
-      t`Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network.`,
+      <Trans>Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network.</Trans>,
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/brendan-d-4ba3b698'
@@ -56,9 +56,9 @@ const data: Person[] = [
   },
   {
     name: 'Ivan Fortunov',
-    position: t`Head of Game Design`,
+    position: <Trans>Head of Game Design</Trans>,
     description:
-      t`Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads.`,
+      <Trans>Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads.</Trans>,
     socials: {
       twitter: 'https://twitter.com/IvanFortunov',
       linkedin: 'https://www.linkedin.com/in/fortunov/'
@@ -66,9 +66,9 @@ const data: Person[] = [
   },
   {
     name: 'Lucas Bean',
-    position: t`Head of Marketing`,
+    position: <Trans>Head of Marketing</Trans>,
     description:
-      t`Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and has founded multiple ventures, including Engage:BDR that is now a public listed company.`,
+      <Trans>Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and has founded multiple ventures, including Engage:BDR that is now a public listed company.</Trans>,
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/lucasbean/'
@@ -76,9 +76,9 @@ const data: Person[] = [
   },
   {
     name: 'Metafrog',
-    position: t`Co-Founder - Operations`,
+    position: <Trans>Co-Founder - Operations</Trans>,
     description:
-      t`A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com.  `,
+      <Trans>A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com.  </Trans>,
     socials: {
       twitter: 'https://twitter.com/0xMetaFrog',
       linkedin: ''
@@ -86,9 +86,9 @@ const data: Person[] = [
   },
   {
     name: 'Jem Law',
-    position: t`Marketing Manager`,
+    position: <Trans>Marketing Manager</Trans>,
     description:
-      t`Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies.`,
+      <Trans>Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies.</Trans>,
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/jemimalaw/'
@@ -96,9 +96,9 @@ const data: Person[] = [
   },
   {
     name: 'AJ Dimarucot',
-    position: t`Art Creative Lead`,
+    position: <Trans>Art Creative Lead</Trans>,
     description:
-      t`AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others. `,
+      <Trans>AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others. </Trans>,
     socials: {
       twitter: 'https://twitter.com/ajdimarucot',
       linkedin: 'https://linkedin.com/in/ajdimarucot'
@@ -106,9 +106,9 @@ const data: Person[] = [
   },
   {
     name: 'Brock',
-    position: t`Product Lead - Blockchain`,
+    position: <Trans>Product Lead - Blockchain</Trans>,
     description:
-      t`Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth. `,
+      <Trans>Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth. </Trans>,
     socials: {
       twitter: '',
       linkedin: ''
@@ -117,9 +117,9 @@ const data: Person[] = [
 
   {
     name: 'Craig Stanford',
-    position: t`UI/UX Lead`,
+    position: <Trans>UI/UX Lead</Trans>,
     description:
-      t`Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more.`,
+      <Trans>Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more.</Trans>,
     socials: {
       twitter: 'https://twitter.com/Lennicus',
       linkedin: 'https://www.linkedin.com/in/craiglstanford/'
@@ -127,9 +127,9 @@ const data: Person[] = [
   },
   {
     name: 'Antonio Molina',
-    position: t`Game Producer`,
+    position: <Trans>Game Producer</Trans>,
     description:
-      t`With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more. `,
+      <Trans>With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more. </Trans>,
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/antoniomolina34/'
@@ -137,9 +137,9 @@ const data: Person[] = [
   },
   {
     name: 'Kidono Huang',
-    position: t`Partner Lead`,
+    position: <Trans>Partner Lead</Trans>,
     description:
-      t`Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more.`,
+      <Trans>Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more.</Trans>,
     socials: {
       twitter: '',
       linkedin: ''
@@ -154,8 +154,8 @@ const principles = [
         <LoveIcon />
       </div>
     ),
-    title: t`Gameplay first`,
-    description: t`Fun, high-quality and free are our core gameplay tenets.  `
+    title: <Trans>Gameplay first</Trans>,
+    description: <Trans>Fun, high-quality and free are our core gameplay tenets.  </Trans>
   },
   {
     icon: (
@@ -163,9 +163,9 @@ const principles = [
         <RadioIcon />
       </div>
     ),
-    title: t`Free to play`,
+    title: <Trans>Free to play</Trans>,
     description:
-      t`We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse.`
+      <Trans>We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse.</Trans>
   },
   {
     icon: (
@@ -173,9 +173,9 @@ const principles = [
         <SafetyIcon />
       </div>
     ),
-    title: t`Empowering players`,
+    title: <Trans>Empowering players</Trans>,
     description:
-      t`We believe players should have true verifiable ownership and control over in-game assets. `
+      <Trans>We believe players should have true verifiable ownership and control over in-game assets. </Trans>
   },
   {
     icon: (
@@ -183,9 +183,9 @@ const principles = [
         <UserIcon />
       </div>
     ),
-    title: t`Powered by the community`,
+    title: <Trans>Powered by the community</Trans>,
     description:
-      t`Myria is community powered and governed through the Myria DAO. We are handing the power back to the people to build a better metaverse. `
+      <Trans>Myria is community powered and governed through the Myria DAO. We are handing the power back to the people to build a better metaverse. </Trans>
   }
 ];
 

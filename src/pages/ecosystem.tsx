@@ -8,19 +8,19 @@ import { paddingX } from '../utils';
 
 const data = [
   {
-    title: t`Proof of reputational authority`,
+    title: <Trans>Proof of reputational authority</Trans>,
     description:
-      t`Our proprietary consensus algorithm achieves greater network security by factoring in the ‘reputational score’ of Myria nodes.`
+      <Trans>Our proprietary consensus algorithm achieves greater network security by factoring in the ‘reputational score’ of Myria nodes.</Trans>
   },
   {
-    title: t`Modularization of smart contracts`,
+    title: <Trans>Modularization of smart contracts</Trans>,
     description:
-      t`Our ERC1155 contracts are engineered for more efficient resource utilization with our smart logic design between the base layer and rules contracts. `
+      <Trans>Our ERC1155 contracts are engineered for more efficient resource utilization with our smart logic design between the base layer and rules contracts. </Trans>
   },
   {
-    title: t`NFT interoperability`,
+    title: <Trans>NFT interoperability</Trans>,
     description:
-      t`We have developed innovative NFT interoperability standards only available on the Myria chain.`
+      <Trans>We have developed innovative NFT interoperability standards only available on the Myria chain.</Trans>
   }
 ];
 const Ecosystem: React.FC = () => {

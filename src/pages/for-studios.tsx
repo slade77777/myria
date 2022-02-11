@@ -18,9 +18,9 @@ const data = [
         <ChartIcon />
       </div>
     ),
-    title: t`Blockchain platform for game studios`,
+    title: <Trans>Blockchain platform for game studios</Trans>,
     description:
-      t`We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming. `,
+      <Trans>We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming. </Trans>,
   },
   {
     icon: (
@@ -28,9 +28,9 @@ const data = [
         <UserIcon />
       </div>
     ),
-    title: t`Myria ecosystem fund`,
+    title: <Trans>Myria ecosystem fund</Trans>,
     description:
-      t`Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain.`,
+      <Trans>Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain.</Trans>,
   },
   {
     icon: (
@@ -38,9 +38,9 @@ const data = [
         <StarIcon />
       </div>
     ),
-    title: t`Education and support`,
+    title: <Trans>Education and support</Trans>,
     description:
-      t`Access ongoing education and technical support to ensure a successful onboarding onto the blockchain. `,
+      <Trans>Access ongoing education and technical support to ensure a successful onboarding onto the blockchain. </Trans>,
   },
 ];
 
