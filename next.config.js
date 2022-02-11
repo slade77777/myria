@@ -1,4 +1,3 @@
-
 /** @type {import('next').NextConfig} */
 
 const { withSentryConfig } = require('@sentry/nextjs');
@@ -9,7 +8,7 @@ const sentryWebpackPluginOptions = {
   // recommended:
   //   release, url, org, project, authToken, configFile, stripPrefix,
   //   urlPrefix, include, ignore
-  silent: true, // Suppresses all logs
+  silent: true // Suppresses all logs
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
@@ -19,11 +18,18 @@ const moduleExports = {
   eslint: {
     dirs: ['src']
   },
-  trailingSlash: true,
   images: {
-    loader: 'akamai',
-    path: '',
+    loader: 'imgix',
+    path: 'https://myria.imgix.net'
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.po/,
+      use: ['@lingui/loader']
+    });
+
+    return config;
   }
-}
+};
 
 module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);

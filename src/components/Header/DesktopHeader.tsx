@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from '../../configs';
@@ -27,6 +28,23 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
         </div>
         <ul className="text-[14px] leading-[1.25] uppercase font-medium grid grid-flow-col gap-[38px] items-center mx-auto text-brand-white">
           {links.map((item, idx) => {
+            if (item.inactive) {
+              return (
+                <li key={idx}>
+                  <div className="relative">
+                    <a className="hover:cursor-not-allowed">{item.text}</a>
+                    <div
+                      style={{
+                        boxShadow: '0 0 0 0.5px #9AC9E3'
+                      }}
+                      className="font-extrabold text-[6px] rounded-sm absolute -top-[9px] -right-7 p-[3px] pb-[1px] bg-brand-light-blue/40 bg-opacity-4">
+                      Soon!
+                    </div>
+                  </div>
+                </li>
+              );
+            }
+
             if (item.children) {
               return (
                 <li key={idx} className="relative group">
@@ -36,7 +54,7 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
                       <ChevronDownIcon />
                     </i>
                   </div>
-                  <div className="absolute hidden pt-4 group-hover:block -left-1/2 top-full">
+                  <div className="absolute left-0 hidden pt-4 -translate-x-6 group-hover:block top-full">
                     <ul className="bg-dark px-6 py-4 pr-[63px] rounded-lg whitespace-nowrap grid gap-6">
                       {item.children.map((link, idx) => (
                         <li key={idx}>
@@ -63,21 +81,21 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
           })}
         </ul>
         <div className="flex items-center w-[220px] justify-end flex-shrink-0">
-          {action === 'login' && (
+          {/* {action === 'login' && (
             <>
               <button className="btn-sm btn-primary">Sign up</button>
               <button className="btn-sm btn-secondary ml-[21px]">Log in</button>
             </>
-          )}
-          {action === 'join-discord' && (
-            <a
-              className="btn-sm btn-secondary"
-              href={socialLinks.discord}
-              target="_blank"
-              rel="noreferrer">
-              JOIN DISCORD
-            </a>
-          )}
+          )} */}
+          {/* {action === 'join-discord' && ( */}
+          <a
+            className="btn-sm btn-secondary"
+            href={socialLinks.discord}
+            target="_blank"
+            rel="noreferrer">
+            <Trans>JOIN DISCORD</Trans>
+          </a>
+          {/* )} */}
         </div>
       </nav>
     </header>

@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
@@ -14,8 +15,7 @@ const Contact: React.FC = () => {
       <div>
         <section
           style={{
-            paddingTop: headerHeight,
-            backgroundPositionY: headerHeight
+            paddingTop: headerHeight
           }}
           className={clsx(paddingX, 'relative isolate md:min-h-screen ')}>
           <div
@@ -24,12 +24,12 @@ const Contact: React.FC = () => {
             }}
             className="absolute left-0 h-[783px] w-full z-[-1]">
             <div className="relative w-full h-full ">
-              <Image src="/images/header-bg.png" alt="" layout="fill" objectFit="cover" />
+              <Image src="/images/contact/header-bg.png" alt="" layout="fill" objectFit="cover" />
             </div>
           </div>
           <div className="w-full mx-auto max-w-content ">
             <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
-              Contact us
+              <Trans>Contact us</Trans>
             </h1>
             <a href="mailto:hello@myria.com" className="flex items-center justify-center mt-[35px]">
               <span className="w-[32px]">
@@ -42,11 +42,16 @@ const Contact: React.FC = () => {
             <GetInTouch />
           </div>
         </section>
-        <section className={clsx(paddingX, 'mt-[242px] mb-[280px]')}>
-          <h3 className="text-center heading-sm md:heading-md">Connect with us</h3>
+        <section className={clsx(paddingX, 'mt-[83px] mb-[145px]')}>
+          <h3 className="text-center heading-sm md:heading-md"><Trans>Connect with us</Trans></h3>
           <div className="mt-[48px] grid grid-flow-col gap-4 md:gap-[69px] justify-center">
             {Socials.map((s) => (
-              <a href={s.link} className="w-[32px] md:w-[40px]" key={s.link} target="_blank" rel="noreferrer">
+              <a
+                href={s.link}
+                className="w-[32px] md:w-[40px]"
+                key={s.link}
+                target="_blank"
+                rel="noreferrer">
                 {s.icon}
               </a>
             ))}

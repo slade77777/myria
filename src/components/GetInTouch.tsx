@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from './Input';
 import Textarea from './Textarea';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import apiClient from 'src/client';
+import CircleCheck from './icons/CircleCheck';
+import { t, Trans } from '@lingui/macro';
 
 interface IFormInputs {
   name: string;
@@ -14,26 +17,46 @@ interface IFormInputs {
 
 const schema = yup
   .object({
-    name: yup.string().trim().required('Name is required!'),
-    email: yup.string().email('Invalid email!').required('Email is required!'),
-    subject: yup.string().trim().required('Subject is required!'),
-    message: yup.string().trim().required('Message is required!')
+    name: yup.string().trim().required(t`Name is required!`),
+    email: yup.string().email(t`Invalid email!`).required(t`Email is required!`),
+    subject: yup.string().trim().required(t`Subject is required!`),
+    message: yup.string().trim().required(t`Message is required!`)
   })
   .required();
 
 const GetInTouch: React.FC = () => {
+  const [error, setError] = useState('');
+  const [success, setIsSubmitSuccess] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting }
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = (data: IFormInputs) => console.log(data);
+  const onSubmit = async (data: IFormInputs) => {
+    try {
+      setError('');
+      setIsSubmitSuccess(false);
+
+      await apiClient
+        .post('/contact-us', data)
+        .then(() => setIsSubmitSuccess(true))
+        .catch((error) => {
+          setError(error.message);
+          setIsSubmitSuccess(false);
+        });
+      reset();
+    } catch (error: any) {
+      setError(error?.message);
+      setIsSubmitSuccess(false);
+    }
+  };
 
   return (
-    <div className="rounded-[20px] bg-[url('/images/get-in-touch/panel.png')] bg-cover bg-center md:py-[64px] p-[32px] w-full">
+    <div className="rounded-[20px] bg-[url('/images/get-in-touch/panel.png')] bg-cover bg-center md:py-[64px] p-[32px] md:px-[100px] lg:px-[216px] w-full">
       <h2 className="text-center heading-sm md:heading-md">Get in touch</h2>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="grid md:grid-cols-2 gap-[32px] gap-x-[28px] mt-[48px]">
@@ -65,10 +88,19 @@ const GetInTouch: React.FC = () => {
             error={!!errors.message}
             errorText={errors.message?.message}
           />
+          {success && (
+            <p className="flex items-center text-xs leading-[15px] text-white">
+              <CircleCheck />
+              <span className="ml-1">
+                <Trans>Thank you for message. We will be in touch within 24-48 hours!</Trans>
+              </span>
+            </p>
+          )}
+          {error && <p className="text-xs leading-[15px] text-[#F37272]">{error}</p>}
         </div>
         <div className="flex justify-end mt-6">
           <button disabled={isSubmitting} className="btn-lg btn-primary">
-            Submit
+            {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         </div>
       </form>

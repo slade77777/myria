@@ -1,88 +1,93 @@
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
+import { socialLinks } from 'src/configs';
 
 import Logo from './icons/Logo';
 import Socials from './Social';
 
 const links = [
   {
-    title: 'Games',
+    title: <Trans>Games</Trans>,
     blocks: [
       [
         {
           label: 'Metarush',
-          link: '/game-detail'
+          link: '/game-detail/metarush'
         },
         {
           label: 'Metakart',
-          link: '/game-detail'
+          link: '/game-detail/metakart'
         },
         {
-          label: 'Blocks Royale',
-          link: '/game-detail'
+          label: 'Block Royale',
+          link: '/game-detail/block-royale'
         },
         {
           label: 'Starstrike Legends',
-          link: '/gamde-detail'
+          link: '/game-detail/starstrike'
         }
       ]
     ]
   },
   {
-    title: 'Ecosystem',
+    title: <Trans>Ecosystem</Trans>,
     blocks: [
       [
         {
-          label: 'Nodes',
+          label: <Trans>Nodes</Trans>,
           link: '/nodes'
         },
         {
-          label: 'Ecosystem',
+          label: <Trans>Ecosystem</Trans>,
           link: '/ecosystem'
         },
         {
-          label: 'Store',
-          link: '/store'
+          label: <Trans>Store</Trans>,
+          link: '/store',
+          inactive: true
         },
         {
-          label: 'For Studios',
+          label: <Trans>For Studios</Trans>,
           link: '/for-studios'
         },
         {
-          label: 'Morphing NFTs',
-          link: '/'
+          label: <Trans>Morphing NFTs</Trans>,
+          link: '/interoperability'
         }
       ]
     ]
   },
   {
-    title: 'About Us',
+    title: <Trans>About Us</Trans>,
     blocks: [
       [
         {
-          label: 'About',
+          label: <Trans>About</Trans>,
           link: '/about-us'
         },
         {
-          label: 'Whitepaper',
-          link: '/'
+          label: <Trans>Whitepaper (Coming soon)</Trans>,
+          link: '/',
+          disabled: true
         },
         {
-          label: 'Team',
-          link: '/'
+          label: <Trans>Team</Trans>,
+          link: '/about-us'
         }
       ],
       [
         {
-          label: 'Careers',
+          label: <Trans>Careers</Trans>,
           link: '/careers'
         },
         {
-          label: 'News',
-          link: '/'
+          label: <Trans>News</Trans>,
+          link: socialLinks.medium,
+          external: true
         },
         {
-          label: 'Contact Us',
+          label: <Trans>Contact Us</Trans>,
           link: '/contact'
         }
       ]
@@ -119,14 +124,31 @@ const Footer: React.FC = () => {
               })}>
               {item.blocks.map((block, idx) => (
                 <div key={idx} className={clsx('grid gap-y-4')}>
-                  {block.map((item, idx) => (
-                    <a
-                      href={item.link}
-                      key={idx}
-                      className="text-[16px] leading-[1.23] hover:text-[#F5B941]">
-                      {item.label}
-                    </a>
-                  ))}
+                  {block.map((item: any, idx) =>
+                    !item?.inactive ? (
+                      <a
+                        href={item.link}
+                        target={item?.external ? '_blank' : '_self'}
+                        key={idx}
+                        rel="noreferrer"
+                        className={clsx('text-[16px] leading-[1.23] hover:text-[#F5B941]', {
+                          'pointer-events-none': item.disabled
+                        })}>
+                        {item.label}
+                      </a>
+                    ) : (
+                      <div key={idx} className="flex items-center">
+                        <p className="hover:cursor-not-allowed mr-[7px]">{item.label}</p>
+                        <div
+                          style={{
+                            boxShadow: '0 0 0 0.5px #9AC9E3'
+                          }}
+                          className="font-extrabold text-[6px] rounded-sm px-[3px] py-[1px] h-3 bg-brand-light-blue/40 bg-opacity-4">
+                          Soon!
+                        </div>
+                      </div>
+                    )
+                  )}
                 </div>
               ))}
             </div>
@@ -135,7 +157,7 @@ const Footer: React.FC = () => {
       </div>
       <div className="text-[16px] leading-[1.5] mt-[14px] md:mt-0">
         <p>© Copyright 2022 Myria</p>
-        <p>Terms | Privacy</p>
+        <p><Trans>Terms | Privacy</Trans></p>
       </div>
     </footer>
   );

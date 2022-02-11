@@ -1,3 +1,4 @@
+import { t, Trans } from "@lingui/macro";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
@@ -17,9 +18,9 @@ const data = [
         <ChartIcon />
       </div>
     ),
-    title: "Blockchain platform for game studios",
+    title: <Trans>Blockchain platform for game studios</Trans>,
     description:
-      "We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming. ",
+      <Trans>We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming. </Trans>,
   },
   {
     icon: (
@@ -27,9 +28,9 @@ const data = [
         <UserIcon />
       </div>
     ),
-    title: "Myria ecosystem fund",
+    title: <Trans>Myria ecosystem fund</Trans>,
     description:
-      "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain.",
+      <Trans>Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain.</Trans>,
   },
   {
     icon: (
@@ -37,9 +38,9 @@ const data = [
         <StarIcon />
       </div>
     ),
-    title: "Education and support",
+    title: <Trans>Education and support</Trans>,
     description:
-      "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain. ",
+      <Trans>Access ongoing education and technical support to ensure a successful onboarding onto the blockchain. </Trans>,
   },
 ];
 
@@ -71,11 +72,11 @@ const Games: React.FC = () => {
           </div>
           <div className="w-full mx-auto max-w-content ">
             <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
-              Blockchain infrastructure for Game Studios
+              <Trans>Blockchain infrastructure for Game Studios</Trans>
             </h1>
             <p className="heading-sm max-w-[672px] mx-auto mt-[32px] text-center">
-              An end-to-end solution for token-based game economies and NFTs
-              that benefits the community
+              <Trans>An end-to-end solution for token-based game economies and NFTs
+              that benefits the community</Trans>
             </p>
           </div>
           <h2 className="heading-md mt-[252px] text-center">What we do</h2>

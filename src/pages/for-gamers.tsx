@@ -1,3 +1,4 @@
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
@@ -16,9 +17,12 @@ const principles = [
         <LoveIcon />
       </div>
     ),
-    title: 'Gameplay first',
-    description:
-      'Myria develops fun AAA games that are enhanced by the blockchain, not vice versa. '
+    title: <Trans>Gameplay first</Trans>,
+    description: (
+      <Trans>
+        Myria develops fun AAA games that are enhanced by the blockchain, not vice versa.{' '}
+      </Trans>
+    )
   },
   {
     icon: (
@@ -26,9 +30,12 @@ const principles = [
         <SafetyIcon />
       </div>
     ),
-    title: 'Empowering players',
-    description:
-      'We believe players should have true verifiable ownership and control over in-game assets. '
+    title: <Trans>Empowering players</Trans>,
+    description: (
+      <Trans>
+        We believe players should have true verifiable ownership and control over in-game assets.{' '}
+      </Trans>
+    )
   },
   {
     icon: (
@@ -36,9 +43,13 @@ const principles = [
         <UserIcon />
       </div>
     ),
-    title: 'Powered by the community',
-    description:
-      'Myria is supported by a network of community-powered nodes, who receive rewards for their contributions. '
+    title: <Trans>Powered by the community</Trans>,
+    description: (
+      <Trans>
+        Myria is supported by a network of community-powered nodes, who receive rewards for their
+        contributions.{' '}
+      </Trans>
+    )
   }
 ];
 
@@ -76,8 +87,8 @@ const ForGamers: React.FC = () => {
             style={{
               top: headerHeight
             }}
-            className="absolute left-0 h-[783px] w-full z-[-2]">
-            <div className="relative w-full h-full ">
+            className="absolute left-0 z-[-2] h-[783px] w-full">
+            <div className="relative h-full w-full ">
               <Image src="/images/header-bg.png" alt="" layout="fill" objectFit="cover" priority />
             </div>
           </div>
@@ -91,13 +102,19 @@ const ForGamers: React.FC = () => {
               height={1047}
             />
           </div>
-          <div className="w-full mx-auto max-w-content ">
-            <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[607px] mx-auto text-center">
-              Connecting the world through <span className=" text-brand-gold">play</span>
+          <div className="mx-auto w-full max-w-content ">
+            <h1 className="heading-lg mx-auto mt-[50px] max-w-[607px] text-center text-brand-white md:heading-massive md:mt-[120px]">
+              <Trans>
+                Connecting the world through <span className=" text-brand-gold">play</span>
+              </Trans>
             </h1>
-            <div className="md:w-1/2 ml-auto mt-[200px] md:mt-[424px] lg:pr-[100px] md:pb-[148px]">
-              <p className="caption text-brand-light-blue">SHIFTING POWER BACK TO THE PEOPLE</p>
-              <h3 className="mt-2 heading-sm md:heading-md">Our Principles</h3>
+            <div className="ml-auto mt-[200px] md:mt-[424px] md:w-1/2 md:pb-[148px] lg:pr-[100px]">
+              <p className="caption text-brand-light-blue">
+                <Trans>SHIFTING POWER BACK TO THE PEOPLE</Trans>
+              </p>
+              <h3 className="heading-sm mt-2 md:heading-md">
+                <Trans>Our Principles</Trans>
+              </h3>
               <div>
                 {principles.map((item, idx) => (
                   <div
@@ -106,7 +123,7 @@ const ForGamers: React.FC = () => {
                       boxShadow: '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
                     }}
                     className={clsx(
-                      'flex items-start p-6 mt-6 rounded-[20px] opacity-50 transition duration-300',
+                      'mt-6 flex items-start rounded-[20px] p-6 opacity-50 transition duration-300',
                       {
                         'bg-brand-deep-blue !opacity-100': idx == currentPrinciple
                       }
@@ -114,8 +131,8 @@ const ForGamers: React.FC = () => {
                     key={idx}>
                     <div className="w-[32px] flex-shrink-0">{item.icon}</div>
                     <div className="ml-4">
-                      <h4 className="font-bold text-[24px] leading-[1.25]">{item.title}</h4>
-                      <p className="mt-2 body text-light">{item.description}</p>
+                      <h4 className="text-[24px] font-bold leading-[1.25]">{item.title}</h4>
+                      <p className="body mt-2 text-light">{item.description}</p>
                     </div>
                   </div>
                 ))}
@@ -125,7 +142,9 @@ const ForGamers: React.FC = () => {
         </section>
         <section className={clsx(paddingX, 'mt-[53px]')}>
           <div className="mx-auto max-w-content">
-            <h3 className="text-center heading-sm md:heading-md">Our games</h3>
+            <h3 className="heading-sm text-center md:heading-md">
+              <Trans>Our games</Trans>
+            </h3>
             <div className="mt-[48px]">
               <OurGames />
             </div>
@@ -134,18 +153,24 @@ const ForGamers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            "w-full mt-[115px] mb-[180px] flex flex-col justify-center min-h-[792px]  bg-[url('/images/globe.png')] bg-no-repeat md:bg-right bg-center"
+            "mt-[115px] mb-[180px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe.png')] bg-center bg-no-repeat md:bg-right"
           )}>
           <div className="mx-auto max-w-content ">
             <div className="md:w-1/2">
-              <h3 className="heading-sm md:heading-md">Pupose-built infrastructure</h3>
-              <p className="mt-6 body">
-                The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for gaming.
-                Our team have developed proprietary technology to make the gaming and trading
-                experience seamless, including a decentralized exchange, marketplace, and
-                cryptocurrency wallet.
+              <h3 className="heading-sm md:heading-md">
+                <Trans>Pupose-built infrastructure</Trans>
+              </h3>
+              <p className="body mt-6">
+                <Trans>
+                  The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for
+                  gaming. Our team have developed proprietary technology to make the gaming and
+                  trading experience seamless, including a decentralized exchange, marketplace, and
+                  cryptocurrency wallet.
+                </Trans>
               </p>
-              <button className="mt-10 btn-lg btn-primary">GET A NODE</button>
+              <button className="btn-lg btn-primary mt-10">
+                <Trans>GET A NODE</Trans>
+              </button>
             </div>
           </div>
         </section>

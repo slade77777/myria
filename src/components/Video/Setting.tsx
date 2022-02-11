@@ -7,6 +7,7 @@ import {
   toggleAutoPlayInGameDetail,
   useAutoPlayInGameDetail,
 } from "../../valtio/autoPlayInGameDetail";
+import { Trans } from "@lingui/macro";
 
 const SettingContent: React.FC = () => {
   const autoPlay = useAutoPlayInGameDetail();
@@ -14,8 +15,8 @@ const SettingContent: React.FC = () => {
   return (
     <label className="flex items-center py-2 px-4 text-white bg-brand-dark-blue rounded-[5px]">
       <div>
-        <p className="text-[14px]">Autoplay</p>
-        <p className="text-[12px] text-light">Applies to all videos</p>
+        <p className="text-[14px]"><Trans>Autoplay</Trans></p>
+        <p className="text-[12px] text-light"><Trans>Applies to all videos</Trans></p>
       </div>
       <div className="ml-4">
         <Switch

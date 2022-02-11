@@ -42,3 +42,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+@media only screen and (max-width: 768px) {
+  [data-aos] {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

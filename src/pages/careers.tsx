@@ -4,6 +4,7 @@ import { headerHeight } from '../components/Header';
 import { paddingX } from '../utils';
 import CareersSection from '../components/Careers';
 import Page from '../components/Page';
+import { Trans } from '@lingui/macro';
 
 const Careers: React.FC = () => {
   return (
@@ -15,11 +16,11 @@ const Careers: React.FC = () => {
           }}
           className={clsx(paddingX, 'relative isolate md:min-h-screen mb-[152px]')}>
           <div className="mx-auto max-w-[900px] mt-[60px]">
-            <h3 className="text-center heading-sm md:heading-md ">Careers</h3>
+            <h3 className="text-center heading-sm md:heading-md "><Trans>Careers</Trans></h3>
             <p className="mt-[50px] body md:body-lg text-center">
-              Join our team of 60+ to forge to future of blockchain gaming
+              <Trans>Join our team of 60+ to forge to future of blockchain gaming</Trans>
             </p>
-            <div className="mt-[60px] max-w-content mx-auto">
+            <div className="mt-[60px] max-w-[923px] mx-auto">
               <CareersSection />
             </div>
           </div>

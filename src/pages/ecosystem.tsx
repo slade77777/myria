@@ -1,3 +1,4 @@
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
@@ -7,19 +8,19 @@ import { paddingX } from '../utils';
 
 const data = [
   {
-    title: 'Proof of reputational authority',
+    title: <Trans>Proof of reputational authority</Trans>,
     description:
-      'Our proprietary consensus algorithm achieves greater network security by factoring in the ‘reputational score’ of Myria nodes.'
+      <Trans>Our proprietary consensus algorithm achieves greater network security by factoring in the ‘reputational score’ of Myria nodes.</Trans>
   },
   {
-    title: 'Modularization of smart contracts',
+    title: <Trans>Modularization of smart contracts</Trans>,
     description:
-      'Our ERC1155 contracts are engineered for more efficient resource utilization with our smart logic design between the base layer and rules contracts. '
+      <Trans>Our ERC1155 contracts are engineered for more efficient resource utilization with our smart logic design between the base layer and rules contracts. </Trans>
   },
   {
-    title: 'NFT interoperability',
+    title: <Trans>NFT interoperability</Trans>,
     description:
-      'We have developed innovative NFT interoperability standards only available on the Myria chain.'
+      <Trans>We have developed innovative NFT interoperability standards only available on the Myria chain.</Trans>
   }
 ];
 const Ecosystem: React.FC = () => {
@@ -37,19 +38,19 @@ const Ecosystem: React.FC = () => {
                 src="/images/ecosystem/header-bg.png"
                 alt=""
                 layout="fill"
-                objectFit="contain"
-                objectPosition="top"
+                objectFit="cover"
+                objectPosition="center"
               />
             </div>
           </div>
           <div className={paddingX}>
             <div className="w-full mx-auto max-w-[607px] ">
               <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
-                Explore the <span className=" text-brand-light-blue">Myria</span> Ecosystem
+                <Trans>Explore the <span className=" text-brand-light-blue">Myria</span> Ecosystem</Trans>
               </h1>
               <h3 className="heading-sm-mobile md:heading-sm mt-[32px] text-center">
-                The Myria ecosystem is designed to empower gamers, communities, studios, and
-                creators.
+                <Trans>The Myria ecosystem is designed to empower gamers, communities, studios, and
+                creators.</Trans>
               </h3>
             </div>
           </div>
@@ -66,24 +67,24 @@ const Ecosystem: React.FC = () => {
           )}>
           <div className="mx-auto max-w-content ">
             <div className="lg:w-1/2">
-              <h3 className="heading-sm md:heading-md">Pupose-built infrastructure</h3>
+              <h3 className="heading-sm md:heading-md"><Trans>Purpose-built infrastructure</Trans></h3>
               <p className="mt-6 body-sm text-light">
-                The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for gaming.
+                <Trans>The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for gaming.
                 Our team have developed proprietary technology to make the gaming and trading
                 experience seamless, including a decentralized exchange, marketplace, and
-                cryptocurrency wallet.
+                cryptocurrency wallet.</Trans>
               </p>
-              <button className="hidden mt-10 md:inline-flex btn-lg btn-primary">
-                Button IF WE NEED IT
-              </button>
             </div>
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[96px] md:mt-0')}>
           <div className=" rounded-[12px] sm:rounded-none bg-brand-deep-blue p-[32px] sm:p-0 sm:bg-transparent min-h-[427px] sm:min-h-0 bg-cover bg-[url('/images/ecosystem/map-bg.png')] sm:bg-none">
-            <h2 className="text-left sm:text-center heading-md">Myria Blockchain Ecosystem Map</h2>
-            <a href="#" className="btn-lg btn-primary mt-[32px] sm:hidden">
-              view now
+            <h2 className="text-left sm:text-center heading-md"><Trans>Myria Blockchain Ecosystem Map</Trans></h2>
+            <a
+              href="/blockchain-map"
+              target="_blank"
+              className="btn-lg btn-primary mt-[32px] sm:hidden">
+              <Trans>view now</Trans>
             </a>
             <div className="mx-auto max-w-content mt-[105px] hidden sm:block">
               <Image
