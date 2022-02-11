@@ -8,7 +8,7 @@ import Socials from './Social';
 
 const links = [
   {
-    title: 'Games',
+    title: <Trans>Games</Trans>,
     blocks: [
       [
         {
@@ -31,63 +31,63 @@ const links = [
     ]
   },
   {
-    title: 'Ecosystem',
+    title: <Trans>Ecosystem</Trans>,
     blocks: [
       [
         {
-          label: t`Nodes`,
+          label: <Trans>Nodes</Trans>,
           link: '/nodes'
         },
         {
-          label: t`Ecosystem`,
+          label: <Trans>Ecosystem</Trans>,
           link: '/ecosystem'
         },
         {
-          label: t`Store`,
+          label: <Trans>Store</Trans>,
           link: '/store',
           inactive: true
         },
         {
-          label: t`For Studios`,
+          label: <Trans>For Studios</Trans>,
           link: '/for-studios'
         },
         {
-          label: t`Morphing NFTs`,
+          label: <Trans>Morphing NFTs</Trans>,
           link: '/interoperability'
         }
       ]
     ]
   },
   {
-    title: 'About Us',
+    title: <Trans>About Us</Trans>,
     blocks: [
       [
         {
-          label: t`About`,
+          label: <Trans>About</Trans>,
           link: '/about-us'
         },
         {
-          label: t`Whitepaper (Coming soon)`,
+          label: <Trans>Whitepaper (Coming soon)</Trans>,
           link: '/',
           disabled: true
         },
         {
-          label: t`Team`,
+          label: <Trans>Team</Trans>,
           link: '/about-us'
         }
       ],
       [
         {
-          label: t`Careers`,
+          label: <Trans>Careers</Trans>,
           link: '/careers'
         },
         {
-          label: t`News`,
+          label: <Trans>News</Trans>,
           link: socialLinks.medium,
           external: true
         },
         {
-          label: t`Contact Us`,
+          label: <Trans>Contact Us</Trans>,
           link: '/contact'
         }
       ]

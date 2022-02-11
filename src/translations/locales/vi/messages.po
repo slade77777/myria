@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-11 15:53+0700\n"
+"POT-Creation-Date: 2022-02-11 16:09+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,6 +51,10 @@ msgstr "ÁP DỤNG NGAY BÂY GIỜ"
 #: src/components/Header/Header.tsx:22
 msgid "About"
 msgstr "Về"
+
+#: src/components/Footer.tsx:62
+msgid "About Us"
+msgstr ""
 
 #: src/pages/for-studios.tsx:43
 msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
@@ -184,6 +188,7 @@ msgstr "Khám phá các trò chơi hay nhất được xây dựng trên blockch
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Mỗi nút được phép bỏ phiếu về các thay đổi được đề xuất đối với chuỗi Myria và các nút cũng sẽ có quyền biểu quyết lớn hơn trong toàn bộ Myriaverse"
 
+#: src/components/Footer.tsx:34
 #: src/components/Footer.tsx:42
 #: src/components/Header/Header.tsx:43
 msgid "Ecosystem"
@@ -253,6 +258,7 @@ msgstr "Nhà sản xuất trò chơi"
 msgid "Gameplay first"
 msgstr "Trò chơi đầu tiên"
 
+#: src/components/Footer.tsx:11
 #: src/components/Header/Header.tsx:47
 msgid "Games"
 msgstr "Trò chơi"
@@ -452,9 +458,6 @@ msgid "Myria node operators will receive daily $MYRIA token rewards for the node
 msgstr "Các nhà khai thác nút Myria sẽ nhận được phần thưởng mã thông báo $ MYRIA hàng ngày cho các nút hoạt động."
 
 #: src/pages/_app.tsx:18
-msgid "Myria | %s"
-msgstr "Myria | %S"
-
 #: src/pages/_app.tsx:29
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | Kết nối thế giới thông qua trò chơi"

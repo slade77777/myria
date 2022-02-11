@@ -68,7 +68,7 @@ const Subscribe: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_auto]">
             <Input
-              placeholder="Enter your email address"
+              placeholder={t`Enter your email address`}
               {...register('email')}
               error={!!errors.email || !!error}
               errorText={errors.email?.message || error}

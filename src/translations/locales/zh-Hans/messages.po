@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-11 15:53+0700\n"
+"POT-Creation-Date: 2022-02-11 16:09+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,6 +50,10 @@ msgstr ""
 #: src/components/Footer.tsx:66
 #: src/components/Header/Header.tsx:22
 msgid "About"
+msgstr ""
+
+#: src/components/Footer.tsx:62
+msgid "About Us"
 msgstr ""
 
 #: src/pages/for-studios.tsx:43
@@ -184,6 +188,7 @@ msgstr ""
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr ""
 
+#: src/components/Footer.tsx:34
 #: src/components/Footer.tsx:42
 #: src/components/Header/Header.tsx:43
 msgid "Ecosystem"
@@ -253,6 +258,7 @@ msgstr ""
 msgid "Gameplay first"
 msgstr ""
 
+#: src/components/Footer.tsx:11
 #: src/components/Header/Header.tsx:47
 msgid "Games"
 msgstr ""
@@ -452,9 +458,6 @@ msgid "Myria node operators will receive daily $MYRIA token rewards for the node
 msgstr ""
 
 #: src/pages/_app.tsx:18
-msgid "Myria | %s"
-msgstr ""
-
 #: src/pages/_app.tsx:29
 msgid "Myria | Connecting the world through play"
 msgstr ""

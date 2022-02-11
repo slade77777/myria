@@ -11,11 +11,11 @@ import { t } from '@lingui/macro';
 function App({ Component, pageProps }: AppProps) {
   useGA();
   return (
-    <>
+    <LanguageProvider>
       <DefaultSeo
         title={t`Connecting the world through play`}
         description={t`Myria is a blockchain gaming ecosystem powered by the Myria blockchain.`}
-        titleTemplate={t`Myria | %s`}
+        titleTemplate={t`Myria | Connecting the world through play`}
         openGraph={{
           type: 'website',
           locale: 'en',
@@ -38,10 +38,8 @@ function App({ Component, pageProps }: AppProps) {
         }}
       />
 
-      <LanguageProvider>
-        <Component {...pageProps} />
-      </LanguageProvider>
-    </>
+      <Component {...pageProps} />
+    </LanguageProvider>
   );
 }
 
