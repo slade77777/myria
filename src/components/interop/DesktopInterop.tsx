@@ -11,6 +11,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Page from 'src/components/Page';
 import { headerHeight } from 'src/components/Header';
 import { paddingX } from 'src/utils';
+import { Trans } from '@lingui/macro';
 
 const video = {
   src: '/videos/interoperability/video.mp4',
@@ -179,7 +180,7 @@ const DesktopInterop: React.FC = () => {
           </div>
           <div className="mx-auto w-full max-w-content ">
             <h1 className="heading-lg mx-auto mt-[50px] max-w-[607px] text-center text-brand-white md:heading-massive md:mt-[180px]">
-              The world’s first Morphing NFTs™
+              <Trans>The world’s first Morphing NFTs™</Trans>
             </h1>
           </div>
           <div className="mx-auto mt-[111px] max-w-[630px]">
@@ -219,7 +220,7 @@ const DesktopInterop: React.FC = () => {
                       <PlayCircleIcon />
                     </span>
                     <p className="mt-[28px] text-[20px] font-extrabold uppercase group-hover:text-brand-light-blue">
-                      Trailer Coming Soon
+                      <Trans>Trailer Coming Soon</Trans>
                     </p>
                   </a>
                 </div>
@@ -267,15 +268,15 @@ const DesktopInterop: React.FC = () => {
                   <div className="gsap-text-how-work-1 mx-auto mt-[500px] grid max-w-content items-center gap-[26px] md:gap-[99px]">
                     <div className="text-center md:order-[-1] md:text-left">
                       <p className="text-[14px] font-extrabold leading-[1.25] text-brand-light-blue md:text-[26px] md:font-bold">
-                        How it works
+                        <Trans>How it works</Trans>
                       </p>
                       <h2 className="heading-md mt-2 md:mt-[17px] md:text-[50px]">
-                        The new standard for interoperable NFTs
+                        <Trans>The new standard for interoperable NFTs</Trans>
                       </h2>
                       <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
-                        At Myria, we believe NFTs should not only endow players with verifiable
+                        <Trans>At Myria, we believe NFTs should not only endow players with verifiable
                         ownership, but also allow players to take their NFTs from one game to
-                        another.
+                        another.</Trans>
                       </p>
                     </div>
                   </div>
@@ -283,15 +284,15 @@ const DesktopInterop: React.FC = () => {
                   <div className="gsap-text-how-work-2 mx-auto mt-[300px] grid max-w-content items-center gap-[26px] md:gap-[99px]">
                     <div className="text-center md:order-[-1] md:text-left">
                       <p className="text-[14px] font-extrabold leading-[1.25] text-brand-light-blue md:text-[26px] md:font-bold">
-                        How it works
+                      <Trans>How it works</Trans>
                       </p>
                       <h2 className="heading-md mt-2 md:mt-[17px] md:text-[50px]">
-                        Own your metaverse identity. Anywhere. Any game.
+                        <Trans>Own your metaverse identity. Anywhere. Any game.</Trans>
                       </h2>
                       <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
-                        Your NFT is your digital identity. Take your NFT with you on your metaverse
+                        <Trans>Your NFT is your digital identity. Take your NFT with you on your metaverse
                         explorations. Equip and level up in different games and worlds. Truly own
-                        your metaverse identity with Myria.
+                        your metaverse identity with Myria.</Trans>
                       </p>
                     </div>
                   </div>
@@ -299,14 +300,14 @@ const DesktopInterop: React.FC = () => {
                   <div className="gsap-text-how-work-3 mx-auto mt-[300px] grid max-w-content items-center gap-[26px] md:gap-[99px]">
                     <div className="text-center md:order-[-1] md:text-left">
                       <p className="text-[14px] font-extrabold leading-[1.25] text-brand-light-blue md:text-[26px] md:font-bold">
-                        How it works
+                        <Trans>How it works</Trans>
                       </p>
                       <h2 className="heading-md mt-2 md:mt-[17px] md:text-[50px]">
-                        Morphing NFTs™ that adapt to your avatars
+                        <Trans>Morphing NFTs™ that adapt to your avatars</Trans>
                       </h2>
                       <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
-                        No matter the shape and size of your avatar, use the same NFT on them all.
-                        Buy once, use on any character. Designed to be interoperable.
+                        <Trans>No matter the shape and size of your avatar, use the same NFT on them all.
+                        Buy once, use on any character. Designed to be interoperable.</Trans>
                       </p>
                     </div>
                   </div>
@@ -329,10 +330,10 @@ const DesktopInterop: React.FC = () => {
             </div>
             <div className="elMorphing-text mt-[27px] mb-[40px] max-w-[607px] text-center">
               <h1 className="heading-lg text-brand-light-blue lg:heading-massive">
-                Morphing NFTs™
+                <Trans>Morphing NFTs™</Trans>
               </h1>
               <p className="heading-massive font-bold lg:text-[70px]">
-                Own your metaverse identity
+                <Trans>Own your metaverse identity</Trans>
               </p>
             </div>
             <div className="elMorphing-img w-[334px] -translate-x-[115%]">

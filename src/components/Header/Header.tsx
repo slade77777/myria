@@ -1,11 +1,12 @@
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { socialLinks } from 'src/configs';
 import DesktopHeader from './DesktopHeader';
 import MobileHeader from './MobileHeader';
 
 type NavItem = {
-  text: string;
+  text: ReactNode;
   url?: string;
   target?: '_blank';
   children?: NavItem[];
@@ -14,49 +15,49 @@ type NavItem = {
 
 export const links: NavItem[] = [
   {
-    text: 'Home',
+    text: <Trans>Home</Trans>,
     url: '/'
   },
   {
-    text: 'About',
+    text: <Trans>About</Trans>,
     children: [
       {
-        text: 'Our vision',
+        text: <Trans>Our vision</Trans>,
         url: '/about-us'
       },
       {
-        text: 'Our team',
+        text: <Trans>Our team</Trans>,
         url: '/about-us'
       },
       {
-        text: 'Morphing NFTs',
+        text: <Trans>Morphing NFTs</Trans>,
         url: '/interoperability'
       },
       {
-        text: 'Careers',
+        text: <Trans>Careers</Trans>,
         url: '/careers'
       }
     ]
   },
   {
-    text: 'Ecosystem',
+    text: <Trans>Ecosystem</Trans>,
     url: '/ecosystem'
   },
   {
-    text: 'Games',
+    text: <Trans>Games</Trans>,
     url: '/games'
   },
   {
-    text: 'Nodes',
+    text: <Trans>Nodes</Trans>,
     url: '/nodes'
   },
   {
-    text: 'Store',
+    text: <Trans>Store</Trans>,
     url: '/store',
     inactive: true
   },
   {
-    text: 'Community',
+    text: <Trans>Community</Trans>,
     children: [
       {
         text: 'Discord',

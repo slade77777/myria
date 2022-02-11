@@ -1,3 +1,4 @@
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import { socialLinks } from 'src/configs';
@@ -7,7 +8,7 @@ import Socials from './Social';
 
 const links = [
   {
-    title: 'Games',
+    title: <Trans>Games</Trans>,
     blocks: [
       [
         {
@@ -30,63 +31,63 @@ const links = [
     ]
   },
   {
-    title: 'Ecosystem',
+    title: <Trans>Ecosystem</Trans>,
     blocks: [
       [
         {
-          label: 'Nodes',
+          label: <Trans>Nodes</Trans>,
           link: '/nodes'
         },
         {
-          label: 'Ecosystem',
+          label: <Trans>Ecosystem</Trans>,
           link: '/ecosystem'
         },
         {
-          label: 'Store',
+          label: <Trans>Store</Trans>,
           link: '/store',
           inactive: true
         },
         {
-          label: 'For Studios',
+          label: <Trans>For Studios</Trans>,
           link: '/for-studios'
         },
         {
-          label: 'Morphing NFTs',
+          label: <Trans>Morphing NFTs</Trans>,
           link: '/interoperability'
         }
       ]
     ]
   },
   {
-    title: 'About Us',
+    title: <Trans>About Us</Trans>,
     blocks: [
       [
         {
-          label: 'About',
+          label: <Trans>About</Trans>,
           link: '/about-us'
         },
         {
-          label: 'Whitepaper (Coming soon)',
+          label: <Trans>Whitepaper (Coming soon)</Trans>,
           link: '/',
           disabled: true
         },
         {
-          label: 'Team',
+          label: <Trans>Team</Trans>,
           link: '/about-us'
         }
       ],
       [
         {
-          label: 'Careers',
+          label: <Trans>Careers</Trans>,
           link: '/careers'
         },
         {
-          label: 'News',
+          label: <Trans>News</Trans>,
           link: socialLinks.medium,
           external: true
         },
         {
-          label: 'Contact Us',
+          label: <Trans>Contact Us</Trans>,
           link: '/contact'
         }
       ]
@@ -156,7 +157,7 @@ const Footer: React.FC = () => {
       </div>
       <div className="text-[16px] leading-[1.5] mt-[14px] md:mt-0">
         <p>© Copyright 2022 Myria</p>
-        <p>Terms | Privacy</p>
+        <p><Trans>Terms | Privacy</Trans></p>
       </div>
     </footer>
   );

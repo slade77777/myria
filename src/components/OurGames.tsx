@@ -1,3 +1,4 @@
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -29,7 +30,7 @@ const data = [
       </div>
     ),
     background: '/images/our-games/metarush-bg.png',
-    title: 'A multiplayer obstacle course game',
+    title: <Trans>A multiplayer obstacle course game</Trans>,
     link: '/game-detail/metarush',
     layout: 'row'
   },
@@ -46,7 +47,7 @@ const data = [
       </div>
     ),
     background: '/images/our-games/block-royale-bg_updated.png',
-    title: 'A battle-royale shooter game',
+    title: <Trans>A battle-royale shooter game</Trans>,
     link: '/game-detail/block-royale',
     layout: 'row'
   },
@@ -63,7 +64,7 @@ const data = [
       </div>
     ),
     background: '/images/our-games/metakart-bg.png',
-    title: 'A multiplayer go-kart racing game',
+    title: <Trans>A multiplayer go-kart racing game</Trans>,
     link: '/game-detail/metakart',
     layout: 'row'
   },
@@ -80,7 +81,7 @@ const data = [
       </div>
     ),
     background: '/images/our-games/starstrike-bg.png',
-    title: 'An objective-based shooter game',
+    title: <Trans>An objective-based shooter game</Trans>,
     link: '/game-detail/starstrike',
     layout: 'row'
   }
@@ -88,15 +89,16 @@ const data = [
 
 const OurGames: React.FC<{ btnLabel?: string }> = ({ btnLabel = 'Learn more' }) => {
   return (
-    <div className="grid md:grid-cols-2 gap-[24px] md:gap-[32px] text-brand-white gsap-our-games-container">
+    <div className="grid md:grid-cols-2 gap-[24px] md:gap-[32px] text-brand-white">
       {data.map((item, idx) => {
         return (
           <Link href={item.link} key={idx}>
             <a
+              data-aos="fade-up"
               style={{
                 backgroundImage: `url("${item.background}")`
               }}
-              className="gsap-our-games hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[211px] md:h-[342px] flex justify-between items-end bg-cover bg-center rounded-lg">
+              className="transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[211px] md:h-[342px] flex justify-between items-end bg-cover bg-center rounded-lg">
               <div
                 className={clsx(
                   'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',

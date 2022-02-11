@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import apiClient from 'src/client';
 import CircleCheck from './icons/CircleCheck';
+import { t, Trans } from '@lingui/macro';
 
 interface IFormInputs {
   name: string;
@@ -16,10 +17,10 @@ interface IFormInputs {
 
 const schema = yup
   .object({
-    name: yup.string().trim().required('Name is required!'),
-    email: yup.string().email('Invalid email!').required('Email is required!'),
-    subject: yup.string().trim().required('Subject is required!'),
-    message: yup.string().trim().required('Message is required!')
+    name: yup.string().trim().required(t`Name is required!`),
+    email: yup.string().email(t`Invalid email!`).required(t`Email is required!`),
+    subject: yup.string().trim().required(t`Subject is required!`),
+    message: yup.string().trim().required(t`Message is required!`)
   })
   .required();
 
@@ -91,7 +92,7 @@ const GetInTouch: React.FC = () => {
             <p className="flex items-center text-xs leading-[15px] text-white">
               <CircleCheck />
               <span className="ml-1">
-                Thank you for message. We will be in touch within 24-48 hours!
+                <Trans>Thank you for message. We will be in touch within 24-48 hours!</Trans>
               </span>
             </p>
           )}

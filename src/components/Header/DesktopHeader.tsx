@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from '../../configs';
@@ -92,7 +93,7 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
             href={socialLinks.discord}
             target="_blank"
             rel="noreferrer">
-            JOIN DISCORD
+            <Trans>JOIN DISCORD</Trans>
           </a>
           {/* )} */}
         </div>
