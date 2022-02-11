@@ -4,7 +4,7 @@ import { en, vi, zh } from 'make-plural/plurals';
 export type Language = 'en' | 'vi' | 'zh';
 
 export const LANGUAGES: Language[] = ['en', 'vi', 'zh'];
-export const DEFAULT_LANGUAGE: Language = 'vi';
+export const DEFAULT_LANGUAGE: Language = 'en';
 export const LANG_KEY = 'lang';
 
 export const validateLanguage = (language: Language): boolean => {
