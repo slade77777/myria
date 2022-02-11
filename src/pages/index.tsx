@@ -98,28 +98,6 @@ const Index = () => {
     });
   }, []);
 
-  useLayoutEffect(() => {
-    ScrollTrigger.matchMedia({
-      '(min-width: 768px)': function () {
-        const tl_our_games = gsap.timeline({
-          scrollTrigger: {
-            trigger: '.gsap-our-games-container',
-            start: 'top 80%',
-            end: 'bottom top'
-          }
-        });
-
-        tl_our_games.from('.gsap-our-games', {
-          xPercent: '100',
-          opacity: 0,
-          stagger: 0.3,
-          ease: 'back',
-          duration: 2
-        });
-      }
-    });
-  }, []);
-
   const handleMouseMove = (e: any) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
@@ -267,7 +245,7 @@ const Index = () => {
               </a> */}
             </div>
           </motion.div>
-          <section id="our-games" className={clsx('overflow-hidden pt-[14px]', paddingX)}>
+          <section id="our-games" className={clsx('pt-[14px]', paddingX)}>
             <h2 data-aos="fade-up" className="heading-md text-center md:heading-lg">
               <Trans>Our games</Trans>
             </h2>
