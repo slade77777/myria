@@ -58,7 +58,7 @@ const data: Person[] = [
     name: 'Ivan Fortunov',
     position: <Trans>Head of Game Design</Trans>,
     description:
-      <Trans>Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads.</Trans>,
+      <Trans>Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing half a billion downloads.</Trans>,
     socials: {
       twitter: 'https://twitter.com/IvanFortunov',
       linkedin: 'https://www.linkedin.com/in/fortunov/'

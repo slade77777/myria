@@ -61,43 +61,6 @@ const Index = () => {
     });
   }, []);
 
-  useLayoutEffect(() => {
-    ScrollTrigger.matchMedia({
-      '(min-width: 768px)': function () {
-        gsap.set('.gsap-bg-parallax', {
-          transform: 'matrix(1.2, 0, 0, 1.2, 0, 472)'
-        });
-
-        gsap.to('.gsap-bg-parallax', {
-          transform: 'matrix(1, 0, 0, 1, 0, 0)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.gsap-bg-parallax-container',
-            scrub: true,
-            end: 'bottom top+=100'
-          }
-        });
-
-        gsap.set('.gsap-text-fade-in', {
-          opacity: 0,
-          transform: 'scale(0.7)'
-        });
-
-        gsap.to('.gsap-text-fade-in', {
-          opacity: 1,
-          transform: 'scale(1)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.gsap-bg-parallax-container',
-            scrub: true,
-            start: 'bottom bottom',
-            end: 'bottom+=100 top+=200'
-          }
-        });
-      }
-    });
-  }, []);
-
   const handleMouseMove = (e: any) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
@@ -389,44 +352,41 @@ const Index = () => {
               </div>
             </div>
           </section>
-          <div className="relative md:mt-[-100vh] md:h-[200vh]">
-            <section
-              className={clsx(
-                'gsap-bg-parallax-container sticky top-0 isolate flex h-screen items-end justify-center overflow-hidden py-4 md:items-center',
-                paddingX
-              )}>
-              <div
-                className="gsap-bg-parallax absolute top-0 right-0 z-[-1] hidden h-full w-full bg-cover bg-center bg-no-repeat md:block md:w-[90%]"
-                style={{ backgroundImage: 'url(/images/home/myriaverse.png)' }}
+          <section
+            className={clsx(
+              'relative isolate mt-[100px] flex min-h-[760px] items-end justify-center py-4 md:min-h-[849px] md:items-center',
+              paddingX
+            )}>
+            <div className="absolute top-0 right-0 z-[-1] hidden h-full w-full md:block md:w-[90%]">
+              <Image src="/images/home/myriaverse.png" alt="" layout="fill" objectFit="cover" />
+            </div>
+            <div className="absolute top-0 right-0 z-[-1] h-full w-full md:hidden md:w-[90%]">
+              <Image
+                src="/images/home/myriaverse-mobile.png"
+                alt=""
+                layout="fill"
+                objectFit="cover"
               />
-              <div className="absolute top-0 right-0 z-[-1] h-full w-full md:hidden md:w-[90%]">
-                <Image
-                  src="/images/home/myriaverse-mobile.png"
-                  alt=""
-                  layout="fill"
-                  objectFit="cover"
-                />
+            </div>
+            <div className="mx-auto grid w-full max-w-content grid-cols-1 items-center gap-y-[53px] gap-x-[83px] md:grid-cols-2">
+              <div className="text-center md:text-left">
+                <h2 data-aos="fade-up" className="heading-md text-[#FFFDFD] md:heading-lg">
+                  <Trans>Unified through the Myriaverse</Trans>
+                </h2>
+                <p data-aos="fade-up" className="body mt-[51px] text-light">
+                  <Trans>
+                    Myriaverse is the wider social metaverse connecting players, communities and
+                    guilds. Players will be able to quest, explore, craft, invest and so much more.
+                    The ever expanding Myriaverse is a virtual society and economy that offers
+                    bountiful earning opportunities for the brave adventurer.
+                  </Trans>
+                </p>
+                <button data-aos="fade-up" className="btn-lg btn-primary mt-[51px]">
+                  <Trans>More details coming soon</Trans>
+                </button>
               </div>
-              <div className="gsap-text-fade-in mx-auto grid w-full max-w-content grid-cols-1 items-center gap-y-[53px] gap-x-[83px] md:grid-cols-2">
-                <div className="text-center md:text-left">
-                  <h2 className="heading-md text-[#FFFDFD] md:heading-lg">
-                    <Trans>Unified through the Myriaverse</Trans>
-                  </h2>
-                  <p className="body mt-[51px] text-light">
-                    <Trans>
-                      Myriaverse is the wider social metaverse connecting players, communities and
-                      guilds. Players will be able to quest, explore, craft, invest and so much
-                      more. The ever expanding Myriaverse is a virtual society and economy that
-                      offers bountiful earning opportunities for the brave adventurer.
-                    </Trans>
-                  </p>
-                  <button className="btn-lg btn-primary mt-[51px]">
-                    <Trans>More details coming soon</Trans>
-                  </button>
-                </div>
-              </div>
-            </section>
-          </div>
+            </div>
+          </section>
           <section
             className={clsx(
               'relative isolate mt-[130px] grid grid-cols-1 grid-rows-1 items-center justify-center py-10 md:mt-0 md:min-h-[790px]'
