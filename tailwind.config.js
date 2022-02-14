@@ -84,6 +84,32 @@ module.exports = {
             animation: theme('animation.slide-up')
           }
         },
+        '.dialog-overlay': {
+          backgroundColor: "rgba(0, 0, 0, .65)",
+          position: "fixed",
+          zIndex: 10,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        },
+
+        '.dialog-content': {
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          minWidth: '200',
+          maxHeight: "85vh",
+          overflow: 'hidden',
+          width: '100%',
+          marginTop: "-5vh",
+          backgroundColor: theme('colors.brand-deep-blue'),
+          borderRadius: 12,
+          "&:focus": {
+            outline: "none"
+          }
+        },
         '.heading-massive': {
           fontSize: 60,
           lineHeight: 1.15,

@@ -16,8 +16,8 @@ const NumberInput: React.FC = () => {
       </button>
       <input
         type="number"
-        className="body-lg flex w-full items-center bg-transparent text-center font-semibold text-white outline-none"
-        value="0"></input>
+        defaultValue={0}
+        className="body-lg flex w-full items-center bg-transparent text-center font-semibold text-white outline-none"></input>
       <button
         data-action="increment"
         className="h-full w-20 cursor-pointer rounded-r bg-brand-dark-blue text-white hover:bg-gray-400 hover:text-gray-700">

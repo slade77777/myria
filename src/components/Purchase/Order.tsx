@@ -35,7 +35,7 @@ const licenses = [
   }
 ];
 
-const Order: React.FC = () => {
+const Order: React.FC<{ onPlaceOder: () => void }> = ({ onPlaceOder }) => {
   return (
     <div className="rounded-lg bg-brand-deep-blue p-8">
       <p className="body-sm text-light">Price</p>
@@ -67,7 +67,9 @@ const Order: React.FC = () => {
       </div>
 
       <div className="mt-12">
-        <button className="btn-lg w-full bg-brand-gold px-4 uppercase text-black">
+        <button
+          className="btn-lg w-full bg-brand-gold px-4 uppercase text-black"
+          onClick={onPlaceOder}>
           Place Order
         </button>
       </div>
