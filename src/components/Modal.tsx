@@ -23,7 +23,7 @@ export const DialogContent = React.forwardRef(
     return (
       <DialogPrimitive.Content
         {...props}
-        className={clsx('dialog-content', className)}
+        className={clsx('dialog-content overflow-auto', className)}
         ref={forwardedRef}>
         <div className="mx-8 mt-8">
           <div className="flex items-center justify-between">

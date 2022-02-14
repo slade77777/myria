@@ -4,7 +4,7 @@ import { Dialog, DialogContent } from 'src/components/Modal';
 const ModalPurchase = ({ open, onClose }: { open: Boolean; onClose: () => void }) => {
   return (
     <Dialog open={open} title="Complete your purchase" onClose={onClose}>
-      <DialogContent className="z-20 w-[832px] shadow-[0_0_40px_10px_#0000004D]">
+      <DialogContent className="z-20 w-80 shadow-[0_0_40px_10px_#0000004D] md:w-[832px]">
         <div className=" p-8">
           <div className="mt-10 mb-4 flex justify-between">
             <div>
@@ -34,7 +34,7 @@ const ModalPurchase = ({ open, onClose }: { open: Boolean; onClose: () => void }
         </div>
 
         <section className="bg-[#050E15] p-8">
-          <div className="flex justify-between ">
+          <div className="flex justify-between">
             <p className="heading-list">Total</p>
             <div>
               <div className="flex items-center justify-end">
