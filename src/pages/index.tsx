@@ -10,7 +10,7 @@ import Page from '../components/Page';
 import Link from 'next/link';
 import { socialLinks } from 'src/configs';
 import AOS from 'aos';
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { useAnimation, motion } from 'framer-motion';
 import Subscribe from 'src/components/Subscribe';
 import 'aos/dist/aos.css';
@@ -18,6 +18,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { CustomEase } from 'gsap/dist/CustomEase';
 import { t, Trans } from '@lingui/macro';
+import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 
 const Index = () => {
   const img1Animation = useAnimation();
@@ -28,7 +29,7 @@ const Index = () => {
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(CustomEase);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     ScrollTrigger.matchMedia({
       '(min-width: 768px)': function () {
         const targets = [
