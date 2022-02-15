@@ -25,7 +25,7 @@ const ProfileComponent: React.FC<{}> = ({}) => {
           <div>{truncateString(address || '')}</div>
         </div>
       </PopoverPrimitive.Trigger>
-      <PopoverPrimitive.Content asChild side="top" sideOffset={5}>
+      <PopoverPrimitive.Content asChild side="bottom" sideOffset={5}>
         <div className="rounded-3xl bg-white px-6 py-3">
           <button onClick={disconnect}>Disconnect</button>
         </div>
