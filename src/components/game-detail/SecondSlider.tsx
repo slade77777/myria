@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Slider, { Settings, CustomArrowProps } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -17,7 +17,7 @@ const Arrow: React.FC<CustomArrowProps & { position: 'left' | 'right' }> = ({
   return (
     <button
       className={clsx(
-        'btn-dark-blue flex items-center justify-center absolute z-10 cursor-pointer top-1/2 -translate-y-1/2 w-[32px] h-[32px] rounded-[8px]',
+        'btn-dark-blue absolute top-1/2 z-10 flex h-[32px] w-[32px] -translate-y-1/2 cursor-pointer items-center justify-center rounded-[8px]',
         {
           'right-0': position === 'right',
           'left-0': position === 'left'
@@ -85,28 +85,28 @@ const SecondSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets }
             '--paddingX': `${PADDING_X}px`
           } as React.CSSProperties
         }
-        className="max-w-full mx-auto">
-        <Slider ref={sliderRef} {...settings} className="relative group px-[var(--paddingX)]">
+        className="mx-auto max-w-full">
+        <Slider ref={sliderRef} {...settings} className="group relative px-[var(--paddingX)]">
           {assets.map((a, idx) => (
             <div
               style={{
                 width: 126
               }}
-              className="px-2 !inline-flex justify-center items-center"
+              className="!inline-flex items-center justify-center px-2"
               key={idx}>
               <button
                 onClick={() => setCurrentSlide(idx)}
                 className={clsx(
-                  'w-full h-[73px] relative rounded-[5px] border border-transparent overflow-hidden',
+                  'relative h-[73px] w-full overflow-hidden rounded-[5px] border border-transparent',
                   {
                     '!border-white': currentSlide == idx
                   }
                 )}>
                 {currentSlide !== idx && (
-                  <div className="absolute z-[3] inset-0 bg-black opacity-40 hover:opacity-0" />
+                  <div className="absolute inset-0 z-[3] bg-black opacity-40 hover:opacity-0" />
                 )}
                 {a.type == 'video' && (
-                  <span className="absolute z-[2] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[13px]">
+                  <span className="absolute top-1/2 left-1/2 z-[2] w-[13px] -translate-x-1/2 -translate-y-1/2">
                     <PlayIcon />
                   </span>
                 )}
