@@ -23,7 +23,7 @@
     "aos": "2.3.4",
     "axios": "^0.25.0",
     "clsx": "1.1.1",
-    "ethers": "5.5.3",
+    "ethers": "^5.5.3",
     "framer-motion": "^6.2.3",
     "gsap": "3.9.1",
     "make-plural": "7.1.0",

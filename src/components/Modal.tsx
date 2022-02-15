@@ -16,7 +16,7 @@ export function Dialog({ title, children, className, onClose, ...props }: any) {
 export const DialogContent = React.forwardRef(
   ({ title, children, className, onClose, ...props }: any, forwardedRef) => {
     const close = (
-      <div className="h-[24px] w-[24px] hover:cursor-pointer">
+      <div className="h-[24px] w-[24px] text-white hover:cursor-pointer">
         <CloseIcon />
       </div>
     );
@@ -27,7 +27,7 @@ export const DialogContent = React.forwardRef(
         ref={forwardedRef}>
         <div className="mx-8 mt-8">
           <div className="flex items-center justify-between">
-            <p className="heading-md">Complete your purchase</p>
+            <p className="heading-md text-white">{title}</p>
             {!onClose ? (
               <DialogPrimitive.Close>{close}</DialogPrimitive.Close>
             ) : (

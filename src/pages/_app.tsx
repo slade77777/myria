@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app';
 import { useGA } from 'src/lib/ga';
 import LanguageProvider from 'src/context/LanguageContext';
 import { t } from '@lingui/macro';
+import { WalletProvider } from 'src/providers/useWallet';
 
 function App({ Component, pageProps }: AppProps) {
   useGA();
@@ -38,7 +39,9 @@ function App({ Component, pageProps }: AppProps) {
         }}
       />
 
-      <Component {...pageProps} />
+      <WalletProvider>
+        <Component {...pageProps} />
+      </WalletProvider>
     </LanguageProvider>
   );
 }

@@ -33,7 +33,7 @@ const Nodes: React.FC = () => {
               <License />
             </div>
             <div className="sticky top-5 h-full md:w-[calc((100%-32px)*0.325)]">
-              <Order onPlaceOder={onPlaceOrder} />
+              <Order onPlaceOrder={onPlaceOrder} />
             </div>
           </div>
         </div>

@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import ETH from '../icons/ETHIcon';
 import NumberInput from './NumberInput';
 import styles from './styles.module.css';
+import { useWalletContext } from 'src/providers/useWallet';
 
 const licenses = [
   {
@@ -35,7 +36,17 @@ const licenses = [
   }
 ];
 
-const Order: React.FC<{ onPlaceOder: () => void }> = ({ onPlaceOder }) => {
+const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
+  const { onConnect, address } = useWalletContext();
+
+  const onClickPurchase = () => {
+    if (address) {
+      onPlaceOrder();
+    } else {
+      onConnect();
+    }
+  };
+
   return (
     <div className="rounded-lg bg-brand-deep-blue p-8">
       <p className="body-sm text-light">Price</p>
@@ -69,7 +80,7 @@ const Order: React.FC<{ onPlaceOder: () => void }> = ({ onPlaceOder }) => {
       <div className="mt-12">
         <button
           className="btn-lg w-full bg-brand-gold px-4 uppercase text-black"
-          onClick={onPlaceOder}>
+          onClick={onClickPurchase}>
           Place Order
         </button>
       </div>
