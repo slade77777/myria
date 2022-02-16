@@ -344,7 +344,7 @@ const Index = () => {
                     </Trans>
                   </p>
                   <button data-aos="fade-up" className="btn-lg btn-primary mt-[70px] mr-auto">
-                    <Trans>TOKEN SALE COMING SOON</Trans>
+                    <Trans>TOKEN LAUNCH COMING SOON</Trans>
                   </button>
                   <div className="absolute top-[-40px] right-0 z-[-1] hidden md:block">
                     <Image src="/images/home/coins-bg.png" alt="" width={262} height={510} />
