@@ -144,15 +144,16 @@ const questions = [
     title: <Trans>How much will a Myria node license cost?</Trans>,
     content: (
       <Trans>
-        Founders Nodes will receive preferential pricing, with the first 100 licences initially
+        {/* Founders Nodes will receive preferential pricing, with the first 100 licences initially
         released at USD $2,000. The price of Myria node licenses will increase by USD $100 for every
-        100 sold, up to a maximum price of $51,900 for the final 100 licenses.
+        100 sold, up to a maximum price of $51,900 for the final 100 licenses. */}
+        Details will be announced soon. 
       </Trans>
     )
   },
   {
     title: <Trans>How many Myria node licenses will be released?</Trans>,
-    content: <Trans>Only 50,000 Myria node licenses will ever be released.</Trans>
+    content: <Trans>Only 60,000 Myria node licenses will ever be released.</Trans>
   }
 ];
 const Nodes: React.FC = () => {
@@ -225,7 +226,7 @@ const Nodes: React.FC = () => {
         </div>
         <section className={clsx(paddingX, 'mx-auto mt-[152px] w-full max-w-[832px]')}>
           <h3 className="heading-sm text-center md:heading-md">
-            <Trans>Validating on Myria</Trans>
+            <Trans>Myria FAQ</Trans>
           </h3>
           <div className="mt-[48px]">
             {questions.map((item, idx) => (

@@ -65,13 +65,13 @@ const data: Person[] = [
     }
   },
   {
-    name: 'Lucas Bean',
-    position: <Trans>Head of Marketing</Trans>,
+    name: 'Jem Law',
+    position: <Trans>Marketing Manager</Trans>,
     description:
-      <Trans>Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and has founded multiple ventures, including Engage:BDR that is now a public listed company.</Trans>,
+      <Trans>Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies.</Trans>,
     socials: {
       twitter: '',
-      linkedin: 'https://www.linkedin.com/in/lucasbean/'
+      linkedin: 'https://www.linkedin.com/in/jemimalaw/'
     }
   },
   {
@@ -85,13 +85,13 @@ const data: Person[] = [
     }
   },
   {
-    name: 'Jem Law',
-    position: <Trans>Marketing Manager</Trans>,
+    name: 'Hunter Jo',
+    position: <Trans>Community Lead</Trans>,
     description:
-      <Trans>Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies.</Trans>,
+      <Trans>Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space.  </Trans>,
     socials: {
       twitter: '',
-      linkedin: 'https://www.linkedin.com/in/jemimalaw/'
+      linkedin: ''
     }
   },
   {
@@ -127,7 +127,7 @@ const data: Person[] = [
   },
   {
     name: 'Antonio Molina',
-    position: <Trans>Game Producer</Trans>,
+    position: <Trans>Games Producer</Trans>,
     description:
       <Trans>With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more. </Trans>,
     socials: {
