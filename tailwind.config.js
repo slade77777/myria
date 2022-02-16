@@ -35,12 +35,26 @@ module.exports = {
           '100%': {
             backgroundPosition: '0%'
           }
+        },
+        cloud: {
+          '0%': {
+            opacity: 0,
+            transform: 'scale(1)'
+          },
+          '25%, 75%': {
+            opacity: 1
+          },
+          '100%': {
+            opacity: 0,
+            transform: 'scale(3)'
+          }
         }
       },
       animation: {
         'slide-up': 'slideUp 300ms',
         'slide-down': 'slideDown 300ms',
-        'slide-out': 'slideOut 1.5s cubic-bezier(0.85,0,0.15,1) forwards'
+        'slide-out': 'slideOut 1.5s cubic-bezier(0.85,0,0.15,1) forwards',
+        cloud: 'cloud calc(3s * var(--index)) linear infinite'
       }
     }
   },
