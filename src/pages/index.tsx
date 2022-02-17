@@ -19,6 +19,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { CustomEase } from 'gsap/dist/CustomEase';
 import { t, Trans } from '@lingui/macro';
 import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
+import Hero from 'src/components/home/Hero';
 
 const Index = () => {
   const img1Animation = useAnimation();
@@ -119,97 +120,8 @@ const Index = () => {
       </div>
       <Page action="join-discord">
         <div>
-          <motion.div
-            onMouseMove={(e) => handleMouseMove(e)}
-            style={{
-              paddingTop: headerHeight,
-              paddingBottom: headerHeight
-            }}
-            className={clsx(
-              paddingX,
-              'relative isolate flex min-h-[900px] flex-col items-center overflow-hidden md:min-h-[789px] md:justify-center '
-            )}>
-            <div className="absolute left-0 z-[-1] w-full md:hidden">
-              <div className="relative h-[815px] w-full overflow-hidden">
-                <Image
-                  src="/images/home/header-bg-mobile.png"
-                  alt=""
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
-            </div>
-            <div
-              style={{
-                background: 'radial-gradient(50% 50% at 50% 50%, #022138 0%, #050E15 100%)'
-              }}
-              className="absolute left-0 z-[-1] hidden h-[697px] w-full md:block">
-              <motion.div animate={img1Animation} className="absolute bottom-0 left-0 w-[394px]">
-                <Image src="/images/home/char1.png" alt="" width={651} height={947} />
-              </motion.div>
-              <motion.div
-                animate={img2Animation}
-                className="absolute bottom-0 left-[50px] w-[400px]">
-                <Image src="/images/home/char2.png" alt="" width={446} height={561} />
-              </motion.div>
-              <motion.div
-                animate={img3Animation}
-                className="absolute bottom-[15px] right-[90px] w-[643px]">
-                <Image src="/images/home/char3.png" alt="" width={643} height={362} />
-              </motion.div>
-              <motion.div
-                animate={img4Animation}
-                className="absolute bottom-[10px] right-[10px] w-[310px]">
-                <Image src="/images/home/char4.png" alt="" width={570} height={766} />
-              </motion.div>
-            </div>
-
-            <div className="mt-[50px] max-w-[607px] text-center md:mt-0">
-              <h1
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                className="heading-lg text-brand-white md:heading-massive">
-                <Trans>
-                  Connecting the world through{' '}
-                  <span className=" aos-text-slide-right text-brand-gold [--animated-color:#F5B941]">
-                    play
-                  </span>
-                </Trans>
-              </h1>
-              <h3
-                data-aos="fade-up"
-                data-aos-duration="2000"
-                className="heading-sm-mobile mt-6 md:heading-sm md:mt-[32px]">
-                <span className="aos-text-slide-right text-white ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
-                  <Trans>
-                    Myria is a blockchain gaming ecosystem powered by the Myria blockchain.
-                  </Trans>
-                </span>
-              </h3>
-              <a
-                data-aos="fade-up"
-                data-aos-duration="3000"
-                href={socialLinks.discord}
-                target="_blank"
-                className="btn-icon btn-primary mx-auto mt-[38px] inline-flex items-center"
-                rel="noreferrer">
-                <span className="w-[30px]">
-                  <DiscordIcon />
-                </span>
-                <span>
-                  <Trans>JOIN DISCORD</Trans>
-                </span>
-              </a>
-              {/* <a
-                href="#our-games"
-                className="md:hidden flex items-center justify-center mt-[237px] bg-[#96C5DF] w-[64px] h-[64px] rounded-full mx-auto bg-opacity-20">
-                <span className="w-[40px]">
-                  <ArrowDownIcon />
-                </span>
-              </a> */}
-            </div>
-          </motion.div>
-          <section id="our-games" className={clsx('pt-[14px]', paddingX)}>
+          <Hero />
+          <section id="our-games" className={clsx('pt-[116px] md:pt-[86px]', paddingX)}>
             <h2 data-aos="fade-up" className="heading-md text-center md:heading-lg">
               <Trans>Our games</Trans>
             </h2>
