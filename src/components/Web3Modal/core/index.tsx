@@ -181,7 +181,7 @@ export class Core {
 
   private updateState = async (state: any) => {
     Object.keys(state).forEach((key) => {
-      this[key] = state[key];
+      this[key as keyof typeof this] = state[key];
     });
     console.log(window);
     await window.updateWeb3Modal(state);

@@ -1,10 +1,10 @@
 import ETH from 'src/components/icons/ETHIcon';
-import { Dialog, DialogContent } from 'src/components/Modal';
+import Dialog from 'src/components/Modal';
 
-const ModalPurchase = ({ open, onClose }: { open: Boolean; onClose: () => void }) => {
+const ModalPurchase = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
   return (
     <Dialog open={open} title="Complete your purchase" onClose={onClose}>
-      <DialogContent className="z-20 w-80 shadow-[0_0_40px_10px_#0000004D] md:w-[832px]">
+      <Dialog.Content className="z-20 w-80 shadow-[0_0_40px_10px_#0000004D] md:w-[832px]">
         <div className=" p-8">
           <div className="mt-10 mb-4 flex justify-between">
             <div>
@@ -49,7 +49,7 @@ const ModalPurchase = ({ open, onClose }: { open: Boolean; onClose: () => void }
             <button className="btn-lg btn-primary mt-2 justify-end">Purchase now</button>
           </div>
         </section>
-      </DialogContent>
+      </Dialog.Content>
     </Dialog>
   );
 };

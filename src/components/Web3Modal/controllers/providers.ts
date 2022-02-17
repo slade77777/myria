@@ -63,7 +63,7 @@ export class ProviderController {
       }
       return {
         ...providerInfo,
-        connector: list.connectors[id],
+        connector: list.connectors[id as keyof typeof list.connectors],
         package: providerInfo.package
       };
     });
@@ -172,7 +172,7 @@ export class ProviderController {
     );
   }
 
-  public getProviderOption(id: string, key: string) {
+  public getProviderOption(id: string, key: keyof IProviderOptions[string]) {
     return this.providerOptions &&
       this.providerOptions[id] &&
       this.providerOptions[id][key]

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { Provider } from './Provider';
 import { SimpleFunction, IProviderUserOptions, ThemeColors } from '../helpers';
-import { Dialog, DialogContent } from 'src/components/Modal';
+import Dialog from 'src/components/Modal';
 
 declare global {
   // tslint:disable-next-line
@@ -78,7 +78,7 @@ export class Modal extends React.Component<IModalProps, IModalState> {
 
     return (
       <Dialog open={show} title="Connect a wallet" onClose={onClose}>
-        <DialogContent className="z-20 w-[380px] shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
+        <Dialog.Content className="z-20 w-[380px] shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
           <div className="mb-[50px] grid grid-cols-1 gap-8 px-8 pt-11 md:grid-cols-2">
             {userOptions.map((provider) =>
               !!provider ? (
@@ -92,7 +92,7 @@ export class Modal extends React.Component<IModalProps, IModalState> {
               ) : null
             )}
           </div>
-        </DialogContent>
+        </Dialog.Content>
       </Dialog>
     );
   };

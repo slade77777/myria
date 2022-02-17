@@ -13,14 +13,14 @@ import {
 
 export function checkInjectedProviders(): IInjectedProvidersMap {
   const result = {
-    injectedAvailable: !!window.ethereum || !!window.web3
+    injectedAvailable: !!window.ethereum || !!window.web3 
   };
   if (result.injectedAvailable) {
     let fallbackProvider = true;
     Object.values(injected).forEach(provider => {
       const isAvailable = verifyInjectedProvider(provider.check);
       if (isAvailable) {
-        result[provider.check] = true;
+        result[provider.check as keyof typeof result] = true;
         fallbackProvider = false;
       }
     });
@@ -28,12 +28,12 @@ export function checkInjectedProviders(): IInjectedProvidersMap {
     const browser = env.detect();
 
     if (browser && browser.name === "opera") {
-      result[injected.OPERA.check] = true;
+      result[injected.OPERA.check as keyof typeof result] = true;
       fallbackProvider = false;
     }
 
     if (fallbackProvider) {
-      result[injected.FALLBACK.check] = true;
+      result[injected.FALLBACK.check as keyof typeof result] = true;
     }
   }
 
@@ -54,6 +54,7 @@ export function getInjectedProvider(): IProviderInfo | null {
   const injectedProviders = checkInjectedProviders();
 
   if (injectedProviders.injectedAvailable) {
+    // @ts-expect-error
     delete injectedProviders.injectedAvailable;
     const checks = Object.keys(injectedProviders);
     result = getProviderInfoFromChecksArray(checks);
@@ -174,7 +175,7 @@ export function filterProviders(
   if (!value) return providers.FALLBACK;
   const match = filterMatches<IProviderInfo>(
     Object.values(providers),
-    x => x[param] === value,
+    x => x[param as keyof typeof x] === value,
     providers.FALLBACK
   );
   return match || providers.FALLBACK;
