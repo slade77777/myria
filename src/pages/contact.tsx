@@ -22,20 +22,25 @@ const Contact: React.FC = () => {
             style={{
               top: headerHeight
             }}
-            className="absolute left-0 h-[783px] w-full z-[-1]">
-            <div className="relative w-full h-full ">
-              <Image src="/images/contact/header-bg.png" alt="" layout="fill" objectFit="cover" />
+            className="absolute left-0 z-[-1] h-[783px] w-full">
+            <div className="relative h-full w-full ">
+              <Image
+                src="/images/contact/header-bg_op.png"
+                alt=""
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
           </div>
-          <div className="w-full mx-auto max-w-content ">
-            <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
+          <div className="mx-auto w-full max-w-content ">
+            <h1 className="heading-lg mx-auto mt-[50px] max-w-[756px] text-center text-brand-white md:heading-massive md:mt-[120px]">
               <Trans>Contact us</Trans>
             </h1>
-            <a href="mailto:hello@myria.com" className="flex items-center justify-center mt-[35px]">
+            <a href="mailto:hello@myria.com" className="mt-[35px] flex items-center justify-center">
               <span className="w-[32px]">
                 <MailIcon />
               </span>
-              <p className="ml-2 text-center body md:body-lg">hello@myria.com</p>
+              <p className="body ml-2 text-center md:body-lg">hello@myria.com</p>
             </a>
           </div>
           <div className="mt-[126px]">
@@ -43,8 +48,10 @@ const Contact: React.FC = () => {
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[83px] mb-[145px]')}>
-          <h3 className="text-center heading-sm md:heading-md"><Trans>Connect with us</Trans></h3>
-          <div className="mt-[48px] grid grid-flow-col gap-4 md:gap-[69px] justify-center">
+          <h3 className="heading-sm text-center md:heading-md">
+            <Trans>Connect with us</Trans>
+          </h3>
+          <div className="mt-[48px] grid grid-flow-col justify-center gap-4 md:gap-[69px]">
             {Socials.map((s) => (
               <a
                 href={s.link}

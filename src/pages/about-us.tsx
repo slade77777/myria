@@ -27,8 +27,13 @@ const data: Person[] = [
   {
     name: 'Andrew Silber',
     position: <Trans>Co-Founder - CTO</Trans>,
-    description:
-      <Trans>Andrew has been a tech executive in the gaming industry with a career spanning over 27 years. He has worked with some of the most recognizable names in the industry, including Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway. </Trans>,
+    description: (
+      <Trans>
+        Andrew has been a tech executive in the gaming industry with a career spanning over 27
+        years. He has worked with some of the most recognizable names in the industry, including
+        Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway.{' '}
+      </Trans>
+    ),
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/andrewsilber'
@@ -37,8 +42,13 @@ const data: Person[] = [
   {
     name: 'goose.eth',
     position: <Trans>Co-Founder - Project Lead</Trans>,
-    description:
-      <Trans>A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain P2E platform. </Trans>,
+    description: (
+      <Trans>
+        A serial entrepreneur and Web3 proponent with over 15 years of founding experience including
+        four multinational VC-backed companies in traditional tech. More recently founding
+        aliens.com and a blockchain P2E platform.{' '}
+      </Trans>
+    ),
     socials: {
       twitter: 'https://twitter.com/0xgoosey',
       linkedin: ''
@@ -47,8 +57,13 @@ const data: Person[] = [
   {
     name: 'Brendan Duhamel',
     position: <Trans>Head of Blockchain</Trans>,
-    description:
-      <Trans>Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network.</Trans>,
+    description: (
+      <Trans>
+        Brendan brings a decade of experience in blockchain. He has founded an escrow solution on
+        the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s
+        largest trade finance blockchain network.
+      </Trans>
+    ),
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/brendan-d-4ba3b698'
@@ -57,8 +72,13 @@ const data: Person[] = [
   {
     name: 'Ivan Fortunov',
     position: <Trans>Head of Game Design</Trans>,
-    description:
-      <Trans>Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing half a billion downloads.</Trans>,
+    description: (
+      <Trans>
+        Ivan has 10+ years of experience in the game industry. He has been a lead game designer at
+        Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing half a
+        billion downloads.
+      </Trans>
+    ),
     socials: {
       twitter: 'https://twitter.com/IvanFortunov',
       linkedin: 'https://www.linkedin.com/in/fortunov/'
@@ -67,8 +87,13 @@ const data: Person[] = [
   {
     name: 'Jem Law',
     position: <Trans>Marketing Manager</Trans>,
-    description:
-      <Trans>Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies.</Trans>,
+    description: (
+      <Trans>
+        Jem brings a breadth of business operations and strategy experience, including 10+ years
+        working with corporate companies in pitching and fundraising, and 6 years managing strategy
+        execution for tech and blockchain companies.
+      </Trans>
+    ),
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/jemimalaw/'
@@ -77,8 +102,13 @@ const data: Person[] = [
   {
     name: 'Moonfrog',
     position: <Trans>Co-Founder - Operations</Trans>,
-    description:
-      <Trans>A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com.  </Trans>,
+    description: (
+      <Trans>
+        A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on
+        organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard,
+        Kayo Streaming and more. More recently founding aliens.com.{' '}
+      </Trans>
+    ),
     socials: {
       twitter: ' https://twitter.com/0xmoonfrog',
       linkedin: ''
@@ -87,8 +117,13 @@ const data: Person[] = [
   {
     name: 'Hunter Jo',
     position: <Trans>Community Lead</Trans>,
-    description:
-      <Trans>Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space.  </Trans>,
+    description: (
+      <Trans>
+        Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront
+        of innovation and helping them build global communities. He has catalyzed and amplified
+        partnerships with some of the largest projects and influencers in this space.{' '}
+      </Trans>
+    ),
     socials: {
       twitter: 'https://twitter.com/CountGupula',
       linkedin: ''
@@ -97,8 +132,13 @@ const data: Person[] = [
   {
     name: 'AJ Dimarucot',
     position: <Trans>Art Creative Lead</Trans>,
-    description:
-      <Trans>AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others. </Trans>,
+    description: (
+      <Trans>
+        AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to
+        crafting brand identities. He has worked with global brands including Nike, Adidas and
+        Microsoft, among others.{' '}
+      </Trans>
+    ),
     socials: {
       twitter: 'https://twitter.com/ajdimarucot',
       linkedin: 'https://linkedin.com/in/ajdimarucot'
@@ -107,8 +147,13 @@ const data: Person[] = [
   {
     name: 'Brock',
     position: <Trans>Product Lead - Blockchain</Trans>,
-    description:
-      <Trans>Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth. </Trans>,
+    description: (
+      <Trans>
+        Brock is an entreprenurial product lead with over 10+ years experience working in the tech
+        startups and founded his own MarTech company. More recently, he helped scale one of the
+        largest blockchain companies focusing on product tokenomics and growth.{' '}
+      </Trans>
+    ),
     socials: {
       twitter: '',
       linkedin: ''
@@ -118,8 +163,13 @@ const data: Person[] = [
   {
     name: 'Craig Stanford',
     position: <Trans>UI/UX Lead</Trans>,
-    description:
-      <Trans>Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more.</Trans>,
+    description: (
+      <Trans>
+        Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting
+        brand identities. He has worked with global companies across industires such as
+        communications, financial institutions, media and more.
+      </Trans>
+    ),
     socials: {
       twitter: 'https://twitter.com/Lennicus',
       linkedin: 'https://www.linkedin.com/in/craiglstanford/'
@@ -128,8 +178,12 @@ const data: Person[] = [
   {
     name: 'Antonio Molina',
     position: <Trans>Games Producer</Trans>,
-    description:
-      <Trans>With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more. </Trans>,
+    description: (
+      <Trans>
+        With 15+ year experience working in the gaming industry, Antonio has contributed to some of
+        the worlds leading titles and brands such as The Witcher, Disney and more.{' '}
+      </Trans>
+    ),
     socials: {
       twitter: '',
       linkedin: 'https://www.linkedin.com/in/antoniomolina34/'
@@ -138,8 +192,13 @@ const data: Person[] = [
   {
     name: 'Kidono Huang',
     position: <Trans>Partner Lead</Trans>,
-    description:
-      <Trans>Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more.</Trans>,
+    description: (
+      <Trans>
+        Kidono is an experienced partner lead with extensive experience managing external
+        development engagements. He has worked with some of the largest game production companies,
+        including Marvel, Tencent, Winkings and more.
+      </Trans>
+    ),
     socials: {
       twitter: '',
       linkedin: ''
@@ -155,7 +214,7 @@ const principles = [
       </div>
     ),
     title: <Trans>Gameplay first</Trans>,
-    description: <Trans>Fun, high-quality and free are our core gameplay tenets.  </Trans>
+    description: <Trans>Fun, high-quality and free are our core gameplay tenets. </Trans>
   },
   {
     icon: (
@@ -164,8 +223,12 @@ const principles = [
       </div>
     ),
     title: <Trans>Free to play</Trans>,
-    description:
-      <Trans>We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse.</Trans>
+    description: (
+      <Trans>
+        We believe in open and equitable access, enabling more people to experience and enjoy the
+        benefits of blockchain and the metaverse.
+      </Trans>
+    )
   },
   {
     icon: (
@@ -174,8 +237,11 @@ const principles = [
       </div>
     ),
     title: <Trans>Empowering players</Trans>,
-    description:
-      <Trans>We believe players should have true verifiable ownership and control over in-game assets. </Trans>
+    description: (
+      <Trans>
+        We believe players should have true verifiable ownership and control over in-game assets.{' '}
+      </Trans>
+    )
   },
   {
     icon: (
@@ -184,8 +250,12 @@ const principles = [
       </div>
     ),
     title: <Trans>Powered by the community</Trans>,
-    description:
-      <Trans>Myria is community powered and governed through the Myria DAO. We are handing the power back to the people to build a better metaverse. </Trans>
+    description: (
+      <Trans>
+        Myria is community powered and governed through the Myria DAO. We are handing the power back
+        to the people to build a better metaverse.{' '}
+      </Trans>
+    )
   }
 ];
 
@@ -223,28 +293,34 @@ const AboutUs: React.FC = () => {
             style={{
               top: headerHeight
             }}
-            className="absolute left-0 h-[783px] w-full z-[-1]">
-            <div className="relative w-full h-full ">
-              <Image src="/images/header-bg.png" alt="" layout="fill" objectFit="cover" />
+            className="absolute left-0 z-[-1] h-[783px] w-full">
+            <div className="relative h-full w-full ">
+              <Image src="/images/header-bg_op.png" alt="" layout="fill" objectFit="cover" />
             </div>
           </div>
-          <div className="w-full mx-auto max-w-content ">
-            <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
+          <div className="mx-auto w-full max-w-content ">
+            <h1 className="heading-lg mx-auto mt-[50px] max-w-[756px] text-center text-brand-white md:heading-massive md:mt-[120px]">
               <Trans>Our Vision</Trans>
             </h1>
-            <p className="heading-sm max-w-[875px] mx-auto mt-[37px] text-center">
-              <Trans>Enhancing the power of play through blockchain, enabling economic access and
-              ownership, and driving a new era of opportunity, exploration and freedom for every
-              human on Earth.</Trans>
+            <p className="heading-sm mx-auto mt-[37px] max-w-[875px] text-center">
+              <Trans>
+                Enhancing the power of play through blockchain, enabling economic access and
+                ownership, and driving a new era of opportunity, exploration and freedom for every
+                human on Earth.
+              </Trans>
             </p>
           </div>
-          <div className="w-full mx-auto max-w-content mt-[65px] grid md:grid-cols-2 gap-[36px] md:gap-[48px] items-center">
+          <div className="mx-auto mt-[65px] grid w-full max-w-content items-center gap-[36px] md:grid-cols-2 md:gap-[48px]">
             <div className="flex justify-center">
               <Image src="/images/about-us/principle-alt.png" width={507} height={717} alt="" />
             </div>
             <div className="md:pr-[100px]">
-              <p className="caption text-brand-light-blue"><Trans>SHIFTING POWER BACK TO THE PEOPLE</Trans></p>
-              <h3 className="mt-2 heading-sm md:heading-md"><Trans>Our Principles</Trans></h3>
+              <p className="caption text-brand-light-blue">
+                <Trans>SHIFTING POWER BACK TO THE PEOPLE</Trans>
+              </p>
+              <h3 className="heading-sm mt-2 md:heading-md">
+                <Trans>Our Principles</Trans>
+              </h3>
               <div>
                 {principles.map((item, idx) => (
                   <div
@@ -253,7 +329,7 @@ const AboutUs: React.FC = () => {
                       boxShadow: '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
                     }}
                     className={clsx(
-                      'flex items-start p-6 mt-6 rounded-[20px] opacity-50 transition duration-300',
+                      'mt-6 flex items-start rounded-[20px] p-6 opacity-50 transition duration-300',
                       {
                         'bg-brand-deep-blue !opacity-100': idx == currentPrinciple
                       }
@@ -261,8 +337,8 @@ const AboutUs: React.FC = () => {
                     key={idx}>
                     <div className="w-[32px] flex-shrink-0">{item.icon}</div>
                     <div className="ml-4">
-                      <h4 className="font-bold text-[24px] leading-[1.25]">{item.title}</h4>
-                      <p className="mt-2 body text-light">{item.description}</p>
+                      <h4 className="text-[24px] font-bold leading-[1.25]">{item.title}</h4>
+                      <p className="body mt-2 text-light">{item.description}</p>
                     </div>
                   </div>
                 ))}
@@ -270,7 +346,9 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
           <div className="mt-[126px]">
-            <h3 className="text-center heading-sm md:heading-md"><Trans>Our Experience</Trans></h3>
+            <h3 className="heading-sm text-center md:heading-md">
+              <Trans>Our Experience</Trans>
+            </h3>
             <div className="mt-[60px]">
               <ExperenceLogos />
             </div>
@@ -278,16 +356,18 @@ const AboutUs: React.FC = () => {
         </section>
         <section className={clsx(paddingX, 'mt-[175px]')}>
           <div className="mx-auto max-w-content">
-            <h3 className="text-center heading-sm md:heading-md"><Trans>Led by industry experts</Trans></h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 mt-[78px] gap-x-[31px] gap-y-[35px]">
+            <h3 className="heading-sm text-center md:heading-md">
+              <Trans>Led by industry experts</Trans>
+            </h3>
+            <div className="mt-[78px] grid gap-x-[31px] gap-y-[35px] sm:grid-cols-2 lg:grid-cols-3">
               {data.map((person, idx) => (
                 <article
                   key={idx}
-                  className="text-center flex flex-col rounded-[20px] md:pt-[50px] md:pb-[40px] p-[32px] bg-brand-deep-blue">
-                  <p className="font-bold body-lg ">{person.name}</p>
-                  <p className="mt-4 font-bold body">{person.position}</p>
-                  <p className="mt-6 mb-auto body-sm text-light">{person.description}</p>
-                  <div className="grid grid-flow-col justify-center gap-6 mt-[35px] opacity-50">
+                  className="flex flex-col rounded-[20px] bg-brand-deep-blue p-[32px] text-center md:pt-[50px] md:pb-[40px]">
+                  <p className="body-lg font-bold ">{person.name}</p>
+                  <p className="body mt-4 font-bold">{person.position}</p>
+                  <p className="body-sm mt-6 mb-auto text-light">{person.description}</p>
+                  <div className="mt-[35px] grid grid-flow-col justify-center gap-6 opacity-50">
                     {person.socials.twitter && (
                       <a
                         href={person.socials.twitter}

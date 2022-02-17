@@ -7,7 +7,7 @@ type Props = {
 };
 const JoinTheRevolution: React.FC<Props> = ({ textAnimation }) => {
   return (
-    <div className="relative isolate rounded-[20px] bg-brand-deep-blue bg-[url('/images/join-the-revolution/panel.png')] bg-cover bg-left-top p-[32px] md:py-[107px] md:px-[81px]">
+    <div className="relative isolate rounded-[20px] bg-brand-deep-blue bg-[url('/images/join-the-revolution/panel_op.png')] bg-cover bg-left-top p-[32px] md:py-[107px] md:px-[81px]">
       <p data-aos={textAnimation} className="caption hidden text-brand-light-blue md:block">
         <Trans>join the revolution</Trans>
       </p>
@@ -26,7 +26,7 @@ const JoinTheRevolution: React.FC<Props> = ({ textAnimation }) => {
         </a>
       </Link>
       <img
-        src="/images/join-the-revolution/character.png"
+        src="/images/join-the-revolution/character_op.png"
         alt=""
         className="top-0 right-0 z-[-1] md:absolute md:h-full"
       />

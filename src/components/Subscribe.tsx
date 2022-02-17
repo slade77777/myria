@@ -14,7 +14,10 @@ interface IFormInputs {
 
 const schema = yup
   .object({
-    email: yup.string().email(t`Invalid email!`).required(t`Email is required!`)
+    email: yup
+      .string()
+      .email(t`Invalid email!`)
+      .required(t`Email is required!`)
   })
   .required();
 
@@ -54,7 +57,7 @@ const Subscribe: React.FC = () => {
       style={{
         boxShadow: '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
       }}
-      className="mx-auto flex max-w-content flex-col items-center rounded-[20px] bg-[url('/images/games/panel.png')] bg-cover bg-center p-[32px] md:py-[158px]">
+      className="mx-auto flex max-w-content flex-col items-center rounded-[20px] bg-[url('/images/games/panel_op.png')] bg-cover bg-center p-[32px] md:py-[158px]">
       <h2 className="heading-sm text-center md:heading-md">
         <Trans>Pre register to stay up to date</Trans>
       </h2>

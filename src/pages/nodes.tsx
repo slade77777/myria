@@ -124,10 +124,18 @@ const questions = [
         </Trans>
         <ul className="list-disc">
           <li>4 GB RAM</li>
-          <li><Trans>2 CPU Cores</Trans></li>
-          <li><Trans>60 GB Disk Space</Trans></li>
-          <li><Trans>An x86/X64 Processor</Trans></li>
-          <li><Trans>A Stable Internet Connection</Trans></li>
+          <li>
+            <Trans>2 CPU Cores</Trans>
+          </li>
+          <li>
+            <Trans>60 GB Disk Space</Trans>
+          </li>
+          <li>
+            <Trans>An x86/X64 Processor</Trans>
+          </li>
+          <li>
+            <Trans>A Stable Internet Connection</Trans>
+          </li>
         </ul>
       </>
     )
@@ -147,7 +155,7 @@ const questions = [
         {/* Founders Nodes will receive preferential pricing, with the first 100 licences initially
         released at USD $2,000. The price of Myria node licenses will increase by USD $100 for every
         100 sold, up to a maximum price of $51,900 for the final 100 licenses. */}
-        Details will be announced soon. 
+        Details will be announced soon.
       </Trans>
     )
   },
@@ -166,7 +174,7 @@ const Nodes: React.FC = () => {
         <div
           className={clsx(
             paddingX,
-            "bg-[url('/images/nodes/page-bg.png')] bg-right-bottom bg-no-repeat "
+            "bg-[url('/images/nodes/page-bg_op.png')] bg-right-bottom bg-no-repeat "
           )}>
           <div className="mx-auto w-full max-w-content">
             <section className={'text-center '}>
@@ -179,7 +187,7 @@ const Nodes: React.FC = () => {
               <p className="heading-sm mx-auto mt-[32px] max-w-[518px]">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              <a className="btn-lg btn-primary mt-[38px]" href='#subcribe'>
+              <a className="btn-lg btn-primary mt-[38px]" href="#subcribe">
                 <Trans>Pre register now</Trans>
               </a>
             </section>
@@ -263,7 +271,7 @@ const Nodes: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            "mt-[112px] mb-[124px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe.png')] bg-center bg-no-repeat md:bg-right"
+            "mt-[112px] mb-[124px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe_op.png')] bg-center bg-no-repeat md:bg-right"
           )}>
           <div className="mx-auto max-w-content ">
             <div className="md:w-1/2">
@@ -277,7 +285,7 @@ const Nodes: React.FC = () => {
                   increases as nodes are sold.
                 </Trans>
               </p>
-              <a className="btn-lg btn-primary mt-[32px]" href='#subcribe'>
+              <a className="btn-lg btn-primary mt-[32px]" href="#subcribe">
                 <Trans>BUY A NODE</Trans>
               </a>
             </div>
