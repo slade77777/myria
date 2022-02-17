@@ -29,7 +29,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
         top
       }}
       className={clsx(
-        'transition invisible duration-700 flex flex-col fixed left-0 overflow-auto z-10 w-full',
+        'invisible fixed left-0 z-10 flex w-full flex-col overflow-auto transition duration-700',
         {
           '!visible': open
         }
@@ -39,7 +39,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
           height: headerHeight
         }}
         className={clsx(
-          'invisible py-4 flex items-center justify-between px-[24px] flex-shrink-0  bg-[#050E15]',
+          'invisible flex flex-shrink-0 items-center justify-between bg-[#050E15] py-4  px-[24px]',
           {
             '!visible': open
           }
@@ -56,7 +56,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
           overscrollBehavior: 'contain'
         }}
         className={clsx(
-          'translate-x-full duration-500 pb-4 text-white px-[24px] pt-2 grid gap-[33px] content-start text-[18px] leading-[1.25] uppercase font-medium flex-grow overflow-auto  bg-[#050E15]',
+          'grid flex-grow translate-x-full content-start gap-[33px] overflow-auto bg-[#050E15] px-[24px] pb-4 pt-2 text-[18px] font-medium uppercase leading-[1.25] text-white  duration-500',
           {
             '!translate-x-0': open
           }
@@ -66,12 +66,12 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
             return (
               <li key={idx}>
                 <div className="relative w-fit">
-                  <a className="hover:text-brand-gold hover:cursor-pointer">{item.text}</a>
+                  <a className="hover:cursor-pointer hover:text-brand-gold">{item.text}</a>
                   <div
                     style={{
                       boxShadow: '0 0 0 0.5px #9AC9E3'
                     }}
-                    className="font-extrabold text-[6px] rounded-sm absolute -top-[9px] p-[3px] -right-6 bg-brand-light-blue/40 bg-opacity-4">
+                    className="bg-opacity-4 absolute -top-[9px] -right-6 rounded-sm bg-brand-light-blue/40 p-[3px] text-[6px] font-extrabold">
                     Soon!
                   </div>
                 </div>
@@ -88,7 +88,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
                       <Collapse.Trigger asChild>
                         <div
                           className={clsx(
-                            'hover:text-brand-gold flex items-center justify-between hover:cursor-pointer',
+                            'flex items-center justify-between hover:cursor-pointer hover:text-brand-gold',
                             {
                               'text-brand-gold': open
                             }
@@ -103,7 +103,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
                         </div>
                       </Collapse.Trigger>
                       <Collapse.Content className="collapse-content">
-                        <ul className="text-[16px] bg-dark px-6 pt-6 rounded-lg whitespace-nowrap grid gap-6">
+                        <ul className="grid gap-6 whitespace-nowrap rounded-lg bg-dark px-6 pt-6 text-[16px]">
                           {item.children!.map((link, idx) => (
                             <li key={idx}>
                               <Link href={link.url as string}>
@@ -130,7 +130,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
             );
           }
         })}
-        <li className="mt-[48px] sm:mt-[62px] grid sm:grid-cols-2 gap-y-6 gap-x-4">
+        <li className="mt-[48px] grid gap-y-6 gap-x-4 sm:mt-[62px] sm:grid-cols-2">
           {action == 'login' && (
             <>
               <button className="btn-lg btn-primary">Sign up</button>
@@ -141,7 +141,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
             <a
               href={socialLinks.discord}
               target="_blank"
-              className="col-span-2 text-center btn-lg btn-secondary"
+              className="btn-lg btn-secondary col-span-2 text-center"
               rel="noreferrer">
               <Trans>JOIN DISCORD</Trans>
             </a>
@@ -171,7 +171,12 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
 
   return (
     <header>
-      <nav ref={navRef} className="py-[40px] px-[24px] flex items-center justify-between">
+      <nav
+        style={{
+          height: headerHeight
+        }}
+        ref={navRef}
+        className="flex items-center justify-between py-4 px-6">
         <Link href="/">
           <a className="w-full max-w-[164px]">
             <Logo />

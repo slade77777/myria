@@ -78,7 +78,7 @@ export const links: NavItem[] = [
   }
 ];
 
-export const headerHeight = 112;
+export const headerHeight = 83;
 
 export type Action = 'login' | 'join-discord';
 

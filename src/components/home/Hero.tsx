@@ -12,6 +12,8 @@ import UnicornImg from 'public/images/home/unicorn-guy-1.png';
 import SkyImg from 'public/images/home/sky.png';
 import CloudImg from 'public/images/home/cloud.png';
 import LandImg from 'public/images/home/land.png';
+import HeaderBgMobile from 'public/images/home/header-bg-mobile.png';
+import HeaderBgOverlayMobile from 'public/images/home/header-bg-overlay-mobile.png';
 import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 
 import { gsap } from 'gsap';
@@ -53,9 +55,9 @@ const Hero: React.FC = () => {
       }
       className={clsx(
         paddingX,
-        'relative isolate flex min-h-screen flex-col overflow-hidden border-transparent md:min-h-[var(--minHeight)] md:justify-center 2xl:min-h-screen'
+        'relative isolate flex min-h-[var(--minHeight)] flex-col justify-end overflow-hidden border-transparent md:justify-center'
       )}>
-      <div className="absolute inset-0 z-[-1]">
+      <div className="absolute inset-0 z-[-1] hidden md:block">
         {/* <Image src="" /> */}
         <div className="sky-img absolute inset-0">
           <div className="relative h-full w-full">
@@ -110,40 +112,61 @@ const Hero: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="hero-text my-[50px] max-w-[607px] md:mt-0">
-        <h1
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          className="heading-lg text-brand-white md:heading-massive">
-          <Trans>
-            Connecting the world through{' '}
-            <span className=" aos-text-slide-right text-brand-gold [--animated-color:#F5B941]">
-              play
+      <div className="absolute inset-0 z-[-1] md:hidden">
+        <div className="absolute left-0 bottom-0 h-full w-full">
+          <div className="relative h-full w-full">
+            <Image src={HeaderBgMobile} alt="" placeholder="blur" layout="fill" objectFit="cover" />
+          </div>
+        </div>
+        <div className="absolute left-0 bottom-0 h-full w-full">
+          <div className="relative h-full w-full">
+            <Image
+              src={HeaderBgOverlayMobile}
+              alt=""
+              placeholder="blur"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="mx-auto w-full max-w-content">
+        <div className="hero-text my-[50px] max-w-[607px] text-center md:mt-0 md:text-left">
+          <h1
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            className="heading-lg text-brand-white md:heading-massive">
+            <Trans>
+              Connecting the world through{' '}
+              <span className=" aos-text-slide-right text-brand-gold [--animated-color:#F5B941]">
+                play
+              </span>
+            </Trans>
+          </h1>
+          <h3
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            className="heading-sm-mobile mt-6 md:heading-sm md:mt-[32px]">
+            <span className="aos-text-slide-right text-white ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
+              <Trans>Myria is a blockchain gaming ecosystem powered by the Myria blockchain.</Trans>
             </span>
-          </Trans>
-        </h1>
-        <h3
-          data-aos="fade-up"
-          data-aos-duration="2000"
-          className="heading-sm-mobile mt-6 md:heading-sm md:mt-[32px]">
-          <span className="aos-text-slide-right text-white ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
-            <Trans>Myria is a blockchain gaming ecosystem powered by the Myria blockchain.</Trans>
-          </span>
-        </h3>
-        <a
-          data-aos="fade-up"
-          data-aos-duration="3000"
-          href={socialLinks.discord}
-          target="_blank"
-          className="btn-icon btn-primary mx-auto mt-[38px] inline-flex items-center"
-          rel="noreferrer">
-          <span className="w-[30px]">
-            <DiscordIcon />
-          </span>
-          <span>
-            <Trans>JOIN DISCORD</Trans>
-          </span>
-        </a>
+          </h3>
+          <a
+            data-aos="fade-up"
+            data-aos-duration="3000"
+            href={socialLinks.discord}
+            target="_blank"
+            className="btn-icon btn-primary mx-auto mt-[38px] inline-flex items-center"
+            rel="noreferrer">
+            <span className="w-[30px]">
+              <DiscordIcon />
+            </span>
+            <span>
+              <Trans>JOIN DISCORD</Trans>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   );
