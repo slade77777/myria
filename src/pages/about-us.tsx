@@ -40,7 +40,7 @@ const data: Person[] = [
     description:
       <Trans>A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain P2E platform. </Trans>,
     socials: {
-      twitter: 'https://twitter.com/gooseara',
+      twitter: 'https://twitter.com/0xgoosey',
       linkedin: ''
     }
   },
@@ -75,12 +75,12 @@ const data: Person[] = [
     }
   },
   {
-    name: 'Metafrog',
+    name: 'Moonfrog',
     position: <Trans>Co-Founder - Operations</Trans>,
     description:
-      <Trans>A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com.  </Trans>,
+      <Trans>A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com.  </Trans>,
     socials: {
-      twitter: 'https://twitter.com/0xMetaFrog',
+      twitter: ' https://twitter.com/0xmoonfrog',
       linkedin: ''
     }
   },
