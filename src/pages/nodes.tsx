@@ -179,9 +179,9 @@ const Nodes: React.FC = () => {
               <p className="heading-sm mx-auto mt-[32px] max-w-[518px]">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              <button className="btn-lg btn-primary mt-[38px]">
+              <a className="btn-lg btn-primary mt-[38px]" href='#subcribe'>
                 <Trans>Pre register now</Trans>
-              </button>
+              </a>
             </section>
             <section className="mt-[100px]">
               <div className="max-w-[715px]">
@@ -277,13 +277,13 @@ const Nodes: React.FC = () => {
                   increases as nodes are sold.
                 </Trans>
               </p>
-              <button className="btn-lg btn-primary mt-[32px]">
+              <a className="btn-lg btn-primary mt-[32px]" href='#subcribe'>
                 <Trans>BUY A NODE</Trans>
-              </button>
+              </a>
             </div>
           </div>
         </section>
-        <section className={clsx(paddingX, 'mb-[124px]')}>
+        <section className={clsx(paddingX, 'mb-[124px]')} id="subcribe">
           <div className="mx-auto max-w-content">
             <Subscribe />
           </div>
