@@ -103,7 +103,7 @@ const Index = () => {
       <div className="flex flex-col items-center justify-center bg-brand-light-blue p-4 text-center md:flex-row md:py-2 md:text-left">
         <p className="text-[14px] font-medium leading-[1.23] ">
           <span className="font-bold">$MYRIA</span>{' '}
-          <Trans>Node Sale and NFT coming soon!!</Trans>
+          <Trans>Node & NFT sales coming soon!</Trans>
         </p>
         <a
           href={socialLinks.discord}
