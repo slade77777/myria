@@ -304,9 +304,7 @@ const AboutUs: React.FC = () => {
             </h1>
             <p className="heading-sm mx-auto mt-[37px] max-w-[875px] text-center">
               <Trans>
-                Enhancing the power of play through blockchain, enabling economic access and
-                ownership, and driving a new era of opportunity, exploration and freedom for every
-                human on Earth.
+              Enhancing the power of play through blockchain, enabling economic access and ownership, and driving a new era of opportunity, exploration and freedom.
               </Trans>
             </p>
           </div>
