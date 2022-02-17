@@ -58,7 +58,6 @@ const Hero: React.FC = () => {
         'relative isolate flex min-h-[var(--minHeight)] flex-col justify-end overflow-hidden border-transparent md:justify-center'
       )}>
       <div className="absolute inset-0 z-[-1] hidden md:block">
-        {/* <Image src="" /> */}
         <div className="sky-img absolute inset-0">
           <div className="relative h-full w-full">
             <Image src={SkyImg} alt="" placeholder="blur" layout="fill" objectFit="cover" />
@@ -86,11 +85,14 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="absolute inset-0">
-          <div className="relative h-full w-full">
-            {/* <Image src={CloudImg} alt="" placeholder="blur" layout="fill" objectFit="cover" /> */}
-          </div>
-        </div>
+        <div
+          style={
+            {
+              background:
+                'linear-gradient(89.66deg, rgba(5, 14, 21, 0.54) 1.52%, rgba(0, 0, 0, 0) 60.23%)'
+            } as CSSProperties
+          }
+          className="absolute inset-0"></div>
         <div className="absolute inset-0">
           {new Array(3).fill(null).map((_, idx) => (
             <img
