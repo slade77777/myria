@@ -21,7 +21,7 @@ const data = [
         />
       </div>
     ),
-    background: '/images/our-games/metarush-bg.png',
+    background: '/images/our-games/metarush-bg_op.png',
     title: <Trans>A multiplayer obstacle course game</Trans>,
     link: '/game-detail/metarush',
     layout: 'row'
@@ -55,7 +55,7 @@ const data = [
         />
       </div>
     ),
-    background: '/images/our-games/metakart-bg.png',
+    background: '/images/our-games/metakart-bg_op.png',
     title: <Trans>A multiplayer go-kart racing game</Trans>,
     link: '/game-detail/metakart',
     layout: 'row'

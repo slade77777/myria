@@ -89,12 +89,18 @@ const ForGamers: React.FC = () => {
             }}
             className="absolute left-0 z-[-2] h-[783px] w-full">
             <div className="relative h-full w-full ">
-              <Image src="/images/header-bg.png" alt="" layout="fill" objectFit="cover" priority />
+              <Image
+                src="/images/header-bg_op.png"
+                alt=""
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
             </div>
           </div>
           <div className="absolute left-0 bottom-0 z-[-1] w-[910px] max-w-full">
             <Image
-              src="/images/for-gamers/game.png"
+              src="/images/for-gamers/game_op.png"
               alt=""
               layout="responsive"
               objectFit="cover"
@@ -153,7 +159,7 @@ const ForGamers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            "mt-[115px] mb-[180px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe.png')] bg-center bg-no-repeat md:bg-right"
+            "mt-[115px] mb-[180px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe_op.png')] bg-center bg-no-repeat md:bg-right"
           )}>
           <div className="mx-auto max-w-content ">
             <div className="md:w-1/2">
