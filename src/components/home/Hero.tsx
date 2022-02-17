@@ -10,7 +10,7 @@ import CowboyImg from 'public/images/home/cowboy-1.png';
 import MonkeyImg from 'public/images/home/monkey-1.png';
 import UnicornImg from 'public/images/home/unicorn-guy-1.png';
 import SkyImg from 'public/images/home/sky.png';
-import CloudImg from 'public/images/home/cloud.png';
+// import CloudImg from 'public/images/home/cloud.png';
 import LandImg from 'public/images/home/land.png';
 import HeaderBgMobile from 'public/images/home/header-bg-mobile.png';
 import HeaderBgOverlayMobile from 'public/images/home/header-bg-overlay-mobile.png';
@@ -88,7 +88,7 @@ const Hero: React.FC = () => {
         </div>
         <div className="absolute inset-0">
           <div className="relative h-full w-full">
-            <Image src={CloudImg} alt="" placeholder="blur" layout="fill" objectFit="cover" />
+            {/* <Image src={CloudImg} alt="" placeholder="blur" layout="fill" objectFit="cover" /> */}
           </div>
         </div>
         <div className="absolute inset-0">
@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
               src={`/images/home/cloud${idx}.png`}
               alt=""
               style={{ '--index': idx + 1 } as CSSProperties}
-              className=" absolute bottom-0 left-0 w-full animate-cloud"
+              className=" absolute -bottom-[120px] left-0 w-full animate-cloud"
             />
           ))}
           {new Array(3).fill(null).map((_, idx) => (
@@ -107,7 +107,7 @@ const Hero: React.FC = () => {
               src={`/images/home/cloud${idx}.png`}
               alt=""
               style={{ '--index': 10 - idx } as CSSProperties}
-              className=" absolute bottom-0 left-0 w-full animate-cloud"
+              className=" absolute -bottom-[120px] left-0 w-full animate-cloud"
             />
           ))}
         </div>
