@@ -240,7 +240,7 @@ const AboutUs: React.FC = () => {
           </div>
           <div className="w-full mx-auto max-w-content mt-[65px] grid md:grid-cols-2 gap-[36px] md:gap-[48px] items-center">
             <div className="flex justify-center">
-              <Image src="/images/about-us/principle.png" width={395} height={720} alt="" />
+              <Image src="/images/about-us/principle.png" width={507} height={717} alt="" />
             </div>
             <div className="md:pr-[100px]">
               <p className="caption text-brand-light-blue"><Trans>SHIFTING POWER BACK TO THE PEOPLE</Trans></p>
