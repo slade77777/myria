@@ -90,7 +90,7 @@ const data: Person[] = [
     description:
       <Trans>Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space.  </Trans>,
     socials: {
-      twitter: '',
+      twitter: 'https://twitter.com/CountGupula',
       linkedin: ''
     }
   },
