@@ -27,7 +27,7 @@ export const links: NavItem[] = [
       },
       {
         text: <Trans>Our team</Trans>,
-        url: '/about-us'
+        url: '/about-us#teams'
       },
       {
         text: <Trans>Morphing NFTs</Trans>,
