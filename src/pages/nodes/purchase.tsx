@@ -5,12 +5,15 @@ import { headerHeight } from '../../components/Header';
 import Page from '../../components/Page';
 import License from '../../components/Purchase/License';
 import ModalPurchase from 'src/components/Purchase/Modals';
+import SignInModal from 'src/components/SignIn/Modal';
+import RegisterModal from 'src/components/Register/Modal';
 
 const Nodes: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
 
   const onPlaceOrder = () => {
-    setOpenModal(true);
+    // setOpenModal(true);
+    // login();
   };
 
   return (
@@ -39,6 +42,8 @@ const Nodes: React.FC = () => {
         </div>
       </div>
       <ModalPurchase open={openModal} onClose={() => setOpenModal(false)} />
+      {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
+      {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
     </Page>
   );
 };

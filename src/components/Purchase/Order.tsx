@@ -5,6 +5,7 @@ import ETH from '../icons/ETHIcon';
 import NumberInput from './NumberInput';
 import styles from './styles.module.css';
 import { useWalletContext } from 'src/providers/useWallet';
+import { useAuthenticationContext } from 'src/providers/useAuthentication';
 
 const licenses = [
   {
@@ -38,12 +39,14 @@ const licenses = [
 
 const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
   const { onConnect, address } = useWalletContext();
+  const { login } = useAuthenticationContext();
 
   const onClickPurchase = () => {
     if (address) {
       onPlaceOrder();
     } else {
-      onConnect();
+      login();
+      // onConnect();
     }
   };
 

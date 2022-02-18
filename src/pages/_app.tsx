@@ -8,6 +8,7 @@ import { useGA } from 'src/lib/ga';
 import LanguageProvider from 'src/context/LanguageContext';
 import { t } from '@lingui/macro';
 import { WalletProvider } from 'src/providers/useWallet';
+import { AuthenticationProvider } from 'src/providers/useAuthentication';
 
 function App({ Component, pageProps }: AppProps) {
   useGA();
@@ -39,9 +40,11 @@ function App({ Component, pageProps }: AppProps) {
         }}
       />
 
-      <WalletProvider>
-        <Component {...pageProps} />
-      </WalletProvider>
+      <AuthenticationProvider>
+        <WalletProvider>
+          <Component {...pageProps} />
+        </WalletProvider>
+      </AuthenticationProvider>
     </LanguageProvider>
   );
 }

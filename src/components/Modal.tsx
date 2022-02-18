@@ -7,7 +7,7 @@ import CloseIcon from './icons/CloseIcon';
 type DialogProps = {
   title?: string,
   className?: string,
-  onClose: (e: any) => void,
+  onClose?: (e: any) => void,
   open?: boolean;
   children:
     | React.ReactNode

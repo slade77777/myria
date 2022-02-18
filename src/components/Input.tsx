@@ -1,33 +1,39 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import clsx from 'clsx';
+import ErrorIcon from './icons/ErrorIcon';
 
-type Props = {
+export type Props = {
   message?: ReactNode | string;
   errorText?: string;
   error?: boolean;
   containerClassName?: string;
+  icon?: React.ReactNode | string;
 };
 
 const Input = React.forwardRef<HTMLInputElement, Props & React.HTMLProps<HTMLInputElement>>(
-  ({ className, message=null, errorText, error, containerClassName, ...props }, ref) => {
+  ({ className, message = null, errorText, error, containerClassName, icon, ...props }, ref) => {
     return (
-      <div className={clsx(containerClassName, 'relative')}>
-        <input
-          className={clsx(className, 'input block w-full', {
-            'border-[#F37272]': error
-          })}
-          type="text"
-          ref={ref}
-          {...props}
-        />
+      <div className={clsx(containerClassName)}>
+        <div>
+          <input
+            className={clsx(className, 'input block w-full', {
+              'border-[#FFFFFF]': error
+            })}
+            type="text"
+            ref={ref}
+            {...props}
+          />
+        </div>
         {error && (
-          <p
-            className={clsx('text-[14px] leading-[1.5] mt-[7px]', {
-              'text-[#F37272]': error,
-              'absolute': error
-            })}>
-            {errorText}
-          </p>
+          <div className="mt-2 flex">
+            <ErrorIcon />
+            <p
+              className={clsx('ml-[10px] text-[14px] leading-[1.5]', {
+                'text-brand-orange': error
+              })}>
+              {errorText}
+            </p>
+          </div>
         )}
         {message}
       </div>
