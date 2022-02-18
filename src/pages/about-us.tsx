@@ -352,7 +352,7 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
         </section>
-        <section className={clsx(paddingX, 'mt-[175px]')}>
+        <section className={clsx(paddingX, 'mt-[175px]')} id="teams">
           <div className="mx-auto max-w-content">
             <h3 className="heading-sm text-center md:heading-md">
               <Trans>Led by industry experts</Trans>

@@ -73,7 +73,7 @@ const links = [
         },
         {
           label: <Trans>Team</Trans>,
-          link: '/about-us'
+          link: '/about-us#teams'
         }
       ],
       [
