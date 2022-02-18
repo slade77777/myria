@@ -8,6 +8,7 @@ import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
 import { links, headerHeight, Action } from './Header';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { useAuthenticationContext } from 'src/providers/useAuthentication';
 
 type Props = {
   action: Action;
@@ -36,6 +37,7 @@ const ProfileComponent: React.FC<{}> = ({}) => {
 
 const DesktopHeader: React.FC<Props> = ({ action }) => {
   const { address, onConnect } = useWalletContext();
+  const { login } = useAuthenticationContext();
 
   return (
     <header>
@@ -128,7 +130,9 @@ const DesktopHeader: React.FC<Props> = ({ action }) => {
             <ProfileComponent />
           ) : (
             <div className="flex">
-              <button className="btn-sm btn-primary mr-3 rounded-lg px-4">Sign in</button>
+              <button className="btn-sm btn-primary mr-3 rounded-lg px-4" onClick={login}>
+                Sign in
+              </button>
               <button
                 className="btn-sm btn-secondary min-w-[153px] rounded-lg px-4 py-3"
                 onClick={onConnect}>
