@@ -1,11 +1,13 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import Order from 'src/components/Purchase/Order';
 import { headerHeight } from '../../components/Header';
 import Page from '../../components/Page';
 import License from '../../components/Purchase/License';
 import ModalPurchase from 'src/components/Purchase/Modals';
 import Subscribe from 'src/components/Subscribe';
+import Stepper, { Step } from 'src/components/Stepper';
+import { t } from '@lingui/macro';
 
 const trophy = (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,6 +28,30 @@ const dashboard = (
 );
 
 const PurchaseComplete: React.FC = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const steps: Step[] = useMemo(
+    () => [
+      {
+        title: t`Step 1`,
+        description: t`Node purchase`
+      },
+      {
+        title: t`Step 2`,
+        description: t`Create an account`
+      },
+      {
+        title: t`Step 3`,
+        description: t`Access node dashboard`
+      },
+      {
+        title: t`Step 4`,
+        description: t`Claim rewards`
+      }
+    ],
+    []
+  );
+
   return (
     <Page>
       <div
@@ -36,12 +62,14 @@ const PurchaseComplete: React.FC = () => {
         className={clsx(
           "mb-[120px] bg-[url('/images/nodes/purchase-page-bg.png')] bg-top bg-no-repeat"
         )}>
-        <div className="mx-auto w-full px-6 text-center md:w-[832px]">
-          <h1 className="heading-md text-center font-extrabold text-brand-mid-blue md:heading-massive md:mt-[151px]">
+        <div className="mx-auto w-full px-6 text-center md:max-w-[832px]">
+          <div className="mt-[77px]">
+            <Stepper steps={steps} currentStep={currentStep} contentClassName="max-w-[149px]" />
+          </div>
+          <h1 className="heading-md mt-[64px] text-center font-extrabold text-brand-mid-blue md:heading-massive">
             Congratulations!
-          </h1>
-          <h1 className="heading-md text-center font-extrabold text-brand-white md:heading-massive">
-            Your purchase is complete.
+            <br />
+            <span className="text-brand-white">Your purchase is complete.</span>
           </h1>
 
           <div className="heading-sm mt-8 mb-12 text-center">Get started with your Myria node.</div>
