@@ -154,16 +154,14 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
 };
 
 const MobileHeader: React.FC<Props> = ({ action }) => {
-  
   const [openMenu, setOpenMenu] = useState(false);
   const toggleMenu = () => {
     setOpenMenu((o) => !o);
   };
 
-  const headerRef = useRef<HTMLElement>(null);
-  useStickyHeader(headerRef.current, 100);
-
   const navRef = useRef<HTMLElement>(null);
+  useStickyHeader(navRef);
+
   const top = navRef.current?.getBoundingClientRect().top ?? 0;
 
   useEffect(() => {
@@ -175,13 +173,13 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
   }, [openMenu]);
 
   return (
-    <header id="page-header-mobile" className='w-full' ref={headerRef}>
+    <header className='w-full'>
       <nav
         style={{
           height: headerHeight
         }}
         ref={navRef}
-        className="flex items-center justify-between py-4 px-6">
+        className="flex items-center justify-between py-4 px-6 w-full">
         <Link href="/">
           <a className="w-full max-w-[164px]">
             <Logo />

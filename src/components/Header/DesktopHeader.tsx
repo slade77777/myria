@@ -14,7 +14,7 @@ type Props = {
 
 const DesktopHeader: React.FC<Props> = () => {
   const headerRef = useRef<HTMLElement>(null);
-  useStickyHeader(headerRef.current, 50);
+  useStickyHeader(headerRef);
 
   return (
     <header>
@@ -23,15 +23,15 @@ const DesktopHeader: React.FC<Props> = () => {
           height: headerHeight
         }}
         ref={headerRef}
-        className="py-4 lg:px-4 xl:px-[54px] flex items-center justify-between w-full">
-        <div className="flex items-center w-[220px]">
+        className="flex w-full items-center justify-between py-4 lg:px-4 xl:px-[54px]">
+        <div className="flex w-[220px] items-center">
           <Link href="/">
             <a className="w-full max-w-[164px]">
               <Logo />
             </a>
           </Link>
         </div>
-        <ul className="text-[14px] leading-[1.25] uppercase font-medium grid grid-flow-col gap-[38px] items-center mx-auto text-brand-white">
+        <ul className="mx-auto grid grid-flow-col items-center gap-[38px] text-[14px] font-medium uppercase leading-[1.25] text-brand-white">
           {links.map((item, idx) => {
             if (item.inactive) {
               return (
@@ -42,7 +42,7 @@ const DesktopHeader: React.FC<Props> = () => {
                       style={{
                         boxShadow: '0 0 0 0.5px #9AC9E3'
                       }}
-                      className="font-extrabold text-[6px] rounded-sm absolute -top-[9px] -right-7 p-[3px] pb-[1px] bg-brand-light-blue/40 bg-opacity-4">
+                      className="bg-opacity-4 absolute -top-[9px] -right-7 rounded-sm bg-brand-light-blue/40 p-[3px] pb-[1px] text-[6px] font-extrabold">
                       Soon!
                     </div>
                   </div>
@@ -52,15 +52,15 @@ const DesktopHeader: React.FC<Props> = () => {
 
             if (item.children) {
               return (
-                <li key={idx} className="relative group">
-                  <div className="flex items-center hover:text-brand-gold hover:cursor-pointer">
+                <li key={idx} className="group relative">
+                  <div className="flex items-center hover:cursor-pointer hover:text-brand-gold">
                     {item.text}
                     <i className="w-[24px]">
                       <ChevronDownIcon />
                     </i>
                   </div>
-                  <div className="absolute left-0 hidden pt-4 -translate-x-6 group-hover:block top-full">
-                    <ul className="bg-dark px-6 py-4 pr-[63px] rounded-lg whitespace-nowrap grid gap-6">
+                  <div className="absolute left-0 top-full hidden -translate-x-6 pt-4 group-hover:block">
+                    <ul className="grid gap-6 whitespace-nowrap rounded-lg bg-dark px-6 py-4 pr-[63px]">
                       {item.children.map((link, idx) => (
                         <li key={idx}>
                           <Link href={link.url as string}>
@@ -85,7 +85,7 @@ const DesktopHeader: React.FC<Props> = () => {
             }
           })}
         </ul>
-        <div className="flex items-center w-[220px] justify-end flex-shrink-0">
+        <div className="flex w-[220px] flex-shrink-0 items-center justify-end">
           {/* {action === 'login' && (
             <>
               <button className="btn-sm btn-primary">Sign up</button>

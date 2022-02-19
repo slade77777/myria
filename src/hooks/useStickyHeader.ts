@@ -1,15 +1,14 @@
-import { useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 
-export function useStickyHeader(header: HTMLElement | null, offset: number = 50) {
+export function useStickyHeader(headerRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
-    if (!header) {
+    if (!headerRef.current) {
       return;
     }
-    
+    const header = headerRef.current;
     // Get the offset position of the navbar
-    const sticky = header.offsetTop + offset;
-    // When the user scrolls the page, execute myFunction
-    window.onscroll = function () {
+    const sticky = header.offsetTop + header.getBoundingClientRect().top;
+    const handleScroll = () => {
       const stickyClasses = ['fixed', 'top-0', 'bg-dark'];
       if (window.pageYOffset > sticky) {
         header.classList.add(...stickyClasses);
@@ -17,5 +16,9 @@ export function useStickyHeader(header: HTMLElement | null, offset: number = 50)
         header.classList.remove(...stickyClasses);
       }
     };
-  }, [header, offset]);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [headerRef]);
 }
