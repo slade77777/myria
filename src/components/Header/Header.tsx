@@ -1,6 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { socialLinks } from 'src/configs';
 import DesktopHeader from './DesktopHeader';
 import MobileHeader from './MobileHeader';
