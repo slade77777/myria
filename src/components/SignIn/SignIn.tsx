@@ -8,7 +8,7 @@ import { t, Trans } from '@lingui/macro';
 import * as yup from 'yup';
 import Link from 'next/link';
 import EyeIcon from '../icons/EyeIcon';
-import { useAuthenticationContext } from 'src/providers/useAuthentication';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 interface IFormSignInInput {
   email: string;

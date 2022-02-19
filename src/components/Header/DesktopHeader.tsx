@@ -2,13 +2,13 @@ import { Trans } from '@lingui/macro';
 import Link from 'next/link';
 import React from 'react';
 import truncateString from 'src/helper';
-import { useWalletContext } from 'src/providers/useWallet';
+import { useWalletContext } from 'src/context/wallet';
 import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
 import { links, headerHeight, Action } from './Header';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { useAuthenticationContext } from 'src/providers/useAuthentication';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 type Props = {
   action: Action;

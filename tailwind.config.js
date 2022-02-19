@@ -85,9 +85,9 @@ module.exports = {
           }
         },
         '.dialog-overlay': {
-          backgroundColor: "rgba(0, 0, 0, .65)",
-          position: "fixed",
-          zIndex: 10,
+          backgroundColor: 'rgba(0, 0, 0, .65)',
+          position: 'fixed',
+          zIndex: 29,
           top: 0,
           right: 0,
           bottom: 0,
@@ -95,19 +95,18 @@ module.exports = {
         },
 
         '.dialog-content': {
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          minWidth: '200',
-          maxHeight: "85vh",
-          overflow: 'hidden',
+          position: 'fixed',
+          zIndex: 30,
+          top: 0,
+          left: 0,
           width: '100%',
-          marginTop: "-5vh",
-          backgroundColor: theme('colors.brand-deep-blue'),
-          borderRadius: 12,
-          "&:focus": {
-            outline: "none"
+          height: '100%',
+          display: 'flex',
+          maxHeight: '100vh',
+          overflow: 'auto',
+          padding: '50px 24px',
+          '&:focus': {
+            outline: 'none'
           }
         },
         '.heading-massive': {

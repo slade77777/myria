@@ -10,7 +10,7 @@ import Link from 'next/link';
 import EyeIcon from '../icons/EyeIcon';
 import CheckIcon from '../icons/CheckIcon';
 import WarningIcon from '../icons/WarningIcon';
-import { useAuthenticationContext } from 'src/providers/useAuthentication';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 interface IFormRegisterInput {
   firstName: string;

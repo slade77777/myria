@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import ETH from '../icons/ETHIcon';
 import NumberInput from './NumberInput';
 import styles from './styles.module.css';
-import { useWalletContext } from 'src/providers/useWallet';
-import { useAuthenticationContext } from 'src/providers/useAuthentication';
+import { useWalletContext } from 'src/context/wallet';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 const licenses = [
   {

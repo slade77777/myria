@@ -5,10 +5,10 @@ import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 
 import { useGA } from 'src/lib/ga';
-import LanguageProvider from 'src/context/LanguageContext';
+import LanguageProvider from 'src/context/language';
 import { t } from '@lingui/macro';
-import { WalletProvider } from 'src/providers/useWallet';
-import { AuthenticationProvider } from 'src/providers/useAuthentication';
+import { WalletProvider } from 'src/context/wallet';
+import { AuthenticationProvider } from 'src/context/authentication';
 
 function App({ Component, pageProps }: AppProps) {
   useGA();

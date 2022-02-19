@@ -4,7 +4,7 @@ import Dialog from 'src/components/Modal';
 const ModalPurchase = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
   return (
     <Dialog open={open} title="Complete your purchase" onClose={onClose}>
-      <Dialog.Content className="z-20 w-80 shadow-[0_0_40px_10px_#0000004D] md:w-[832px]">
+      <Dialog.Content className="z-20 shadow-[0_0_40px_10px_#0000004D] md:w-[832px]">
         <div className=" p-8">
           <div className="mt-10 mb-4 flex justify-between">
             <div>
