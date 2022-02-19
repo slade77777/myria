@@ -7,6 +7,7 @@ import License from '../../components/Purchase/License';
 import ModalPurchase from 'src/components/Purchase/Modals';
 import SignInModal from 'src/components/SignIn/Modal';
 import RegisterModal from 'src/components/Register/Modal';
+import { paddingX } from 'src/utils';
 
 const Nodes: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -17,25 +18,22 @@ const Nodes: React.FC = () => {
   };
 
   return (
-    <Page>
+    <Page footerClassName="hidden md:block">
       <div
         style={{
           paddingTop: headerHeight,
           backgroundSize: '100% auto'
         }}
         className={clsx(
-          "mb-[120px] bg-[url('/images/nodes/purchase-page-bg.png')] bg-top bg-no-repeat"
+          paddingX,
+          "bg-[url('/images/nodes/purchase-page-bg.png')] bg-top bg-no-repeat md:mb-[120px]"
         )}>
-        <div className="mx-auto w-full max-w-[1734] px-6 md:px-[88px]">
-          <h1 className="heading-md max-w-[756px] font-extrabold text-brand-white md:heading-lg md:mt-[151px]">
-            Purchase a Myria Node
-          </h1>
-
-          <div className="mt-[80px] flex flex-col md:flex-row">
-            <div className="mb-8 md:mb-0 md:mr-8 md:w-[calc((100%-32px)*0.675)]">
+        <div className="mx-auto mt-[30px] w-full max-w-[1734] md:mt-[109px]">
+          <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[67.5fr_32.5fr]">
+            <div className="md:mt-0">
               <License />
             </div>
-            <div className="sticky top-5 h-full md:w-[calc((100%-32px)*0.325)]">
+            <div className="sticky bottom-0 -mx-6 mt-[80px] md:top-5 md:mx-0 md:mt-0">
               <Order onPlaceOrder={onPlaceOrder} />
             </div>
           </div>

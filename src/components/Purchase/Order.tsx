@@ -51,27 +51,29 @@ const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
   };
 
   return (
-    <div className="rounded-lg bg-brand-deep-blue p-8">
-      <p className="body-sm text-light">Price</p>
-      <div className="mt-[7px] flex items-center justify-between">
-        <div className="flex items-center">
-          <ETH /> <p className="heading-md ml-[9px] ">1.5 </p>
+    <div className="rounded-t-lg bg-brand-deep-blue p-6 md:rounded-lg md:p-8">
+      <div className="flex items-center justify-between md:block">
+        <p className="caption hidden font-bold text-light md:body-sm md:block">Price</p>
+        <div className="flex items-baseline justify-between md:mt-[7px] md:items-center">
+          <div className="flex items-center">
+            <ETH /> <p className="heading-md ml-[9px] ">1.5 </p>
+          </div>
+          <p className="caption ml-2 font-normal text-light md:body-sm md:ml-0">~$4,608.22</p>
         </div>
-        <p className="body-sm text-light">~$4,608.22</p>
+
+        <div className="ml-[100px] md:ml-0 md:mt-6">
+          <p className="body-sm mb-2 hidden md:block">Quantity</p>
+          <NumberInput />
+        </div>
       </div>
 
-      <div className="mt-6">
-        <p className="body-sm mb-2">Quantity</p>
-        <NumberInput />
-      </div>
-
-      <div className="body-sm mt-10 text-light">
+      <div className="caption mt-6 font-normal normal-case text-light md:body-sm md:mt-10">
         {licenses.map((license) => (
           <div className="mb-4 flex" key={license.value}>
             <input
               type="checkbox"
               className={clsx(
-                'bg-red mt-1 h-5 w-5 flex-none cursor-pointer appearance-none rounded-sm border border-brand-light-blue checked:bg-brand-light-blue',
+                'bg-red mt-1 h-4 w-4 flex-none cursor-pointer appearance-none rounded-sm border border-brand-light-blue checked:bg-brand-light-blue md:h-5 md:w-5',
                 styles['checkbox-terms']
               )}
             />
@@ -80,11 +82,11 @@ const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
         ))}
       </div>
 
-      <div className="mt-12">
+      <div className="mt-2 md:mt-12">
         <button
           className="btn-lg w-full bg-brand-gold px-4 uppercase text-black"
           onClick={onClickPurchase}>
-          Place Order
+          PURCHASE NOW
         </button>
       </div>
     </div>
