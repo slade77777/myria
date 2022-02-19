@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
@@ -11,14 +12,18 @@ type Props = {
   className?: string;
 };
 
-const DesktopHeader: React.FC<Props> = ({ action }) => {
+const DesktopHeader: React.FC<Props> = () => {
+  const headerRef = useRef<HTMLElement>(null);
+  useStickyHeader(headerRef.current, 50);
+
   return (
     <header>
       <nav
         style={{
           height: headerHeight
         }}
-        className="py-4 lg:px-4 xl:px-[54px] flex items-center justify-between">
+        ref={headerRef}
+        className="py-4 lg:px-4 xl:px-[54px] flex items-center justify-between w-full">
         <div className="flex items-center w-[220px]">
           <Link href="/">
             <a className="w-full max-w-[164px]">
