@@ -348,7 +348,7 @@ const GameDetail: React.FC = () => {
   const game = games[id];
   const { title, assets, logo, logoMobile, content, info, image, description, headerBg } = game;
   return (
-    <Page>
+    <Page stickyHeader={false}>
       <div>
         <section
           style={{

@@ -1,8 +1,8 @@
 import { RefObject, useEffect } from 'react';
 
-export function useStickyHeader(headerRef: RefObject<HTMLElement | null>) {
+export function useStickyHeader(headerRef: RefObject<HTMLElement | null>, stickyHeader: boolean=true) {
   useEffect(() => {
-    if (!headerRef.current) {
+    if (!headerRef.current || !stickyHeader ) {
       return;
     }
     const header = headerRef.current;
