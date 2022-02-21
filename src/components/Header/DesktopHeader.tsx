@@ -9,14 +9,67 @@ import Logo from '../icons/Logo';
 import { links, headerHeight, Action } from './Header';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { useAuthenticationContext } from 'src/context/authentication';
+import LinearSettingIcon from '../icons/LinearSettingIcon';
+import SignOutIcon from '../icons/SignOutIcon';
+import DashboardIcon from '../icons/DashboardIcon';
+import WalletIcon from '../icons/WalletIcon';
 
 type Props = {
   action: Action;
   className?: string;
 };
 
+const ProfileMenus = [
+  {
+    text: 'My account',
+    href: '/',
+    icon: <LinearSettingIcon />
+  },
+  {
+    text: 'Wallet',
+    href: '/',
+    icon: <WalletIcon />
+  },
+  {
+    text: 'Node Dashboard',
+    href: '/',
+    icon: <DashboardIcon />
+  }
+];
+
 const ProfileComponent: React.FC<{}> = ({}) => {
   const { address, disconnect } = useWalletContext();
+  const { user } = useAuthenticationContext();
+  if (user) {
+    return (
+      <PopoverPrimitive.Root modal>
+        <PopoverPrimitive.Trigger asChild>
+          <div className="flex items-center rounded-3xl bg-[#081824] px-6 py-3 hover:cursor-pointer">
+            <img src={'/images/header-user.png'} alt={address} className="mr-3" />
+            <div>{truncateString(address || '')}</div>
+          </div>
+        </PopoverPrimitive.Trigger>
+        <PopoverPrimitive.Content asChild side="bottom" sideOffset={5}>
+          <div className="min-w-[164px] rounded-xl bg-[#091824] px-4 py-6 text-sm text-white">
+            {ProfileMenus.map((menu) => {
+              return (
+                <Link href={menu.href} key={menu.href}>
+                  <a className="mb-6 flex items-center">
+                    {menu.icon}
+                    <p className="ml-2">{menu.text}</p>
+                  </a>
+                </Link>
+              );
+            })}
+            <div className="mt-6 flex items-center hover:cursor-pointer">
+              <SignOutIcon />
+              <p className="ml-2">Sign out</p>
+            </div>
+          </div>
+        </PopoverPrimitive.Content>
+      </PopoverPrimitive.Root>
+    );
+  }
 
   return (
     <PopoverPrimitive.Root modal>
@@ -27,8 +80,10 @@ const ProfileComponent: React.FC<{}> = ({}) => {
         </div>
       </PopoverPrimitive.Trigger>
       <PopoverPrimitive.Content asChild side="bottom" sideOffset={5}>
-        <div className="rounded-3xl bg-white px-6 py-3">
-          <button onClick={disconnect}>Disconnect</button>
+        <div className="flex items-center rounded-xl bg-[#091824] px-6 py-3 text-white">
+          <button onClick={disconnect} className="ml-2">
+            Disconnect
+          </button>
         </div>
       </PopoverPrimitive.Content>
     </PopoverPrimitive.Root>
