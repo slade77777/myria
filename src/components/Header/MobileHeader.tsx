@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Collapse from '../Collapse';
 import { socialLinks } from '../../configs';
 import { Trans } from '@lingui/macro';
+import { useStickyHeader } from 'src/hooks/useStickyHeader';
 
 type Props = {
   action: Action;
@@ -157,7 +158,9 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
   const toggleMenu = () => {
     setOpenMenu((o) => !o);
   };
+
   const navRef = useRef<HTMLElement>(null);
+  useStickyHeader(navRef);
 
   const top = navRef.current?.getBoundingClientRect().top ?? 0;
 
@@ -170,13 +173,13 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
   }, [openMenu]);
 
   return (
-    <header>
+    <header className='w-full'>
       <nav
         style={{
           height: headerHeight
         }}
         ref={navRef}
-        className="flex items-center justify-between py-4 px-6">
+        className="flex items-center justify-between py-4 px-6 w-full">
         <Link href="/">
           <a className="w-full max-w-[164px]">
             <Logo />

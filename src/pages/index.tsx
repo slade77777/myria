@@ -180,7 +180,7 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'relative isolate z-10 mt-[100px] flex items-center justify-center bg-dark md:mt-0 md:min-h-[745px]',
+              'relative isolate z-0 mt-[100px] flex items-center justify-center bg-dark md:mt-0 md:min-h-[745px]',
               paddingX
             )}>
             <div className="mx-auto grid w-full max-w-content grid-cols-1 items-center gap-y-[53px] gap-x-[83px] md:grid-cols-2">
@@ -222,7 +222,7 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'relative isolate z-10 flex items-center justify-center bg-dark pt-[100px] pb-[100px] md:pb-0 md:min-h-[629px] md:pt-0',
+              'relative isolate z-0 flex items-center justify-center bg-dark pt-[100px] pb-[100px] md:pb-0 md:min-h-[629px] md:pt-0',
               paddingX
             )}>
             <div className="mx-auto grid w-full max-w-content grid-cols-1 gap-y-[53px] gap-x-[83px] md:grid-cols-2">
