@@ -222,22 +222,22 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'relative isolate z-10 flex items-center justify-center bg-dark pt-[100px] pb-[100px] md:min-h-[629px] md:pt-0',
+              'relative isolate z-10 flex items-center justify-center bg-dark pt-[100px] pb-[100px] md:pb-0 md:min-h-[629px] md:pt-0',
               paddingX
             )}>
             <div className="mx-auto grid w-full max-w-content grid-cols-1 gap-y-[53px] gap-x-[83px] md:grid-cols-2">
               <div className="gsap-image-parallax-container-3">
                 <div className="gsap-image-parallax hidden md:block">
                   <Image
-                    src="/images/home/tacoguy.png"
+                    src="/images/home/tacco_guy_op.png"
                     alt=""
                     layout="responsive"
-                    width={804}
-                    height={1206}
+                    width={554}
+                    height={630}
                   />
                 </div>
                 <div className="flex justify-center md:hidden">
-                  <Image src="/images/home/tacoguy.png" alt="" width={254} height={382} />
+                  <Image src="/images/home/tacco_guy_op.png" alt="" width={554} height={630}/>
                 </div>
               </div>
               <div className="relative flex flex-col justify-center overflow-hidden text-center md:text-left">
@@ -267,21 +267,26 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'relative isolate mt-[100px] flex min-h-[760px] items-end justify-center py-4 md:min-h-[849px] md:items-center',
+              'relative isolate flex min-h-[936px] items-end justify-center py-4 md:min-h-[811px] md:items-center',
               paddingX
             )}>
-            <div className="absolute top-0 right-0 z-[-1] hidden h-full w-full md:block md:w-[90%]">
-              <Image src="/images/home/myriaverse.png" alt="" layout="fill" objectFit="cover" />
-            </div>
-            <div className="absolute top-0 right-0 z-[-1] h-full w-full md:hidden md:w-[90%]">
+            <div className="absolute top-0 right-0 z-[-1] hidden h-full w-full md:block">
               <Image
-                src="/images/home/myriaverse-mobile.png"
+                src="/images/home/myriaverse_op.png"
+                alt=""
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <div className="absolute top-0 right-0 z-[-1] h-full w-full md:hidden">
+              <Image
+                src="/images/home/myriaverse-mobile_op.png"
                 alt=""
                 layout="fill"
                 objectFit="cover"
               />
             </div>
-            <div className="mx-auto grid w-full max-w-content grid-cols-1 items-center gap-y-[53px] gap-x-[83px] md:grid-cols-2">
+            <div className="mx-auto mb-[90px] grid w-full max-w-content grid-cols-1 items-center gap-y-[53px] gap-x-[83px] md:grid-cols-2">
               <div className="text-center md:text-left">
                 <h2 data-aos="fade-up" className="heading-md text-[#FFFDFD] md:heading-lg">
                   <Trans>Unified through the Myriaverse</Trans>
@@ -302,7 +307,7 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'relative isolate mt-[130px] grid grid-cols-1 grid-rows-1 items-center justify-center py-10 md:mt-0 md:min-h-[790px]'
+              'relative isolate mt-[130px] grid grid-cols-1 grid-rows-1 items-center justify-center py-20 md:mt-0 md:min-h-[790px]'
             )}>
             <div className="[grid-area:1/1/-1/-1] md:hidden">
               <Image src="/images/home/globe.png" width={856} height={1034} alt="" />
@@ -409,7 +414,7 @@ const Index = () => {
               <div className="relative isolate h-[470px] overflow-hidden rounded-[20px] bg-brand-deep-blue p-[32px] md:h-[540px] md:p-10">
                 <div className="absolute inset-0 z-[-1]">
                   <Image
-                    src="/images/home/for-studios.png"
+                    src="/images/home/for-studios_op.png"
                     alt=""
                     layout="fill"
                     objectFit="cover"
