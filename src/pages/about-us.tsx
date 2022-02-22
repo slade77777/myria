@@ -50,7 +50,7 @@ const data: Person[] = [
       </Trans>
     ),
     socials: {
-      twitter: 'https://twitter.com/0xgoosey',
+      twitter: 'https://twitter.com/gooseara',
       linkedin: ''
     }
   },
@@ -85,18 +85,18 @@ const data: Person[] = [
     }
   },
   {
-    name: 'Jem Law',
-    position: <Trans>Marketing Manager</Trans>,
+    name: 'Brock',
+    position: <Trans>Product Lead - Blockchain</Trans>,
     description: (
       <Trans>
-        Jem brings a breadth of business operations and strategy experience, including 10+ years
-        working with corporate companies in pitching and fundraising, and 6 years managing strategy
-        execution for tech and blockchain companies.
+        Brock is an entreprenurial product lead with over 10+ years experience working in the tech
+        startups and founded his own MarTech company. More recently, he helped scale one of the
+        largest blockchain companies focusing on product tokenomics and growth.{' '}
       </Trans>
     ),
     socials: {
       twitter: '',
-      linkedin: 'https://www.linkedin.com/in/jemimalaw/'
+      linkedin: ''
     }
   },
   {
@@ -114,21 +114,22 @@ const data: Person[] = [
       linkedin: ''
     }
   },
+
   {
-    name: 'Hunter Jo',
-    position: <Trans>Community Lead</Trans>,
+    name: 'Antonio Molina',
+    position: <Trans>Games Producer</Trans>,
     description: (
       <Trans>
-        Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront
-        of innovation and helping them build global communities. He has catalyzed and amplified
-        partnerships with some of the largest projects and influencers in this space.{' '}
+        With 15+ year experience working in the gaming industry, Antonio has contributed to some of
+        the worlds leading titles and brands such as The Witcher, Disney and more.{' '}
       </Trans>
     ),
     socials: {
-      twitter: 'https://twitter.com/CountGupula',
-      linkedin: ''
+      twitter: '',
+      linkedin: 'https://www.linkedin.com/in/antoniomolina34/'
     }
   },
+
   {
     name: 'AJ Dimarucot',
     position: <Trans>Art Creative Lead</Trans>,
@@ -144,19 +145,20 @@ const data: Person[] = [
       linkedin: 'https://linkedin.com/in/ajdimarucot'
     }
   },
+
   {
-    name: 'Brock',
-    position: <Trans>Product Lead - Blockchain</Trans>,
+    name: 'Jem Law',
+    position: <Trans>Marketing Manager</Trans>,
     description: (
       <Trans>
-        Brock is an entreprenurial product lead with over 10+ years experience working in the tech
-        startups and founded his own MarTech company. More recently, he helped scale one of the
-        largest blockchain companies focusing on product tokenomics and growth.{' '}
+        Jem brings a breadth of business operations and strategy experience, including 10+ years
+        working with corporate companies in pitching and fundraising, and 6 years managing strategy
+        execution for tech and blockchain companies.
       </Trans>
     ),
     socials: {
       twitter: '',
-      linkedin: ''
+      linkedin: 'https://www.linkedin.com/in/jemimalaw/'
     }
   },
 
@@ -176,17 +178,18 @@ const data: Person[] = [
     }
   },
   {
-    name: 'Antonio Molina',
-    position: <Trans>Games Producer</Trans>,
+    name: 'Hunter Jo',
+    position: <Trans>Community Lead</Trans>,
     description: (
       <Trans>
-        With 15+ year experience working in the gaming industry, Antonio has contributed to some of
-        the worlds leading titles and brands such as The Witcher, Disney and more.{' '}
+        Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront
+        of innovation and helping them build global communities. He has catalyzed and amplified
+        partnerships with some of the largest projects and influencers in this space.{' '}
       </Trans>
     ),
     socials: {
-      twitter: '',
-      linkedin: 'https://www.linkedin.com/in/antoniomolina34/'
+      twitter: 'https://twitter.com/CountGupula',
+      linkedin: ''
     }
   },
   {
@@ -304,7 +307,8 @@ const AboutUs: React.FC = () => {
             </h1>
             <p className="heading-sm mx-auto mt-[37px] max-w-[875px] text-center">
               <Trans>
-              Enhancing the power of play through blockchain, enabling economic access and ownership, and driving a new era of opportunity, exploration and freedom.
+                Enhancing the power of play through blockchain, enabling economic access and
+                ownership, and driving a new era of opportunity, exploration and freedom.
               </Trans>
             </p>
           </div>
