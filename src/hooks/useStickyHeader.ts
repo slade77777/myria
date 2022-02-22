@@ -1,24 +1,24 @@
-import { RefObject, useEffect } from 'react';
+import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
+import { RefObject } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-export function useStickyHeader(headerRef: RefObject<HTMLElement | null>) {
-  useEffect(() => {
-    if (!headerRef.current) {
+gsap.registerPlugin(ScrollTrigger);
+
+export function useStickyHeader(headerRef: RefObject<HTMLElement | null>, stickyHeader = true) {
+  useIsomorphicLayoutEffect(() => {
+    if (!headerRef?.current || !stickyHeader) {
       return;
     }
-    const header = headerRef.current;
-    // Get the offset position of the navbar
-    const sticky = header.offsetTop + header.getBoundingClientRect().top;
-    const handleScroll = () => {
-      const stickyClasses = ['fixed', 'top-0', 'bg-dark'];
-      if (window.pageYOffset > sticky) {
-        header.classList.add(...stickyClasses);
-      } else {
-        header.classList.remove(...stickyClasses);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
+    const effect = ScrollTrigger.create({
+      trigger: headerRef.current,
+      start: 'top top',
+      endTrigger: 'body',
+      end: 'bottom+=1000px bottom',
+      toggleClass: 'sticky-header'
+    });
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      effect.kill();
     };
-  }, [headerRef]);
+  }, [headerRef, stickyHeader]);
 }

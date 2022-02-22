@@ -10,11 +10,12 @@ import { links, headerHeight, Action } from './Header';
 type Props = {
   action: Action;
   className?: string;
+  stickyHeader: boolean;
 };
 
-const DesktopHeader: React.FC<Props> = () => {
+const DesktopHeader: React.FC<Props> = ({ stickyHeader=true }) => {
   const headerRef = useRef<HTMLElement>(null);
-  useStickyHeader(headerRef);
+  useStickyHeader(headerRef, stickyHeader);
 
   return (
     <header>
