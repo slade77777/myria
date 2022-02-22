@@ -3,7 +3,7 @@ variables:
 
 deploy to staging:
   environment: staging
-  image: python:latest
+  image: node:14
   script:
   - yarn
   - yarn build
