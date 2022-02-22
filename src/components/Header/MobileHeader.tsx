@@ -10,6 +10,7 @@ import Collapse from '../Collapse';
 import { socialLinks } from '../../configs';
 import { Trans } from '@lingui/macro';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
+import { Cross as Hamburger } from 'hamburger-react';
 
 type Props = {
   action: Action;
@@ -22,7 +23,7 @@ type OverlayProps = {
   top: number;
 };
 
-const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => {
+const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
   return (
     <div
       style={{
@@ -176,8 +177,8 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
               <Logo />
             </a>
           </Link>
-          <button onClick={toggleMenu} className="w-[32px]">
-            {openMenu ? <CloseIcon /> : <MenuIcon />}
+          <button onClick={toggleMenu} className="">
+            <Hamburger size={30} direction="right" toggled={openMenu} />
           </button>
         </nav>
         <HeaderOverlay top={top} action={action} onClose={toggleMenu} open={openMenu} />
