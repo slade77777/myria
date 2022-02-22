@@ -21,3 +21,5 @@ deploy to s3:
     - aws --version
     - aws s3 rm s3://website-dapp-staging --recursive
     - aws s3 sync out s3://website-dapp-staging
+  only:
+    - staging
