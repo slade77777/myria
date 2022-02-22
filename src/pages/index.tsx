@@ -524,7 +524,7 @@ const Index = () => {
               <ExperenceLogos />
             </div>
           </section>
-          <section className={clsx(paddingX, 'mt-[122px] md:mt-[168px]')}>
+          <section className={clsx(paddingX, 'mt-[43px] md:mt-[168px]')}>
             <div className="mx-auto max-w-content">
               <JoinTheRevolution textAnimation="fade-up" />
             </div>
