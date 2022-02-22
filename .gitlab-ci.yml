@@ -1,0 +1,13 @@
+variables:
+  S3_BUCKET_NAME: "website-dapp-staging"
+
+deploy to production:
+  environment: production
+  image: python:latest
+  script:
+  - yarn
+  - yarn build
+  - pip install awscli
+  - aws s3 sync ./out s3://website-dapp-staging
+  only:
+  - staging
