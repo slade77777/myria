@@ -7,11 +7,11 @@ deploy to staging:
   script:
   - yarn
   - yarn build
-artifacts:
-  paths:
-    - out  
-only:
-  - staging
+  artifacts:
+    paths:
+      - out  
+  only:
+    - staging
 deploy to s3:
   stage: deploy
   image: 
