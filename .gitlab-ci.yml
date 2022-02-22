@@ -1,8 +1,8 @@
 variables:
   S3_BUCKET_NAME: "website-dapp-staging"
 
-deploy to production:
-  environment: production
+deploy to staging:
+  environment: staging
   image: python:latest
   script:
   - yarn
