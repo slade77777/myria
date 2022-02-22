@@ -256,6 +256,12 @@ module.exports = {
           transform: 'translateX(2px)',
           willChange: 'transform',
           '&[data-state="checked"]': { transform: 'translateX(19px)' }
+        },
+        '.sticky-header': {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          background: theme('colors.dark')
         }
       });
     })

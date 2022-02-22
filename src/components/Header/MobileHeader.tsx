@@ -167,7 +167,7 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
   return (
     <header className="relative isolate w-full">
       <nav ref={navRef} className="w-full">
-        <nav
+        <div
           style={{
             height: headerHeight
           }}
@@ -180,7 +180,7 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
           <button onClick={toggleMenu} className="">
             <Hamburger size={30} direction="right" toggled={openMenu} />
           </button>
-        </nav>
+        </div>
         <HeaderOverlay top={top} action={action} onClose={toggleMenu} open={openMenu} />
       </nav>
     </header>
