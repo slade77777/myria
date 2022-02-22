@@ -15,8 +15,7 @@ export function useStickyHeader(headerRef: RefObject<HTMLElement | null>, sticky
       start: 'top top',
       endTrigger: 'body',
       end: 'bottom+=1000px bottom',
-      toggleClass: 'sticky-header',
-      markers: true
+      toggleClass: 'sticky-header'
     });
     return () => {
       effect.kill();
