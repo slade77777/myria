@@ -7,8 +7,19 @@ deploy to staging:
   script:
   - yarn
   - yarn build
-  - sudo apt install python3-pip
-  - pip3 install awscli
-  - aws s3 sync ./out s3://website-dapp-staging
+artifacts:
+  paths:
+    - out  
+  only:
+  - staging
+deploy to s3:
+  stage: deploy
+  image: 
+    name: amazon/aws-cli
+    entrypoint: [""]
+  script:
+    - aws --version
+    - aws s3 rm s3://website-dapp-staging --recursive
+    - aws s3 sync out s3://website-dapp-staging
   only:
   - staging
