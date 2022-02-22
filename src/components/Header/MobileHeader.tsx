@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import CloseIcon from '../icons/CloseIcon';
 import Logo from '../icons/Logo';
@@ -27,39 +27,30 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
     <div
       style={{
         height: `calc(100vh - ${top}px)`,
-        top
+        top: top,
+        paddingTop: headerHeight
       }}
       className={clsx(
-        'invisible fixed left-0 z-10 flex w-full flex-col overflow-auto transition duration-700',
+        ' invisible fixed left-0 isolate z-[9] flex w-full flex-col overflow-auto transition duration-700',
         {
           '!visible': open
         }
       )}>
-      <nav
+      <div
         style={{
-          height: headerHeight
+          opacity: open ? 1 : 0
         }}
-        className={clsx(
-          'invisible flex flex-shrink-0 items-center justify-between bg-[#050E15] py-4  px-[24px]',
-          {
-            '!visible': open
-          }
-        )}>
-        <div className="w-full max-w-[164px]">
-          <Logo />
-        </div>
-        <button onClick={onClose} className="w-[32px] text-white">
-          <CloseIcon />
-        </button>
-      </nav>
+        className="absolute top-0 left-0 z-[-1] h-full w-full bg-dark/70 backdrop-blur-lg transition duration-500"
+      />
+
       <ul
         style={{
           overscrollBehavior: 'contain'
         }}
         className={clsx(
-          'grid flex-grow translate-x-full content-start gap-[33px] overflow-auto bg-[#050E15] px-[24px] pb-4 pt-2 text-[18px] font-medium uppercase leading-[1.25] text-white  duration-500',
+          'grid flex-grow content-start gap-[33px] overflow-auto px-[24px] pb-4 pt-2 text-[18px] font-medium uppercase leading-[1.25] text-white opacity-0 duration-500',
           {
-            '!translate-x-0': open
+            '!opacity-100': open
           }
         )}>
         {links.map((item, idx) => {
@@ -104,7 +95,7 @@ const HeaderOverlay = ({ onClose, open, action, top }: OverlayProps & Props) => 
                         </div>
                       </Collapse.Trigger>
                       <Collapse.Content className="collapse-content">
-                        <ul className="grid gap-6 whitespace-nowrap rounded-lg bg-dark px-6 pt-6 text-[16px]">
+                        <ul className="grid gap-6 whitespace-nowrap rounded-lg px-6 pt-6 text-[16px]">
                           {item.children!.map((link, idx) => (
                             <li key={idx}>
                               <Link href={link.url as string}>
@@ -173,23 +164,24 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
   }, [openMenu]);
 
   return (
-    <header className='w-full'>
-      <nav
-        style={{
-          height: headerHeight
-        }}
-        ref={navRef}
-        className="flex items-center justify-between py-4 px-6 w-full">
-        <Link href="/">
-          <a className="w-full max-w-[164px]">
-            <Logo />
-          </a>
-        </Link>
-        <button onClick={toggleMenu} className="w-[32px]">
-          <MenuIcon />
-        </button>
+    <header className="relative isolate w-full">
+      <nav ref={navRef} className="w-full">
+        <nav
+          style={{
+            height: headerHeight
+          }}
+          className={clsx('relative z-10 flex w-full items-center justify-between py-4 px-6')}>
+          <Link href="/">
+            <a className="w-full max-w-[164px]">
+              <Logo />
+            </a>
+          </Link>
+          <button onClick={toggleMenu} className="w-[32px]">
+            {openMenu ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </nav>
+        <HeaderOverlay top={top} action={action} onClose={toggleMenu} open={openMenu} />
       </nav>
-      <HeaderOverlay top={top} action={action} onClose={toggleMenu} open={openMenu} />
     </header>
   );
 };

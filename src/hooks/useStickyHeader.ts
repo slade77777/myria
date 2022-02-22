@@ -1,15 +1,15 @@
 import { RefObject, useEffect } from 'react';
 
-export function useStickyHeader(headerRef: RefObject<HTMLElement | null>, stickyHeader: boolean=true) {
+export function useStickyHeader(headerRef: RefObject<HTMLElement | null>, stickyHeader = true) {
   useEffect(() => {
-    if (!headerRef.current || !stickyHeader ) {
+    if (!headerRef.current || !stickyHeader) {
       return;
     }
     const header = headerRef.current;
     // Get the offset position of the navbar
     const sticky = header.offsetTop + header.getBoundingClientRect().top;
     const handleScroll = () => {
-      const stickyClasses = ['fixed', 'top-0', 'bg-dark'];
+      const stickyClasses = ['!fixed', 'top-0', 'bg-dark'];
       if (window.pageYOffset > sticky) {
         header.classList.add(...stickyClasses);
       } else {
@@ -20,5 +20,5 @@ export function useStickyHeader(headerRef: RefObject<HTMLElement | null>, sticky
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [headerRef]);
+  }, [headerRef, stickyHeader]);
 }
