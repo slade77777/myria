@@ -10,7 +10,7 @@ import Collapse from '../Collapse';
 import { socialLinks } from '../../configs';
 import { Trans } from '@lingui/macro';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
-import { Cross as Hamburger } from 'hamburger-react';
+import Hamburger from 'hamburger-react';
 
 type Props = {
   action: Action;
