@@ -7,7 +7,7 @@ deploy to staging:
   script:
   - yarn
   - yarn build
-  - pip install awscli
+  - pip3 install awscli
   - aws s3 sync ./out s3://website-dapp-staging
   only:
   - staging
