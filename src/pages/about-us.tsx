@@ -216,8 +216,13 @@ const principles = [
         <LoveIcon />
       </div>
     ),
-    title: <Trans>Gameplay first</Trans>,
-    description: <Trans>Fun, high-quality and free are our core gameplay tenets. </Trans>
+    title: <Trans>Gameplay first & free to play</Trans>,
+    description: (
+      <Trans>
+        Fun, high-quality and free are our core beliefs. We believe in open and equitable access,
+        enabling more people to experience and enjoy the benefits of blockchain and the metaverse.
+      </Trans>
+    )
   },
   {
     icon: (
@@ -225,11 +230,11 @@ const principles = [
         <RadioIcon />
       </div>
     ),
-    title: <Trans>Free to play</Trans>,
+    title: <Trans>Play & earn</Trans>,
     description: (
       <Trans>
-        We believe in open and equitable access, enabling more people to experience and enjoy the
-        benefits of blockchain and the metaverse.
+        We aim to build a world where gamers can play the games they love and also earn rewards at
+        the same time.
       </Trans>
     )
   },
