@@ -265,7 +265,7 @@ const Index = () => {
               <div className="gsap-image-parallax-container-3">
                 <div className="gsap-image-parallax hidden md:block">
                   <Image
-                    src="/images/home/tacco_guy_op.png"
+                    src="/images/home/tacco_guy_op_trans.png"
                     alt=""
                     layout="responsive"
                     width={554}
@@ -273,7 +273,7 @@ const Index = () => {
                   />
                 </div>
                 <div className="flex justify-center md:hidden">
-                  <Image src="/images/home/tacco_guy_op.png" alt="" width={554} height={630} />
+                  <Image src="/images/home/tacco_guy_op_trans.png" alt="" width={554} height={630} />
                 </div>
               </div>
               <div className="relative flex flex-col justify-center overflow-hidden text-center md:text-left">
