@@ -5,6 +5,7 @@ import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
+import LanguageSwitcher from '../LanguageSwitcher';
 import { links, headerHeight, Action } from './Header';
 
 type Props = {
@@ -13,7 +14,9 @@ type Props = {
   stickyHeader: boolean;
 };
 
-const DesktopHeader: React.FC<Props> = ({ stickyHeader=true }) => {
+const SIDE_SPACE = 325;
+
+const DesktopHeader: React.FC<Props> = ({ stickyHeader = true }) => {
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
 
@@ -25,14 +28,18 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader=true }) => {
         }}
         ref={headerRef}
         className="flex w-full items-center justify-between py-4 lg:px-4 xl:px-[54px]">
-        <div className="flex w-[220px] items-center">
+        <div
+          style={{
+            width: SIDE_SPACE
+          }}
+          className="flex items-center">
           <Link href="/">
             <a className="w-full max-w-[164px]">
               <Logo />
             </a>
           </Link>
         </div>
-        <ul className="mx-auto grid grid-flow-col items-center gap-[38px] text-[14px] font-medium uppercase leading-[1.25] text-brand-white">
+        <ul className="mx-auto grid flex-shrink-0 grid-flow-col items-center gap-[38px] text-[14px] font-medium uppercase leading-[1.25] text-brand-white">
           {links.map((item, idx) => {
             if (item.inactive) {
               return (
@@ -86,7 +93,14 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader=true }) => {
             }
           })}
         </ul>
-        <div className="flex w-[220px] flex-shrink-0 items-center justify-end">
+        <div
+          style={{
+            width: SIDE_SPACE
+          }}
+          className="flex flex-shrink-0 items-center justify-end">
+          <div className="mr-6">
+            <LanguageSwitcher />
+          </div>
           {/* {action === 'login' && (
             <>
               <button className="btn-sm btn-primary">Sign up</button>
