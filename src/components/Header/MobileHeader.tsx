@@ -11,6 +11,7 @@ import { socialLinks } from '../../configs';
 import { Trans } from '@lingui/macro';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import Hamburger from 'hamburger-react';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 type Props = {
   action: Action;
@@ -168,14 +169,17 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
           style={{
             height: headerHeight
           }}
-          className={clsx('relative z-10 flex w-full items-center justify-between py-4 px-6')}>
+          className={clsx('relative z-10 flex w-full items-center py-4 px-6')}>
           <Link href="/">
             <a className="w-full max-w-[164px]">
               <Logo />
             </a>
           </Link>
+          <div className="ml-auto mr-6 flex">
+            <LanguageSwitcher isMobile />
+          </div>
           <button onClick={toggleMenu} className="">
-            <Hamburger size={30} direction="right" toggled={openMenu} />
+            <Hamburger size={24} direction="right" toggled={openMenu} />
           </button>
         </div>
         <HeaderOverlay top={top} action={action} onClose={toggleMenu} open={openMenu} />
