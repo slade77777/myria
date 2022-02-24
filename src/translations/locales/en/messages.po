@@ -127,11 +127,11 @@ msgstr "At Myria, we believe NFTs should not only endow players with verifiable 
 msgid "Autoplay"
 msgstr "Autoplay"
 
-#: src/pages/nodes.tsx:289
+#: src/pages/nodes.tsx:288
 msgid "BUY A NODE"
 msgstr "BUY A NODE"
 
-#: src/pages/nodes.tsx:282
+#: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 
@@ -270,6 +270,10 @@ msgstr "Exclusive NFTs"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "Explore the <0>Myria</0> Ecosystem"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr "FOLLOW US ON TWITTER"
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "For Gamers"
@@ -312,7 +316,7 @@ msgstr "Games"
 msgid "Games Producer"
 msgstr "Games Producer"
 
-#: src/pages/nodes.tsx:279
+#: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "Get a founders node today"
 
@@ -379,6 +383,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing half a billion downloads."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
@@ -463,7 +468,7 @@ msgstr "Morphing NFTs™ that adapt to your avatars"
 msgid "Myria Blockchain Ecosystem Map"
 msgstr "Myria Blockchain Ecosystem Map"
 
-#: src/pages/nodes.tsx:237
+#: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
 msgstr "Myria FAQ"
 
@@ -554,8 +559,8 @@ msgid "Nodes"
 msgstr "Nodes"
 
 #: src/pages/nodes.tsx:164
-msgid "Only 60,000 Myria node licenses will ever be released."
-msgstr "Only 60,000 Myria node licenses will ever be released."
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr "Only 55,000 Myria node licenses will ever be released."
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
@@ -668,7 +673,7 @@ msgid "RUN A NODE"
 msgstr "RUN A NODE"
 
 #: src/pages/games.tsx:92
-#: src/pages/nodes.tsx:225
+#: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "Releasing soon"
 
