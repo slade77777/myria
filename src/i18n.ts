@@ -1,11 +1,11 @@
 import type { I18n } from '@lingui/core';
 import { en, vi, zh, ja, ko, tr, es } from 'make-plural/plurals';
+import { localStorageKeys } from './configs';
 
 export type Language = 'en' | 'zh-Hans' | 'ja' | 'ko' | 'es' | 'tr' | 'vi';
 
 export const LANGUAGES: Language[] = ['en', 'zh-Hans', 'ja', 'ko', 'es', 'tr', 'vi'];
 export const DEFAULT_LANGUAGE: Language = 'en';
-export const LANG_KEY = 'lang';
 
 export const validateLanguage = (language: Language): boolean => {
   if (LANGUAGES.includes(language)) {
@@ -23,14 +23,14 @@ export const invalidateLanguage = (language: any): Language => {
 
 export const getLanguageFromLocalStorage = (): Language => {
   if (typeof localStorage != 'undefined') {
-    return invalidateLanguage(localStorage.getItem(LANG_KEY));
+    return invalidateLanguage(localStorage.getItem(localStorageKeys.language));
   }
   return DEFAULT_LANGUAGE;
 };
 
-export const setLanguageToLocalStorage = (language: Language) => {
+export const setlToLocalStorage = (language: Language) => {
   if (typeof localStorage != 'undefined') {
-    localStorage.setItem(LANG_KEY, language);
+    localStorage.setItem(localStorageKeys.language, language);
   }
 };
 

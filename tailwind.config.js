@@ -9,7 +9,9 @@ module.exports = {
     'animate-slide-down-and-fade',
     'animate-slide-up-and-fade',
     'animate-slide-right-and-fade',
-    'animate-slide-left-and-fade'
+    'animate-slide-left-and-fade',
+    'animate-fade-in',
+    'animate-fade-out'
   ],
   theme: {
     extend: {
@@ -72,6 +74,14 @@ module.exports = {
         slideLeftAndFade: {
           '0%': { opacity: 0, transform: 'translateX(2px)' },
           '100%': { opacity: 1, transform: 'translateX(0)' }
+        },
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 }
+        },
+        fadeOut: {
+          '0%': { opacity: 1 },
+          '100%': { opacity: 0 }
         }
       },
       animation: {
@@ -82,7 +92,9 @@ module.exports = {
         'slide-up-and-fade': 'slideUpAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'slide-down-and-fade': 'slideDownAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'slide-right-and-fade': 'slideRightAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
-        'slide-left-and-fade': 'slideLeftAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)'
+        'slide-left-and-fade': 'slideLeftAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'fade-in': 'fadeIn 700ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards'
       }
     }
   },
@@ -113,6 +125,43 @@ module.exports = {
           },
           '&[data-state="closed"]': {
             animation: theme('animation.slide-up')
+          }
+        },
+        '.dialog-overlay': {
+          backgroundColor: 'rgba(0, 0, 0, .65)',
+          position: 'fixed',
+          zIndex: 29,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          '&[data-state="open"]': {
+            animation: theme('animation.fade-in')
+          },
+          '&[data-state="closed"]': {
+            animation: theme('animation.fade-out')
+          }
+        },
+
+        '.dialog-content': {
+          position: 'fixed',
+          zIndex: 30,
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          maxHeight: '100vh',
+          overflow: 'auto',
+          padding: '50px 24px',
+          '&:focus': {
+            outline: 'none'
+          },
+          '&[data-state="open"]': {
+            animation: theme('animation.fade-in')
+          },
+          '&[data-state="closed"]': {
+            animation: theme('animation.fade-out')
           }
         },
         '.dropdown-content': {
