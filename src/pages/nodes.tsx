@@ -220,7 +220,6 @@ const Nodes: React.FC = () => {
                       <p className="body-sm mt-6">{item.description}</p>
                       {item.learnMore && (
                         <button
-                          href={item.learnMore as string}
                           className="btn-lg btn-primary mt-[22px] inline-block">
                           <Trans>Releasing soon</Trans>
                         </button>
