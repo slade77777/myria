@@ -40,7 +40,7 @@ const data: Person[] = [
     }
   },
   {
-    name: 'goose.eth',
+    name: 'Jonathan Teoh',
     position: <Trans>Co-Founder - Project Lead</Trans>,
     description: (
       <Trans>
@@ -85,7 +85,7 @@ const data: Person[] = [
     }
   },
   {
-    name: 'Brock',
+    name: 'Brock Chan',
     position: <Trans>Product Lead - Blockchain</Trans>,
     description: (
       <Trans>
