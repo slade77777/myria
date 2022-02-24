@@ -1,5 +1,5 @@
 module.exports = {
-  locales: ['en', 'vi', 'zh-Hans'],
+  locales: ['en', 'zh-Hans', 'ja', 'ko', 'es', 'tr', 'vi'],
   sourceLocale: 'en',
   fallbackLocales: {
     default: 'en'
@@ -14,6 +14,6 @@ module.exports = {
   format: 'po',
   service: {
     name: 'TranslationIO',
-    apiKey: 'b37400a1536547c981f5c827b86e847a'
+    apiKey: '0ad7a5c4adb64a7084896b0027569865'
   }
 };

@@ -17,10 +17,22 @@ interface IFormInputs {
 
 const schema = yup
   .object({
-    name: yup.string().trim().required(t`Name is required!`),
-    email: yup.string().email(t`Invalid email!`).required(t`Email is required!`),
-    subject: yup.string().trim().required(t`Subject is required!`),
-    message: yup.string().trim().required(t`Message is required!`)
+    name: yup
+      .string()
+      .trim()
+      .required(t`Name is required!`),
+    email: yup
+      .string()
+      .email(t`Invalid email!`)
+      .required(t`Email is required!`),
+    subject: yup
+      .string()
+      .trim()
+      .required(t`Subject is required!`),
+    message: yup
+      .string()
+      .trim()
+      .required(t`Message is required!`)
   })
   .required();
 
@@ -56,10 +68,10 @@ const GetInTouch: React.FC = () => {
   };
 
   return (
-    <div className="rounded-[20px] bg-[url('/images/get-in-touch/panel.png')] bg-cover bg-center md:py-[64px] p-[32px] md:px-[100px] lg:px-[216px] w-full">
-      <h2 className="text-center heading-sm md:heading-md">Get in touch</h2>
+    <div className="w-full rounded-[20px] bg-[url('/images/get-in-touch/panel_op.png')] bg-cover bg-center p-[32px] md:py-[64px] md:px-[100px] lg:px-[216px]">
+      <h2 className="heading-sm text-center md:heading-md">Get in touch</h2>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="grid md:grid-cols-2 gap-[32px] gap-x-[28px] mt-[48px]">
+        <div className="mt-[48px] grid gap-[32px] gap-x-[28px] md:grid-cols-2">
           <Input
             placeholder="Name"
             {...register('name')}
@@ -98,7 +110,7 @@ const GetInTouch: React.FC = () => {
           )}
           {error && <p className="text-xs leading-[15px] text-[#F37272]">{error}</p>}
         </div>
-        <div className="flex justify-end mt-6">
+        <div className="mt-6 flex justify-end">
           <button disabled={isSubmitting} className="btn-lg btn-primary">
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>

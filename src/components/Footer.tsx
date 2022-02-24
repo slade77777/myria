@@ -1,5 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
+import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
 
@@ -73,7 +74,7 @@ const links = [
         },
         {
           label: <Trans>Team</Trans>,
-          link: '/about-us'
+          link: '/about-us#teams'
         }
       ],
       [
@@ -97,12 +98,12 @@ const links = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="grid lg:grid-cols-[max-content_1fr] lg:grid-rows-[auto_auto] lg:gap-x-[100px] xl:gap-x-[281px] gap-y-[34px] md:gap-y-[50px]">
+    <footer className="grid gap-y-[34px] md:gap-y-[50px] lg:grid-cols-[max-content_1fr] lg:grid-rows-[auto_auto] lg:gap-x-[100px] xl:gap-x-[281px]">
       <div>
         <div className="w-[215px]">
           <Logo />
         </div>
-        <div className="mt-10 md:mt-[48px] grid grid-flow-col gap-4 sm:gap-6 justify-start">
+        <div className="mt-10 grid grid-flow-col justify-start gap-4 sm:gap-6 md:mt-[48px]">
           {Socials.map((item, idx) => (
             <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
               {item.icon}
@@ -110,40 +111,41 @@ const Footer: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="row-span-2 grid grid-cols-2 md:grid-cols-[auto_auto_auto] gap-y-[32px] gap-10 md:gap-[77px] justify-start">
+      <div className="row-span-2 grid grid-cols-2 justify-start gap-10 gap-y-[32px] md:grid-cols-[auto_auto_auto] md:gap-[77px]">
         {links.map((item, idx) => (
           <div
             key={idx}
             className={clsx({
               'col-span-2 md:col-span-1': idx === 2
             })}>
-            <h3 className="font-extrabold text-[24px] leading-[1.24]">{item.title}</h3>
+            <h3 className="text-[24px] font-extrabold leading-[1.24]">{item.title}</h3>
             <div
-              className={clsx('grid gap-y-4 mt-6', {
+              className={clsx('mt-6 grid gap-y-4', {
                 'grid-cols-2 gap-x-10 md:grid-cols-1': idx === 2
               })}>
               {item.blocks.map((block, idx) => (
                 <div key={idx} className={clsx('grid gap-y-4')}>
                   {block.map((item: any, idx) =>
                     !item?.inactive ? (
-                      <a
-                        href={item.link}
-                        target={item?.external ? '_blank' : '_self'}
-                        key={idx}
-                        rel="noreferrer"
-                        className={clsx('text-[16px] leading-[1.23] hover:text-[#F5B941]', {
-                          'pointer-events-none': item.disabled
-                        })}>
-                        {item.label}
-                      </a>
+                      <Link href={item.link} key={idx}>
+                        <a
+                          target={item?.external ? '_blank' : '_self'}
+                          key={idx}
+                          rel="noreferrer"
+                          className={clsx('text-[16px] leading-[1.23] hover:text-[#F5B941]', {
+                            'pointer-events-none': item.disabled
+                          })}>
+                          {item.label}
+                        </a>
+                      </Link>
                     ) : (
                       <div key={idx} className="flex items-center">
-                        <p className="hover:cursor-not-allowed mr-[7px]">{item.label}</p>
+                        <p className="mr-[7px] hover:cursor-not-allowed">{item.label}</p>
                         <div
                           style={{
                             boxShadow: '0 0 0 0.5px #9AC9E3'
                           }}
-                          className="font-extrabold text-[6px] rounded-sm px-[3px] py-[1px] h-3 bg-brand-light-blue/40 bg-opacity-4">
+                          className="bg-opacity-4 h-3 rounded-sm bg-brand-light-blue/40 px-[3px] py-[1px] text-[6px] font-extrabold">
                           Soon!
                         </div>
                       </div>
@@ -155,9 +157,11 @@ const Footer: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className="text-[16px] leading-[1.5] mt-[14px] md:mt-0">
+      <div className="mt-[14px] text-[16px] leading-[1.5] md:mt-0">
         <p>© Copyright 2022 Myria</p>
-        <p><Trans>Terms | Privacy</Trans></p>
+        <p>
+          <Trans>Terms | Privacy</Trans>
+        </p>
       </div>
     </footer>
   );

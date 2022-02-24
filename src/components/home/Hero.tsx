@@ -21,27 +21,36 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const DESKTOP_WIDTH = 1000;
-
 const Hero: React.FC = () => {
   useIsomorphicLayoutEffect(() => {
-    if (window.innerWidth < DESKTOP_WIDTH) {
-      return;
-    }
+    let animations: gsap.core.Timeline[] = [];
+    ScrollTrigger.matchMedia({
+      '(min-width: 1000px)': function () {
+        const targets = [
+          '.land-img',
+          '.hero-text',
+          '.cowboy-img',
+          '.unicorn-guy-img',
+          '.monkey-img'
+        ];
 
-    const targets = ['.land-img', '.hero-text', '.cowboy-img', '.unicorn-guy-img', '.monkey-img'];
-
-    targets.forEach((target, idx) => {
-      const tl_section = gsap.timeline({
-        scrollTrigger: {
-          trigger: '#hero',
-          start: `top top`,
-          end: 'bottom top',
-          scrub: 0.6
-        }
-      });
-      tl_section.to(target, { y: `-${50 * (idx + 2)}px` });
+        targets.forEach((target, idx) => {
+          const tl_section = gsap.timeline({
+            scrollTrigger: {
+              trigger: '#hero',
+              start: `top top`,
+              end: 'bottom top',
+              scrub: 0.6
+            }
+          });
+          tl_section.to(target, { y: `-${50 * (idx + 2)}px` });
+          animations.push(tl_section);
+        });
+      }
     });
+    return () => {
+      animations.forEach((tl) => tl.kill());
+    };
   }, []);
 
   return (
@@ -58,7 +67,6 @@ const Hero: React.FC = () => {
         'relative isolate flex min-h-[var(--minHeight)] flex-col justify-end overflow-hidden border-transparent md:justify-center'
       )}>
       <div className="absolute inset-0 z-[-1] hidden md:block">
-        {/* <Image src="" /> */}
         <div className="sky-img absolute inset-0">
           <div className="relative h-full w-full">
             <Image src={SkyImg} alt="" placeholder="blur" layout="fill" objectFit="cover" />
@@ -86,11 +94,14 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="absolute inset-0">
-          <div className="relative h-full w-full">
-            {/* <Image src={CloudImg} alt="" placeholder="blur" layout="fill" objectFit="cover" /> */}
-          </div>
-        </div>
+        <div
+          style={
+            {
+              background:
+                'linear-gradient(89.66deg, rgba(5, 14, 21, 0.54) 1.52%, rgba(0, 0, 0, 0) 60.23%)'
+            } as CSSProperties
+          }
+          className="absolute inset-0"></div>
         <div className="absolute inset-0">
           {new Array(3).fill(null).map((_, idx) => (
             <img

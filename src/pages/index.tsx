@@ -10,8 +10,7 @@ import Page from '../components/Page';
 import Link from 'next/link';
 import { socialLinks } from 'src/configs';
 import AOS from 'aos';
-import { useEffect } from 'react';
-import { useAnimation, motion } from 'framer-motion';
+import { CSSProperties, useEffect, useRef } from 'react';
 import Subscribe from 'src/components/Subscribe';
 import 'aos/dist/aos.css';
 import { gsap } from 'gsap';
@@ -21,16 +20,19 @@ import { t, Trans } from '@lingui/macro';
 import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 import Hero from 'src/components/home/Hero';
 
-const Index = () => {
-  const img1Animation = useAnimation();
-  const img2Animation = useAnimation();
-  const img3Animation = useAnimation();
-  const img4Animation = useAnimation();
+const PLANNET_MOVE_X = 300;
+const PLANNET_MOVE_Y = 300;
+const OTHER_PLANNET_X = 400;
+const CHARACTER_ON_ROCK_MOVE_Y = 0;
 
+const Index = () => {
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(CustomEase);
 
+  const myriaverseRef = useRef<HTMLElement>(null);
+
   useIsomorphicLayoutEffect(() => {
+    let animations: gsap.core.Timeline[] = [];
     ScrollTrigger.matchMedia({
       '(min-width: 768px)': function () {
         const targets = [
@@ -58,34 +60,69 @@ const Index = () => {
               ease: 'slow'
             }
           );
+          animations.push(tl_foreground_parallax);
         });
       }
     });
+    return () => {
+      animations.forEach((tl) => tl.kill());
+    };
   }, []);
 
-  const handleMouseMove = (e: any) => {
-    const { clientX, clientY } = e;
-    const moveX = clientX - window.innerWidth / 2;
-    const moveY = clientY - window.innerHeight / 2;
-    const offsetFactor = 5;
+  useIsomorphicLayoutEffect(() => {
+    let animations: gsap.core.Timeline[] = [];
+    ScrollTrigger.matchMedia({
+      '(min-width: 768px)': function () {
+        const q = gsap.utils.selector(myriaverseRef.current);
 
-    img1Animation.start({
-      x: -moveX / (offsetFactor + 15),
-      y: -moveY / (offsetFactor + 15)
+        let tl1 = gsap.timeline({
+          scrollTrigger: {
+            trigger: myriaverseRef.current,
+            start: 'top bottom',
+            end: 'center top',
+            scrub: 1
+          }
+        });
+
+        tl1.to(q('#other-plannet'), {
+          x: OTHER_PLANNET_X
+        });
+
+        let tl2 = gsap.timeline({
+          scrollTrigger: {
+            trigger: myriaverseRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1
+          }
+        });
+
+        tl2.to(q('#plannet'), {
+          x: PLANNET_MOVE_X * 1.5,
+          y: -PLANNET_MOVE_Y * 1.5
+        });
+
+        let tl3 = gsap.timeline({
+          scrollTrigger: {
+            trigger: myriaverseRef.current,
+            start: 'bottom-=100px bottom',
+            end: 'bottom center',
+            scrub: 1
+          }
+        });
+
+        tl3.to(q('#character-on-rock'), {
+          y: -CHARACTER_ON_ROCK_MOVE_Y
+          // ease: 'power4.out'
+        });
+
+        animations.push(tl1, tl2, tl3);
+      }
     });
-    img2Animation.start({
-      x: -moveX / (offsetFactor + 7),
-      y: -moveY / (offsetFactor + 7)
-    });
-    img3Animation.start({
-      x: -moveX / (offsetFactor + 15),
-      y: -moveY / (offsetFactor + 15)
-    });
-    img4Animation.start({
-      x: -moveX / (offsetFactor + 7),
-      y: -moveY / (offsetFactor + 7)
-    });
-  };
+    return () => {
+      animations.forEach((tl) => tl.kill());
+    };
+  }, []);
 
   useEffect(() => {
     AOS.init({
@@ -102,8 +139,7 @@ const Index = () => {
     <>
       <div className="flex flex-col items-center justify-center bg-brand-light-blue p-4 text-center md:flex-row md:py-2 md:text-left">
         <p className="text-[14px] font-medium leading-[1.23] ">
-          <span className="font-bold">$MYRIA</span>{' '}
-          <Trans>Node & NFT sales coming soon!</Trans>
+          <span className="font-bold">$MYRIA</span> <Trans>Node & NFT sales coming soon!</Trans>
         </p>
         <a
           href={socialLinks.discord}
@@ -180,7 +216,7 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'relative isolate z-10 mt-[100px] flex items-center justify-center bg-dark md:mt-0 md:min-h-[745px]',
+              'relative isolate z-0 mt-[100px] flex items-center justify-center bg-dark md:mt-0 md:min-h-[745px]',
               paddingX
             )}>
             <div className="mx-auto grid w-full max-w-content grid-cols-1 items-center gap-y-[53px] gap-x-[83px] md:grid-cols-2">
@@ -222,22 +258,22 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'relative isolate z-10 flex items-center justify-center bg-dark pt-[100px] pb-[100px] md:min-h-[629px] md:pt-0',
+              'relative isolate z-0 flex items-center justify-center bg-dark pt-[100px] pb-[100px] md:min-h-[629px] md:pb-0 md:pt-0',
               paddingX
             )}>
             <div className="mx-auto grid w-full max-w-content grid-cols-1 gap-y-[53px] gap-x-[83px] md:grid-cols-2">
               <div className="gsap-image-parallax-container-3">
                 <div className="gsap-image-parallax hidden md:block">
                   <Image
-                    src="/images/home/tacoguy.png"
+                    src="/images/home/tacco_guy_op1.png"
                     alt=""
                     layout="responsive"
-                    width={804}
-                    height={1206}
+                    width={554}
+                    height={630}
                   />
                 </div>
                 <div className="flex justify-center md:hidden">
-                  <Image src="/images/home/tacoguy.png" alt="" width={254} height={382} />
+                  <Image src="/images/home/tacco_guy_op1.png" alt="" width={554} height={630} />
                 </div>
               </div>
               <div className="relative flex flex-col justify-center overflow-hidden text-center md:text-left">
@@ -266,22 +302,59 @@ const Index = () => {
             </div>
           </section>
           <section
+            ref={myriaverseRef}
             className={clsx(
-              'relative isolate mt-[100px] flex min-h-[760px] items-end justify-center py-4 md:min-h-[849px] md:items-center',
+              'relative isolate flex min-h-[936px] items-end justify-center overflow-hidden py-4 md:min-h-[811px] md:items-center',
               paddingX
             )}>
-            <div className="absolute top-0 right-0 z-[-1] hidden h-full w-full md:block md:w-[90%]">
-              <Image src="/images/home/myriaverse.png" alt="" layout="fill" objectFit="cover" />
+            <div className="absolute top-0 right-0 z-[-1] hidden h-full w-full md:block">
+              <div
+                id="other-plannet"
+                style={{
+                  right: `calc(64px + ${OTHER_PLANNET_X}px)`
+                }}
+                className="absolute top-[62px]">
+                <Image src="/images/home/other-plannet_op.png" alt="" width={726} height={597} />
+              </div>
+              <div
+                id="plannet"
+                style={{
+                  right: PLANNET_MOVE_X,
+                  top: 62 + PLANNET_MOVE_Y
+                }}
+                className="absolute">
+                <Image src="/images/home/plannet_op.png" alt="" width={906} height={525} />
+              </div>
+              <div
+                id="character-on-rock"
+                style={{
+                  bottom: 0
+                }}
+                className="absolute w-full">
+                <Image
+                  src="/images/home/character-on-rock_op2.png"
+                  alt=""
+                  layout="responsive"
+                  width={1440}
+                  height={811}
+                />
+                <div
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 86.46%, #050E15 100%)'
+                  }}
+                  className="absolute inset-0"
+                />
+              </div>
             </div>
-            <div className="absolute top-0 right-0 z-[-1] h-full w-full md:hidden md:w-[90%]">
+            <div className="absolute top-0 right-0 z-[-1] h-full w-full md:hidden">
               <Image
-                src="/images/home/myriaverse-mobile.png"
+                src="/images/home/myriaverse-mobile_op.png"
                 alt=""
                 layout="fill"
                 objectFit="cover"
               />
             </div>
-            <div className="mx-auto grid w-full max-w-content grid-cols-1 items-center gap-y-[53px] gap-x-[83px] md:grid-cols-2">
+            <div className="mx-auto mb-[90px] grid w-full max-w-content grid-cols-1 items-center gap-y-[53px] gap-x-[83px] md:grid-cols-2">
               <div className="text-center md:text-left">
                 <h2 data-aos="fade-up" className="heading-md text-[#FFFDFD] md:heading-lg">
                   <Trans>Unified through the Myriaverse</Trans>
@@ -302,7 +375,7 @@ const Index = () => {
           </section>
           <section
             className={clsx(
-              'relative isolate mt-[130px] grid grid-cols-1 grid-rows-1 items-center justify-center py-10 md:mt-0 md:min-h-[790px]'
+              'relative isolate mt-[130px] grid grid-cols-1 grid-rows-1 items-center justify-center py-20 md:mt-0 md:min-h-[790px]'
             )}>
             <div className="[grid-area:1/1/-1/-1] md:hidden">
               <Image src="/images/home/globe.png" width={856} height={1034} alt="" />
@@ -409,7 +482,7 @@ const Index = () => {
               <div className="relative isolate h-[470px] overflow-hidden rounded-[20px] bg-brand-deep-blue p-[32px] md:h-[540px] md:p-10">
                 <div className="absolute inset-0 z-[-1]">
                   <Image
-                    src="/images/home/for-studios.png"
+                    src="/images/home/for-studios_op.png"
                     alt=""
                     layout="fill"
                     objectFit="cover"
@@ -457,7 +530,7 @@ const Index = () => {
               <ExperenceLogos />
             </div>
           </section>
-          <section className={clsx(paddingX, 'mt-[122px] md:mt-[168px]')}>
+          <section className={clsx(paddingX, 'mt-[43px] md:mt-[168px]')}>
             <div className="mx-auto max-w-content">
               <JoinTheRevolution textAnimation="fade-up" />
             </div>

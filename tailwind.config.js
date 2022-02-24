@@ -2,7 +2,15 @@ const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
-  safelist: ['animate-slide-up', 'animate-slide-down', 'animate-slide-out'],
+  safelist: [
+    'animate-slide-up',
+    'animate-slide-down',
+    'animate-slide-out',
+    'animate-slide-down-and-fade',
+    'animate-slide-up-and-fade',
+    'animate-slide-right-and-fade',
+    'animate-slide-left-and-fade'
+  ],
   theme: {
     extend: {
       colors: {
@@ -48,18 +56,41 @@ module.exports = {
             opacity: 0,
             transform: 'scale(3)'
           }
+        },
+        slideUpAndFade: {
+          '0%': { opacity: 0, transform: 'translateY(2px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' }
+        },
+        slideDownAndFade: {
+          '0%': { opacity: 0, transform: 'translateY(-2px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' }
+        },
+        slideRightAndFade: {
+          '0%': { opacity: 0, transform: 'translateX(-2px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' }
+        },
+        slideLeftAndFade: {
+          '0%': { opacity: 0, transform: 'translateX(2px)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' }
         }
       },
       animation: {
         'slide-up': 'slideUp 300ms',
         'slide-down': 'slideDown 300ms',
         'slide-out': 'slideOut 1.5s cubic-bezier(0.85,0,0.15,1) forwards',
-        cloud: 'cloud calc(3s * var(--index)) linear infinite'
+        cloud: 'cloud calc(3s * var(--index)) linear infinite',
+        'slide-up-and-fade': 'slideUpAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'slide-down-and-fade': 'slideDownAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'slide-right-and-fade': 'slideRightAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'slide-left-and-fade': 'slideLeftAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)'
       }
     }
   },
   plugins: [
-    plugin(function ({ addComponents, theme }) {
+    plugin(function ({ addComponents, theme, addVariant }) {
+      addVariant('open', '&[data-state~="open"]');
+      addVariant('parent-open', '[data-state~="open"] &');
+
       addComponents({
         '.aos-text-slide-right': {
           '--animated-color': theme('colors.brand-light-blue'),
@@ -107,6 +138,15 @@ module.exports = {
           padding: '50px 24px',
           '&:focus': {
             outline: 'none'
+          }
+        },
+        '.dropdown-content': {
+          willChange: 'transform, opacity',
+          '&[data-state="open"]': {
+            '&[data-side="top"]': { animation: theme('animation.slide-down-and-fade') },
+            '&[data-side="right"]': { animation: theme('animation.slide-left-and-fade') },
+            '&[data-side="bottom"]': { animation: theme('animation.slide-up-and-fade') },
+            '&[data-side="left"]': { animation: theme('animation.slide-right-and-fade') }
           }
         },
         '.heading-massive': {
@@ -281,6 +321,12 @@ module.exports = {
           transform: 'translateX(2px)',
           willChange: 'transform',
           '&[data-state="checked"]': { transform: 'translateX(19px)' }
+        },
+        '.sticky-header': {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          background: theme('colors.dark')
         }
       });
     })
