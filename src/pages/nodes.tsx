@@ -219,11 +219,11 @@ const Nodes: React.FC = () => {
                       <h3 className="heading-sm md:heading-md">{item.title}</h3>
                       <p className="body-sm mt-6">{item.description}</p>
                       {item.learnMore && (
-                        <a
-                          href={item.learnMore}
+                        <button
+                          href={item.learnMore as string}
                           className="btn-lg btn-primary mt-[22px] inline-block">
                           <Trans>Releasing soon</Trans>
-                        </a>
+                        </button>
                       )}
                     </div>
                   </CardWithIcon>
