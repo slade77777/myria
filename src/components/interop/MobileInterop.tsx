@@ -9,6 +9,7 @@ import { paddingX } from '../../utils';
 import ReactPlayer from 'react-player';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import { Trans } from '@lingui/macro';
+import Subscribe from '../Subscribe';
 
 const video = {
   src: '/videos/interoperability/video.mp4',
@@ -196,6 +197,9 @@ const MobileInterop: React.FC = () => {
               <p className="heading-lg mt-[31px] font-bold"><Trans>Own your metaverse identity</Trans></p>
             </div>
           </div>
+        </section>
+        <section className={clsx(paddingX, 'mt-[32px] mb-[156px] md:mt-[54px]')}>
+          <Subscribe />
         </section>
       </div>
     </Page>

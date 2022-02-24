@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 11:10+0700\n"
+"POT-Creation-Date: 2022-02-24 12:59+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -71,12 +71,12 @@ msgstr "AJ, web ve giyim tasarımından marka kimlikleri oluşturmaya kadar 20 y
 msgid "APPLY NOW"
 msgstr "ŞİMDİ UYGULA"
 
-#: src/components/Footer.tsx:66
+#: src/components/Footer.tsx:67
 #: src/components/Header/Header.tsx:22
 msgid "About"
 msgstr "Hakkında"
 
-#: src/components/Footer.tsx:62
+#: src/components/Footer.tsx:63
 msgid "About Us"
 msgstr "Hakkımızda"
 
@@ -113,7 +113,7 @@ msgid "Art Creative Lead"
 msgstr "Sanat Yaratıcı Lideri"
 
 #: src/components/interop/DesktopInterop.tsx:227
-#: src/components/interop/MobileInterop.tsx:130
+#: src/components/interop/MobileInterop.tsx:131
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "Myria'da, NFT'lerin oyunculara yalnızca doğrulanabilir sahiplik sağlamaları gerektiğine değil, aynı zamanda NFT'lerini bir oyundan diğerine taşımalarına da izin vermesi gerektiğine inanıyoruz."
 
@@ -153,7 +153,7 @@ msgstr "Sınırlı kurucu NFT'ler satın alın"
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "Düğüm lisansı satın almak, sahibine düğümü (yerel veya bulutta) çalıştırma ve yönetim tarafından belirlenen ödülleri alma hakkı verir."
 
-#: src/components/Footer.tsx:81
+#: src/components/Footer.tsx:82
 #: src/components/Header/Header.tsx:37
 #: src/pages/careers.tsx:19
 msgid "Careers"
@@ -196,7 +196,7 @@ msgstr "<0>Oyun</0> aracılığıyla dünyayı birbirine bağlama"
 msgid "Connecting the world through play"
 msgstr "Oyun yoluyla dünyayı birbirine bağlamak"
 
-#: src/components/Footer.tsx:90
+#: src/components/Footer.tsx:91
 msgid "Contact Us"
 msgstr "Bize Ulaşın"
 
@@ -220,7 +220,7 @@ msgstr "Bilgi işlem kaynakları sunarak ağı merkezi olmayan hale getirin"
 msgid "Details will be announced soon."
 msgstr ""
 
-#: src/pages/index.tsx:468
+#: src/pages/index.tsx:474
 msgid "Discover the best games built on the blockchain"
 msgstr "Blok zincir üzerine inşa edilmiş en iyi oyunları keşfedin"
 
@@ -228,8 +228,8 @@ msgstr "Blok zincir üzerine inşa edilmiş en iyi oyunları keşfedin"
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Her düğümün Myria zincirinde önerilen değişiklikler üzerinde oy kullanmasına izin verilir ve düğümler ayrıca Myriaverse boyunca daha fazla oylama gücüne sahip olacaktır."
 
-#: src/components/Footer.tsx:34
-#: src/components/Footer.tsx:42
+#: src/components/Footer.tsx:35
+#: src/components/Footer.tsx:43
 #: src/components/Header/Header.tsx:43
 msgid "Ecosystem"
 msgstr "Ekosistem"
@@ -264,16 +264,16 @@ msgstr "Özel NFT'ler"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "<0>Myria</0> Ekosistemini Keşfedin"
 
-#: src/pages/index.tsx:463
+#: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "Oyuncular için"
 
-#: src/components/Footer.tsx:51
-#: src/pages/index.tsx:486
+#: src/components/Footer.tsx:52
+#: src/pages/index.tsx:492
 msgid "For Studios"
 msgstr "Stüdyolar için"
 
-#: src/pages/index.tsx:503
+#: src/pages/index.tsx:509
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "Önde gelen oyun ve blockchain endüstrisi uzmanları tarafından kuruldu"
 
@@ -297,7 +297,7 @@ msgstr "Önce oyun"
 msgid "Gameplay first & free to play"
 msgstr ""
 
-#: src/components/Footer.tsx:11
+#: src/components/Footer.tsx:12
 #: src/components/Header/Header.tsx:47
 msgid "Games"
 msgstr "Oyunlar"
@@ -310,7 +310,7 @@ msgstr ""
 msgid "Get a founders node today"
 msgstr "Bugün bir kurucu düğüm edinin"
 
-#: src/pages/index.tsx:420
+#: src/pages/index.tsx:426
 msgid "Get the latest updates on our games, token and NFT releases, play-to-earn mechanics, and have the opportunity to access alpha gameplay."
 msgstr "Oyunlarımız, jeton ve NFT sürümleri, oyna-kazan mekaniği hakkında en son güncellemeleri alın ve alfa oyununa erişme fırsatına sahip olun."
 
@@ -318,7 +318,7 @@ msgstr "Oyunlarımız, jeton ve NFT sürümleri, oyna-kazan mekaniği hakkında 
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
 msgstr "Yenilikçi bir oyun fikriniz mi var? Myria zincirinde vizyonunuzu sergilemek için hibe başvurusunda bulunun."
 
-#: src/pages/index.tsx:413
+#: src/pages/index.tsx:419
 msgid "Grow with myria"
 msgstr "myria ile büyümek"
 
@@ -341,9 +341,9 @@ msgstr "Nasıl Myria düğüm operatörü olabilirim?"
 #: src/components/interop/DesktopInterop.tsx:221
 #: src/components/interop/DesktopInterop.tsx:239
 #: src/components/interop/DesktopInterop.tsx:257
-#: src/components/interop/MobileInterop.tsx:126
-#: src/components/interop/MobileInterop.tsx:149
-#: src/components/interop/MobileInterop.tsx:173
+#: src/components/interop/MobileInterop.tsx:127
+#: src/components/interop/MobileInterop.tsx:150
+#: src/components/interop/MobileInterop.tsx:174
 msgid "How it works"
 msgstr "Nasıl çalışır"
 
@@ -377,7 +377,7 @@ msgstr "Ivan, oyun endüstrisinde 10 yılı aşkın deneyime sahiptir. Gameloft,
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
 #: src/pages/index.tsx:153
-#: src/pages/index.tsx:443
+#: src/pages/index.tsx:449
 msgid "JOIN DISCORD"
 msgstr "DISCORD'A KATIL"
 
@@ -393,7 +393,7 @@ msgstr "Jem, kurumsal şirketlerle satış konuşması yapma ve kaynak yaratma k
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
 msgstr "Blok zincir oyunlarının geleceğini şekillendirmek için 60’tan fazla kişilik ekibimize katılın"
 
-#: src/pages/index.tsx:416
+#: src/pages/index.tsx:422
 msgid "Join the thriving Myria ecosystem"
 msgstr ""
 
@@ -405,8 +405,8 @@ msgstr "Kidono, harici geliştirme sözleşmelerini yönetme konusunda kapsamlı
 msgid "LEARN MORE"
 msgstr "DAHA FAZLA BİLGİ EDİN"
 
-#: src/pages/index.tsx:472
-#: src/pages/index.tsx:495
+#: src/pages/index.tsx:478
+#: src/pages/index.tsx:501
 msgid "Learn more"
 msgstr "Daha fazla bilgi edin"
 
@@ -414,7 +414,7 @@ msgstr "Daha fazla bilgi edin"
 msgid "Led by industry experts"
 msgstr "Sektör uzmanları tarafından yönetiliyor"
 
-#: src/pages/index.tsx:515
+#: src/pages/index.tsx:521
 msgid "MEET THE TEAM"
 msgstr "EKİPLE TANIŞIN"
 
@@ -430,7 +430,7 @@ msgstr "Mesaj gerekli!"
 msgid "Modularization of smart contracts"
 msgstr "Akıllı sözleşmelerin modülerleştirilmesi"
 
-#: src/pages/index.tsx:365
+#: src/pages/index.tsx:371
 msgid "More details coming soon"
 msgstr "Daha fazla detay yakında"
 
@@ -438,18 +438,18 @@ msgstr "Daha fazla detay yakında"
 msgid "More games coming soon..."
 msgstr "Daha fazla oyun yakında..."
 
-#: src/components/Footer.tsx:55
+#: src/components/Footer.tsx:56
 #: src/components/Header/Header.tsx:33
 msgid "Morphing NFTs"
 msgstr "NFT'leri Dönüştürme"
 
 #: src/components/interop/DesktopInterop.tsx:322
-#: src/components/interop/MobileInterop.tsx:195
+#: src/components/interop/MobileInterop.tsx:196
 msgid "Morphing NFTs™"
 msgstr "NFT'leri Dönüştürme™"
 
 #: src/components/interop/DesktopInterop.tsx:260
-#: src/components/interop/MobileInterop.tsx:175
+#: src/components/interop/MobileInterop.tsx:176
 msgid "Morphing NFTs™ that adapt to your avatars"
 msgstr "Avatarlarınıza uyum sağlayan Dönüşen NFT'ler™"
 
@@ -473,11 +473,11 @@ msgstr "Myria, blok zincir ile geliştirilmiş eğlenceli AAA oyunları gelişti
 msgid "Myria ecosystem fund"
 msgstr "Myria ekosistem fonu"
 
-#: src/pages/index.tsx:508
+#: src/pages/index.tsx:514
 msgid "Myria has been built by an all-star team of over 60+ people, united with a common vision of revolutionizing gaming with blockchain technology."
 msgstr "Myria, blok zincir teknolojisiyle oyun alanında devrim yaratma ortak vizyonuyla birleşen 60'tan fazla kişiden oluşan yıldız bir ekip tarafından inşa edilmiştir."
 
-#: src/pages/index.tsx:491
+#: src/pages/index.tsx:497
 msgid "Myria helps studios join the blockchain revolution"
 msgstr "Myria, stüdyoların blok zincir devrimine katılmasına yardımcı oluyor"
 
@@ -509,7 +509,7 @@ msgstr "Myria düğüm operatörleri, düğüm çalışmaları için günlük $M
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | Oyun yoluyla dünyayı birbirine bağlama"
 
-#: src/pages/index.tsx:357
+#: src/pages/index.tsx:363
 msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
 msgstr "Myriaverse, oyuncuları, toplulukları ve loncaları birbirine bağlayan geniş bir sosyal meta veri tabanıdır. Oyuncular araştırma yapabilecek, keşfedebilecek, zanaat, yatırım yapabilecek ve çok daha fazlasını yapabilecekler. Sürekli genişleyen Myriaverse, cesur maceracılar için bol kazanç fırsatları sunan sanal bir toplum ve ekonomidir."
 
@@ -521,12 +521,12 @@ msgstr "NFT birlikte çalışabilirliği"
 msgid "Name is required!"
 msgstr "İsim gerekli!"
 
-#: src/components/Footer.tsx:85
+#: src/components/Footer.tsx:86
 msgid "News"
 msgstr "Haber"
 
 #: src/components/interop/DesktopInterop.tsx:263
-#: src/components/interop/MobileInterop.tsx:177
+#: src/components/interop/MobileInterop.tsx:178
 msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
 msgstr "Avatarınızın şekli ve boyutu ne olursa olsun, hepsinde aynı NFT'yi kullanın. Bir kez satın alın, herhangi bir karakterde kullanın. Birlikte çalışabilecek şekilde tasarlanmıştır."
 
@@ -542,7 +542,7 @@ msgstr "Düğüm sahibi ödülleri"
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "Düğüm sahipleri ayrıca, düğüm operatörleri ve genel topluluk üyeleri olarak itibar puanlarına dayalı olarak NFT hediyeleri ve belirteçleri ile ödüllendirilecekler."
 
-#: src/components/Footer.tsx:38
+#: src/components/Footer.tsx:39
 #: src/components/Header/Header.tsx:51
 msgid "Nodes"
 msgstr "Düğümler"
@@ -551,7 +551,7 @@ msgstr "Düğümler"
 msgid "Only 60,000 Myria node licenses will ever be released."
 msgstr "Yalnızca 60.000 Myria düğüm lisansı piyasaya sürülecek."
 
-#: src/pages/index.tsx:426
+#: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
 msgstr "Ev bilgisayarınızdan Myria düğümü çalıştırın ve ağa katkınız için ödüller kazanın."
 
@@ -560,7 +560,7 @@ msgid "Our ERC1155 contracts are engineered for more efficient resource utilizat
 msgstr "ERC1155 sözleşmelerimiz, temel katman ve kural sözleşmeleri arasındaki akıllı mantık tasarımımızla daha verimli kaynak kullanımı için tasarlanmıştır."
 
 #: src/pages/about-us.tsx:357
-#: src/pages/index.tsx:521
+#: src/pages/index.tsx:527
 msgid "Our Experience"
 msgstr "Tecrübemiz"
 
@@ -599,12 +599,12 @@ msgid "Our vision"
 msgstr "Vizyonumuz"
 
 #: src/components/interop/DesktopInterop.tsx:325
-#: src/components/interop/MobileInterop.tsx:196
+#: src/components/interop/MobileInterop.tsx:197
 msgid "Own your metaverse identity"
 msgstr "Meta veri deposu kimliğine sahip olun"
 
 #: src/components/interop/DesktopInterop.tsx:242
-#: src/components/interop/MobileInterop.tsx:151
+#: src/components/interop/MobileInterop.tsx:152
 msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "Meta veri deposu kimliğine sahip olun. Herhangi bir yerde. Herhangi Oyun."
 
@@ -657,7 +657,7 @@ msgstr "Amaca yönelik altyapı"
 msgid "READ ABOUT OUR ECOSYSTEM"
 msgstr "EKOSİSTEMİMİZ HAKKINDA OKUYUN"
 
-#: src/pages/index.tsx:448
+#: src/pages/index.tsx:454
 msgid "RUN A NODE"
 msgstr "DÜĞÜM ÇALIŞTIR"
 
@@ -687,7 +687,7 @@ msgstr "Geliştirme güncellemeleri, jeton ve NFT hediyeleri ve özel promosyonl
 msgid "Start playing and earning rewards"
 msgstr "Oynamaya ve ödüller kazanmaya başlayın"
 
-#: src/components/Footer.tsx:46
+#: src/components/Footer.tsx:47
 #: src/components/Header/Header.tsx:55
 msgid "Store"
 msgstr "Mağaza"
@@ -700,11 +700,11 @@ msgstr "Konu gerekli!"
 msgid "TOKEN LAUNCH COMING SOON"
 msgstr "JETON SATIŞI YAKINDA"
 
-#: src/components/Footer.tsx:75
+#: src/components/Footer.tsx:76
 msgid "Team"
 msgstr "Ekip"
 
-#: src/components/Footer.tsx:160
+#: src/components/Footer.tsx:162
 msgid "Terms | Privacy"
 msgstr "Koşullar | Gizlilik"
 
@@ -730,17 +730,17 @@ msgid "The Myria ecosystem is designed to empower gamers, communities, studios, 
 msgstr "Myria ekosistemi, oyuncuları, toplulukları, stüdyoları ve yaratıcıları güçlendirmek için tasarlanmıştır."
 
 #: src/components/interop/DesktopInterop.tsx:224
-#: src/components/interop/MobileInterop.tsx:128
+#: src/components/interop/MobileInterop.tsx:129
 msgid "The new standard for interoperable NFTs"
 msgstr "Birlikte çalışabilir NFT'ler için yeni standart"
 
 #: src/components/interop/DesktopInterop.tsx:165
-#: src/components/interop/MobileInterop.tsx:63
+#: src/components/interop/MobileInterop.tsx:64
 msgid "The world’s first Morphing NFTs™"
 msgstr "Dünyanın ilk Dönüşen NFT'leri™"
 
 #: src/components/interop/DesktopInterop.tsx:205
-#: src/components/interop/MobileInterop.tsx:104
+#: src/components/interop/MobileInterop.tsx:105
 msgid "Trailer Coming Soon"
 msgstr "Fragman Çok Yakında"
 
@@ -748,7 +748,7 @@ msgstr "Fragman Çok Yakında"
 msgid "UI/UX Lead"
 msgstr "UI/UX Lideri"
 
-#: src/pages/index.tsx:354
+#: src/pages/index.tsx:360
 msgid "Unified through the Myriaverse"
 msgstr "Myriaverse aracılığıyla birleştirilmiş"
 
@@ -797,7 +797,7 @@ msgstr "Myria düğüm operatörleri hangi ödülleri alıyor?"
 msgid "When will Myria node licenses be sold?"
 msgstr "Myria düğüm lisansları ne zaman satılacak?"
 
-#: src/components/Footer.tsx:70
+#: src/components/Footer.tsx:71
 msgid "Whitepaper (Coming soon)"
 msgstr "Teknik İnceleme (Yakında)"
 
@@ -806,7 +806,7 @@ msgid "With 15+ year experience working in the gaming industry, Antonio has cont
 msgstr "Oyun endüstrisinde 15 yılı aşkın deneyime sahip olan Antonio, The Witcher, Disney gibi dünyanın önde gelen bazı oyunlarına ve markalarına katkıda bulunmuştur."
 
 #: src/components/interop/DesktopInterop.tsx:245
-#: src/components/interop/MobileInterop.tsx:153
+#: src/components/interop/MobileInterop.tsx:154
 msgid "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
 msgstr "NFT'niz dijital kimliğinizdir. Metaverse keşiflerinizde NFT'nizi yanınıza alın. Farklı oyunlarda ve dünyalarda donanın ve seviye atlayın. Myria ile meta veri tabanı kimliğinize gerçekten sahip olun."
 

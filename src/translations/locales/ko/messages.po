@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 11:10+0700\n"
+"POT-Creation-Date: 2022-02-24 12:59+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -71,12 +71,12 @@ msgstr "AJ는 20년 이상의 여러 학문 분야에 걸친 종합적 경륜을
 msgid "APPLY NOW"
 msgstr "지금 신청하기"
 
-#: src/components/Footer.tsx:66
+#: src/components/Footer.tsx:67
 #: src/components/Header/Header.tsx:22
 msgid "About"
 msgstr "에 관하여"
 
-#: src/components/Footer.tsx:62
+#: src/components/Footer.tsx:63
 msgid "About Us"
 msgstr "당사 소개"
 
@@ -113,7 +113,7 @@ msgid "Art Creative Lead"
 msgstr "아트 창의적 리드"
 
 #: src/components/interop/DesktopInterop.tsx:227
-#: src/components/interop/MobileInterop.tsx:130
+#: src/components/interop/MobileInterop.tsx:131
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "Myria에서 우리는 NFT가 플레이어들에게 입증 가능한 소유권을 제공할 뿐 아니라, 플레이어들이 모든 게임에서 자신들의 NFT를 취하도록 허용하여야 한다."
 
@@ -153,7 +153,7 @@ msgstr "제한된 파운딩 NFT 구매"
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "노드 라이선스 구매는 소유자에게 노드를 가동할 권리(장소상으로나 클라우드에서)를 주고 관리 방식으로 결정됨에 따라 보상을 받게 될 것이다."
 
-#: src/components/Footer.tsx:81
+#: src/components/Footer.tsx:82
 #: src/components/Header/Header.tsx:37
 #: src/pages/careers.tsx:19
 msgid "Careers"
@@ -196,7 +196,7 @@ msgstr "<0>플레이</0>을 통하여 세상과 연결하기"
 msgid "Connecting the world through play"
 msgstr "플레이를 통하여 세상과 연결하기"
 
-#: src/components/Footer.tsx:90
+#: src/components/Footer.tsx:91
 msgid "Contact Us"
 msgstr "당사 연락처"
 
@@ -220,7 +220,7 @@ msgstr "자원 계산을 제공하여 네트워크를 분권화함"
 msgid "Details will be announced soon."
 msgstr ""
 
-#: src/pages/index.tsx:468
+#: src/pages/index.tsx:474
 msgid "Discover the best games built on the blockchain"
 msgstr "블록 체인에 기반한 최상의 게임을 발견함"
 
@@ -228,8 +228,8 @@ msgstr "블록 체인에 기반한 최상의 게임을 발견함"
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "각 노드는 Myria 체인에 제시된 변화에 대해 투표하는 것이 허용되고 노드는 또한 Myriaverse를 통하여 더 큰 투표 권한을 유지할 것이다."
 
-#: src/components/Footer.tsx:34
-#: src/components/Footer.tsx:42
+#: src/components/Footer.tsx:35
+#: src/components/Footer.tsx:43
 #: src/components/Header/Header.tsx:43
 msgid "Ecosystem"
 msgstr "생태계"
@@ -264,16 +264,16 @@ msgstr "독점적 NFT"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "<0>Myria</0> 생태계 탐구"
 
-#: src/pages/index.tsx:463
+#: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "게이머 용"
 
-#: src/components/Footer.tsx:51
-#: src/pages/index.tsx:486
+#: src/components/Footer.tsx:52
+#: src/pages/index.tsx:492
 msgid "For Studios"
 msgstr "스튜디오 용"
 
-#: src/pages/index.tsx:503
+#: src/pages/index.tsx:509
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "주도적인 게이밍 및 블록 체인 산업 베테랑에 의해 창설됨"
 
@@ -297,7 +297,7 @@ msgstr "게임 플레이 먼저"
 msgid "Gameplay first & free to play"
 msgstr ""
 
-#: src/components/Footer.tsx:11
+#: src/components/Footer.tsx:12
 #: src/components/Header/Header.tsx:47
 msgid "Games"
 msgstr "게임"
@@ -310,7 +310,7 @@ msgstr ""
 msgid "Get a founders node today"
 msgstr "오늘 창설자 노드 획득"
 
-#: src/pages/index.tsx:420
+#: src/pages/index.tsx:426
 msgid "Get the latest updates on our games, token and NFT releases, play-to-earn mechanics, and have the opportunity to access alpha gameplay."
 msgstr "우리 게임, 토큰 및 NFT 출시, 플레이 하고 돈 벌기 메커니즘에서 가장 최신 업데이트, 그리고 알파 게임 플레이에 접속할 기회를 얻는다."
 
@@ -318,7 +318,7 @@ msgstr "우리 게임, 토큰 및 NFT 출시, 플레이 하고 돈 벌기 메커
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
 msgstr "혁신적 게임 아이디어를 얻었다고? Myria 체인 상 당신의 비전을 나타내기 위해 보조금 신청한다."
 
-#: src/pages/index.tsx:413
+#: src/pages/index.tsx:419
 msgid "Grow with myria"
 msgstr "Myria로 성장"
 
@@ -341,9 +341,9 @@ msgstr "나는 Myria 노드 운영자가 어떻게 될 수 있는가?"
 #: src/components/interop/DesktopInterop.tsx:221
 #: src/components/interop/DesktopInterop.tsx:239
 #: src/components/interop/DesktopInterop.tsx:257
-#: src/components/interop/MobileInterop.tsx:126
-#: src/components/interop/MobileInterop.tsx:149
-#: src/components/interop/MobileInterop.tsx:173
+#: src/components/interop/MobileInterop.tsx:127
+#: src/components/interop/MobileInterop.tsx:150
+#: src/components/interop/MobileInterop.tsx:174
 msgid "How it works"
 msgstr "그것은 어떻게 작동할까?"
 
@@ -377,7 +377,7 @@ msgstr "이반(Ivan)은 게임 산업에 10년 이상의 경력을 갖추고 있
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
 #: src/pages/index.tsx:153
-#: src/pages/index.tsx:443
+#: src/pages/index.tsx:449
 msgid "JOIN DISCORD"
 msgstr "DISCORD에 합류하기"
 
@@ -393,7 +393,7 @@ msgstr "젬(Jem)은 광범위한 사업 운용과 전략 경험을 갖추고 있
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
 msgstr "블록 체인 게이밍의 미래를 구축하고자 60개 이상의 팀 합류"
 
-#: src/pages/index.tsx:416
+#: src/pages/index.tsx:422
 msgid "Join the thriving Myria ecosystem"
 msgstr ""
 
@@ -405,8 +405,8 @@ msgstr "키도노(Kidono)는 외부 개발 약속을 관리하는 광범위한 �
 msgid "LEARN MORE"
 msgstr "더 많이 배우기"
 
-#: src/pages/index.tsx:472
-#: src/pages/index.tsx:495
+#: src/pages/index.tsx:478
+#: src/pages/index.tsx:501
 msgid "Learn more"
 msgstr "더 많이 배우기"
 
@@ -414,7 +414,7 @@ msgstr "더 많이 배우기"
 msgid "Led by industry experts"
 msgstr "산업 전문가들에 의한 주도"
 
-#: src/pages/index.tsx:515
+#: src/pages/index.tsx:521
 msgid "MEET THE TEAM"
 msgstr "팀을 충족시킴"
 
@@ -430,7 +430,7 @@ msgstr "메시지가 요구됨!"
 msgid "Modularization of smart contracts"
 msgstr "스마트 계약의 모듈러리제이션"
 
-#: src/pages/index.tsx:365
+#: src/pages/index.tsx:371
 msgid "More details coming soon"
 msgstr "좀 더 세부 내용 개봉 박두"
 
@@ -438,18 +438,18 @@ msgstr "좀 더 세부 내용 개봉 박두"
 msgid "More games coming soon..."
 msgstr "더 많은 게임 개봉 박두"
 
-#: src/components/Footer.tsx:55
+#: src/components/Footer.tsx:56
 #: src/components/Header/Header.tsx:33
 msgid "Morphing NFTs"
 msgstr "모핑 NFT"
 
 #: src/components/interop/DesktopInterop.tsx:322
-#: src/components/interop/MobileInterop.tsx:195
+#: src/components/interop/MobileInterop.tsx:196
 msgid "Morphing NFTs™"
 msgstr "모핑 NFTs™"
 
 #: src/components/interop/DesktopInterop.tsx:260
-#: src/components/interop/MobileInterop.tsx:175
+#: src/components/interop/MobileInterop.tsx:176
 msgid "Morphing NFTs™ that adapt to your avatars"
 msgstr "당신의 아바타에 적응되는 모핑 NFTs™"
 
@@ -473,11 +473,11 @@ msgstr "Myria는 블록 체인에 의해 향상되나 그 반대는 불가능한
 msgid "Myria ecosystem fund"
 msgstr "Myria 생태계 기금"
 
-#: src/pages/index.tsx:508
+#: src/pages/index.tsx:514
 msgid "Myria has been built by an all-star team of over 60+ people, united with a common vision of revolutionizing gaming with blockchain technology."
 msgstr "Myria가 블록 체인 기술을 갖춘 혁명적인 게이밍의 통상적 비전으로 결합되어, 60명 이상의 올 스타 팀에 의해 수립되었다."
 
-#: src/pages/index.tsx:491
+#: src/pages/index.tsx:497
 msgid "Myria helps studios join the blockchain revolution"
 msgstr "Myria는 스튜디오가 블록 체인 레볼루션에 가입하도록 돕는다."
 
@@ -509,7 +509,7 @@ msgstr "Myria 노드 운영자들은 노드 작업에 대해 매일 $MYRIA 토�
 msgid "Myria | Connecting the world through play"
 msgstr "Myria/ 플레이를 통해 세상을 연결시킴"
 
-#: src/pages/index.tsx:357
+#: src/pages/index.tsx:363
 msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
 msgstr "미리아버스는 플레이어들, 커뮤니티 및 길드를 연결시키는 더 광범위한 메타버스이다. 플레이어들은 탐구하고, 탐색하며, 투자 및 그 이상의 것을 할 수 있을 것이다. 지금까지 확장해온 미리아버스는 용감한 모험가들에게 풍부한 수익 기회를 제공하는 가상 사회 및 경제이다."
 
@@ -521,12 +521,12 @@ msgstr "NFT 상호운용"
 msgid "Name is required!"
 msgstr "이름을 요구함!"
 
-#: src/components/Footer.tsx:85
+#: src/components/Footer.tsx:86
 msgid "News"
 msgstr "뉴스"
 
 #: src/components/interop/DesktopInterop.tsx:263
-#: src/components/interop/MobileInterop.tsx:177
+#: src/components/interop/MobileInterop.tsx:178
 msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
 msgstr "당신의 아바타의 모양과 크기가 어떠하든, 그들 모두에 대해 동일한 NFT를 사용한다. 일단 구매하고, 모든 캐릭터를 사용한다. 상호운용되도록 설계된다."
 
@@ -542,7 +542,7 @@ msgstr "노드 소유자 보상"
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "노드 소유자들은 또한 노드 운영자 및 일반 커뮤니티 구성원으로서 자신의 명성 점수에 기반하여 NFT 드롭과 토큰으로 보상을 받게 될 것이다."
 
-#: src/components/Footer.tsx:38
+#: src/components/Footer.tsx:39
 #: src/components/Header/Header.tsx:51
 msgid "Nodes"
 msgstr "노드"
@@ -551,7 +551,7 @@ msgstr "노드"
 msgid "Only 60,000 Myria node licenses will ever be released."
 msgstr "단지 60,000 Myria 노드 라이선스가 출시될 것이다."
 
-#: src/pages/index.tsx:426
+#: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
 msgstr "당신의 가정용 컴퓨터에서 Myria 노드를 운영하여 네트워크에 대한 당신의 기여에 대해 보상을 받을 것이다."
 
@@ -560,7 +560,7 @@ msgid "Our ERC1155 contracts are engineered for more efficient resource utilizat
 msgstr "우리의 에릭 1155 계약은 기초 층과 규칙 계약 간 스마트 로직 디자인으로 좀 더 능률적인 자원 이용에 대해 기획된다."
 
 #: src/pages/about-us.tsx:357
-#: src/pages/index.tsx:521
+#: src/pages/index.tsx:527
 msgid "Our Experience"
 msgstr "우리의 경험"
 
@@ -599,12 +599,12 @@ msgid "Our vision"
 msgstr "우리의 비전"
 
 #: src/components/interop/DesktopInterop.tsx:325
-#: src/components/interop/MobileInterop.tsx:196
+#: src/components/interop/MobileInterop.tsx:197
 msgid "Own your metaverse identity"
 msgstr "당신의 메타버스 아이덴티티 소유"
 
 #: src/components/interop/DesktopInterop.tsx:242
-#: src/components/interop/MobileInterop.tsx:151
+#: src/components/interop/MobileInterop.tsx:152
 msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "당신의 메타버스 아이덴티티 소유: 어디든. 모든 게임."
 
@@ -657,7 +657,7 @@ msgstr "목적-기반 시설"
 msgid "READ ABOUT OUR ECOSYSTEM"
 msgstr "우리의 생태계에 관해 읽기"
 
-#: src/pages/index.tsx:448
+#: src/pages/index.tsx:454
 msgid "RUN A NODE"
 msgstr "노드 가동"
 
@@ -687,7 +687,7 @@ msgstr "개발 업데이트, 토큰 및 NFT 드롭, 및 독점 홍보를 목적�
 msgid "Start playing and earning rewards"
 msgstr "플레이 시작 및 보상 받기"
 
-#: src/components/Footer.tsx:46
+#: src/components/Footer.tsx:47
 #: src/components/Header/Header.tsx:55
 msgid "Store"
 msgstr "스토어"
@@ -700,11 +700,11 @@ msgstr "대상 필수!"
 msgid "TOKEN LAUNCH COMING SOON"
 msgstr "토큰 판매 개봉 박두"
 
-#: src/components/Footer.tsx:75
+#: src/components/Footer.tsx:76
 msgid "Team"
 msgstr "팀"
 
-#: src/components/Footer.tsx:160
+#: src/components/Footer.tsx:162
 msgid "Terms | Privacy"
 msgstr "팀/프라이버시"
 
@@ -730,17 +730,17 @@ msgid "The Myria ecosystem is designed to empower gamers, communities, studios, 
 msgstr "Myria 생태계는 게이머, 커뮤니티, 스튜디오 및 창조자에게 권한을 부여하도록 설계되어 있다."
 
 #: src/components/interop/DesktopInterop.tsx:224
-#: src/components/interop/MobileInterop.tsx:128
+#: src/components/interop/MobileInterop.tsx:129
 msgid "The new standard for interoperable NFTs"
 msgstr "상호 운용 가능한 NFT 용 신규 기준"
 
 #: src/components/interop/DesktopInterop.tsx:165
-#: src/components/interop/MobileInterop.tsx:63
+#: src/components/interop/MobileInterop.tsx:64
 msgid "The world’s first Morphing NFTs™"
 msgstr "세계 최초 모핑 NFTs™"
 
 #: src/components/interop/DesktopInterop.tsx:205
-#: src/components/interop/MobileInterop.tsx:104
+#: src/components/interop/MobileInterop.tsx:105
 msgid "Trailer Coming Soon"
 msgstr "트레일러 개봉 박두"
 
@@ -748,7 +748,7 @@ msgstr "트레일러 개봉 박두"
 msgid "UI/UX Lead"
 msgstr "UI/UX 리드"
 
-#: src/pages/index.tsx:354
+#: src/pages/index.tsx:360
 msgid "Unified through the Myriaverse"
 msgstr "미리아버스를 통하여 통일됨"
 
@@ -797,7 +797,7 @@ msgstr "Myria 노드 운영자들은 무슨 보상을 받는가?"
 msgid "When will Myria node licenses be sold?"
 msgstr "Myria 노드 라이선스는 언제 판매될 것인가?"
 
-#: src/components/Footer.tsx:70
+#: src/components/Footer.tsx:71
 msgid "Whitepaper (Coming soon)"
 msgstr "백서(개봉박두)"
 
@@ -806,7 +806,7 @@ msgid "With 15+ year experience working in the gaming industry, Antonio has cont
 msgstr "게임 산업에서 15년 이상의 작업 경력을 갖춘 안토니오는 Witcher, Disney 등과 같은 세계의 주도적인 타이틀 및 브랜드 일부에 기여해 왔다."
 
 #: src/components/interop/DesktopInterop.tsx:245
-#: src/components/interop/MobileInterop.tsx:153
+#: src/components/interop/MobileInterop.tsx:154
 msgid "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
 msgstr "당신의 NFT는 당신의 디지털 아이덴티티이다. 당신의 메타버스 개발에서 자신의 NFT를 취할 것이다. 다른 게임과 세상에서 장비를 갖추고 레벨을 높일 것이다. 진실로 Myria와 자신의 메타버스 아이덴티티를 소유할 것이다."
 
