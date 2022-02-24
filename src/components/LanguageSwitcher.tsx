@@ -7,11 +7,11 @@ import ChevronDownIcon from './icons/ChevronDownIcon';
 import LanguageIcon from './icons/LanguageIcon';
 
 const languages: Record<Language, string> = {
+  en: 'English',
   'zh-Hans': '中文',
   ja: '日文',
   es: 'Español',
   vi: 'Tiếng Việt',
-  en: 'English',
   ko: '한국어',
   tr: 'Türk'
 };
