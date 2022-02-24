@@ -1,6 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { socialLinks } from 'src/configs';
 import DesktopHeader from './DesktopHeader';
 import MobileHeader from './MobileHeader';
@@ -27,7 +27,7 @@ export const links: NavItem[] = [
       },
       {
         text: <Trans>Our team</Trans>,
-        url: '/about-us'
+        url: '/about-us#teams'
       },
       {
         text: <Trans>Morphing NFTs</Trans>,
@@ -78,18 +78,19 @@ export const links: NavItem[] = [
   }
 ];
 
-export const headerHeight = 112;
+export const headerHeight = 83;
 
 export type Action = 'login' | 'join-discord';
 
-const Header: React.FC<{ action?: Action; className?: string }> = ({
+const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
   action = 'join-discord',
-  className
+  className,
+  stickyHeader=true
 }) => {
   return (
     <div className={clsx('absolute top-0 z-10 w-full', className)}>
       <div className="hidden lg:block">
-        <DesktopHeader action={action} />
+        <DesktopHeader action={action} stickyHeader={stickyHeader}/>
       </div>
       <div className="lg:hidden">
         <MobileHeader action={action} />

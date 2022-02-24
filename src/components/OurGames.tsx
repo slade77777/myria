@@ -4,24 +4,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const Backdrop = () => {
-  return (
-    <svg viewBox="0 0 616 105" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        opacity="0.7"
-        d="M0 0L616 16V93C616 99.6274 610.627 105 604 105H12C5.37259 105 0 99.6274 0 93V0Z"
-        fill="#050E15"
-      />
-    </svg>
-  );
-};
-
 const data = [
   {
     logo: (
-      <div className="w-[225px] md:w-[288px]">
+      <div
+        className="w-[225px] md:w-[288px]"
+        style={{
+          filter: `drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.7))`
+        }}>
         <Image
-          src="/images/our-games/metarush_updated.png"
+          src="/images/our-games/metarush-noshadow.png"
           alt="metarush"
           layout="responsive"
           width={926}
@@ -29,7 +21,7 @@ const data = [
         />
       </div>
     ),
-    background: '/images/our-games/metarush-bg.png',
+    background: '/images/our-games/metarush-bg_op.png',
     title: <Trans>A multiplayer obstacle course game</Trans>,
     link: '/game-detail/metarush',
     layout: 'row'
@@ -63,7 +55,7 @@ const data = [
         />
       </div>
     ),
-    background: '/images/our-games/metakart-bg.png',
+    background: '/images/our-games/metakart-bg_op.png',
     title: <Trans>A multiplayer go-kart racing game</Trans>,
     link: '/game-detail/metakart',
     layout: 'row'
@@ -89,7 +81,7 @@ const data = [
 
 const OurGames: React.FC<{ btnLabel?: string }> = ({ btnLabel = 'Learn more' }) => {
   return (
-    <div className="grid md:grid-cols-2 gap-[24px] md:gap-[32px] text-brand-white">
+    <div className="grid gap-[24px] text-brand-white md:grid-cols-2 md:gap-[32px]">
       {data.map((item, idx) => {
         return (
           <Link href={item.link} key={idx}>
@@ -98,26 +90,26 @@ const OurGames: React.FC<{ btnLabel?: string }> = ({ btnLabel = 'Learn more' }) 
               style={{
                 backgroundImage: `url("${item.background}")`
               }}
-              className="transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] overflow-hidden relative isolate h-[211px] md:h-[342px] flex justify-between items-end bg-cover bg-center rounded-lg">
+              className="relative isolate flex h-[211px] items-end justify-between overflow-hidden rounded-lg bg-cover bg-center transition duration-300 hover:[box-shadow:0_0_0_3px_#fff] md:h-[342px]">
               <div
                 className={clsx(
-                  'mb-[22px] md:mb-4 xl:mb-6 justify-items-center flex-grow xl:justify-items-start xl:ml-[32px] grid content-end gap-y-4 md:gap-y-3 xl:gap-y-6',
+                  'mb-[22px] grid flex-grow content-end justify-items-center gap-y-4 md:mb-4 md:gap-y-3 xl:mb-6 xl:ml-[32px] xl:justify-items-start xl:gap-y-6',
                   {
-                    'xl:grid-cols-[126px_auto] gap-x-[21px] xl:items-end':
+                    'gap-x-[21px] xl:grid-cols-[126px_auto] xl:items-end':
                       (item.layout as any) === 'col'
                   }
                 )}>
                 {item.logo}
-                <p className=" font-bold text-[20px] md:text-[16px] xl:text-[20px] text-center xl:text-left leading-[1.15] md:max-w-[194px] xl:max-w-none">
+                <p className=" text-center text-[20px] font-bold leading-[1.15] md:max-w-[194px] md:text-[16px] xl:max-w-none xl:text-left xl:text-[20px]">
                   {item.title}
                 </p>
               </div>
-              <button className="hidden mb-6 ml-4 mr-6 xl:block btn-lg btn-white whitespace-nowrap">
-                {btnLabel}
-              </button>
-              <div className="absolute z-[-1] min-w-[500px] md:min-w-[616px] -translate-x-1/2 w-[calc(100%+5px)] bottom-0 left-1/2">
-                <Backdrop />
-              </div>
+              <div
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 0.48) 100%)'
+                }}
+                className="absolute inset-0 z-[-1]"></div>
             </a>
           </Link>
         );

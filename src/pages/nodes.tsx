@@ -20,7 +20,11 @@ const rewards = [
       </div>
     ),
     title: <Trans>Daily $MYRIA token rewards</Trans>,
-    description: <Trans>Myria node operators will receive daily $MYRIA token rewards for the nodes work. </Trans>,
+    description: (
+      <Trans>
+        Myria node operators will receive daily $MYRIA token rewards for the nodes work.{' '}
+      </Trans>
+    )
   },
   {
     icon: (
@@ -29,8 +33,12 @@ const rewards = [
       </div>
     ),
     title: <Trans>Voting rights</Trans>,
-    description:
-      <Trans>Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse</Trans>,
+    description: (
+      <Trans>
+        Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold
+        greater voting power throughout the Myriaverse
+      </Trans>
+    )
   },
   {
     icon: (
@@ -39,8 +47,12 @@ const rewards = [
       </div>
     ),
     title: <Trans>Exclusive NFTs</Trans>,
-    description:
-      <Trans>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</Trans>,
+    description: (
+      <Trans>
+        Node owners will also be rewarded with NFT drops and tokens based on their reputational
+        score as node operators and general community members.
+      </Trans>
+    ),
     learnMore: '/'
   }
 ];
@@ -48,38 +60,108 @@ const rewards = [
 const questions = [
   {
     title: <Trans>What is a Myria node?</Trans>,
-    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
-  },
-  {
-    title: <Trans>How can I become a Myria node operator?</Trans>,
-    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
+    content: (
+      <Trans>
+        <p className="mb-2">
+          In order to run any blockchain, including the Myria chain, nodes are required for
+          verification of network transactions. Nodes in the Myria ecosystem will be used for a
+          variety of network-supporting activities including initial test networks, block production
+          and validation.
+        </p>
+        <p>
+          In addition to their role as potential validators, node owners will also be asked to - and
+          rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more
+          advanced. These include the need for decentralized storage of certain critical information
+          in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific
+          concepts.
+        </p>
+      </Trans>
+    )
   },
   {
     title: <Trans>What rewards do Myria node operators receive?</Trans>,
-    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
+    content: (
+      <Trans>
+        <p className="mb-2">
+          Myria node operators will receive daily $MYRIA token rewards for the nodes work.
+        </p>
+        <p className="mb-2">
+          Node owners will also be rewarded with NFT drops and tokens based on their reputational
+          score as node operators and general community members.
+        </p>
+        <p>
+          Reputation scores will be determined by the playing activity of node owners, the number of
+          tokens they own and stake, previous uptime metrics, and their history of network support
+          (e.g. validation or oracle provider).
+        </p>
+      </Trans>
+    )
   },
   {
+    title: <Trans>How can I become a Myria node operator?</Trans>,
+    content: (
+      <Trans>
+        Buying a node license will give the owner the right to run the node (either locally or in
+        the cloud) and receive rewards as determined by governance.
+      </Trans>
+    )
+  },
+
+  {
     title: <Trans>What are the software and hardware requirements to run a node?</Trans>,
-    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
+    content: (
+      <>
+        <Trans>
+          <p className="mb-2">
+            You can choose whether you prefer to run your node in the cloud or locally.
+          </p>
+          <p className="mb-2">
+            Myria node software will be available to download on Windows and Mac. Our node operation
+            is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able
+            to run our node software from your home computer with the following minimum
+            requirements:
+          </p>
+        </Trans>
+        <ul className="list-disc">
+          <li>4 GB RAM</li>
+          <li>
+            <Trans>2 CPU Cores</Trans>
+          </li>
+          <li>
+            <Trans>60 GB Disk Space</Trans>
+          </li>
+          <li>
+            <Trans>An x86/X64 Processor</Trans>
+          </li>
+          <li>
+            <Trans>A Stable Internet Connection</Trans>
+          </li>
+        </ul>
+      </>
+    )
   },
   {
     title: <Trans>When will Myria node licenses be sold?</Trans>,
-    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
+    content: (
+      <Trans>
+        Myria node license sales are anticipated to commence in March 2022 (subject to change).
+      </Trans>
+    )
   },
   {
     title: <Trans>How much will a Myria node license cost?</Trans>,
-    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
+    content: (
+      <Trans>
+        {/* Founders Nodes will receive preferential pricing, with the first 100 licences initially
+        released at USD $2,000. The price of Myria node licenses will increase by USD $100 for every
+        100 sold, up to a maximum price of $51,900 for the final 100 licenses. */}
+        Details will be announced soon.
+      </Trans>
+    )
   },
   {
     title: <Trans>How many Myria node licenses will be released?</Trans>,
-    content: <Trans>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions.
-    Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</Trans>
+    content: <Trans>Only 60,000 Myria node licenses will ever be released.</Trans>
   }
 ];
 const Nodes: React.FC = () => {
@@ -92,44 +174,55 @@ const Nodes: React.FC = () => {
         <div
           className={clsx(
             paddingX,
-            "bg-[url('/images/nodes/page-bg.png')] bg-right-bottom bg-no-repeat "
+            "bg-[url('/images/nodes/page-bg_op.png')] bg-right-bottom bg-no-repeat "
           )}>
-          <div className="w-full mx-auto max-w-content">
+          <div className="mx-auto w-full max-w-content">
             <section className={'text-center '}>
-              <h1 className="heading-lg md:heading-massive text-brand-white mt-[50px] md:mt-[120px] max-w-[756px] mx-auto text-center">
-                <Trans>Run a node and earn <span className="text-brand-mid-blue">$MYRIA</span> and NFT
-                rewards</Trans>
+              <h1 className="heading-lg mx-auto mt-[50px] max-w-[756px] text-center text-brand-white md:heading-massive md:mt-[120px]">
+                <Trans>
+                  Run a node and earn <span className="text-brand-mid-blue">$MYRIA</span> and NFT
+                  rewards
+                </Trans>
               </h1>
-              <p className="mt-[32px] heading-sm max-w-[518px] mx-auto">
+              <p className="heading-sm mx-auto mt-[32px] max-w-[518px]">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              <button className="mt-[38px] btn-lg btn-primary"><Trans>Pre register now</Trans></button>
+              <a className="btn-lg btn-primary mt-[38px]" href="#subcribe">
+                <Trans>Pre register now</Trans>
+              </a>
             </section>
             <section className="mt-[100px]">
               <div className="max-w-[715px]">
-                <p className="caption text-brand-light-blue"><Trans>a decentralized ecosystem</Trans></p>
-                <h2 className="mt-4 heading-lg"><Trans>Powered by the community of player-run nodes</Trans></h2>
-                <p className="mt-6 body text-light">
-                  <Trans>The Myria chain is supported by a network of player-run nodes. Use your home
-                  computer to become a node operator and receive rewards and benefits for your
-                  contribution to the ecosystem.</Trans>
+                <p className="caption text-brand-light-blue">
+                  <Trans>a decentralized ecosystem</Trans>
+                </p>
+                <h2 className="heading-lg mt-4">
+                  <Trans>Powered by the community of player-run nodes</Trans>
+                </h2>
+                <p className="body mt-6 text-light">
+                  <Trans>
+                    The Myria chain is supported by a network of player-run nodes. Use your home
+                    computer to become a node operator and receive rewards and benefits for your
+                    contribution to the ecosystem.
+                  </Trans>
                 </p>
               </div>
             </section>
             <section className="mt-[152px]">
-              <h2 className="text-center heading-sm md:heading-md"><Trans>Node owner rewards</Trans></h2>
-              <div className="mt-[92px] md:grid-cols-2 grid lg:grid-cols-3 gap-[32px] gap-y-[76px]">
+              <h2 className="heading-sm text-center md:heading-md">
+                <Trans>Node owner rewards</Trans>
+              </h2>
+              <div className="mt-[92px] grid gap-[32px] gap-y-[76px] md:grid-cols-2 lg:grid-cols-3">
                 {rewards.map((item, idx) => (
                   <CardWithIcon icon={item.icon} key={idx}>
                     <div className="pb-[48px]">
                       <h3 className="heading-sm md:heading-md">{item.title}</h3>
-                      <p className="mt-6 body-sm">{item.description}</p>
+                      <p className="body-sm mt-6">{item.description}</p>
                       {item.learnMore && (
-                        <a
-                          href={item.learnMore}
-                          className="inline-block mt-[22px] btn-lg btn-primary">
+                        <button
+                          className="btn-lg btn-primary mt-[22px] inline-block">
                           <Trans>Releasing soon</Trans>
-                        </a>
+                        </button>
                       )}
                     </div>
                   </CardWithIcon>
@@ -138,8 +231,10 @@ const Nodes: React.FC = () => {
             </section>
           </div>
         </div>
-        <section className={clsx(paddingX, 'w-full mt-[152px] mx-auto max-w-[832px]')}>
-          <h3 className="text-center heading-sm md:heading-md"><Trans>Validating on Myria</Trans></h3>
+        <section className={clsx(paddingX, 'mx-auto mt-[152px] w-full max-w-[832px]')}>
+          <h3 className="heading-sm text-center md:heading-md">
+            <Trans>Myria FAQ</Trans>
+          </h3>
           <div className="mt-[48px]">
             {questions.map((item, idx) => (
               <React.Fragment key={idx}>
@@ -148,7 +243,7 @@ const Nodes: React.FC = () => {
                     {({ open }) => (
                       <div>
                         <Collapse.Trigger asChild>
-                          <div className="flex items-center justify-between cursor-pointer">
+                          <div className="flex cursor-pointer items-center justify-between">
                             <h3 className="heading-list">{item.title}</h3>
                             <i
                               className={clsx('w-[24px] transition duration-300', {
@@ -160,14 +255,14 @@ const Nodes: React.FC = () => {
                         </Collapse.Trigger>
                         <Collapse.Content>
                           <div className="pb-2">
-                            <p className="mt-6 body text-light">{item.content}</p>
+                            <p className="body mt-6 text-light">{item.content}</p>
                           </div>
                         </Collapse.Content>
                       </div>
                     )}
                   </Collapse>
                 </div>
-                <div className="w-full h-[1px] bg-white opacity-20 mt-6" />
+                <div className="mt-6 h-[1px] w-full bg-white opacity-20" />
               </React.Fragment>
             ))}
           </div>
@@ -175,21 +270,27 @@ const Nodes: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            "w-full mt-[112px] mb-[124px] flex flex-col justify-center min-h-[792px]  bg-[url('/images/globe.png')] bg-no-repeat md:bg-right bg-center"
+            "mt-[112px] mb-[124px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe_op.png')] bg-center bg-no-repeat md:bg-right"
           )}>
           <div className="mx-auto max-w-content ">
             <div className="md:w-1/2">
-              <h3 className="heading-sm md:heading-md"><Trans>Get a founders node today</Trans></h3>
-              <p className="mt-6 body">
-                <Trans>Become an integral part of the Myria ecosystem and reap the benefits of your
-                contribution. Early founder node operators receive preferential pricing, which
-                increases as nodes are sold.</Trans>
+              <h3 className="heading-sm md:heading-md">
+                <Trans>Get a founders node today</Trans>
+              </h3>
+              <p className="body mt-6">
+                <Trans>
+                  Become an integral part of the Myria ecosystem and reap the benefits of your
+                  contribution. Early founder node operators receive preferential pricing, which
+                  increases as nodes are sold.
+                </Trans>
               </p>
-              <button className="btn-lg btn-primary mt-[32px]"><Trans>BUY A NODE</Trans></button>
+              <a className="btn-lg btn-primary mt-[32px]" href="#subcribe">
+                <Trans>BUY A NODE</Trans>
+              </a>
             </div>
           </div>
         </section>
-        <section className={clsx(paddingX, 'mb-[124px]')}>
+        <section className={clsx(paddingX, 'mb-[124px]')} id="subcribe">
           <div className="mx-auto max-w-content">
             <Subscribe />
           </div>

@@ -1,5 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
+import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
 
@@ -73,7 +74,7 @@ const links = [
         },
         {
           label: <Trans>Team</Trans>,
-          link: '/about-us'
+          link: '/about-us#teams'
         }
       ],
       [
@@ -126,8 +127,8 @@ const Footer: React.FC = () => {
                 <div key={idx} className={clsx('grid gap-y-4')}>
                   {block.map((item: any, idx) =>
                     !item?.inactive ? (
+                      <Link href={item.link}>
                       <a
-                        href={item.link}
                         target={item?.external ? '_blank' : '_self'}
                         key={idx}
                         rel="noreferrer"
@@ -136,6 +137,7 @@ const Footer: React.FC = () => {
                         })}>
                         {item.label}
                       </a>
+                      </Link>
                     ) : (
                       <div key={idx} className="flex items-center">
                         <p className="hover:cursor-not-allowed mr-[7px]">{item.label}</p>
