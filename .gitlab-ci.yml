@@ -27,13 +27,11 @@ deploy to s3:
     - staging
 
 deploy to production:
-  variables:
-    NEXT_PUBLIC_GOOGLE_ANALYTICS: "UA-219865262-1"
   environment: production
   image: node:14
   script:
   - yarn
-  - yarn build
+  - yarn build:prod
   artifacts:
     paths:
       - out  
