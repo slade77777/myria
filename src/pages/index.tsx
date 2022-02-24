@@ -23,7 +23,7 @@ import Hero from 'src/components/home/Hero';
 const PLANNET_MOVE_X = 300;
 const PLANNET_MOVE_Y = 300;
 const OTHER_PLANNET_X = 400;
-const CHARACTER_ON_ROCK_MOVE_Y = 200;
+const CHARACTER_ON_ROCK_MOVE_Y = 0;
 
 const Index = () => {
   gsap.registerPlugin(ScrollTrigger);
