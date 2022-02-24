@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 12:56+0700\n"
+"POT-Creation-Date: 2022-02-24 11:10+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,7 +49,7 @@ msgstr "一款大逃杀射击游戏"
 
 #: src/pages/about-us.tsx:106
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
-msgstr "一名充满活力的企业管理者，具有8年以上管理咨询经验，专注于Bandai Namco、Verizon、Vanguard、Kayo Streaming 等全球公司的组织转型。近期创立aliens.com网站"
+msgstr "一名充满活力的企业管理者，具有8年以上管理咨询经验，专注威Verizon、Vanguard、Kayo Streaming等全球公司的组织转型。近期创立aliens.com网站"
 
 #: src/components/OurGames.tsx:59
 msgid "A multiplayer go-kart racing game"
@@ -190,7 +190,7 @@ msgstr "联系我们"
 #: src/components/home/Hero.tsx:151
 #: src/pages/for-gamers.tsx:113
 msgid "Connecting the world through <0>play</0>"
-msgstr "通过<0>游戏</0>连接世界"
+msgstr "连接世界<0>游戏</0>"
 
 #: src/pages/_app.tsx:16
 msgid "Connecting the world through play"
@@ -316,7 +316,7 @@ msgstr "获取有关我方游戏、代币和非同质化代币发布信息及游
 
 #: src/pages/for-studios.tsx:37
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
-msgstr "有了创新游戏想法？申请授权，在Myria链上展示您的愿景？"
+msgstr "有了创新游戏想法？申请授权，在Myrial链上展示您的愿景？"
 
 #: src/pages/index.tsx:413
 msgid "Grow with myria"
@@ -391,7 +391,7 @@ msgstr "Jem拥有丰富的商业运营和战略经验，曾在竞投和筹款公
 
 #: src/pages/careers.tsx:21
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
-msgstr "加入蓬勃发展的Myria生态系统"
+msgstr "Myria团队由60多人组成，加入我们，共筑区块链游戏的未来"
 
 #: src/pages/index.tsx:416
 msgid "Join the thriving Myria ecosystem"
