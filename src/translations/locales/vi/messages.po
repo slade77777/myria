@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 12:59+0700\n"
+"POT-Creation-Date: 2022-02-24 17:26+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -121,11 +121,11 @@ msgstr "Tại Myria, chúng tôi tin rằng NFT không chỉ mang lại cho ngư
 msgid "Autoplay"
 msgstr "Tự động chơi"
 
-#: src/pages/nodes.tsx:289
+#: src/pages/nodes.tsx:288
 msgid "BUY A NODE"
 msgstr "MUA MỘT NODE"
 
-#: src/pages/nodes.tsx:282
+#: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Trở thành một phần không thể thiếu của hệ sinh thái Myria và thu được những lợi ích từ sự đóng góp của bạn. Các nhà khai thác node của người sáng lập sớm nhận được giá ưu đãi, giá này sẽ tăng lên khi các node được bán."
 
@@ -264,6 +264,10 @@ msgstr "NFT độc quyền"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "Khám phá Hệ Sinh Thái <0>Myria</0>"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr ""
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "Dành cho Người Chơi Trò Chơi"
@@ -306,7 +310,7 @@ msgstr "Trò chơi"
 msgid "Games Producer"
 msgstr ""
 
-#: src/pages/nodes.tsx:279
+#: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "Nhận node người sáng lập ngay hôm nay"
 
@@ -373,13 +377,14 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan có hơn 10 năm kinh nghiệm trong ngành công nghiệp trò chơi. Ngài ấy đã từng là nhà thiết kế trò chơi hàng đầu tại Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, v.v., với các trò chơi của ngài ấy đã đạt được nửa tỷ lượt tải xuống."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
 #: src/pages/index.tsx:153
 #: src/pages/index.tsx:449
 msgid "JOIN DISCORD"
-msgstr "THAM GIA TRANH LUẬN"
+msgstr "THAM GIA DISCORD"
 
 #: src/components/JoinTheRevolution.tsx:35
 msgid "JOIN THE TEAM"
@@ -457,7 +462,7 @@ msgstr "Morphing NFTs™ thích ứng với hình đại diện của bạn"
 msgid "Myria Blockchain Ecosystem Map"
 msgstr "Bản Đồ Hệ Sinh Thái Blockchain Myria"
 
-#: src/pages/nodes.tsx:237
+#: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
 msgstr ""
 
@@ -545,11 +550,11 @@ msgstr "Những người sở hữu node cũng sẽ được thưởng NFT và m
 #: src/components/Footer.tsx:39
 #: src/components/Header/Header.tsx:51
 msgid "Nodes"
-msgstr "Số lượng node"
+msgstr "Nodes"
 
 #: src/pages/nodes.tsx:164
-msgid "Only 60,000 Myria node licenses will ever be released."
-msgstr "Chỉ 60.000 giấy phép node Myria sẽ được phát hành."
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr ""
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
@@ -662,7 +667,7 @@ msgid "RUN A NODE"
 msgstr "VẬN HÀNH MỘT NODE"
 
 #: src/pages/games.tsx:92
-#: src/pages/nodes.tsx:225
+#: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "Sắp phát hành"
 

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 12:59+0700\n"
+"POT-Creation-Date: 2022-02-24 17:26+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,7 +33,7 @@ msgstr "<0>针对所开展的节点工作，Myria节点操作者将于每日收�
 
 #: src/pages/nodes.tsx:114
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows and Mac. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
-msgstr "<0>您可选择在云中或本地运行节点。</0><1>Myria节点软件可从Windows和Mac系统上下载。与传统加密货币挖矿不同，我们的节点操作并非是重度资源密集型。只要满足以下最低要求，您便可通过家用计算机运行我们的节点软件：</1>"
+msgstr "<0>您可选择在云端或本地运行节点。</0><1>Myria节点软件可从Windows和Mac系统上下载。与传统加密货币挖矿不同，我们的节点操作并非是重度资源密集型。只要满足以下最低要求，您便可通过家用计算机运行我们的节点软件：</1>"
 
 #: src/pages/index.tsx:193
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
@@ -94,7 +94,7 @@ msgstr "造福社区的基于代币游戏经济和非同质化代币的端到端
 
 #: src/components/OurGames.tsx:76
 msgid "An objective-based shooter game"
-msgstr "基于目标的射击游戏"
+msgstr "一款第一人称射击游戏"
 
 #: src/pages/nodes.tsx:134
 msgid "An x86/X64 Processor"
@@ -121,11 +121,11 @@ msgstr "在Myria，我们坚信非同质化代币不仅能够赋予玩家可验�
 msgid "Autoplay"
 msgstr "自动播放"
 
-#: src/pages/nodes.tsx:289
+#: src/pages/nodes.tsx:288
 msgid "BUY A NODE"
 msgstr "购买节点"
 
-#: src/pages/nodes.tsx:282
+#: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "成为Myria生态系统中不可或缺的一部分，并基于自身贡献获益。作为早期创始人的节点操作者可获得优惠价格。随着节点售出，节点价格将不断提高。"
 
@@ -264,6 +264,10 @@ msgstr "专属非同质化代币 "
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "探索<0>Myria</0>生态系统"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr "在推特上关注我们"
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "探索<0>Myria</0>生态系统"
@@ -279,7 +283,7 @@ msgstr "由游戏和区块链行业的顶尖业内人士创立"
 
 #: src/pages/about-us.tsx:221
 msgid "Fun, high-quality and free are our core beliefs. We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse."
-msgstr ""
+msgstr "有趣、优质、免费是我们的核心信念。我们相信开放和公平的访问，能让更多的人体验和享受区块链和元宇宙的好处。"
 
 #: src/pages/for-gamers.tsx:178
 msgid "GET A NODE"
@@ -306,7 +310,7 @@ msgstr "游戏"
 msgid "Games Producer"
 msgstr "游戏制作人"
 
-#: src/pages/nodes.tsx:279
+#: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "现在就获取创始人节点"
 
@@ -357,7 +361,7 @@ msgstr "一份Myria节点许可证的成本是多少？"
 
 #: src/pages/about-us.tsx:184
 msgid "Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space."
-msgstr ""
+msgstr "Hunter 自 2016 年以来一直是活跃在加密领域内部的企业家，加入了许多处于创新前沿的项目并帮助他们建立全球社区。他促进并扩大了与该领域一些大型项目和具有影响力者的合作伙伴关系。"
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan在游戏行业深耕10年，经验丰富。他曾担任智乐软件、CrazyLabs、GPG（育碧）、Sperasoft等公司的首席游戏设计师，所设计的游戏累计下载量达5亿次。"
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
@@ -391,11 +396,11 @@ msgstr "Jem拥有丰富的商业运营和战略经验，曾在竞投和筹款公
 
 #: src/pages/careers.tsx:21
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
-msgstr "加入蓬勃发展的Myria生态系统"
+msgstr "Myria团队由60多人组成，加入我们，共筑区块链游戏的未来"
 
 #: src/pages/index.tsx:422
 msgid "Join the thriving Myria ecosystem"
-msgstr "Myria团队由60多人组成，加入我们，共筑区块链游戏的未来"
+msgstr "加入蓬勃发展的Myria生态系统"
 
 #: src/pages/about-us.tsx:199
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
@@ -457,7 +462,7 @@ msgstr "适应您的虚拟形象的Morphing NFT™"
 msgid "Myria Blockchain Ecosystem Map"
 msgstr "Myria区块链生态系统地图"
 
-#: src/pages/nodes.tsx:237
+#: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
 msgstr "Myria 常见问题"
 
@@ -507,7 +512,7 @@ msgstr "每天，Myria节点操作者将从节点作业中获取代币奖励（M
 #: src/pages/_app.tsx:18
 #: src/pages/_app.tsx:29
 msgid "Myria | Connecting the world through play"
-msgstr "Myria | 游戏连接世界"
+msgstr "Myria | 通过游戏连接世界"
 
 #: src/pages/index.tsx:363
 msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
@@ -548,8 +553,8 @@ msgid "Nodes"
 msgstr "节点"
 
 #: src/pages/nodes.tsx:164
-msgid "Only 60,000 Myria node licenses will ever be released."
-msgstr "仅发布60,000份Myria节点许可证。"
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr "仅会发布 55,000 个 Myria 节点许可证。"
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
@@ -614,11 +619,11 @@ msgstr "首席合作伙伴"
 
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
-msgstr ""
+msgstr "边玩边赚"
 
 #: src/pages/index.tsx:282
 msgid "Powered and governed by <0>$MYRIA</0>"
-msgstr "由<0>MYRIA币</0>支持和管理"
+msgstr "由<0>$MYRIA</0>支持和管理"
 
 #: src/pages/about-us.tsx:260
 #: src/pages/for-gamers.tsx:46
@@ -662,13 +667,13 @@ msgid "RUN A NODE"
 msgstr "运行节点"
 
 #: src/pages/games.tsx:92
-#: src/pages/nodes.tsx:225
+#: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "立即发布"
 
 #: src/pages/nodes.tsx:182
 msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
-msgstr "运行节点，赚取<0>MYRIA币</0>和非同质化代币奖励"
+msgstr "运行节点，赚取<0>$MYRIA</0>和非同质化代币奖励"
 
 #: src/pages/about-us.tsx:326
 #: src/pages/for-gamers.tsx:119
@@ -690,7 +695,7 @@ msgstr "开始游戏并赚取奖励"
 #: src/components/Footer.tsx:47
 #: src/components/Header/Header.tsx:55
 msgid "Store"
-msgstr "保存"
+msgstr "商店"
 
 #: src/components/GetInTouch.tsx:31
 msgid "Subject is required!"
@@ -762,7 +767,7 @@ msgstr "投票权"
 
 #: src/pages/about-us.tsx:235
 msgid "We aim to build a world where gamers can play the games they love and also earn rewards at the same time."
-msgstr ""
+msgstr "我们的目标是建立一个游戏玩家可以畅玩他们喜欢的游戏并同时获得奖励的世界。"
 
 #: src/pages/about-us.tsx:249
 #: src/pages/for-gamers.tsx:35

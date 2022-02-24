@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 12:59+0700\n"
+"POT-Creation-Date: 2022-02-24 17:26+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -121,11 +121,11 @@ msgstr "En Myria, creemos que los NFTs no solo deben dotar a los jugadores de un
 msgid "Autoplay"
 msgstr "Reproducción automática"
 
-#: src/pages/nodes.tsx:289
+#: src/pages/nodes.tsx:288
 msgid "BUY A NODE"
 msgstr "COMPRAR UN NODO"
 
-#: src/pages/nodes.tsx:282
+#: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Conviértase en una parte integral del ecosistema de Myria y coseche los beneficios de su contribución. Los primeros operadores de nodos fundadores reciben un precio preferencial, que aumenta a medida que se venden los nodos."
 
@@ -264,6 +264,10 @@ msgstr "NFTs exclusivos"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "Explora el ecosistema <0>Myria</0>"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr ""
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "Para los jugadores"
@@ -306,7 +310,7 @@ msgstr "Juegos"
 msgid "Games Producer"
 msgstr ""
 
-#: src/pages/nodes.tsx:279
+#: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "Consigue un nodo de fundadores hoy mismo"
 
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan tiene más de 10 años de experiencia en la industria del juego. Ha sido diseñador principal de juegos en Gameloft, CrazyLabs, GPG (Ubisoft) y Sperasoft, entre otros, y sus juegos han acumulado 500 millones de descargas."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
@@ -457,7 +462,7 @@ msgstr "Morphing NFTs™ los cuales se adaptan a tus avatares"
 msgid "Myria Blockchain Ecosystem Map"
 msgstr "Mapa del ecosistema de la Blockchain de Myria"
 
-#: src/pages/nodes.tsx:237
+#: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
 msgstr ""
 
@@ -548,8 +553,8 @@ msgid "Nodes"
 msgstr "Nodos"
 
 #: src/pages/nodes.tsx:164
-msgid "Only 60,000 Myria node licenses will ever be released."
-msgstr "Sólo se pondrán a la venta 60,000 licencias de nodos Myria."
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr ""
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
@@ -662,7 +667,7 @@ msgid "RUN A NODE"
 msgstr "EJECUTAR UN NODO"
 
 #: src/pages/games.tsx:92
-#: src/pages/nodes.tsx:225
+#: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "Próximo lanzamiento"
 
