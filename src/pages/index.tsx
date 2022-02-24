@@ -332,11 +332,17 @@ const Index = () => {
                 }}
                 className="absolute w-full">
                 <Image
-                  src="/images/home/character-on-rock_op.png"
+                  src="/images/home/character-on-rock_op2.png"
                   alt=""
                   layout="responsive"
                   width={1440}
                   height={811}
+                />
+                <div
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 86.46%, #050E15 100%)'
+                  }}
+                  className="absolute inset-0"
                 />
               </div>
             </div>
