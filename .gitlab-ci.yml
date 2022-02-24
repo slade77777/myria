@@ -2,6 +2,8 @@ variables:
   S3_BUCKET_NAME: "website-dapp-staging"
 
 deploy to staging:
+  variables:
+    NEXT_PUBLIC_GOOGLE_ANALYTICS: "dump"
   environment: staging
   image: node:14
   script:
@@ -25,6 +27,8 @@ deploy to s3:
     - staging
 
 deploy to production:
+  variables:
+    NEXT_PUBLIC_GOOGLE_ANALYTICS: "UA-219865262-1"
   environment: production
   image: node:14
   script:
