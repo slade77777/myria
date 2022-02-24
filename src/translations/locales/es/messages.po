@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 11:10+0700\n"
+"POT-Creation-Date: 2022-02-24 12:59+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -220,7 +220,7 @@ msgstr "Descentralizar la red proporcionando recursos informáticos"
 msgid "Details will be announced soon."
 msgstr ""
 
-#: src/pages/index.tsx:468
+#: src/pages/index.tsx:474
 msgid "Discover the best games built on the blockchain"
 msgstr "Descubrir los mejores juegos construidos en la blockchain"
 
@@ -264,16 +264,16 @@ msgstr "NFTs exclusivos"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "Explora el ecosistema <0>Myria</0>"
 
-#: src/pages/index.tsx:463
+#: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "Para los jugadores"
 
 #: src/components/Footer.tsx:52
-#: src/pages/index.tsx:486
+#: src/pages/index.tsx:492
 msgid "For Studios"
 msgstr "Para los estudios"
 
-#: src/pages/index.tsx:503
+#: src/pages/index.tsx:509
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "Fundado por los principales veteranos de la industria del juego y del blockchain"
 
@@ -310,7 +310,7 @@ msgstr ""
 msgid "Get a founders node today"
 msgstr "Consigue un nodo de fundadores hoy mismo"
 
-#: src/pages/index.tsx:420
+#: src/pages/index.tsx:426
 msgid "Get the latest updates on our games, token and NFT releases, play-to-earn mechanics, and have the opportunity to access alpha gameplay."
 msgstr "Obtenga las últimas actualizaciones de nuestros juegos, lanzamientos de fichas y NFT, mecánicas para jugar y ganar, y tenga la oportunidad de acceder al juego alfa."
 
@@ -318,7 +318,7 @@ msgstr "Obtenga las últimas actualizaciones de nuestros juegos, lanzamientos de
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
 msgstr "¿Tienes una idea de juego innovadora? Solicite una subvención para manifestar su visión en la cadena Myria."
 
-#: src/pages/index.tsx:413
+#: src/pages/index.tsx:419
 msgid "Grow with myria"
 msgstr "Crece con myria"
 
@@ -377,7 +377,7 @@ msgstr "Ivan tiene más de 10 años de experiencia en la industria del juego. Ha
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
 #: src/pages/index.tsx:153
-#: src/pages/index.tsx:443
+#: src/pages/index.tsx:449
 msgid "JOIN DISCORD"
 msgstr "ÚNETE AL DISCORD"
 
@@ -393,7 +393,7 @@ msgstr "Jem aporta una amplia experiencia en operaciones empresariales y estrate
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
 msgstr "Únase a nuestro equipo de más de 60 personas para forjar el futuro de los juegos de blockchain"
 
-#: src/pages/index.tsx:416
+#: src/pages/index.tsx:422
 msgid "Join the thriving Myria ecosystem"
 msgstr ""
 
@@ -405,8 +405,8 @@ msgstr "Kidono es un socio líder experimentado con una amplia experiencia en la
 msgid "LEARN MORE"
 msgstr "MÁS INFORMACIÓN"
 
-#: src/pages/index.tsx:472
-#: src/pages/index.tsx:495
+#: src/pages/index.tsx:478
+#: src/pages/index.tsx:501
 msgid "Learn more"
 msgstr "Más información"
 
@@ -414,7 +414,7 @@ msgstr "Más información"
 msgid "Led by industry experts"
 msgstr "Dirigido por expertos de la industria"
 
-#: src/pages/index.tsx:515
+#: src/pages/index.tsx:521
 msgid "MEET THE TEAM"
 msgstr "CONOZCA AL EQUIPO"
 
@@ -430,7 +430,7 @@ msgstr "¡Se requiere un mensaje!"
 msgid "Modularization of smart contracts"
 msgstr "Modularización de los contratos inteligentes"
 
-#: src/pages/index.tsx:365
+#: src/pages/index.tsx:371
 msgid "More details coming soon"
 msgstr "Más detalles en breve"
 
@@ -473,11 +473,11 @@ msgstr "Myria desarrolla divertidos juegos AAA que son mejorados por la blockcha
 msgid "Myria ecosystem fund"
 msgstr "Fondo del ecosistema Myria"
 
-#: src/pages/index.tsx:508
+#: src/pages/index.tsx:514
 msgid "Myria has been built by an all-star team of over 60+ people, united with a common vision of revolutionizing gaming with blockchain technology."
 msgstr "Myria ha sido construida por un equipo de más de 60 personas, unidas con la visión común de revolucionar los juegos con la tecnología blockchain."
 
-#: src/pages/index.tsx:491
+#: src/pages/index.tsx:497
 msgid "Myria helps studios join the blockchain revolution"
 msgstr "Myria ayuda a los estudios a unirse a la revolución de la blockchain"
 
@@ -509,7 +509,7 @@ msgstr "Los operadores de nodos Myria recibirán recompensas diarias de tokens $
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | Conectando el mundo a través del juego"
 
-#: src/pages/index.tsx:357
+#: src/pages/index.tsx:363
 msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
 msgstr "Myriaverse es el metaverso social más amplio que conecta a jugadores, comunidades y gremios. Los jugadores podrán buscar, explorar, crear, invertir y mucho más. El Myriaverse, en constante expansión, es una sociedad y una economía virtuales que ofrecen abundantes oportunidades de ganar dinero a los valientes aventureros."
 
@@ -551,7 +551,7 @@ msgstr "Nodos"
 msgid "Only 60,000 Myria node licenses will ever be released."
 msgstr "Sólo se pondrán a la venta 60,000 licencias de nodos Myria."
 
-#: src/pages/index.tsx:426
+#: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
 msgstr "Opere un nodo Myria desde su ordenador personal y gane recompensas por su contribución a la red."
 
@@ -560,7 +560,7 @@ msgid "Our ERC1155 contracts are engineered for more efficient resource utilizat
 msgstr "Nuestros contratos ERC1155 están diseñados para una utilización más eficiente de los recursos con nuestro diseño lógico inteligente entre la capa base y los contratos de reglas."
 
 #: src/pages/about-us.tsx:357
-#: src/pages/index.tsx:521
+#: src/pages/index.tsx:527
 msgid "Our Experience"
 msgstr "Nuestra experiencia"
 
@@ -657,7 +657,7 @@ msgstr "Infraestructura construida con fines específicos"
 msgid "READ ABOUT OUR ECOSYSTEM"
 msgstr "LEA SOBRE NUESTRO ECOSISTEMA"
 
-#: src/pages/index.tsx:448
+#: src/pages/index.tsx:454
 msgid "RUN A NODE"
 msgstr "EJECUTAR UN NODO"
 
@@ -748,7 +748,7 @@ msgstr "Tráiler próximamente"
 msgid "UI/UX Lead"
 msgstr "Líder de UI/UX"
 
-#: src/pages/index.tsx:354
+#: src/pages/index.tsx:360
 msgid "Unified through the Myriaverse"
 msgstr "Unificado a través del Myriaverse"
 

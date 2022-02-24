@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 11:10+0700\n"
+"POT-Creation-Date: 2022-02-24 12:59+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,7 +49,7 @@ msgstr "一款大逃杀射击游戏"
 
 #: src/pages/about-us.tsx:106
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
-msgstr "一名充满活力的企业管理者，具有8年以上管理咨询经验，专注威Verizon、Vanguard、Kayo Streaming等全球公司的组织转型。近期创立aliens.com网站"
+msgstr "一名充满活力的企业管理者，具有8年以上管理咨询经验，专注于Bandai Namco、Verizon、Vanguard、Kayo Streaming 等全球公司的组织转型。近期创立aliens.com网站"
 
 #: src/components/OurGames.tsx:59
 msgid "A multiplayer go-kart racing game"
@@ -190,7 +190,7 @@ msgstr "联系我们"
 #: src/components/home/Hero.tsx:151
 #: src/pages/for-gamers.tsx:113
 msgid "Connecting the world through <0>play</0>"
-msgstr "连接世界<0>游戏</0>"
+msgstr "通过<0>游戏</0>连接世界"
 
 #: src/pages/_app.tsx:16
 msgid "Connecting the world through play"
@@ -220,7 +220,7 @@ msgstr "通过提供计算资源去中心化网络"
 msgid "Details will be announced soon."
 msgstr "详情将很快公布。"
 
-#: src/pages/index.tsx:468
+#: src/pages/index.tsx:474
 msgid "Discover the best games built on the blockchain"
 msgstr "发掘构建于区块链之上的最佳游戏"
 
@@ -264,16 +264,16 @@ msgstr "专属非同质化代币 "
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "探索<0>Myria</0>生态系统"
 
-#: src/pages/index.tsx:463
+#: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "探索<0>Myria</0>生态系统"
 
 #: src/components/Footer.tsx:52
-#: src/pages/index.tsx:486
+#: src/pages/index.tsx:492
 msgid "For Studios"
 msgstr "面向游戏工作室"
 
-#: src/pages/index.tsx:503
+#: src/pages/index.tsx:509
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "由游戏和区块链行业的顶尖业内人士创立"
 
@@ -310,15 +310,15 @@ msgstr "游戏制作人"
 msgid "Get a founders node today"
 msgstr "现在就获取创始人节点"
 
-#: src/pages/index.tsx:420
+#: src/pages/index.tsx:426
 msgid "Get the latest updates on our games, token and NFT releases, play-to-earn mechanics, and have the opportunity to access alpha gameplay."
 msgstr "获取有关我方游戏、代币和非同质化代币发布信息及游戏赚取机制的最新消息，并有机会试玩Alpha版测试游戏。"
 
 #: src/pages/for-studios.tsx:37
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
-msgstr "有了创新游戏想法？申请授权，在Myrial链上展示您的愿景？"
+msgstr "有了创新游戏想法？申请授权，在Myria链上展示您的愿景？"
 
-#: src/pages/index.tsx:413
+#: src/pages/index.tsx:419
 msgid "Grow with myria"
 msgstr "与Myria共同成长"
 
@@ -377,7 +377,7 @@ msgstr "Ivan在游戏行业深耕10年，经验丰富。他曾担任智乐软件
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
 #: src/pages/index.tsx:153
-#: src/pages/index.tsx:443
+#: src/pages/index.tsx:449
 msgid "JOIN DISCORD"
 msgstr "加入Discord"
 
@@ -391,9 +391,9 @@ msgstr "Jem拥有丰富的商业运营和战略经验，曾在竞投和筹款公
 
 #: src/pages/careers.tsx:21
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
-msgstr "Myria团队由60多人组成，加入我们，共筑区块链游戏的未来"
+msgstr "加入蓬勃发展的Myria生态系统"
 
-#: src/pages/index.tsx:416
+#: src/pages/index.tsx:422
 msgid "Join the thriving Myria ecosystem"
 msgstr "Myria团队由60多人组成，加入我们，共筑区块链游戏的未来"
 
@@ -405,8 +405,8 @@ msgstr "Kidono是一名经验丰富的首席合作伙伴，在管理外部开发
 msgid "LEARN MORE"
 msgstr "了解更多"
 
-#: src/pages/index.tsx:472
-#: src/pages/index.tsx:495
+#: src/pages/index.tsx:478
+#: src/pages/index.tsx:501
 msgid "Learn more"
 msgstr "了解更多"
 
@@ -414,7 +414,7 @@ msgstr "了解更多"
 msgid "Led by industry experts"
 msgstr "由行业专家领导"
 
-#: src/pages/index.tsx:515
+#: src/pages/index.tsx:521
 msgid "MEET THE TEAM"
 msgstr "与团队会面"
 
@@ -430,7 +430,7 @@ msgstr "信息必填！"
 msgid "Modularization of smart contracts"
 msgstr "智能合约模块化"
 
-#: src/pages/index.tsx:365
+#: src/pages/index.tsx:371
 msgid "More details coming soon"
 msgstr "更多细节即将推出"
 
@@ -473,11 +473,11 @@ msgstr "通过区块链增强，Myria开发了有趣的AAA游戏，而非相反�
 msgid "Myria ecosystem fund"
 msgstr "Myria生态系统基金"
 
-#: src/pages/index.tsx:508
+#: src/pages/index.tsx:514
 msgid "Myria has been built by an all-star team of over 60+ people, united with a common vision of revolutionizing gaming with blockchain technology."
 msgstr "Myria已构建由60多人组成的全明星团队。秉承以区块链技术革新游戏的共同愿景，我们团结在一起。"
 
-#: src/pages/index.tsx:491
+#: src/pages/index.tsx:497
 msgid "Myria helps studios join the blockchain revolution"
 msgstr "Myria可助力工作室迈入区块链变革。"
 
@@ -509,7 +509,7 @@ msgstr "每天，Myria节点操作者将从节点作业中获取代币奖励（M
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | 游戏连接世界"
 
-#: src/pages/index.tsx:357
+#: src/pages/index.tsx:363
 msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
 msgstr "Myriaverse是连接玩家、社区和公会的广泛社交元宇宙。玩家能够开展探求、探索、制作、投资等活动。Myriaverse是不断扩张的虚拟社会和经济环境，为勇敢的冒险家提供丰富的掘金机会。"
 
@@ -551,7 +551,7 @@ msgstr "节点"
 msgid "Only 60,000 Myria node licenses will ever be released."
 msgstr "仅发布60,000份Myria节点许可证。"
 
-#: src/pages/index.tsx:426
+#: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
 msgstr "您可在家用电脑上操作Myria节点，根据对网络的贡献获得奖励。"
 
@@ -560,7 +560,7 @@ msgid "Our ERC1155 contracts are engineered for more efficient resource utilizat
 msgstr "通过在基础层和规则契约间的智能逻辑设计，我们的ERC1155契约可实现更高效的资源利用。"
 
 #: src/pages/about-us.tsx:357
-#: src/pages/index.tsx:521
+#: src/pages/index.tsx:527
 msgid "Our Experience"
 msgstr "我们的经验"
 
@@ -657,7 +657,7 @@ msgstr "专门构建的基础设施"
 msgid "READ ABOUT OUR ECOSYSTEM"
 msgstr "了解我们的生态系统"
 
-#: src/pages/index.tsx:448
+#: src/pages/index.tsx:454
 msgid "RUN A NODE"
 msgstr "运行节点"
 
@@ -748,7 +748,7 @@ msgstr "预告片即将推出"
 msgid "UI/UX Lead"
 msgstr "用户界面/用户体验主管"
 
-#: src/pages/index.tsx:354
+#: src/pages/index.tsx:360
 msgid "Unified through the Myriaverse"
 msgstr "通过Myriaverse元宇宙结合在一起"
 

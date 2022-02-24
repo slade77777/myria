@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 11:10+0700\n"
+"POT-Creation-Date: 2022-02-24 12:59+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -220,7 +220,7 @@ msgstr "자원 계산을 제공하여 네트워크를 분권화함"
 msgid "Details will be announced soon."
 msgstr ""
 
-#: src/pages/index.tsx:468
+#: src/pages/index.tsx:474
 msgid "Discover the best games built on the blockchain"
 msgstr "블록 체인에 기반한 최상의 게임을 발견함"
 
@@ -264,16 +264,16 @@ msgstr "독점적 NFT"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "<0>Myria</0> 생태계 탐구"
 
-#: src/pages/index.tsx:463
+#: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "게이머 용"
 
 #: src/components/Footer.tsx:52
-#: src/pages/index.tsx:486
+#: src/pages/index.tsx:492
 msgid "For Studios"
 msgstr "스튜디오 용"
 
-#: src/pages/index.tsx:503
+#: src/pages/index.tsx:509
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "주도적인 게이밍 및 블록 체인 산업 베테랑에 의해 창설됨"
 
@@ -310,7 +310,7 @@ msgstr ""
 msgid "Get a founders node today"
 msgstr "오늘 창설자 노드 획득"
 
-#: src/pages/index.tsx:420
+#: src/pages/index.tsx:426
 msgid "Get the latest updates on our games, token and NFT releases, play-to-earn mechanics, and have the opportunity to access alpha gameplay."
 msgstr "우리 게임, 토큰 및 NFT 출시, 플레이 하고 돈 벌기 메커니즘에서 가장 최신 업데이트, 그리고 알파 게임 플레이에 접속할 기회를 얻는다."
 
@@ -318,7 +318,7 @@ msgstr "우리 게임, 토큰 및 NFT 출시, 플레이 하고 돈 벌기 메커
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
 msgstr "혁신적 게임 아이디어를 얻었다고? Myria 체인 상 당신의 비전을 나타내기 위해 보조금 신청한다."
 
-#: src/pages/index.tsx:413
+#: src/pages/index.tsx:419
 msgid "Grow with myria"
 msgstr "Myria로 성장"
 
@@ -377,7 +377,7 @@ msgstr "이반(Ivan)은 게임 산업에 10년 이상의 경력을 갖추고 있
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
 #: src/pages/index.tsx:153
-#: src/pages/index.tsx:443
+#: src/pages/index.tsx:449
 msgid "JOIN DISCORD"
 msgstr "DISCORD에 합류하기"
 
@@ -393,7 +393,7 @@ msgstr "젬(Jem)은 광범위한 사업 운용과 전략 경험을 갖추고 있
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
 msgstr "블록 체인 게이밍의 미래를 구축하고자 60개 이상의 팀 합류"
 
-#: src/pages/index.tsx:416
+#: src/pages/index.tsx:422
 msgid "Join the thriving Myria ecosystem"
 msgstr ""
 
@@ -405,8 +405,8 @@ msgstr "키도노(Kidono)는 외부 개발 약속을 관리하는 광범위한 �
 msgid "LEARN MORE"
 msgstr "더 많이 배우기"
 
-#: src/pages/index.tsx:472
-#: src/pages/index.tsx:495
+#: src/pages/index.tsx:478
+#: src/pages/index.tsx:501
 msgid "Learn more"
 msgstr "더 많이 배우기"
 
@@ -414,7 +414,7 @@ msgstr "더 많이 배우기"
 msgid "Led by industry experts"
 msgstr "산업 전문가들에 의한 주도"
 
-#: src/pages/index.tsx:515
+#: src/pages/index.tsx:521
 msgid "MEET THE TEAM"
 msgstr "팀을 충족시킴"
 
@@ -430,7 +430,7 @@ msgstr "메시지가 요구됨!"
 msgid "Modularization of smart contracts"
 msgstr "스마트 계약의 모듈러리제이션"
 
-#: src/pages/index.tsx:365
+#: src/pages/index.tsx:371
 msgid "More details coming soon"
 msgstr "좀 더 세부 내용 개봉 박두"
 
@@ -473,11 +473,11 @@ msgstr "Myria는 블록 체인에 의해 향상되나 그 반대는 불가능한
 msgid "Myria ecosystem fund"
 msgstr "Myria 생태계 기금"
 
-#: src/pages/index.tsx:508
+#: src/pages/index.tsx:514
 msgid "Myria has been built by an all-star team of over 60+ people, united with a common vision of revolutionizing gaming with blockchain technology."
 msgstr "Myria가 블록 체인 기술을 갖춘 혁명적인 게이밍의 통상적 비전으로 결합되어, 60명 이상의 올 스타 팀에 의해 수립되었다."
 
-#: src/pages/index.tsx:491
+#: src/pages/index.tsx:497
 msgid "Myria helps studios join the blockchain revolution"
 msgstr "Myria는 스튜디오가 블록 체인 레볼루션에 가입하도록 돕는다."
 
@@ -509,7 +509,7 @@ msgstr "Myria 노드 운영자들은 노드 작업에 대해 매일 $MYRIA 토�
 msgid "Myria | Connecting the world through play"
 msgstr "Myria/ 플레이를 통해 세상을 연결시킴"
 
-#: src/pages/index.tsx:357
+#: src/pages/index.tsx:363
 msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
 msgstr "미리아버스는 플레이어들, 커뮤니티 및 길드를 연결시키는 더 광범위한 메타버스이다. 플레이어들은 탐구하고, 탐색하며, 투자 및 그 이상의 것을 할 수 있을 것이다. 지금까지 확장해온 미리아버스는 용감한 모험가들에게 풍부한 수익 기회를 제공하는 가상 사회 및 경제이다."
 
@@ -551,7 +551,7 @@ msgstr "노드"
 msgid "Only 60,000 Myria node licenses will ever be released."
 msgstr "단지 60,000 Myria 노드 라이선스가 출시될 것이다."
 
-#: src/pages/index.tsx:426
+#: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
 msgstr "당신의 가정용 컴퓨터에서 Myria 노드를 운영하여 네트워크에 대한 당신의 기여에 대해 보상을 받을 것이다."
 
@@ -560,7 +560,7 @@ msgid "Our ERC1155 contracts are engineered for more efficient resource utilizat
 msgstr "우리의 에릭 1155 계약은 기초 층과 규칙 계약 간 스마트 로직 디자인으로 좀 더 능률적인 자원 이용에 대해 기획된다."
 
 #: src/pages/about-us.tsx:357
-#: src/pages/index.tsx:521
+#: src/pages/index.tsx:527
 msgid "Our Experience"
 msgstr "우리의 경험"
 
@@ -657,7 +657,7 @@ msgstr "목적-기반 시설"
 msgid "READ ABOUT OUR ECOSYSTEM"
 msgstr "우리의 생태계에 관해 읽기"
 
-#: src/pages/index.tsx:448
+#: src/pages/index.tsx:454
 msgid "RUN A NODE"
 msgstr "노드 가동"
 
@@ -748,7 +748,7 @@ msgstr "트레일러 개봉 박두"
 msgid "UI/UX Lead"
 msgstr "UI/UX 리드"
 
-#: src/pages/index.tsx:354
+#: src/pages/index.tsx:360
 msgid "Unified through the Myriaverse"
 msgstr "미리아버스를 통하여 통일됨"
 
