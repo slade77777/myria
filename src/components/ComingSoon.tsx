@@ -31,7 +31,7 @@ const ComingSoon: React.FC = () => {
       <div className="absolute top-[81px] left-0 w-full z-[-1]">
         <div className="relative w-full h-[697px] ">
           <img
-            src="/images/home/header-bg.png"
+            src="/images/home/header-bg-comming.png"
             alt=""
             className="absolute object-contain w-full h-full"
           />

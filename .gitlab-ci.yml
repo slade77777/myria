@@ -2,6 +2,8 @@ variables:
   S3_BUCKET_NAME: "website-dapp-staging"
 
 deploy to staging:
+  variables:
+    NEXT_PUBLIC_GOOGLE_ANALYTICS: "dump"
   environment: staging
   image: node:14
   script:
@@ -23,3 +25,28 @@ deploy to s3:
     - aws s3 sync out s3://website-dapp-staging
   only:
     - staging
+
+deploy to production:
+  variables:
+    NEXT_PUBLIC_GOOGLE_ANALYTICS: "UA-219865262-1"
+  environment: production
+  image: node:14
+  script:
+  - yarn
+  - yarn build
+  artifacts:
+    paths:
+      - out  
+  only:
+    - main
+deploy to s3:
+  stage: deploy
+  image: 
+    name: amazon/aws-cli
+    entrypoint: [""]
+  script:
+    - aws --version
+    - aws s3 rm s3://website-dapp --recursive
+    - aws s3 sync out s3://website-dapp
+  only:
+    - main
