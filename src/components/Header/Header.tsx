@@ -73,6 +73,11 @@ export const links: NavItem[] = [
         text: 'Instagram',
         url: socialLinks.instagram,
         target: '_blank'
+      },
+      {
+        text: 'Medium',
+        url: socialLinks.medium,
+        target: '_blank'
       }
     ]
   }
