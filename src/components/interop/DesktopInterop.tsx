@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PlayCircleIcon from 'src/components/icons/PlayCircleIcon';
 import Video from 'src/components/Video';
 import Subscribe from 'src/components/Subscribe';
@@ -12,6 +12,7 @@ import Page from 'src/components/Page';
 import { headerHeight } from 'src/components/Header';
 import { paddingX } from 'src/utils';
 import { Trans } from '@lingui/macro';
+import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 
 const video = {
   src: '/videos/interoperability/video.mp4',
@@ -35,7 +36,7 @@ const DesktopInterop: React.FC = () => {
     }
   }, [openVideo]);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     gsap.timeline({
       scrollTrigger: {
         trigger: '.gsap-image-container',
@@ -43,31 +44,12 @@ const DesktopInterop: React.FC = () => {
         endTrigger: '.gsap-text-how-work-container',
         end: 'bottom bottom',
         scrub: true,
-        pin: true,
-        pinSpacing: false
+        pin: true
       }
     });
-
-    const tl_img = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.gsap-image',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-    tl_img.fromTo(
-      '.gsap-image',
-      {
-        width: '100%'
-      },
-      {
-        width: '50%'
-      }
-    );
   }, []);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const targets = ['.gsap-text-how-work-1', '.gsap-text-how-work-2', '.gsap-text-how-work-3'];
     gsap.set('.gsap-img-2, .gsap-img-3', { opacity: 0 });
 
@@ -230,42 +212,10 @@ const DesktopInterop: React.FC = () => {
         </section>
         <section className={clsx(paddingX, 'mt-[88px]')} ref={el}>
           <div className=" mx-auto max-w-content">
-            <div className="gsap-image-container flex justify-end ">
-              <div className="gsap-image relative grid h-screen w-full">
-                <div className="2 3tems-center z-[1] flex justify-end [grid-area:1/1/-1/-1]">
-                  <img
-                    src="/images/interoperability/hat3.png"
-                    alt=""
-                    width={1268}
-                    height={1306}
-                    className="w-full object-contain"
-                  />
-                </div>
-                <div className="gsap-img-2 z-[1] flex items-center justify-end [grid-area:1/1/-1/-1]">
-                  <img
-                    src="/images/interoperability/cowboy-cartoon.png"
-                    alt=""
-                    width={1268}
-                    height={1306}
-                    className="w-full object-contain"
-                  />
-                </div>
-                <div className="gsap-img-3 z-[1] flex items-center justify-end [grid-area:1/1/-1/-1]">
-                  <img
-                    src="/images/interoperability/cowboy-human.png"
-                    alt=""
-                    width={1268}
-                    height={1306}
-                    className="w-full object-contain"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 items-center gap-[26px] overflow-hidden">
+            <div className="grid grid-cols-2 gap-[26px] overflow-hidden">
               <div className="">
-                <div className="gsap-text-how-work-container pb-[250px]">
-                  <div className="gsap-text-how-work-1 mx-auto mt-[500px] grid max-w-content items-center gap-[26px] md:gap-[99px]">
+                <div className="gsap-text-how-work-container pb-[calc(50vh-140px)]">
+                  <div className="gsap-text-how-work-1 mx-auto mt-[calc(50vh-140px)] grid max-w-content items-center gap-[26px] md:gap-[99px]">
                     <div className="text-center md:order-[-1] md:text-left">
                       <p className="text-[14px] font-extrabold leading-[1.25] text-brand-light-blue md:text-[26px] md:font-bold">
                         <Trans>How it works</Trans>
@@ -274,9 +224,11 @@ const DesktopInterop: React.FC = () => {
                         <Trans>The new standard for interoperable NFTs</Trans>
                       </h2>
                       <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
-                        <Trans>At Myria, we believe NFTs should not only endow players with verifiable
-                        ownership, but also allow players to take their NFTs from one game to
-                        another.</Trans>
+                        <Trans>
+                          At Myria, we believe NFTs should not only endow players with verifiable
+                          ownership, but also allow players to take their NFTs from one game to
+                          another.
+                        </Trans>
                       </p>
                     </div>
                   </div>
@@ -284,15 +236,17 @@ const DesktopInterop: React.FC = () => {
                   <div className="gsap-text-how-work-2 mx-auto mt-[300px] grid max-w-content items-center gap-[26px] md:gap-[99px]">
                     <div className="text-center md:order-[-1] md:text-left">
                       <p className="text-[14px] font-extrabold leading-[1.25] text-brand-light-blue md:text-[26px] md:font-bold">
-                      <Trans>How it works</Trans>
+                        <Trans>How it works</Trans>
                       </p>
                       <h2 className="heading-md mt-2 md:mt-[17px] md:text-[50px]">
                         <Trans>Own your metaverse identity. Anywhere. Any game.</Trans>
                       </h2>
                       <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
-                        <Trans>Your NFT is your digital identity. Take your NFT with you on your metaverse
-                        explorations. Equip and level up in different games and worlds. Truly own
-                        your metaverse identity with Myria.</Trans>
+                        <Trans>
+                          Your NFT is your digital identity. Take your NFT with you on your
+                          metaverse explorations. Equip and level up in different games and worlds.
+                          Truly own your metaverse identity with Myria.
+                        </Trans>
                       </p>
                     </div>
                   </div>
@@ -306,9 +260,44 @@ const DesktopInterop: React.FC = () => {
                         <Trans>Morphing NFTs™ that adapt to your avatars</Trans>
                       </h2>
                       <p className="body-sm mt-6 text-light md:body md:mt-[17px]">
-                        <Trans>No matter the shape and size of your avatar, use the same NFT on them all.
-                        Buy once, use on any character. Designed to be interoperable.</Trans>
+                        <Trans>
+                          No matter the shape and size of your avatar, use the same NFT on them all.
+                          Buy once, use on any character. Designed to be interoperable.
+                        </Trans>
                       </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="gsap-image-container flex justify-end">
+                  <div className="gsap-image relative grid h-screen w-full">
+                    <div className="2 3tems-center z-[1] flex justify-end [grid-area:1/1/-1/-1]">
+                      <img
+                        src="/images/interoperability/hat3.png"
+                        alt=""
+                        width={1268}
+                        height={1306}
+                        className="w-full object-contain"
+                      />
+                    </div>
+                    <div className="gsap-img-2 z-[1] flex items-center justify-end [grid-area:1/1/-1/-1]">
+                      <img
+                        src="/images/interoperability/cowboy-cartoon.png"
+                        alt=""
+                        width={1268}
+                        height={1306}
+                        className="w-full object-contain"
+                      />
+                    </div>
+                    <div className="gsap-img-3 z-[1] flex items-center justify-end [grid-area:1/1/-1/-1]">
+                      <img
+                        src="/images/interoperability/cowboy-human.png"
+                        alt=""
+                        width={1268}
+                        height={1306}
+                        className="w-full object-contain"
+                      />
                     </div>
                   </div>
                 </div>

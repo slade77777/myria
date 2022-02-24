@@ -65,7 +65,7 @@ const LanguageProvider: React.FC = ({ children }) => {
   }
 
   return (
-    <I18nProvider i18n={i18n}>
+    <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
       <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
     </I18nProvider>
   );

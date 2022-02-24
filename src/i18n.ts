@@ -1,9 +1,9 @@
 import type { I18n } from '@lingui/core';
-import { en, vi, zh } from 'make-plural/plurals';
+import { en, vi, zh, ja, ko, tr, es } from 'make-plural/plurals';
 
-export type Language = 'en' | 'vi' | 'zh';
+export type Language = 'en' | 'zh-Hans' | 'ja' | 'ko' | 'es' | 'tr' | 'vi';
 
-export const LANGUAGES: Language[] = ['en', 'vi', 'zh'];
+export const LANGUAGES: Language[] = ['en', 'zh-Hans', 'ja', 'ko', 'es', 'tr', 'vi'];
 export const DEFAULT_LANGUAGE: Language = 'en';
 export const LANG_KEY = 'lang';
 
@@ -46,7 +46,11 @@ export const loadMessages = async (locale: string) => {
 const plurals: { [language in Language]: any } = {
   en,
   vi,
-  zh
+  'zh-Hans': zh,
+  ja,
+  ko,
+  es,
+  tr
 };
 
 export const dynamicActivate = async (i18n: I18n, locale: string, messagesData?: any) => {
