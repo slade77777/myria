@@ -9,12 +9,12 @@ import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { links, headerHeight, Action } from './Header';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { useAuthenticationContext } from 'src/context/authentication';
 import LinearSettingIcon from '../icons/LinearSettingIcon';
 import SignOutIcon from '../icons/SignOutIcon';
 import DashboardIcon from '../icons/DashboardIcon';
 import WalletIcon from '../icons/WalletIcon';
+import Popover from '../Popover';
 
 type Props = {
   action: Action;
@@ -45,14 +45,14 @@ const ProfileComponent: React.FC<{}> = ({}) => {
   const { user } = useAuthenticationContext();
   if (user) {
     return (
-      <PopoverPrimitive.Root modal>
-        <PopoverPrimitive.Trigger asChild>
+      <Popover modal>
+        <Popover.Trigger asChild>
           <div className="flex items-center rounded-3xl bg-[#081824] px-6 py-3 hover:cursor-pointer">
             <img src={'/images/header-user.png'} alt={address} className="mr-3" />
             <div>{truncateString(address || '')}</div>
           </div>
-        </PopoverPrimitive.Trigger>
-        <PopoverPrimitive.Content asChild side="bottom" sideOffset={5}>
+        </Popover.Trigger>
+        <Popover.Content asChild side="bottom" sideOffset={5}>
           <div className="min-w-[164px] rounded-xl bg-[#091824] px-4 py-6 text-sm text-white">
             {ProfileMenus.map((menu) => {
               return (
@@ -69,27 +69,27 @@ const ProfileComponent: React.FC<{}> = ({}) => {
               <p className="ml-2">Sign out</p>
             </div>
           </div>
-        </PopoverPrimitive.Content>
-      </PopoverPrimitive.Root>
+        </Popover.Content>
+      </Popover>
     );
   }
 
   return (
-    <PopoverPrimitive.Root modal>
-      <PopoverPrimitive.Trigger asChild>
+    <Popover modal>
+      <Popover.Trigger asChild>
         <div className="flex items-center rounded-3xl bg-[#081824] px-6 py-3 hover:cursor-pointer">
           <img src={'/images/header-user.png'} alt={address} className="mr-3" />
           <div>{truncateString(address || '')}</div>
         </div>
-      </PopoverPrimitive.Trigger>
-      <PopoverPrimitive.Content asChild side="bottom" sideOffset={5}>
+      </Popover.Trigger>
+      <Popover.Content asChild side="bottom" sideOffset={5}>
         <div className="flex items-center rounded-xl bg-[#091824] px-6 py-3 text-white">
           <button onClick={disconnect} className="ml-2">
             Disconnect
           </button>
         </div>
-      </PopoverPrimitive.Content>
-    </PopoverPrimitive.Root>
+      </Popover.Content>
+    </Popover>
   );
 };
 

@@ -6,7 +6,11 @@ type Popover = React.FC<PopoverPrimitive.PopoverProps> & {
   Content: React.FC<PopoverPrimitive.PopoverContentProps>;
 };
 
-const Popover: Popover = ({ ...props }) => <PopoverPrimitive.Root {...props} />;
+const Popover: Popover = ({ children, ...props }) => (
+  <PopoverPrimitive.Root {...props}>{children}</PopoverPrimitive.Root>
+);
 
 Popover.Trigger = PopoverPrimitive.Trigger;
 Popover.Content = PopoverPrimitive.Content;
+
+export default Popover;
