@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import WalletConnect from '@walletconnect/web3-provider';
 import Web3Modal from '../components/Web3Modal';
 // import Web3Modal from 'web3modal';
-import Dialog from 'src/components/Modal';
+import Modal from 'src/components/Modal';
 import SignIn from 'src/components/SignIn';
 import Register from 'src/components/Register';
 
@@ -11,21 +11,21 @@ let web3Modal: Web3Modal;
 
 const SignInModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
   return (
-    <Dialog open={open} title="Sign in" onClose={onClose}>
-      <Dialog.Content className="shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title="Sign in" className="shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
         <SignIn />
-      </Dialog.Content>
-    </Dialog>
+      </Modal.Content>
+    </Modal>
   );
 };
 
 const RegisterModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
   return (
-    <Dialog open={open} title="Register" onClose={onClose}>
-      <Dialog.Content className="shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title="Register" className="shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
         <Register />
-      </Dialog.Content>
-    </Dialog>
+      </Modal.Content>
+    </Modal>
   );
 };
 

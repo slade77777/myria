@@ -6,7 +6,6 @@ import { paddingX } from '../utils';
 import FirstTimeVisitModal from './FirstTimeVisitModal';
 import Footer from './Footer';
 import Header, { Action } from './Header';
-import Modal from './Modal';
 
 type Props = {
   action?: Action;
@@ -26,8 +25,6 @@ const Page: React.FC<Props> = ({ children, action, headerClassName, stickyHeader
     if (firstTimeVisit) {
       timeout = setTimeout(() => {
         setShowFirstTimeVisitModal(true);
-        console.log('runn');
-
         setFirtTimeVisit(false);
       }, TIME_SHOW_FIRST_TIME_VISIT_MODAL);
     }

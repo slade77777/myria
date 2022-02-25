@@ -77,8 +77,10 @@ export class Modal extends React.Component<IModalProps, IModalState> {
     const { onClose, userOptions, themeColors } = this.props;
 
     return (
-      <Dialog open={show} title="Connect a wallet" onClose={onClose}>
-        <Dialog.Content className="w-[380px] shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
+      <Dialog open={show} onOpenChange={onClose}>
+        <Dialog.Content
+          title="Connect a wallet"
+          className="w-[380px] shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
           <div className="mb-[50px] grid grid-cols-1 gap-8 px-8 pt-11 md:grid-cols-2">
             {userOptions.map((provider) =>
               !!provider ? (
