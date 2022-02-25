@@ -301,7 +301,12 @@ module.exports = {
           position: 'fixed',
           top: 0,
           left: 0,
-          background: theme('colors.dark')
+          background: theme('colors.dark'),
+          '&.w-full': {
+            // hack fix for full width element when scrollbar is hiden
+            width: 'calc(100% - var(--removed-body-scroll-bar-size, 0px))',
+            marginRight: 'var(--removed-body-scroll-bar-size, 0px)'
+          }
         }
       });
     })
