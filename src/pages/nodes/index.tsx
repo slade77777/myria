@@ -161,7 +161,7 @@ const questions = [
   },
   {
     title: <Trans>How many Myria node licenses will be released?</Trans>,
-    content: <Trans>Only 60,000 Myria node licenses will ever be released.</Trans>
+    content: <Trans>Only 55,000 Myria node licenses will ever be released.</Trans>
   }
 ];
 const Nodes: React.FC = () => {
@@ -220,7 +220,6 @@ const Nodes: React.FC = () => {
                       <p className="body-sm mt-6">{item.description}</p>
                       {item.learnMore && (
                         <button
-                          href={item.learnMore as string}
                           className="btn-lg btn-primary mt-[22px] inline-block">
                           <Trans>Releasing soon</Trans>
                         </button>

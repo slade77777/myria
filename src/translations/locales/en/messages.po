@@ -135,7 +135,7 @@ msgid "Art Creative Lead"
 msgstr "Art Creative Lead"
 
 #: src/components/interop/DesktopInterop.tsx:227
-#: src/components/interop/MobileInterop.tsx:130
+#: src/components/interop/MobileInterop.tsx:131
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 
@@ -147,11 +147,11 @@ msgstr "At least 8 characters—the more characters, the better"
 msgid "Autoplay"
 msgstr "Autoplay"
 
-#: src/pages/nodes/index.tsx:289
+#: src/pages/nodes.tsx:288
 msgid "BUY A NODE"
 msgstr "BUY A NODE"
 
-#: src/pages/nodes/index.tsx:282
+#: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 
@@ -325,13 +325,9 @@ msgstr "Exclusive NFTs"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "Explore the <0>Myria</0> Ecosystem"
 
-#: src/components/Register/Register.tsx:127
-msgid "First name"
-msgstr "First name"
-
-#: src/components/Register/Register.tsx:47
-msgid "First name is required!"
-msgstr "First name is required!"
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr "FOLLOW US ON TWITTER"
 
 #: src/pages/index.tsx:469
 msgid "For Gamers"
@@ -387,7 +383,7 @@ msgstr "Games"
 msgid "Games Producer"
 msgstr "Games Producer"
 
-#: src/pages/nodes/index.tsx:279
+#: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "Get a founders node today"
 
@@ -426,9 +422,9 @@ msgstr "How can I become a Myria node operator?"
 #: src/components/interop/DesktopInterop.tsx:221
 #: src/components/interop/DesktopInterop.tsx:239
 #: src/components/interop/DesktopInterop.tsx:257
-#: src/components/interop/MobileInterop.tsx:126
-#: src/components/interop/MobileInterop.tsx:149
-#: src/components/interop/MobileInterop.tsx:173
+#: src/components/interop/MobileInterop.tsx:127
+#: src/components/interop/MobileInterop.tsx:150
+#: src/components/interop/MobileInterop.tsx:174
 msgid "How it works"
 msgstr "How it works"
 
@@ -464,6 +460,8 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing half a billion downloads."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
+#: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
 #: src/pages/index.tsx:153
@@ -495,14 +493,6 @@ msgstr "Kidono is an experienced partner lead with extensive experience managing
 msgid "LEARN MORE"
 msgstr "LEARN MORE"
 
-#: src/components/Register/Register.tsx:134
-msgid "Last name"
-msgstr "Last name"
-
-#: src/components/Register/Register.tsx:48
-msgid "Last name is required!"
-msgstr "Last name is required!"
-
 #: src/pages/index.tsx:478
 #: src/pages/index.tsx:501
 msgid "Learn more"
@@ -511,10 +501,6 @@ msgstr "Learn more"
 #: src/pages/about-us.tsx:367
 msgid "Led by industry experts"
 msgstr "Led by industry experts"
-
-#: src/pages/about-us.tsx:71
-#~ msgid "Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and has founded multiple ventures, including Engage:BDR that is now a public listed company."
-#~ msgstr "Lucas brings over 22+ years of expertise in marketing. He was previously Head of Global Marketing for iconic gaming giants such as Atari and Sony and has founded multiple ventures, including Engage:BDR that is now a public listed company."
 
 #: src/pages/index.tsx:521
 msgid "MEET THE TEAM"
@@ -546,12 +532,12 @@ msgid "Morphing NFTs"
 msgstr "Morphing NFTs"
 
 #: src/components/interop/DesktopInterop.tsx:322
-#: src/components/interop/MobileInterop.tsx:195
+#: src/components/interop/MobileInterop.tsx:196
 msgid "Morphing NFTs™"
 msgstr "Morphing NFTs™"
 
 #: src/components/interop/DesktopInterop.tsx:260
-#: src/components/interop/MobileInterop.tsx:175
+#: src/components/interop/MobileInterop.tsx:176
 msgid "Morphing NFTs™ that adapt to your avatars"
 msgstr "Morphing NFTs™ that adapt to your avatars"
 
@@ -559,7 +545,7 @@ msgstr "Morphing NFTs™ that adapt to your avatars"
 msgid "Myria Blockchain Ecosystem Map"
 msgstr "Myria Blockchain Ecosystem Map"
 
-#: src/pages/nodes/index.tsx:237
+#: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
 msgstr "Myria FAQ"
 
@@ -628,7 +614,7 @@ msgid "News"
 msgstr "News"
 
 #: src/components/interop/DesktopInterop.tsx:263
-#: src/components/interop/MobileInterop.tsx:177
+#: src/components/interop/MobileInterop.tsx:178
 msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
 msgstr "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
 
@@ -644,22 +630,14 @@ msgstr "Node owner rewards"
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 
-#: src/pages/nodes/purchase-complete.tsx:37
-msgid "Node purchase"
-msgstr "Node purchase"
-
 #: src/components/Footer.tsx:39
 #: src/components/Header/Header.tsx:51
 msgid "Nodes"
 msgstr "Nodes"
 
-#: src/pages/nodes.tsx:155
-#~ msgid "Only 50,000 Myria node licenses will ever be released."
-#~ msgstr "Only 50,000 Myria node licenses will ever be released."
-
-#: src/pages/nodes/index.tsx:164
-msgid "Only 60,000 Myria node licenses will ever be released."
-msgstr "Only 60,000 Myria node licenses will ever be released."
+#: src/pages/nodes.tsx:164
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr "Only 55,000 Myria node licenses will ever be released."
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
@@ -709,12 +687,12 @@ msgid "Our vision"
 msgstr "Our vision"
 
 #: src/components/interop/DesktopInterop.tsx:325
-#: src/components/interop/MobileInterop.tsx:196
+#: src/components/interop/MobileInterop.tsx:197
 msgid "Own your metaverse identity"
 msgstr "Own your metaverse identity"
 
 #: src/components/interop/DesktopInterop.tsx:242
-#: src/components/interop/MobileInterop.tsx:151
+#: src/components/interop/MobileInterop.tsx:152
 msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "Own your metaverse identity. Anywhere. Any game."
 
@@ -781,7 +759,7 @@ msgid "Register"
 msgstr "Register"
 
 #: src/pages/games.tsx:92
-#: src/pages/nodes/index.tsx:225
+#: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "Releasing soon"
 
@@ -814,22 +792,6 @@ msgstr "Sign up to our newsletter to for development updates, token and NFT drop
 msgid "Start playing and earning rewards"
 msgstr "Start playing and earning rewards"
 
-#: src/pages/nodes/purchase-complete.tsx:36
-msgid "Step 1"
-msgstr "Step 1"
-
-#: src/pages/nodes/purchase-complete.tsx:40
-msgid "Step 2"
-msgstr "Step 2"
-
-#: src/pages/nodes/purchase-complete.tsx:44
-msgid "Step 3"
-msgstr "Step 3"
-
-#: src/pages/nodes/purchase-complete.tsx:48
-msgid "Step 4"
-msgstr "Step 4"
-
 #: src/components/Footer.tsx:47
 #: src/components/Header/Header.tsx:55
 msgid "Store"
@@ -842,10 +804,6 @@ msgstr "Subject is required!"
 #: src/pages/index.tsx:295
 msgid "TOKEN LAUNCH COMING SOON"
 msgstr "TOKEN LAUNCH COMING SOON>>>>>>> origin/staging"
-
-#: src/pages/index.tsx:383
-#~ msgid "TOKEN SALE COMING SOON"
-#~ msgstr "TOKEN SALE COMING SOON======="
 
 #: src/components/Footer.tsx:76
 msgid "Team"
@@ -877,12 +835,12 @@ msgid "The Myria ecosystem is designed to empower gamers, communities, studios, 
 msgstr "The Myria ecosystem is designed to empower gamers, communities, studios, and creators."
 
 #: src/components/interop/DesktopInterop.tsx:224
-#: src/components/interop/MobileInterop.tsx:128
+#: src/components/interop/MobileInterop.tsx:129
 msgid "The new standard for interoperable NFTs"
 msgstr "The new standard for interoperable NFTs"
 
 #: src/components/interop/DesktopInterop.tsx:165
-#: src/components/interop/MobileInterop.tsx:63
+#: src/components/interop/MobileInterop.tsx:64
 msgid "The world’s first Morphing NFTs™"
 msgstr "The world’s first Morphing NFTs™"
 
@@ -891,7 +849,7 @@ msgstr "The world’s first Morphing NFTs™"
 #~ msgstr "Token Sale and Node Sale coming soon!=======>>>>>>> origin/staging"
 
 #: src/components/interop/DesktopInterop.tsx:205
-#: src/components/interop/MobileInterop.tsx:104
+#: src/components/interop/MobileInterop.tsx:105
 msgid "Trailer Coming Soon"
 msgstr "Trailer Coming Soon"
 
@@ -969,7 +927,7 @@ msgid "With 15+ year experience working in the gaming industry, Antonio has cont
 msgstr "With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more."
 
 #: src/components/interop/DesktopInterop.tsx:245
-#: src/components/interop/MobileInterop.tsx:153
+#: src/components/interop/MobileInterop.tsx:154
 msgid "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
 msgstr "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
 

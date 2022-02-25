@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
+    "build:prod": "env-cmd -f env.production next build && next export",
     "start": "next start",
     "lint": "next lint",
     "extract": "NODE_ENV=development lingui extract",
@@ -24,6 +25,7 @@
     "aos": "2.3.4",
     "axios": "0.25.0",
     "clsx": "1.1.1",
+    "env-cmd": "10.1.0",
     "ethers": "5.5.3",
     "framer-motion": "6.2.3",
     "gsap": "3.9.1",

@@ -4,3 +4,8 @@ export const socialLinks = {
   instagram: 'https://www.instagram.com/myriagames/',
   medium: 'https://medium.com/@myriagames'
 };
+
+export const localStorageKeys = {
+  language: 'LANG',
+  firstTime: 'FIRST_TIME'
+};

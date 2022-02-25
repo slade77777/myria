@@ -30,7 +30,7 @@ const Games: React.FC = () => {
             <div className="mt-[100px] md:mt-[180px]">
               <OurGames />
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-center">
               <div className="mt-[32px] rounded-[20px] bg-brand-deep-blue py-[23px] px-[38px] text-right">
                 <p className="body-md md:body-lg">
                   <Trans>More games coming soon...</Trans>

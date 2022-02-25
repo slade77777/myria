@@ -1,10 +1,9 @@
-/* eslint-disable react/display-name */
 import React, { ReactNode } from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import clsx from 'clsx';
 import CloseIcon from './icons/CloseIcon';
 
-type DialogProps = {
+type ModalProps = {
   title?: string;
   className?: string;
   onClose?: (e: any) => void;
@@ -12,13 +11,18 @@ type DialogProps = {
   children: React.ReactNode | ((props: { title: boolean; onClose: () => void }) => React.ReactNode);
 };
 
-type DialogType = React.FC<DialogProps & DialogPrimitive.DialogProps> & {
-  Content: React.FC<DialogPrimitive.DialogContentProps>;
+type ModalContentProps = {
+  onClose?: () => void;
+  includingHeader?: boolean;
+};
+
+type ModalType = React.FC<ModalProps & DialogPrimitive.DialogProps> & {
+  Content: React.FC<DialogPrimitive.DialogContentProps & ModalContentProps>;
   Trigger: React.FC<DialogPrimitive.DialogTriggerProps>;
   Close: React.FC<DialogPrimitive.DialogCloseProps>;
 };
 
-const Dialog: DialogType = ({ title, children, className, onClose, ...props }) => {
+const Modal: ModalType = ({ title, children, className, onClose, ...props }) => {
   return (
     <DialogPrimitive.Root {...props}>
       <DialogPrimitive.Overlay className={clsx('dialog-overlay', className)} onClick={onClose} />
@@ -30,8 +34,10 @@ const Dialog: DialogType = ({ title, children, className, onClose, ...props }) =
   );
 };
 
-export const DialogContent = React.forwardRef(
-  ({ title, children, className, onClose, ...props }: any, forwardedRef) => {
+type ExtractProps<T> = T extends React.FC<infer P> ? P : never;
+
+const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Content']>>(
+  ({ title, children, className, onClose, includingHeader = true, ...props }, forwardedRef) => {
     const close = (
       <div className="h-[24px] w-[24px] text-white hover:cursor-pointer">
         <CloseIcon />
@@ -40,16 +46,18 @@ export const DialogContent = React.forwardRef(
     return (
       <DialogPrimitive.Content {...props} className={clsx('dialog-content')} ref={forwardedRef}>
         <div className={clsx('mx-auto my-auto w-full rounded-lg bg-brand-deep-blue', className)}>
-          <div className="px-8 pt-8">
-            <div className="flex items-center justify-between">
-              <p className="heading-md text-white">{title}</p>
-              {!onClose ? (
-                <DialogPrimitive.Close>{close}</DialogPrimitive.Close>
-              ) : (
-                <div onClick={onClose}>{close}</div>
-              )}
+          {includingHeader && (
+            <div className="px-8 pt-8">
+              <div className="flex items-center justify-between">
+                <p className="heading-md text-white">{title}</p>
+                {!onClose ? (
+                  <DialogPrimitive.Close>{close}</DialogPrimitive.Close>
+                ) : (
+                  <button onClick={onClose}>{close}</button>
+                )}
+              </div>
             </div>
-          </div>
+          )}
           {children}
         </div>
       </DialogPrimitive.Content>
@@ -57,8 +65,10 @@ export const DialogContent = React.forwardRef(
   }
 );
 
-Dialog.Content = DialogContent;
-Dialog.Trigger = DialogPrimitive.Trigger;
-Dialog.Close = DialogPrimitive.Close;
+ModalContent.displayName = 'ModalContent';
 
-export default Dialog;
+Modal.Content = ModalContent;
+Modal.Trigger = DialogPrimitive.Trigger;
+Modal.Close = DialogPrimitive.Close;
+
+export default Modal;
