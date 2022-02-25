@@ -1,9 +1,7 @@
 variables:
   S3_BUCKET_NAME: "website-dapp-staging"
 
-deploy to staging:
-  variables:
-    NEXT_PUBLIC_GOOGLE_ANALYTICS: "dump"
+build-staging:
   environment: staging
   image: node:14
   script:
@@ -14,7 +12,7 @@ deploy to staging:
       - out  
   only:
     - staging
-deploy to s3:
+deploy to s3 staging:
   stage: deploy
   image: 
     name: amazon/aws-cli
@@ -26,7 +24,7 @@ deploy to s3:
   only:
     - staging
 
-deploy to production:
+build-production:
   environment: production
   image: node:14
   script:
@@ -37,7 +35,7 @@ deploy to production:
       - out  
   only:
     - main
-deploy to s3:
+sync to s3 production:
   stage: deploy
   image: 
     name: amazon/aws-cli

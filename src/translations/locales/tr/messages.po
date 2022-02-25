@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 12:59+0700\n"
+"POT-Creation-Date: 2022-02-24 17:26+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -121,11 +121,11 @@ msgstr "Myria'da, NFT'lerin oyunculara yalnızca doğrulanabilir sahiplik sağla
 msgid "Autoplay"
 msgstr "Otomatik oynatma"
 
-#: src/pages/nodes.tsx:289
+#: src/pages/nodes.tsx:288
 msgid "BUY A NODE"
 msgstr "DÜĞÜM SATIN AL"
 
-#: src/pages/nodes.tsx:282
+#: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Myria ekosisteminin ayrılmaz bir parçası olun ve katkınızın avantajlarından yararlanın. Erken kurucu düğüm operatörleri, düğümler satıldıkça artan tercihli fiyatlandırma alırlar."
 
@@ -264,6 +264,10 @@ msgstr "Özel NFT'ler"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "<0>Myria</0> Ekosistemini Keşfedin"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr ""
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "Oyuncular için"
@@ -306,7 +310,7 @@ msgstr "Oyunlar"
 msgid "Games Producer"
 msgstr ""
 
-#: src/pages/nodes.tsx:279
+#: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "Bugün bir kurucu düğüm edinin"
 
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan, oyun endüstrisinde 10 yılı aşkın deneyime sahiptir. Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft gibi birçok oyunun yarım milyar indirilmesiyle baş oyun tasarımcısı olmuştur."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
@@ -457,7 +462,7 @@ msgstr "Avatarlarınıza uyum sağlayan Dönüşen NFT'ler™"
 msgid "Myria Blockchain Ecosystem Map"
 msgstr "Myria Blok zincir Ekosistem Haritası"
 
-#: src/pages/nodes.tsx:237
+#: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
 msgstr ""
 
@@ -548,8 +553,8 @@ msgid "Nodes"
 msgstr "Düğümler"
 
 #: src/pages/nodes.tsx:164
-msgid "Only 60,000 Myria node licenses will ever be released."
-msgstr "Yalnızca 60.000 Myria düğüm lisansı piyasaya sürülecek."
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr ""
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
@@ -662,7 +667,7 @@ msgid "RUN A NODE"
 msgstr "DÜĞÜM ÇALIŞTIR"
 
 #: src/pages/games.tsx:92
-#: src/pages/nodes.tsx:225
+#: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "Yakında piyasaya sürülecek"
 

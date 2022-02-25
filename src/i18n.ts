@@ -28,7 +28,7 @@ export const getLanguageFromLocalStorage = (): Language => {
   return DEFAULT_LANGUAGE;
 };
 
-export const setlToLocalStorage = (language: Language) => {
+export const setLanguageToLocalStorage = (language: Language) => {
   if (typeof localStorage != 'undefined') {
     localStorage.setItem(localStorageKeys.language, language);
   }

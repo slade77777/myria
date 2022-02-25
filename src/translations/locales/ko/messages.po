@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 12:59+0700\n"
+"POT-Creation-Date: 2022-02-24 17:26+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -121,11 +121,11 @@ msgstr "Myria에서 우리는 NFT가 플레이어들에게 입증 가능한 소�
 msgid "Autoplay"
 msgstr "오토플레이"
 
-#: src/pages/nodes.tsx:289
+#: src/pages/nodes.tsx:288
 msgid "BUY A NODE"
 msgstr "노드 구매"
 
-#: src/pages/nodes.tsx:282
+#: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Myria 생태계의 일체가 되고 당신의 기여 이익을 수확함. 초기 창설자 노드 운영자들은 우선 가격 책정을 받는데, 이는 노드가 판매됨으로 인해 증가됨."
 
@@ -264,6 +264,10 @@ msgstr "독점적 NFT"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "<0>Myria</0> 생태계 탐구"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr ""
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "게이머 용"
@@ -306,7 +310,7 @@ msgstr "게임"
 msgid "Games Producer"
 msgstr ""
 
-#: src/pages/nodes.tsx:279
+#: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "오늘 창설자 노드 획득"
 
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "이반(Ivan)은 게임 산업에 10년 이상의 경력을 갖추고 있다. 그는 Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft 등등에서 총 5억회의 다운로드를 모으는 자신의 게임을 갖춘 리드 게임 디자이너로 활동해 왔다."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
@@ -457,7 +462,7 @@ msgstr "당신의 아바타에 적응되는 모핑 NFTs™"
 msgid "Myria Blockchain Ecosystem Map"
 msgstr "Myria 블록 체인 생태계 맵"
 
-#: src/pages/nodes.tsx:237
+#: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
 msgstr ""
 
@@ -548,8 +553,8 @@ msgid "Nodes"
 msgstr "노드"
 
 #: src/pages/nodes.tsx:164
-msgid "Only 60,000 Myria node licenses will ever be released."
-msgstr "단지 60,000 Myria 노드 라이선스가 출시될 것이다."
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr ""
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
@@ -662,7 +667,7 @@ msgid "RUN A NODE"
 msgstr "노드 가동"
 
 #: src/pages/games.tsx:92
-#: src/pages/nodes.tsx:225
+#: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "조만간 출시"
 
