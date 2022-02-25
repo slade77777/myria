@@ -24,10 +24,15 @@ module.exports = {
         'brand-light-blue': '#9AC9E3',
         'brand-white': '#FFFFFF',
         dark: '#050E15',
-        light: '#97AAB5'
+        light: '#97AAB5',
+        'light-green': '#9ECEAB',
+        'light-red': '#D55E5E'
       },
       maxWidth: {
         content: 1264
+      },
+      boxShadow: {
+        'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
       },
       keyframes: {
         slideDown: {

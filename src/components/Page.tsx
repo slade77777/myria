@@ -16,7 +16,13 @@ type Props = {
 
 const TIME_SHOW_FIRST_TIME_VISIT_MODAL = 10_000;
 
-const Page: React.FC<Props> = ({ children, action, headerClassName, stickyHeader = true }) => {
+const Page: React.FC<Props> = ({
+  children,
+  action,
+  headerClassName,
+  stickyHeader = true,
+  footerClassName
+}) => {
   const [firstTimeVisit, setFirtTimeVisit] = useLocalStorage(localStorageKeys.firstTime, true);
   const [showFirstTimeVisitModal, setShowFirstTimeVisitModal] = useState(false);
 
@@ -53,7 +59,7 @@ const Page: React.FC<Props> = ({ children, action, headerClassName, stickyHeader
         />
         <div className="bg-dark">
           {children}
-          <div className={clsx(paddingX, 'pb-[149px] md:pb-[112px]')}>
+          <div className={clsx(paddingX, 'pb-[149px] md:pb-[112px]', footerClassName)}>
             <div className="mx-auto max-w-content">
               <Footer />
             </div>
