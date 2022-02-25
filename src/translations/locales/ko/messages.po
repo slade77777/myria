@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 12:59+0700\n"
+"POT-Creation-Date: 2022-02-25 21:33+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -121,11 +121,11 @@ msgstr "Myria에서 우리는 NFT가 플레이어들에게 입증 가능한 소�
 msgid "Autoplay"
 msgstr "오토플레이"
 
-#: src/pages/nodes.tsx:289
+#: src/pages/nodes.tsx:288
 msgid "BUY A NODE"
 msgstr "노드 구매"
 
-#: src/pages/nodes.tsx:282
+#: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Myria 생태계의 일체가 되고 당신의 기여 이익을 수확함. 초기 창설자 노드 운영자들은 우선 가격 책정을 받는데, 이는 노드가 판매됨으로 인해 증가됨."
 
@@ -192,7 +192,7 @@ msgstr "우리들 과의 연결"
 msgid "Connecting the world through <0>play</0>"
 msgstr "<0>플레이</0>을 통하여 세상과 연결하기"
 
-#: src/pages/_app.tsx:16
+#: src/pages/_app.tsx:20
 msgid "Connecting the world through play"
 msgstr "플레이를 통하여 세상과 연결하기"
 
@@ -205,8 +205,8 @@ msgid "Contact us"
 msgstr "당사 연락처"
 
 #: src/pages/about-us.tsx:169
-msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
-msgstr "크레이그(Craig)는 웹 & 앱 UI/UX 디자인 및 크래프팅 브랜드 아이덴티티를 주도하는데 10년 이상의 경륜을 갖추고 있다. 그는 통신, 금융 기관, 미디어 및 그 외 산업을 넘어 글로벌 기업들과 일해 왔다."
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr ""
 
 #: src/pages/nodes.tsx:22
 msgid "Daily $MYRIA token rewards"
@@ -218,7 +218,7 @@ msgstr "자원 계산을 제공하여 네트워크를 분권화함"
 
 #: src/pages/nodes.tsx:154
 msgid "Details will be announced soon."
-msgstr ""
+msgstr "세부 사항은 곧 공표될 것입니다."
 
 #: src/pages/index.tsx:474
 msgid "Discover the best games built on the blockchain"
@@ -279,13 +279,13 @@ msgstr "주도적인 게이밍 및 블록 체인 산업 베테랑에 의해 창�
 
 #: src/pages/about-us.tsx:221
 msgid "Fun, high-quality and free are our core beliefs. We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse."
-msgstr ""
+msgstr "재미, 고품질 그리고 무료는 우리의 핵심적인 신조입니다. 우리는 열려 있고 공평한 접속을 통해 더 많은 사람들이 블록체인과 메타버스를 경험하고 누릴 수 있을 거라 믿습니다."
 
 #: src/pages/for-gamers.tsx:178
 msgid "GET A NODE"
 msgstr "노드 획득"
 
-#: src/pages/_app.tsx:25
+#: src/pages/_app.tsx:29
 msgid "Game NFT"
 msgstr "게임 NFT"
 
@@ -295,7 +295,7 @@ msgstr "게임 플레이 먼저"
 
 #: src/pages/about-us.tsx:219
 msgid "Gameplay first & free to play"
-msgstr ""
+msgstr "게임방식이 먼저이고 무료로 즐길 수 있습니다."
 
 #: src/components/Footer.tsx:12
 #: src/components/Header/Header.tsx:47
@@ -304,9 +304,9 @@ msgstr "게임"
 
 #: src/pages/about-us.tsx:120
 msgid "Games Producer"
-msgstr ""
+msgstr "게임 생산자"
 
-#: src/pages/nodes.tsx:279
+#: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "오늘 창설자 노드 획득"
 
@@ -357,7 +357,7 @@ msgstr "Myria 노드 라이선스 얼마나 많은 비용이 들까?"
 
 #: src/pages/about-us.tsx:184
 msgid "Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space."
-msgstr ""
+msgstr "헌터는 2016년 이후 암호화폐 공간의  사내 기업가로,  혁신 선두에서 프로젝트에 합류하여 글로벌 커뮤니티를 수립하는데 일조하고 있습니다. 그는  몇몇 최대 프로젝트 동업자 관계와 이 공간에 대한 영향력을  촉진시키고  증폭시켜 왔습니다."
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
@@ -457,9 +457,9 @@ msgstr "당신의 아바타에 적응되는 모핑 NFTs™"
 msgid "Myria Blockchain Ecosystem Map"
 msgstr "Myria 블록 체인 생태계 맵"
 
-#: src/pages/nodes.tsx:237
+#: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
-msgstr ""
+msgstr "Myria 자주 묻는 질문들"
 
 #: src/pages/games.tsx:85
 msgid "Myria are releasing limited drops of exclusive founding Myria land, avatars, and skins. These items will never be made available to the public again and will forever commemorate holders as pioneers in the Myriaverse."
@@ -483,8 +483,8 @@ msgstr "Myria는 스튜디오가 블록 체인 레볼루션에 가입하도록 �
 
 #: src/components/ComingSoon.tsx:48
 #: src/components/home/Hero.tsx:163
-#: src/pages/_app.tsx:17
-#: src/pages/_app.tsx:30
+#: src/pages/_app.tsx:21
+#: src/pages/_app.tsx:34
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria는 Myria 블록체인에 의해 가동되는 블록 체인 게이밍 생태계이다."
 
@@ -504,8 +504,8 @@ msgstr "Myria 노드 라이선스 판매는 2022년 3월에 시작할 것으로 
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Myria 노드 운영자들은 노드 작업에 대해 매일 $MYRIA 토큰 보상을 받게 될 것이다."
 
-#: src/pages/_app.tsx:18
-#: src/pages/_app.tsx:29
+#: src/pages/_app.tsx:22
+#: src/pages/_app.tsx:33
 msgid "Myria | Connecting the world through play"
 msgstr "Myria/ 플레이를 통해 세상을 연결시킴"
 
@@ -532,7 +532,7 @@ msgstr "당신의 아바타의 모양과 크기가 어떠하든, 그들 모두�
 
 #: src/pages/index.tsx:142
 msgid "Node & NFT sales coming soon!"
-msgstr ""
+msgstr "노드 & NFT 판매 개봉박두!"
 
 #: src/pages/nodes.tsx:213
 msgid "Node owner rewards"
@@ -548,8 +548,8 @@ msgid "Nodes"
 msgstr "노드"
 
 #: src/pages/nodes.tsx:164
-msgid "Only 60,000 Myria node licenses will ever be released."
-msgstr "단지 60,000 Myria 노드 라이선스가 출시될 것이다."
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr ""
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
@@ -614,7 +614,7 @@ msgstr "파트너 리드"
 
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
-msgstr ""
+msgstr "플레이 & 벌기"
 
 #: src/pages/index.tsx:282
 msgid "Powered and governed by <0>$MYRIA</0>"
@@ -662,7 +662,7 @@ msgid "RUN A NODE"
 msgstr "노드 가동"
 
 #: src/pages/games.tsx:92
-#: src/pages/nodes.tsx:225
+#: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "조만간 출시"
 
@@ -762,7 +762,7 @@ msgstr "투표권"
 
 #: src/pages/about-us.tsx:235
 msgid "We aim to build a world where gamers can play the games they love and also earn rewards at the same time."
-msgstr ""
+msgstr "우리는 게이머들이 자신이 사랑하는 게임을 하면서 동시에 보상을 받을 수 있는 세상을 만드는 것을 목표로 하고 있습니다."
 
 #: src/pages/about-us.tsx:249
 #: src/pages/for-gamers.tsx:35
