@@ -29,7 +29,7 @@ const schema = yup
   .required();
 
 const SignIn: React.FC = () => {
-  const { register } = useAuthenticationContext();
+  const { register, openVerify } = useAuthenticationContext();
   const [error, setError] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
   const {
@@ -46,7 +46,7 @@ const SignIn: React.FC = () => {
   };
 
   const onSubmit = async (data: IFormSignInInput) => {
-    console.log(data);
+    openVerify();
     try {
       setError('');
       // setIsSubmitSuccess(false);
