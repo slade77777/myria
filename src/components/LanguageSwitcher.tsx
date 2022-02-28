@@ -39,7 +39,10 @@ const LanguageSwitcher: React.FC<Props> = ({ isMobile }) => {
           </button>
         )}
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content sideOffset={16} align="end">
+      <DropdownMenu.Content
+        sideOffset={16}
+        align="end"
+        className="!animate-none md:!dropdown-content">
         <div
           style={{
             boxShadow: '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
