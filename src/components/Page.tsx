@@ -21,11 +21,13 @@ const Page: React.FC<Props> = ({ children, action, headerClassName, stickyHeader
   const [showFirstTimeVisitModal, setShowFirstTimeVisitModal] = useState(false);
 
   useEffect(() => {
+    if (window.location.hostname==='myria.com') {
+      return;
+    }
     let timeout: ReturnType<typeof setTimeout>;
     if (firstTimeVisit) {
       timeout = setTimeout(() => {
         setShowFirstTimeVisitModal(true);
-        console.log('runn');
 
         setFirtTimeVisit(false);
       }, TIME_SHOW_FIRST_TIME_VISIT_MODAL);
@@ -40,7 +42,7 @@ const Page: React.FC<Props> = ({ children, action, headerClassName, stickyHeader
   const handleCloseFirstTimeVisitModal = () => {
     setShowFirstTimeVisitModal(false);
   };
-
+  
   return (
     <>
       <FirstTimeVisitModal
