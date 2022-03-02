@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 17:26+0700\n"
+"POT-Creation-Date: 2022-02-25 21:33+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -192,7 +192,7 @@ msgstr "联系我们"
 msgid "Connecting the world through <0>play</0>"
 msgstr "通过<0>游戏</0>连接世界"
 
-#: src/pages/_app.tsx:16
+#: src/pages/_app.tsx:20
 msgid "Connecting the world through play"
 msgstr "游戏连接世界"
 
@@ -205,8 +205,8 @@ msgid "Contact us"
 msgstr "联系我们"
 
 #: src/pages/about-us.tsx:169
-msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
-msgstr "在领导网页和应用程序的用户界面/用户体验设计及品牌身份创建方面，Craig拥有10多年经验。他曾与通信、金融机构、媒体等行业的跨国公司合作。"
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr ""
 
 #: src/pages/nodes.tsx:22
 msgid "Daily $MYRIA token rewards"
@@ -289,7 +289,7 @@ msgstr "有趣、优质、免费是我们的核心信念。我们相信开放和
 msgid "GET A NODE"
 msgstr "获取节点"
 
-#: src/pages/_app.tsx:25
+#: src/pages/_app.tsx:29
 msgid "Game NFT"
 msgstr "游戏非同质化代币 "
 
@@ -299,7 +299,7 @@ msgstr "游戏第一"
 
 #: src/pages/about-us.tsx:219
 msgid "Gameplay first & free to play"
-msgstr "游戏第一&免费游玩"
+msgstr "游戏第一&免费畅玩"
 
 #: src/components/Footer.tsx:12
 #: src/components/Header/Header.tsx:47
@@ -361,7 +361,7 @@ msgstr "一份Myria节点许可证的成本是多少？"
 
 #: src/pages/about-us.tsx:184
 msgid "Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space."
-msgstr "Hunter 自 2016 年以来一直是活跃在加密领域内部的企业家，加入了许多处于创新前沿的项目并帮助他们建立全球社区。他促进并扩大了与该领域一些大型项目和具有影响力者的合作伙伴关系。"
+msgstr "自2016年以来，Hunter始终担任着加密领域创业者的角色。他曾加入多项创业前沿项目，助其构建全球社区。此外，他还对业内大项目及有影响力者的合作起到了催化和扩力的作用。"
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
@@ -488,8 +488,8 @@ msgstr "Myria可助力工作室迈入区块链变革。"
 
 #: src/components/ComingSoon.tsx:48
 #: src/components/home/Hero.tsx:163
-#: src/pages/_app.tsx:17
-#: src/pages/_app.tsx:30
+#: src/pages/_app.tsx:21
+#: src/pages/_app.tsx:34
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria是由Myria区块链驱动的游戏生态系统。"
 
@@ -509,8 +509,8 @@ msgstr "Myria节点许可证预计将于2022年3月（日期可能发生变更�
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "每天，Myria节点操作者将从节点作业中获取代币奖励（MYRIA币 ）。"
 
-#: src/pages/_app.tsx:18
-#: src/pages/_app.tsx:29
+#: src/pages/_app.tsx:22
+#: src/pages/_app.tsx:33
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | 通过游戏连接世界"
 
@@ -767,7 +767,7 @@ msgstr "投票权"
 
 #: src/pages/about-us.tsx:235
 msgid "We aim to build a world where gamers can play the games they love and also earn rewards at the same time."
-msgstr "我们的目标是建立一个游戏玩家可以畅玩他们喜欢的游戏并同时获得奖励的世界。"
+msgstr "我们旨在创建一个世界，让玩家在享受所钟爱游戏的同时赚取奖励。"
 
 #: src/pages/about-us.tsx:249
 #: src/pages/for-gamers.tsx:35

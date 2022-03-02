@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 17:26+0700\n"
+"POT-Creation-Date: 2022-02-25 21:33+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -192,7 +192,7 @@ msgstr "Kết nối với chúng tôi"
 msgid "Connecting the world through <0>play</0>"
 msgstr "Kết nối thế giới thông qua <0>trò chơi</0>"
 
-#: src/pages/_app.tsx:16
+#: src/pages/_app.tsx:20
 msgid "Connecting the world through play"
 msgstr "Kết nối thế giới thông qua trò chơi"
 
@@ -205,8 +205,8 @@ msgid "Contact us"
 msgstr "Liên hệ chúng tôi"
 
 #: src/pages/about-us.tsx:169
-msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
-msgstr "Craig có hơn 10 năm kinh nghiệm trong lĩnh vực thiết kế giao diện người dùng/trải nghiệm người dùng web và ứng dụng hàng đầu và tạo ra các bản sắc thương hiệu. Ngài ấy đã làm việc với các công ty toàn cầu trong các lĩnh vực công nghiệp như viễn thông, tổ chức tài chính, truyền thông và nhiều lĩnh vực khác."
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr ""
 
 #: src/pages/nodes.tsx:22
 msgid "Daily $MYRIA token rewards"
@@ -218,7 +218,7 @@ msgstr "Phân quyền mạng bằng cách cung cấp tài nguyên máy tính"
 
 #: src/pages/nodes.tsx:154
 msgid "Details will be announced soon."
-msgstr ""
+msgstr "Thông tin chi tiết sẽ sớm được công bố."
 
 #: src/pages/index.tsx:474
 msgid "Discover the best games built on the blockchain"
@@ -283,13 +283,13 @@ msgstr "Được thành lập bởi những người kỳ cựu hàng đầu tro
 
 #: src/pages/about-us.tsx:221
 msgid "Fun, high-quality and free are our core beliefs. We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse."
-msgstr ""
+msgstr "Vui vẻ, chất lượng cao và miễn phí là niềm tin cốt lõi của chúng tôi. Chúng tôi tin vào quyền truy cập mở và công bằng, cho phép nhiều người hơn trải nghiệm và tận hưởng những lợi ích của blockchain và vũ trụ ảo."
 
 #: src/pages/for-gamers.tsx:178
 msgid "GET A NODE"
 msgstr "NHẬN NODE"
 
-#: src/pages/_app.tsx:25
+#: src/pages/_app.tsx:29
 msgid "Game NFT"
 msgstr "NFT Trò Chơi "
 
@@ -299,7 +299,7 @@ msgstr "Chơi trò chơi trước"
 
 #: src/pages/about-us.tsx:219
 msgid "Gameplay first & free to play"
-msgstr ""
+msgstr "Trò chơi đầu tiên và miễn phí đển chơi"
 
 #: src/components/Footer.tsx:12
 #: src/components/Header/Header.tsx:47
@@ -308,7 +308,7 @@ msgstr "Trò chơi"
 
 #: src/pages/about-us.tsx:120
 msgid "Games Producer"
-msgstr ""
+msgstr "Nhà sản xuất trò chơi"
 
 #: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
@@ -361,7 +361,7 @@ msgstr "Giấy phép node Myria sẽ có giá bao nhiêu?"
 
 #: src/pages/about-us.tsx:184
 msgid "Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space."
-msgstr ""
+msgstr "Hunter là một chuyên gia trong không gian tiền mã hoá từ năm 2016 tham gia các dự án đi đầu trong việc đổi mới và giúp họ xây dựng cộng đồng toàn cầu. Ông ấy đã thúc đẩy và tăng cường quan hệ đối tác với một số dự án và những người có tầm ảnh hưởng lớn nhất trong lĩnh vực này."
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
@@ -464,7 +464,7 @@ msgstr "Bản Đồ Hệ Sinh Thái Blockchain Myria"
 
 #: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
-msgstr ""
+msgstr "Câu hỏi thường gặp về Myria"
 
 #: src/pages/games.tsx:85
 msgid "Myria are releasing limited drops of exclusive founding Myria land, avatars, and skins. These items will never be made available to the public again and will forever commemorate holders as pioneers in the Myriaverse."
@@ -488,8 +488,8 @@ msgstr "Myria giúp các studio tham gia vào cuộc cách mạng blockchain"
 
 #: src/components/ComingSoon.tsx:48
 #: src/components/home/Hero.tsx:163
-#: src/pages/_app.tsx:17
-#: src/pages/_app.tsx:30
+#: src/pages/_app.tsx:21
+#: src/pages/_app.tsx:34
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria là một hệ sinh thái trò chơi blockchain được cung cấp bởi blockchain Myria."
 
@@ -509,8 +509,8 @@ msgstr "Việc bán giấy phép node Myria dự kiến sẽ bắt đầu vào t
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Những người vận hành node Myria sẽ nhận được phần thưởng mã token $MYRIA hàng ngày cho các node hoạt động."
 
-#: src/pages/_app.tsx:18
-#: src/pages/_app.tsx:29
+#: src/pages/_app.tsx:22
+#: src/pages/_app.tsx:33
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | Kết nối thế giới thông qua trò chơi"
 
@@ -537,7 +537,7 @@ msgstr "Bất kể hình dạng và kích thước của hình đại diện c�
 
 #: src/pages/index.tsx:142
 msgid "Node & NFT sales coming soon!"
-msgstr ""
+msgstr "Sắp mở bán Node & NFT!"
 
 #: src/pages/nodes.tsx:213
 msgid "Node owner rewards"
@@ -619,7 +619,7 @@ msgstr "Trưởng Nhóm Đối Tác"
 
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
-msgstr ""
+msgstr "Chơi và kiếm tiền"
 
 #: src/pages/index.tsx:282
 msgid "Powered and governed by <0>$MYRIA</0>"
@@ -767,7 +767,7 @@ msgstr "Quyền biểu quyết"
 
 #: src/pages/about-us.tsx:235
 msgid "We aim to build a world where gamers can play the games they love and also earn rewards at the same time."
-msgstr ""
+msgstr "Chúng tôi mong muốn xây dựng một thế giới nơi mà người chơi có thể chơi các trò chơi mà họ yêu thích và đồng thời cũng kiếm được phần thưởng."
 
 #: src/pages/about-us.tsx:249
 #: src/pages/for-gamers.tsx:35
