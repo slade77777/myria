@@ -5,9 +5,13 @@ import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 
 import { useGA } from 'src/lib/ga';
-import LanguageProvider from 'src/context/LanguageContext';
+import LanguageProvider, { useLanguage } from 'src/context/LanguageContext';
 import { t } from '@lingui/macro';
 
+const WithLanguageStyle: React.FC<any> = ({ children }) => {
+  const { language } = useLanguage();
+  return <div className={language}>{children}</div>;
+};
 function App({ Component, pageProps }: AppProps) {
   useGA();
   return (
@@ -37,8 +41,9 @@ function App({ Component, pageProps }: AppProps) {
           cardType: 'summary_large_image'
         }}
       />
-
-      <Component {...pageProps} />
+      <WithLanguageStyle>
+        <Component {...pageProps} />
+      </WithLanguageStyle>
     </LanguageProvider>
   );
 }

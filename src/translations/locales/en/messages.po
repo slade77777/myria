@@ -198,7 +198,7 @@ msgstr "Connect with us"
 msgid "Connecting the world through <0>play</0>"
 msgstr "Connecting the world through <0>play</0>"
 
-#: src/pages/_app.tsx:16
+#: src/pages/_app.tsx:20
 msgid "Connecting the world through play"
 msgstr "Connecting the world through play"
 
@@ -211,8 +211,12 @@ msgid "Contact us"
 msgstr "Contact us"
 
 #: src/pages/about-us.tsx:169
-msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
-msgstr "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
+#~ msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
+#~ msgstr "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
+
+#: src/pages/about-us.tsx:169
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
 
 #: src/pages/nodes.tsx:22
 msgid "Daily $MYRIA token rewards"
@@ -295,7 +299,7 @@ msgstr "Fun, high-quality and free are our core beliefs. We believe in open and 
 msgid "GET A NODE"
 msgstr "GET A NODE"
 
-#: src/pages/_app.tsx:25
+#: src/pages/_app.tsx:29
 msgid "Game NFT"
 msgstr "Game NFT"
 
@@ -494,8 +498,8 @@ msgstr "Myria helps studios join the blockchain revolution"
 
 #: src/components/ComingSoon.tsx:48
 #: src/components/home/Hero.tsx:163
-#: src/pages/_app.tsx:17
-#: src/pages/_app.tsx:30
+#: src/pages/_app.tsx:21
+#: src/pages/_app.tsx:34
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 
@@ -515,8 +519,8 @@ msgstr "Myria node license sales are anticipated to commence in March 2022 (subj
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 
-#: src/pages/_app.tsx:18
-#: src/pages/_app.tsx:29
+#: src/pages/_app.tsx:22
+#: src/pages/_app.tsx:33
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | Connecting the world through play"
 
@@ -561,6 +565,10 @@ msgstr "Nodes"
 #: src/pages/nodes.tsx:164
 msgid "Only 55,000 Myria node licenses will ever be released."
 msgstr "Only 55,000 Myria node licenses will ever be released."
+
+#: src/pages/nodes.tsx:164
+#~ msgid "Only 60,000 Myria node licenses will ever be released."
+#~ msgstr "Only 60,000 Myria node licenses will ever be released."
 
 #: src/pages/index.tsx:432
 msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."

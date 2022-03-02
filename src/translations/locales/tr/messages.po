@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 17:26+0700\n"
+"POT-Creation-Date: 2022-02-25 21:33+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -192,7 +192,7 @@ msgstr "Bizimle iletişime geçin"
 msgid "Connecting the world through <0>play</0>"
 msgstr "<0>Oyun</0> aracılığıyla dünyayı birbirine bağlama"
 
-#: src/pages/_app.tsx:16
+#: src/pages/_app.tsx:20
 msgid "Connecting the world through play"
 msgstr "Oyun yoluyla dünyayı birbirine bağlamak"
 
@@ -205,8 +205,8 @@ msgid "Contact us"
 msgstr "Bize Ulaşın"
 
 #: src/pages/about-us.tsx:169
-msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
-msgstr "Craig, önde gelen web ve uygulama UI/UX tasarımı ve marka kimlikleri oluşturma konusunda 10 yılı aşkın deneyime sahiptir. İletişim, finans kurumları, medya gibi birçok sektörde küresel şirketlerle çalıştı."
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr ""
 
 #: src/pages/nodes.tsx:22
 msgid "Daily $MYRIA token rewards"
@@ -218,7 +218,7 @@ msgstr "Bilgi işlem kaynakları sunarak ağı merkezi olmayan hale getirin"
 
 #: src/pages/nodes.tsx:154
 msgid "Details will be announced soon."
-msgstr ""
+msgstr "Detaylar yakında açıklanacak."
 
 #: src/pages/index.tsx:474
 msgid "Discover the best games built on the blockchain"
@@ -283,13 +283,13 @@ msgstr "Önde gelen oyun ve blockchain endüstrisi uzmanları tarafından kuruld
 
 #: src/pages/about-us.tsx:221
 msgid "Fun, high-quality and free are our core beliefs. We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse."
-msgstr ""
+msgstr "Eğlenceli, kaliteli ve özgür temel inançlarımızdır. Açık ve adil erişime inanıyoruz, daha fazla insanın blok zinciri ve meta veri deposunun faydalarını deneyimlemesini ve yararlanmalarını sağlıyoruz."
 
 #: src/pages/for-gamers.tsx:178
 msgid "GET A NODE"
 msgstr "DÜĞÜM AL"
 
-#: src/pages/_app.tsx:25
+#: src/pages/_app.tsx:29
 msgid "Game NFT"
 msgstr "Oyun NFT'si"
 
@@ -299,7 +299,7 @@ msgstr "Önce oyun"
 
 #: src/pages/about-us.tsx:219
 msgid "Gameplay first & free to play"
-msgstr ""
+msgstr "Önce oyun ve oynaması ücretsiz"
 
 #: src/components/Footer.tsx:12
 #: src/components/Header/Header.tsx:47
@@ -308,7 +308,7 @@ msgstr "Oyunlar"
 
 #: src/pages/about-us.tsx:120
 msgid "Games Producer"
-msgstr ""
+msgstr "Oyun Yapımcısı"
 
 #: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
@@ -361,7 +361,7 @@ msgstr "Bir Myria düğüm lisansının maliyeti nedir?"
 
 #: src/pages/about-us.tsx:184
 msgid "Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space."
-msgstr ""
+msgstr "Hunter, 2016'dan beri kripto alanında bir şirket içi girişimcidir, inovasyonun ön saflarında yer alan projelere katılır ve global toplulukların oluşturmasına yardımcı olur. Bu alandaki en büyük projelerden ve etkileyicilerden bazılarıyla ortaklıkları hızlandırdı ve güçlendirdi."
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
@@ -464,7 +464,7 @@ msgstr "Myria Blok zincir Ekosistem Haritası"
 
 #: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
-msgstr ""
+msgstr "Myria SSS"
 
 #: src/pages/games.tsx:85
 msgid "Myria are releasing limited drops of exclusive founding Myria land, avatars, and skins. These items will never be made available to the public again and will forever commemorate holders as pioneers in the Myriaverse."
@@ -488,8 +488,8 @@ msgstr "Myria, stüdyoların blok zincir devrimine katılmasına yardımcı oluy
 
 #: src/components/ComingSoon.tsx:48
 #: src/components/home/Hero.tsx:163
-#: src/pages/_app.tsx:17
-#: src/pages/_app.tsx:30
+#: src/pages/_app.tsx:21
+#: src/pages/_app.tsx:34
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria, Myria blok zinciri tarafından desteklenen blok zincir oyun ekosistemidir."
 
@@ -509,8 +509,8 @@ msgstr "Myria düğümü lisans satışlarının Mart 2022'de başlaması beklen
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Myria düğüm operatörleri, düğüm çalışmaları için günlük $MYRIA jeton ödülleri alacaklar."
 
-#: src/pages/_app.tsx:18
-#: src/pages/_app.tsx:29
+#: src/pages/_app.tsx:22
+#: src/pages/_app.tsx:33
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | Oyun yoluyla dünyayı birbirine bağlama"
 
@@ -537,7 +537,7 @@ msgstr "Avatarınızın şekli ve boyutu ne olursa olsun, hepsinde aynı NFT'yi 
 
 #: src/pages/index.tsx:142
 msgid "Node & NFT sales coming soon!"
-msgstr ""
+msgstr "Düğüm ve NFT satışları çok yakında!"
 
 #: src/pages/nodes.tsx:213
 msgid "Node owner rewards"
@@ -619,7 +619,7 @@ msgstr "İş Ortağı Lideri"
 
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
-msgstr ""
+msgstr "Oyna ve kazan"
 
 #: src/pages/index.tsx:282
 msgid "Powered and governed by <0>$MYRIA</0>"
@@ -767,7 +767,7 @@ msgstr "Oy hakları"
 
 #: src/pages/about-us.tsx:235
 msgid "We aim to build a world where gamers can play the games they love and also earn rewards at the same time."
-msgstr ""
+msgstr "Oyuncuların sevdikleri oyunları oynayabilecekleri ve aynı zamanda ödüller kazanabilecekleri bir dünya inşa etmeyi amaçlıyoruz."
 
 #: src/pages/about-us.tsx:249
 #: src/pages/for-gamers.tsx:35

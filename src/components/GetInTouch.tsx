@@ -10,7 +10,7 @@ import { t, Trans } from '@lingui/macro';
 
 interface IFormInputs {
   name: string;
-  email: string;
+  fromEmail: string;
   subject: string;
   message: string;
 }
@@ -21,7 +21,7 @@ const schema = yup
       .string()
       .trim()
       .required(t`Name is required!`),
-    email: yup
+    fromEmail: yup
       .string()
       .email(t`Invalid email!`)
       .required(t`Email is required!`),
@@ -81,9 +81,9 @@ const GetInTouch: React.FC = () => {
           <Input
             placeholder="Email"
             type="email"
-            {...register('email')}
-            error={!!errors.email}
-            errorText={errors.email?.message}
+            {...register('fromEmail')}
+            error={!!errors.fromEmail}
+            errorText={errors.fromEmail?.message}
           />
           <Input
             placeholder="Subject"
