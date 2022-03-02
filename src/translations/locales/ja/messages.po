@@ -264,6 +264,10 @@ msgstr "エセックシーブNFTs"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "<0>Myria</0>エコシステムを探ります"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr ""
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "ゲーマー向け"
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "イワーンは、ゲーム業界に10年以上の経験を持っています。 彼はGameloft、CrazyLabs、GPG（Ubisoft）、Sperasoftなどでリードゲームデザイナーを務めており、ゲームのダウンロード数は5億回に上ります。"
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177

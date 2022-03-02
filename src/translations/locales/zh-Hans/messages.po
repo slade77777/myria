@@ -264,6 +264,10 @@ msgstr "专属非同质化代币 "
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "探索<0>Myria</0>生态系统"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr "在推特上关注我们"
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "探索<0>Myria</0>生态系统"
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan在游戏行业深耕10年，经验丰富。他曾担任智乐软件、CrazyLabs、GPG（育碧）、Sperasoft等公司的首席游戏设计师，所设计的游戏累计下载量达5亿次。"
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177

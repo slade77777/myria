@@ -264,6 +264,10 @@ msgstr "NFTs exclusivos"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "Explora el ecosistema <0>Myria</0>"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr ""
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "Para los jugadores"
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan tiene más de 10 años de experiencia en la industria del juego. Ha sido diseñador principal de juegos en Gameloft, CrazyLabs, GPG (Ubisoft) y Sperasoft, entre otros, y sus juegos han acumulado 500 millones de descargas."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177

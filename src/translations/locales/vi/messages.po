@@ -264,6 +264,10 @@ msgstr "NFT độc quyền"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "Khám phá Hệ Sinh Thái <0>Myria</0>"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr ""
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "Dành cho Người Chơi Trò Chơi"
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "Ivan có hơn 10 năm kinh nghiệm trong ngành công nghiệp trò chơi. Ngài ấy đã từng là nhà thiết kế trò chơi hàng đầu tại Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, v.v., với các trò chơi của ngài ấy đã đạt được nửa tỷ lượt tải xuống."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177

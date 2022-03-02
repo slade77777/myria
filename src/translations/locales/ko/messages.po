@@ -264,6 +264,10 @@ msgstr "독점적 NFT"
 msgid "Explore the <0>Myria</0> Ecosystem"
 msgstr "<0>Myria</0> 생태계 탐구"
 
+#: src/components/FirstTimeVisitModal.tsx:58
+msgid "FOLLOW US ON TWITTER"
+msgstr ""
+
 #: src/pages/index.tsx:469
 msgid "For Gamers"
 msgstr "게이머 용"
@@ -373,6 +377,7 @@ msgid "Ivan has 10+ years of experience in the game industry. He has been a lead
 msgstr "이반(Ivan)은 게임 산업에 10년 이상의 경력을 갖추고 있다. 그는 Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft 등등에서 총 5억회의 다운로드를 모으는 자신의 게임을 갖춘 리드 게임 디자이너로 활동해 왔다."
 
 #: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:44
 #: src/components/Header/DesktopHeader.tsx:116
 #: src/components/Header/MobileHeader.tsx:136
 #: src/components/home/Hero.tsx:177
