@@ -19,10 +19,10 @@ const moduleExports = {
     dirs: ['src']
   },
   trailingSlash: true,
-  // images: {
-  //   loader: 'imgix',
-  //   path: 'https://myria.imgix.net'
-  // },
+  images: {
+    loader: 'imgix',
+    path: 'https://myria.imgix.net'
+  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.po/,

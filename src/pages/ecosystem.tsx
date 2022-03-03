@@ -1,6 +1,7 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { headerHeight } from '../components/Header';
 import Page from '../components/Page';
@@ -102,12 +103,11 @@ const Ecosystem: React.FC = () => {
             <h2 className="heading-md text-left sm:text-center">
               <Trans>Myria Blockchain Ecosystem Map</Trans>
             </h2>
-            <a
-              href="/blockchain-map"
-              target="_blank"
-              className="btn-lg btn-primary mt-[32px] sm:hidden">
-              <Trans>view now</Trans>
-            </a>
+            <Link href="/blockchain-map">
+              <a target="_blank" className="btn-lg btn-primary mt-[32px] sm:hidden">
+                <Trans>view now</Trans>
+              </a>
+            </Link>
             <div className="mx-auto mt-[105px] hidden max-w-content sm:block">
               <Image
                 src="/images/ecosystem/diagram.svg"
