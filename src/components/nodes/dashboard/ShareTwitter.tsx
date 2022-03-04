@@ -10,7 +10,7 @@ const ShareTwitter: React.FC = () => {
   return (
     <>
       <Modal open={show} onOpenChange={() => setShow(false)}>
-        <Modal.Content title="Share this on Twitter" className="max-w-[576px]">
+        <Modal.Content title="Share this on Twitter">
           <div className="p-8">
             <div
               style={{

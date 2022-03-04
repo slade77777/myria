@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import DropdownMenu from '../DropdownMenu';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
@@ -11,11 +12,11 @@ const menus = [
   },
   {
     label: 'Reward Vault',
-    path: '/nodes/dashboard'
+    path: '/nodes/rewards'
   },
   {
     label: 'Transaction List',
-    path: '/nodes/dashboard'
+    path: '/nodes/transactions'
   },
   {
     label: 'More coming soon!',
@@ -23,7 +24,9 @@ const menus = [
   }
 ];
 const Sidebar: React.FC = () => {
-  const active = 0;
+  const router = useRouter();
+  const active = menus.findIndex((menu) => menu.path === router.route);
+
   return (
     <div>
       <div className="md:hidden">
@@ -60,13 +63,17 @@ const Sidebar: React.FC = () => {
       <div className="hidden flex-col md:flex">
         {menus.map((menu, idx) => {
           return (
-            <button
-              key={idx}
-              className={clsx('body-sm rounded-lg px-6 py-4 text-left text-light', {
-                ' bg-brand-dark-blue font-bold leading-[0.89] !text-white': active === idx
-              })}>
-              {menu.label}
-            </button>
+            <Link href={menu.path} key={idx}>
+              <a
+                className={clsx(
+                  'body-sm rounded-lg px-6 py-4 text-left text-light hover:text-white',
+                  {
+                    ' bg-brand-dark-blue font-bold leading-[0.89] !text-white': active === idx
+                  }
+                )}>
+                {menu.label}
+              </a>
+            </Link>
           );
         })}
       </div>

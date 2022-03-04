@@ -6,6 +6,7 @@ import NumberInput from './NumberInput';
 import styles from './styles.module.css';
 import { useWalletContext } from 'src/context/wallet';
 import { useAuthenticationContext } from 'src/context/authentication';
+import Input from '../Input';
 
 const licenses = [
   {
@@ -70,13 +71,7 @@ const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
       <div className="caption mt-6 font-normal normal-case text-light md:body-sm md:mt-10">
         {licenses.map((license) => (
           <div className="mb-4 flex" key={license.value}>
-            <input
-              type="checkbox"
-              className={clsx(
-                'bg-red mt-1 h-4 w-4 flex-none cursor-pointer appearance-none rounded-sm border border-brand-light-blue checked:bg-brand-light-blue md:h-5 md:w-5',
-                styles['checkbox-terms']
-              )}
-            />
+            <Input type="checkbox" className="mt-1" />
             <p className="ml-4">{license.content}</p>
           </div>
         ))}

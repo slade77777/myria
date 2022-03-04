@@ -51,7 +51,7 @@ const Page: React.FC<Props> = ({
         open={showFirstTimeVisitModal}
         onClose={handleCloseFirstTimeVisitModal}
       />
-      <div className="relative min-h-screen bg-red-500 text-white">
+      <div className="relative min-h-screen text-white">
         <Header
           className={headerClassName}
           action={action}

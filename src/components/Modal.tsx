@@ -10,7 +10,8 @@ type ModalProps = {
 type ModalContentProps = {
   title?: string | JSX.Element;
   includingHeader?: boolean;
-  headerClass?: string;
+  headerClassName?: string;
+  titleClassName?: string;
 };
 
 type ModalType = React.FC<ModalProps & DialogPrimitive.DialogProps> & {
@@ -32,16 +33,28 @@ type ExtractProps<T> = T extends React.FC<infer P> ? P : never;
 
 const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Content']>>(
   (
-    { title, className, children, includingHeader = true, headerClass = 'px-8 pt-8', ...props },
+    {
+      title,
+      className,
+      children,
+      includingHeader = true,
+      headerClassName,
+      titleClassName,
+      ...props
+    },
     forwardedRef
   ) => {
     return (
       <DialogPrimitive.Content {...props} className={clsx('dialog-content')} ref={forwardedRef}>
-        <div className={clsx('mx-auto my-auto w-full rounded-lg bg-brand-deep-blue', className)}>
+        <div
+          className={clsx(
+            'mx-auto my-auto w-full max-w-[576px] rounded-lg bg-brand-deep-blue',
+            className
+          )}>
           {includingHeader && (
-            <div className={headerClass}>
+            <div className={clsx('px-8 pt-8', headerClassName)}>
               <div className="flex items-center justify-between">
-                <div className="heading-md text-white">{title}</div>
+                <div className={clsx('heading-md text-white', titleClassName)}>{title}</div>
                 <DialogPrimitive.Close asChild>
                   <button className="h-[24px] w-[24px] text-white hover:cursor-pointer">
                     <CloseIcon />

@@ -6,7 +6,7 @@ const ModalPurchase = ({ open, onClose }: { open: boolean; onClose: () => void }
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content
         title="Complete your purchase"
-        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:w-[832px]">
+        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
         <div className=" p-8">
           <div className="mt-10 mb-4 flex justify-between">
             <div>

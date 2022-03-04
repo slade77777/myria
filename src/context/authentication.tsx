@@ -14,7 +14,7 @@ const VerifyModal = ({ open, onClose }: { open: boolean; onClose?: () => void })
       <Modal.Content
         title={<p className="body">Security Verification</p>}
         className="h-[360px] shadow-[0_0_40px_10px_#0000004D] md:w-[342px]"
-        headerClass="px-3 pt-4">
+        headerClassName="!px-3 !pt-4">
         <Verify
           width={310}
           height={188}
@@ -32,7 +32,7 @@ const VerifyModal = ({ open, onClose }: { open: boolean; onClose?: () => void })
 const SignInModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title="Sign in" className="shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
+      <Modal.Content title="Sign in" className="shadow-[0_0_40px_10px_#0000004D]">
         <SignIn />
       </Modal.Content>
     </Modal>
@@ -42,7 +42,7 @@ const SignInModal = ({ open, onClose }: { open: boolean; onClose?: () => void })
 const RegisterModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title="Register" className="shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
+      <Modal.Content title="Register" className="shadow-[0_0_40px_10px_#0000004D]">
         <Register />
       </Modal.Content>
     </Modal>
