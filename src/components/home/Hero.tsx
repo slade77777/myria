@@ -56,15 +56,8 @@ const Hero: React.FC = () => {
   return (
     <div
       id="hero"
-      style={
-        {
-          borderTopWidth: headerHeight,
-          '--minHeight': `${headerHeight + 750}px`
-        } as CSSProperties
-      }
       className={clsx(
-        paddingX,
-        'relative isolate flex min-h-[var(--minHeight)] flex-col justify-end overflow-hidden border-transparent md:justify-center'
+        'relative isolate flex min-h-[615px] flex-col justify-end overflow-hidden border-transparent md:justify-center md:rounded-xl'
       )}>
       <div className="absolute inset-0 z-[-1] hidden md:block">
         <div className="sky-img absolute inset-0">
@@ -129,54 +122,55 @@ const Hero: React.FC = () => {
             <Image src={HeaderBgMobile} alt="" placeholder="blur" layout="fill" objectFit="cover" />
           </div>
         </div>
-        <div className="absolute left-0 bottom-0 h-full w-full">
-          <div className="relative h-full w-full">
-            <Image
-              src={HeaderBgOverlayMobile}
-              alt=""
-              placeholder="blur"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="bottom"
-            />
-          </div>
-        </div>
       </div>
-      <div className="mx-auto w-full max-w-content">
+      <div
+        style={
+          {
+            '--bg': 'linear-gradient(360deg, rgba(5, 14, 21, 0.5) 52.64%, rgba(5, 14, 21, 0) 100%)'
+          } as any
+        }
+        className="mx-auto w-full max-w-content px-6  [background:var(--bg)] md:bg-none md:px-[64px]">
         <div className="hero-text my-[50px] max-w-[607px] text-center md:mt-0 md:text-left">
-          <h1
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            className="heading-lg text-brand-white md:heading-massive">
+          <h1 data-aos="fade-up" data-aos-duration="1000" className="heading-lg text-brand-white">
             <Trans>
-              Connecting the world through{' '}
+              Bringing{' '}
               <span className=" aos-text-slide-right text-brand-gold [--animated-color:#F5B941]">
-                play
+                blockchain gaming
               </span>
+              to the world
             </Trans>
           </h1>
           <h3
             data-aos="fade-up"
             data-aos-duration="2000"
-            className="heading-sm-mobile mt-6 md:heading-sm md:mt-[32px]">
+            className="mt-6 text-[18px] leading-[1.3] md:text-[22px]">
             <span className="aos-text-slide-right text-white ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
-              <Trans>Myria is a blockchain gaming ecosystem powered by the Myria blockchain.</Trans>
+              <Trans>
+                A decentralised Ethereum scaling platform, purpose built for digital assets and
+                gaming.
+              </Trans>
             </span>
           </h3>
-          <a
+          <div
             data-aos="fade-up"
             data-aos-duration="3000"
-            href={socialLinks.discord}
-            target="_blank"
-            className="btn-icon btn-primary mx-auto mt-[38px] inline-flex items-center"
-            rel="noreferrer">
-            <span className="w-[30px]">
-              <DiscordIcon />
-            </span>
-            <span>
-              <Trans>JOIN DISCORD</Trans>
-            </span>
-          </a>
+            className="mt-8 flex justify-center space-x-5 md:justify-start">
+            <a className="btn-lg btn-white">
+              <Trans>Learn more</Trans>
+            </a>
+            <a
+              href={socialLinks.discord}
+              target="_blank"
+              className="btn-icon btn-primary inline-flex items-center"
+              rel="noreferrer">
+              <span className="w-[30px]">
+                <DiscordIcon />
+              </span>
+              <span>
+                <Trans>JOIN DISCORD</Trans>
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
