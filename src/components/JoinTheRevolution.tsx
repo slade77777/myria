@@ -24,7 +24,7 @@ const JoinTheRevolution: React.FC<Props> = ({ textAnimation }) => {
         <h2 data-aos={textAnimation} className="heading-md md:heading-lg md:mt-4">
           <Trans>We’re hiring, join the future of gaming</Trans>
         </h2>
-        <p data-aos={textAnimation} className="body-sm mt-4 max-w-[616px] text-light md:mt-6">
+        <p data-aos={textAnimation} className="body mt-4 max-w-[616px] text-light md:mt-6">
           <Trans>
             If you want to make a real impact in gaming and blockchain, join us at Myria. We’re
             scouring the world for the best and brightest to join our rapidly growing company.

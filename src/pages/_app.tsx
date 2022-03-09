@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app';
 import { useGA } from 'src/lib/ga';
 import LanguageProvider, { useLanguage } from 'src/context/LanguageContext';
 import { t } from '@lingui/macro';
+import NotiBanner from 'src/components/NotiBanner';
 
 const WithLanguageStyle: React.FC<any> = ({ children }) => {
   const { language } = useLanguage();
@@ -42,6 +43,7 @@ function App({ Component, pageProps }: AppProps) {
         }}
       />
       <WithLanguageStyle>
+        <NotiBanner />
         <Component {...pageProps} />
       </WithLanguageStyle>
     </LanguageProvider>

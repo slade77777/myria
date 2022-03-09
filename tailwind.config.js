@@ -99,6 +99,7 @@ module.exports = {
     }
   },
   plugins: [
+    require('@tailwindcss/line-clamp'),
     plugin(function ({ addComponents, theme, addVariant }) {
       addVariant('open', '&[data-state~="open"]');
       addVariant('parent-open', '[data-state~="open"] &');

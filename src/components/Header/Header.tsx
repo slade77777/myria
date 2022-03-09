@@ -9,17 +9,20 @@ type NavItem = {
   text: ReactNode;
   url?: string;
   target?: '_blank';
-  children?: NavItem[];
+  children?: Omit<NavItem, 'position'>[];
   inactive?: boolean;
+  position: 'left' | 'right';
 };
 
 export const links: NavItem[] = [
   {
     text: <Trans>Home</Trans>,
-    url: '/'
+    url: '/',
+    position: 'left'
   },
   {
     text: <Trans>About</Trans>,
+    position: 'right',
     children: [
       {
         text: <Trans>Our vision</Trans>,
@@ -41,23 +44,28 @@ export const links: NavItem[] = [
   },
   {
     text: <Trans>Ecosystem</Trans>,
-    url: '/ecosystem'
+    url: '/ecosystem',
+    position: 'left'
   },
   {
     text: <Trans>Games</Trans>,
-    url: '/games'
+    url: '/games',
+    position: 'left'
   },
   {
     text: <Trans>Nodes</Trans>,
-    url: '/nodes'
+    url: '/nodes',
+    position: 'left'
   },
   {
     text: <Trans>Store</Trans>,
     url: '/store',
-    inactive: true
+    inactive: true,
+    position: 'left'
   },
   {
     text: <Trans>Community</Trans>,
+    position: 'right',
     children: [
       {
         text: 'Discord',
@@ -90,12 +98,12 @@ export type Action = 'login' | 'join-discord';
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
   action = 'join-discord',
   className,
-  stickyHeader=true
+  stickyHeader = true
 }) => {
   return (
     <div className={clsx('absolute top-0 z-10 w-full', className)}>
       <div className="hidden lg:block">
-        <DesktopHeader action={action} stickyHeader={stickyHeader}/>
+        <DesktopHeader action={action} stickyHeader={stickyHeader} />
       </div>
       <div className="lg:hidden">
         <MobileHeader action={action} />
