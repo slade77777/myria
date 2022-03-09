@@ -7,7 +7,7 @@ import Program from 'src/components/Program';
 import Subscribe from 'src/components/Subscribe';
 import { headerHeight } from '../components/Header';
 import Page from '../components/Page';
-import { paddingX } from '../utils';
+import { negativeMarginXSm, paddingX } from '../utils';
 
 const Games: React.FC = () => {
   return (
@@ -20,14 +20,18 @@ const Games: React.FC = () => {
           }}
           className={paddingX}>
           <div className="mx-auto max-w-content">
-            <section className="relative mt-6 flex h-[288px] items-center rounded-[5px] bg-[url('/images/games/header-bg.png')] bg-cover bg-left px-[56px]">
-              <p className="max-w-[420px] text-[40px] font-medium leading-[1.15]">
+            <section
+              className={clsx(
+                negativeMarginXSm,
+                "mt-5 flex h-[479px] bg-[url('/images/games/header-bg-mobile.png')] bg-cover bg-left px-6 pt-[85px] text-center md:mx-0 md:mt-6 md:h-[288px] md:items-center md:rounded-[5px]  md:bg-[url('/images/games/header-bg.png')] md:px-[56px] md:pt-0 md:text-left"
+              )}>
+              <p className="heading-lg mx-auto max-w-[420px] md:mx-0 md:font-medium">
                 <Trans>
                   <span className="text-brand-gold">Play</span> and earn <br /> rewards and NFTs
                 </Trans>
               </p>
             </section>
-            <section className="mt-[88px]">
+            <section className="-mt-7 md:mt-[88px]">
               <GameList />
             </section>
             <section className={'mt-[116px]'}>

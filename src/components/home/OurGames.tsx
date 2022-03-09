@@ -1,7 +1,9 @@
 import { Trans } from '@lingui/macro';
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { negativeMarginXSm } from 'src/utils';
 
 const games = [
   {
@@ -52,13 +54,17 @@ const OurGames: React.FC = () => {
     <div>
       <div className="flex items-center justify-between">
         <h2 className="text-[24px] font-medium leading-[1.25] md:text-[30px]">Our Games</h2>
-        <Link href="/">
+        <Link href="/games">
           <a className="link">
             <Trans>Discover more</Trans>
           </a>
         </Link>
       </div>
-      <div className="-mx-6 mt-8 flex space-x-6 overflow-auto px-6 md:mx-0 md:px-0">
+      <div
+        className={clsx(
+          negativeMarginXSm,
+          'mt-8 flex space-x-6 overflow-auto px-6 md:mx-0 md:px-0'
+        )}>
         {games.map((item, idx) => (
           <div key={idx} className="min-w-[233px] flex-1">
             <Item item={item} />
