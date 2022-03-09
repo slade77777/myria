@@ -163,10 +163,12 @@ const GameList: React.FC = () => {
       <div
         className={clsx(
           negativeMarginXSm,
-          'mt-8 grid grid-flow-col gap-x-6 gap-y-8 overflow-auto px-6 md:mx-0 md:grid-flow-row md:grid-cols-4 md:px-0'
+          'mt-8 grid snap-x grid-flow-col gap-x-6 gap-y-8 overflow-auto px-6 md:mx-0 md:grid-flow-row md:grid-cols-4 md:px-0'
         )}>
         {games.map((item, idx) => (
-          <GameItem key={idx} item={item} />
+          <div key={idx} className="snap-start">
+            <GameItem item={item} />
+          </div>
         ))}
       </div>
     </div>
