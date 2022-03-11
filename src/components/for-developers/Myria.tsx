@@ -63,7 +63,7 @@ const Myria: React.FC = () => {
           the blockchain potential of your business
         </p>
       </div>
-      <div className="mt-[110px] grid grid-cols-2 gap-x-[105px] gap-y-[100px]">
+      <div className="mt-[110px] grid gap-x-[105px] gap-y-[100px] md:grid-cols-2">
         {data.map((item, idx) => (
           <div key={idx} className="col-span-1">
             <p className="text-[20px] leading-[1.25] text-brand-gold">{item.subTitle}</p>
