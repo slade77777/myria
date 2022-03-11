@@ -1,10 +1,13 @@
 import { t, Trans } from '@lingui/macro';
+import clsx from 'clsx';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { socialLinks } from 'src/configs';
 import DiscordIcon from './icons/DiscordIcon';
 
 const NotiBanner: React.FC = () => {
+  const router = useRouter();
   return (
     <div className="hidden grid-cols-[1fr_auto_1fr] bg-brand-light-blue md:grid">
       <div className="flex">
@@ -15,11 +18,17 @@ const NotiBanner: React.FC = () => {
           },
           {
             text: t`FOR DEVELOPERS`,
-            href: '/dev'
+            href: '/for-developers'
           }
         ].map((item) => (
           <Link key={item.href} href={item.href}>
-            <a className="flex items-center px-6 py-4 text-[14px] font-bold leading-[17px] hover:bg-[#003552] hover:text-white">
+            <a
+              className={clsx(
+                'flex items-center px-6 py-4 text-[14px] font-bold leading-[17px] hover:bg-[#003552] hover:text-white',
+                {
+                  'bg-[#003552] text-white': router.pathname === item.href
+                }
+              )}>
               {item.text}
             </a>
           </Link>

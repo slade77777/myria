@@ -1,24 +1,22 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
 import LanguageSwitcher from '../LanguageSwitcher';
-import { links, headerHeight, Action } from './Header';
+import { links, headerHeight, Action, NavItem } from './Header';
 
 type Props = {
   action: Action;
   className?: string;
   stickyHeader: boolean;
+  links?: NavItem[];
 };
 
-const HeaderLinks: React.FC<{ links: typeof links; className?: string }> = ({
-  links,
-  className
-}) => {
+const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links, className }) => {
   return (
     <ul
       className={clsx(
@@ -81,10 +79,37 @@ const HeaderLinks: React.FC<{ links: typeof links; className?: string }> = ({
   );
 };
 
-const DesktopHeader: React.FC<Props> = ({ stickyHeader = true }) => {
+const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
 
+  const actionElements = useMemo(() => {
+    switch (action) {
+      case 'start-building':
+        return (
+          <a
+            className="btn-sm btn-secondary"
+            href={socialLinks.discord}
+            target="_blank"
+            rel="noreferrer">
+            <Trans>START BUILDING</Trans>
+          </a>
+        );
+
+      default:
+        return (
+          <a
+            className="btn-sm btn-secondary"
+            href={socialLinks.discord}
+            target="_blank"
+            rel="noreferrer">
+            <Trans>JOIN DISCORD</Trans>
+          </a>
+        );
+    }
+  }, [action]);
+
+  const filterdLinks = links.filter((link) => !link.action || link.action == action);
   return (
     <header>
       <nav
@@ -93,7 +118,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true }) => {
         }}
         ref={headerRef}
         className="grid w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
-        <HeaderLinks links={links.filter((link) => link.position === 'left')} />
+        <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
 
         <div className="flex items-center">
           <Link href="/">
@@ -102,18 +127,12 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true }) => {
             </a>
           </Link>
         </div>
-        <div className="flex flex-shrink-0 items-center justify-end">
-          <HeaderLinks links={links.filter((link) => link.position == 'right')} />
-          <div className="mx-9">
+        <div className="flex flex-shrink-0 items-center justify-end space-x-9">
+          <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
+          <div>
             <LanguageSwitcher />
           </div>
-          <a
-            className="btn-sm btn-secondary"
-            href={socialLinks.discord}
-            target="_blank"
-            rel="noreferrer">
-            <Trans>JOIN DISCORD</Trans>
-          </a>
+          {actionElements}
         </div>
       </nav>
     </header>

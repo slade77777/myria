@@ -135,7 +135,7 @@ const Hero: React.FC = () => {
             <Trans>
               Bringing{' '}
               <span className=" aos-text-slide-right text-brand-gold [--animated-color:#F5B941]">
-                blockchain gaming
+                blockchain gaming{' '}
               </span>
               to the world
             </Trans>

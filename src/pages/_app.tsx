@@ -43,7 +43,9 @@ function App({ Component, pageProps }: AppProps) {
         }}
       />
       <WithLanguageStyle>
-        <NotiBanner />
+        <div className="hidden lg:block">
+          <NotiBanner />
+        </div>
         <Component {...pageProps} />
       </WithLanguageStyle>
     </LanguageProvider>
