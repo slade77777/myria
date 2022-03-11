@@ -23,28 +23,7 @@ export const links: NavItem[] = [
     url: '/',
     position: 'left'
   },
-  {
-    text: <Trans>About</Trans>,
-    position: 'right',
-    children: [
-      {
-        text: <Trans>Our vision</Trans>,
-        url: '/about-us'
-      },
-      {
-        text: <Trans>Our team</Trans>,
-        url: '/about-us#teams'
-      },
-      {
-        text: <Trans>MYRIA STUDIOS</Trans>,
-        url: '/studios'
-      },
-      {
-        text: <Trans>Careers</Trans>,
-        url: '/careers'
-      }
-    ]
-  },
+
   {
     text: <Trans>Ecosystem</Trans>,
     url: '/ecosystem',
@@ -81,6 +60,28 @@ export const links: NavItem[] = [
     url: '/developer-program',
     position: 'left',
     action: 'start-building'
+  },
+  {
+    text: <Trans>About</Trans>,
+    position: 'right',
+    children: [
+      {
+        text: <Trans>Our vision</Trans>,
+        url: '/about-us'
+      },
+      {
+        text: <Trans>Our team</Trans>,
+        url: '/about-us#teams'
+      },
+      {
+        text: <Trans>MYRIA STUDIOS</Trans>,
+        url: '/studios'
+      },
+      {
+        text: <Trans>Careers</Trans>,
+        url: '/careers'
+      }
+    ]
   },
   {
     text: <Trans>Community</Trans>,

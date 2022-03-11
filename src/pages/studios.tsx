@@ -368,7 +368,7 @@ const Index = () => {
                 className="absolute right-4 bottom-4 z-[-1]"
               />
             </div>
-            <div className="relative isolate rounded-xl bg-[url('/images/studios/character-panel.png')] bg-cover bg-center p-8 pb-[230px] md:pb-[86px]">
+            <div className="relative isolate rounded-xl bg-[url('/images/studios/character-panel.png')] bg-cover bg-right p-8 pb-[230px] md:pb-[86px]">
               <p className="max-w-[468px] text-[24px] font-bold leading-[1.25] md:text-[28px]">
                 <Trans> Join Myria in building the next blockchain revolution </Trans>
               </p>
