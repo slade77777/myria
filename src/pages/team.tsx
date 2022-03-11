@@ -203,7 +203,7 @@ const data: Person[] = [
 
 const Team: React.FC = () => {
   return (
-    <Page>
+    <Page action="start-building">
       <div className="relative isolate">
         <div
           style={{

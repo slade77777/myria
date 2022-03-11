@@ -5,13 +5,16 @@ import { socialLinks } from 'src/configs';
 import DesktopHeader from './DesktopHeader';
 import MobileHeader from './MobileHeader';
 
-type NavItem = {
+export type Action = 'login' | 'join-discord' | 'start-building';
+
+export type NavItem = {
   text: ReactNode;
   url?: string;
   target?: '_blank';
   children?: Omit<NavItem, 'position'>[];
   inactive?: boolean;
   position: 'left' | 'right';
+  action?: Action;
 };
 
 export const links: NavItem[] = [
@@ -33,8 +36,8 @@ export const links: NavItem[] = [
         url: '/about-us#teams'
       },
       {
-        text: <Trans>Morphing NFTs</Trans>,
-        url: '/interoperability'
+        text: <Trans>MYRIA STUDIOS</Trans>,
+        url: '/studios'
       },
       {
         text: <Trans>Careers</Trans>,
@@ -45,23 +48,39 @@ export const links: NavItem[] = [
   {
     text: <Trans>Ecosystem</Trans>,
     url: '/ecosystem',
-    position: 'left'
+    position: 'left',
+    action: 'join-discord'
   },
   {
     text: <Trans>Games</Trans>,
     url: '/games',
-    position: 'left'
+    position: 'left',
+    action: 'join-discord'
   },
   {
     text: <Trans>Nodes</Trans>,
     url: '/nodes',
-    position: 'left'
+    position: 'left',
+    action: 'join-discord'
   },
   {
     text: <Trans>Store</Trans>,
     url: '/store',
     inactive: true,
-    position: 'left'
+    position: 'left',
+    action: 'join-discord'
+  },
+  {
+    text: <Trans>OUR SOLUTION</Trans>,
+    url: '/solution',
+    position: 'left',
+    action: 'start-building'
+  },
+  {
+    text: <Trans>DEVELOPER PROGRAM</Trans>,
+    url: '/developer-program',
+    position: 'left',
+    action: 'start-building'
   },
   {
     text: <Trans>Community</Trans>,
@@ -92,8 +111,6 @@ export const links: NavItem[] = [
 ];
 
 export const headerHeight = 83;
-
-export type Action = 'login' | 'join-discord';
 
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
   action = 'join-discord',
