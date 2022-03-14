@@ -88,7 +88,7 @@ const links = [
       [
         {
           label: <Trans>About</Trans>,
-          link: '/about-us'
+          link: '/ecosystem'
         },
         {
           label: <Trans>Whitepaper</Trans>,
@@ -98,7 +98,7 @@ const links = [
         },
         {
           label: <Trans>Team</Trans>,
-          link: '/about-us#teams'
+          link: '/team'
         }
       ],
       [
@@ -153,8 +153,8 @@ const Footer: React.FC = () => {
                 <div key={idx} className={clsx('grid gap-y-4')}>
                   {block.map((item: any, idx) =>
                     !item?.inactive ? (
-                      <div className="flex items-center space-x-[14px]">
-                        <Link href={item.link} key={idx}>
+                      <div key={idx} className="flex items-center space-x-[14px]">
+                        <Link href={item.link}>
                           <a
                             target={item?.external ? '_blank' : '_self'}
                             key={idx}
