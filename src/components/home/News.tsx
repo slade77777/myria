@@ -35,9 +35,11 @@ const News: React.FC = () => {
           </a>
         </Link>
       </div>
-      <div className="mt-8 grid gap-8 md:grid-cols-3">
+      <div className="mt-8 grid grid-flow-col gap-6 overflow-x-auto md:grid-flow-row md:grid-cols-3 md:gap-8">
         {data.map((item, idx) => (
-          <Item key={idx} item={item} />
+          <div key={idx} className="min-w-[330px] md:min-w-0">
+            <Item key={idx} item={item} />
+          </div>
         ))}
       </div>
     </div>

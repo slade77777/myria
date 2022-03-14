@@ -320,17 +320,15 @@ const data = [
 const Ethereum: React.FC = () => {
   return (
     <div className="text-center">
-      <h2 className="text-[40px] font-extrabold leading-[1.15]">
+      <h2 className="text-[32px] font-extrabold leading-[1.15] md:text-[40px]">
         Scaling blockchain gaming on Ethereum
       </h2>
-      <div className="mt-12 flex space-x-8">
+      <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-4">
         {data.map((item, index) => (
           <div key={index} className="flex flex-1 flex-col items-center px-4 pb-2">
             <span className="w-[88px]">{item.icon}</span>
-            <p className="mt-10 text-[20px] font-bold leading-[1.25]">ETH Compatability</p>
-            <p className="mt-4 text-[16px] leading-[1.5] text-light">
-              Empower mainstream adoption to Ethereum using Myria’s scaling solution
-            </p>
+            <p className="mt-4 text-[20px] font-bold leading-[1.25] md:mt-10">{item.title}</p>
+            <p className="mt-4 text-[16px] leading-[1.5] text-light">{item.description}</p>
           </div>
         ))}
       </div>

@@ -14,61 +14,77 @@ const ForDevelopers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            'relative isolate flex min-h-[782px] flex-col items-center pt-[150px] pb-[87px]'
+            "relative isolate flex min-h-[782px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile.png')] bg-cover bg-top pt-[132px] pb-[87px] md:bg-none md:pt-[150px]"
           )}>
-          <div
-            style={{
-              background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)'
-            }}
-            className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
-          <div className="absolute top-0 left-0 z-[-1] w-full">
-            <Image
-              src="/images/for-developers/header-bg.png"
-              alt=""
-              width={4320}
-              height={2346}
-              layout="responsive"
-            />
+          <div className="hidden md:block">
+            <div
+              style={{
+                background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)'
+              }}
+              className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
+            <div className="absolute top-0 left-0 z-[-1] w-full">
+              <Image
+                src="/images/for-developers/header-bg.png"
+                alt=""
+                width={4320}
+                height={2346}
+                layout="responsive"
+              />
+            </div>
           </div>
           <div className="mx-auto max-w-[668px] text-center">
             <h1 className="text-[40px] font-extrabold leading-[1.15]">
               Enabling digital asset scalabiltiy on Ethereum
             </h1>
-            <p className="mt-6 text-[20px] leading-[1.5]">
+            <p className="mt-6 text-[18px] leading-[1.5] md:text-[20px]">
               Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and
               blockchain gaming.
             </p>
             <button className="btn-lg btn-primary mt-8">START BUILDING</button>
           </div>
-          <div className="mx-auto mt-[112px] flex max-w-[1048px] items-center space-x-[93px] rounded-xl bg-[url('/images/for-developers/panel.png')] p-8 shadow-dark-panel">
+          <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel.png')]">
             <div>
-              <h3 className="text-[18px] font-bold leading-[1.25]">
+              <h3 className="text-[24px] font-bold leading-[1.25] md:text-[18px]">
                 Myria launches $200M game developer grant program
               </h3>
-              <p className="mt-6 max-w-[488px] text-[18px] leading-[1.5] text-light">
+              <p className="mt-4 max-w-[488px] text-[16px] leading-[1.5] text-light md:mt-6 md:text-[18px]">
                 We are funding the builders and creators to power the future of blockchain gaming.
                 Apply for grant consideration.
               </p>
             </div>
-            <button className="btn-lg btn-primary">Apply now</button>
+            <button className="btn-lg btn-primary mt-8 md:mt-0">Apply now</button>
           </div>
         </section>
-        <section className={clsx(paddingX, 'mt-10')}>
+        <section className={clsx(paddingX, 'mt-14 md:mt-10')}>
           <div className="mx-auto max-w-content">
             <Ethereum />
           </div>
         </section>
         <div
-          style={{
-            backgroundImage:
-              'linear-gradient(180deg, #050E15 -1.93%, #041825 15.28%, #041723 80.47%, #050E15 98.21%)',
-            backgroundSize: '100% 1911px'
-          }}
-          className={clsx(paddingX, 'mt-[170px] mb-[152px] bg-no-repeat')}>
-          <section className="mx-auto max-w-[966px]">
+          style={
+            {
+              '--bg':
+                'linear-gradient(180deg, #050E15 -1.93%, #041825 15.28%, #041723 80.47%, #050E15 98.21%)',
+              backgroundSize: '100% 1911px'
+            } as any
+          }
+          className={clsx(
+            'mt-[95px] mb-[120px] bg-no-repeat md:mt-[170px] md:mb-[152px] md:[background-image:var(--bg)]'
+          )}>
+          <section
+            style={
+              {
+                '--bg':
+                  'linear-gradient(179.98deg, #050E15 0.01%, #041825 3.82%, #041723 93.84%, #050E15 99.99%)'
+              } as any
+            }
+            className={clsx(
+              paddingX,
+              'mx-auto max-w-[966px] bg-bottom bg-no-repeat [background-size:100%_calc(100%-238px)] [background-image:var(--bg)] md:bg-none'
+            )}>
             <Myria />
           </section>
-          <section className="mx-auto mt-[163px]">
+          <section className={clsx(paddingX, 'mx-auto mt-[45px] md:mt-[163px]')}>
             <BuildYourBlockchain />
           </section>
         </div>

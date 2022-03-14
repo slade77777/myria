@@ -1,4 +1,7 @@
+import clsx from 'clsx';
 import React from 'react';
+import Collapse from '../Collapse';
+import ChevronDownIcon from '../icons/ChevronDownIcon';
 
 const data = [
   {
@@ -55,20 +58,54 @@ const Myria: React.FC = () => {
   return (
     <div>
       <div className="mx-auto max-w-[713px] text-center">
-        <h2 className="text-[40px] font-bold leading-[1.25]">
+        <h2 className="text-[32px] font-bold leading-[1.25] md:text-[40px]">
           Gaming is evolving. Build with Myria.
         </h2>
-        <p className="mt-10 text-[20px] leading-[1.5] text-light">
+        <p className="mt-6 text-[18px] leading-[1.5] text-light md:mt-10 md:text-[20px]">
           Myria provides an end-to-end solution for developers and publishers, and help you unlock
           the blockchain potential of your business
         </p>
       </div>
-      <div className="mt-[110px] grid grid-cols-2 gap-x-[105px] gap-y-[100px]">
+      <div className="mt-[26px] grid gap-4 pt-[22px] pb-[19px] md:mt-[110px] md:grid-cols-2 md:gap-x-[105px] md:gap-y-[100px] md:p-0">
         {data.map((item, idx) => (
-          <div key={idx} className="col-span-1">
-            <p className="text-[20px] leading-[1.25] text-brand-gold">{item.subTitle}</p>
-            <p className="mt-4 text-[28px] font-bold leading-[1.25] ">{item.title}</p>
-            <p className="mt-3 text-[16px] leading-[1.5] text-light">{item.description}</p>
+          <div key={idx}>
+            <div className="hidden md:block">
+              <div>
+                <p className="text-[20px] leading-[1.25] text-brand-gold">{item.subTitle}</p>
+                <label className="mt-2 flex items-start justify-between text-[18px] font-bold leading-[1.25] md:mt-4 md:text-[28px] ">
+                  {item.title}
+                </label>
+                <p className=" pt-4 leading-[1.5] text-light md:pt-3 md:text-[16px]">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+            <div className="md:hidden">
+              <Collapse>
+                <div>
+                  <p className="text-[14px] leading-[1.25] text-brand-gold md:text-[20px]">
+                    {item.subTitle}
+                  </p>
+                  <label className="mt-2 flex items-start justify-between text-[18px] font-bold leading-[1.25] md:mt-4 md:text-[28px] ">
+                    {item.title}
+                    <Collapse.Trigger asChild>
+                      <button
+                        className={clsx(
+                          'ml-4 w-6 flex-shrink-0 text-white transition duration-300 open:rotate-180 md:hidden'
+                        )}>
+                        <ChevronDownIcon />
+                      </button>
+                    </Collapse.Trigger>
+                  </label>
+                  <Collapse.Content>
+                    <p className=" pt-4 text-[14px] leading-[1.5] text-light md:pt-3 md:text-[16px]">
+                      {item.description}
+                    </p>
+                  </Collapse.Content>
+                </div>
+                <div className="mt-4 border-t border-white opacity-20" />
+              </Collapse>
+            </div>
           </div>
         ))}
       </div>
