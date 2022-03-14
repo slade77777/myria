@@ -80,11 +80,11 @@ const ForDevelopers: React.FC = () => {
             }
             className={clsx(
               paddingX,
-              'mx-auto max-w-[966px]  bg-cover [background-image:var(--bg)] md:bg-none'
+              'mx-auto max-w-[966px] bg-bottom bg-no-repeat [background-size:100%_calc(100%-238px)] [background-image:var(--bg)] md:bg-none'
             )}>
             <Myria />
           </section>
-          <section className={clsx(paddingX, 'mx-auto mt-[64px] md:mt-[163px]')}>
+          <section className={clsx(paddingX, 'mx-auto mt-[45px] md:mt-[163px]')}>
             <BuildYourBlockchain />
           </section>
         </div>
