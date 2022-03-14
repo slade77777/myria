@@ -67,11 +67,11 @@ export const links: NavItem[] = [
     children: [
       {
         text: <Trans>Our vision</Trans>,
-        url: '/about-us'
+        url: '/ecosystem'
       },
       {
         text: <Trans>Our team</Trans>,
-        url: '/about-us#teams'
+        url: '/team'
       },
       {
         text: <Trans>MYRIA STUDIOS</Trans>,

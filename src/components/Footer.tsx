@@ -88,7 +88,7 @@ const links = [
       [
         {
           label: <Trans>About</Trans>,
-          link: '/about-us'
+          link: '/ecosystem'
         },
         {
           label: <Trans>Whitepaper</Trans>,
@@ -98,7 +98,7 @@ const links = [
         },
         {
           label: <Trans>Team</Trans>,
-          link: '/about-us#teams'
+          link: '/team'
         }
       ],
       [
