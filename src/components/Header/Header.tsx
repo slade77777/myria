@@ -21,7 +21,8 @@ export const links: NavItem[] = [
   {
     text: <Trans>Home</Trans>,
     url: '/',
-    position: 'left'
+    position: 'left',
+    action: 'join-discord'
   },
 
   {
@@ -50,17 +51,23 @@ export const links: NavItem[] = [
     action: 'join-discord'
   },
   {
-    text: <Trans>OUR SOLUTION</Trans>,
-    url: '/solution',
+    text: <Trans>Home</Trans>,
+    url: '/for-developers',
     position: 'left',
     action: 'start-building'
   },
   {
-    text: <Trans>DEVELOPER PROGRAM</Trans>,
-    url: '/developer-program',
+    text: <Trans>OUR SOLUTION</Trans>,
+    url: '/for-developers/solution',
     position: 'left',
     action: 'start-building'
   },
+  // {
+  //   text: <Trans>DEVELOPER PROGRAM</Trans>,
+  //   url: '/developer-program',
+  //   position: 'left',
+  //   action: 'start-building'
+  // },
   {
     text: <Trans>About</Trans>,
     position: 'right',

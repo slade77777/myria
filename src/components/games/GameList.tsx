@@ -17,11 +17,11 @@ const filters = [
   },
   {
     title: 'Genre',
-    options: ['Strategy', 'Simulation', 'Casual', 'Survival', 'Action', 'Racing']
+    options: ['Simulation', 'Casual', 'Survival', 'Action', 'Racing', 'Shooter']
   },
   {
-    title: 'Another filter',
-    options: ['Myria Studios', 'Leapblock Studio', 'Playware Games']
+    title: 'Publisher',
+    options: ['Myria Studios', 'Leapblock Studios', 'Playware Games']
   }
 ] as const;
 
@@ -38,65 +38,51 @@ const games: {
   title: string;
   feature: Filter[0]['options'][number];
   genre: Filter[1]['options'][number][];
-  studio: Filter[2]['options'][number];
+  publisher: Filter[2]['options'][number][];
 }[] = [
-  {
-    image: '/images/our-games/aer.png',
-    title: 'AER Memories of Old',
-    feature: 'Multi Player',
-    genre: ['Survival'],
-    studio: 'Myria Studios'
-  },
-  {
-    image: '/images/our-games/jars.png',
-    title: 'JARS',
-    feature: 'Multi Player',
-    genre: ['Survival'],
-    studio: 'Myria Studios'
-  },
-  {
-    image: '/images/our-games/valhalla.png',
-    title: 'Assasin’s Creed Valhalla',
-    feature: 'Multi Player',
-    genre: ['Survival'],
-    studio: 'Myria Studios'
-  },
-  {
-    image: '/images/our-games/battlefront.png',
-    title: 'STAR WARS Battlefront I...',
-    feature: 'Multi Player',
-    genre: ['Survival'],
-    studio: 'Myria Studios'
-  },
-  {
-    image: '/images/our-games/pillars.png',
-    title: 'Ken Follett’s The Pillars of...',
-    feature: 'Multi Player',
-    genre: ['Survival'],
-    studio: 'Myria Studios'
-  },
-  {
-    image: '/images/our-games/aer.png',
-    title: 'AER Memories of Old',
-    feature: 'Multi Player',
-    genre: ['Survival'],
-    studio: 'Myria Studios'
-  },
-  {
-    image: '/images/our-games/jars.png',
-    title: 'JARS',
-    feature: 'Multi Player',
-    genre: ['Survival'],
-    studio: 'Myria Studios'
-  },
-  {
-    image: '/images/our-games/valhalla.png',
-    title: 'Assasin’s Creed Valhalla',
-    feature: 'Single Player',
-    genre: ['Survival'],
-    studio: 'Myria Studios'
-  }
-];
+    {
+      image: '/images/our-games/aer.png',
+      title: 'Metarush',
+      feature: 'Multi Player',
+      genre: ['Survival', 'Racing'],
+      publisher: ['Myria Studios']
+    },
+    {
+      image: '/images/our-games/jars.png',
+      title: 'Metakart',
+      feature: 'Multi Player',
+      genre: ['Racing', 'Casual'],
+      publisher: ['Myria Studios']
+    },
+    {
+      image: '/images/our-games/valhalla.png',
+      title: 'Block Royale ',
+      feature: 'Multi Player',
+      genre: ['Survival', 'Action', 'Shooter'],
+      publisher: ['Myria Studios']
+    },
+    {
+      image: '/images/our-games/battlefront.png',
+      title: 'Starstrike Legends',
+      feature: 'Multi Player',
+      genre: ['Action', 'Shooter'],
+      publisher: ['Myria Studios']
+    },
+    {
+      image: '/images/our-games/pillars.png',
+      title: 'Moonville Farm',
+      feature: 'Single Player',
+      genre: ['Casual', 'Simulation'],
+      publisher: ['Leapblock Studios']
+    },
+    {
+      image: '/images/our-games/aer.png',
+      title: 'Hot Slice Tycoon',
+      feature: 'Single Player',
+      genre: ['Casual', 'Simulation'],
+      publisher: ['Playware Games']
+    }
+  ];
 
 const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
   return (
@@ -105,7 +91,7 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
         <Image src={item.image} alt="" layout="fill" objectFit="cover" />
       </div>
       <p className="mt-4 text-[14px] font-bold uppercase leading-[1.5] text-brand-light-blue">
-        {item.studio}
+        {item.publisher}
       </p>
       <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[16px] font-medium leading-[1.5] md:text-[18px]">
         {item.title}
@@ -122,6 +108,7 @@ const Filter: React.FC<{
     const newFilterOption = filter[filterKey].includes(value)
       ? filter[filterKey].filter((v) => v !== value)
       : [...filter[filterKey], value];
+
     setFilter({
       ...filter,
       [filterKey]: newFilterOption
@@ -213,16 +200,16 @@ const Filter: React.FC<{
 
 const GameList: React.FC = () => {
   const [filter, setFilter] = useState<FilterMap>({
-    Features: [...filters[0].options],
-    Genre: [...filters[1].options],
-    'Another filter': [...filters[2].options]
+    Features: [],
+    Genre: [],
+    'Publisher': []
   });
 
   const filteredGames = games.filter((game) => {
     return (
       (filter['Features'].length == 0 || filter['Features'].includes(game.feature)) &&
-      (filter['Genre'].length == 0 || filter['Genre'].includes(game.genre[0])) &&
-      (filter['Another filter'].length == 0 || filter['Another filter'].includes(game.studio))
+      (filter['Genre'].length == 0 || filter['Genre'].includes(game.genre[0]) || filter['Genre'].includes(game.genre[1])) &&
+      (filter['Publisher'].length == 0 || filter['Publisher'].includes(game.publisher[0]) || filter['Publisher'].includes(game.publisher[1]) || filter['Publisher'].includes(game.publisher[2]))
     );
   });
 
