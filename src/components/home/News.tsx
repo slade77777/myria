@@ -6,17 +6,17 @@ import { Trans } from '@lingui/macro';
 
 const Item: React.FC<{ item: TItem }> = ({ item }) => {
   return (
-    <div className="flex flex-col space-y-4">
+    <a href={item.link} target="_blank" rel="noreferrer" className="flex flex-col space-y-4">
       <img
         src={item.thumbnail}
         alt=""
         className="flex h-[228px] w-full rounded-[10px] object-cover"
       />
-      <p className="text-[18px] leading-[1.5] line-clamp-2">{item.description}</p>
-      <a href={item.link} target="_blank" className="link" rel="noreferrer">
+      <p className="text-[18px] font-medium leading-[1.5] line-clamp-2">{item.title}</p>
+      <span className="link">
         <Trans>Read more</Trans>
-      </a>
-    </div>
+      </span>
+    </a>
   );
 };
 
@@ -35,7 +35,7 @@ const News: React.FC = () => {
           </a>
         </Link>
       </div>
-      <div className="mt-8 grid grid-flow-col gap-6 overflow-x-auto md:grid-flow-row md:grid-cols-3 md:gap-8">
+      <div className="mt-8 grid grid-flow-col gap-6 overflow-x-auto overflow-y-hidden md:grid-flow-row md:grid-cols-3 md:gap-8 md:overflow-visible">
         {data.map((item, idx) => (
           <div key={idx} className="min-w-[330px] md:min-w-0">
             <Item key={idx} item={item} />

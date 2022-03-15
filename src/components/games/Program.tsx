@@ -17,7 +17,7 @@ const Program: React.FC = () => {
           <Trans>BUY A NODE</Trans>
         </button>
         <img
-          src="/images/program/computer.png"
+          src="/images/program/computer_op.png"
           alt=""
           width="268"
           height="145"
