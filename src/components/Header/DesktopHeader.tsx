@@ -8,7 +8,8 @@ import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
 import LanguageSwitcher from '../LanguageSwitcher';
-import { links, headerHeight, Action, NavItem } from './Header';
+import NotiBanner from '../NotiBanner';
+import { links, headerHeight, Action, NavItem, navHeight } from './Header';
 
 type Props = {
   action: Action;
@@ -118,12 +119,18 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
 
   const filterdLinks = links.filter((link) => !link.action || link.action == action);
   return (
-    <header>
+    <header
+
+      ref={headerRef}
+      className="w-full"
+    >
+      <div className="hidden lg:block text-black">
+        <NotiBanner />
+      </div>
       <nav
         style={{
-          height: headerHeight
+          height: navHeight
         }}
-        ref={headerRef}
         className="grid w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
         <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
 

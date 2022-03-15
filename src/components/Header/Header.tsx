@@ -118,7 +118,9 @@ export const links: NavItem[] = [
   }
 ];
 
-export const headerHeight = 83;
+export const navHeight = 83;
+export const bannerHeight = 50;
+export const headerHeight = navHeight + bannerHeight;
 
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
   action = 'join-discord',

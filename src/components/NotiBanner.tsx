@@ -8,7 +8,6 @@ import DiscordIcon from './icons/DiscordIcon';
 
 const NotiBanner: React.FC = () => {
   const router = useRouter();
-  console.log(router.pathname);
   
   return (
     <div className="hidden grid-cols-[1fr_auto_1fr] bg-brand-light-blue md:grid">
