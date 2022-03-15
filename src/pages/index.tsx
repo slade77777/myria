@@ -11,7 +11,7 @@ import 'aos/dist/aos.css';
 import { Trans } from '@lingui/macro';
 import Hero from 'src/components/home/Hero';
 import OurGames from 'src/components/home/OurGames';
-import Program from 'src/components/home/Program';
+import Program from 'src/components/Program';
 import News from 'src/components/home/News';
 
 const Index = () => {

@@ -73,12 +73,12 @@ const links = [
         },
         {
           label: <Trans>Our Solutions</Trans>,
-          link: '/nodes'
-        },
-        {
-          label: <Trans>Developer Grant Program</Trans>,
-          link: '/store'
+          link: '/solution'
         }
+        // {
+        //   label: <Trans>Developer Grant Program</Trans>,
+        //   link: '/store'
+        // }
       ]
     ]
   },
