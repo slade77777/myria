@@ -5,6 +5,7 @@ import React from 'react';
 import Backbone from 'src/components/ecosystem/Backbone';
 import Diagram from 'src/components/ecosystem/Diagram';
 import Platform from 'src/components/ecosystem/Platform';
+import { bannerHeight } from 'src/components/Header/Header';
 import Page from '../components/Page';
 import { paddingX } from '../utils';
 
@@ -24,7 +25,7 @@ const data = [
 const Ecosystem: React.FC = () => {
   return (
     <Page>
-      <div>
+      <div className={`md:pt-[${bannerHeight}px]`}>
         <section
           className={clsx(
             paddingX,

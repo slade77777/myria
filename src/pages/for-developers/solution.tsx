@@ -2,6 +2,7 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
+import { bannerHeight } from 'src/components/Header/Header';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import Page from 'src/components/Page';
 import { paddingX } from 'src/utils';
@@ -39,7 +40,7 @@ const data = [
 const Solution: React.FC = () => {
   return (
     <Page action="start-building">
-      <div>
+      <div className={`md:pt-[${bannerHeight}px]`}>
         <section
           className={clsx(
             paddingX,

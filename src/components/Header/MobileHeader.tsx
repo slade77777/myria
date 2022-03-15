@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
-import { links, headerHeight, Action } from './Header';
+import { links, headerHeight, Action, navHeight } from './Header';
 import clsx from 'clsx';
 import Link from 'next/link';
 import Collapse from '../Collapse';
@@ -187,7 +187,7 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
       <nav ref={navRef} className="w-full">
         <div
           style={{
-            height: headerHeight
+            height: navHeight
           }}
           className={clsx('relative z-10 flex w-full items-center py-4 px-6')}>
           <Link href="/">
