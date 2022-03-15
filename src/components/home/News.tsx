@@ -3,6 +3,8 @@ import React from 'react';
 import useLatestPosts from 'src/hooks/useLatestPosts';
 import type { Item as TItem } from 'src/hooks/useLatestPosts';
 import { Trans } from '@lingui/macro';
+import { negativeMarginXSm } from 'src/utils';
+import clsx from 'clsx';
 
 const Item: React.FC<{ item: TItem }> = ({ item }) => {
   return (
@@ -35,9 +37,13 @@ const News: React.FC = () => {
           </a>
         </Link>
       </div>
-      <div className="mt-8 grid grid-flow-col gap-6 overflow-x-auto overflow-y-hidden md:grid-flow-row md:grid-cols-3 md:gap-8 md:overflow-visible">
+      <div
+        className={clsx(
+          negativeMarginXSm,
+          'mt-8 flex space-x-6 overflow-auto px-6 md:mx-0 md:overflow-visible md:px-0'
+        )}>
         {data.map((item, idx) => (
-          <div key={idx} className="min-w-[330px] md:min-w-0">
+          <div key={idx} className="min-w-[330px] flex-1 md:min-w-0">
             <Item key={idx} item={item} />
           </div>
         ))}

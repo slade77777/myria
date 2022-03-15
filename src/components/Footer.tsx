@@ -69,11 +69,11 @@ const links = [
       [
         {
           label: <Trans>Get Started</Trans>,
-          link: '/games'
+          link: '/for-developers#dev-contact'
         },
         {
           label: <Trans>Our Solutions</Trans>,
-          link: '/solution'
+          link: '/for-developers/solution'
         }
         // {
         //   label: <Trans>Developer Grant Program</Trans>,
