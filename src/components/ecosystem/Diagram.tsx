@@ -6,7 +6,7 @@ import React from 'react';
 const Diagram: React.FC = () => {
   return (
     <div>
-      <div className="h-[427px] rounded-xl bg-brand-deep-blue bg-[url('/images/ecosystem/diagram-mobile.png')] bg-cover bg-right-bottom bg-no-repeat p-8 sm:hidden">
+      <div className="h-[427px] rounded-xl bg-brand-deep-blue bg-[url('/images/ecosystem/diagram-mobile_op.png')] bg-cover bg-right-bottom bg-no-repeat p-8 sm:hidden">
         <h2 className="text-[32px] font-bold leading-[1.25]">Myria Blockchain Ecosystem Map</h2>
         <Link href="/blockchain-map">
           <a target="_blank" className="btn-lg btn-primary mt-8">

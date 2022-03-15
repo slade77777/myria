@@ -12,6 +12,7 @@ import SecondSlider from '../../components/game-detail/SecondSlider';
 import { useRouter } from 'next/router';
 import { socialLinks } from 'src/configs';
 import Subscribe from 'src/components/Subscribe';
+import { Trans } from '@lingui/macro';
 
 export type Asset = {
   type: 'video' | 'image';
@@ -422,7 +423,7 @@ const GameDetail: React.FC = () => {
                       IN DEVELOPMENT
                     </button> */}
                     <button className="justify-center w-full btn-lg btn-primary">
-                      IN DEVELOPMENT
+                      <Trans>IN DEVELOPMENT</Trans>
                     </button>
                     <a
                       href={socialLinks.discord}
@@ -432,7 +433,7 @@ const GameDetail: React.FC = () => {
                       <span className="w-[30px]">
                         <DiscordIcon />
                       </span>
-                      <span>JOIN DISCORD</span>
+                      <span><Trans>JOIN DISCORD</Trans></span>
                     </a>
                   </div>
                 </div>

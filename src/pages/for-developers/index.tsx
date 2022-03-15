@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
@@ -14,7 +15,7 @@ const ForDevelopers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            "relative isolate flex min-h-[782px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile.png')] bg-cover bg-top pt-[132px] pb-[87px] md:bg-none md:pt-[150px]"
+            "relative isolate flex min-h-[782px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile_op.png')] bg-cover bg-top pt-[132px] pb-[87px] md:bg-none md:pt-[150px]"
           )}>
           <div className="hidden md:block">
             <div
@@ -24,7 +25,7 @@ const ForDevelopers: React.FC = () => {
               className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
             <div className="absolute top-0 left-0 z-[-1] w-full">
               <Image
-                src="/images/for-developers/header-bg.png"
+                src="/images/for-developers/header-bg_op.png"
                 alt=""
                 width={4320}
                 height={2346}
@@ -34,25 +35,25 @@ const ForDevelopers: React.FC = () => {
           </div>
           <div className="mx-auto max-w-[668px] text-center">
             <h1 className="text-[40px] font-extrabold leading-[1.15]">
-              Enabling digital asset scalabiltiy on Ethereum
+              <Trans>Enabling digital asset scalabiltiy on Ethereum</Trans>
             </h1>
             <p className="mt-6 text-[18px] leading-[1.5] md:text-[20px]">
-              Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and
-              blockchain gaming.
+              <Trans>Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and
+              blockchain gaming.</Trans>
             </p>
-            <button className="btn-lg btn-primary mt-8">START BUILDING</button>
+            <button className="btn-lg btn-primary mt-8"><Trans>START BUILDING</Trans></button>
           </div>
-          <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel.png')]">
+          <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2_op.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel_op.png')]">
             <div>
               <h3 className="text-[24px] font-bold leading-[1.25] md:text-[18px]">
-                Myria launches $200M game developer grant program
+                <Trans>Myria launches $200M game developer grant program</Trans>
               </h3>
               <p className="mt-4 max-w-[488px] text-[16px] leading-[1.5] text-light md:mt-6 md:text-[18px]">
-                We are funding the builders and creators to power the future of blockchain gaming.
-                Apply for grant consideration.
+                <Trans>We are funding the builders and creators to power the future of blockchain gaming.
+                Apply for grant consideration.</Trans>
               </p>
             </div>
-            <button className="btn-lg btn-primary mt-8 md:mt-0">Apply now</button>
+            <button className="btn-lg btn-primary mt-8 md:mt-0"><Trans>Apply now</Trans></button>
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-14 md:mt-10')}>
