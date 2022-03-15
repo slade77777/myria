@@ -10,29 +10,29 @@ const data = [
   {
     title: <Trans>Secure and scalable</Trans>,
     items: [
-      <Trans>Ethereum-level security provided by
+      <Trans key={0}>Ethereum-level security provided by
         zk-STARKs</Trans>,
-      <Trans>Transparent (no trusted setup) and post-quantum secure</Trans>,
-      <Trans>High throughput of 1,000+ TPS before sharding and 10,000+ TPS after sharding</Trans>,
-      <Trans>Low transaction fees: over 100x lower than fees on Ethereum</Trans>
+      <Trans key={1}>Transparent (no trusted setup) and post-quantum secure</Trans>,
+      <Trans key={2}>High throughput of 1,000+ TPS before sharding and 10,000+ TPS after sharding</Trans>,
+      <Trans key={3}>Low transaction fees: over 100x lower than fees on Ethereum</Trans>
     ]
   },
   {
     title: <Trans>Safely programmable</Trans>,
     items: [
-      <Trans>Arbitrary smart contracts written in Solidity and other languages</Trans>,
-      <Trans>Account abstractions and other features not yet available on Ethereum</Trans>,
-      <Trans>Simpler formal verification of contracts due to safe VM architecture</Trans>,
-      <Trans>Clear roadmap to privacy-preserving smart contracts</Trans>
+      <Trans key={0}>Arbitrary smart contracts written in Solidity and other languages</Trans>,
+      <Trans key={1}>Account abstractions and other features not yet available on Ethereum</Trans>,
+      <Trans key={2}>Simpler formal verification of contracts due to safe VM architecture</Trans>,
+      <Trans key={3}>Clear roadmap to privacy-preserving smart contracts</Trans>
     ]
   },
   {
     title: <Trans>Open and permissionless</Trans>,
     items: [
-      <Trans>Arbitrary smart contracts written in Solidity and other languages</Trans>,
-      <Trans>Account abstractions and other features not yet available on Ethereum</Trans>,
-      <Trans>Simpler formal verification of contracts due to safe VM architecture</Trans>,
-      <Trans>Clear roadmap to privacy-preserving smart contracts</Trans>
+      <Trans key={0}>Arbitrary smart contracts written in Solidity and other languages</Trans>,
+      <Trans key={1}>Account abstractions and other features not yet available on Ethereum</Trans>,
+      <Trans key={2}>Simpler formal verification of contracts due to safe VM architecture</Trans>,
+      <Trans key={3}>Clear roadmap to privacy-preserving smart contracts</Trans>
     ]
   }
 ];
