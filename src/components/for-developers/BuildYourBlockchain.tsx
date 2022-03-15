@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import Input from '../Input';
@@ -10,11 +11,11 @@ const BuildYourBlockchain: React.FC = () => {
     <div>
       <div className="mx-auto max-w-[723px] text-center">
         <h2 className="text-[32px] font-bold leading-[1.25] md:text-[40px]">
-          Build your blockchain game with Myria
+          <Trans>Build your blockchain game with Myria</Trans>
         </h2>
         <p className="mt-6 text-[18px] leading-[1.5] text-light md:mt-10 md:text-[20px]">
-          We would love to hear from you. Contact us and get started with your blockchain gaming
-          journey today.
+          <Trans>We would love to hear from you. Contact us and get started with your blockchain gaming
+          journey today.</Trans>
         </p>
       </div>
       <form className="mx-auto mt-8 max-w-[616px] space-y-6 md:mt-[65px]">
@@ -23,7 +24,7 @@ const BuildYourBlockchain: React.FC = () => {
         <Input className={inputClassName} type="email" placeholder="Company" />
         <Input className={inputClassName} type="email" placeholder="Website" />
         <Textarea className={clsx(inputClassName, 'h-[200px]')} placeholder="Message" />
-        <button className="btn-lg btn-primary !mt-8 flex w-full justify-center">SUBMIT</button>
+        <button className="btn-lg btn-primary !mt-8 flex w-full justify-center"><Trans>SUBMIT</Trans></button>
       </form>
     </div>
   );

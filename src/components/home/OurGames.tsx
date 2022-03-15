@@ -9,27 +9,27 @@ const games = [
   {
     image: '/images/our-games/aer.png',
     subtitle: 'MYRIA STUDIO',
-    title: 'AER Memories of Old'
+    title: 'Metarush'
   },
   {
     image: '/images/our-games/jars.png',
     subtitle: 'MYRIA STUDIO',
-    title: 'JARS'
+    title: 'Metakart'
   },
   {
     image: '/images/our-games/valhalla.png',
     subtitle: 'MYRIA STUDIO',
-    title: 'Assasin’s Creed Valhalla'
+    title: 'Block Royale'
   },
   {
     image: '/images/our-games/battlefront.png',
-    subtitle: 'LEAPBLOCK STUDIO',
-    title: 'STAR WARS Battlefront I...'
+    subtitle: 'MYRIA STUDIO',
+    title: 'Starstrike Legends'
   },
   {
     image: '/images/our-games/pillars.png',
-    subtitle: 'BLOCK88 STUDIO',
-    title: 'Ken Follett’s The Pillars of...'
+    subtitle: 'LEAPBLOCK STUDIOS',
+    title: 'Moonville Farm'
   }
 ];
 

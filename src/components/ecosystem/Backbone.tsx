@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import BrushIcon from '../icons/BrushIcon';
 import CloudIcon from '../icons/CloundIcon';
@@ -9,22 +10,22 @@ const data = [
     icon: <CPUIcon />,
     title: 'Myria Infrastructure',
     description: (
-      <>
+      <Trans>
         Myria’s <span className="text-brand-gold">Ethereum L2 scaling solution</span> uses ZK-Rollup
         to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on
         security.
-      </>
+      </Trans>
     )
   },
   {
     icon: <PeopleIcon />,
     title: 'Myria Partners',
     description: (
-      <>
+      <Trans>
         Myria help project partners set up for success.{' '}
         <span className="text-brand-gold">Learn more</span> about our easy-to-use, full stack
         solution and build with Myria today.
-      </>
+      </Trans>
     )
   },
 
@@ -32,22 +33,22 @@ const data = [
     icon: <BrushIcon />,
     title: 'Myria Studios',
     description: (
-      <>
+      <Trans>
         <span className="text-brand-gold">Myria Studios</span> creates a range of free-to-play AAA
         games spans across an entire interconnected ecosystem, built with the new standard of
         interoperable NFTs.
-      </>
+      </Trans>
     )
   },
   {
     icon: <CloudIcon />,
     title: 'Myria Nodes',
     description: (
-      <>
+      <Trans>
         The Myria platform is supported by Myria Nodes. Being a{' '}
         <span className="text-brand-gold">Myria Node</span> operator means that you will receive
         limited edition NFTs, token rewards and more.
-      </>
+      </Trans>
     )
   }
 ];
@@ -55,11 +56,11 @@ const Backbone: React.FC = () => {
   return (
     <div>
       <h2 className="text-center text-[32px] font-bold leading-[1.25] md:text-[40px]">
-        Myria is the backbone of blockchain gaming
+        <Trans>Myria is the backbone of blockchain gaming</Trans>
       </h2>
       <p className="mx-auto mt-6 max-w-[713px] text-center text-[18px] leading-[1.5] text-light md:text-[20px]">
-        We bring together everything that is required to build a decentralized, scalable and secure
-        digital asset and blockchain gaming platform
+        <Trans>We bring together everything that is required to build a decentralized, scalable and secure
+          digital asset and blockchain gaming platform</Trans>
       </p>
       <div className="mt-10 grid gap-x-[100px] gap-y-10 md:mt-[64px] md:grid-cols-2 md:gap-y-8">
         {data.map((item, idx) => (

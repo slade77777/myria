@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import Collapse from '../Collapse';
@@ -5,53 +6,53 @@ import ChevronDownIcon from '../icons/ChevronDownIcon';
 
 const data = [
   {
-    subTitle: 'Supercharge your project',
-    title: 'The easiest way to launch your blockchain game',
+    subTitle: <Trans>Supercharge your project</Trans>,
+    title: <Trans>The easiest way to launch your blockchain game</Trans>,
     description:
-      'We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities. '
+      <Trans>We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities. </Trans>
   },
   {
-    subTitle: 'Manage your NFT & digital assets',
-    title: 'Manage your digital storefront and marketplace',
+    subTitle: <Trans>Manage your NFT & digital assets</Trans>,
+    title: <Trans>Manage your digital storefront and marketplace</Trans>,
     description:
-      'Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey.  '
+      <Trans>Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey.  </Trans>
   },
   {
-    subTitle: 'Unlock immense scale',
+    subTitle: <Trans>Unlock immense scale</Trans>,
+    title: <Trans>Enabling true scalability while leveraging the Ethereum network</Trans>,
+    description:
+      <Trans>Expereince low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution.  </Trans>
+  },
+  {
+    subTitle: <Trans>Save time. Ship faster. </Trans>,
+    title: <Trans>The easiest way to launch your blockchain game</Trans>,
+    description:
+      <Trans>Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business.</Trans>
+  },
+  {
+    subTitle: <Trans>Blockchain consultancy </Trans>,
+    title: <Trans>Enabling true scalability while leveraging the Ethereum network</Trans>,
+    description:
+      <Trans>Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support. </Trans>
+  },
+  {
+    subTitle: <Trans>Tokenomics consultancy </Trans>,
+    title: <Trans>Enabling true scalability while leveraging the Ethereum network</Trans>,
+    description:
+      <Trans>Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives.</Trans>
+  },
+  {
+    subTitle: <Trans>Compliance support</Trans>,
     title: 'Enabling true scalability while leveraging the Ethereum network',
     description:
-      'Expereince low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution.  '
-  },
-  {
-    subTitle: 'Save time. Ship faster. ',
-    title: 'The easiest way to launch your blockchain game',
-    description:
-      'Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business.'
-  },
-  {
-    subTitle: 'Blockchain consultancy ',
-    title: 'Enabling true scalability while leveraging the Ethereum network',
-    description:
-      'Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support. '
-  },
-  {
-    subTitle: 'Tokenomics consultancy ',
-    title: 'Enabling true scalability while leveraging the Ethereum network',
-    description:
-      'Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives.'
-  },
-  {
-    subTitle: 'Compliance support',
-    title: 'Enabling true scalability while leveraging the Ethereum network',
-    description:
-      'Provide your players with a protected experience and ensure your business understands critical regulatory compliance components.  '
+      <Trans>Provide your players with a protected experience and ensure your business understands critical regulatory compliance components.  </Trans>
   },
 
   {
-    subTitle: 'Instant project visibility ',
+    subTitle: <Trans>Instant project visibility </Trans>,
     title: 'Market your project across our platforms',
     description:
-      'Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners. '
+      <Trans>Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners. </Trans>
   }
 ];
 const Myria: React.FC = () => {
@@ -59,11 +60,11 @@ const Myria: React.FC = () => {
     <div>
       <div className="mx-auto max-w-[713px] text-center">
         <h2 className="text-[32px] font-bold leading-[1.25] md:text-[40px]">
-          Gaming is evolving. Build with Myria.
+          <Trans>Gaming is evolving. Build with Myria.</Trans>
         </h2>
         <p className="mt-6 text-[18px] leading-[1.5] text-light md:mt-10 md:text-[20px]">
-          Myria provides an end-to-end solution for developers and publishers, and help you unlock
-          the blockchain potential of your business
+          <Trans>Myria provides an end-to-end solution for developers and publishers, and help you unlock
+          the blockchain potential of your business</Trans>
         </p>
       </div>
       <div className="mt-[26px] grid gap-4 pt-[22px] pb-[19px] md:mt-[110px] md:grid-cols-2 md:gap-x-[105px] md:gap-y-[100px] md:p-0">

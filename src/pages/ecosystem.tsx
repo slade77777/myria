@@ -28,7 +28,7 @@ const Ecosystem: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            "flex min-h-[657px] flex-col items-center bg-[url('/images/ecosystem/header-bg-mobile.png')] bg-cover bg-bottom text-center md:min-h-[537px] md:justify-end md:bg-[url('/images/ecosystem/header-bg.png')] md:pb-[58px]"
+            "flex min-h-[657px] flex-col items-center bg-[url('/images/ecosystem/header-bg-mobile_op.png')] bg-cover bg-bottom text-center md:min-h-[537px] md:justify-end md:bg-[url('/images/ecosystem/header-bg_op.png')] md:pb-[58px]"
           )}>
           <div className="mx-auto mt-[132px] max-w-[668px] md:mt-0">
             <h1 className="text-[40px] font-extrabold leading-[1.15]">

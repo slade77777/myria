@@ -3,17 +3,13 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React, { CSSProperties } from 'react';
 import { socialLinks } from 'src/configs';
-import { paddingX } from 'src/utils';
-import { headerHeight } from '../Header';
 import DiscordIcon from '../icons/DiscordIcon';
 import CowboyImg from 'public/images/home/cowboy-1.png';
 import MonkeyImg from 'public/images/home/monkey-1.png';
 import UnicornImg from 'public/images/home/unicorn-guy-1.png';
 import SkyImg from 'public/images/home/sky.png';
-// import CloudImg from 'public/images/home/cloud.png';
 import LandImg from 'public/images/home/land.png';
 import HeaderBgMobile from 'public/images/home/header-bg-mobile.png';
-import HeaderBgOverlayMobile from 'public/images/home/header-bg-overlay-mobile.png';
 import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 
 import { gsap } from 'gsap';

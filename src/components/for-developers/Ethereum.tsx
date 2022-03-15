@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 const data = [
   {
@@ -92,7 +93,7 @@ const data = [
       </svg>
     ),
     title: 'Scalability',
-    description: 'Support unlimited scalabiltiy, delivering up to 5,000+ TPS '
+    description: <Trans>Support unlimited scalabiltiy, delivering up to 5,000+ TPS </Trans>
   },
   {
     icon: (
@@ -144,7 +145,7 @@ const data = [
       </svg>
     ),
     title: 'ETH Compatability',
-    description: 'Empower mainstream adoption to Ethereum using Myria’s scaling solution'
+    description: <Trans>Empower mainstream adoption to Ethereum using Myria’s scaling solution</Trans>
   },
   {
     icon: (
@@ -217,7 +218,7 @@ const data = [
     ),
     title: 'Built for Developers',
     description:
-      'We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey '
+      <Trans>We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey</Trans>
   },
   {
     icon: (
@@ -314,14 +315,14 @@ const data = [
     ),
     title: 'Network Security',
     description:
-      '100% Ethereum-level security guarantees; whilst increase transaction speed and throughput'
+      <Trans>100% Ethereum-level security guarantees; whilst increase transaction speed and throughput</Trans>
   }
 ];
 const Ethereum: React.FC = () => {
   return (
     <div className="text-center">
       <h2 className="text-[32px] font-extrabold leading-[1.15] md:text-[40px]">
-        Scaling blockchain gaming on Ethereum
+        <Trans> Scaling blockchain gaming on Ethereum</Trans>
       </h2>
       <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-4">
         {data.map((item, index) => (

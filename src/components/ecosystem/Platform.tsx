@@ -64,7 +64,7 @@ const Platform: React.FC = () => {
                 <CartIcon />
               </span>
               <p className="mt-2 text-[12px] font-bold leading-[1.25] md:text-[16px]">
-                Myria Marketplace
+                <Trans>Myria Marketplace</Trans>
               </p>
             </div>
             <div className=" flex h-[88px] flex-1 flex-col items-center justify-center rounded-xl bg-[#4BB986] px-5 md:h-[135px] md:p-6">
@@ -72,7 +72,7 @@ const Platform: React.FC = () => {
                 <WalletIcon />
               </span>
               <p className="mt-2 text-[12px] font-bold leading-[1.25] md:text-[16px]">
-                Myria Wallet
+                <Trans>Myria Wallet</Trans>
               </p>
             </div>
             <div className=" flex h-[88px] flex-1 flex-col items-center justify-center rounded-xl bg-[#4B9CB9] px-5 md:h-[135px] md:p-6">
@@ -80,7 +80,7 @@ const Platform: React.FC = () => {
                 <MonitorIcon />
               </span>
               <p className="mt-2 text-[12px] font-bold leading-[1.25] md:text-[16px]">
-                Myria Platform
+                <Trans>Myria Platform</Trans>
               </p>
             </div>
           </div>
