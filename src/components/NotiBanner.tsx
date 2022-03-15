@@ -8,17 +8,21 @@ import DiscordIcon from './icons/DiscordIcon';
 
 const NotiBanner: React.FC = () => {
   const router = useRouter();
+  console.log(router.pathname);
+  
   return (
     <div className="hidden grid-cols-[1fr_auto_1fr] bg-brand-light-blue md:grid">
       <div className="flex">
         {[
           {
             text: t`FOR GAMERS`,
-            href: '/games'
+            href: '/games',
+            dependentRoutes: ['', '/', '/ecosystem', '/nodes', '/games']
           },
           {
             text: t`FOR DEVELOPERS`,
-            href: '/for-developers'
+            href: '/for-developers',
+            dependentRoutes: ['/for-developers', '/for-developers/solution']
           }
         ].map((item) => (
           <Link key={item.href} href={item.href}>
@@ -26,7 +30,7 @@ const NotiBanner: React.FC = () => {
               className={clsx(
                 'flex items-center px-6 py-4 text-[14px] font-bold leading-[17px] hover:bg-[#003552] hover:text-white',
                 {
-                  'bg-[#003552] text-white': router.pathname === item.href
+                  'bg-[#003552] text-white': item.dependentRoutes.includes(router.pathname)
                 }
               )}>
               {item.text}
@@ -37,7 +41,7 @@ const NotiBanner: React.FC = () => {
       </div>
       <div className="flex flex-col items-center py-4 text-center md:flex-row md:py-2 ">
         <p className="text-[14px] font-medium leading-[1.23] ">
-          <span className="font-bold">$MYRIA</span> <Trans>Node & NFT sales coming soon!</Trans>
+        <Trans><span className="font-bold">$MYRIA</span>Node & token IBCO sales coming soon!</Trans>
         </p>
         <a
           href={socialLinks.discord}

@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useMemo, useRef } from 'react';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { socialLinks } from '../../configs';
@@ -17,6 +18,8 @@ type Props = {
 };
 
 const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links, className }) => {
+  const router = useRouter();
+
   return (
     <ul
       className={clsx(
@@ -44,7 +47,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
         if (item.children) {
           return (
             <li key={idx} className="group relative">
-              <div className="flex items-center hover:cursor-pointer hover:text-brand-gold">
+              <div className={clsx("flex items-center hover:cursor-pointer hover:text-brand-gold")}>
                 {item.text}
                 <i className="w-[24px]">
                   <ChevronDownIcon />
@@ -55,7 +58,9 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                   {item.children.map((link, idx) => (
                     <li key={idx}>
                       <Link href={link.url as string}>
-                        <a target={link.target} className="hover:text-brand-gold">
+                        <a target={link.target} className={clsx("hover:text-brand-gold", {
+                          "text-brand-gold": link.url === router.pathname
+                        })}>
                           {link.text}
                         </a>
                       </Link>
@@ -69,7 +74,9 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
           return (
             <li key={idx}>
               <Link href={item.url as string}>
-                <a className="hover:text-brand-gold">{item.text}</a>
+                <a className={clsx("hover:text-brand-gold", {
+                  "text-brand-gold": item.url === router.pathname
+                })}>{item.text}</a>
               </Link>
             </li>
           );
