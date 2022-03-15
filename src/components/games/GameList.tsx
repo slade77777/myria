@@ -2,8 +2,8 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { negativeMarginXSm } from 'src/utils';
+import React, { useCallback, useRef, useState } from 'react';
+import useClickOutside from 'src/hooks/useClickOutside';
 import Collapse from '../Collapse';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import MinusIcon from '../icons/MinusIcon';
@@ -100,14 +100,14 @@ const games: {
 
 const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
   return (
-    <div className="min-w-[300px] md:min-w-0">
-      <div className="relative h-[344px] overflow-hidden rounded-[5px]">
+    <div className="">
+      <div className="relative h-[232px] overflow-hidden rounded-[5px] md:h-[344px]">
         <Image src={item.image} alt="" layout="fill" objectFit="cover" />
       </div>
       <p className="mt-4 text-[14px] font-bold uppercase leading-[1.5] text-brand-light-blue">
         {item.studio}
       </p>
-      <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[18px] font-medium leading-[1.5]">
+      <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[16px] font-medium leading-[1.5] md:text-[18px]">
         {item.title}
       </p>
     </div>
@@ -128,7 +128,15 @@ const Filter: React.FC<{
     });
   };
 
-  console.log(filter);
+  const [open, setOpen] = useState(false);
+
+  const collapseRef = useRef(null);
+
+  const handleCollapse = useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  useClickOutside(collapseRef, handleCollapse);
 
   return (
     <>
@@ -168,35 +176,37 @@ const Filter: React.FC<{
           </Collapse>
         ))}
       </div>
-      <Collapse className="relative md:hidden">
-        <Collapse.Trigger asChild>
-          <div className="flex justify-between rounded-lg bg-brand-dark-blue py-5 px-6">
-            <p className="text-[18px] font-medium leading-none">Filter</p>
-            <span className="w-6">
-              <ChevronDownIcon />
-            </span>
-          </div>
-        </Collapse.Trigger>
-        <Collapse.Content className="absolute top-[calc(100%-16px)] left-0 z-[5] w-full rounded-lg bg-brand-dark-blue">
-          <div className="space-y-6 p-6">
-            {filters.map((filter, idx) => (
-              <div key={idx}>
-                <p className="text-[18px] leading-none">{filter.title}</p>
-                <div className="mt-6 space-y-6">
-                  {filter.options.map((option, idx) => (
-                    <label
-                      key={idx}
-                      className="flex items-center justify-between space-x-2 text-[18px] leading-none text-light">
-                      <span>{option}</span>
-                      <Input className="h-4 w-4" type="checkbox" />
-                    </label>
-                  ))}
+      <div ref={collapseRef}>
+        <Collapse open={open} onOpenChange={(open) => setOpen(open)} className="relative md:hidden">
+          <Collapse.Trigger asChild>
+            <div className="flex justify-between rounded-lg bg-brand-dark-blue py-5 px-6">
+              <p className="text-[18px] font-medium leading-none">Filter</p>
+              <span className="w-6">
+                <ChevronDownIcon />
+              </span>
+            </div>
+          </Collapse.Trigger>
+          <Collapse.Content className="absolute top-[calc(100%-16px)] left-0 z-[5] w-full rounded-lg bg-brand-dark-blue">
+            <div className="space-y-6 p-6">
+              {filters.map((filter, idx) => (
+                <div key={idx}>
+                  <p className="text-[18px] leading-none">{filter.title}</p>
+                  <div className="mt-6 space-y-6">
+                    {filter.options.map((option, idx) => (
+                      <label
+                        key={idx}
+                        className="flex items-center justify-between space-x-2 text-[18px] leading-none text-light">
+                        <span>{option}</span>
+                        <Input className="h-4 w-4" type="checkbox" />
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Collapse.Content>
-      </Collapse>
+              ))}
+            </div>
+          </Collapse.Content>
+        </Collapse>
+      </div>
     </>
   );
 };
@@ -221,19 +231,7 @@ const GameList: React.FC = () => {
       <div className="min-w-[184px]">
         <Filter filter={filter} setFilter={setFilter} />
       </div>
-      <div className="mt-6 flex items-center justify-between md:hidden">
-        <h2 className="text-[24px] font-medium leading-[1.25]">Our Games</h2>
-        <Link href="/games">
-          <a className="link">
-            <Trans>Discover more</Trans>
-          </a>
-        </Link>
-      </div>
-      <div
-        className={clsx(
-          negativeMarginXSm,
-          'mt-8 grid snap-x grid-flow-col gap-x-6 gap-y-8 overflow-auto px-6 md:mx-0 md:grid-flow-row md:grid-cols-4 md:px-0'
-        )}>
+      <div className={clsx('mt-7 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4')}>
         {filteredGames.map((item, idx) => (
           <div key={idx} className="snap-start">
             <GameItem item={item} />

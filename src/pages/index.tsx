@@ -49,12 +49,14 @@ const Index = () => {
           </div>
         </div>
         <section className={clsx(paddingX, 'mt-[56px] hidden flex-col md:mt-[88px] md:flex')}>
-          <h1 data-aos="fade-up" className="heading-massive mx-auto max-w-[1024px] text-center">
+          <h1
+            data-aos="fade-up"
+            className="mx-auto max-w-[1024px] text-center text-[48px] font-extrabold leading-[1.15]">
             <Trans>Founded by leading gaming and blockchain industry veterans</Trans>
           </h1>
           <p
             data-aos="fade-up"
-            className="body-lg mx-auto mt-[32px] max-w-[717px] text-center text-light">
+            className="mx-auto mt-[32px] max-w-[717px] text-center text-[20px] leading-[1.5] text-light">
             <Trans>
               Myria has been built by an all-star team of over 100 people, united with a common
               vision of revolutionizing gaming with blockchain technology.

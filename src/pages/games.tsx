@@ -2,7 +2,6 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import GameList from 'src/components/games/GameList';
-import NotiBanner from 'src/components/NotiBanner';
 import Program from 'src/components/Program';
 import Subscribe from 'src/components/Subscribe';
 import { headerHeight } from '../components/Header';
@@ -32,10 +31,10 @@ const Games: React.FC = () => {
           <section className="-mt-7 md:mt-[88px]">
             <GameList />
           </section>
-          <section className={'mt-[116px]'}>
+          <section className={'mt-[54px] md:mt-[116px]'}>
             <Program />
           </section>
-          <section className={clsx('mt-8 mb-[100px]')}>
+          <section className={clsx('mt-6 mb-[100px] md:mt-8')}>
             <Subscribe />
           </section>
         </div>

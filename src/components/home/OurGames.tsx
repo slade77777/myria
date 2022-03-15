@@ -63,10 +63,10 @@ const OurGames: React.FC = () => {
       <div
         className={clsx(
           negativeMarginXSm,
-          'mt-8 flex space-x-6 overflow-auto px-6 md:mx-0 md:px-0'
+          'mt-8 flex space-x-6 overflow-auto px-6 md:mx-0 md:overflow-visible md:px-0'
         )}>
         {games.map((item, idx) => (
-          <div key={idx} className="min-w-[233px] flex-1">
+          <div key={idx} className="min-w-[233px] flex-1 md:min-w-0">
             <Item item={item} />
           </div>
         ))}
