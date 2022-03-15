@@ -84,7 +84,7 @@ const ForDevelopers: React.FC = () => {
             )}>
             <Myria />
           </section>
-          <section className={clsx(paddingX, 'mx-auto mt-[45px] md:mt-[163px]')}>
+          <section className={clsx(paddingX, 'mx-auto mt-[45px] md:mt-[163px]')} id="dev-contact">
             <BuildYourBlockchain />
           </section>
         </div>
