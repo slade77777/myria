@@ -67,7 +67,7 @@ export const games: {
       id: 'block-royale'
     },
     {
-      image: '/images/our-games/battlefront.png',
+      image: '/images/our-games/starstrike_updated_card_op.png',
       title: 'Starstrike Legends',
       feature: 'Multi Player',
       genre: ['Action', 'Shooter'],
