@@ -13,6 +13,7 @@ import Hero from 'src/components/home/Hero';
 import OurGames from 'src/components/home/OurGames';
 import Program from 'src/components/Program';
 import News from 'src/components/home/News';
+import { bannerSpacingClassName, headerNavSpacingClassName } from 'src/components/Header/Header';
 
 const Index = () => {
   useEffect(() => {
@@ -28,11 +29,8 @@ const Index = () => {
 
   return (
     <Page>
-      <div
-        style={{
-          paddingTop: headerHeight
-        }}>
-        <div className={clsx(paddingX, 'mt-7')}>
+      <div className={headerNavSpacingClassName}>
+      <div className={clsx(paddingX, 'md:mt-7')}>
           <div className="mx-auto max-w-content">
             <div className="-mx-6 md:mx-0">
               <Hero />
@@ -51,12 +49,12 @@ const Index = () => {
         <section className={clsx(paddingX, 'mt-[123px] flex-col md:mt-[88px] md:flex')}>
           <h1
             data-aos="fade-up"
-            className="mt-6 mx-auto max-w-[1024px] text-[32px] leading-10 text-center md:text-[48px] font-extrabold md:leading-[1.15]">
+            className="mx-auto mt-6 max-w-[1024px] text-center text-[32px] font-extrabold leading-10 md:text-[48px] md:leading-[1.15]">
             <Trans>Founded by leading gaming and blockchain industry veterans</Trans>
           </h1>
           <p
             data-aos="fade-up"
-            className="mx-auto mt-[32px] max-w-[717px] text-lg  text-center md:text-[20px] md:leading-[1.5] text-light">
+            className="mx-auto mt-[32px] max-w-[717px] text-center  text-lg text-light md:text-[20px] md:leading-[1.5]">
             <Trans>
               Myria has been built by an all-star team of over 100 people, united with a common
               vision of revolutionizing gaming with blockchain technology.

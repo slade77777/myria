@@ -121,6 +121,7 @@ export const navHeight = 83;
 export const bannerHeight = 50;
 export const headerHeight = navHeight + bannerHeight;
 export const bannerSpacingClassName = 'md:pt-[50px]';
+export const headerNavSpacingClassName = 'pt-[104px] md:pt-[133px]';
 
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
   action = 'join-discord',
