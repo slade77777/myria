@@ -139,16 +139,16 @@ const Index = () => {
             paddingX,
             "relative isolate min-h-[782px] bg-[url('/images/studios/header-bg-mobile_op.png')] bg-cover bg-top md:min-h-[872px] md:bg-none"
           )}>
-          <div className="absolute inset-0 z-[-1] hidden bg-[url('/images/studios/header-bg_op.png')] bg-cover bg-top bg-no-repeat md:block"></div>
+          <div data-aos="fade-left" className="absolute inset-0 z-[-1] hidden bg-[url('/images/studios/header-bg_op.png')] bg-cover bg-top bg-no-repeat md:block"></div>
           <div
             style={{ background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)' }}
             className="absolute top-0 left-0 z-[-2] hidden h-[606px] w-full md:block"
           />
           <div className="flex flex-col items-center pt-[112px] text-center md:items-start md:pt-[255px] md:pl-10 md:text-left">
             <div className="w-[192px] md:w-[252px]">
-              <Image src="/images/studios/studios_op.png" alt="" width={252} height={146} />
+              <Image src="/images/studios/studios_op.png" alt="" width={252} height={146} data-aos="fade-right"/>
             </div>
-            <p className="mt-4 max-w-[447px] text-[20px] leading-[1.5] md:mt-6 md:text-[24px]">
+            <p data-aos="fade-right" className="mt-4 max-w-[447px] text-[20px] leading-[1.5] md:mt-6 md:text-[24px]">
               Creating the new standard for blockchain games and experiences{' '}
             </p>
           </div>

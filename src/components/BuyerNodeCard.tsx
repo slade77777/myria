@@ -1,4 +1,5 @@
 import { Trans } from "@lingui/macro";
+import BuyANodeLink from "./BuyANode";
 
 const BuyerNode = () => (
     <div className="relative isolate rounded-xl bg-[url('/images/program/panel-1.png')] bg-cover bg-center p-8 pb-[230px] md:pb-[86px]">
@@ -10,9 +11,7 @@ const BuyerNode = () => (
                 Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network
             </Trans>
         </p>
-        <button className="btn-lg btn-primary mt-8 md:mt-10">
-            <Trans>BUY A NODE</Trans>
-        </button>
+        <BuyANodeLink className="btn-lg btn-primary mt-8 md:mt-10" />
         <img
             src="/images/program/computer_op.png"
             alt=""

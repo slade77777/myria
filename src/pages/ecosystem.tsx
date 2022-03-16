@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React, { useEffect } from 'react';
+import React from 'react';
 import BuyerNodeCard from 'src/components/BuyerNodeCard';
 import Backbone from 'src/components/ecosystem/Backbone';
 import Diagram from 'src/components/ecosystem/Diagram';

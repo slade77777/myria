@@ -9,6 +9,7 @@ import ChevronDownIcon from '../icons/ChevronDownIcon';
 import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import Input from '../Input';
+import Overlay from '../overlay/Overlay';
 
 const filters = [
   {
@@ -33,70 +34,79 @@ type FilterMap = {
   [k in FilterKey]: string[];
 };
 
-const games: {
+export const games: {
   image: string;
   title: string;
   feature: Filter[0]['options'][number];
   genre: Filter[1]['options'][number][];
-  publisher: Filter[2]['options'][number][];
+  publisher: Filter[2]['options'][number];
+  id: string;
 }[] = [
     {
-      image: '/images/our-games/aer.png',
+      image: '/images/our-games/metarush_op.png',
       title: 'Metarush',
       feature: 'Multi Player',
       genre: ['Survival', 'Racing'],
-      publisher: ['Myria Studios']
+      publisher: 'Myria Studios',
+      id: 'metarush',
     },
     {
-      image: '/images/our-games/jars.png',
+      image: '/images/our-games/metakart_op.png',
       title: 'Metakart',
       feature: 'Multi Player',
       genre: ['Racing', 'Casual'],
-      publisher: ['Myria Studios']
+      publisher: 'Myria Studios',
+      id: 'metakart',
     },
     {
-      image: '/images/our-games/valhalla.png',
+      image: '/images/our-games/block-royale_op.png',
       title: 'Block Royale ',
       feature: 'Multi Player',
       genre: ['Survival', 'Action', 'Shooter'],
-      publisher: ['Myria Studios']
+      publisher: 'Myria Studios',
+      id: 'block-royale'
     },
     {
       image: '/images/our-games/battlefront.png',
       title: 'Starstrike Legends',
       feature: 'Multi Player',
       genre: ['Action', 'Shooter'],
-      publisher: ['Myria Studios']
+      publisher: 'Myria Studios',
+      id: 'starstrike',
     },
     {
-      image: '/images/our-games/pillars.png',
+      image: '/images/our-games/moonville_op.png',
       title: 'Moonville Farm',
       feature: 'Single Player',
       genre: ['Casual', 'Simulation'],
-      publisher: ['Leapblock Studios']
+      publisher: 'Leapblock Studios',
+      id: 'moonville',
     },
     {
-      image: '/images/our-games/aer.png',
+      image: '/images/our-games/hot-slice_op.png',
       title: 'Hot Slice Tycoon',
       feature: 'Single Player',
       genre: ['Casual', 'Simulation'],
-      publisher: ['Playware Games']
+      publisher: 'Playware Games',
+      id: 'hotslice'
     }
   ];
 
 const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
   return (
-    <div className="">
-      <div className="relative h-[232px] overflow-hidden rounded-[5px] md:h-[344px]">
-        <Image src={item.image} alt="" layout="fill" objectFit="cover" />
-      </div>
-      <p className="mt-4 text-[14px] font-bold uppercase leading-[1.5] text-brand-light-blue">
-        {item.publisher}
-      </p>
-      <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[16px] font-medium leading-[1.5] md:text-[18px]">
-        {item.title}
-      </p>
-    </div>
+    <Link href={'/game-detail/' + item.id}>
+      <a className="block">
+        <Overlay className="h-[232px] overflow-hidden rounded-[5px] md:h-[344px]">
+          <Image src={item.image} alt="" layout="fill" objectFit="cover" />
+        </Overlay>
+        <p className="mt-4 text-[14px] font-bold uppercase leading-[1.5] text-brand-light-blue">
+          {item.publisher}
+        </p>
+        <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[16px] font-medium leading-[1.5] md:text-[18px]">
+          {item.title}
+        </p>
+      </a>
+    </Link>
   );
 };
 
@@ -209,7 +219,7 @@ const GameList: React.FC = () => {
     return (
       (filter['Features'].length == 0 || filter['Features'].includes(game.feature)) &&
       (filter['Genre'].length == 0 || filter['Genre'].includes(game.genre[0]) || filter['Genre'].includes(game.genre[1])) &&
-      (filter['Publisher'].length == 0 || filter['Publisher'].includes(game.publisher[0]) || filter['Publisher'].includes(game.publisher[1]) || filter['Publisher'].includes(game.publisher[2]))
+      (filter['Publisher'].length == 0 || filter['Publisher'].includes(game.publisher))
     );
   });
 

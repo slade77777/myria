@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import useLatestPosts from 'src/hooks/useLatestPosts';
+import useLatestPosts, { mediumPage } from 'src/hooks/useLatestPosts';
 import type { Item as TItem } from 'src/hooks/useLatestPosts';
 import { Trans } from '@lingui/macro';
 import { negativeMarginXSm } from 'src/utils';
@@ -31,11 +31,9 @@ const News: React.FC = () => {
         <h2 className="text-[24px] font-medium leading-[1.25] md:text-[30px]">
           <Trans>Latest Updates & News</Trans>
         </h2>
-        <Link href="/">
-          <a className="link">
-            <Trans>Read more</Trans>
-          </a>
-        </Link>
+        <a className="link" target="_blank" href={mediumPage} rel="noreferrer">
+          <Trans>Read more</Trans>
+        </a>
       </div>
       <div
         className={clsx(

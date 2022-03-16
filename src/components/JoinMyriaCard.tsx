@@ -1,4 +1,5 @@
 import { Trans } from "@lingui/macro";
+import Link from "next/link";
 
 const JoinMyriaCard = () => (
     <div className="relative isolate rounded-xl bg-[url('/images/studios/character-panel_op.png')] bg-cover bg-right p-8 pb-[230px] md:pb-[86px]">
@@ -10,9 +11,11 @@ const JoinMyriaCard = () => (
                 Learn more about our job current openings and see how you can get involved!
             </Trans>
         </p>
-        <button className="btn-lg btn-primary mt-8 md:mt-10">
-            <Trans>Join MYRIA</Trans>
-        </button>
+        <Link href={'/careers'}>
+            <button className="btn-lg btn-primary mt-8 md:mt-10">
+                <Trans>Join MYRIA</Trans>
+            </button>
+        </Link>
     </div>
 )
 

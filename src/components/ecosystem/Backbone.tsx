@@ -1,19 +1,26 @@
 import { Trans } from '@lingui/macro';
+import Link from 'next/link';
 import React from 'react';
 import BrushIcon from '../icons/BrushIcon';
 import CloudIcon from '../icons/CloundIcon';
 import CPUIcon from '../icons/CPUIcon';
 import PeopleIcon from '../icons/PeolpleIcon';
 
+const CustomLink: React.FC<{
+  title: string;
+  href: string;
+}> = ({ title, href }) => (
+  <Link href={href}>
+    <a className="link text-brand-gold no-underline hover:underline	">{title}</a>
+  </Link>
+)
 const data = [
   {
     icon: <CPUIcon />,
     title: 'Myria Infrastructure',
     description: (
       <Trans>
-        Myria’s <span className="text-brand-gold">Ethereum L2 scaling solution</span> uses ZK-Rollup
-        to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on
-        security.
+        Myria’s <CustomLink title='Ethereum L2 scaling solution' href='/for-developers/solution' /> uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on security.
       </Trans>
     )
   },
@@ -23,7 +30,7 @@ const data = [
     description: (
       <Trans>
         Myria help project partners set up for success.{' '}
-        <span className="text-brand-gold">Learn more</span> about our easy-to-use, full stack
+        <CustomLink title='Learn more' href='/for-developers' /> about our easy-to-use, full stack
         solution and build with Myria today.
       </Trans>
     )
@@ -34,7 +41,7 @@ const data = [
     title: 'Myria Studios',
     description: (
       <Trans>
-        <span className="text-brand-gold">Myria Studios</span> creates a range of free-to-play AAA
+        <CustomLink title='Myria Studios' href='/studios' /> creates a range of free-to-play AAA
         games spans across an entire interconnected ecosystem, built with the new standard of
         interoperable NFTs.
       </Trans>
@@ -46,7 +53,7 @@ const data = [
     description: (
       <Trans>
         The Myria platform is supported by Myria Nodes. Being a{' '}
-        <span className="text-brand-gold">Myria Node</span> operator means that you will receive
+        <CustomLink href='/nodes' title='Myria Node'/> operator means that you will receive
         limited edition NFTs, token rewards and more.
       </Trans>
     )

@@ -16,7 +16,7 @@ const NotiBanner: React.FC = () => {
           {
             text: t`FOR GAMERS`,
             href: '/games',
-            dependentRoutes: ['', '/', '/ecosystem', '/nodes', '/games']
+            dependentRoutes: ['', '/', '/ecosystem', '/nodes', '/games', '/game-detail/[id]']
           },
           {
             text: t`FOR DEVELOPERS`,

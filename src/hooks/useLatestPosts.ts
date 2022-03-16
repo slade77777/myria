@@ -15,6 +15,7 @@ export type Item = {
   link: string;
 };
 
+export const mediumPage ='https://medium.com/feed/@myriagames';
 export default function useLatestPosts() {
   const [items, setItems] = useState<Item[]>([]);
 
@@ -22,7 +23,7 @@ export default function useLatestPosts() {
     async function fetchLatestItems() {
       const response = await fetch(
         `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
-          'https://medium.com/feed/@myriagames'
+          mediumPage
         )}&x=${new Date().getTime()}`,
         {
           mode: 'cors'

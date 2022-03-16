@@ -189,15 +189,15 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
           style={{
             height: navHeight
           }}
-          className={clsx('relative z-10 flex w-full items-center py-4 px-6')}>
+          className={clsx('relative z-10 flex w-full items-center justify-between py-4 px-6')}>
           <Link href="/">
             <a className="w-full max-w-[164px]">
               <Logo />
             </a>
           </Link>
-          <div className="ml-auto mr-6 flex">
+          {/* <div className="ml-auto mr-6 flex">
             <LanguageSwitcher isMobile />
-          </div>
+          </div> */}
           <button onClick={toggleMenu} className="">
             <Hamburger size={24} direction="right" toggled={openMenu} />
           </button>
