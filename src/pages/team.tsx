@@ -70,7 +70,7 @@ const data: Person[] = [
     position: <Trans>CMO</Trans>,
     description: (
       <Trans>
-        Dave has over 25 years of marketing and management experience. He previously lead marketing
+        Dave has over 25 years of marketing and management experience. He previously led marketing
         at Banxa and Rockstar Games. Dave also founded Marley Spoon; taking the company from
         inception to IPO.
       </Trans>
