@@ -12,7 +12,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { CustomEase } from 'gsap/dist/CustomEase';
 import { t, Trans } from '@lingui/macro';
 import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
-import { bannerHeight } from 'src/components/Header/Header';
+import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
 
 const PLANNET_MOVE_X = 300;
 const PLANNET_MOVE_Y = 300;
@@ -131,7 +131,7 @@ const Index = () => {
 
   return (
     <Page>
-      <div className={`md:pt-[${bannerHeight}px]`}>
+      <div className={bannerSpacingClassName}>
         <section
           className={clsx(
             paddingX,

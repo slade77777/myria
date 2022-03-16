@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
-import { bannerHeight, navHeight } from 'src/components/Header/Header';
+import { bannerHeight, bannerSpacingClassName, navHeight } from 'src/components/Header/Header';
 import JoinTheRevolution from 'src/components/JoinTheRevolution';
 import ExperenceLogos from '../components/ExperienceLogos';
 import LinkedinWithBackgroundIcon from '../components/icons/LinkedinWithBackgroundIcon';
@@ -205,13 +205,13 @@ const data: Person[] = [
 const Team: React.FC = () => {
   return (
     <Page action="start-building">
-      <div className={`relative isolate md:pt-[${bannerHeight}px]`}>
+      <div className={`relative isolate ${bannerSpacingClassName}`}>
         <div
           style={{
             background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)'
           }}
           className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
-        <div className={`absolute top-0 md:top-[${bannerHeight}px] left-0 z-[-1] w-full`}>
+        <div className={`absolute top-0 md:top-[50px] left-0 z-[-1] w-full`}>
           <Image
             src="/images/team/header-bg.png"
             alt=""

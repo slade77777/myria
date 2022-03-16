@@ -5,14 +5,14 @@ import React from 'react';
 import BuildYourBlockchain from 'src/components/for-developers/BuildYourBlockchain';
 import Ethereum from 'src/components/for-developers/Ethereum';
 import Myria from 'src/components/for-developers/Myria';
-import { bannerHeight } from 'src/components/Header/Header';
+import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
 import Page from 'src/components/Page';
 import { paddingX } from 'src/utils';
 
 const ForDevelopers: React.FC = () => {
   return (
     <Page action="start-building">
-      <div className={`md:pt-[${bannerHeight}px]`}>
+      <div className={bannerSpacingClassName}>
         <section
           className={clsx(
             paddingX,
