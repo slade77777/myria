@@ -139,7 +139,7 @@ const Solution: React.FC = () => {
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-10 mb-14 md:mt-[105px] md:mb-[100px]')}>
-          <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel.png')]">
+          {/* <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel.png')]">
             <div>
               <h3 className="text-[24px] font-bold leading-[1.25] md:text-[28px]">
                 <Trans>Myria launches $200M game developer grant program</Trans>
@@ -150,7 +150,7 @@ const Solution: React.FC = () => {
               </p>
             </div>
             <button className="btn-lg btn-primary mt-8 md:mt-0"><Trans>Apply now</Trans></button>
-          </div>
+          </div> */}
         </section>
       </div>
     </Page>
