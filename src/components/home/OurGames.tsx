@@ -4,48 +4,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { negativeMarginXSm } from 'src/utils';
-
-const games = [
-  {
-    image: '/images/our-games/aer.png',
-    subtitle: 'MYRIA STUDIO',
-    title: 'Metarush'
-  },
-  {
-    image: '/images/our-games/jars.png',
-    subtitle: 'MYRIA STUDIO',
-    title: 'Metakart'
-  },
-  {
-    image: '/images/our-games/valhalla.png',
-    subtitle: 'MYRIA STUDIO',
-    title: 'Block Royale'
-  },
-  {
-    image: '/images/our-games/battlefront.png',
-    subtitle: 'MYRIA STUDIO',
-    title: 'Starstrike Legends'
-  },
-  {
-    image: '/images/our-games/pillars.png',
-    subtitle: 'LEAPBLOCK STUDIOS',
-    title: 'Moonville Farm'
-  }
-];
+import { games } from '../games/GameList';
+import Overlay from '../overlay/Overlay';
 
 const Item: React.FC<{ item: typeof games[number] }> = ({ item }) => {
   return (
-    <div>
-      <div className="relative h-[300px]">
-        <Image src={item.image} alt="" layout="fill" objectFit="cover" />
-      </div>
-      <p className="mt-4 text-[14px] font-bold leading-[1.5] text-brand-light-blue">
-        {item.subtitle}
-      </p>
-      <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[18px] font-medium leading-[1.5]">
-        {item.title}
-      </p>
-    </div>
+    <Link href={`/game-detail/${item.id}`}>
+      <a className='block'>
+        <Overlay className="h-[300px] rounded-[5px] overflow-hidden">
+          <Image src={item.image} alt="" layout="fill" objectFit="cover" />
+        </Overlay>
+        <p className="mt-4 text-[14px] font-bold leading-[1.5] text-brand-light-blue">
+          {item.publisher}
+        </p>
+        <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[18px] font-medium leading-[1.5]">
+          {item.title}
+        </p>
+      </a>
+    </Link>
   );
 };
 
@@ -65,7 +41,7 @@ const OurGames: React.FC = () => {
           negativeMarginXSm,
           'mt-8 flex space-x-6 overflow-auto px-6 md:mx-0 md:overflow-visible md:px-0'
         )}>
-        {games.map((item, idx) => (
+        {games.filter(g => g.id !== 'hotslice').map((item, idx) => (
           <div key={idx} className="min-w-[233px] flex-1 md:min-w-0">
             <Item item={item} />
           </div>

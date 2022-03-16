@@ -48,23 +48,23 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <section className={clsx(paddingX, 'mt-[56px] hidden flex-col md:mt-[88px] md:flex')}>
+        <section className={clsx(paddingX, 'mt-[123px] flex-col md:mt-[88px] md:flex')}>
           <h1
             data-aos="fade-up"
-            className="mx-auto max-w-[1024px] text-center text-[48px] font-extrabold leading-[1.15]">
+            className="mt-6 mx-auto max-w-[1024px] text-[32px] leading-10 text-center md:text-[48px] font-extrabold md:leading-[1.15]">
             <Trans>Founded by leading gaming and blockchain industry veterans</Trans>
           </h1>
           <p
             data-aos="fade-up"
-            className="mx-auto mt-[32px] max-w-[717px] text-center text-[20px] leading-[1.5] text-light">
+            className="mx-auto mt-[32px] max-w-[717px] text-lg  text-center md:text-[20px] md:leading-[1.5] text-light">
             <Trans>
               Myria has been built by an all-star team of over 100 people, united with a common
               vision of revolutionizing gaming with blockchain technology.
             </Trans>
           </p>
         </section>
-        <section className={clsx(paddingX, 'mt-[123px] md:mt-[88px]')}>
-          <div data-aos="fade-up" className="mt-[59px]">
+        <section className={clsx(paddingX, 'mt-[50px] md:mt-[88px]')}>
+          <div data-aos="fade-up" className="md:mt-[59px]">
             <ExperenceLogos />
           </div>
         </section>

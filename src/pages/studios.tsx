@@ -13,6 +13,8 @@ import { CustomEase } from 'gsap/dist/CustomEase';
 import { t, Trans } from '@lingui/macro';
 import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
+import BuyerNode from 'src/components/BuyerNodeCard';
+import JoinMyriaCard from 'src/components/JoinMyriaCard';
 
 const PLANNET_MOVE_X = 300;
 const PLANNET_MOVE_Y = 300;
@@ -137,16 +139,16 @@ const Index = () => {
             paddingX,
             "relative isolate min-h-[782px] bg-[url('/images/studios/header-bg-mobile_op.png')] bg-cover bg-top md:min-h-[872px] md:bg-none"
           )}>
-          <div className="absolute inset-0 z-[-1] hidden bg-[url('/images/studios/header-bg_op.png')] bg-cover bg-top bg-no-repeat md:block"></div>
+          <div data-aos="fade-left" className="absolute inset-0 z-[-1] hidden bg-[url('/images/studios/header-bg_op.png')] bg-cover bg-top bg-no-repeat md:block"></div>
           <div
             style={{ background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)' }}
             className="absolute top-0 left-0 z-[-2] hidden h-[606px] w-full md:block"
           />
           <div className="flex flex-col items-center pt-[112px] text-center md:items-start md:pt-[255px] md:pl-10 md:text-left">
             <div className="w-[192px] md:w-[252px]">
-              <Image src="/images/studios/studios_op.png" alt="" width={252} height={146} />
+              <Image src="/images/studios/studios_op.png" alt="" width={252} height={146} data-aos="fade-right"/>
             </div>
-            <p className="mt-4 max-w-[447px] text-[20px] leading-[1.5] md:mt-6 md:text-[24px]">
+            <p data-aos="fade-right" className="mt-4 max-w-[447px] text-[20px] leading-[1.5] md:mt-6 md:text-[24px]">
               Creating the new standard for blockchain games and experiences{' '}
             </p>
           </div>
@@ -349,39 +351,8 @@ const Index = () => {
         </section>
         <section className={clsx(paddingX, 'mt-[58px]')}>
           <div className="mx-auto grid max-w-content gap-8 md:grid-cols-2">
-            <div className="relative isolate rounded-xl bg-[url('/images/program/panel-1.png')] bg-cover bg-center p-8 pb-[230px] md:pb-[86px]">
-              <p className="max-w-[468px] text-[24px] font-bold leading-[1.25] md:text-[28px]">
-                <Trans> Become a Myria node owner & receive rewards</Trans>
-              </p>
-              <p className="mt-4 max-w-[417px] text-[16px] leading-[1.5] text-light md:mt-6 md:text-[18px]">
-                <Trans>
-                  Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network
-                </Trans>
-              </p>
-              <button className="btn-lg btn-primary mt-8 md:mt-10">
-                <Trans>BUY A NODE</Trans>
-              </button>
-              <img
-                src="/images/program/computer_op.png"
-                alt=""
-                width="268"
-                height="145"
-                className="absolute right-4 bottom-4 z-[-1]"
-              />
-            </div>
-            <div className="relative isolate rounded-xl bg-[url('/images/studios/character-panel_op.png')] bg-cover bg-right p-8 pb-[230px] md:pb-[86px]">
-              <p className="max-w-[468px] text-[24px] font-bold leading-[1.25] md:text-[28px]">
-                <Trans> Join Myria in building the next blockchain revolution </Trans>
-              </p>
-              <p className="mt-4 max-w-[467px] text-[16px] leading-[1.5] text-light md:mt-6 md:text-[18px]">
-                <Trans>
-                  Learn more about our job current openings and see how you can get involved!
-                </Trans>
-              </p>
-              <button className="btn-lg btn-primary mt-8 md:mt-10">
-                <Trans>Join MYRIA</Trans>
-              </button>
-            </div>
+            <BuyerNode />
+            <JoinMyriaCard />
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[64px] mb-[156px] md:mb-[168px]')}>

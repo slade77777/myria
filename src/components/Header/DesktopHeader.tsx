@@ -143,9 +143,9 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         </div>
         <div className="flex flex-shrink-0 items-center justify-end space-x-9">
           <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
-          <div>
+          {/* <div>
             <LanguageSwitcher />
-          </div>
+          </div> */}
           {actionElements}
         </div>
       </nav>

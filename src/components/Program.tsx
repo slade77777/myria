@@ -1,5 +1,7 @@
 import { Trans } from '@lingui/macro';
+import Link from 'next/link';
 import React from 'react';
+import BuyANodeLink from './BuyANode';
 
 const Program: React.FC = () => {
   return (
@@ -14,9 +16,7 @@ const Program: React.FC = () => {
           </Trans>
         </p>
         <div className='mt-[13px] md:mt-[11px] flex justify-between items-center'>
-          <button className="btn-lg btn-primary min-w-[145px] md:mt-10 ">
-            <Trans>BUY A NODE</Trans>
-          </button>
+          <BuyANodeLink className="btn-lg btn-primary min-w-[145px] md:mt-10 " />
           <img
             src="/images/program/computer_op.png"
             alt=""
@@ -34,9 +34,9 @@ const Program: React.FC = () => {
         <p className="mt-4 max-w-[467px] text-[16px] leading-[1.5] text-light md:mt-6 md:text-[18px]">
           <Trans>Learn more about our job current openings and see how you can get involved!</Trans>
         </p>
-        <button className="btn-lg btn-primary mt-8 md:mt-10 md:min-w-[145px]">
+        <Link href="/for-developers#dev-contact"><button className="btn-lg btn-primary mt-8 md:mt-10 md:min-w-[145px]">
           <Trans>Start now</Trans>
-        </button>
+        </button></Link>
         <img
           src="/images/program/coins.png"
           alt=""

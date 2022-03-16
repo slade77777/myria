@@ -1,7 +1,8 @@
 import { Trans } from '@lingui/macro';
-import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import React, { useEffect } from 'react';
 import CartIcon from '../icons/CartIcon';
-import Logo from '../icons/Logo';
 import LogoSm from '../icons/LogoSm';
 import MonitorIcon from '../icons/MonitorIcon';
 import WalletIcon from '../icons/WalletIcon';
@@ -24,6 +25,17 @@ const data = [
   }
 ];
 const Platform: React.FC = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      disable: function () {
+        const maxWidth = 768;
+        return window.innerWidth < maxWidth;
+      }
+    });
+  }, []);
+
   return (
     <div>
       <h2 className="text-center text-[32px] font-bold leading-[1.25] md:text-[40px]">
@@ -36,7 +48,7 @@ const Platform: React.FC = () => {
         </Trans>
       </p>
       <div className="mt-[72px] grid gap-10 md:mt-[65px] md:grid-cols-[63fr_37fr] md:gap-[86px]">
-        <div className="contents md:block md:space-y-8">
+        <div data-aos="fade-right" className="contents md:block md:space-y-8">
           <div className="order-1 flex space-x-2 rounded-xl text-center md:space-x-6 md:p-4 md:shadow-light-panel">
             <div className=" flex h-[88px] flex-1 flex-col items-center justify-center rounded-xl bg-brand-gold px-4 md:h-[135px] md:p-6">
               <span className="w-[29px] md:w-[51px]">
@@ -89,6 +101,7 @@ const Platform: React.FC = () => {
         <div className="contents md:block md:space-y-[64px]">
           {data.map((item, index) => (
             <div
+            data-aos="fade-left"
               className="-mt-2 text-center md:mt-0 md:text-left"
               style={{ order: (index + 1) * 2 }}
               key={index}>

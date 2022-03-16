@@ -44,7 +44,7 @@ const ForDevelopers: React.FC = () => {
             </p>
             <button className="btn-lg btn-primary mt-8"><Trans>START BUILDING</Trans></button>
           </div>
-          <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2_op.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel_op.png')]">
+          {/* <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2_op.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel_op.png')]">
             <div>
               <h3 className="text-[24px] font-bold leading-[1.25] md:text-[18px]">
                 <Trans>Myria launches $200M game developer grant program</Trans>
@@ -55,7 +55,7 @@ const ForDevelopers: React.FC = () => {
               </p>
             </div>
             <button className="btn-lg btn-primary mt-8 md:mt-0"><Trans>Apply now</Trans></button>
-          </div>
+          </div> */}
         </section>
         <section className={clsx(paddingX, 'mt-14 md:mt-10')}>
           <div className="mx-auto max-w-content">

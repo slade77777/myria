@@ -12,8 +12,16 @@ const ExperenceLogos: React.FC = () => {
           <div>
             <Image src="/images/activision.png" alt="" width={131} height={32} />
           </div>
+        </div>
+        <div className="grid grid-cols-[repeat(3,auto)] items-center justify-center gap-10">
           <div>
-            <Image src="/images/ea.png" alt="" width={44} height={46} />
+            <Image src="/images/marvel.png" alt="" width={61} height={22} />
+          </div>
+          <div>
+          <Image src="/images/gameloft.png" alt="" width={66} height={46} />
+          </div>
+          <div>
+            <Image src="/images/epic.png" alt="" width={61} height={70} />
           </div>
         </div>
         <div className="grid grid-cols-[repeat(2,auto)] items-center justify-center gap-10">
@@ -21,26 +29,18 @@ const ExperenceLogos: React.FC = () => {
             <Image src="/images/blizzard.png" alt="" width={112} height={59} />
           </div>
           <div>
-            <Image src="/images/riot.png" alt="" width={127} height={64} />
+            <Image src="/images/goldman.png" alt="" width={108} height={44} />
           </div>
         </div>
         <div className="grid grid-cols-[repeat(3,auto)] items-center justify-center gap-10">
           <div>
-            <Image src="/images/marvel.png" alt="" width={183} height={65} />
+            <Image src="/images/ea.png" alt="" width={44} height={46} />
           </div>
           <div>
-            <Image src="/images/gameloft.png" alt="" width={66} height={46} />
+            <Image src="/images/riot.png" alt="" width={62} height={31} />
           </div>
           <div>
-            <Image src="/images/epic.png" alt="" width={96} height={111} />
-          </div>
-        </div>
-        <div className="grid grid-cols-[repeat(2,auto)] items-center justify-center gap-10">
-          <div>
-            <Image src="/images/goldman.png" alt="" width={195} height={80} />
-          </div>
-          <div>
-            <Image src="/images/tencent.png" alt="" width={132} height={24} />
+            <Image src="/images/tencent.png" alt="" width={107} height={20} />
           </div>
         </div>
       </div>
