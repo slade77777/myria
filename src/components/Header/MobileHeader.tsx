@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
-import { links, headerHeight, Action, navHeight } from './Header';
+import { headerHeight, Action, navHeight, NavItem } from './Header';
 import clsx from 'clsx';
 import Link from 'next/link';
 import Collapse from '../Collapse';
@@ -10,6 +10,7 @@ import { Trans } from '@lingui/macro';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import Hamburger from 'hamburger-react';
 import LanguageSwitcher from '../LanguageSwitcher';
+import Socials from '../Social';
 
 type Props = {
   action: Action;
@@ -22,18 +23,112 @@ type OverlayProps = {
   top: number;
 };
 
+export const links: NavItem[] = [
+  {
+    text: <Trans>Home</Trans>,
+    url: '/',
+    position: 'left',
+    action: 'join-discord'
+  },
+  {
+    text: <Trans>Games</Trans>,
+    url: '/games',
+    position: 'left',
+    action: 'join-discord'
+  },
+  {
+    text: <Trans>Store</Trans>,
+    url: '/store',
+    inactive: true,
+    position: 'left',
+    action: 'join-discord'
+  },
+  {
+    text: <Trans>Nodes</Trans>,
+    url: '/nodes',
+    position: 'left',
+    action: 'join-discord'
+  },
+
+  {
+    text: <Trans>Ecosystem</Trans>,
+    url: '/ecosystem',
+    position: 'left',
+    action: 'join-discord'
+  },
+  // {
+  //   text: <Trans>DEVELOPER PROGRAM</Trans>,
+  //   url: '/developer-program',
+  //   position: 'left',
+  //   action: 'start-building'
+  // },
+  {
+    text: <Trans>About</Trans>,
+    position: 'right',
+    children: [
+      {
+        text: <Trans>Our team</Trans>,
+        url: '/team'
+      },
+      {
+        text: <Trans>FOR GAMERS</Trans>,
+        url: '/games'
+      },
+      {
+        text: <Trans>FOR STUDIOS</Trans>,
+        url: '/studios'
+      }
+    ]
+  },
+  {
+    text: <Trans>Community</Trans>,
+    position: 'right',
+    children: [
+      {
+        text: 'Discord',
+        url: socialLinks.discord,
+        target: '_blank'
+      },
+      {
+        text: 'Twitter',
+        url: socialLinks.twitter,
+        target: '_blank'
+      },
+      {
+        text: 'Instagram',
+        url: socialLinks.instagram,
+        target: '_blank'
+      },
+      {
+        text: 'Medium',
+        url: socialLinks.medium,
+        target: '_blank'
+      }
+    ]
+  }
+];
+
 const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
   const actionElements = useMemo(() => {
     switch (action) {
       case 'start-building':
         return (
-          <a
-            href={socialLinks.discord}
-            target="_blank"
-            className="btn-lg btn-secondary col-span-2 text-center"
-            rel="noreferrer">
-            <Trans>JOIN DISCORD</Trans>
-          </a>
+          <div>
+            <a
+              href={socialLinks.discord}
+              target="_blank"
+              className="btn-lg w-full btn-secondary col-span-2 text-center"
+              rel="noreferrer">
+              <Trans>JOIN DISCORD</Trans>
+            </a>
+            <div className="mt-[30px] grid grid-flow-col justify-center gap-4 sm:gap-6">
+              {Socials.map((item, idx) => (
+                <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+          </div>
         );
 
       case 'login':
@@ -43,16 +138,24 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             <button className="btn-lg btn-secondary">Log in</button>
           </>
         );
-
       default:
         return (
-          <a
-            href={socialLinks.discord}
-            target="_blank"
-            className="btn-lg btn-secondary col-span-2 text-center"
-            rel="noreferrer">
-            <Trans>JOIN DISCORD</Trans>
-          </a>
+          <div>
+            <a
+              href={socialLinks.discord}
+              target="_blank"
+              className="btn-lg btn-primary col-span-2 w-full text-center"
+              rel="noreferrer">
+              <Trans>JOIN DISCORD</Trans>
+            </a>
+            <div className="mt-[30px] grid grid-flow-col justify-center gap-4 sm:gap-6">
+              {Socials.map((item, idx) => (
+                <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+          </div>
         );
     }
   }, [action]);
@@ -163,6 +266,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
   );
 };
 
+const navHeightMobile = 104;
 const MobileHeader: React.FC<Props> = ({ action }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const toggleMenu = () => {
@@ -187,7 +291,7 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
       <nav ref={navRef} className="w-full">
         <div
           style={{
-            height: navHeight
+            height: navHeightMobile
           }}
           className={clsx('relative z-10 flex w-full items-center justify-between py-4 px-6')}>
           <Link href="/">

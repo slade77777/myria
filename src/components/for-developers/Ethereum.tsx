@@ -93,7 +93,7 @@ const data = [
       </svg>
     ),
     title: 'Scalability',
-    description: <Trans>Support unlimited scalabiltiy, delivering up to 5,000+ TPS </Trans>
+    description: <Trans>Support unlimited scalabiltiy, delivering up to 9,000+ TPS </Trans>
   },
   {
     icon: (

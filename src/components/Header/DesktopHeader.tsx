@@ -120,7 +120,6 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const filterdLinks = links.filter((link) => !link.action || link.action == action);
   return (
     <header
-
       ref={headerRef}
       className="w-full"
     >

@@ -72,7 +72,7 @@ const Myria: React.FC = () => {
           <div key={idx}>
             <div className="hidden md:block">
               <div>
-                <p className="text-[20px] leading-[1.25] text-brand-gold">{item.subTitle}</p>
+                <p className="text-[20px] leading-[1.25] text-brand-gold font-medium">{item.subTitle}</p>
                 <label className="mt-2 flex items-start justify-between text-[18px] font-bold leading-[1.25] md:mt-4 md:text-[28px] ">
                   {item.title}
                 </label>

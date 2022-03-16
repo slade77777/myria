@@ -211,6 +211,7 @@ const Team: React.FC = () => {
             background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)'
           }}
           className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
+          {/* md:top-[50px]: minus banner */}
         <div className={`absolute top-0 md:top-[50px] left-0 z-[-1] w-full`}>
           <Image
             src="/images/team/header-bg.png"
@@ -220,12 +221,12 @@ const Team: React.FC = () => {
             layout="responsive"
           />
         </div>
-        <section className={clsx(paddingX, 'pt-[255px] pb-[208px]')}>
+        <section className={clsx(paddingX, 'hidden md:block pt-[255px] pb-[208px]')}>
           <h1 className="mx-auto max-w-[729px] text-center text-[40px] font-bold leading-[1.25]">
             Contributing to the future of a decentralized internet
           </h1>
         </section>
-        <section className={clsx(paddingX)}>
+        <section className={clsx(paddingX, 'pt-[150px] md:pt-0')}>
           <div className="mx-auto max-w-content">
             <h3 className="text-center text-[32px] font-medium leading-[1.25]">
               <Trans>Led by industry experts</Trans>
