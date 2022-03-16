@@ -1,26 +1,14 @@
-import { t, Trans } from '@lingui/macro';
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
+import BuyerNodeCard from 'src/components/BuyerNodeCard';
 import Backbone from 'src/components/ecosystem/Backbone';
 import Diagram from 'src/components/ecosystem/Diagram';
 import Platform from 'src/components/ecosystem/Platform';
-import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
+import { bannerSpacingClassName } from 'src/components/Header/Header';
+import JoinMyriaCard from 'src/components/JoinMyriaCard';
 import Page from '../components/Page';
 import { paddingX } from '../utils';
-
-const data = [
-  {
-    className: 'text-brand-gold',
-    title: 'Humblebrag polaroid biodiesel kickstarter',
-    description: 'Gluten-free squid man braid, mlkshk offal bespoke lomo biodiesel direct trade.'
-  },
-  {
-    className: 'text-brand-light-blue',
-    title: 'Humblebrag polaroid biodiesel kickstarter',
-    description: 'Gluten-free squid man braid, mlkshk offal bespoke lomo biodiesel direct trade.'
-  }
-];
 
 const Ecosystem: React.FC = () => {
   return (
@@ -53,22 +41,14 @@ const Ecosystem: React.FC = () => {
           <section className="mt-12 md:mt-[100px]">
             <Diagram />
           </section>
-          <section className="mx-auto mt-10 mb-[53px] grid max-w-[1049px] gap-6 md:mb-[95px] md:mt-[131px] md:grid-cols-2 md:gap-8">
-            {data.map((item, idx) => (
-              <div
-                key={idx}
-                className={clsx(
-                  item.className,
-                  'flex space-x-6 rounded-xl bg-brand-deep-blue py-8 pr-6'
-                )}>
-                <div className="h-[103px] rounded-r-full border-r-[51px]  [border-color:currentColor]" />
-                <div className="">
-                  <h3 className="text-[20px] font-bold leading-[1.25]">{item.title}</h3>
-                  <p className="mt-6 text-[18px] leading-[1.5] text-light">{item.description}</p>
-                </div>
-              </div>
-            ))}
+
+          <section className={clsx(paddingX, 'mt-10 mb-[53px] md:mb-[131px] md:mt-[80px]')}>
+            <div className="mx-auto grid max-w-content gap-8 md:grid-cols-2">
+              <BuyerNodeCard />
+              <JoinMyriaCard />
+            </div>
           </section>
+
         </div>
       </div>
     </Page>

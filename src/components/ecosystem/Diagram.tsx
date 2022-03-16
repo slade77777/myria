@@ -16,7 +16,7 @@ const Diagram: React.FC = () => {
       </div>
       <div className="hidden sm:block">
         <Image
-          src="/images/ecosystem/diagram.svg"
+          src="/images/ecosystem/diagram_update.svg"
           alt=""
           width={1048}
           height={1148}
