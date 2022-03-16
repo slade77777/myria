@@ -54,7 +54,7 @@ const BuildYourBlockchain: React.FC = () => {
       setError('');
       setIsSubmitSuccess(false);
 
-      data.subject = `${data.name} ${data.company ?? `- ${data.company}`}`;
+      data.subject = `Build with Myria`;
       await apiClient
         .post('/contact-us', data)
         .then(() => setIsSubmitSuccess(true))
