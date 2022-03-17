@@ -43,7 +43,7 @@ const Ecosystem: React.FC<{ action: Action }> = ({ action }) => {
             <Diagram />
           </section>
 
-          <section className={clsx(paddingX, 'mt-10 mb-[53px] md:mb-[131px] md:mt-[80px]')}>
+          <section className={clsx('mt-10 mb-[53px] md:mb-[131px] md:mt-[80px]')}>
             <div className="mx-auto grid max-w-content gap-8 md:grid-cols-2">
               <BuyerNodeCard />
               <JoinMyriaCard />
