@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app';
 import { useGA } from 'src/lib/ga';
 import LanguageProvider, { useLanguage } from 'src/context/LanguageContext';
 import { t } from '@lingui/macro';
+import TabProvider from 'src/context/tabContext';
 
 const WithLanguageStyle: React.FC<any> = ({ children }) => {
   const { language } = useLanguage();
@@ -42,8 +43,9 @@ function App({ Component, pageProps }: AppProps) {
         }}
       />
       <WithLanguageStyle>
-        
-        <Component {...pageProps} />
+        <TabProvider>
+          <Component {...pageProps} />
+        </TabProvider>
       </WithLanguageStyle>
     </LanguageProvider>
   );

@@ -10,6 +10,16 @@ class AppDocument extends Document {
     return (
       <Html>
         <Head>
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+          />
           <link rel="apple-touch-icon" sizes="180x180" href="/seo/apple-touch-icon.png" />
           <link rel="icon" type="image/x-icon" href="/seo/favicon.ico" />
           <link rel="icon" type="image/png" sizes="32x32" href="/seo/favicon-32x32.png" />
@@ -20,11 +30,10 @@ class AppDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-         {/* Global Site Tag (gtag.js) - Google Analytics */}
-         <script
+          <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-            />
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <link
