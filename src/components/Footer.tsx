@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
+import Badge from './Badge';
 
 import Logo from './icons/Logo';
 import Socials from './Social';
@@ -174,9 +175,7 @@ const Footer: React.FC = () => {
                     ) : (
                       <div key={idx} className="relative flex items-center space-x-[14px]">
                         <p className="mr-[7px] hover:cursor-not-allowed">{item.label}</p>
-                        <div className="rounded-lg bg-brand-dark-blue px-[10px] py-[6px] text-[9px] leading-[1.3] text-brand-light-blue">
-                          COMING SOON
-                        </div>
+                        <Badge>COMING SOON</Badge>
                       </div>
                     )
                   )}
