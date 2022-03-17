@@ -234,7 +234,9 @@ module.exports = {
           transition: '0.3s',
           fontWeight: 700,
           textTransform: 'uppercase',
-          display: 'inline-block'
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
         '.btn-sm': {
           padding: '7px 24px',
@@ -244,7 +246,9 @@ module.exports = {
           transition: '0.3s',
           fontWeight: 700,
           textTransform: 'uppercase',
-          display: 'inline-block'
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
         '.btn-icon': {
           padding: '9px 24px',
@@ -254,7 +258,9 @@ module.exports = {
           transition: '0.3s',
           fontWeight: 700,
           textTransform: 'uppercase',
-          display: 'inline-block'
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
         '.btn-icon-sm': {
           padding: '9px 24px',
@@ -264,7 +270,9 @@ module.exports = {
           transition: '0.3s',
           fontWeight: 700,
           textTransform: 'uppercase',
-          display: 'inline-block'
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
         '.btn-primary': {
           backgroundColor: theme('colors.brand-gold'),
@@ -360,6 +368,24 @@ module.exports = {
             // hack fix for full width element when scrollbar is hiden
             width: 'calc(100% - var(--removed-body-scroll-bar-size, 0px))',
             marginRight: 'var(--removed-body-scroll-bar-size, 0px)'
+          }
+        },
+        '.carousel-dots': {
+          position: 'absolute',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: '2',
+          display: 'grid !important',
+          gap: 25,
+          gridAutoFlow: 'column',
+          '& button': {
+            background: 'rgba(154, 201, 227, 0.5)',
+            width: 94,
+            height: 7,
+            fontSize: 0
+          },
+          '& .slick-active button': {
+            background: '#9AC9E3'
           }
         }
       });

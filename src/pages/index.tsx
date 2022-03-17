@@ -41,12 +41,12 @@ const Index = () => {
               <Program />
             </div>
             <div className="mt-10 md:mt-11">
-              <div className="mx-auto max-w-content rounded-xl bg-[url('/images/home/network.png')] bg-cover bg-right-bottom px-[64px] pt-[73px] pb-[81px] shadow-dark-panel">
-                <div className="max-w-[422px]">
+              <div className="mx-auto max-w-content rounded-xl bg-[url('/images/home/network-mobile_op.png')] bg-cover bg-right-bottom p-8 pb-[300px] shadow-dark-panel md:bg-[url('/images/home/network_op.png')] md:px-[64px] md:pt-[73px] md:pb-[81px]">
+                <div className="md:max-w-[422px]">
                   <p className="text-[20px] leading-[1.25] text-brand-gold">
                     Scale with confidence with Myria
                   </p>
-                  <p className="mt-4 text-[28px] font-bold leading-[1.25]">
+                  <p className="mt-4 text-[24px] font-bold leading-[1.25] md:text-[28px]">
                     A trusted Ethereum L2 solution, engineered for growth{' '}
                   </p>
                   <a href="#" className="btn-lg btn-white mt-10">
