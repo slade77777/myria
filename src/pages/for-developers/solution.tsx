@@ -11,10 +11,11 @@ const data = [
   {
     title: <Trans>Secure and scalable</Trans>,
     items: [
-      <Trans key={0}>Ethereum-level security provided by
-        zk-STARKs</Trans>,
+      <Trans key={0}>Ethereum-level security provided by zk-STARKs</Trans>,
       <Trans key={1}>Transparent (no trusted setup) and post-quantum secure</Trans>,
-      <Trans key={2}>High throughput of 1,000+ TPS before sharding and 10,000+ TPS after sharding</Trans>,
+      <Trans key={2}>
+        High throughput of 1,000+ TPS before sharding and 10,000+ TPS after sharding
+      </Trans>,
       <Trans key={3}>Low transaction fees: over 100x lower than fees on Ethereum</Trans>
     ]
   },
@@ -63,15 +64,21 @@ const Solution: React.FC = () => {
             </div>
           </div>
           <div className="mx-auto max-w-[668px] text-center">
-            <h1 className="text-[40px] font-extrabold leading-[1.15]"><Trans>General purpose zk-rollup</Trans></h1>
+            <h1 className="text-[40px] font-extrabold leading-[1.15]">
+              <Trans>General purpose zk-rollup</Trans>
+            </h1>
             <p className="mt-6 text-[18px] leading-[1.5] md:text-[20px]">
-              <Trans>Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT,
-                blockchain gaming and more.</Trans>
+              <Trans>
+                Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT,
+                blockchain gaming and more.
+              </Trans>
             </p>
           </div>
           <div className=" mx-auto mt-12 w-full max-w-content rounded-xl bg-brand-deep-blue/80 bg-[url('/images/solution/panel-mobile_op.png')] bg-cover bg-bottom p-8 pb-[303px] shadow-dark-panel md:mt-[112px] md:bg-[url('/images/solution/panel_op.png')] md:bg-right md:px-[64px] md:pt-[73px] md:pb-[94px] ">
             <div className="md:max-w-[552px]">
-              <p className="text-[20px] font-medium leading-[1.25] text-brand-gold"><Trans>Our solution</Trans></p>
+              <p className="text-[20px] font-medium leading-[1.25] text-brand-gold">
+                <Trans>Our solution</Trans>
+              </p>
               <p className="mt-2 text-[24px] font-bold leading-[1.25] md:text-[28px]">
                 STARK-based zk-rollup
               </p>
@@ -83,7 +90,8 @@ const Solution: React.FC = () => {
                   transactions into one single transaction. This then sends a validity proof back to
                   the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based
                   zkrollup solution powered by Starkware enable NFTs and dApps to achieve unlimited
-                  scale, low transaction fees without sacrificing on security.</Trans>
+                  scale, low transaction fees without sacrificing on security.
+                </Trans>
               </p>
             </div>
           </div>
@@ -109,26 +117,30 @@ const Solution: React.FC = () => {
         </section>
         <section className={clsx(paddingX, 'mt-10 text-center md:mt-[90px]')}>
           <div className="mx-auto">
-            <p className="text-[20px] font-medium leading-[1.25] text-brand-gold"><Trans>Architecture</Trans></p>
+            <p className="text-[20px] font-medium leading-[1.25] text-brand-gold">
+              <Trans>Architecture</Trans>
+            </p>
             <p className="mt-4 text-[32px] font-bold leading-[1.25] md:mt-6 md:text-[40px]">
               <Trans>Layer 2 scalability solution</Trans>
             </p>
             <p className="mx-auto mt-8 max-w-[713px] text-[18px] leading-[1.5] text-light md:mt-6 md:text-[20px]">
-              <Trans>Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1
-                data availability provide Ethereum-level security.</Trans>
+              <Trans>
+                Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1
+                data availability provide Ethereum-level security.
+              </Trans>
             </p>
             <div className="mt-10 md:hidden">
               <Image
-                src="/images/solution/diagram-mobile_op.png"
+                src="/images/solution/diagram-mobile-update_op.png"
                 width={380}
                 height={632}
                 layout="responsive"
                 alt=""
               />
             </div>
-            <div className="mt-10 ml-auto mr-[288px] hidden max-w-[732px] md:block md:mx-auto">
+            <div className="mt-10 ml-auto mr-[288px] hidden max-w-[732px] md:mx-auto md:block">
               <Image
-                src="/images/solution/diagram_op.png"
+                src="/images/solution/diagram-update_op.png"
                 width={732}
                 height={943}
                 layout="responsive"
