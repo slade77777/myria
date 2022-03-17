@@ -89,7 +89,7 @@ const Solution: React.FC = () => {
                   uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2
                   transactions into one single transaction. This then sends a validity proof back to
                   the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based
-                  zkrollup solution powered by Starkware enable NFTs and dApps to achieve unlimited
+                  zkrollup solution enable NFTs and dApps to achieve unlimited
                   scale, low transaction fees without sacrificing on security.
                 </Trans>
               </p>
@@ -140,7 +140,7 @@ const Solution: React.FC = () => {
             </div>
             <div className="mt-10 ml-auto mr-[288px] hidden max-w-[732px] md:mx-auto md:block">
               <Image
-                src="/images/solution/diagram-update_op.png"
+                src="/images/solution/diagram-update.svg"
                 width={732}
                 height={943}
                 layout="responsive"
