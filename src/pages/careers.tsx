@@ -5,10 +5,13 @@ import { paddingX } from '../utils';
 import CareersSection from '../components/Careers';
 import Page from '../components/Page';
 import { Trans } from '@lingui/macro';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { TAB } from 'src/components/NotiBanner';
 
 const Careers: React.FC = () => {
+  const [activatingTab] = useLocalStorage<TAB>('active-tab', 'for-gamer');
   return (
-    <Page>
+    <Page action={activatingTab === 'for-dev' ? 'start-building' : 'join-discord'}>
       <div>
         <section
           style={{

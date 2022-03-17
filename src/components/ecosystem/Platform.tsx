@@ -9,17 +9,17 @@ import WalletIcon from '../icons/WalletIcon';
 
 const data = [
   {
-    title: 'Games & Applications',
+    title: 'Myria NFT Marketplace',
     description:
       'We believe in open and equitable access, enabling more people to build, experience and enjoy the benefits of blockchain and the metaverse.'
   },
   {
-    title: 'Platform ',
+    title: 'Myria Wallet ',
     description:
       'We want to make digital asset trading and blockchain gaming easy with our all-in-one platform.'
   },
   {
-    title: 'Infrastructure & Tools',
+    title: 'Myria Game Platform',
     description:
       'Our Ethereum L2 scaling solution provides reliability, scalability and security. Making it easy for developers to build and manage their projects.'
   }

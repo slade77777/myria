@@ -90,7 +90,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
 const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
-
+  
   const actionElements = useMemo(() => {
     switch (action) {
       case 'start-building':
@@ -116,7 +116,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         );
     }
   }, [action]);
-
+  
   const filterdLinks = links.filter((link) => !link.action || link.action == action);
   return (
     <header

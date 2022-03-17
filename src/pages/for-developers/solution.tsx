@@ -126,7 +126,7 @@ const Solution: React.FC = () => {
                 alt=""
               />
             </div>
-            <div className="mt-10 ml-auto mr-[288px] hidden max-w-[732px] md:block">
+            <div className="mt-10 ml-auto mr-[288px] hidden max-w-[732px] md:block md:mx-auto">
               <Image
                 src="/images/solution/diagram_op.png"
                 width={732}

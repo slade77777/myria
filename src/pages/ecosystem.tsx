@@ -2,6 +2,7 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import BuyerNodeCard from 'src/components/BuyerNodeCard';
+import { Action } from 'src/components/Header';
 import Backbone from 'src/components/ecosystem/Backbone';
 import Diagram from 'src/components/ecosystem/Diagram';
 import Platform from 'src/components/ecosystem/Platform';
@@ -10,9 +11,9 @@ import JoinMyriaCard from 'src/components/JoinMyriaCard';
 import Page from '../components/Page';
 import { paddingX } from '../utils';
 
-const Ecosystem: React.FC = () => {
+const Ecosystem: React.FC<{ action: Action }> = ({ action = 'join-discord' }) => {
   return (
-    <Page>
+    <Page action={action}>
       <div className={bannerSpacingClassName}>
         <section
           className={clsx(
@@ -48,7 +49,6 @@ const Ecosystem: React.FC = () => {
               <JoinMyriaCard />
             </div>
           </section>
-
         </div>
       </div>
     </Page>
