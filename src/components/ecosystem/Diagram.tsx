@@ -14,13 +14,13 @@ const Diagram: React.FC = () => {
           </a>
         </Link>
       </div>
-      <div className="hidden sm:block">
+      <div className="hidden sm:flex justify-center min-w-full">
         <Image
           src="/images/ecosystem/diagram_update.svg"
           alt=""
           width={1048}
-          height={1148}
           layout="responsive"
+          height={1148}
         />
       </div>
     </div>

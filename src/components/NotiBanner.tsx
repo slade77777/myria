@@ -7,7 +7,7 @@ import { socialLinks } from 'src/configs';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import DiscordIcon from './icons/DiscordIcon';
 
-type TAB = 'for-gamer' | 'for-dev';
+export type TAB = 'for-gamer' | 'for-dev';
 const routes: {
   text: string;
   href: string;
@@ -33,8 +33,10 @@ const NotiBanner: React.FC = () => {
   const [activatingTab, setActivatingTab] = useLocalStorage<TAB>('active-tab', 'for-gamer');
   
   useEffect(() => {
-    let tab = routes.find(r => r.dependentRoutes.includes(router.pathname))?.id ?? activatingTab;
-    setActivatingTab(tab);
+    let tab = routes.find(r => r.dependentRoutes.includes(router.pathname))?.id;
+    if (tab!== activatingTab && !!tab) {
+      setActivatingTab(tab);
+    }
   }, [router.pathname, activatingTab])
   
   return (

@@ -16,7 +16,7 @@ const ForDevelopers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            "relative isolate flex min-h-[580px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile_op.png')] bg-cover bg-top pt-[150px] pb-[87px] md:bg-none md:pt-[150px]"
+            "relative isolate flex min-h-[520px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile_op.png')] bg-cover bg-top pt-[150px] pb-[87px] md:bg-none md:pt-[150px]"
           )}>
           <div className="hidden md:block">
             <div

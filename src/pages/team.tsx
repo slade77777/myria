@@ -4,6 +4,8 @@ import Image from 'next/image';
 import React from 'react';
 import { bannerHeight, bannerSpacingClassName, navHeight } from 'src/components/Header/Header';
 import JoinTheRevolution from 'src/components/JoinTheRevolution';
+import { TAB } from 'src/components/NotiBanner';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 import ExperenceLogos from '../components/ExperienceLogos';
 import LinkedinWithBackgroundIcon from '../components/icons/LinkedinWithBackgroundIcon';
 import TwitterWithBackgroundIcon from '../components/icons/TwitterWithBackgroundIcon';
@@ -203,8 +205,9 @@ const data: Person[] = [
 ];
 
 const Team: React.FC = () => {
+  const [activatingTab] = useLocalStorage<TAB>('active-tab', 'for-dev');
   return (
-    <Page action="start-building">
+    <Page action={activatingTab === 'for-dev' ? "start-building": "join-discord"}>
       <div className={`relative isolate ${bannerSpacingClassName}`}>
         <div
           style={{

@@ -15,6 +15,8 @@ import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
 import BuyerNode from 'src/components/BuyerNodeCard';
 import JoinMyriaCard from 'src/components/JoinMyriaCard';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { TAB } from 'src/components/NotiBanner';
 
 const PLANNET_MOVE_X = 300;
 const PLANNET_MOVE_Y = 300;
@@ -22,6 +24,7 @@ const OTHER_PLANNET_X = 400;
 const CHARACTER_ON_ROCK_MOVE_Y = 0;
 
 const Index = () => {
+  const [activatingTab] = useLocalStorage<TAB>('active-tab', 'for-gamer');
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(CustomEase);
 
@@ -132,23 +135,33 @@ const Index = () => {
   }, []);
 
   return (
-    <Page>
+    <Page action={activatingTab === 'for-dev' ? 'start-building' : 'join-discord'}>
       <div className={bannerSpacingClassName}>
         <section
           className={clsx(
             paddingX,
             "relative isolate min-h-[782px] bg-[url('/images/studios/header-bg-mobile_op.png')] bg-cover bg-top md:min-h-[872px] md:bg-none"
           )}>
-          <div data-aos="fade-left" className="absolute inset-0 z-[-1] hidden bg-[url('/images/studios/header-bg_op.png')] bg-cover bg-top bg-no-repeat md:block"></div>
+          <div
+            data-aos="fade-left"
+            className="absolute inset-0 z-[-1] hidden bg-[url('/images/studios/header-bg_op.png')] bg-cover bg-top bg-no-repeat md:block"></div>
           <div
             style={{ background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)' }}
             className="absolute top-0 left-0 z-[-2] hidden h-[606px] w-full md:block"
           />
           <div className="flex flex-col items-center pt-[112px] text-center md:items-start md:pt-[255px] md:pl-10 md:text-left">
             <div className="w-[192px] md:w-[252px]">
-              <Image src="/images/studios/studios_op.png" alt="" width={252} height={146} data-aos="fade-right"/>
+              <Image
+                src="/images/studios/studios_op.png"
+                alt=""
+                width={252}
+                height={146}
+                data-aos="fade-right"
+              />
             </div>
-            <p data-aos="fade-right" className="mt-4 max-w-[447px] text-[20px] leading-[1.5] md:mt-6 md:text-[24px]">
+            <p
+              data-aos="fade-right"
+              className="mt-4 max-w-[447px] text-[20px] leading-[1.5] md:mt-6 md:text-[24px]">
               Creating the new standard for blockchain games and experiences{' '}
             </p>
           </div>
