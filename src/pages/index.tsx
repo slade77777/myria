@@ -13,6 +13,7 @@ import OurGames from 'src/components/home/OurGames';
 import Program from 'src/components/Program';
 import News from 'src/components/home/News';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
+import Link from 'next/link';
 
 const Index = () => {
   useEffect(() => {
@@ -47,11 +48,13 @@ const Index = () => {
                     Scale with confidence with Myria
                   </p>
                   <p className="mt-4 text-[24px] font-bold leading-[1.25] md:text-[28px]">
-                    A trusted Ethereum L2 solution, engineered for growth{' '}
+                    A trusted Ethereum L2 solution, engineered for growth and security
                   </p>
-                  <a href="#" className="btn-lg btn-white mt-10">
-                    Learn more
-                  </a>
+                  <Link href={'/for-developers/solution'}>
+                    <a href="#" className="btn-lg btn-white mt-10">
+                      Learn more
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>

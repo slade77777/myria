@@ -17,6 +17,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,7 +83,7 @@ const Hero: React.FC = () => {
                 <Trans>COMING SOON</Trans>
               </p>
               <p className="mt-2 text-[40px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
-                <Trans>IBCO $MYRIA Token Sale</Trans>
+                <Trans>$MYRIA Token Sale</Trans>
               </p>
               <button disabled className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[53px]">
                 <Trans>COMING SOON</Trans>
@@ -220,9 +221,11 @@ const Hero: React.FC = () => {
                   data-aos="fade-up"
                   data-aos-duration="3000"
                   className="mt-8 flex justify-center space-x-5 md:justify-start">
-                  <a className="btn-lg btn-white min-w-[178px]">
-                    <Trans>Learn more</Trans>
-                  </a>
+                  <Link href={'/ecosystem'}>
+                    <a className="btn-lg btn-white min-w-[178px]">
+                      <Trans>Learn more</Trans>
+                    </a>
+                  </Link>
                   <a
                     href={socialLinks.discord}
                     target="_blank"

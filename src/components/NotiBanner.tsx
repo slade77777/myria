@@ -29,7 +29,7 @@ const NotiBanner: React.FC = () => {
       <div className="flex flex-col items-center py-4 text-center md:flex-row md:py-2 ">
         <p className="text-[14px] font-medium leading-[1.23] ">
           <Trans>
-            <span className="font-bold">$MYRIA</span> Node & token IBCO sales coming soon!
+            <span className="font-bold">$MYRIA</span> Node & token sales coming soon!
           </Trans>
         </p>
         <a
