@@ -11,9 +11,9 @@ import JoinMyriaCard from 'src/components/JoinMyriaCard';
 import Page from '../components/Page';
 import { paddingX } from '../utils';
 
-const Ecosystem: React.FC<{ action: Action }> = ({ action = 'join-discord' }) => {
+const Ecosystem: React.FC<{ action: Action }> = ({ action }) => {
   return (
-    <Page action={action}>
+    <Page action={action || 'join-discord'}>
       <div className={bannerSpacingClassName}>
         <section
           className={clsx(
