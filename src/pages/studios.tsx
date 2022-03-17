@@ -16,7 +16,6 @@ import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Head
 import BuyerNode from 'src/components/BuyerNodeCard';
 import JoinMyriaCard from 'src/components/JoinMyriaCard';
 import useLocalStorage from 'src/hooks/useLocalStorage';
-import { TAB } from 'src/components/NotiBanner';
 
 const PLANNET_MOVE_X = 300;
 const PLANNET_MOVE_Y = 300;
@@ -24,7 +23,6 @@ const OTHER_PLANNET_X = 400;
 const CHARACTER_ON_ROCK_MOVE_Y = 0;
 
 const Index = () => {
-  const [activatingTab] = useLocalStorage<TAB>('active-tab', 'for-gamer');
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(CustomEase);
 
@@ -135,7 +133,7 @@ const Index = () => {
   }, []);
 
   return (
-    <Page action={activatingTab === 'for-dev' ? 'start-building' : 'join-discord'}>
+    <Page action={'auto'}>
       <div className={bannerSpacingClassName}>
         <section
           className={clsx(

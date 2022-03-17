@@ -2,10 +2,11 @@ import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React, { ReactNode, useEffect } from 'react';
 import { socialLinks } from 'src/configs';
+import { useTabContext } from 'src/context/tabContext';
 import DesktopHeader from './DesktopHeader';
 import MobileHeader from './MobileHeader';
 
-export type Action = 'login' | 'join-discord' | 'start-building';
+export type Action = 'login' | 'join-discord' | 'start-building' | 'auto';
 
 export type NavItem = {
   text: ReactNode;
@@ -128,13 +129,18 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
   className,
   stickyHeader = true
 }) => {
+  const { activatingTab } = useTabContext();
+  let usedAction = action;
+  if (action === 'auto') {
+    usedAction = activatingTab === 'for-gamer' ? 'join-discord' : 'start-building';
+  }
   return (
     <div className={clsx('absolute top-0 z-10 w-full', className)}>
       <div className="hidden lg:block">
-        <DesktopHeader action={action} stickyHeader={stickyHeader} />
+        <DesktopHeader action={usedAction} stickyHeader={stickyHeader} />
       </div>
       <div className="lg:hidden">
-        <MobileHeader action={action} />
+        <MobileHeader action={usedAction} />
       </div>
     </div>
   );
