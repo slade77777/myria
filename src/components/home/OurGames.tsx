@@ -23,7 +23,7 @@ const Item: React.FC<{ item: typeof games[number] }> = ({ item }) => {
           {item.disabled && (
             <div className="ml-auto">
               <Badge>
-                <Trans>COMMING SOON</Trans>
+                <Trans>COMING SOON</Trans>
               </Badge>
             </div>
           )}
