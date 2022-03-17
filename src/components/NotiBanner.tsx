@@ -2,34 +2,51 @@ import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { socialLinks } from 'src/configs';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 import DiscordIcon from './icons/DiscordIcon';
+
+type TAB = 'for-gamer' | 'for-dev';
+const routes: {
+  text: string;
+  href: string;
+  id: TAB;
+  dependentRoutes: string[]
+}[] = [
+  {
+    text: t`FOR GAMERS`,
+    href: '/',
+    id:'for-gamer',
+    dependentRoutes: ['/', '/ecosystem', '/nodes', '/games', '/game-detail/[id]']
+  },
+  {
+    text: t`FOR DEVELOPERS`,
+    href: '/for-developers',
+    id: 'for-dev',
+    dependentRoutes: ['/for-developers', '/for-developers/solution']
+  }
+];
 
 const NotiBanner: React.FC = () => {
   const router = useRouter();
+  const [activatingTab, setActivatingTab] = useLocalStorage<TAB>('active-tab', 'for-gamer');
+  
+  useEffect(() => {
+    let tab = routes.find(r => r.dependentRoutes.includes(router.pathname))?.id ?? activatingTab;
+    setActivatingTab(tab);
+  }, [router.pathname, activatingTab])
   
   return (
     <div className="hidden grid-cols-[1fr_auto_1fr] bg-brand-light-blue md:grid">
       <div className="flex">
-        {[
-          {
-            text: t`FOR GAMERS`,
-            href: '/games',
-            dependentRoutes: ['', '/', '/ecosystem', '/nodes', '/games', '/game-detail/[id]']
-          },
-          {
-            text: t`FOR DEVELOPERS`,
-            href: '/for-developers',
-            dependentRoutes: ['/for-developers', '/for-developers/solution']
-          }
-        ].map((item) => (
+        {routes.map((item) => (
           <Link key={item.href} href={item.href}>
             <a
               className={clsx(
                 'flex items-center px-6 py-4 text-[14px] font-bold leading-[17px] hover:bg-[#003552] hover:text-white',
                 {
-                  'bg-[#003552] text-white': item.dependentRoutes.includes(router.pathname)
+                  'bg-[#003552] text-white': activatingTab === item.id
                 }
               )}>
               {item.text}

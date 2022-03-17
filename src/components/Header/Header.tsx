@@ -74,7 +74,7 @@ export const links: NavItem[] = [
     children: [
       {
         text: <Trans>Our vision</Trans>,
-        url: '/ecosystem'
+        url: '/our-vision'
       },
       {
         text: <Trans>Our team</Trans>,
