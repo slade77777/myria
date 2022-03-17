@@ -22,7 +22,7 @@ const Careers: React.FC = () => {
               <Trans>Careers</Trans>
             </h3>
             <p className="body mt-[50px] text-center md:body-lg">
-              <Trans>Join our team of 60+ to forge to future of blockchain gaming</Trans>
+              <Trans>Join our team of 100+ to forge to future of blockchain gaming</Trans>
             </p>
             <div className="mx-auto mt-[60px] max-w-[923px]">
               <CareersSection />

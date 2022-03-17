@@ -31,26 +31,25 @@ const data = [
   },
   {
     subTitle: <Trans>Blockchain consultancy </Trans>,
-    title: <Trans>Enabling true scalability while leveraging the Ethereum network</Trans>,
+    title: <Trans>Enter the new era of web3.0 with confidence </Trans>,
     description:
       <Trans>Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support. </Trans>
   },
   {
     subTitle: <Trans>Tokenomics consultancy </Trans>,
-    title: <Trans>Enabling true scalability while leveraging the Ethereum network</Trans>,
+    title: <Trans>Launch with full support from our tokenomics experts</Trans>,
     description:
       <Trans>Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives.</Trans>
   },
   {
     subTitle: <Trans>Compliance support</Trans>,
-    title: 'Enabling true scalability while leveraging the Ethereum network',
+    title: <Trans>Work with our experienced legal team</Trans>,
     description:
       <Trans>Provide your players with a protected experience and ensure your business understands critical regulatory compliance components.  </Trans>
   },
-
   {
     subTitle: <Trans>Instant project visibility </Trans>,
-    title: 'Market your project across our platforms',
+    title: <Trans>Market your project across our platforms</Trans>,
     description:
       <Trans>Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners. </Trans>
   }
