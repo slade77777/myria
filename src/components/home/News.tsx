@@ -5,6 +5,7 @@ import type { Item as TItem } from 'src/hooks/useLatestPosts';
 import { Trans } from '@lingui/macro';
 import { negativeMarginXSm } from 'src/utils';
 import clsx from 'clsx';
+import { socialLinks } from 'src/configs';
 
 const Item: React.FC<{ item: TItem }> = ({ item }) => {
   return (
@@ -31,7 +32,7 @@ const News: React.FC = () => {
         <h2 className="text-[24px] font-medium leading-[1.25] md:text-[30px]">
           <Trans>Latest Updates & News</Trans>
         </h2>
-        <a className="link" target="_blank" href={mediumPage} rel="noreferrer">
+        <a className="link" target="_blank" href={socialLinks.medium} rel="noreferrer">
           <Trans>Read more</Trans>
         </a>
       </div>
