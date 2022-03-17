@@ -1,16 +1,17 @@
+import { Trans } from '@lingui/macro';
+import clsx from 'clsx';
+import Hamburger from 'hamburger-react';
+import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { tabRoutes, useTabContext } from 'src/context/tabContext';
+import { useStickyHeader } from 'src/hooks/useStickyHeader';
+import { socialLinks } from '../../configs';
+import Collapse from '../Collapse';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
-import { headerHeight, Action, navHeight, NavItem } from './Header';
-import clsx from 'clsx';
-import Link from 'next/link';
-import Collapse from '../Collapse';
-import { socialLinks } from '../../configs';
-import { Trans } from '@lingui/macro';
-import { useStickyHeader } from 'src/hooks/useStickyHeader';
-import Hamburger from 'hamburger-react';
-import LanguageSwitcher from '../LanguageSwitcher';
 import Socials from '../Social';
+import { linkSources } from './linkSources';
+import { Action, NavItem } from './type';
 
 type Props = {
   action: Action;
@@ -24,91 +25,20 @@ type OverlayProps = {
 };
 
 export const links: NavItem[] = [
-  {
-    text: <Trans>Home</Trans>,
-    url: '/',
-    position: 'left',
-    action: 'join-discord'
-  },
-  {
-    text: <Trans>Games</Trans>,
-    url: '/games',
-    position: 'left',
-    action: 'join-discord'
-  },
-  {
-    text: <Trans>Store</Trans>,
-    url: '/store',
-    inactive: true,
-    position: 'left',
-    action: 'join-discord'
-  },
-  {
-    text: <Trans>Nodes</Trans>,
-    url: '/nodes',
-    position: 'left',
-    action: 'join-discord'
-  },
-
-  {
-    text: <Trans>Ecosystem</Trans>,
-    url: '/ecosystem',
-    position: 'left',
-    action: 'join-discord'
-  },
-  // {
-  //   text: <Trans>DEVELOPER PROGRAM</Trans>,
-  //   url: '/developer-program',
-  //   position: 'left',
-  //   action: 'start-building'
-  // },
-  {
-    text: <Trans>About</Trans>,
-    position: 'right',
-    children: [
-      {
-        text: <Trans>Our team</Trans>,
-        url: '/team'
-      },
-      {
-        text: <Trans>FOR GAMERS</Trans>,
-        url: '/games'
-      },
-      {
-        text: <Trans>FOR STUDIOS</Trans>,
-        url: '/studios'
-      }
-    ]
-  },
-  {
-    text: <Trans>Community</Trans>,
-    position: 'right',
-    children: [
-      {
-        text: 'Discord',
-        url: socialLinks.discord,
-        target: '_blank'
-      },
-      {
-        text: 'Twitter',
-        url: socialLinks.twitter,
-        target: '_blank'
-      },
-      {
-        text: 'Instagram',
-        url: socialLinks.instagram,
-        target: '_blank'
-      },
-      {
-        text: 'Medium',
-        url: socialLinks.medium,
-        target: '_blank'
-      }
-    ]
-  }
+  linkSources.home,
+  linkSources.games,
+  linkSources.store,
+  linkSources.nodes,
+  linkSources.ecosystem,
+  linkSources.forDevelopers,
+  linkSources.ourSolution,
+  linkSources.about,
+  linkSources.community
 ];
 
 const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
+  const { activatingTab } = useTabContext();
+
   const actionElements = useMemo(() => {
     switch (action) {
       case 'start-building':
@@ -117,7 +47,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             <a
               href={socialLinks.discord}
               target="_blank"
-              className="btn-lg w-full btn-secondary col-span-2 text-center"
+              className="btn-lg btn-secondary col-span-2 w-full text-center"
               rel="noreferrer">
               <Trans>JOIN DISCORD</Trans>
             </a>
@@ -176,15 +106,30 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
       <div
         style={{
           opacity: open ? 1 : 0,
-          paddingTop: headerHeight
+          paddingTop: navHeightMobile
         }}
         className="flex h-full w-full flex-col bg-dark/70 backdrop-blur-lg transition duration-500">
+        <div className="flex">
+          {tabRoutes.map((item) => (
+            <Link key={item.href} href={item.href}>
+              <a
+                className={clsx(
+                  'inline-block p-4 w-full max-w-[400px] flex-1 items-center border-[1px] border-solid border-white py-4 text-center text-lg font-normal leading-[22px]',
+                  {
+                    'bg-white text-black': activatingTab === item.id
+                  }
+                )}>
+                {item.text}
+              </a>
+            </Link>
+          ))}
+        </div>
         <ul
           style={{
             overscrollBehavior: 'contain'
           }}
           className={clsx(
-            'grid flex-grow content-start gap-[33px] overflow-auto px-[24px] pb-4 pt-2 text-[18px] font-medium uppercase leading-[1.25] text-white'
+            'grid flex-grow content-start gap-[33px] overflow-auto px-[24px] pb-4 pt-8 text-[18px] font-medium uppercase leading-[1.25] text-white'
           )}>
           {links
             .filter((link) => !link.action || link.action === action)

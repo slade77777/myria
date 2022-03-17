@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 
 type Context = {
@@ -17,7 +17,7 @@ export function useTabContext() {
 
 export type TAB = 'for-gamer' | 'for-dev';
 
-export const routes: {
+export const tabRoutes: {
   text: string;
   href: string;
   id: TAB;
@@ -39,10 +39,10 @@ export const routes: {
 
 const TabProvider: React.FC = ({ children }) => {
   const router = useRouter();
-  const [activatingTab, setActivatingTab] = useLocalStorage<TAB>('active-tab', 'for-gamer');
+  const [activatingTab, setActivatingTab] = useState<TAB>('for-gamer');
 
   useEffect(() => {
-    let tab = routes.find((r) => r.dependentRoutes.includes(router.pathname))?.id;
+    let tab = tabRoutes.find((r) => r.dependentRoutes.includes(router.pathname))?.id;
     if (tab !== activatingTab && !!tab) {
       setActivatingTab(tab);
     }

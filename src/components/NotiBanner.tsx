@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
-import { routes, useTabContext } from 'src/context/tabContext';
+import { tabRoutes, useTabContext } from 'src/context/tabContext';
 import DiscordIcon from './icons/DiscordIcon';
 
 const NotiBanner: React.FC = () => {
@@ -11,7 +11,7 @@ const NotiBanner: React.FC = () => {
   return (
     <div className="hidden grid-cols-[1fr_auto_1fr] bg-brand-light-blue md:grid">
       <div className="flex">
-        {routes.map((item) => (
+        {tabRoutes.map((item) => (
           <Link key={item.href} href={item.href}>
             <a
               className={clsx(

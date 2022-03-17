@@ -2,14 +2,14 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
-import LanguageSwitcher from '../LanguageSwitcher';
 import NotiBanner from '../NotiBanner';
-import { links, headerHeight, Action, NavItem, navHeight } from './Header';
+import { links, navHeight } from './Header';
+import { Action, NavItem } from './type';
 
 type Props = {
   action: Action;

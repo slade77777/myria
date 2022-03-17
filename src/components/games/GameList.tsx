@@ -109,7 +109,7 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
           <span>{item.publisher}</span>
           {item.disabled && <div className="ml-auto">
             <Badge>
-              <Trans>COMMING SOON</Trans>
+              <Trans>COMING SOON</Trans>
             </Badge>
           </div>}
         </p>
