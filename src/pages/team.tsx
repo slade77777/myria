@@ -52,7 +52,7 @@ const data: Person[] = [
   },
   {
     name: 'Brendan Duhamel',
-    position: <Trans>Head of Blockchain</Trans>,
+    position: <Trans>Co-Founder - Head of Blockchain</Trans>,
     description: (
       <Trans>
         Brendan brings a decade of experience in blockchain. He has founded an escrow solution on
