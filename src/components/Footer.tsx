@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
+import Badge from './Badge';
 
 import Logo from './icons/Logo';
 import Socials from './Social';
@@ -27,6 +28,10 @@ const links = [
         {
           label: 'Starstrike Legends',
           link: '/game-detail/starstrike'
+        },
+        {
+          label: 'All games',
+          link: '/games'
         }
       ]
     ]
@@ -36,12 +41,12 @@ const links = [
     blocks: [
       [
         {
-          label: <Trans>Nodes</Trans>,
-          link: '/nodes'
+          label: <Trans>Games</Trans>,
+          link: '/games'
         },
         {
-          label: <Trans>Ecosystem</Trans>,
-          link: '/ecosystem'
+          label: <Trans>Nodes</Trans>,
+          link: '/nodes'
         },
         {
           label: <Trans>Store</Trans>,
@@ -49,38 +54,59 @@ const links = [
           inactive: true
         },
         {
-          label: <Trans>For Studios</Trans>,
-          link: '/for-studios'
+          label: <Trans>Myria Studios</Trans>,
+          link: '/studios'
         },
         {
-          label: <Trans>Morphing NFTs</Trans>,
-          link: '/interoperability'
+          label: <Trans>For Developers</Trans>,
+          link: '/for-developers'
         }
       ]
     ]
   },
   {
-    title: <Trans>About Us</Trans>,
+    title: <Trans>For Developers</Trans>,
+    blocks: [
+      [
+        {
+          label: <Trans>Get Started</Trans>,
+          link: '/for-developers#dev-contact'
+        },
+        {
+          label: <Trans>Our Solutions</Trans>,
+          link: '/for-developers/solution'
+        }
+        // {
+        //   label: <Trans>Developer Grant Program</Trans>,
+        //   link: '/store'
+        // }
+      ]
+    ]
+  },
+  {
+    title: <Trans>General</Trans>,
     blocks: [
       [
         {
           label: <Trans>About</Trans>,
-          link: '/about-us'
+          link: '/ecosystem'
         },
         {
-          label: <Trans>Whitepaper (Coming soon)</Trans>,
+          label: <Trans>Whitepaper</Trans>,
           link: '/',
-          disabled: true
+          disabled: true,
+          inactive: true
         },
         {
           label: <Trans>Team</Trans>,
-          link: '/about-us#teams'
+          link: '/team'
         }
       ],
       [
         {
           label: <Trans>Careers</Trans>,
-          link: '/careers'
+          link: '/careers',
+          moreText: "We're hiring"
         },
         {
           label: <Trans>News</Trans>,
@@ -98,12 +124,12 @@ const links = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="grid lg:grid-cols-[max-content_1fr] lg:grid-rows-[auto_auto] lg:gap-x-[100px] xl:gap-x-[281px] gap-y-[34px] md:gap-y-[50px]">
+    <footer className="grid gap-y-[34px] md:gap-y-[50px] lg:grid-cols-[max-content_1fr] lg:grid-rows-[auto_auto] lg:gap-x-[100px] xl:gap-x-[180px]">
       <div>
         <div className="w-[215px]">
           <Logo />
         </div>
-        <div className="mt-10 md:mt-[48px] grid grid-flow-col gap-4 sm:gap-6 justify-start">
+        <div className="mt-10 grid grid-flow-col justify-start gap-4 sm:gap-6 md:mt-[48px]">
           {Socials.map((item, idx) => (
             <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
               {item.icon}
@@ -111,43 +137,45 @@ const Footer: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="row-span-2 grid grid-cols-2 md:grid-cols-[auto_auto_auto] gap-y-[32px] gap-10 md:gap-[77px] justify-start">
+      <div className="row-span-2 grid grid-cols-2 justify-start gap-10 gap-y-[32px] md:grid-cols-[repeat(4,max-content)] md:gap-[56px]">
         {links.map((item, idx) => (
           <div
             key={idx}
-            className={clsx({
-              'col-span-2 md:col-span-1': idx === 2
-            })}>
-            <h3 className="font-extrabold text-[24px] leading-[1.24]">{item.title}</h3>
+            // className={clsx({
+            //   'col-span-2 md:col-span-1': idx === 2
+            // })}
+          >
+            <h3 className="text-[24px] font-extrabold leading-[1.24]">{item.title}</h3>
             <div
-              className={clsx('grid gap-y-4 mt-6', {
-                'grid-cols-2 gap-x-10 md:grid-cols-1': idx === 2
+              className={clsx('mt-6 grid gap-y-4', {
+                // 'grid-cols-2 gap-x-10 md:grid-cols-1': idx === 2
               })}>
               {item.blocks.map((block, idx) => (
                 <div key={idx} className={clsx('grid gap-y-4')}>
                   {block.map((item: any, idx) =>
                     !item?.inactive ? (
-                      <Link href={item.link}>
-                      <a
-                        target={item?.external ? '_blank' : '_self'}
-                        key={idx}
-                        rel="noreferrer"
-                        className={clsx('text-[16px] leading-[1.23] hover:text-[#F5B941]', {
-                          'pointer-events-none': item.disabled
-                        })}>
-                        {item.label}
-                      </a>
-                      </Link>
+                      <div key={idx} className="flex items-center space-x-[14px]">
+                        <Link href={item.link}>
+                          <a
+                            target={item?.external ? '_blank' : '_self'}
+                            key={idx}
+                            rel="noreferrer"
+                            className={clsx('text-[16px] leading-[1.23] hover:text-[#F5B941]', {
+                              'pointer-events-none': item.disabled
+                            })}>
+                            {item.label}
+                          </a>
+                        </Link>
+                        {item.moreText && (
+                          <div className="rounded-lg bg-brand-dark-blue px-[10px] py-[6px] text-[9px] uppercase leading-[1.3] text-brand-light-blue">
+                            {item.moreText}
+                          </div>
+                        )}
+                      </div>
                     ) : (
-                      <div key={idx} className="flex items-center">
-                        <p className="hover:cursor-not-allowed mr-[7px]">{item.label}</p>
-                        <div
-                          style={{
-                            boxShadow: '0 0 0 0.5px #9AC9E3'
-                          }}
-                          className="font-extrabold text-[6px] rounded-sm px-[3px] py-[1px] h-3 bg-brand-light-blue/40 bg-opacity-4">
-                          Soon!
-                        </div>
+                      <div key={idx} className="relative flex items-center space-x-[14px]">
+                        <p className="mr-[7px] hover:cursor-not-allowed">{item.label}</p>
+                        <Badge>COMING SOON</Badge>
                       </div>
                     )
                   )}
@@ -157,9 +185,11 @@ const Footer: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className="text-[16px] leading-[1.5] mt-[14px] md:mt-0">
+      <div className="mt-[14px] text-[16px] leading-[1.5] md:mt-0">
         <p>© Copyright 2022 Myria</p>
-        <p><Trans>Terms | Privacy</Trans></p>
+        <p>
+          <Trans>Terms | Privacy</Trans>
+        </p>
       </div>
     </footer>
   );

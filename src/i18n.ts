@@ -22,9 +22,9 @@ export const invalidateLanguage = (language: any): Language => {
 };
 
 export const getLanguageFromLocalStorage = (): Language => {
-  if (typeof localStorage != 'undefined') {
-    return invalidateLanguage(localStorage.getItem(localStorageKeys.language));
-  }
+  // if (typeof localStorage != 'undefined') {
+  //   return invalidateLanguage(localStorage.getItem(localStorageKeys.language));
+  // }
   return DEFAULT_LANGUAGE;
 };
 

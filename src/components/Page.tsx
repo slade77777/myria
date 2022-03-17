@@ -5,8 +5,8 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { paddingX } from '../utils';
 import FirstTimeVisitModal from './FirstTimeVisitModal';
 import Footer from './Footer';
-import Header, { Action } from './Header';
-import Modal from './Modal';
+import Header from './Header';
+import { Action } from './Header/type';
 
 type Props = {
   action?: Action;
@@ -21,9 +21,6 @@ const Page: React.FC<Props> = ({ children, action, headerClassName, stickyHeader
   const [showFirstTimeVisitModal, setShowFirstTimeVisitModal] = useState(false);
 
   useEffect(() => {
-    if (window.location.hostname==='myria.com') {
-      return;
-    }
     let timeout: ReturnType<typeof setTimeout>;
     if (firstTimeVisit) {
       timeout = setTimeout(() => {
@@ -42,14 +39,14 @@ const Page: React.FC<Props> = ({ children, action, headerClassName, stickyHeader
   const handleCloseFirstTimeVisitModal = () => {
     setShowFirstTimeVisitModal(false);
   };
-  
+
   return (
     <>
       <FirstTimeVisitModal
         open={showFirstTimeVisitModal}
         onClose={handleCloseFirstTimeVisitModal}
       />
-      <div className="relative min-h-screen bg-red-500 text-white">
+      <div className="relative min-h-screen text-white">
         <Header
           className={headerClassName}
           action={action}
