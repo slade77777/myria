@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
       slidesToShow: 1,
       slidesToScroll: 1,
       dotsClass: 'carousel-dots bottom-4 md:bottom-6',
-      autoplay: false,
+      autoplay: true,
       autoplaySpeed: 5000,
       pauseOnHover: true,
       afterChange: (currentSlide) => setCurrentSlide(currentSlide)
