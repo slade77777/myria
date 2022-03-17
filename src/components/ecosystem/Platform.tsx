@@ -9,17 +9,17 @@ import WalletIcon from '../icons/WalletIcon';
 
 const data = [
   {
-    title: 'Myria NFT Marketplace',
+    title: 'Games & Applications',
     description:
       'We believe in open and equitable access, enabling more people to build, experience and enjoy the benefits of blockchain and the metaverse.'
   },
   {
-    title: 'Myria Wallet ',
+    title: 'Platform ',
     description:
       'We want to make digital asset trading and blockchain gaming easy with our all-in-one platform.'
   },
   {
-    title: 'Myria Game Platform',
+    title: 'Infrastructure & Tools',
     description:
       'Our Ethereum L2 scaling solution provides reliability, scalability and security. Making it easy for developers to build and manage their projects.'
   }
@@ -79,7 +79,7 @@ const Platform: React.FC = () => {
               <CartIcon />
             </span>
             <p className="mt-2 text-[12px] font-bold leading-[1.25] md:text-[16px]">
-              <Trans>Myria Marketplace</Trans>
+              <Trans>Myria NFT Marketplace</Trans>
             </p>
           </div>
           <div className=" flex h-[88px] flex-1 flex-col items-center justify-center rounded-xl bg-[#4BB986] px-5 md:h-[135px] md:p-6">
@@ -95,7 +95,7 @@ const Platform: React.FC = () => {
               <MonitorIcon />
             </span>
             <p className="mt-2 text-[12px] font-bold leading-[1.25] md:text-[16px]">
-              <Trans>Myria Platform</Trans>
+              <Trans>Myria Game Platform</Trans>
             </p>
           </div>
         </div>
