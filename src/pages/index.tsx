@@ -1,8 +1,7 @@
 import clsx from 'clsx';
-import { headerHeight } from '../components/Header';
 import JoinTheRevolution from '../components/JoinTheRevolution';
 import ExperenceLogos from '../components/ExperienceLogos';
-import { paddingX } from '../utils';
+import { negativeMarginXSm, paddingX } from '../utils';
 import Page from '../components/Page';
 import AOS from 'aos';
 import { useEffect } from 'react';
@@ -13,7 +12,7 @@ import Hero from 'src/components/home/Hero';
 import OurGames from 'src/components/home/OurGames';
 import Program from 'src/components/Program';
 import News from 'src/components/home/News';
-import { bannerSpacingClassName, headerNavSpacingClassName } from 'src/components/Header/Header';
+import { headerNavSpacingClassName } from 'src/components/Header/Header';
 
 const Index = () => {
   useEffect(() => {
@@ -30,9 +29,9 @@ const Index = () => {
   return (
     <Page>
       <div className={headerNavSpacingClassName}>
-      <div className={clsx(paddingX, 'md:mt-7')}>
+        <div className={clsx(paddingX, 'md:mt-7')}>
           <div className="mx-auto max-w-content">
-            <div className="-mx-6 md:mx-0">
+            <div className={clsx(negativeMarginXSm, 'md:mx-0')}>
               <Hero />
             </div>
             <div className="mt-12 md:mt-10">
@@ -40,6 +39,21 @@ const Index = () => {
             </div>
             <div className="mt-10 md:mt-11">
               <Program />
+            </div>
+            <div className="mt-10 md:mt-11">
+              <div className="mx-auto max-w-content rounded-xl bg-[url('/images/home/network.png')] bg-cover bg-right-bottom px-[64px] pt-[73px] pb-[81px] shadow-dark-panel">
+                <div className="max-w-[422px]">
+                  <p className="text-[20px] leading-[1.25] text-brand-gold">
+                    Scale with confidence with Myria
+                  </p>
+                  <p className="mt-4 text-[28px] font-bold leading-[1.25]">
+                    A trusted Ethereum L2 solution, engineered for growth{' '}
+                  </p>
+                  <a href="#" className="btn-lg btn-white mt-10">
+                    Learn more
+                  </a>
+                </div>
+              </div>
             </div>
             <div className="mt-10 md:mt-[60px]">
               <News />
