@@ -131,7 +131,7 @@ const Solution: React.FC = () => {
             </p>
             <div className="mt-10 md:hidden">
               <Image
-                src="/images/solution/diagram-mobile-update_op.png"
+                src="/images/solution/diagram-update.svg"
                 width={380}
                 height={632}
                 layout="responsive"
