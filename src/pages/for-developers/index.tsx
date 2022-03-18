@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import BuildYourBlockchain from 'src/components/for-developers/BuildYourBlockchain';
 import Ethereum from 'src/components/for-developers/Ethereum';
@@ -39,10 +40,16 @@ const ForDevelopers: React.FC = () => {
               <Trans>Enabling digital asset scalabiltiy on Ethereum</Trans>
             </h1>
             <p className="mt-6 text-[18px] leading-[1.5] md:text-[20px]">
-              <Trans>Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and
-              blockchain gaming.</Trans>
+              <Trans>
+                Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and
+                blockchain gaming.
+              </Trans>
             </p>
-            <button className="btn-lg btn-primary mt-8"><Trans>START BUILDING</Trans></button>
+            <Link href={'#dev-contact'}>
+              <a className="btn-lg btn-primary mt-8">
+                <Trans>START BUILDING</Trans>
+              </a>
+            </Link>
           </div>
           {/* <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2_op.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel_op.png')]">
             <div>
