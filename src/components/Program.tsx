@@ -32,7 +32,7 @@ const Program: React.FC = () => {
           <Trans> Gaming is evolving. Build with Myria! </Trans>
         </p>
         <p className="mt-4 max-w-[467px] text-[16px] leading-[1.5] text-light md:mt-6 md:text-[18px]">
-          <Trans>Learn more about our job current openings and see how you can get involved!</Trans>
+          <Trans>Myria helps blockchain projects scale. Whether you’re an established crypto business or simply exploring new possibilities, Myria has a solution for you!</Trans>
         </p>
         <Link href="/for-developers#dev-contact"><button className="btn-lg btn-primary mt-8 md:mt-10 md:min-w-[145px]">
           <Trans>Start now</Trans>
