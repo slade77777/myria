@@ -10,7 +10,6 @@ import UnicornImg from 'public/images/home/unicorn-guy-1.png';
 import SkyImg from 'public/images/home/sky.png';
 import LandImg from 'public/images/home/land.png';
 import HeaderBgMobile from 'public/images/home/header-bg-mobile.png';
-import useIsomorphicLayoutEffect from 'src/hooks/useIsomorphicLayoutEffect';
 import Slider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -22,40 +21,36 @@ import Link from 'next/link';
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  useIsomorphicLayoutEffect(() => {
-    if (currentSlide !== 1) {
-      return;
-    }
-    let animations: gsap.core.Timeline[] = [];
-    ScrollTrigger.matchMedia({
-      '(min-width: 1000px)': function () {
-        const targets = [
-          '.land-img',
-          '.hero-text',
-          '.cowboy-img',
-          '.unicorn-guy-img',
-          '.monkey-img'
-        ];
+  // useIsomorphicLayoutEffect(() => {
+  //   let animations: gsap.core.Timeline[] = [];
+  //   ScrollTrigger.matchMedia({
+  //     '(min-width: 1000px)': function () {
+  //       const targets = [
+  //         '.land-img',
+  //         '.hero-text',
+  //         '.cowboy-img',
+  //         '.unicorn-guy-img',
+  //         '.monkey-img'
+  //       ];
 
-        targets.forEach((target, idx) => {
-          const tl_section = gsap.timeline({
-            scrollTrigger: {
-              trigger: '#hero',
-              start: `top top`,
-              end: 'bottom top',
-              scrub: 0.6
-            }
-          });
-          tl_section.to(target, { y: `-${50 * (idx + 2)}px` });
-          animations.push(tl_section);
-        });
-      }
-    });
-    return () => {
-      animations.forEach((tl) => tl.kill());
-    };
-  }, [currentSlide]);
+  //       targets.forEach((target, idx) => {
+  //         const tl_section = gsap.timeline({
+  //           scrollTrigger: {
+  //             trigger: '#hero',
+  //             start: `top top`,
+  //             end: 'bottom top',
+  //             scrub: 0.6
+  //           }
+  //         });
+  //         tl_section.to(target, { y: `-${50 * (idx + 2)}px` });
+  //         animations.push(tl_section);
+  //       });
+  //     }
+  //   });
+  //   return () => {
+  //     animations.forEach((tl) => tl.kill());
+  //   };
+  // }, [currentSlide]);
 
   const settings: Settings = useMemo(
     () => ({
@@ -67,8 +62,7 @@ const Hero: React.FC = () => {
       dotsClass: 'carousel-dots bottom-4 md:bottom-6',
       autoplay: true,
       autoplaySpeed: 5000,
-      pauseOnHover: true,
-      afterChange: (currentSlide) => setCurrentSlide(currentSlide)
+      pauseOnHover: true
     }),
     []
   );
