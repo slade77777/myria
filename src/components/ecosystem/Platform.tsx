@@ -16,7 +16,7 @@ const data = [
   {
     title: 'Platform ',
     description:
-      'We want to make digital asset trading and blockchain gaming easy with our all-in-one platform.'
+      'We make digital asset trading and blockchain gaming easy with our all-in-one platform.'
   },
   {
     title: 'Infrastructure & Tools',
