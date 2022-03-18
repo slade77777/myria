@@ -48,7 +48,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
         if (item.children) {
           return (
             <li key={idx} className="group relative">
-              <div className={clsx("flex items-center hover:cursor-pointer hover:text-brand-gold")}>
+              <div className={clsx('flex items-center hover:cursor-pointer hover:text-brand-gold')}>
                 {item.text}
                 <i className="w-[24px]">
                   <ChevronDownIcon />
@@ -59,9 +59,11 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                   {item.children.map((link, idx) => (
                     <li key={idx}>
                       <Link href={link.url as string}>
-                        <a target={link.target} className={clsx("hover:text-brand-gold", {
-                          "text-brand-gold": link.url === router.pathname
-                        })}>
+                        <a
+                          target={link.target}
+                          className={clsx('hover:text-brand-gold', {
+                            'text-brand-gold': link.url === router.pathname
+                          })}>
                           {link.text}
                         </a>
                       </Link>
@@ -75,9 +77,12 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
           return (
             <li key={idx}>
               <Link href={item.url as string}>
-                <a className={clsx("hover:text-brand-gold", {
-                  "text-brand-gold": item.url === router.pathname
-                })}>{item.text}</a>
+                <a
+                  className={clsx('hover:text-brand-gold', {
+                    'text-brand-gold': item.url === router.pathname
+                  })}>
+                  {item.text}
+                </a>
               </Link>
             </li>
           );
@@ -90,18 +95,16 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
 const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
-  
+
   const actionElements = useMemo(() => {
     switch (action) {
       case 'start-building':
         return (
-          <a
-            className="btn-sm btn-secondary"
-            href={socialLinks.discord}
-            target="_blank"
-            rel="noreferrer">
-            <Trans>START BUILDING</Trans>
-          </a>
+          <Link href={'/for-developers#dev-contact'}>
+            <a className="btn-sm btn-secondary">
+              <Trans>START BUILDING</Trans>
+            </a>
+          </Link>
         );
 
       default:
@@ -116,14 +119,11 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         );
     }
   }, [action]);
-  
+
   const filterdLinks = links.filter((link) => !link.action || link.action == action);
   return (
-    <header
-      ref={headerRef}
-      className="w-full"
-    >
-      <div className="hidden lg:block text-black">
+    <header ref={headerRef} className="w-full">
+      <div className="hidden text-black lg:block">
         <NotiBanner />
       </div>
       <nav
