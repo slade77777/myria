@@ -79,7 +79,7 @@ const Index = () => {
           </p>
         </section>
         <section className={clsx(paddingX, 'mt-[50px] md:mt-[88px]')}>
-          <div data-aos="fade-up" className="md:mt-[59px]">
+          <div data-aos="fade-up" className="md:mt-[59px] mx-auto max-w-content">
             <ExperenceLogos />
           </div>
         </section>
