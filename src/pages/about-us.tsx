@@ -356,7 +356,7 @@ const AboutUs: React.FC = () => {
             <h3 className="heading-sm text-center md:heading-md">
               <Trans>Our Experience</Trans>
             </h3>
-            <div className="mt-[60px]">
+            <div className="mt-[60px] mx-auto max-w-content">
               <ExperenceLogos />
             </div>
           </div>
