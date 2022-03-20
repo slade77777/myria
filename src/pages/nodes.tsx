@@ -144,7 +144,7 @@ const questions = [
     title: <Trans>When will Myria node licenses be sold?</Trans>,
     content: (
       <Trans>
-        Myria node license sales are anticipated to commence in March 2022 (subject to change).
+        Myria node license sales are anticipated to commence in Q2 2022 (subject to change).
       </Trans>
     )
   },
