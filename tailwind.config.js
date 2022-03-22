@@ -26,7 +26,9 @@ module.exports = {
         dark: '#050E15',
         light: '#97AAB5',
         'light-green': '#9ECEAB',
-        'light-red': '#D55E5E'
+        'light-red': '#D55E5E',
+        purple: '#8E74D3',
+        green: '#41F59F'
       },
       maxWidth: {
         content: 1264
@@ -170,6 +172,22 @@ module.exports = {
           }
         },
         '.dropdown-content': {
+          willChange: 'transform, opacity',
+          '&[data-state="open"]': {
+            '&[data-side="top"]': { animation: theme('animation.slide-down-and-fade') },
+            '&[data-side="right"]': { animation: theme('animation.slide-left-and-fade') },
+            '&[data-side="bottom"]': { animation: theme('animation.slide-up-and-fade') },
+            '&[data-side="left"]': { animation: theme('animation.slide-right-and-fade') }
+          }
+        },
+        '.tooltip-content': {
+          background: theme('colors.brand-deep-blue'),
+          color: theme('colors.light'),
+          padding: 16,
+          fontSize: 12,
+          lineHeight: 1.5,
+          borderRadius: 8,
+          boxShadow: theme('boxShadow.dark-panel'),
           willChange: 'transform, opacity',
           '&[data-state="open"]': {
             '&[data-side="top"]': { animation: theme('animation.slide-down-and-fade') },
@@ -356,6 +374,12 @@ module.exports = {
           top: 0,
           left: 0,
           background: theme('colors.dark')
+        },
+        '.insignia-panel': {
+          background: `linear-gradient(174.77deg, rgba(154, 201, 227, 0.05) 5.09%, rgba(154, 201, 227, 0) 47.22%), rgba(5, 15, 23, 0.9)`,
+          boxShadow: theme('boxShadow.dark-panel'),
+          borderRadius: 12,
+          border: '1px solid rgba(154, 201, 227, 0.102)'
         }
       });
     })

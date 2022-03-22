@@ -4,19 +4,33 @@ import CheckOutlineIcon from './icons/CheckOutlineIcon';
 
 export type Step = {
   title: string;
-  description: string;
+  description?: string;
 };
 
 type Props = {
   steps: Step[];
   currentStep: number;
+  circleClassName?: string;
+  lineClassName?: string;
   contentClassName?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
+  circleSize?: number;
 };
 
 const CIRCLE_SIZE = 40;
 const SPACING = 8;
 
-const Stepper: React.FC<Props> = ({ steps, currentStep, contentClassName }) => {
+const Stepper: React.FC<Props> = ({
+  steps,
+  currentStep,
+  circleClassName,
+  lineClassName,
+  contentClassName,
+  titleClassName,
+  descriptionClassName,
+  circleSize = CIRCLE_SIZE
+}) => {
   return (
     <div className="flex">
       {steps.map((step, idx) => {
@@ -26,11 +40,12 @@ const Stepper: React.FC<Props> = ({ steps, currentStep, contentClassName }) => {
             <div>
               <div
                 style={{
-                  height: CIRCLE_SIZE,
-                  width: CIRCLE_SIZE
+                  height: circleSize,
+                  width: circleSize
                 }}
                 className={clsx(
                   'flex items-center justify-center rounded-full border-2 border-dashed border-brand-light-blue',
+                  circleClassName,
                   {
                     '!border-solid bg-brand-light-blue ': isActive
                   }
@@ -45,13 +60,13 @@ const Stepper: React.FC<Props> = ({ steps, currentStep, contentClassName }) => {
                 <div
                   style={
                     {
-                      width: `calc(100% - ${CIRCLE_SIZE + 2 * SPACING}px)`,
-                      top: CIRCLE_SIZE / 2,
+                      width: `calc(100% - ${circleSize + 2 * SPACING}px)`,
+                      top: circleSize / 2,
                       right: '50%',
-                      transform: `translate(-${CIRCLE_SIZE / 2 + SPACING}px, -50%)`
+                      transform: `translate(-${circleSize / 2 + SPACING}px, -50%)`
                     } as CSSProperties
                   }
-                  className={clsx('absolute border border-brand-light-blue', {
+                  className={clsx('absolute border border-brand-light-blue', lineClassName, {
                     'border-dashed': !isActive
                   })}
                 />
@@ -65,8 +80,14 @@ const Stepper: React.FC<Props> = ({ steps, currentStep, contentClassName }) => {
               className={clsx('mt-6 text-center', contentClassName, {
                 'opacity-50': !isActive
               })}>
-              <div className="caption font-bold text-brand-light-blue">{step.title} </div>
-              <div className="mt-2 text-base leading-[1.3]">{step.description}</div>
+              <div className={clsx('caption font-bold text-brand-light-blue', titleClassName)}>
+                {step.title}{' '}
+              </div>
+              {step.description && (
+                <div className={clsx('mt-2 text-base leading-[1.3]', descriptionClassName)}>
+                  {step.description}
+                </div>
+              )}
             </div>
           </div>
         );

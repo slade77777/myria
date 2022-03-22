@@ -3,7 +3,7 @@ import NodesPage from 'src/components/nodes/NodesPage';
 import RewardList from 'src/components/nodes/rewards/RewardList';
 import TotalRewards from 'src/components/nodes/rewards/TotalRewards';
 
-const Dashboard: React.FC = () => {
+const Rewards: React.FC = () => {
   return (
     <NodesPage>
       <div>
@@ -16,4 +16,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default Rewards;

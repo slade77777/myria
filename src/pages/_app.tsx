@@ -9,6 +9,7 @@ import LanguageProvider from 'src/context/language';
 import { t } from '@lingui/macro';
 import { WalletProvider } from 'src/context/wallet';
 import { AuthenticationProvider } from 'src/context/authentication';
+import Tooltip from 'src/components/Tooltip';
 
 function App({ Component, pageProps }: AppProps) {
   useGA();
@@ -42,7 +43,9 @@ function App({ Component, pageProps }: AppProps) {
 
       <AuthenticationProvider>
         <WalletProvider>
-          <Component {...pageProps} />
+          <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
+            <Component {...pageProps} />
+          </Tooltip.Provider>
         </WalletProvider>
       </AuthenticationProvider>
     </LanguageProvider>
