@@ -1,5 +1,6 @@
 import React from 'react';
 import MissionItem, { Mission } from './MissionItem';
+import ReferFriendModal from './ReferFriendModal';
 
 const missions: Mission[] = [
   {
@@ -48,14 +49,17 @@ const missions: Mission[] = [
 
 const Missions: React.FC = () => {
   return (
-    <div className="insignia-panel p-4 pt-6">
-      <p className="text-[24px] font-bold leading-[1.2]">Missions</p>
-      <div className="mt-8 space-y-4">
-        {missions.map((mission, index) => (
-          <MissionItem key={index} {...mission} />
-        ))}
+    <>
+      <ReferFriendModal open={false} onClose={() => {}} link="https://myria.com/r/%112yb877a" />
+      <div className="insignia-panel p-4 pt-6">
+        <p className="text-[24px] font-bold leading-[1.2]">Missions</p>
+        <div className="mt-8 space-y-4">
+          {missions.map((mission, index) => (
+            <MissionItem key={index} {...mission} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
