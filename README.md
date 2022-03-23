@@ -52,3 +52,33 @@ For usages, find out more here: https://lingui.js.org/tutorials/react-patterns.h
 - Add a new locale on translation.io
 - Copy settings to the file config (lingui) in code
 - Run `yarn sync`
+
+# Convention
+
+## Structure
+
+- Put all components in `src/components` with PascalCase name, i.e. `src/components/Button.tsx`
+- If a component belongs to a specific page, put it in the respective page folder `src/components/[page]/[ComponentName]`, i.e. `src/components/home/Hero.tsx`
+- If a component has many small separate components/utils, put them in a folder `src/components/[ComponentName]/[ComponentName]`, i.e. `src/components/Header/Header.tsx` and export it in `src/components/Header/index.tsx`
+
+## Images
+
+- Put images in its respective page folder with kebab-case name `public/images/[page]/[image-name]`, i.e. `src/images/home/header-bg.png`
+- If an image need an optimized format, optimize it and name it into `[image-name]_op.[ext]`, i.e. `src/images/home/header-bg_op.png`
+
+## Styling
+
+- Use tailwindcss for all cases, except some edge case
+- Refer to tailwindcss documentation for more information, checkout tailwind.config.js for some advanced usage
+
+## Common components
+
+- If we need a special common component, like Modal, rewrite it using `radix-ui`, refer to `src/components/Collapse.tsx` component as an example
+
+- Define the className of those components in `tailwind.config.js`, if that component using animation, remember whitelist all those animation classes
+
+## Icons
+
+- Export svg from the design, and create a React component for it, put it in `src/components/icons/[Name]Icon.tsx`
+
+- Remember remove `width`, `height` and fill color with `currentColor`, refer to `src/components/icons/ArrowDownIcon.tsx` and its usage as an example, then the parent container must define `width`, `height` and `color` to use it
