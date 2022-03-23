@@ -15,6 +15,10 @@ const menus = [
     path: '/nodes/rewards'
   },
   {
+    label: 'Mint Assets',
+    path: '/nodes/mint-assets'
+  },
+  {
     label: 'Transaction List',
     path: '/nodes/transactions'
   },

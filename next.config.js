@@ -13,16 +13,18 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const moduleExports = {
   reactStrictMode: true,
   eslint: {
     dirs: ['src']
   },
   trailingSlash: true,
-  images: {
+  images: isProd ? {
     loader: 'imgix',
     path: 'https://myria.imgix.net'
-  },
+  } : {},
   webpack: (config) => {
     config.module.rules.push({
       test: /\.po/,
