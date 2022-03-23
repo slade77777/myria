@@ -9,5 +9,5 @@ export type NavItem = {
   children?: Omit<NavItem, 'position'>[];
   inactive?: boolean;
   position: 'left' | 'right';
-  action?: Action;
+  action?: Action[];
 };

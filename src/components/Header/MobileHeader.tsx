@@ -114,7 +114,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             <Link key={item.href} href={item.href}>
               <a
                 className={clsx(
-                  'inline-block p-4 w-full flex-1 items-center border-[1px] border-solid border-white py-4 text-center text-lg font-normal leading-[22px]',
+                  'inline-block w-full flex-1 items-center border-[1px] border-solid border-white p-4 py-4 text-center text-lg font-normal leading-[22px]',
                   {
                     'bg-white text-black': activatingTab === item.id
                   }
@@ -132,7 +132,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             'grid flex-grow content-start gap-[33px] overflow-auto px-[24px] pb-4 pt-8 text-[18px] font-medium uppercase leading-[1.25] text-white'
           )}>
           {links
-            .filter((link) => !link.action || link.action === action)
+            .filter((link) => !link.action || link.action.includes(action))
             .map((item, idx) => {
               if (item.inactive) {
                 return (
@@ -202,7 +202,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                 );
               }
             })}
-          <li className="mt-[48px] grid gap-y-6 gap-x-4 sm:mt-[62px] max-w-[480px] mx-auto w-full">
+          <li className="mx-auto mt-[48px] grid w-full max-w-[480px] gap-y-6 gap-x-4 sm:mt-[62px]">
             {actionElements}
           </li>
         </ul>

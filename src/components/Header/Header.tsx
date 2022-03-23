@@ -6,7 +6,7 @@ import { linkSources } from './linkSources';
 import MobileHeader from './MobileHeader';
 import { Action, NavItem } from './type';
 
-export const links: NavItem[] = Object.values(linkSources)
+export const links: NavItem[] = Object.values(linkSources);
 export const navHeight = 83;
 export const bannerHeight = 50;
 export const headerHeight = navHeight + bannerHeight;
@@ -14,7 +14,7 @@ export const bannerSpacingClassName = 'lg:pt-[50px]';
 export const headerNavSpacingClassName = 'pt-[104px] md:pt-[133px]';
 
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
-  action = 'join-discord',
+  action = 'login',
   className,
   stickyHeader = true
 }) => {

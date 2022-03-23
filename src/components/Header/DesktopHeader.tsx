@@ -217,7 +217,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
     }
   }, [action, address, login, onConnect]);
 
-  const filterdLinks = links.filter((link) => !link.action || link.action == action);
+  const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
   return (
     <header ref={headerRef} className="w-full">
       <div className="hidden text-black lg:block">
