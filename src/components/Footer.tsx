@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
+import Badge from './Badge';
 
 import Logo from './icons/Logo';
 import Socials from './Social';
@@ -27,6 +28,10 @@ const links = [
         {
           label: 'Starstrike Legends',
           link: '/game-detail/starstrike'
+        },
+        {
+          label: 'All games',
+          link: '/games'
         }
       ]
     ]
@@ -36,12 +41,12 @@ const links = [
     blocks: [
       [
         {
-          label: <Trans>Nodes</Trans>,
-          link: '/nodes'
+          label: <Trans>Games</Trans>,
+          link: '/games'
         },
         {
-          label: <Trans>Ecosystem</Trans>,
-          link: '/ecosystem'
+          label: <Trans>Nodes</Trans>,
+          link: '/nodes'
         },
         {
           label: <Trans>Store</Trans>,
@@ -49,38 +54,59 @@ const links = [
           inactive: true
         },
         {
-          label: <Trans>For Studios</Trans>,
-          link: '/for-studios'
+          label: <Trans>Myria Studios</Trans>,
+          link: '/studios'
         },
         {
-          label: <Trans>Morphing NFTs</Trans>,
-          link: '/interoperability'
+          label: <Trans>For Developers</Trans>,
+          link: '/for-developers'
         }
       ]
     ]
   },
   {
-    title: <Trans>About Us</Trans>,
+    title: <Trans>For Developers</Trans>,
+    blocks: [
+      [
+        {
+          label: <Trans>Get Started</Trans>,
+          link: '/for-developers#dev-contact'
+        },
+        {
+          label: <Trans>Our Solutions</Trans>,
+          link: '/for-developers/solution'
+        }
+        // {
+        //   label: <Trans>Developer Grant Program</Trans>,
+        //   link: '/store'
+        // }
+      ]
+    ]
+  },
+  {
+    title: <Trans>General</Trans>,
     blocks: [
       [
         {
           label: <Trans>About</Trans>,
-          link: '/about-us'
+          link: '/ecosystem'
         },
         {
-          label: <Trans>Whitepaper (Coming soon)</Trans>,
+          label: <Trans>Whitepaper</Trans>,
           link: '/',
-          disabled: true
+          disabled: true,
+          inactive: true
         },
         {
           label: <Trans>Team</Trans>,
-          link: '/about-us#teams'
+          link: '/team'
         }
       ],
       [
         {
           label: <Trans>Careers</Trans>,
-          link: '/careers'
+          link: '/careers',
+          moreText: "We're hiring"
         },
         {
           label: <Trans>News</Trans>,
@@ -98,7 +124,7 @@ const links = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="grid gap-y-[34px] md:gap-y-[50px] lg:grid-cols-[max-content_1fr] lg:grid-rows-[auto_auto] lg:gap-x-[100px] xl:gap-x-[281px]">
+    <footer className="grid gap-y-[34px] md:gap-y-[50px] lg:grid-cols-[max-content_1fr] lg:grid-rows-[auto_auto] lg:gap-x-[100px] xl:gap-x-[180px]">
       <div>
         <div className="w-[215px]">
           <Logo />
@@ -111,43 +137,45 @@ const Footer: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="row-span-2 grid grid-cols-2 justify-start gap-10 gap-y-[32px] md:grid-cols-[auto_auto_auto] md:gap-[77px]">
+      <div className="row-span-2 grid grid-cols-2 justify-start gap-10 gap-y-[32px] md:grid-cols-[repeat(4,max-content)] md:gap-[56px]">
         {links.map((item, idx) => (
           <div
             key={idx}
-            className={clsx({
-              'col-span-2 md:col-span-1': idx === 2
-            })}>
+            // className={clsx({
+            //   'col-span-2 md:col-span-1': idx === 2
+            // })}
+          >
             <h3 className="text-[24px] font-extrabold leading-[1.24]">{item.title}</h3>
             <div
               className={clsx('mt-6 grid gap-y-4', {
-                'grid-cols-2 gap-x-10 md:grid-cols-1': idx === 2
+                // 'grid-cols-2 gap-x-10 md:grid-cols-1': idx === 2
               })}>
               {item.blocks.map((block, idx) => (
                 <div key={idx} className={clsx('grid gap-y-4')}>
                   {block.map((item: any, idx) =>
                     !item?.inactive ? (
-                      <Link href={item.link} key={idx}>
-                        <a
-                          target={item?.external ? '_blank' : '_self'}
-                          key={idx}
-                          rel="noreferrer"
-                          className={clsx('text-[16px] leading-[1.23] hover:text-[#F5B941]', {
-                            'pointer-events-none': item.disabled
-                          })}>
-                          {item.label}
-                        </a>
-                      </Link>
+                      <div key={idx} className="flex items-center space-x-[14px]">
+                        <Link href={item.link}>
+                          <a
+                            target={item?.external ? '_blank' : '_self'}
+                            key={idx}
+                            rel="noreferrer"
+                            className={clsx('text-[16px] leading-[1.23] hover:text-[#F5B941]', {
+                              'pointer-events-none': item.disabled
+                            })}>
+                            {item.label}
+                          </a>
+                        </Link>
+                        {item.moreText && (
+                          <div className="rounded-lg bg-brand-dark-blue px-[10px] py-[6px] text-[9px] uppercase leading-[1.3] text-brand-light-blue">
+                            {item.moreText}
+                          </div>
+                        )}
+                      </div>
                     ) : (
-                      <div key={idx} className="flex items-center">
+                      <div key={idx} className="relative flex items-center space-x-[14px]">
                         <p className="mr-[7px] hover:cursor-not-allowed">{item.label}</p>
-                        <div
-                          style={{
-                            boxShadow: '0 0 0 0.5px #9AC9E3'
-                          }}
-                          className="bg-opacity-4 h-3 rounded-sm bg-brand-light-blue/40 px-[3px] py-[1px] text-[6px] font-extrabold">
-                          Soon!
-                        </div>
+                        <Badge>COMING SOON</Badge>
                       </div>
                     )
                   )}

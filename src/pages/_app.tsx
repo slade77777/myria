@@ -5,11 +5,17 @@ import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 
 import { useGA } from 'src/lib/ga';
-import LanguageProvider from 'src/context/language';
-import { t } from '@lingui/macro';
 import { WalletProvider } from 'src/context/wallet';
 import { AuthenticationProvider } from 'src/context/authentication';
 import Tooltip from 'src/components/Tooltip';
+import LanguageProvider, { useLanguage } from 'src/context/language';
+import { t } from '@lingui/macro';
+import TabProvider from 'src/context/tabContext';
+
+const WithLanguageStyle: React.FC<any> = ({ children }) => {
+  const { language } = useLanguage();
+  return <div className={language}>{children}</div>;
+};
 
 function App({ Component, pageProps }: AppProps) {
   useGA();
@@ -44,7 +50,11 @@ function App({ Component, pageProps }: AppProps) {
       <AuthenticationProvider>
         <WalletProvider>
           <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
-            <Component {...pageProps} />
+            <WithLanguageStyle>
+              <TabProvider>
+                <Component {...pageProps} />
+              </TabProvider>
+            </WithLanguageStyle>
           </Tooltip.Provider>
         </WalletProvider>
       </AuthenticationProvider>

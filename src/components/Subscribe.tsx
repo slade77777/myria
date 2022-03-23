@@ -58,11 +58,11 @@ const Subscribe: React.FC = () => {
         boxShadow: '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
       }}
       className="mx-auto flex max-w-content flex-col items-center rounded-[20px] bg-[url('/images/games/panel_op.png')] bg-cover bg-center p-[32px] md:py-[158px]">
-      <h2 className="heading-sm text-center md:heading-md">
+      <h2 className="heading-list leading-[30px] md:heading-lg md:mt-4">
         <Trans>Pre register to stay up to date</Trans>
       </h2>
       <div className="mt-6 w-full max-w-[585px] ">
-        <p className="body text-center text-light">
+        <p className="text-base leading-6 max-w-[616px] text-light">
           <Trans>
             Sign up to our newsletter to for development updates, token and NFT drops, and exclusive
             promotions.

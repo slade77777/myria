@@ -1,104 +1,35 @@
-import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React, { ReactNode, useEffect } from 'react';
-import { socialLinks } from 'src/configs';
+import React from 'react';
+import { useTabContext } from 'src/context/tabContext';
 import DesktopHeader from './DesktopHeader';
+import { linkSources } from './linkSources';
 import MobileHeader from './MobileHeader';
+import { Action, NavItem } from './type';
 
-type NavItem = {
-  text: ReactNode;
-  url?: string;
-  target?: '_blank';
-  children?: NavItem[];
-  inactive?: boolean;
-};
-
-export const links: NavItem[] = [
-  {
-    text: <Trans>Home</Trans>,
-    url: '/'
-  },
-  {
-    text: <Trans>About</Trans>,
-    children: [
-      {
-        text: <Trans>Our vision</Trans>,
-        url: '/about-us'
-      },
-      {
-        text: <Trans>Our team</Trans>,
-        url: '/about-us#teams'
-      },
-      {
-        text: <Trans>Morphing NFTs</Trans>,
-        url: '/interoperability'
-      },
-      {
-        text: <Trans>Careers</Trans>,
-        url: '/careers'
-      }
-    ]
-  },
-  {
-    text: <Trans>Ecosystem</Trans>,
-    url: '/ecosystem'
-  },
-  {
-    text: <Trans>Games</Trans>,
-    url: '/games'
-  },
-  {
-    text: <Trans>Nodes</Trans>,
-    url: '/nodes'
-  },
-  {
-    text: <Trans>Store</Trans>,
-    url: '/store',
-    inactive: true
-  },
-  {
-    text: <Trans>Community</Trans>,
-    children: [
-      {
-        text: 'Discord',
-        url: socialLinks.discord,
-        target: '_blank'
-      },
-      {
-        text: 'Twitter',
-        url: socialLinks.twitter,
-        target: '_blank'
-      },
-      {
-        text: 'Instagram',
-        url: socialLinks.instagram,
-        target: '_blank'
-      },
-      {
-        text: 'Medium',
-        url: socialLinks.medium,
-        target: '_blank'
-      }
-    ]
-  }
-];
-
-export const headerHeight = 83;
-
-export type Action = 'login' | 'join-discord';
+export const links: NavItem[] = Object.values(linkSources);
+export const navHeight = 83;
+export const bannerHeight = 50;
+export const headerHeight = navHeight + bannerHeight;
+export const bannerSpacingClassName = 'lg:pt-[50px]';
+export const headerNavSpacingClassName = 'pt-[104px] md:pt-[133px]';
 
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
-  action = 'join-discord',
+  action = 'login',
   className,
-  stickyHeader=true
+  stickyHeader = true
 }) => {
+  const { activatingTab } = useTabContext();
+  let usedAction = action;
+  if (action === 'auto') {
+    usedAction = activatingTab === 'for-gamer' ? 'join-discord' : 'start-building';
+  }
   return (
     <div className={clsx('absolute top-0 z-10 w-full', className)}>
       <div className="hidden lg:block">
-        <DesktopHeader action={action} stickyHeader={stickyHeader}/>
+        <DesktopHeader action={usedAction} stickyHeader={stickyHeader} />
       </div>
       <div className="lg:hidden">
-        <MobileHeader action={action} />
+        <MobileHeader action={usedAction} />
       </div>
     </div>
   );

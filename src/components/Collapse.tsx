@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import * as Collapsible from "@radix-ui/react-collapsible";
-import clsx from "clsx";
+import React, { useState } from 'react';
+import * as Collapsible from '@radix-ui/react-collapsible';
+import clsx from 'clsx';
 
 type CollapseProps = {
-  open?: boolean;
+  defaultOpen?: boolean;
   children:
     | React.ReactNode
-    | ((props: {
-        open: boolean;
-        setOpen: (open: boolean) => void;
-      }) => React.ReactNode);
+    | ((props: { open: boolean; setOpen: (open: boolean) => void }) => React.ReactNode);
 };
 
 type Collapse = React.FC<CollapseProps & Collapsible.CollapsibleProps> & {
@@ -17,10 +14,10 @@ type Collapse = React.FC<CollapseProps & Collapsible.CollapsibleProps> & {
   Content: React.FC<Collapsible.CollapsibleContentProps>;
 };
 
-const Collapse: Collapse = ({ children, ...props }) => {
-  const [open, setOpen] = useState(false);
+const Collapse: Collapse = ({ children, defaultOpen = false, ...props }) => {
+  const [open, setOpen] = useState(defaultOpen);
 
-  if (typeof children === "function") {
+  if (typeof children === 'function') {
     return (
       <Collapsible.Root open={open} onOpenChange={setOpen} {...props}>
         {children({ open, setOpen })}
@@ -34,9 +31,7 @@ const Collapse: Collapse = ({ children, ...props }) => {
   );
 };
 
-const CollapseTrigger: React.FC<Collapsible.CollapsibleTriggerProps> = ({
-  ...props
-}) => {
+const CollapseTrigger: React.FC<Collapsible.CollapsibleTriggerProps> = ({ ...props }) => {
   return <Collapsible.Trigger {...props} />;
 };
 
@@ -46,10 +41,7 @@ const CollapseContent: React.FC<Collapsible.CollapsibleContentProps> = ({
   ...props
 }) => {
   return (
-    <Collapsible.Content
-      className={clsx("collapse-content", className)}
-      {...props}
-    >
+    <Collapsible.Content className={clsx('collapse-content', className)} {...props}>
       {children}
     </Collapsible.Content>
   );

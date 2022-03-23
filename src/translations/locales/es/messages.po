@@ -1,17 +1,21 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 17:26+0700\n"
+"POT-Creation-Date: 2022-03-15 18:51+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: es\n"
 
-#: src/pages/index.tsx:288
+#: src/pages/studios.tsx:261
 msgid "$MYRIA is the native governance and utility token that encapsulates the Myria ecosystem. Players will be able to use $MYRIA to buy, trade, upgrade, vote and more!"
 msgstr "$MYRIA es el token nativo de gobierno y utilidad que engloba el ecosistema de Myria. Los jugadores pueden utilizar $MYRIA para comprar, comerciar, mejorar, votar y mucho más."
 
-#: src/pages/nodes/index.tsx:128
+#: src/components/for-developers/Ethereum.tsx:318
+msgid "100% Ethereum-level security guarantees; whilst increase transaction speed and throughput"
+msgstr ""
+
+#: src/pages/nodes.tsx:128
 msgid "2 CPU Cores"
 msgstr "2 núcleos de CPU"
 
@@ -19,23 +23,35 @@ msgstr "2 núcleos de CPU"
 msgid "60 GB Disk Space"
 msgstr "60 GB de espacio en disco"
 
-#: src/pages/nodes/index.tsx:64
+#: src/components/NotiBanner.tsx:44
+msgid "<0>$MYRIA</0> Node & token IBCO sales coming soon!"
+msgstr ""
+
+#: src/pages/nodes.tsx:64
 msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
 msgstr "<0>Para que funcione la cadena de bloques, incluida la cadena Myria, se necesitan nodos para verificar las transacciones de la red. Los nodos del ecosistema Myria se utilizarán para una variedad de actividades de apoyo a la red, incluyendo las redes de prueba iniciales, la producción de bloques y la validación.</0><1>Además de su papel como validadores potenciales, también se pedirá a los propietarios de los nodos -y se les recompensará- que realicen funciones auxiliares de la red blockchain a medida que el ecosistema Myria vaya avanzando. Entre ellas se encuentran la necesidad de almacenamiento descentralizado de cierta información crítica en el ecosistema Myria, los oráculos, la votación de gobernanza, así como la votación de conceptos específicos del juego.</1>"
 
-#: src/pages/index.tsx:225
+#: src/pages/studios.tsx:200
 msgid "<0>Interoperable</0> & Interconnected NFTs"
 msgstr "NFTs <0>Interoperables</0> e Interconectados"
 
-#: src/pages/nodes/index.tsx:84
+#: src/components/ecosystem/Backbone.tsx:36
+msgid "<0>Myria Studios</0> creates a range of free-to-play AAA games spans across an entire interconnected ecosystem, built with the new standard of interoperable NFTs."
+msgstr ""
+
+#: src/pages/nodes.tsx:84
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>Los operadores de nodos Myria recibirán recompensas diarias de tokens $MYRIA por el funcionamiento de los nodos.</0><1>Los propietarios de nodos también serán recompensados con drops de NFTs y tokens en base a su puntuación por reputación como operadores de nodos y miembros de la comunidad en general.</1><2>Las puntuaciones de reputación se determinarán por la actividad de juego de los propietarios de nodos, el número de tokens que posean y apuesten, las métricas de tiempo de actividad anteriores y su historial de apoyo a la red (por ejemplo, proveedor de validaciones u oráculos).</2>"
 
-#: src/pages/nodes/index.tsx:114
+#: src/pages/games.tsx:26
+msgid "<0>Play</0> and earn <1/> rewards and NFTs"
+msgstr ""
+
+#: src/pages/nodes.tsx:114
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows and Mac. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
 msgstr "<0>Puede elegir si prefiere ejecutar su nodo en la nube o localmente.</0><1>El software del nodo Myria estará disponible para su descarga en Windows y Mac. El funcionamiento de nuestro nodo no requiere una gran cantidad de recursos como la minería de criptomonedas tradicional. Podrá ejecutar nuestro software de nodo desde su ordenador doméstico con los siguientes requisitos mínimos:</1>"
 
-#: src/pages/index.tsx:193
+#: src/pages/studios.tsx:173
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "Un <0>ecosistema descentralizado</0> de juegos y mundos de blockchain"
 
@@ -47,6 +63,10 @@ msgstr "Una conexión a Internet estable"
 msgid "A battle-royale shooter game"
 msgstr "Un juego de disparos battle-royale"
 
+#: src/components/home/Hero.tsx:144
+msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
+msgstr ""
+
 #: src/pages/about-us.tsx:106
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
 msgstr ""
@@ -57,6 +77,10 @@ msgstr ""
 
 #: src/components/Register/Register.tsx:35
 msgid "A mixture of letters and numbers"
+msgstr ""
+
+#: src/pages/team.tsx:101
+msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
 msgstr ""
 
 #: src/components/OurGames.tsx:59
@@ -71,7 +95,12 @@ msgstr "Un juego de carreras de obstáculos multijugador"
 msgid "A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain P2E platform."
 msgstr "Emprendedor en serie y defensor de la Web3 con más de 15 años de experiencia en la fundación de empresas, incluyendo cuatro compañías multinacionales respaldadas por VC en tecnología tradicional. Más recientemente fundó aliens.com y una plataforma P2E de blockchain."
 
+#: src/pages/team.tsx:41
+msgid "A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain SAAS platform."
+msgstr ""
+
 #: src/pages/about-us.tsx:137
+#: src/pages/team.tsx:131
 msgid "AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others."
 msgstr "AJ tiene más de 20 años de experiencia en el diseño multidisciplinario, desde el diseño de la web y de la ropa, hasta la creación de identidades de marca. Ha trabajado con marcas globales como Nike, Adidas y Microsoft, entre otras."
 
@@ -79,22 +108,19 @@ msgstr "AJ tiene más de 20 años de experiencia en el diseño multidisciplinari
 msgid "APPLY NOW"
 msgstr "SOLICITAR AHORA"
 
-#: src/components/Footer.tsx:67
-#: src/components/Header/Header.tsx:22
+#: src/components/Footer.tsx:90
+#: src/components/Header/Header.tsx:72
 msgid "About"
 msgstr "Acerca de"
-
-#: src/components/Footer.tsx:63
-msgid "About Us"
-msgstr "Sobre nosotros"
-
-#: src/pages/nodes/purchase-complete.tsx:45
-msgid "Access node dashboard"
-msgstr ""
 
 #: src/pages/for-studios.tsx:50
 msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
 msgstr "Acceda a la formación continua y al apoyo técnico para garantizar una integración satisfactoria en la blockchain."
+
+#: src/pages/for-developers/solution.tsx:24
+#: src/pages/for-developers/solution.tsx:33
+msgid "Account abstractions and other features not yet available on Ethereum"
+msgstr ""
 
 #: src/components/Careers/Careers.tsx:27
 msgid "All positions"
@@ -113,6 +139,7 @@ msgid "An x86/X64 Processor"
 msgstr "Un procesador x86/X64"
 
 #: src/pages/about-us.tsx:31
+#: src/pages/team.tsx:26
 msgid "Andrew has been a tech executive in the gaming industry with a career spanning over 27 years. He has worked with some of the most recognizable names in the industry, including Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway."
 msgstr "Andrew ha sido un ejecutivo de tecnología en la industria del juego con una carrera que abarca más de 27 años. Ha trabajado con algunos de los nombres más reconocidos de la industria, como Activision, Electronic Arts, 2K, Ubisoft, Sony y Midway."
 
@@ -120,7 +147,22 @@ msgstr "Andrew ha sido un ejecutivo de tecnología en la industria del juego con
 msgid "Applies to all videos"
 msgstr "Se aplica a todos los vídeos"
 
+#: src/pages/for-developers/index.tsx:56
+#: src/pages/for-developers/solution.tsx:151
+msgid "Apply now"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:23
+#: src/pages/for-developers/solution.tsx:32
+msgid "Arbitrary smart contracts written in Solidity and other languages"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:111
+msgid "Architecture"
+msgstr ""
+
 #: src/pages/about-us.tsx:135
+#: src/pages/team.tsx:129
 msgid "Art Creative Lead"
 msgstr "Jefe creativo de arte"
 
@@ -137,13 +179,24 @@ msgstr ""
 msgid "Autoplay"
 msgstr "Reproducción automática"
 
+#: src/components/Program.tsx:18
 #: src/pages/nodes.tsx:288
+#: src/pages/studios.tsx:361
 msgid "BUY A NODE"
 msgstr "COMPRAR UN NODO"
+
+#: src/components/Program.tsx:9
+#: src/pages/studios.tsx:353
+msgid "Become a Myria node owner & receive rewards"
+msgstr ""
 
 #: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Conviértase en una parte integral del ecosistema de Myria y coseche los beneficios de su contribución. Los primeros operadores de nodos fundadores reciben un precio preferencial, que aumenta a medida que se venden los nodos."
+
+#: src/components/for-developers/Myria.tsx:33
+msgid "Blockchain consultancy"
+msgstr ""
 
 #: src/pages/for-studios.tsx:79
 msgid "Blockchain infrastructure for Game Studios"
@@ -154,36 +207,57 @@ msgid "Blockchain platform for game studios"
 msgstr "Plataforma Blockchain para estudios de juegos"
 
 #: src/pages/about-us.tsx:61
+#: src/pages/team.tsx:56
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "Brendan aporta una década de experiencia en blockchain. Ha fundado una solución de custodia en la blockchain de Bitcoin, un cripto ETF en ethereum, y fue líder de blockchain para la mayor red de blockchain de finanzas comerciales del mundo."
 
+#: src/components/home/Hero.tsx:131
+msgid "Bringing <0>blockchain gaming </0>to the world"
+msgstr ""
+
 #: src/pages/about-us.tsx:91
+#: src/pages/team.tsx:146
 msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 msgstr "Brock es un líder de productos emprendedores con más de 10 años de experiencia trabajando en startups tecnológicas y fundó su propia compañía MarTech. Más recientemente, ayudó a escalar una de las mayores empresas de blockchain centrándose en la tokenómica de productos y el crecimiento."
 
-#: src/pages/games.tsx:82
-msgid "Buy limited founding NFTs"
-msgstr "Comprar NFTs de fundación limitada"
+#: src/components/for-developers/BuildYourBlockchain.tsx:14
+msgid "Build your blockchain game with Myria"
+msgstr ""
 
 #: src/pages/nodes/index.tsx:103
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "La compra de una licencia de nodo dará al propietario el derecho a ejecutar el nodo (ya sea localmente o en la nube) y a recibir las recompensas que determine la gobernanza."
 
-#: src/components/Footer.tsx:82
-#: src/components/Header/Header.tsx:37
+#: src/pages/team.tsx:69
+msgid "CMO"
+msgstr ""
+
+#: src/pages/team.tsx:84
+msgid "CPO (People)"
+msgstr ""
+
+#: src/components/Footer.tsx:106
+#: src/components/Header/Header.tsx:88
 #: src/pages/careers.tsx:19
 msgid "Careers"
 msgstr "Carreras profesionales"
 
-#: src/pages/nodes/purchase-complete.tsx:49
-msgid "Claim rewards"
+#: src/pages/for-developers/solution.tsx:26
+#: src/pages/for-developers/solution.tsx:35
+msgid "Clear roadmap to privacy-preserving smart contracts"
+msgstr ""
+
+#: src/pages/team.tsx:39
+msgid "Co-Founder - CEO"
 msgstr ""
 
 #: src/pages/about-us.tsx:29
+#: src/pages/team.tsx:24
 msgid "Co-Founder - CTO"
 msgstr "Cofundador - CTO"
 
 #: src/pages/about-us.tsx:104
+#: src/pages/team.tsx:99
 msgid "Co-Founder - Operations"
 msgstr "Cofundador - Operaciones"
 
@@ -195,12 +269,16 @@ msgstr "Cofundador - Jefe de Proyecto"
 msgid "Coming Soon"
 msgstr "Próximamente"
 
-#: src/components/Header/Header.tsx:60
+#: src/components/Header/Header.tsx:94
 msgid "Community"
 msgstr "Comunidad"
 
 #: src/pages/about-us.tsx:182
 msgid "Community Lead"
+msgstr "Líder de la comunidad"
+
+#: src/components/for-developers/Myria.tsx:45
+msgid "Compliance support"
 msgstr ""
 
 #: src/components/Register/Register.tsx:174
@@ -215,16 +293,15 @@ msgstr ""
 msgid "Connect with us"
 msgstr "Conéctate con nosotros"
 
-#: src/components/home/Hero.tsx:151
 #: src/pages/for-gamers.tsx:113
 msgid "Connecting the world through <0>play</0>"
 msgstr "Conectando el mundo a través del <0>juego</0>"
 
-#: src/pages/_app.tsx:18
+#: src/pages/_app.tsx:21
 msgid "Connecting the world through play"
 msgstr "Conectando el mundo a través del juego"
 
-#: src/components/Footer.tsx:91
+#: src/components/Footer.tsx:116
 msgid "Contact Us"
 msgstr "Contacta con nosotros"
 
@@ -232,29 +309,33 @@ msgstr "Contacta con nosotros"
 msgid "Contact us"
 msgstr "Contacta con nosotros"
 
-#: src/pages/about-us.tsx:169
+#: src/pages/team.tsx:161
 msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
 msgstr "Craig aporta más de 10 años de experiencia en el diseño de interfaces de usuario y de aplicaciones y en la creación de identidades de marca. Ha trabajado con empresas globales en sectores como las comunicaciones, las instituciones financieras, los medios de comunicación y otros."
 
-#: src/pages/nodes/purchase-complete.tsx:41
-msgid "Create an account"
-msgstr ""
+#: src/pages/about-us.tsx:169
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr "Craig cuenta con más de 10 años de experiencia en el diseño de interfaz de usuario y usuario de aplicaciones web y en la creación de identidades de marca. Ha trabajado con compañías globales a través de industrias tales como comunicaciones, instituciones financieras, medios de comunicación y más."
 
-#: src/pages/nodes/index.tsx:22
+#: src/pages/nodes.tsx:22
 msgid "Daily $MYRIA token rewards"
 msgstr "Recompensas diarias del token $MYRIA"
 
-#: src/pages/nodes/index.tsx:188
+#: src/pages/team.tsx:71
+msgid "Dave has over 25 years of marketing and management experience. He previously lead marketing at Banxa and Rockstar Games. Dave also founded Marley Spoon; taking the company from inception to IPO."
+msgstr ""
+
+#: src/pages/nodes.tsx:188
 msgid "Decentralize the network by providing computing resources"
 msgstr "Descentralizar la red proporcionando recursos informáticos"
 
 #: src/pages/nodes/index.tsx:154
 msgid "Details will be announced soon."
-msgstr ""
+msgstr "Los detalles se anunciarán pronto."
 
-#: src/pages/index.tsx:474
-msgid "Discover the best games built on the blockchain"
-msgstr "Descubrir los mejores juegos construidos en la blockchain"
+#: src/components/home/OurGames.tsx:59
+msgid "Discover more"
+msgstr ""
 
 #: src/components/SignIn/SignIn.tsx:109
 msgid "Don’t have an account?"
@@ -264,9 +345,8 @@ msgstr ""
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Cada nodo puede votar sobre los cambios propuestos en la cadena Myria y los nodos también tendrán mayor poder de voto en todo el Myriaverse"
 
-#: src/components/Footer.tsx:35
-#: src/components/Footer.tsx:43
-#: src/components/Header/Header.tsx:43
+#: src/components/Footer.tsx:39
+#: src/components/Header/Header.tsx:29
 msgid "Ecosystem"
 msgstr "Ecosistema"
 
@@ -285,10 +365,28 @@ msgstr ""
 msgid "Email is required!"
 msgstr "¡El correo electrónico es necesario! "
 
+#: src/components/for-developers/Ethereum.tsx:148
+msgid "Empower mainstream adoption to Ethereum using Myria’s scaling solution"
+msgstr ""
+
 #: src/pages/about-us.tsx:247
 #: src/pages/for-gamers.tsx:33
 msgid "Empowering players"
 msgstr "Potenciando a los jugadores"
+
+#: src/pages/for-developers/index.tsx:38
+msgid "Enabling digital asset scalabiltiy on Ethereum"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:22
+#: src/components/for-developers/Myria.tsx:34
+#: src/components/for-developers/Myria.tsx:40
+msgid "Enabling true scalability while leveraging the Ethereum network"
+msgstr ""
+
+#: src/pages/ecosystem.tsx:35
+msgid "Enhancing the power of play through blockchain"
+msgstr ""
 
 #: src/pages/about-us.tsx:314
 msgid "Enhancing the power of play through blockchain, enabling economic access and ownership, and driving a new era of opportunity, exploration and freedom."
@@ -302,45 +400,52 @@ msgstr ""
 msgid "Enter your email address"
 msgstr "Introduzca su dirección de correo electrónico"
 
-#: src/components/Register/Register.tsx:158
-#: src/components/SignIn/SignIn.tsx:86
-msgid "Enter your password"
+#: src/pages/for-developers/solution.tsx:13
+msgid "Ethereum-level security provided by zk-STARKs"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:49
+#: src/pages/nodes.tsx:49
 msgid "Exclusive NFTs"
 msgstr "NFTs exclusivos"
 
-#: src/pages/ecosystem.tsx:61
-msgid "Explore the <0>Myria</0> Ecosystem"
-msgstr "Explora el ecosistema <0>Myria</0>"
+#: src/components/for-developers/Myria.tsx:24
+msgid "Expereince low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution."
+msgstr ""
 
 #: src/components/FirstTimeVisitModal.tsx:58
 msgid "FOLLOW US ON TWITTER"
+msgstr "SÍGUENOS EN TWITTER"
+
+#: src/components/NotiBanner.tsx:23
+msgid "FOR DEVELOPERS"
 msgstr ""
 
-#: src/pages/index.tsx:469
-msgid "For Gamers"
-msgstr "Para los jugadores"
+#: src/components/NotiBanner.tsx:18
+msgid "FOR GAMERS"
+msgstr ""
 
-#: src/components/Footer.tsx:52
-#: src/pages/index.tsx:492
-msgid "For Studios"
-msgstr "Para los estudios"
+#: src/pages/for-developers/solution.tsx:116
+msgid "Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1 data availability provide Ethereum-level security."
+msgstr ""
 
-#: src/pages/index.tsx:509
+#: src/components/Footer.tsx:60
+#: src/components/Footer.tsx:67
+msgid "For Developers"
+msgstr ""
+
+#: src/pages/index.tsx:55
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "Fundado por los principales veteranos de la industria del juego y del blockchain"
 
 #: src/pages/about-us.tsx:221
 msgid "Fun, high-quality and free are our core beliefs. We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse."
-msgstr ""
+msgstr "La diversión, la calidad y la gratuitidad son nuestras principales creencias. Creemos en un acceso abierto y equitativo, que permita a más personas experimentar y disfrutar de los beneficios del blockchain y del metaverso."
 
 #: src/pages/for-gamers.tsx:178
 msgid "GET A NODE"
 msgstr "OBTENGA UN NODO"
 
-#: src/pages/_app.tsx:27
+#: src/pages/_app.tsx:30
 msgid "Game NFT"
 msgstr "Juego NFT"
 
@@ -350,42 +455,63 @@ msgstr "La jugabilidad es lo primero"
 
 #: src/pages/about-us.tsx:219
 msgid "Gameplay first & free to play"
-msgstr ""
+msgstr "La jugabilidad es lo primero y el juego es gratuito"
 
 #: src/components/Footer.tsx:12
-#: src/components/Header/Header.tsx:47
+#: src/components/Footer.tsx:43
+#: src/components/Header/Header.tsx:35
 msgid "Games"
 msgstr "Juegos"
 
 #: src/pages/about-us.tsx:120
+#: src/pages/team.tsx:174
 msgid "Games Producer"
+msgstr "Productor de juegos"
+
+#: src/components/Program.tsx:32
+msgid "Gaming is evolving. Build with Myria!"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:63
+msgid "Gaming is evolving. Build with Myria."
+msgstr ""
+
+#: src/components/Footer.tsx:86
+msgid "General"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:65
+msgid "General purpose zk-rollup"
+msgstr ""
+
+#: src/components/Footer.tsx:71
+msgid "Get Started"
 msgstr ""
 
 #: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "Consigue un nodo de fundadores hoy mismo"
 
-#: src/pages/index.tsx:426
-msgid "Get the latest updates on our games, token and NFT releases, play-to-earn mechanics, and have the opportunity to access alpha gameplay."
-msgstr "Obtenga las últimas actualizaciones de nuestros juegos, lanzamientos de fichas y NFT, mecánicas para jugar y ganar, y tenga la oportunidad de acceder al juego alfa."
-
 #: src/pages/for-studios.tsx:37
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
 msgstr "¿Tienes una idea de juego innovadora? Solicite una subvención para manifestar su visión en la cadena Myria."
 
-#: src/pages/index.tsx:419
-msgid "Grow with myria"
-msgstr "Crece con myria"
-
 #: src/pages/about-us.tsx:59
+#: src/pages/team.tsx:54
 msgid "Head of Blockchain"
 msgstr "Jefe de Blockchain"
 
 #: src/pages/about-us.tsx:74
+#: src/pages/team.tsx:114
 msgid "Head of Game Design"
 msgstr "Jefe de diseño de juegos"
 
-#: src/components/Header/Header.tsx:18
+#: src/pages/for-developers/solution.tsx:16
+msgid "High throughput of 1,000+ TPS before sharding and 10,000+ TPS after sharding"
+msgstr ""
+
+#: src/components/Header/Header.tsx:22
+#: src/components/Header/Header.tsx:54
 msgid "Home"
 msgstr "Inicio"
 
@@ -412,14 +538,26 @@ msgstr "¿Cuánto costará una licencia de nodo Myria?"
 
 #: src/pages/about-us.tsx:184
 msgid "Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space."
+msgstr "Hunter es un intraemprendedor en el espacio de las criptomonedas desde 2016, uniéndose a proyectos a la vanguardia de la innovación y ayudándolos a construir comunidades globales. Ha catalizado y amplificado las asociaciones con algunos de los mayores proyectos y personas influyentes en este espacio."
+
+#: src/pages/game-detail/[id].tsx:426
+msgid "IN DEVELOPMENT"
 msgstr ""
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
 msgstr "Si quiere tener un impacto real en el juego y la blockchain, únase a nosotros en Myria. Estamos recorriendo el mundo en busca de los mejores y más brillantes para unirse a nuestra empresa de rápido crecimiento."
 
-#: src/components/Register/Register.tsx:39
-msgid "Inclusion of at least one special character"
+#: src/pages/team.tsx:86
+msgid "In his role leading the People team, Damian helps Myria connect, develop and care for its global team. Damian brings decades of experience to Myria and was previously Global Head of People for Bitmex and Goldman Sachs."
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:52
+msgid "Instant project visibility"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:55
+msgid "Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners."
 msgstr ""
 
 #: src/components/GetInTouch.tsx:26
@@ -429,17 +567,22 @@ msgstr ""
 msgid "Invalid email!"
 msgstr "¡Correo electrónico inválido!"
 
+#: src/pages/team.tsx:116
+msgid "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads."
+msgstr ""
+
 #: src/pages/about-us.tsx:76
 msgid "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing half a billion downloads."
 msgstr "Ivan tiene más de 10 años de experiencia en la industria del juego. Ha sido diseñador principal de juegos en Gameloft, CrazyLabs, GPG (Ubisoft) y Sperasoft, entre otros, y sus juegos han acumulado 500 millones de descargas."
 
 #: src/components/ComingSoon.tsx:59
 #: src/components/FirstTimeVisitModal.tsx:44
-#: src/components/Header/DesktopHeader.tsx:116
-#: src/components/Header/MobileHeader.tsx:136
-#: src/components/home/Hero.tsx:177
-#: src/pages/index.tsx:153
-#: src/pages/index.tsx:449
+#: src/components/Header/DesktopHeader.tsx:113
+#: src/components/Header/MobileHeader.tsx:35
+#: src/components/Header/MobileHeader.tsx:54
+#: src/components/NotiBanner.tsx:55
+#: src/components/home/Hero.tsx:166
+#: src/pages/game-detail/[id].tsx:436
 msgid "JOIN DISCORD"
 msgstr "ÚNETE AL DISCORD"
 
@@ -451,34 +594,68 @@ msgstr "ÚNETE AL EQUIPO"
 msgid "Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies."
 msgstr "Jem aporta una amplia experiencia en operaciones empresariales y estrategia, incluyendo más de 10 años trabajando con empresas corporativas en el lanzamiento y la recaudación de fondos, y 6 años gestionando la ejecución de estrategias para empresas tecnológicas y de blockchain."
 
+#: src/pages/studios.tsx:381
+msgid "Join MYRIA"
+msgstr ""
+
+#: src/pages/studios.tsx:373
+msgid "Join Myria in building the next blockchain revolution"
+msgstr ""
+
 #: src/pages/careers.tsx:21
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
 msgstr "Únase a nuestro equipo de más de 60 personas para forjar el futuro de los juegos de blockchain"
 
-#: src/pages/index.tsx:422
-msgid "Join the thriving Myria ecosystem"
-msgstr ""
-
 #: src/pages/about-us.tsx:199
+#: src/pages/team.tsx:191
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 msgstr "Kidono es un socio líder experimentado con una amplia experiencia en la gestión de compromisos de desarrollo externos. Ha trabajado con algunas de las mayores empresas de producción de juegos, como Marvel, Tencent, Winkings y otras."
 
-#: src/pages/index.tsx:239
+#: src/pages/studios.tsx:212
 msgid "LEARN MORE"
 msgstr "MÁS INFORMACIÓN"
 
-#: src/pages/index.tsx:478
-#: src/pages/index.tsx:501
+#: src/components/home/News.tsx:32
+msgid "Latest Updates & News"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:113
+msgid "Layer 2 scalability solution"
+msgstr ""
+
+#: src/components/home/Hero.tsx:155
 msgid "Learn more"
 msgstr "Más información"
 
+#: src/components/Program.tsx:35
+#: src/pages/studios.tsx:376
+msgid "Learn more about our job current openings and see how you can get involved!"
+msgstr ""
+
 #: src/pages/about-us.tsx:367
+#: src/pages/team.tsx:230
 msgid "Led by industry experts"
 msgstr "Dirigido por expertos de la industria"
 
-#: src/pages/index.tsx:521
-msgid "MEET THE TEAM"
-msgstr "CONOZCA AL EQUIPO"
+#: src/components/for-developers/Myria.tsx:30
+msgid "Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business."
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:17
+msgid "Low transaction fees: over 100x lower than fees on Ethereum"
+msgstr ""
+
+#: src/components/Header/Header.tsx:84
+msgid "MYRIA STUDIOS"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:15
+msgid "Manage your NFT & digital assets"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:16
+msgid "Manage your digital storefront and marketplace"
+msgstr ""
 
 #: src/pages/about-us.tsx:151
 msgid "Marketing Manager"
@@ -488,22 +665,9 @@ msgstr "Director de Marketing"
 msgid "Message is required!"
 msgstr "¡Se requiere un mensaje!"
 
-#: src/pages/ecosystem.tsx:20
-msgid "Modularization of smart contracts"
-msgstr "Modularización de los contratos inteligentes"
-
-#: src/pages/index.tsx:371
+#: src/pages/studios.tsx:344
 msgid "More details coming soon"
 msgstr "Más detalles en breve"
-
-#: src/pages/games.tsx:36
-msgid "More games coming soon..."
-msgstr "Más juegos próximamente..."
-
-#: src/components/Footer.tsx:56
-#: src/components/Header/Header.tsx:33
-msgid "Morphing NFTs"
-msgstr "Morphing NFTs"
 
 #: src/components/interop/DesktopInterop.tsx:322
 #: src/components/interop/MobileInterop.tsx:196
@@ -515,17 +679,33 @@ msgstr "Morphing NFTs™"
 msgid "Morphing NFTs™ that adapt to your avatars"
 msgstr "Morphing NFTs™ los cuales se adaptan a tus avatares"
 
-#: src/pages/ecosystem.tsx:103
-msgid "Myria Blockchain Ecosystem Map"
-msgstr "Mapa del ecosistema de la Blockchain de Myria"
-
 #: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
+msgstr "Preguntas frecuentes sobre Myria"
+
+#: src/components/ecosystem/Platform.tsx:67
+msgid "Myria Marketplace"
 msgstr ""
 
-#: src/pages/games.tsx:85
-msgid "Myria are releasing limited drops of exclusive founding Myria land, avatars, and skins. These items will never be made available to the public again and will forever commemorate holders as pioneers in the Myriaverse."
-msgstr "Myria está lanzando gotas limitadas de tierra fundadora exclusiva de Myria, avatares y skins. Estos objetos no volverán a estar disponibles para el público y conmemorarán para siempre a los poseedores como pioneros en el Myriaverse."
+#: src/components/ecosystem/Platform.tsx:83
+msgid "Myria Platform"
+msgstr ""
+
+#: src/components/Footer.tsx:56
+msgid "Myria Studios"
+msgstr ""
+
+#: src/pages/studios.tsx:182
+msgid "Myria Studios is building a range of free-to-play AAA games spans across an entire interconnected ecosystem. Players experience intertwining lore, characters, and rich storylines that carry across each game world, and Myria tokens and NFTs can be used across the Myriaverse."
+msgstr ""
+
+#: src/components/ecosystem/Platform.tsx:75
+msgid "Myria Wallet"
+msgstr ""
+
+#: src/components/ecosystem/Platform.tsx:33
+msgid "Myria combines a gaming platform with applications, tools and scaling infrastructure needed to bring blockchain gaming to life."
+msgstr ""
 
 #: src/pages/for-gamers.tsx:22
 msgid "Myria develops fun AAA games that are enhanced by the blockchain, not vice versa."
@@ -535,20 +715,35 @@ msgstr "Myria desarrolla divertidos juegos AAA que son mejorados por la blockcha
 msgid "Myria ecosystem fund"
 msgstr "Fondo del ecosistema Myria"
 
-#: src/pages/index.tsx:514
-msgid "Myria has been built by an all-star team of over 60+ people, united with a common vision of revolutionizing gaming with blockchain technology."
-msgstr "Myria ha sido construida por un equipo de más de 60 personas, unidas con la visión común de revolucionar los juegos con la tecnología blockchain."
+#: src/components/for-developers/Myria.tsx:42
+msgid "Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives."
+msgstr ""
 
-#: src/pages/index.tsx:497
-msgid "Myria helps studios join the blockchain revolution"
-msgstr "Myria ayuda a los estudios a unirse a la revolución de la blockchain"
+#: src/pages/index.tsx:60
+msgid "Myria has been built by an all-star team of over 100 people, united with a common vision of revolutionizing gaming with blockchain technology."
+msgstr ""
+
+#: src/components/ecosystem/Backbone.tsx:24
+msgid "Myria help project partners set up for success. <0>Learn more</0> about our easy-to-use, full stack solution and build with Myria today."
+msgstr ""
 
 #: src/components/ComingSoon.tsx:48
-#: src/components/home/Hero.tsx:163
-#: src/pages/_app.tsx:19
-#: src/pages/_app.tsx:32
+#: src/pages/_app.tsx:22
+#: src/pages/_app.tsx:35
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria es un ecosistema de juego basado en la blockchain Myria."
+
+#: src/pages/ecosystem.tsx:38
+msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT and blockchain gaming."
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:67
+msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT, blockchain gaming and more."
+msgstr ""
+
+#: src/pages/for-developers/index.tsx:41
+msgid "Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and blockchain gaming."
+msgstr ""
 
 #: src/pages/about-us.tsx:262
 msgid "Myria is community powered and governed through the Myria DAO. We are handing the power back to the people to build a better metaverse."
@@ -558,7 +753,16 @@ msgstr "Myria está impulsada por la comunidad y se gobierna a través de la DAO
 msgid "Myria is supported by a network of community-powered nodes, who receive rewards for their contributions."
 msgstr "Myria se apoya en una red de nodos impulsados por la comunidad, que reciben recompensas por sus contribuciones."
 
-#: src/pages/nodes/index.tsx:146
+#: src/components/ecosystem/Backbone.tsx:59
+msgid "Myria is the backbone of blockchain gaming"
+msgstr ""
+
+#: src/pages/for-developers/index.tsx:49
+#: src/pages/for-developers/solution.tsx:144
+msgid "Myria launches $200M game developer grant program"
+msgstr ""
+
+#: src/pages/nodes.tsx:146
 msgid "Myria node license sales are anticipated to commence in March 2022 (subject to change)."
 msgstr "Se prevé que la venta de licencias de nodos de Myria comience en marzo de 2022 (sujeto a cambios)."
 
@@ -566,24 +770,40 @@ msgstr "Se prevé que la venta de licencias de nodos de Myria comience en marzo 
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Los operadores de nodos Myria recibirán recompensas diarias de tokens $MYRIA por el trabajo de los nodos."
 
-#: src/pages/_app.tsx:20
-#: src/pages/_app.tsx:31
+#: src/components/for-developers/Myria.tsx:66
+msgid "Myria provides an end-to-end solution for developers and publishers, and help you unlock the blockchain potential of your business"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:36
+msgid "Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support."
+msgstr ""
+
+#: src/pages/_app.tsx:23
+#: src/pages/_app.tsx:34
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | Conectando el mundo a través del juego"
 
-#: src/pages/index.tsx:363
+#: src/pages/studios.tsx:336
 msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
 msgstr "Myriaverse es el metaverso social más amplio que conecta a jugadores, comunidades y gremios. Los jugadores podrán buscar, explorar, crear, invertir y mucho más. El Myriaverse, en constante expansión, es una sociedad y una economía virtuales que ofrecen abundantes oportunidades de ganar dinero a los valientes aventureros."
 
-#: src/pages/ecosystem.tsx:29
-msgid "NFT interoperability"
-msgstr "Interoperabilidad NFT"
+#: src/components/ecosystem/Backbone.tsx:13
+msgid "Myria’s <0>Ethereum L2 scaling solution</0> uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:78
+msgid "Myria’s <0>Ethereum L2 scaling solution</0> uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2 transactions into one single transaction. This then sends a validity proof back to the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based zkrollup solution powered by Starkware enable NFTs and dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:18
+msgid "Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey."
+msgstr ""
 
 #: src/components/GetInTouch.tsx:23
 msgid "Name is required!"
 msgstr "¡El nombre es necesario!"
 
-#: src/components/Footer.tsx:86
+#: src/components/Footer.tsx:111
 msgid "News"
 msgstr "Noticias"
 
@@ -592,11 +812,7 @@ msgstr "Noticias"
 msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
 msgstr "No importa la forma y el tamaño de tu avatar, utiliza el mismo NFT en todos ellos. Cómpralo una vez y úsalo en cualquier personaje. Diseñado para ser interoperable."
 
-#: src/pages/index.tsx:142
-msgid "Node & NFT sales coming soon!"
-msgstr ""
-
-#: src/pages/nodes/index.tsx:213
+#: src/pages/nodes.tsx:213
 msgid "Node owner rewards"
 msgstr "Recompensas para los propietarios de nodos"
 
@@ -604,25 +820,25 @@ msgstr "Recompensas para los propietarios de nodos"
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "Los propietarios de nodos también serán recompensados con gotas de NFT y tokens en función de su reputación como operadores de nodos y miembros de la comunidad en general."
 
-#: src/components/Footer.tsx:39
-#: src/components/Header/Header.tsx:51
+#: src/components/Footer.tsx:47
+#: src/components/Header/Header.tsx:41
 msgid "Nodes"
 msgstr "Nodos"
 
-#: src/pages/nodes.tsx:164
-msgid "Only 55,000 Myria node licenses will ever be released."
+#: src/components/Header/Header.tsx:60
+msgid "OUR SOLUTION"
 msgstr ""
 
-#: src/pages/index.tsx:432
-msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
-msgstr "Opere un nodo Myria desde su ordenador personal y gane recompensas por su contribución a la red."
+#: src/pages/nodes.tsx:164
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr "Solo se lanzarán 55.000 licencias de nodos Myria."
 
-#: src/pages/ecosystem.tsx:22
-msgid "Our ERC1155 contracts are engineered for more efficient resource utilization with our smart logic design between the base layer and rules contracts."
-msgstr "Nuestros contratos ERC1155 están diseñados para una utilización más eficiente de los recursos con nuestro diseño lógico inteligente entre la capa base y los contratos de reglas."
+#: src/pages/for-developers/solution.tsx:30
+msgid "Open and permissionless"
+msgstr ""
 
 #: src/pages/about-us.tsx:357
-#: src/pages/index.tsx:527
+#: src/pages/team.tsx:267
 msgid "Our Experience"
 msgstr "Nuestra experiencia"
 
@@ -631,32 +847,27 @@ msgstr "Nuestra experiencia"
 msgid "Our Principles"
 msgstr "Nuestros principios"
 
+#: src/components/Footer.tsx:75
+msgid "Our Solutions"
+msgstr ""
+
 #: src/pages/about-us.tsx:311
 msgid "Our Vision"
 msgstr "Nuestra visión"
 
 #: src/pages/for-gamers.tsx:152
-#: src/pages/index.tsx:162
 msgid "Our games"
 msgstr "Nuestros juegos"
 
-#: src/pages/games.tsx:58
-msgid "Our games offer a range of play and earn mechanics that reward players with cryptocurrency and NFTs."
-msgstr "Nuestros juegos ofrecen una serie de mecánicas de juego y ganancia que recompensan a los jugadores con criptomonedas y NFTs."
+#: src/pages/for-developers/solution.tsx:73
+msgid "Our solution"
+msgstr ""
 
-#: src/pages/ecosystem.tsx:13
-msgid "Our proprietary consensus algorithm achieves greater network security by factoring in the ‘reputational score’ of Myria nodes."
-msgstr "Nuestro algoritmo de consenso patentado consigue una mayor seguridad en la red al tener en cuenta la \"puntuación de reputación\" de los nodos de Myria."
-
-#: src/pages/index.tsx:202
-msgid "Our range of free-to-play AAA games spans across an entire interconnected ecosystem. Players experience intertwining lore, characters, and rich storylines that carry across each game world, and Myria tokens and NFTs can be used across the Myriaverse."
-msgstr "Nuestra gama de juegos AAA gratuitos se extiende por todo un ecosistema interconectado. Los jugadores experimentan una historia entrelazada, personajes y ricos argumentos que se extienden a través de cada mundo de juego, y los tokens Myria y los NFTs pueden utilizarse en todo el Myriaverse."
-
-#: src/components/Header/Header.tsx:29
+#: src/components/Header/Header.tsx:80
 msgid "Our team"
 msgstr "Nuestro equipo"
 
-#: src/components/Header/Header.tsx:25
+#: src/components/Header/Header.tsx:76
 msgid "Our vision"
 msgstr "Nuestra visión"
 
@@ -671,6 +882,7 @@ msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "Sé dueño de tu identidad metaversa. En cualquier lugar. En cualquier juego."
 
 #: src/pages/about-us.tsx:197
+#: src/pages/team.tsx:189
 msgid "Partner Lead"
 msgstr "Dirigido por un socio"
 
@@ -681,9 +893,9 @@ msgstr ""
 
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
-msgstr ""
+msgstr "Juega y gana"
 
-#: src/pages/index.tsx:282
+#: src/pages/studios.tsx:255
 msgid "Powered and governed by <0>$MYRIA</0>"
 msgstr "Impulsado y gobernado por <0>$MYRIA</0>"
 
@@ -705,34 +917,28 @@ msgid "Pre register to stay up to date"
 msgstr "Preinscríbase para estar al día"
 
 #: src/pages/about-us.tsx:89
+#: src/pages/team.tsx:144
 msgid "Product Lead - Blockchain"
 msgstr "Jefe de Producto - Blockchain"
 
-#: src/pages/ecosystem.tsx:11
-msgid "Proof of reputational authority"
-msgstr "Prueba de autoridad reputacional"
+#: src/components/for-developers/Myria.tsx:48
+msgid "Provide your players with a protected experience and ensure your business understands critical regulatory compliance components."
+msgstr ""
 
 #: src/pages/for-gamers.tsx:167
 msgid "Pupose-built infrastructure"
 msgstr "Infraestructura construida con fines específicos"
 
-#: src/pages/ecosystem.tsx:87
-msgid "Purpose-built infrastructure"
-msgstr "Infraestructura construida con fines específicos"
-
-#: src/pages/index.tsx:211
-msgid "READ ABOUT OUR ECOSYSTEM"
-msgstr "LEA SOBRE NUESTRO ECOSISTEMA"
-
-#: src/pages/index.tsx:454
-msgid "RUN A NODE"
-msgstr "EJECUTAR UN NODO"
-
-#: src/components/Register/Register.tsx:200
-msgid "Register"
+#: src/components/home/News.tsx:19
+#: src/components/home/News.tsx:36
+msgid "Read more"
 msgstr ""
 
-#: src/pages/games.tsx:92
+#: src/components/Program.tsx:12
+#: src/pages/studios.tsx:356
+msgid "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
+msgstr ""
+
 #: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "Próximo lanzamiento"
@@ -746,28 +952,47 @@ msgstr "Dirige un nodo y gana <0>$MYRIA</0> y recompensas NFT"
 msgid "SHIFTING POWER BACK TO THE PEOPLE"
 msgstr "DEVUELVE EL PODER A LA GENTE"
 
+#: src/components/Header/DesktopHeader.tsx:102
+#: src/pages/for-developers/index.tsx:44
+msgid "START BUILDING"
+msgstr ""
+
 #: src/components/Subscribe.tsx:91
+#: src/components/for-developers/BuildYourBlockchain.tsx:27
 msgid "SUBMIT"
 msgstr "ENVIAR"
 
-#: src/components/SignIn/SignIn.tsx:105
-msgid "Sign in"
+#: src/pages/for-developers/solution.tsx:21
+msgid "Safely programmable"
 msgstr ""
 
-#: src/components/SignIn/SignIn.tsx:113
-msgid "Sign up now"
+#: src/components/for-developers/Myria.tsx:27
+msgid "Save time. Ship faster."
+msgstr ""
+
+#: src/components/for-developers/Ethereum.tsx:325
+msgid "Scaling blockchain gaming on Ethereum"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:11
+msgid "Secure and scalable"
 msgstr ""
 
 #: src/components/Subscribe.tsx:66
 msgid "Sign up to our newsletter to for development updates, token and NFT drops, and exclusive promotions."
 msgstr "Inscríbete en nuestro boletín de noticias para recibir actualizaciones de desarrollo, entregas de fichas y NFT, y promociones exclusivas."
 
-#: src/pages/games.tsx:55
-msgid "Start playing and earning rewards"
-msgstr "Empieza a jugar y a ganar recompensas"
+#: src/pages/for-developers/solution.tsx:25
+#: src/pages/for-developers/solution.tsx:34
+msgid "Simpler formal verification of contracts due to safe VM architecture"
+msgstr ""
 
-#: src/components/Footer.tsx:47
-#: src/components/Header/Header.tsx:55
+#: src/components/Program.tsx:38
+msgid "Start now"
+msgstr ""
+
+#: src/components/Footer.tsx:51
+#: src/components/Header/Header.tsx:47
 msgid "Store"
 msgstr "Tienda"
 
@@ -775,15 +1000,23 @@ msgstr "Tienda"
 msgid "Subject is required!"
 msgstr "¡Se requiere el tema!"
 
-#: src/pages/index.tsx:295
+#: src/components/for-developers/Myria.tsx:9
+msgid "Supercharge your project"
+msgstr ""
+
+#: src/components/for-developers/Ethereum.tsx:96
+msgid "Support unlimited scalabiltiy, delivering up to 5,000+ TPS"
+msgstr ""
+
+#: src/pages/studios.tsx:268
 msgid "TOKEN LAUNCH COMING SOON"
 msgstr ""
 
-#: src/components/Footer.tsx:76
+#: src/components/Footer.tsx:100
 msgid "Team"
 msgstr "Equipo"
 
-#: src/components/Footer.tsx:162
+#: src/components/Footer.tsx:192
 msgid "Terms | Privacy"
 msgstr "Términos | Privacidad"
 
@@ -799,14 +1032,22 @@ msgstr "¡Gracias por suscribirse!"
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "La cadena Myria se sustenta en una red de nodos gestionados por jugadores. Utiliza tu ordenador personal para convertirte en un operador de nodos y recibir recompensas y beneficios por tu contribución al ecosistema."
 
-#: src/pages/ecosystem.tsx:90
 #: src/pages/for-gamers.tsx:170
 msgid "The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for gaming. Our team have developed proprietary technology to make the gaming and trading experience seamless, including a decentralized exchange, marketplace, and cryptocurrency wallet."
 msgstr "El ecosistema Myria está construido sobre Myria blockchain, nuestro Ethereum L2 creado para el juego. Nuestro equipo ha desarrollado una tecnología propia para que la experiencia de juego y comercio sea perfecta, incluyendo un intercambio descentralizado, un mercado y una cartera de criptodivisas."
 
-#: src/pages/ecosystem.tsx:66
-msgid "The Myria ecosystem is designed to empower gamers, communities, studios, and creators."
-msgstr "El ecosistema Myria está diseñado para potenciar a los jugadores, las comunidades, los estudios y los creadores."
+#: src/components/ecosystem/Backbone.tsx:47
+msgid "The Myria platform is supported by Myria Nodes. Being a <0>Myria Node</0> operator means that you will receive limited edition NFTs, token rewards and more."
+msgstr ""
+
+#: src/components/ecosystem/Platform.tsx:30
+msgid "The comprehensive blockchain gaming platform"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:10
+#: src/components/for-developers/Myria.tsx:28
+msgid "The easiest way to launch your blockchain game"
+msgstr ""
 
 #: src/components/interop/DesktopInterop.tsx:224
 #: src/components/interop/MobileInterop.tsx:129
@@ -818,22 +1059,31 @@ msgstr "El nuevo estándar para las NFTs interoperables"
 msgid "The world’s first Morphing NFTs™"
 msgstr "Los primeras NFTs™ morfológicas del mundo"
 
+#: src/components/for-developers/Myria.tsx:39
+msgid "Tokenomics consultancy"
+msgstr ""
+
 #: src/components/interop/DesktopInterop.tsx:205
 #: src/components/interop/MobileInterop.tsx:105
 msgid "Trailer Coming Soon"
 msgstr "Tráiler próximamente"
 
+#: src/pages/for-developers/solution.tsx:15
+msgid "Transparent (no trusted setup) and post-quantum secure"
+msgstr ""
+
 #: src/pages/about-us.tsx:167
+#: src/pages/team.tsx:159
 msgid "UI/UX Lead"
 msgstr "Líder de UI/UX"
 
-#: src/pages/index.tsx:360
+#: src/pages/studios.tsx:333
 msgid "Unified through the Myriaverse"
 msgstr "Unificado a través del Myriaverse"
 
-#: src/pages/games.tsx:64
-msgid "Unlike most blockchain games, all of our games are free-to-play."
-msgstr "A diferencia de la mayoría de los juegos de blockchain, todos nuestros juegos son free-to-play."
+#: src/components/for-developers/Myria.tsx:21
+msgid "Unlock immense scale"
+msgstr ""
 
 #: src/components/Register/Register.tsx:143
 msgid "Username"
@@ -849,6 +1099,11 @@ msgstr "Derechos al voto"
 
 #: src/pages/about-us.tsx:235
 msgid "We aim to build a world where gamers can play the games they love and also earn rewards at the same time."
+msgstr "Nuestro objetivo es construir un mundo en el que los jugadores puedan jugar a los juegos que les gustan y ganar recompensas al mismo tiempo."
+
+#: src/pages/for-developers/index.tsx:52
+#: src/pages/for-developers/solution.tsx:147
+msgid "We are funding the builders and creators to power the future of blockchain gaming. Apply for grant consideration."
 msgstr ""
 
 #: src/pages/about-us.tsx:249
@@ -856,13 +1111,25 @@ msgstr ""
 msgid "We believe players should have true verifiable ownership and control over in-game assets."
 msgstr "Creemos que los jugadores deben tener una verdadera propiedad y control verificables sobre los activos del juego."
 
-#: src/pages/ecosystem.tsx:31
-msgid "We have developed innovative NFT interoperability standards only available on the Myria chain."
-msgstr "Hemos desarrollado innovadores estándares de interoperabilidad NFT sólo disponibles en la cadena Myria."
+#: src/components/ecosystem/Backbone.tsx:62
+msgid "We bring together everything that is required to build a decentralized, scalable and secure digital asset and blockchain gaming platform"
+msgstr ""
 
 #: src/pages/for-studios.tsx:23
 msgid "We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming."
 msgstr "Proporcionamos un conjunto completo de infraestructura de blockchain en la cadena Myria, nuestra Ethereum L2 construida para el juego."
+
+#: src/components/for-developers/Ethereum.tsx:221
+msgid "We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:12
+msgid "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
+msgstr ""
+
+#: src/components/for-developers/BuildYourBlockchain.tsx:17
+msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
+msgstr ""
 
 #: src/components/JoinTheRevolution.tsx:25
 msgid "We’re hiring, join the future of gaming"
@@ -884,11 +1151,12 @@ msgstr "¿Qué recompensas reciben los operadores de nodos Myria?"
 msgid "When will Myria node licenses be sold?"
 msgstr "¿Cuándo se venderán las licencias de los nodos Myria?"
 
-#: src/components/Footer.tsx:71
-msgid "Whitepaper (Coming soon)"
-msgstr "Informe técnico (Próximamente)"
+#: src/components/Footer.tsx:94
+msgid "Whitepaper"
+msgstr ""
 
 #: src/pages/about-us.tsx:122
+#: src/pages/team.tsx:176
 msgid "With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more."
 msgstr "Con más de 15 años de experiencia trabajando en la industria del juego, Antonio ha contribuido a algunos de los títulos y marcas más importantes del mundo como The Witcher, Disney y otros."
 
@@ -905,6 +1173,6 @@ msgstr "un ecosistema descentralizado"
 msgid "join the revolution"
 msgstr "únete a la revolución"
 
-#: src/pages/ecosystem.tsx:109
+#: src/components/ecosystem/Diagram.tsx:13
 msgid "view now"
 msgstr "ver ahora"
