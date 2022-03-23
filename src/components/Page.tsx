@@ -5,7 +5,8 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { paddingX } from '../utils';
 import FirstTimeVisitModal from './FirstTimeVisitModal';
 import Footer from './Footer';
-import Header, { Action } from './Header';
+import Header from './Header';
+import { Action } from './Header/type';
 
 type Props = {
   action?: Action;

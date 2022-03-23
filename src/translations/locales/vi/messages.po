@@ -1,17 +1,21 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-02-24 17:26+0700\n"
+"POT-Creation-Date: 2022-03-15 18:51+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: vi\n"
 
-#: src/pages/index.tsx:288
+#: src/pages/studios.tsx:261
 msgid "$MYRIA is the native governance and utility token that encapsulates the Myria ecosystem. Players will be able to use $MYRIA to buy, trade, upgrade, vote and more!"
 msgstr "$MYRIA là mã token tiện ích và quản trị bản địa đóng gói vào hệ sinh thái Myria. Người chơi sẽ có thể sử dụng $MYRIA để mua, giao dịch, nâng cấp, bỏ phiếu và nhiều hoạt động khác nữa!"
 
-#: src/pages/nodes/index.tsx:128
+#: src/components/for-developers/Ethereum.tsx:318
+msgid "100% Ethereum-level security guarantees; whilst increase transaction speed and throughput"
+msgstr ""
+
+#: src/pages/nodes.tsx:128
 msgid "2 CPU Cores"
 msgstr "2 nhân CPU"
 
@@ -19,23 +23,35 @@ msgstr "2 nhân CPU"
 msgid "60 GB Disk Space"
 msgstr "Dung Lượng Ổ Đĩa 60 GB"
 
-#: src/pages/nodes/index.tsx:64
+#: src/components/NotiBanner.tsx:44
+msgid "<0>$MYRIA</0> Node & token IBCO sales coming soon!"
+msgstr ""
+
+#: src/pages/nodes.tsx:64
 msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
 msgstr "<0> Để vận hành bất kỳ chuỗi blockchain nào, bao gồm chuỗi Myria, các node cần thiết để xác minh các giao dịch mạng. Các node trong hệ sinh thái Myria sẽ được sử dụng cho nhiều hoạt động hỗ trợ mạng bao gồm mạng thử nghiệm ban đầu, sản xuất khối block và xác thực.</0><1>Ngoài vai trò là trình xác thực tiềm năng, người sở hữu node cũng sẽ được yêu cầu để - và được thưởng cho các chức năng mạng chuỗi blockchain phụ trợ khi hệ sinh thái Myria trở nên ưu việt hơn. Chúng bao gồm nhu cầu lưu trữ phi tập trung đối với một số thông tin quan trọng nhất định trong hệ sinh thái Myria, oracle, bỏ phiếu quản trị, cũng như biểu quyết về các khái niệm dành riêng cho trò chơi.</1>"
 
-#: src/pages/index.tsx:225
+#: src/pages/studios.tsx:200
 msgid "<0>Interoperable</0> & Interconnected NFTs"
 msgstr "<0>Các NFT có thể tương tác</0> & được kết nối với nhau"
 
-#: src/pages/nodes/index.tsx:84
+#: src/components/ecosystem/Backbone.tsx:36
+msgid "<0>Myria Studios</0> creates a range of free-to-play AAA games spans across an entire interconnected ecosystem, built with the new standard of interoperable NFTs."
+msgstr ""
+
+#: src/pages/nodes.tsx:84
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>Các nhà khai thác node Myria sẽ nhận được phần thưởng mã token $MYRIA hàng ngày cho các node hoạt động.</0><1>Người sở hữu node cũng sẽ được thưởng NFT và mã token trên cơ sở số điểm danh tiếng của họ với tư cách là nhà khai thác node và thành viên cộng đồng nói chung.</1><2>Số điểm danh tiếng sẽ được xác định bởi hoạt động chơi của các người sở hữu node, số mã token họ sở hữu và đặt cược, các chỉ số thời gian hoạt động trước đó, và lịch sử hỗ trợ mạng của họ (ví dụ: xác thực hoặc nhà cung cấp oracle) </2>"
 
-#: src/pages/nodes/index.tsx:114
+#: src/pages/games.tsx:26
+msgid "<0>Play</0> and earn <1/> rewards and NFTs"
+msgstr ""
+
+#: src/pages/nodes.tsx:114
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows and Mac. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
 msgstr "<0>Bạn có thể chọn xem bạn có muốn vận hành node của mình trên đám mây hay cục bộ không.</0><1>Phần mềm node Myria sẽ có sẵn để tải xuống trên Windows và Mac. Việc vận hành node của chúng tôi không tiêu tốn nhiều tài nguyên như khai thác tiền điện tử truyền thống. Bạn sẽ có thể vận hành phần mềm node của chúng tôi từ máy tính tại nhà của mình với các yêu cầu tối thiểu sau: </1>"
 
-#: src/pages/index.tsx:193
+#: src/pages/studios.tsx:173
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "Một <0>hệ sinh thái phi tập trung</0> của các trò chơi và thế giới blockchain"
 
@@ -46,6 +62,10 @@ msgstr "Kết Nối Internet Ổn Định"
 #: src/components/OurGames.tsx:42
 msgid "A battle-royale shooter game"
 msgstr "Trò chơi bắn súng battle royale"
+
+#: src/components/home/Hero.tsx:144
+msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
+msgstr ""
 
 #: src/pages/about-us.tsx:106
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
@@ -59,6 +79,10 @@ msgstr ""
 msgid "A mixture of letters and numbers"
 msgstr ""
 
+#: src/pages/team.tsx:101
+msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
+msgstr "Một giám đốc điều hành năng động, có kinh nghiệm với hơn 8 năm trong lĩnh vực tư vấn quản lý, tập trung vào việc chuyển đổi tổ chức cho các công ty toàn cầu như Verizon, Vanguard, Kayo Streaming và hơn thế nữa. Gần đây hơn thành lập aliens.com."
+
 #: src/components/OurGames.tsx:59
 msgid "A multiplayer go-kart racing game"
 msgstr "Trò chơi đua xe go-kart nhiều người chơi"
@@ -71,7 +95,12 @@ msgstr "Trò chơi vượt chướng ngại vật nhiều người chơi"
 msgid "A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain P2E platform."
 msgstr "Doanh nhân nối tiếp và người đề xuất Web3 với hơn 15 năm kinh nghiệm sáng lập bao gồm bốn công ty đa quốc gia được VC hậu thuẫn trong lĩnh vực công nghệ truyền thống. Gần đây, đã sáng lập"
 
+#: src/pages/team.tsx:41
+msgid "A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain SAAS platform."
+msgstr ""
+
 #: src/pages/about-us.tsx:137
+#: src/pages/team.tsx:131
 msgid "AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others."
 msgstr "AJ có hơn 20 năm kinh nghiệm thiết kế đa ngành— từ thiết kế web và quần áo, đến tạo hình nhận diện thương hiệu. Ông đã làm việc với các thương hiệu toàn cầu bao gồm Nike, Adidas và Microsoft, nhiều hãng khác."
 
@@ -79,22 +108,19 @@ msgstr "AJ có hơn 20 năm kinh nghiệm thiết kế đa ngành— từ thiế
 msgid "APPLY NOW"
 msgstr "NỘP ĐƠN NGAY"
 
-#: src/components/Footer.tsx:67
-#: src/components/Header/Header.tsx:22
+#: src/components/Footer.tsx:90
+#: src/components/Header/Header.tsx:72
 msgid "About"
 msgstr "Giới thiệu"
-
-#: src/components/Footer.tsx:63
-msgid "About Us"
-msgstr "Về chúng tôi"
-
-#: src/pages/nodes/purchase-complete.tsx:45
-msgid "Access node dashboard"
-msgstr ""
 
 #: src/pages/for-studios.tsx:50
 msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
 msgstr "Tiếp cận hỗ trợ giáo dục và kỹ thuật liên tục để đảm bảo tham gia thành công vào blockchain."
+
+#: src/pages/for-developers/solution.tsx:24
+#: src/pages/for-developers/solution.tsx:33
+msgid "Account abstractions and other features not yet available on Ethereum"
+msgstr ""
 
 #: src/components/Careers/Careers.tsx:27
 msgid "All positions"
@@ -113,6 +139,7 @@ msgid "An x86/X64 Processor"
 msgstr "Bộ xử lý x86/X64"
 
 #: src/pages/about-us.tsx:31
+#: src/pages/team.tsx:26
 msgid "Andrew has been a tech executive in the gaming industry with a career spanning over 27 years. He has worked with some of the most recognizable names in the industry, including Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway."
 msgstr "Andrew đã từng là giám đốc điều hành công nghệ trong ngành công nghiệp trò chơi với sự nghiệp kéo dài hơn 27 năm. Ngài ấy đã làm việc với một số công ty nổi tiếng nhất trong ngành, bao gồm Activision, Electronic Arts, 2K, Ubisoft, Sony và Midway."
 
@@ -120,7 +147,22 @@ msgstr "Andrew đã từng là giám đốc điều hành công nghệ trong ng�
 msgid "Applies to all videos"
 msgstr "Áp dụng cho tất cả các video"
 
+#: src/pages/for-developers/index.tsx:56
+#: src/pages/for-developers/solution.tsx:151
+msgid "Apply now"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:23
+#: src/pages/for-developers/solution.tsx:32
+msgid "Arbitrary smart contracts written in Solidity and other languages"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:111
+msgid "Architecture"
+msgstr ""
+
 #: src/pages/about-us.tsx:135
+#: src/pages/team.tsx:129
 msgid "Art Creative Lead"
 msgstr "Trưởng Nhóm Sáng Tạo Nghệ Thuật"
 
@@ -137,13 +179,24 @@ msgstr ""
 msgid "Autoplay"
 msgstr "Tự động chơi"
 
+#: src/components/Program.tsx:18
 #: src/pages/nodes.tsx:288
+#: src/pages/studios.tsx:361
 msgid "BUY A NODE"
 msgstr "MUA MỘT NODE"
+
+#: src/components/Program.tsx:9
+#: src/pages/studios.tsx:353
+msgid "Become a Myria node owner & receive rewards"
+msgstr ""
 
 #: src/pages/nodes.tsx:281
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Trở thành một phần không thể thiếu của hệ sinh thái Myria và thu được những lợi ích từ sự đóng góp của bạn. Các nhà khai thác node của người sáng lập sớm nhận được giá ưu đãi, giá này sẽ tăng lên khi các node được bán."
+
+#: src/components/for-developers/Myria.tsx:33
+msgid "Blockchain consultancy"
+msgstr ""
 
 #: src/pages/for-studios.tsx:79
 msgid "Blockchain infrastructure for Game Studios"
@@ -154,36 +207,57 @@ msgid "Blockchain platform for game studios"
 msgstr "Nền tảng blockchain cho các Game Studio"
 
 #: src/pages/about-us.tsx:61
+#: src/pages/team.tsx:56
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "Brendan có mười năm kinh nghiệm trong lĩnh vực blockchain. Ngài ấy đã sáng lập một giải pháp ký quỹ trên blockchain của Bitcoin, một quỹ ETF tiền điện tử trên ethereum và là trưởng nhóm blockchain cho mạng lưới blockchain tài trợ thương mại lớn nhất thế giới."
 
+#: src/components/home/Hero.tsx:131
+msgid "Bringing <0>blockchain gaming </0>to the world"
+msgstr ""
+
 #: src/pages/about-us.tsx:91
+#: src/pages/team.tsx:146
 msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 msgstr "Brock là một nhà lãnh đạo sản phẩm công ty với hơn 10 năm kinh nghiệm làm việc trong các công ty khởi nghiệp công nghệ và sáng lập công ty MarTech của riêng mình. Gần đây hơn, ngài ấy đã hỗ trợ mở rộng quy mô một trong những công ty blockchain lớn nhất tập trung vào tokenomics và tăng trưởng sản phẩm."
 
-#: src/pages/games.tsx:82
-msgid "Buy limited founding NFTs"
-msgstr "Mua NFT sáng lập giới hạn"
+#: src/components/for-developers/BuildYourBlockchain.tsx:14
+msgid "Build your blockchain game with Myria"
+msgstr ""
 
 #: src/pages/nodes/index.tsx:103
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "Mua giấy phép node sẽ mang đến cho người sở hữu quyền cvận hành node (cục bộ hoặc trên đám mây) và nhận phần thưởng theo quyết định của ban quản trị."
 
-#: src/components/Footer.tsx:82
-#: src/components/Header/Header.tsx:37
+#: src/pages/team.tsx:69
+msgid "CMO"
+msgstr ""
+
+#: src/pages/team.tsx:84
+msgid "CPO (People)"
+msgstr ""
+
+#: src/components/Footer.tsx:106
+#: src/components/Header/Header.tsx:88
 #: src/pages/careers.tsx:19
 msgid "Careers"
 msgstr "Sự nghiệp"
 
-#: src/pages/nodes/purchase-complete.tsx:49
-msgid "Claim rewards"
+#: src/pages/for-developers/solution.tsx:26
+#: src/pages/for-developers/solution.tsx:35
+msgid "Clear roadmap to privacy-preserving smart contracts"
+msgstr ""
+
+#: src/pages/team.tsx:39
+msgid "Co-Founder - CEO"
 msgstr ""
 
 #: src/pages/about-us.tsx:29
+#: src/pages/team.tsx:24
 msgid "Co-Founder - CTO"
 msgstr "Đồng Sáng Lập - Giám Đốc Công Nghệ"
 
 #: src/pages/about-us.tsx:104
+#: src/pages/team.tsx:99
 msgid "Co-Founder - Operations"
 msgstr "Đồng Sáng Lập - Vận Hành"
 
@@ -195,12 +269,16 @@ msgstr "Đồng Sáng Lập - Trưởng Nhóm Dự Án"
 msgid "Coming Soon"
 msgstr "Sắp Ra Mắt"
 
-#: src/components/Header/Header.tsx:60
+#: src/components/Header/Header.tsx:94
 msgid "Community"
 msgstr "Cộng Đồng"
 
 #: src/pages/about-us.tsx:182
 msgid "Community Lead"
+msgstr "Dẫn Dắt Cộng Đồng"
+
+#: src/components/for-developers/Myria.tsx:45
+msgid "Compliance support"
 msgstr ""
 
 #: src/components/Register/Register.tsx:174
@@ -215,16 +293,15 @@ msgstr ""
 msgid "Connect with us"
 msgstr "Kết nối với chúng tôi"
 
-#: src/components/home/Hero.tsx:151
 #: src/pages/for-gamers.tsx:113
 msgid "Connecting the world through <0>play</0>"
 msgstr "Kết nối thế giới thông qua <0>trò chơi</0>"
 
-#: src/pages/_app.tsx:18
+#: src/pages/_app.tsx:21
 msgid "Connecting the world through play"
 msgstr "Kết nối thế giới thông qua trò chơi"
 
-#: src/components/Footer.tsx:91
+#: src/components/Footer.tsx:116
 msgid "Contact Us"
 msgstr "Liên hệ Chúng tôi"
 
@@ -232,29 +309,33 @@ msgstr "Liên hệ Chúng tôi"
 msgid "Contact us"
 msgstr "Liên hệ chúng tôi"
 
-#: src/pages/about-us.tsx:169
+#: src/pages/team.tsx:161
 msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industires such as communications, financial institutions, media and more."
 msgstr "Craig có hơn 10 năm kinh nghiệm trong lĩnh vực thiết kế giao diện người dùng/trải nghiệm người dùng web và ứng dụng hàng đầu và tạo ra các bản sắc thương hiệu. Ngài ấy đã làm việc với các công ty toàn cầu trong các lĩnh vực công nghiệp như viễn thông, tổ chức tài chính, truyền thông và nhiều lĩnh vực khác."
 
-#: src/pages/nodes/purchase-complete.tsx:41
-msgid "Create an account"
-msgstr ""
+#: src/pages/about-us.tsx:169
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr "Craig có hơn 10 năm kinh nghiệm trong lĩnh vực thiết kế giao diện người dùng/trải nghiệm người dùng web và ứng dụng và tạo ra các bản sắc thương hiệu hàng đầu. Ngài ấy đã làm việc cho các công ty toàn cầu trong các ngành như thông tin truyền thông, tổ chức tài chính, truyền thông và các ngành khác."
 
-#: src/pages/nodes/index.tsx:22
+#: src/pages/nodes.tsx:22
 msgid "Daily $MYRIA token rewards"
 msgstr "Phần thưởng mã token $MYRIA hàng ngày"
 
-#: src/pages/nodes/index.tsx:188
+#: src/pages/team.tsx:71
+msgid "Dave has over 25 years of marketing and management experience. He previously lead marketing at Banxa and Rockstar Games. Dave also founded Marley Spoon; taking the company from inception to IPO."
+msgstr ""
+
+#: src/pages/nodes.tsx:188
 msgid "Decentralize the network by providing computing resources"
 msgstr "Phân quyền mạng bằng cách cung cấp tài nguyên máy tính"
 
 #: src/pages/nodes/index.tsx:154
 msgid "Details will be announced soon."
-msgstr ""
+msgstr "Thông tin chi tiết sẽ sớm được công bố."
 
-#: src/pages/index.tsx:474
-msgid "Discover the best games built on the blockchain"
-msgstr "Khám phá các trò chơi hay nhất được xây dựng trên blockchain"
+#: src/components/home/OurGames.tsx:59
+msgid "Discover more"
+msgstr ""
 
 #: src/components/SignIn/SignIn.tsx:109
 msgid "Don’t have an account?"
@@ -264,9 +345,8 @@ msgstr ""
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Mỗi node được phép bỏ phiếu về các thay đổi được đề xuất đối với chuỗi Myria và các node cũng sẽ có quyền bỏ phiếu lớn hơn trong toàn bộ Myriaverse"
 
-#: src/components/Footer.tsx:35
-#: src/components/Footer.tsx:43
-#: src/components/Header/Header.tsx:43
+#: src/components/Footer.tsx:39
+#: src/components/Header/Header.tsx:29
 msgid "Ecosystem"
 msgstr "Hệ sinh thái"
 
@@ -285,10 +365,28 @@ msgstr ""
 msgid "Email is required!"
 msgstr "Email là cần thiết!"
 
+#: src/components/for-developers/Ethereum.tsx:148
+msgid "Empower mainstream adoption to Ethereum using Myria’s scaling solution"
+msgstr ""
+
 #: src/pages/about-us.tsx:247
 #: src/pages/for-gamers.tsx:33
 msgid "Empowering players"
 msgstr "Trao quyền cho người chơi"
+
+#: src/pages/for-developers/index.tsx:38
+msgid "Enabling digital asset scalabiltiy on Ethereum"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:22
+#: src/components/for-developers/Myria.tsx:34
+#: src/components/for-developers/Myria.tsx:40
+msgid "Enabling true scalability while leveraging the Ethereum network"
+msgstr ""
+
+#: src/pages/ecosystem.tsx:35
+msgid "Enhancing the power of play through blockchain"
+msgstr ""
 
 #: src/pages/about-us.tsx:314
 msgid "Enhancing the power of play through blockchain, enabling economic access and ownership, and driving a new era of opportunity, exploration and freedom."
@@ -302,45 +400,52 @@ msgstr ""
 msgid "Enter your email address"
 msgstr "Nhập địa chỉ email của bạn"
 
-#: src/components/Register/Register.tsx:158
-#: src/components/SignIn/SignIn.tsx:86
-msgid "Enter your password"
+#: src/pages/for-developers/solution.tsx:13
+msgid "Ethereum-level security provided by zk-STARKs"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:49
+#: src/pages/nodes.tsx:49
 msgid "Exclusive NFTs"
 msgstr "NFT độc quyền"
 
-#: src/pages/ecosystem.tsx:61
-msgid "Explore the <0>Myria</0> Ecosystem"
-msgstr "Khám phá Hệ Sinh Thái <0>Myria</0>"
+#: src/components/for-developers/Myria.tsx:24
+msgid "Expereince low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution."
+msgstr ""
 
 #: src/components/FirstTimeVisitModal.tsx:58
 msgid "FOLLOW US ON TWITTER"
+msgstr "HÃY THEO DÕI CHÚNG TỐI TRÊN TWITTER"
+
+#: src/components/NotiBanner.tsx:23
+msgid "FOR DEVELOPERS"
 msgstr ""
 
-#: src/pages/index.tsx:469
-msgid "For Gamers"
-msgstr "Dành cho Người Chơi Trò Chơi"
+#: src/components/NotiBanner.tsx:18
+msgid "FOR GAMERS"
+msgstr ""
 
-#: src/components/Footer.tsx:52
-#: src/pages/index.tsx:492
-msgid "For Studios"
-msgstr "Dành cho Studio"
+#: src/pages/for-developers/solution.tsx:116
+msgid "Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1 data availability provide Ethereum-level security."
+msgstr ""
 
-#: src/pages/index.tsx:509
+#: src/components/Footer.tsx:60
+#: src/components/Footer.tsx:67
+msgid "For Developers"
+msgstr ""
+
+#: src/pages/index.tsx:55
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "Được thành lập bởi những người kỳ cựu hàng đầu trong ngành công nghiệp blockchain và trò chơi"
 
 #: src/pages/about-us.tsx:221
 msgid "Fun, high-quality and free are our core beliefs. We believe in open and equitable access, enabling more people to experience and enjoy the benefits of blockchain and the metaverse."
-msgstr ""
+msgstr "Vui vẻ, chất lượng cao và miễn phí là niềm tin cốt lõi của chúng tôi. Chúng tôi tin vào quyền truy cập mở và công bằng, cho phép nhiều người hơn trải nghiệm và tận hưởng những lợi ích của blockchain và vũ trụ ảo."
 
 #: src/pages/for-gamers.tsx:178
 msgid "GET A NODE"
 msgstr "NHẬN NODE"
 
-#: src/pages/_app.tsx:27
+#: src/pages/_app.tsx:30
 msgid "Game NFT"
 msgstr "NFT Trò Chơi "
 
@@ -350,42 +455,63 @@ msgstr "Chơi trò chơi trước"
 
 #: src/pages/about-us.tsx:219
 msgid "Gameplay first & free to play"
-msgstr ""
+msgstr "Trò chơi đầu tiên và miễn phí đển chơi"
 
 #: src/components/Footer.tsx:12
-#: src/components/Header/Header.tsx:47
+#: src/components/Footer.tsx:43
+#: src/components/Header/Header.tsx:35
 msgid "Games"
 msgstr "Trò chơi"
 
 #: src/pages/about-us.tsx:120
+#: src/pages/team.tsx:174
 msgid "Games Producer"
+msgstr "Nhà sản xuất trò chơi"
+
+#: src/components/Program.tsx:32
+msgid "Gaming is evolving. Build with Myria!"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:63
+msgid "Gaming is evolving. Build with Myria."
+msgstr ""
+
+#: src/components/Footer.tsx:86
+msgid "General"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:65
+msgid "General purpose zk-rollup"
+msgstr ""
+
+#: src/components/Footer.tsx:71
+msgid "Get Started"
 msgstr ""
 
 #: src/pages/nodes.tsx:278
 msgid "Get a founders node today"
 msgstr "Nhận node người sáng lập ngay hôm nay"
 
-#: src/pages/index.tsx:426
-msgid "Get the latest updates on our games, token and NFT releases, play-to-earn mechanics, and have the opportunity to access alpha gameplay."
-msgstr "Nhận các bản cập nhật mới nhất về trò chơi của chúng tôi, phát hành mã token và NFT, cơ chế chơi để kiếm tiền và có cơ hội truy cập vào trò chơi alpha."
-
 #: src/pages/for-studios.tsx:37
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
 msgstr "Có một ý tưởng chơi game sáng tạo? Xin tài trợ để thể hiện tầm nhìn của bạn trên chuỗi Myria."
 
-#: src/pages/index.tsx:419
-msgid "Grow with myria"
-msgstr "Phát triển cùng với myria"
-
 #: src/pages/about-us.tsx:59
+#: src/pages/team.tsx:54
 msgid "Head of Blockchain"
 msgstr "Trưởng Bộ Phận Blockchain"
 
 #: src/pages/about-us.tsx:74
+#: src/pages/team.tsx:114
 msgid "Head of Game Design"
 msgstr "Trưởng Bộ Phận Thiết Kế Trò Chơi"
 
-#: src/components/Header/Header.tsx:18
+#: src/pages/for-developers/solution.tsx:16
+msgid "High throughput of 1,000+ TPS before sharding and 10,000+ TPS after sharding"
+msgstr ""
+
+#: src/components/Header/Header.tsx:22
+#: src/components/Header/Header.tsx:54
 msgid "Home"
 msgstr "Trang chủ"
 
@@ -412,14 +538,26 @@ msgstr "Giấy phép node Myria sẽ có giá bao nhiêu?"
 
 #: src/pages/about-us.tsx:184
 msgid "Hunter is an intrapreneur in the crypto space since 2016, joining projects at the forefront of innovation and helping them build global communities. He has catalyzed and amplified partnerships with some of the largest projects and influencers in this space."
+msgstr "Hunter là một chuyên gia trong không gian tiền mã hoá từ năm 2016 tham gia các dự án đi đầu trong việc đổi mới và giúp họ xây dựng cộng đồng toàn cầu. Ông ấy đã thúc đẩy và tăng cường quan hệ đối tác với một số dự án và những người có tầm ảnh hưởng lớn nhất trong lĩnh vực này."
+
+#: src/pages/game-detail/[id].tsx:426
+msgid "IN DEVELOPMENT"
 msgstr ""
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
 msgstr "Nếu bạn muốn tạo ra tác động thực sự trong trò chơi và blockchain, hãy tham gia với chúng tôi tại Myria. Chúng tôi đang tìm kiếm khắp thế giới để tìm ra những người giỏi nhất và sáng giá nhất để gia nhập công ty đang phát triển nhanh chóng của chúng tôi."
 
-#: src/components/Register/Register.tsx:39
-msgid "Inclusion of at least one special character"
+#: src/pages/team.tsx:86
+msgid "In his role leading the People team, Damian helps Myria connect, develop and care for its global team. Damian brings decades of experience to Myria and was previously Global Head of People for Bitmex and Goldman Sachs."
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:52
+msgid "Instant project visibility"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:55
+msgid "Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners."
 msgstr ""
 
 #: src/components/GetInTouch.tsx:26
@@ -429,17 +567,22 @@ msgstr ""
 msgid "Invalid email!"
 msgstr "Email không hợp lệ!"
 
+#: src/pages/team.tsx:116
+msgid "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads."
+msgstr ""
+
 #: src/pages/about-us.tsx:76
 msgid "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing half a billion downloads."
 msgstr "Ivan có hơn 10 năm kinh nghiệm trong ngành công nghiệp trò chơi. Ngài ấy đã từng là nhà thiết kế trò chơi hàng đầu tại Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, v.v., với các trò chơi của ngài ấy đã đạt được nửa tỷ lượt tải xuống."
 
 #: src/components/ComingSoon.tsx:59
 #: src/components/FirstTimeVisitModal.tsx:44
-#: src/components/Header/DesktopHeader.tsx:116
-#: src/components/Header/MobileHeader.tsx:136
-#: src/components/home/Hero.tsx:177
-#: src/pages/index.tsx:153
-#: src/pages/index.tsx:449
+#: src/components/Header/DesktopHeader.tsx:113
+#: src/components/Header/MobileHeader.tsx:35
+#: src/components/Header/MobileHeader.tsx:54
+#: src/components/NotiBanner.tsx:55
+#: src/components/home/Hero.tsx:166
+#: src/pages/game-detail/[id].tsx:436
 msgid "JOIN DISCORD"
 msgstr "THAM GIA DISCORD"
 
@@ -451,34 +594,68 @@ msgstr "THAM GIA NHÓM"
 msgid "Jem brings a breadth of business operations and strategy experience, including 10+ years working with corporate companies in pitching and fundraising, and 6 years managing strategy execution for tech and blockchain companies."
 msgstr "Jem mang đến nhiều hoạt động kinh doanh và trải nghiệm chiến lược, bao gồm hơn 10 năm làm việc với các công ty doanh nghiệp trong việc quảng cáo chiêu hàng và gây quỹ, và 6 năm quản lý thực thi chiến lược cho các công ty công nghệ và blockchain."
 
+#: src/pages/studios.tsx:381
+msgid "Join MYRIA"
+msgstr ""
+
+#: src/pages/studios.tsx:373
+msgid "Join Myria in building the next blockchain revolution"
+msgstr ""
+
 #: src/pages/careers.tsx:21
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
 msgstr "Tham gia nhóm hơn 60 người của chúng tôi để tạo nên tương lai của trò chơi blockchain"
 
-#: src/pages/index.tsx:422
-msgid "Join the thriving Myria ecosystem"
-msgstr ""
-
 #: src/pages/about-us.tsx:199
+#: src/pages/team.tsx:191
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 msgstr "Kidono là đối tác có kinh nghiệm dẫn đầu với nhiều kinh nghiệm quản lý các cam kết phát triển bên ngoài. Ngài ấy đã làm việc với một số công ty sản xuất trò chơi lớn nhất, bao gồm Marvel, Tencent, Winkings và nhiều công ty khác."
 
-#: src/pages/index.tsx:239
+#: src/pages/studios.tsx:212
 msgid "LEARN MORE"
 msgstr "TÌM HIỂU THÊM"
 
-#: src/pages/index.tsx:478
-#: src/pages/index.tsx:501
+#: src/components/home/News.tsx:32
+msgid "Latest Updates & News"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:113
+msgid "Layer 2 scalability solution"
+msgstr ""
+
+#: src/components/home/Hero.tsx:155
 msgid "Learn more"
 msgstr "Tìm hiểu thêm"
 
+#: src/components/Program.tsx:35
+#: src/pages/studios.tsx:376
+msgid "Learn more about our job current openings and see how you can get involved!"
+msgstr ""
+
 #: src/pages/about-us.tsx:367
+#: src/pages/team.tsx:230
 msgid "Led by industry experts"
 msgstr "Được dẫn dắt bởi các chuyên gia trong ngành"
 
-#: src/pages/index.tsx:521
-msgid "MEET THE TEAM"
-msgstr "GẶP GỠ NHÓM"
+#: src/components/for-developers/Myria.tsx:30
+msgid "Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business."
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:17
+msgid "Low transaction fees: over 100x lower than fees on Ethereum"
+msgstr ""
+
+#: src/components/Header/Header.tsx:84
+msgid "MYRIA STUDIOS"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:15
+msgid "Manage your NFT & digital assets"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:16
+msgid "Manage your digital storefront and marketplace"
+msgstr ""
 
 #: src/pages/about-us.tsx:151
 msgid "Marketing Manager"
@@ -488,22 +665,9 @@ msgstr "Giám Đốc Tiếp Thị"
 msgid "Message is required!"
 msgstr "Tin nhắn là bắt buộc!"
 
-#: src/pages/ecosystem.tsx:20
-msgid "Modularization of smart contracts"
-msgstr "Hiện đại hóa các hợp đồng thông minh"
-
-#: src/pages/index.tsx:371
+#: src/pages/studios.tsx:344
 msgid "More details coming soon"
 msgstr "Sắp có thêm các thông tin chi tiết"
-
-#: src/pages/games.tsx:36
-msgid "More games coming soon..."
-msgstr "Sắp có thêm nhiều trò chơi..."
-
-#: src/components/Footer.tsx:56
-#: src/components/Header/Header.tsx:33
-msgid "Morphing NFTs"
-msgstr "Morphing NFTs"
 
 #: src/components/interop/DesktopInterop.tsx:322
 #: src/components/interop/MobileInterop.tsx:196
@@ -515,17 +679,33 @@ msgstr "Morphing NFTs™"
 msgid "Morphing NFTs™ that adapt to your avatars"
 msgstr "Morphing NFTs™ thích ứng với hình đại diện của bạn"
 
-#: src/pages/ecosystem.tsx:103
-msgid "Myria Blockchain Ecosystem Map"
-msgstr "Bản Đồ Hệ Sinh Thái Blockchain Myria"
-
 #: src/pages/nodes.tsx:236
 msgid "Myria FAQ"
+msgstr "Câu hỏi thường gặp về Myria"
+
+#: src/components/ecosystem/Platform.tsx:67
+msgid "Myria Marketplace"
 msgstr ""
 
-#: src/pages/games.tsx:85
-msgid "Myria are releasing limited drops of exclusive founding Myria land, avatars, and skins. These items will never be made available to the public again and will forever commemorate holders as pioneers in the Myriaverse."
-msgstr "Myria đang phát hành số lượng giới hạn của đất, hình đại diện và da Myria sáng lập độc quyền. Những vật phẩm này sẽ không bao giờ được đưa ra cho công chúng nữa và sẽ mãi mãi để tưởng nhớ những người sở hữu như những người tiên phong trong Myriaverse."
+#: src/components/ecosystem/Platform.tsx:83
+msgid "Myria Platform"
+msgstr ""
+
+#: src/components/Footer.tsx:56
+msgid "Myria Studios"
+msgstr ""
+
+#: src/pages/studios.tsx:182
+msgid "Myria Studios is building a range of free-to-play AAA games spans across an entire interconnected ecosystem. Players experience intertwining lore, characters, and rich storylines that carry across each game world, and Myria tokens and NFTs can be used across the Myriaverse."
+msgstr ""
+
+#: src/components/ecosystem/Platform.tsx:75
+msgid "Myria Wallet"
+msgstr ""
+
+#: src/components/ecosystem/Platform.tsx:33
+msgid "Myria combines a gaming platform with applications, tools and scaling infrastructure needed to bring blockchain gaming to life."
+msgstr ""
 
 #: src/pages/for-gamers.tsx:22
 msgid "Myria develops fun AAA games that are enhanced by the blockchain, not vice versa."
@@ -535,20 +715,35 @@ msgstr "Myria phát triển các trò chơi AAA vui nhộn được cải tiến
 msgid "Myria ecosystem fund"
 msgstr "Quỹ hệ sinh thái Myria"
 
-#: src/pages/index.tsx:514
-msgid "Myria has been built by an all-star team of over 60+ people, united with a common vision of revolutionizing gaming with blockchain technology."
-msgstr "Myria được xây dựng bởi một đội ngũ toàn những ngôi sao bao gồm hơn 60 người, với đoàn kết và tầm nhìn chung về việc cách mạng hóa trò chơi bằng công nghệ blockchain."
+#: src/components/for-developers/Myria.tsx:42
+msgid "Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives."
+msgstr ""
 
-#: src/pages/index.tsx:497
-msgid "Myria helps studios join the blockchain revolution"
-msgstr "Myria giúp các studio tham gia vào cuộc cách mạng blockchain"
+#: src/pages/index.tsx:60
+msgid "Myria has been built by an all-star team of over 100 people, united with a common vision of revolutionizing gaming with blockchain technology."
+msgstr ""
+
+#: src/components/ecosystem/Backbone.tsx:24
+msgid "Myria help project partners set up for success. <0>Learn more</0> about our easy-to-use, full stack solution and build with Myria today."
+msgstr ""
 
 #: src/components/ComingSoon.tsx:48
-#: src/components/home/Hero.tsx:163
-#: src/pages/_app.tsx:19
-#: src/pages/_app.tsx:32
+#: src/pages/_app.tsx:22
+#: src/pages/_app.tsx:35
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria là một hệ sinh thái trò chơi blockchain được cung cấp bởi blockchain Myria."
+
+#: src/pages/ecosystem.tsx:38
+msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT and blockchain gaming."
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:67
+msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT, blockchain gaming and more."
+msgstr ""
+
+#: src/pages/for-developers/index.tsx:41
+msgid "Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and blockchain gaming."
+msgstr ""
 
 #: src/pages/about-us.tsx:262
 msgid "Myria is community powered and governed through the Myria DAO. We are handing the power back to the people to build a better metaverse."
@@ -558,7 +753,16 @@ msgstr "Myria được cộng đồng hỗ trợ và quản lý thông qua Myria
 msgid "Myria is supported by a network of community-powered nodes, who receive rewards for their contributions."
 msgstr "Myria được hỗ trợ bởi một mạng lưới các node do cộng đồng hỗ trợ, những người này sẽ nhận được phần thưởng cho những đóng góp của họ."
 
-#: src/pages/nodes/index.tsx:146
+#: src/components/ecosystem/Backbone.tsx:59
+msgid "Myria is the backbone of blockchain gaming"
+msgstr ""
+
+#: src/pages/for-developers/index.tsx:49
+#: src/pages/for-developers/solution.tsx:144
+msgid "Myria launches $200M game developer grant program"
+msgstr ""
+
+#: src/pages/nodes.tsx:146
 msgid "Myria node license sales are anticipated to commence in March 2022 (subject to change)."
 msgstr "Việc bán giấy phép node Myria dự kiến sẽ bắt đầu vào tháng 3 năm 2022 (có thể thay đổi)."
 
@@ -566,24 +770,40 @@ msgstr "Việc bán giấy phép node Myria dự kiến sẽ bắt đầu vào t
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Những người vận hành node Myria sẽ nhận được phần thưởng mã token $MYRIA hàng ngày cho các node hoạt động."
 
-#: src/pages/_app.tsx:20
-#: src/pages/_app.tsx:31
+#: src/components/for-developers/Myria.tsx:66
+msgid "Myria provides an end-to-end solution for developers and publishers, and help you unlock the blockchain potential of your business"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:36
+msgid "Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support."
+msgstr ""
+
+#: src/pages/_app.tsx:23
+#: src/pages/_app.tsx:34
 msgid "Myria | Connecting the world through play"
 msgstr "Myria | Kết nối thế giới thông qua trò chơi"
 
-#: src/pages/index.tsx:363
+#: src/pages/studios.tsx:336
 msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
 msgstr "Myriaverse là vũ trụ ảo xã hội rộng lớn hơn kết nối người chơi, cộng đồng và hội đoàn. Người chơi sẽ có thể tìm kiếm, khám phá, chế tạo, đầu tư và nhiều hoạt động khác nữa. Myriaverse ngày càng mở rộng là một nền kinh tế và xã hội ảo mang đến cơ hội kiếm tiền dồi dào cho những nhà thám hiểm dũng cảm."
 
-#: src/pages/ecosystem.tsx:29
-msgid "NFT interoperability"
-msgstr "Khả năng tương tác NFT"
+#: src/components/ecosystem/Backbone.tsx:13
+msgid "Myria’s <0>Ethereum L2 scaling solution</0> uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:78
+msgid "Myria’s <0>Ethereum L2 scaling solution</0> uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2 transactions into one single transaction. This then sends a validity proof back to the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based zkrollup solution powered by Starkware enable NFTs and dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:18
+msgid "Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey."
+msgstr ""
 
 #: src/components/GetInTouch.tsx:23
 msgid "Name is required!"
 msgstr "Tên là bắt buộc!"
 
-#: src/components/Footer.tsx:86
+#: src/components/Footer.tsx:111
 msgid "News"
 msgstr "Tin tức"
 
@@ -592,11 +812,7 @@ msgstr "Tin tức"
 msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
 msgstr "Bất kể hình dạng và kích thước của hình đại diện của bạn thế nào, hãy sử dụng cùng một NFT cho tất cả chúng. Mua một lần và sử dụng trên bất kỳ nhân vật nào. Được thiết kế để có thể tương tác."
 
-#: src/pages/index.tsx:142
-msgid "Node & NFT sales coming soon!"
-msgstr ""
-
-#: src/pages/nodes/index.tsx:213
+#: src/pages/nodes.tsx:213
 msgid "Node owner rewards"
 msgstr "Phần thưởng của người sở hữu node"
 
@@ -604,25 +820,25 @@ msgstr "Phần thưởng của người sở hữu node"
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "Những người sở hữu node cũng sẽ được thưởng NFT và mã token dựa trên số điểm danh tiếng của họ với tư cách là người vận hành node và thành viên cộng đồng nói chung."
 
-#: src/components/Footer.tsx:39
-#: src/components/Header/Header.tsx:51
+#: src/components/Footer.tsx:47
+#: src/components/Header/Header.tsx:41
 msgid "Nodes"
 msgstr "Nodes"
 
-#: src/pages/nodes.tsx:164
-msgid "Only 55,000 Myria node licenses will ever be released."
+#: src/components/Header/Header.tsx:60
+msgid "OUR SOLUTION"
 msgstr ""
 
-#: src/pages/index.tsx:432
-msgid "Operate a Myria node from your home computer and earn rewards for your contribution to the network."
-msgstr "Vận hành một node Myria từ máy tính tại nhà của bạn và kiếm phần thưởng cho những đóng góp của bạn cho mạng."
+#: src/pages/nodes.tsx:164
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr "Chỉ có 55.000 giấy phép node Myria sẽ được phát hành."
 
-#: src/pages/ecosystem.tsx:22
-msgid "Our ERC1155 contracts are engineered for more efficient resource utilization with our smart logic design between the base layer and rules contracts."
-msgstr "Các hợp đồng ERC1155 của chúng tôi được thiết kế để sử dụng tài nguyên hiệu quả hơn với thiết kế logic thông minh giữa lớp cơ sở và các hợp đồng quy tắc."
+#: src/pages/for-developers/solution.tsx:30
+msgid "Open and permissionless"
+msgstr ""
 
 #: src/pages/about-us.tsx:357
-#: src/pages/index.tsx:527
+#: src/pages/team.tsx:267
 msgid "Our Experience"
 msgstr "Kinh nghiệm của chúng tôi"
 
@@ -631,32 +847,27 @@ msgstr "Kinh nghiệm của chúng tôi"
 msgid "Our Principles"
 msgstr "Nguyên tắc của chúng tôi"
 
+#: src/components/Footer.tsx:75
+msgid "Our Solutions"
+msgstr ""
+
 #: src/pages/about-us.tsx:311
 msgid "Our Vision"
 msgstr "Tầm nhìn của chúng tôi"
 
 #: src/pages/for-gamers.tsx:152
-#: src/pages/index.tsx:162
 msgid "Our games"
 msgstr "Trò chơi của chúng tôi"
 
-#: src/pages/games.tsx:58
-msgid "Our games offer a range of play and earn mechanics that reward players with cryptocurrency and NFTs."
-msgstr "Các trò chơi của chúng tôi có nhiều cơ chế chơi và kiếm tiền thưởng cho người chơi bằng tiền điện tử và NFT."
+#: src/pages/for-developers/solution.tsx:73
+msgid "Our solution"
+msgstr ""
 
-#: src/pages/ecosystem.tsx:13
-msgid "Our proprietary consensus algorithm achieves greater network security by factoring in the ‘reputational score’ of Myria nodes."
-msgstr "Thuật toán đồng thuận độc quyền của chúng tôi đạt được bảo mật mạng cao hơn bằng cách tính vào ‘số điểm danh tiếng’ của các node Myria."
-
-#: src/pages/index.tsx:202
-msgid "Our range of free-to-play AAA games spans across an entire interconnected ecosystem. Players experience intertwining lore, characters, and rich storylines that carry across each game world, and Myria tokens and NFTs can be used across the Myriaverse."
-msgstr "Hàng loạt trò chơi AAA miễn phí để chơi của chúng tôi trải khắp trên toàn bộ hệ sinh thái được kết nối với nhau. Người chơi trải nghiệm truyền thuyết, nhân vật và cốt truyện phong phú đan xen trong mỗi thế giới trò chơi, đồng thời thẻ Myria và NFT có thể được sử dụng trên Myriaverse."
-
-#: src/components/Header/Header.tsx:29
+#: src/components/Header/Header.tsx:80
 msgid "Our team"
 msgstr "Đội ngũ của chúng tôi"
 
-#: src/components/Header/Header.tsx:25
+#: src/components/Header/Header.tsx:76
 msgid "Our vision"
 msgstr "Tầm nhìn của chúng tôi"
 
@@ -671,6 +882,7 @@ msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "Sở hữu danh tính trong vũ trụ ảo của bạn. Bất cứ nơi nào. Bất kì trò chơi nào."
 
 #: src/pages/about-us.tsx:197
+#: src/pages/team.tsx:189
 msgid "Partner Lead"
 msgstr "Trưởng Nhóm Đối Tác"
 
@@ -681,9 +893,9 @@ msgstr ""
 
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
-msgstr ""
+msgstr "Chơi và kiếm tiền"
 
-#: src/pages/index.tsx:282
+#: src/pages/studios.tsx:255
 msgid "Powered and governed by <0>$MYRIA</0>"
 msgstr "Được hỗ trợ và quản lý bởi <0>$MYRIA</0>"
 
@@ -705,34 +917,28 @@ msgid "Pre register to stay up to date"
 msgstr "Đăng ký trước để luôn được cập nhật"
 
 #: src/pages/about-us.tsx:89
+#: src/pages/team.tsx:144
 msgid "Product Lead - Blockchain"
 msgstr "Trưởng Nhóm Sản Phẩm - Blockchain"
 
-#: src/pages/ecosystem.tsx:11
-msgid "Proof of reputational authority"
-msgstr "Bằng chứng của cơ quan danh tiếng"
+#: src/components/for-developers/Myria.tsx:48
+msgid "Provide your players with a protected experience and ensure your business understands critical regulatory compliance components."
+msgstr ""
 
 #: src/pages/for-gamers.tsx:167
 msgid "Pupose-built infrastructure"
 msgstr "Cơ sở hạ tầng được xây dựng có mục đích"
 
-#: src/pages/ecosystem.tsx:87
-msgid "Purpose-built infrastructure"
-msgstr "Cơ sở hạ tầng được xây dựng có mục đích"
-
-#: src/pages/index.tsx:211
-msgid "READ ABOUT OUR ECOSYSTEM"
-msgstr "ĐỌC VỀ HỆ SINH THÁI CỦA CHÚNG TÔI"
-
-#: src/pages/index.tsx:454
-msgid "RUN A NODE"
-msgstr "VẬN HÀNH MỘT NODE"
-
-#: src/components/Register/Register.tsx:200
-msgid "Register"
+#: src/components/home/News.tsx:19
+#: src/components/home/News.tsx:36
+msgid "Read more"
 msgstr ""
 
-#: src/pages/games.tsx:92
+#: src/components/Program.tsx:12
+#: src/pages/studios.tsx:356
+msgid "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
+msgstr ""
+
 #: src/pages/nodes.tsx:224
 msgid "Releasing soon"
 msgstr "Sắp phát hành"
@@ -746,28 +952,47 @@ msgstr "Vận hành một node và kiếm phần thưởng <0>$MYRIA</0> và NFT
 msgid "SHIFTING POWER BACK TO THE PEOPLE"
 msgstr "CHUYỂN QUYỀN LỰC CHO MỌI NGƯỜI"
 
+#: src/components/Header/DesktopHeader.tsx:102
+#: src/pages/for-developers/index.tsx:44
+msgid "START BUILDING"
+msgstr ""
+
 #: src/components/Subscribe.tsx:91
+#: src/components/for-developers/BuildYourBlockchain.tsx:27
 msgid "SUBMIT"
 msgstr "NỘP"
 
-#: src/components/SignIn/SignIn.tsx:105
-msgid "Sign in"
+#: src/pages/for-developers/solution.tsx:21
+msgid "Safely programmable"
 msgstr ""
 
-#: src/components/SignIn/SignIn.tsx:113
-msgid "Sign up now"
+#: src/components/for-developers/Myria.tsx:27
+msgid "Save time. Ship faster."
+msgstr ""
+
+#: src/components/for-developers/Ethereum.tsx:325
+msgid "Scaling blockchain gaming on Ethereum"
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:11
+msgid "Secure and scalable"
 msgstr ""
 
 #: src/components/Subscribe.tsx:66
 msgid "Sign up to our newsletter to for development updates, token and NFT drops, and exclusive promotions."
 msgstr "Đăng ký bản tin của chúng tôi để nhận các bản cập nhật phát triển, mã token và NFT, cũng như các chương trình khuyến mãi độc quyền."
 
-#: src/pages/games.tsx:55
-msgid "Start playing and earning rewards"
-msgstr "Bắt đầu chơi và kiếm phần thưởng"
+#: src/pages/for-developers/solution.tsx:25
+#: src/pages/for-developers/solution.tsx:34
+msgid "Simpler formal verification of contracts due to safe VM architecture"
+msgstr ""
 
-#: src/components/Footer.tsx:47
-#: src/components/Header/Header.tsx:55
+#: src/components/Program.tsx:38
+msgid "Start now"
+msgstr ""
+
+#: src/components/Footer.tsx:51
+#: src/components/Header/Header.tsx:47
 msgid "Store"
 msgstr "Cửa hàng"
 
@@ -775,15 +1000,23 @@ msgstr "Cửa hàng"
 msgid "Subject is required!"
 msgstr "Chủ đề là bắt buộc!"
 
-#: src/pages/index.tsx:295
+#: src/components/for-developers/Myria.tsx:9
+msgid "Supercharge your project"
+msgstr ""
+
+#: src/components/for-developers/Ethereum.tsx:96
+msgid "Support unlimited scalabiltiy, delivering up to 5,000+ TPS"
+msgstr ""
+
+#: src/pages/studios.tsx:268
 msgid "TOKEN LAUNCH COMING SOON"
 msgstr ""
 
-#: src/components/Footer.tsx:76
+#: src/components/Footer.tsx:100
 msgid "Team"
 msgstr "Đội nhóm"
 
-#: src/components/Footer.tsx:162
+#: src/components/Footer.tsx:192
 msgid "Terms | Privacy"
 msgstr "Điều Khoản | Quyền Riêng Tư"
 
@@ -799,14 +1032,22 @@ msgstr "Cảm ơn bạn đã đăng ký!"
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "Chuỗi Myria được hỗ trợ bởi một mạng lưới các node do người chơi vận hành. Sử dụng máy tính tại nhà của bạn để trở thành người vận hành node và nhận phần thưởng cũng như lợi ích cho sự đóng góp của bạn vào hệ sinh thái."
 
-#: src/pages/ecosystem.tsx:90
 #: src/pages/for-gamers.tsx:170
 msgid "The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for gaming. Our team have developed proprietary technology to make the gaming and trading experience seamless, including a decentralized exchange, marketplace, and cryptocurrency wallet."
 msgstr "Hệ sinh thái Myria được xây dựng trên blockchain Myria, Ethereum L2 của chúng tôi được xây dựng để chơi trò chơi. Nhóm của chúng tôi đã phát triển công nghệ độc quyền để giúp trải nghiệm chơi trò chơi và giao dịch liền mạch, bao gồm sàn giao dịch phi tập trung, thị trường và ví tiền điện tử."
 
-#: src/pages/ecosystem.tsx:66
-msgid "The Myria ecosystem is designed to empower gamers, communities, studios, and creators."
-msgstr "Hệ sinh thái Myria được thiết kế để trao quyền cho người chơi, cộng đồng, studio và người sáng tạo."
+#: src/components/ecosystem/Backbone.tsx:47
+msgid "The Myria platform is supported by Myria Nodes. Being a <0>Myria Node</0> operator means that you will receive limited edition NFTs, token rewards and more."
+msgstr ""
+
+#: src/components/ecosystem/Platform.tsx:30
+msgid "The comprehensive blockchain gaming platform"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:10
+#: src/components/for-developers/Myria.tsx:28
+msgid "The easiest way to launch your blockchain game"
+msgstr ""
 
 #: src/components/interop/DesktopInterop.tsx:224
 #: src/components/interop/MobileInterop.tsx:129
@@ -818,22 +1059,31 @@ msgstr "Tiêu chuẩn mới cho các NFT có thể tương tác"
 msgid "The world’s first Morphing NFTs™"
 msgstr "Morphing NFTs™ đầu tiên trên thế giới"
 
+#: src/components/for-developers/Myria.tsx:39
+msgid "Tokenomics consultancy"
+msgstr ""
+
 #: src/components/interop/DesktopInterop.tsx:205
 #: src/components/interop/MobileInterop.tsx:105
 msgid "Trailer Coming Soon"
 msgstr "Sắp Ra Mắt Đoạn Trailer Giới Thiệu"
 
+#: src/pages/for-developers/solution.tsx:15
+msgid "Transparent (no trusted setup) and post-quantum secure"
+msgstr ""
+
 #: src/pages/about-us.tsx:167
+#: src/pages/team.tsx:159
 msgid "UI/UX Lead"
 msgstr "Dẫn Đầu Giao Diện Người Dùng/Trải Nghiệm Người "
 
-#: src/pages/index.tsx:360
+#: src/pages/studios.tsx:333
 msgid "Unified through the Myriaverse"
 msgstr "Hợp nhất thông qua Myriaverse"
 
-#: src/pages/games.tsx:64
-msgid "Unlike most blockchain games, all of our games are free-to-play."
-msgstr "Không giống như hầu hết các trò chơi blockchain khác, tất cả các trò chơi của chúng tôi đều miễn phí để chơi."
+#: src/components/for-developers/Myria.tsx:21
+msgid "Unlock immense scale"
+msgstr ""
 
 #: src/components/Register/Register.tsx:143
 msgid "Username"
@@ -849,6 +1099,11 @@ msgstr "Quyền biểu quyết"
 
 #: src/pages/about-us.tsx:235
 msgid "We aim to build a world where gamers can play the games they love and also earn rewards at the same time."
+msgstr "Chúng tôi mong muốn xây dựng một thế giới nơi mà người chơi có thể chơi các trò chơi mà họ yêu thích và đồng thời cũng kiếm được phần thưởng."
+
+#: src/pages/for-developers/index.tsx:52
+#: src/pages/for-developers/solution.tsx:147
+msgid "We are funding the builders and creators to power the future of blockchain gaming. Apply for grant consideration."
 msgstr ""
 
 #: src/pages/about-us.tsx:249
@@ -856,13 +1111,25 @@ msgstr ""
 msgid "We believe players should have true verifiable ownership and control over in-game assets."
 msgstr "Chúng tôi tin rằng người chơi phải có quyền sở hữu và quyền kiểm soát thực sự có thể xác minh được đối với các tài sản trong trò chơi."
 
-#: src/pages/ecosystem.tsx:31
-msgid "We have developed innovative NFT interoperability standards only available on the Myria chain."
-msgstr "Chúng tôi đã phát triển các tiêu chuẩn khả năng tương tác NFT sáng tạo chỉ có trên chuỗi Myria."
+#: src/components/ecosystem/Backbone.tsx:62
+msgid "We bring together everything that is required to build a decentralized, scalable and secure digital asset and blockchain gaming platform"
+msgstr ""
 
 #: src/pages/for-studios.tsx:23
 msgid "We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming."
 msgstr "Chúng tôi cung cấp một bộ cơ sở hạ tầng blockchain đầy đủ trên chuỗi Myria, Ethereum L2 được xây dựng để chơi trò chơi."
+
+#: src/components/for-developers/Ethereum.tsx:221
+msgid "We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:12
+msgid "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
+msgstr ""
+
+#: src/components/for-developers/BuildYourBlockchain.tsx:17
+msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
+msgstr ""
 
 #: src/components/JoinTheRevolution.tsx:25
 msgid "We’re hiring, join the future of gaming"
@@ -884,11 +1151,12 @@ msgstr "Những người vận hành node Myria nhận được phần thưởng
 msgid "When will Myria node licenses be sold?"
 msgstr "Khi nào giấy phép node Myria sẽ được bán?"
 
-#: src/components/Footer.tsx:71
-msgid "Whitepaper (Coming soon)"
-msgstr "Whitepaper (Sắp ra mắt)"
+#: src/components/Footer.tsx:94
+msgid "Whitepaper"
+msgstr ""
 
 #: src/pages/about-us.tsx:122
+#: src/pages/team.tsx:176
 msgid "With 15+ year experience working in the gaming industry, Antonio has contributed to some of the worlds leading titles and brands such as The Witcher, Disney and more."
 msgstr "Với hơn 15 năm kinh nghiệm làm việc trong ngành công nghiệp trò chơi, Antonio đã đóng góp cho một số danh hiệu và thương hiệu hàng đầu thế giới như The Witcher, Disney, v.v."
 
@@ -905,6 +1173,6 @@ msgstr "một hệ sinh thái phi tập trung"
 msgid "join the revolution"
 msgstr "tham gia cuộc cách mạng"
 
-#: src/pages/ecosystem.tsx:109
+#: src/components/ecosystem/Diagram.tsx:13
 msgid "view now"
 msgstr "xem ngay bây giờ"

@@ -100,10 +100,15 @@ module.exports = {
         'slide-left-and-fade': 'slideLeftAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-in': 'fadeIn 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards'
+      },
+      boxShadow: {
+        'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)',
+        'light-panel': '0px 0px 40px rgba(154, 201, 227, 0.4)'
       }
     }
   },
   plugins: [
+    require('@tailwindcss/line-clamp'),
     plugin(function ({ addComponents, theme, addVariant }) {
       addVariant('open', '&[data-state~="open"]');
       addVariant('parent-open', '[data-state~="open"] &');
@@ -234,7 +239,9 @@ module.exports = {
           transition: '0.3s',
           fontWeight: 700,
           textTransform: 'uppercase',
-          display: 'inline-block'
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
         '.btn-sm': {
           padding: '7px 24px',
@@ -244,7 +251,9 @@ module.exports = {
           transition: '0.3s',
           fontWeight: 700,
           textTransform: 'uppercase',
-          display: 'inline-block'
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
         '.btn-icon': {
           padding: '9px 24px',
@@ -254,7 +263,9 @@ module.exports = {
           transition: '0.3s',
           fontWeight: 700,
           textTransform: 'uppercase',
-          display: 'inline-block'
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
         '.btn-icon-sm': {
           padding: '9px 24px',
@@ -264,7 +275,9 @@ module.exports = {
           transition: '0.3s',
           fontWeight: 700,
           textTransform: 'uppercase',
-          display: 'inline-block'
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         },
         '.btn-primary': {
           backgroundColor: theme('colors.brand-gold'),
@@ -355,7 +368,30 @@ module.exports = {
           position: 'fixed',
           top: 0,
           left: 0,
-          background: theme('colors.dark')
+          background: theme('colors.dark'),
+          '&.w-full': {
+            // hack fix for full width element when scrollbar is hiden
+            width: 'calc(100% - var(--removed-body-scroll-bar-size, 0px))',
+            marginRight: 'var(--removed-body-scroll-bar-size, 0px)'
+          }
+        },
+        '.carousel-dots': {
+          position: 'absolute',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: '2',
+          display: 'grid !important',
+          gap: 25,
+          gridAutoFlow: 'column',
+          '& button': {
+            background: 'rgba(154, 201, 227, 0.5)',
+            width: 94,
+            height: 7,
+            fontSize: 0
+          },
+          '& .slick-active button': {
+            background: '#9AC9E3'
+          }
         }
       });
     })

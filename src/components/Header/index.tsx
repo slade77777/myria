@@ -1,6 +1,5 @@
-import Header, { headerHeight, Action } from './Header';
+import Header, { headerHeight } from './Header';
 
 export { headerHeight };
-export type { Action };
 
 export default Header;
