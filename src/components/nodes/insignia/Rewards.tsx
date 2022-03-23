@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ClaimModal from './ClaimModal';
 import RewardItem, { Reward } from './RewardItem';
+import ShareTwitterModal from './ShareTwitterModal';
 
 const currentRewards: Reward[] = [
   {
@@ -62,6 +63,7 @@ const Rewards: React.FC = () => {
         }}
         item={claimItem}
       />
+      <ShareTwitterModal open={false} onClose={() => {}} />
       <div className="insignia-panel p-6 pb-8">
         <div className="flex items-center justify-between">
           <p className="text-[24px] font-extrabold leading-[1.15]">Rewards</p>
