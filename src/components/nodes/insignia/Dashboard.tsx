@@ -3,7 +3,7 @@ import React from 'react';
 import { paddingX } from 'src/utils';
 import AllianceInfo from './AllianceInfo';
 import Missions from './Missions';
-// import Rewards from './Rewards';
+import Rewards from './Rewards';
 
 const Dashboard: React.FC = () => {
   return (
@@ -12,9 +12,9 @@ const Dashboard: React.FC = () => {
         <div>
           <AllianceInfo />
         </div>
-        {/* <div>
+        <div>
           <Rewards />
-        </div> */}
+        </div>
         <div>
           <Missions />
         </div>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ClaimModal from './ClaimModal';
 import RewardItem, { Reward } from './RewardItem';
 
 const currentRewards: Reward[] = [
@@ -46,56 +47,54 @@ const nextRewards: Reward[] = [
 const Rewards: React.FC = () => {
   const nextReward = nextRewards[0];
   const otherNextRewards = nextRewards.slice(1);
+  const [claimItem, setClaimItem] = useState<Reward | null>(null);
+
+  const handleClaim = (reward: Reward) => {
+    setClaimItem(reward);
+  };
+
   return (
-    <div className="insignia-panel p-6 pb-8">
-      <div className="flex items-center justify-between">
-        <p className="text-[24px] font-extrabold leading-[1.15]">Rewards</p>
-        <button className="rounded-[4px] bg-[#1F2334] py-[9px] px-2 text-[14px] font-bold uppercase leading-[1.14] text-light">
-          MINTING DASHBOARD
-        </button>
-      </div>
-      <div className="mt-8">
-        <div className="space-y-6">
-          {currentRewards.map((rw, idx) => (
-            <RewardItem
-              key={idx}
-              image={rw.image}
-              state={rw.state}
-              title={rw.title}
-              credits={rw.credits}
-            />
-          ))}
+    <>
+      <ClaimModal
+        open={!!claimItem}
+        onClose={() => {
+          setClaimItem(null);
+        }}
+        item={claimItem}
+      />
+      <div className="insignia-panel p-6 pb-8">
+        <div className="flex items-center justify-between">
+          <p className="text-[24px] font-extrabold leading-[1.15]">Rewards</p>
+          <button className="rounded-[4px] bg-[#1F2334] py-[9px] px-2 text-[14px] font-bold uppercase leading-[1.14] text-light">
+            MINTING DASHBOARD
+          </button>
         </div>
-        <p className="mt-6 flex items-center space-x-4 text-[18px] font-bold leading-[1.22]">
-          <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
-          <span>Next Reward</span>
-          <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
-        </p>
-        <div className="mt-6">
-          <RewardItem
-            image={nextReward.image}
-            state={nextReward.state}
-            title={nextReward.title}
-            credits={nextReward.credits}
-          />
-        </div>
-        <p className="mt-6 flex items-center">
-          <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
-          <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
-        </p>
-        <div className="mt-6 space-y-6 opacity-60">
-          {otherNextRewards.map((rw, idx) => (
-            <RewardItem
-              key={idx}
-              image={rw.image}
-              state={rw.state}
-              title={rw.title}
-              credits={rw.credits}
-            />
-          ))}
+        <div className="mt-8">
+          <div className="space-y-6">
+            {currentRewards.map((rw, idx) => (
+              <RewardItem key={idx} item={rw} onClaim={handleClaim} />
+            ))}
+          </div>
+          <p className="mt-6 flex items-center space-x-4 text-[18px] font-bold leading-[1.22]">
+            <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
+            <span>Next Reward</span>
+            <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
+          </p>
+          <div className="mt-6">
+            <RewardItem item={nextReward} onClaim={handleClaim} />
+          </div>
+          <p className="mt-6 flex items-center">
+            <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
+            <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
+          </p>
+          <div className="mt-6 space-y-6 opacity-60">
+            {otherNextRewards.map((rw, idx) => (
+              <RewardItem key={idx} item={rw} onClaim={handleClaim} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

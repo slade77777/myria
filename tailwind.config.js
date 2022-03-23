@@ -28,7 +28,8 @@ module.exports = {
         'light-green': '#9ECEAB',
         'light-red': '#D55E5E',
         purple: '#8E74D3',
-        green: '#41F59F'
+        green: '#41F59F',
+        flat: '#A9A6B1'
       },
       maxWidth: {
         content: 1264
@@ -106,6 +107,9 @@ module.exports = {
       boxShadow: {
         'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)',
         'light-panel': '0px 0px 40px rgba(154, 201, 227, 0.4)'
+      },
+      backgroundImage: {
+        hightlight: 'linear-gradient(135.49deg, #FFFFFF 22.84%, rgba(255, 255, 255, 0) 55.58%)'
       }
     }
   },

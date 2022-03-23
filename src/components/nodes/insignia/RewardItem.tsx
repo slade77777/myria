@@ -25,7 +25,13 @@ const Progress: React.FC<{ percentage: number }> = ({ percentage }) => {
   );
 };
 
-const RewardItem: React.FC<Reward> = ({ title, credits, state, image }) => {
+type Props = {
+  item: Reward;
+  onClaim: (reward: Reward) => void;
+};
+
+const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
+  const { title, credits, state, image } = item;
   const content = useMemo(() => {
     switch (state) {
       case 'locked':
@@ -48,7 +54,9 @@ const RewardItem: React.FC<Reward> = ({ title, credits, state, image }) => {
 
       case 'claim-now':
         return (
-          <button className="rounded-[4px] bg-[#1F2334] px-4 py-1 text-[12px] font-bold leading-[1.25] text-brand-gold">
+          <button
+            onClick={() => onClaim(item)}
+            className="rounded-[4px] bg-[#1F2334] px-4 py-1 text-[12px] font-bold leading-[1.25] text-brand-gold">
             CLAIM NOW
           </button>
         );
@@ -60,7 +68,7 @@ const RewardItem: React.FC<Reward> = ({ title, credits, state, image }) => {
           </div>
         );
     }
-  }, [state]);
+  }, [state, onClaim, item]);
 
   return (
     <div
