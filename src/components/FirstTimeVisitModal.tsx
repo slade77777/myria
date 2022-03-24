@@ -2,6 +2,7 @@ import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React from 'react';
 import { socialLinks } from 'src/configs';
+import { ga } from 'src/lib/ga';
 import CloseIcon from './icons/CloseIcon';
 import DiscordIcon from './icons/DiscordIcon';
 import TwitterIcon from './icons/TwitterIcon';
@@ -34,6 +35,13 @@ const FirstTimeVisitModal: React.FC<Props> = ({ open, onClose }) => {
           <div className="mt-[30px] md:mt-8">
             <a
               href={socialLinks.discord}
+              onClick={() => {
+                ga.event('Click', {
+                  event_category: 'Button',
+                  event_label: 'Discord Link',
+                  value: 'Popup'
+                })
+              }}
               target="_blank"
               className="btn-icon inline-flex w-full items-center justify-center bg-white px-3 text-dark md:w-[251px]"
               rel="noreferrer">

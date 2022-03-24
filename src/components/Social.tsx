@@ -8,19 +8,23 @@ import TwitterIcon from './icons/TwitterIcon';
 const Socials = [
   {
     icon: <DiscordIcon />,
-    link: socialLinks.discord
+    link: socialLinks.discord,
+    name: 'Discord'
   },
   {
     icon: <TwitterIcon />,
-    link: socialLinks.twitter
+    link: socialLinks.twitter,
+    name: 'Twitter'
   },
   {
     icon: <MediumIcon />,
-    link: socialLinks.medium
+    link: socialLinks.medium,
+    name: 'Medium'
   },
   {
     icon: <InstagramIcon />,
-    link: socialLinks.instagram
+    link: socialLinks.instagram,
+    name: 'Instagram'
   }
 ];
 

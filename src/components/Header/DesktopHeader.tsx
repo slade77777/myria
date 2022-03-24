@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useMemo, useRef } from 'react';
+import { ga } from 'src/lib/ga';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
@@ -60,6 +61,11 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                     <li key={idx}>
                       <Link href={link.url as string}>
                         <a
+                          onClick={() => {
+                            if (item.id === 'community') {
+                              ga.event('Click', { event_category: 'Link', event_label: `${link.text} Link`, value: 'Community Links' })
+                            }
+                          }}
                           target={link.target}
                           className={clsx('hover:text-brand-gold', {
                             'text-brand-gold': link.url === router.pathname
@@ -110,6 +116,9 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
       default:
         return (
           <a
+            onClick={() => {
+              ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Top Button' })
+            }}
             className="btn-sm btn-secondary"
             href={socialLinks.discord}
             target="_blank"

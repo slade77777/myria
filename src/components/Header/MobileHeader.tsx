@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { tabRoutes, useTabContext } from 'src/context/tabContext';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
+import { ga } from 'src/lib/ga';
 import { socialLinks } from '../../configs';
 import Collapse from '../Collapse';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
@@ -179,7 +180,11 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                               {item.children!.map((link, idx) => (
                                 <li key={idx}>
                                   <Link href={link.url as string}>
-                                    <a target={link.target} className="text-brand-gold">
+                                    <a target={link.target} className="text-brand-gold" onClick={() => {
+                                      if (item.id === 'community') {
+                                        ga.event('Click', { event_category: 'Link', event_label: `${link.text} Link`, value: 'Community Links' })
+                                      }
+                                    }}>
                                       {link.text}
                                     </a>
                                   </Link>

@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
+import { ga } from 'src/lib/ga';
 import Badge from './Badge';
 
 import Logo from './icons/Logo';
@@ -131,7 +132,13 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-10 grid grid-flow-col justify-start gap-4 sm:gap-6 md:mt-[48px]">
           {Socials.map((item, idx) => (
-            <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
+            <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer" onClick={() => {
+              ga.event('Click', {
+                event_category: 'Button',
+                event_label: `${item.name} Link`,
+                value: 'Footer'
+              })
+            }}>
               {item.icon}
             </a>
           ))}

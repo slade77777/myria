@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
 import { tabRoutes, useTabContext } from 'src/context/tabContext';
+import { ga } from 'src/lib/ga';
 import DiscordIcon from './icons/DiscordIcon';
 
 const NotiBanner: React.FC = () => {
@@ -34,6 +35,13 @@ const NotiBanner: React.FC = () => {
         </p>
         <a
           href={socialLinks.discord}
+          onClick={() => {
+            ga.event('Click', {
+              event_category: 'Button',
+              event_label: 'Discord Link',
+              value: 'Top Bar'
+            })
+          }}
           target="_blank"
           className="btn-icon-sm btn-white mt-4 flex items-center px-4 text-[12px] md:mt-0 md:ml-6"
           rel="noreferrer">

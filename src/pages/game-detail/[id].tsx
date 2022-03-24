@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { ga } from 'src/lib/ga';
 import { headerHeight } from '../../components/Header';
 import DiscordIcon from '../../components/icons/DiscordIcon';
 import Page from '../../components/Page';
@@ -429,7 +430,11 @@ const GameDetail: React.FC = () => {
                       href={socialLinks.discord}
                       target="_blank"
                       className="flex items-center justify-center w-full mt-6 btn-icon btn-white"
-                      rel="noreferrer">
+                      rel="noreferrer"
+                      onClick={() => {
+                        ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Game' })
+                      }}
+                    >
                       <span className="w-[30px]">
                         <DiscordIcon />
                       </span>
