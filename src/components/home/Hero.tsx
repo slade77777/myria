@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { CSSProperties, useMemo, useState } from 'react';
-import { socialLinks } from 'src/configs';
+import { ga } from 'src/lib/ga';
 import DiscordIcon from '../icons/DiscordIcon';
 import CowboyImg from 'public/images/home/cowboy-1.png';
 import MonkeyImg from 'public/images/home/monkey-1.png';
@@ -221,7 +221,10 @@ const Hero: React.FC = () => {
                     </a>
                   </Link>
                   <a
-                    href={socialLinks.discord}
+                    onClick={() => {
+                      ga.event('Click', { event_category: 'Banner', event_label: 'Discord Link', value: 'Banner' })
+                    }}
+                    href='https://discord.gg/VQaPXRGR6S'
                     target="_blank"
                     className="btn-icon btn-primary inline-flex min-w-[178px] items-center text-[14px]  md:text-[16px]"
                     rel="noreferrer">

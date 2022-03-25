@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import React, { useMemo, useRef } from 'react';
 import { ga } from 'src/lib/ga';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
-import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
 import NotiBanner from '../NotiBanner';
@@ -120,7 +119,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
               ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Top Button' })
             }}
             className="btn-sm btn-secondary"
-            href={socialLinks.discord}
+            href='https://discord.gg/7K49nXJ49R'
             target="_blank"
             rel="noreferrer">
             <Trans>JOIN DISCORD</Trans>

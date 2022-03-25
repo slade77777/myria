@@ -89,7 +89,7 @@ export const linkSources: { [key: string]: NavItem } = {
     children: [
       {
         text: 'Discord',
-        url: socialLinks.discord,
+        url: 'https://discord.gg/mxpVXxh55P',
         target: '_blank'
       },
       {

@@ -11,7 +11,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import FirstSlider from '../../components/game-detail/FirstSlider';
 import SecondSlider from '../../components/game-detail/SecondSlider';
 import { useRouter } from 'next/router';
-import { socialLinks } from 'src/configs';
 import Subscribe from 'src/components/Subscribe';
 import { Trans } from '@lingui/macro';
 
@@ -43,9 +42,11 @@ const games: Record<
       heading?: string;
       paragraph?: string[];
     }[];
+    discord: string;
   }
 > = {
   metarush: {
+    discord: 'https://discord.gg/pwHWQgzRRn',
     headerBg: '/images/game-detail/header-bg-1.png',
     title: 'Metarush',
     description:
@@ -123,6 +124,7 @@ const games: Record<
     ]
   },
   metakart: {
+    discord: 'https://discord.gg/y2nsGsa5Jq',
     headerBg: '/images/game-detail/header-bg-2.png',
     title: 'Metakart',
     description:
@@ -202,6 +204,7 @@ const games: Record<
     ]
   },
   'block-royale': {
+    discord: 'https://discord.gg/RraSMhEpev',
     headerBg: '/images/game-detail/header-bg-3.png',
     title: 'Block Royale',
     description:
@@ -278,6 +281,7 @@ const games: Record<
     ]
   },
   starstrike: {
+    discord: 'https://discord.gg/N268ZZa2Ky',
     headerBg: '/images/game-detail/header-bg-4.png',
     title: 'Starstrike Legends',
     description:
@@ -427,7 +431,7 @@ const GameDetail: React.FC = () => {
                       <Trans>IN DEVELOPMENT</Trans>
                     </button>
                     <a
-                      href={socialLinks.discord}
+                      href={game.discord}
                       target="_blank"
                       className="flex items-center justify-center w-full mt-6 btn-icon btn-white"
                       rel="noreferrer"
