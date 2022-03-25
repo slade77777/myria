@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { ga } from 'src/lib/ga';
+import { ga, useGA4 } from 'src/lib/ga';
 import { headerHeight } from '../../components/Header';
 import DiscordIcon from '../../components/icons/DiscordIcon';
 import Page from '../../components/Page';
@@ -346,6 +346,7 @@ const games: Record<
 const GameDetail: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const router = useRouter();
+  const { event } = useGA4();
   const { id } = router.query;
   if (typeof id !== 'string') {
     return null;
@@ -436,6 +437,7 @@ const GameDetail: React.FC = () => {
                       className="flex items-center justify-center w-full mt-6 btn-icon btn-white"
                       rel="noreferrer"
                       onClick={() => {
+                        event('Dicord Button Clicked', { button_location: 'Game', game_name: game.title })
                         ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Game' })
                       }}
                     >

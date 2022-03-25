@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useMemo, useRef } from 'react';
-import { ga } from 'src/lib/ga';
+import { ga, useGA4 } from 'src/lib/ga';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
@@ -20,6 +20,7 @@ type Props = {
 
 const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links, className }) => {
   const router = useRouter();
+  const { event } = useGA4();
 
   return (
     <ul
@@ -62,6 +63,12 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                         <a
                           onClick={() => {
                             if (item.id === 'community') {
+                              if (link.id === 'discord') {
+                                event('Dicord Button Clicked', { button_location: 'Community Links' });
+                              }
+                              if (link.id === 'twitter') {
+                                event('Twitter Button Clicked', { button_location: 'Community Links' });
+                              }
                               ga.event('Click', { event_category: 'Link', event_label: `${link.text} Link`, value: 'Community Links' })
                             }
                           }}
@@ -98,6 +105,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
 };
 
 const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
+  const { event } = useGA4();
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
 
@@ -116,6 +124,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         return (
           <a
             onClick={() => {
+              event('Dicord Button Clicked', { button_location: 'Top Button' });
               ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Top Button' })
             }}
             className="btn-sm btn-secondary"

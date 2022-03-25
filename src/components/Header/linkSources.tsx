@@ -65,18 +65,22 @@ export const linkSources: { [key: string]: NavItem } = {
     position: 'right',
     children: [
       {
+        id: 'our-vision',
         text: <Trans>Our vision</Trans>,
         url: '/our-vision'
       },
       {
+        id: 'team',
         text: <Trans>Our team</Trans>,
         url: '/team'
       },
       {
+        id: 'studios',
         text: <Trans>MYRIA STUDIOS</Trans>,
         url: '/studios'
       },
       {
+        id: 'careers',
         text: <Trans>Careers</Trans>,
         url: '/careers'
       }
@@ -88,21 +92,25 @@ export const linkSources: { [key: string]: NavItem } = {
     position: 'right',
     children: [
       {
+        id: 'discord',
         text: 'Discord',
         url: 'https://discord.gg/mxpVXxh55P',
         target: '_blank'
       },
       {
+        id: 'twitter',
         text: 'Twitter',
         url: socialLinks.twitter,
         target: '_blank'
       },
       {
+        id: 'instagram',
         text: 'Instagram',
         url: socialLinks.instagram,
         target: '_blank'
       },
       {
+        id: 'medium',
         text: 'Medium',
         url: socialLinks.medium,
         target: '_blank'

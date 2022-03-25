@@ -3,11 +3,12 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { tabRoutes, useTabContext } from 'src/context/tabContext';
-import { ga } from 'src/lib/ga';
+import { ga, useGA4 } from 'src/lib/ga';
 import DiscordIcon from './icons/DiscordIcon';
 
 const NotiBanner: React.FC = () => {
   const { activatingTab } = useTabContext();
+  const { event } = useGA4();
   return (
     <div className="hidden grid-cols-[1fr_auto_1fr] bg-brand-light-blue md:grid">
       <div className="flex">
@@ -35,6 +36,7 @@ const NotiBanner: React.FC = () => {
         <a
           href='https://discord.gg/HgXdFqJXmu '
           onClick={() => {
+            event('Dicord Button Clicked', { button_location: 'Top Bar' });
             ga.event('Click', {
               event_category: 'Button',
               event_label: 'Discord Link',
