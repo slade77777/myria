@@ -16,7 +16,12 @@ const event = (action: Action, params: EventParams) => {
   (window as any).gtag('event', action, params);
 };
 
+const eventGA4 = (eventName: string, params: any) => {
+  (window as any).gtag('event', eventName, params);
+};
+
 export default {
   pageview,
-  event
+  event,
+  eventGA4
 };

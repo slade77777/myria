@@ -4,7 +4,7 @@ import '../styles/globals.css';
 import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 
-import { useGA } from 'src/lib/ga';
+import { useGATrackPageview } from 'src/lib/ga';
 import LanguageProvider, { useLanguage } from 'src/context/LanguageContext';
 import { t } from '@lingui/macro';
 import TabProvider from 'src/context/tabContext';
@@ -14,7 +14,7 @@ const WithLanguageStyle: React.FC<any> = ({ children }) => {
   return <div className={language}>{children}</div>;
 };
 function App({ Component, pageProps }: AppProps) {
-  useGA();
+  useGATrackPageview();
   return (
     <LanguageProvider>
       <DefaultSeo
