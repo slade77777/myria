@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { ga, useGA4 } from 'src/lib/ga';
 import { headerHeight } from '../../components/Header';
 import DiscordIcon from '../../components/icons/DiscordIcon';
 import Page from '../../components/Page';
@@ -10,7 +11,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import FirstSlider from '../../components/game-detail/FirstSlider';
 import SecondSlider from '../../components/game-detail/SecondSlider';
 import { useRouter } from 'next/router';
-import { socialLinks } from 'src/configs';
 import Subscribe from 'src/components/Subscribe';
 import { Trans } from '@lingui/macro';
 
@@ -42,9 +42,11 @@ const games: Record<
       heading?: string;
       paragraph?: string[];
     }[];
+    discord: string;
   }
 > = {
   metarush: {
+    discord: 'https://discord.gg/pwHWQgzRRn',
     headerBg: '/images/game-detail/header-bg-1.png',
     title: 'Metarush',
     description:
@@ -122,6 +124,7 @@ const games: Record<
     ]
   },
   metakart: {
+    discord: 'https://discord.gg/y2nsGsa5Jq',
     headerBg: '/images/game-detail/header-bg-2.png',
     title: 'Metakart',
     description:
@@ -201,6 +204,7 @@ const games: Record<
     ]
   },
   'block-royale': {
+    discord: 'https://discord.gg/RraSMhEpev',
     headerBg: '/images/game-detail/header-bg-3.png',
     title: 'Block Royale',
     description:
@@ -277,6 +281,7 @@ const games: Record<
     ]
   },
   starstrike: {
+    discord: 'https://discord.gg/N268ZZa2Ky',
     headerBg: '/images/game-detail/header-bg-4.png',
     title: 'Starstrike Legends',
     description:
@@ -341,6 +346,7 @@ const games: Record<
 const GameDetail: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const router = useRouter();
+  const { event } = useGA4();
   const { id } = router.query;
   if (typeof id !== 'string') {
     return null;
@@ -426,10 +432,15 @@ const GameDetail: React.FC = () => {
                       <Trans>IN DEVELOPMENT</Trans>
                     </button>
                     <a
-                      href={socialLinks.discord}
+                      href={game.discord}
                       target="_blank"
                       className="flex items-center justify-center w-full mt-6 btn-icon btn-white"
-                      rel="noreferrer">
+                      rel="noreferrer"
+                      onClick={() => {
+                        event('Dicord Button Clicked', { button_location: 'Game', game_name: game.title })
+                        ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Game' })
+                      }}
+                    >
                       <span className="w-[30px]">
                         <DiscordIcon />
                       </span>
