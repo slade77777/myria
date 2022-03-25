@@ -7,7 +7,7 @@ export type NavItem = {
   text: ReactNode;
   url?: string;
   target?: '_blank';
-  children?: Omit<NavItem, 'position' | 'id'>[];
+  children?: Omit<NavItem, 'position'>[];
   inactive?: boolean;
   position: 'left' | 'right';
   action?: Action;
