@@ -46,7 +46,7 @@ const data: Person[] = [
       </Trans>
     ),
     socials: {
-      twitter: 'https://twitter.com/gooseara',
+      twitter: '',
       linkedin: ''
     }
   },
