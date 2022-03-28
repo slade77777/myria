@@ -43,7 +43,7 @@ const Sigil: React.FC = () => {
             />
           </div>
         )}
-        <div>{content}</div>
+        <div className='min-h-screen'>{content}</div>
       </div>
     </Page>
   );
