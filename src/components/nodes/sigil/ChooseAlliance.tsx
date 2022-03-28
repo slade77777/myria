@@ -8,7 +8,7 @@ const ChooseAlliance: React.FC = () => {
       <AllianceModal open={false} onClose={() => {}} />
       <div className="relative grid grid-cols-1 grid-rows-1">
         <Image
-          src="/images/nodes/insignia/choose-alliance-bg.png"
+          src="/images/nodes/sigil/choose-alliance-bg.png"
           alt=""
           layout="responsive"
           width={4320}

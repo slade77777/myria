@@ -8,7 +8,7 @@ const Welcome: React.FC = () => {
   return (
     <div
       className={
-        "relative min-h-[791px] bg-[url('/images/nodes/insignia/header-bg.png')] bg-cover pt-[155px]"
+        "relative min-h-[791px] bg-[url('/images/nodes/sigil/header-bg.png')] bg-cover pt-[155px]"
       }>
       <div className="mx-auto max-w-[408px] text-center">
         <h1 className="text-[28px] font-bold leading-[1.2]">Welcome to the Myriaverse</h1>

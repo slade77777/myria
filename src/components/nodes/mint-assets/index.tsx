@@ -4,7 +4,7 @@ import Asset from './Asset';
 const availableMint = [
   {
     id: 'A1',
-    image: '/images/nodes/insignia/alliance-modal-item.png',
+    image: '/images/nodes/sigil/alliance-modal-item.png',
     title: 'Common Sigil',
     description: 'Gluten-free squid man braid, mlkshk offal bespoke lomo biodiesel direct trade.',
     time: '2 hours ago',
@@ -12,7 +12,7 @@ const availableMint = [
   },
   {
     id: 'A2',
-    image: '/images/nodes/insignia/alliance-modal-item.png',
+    image: '/images/nodes/sigil/alliance-modal-item.png',
     title: 'Rare Sigil',
     description: 'Gluten-free squid man braid, mlkshk offal bespoke lomo biodiesel direct trade.',
     time: '2 hours ago',
@@ -20,7 +20,7 @@ const availableMint = [
   },
   {
     id: 'A3',
-    image: '/images/nodes/insignia/alliance-modal-item.png',
+    image: '/images/nodes/sigil/alliance-modal-item.png',
     title: 'Ultra Rare Sigil',
     description: 'Gluten-free squid man braid, mlkshk offal bespoke lomo biodiesel direct trade.',
     time: '2 hours ago',
@@ -31,7 +31,7 @@ const availableMint = [
 const offchainAssets = [
   {
     id: 'B1',
-    image: '/images/nodes/insignia/alliance-1.png',
+    image: '/images/nodes/sigil/alliance-1.png',
     title: 'Common Alliance Chest',
     description: 'Gluten-free squid man braid, mlkshk offal bespoke lomo biodiesel direct trade.',
     time: '2 hours ago'

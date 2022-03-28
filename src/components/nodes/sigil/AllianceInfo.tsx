@@ -2,11 +2,11 @@ import React from 'react';
 
 const AllianceInfo: React.FC = () => {
   return (
-    <div className="insignia-panel flex h-[441px] flex-col items-center px-4 pt-[37px] pb-[30px] text-center">
+    <div className="sigil-panel flex h-[441px] flex-col items-center px-4 pt-[37px] pb-[30px] text-center">
       <div className="relative">
         <div className="relative h-[108px] w-[108px] rounded-full border border-[#A077DE] bg-[#A077DE]/50 opacity-50 shadow-[0px_0px_30px_#A077DE]"></div>
         <img
-          src="/images/nodes/insignia/alliance-1.png"
+          src="/images/nodes/sigil/alliance-1.png"
           alt=""
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         />

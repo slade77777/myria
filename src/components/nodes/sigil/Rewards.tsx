@@ -8,13 +8,13 @@ const currentRewards: Reward[] = [
     title: 'Reward 1',
     credits: 100,
     state: 'claim-now',
-    image: '/images/nodes/insignia/reward-item-1.png'
+    image: '/images/nodes/sigil/reward-item-1.png'
   },
   {
     title: 'Reward 2',
     credits: 200,
     state: 'progress',
-    image: '/images/nodes/insignia/reward-item-1.png'
+    image: '/images/nodes/sigil/reward-item-1.png'
   }
 ];
 
@@ -23,25 +23,25 @@ const nextRewards: Reward[] = [
     title: 'Reward 1',
     credits: 100,
     state: 'locked',
-    image: '/images/nodes/insignia/reward-item-1.png'
+    image: '/images/nodes/sigil/reward-item-1.png'
   },
   {
     title: 'Reward 2',
     credits: 200,
     state: 'locked',
-    image: '/images/nodes/insignia/reward-item-1.png'
+    image: '/images/nodes/sigil/reward-item-1.png'
   },
   {
     title: 'Reward 1',
     credits: 100,
     state: 'locked',
-    image: '/images/nodes/insignia/reward-item-1.png'
+    image: '/images/nodes/sigil/reward-item-1.png'
   },
   {
     title: 'Reward 2',
     credits: 200,
     state: 'locked',
-    image: '/images/nodes/insignia/reward-item-1.png'
+    image: '/images/nodes/sigil/reward-item-1.png'
   }
 ];
 
@@ -64,7 +64,7 @@ const Rewards: React.FC = () => {
         item={claimItem}
       />
       <ShareTwitterModal open={false} onClose={() => {}} />
-      <div className="insignia-panel p-6 pb-8">
+      <div className="sigil-panel p-6 pb-8">
         <div className="flex items-center justify-between">
           <p className="text-[24px] font-extrabold leading-[1.15]">Rewards</p>
           <button className="rounded-[4px] bg-[#1F2334] py-[9px] px-2 text-[14px] font-bold uppercase leading-[1.14] text-light">

@@ -51,7 +51,7 @@ const Missions: React.FC = () => {
   return (
     <>
       <ReferFriendModal open={false} onClose={() => {}} link="https://myria.com/r/%112yb877a" />
-      <div className="insignia-panel p-4 pt-6">
+      <div className="sigil-panel p-4 pt-6">
         <p className="text-[24px] font-bold leading-[1.2]">Missions</p>
         <div className="mt-8 space-y-4">
           {missions.map((mission, index) => (

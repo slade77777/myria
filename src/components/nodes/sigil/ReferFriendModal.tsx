@@ -12,7 +12,7 @@ const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content className="w-[324px] bg-transparent" includingHeader={false}>
-        <div className="rounded-lg bg-[url('/images/nodes/insignia/refer-friend-modal-bg.png')] bg-cover bg-right-bottom p-4">
+        <div className="rounded-lg bg-[url('/images/nodes/sigil/refer-friend-modal-bg.png')] bg-cover bg-right-bottom p-4">
           <div className="flex justify-end">
             <Modal.Close asChild>
               <button className="w-6 text-white/50">

@@ -14,7 +14,7 @@ const ClaimModal: React.FC<Props> = ({ open, onClose, item }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content className="w-[324px] bg-transparent" includingHeader={false}>
-        <div className="rounded-lg bg-[url('/images/nodes/insignia/claim-modal-bg.png')] bg-cover bg-right-bottom p-4 pb-6">
+        <div className="rounded-lg bg-[url('/images/nodes/sigil/claim-modal-bg.png')] bg-cover bg-right-bottom p-4 pb-6">
           <div className="flex justify-end">
             <Modal.Close asChild>
               <button className="w-6 text-white/50">
@@ -23,7 +23,7 @@ const ClaimModal: React.FC<Props> = ({ open, onClose, item }) => {
             </Modal.Close>
           </div>
           <div className="flex justify-center">
-            <img src="/images/nodes/insignia/sample-item.png" alt="" />
+            <img src="/images/nodes/sigil/sample-item.png" alt="" />
           </div>
           <div className="flex flex-col items-center text-center">
             <p className="text-[12px] font-medium leading-[1.5]">You have just claimed</p>

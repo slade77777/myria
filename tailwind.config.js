@@ -415,7 +415,7 @@ module.exports = {
             background: '#9AC9E3'
           }
         },
-        '.insignia-panel': {
+        '.sigil-panel': {
           background: `linear-gradient(174.77deg, rgba(154, 201, 227, 0.05) 5.09%, rgba(154, 201, 227, 0) 47.22%), rgba(5, 15, 23, 0.9)`,
           boxShadow: theme('boxShadow.dark-panel'),
           borderRadius: 12,

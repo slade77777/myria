@@ -15,12 +15,12 @@ const AllianceModal: React.FC<Props> = ({ open, onClose }) => {
       onOpenChange={onClose}
       overlayClassName="bg-[rgba(5,14,21,0.7)] backdrop-blur-[10px]">
       <Modal.Content includingHeader={false} className="!max-w-[380px] bg-transparent">
-        <div className="relative rounded-lg bg-[url('/images/nodes/insignia/alliance-modal-bg.png')] bg-cover bg-top p-8 px-[38px]">
+        <div className="relative rounded-lg bg-[url('/images/nodes/sigil/alliance-modal-bg.png')] bg-cover bg-top p-8 px-[38px]">
           <span className="absolute top-6 right-6 w-6 text-[#09131A]">
             <CloseIcon />
           </span>
           <img
-            src="/images/nodes/insignia/alliance-modal-item.png"
+            src="/images/nodes/sigil/alliance-modal-item.png"
             style={{
               filter: 'drop-shadow(0px 0px 40px #E2D0E2)'
             }}

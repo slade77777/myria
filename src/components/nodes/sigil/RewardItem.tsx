@@ -83,7 +83,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
         style={{
           clipPath: 'polygon(0 0, 100% 0, 77% 100%, 0% 100%'
         }}
-        className="relative isolate flex w-[137px] flex-shrink-0 items-center justify-center bg-[url('/images/nodes/insignia/reward-side-panel.png')] bg-cover bg-left shadow-dark-panel">
+        className="relative isolate flex w-[137px] flex-shrink-0 items-center justify-center bg-[url('/images/nodes/sigil/reward-side-panel.png')] bg-cover bg-left shadow-dark-panel">
         <div className="absolute inset-0 z-[-1] opacity-50 [background-color:var(--color)]"></div>
         <img className="w-[80%]" src={image} alt="" />
       </div>
