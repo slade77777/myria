@@ -46,7 +46,7 @@ const data: Person[] = [
       </Trans>
     ),
     socials: {
-      twitter: 'https://twitter.com/gooseara',
+      twitter: '',
       linkedin: ''
     }
   },
@@ -269,7 +269,7 @@ const Team: React.FC = () => {
           <h3 className="text-center text-[40px] font-bold leading-[1.25]">
             <Trans>Our Experience</Trans>
           </h3>
-          <div className="mt-[60px]">
+          <div className="mt-[60px] mx-auto max-w-content">
             <ExperenceLogos />
           </div>
         </section>
