@@ -24,7 +24,11 @@ const schema = yup
       .string()
       .trim()
       .required(t`Name is required!`),
-    website: yup.string().url(t`Invalid website url!`),
+    website: yup.string().matches(
+      /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+      t`Please enter correct url!`
+  )
+  .required('Please enter website'),
     fromEmail: yup
       .string()
       .email(t`Invalid email!`)

@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useMemo, useRef } from 'react';
+import { ga, useGA4 } from 'src/lib/ga';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
-import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
 import NotiBanner from '../NotiBanner';
@@ -20,6 +20,7 @@ type Props = {
 
 const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links, className }) => {
   const router = useRouter();
+  const { event } = useGA4();
 
   return (
     <ul
@@ -60,6 +61,17 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                     <li key={idx}>
                       <Link href={link.url as string}>
                         <a
+                          onClick={() => {
+                            if (item.id === 'community') {
+                              if (link.id === 'discord') {
+                                event('Dicord Button Clicked', { button_location: 'Community Links' });
+                              }
+                              if (link.id === 'twitter') {
+                                event('Twitter Button Clicked', { button_location: 'Community Links' });
+                              }
+                              ga.event('Click', { event_category: 'Link', event_label: `${link.text} Link`, value: 'Community Links' })
+                            }
+                          }}
                           target={link.target}
                           className={clsx('hover:text-brand-gold', {
                             'text-brand-gold': link.url === router.pathname
@@ -93,6 +105,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
 };
 
 const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
+  const { event } = useGA4();
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
 
@@ -110,8 +123,12 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
       default:
         return (
           <a
+            onClick={() => {
+              event('Dicord Button Clicked', { button_location: 'Top Button' });
+              ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Top Button' })
+            }}
             className="btn-sm btn-secondary"
-            href={socialLinks.discord}
+            href='https://discord.gg/7K49nXJ49R'
             target="_blank"
             rel="noreferrer">
             <Trans>JOIN DISCORD</Trans>
