@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { useMemo, useState } from 'react';
-import { headerHeight } from '../../components/Header';
-import Page from '../../components/Page';
+import { headerHeight } from '../components/Header';
+import Page from '../components/Page';
 import { paddingX } from 'src/utils';
 import Dashboard from 'src/components/nodes/sigil/Dashboard';
 import SigilStepper from 'src/components/nodes/sigil/SigilStepper';
