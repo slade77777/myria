@@ -9,7 +9,7 @@ import ChooseAlliance from 'src/components/nodes/sigil/ChooseAlliance';
 import Welcome from 'src/components/nodes/sigil/Welcome';
 
 const Sigil: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState<0 | 1 | 2>(0);
+  const [currentStep, setCurrentStep] = useState<0 | 1 | 2>(2);
 
   const content = useMemo(() => {
     switch (currentStep) {
