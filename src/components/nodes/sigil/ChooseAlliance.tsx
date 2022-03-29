@@ -10,6 +10,7 @@ interface SigilProps {
   onActive: (id: string | null) => void;
   isActive: boolean;
   id: string;
+  onClick: () => void;
 }
 
 type Sigil = {
@@ -44,9 +45,19 @@ const SIGILS: Sigil[] = [
   }
 ];
 
-const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive }: SigilProps) => {
+const Sigil = ({
+  id,
+  sigilImg,
+  width,
+  height,
+  className,
+  isActive,
+  onActive,
+  onClick
+}: SigilProps) => {
   return (
     <div
+      onClick={onClick}
       onMouseEnter={() => onActive(id)}
       onMouseLeave={() => onActive(null)}
       className={`absolute top-[10%] flex h-[45%] flex-col items-center justify-center ${
@@ -75,7 +86,11 @@ const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive }: S
   );
 };
 
-const ChooseAlliance: React.FC = () => {
+type Props = {
+  onNext: () => void;
+};
+
+const ChooseAlliance: React.FC<Props> = ({ onNext }) => {
   const [activeSigil, setActiveSigil] = React.useState<string | null>(null);
 
   return (
@@ -104,6 +119,7 @@ const ChooseAlliance: React.FC = () => {
                 className={sigil.className}
                 isActive={sigil.id === activeSigil}
                 onActive={setActiveSigil}
+                onClick={onNext}
               />
             ))}
           </div>

@@ -127,7 +127,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
 
       case 'mint':
         return (
-          <Link href={address ? '/nodes/dashboard' : '/sigil'}>
+          <Link href={'/sigil'}>
             <a
               style={{
                 filter: 'drop-shadow(0px 0px 10px #F5B941)'

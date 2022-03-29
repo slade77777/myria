@@ -4,7 +4,6 @@ import Hamburger from 'hamburger-react';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { tabRoutes, useTabContext } from 'src/context/tabContext';
-import { useWalletContext } from 'src/context/wallet';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { socialLinks } from '../../configs';
 import Collapse from '../Collapse';
@@ -39,7 +38,6 @@ export const links: NavItem[] = [
 
 const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
   const { activatingTab } = useTabContext();
-  const { address } = useWalletContext();
 
   const actionElements = useMemo(() => {
     switch (action) {
@@ -72,7 +70,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
         );
       case 'mint':
         return (
-          <Link href={address ? '/nodes/dashboard' : '/sigil'}>
+          <Link href={'/sigil'}>
             <a
               style={{
                 filter: 'drop-shadow(0px 0px 10px #F5B941)'
@@ -102,7 +100,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
           </div>
         );
     }
-  }, [action, address]);
+  }, [action]);
 
   return (
     <div

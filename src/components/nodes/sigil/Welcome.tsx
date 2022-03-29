@@ -1,7 +1,11 @@
 import React from 'react';
 import { useWalletContext } from 'src/context/wallet';
 
-const Welcome: React.FC = () => {
+type Props = {
+  onNext: () => void;
+};
+
+const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
 
   return (
@@ -16,7 +20,9 @@ const Welcome: React.FC = () => {
           mumblecore hot chicken.
         </p>
         {address ? (
-          <button className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
+          <button
+            onClick={onNext}
+            className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
             JOIN NOW
           </button>
         ) : (
