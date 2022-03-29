@@ -90,6 +90,31 @@ module.exports = {
         fadeOut: {
           '0%': { opacity: 1 },
           '100%': { opacity: 0 }
+        },
+        float: {
+          '0%': {
+            transform: 'translatey(0px)'
+          },
+          '50%': {
+            transform: 'translatey(-20px)',
+          },
+          '100%': {
+            transform: 'translatey(0px)',
+          }
+        },
+        starUp: {
+          '0%': {
+            transform: 'translateY(0px)',
+            width: 6,
+            height: 6,
+            opacity: 1,
+          },
+          '100%': {
+            transform: 'translateY(-400px)',
+            opacity: 0,
+            width: 0,
+            height: 0.3,
+          }
         }
       },
       animation: {
@@ -102,7 +127,9 @@ module.exports = {
         'slide-right-and-fade': 'slideRightAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'slide-left-and-fade': 'slideLeftAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-in': 'fadeIn 700ms cubic-bezier(0.16, 1, 0.3, 1)',
-        'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards'
+        'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'float': 'float 6s ease-in-out infinite;',
+        'starUp': 'starUp 4s ease-in-out infinite'
       },
       boxShadow: {
         'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)',
@@ -255,6 +282,18 @@ module.exports = {
         },
         '.btn-lg': {
           padding: '16px 24px',
+          borderRadius: '8px',
+          fontSize: 16,
+          lineHeight: 1,
+          transition: '0.3s',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        '.btn-md': {
+          padding: '12px 24px',
           borderRadius: '8px',
           fontSize: 16,
           lineHeight: 1,
