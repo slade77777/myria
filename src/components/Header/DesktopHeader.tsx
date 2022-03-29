@@ -1,24 +1,18 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
-import truncateString from 'src/helper';
 import { useWalletContext } from 'src/context/wallet';
 import React, { useMemo, useRef } from 'react';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { socialLinks } from '../../configs';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
-import LanguageSwitcher from '../LanguageSwitcher';
 import { useAuthenticationContext } from 'src/context/authentication';
-import LinearSettingIcon from '../icons/LinearSettingIcon';
-import SignOutIcon from '../icons/SignOutIcon';
-import DashboardIcon from '../icons/DashboardIcon';
-import WalletIcon from '../icons/WalletIcon';
-import Popover from '../Popover';
 import NotiBanner from '../NotiBanner';
 import { links, navHeight } from './Header';
 import { Action, NavItem } from './type';
 import { useRouter } from 'next/router';
+import ProfileComponent from './ProfileComponent';
 
 type Props = {
   action: Action;
@@ -27,76 +21,6 @@ type Props = {
   links?: NavItem[];
 };
 
-const ProfileMenus = [
-  {
-    text: 'My account',
-    href: '/',
-    icon: <LinearSettingIcon />
-  },
-  {
-    text: 'Wallet',
-    href: '/',
-    icon: <WalletIcon />
-  },
-  {
-    text: 'Node Dashboard',
-    href: '/',
-    icon: <DashboardIcon />
-  }
-];
-
-const ProfileComponent: React.FC<{}> = ({}) => {
-  const { address, disconnect } = useWalletContext();
-  const { user } = useAuthenticationContext();
-  if (user) {
-    return (
-      <Popover modal>
-        <Popover.Trigger asChild>
-          <div className="flex items-center rounded-3xl bg-[#081824] px-6 py-3 hover:cursor-pointer">
-            <img src={'/images/header-user.png'} alt={address} className="mr-3" />
-            <div>{truncateString(address || '')}</div>
-          </div>
-        </Popover.Trigger>
-        <Popover.Content asChild side="bottom" sideOffset={5}>
-          <div className="min-w-[164px] rounded-xl bg-[#091824] px-4 py-6 text-sm text-white">
-            {ProfileMenus.map((menu) => {
-              return (
-                <Link href={menu.href} key={menu.href}>
-                  <a className="mb-6 flex items-center">
-                    {menu.icon}
-                    <p className="ml-2">{menu.text}</p>
-                  </a>
-                </Link>
-              );
-            })}
-            <div className="mt-6 flex items-center hover:cursor-pointer">
-              <SignOutIcon />
-              <p className="ml-2">Sign out</p>
-            </div>
-          </div>
-        </Popover.Content>
-      </Popover>
-    );
-  }
-
-  return (
-    <Popover modal>
-      <Popover.Trigger asChild>
-        <div className="flex items-center rounded-3xl bg-[#081824] px-6 py-3 hover:cursor-pointer">
-          <img src={'/images/header-user.png'} alt={address} className="mr-3" />
-          <div>{truncateString(address || '')}</div>
-        </div>
-      </Popover.Trigger>
-      <Popover.Content asChild side="bottom" sideOffset={5}>
-        <div className="flex items-center rounded-xl bg-[#091824] px-6 py-3 text-white">
-          <button onClick={disconnect} className="ml-2">
-            Disconnect
-          </button>
-        </div>
-      </Popover.Content>
-    </Popover>
-  );
-};
 const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links, className }) => {
   const router = useRouter();
 
@@ -193,9 +117,6 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           <ProfileComponent />
         ) : (
           <div className="flex">
-            <button className="btn-sm btn-primary mr-3 rounded-lg px-4" onClick={login}>
-              Sign in
-            </button>
             <button
               className="btn-sm btn-secondary min-w-[153px] rounded-lg px-4 py-3"
               onClick={onConnect}>
@@ -204,6 +125,18 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           </div>
         );
 
+      case 'mint':
+        return (
+          <Link href={address ? '/nodes/dashboard' : '/sigil'}>
+            <a
+              style={{
+                filter: 'drop-shadow(0px 0px 10px #F5B941)'
+              }}
+              className="btn-sm btn-secondary">
+              <Trans>FREE NFT MINT</Trans>
+            </a>
+          </Link>
+        );
       default:
         return (
           <a
@@ -215,7 +148,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           </a>
         );
     }
-  }, [action, address, login, onConnect]);
+  }, [action, address, onConnect]);
 
   const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
   return (

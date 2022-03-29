@@ -7,7 +7,7 @@ import Rewards from './Rewards';
 
 const Dashboard: React.FC = () => {
   return (
-    <div className={clsx(paddingX, 'pt-[136px] pb-[238px]')}>
+    <div className={clsx(paddingX, 'pt-[149px] pb-[238px]')}>
       <div className="grid grid-cols-[292fr_616fr_212fr] gap-8">
         <div>
           <AllianceInfo />

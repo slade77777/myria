@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type Action = 'login' | 'join-discord' | 'start-building' | 'auto';
+export type Action = 'login' | 'join-discord' | 'start-building' | 'mint' | 'auto';
 
 export type NavItem = {
   text: ReactNode;

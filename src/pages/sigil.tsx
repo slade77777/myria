@@ -1,15 +1,13 @@
-import clsx from 'clsx';
 import React, { useMemo, useState } from 'react';
-import { headerHeight } from '../components/Header';
 import Page from '../components/Page';
-import { paddingX } from 'src/utils';
 import Dashboard from 'src/components/nodes/sigil/Dashboard';
 import SigilStepper from 'src/components/nodes/sigil/SigilStepper';
 import ChooseAlliance from 'src/components/nodes/sigil/ChooseAlliance';
 import Welcome from 'src/components/nodes/sigil/Welcome';
+import Header from 'src/components/nodes/sigil/Header';
 
 const Sigil: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState<0 | 1 | 2>(2);
+  const [currentStep, setCurrentStep] = useState<0 | 1 | 2>(0);
 
   const content = useMemo(() => {
     switch (currentStep) {
@@ -23,8 +21,9 @@ const Sigil: React.FC = () => {
   }, [currentStep]);
 
   return (
-    <Page footerClassName="hidden">
-      <div className="relative min-h-screen">
+    <Page headerClassName="hidden" footerClassName="hidden">
+      <Header step={currentStep} />
+      <div className="relative min-h-screen bg-dark">
         {currentStep !== 2 && (
           <div className="absolute top-[calc(100vh-28px)] left-1/2 z-[2] w-full max-w-[577px] -translate-y-full -translate-x-1/2">
             <SigilStepper
@@ -43,7 +42,7 @@ const Sigil: React.FC = () => {
             />
           </div>
         )}
-        <div className='min-h-screen'>{content}</div>
+        <div className="min-h-screen">{content}</div>
       </div>
     </Page>
   );

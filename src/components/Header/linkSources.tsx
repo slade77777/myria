@@ -7,32 +7,32 @@ export const linkSources: { [key: string]: NavItem } = {
     text: <Trans>Home</Trans>,
     url: '/',
     position: 'left',
-    action: ['join-discord', 'login']
+    action: ['join-discord', 'login', 'mint']
   },
   ecosystem: {
     text: <Trans>Ecosystem</Trans>,
     url: '/ecosystem',
     position: 'left',
-    action: ['join-discord', 'login']
+    action: ['join-discord', 'login', 'mint']
   },
   games: {
     text: <Trans>Games</Trans>,
     url: '/games',
     position: 'left',
-    action: ['join-discord', 'login']
+    action: ['join-discord', 'login', 'mint']
   },
   nodes: {
     text: <Trans>Nodes</Trans>,
     url: '/nodes',
     position: 'left',
-    action: ['join-discord', 'login']
+    action: ['join-discord', 'login', 'mint']
   },
   store: {
     text: <Trans>Store</Trans>,
     url: '/store',
     inactive: true,
     position: 'left',
-    action: ['join-discord', 'login']
+    action: ['join-discord', 'login', 'mint']
   },
   forDevelopers: {
     text: <Trans>Home</Trans>,

@@ -63,7 +63,6 @@ const Rewards: React.FC = () => {
         }}
         item={claimItem}
       />
-      <ShareTwitterModal open={false} onClose={() => {}} />
       <div className="sigil-panel p-6 pb-8">
         <div className="flex items-center justify-between">
           <p className="text-[24px] font-extrabold leading-[1.15]">Rewards</p>

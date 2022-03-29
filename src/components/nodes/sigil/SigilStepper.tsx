@@ -19,7 +19,7 @@ type Props = {
 const CIRCLE_SIZE = 24;
 const SPACING = 8;
 
-const Stepper: React.FC<Props> = ({ steps, currentStep }) => {
+const SigilStepper: React.FC<Props> = ({ steps, currentStep }) => {
   return (
     <div className="flex">
       {steps.map((step, idx) => {
@@ -81,4 +81,4 @@ const Stepper: React.FC<Props> = ({ steps, currentStep }) => {
   );
 };
 
-export default Stepper;
+export default SigilStepper;

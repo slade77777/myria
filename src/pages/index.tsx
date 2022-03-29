@@ -28,7 +28,7 @@ const Index = () => {
   }, []);
 
   return (
-    <Page>
+    <Page action="mint">
       <div className={headerNavSpacingClassName}>
         <div className={clsx(paddingX, 'md:mt-7')}>
           <div className="mx-auto max-w-content">

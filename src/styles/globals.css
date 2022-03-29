@@ -65,3 +65,8 @@ button:disabled {
 .vi * {
   font-family: 'Montserrat', sans-serif;
 }
+
+.fixed.w-full {
+  width: calc(100% - var(--removed-body-scroll-bar-size, 0px));
+  margin-right: var(--removed-body-scroll-bar-size, 0px);
+}

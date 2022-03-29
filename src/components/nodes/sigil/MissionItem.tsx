@@ -13,6 +13,7 @@ export type Mission = {
   action?: {
     label: string;
     link: string;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   };
   score: number;
   state: 'locked' | 'avaible' | 'completed' | 'active';
@@ -44,7 +45,8 @@ const MissionItem: React.FC<Mission> = ({
             href={action.link}
             target="_blank"
             rel="noreferrer"
-            className="rounded-[4px] bg-[#1F2334] px-2 py-[5px] text-[12px] font-bold leading-[1.25] text-brand-gold">
+            className="flex flex-1 items-center justify-center rounded-[4px] bg-[#1F2334] px-2 py-[5px] text-[12px] font-bold leading-[1.25] text-brand-gold"
+            onClick={action.onClick}>
             {action.label}
           </a>
         </div>
