@@ -14,7 +14,6 @@ function Sound({ soundUrl }: Props) {
     if (audioElement && soundUrl) {
       audioElement.src = soundUrl;
       audioElement.play();
-      console.log('Play', soundUrl)
     }
   }, [soundUrl]);
 

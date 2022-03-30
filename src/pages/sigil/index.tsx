@@ -39,7 +39,7 @@ const Sigil: React.FC = () => {
   const soundUrl = React.useMemo(() => {
     switch(currentStep) {
       case 0:
-        return '/sounds/sigil_bg.wav';
+        return '/sounds/sigil_bg.mp3';
       case 1:
         if (hoveredSigil) {
           return '/sounds/sigil.wav';
