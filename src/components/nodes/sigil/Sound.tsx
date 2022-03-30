@@ -31,7 +31,7 @@ function Sound({ soundUrl }: Props) {
         )}
 
         <p className="body-sm font-medium	" onClick={handleToggleSound}>
-          Mute sound
+          {mute ? 'Unmute sound' : 'Mute sound'}
         </p>
       </div>
       <audio ref={audioRef} muted={mute} />
