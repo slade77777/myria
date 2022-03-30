@@ -8,11 +8,13 @@ import WelcomeMobile from 'src/components/nodes/sigil/WelcomeMobile';
 import Header from 'src/components/nodes/sigil/Header';
 import { isMobile } from 'src/utils';
 import Footer from 'src/components/nodes/sigil/Footer';
+import Sound from 'src/components/nodes/sigil/Sound';
 
 type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<Step>(0);
+  const [hoveredSigil, setHoveredSigil] = useState<string | null>(null);
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {
@@ -28,11 +30,25 @@ const Sigil: React.FC = () => {
       case 0:
         return <Welcome onNext={goToNextStep} />;
       case 1:
-        return <ChooseAlliance onNext={goToNextStep} />;
+        return <ChooseAlliance onHoverSigil={setHoveredSigil} onNext={goToNextStep} />;
       default:
         return <Dashboard />;
     }
   }, [currentStep, goToNextStep]);
+
+  const soundUrl = React.useMemo(() => {
+    switch(currentStep) {
+      case 0:
+        return '/sounds/sigil_bg.wav';
+      case 1:
+        if (hoveredSigil) {
+          return '/sounds/sigil.wav';
+        }
+        break;
+      default:
+        return undefined;
+    }
+  }, [currentStep, hoveredSigil]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden">
@@ -64,7 +80,7 @@ const Sigil: React.FC = () => {
           </div>
       )}
 
-      <Footer />
+      <Sound soundUrl={soundUrl} />
     </Page>
   );
 };

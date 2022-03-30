@@ -22,6 +22,11 @@ interface SigilInfoProps {
   desc: string;
 }
 
+interface ChooseAllianceProps {
+  onNext: () => void
+  onHoverSigil: (id: string | null) => void
+}
+
 type Sigil = {
   id: string;
   img: string;
@@ -162,9 +167,12 @@ const SigilInfo = ({ id, className, isActive, onActive, onSelect, name, desc }: 
   );
 };
 
-const ChooseAlliance: React.FC = () => {
+const ChooseAlliance = ({ onNext, onHoverSigil }: ChooseAllianceProps) => {
   const [activeSigil, setActiveSigil] = React.useState<string | null>(null);
-
+  const handleHoverSigil = (id: string | null) => {
+    setActiveSigil(id);
+    onHoverSigil(id);
+  }
   return (
     <>
       <AllianceModal open={false} onClose={() => {}} />
@@ -182,8 +190,8 @@ const ChooseAlliance: React.FC = () => {
                 name={sigil.name}
                 desc={sigil.desc}
                 isActive={sigil.id === activeSigil}
-                onActive={setActiveSigil}
-                onSelect={(id) => alert(`Select sigil ${id}`)}
+                onActive={handleHoverSigil}
+                onSelect={onNext}
               />
             ))}
           </div>
@@ -205,7 +213,7 @@ const ChooseAlliance: React.FC = () => {
                   height={sigil.height}
                   className={sigil.className}
                   isActive={sigil.id === activeSigil}
-                  onActive={setActiveSigil}
+                  onActive={handleHoverSigil}
                 />
               ))}
             </div>
