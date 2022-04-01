@@ -8,21 +8,12 @@ interface SigilProps {
   height: number;
   className?: string;
   onActive: (id: string | null) => void;
-  isActive: boolean;
-  id: string;
-}
-
-interface SigilInfoProps {
-  className?: string;
-  onActive: (id: string | null) => void;
   onSelect: (id: string | null) => void;
-  width: number;
   isActive: boolean;
   id: string;
   name: string;
   desc: string;
 }
-
 interface ChooseAllianceProps {
   onNext: () => void;
   onHoverSigil: (id: string | null) => void;
@@ -42,8 +33,8 @@ const SIGILS: Sigil[] = [
   {
     id: 'a',
     img: '/images/nodes/insignia/alliance_sigilA.png',
-    width: 584 / 3,
-    height: 748 / 3,
+    width: 584 / 2,
+    height: 748 / 2,
     className: 'left-0 w-[30%]',
     name: 'Alliance 1',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
@@ -51,8 +42,8 @@ const SIGILS: Sigil[] = [
   {
     id: 'b',
     img: '/images/nodes/insignia/alliance_sigilB.png',
-    width: 584 / 3,
-    height: 748 / 3,
+    width: 584 / 2,
+    height: 748 / 2,
     className: 'w-[30%]',
     name: 'Alliance 2',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
@@ -60,15 +51,15 @@ const SIGILS: Sigil[] = [
   {
     id: 'c',
     img: '/images/nodes/insignia/alliance_sigilC.png',
-    width: 584 / 3,
-    height: 748 / 3,
+    width: 584 / 2,
+    height: 748 / 2,
     className: 'right-0 w-[30%]',
     name: 'Alliance 3',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
   }
 ];
 
-const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive }: SigilProps) => {
+const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive, onSelect, name, desc }: SigilProps) => {
   const shadowEffect = React.useRef(
     Array(40)
       .fill(0)
@@ -82,60 +73,9 @@ const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive }: S
       className={`absolute bottom-[35%] flex flex-col items-center justify-center pb-[100px] ${
         className || ''
       }`}>
-      <div
-        className={`relative flex h-full w-full flex-col items-center justify-center ${
+      <div className={`flex h-full w-full flex-col items-center justify-center mb-6  ${
           isActive ? 'z-20' : 'z-0'
         }`}>
-        <div className="flex animate-float items-center justify-center">
-          <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
-        </div>
-
-        <div
-          className="z-30 w-0 flex-1"
-          style={{
-            boxShadow: `0 0 60px 20px white, 25px 15px 50px 10px #fff, -5px -5px 30px 5px #fff ${
-              isActive
-                ? ',0 0 40px 10px white, 0px -100px 40px 10px white, 0px -180px 40px 40px rgba(255,255,255,0.2)'
-                : ''
-            }`
-          }}
-        />
-        {isActive && (
-          <div className="absolute bottom-[-50px] h-[300px] w-[150px]">
-            <div className="relative flex h-full w-full justify-center overflow-hidden">
-              <div
-                className="absolute bottom-0 h-[1px] w-[1px] animate-starUp rounded-full"
-                style={{
-                  content: '',
-                  boxShadow: shadowEffect.current
-                }}
-              />
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-const SigilInfo = ({
-  id,
-  className,
-  isActive,
-  onActive,
-  onSelect,
-  name,
-  desc,
-  width
-}: SigilInfoProps) => {
-  return (
-    <div
-      onMouseEnter={() => onActive(id)}
-      onMouseLeave={() => onActive(null)}
-      className={`${
-        isActive ? 'z-20' : 'z-0'
-      } absolute bottom-0 flex-col items-center justify-center ${className || ''}`}>
-      <div className="flex h-full w-full flex-col items-center justify-center">
         <div className="relative flex items-center justify-center">
           <Image
             src="/images/nodes/insignia/sigil_info_box.png"
@@ -173,6 +113,38 @@ const SigilInfo = ({
           />
         )}
       </div>
+      <div
+        className={`relative flex h-full w-full flex-col items-center justify-center ${
+          isActive ? 'z-20' : 'z-0'
+        }`}>
+        <div className="flex w-[60%] animate-float items-center justify-center">
+          <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
+        </div>
+
+        <div
+          className="z-30 w-0 flex-1"
+          style={{
+            boxShadow: `0 0 60px 20px white, 25px 15px 50px 10px #fff, -5px -5px 30px 5px #fff ${
+              isActive
+                ? ',0 0 40px 10px white, 0px -100px 40px 10px white, 0px -180px 40px 40px rgba(255,255,255,0.2)'
+                : ''
+            }`
+          }}
+        />
+        {isActive && (
+          <div className="absolute bottom-[-50px] h-[300px] w-[150px]">
+            <div className="relative flex h-full w-full justify-center overflow-hidden">
+              <div
+                className="absolute bottom-0 h-[1px] w-[1px] animate-starUp rounded-full"
+                style={{
+                  content: '',
+                  boxShadow: shadowEffect.current
+                }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
@@ -186,26 +158,11 @@ const ChooseAlliance = ({ onNext, onHoverSigil }: ChooseAllianceProps) => {
   return (
     <>
       <AllianceModal open={false} onClose={() => {}} />
-      <div className="relative grid min-h-screen min-w-[1440px] grid-cols-1 grid-rows-1">
+      <div className="relative grid min-h-screen min-w-[1200px] grid-cols-1 grid-rows-1">
         <div className="pointer-events-none relative h-full w-full object-cover object-center">
           <Image src="/images/nodes/insignia/alliance_bg.png" alt="" layout="fill" />
         </div>
         <div className="absolute left-0 bottom-0 w-full">
-          <div className="relative flex h-[340px] w-full items-end justify-center">
-            {SIGILS.map((sigil) => (
-              <SigilInfo
-                key={sigil.id}
-                id={sigil.id}
-                className={sigil.className}
-                name={sigil.name}
-                desc={sigil.desc}
-                width={sigil.width}
-                isActive={sigil.id === activeSigil}
-                onActive={handleHoverSigil}
-                onSelect={onNext}
-              />
-            ))}
-          </div>
           <div className="relative w-full object-cover object-center">
             <Image
               src="/images/nodes/insignia/alliance_stand.png"
@@ -224,7 +181,10 @@ const ChooseAlliance = ({ onNext, onHoverSigil }: ChooseAllianceProps) => {
                   height={sigil.height}
                   className={sigil.className}
                   isActive={sigil.id === activeSigil}
+                  name={sigil.name}
+                  desc={sigil.desc}
                   onActive={handleHoverSigil}
+                  onSelect={(id) => onNext()}
                 />
               ))}
             </div>
