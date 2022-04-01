@@ -21,11 +21,10 @@ const moduleExports = {
     dirs: ['src']
   },
   trailingSlash: true,
-  //TODO: Revert this later
-  // images: isProd ? {
-  //   loader: 'imgix',
-  //   path: 'https://myria.imgix.net'
-  // } : {},
+  images: isProd ? {
+    loader: 'imgix',
+    path: 'https://myria.imgix.net'
+  } : {},
   webpack: (config) => {
     config.module.rules.push({
       test: /\.po/,

@@ -105,12 +105,18 @@ module.exports = {
         starUp: {
           '0%': {
             transform: 'translateY(0px)',
+            width: 0,
+            height: 0,
+            opacity: 0,
+          },
+          '10%': {
+            transform: 'translateY(0px)',
             width: 6,
             height: 6,
             opacity: 1,
           },
           '100%': {
-            transform: 'translateY(-400px)',
+            transform: 'translateY(-150px)',
             opacity: 0,
             width: 0,
             height: 0.3,

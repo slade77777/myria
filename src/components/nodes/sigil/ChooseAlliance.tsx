@@ -16,6 +16,7 @@ interface SigilInfoProps {
   className?: string;
   onActive: (id: string | null) => void;
   onSelect: (id: string | null) => void;
+  width: number;
   isActive: boolean;
   id: string;
   name: string;
@@ -23,8 +24,8 @@ interface SigilInfoProps {
 }
 
 interface ChooseAllianceProps {
-  onNext: () => void
-  onHoverSigil: (id: string | null) => void
+  onNext: () => void;
+  onHoverSigil: (id: string | null) => void;
 }
 
 type Sigil = {
@@ -69,9 +70,9 @@ const SIGILS: Sigil[] = [
 
 const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive }: SigilProps) => {
   const shadowEffect = React.useRef(
-    Array(100)
+    Array(40)
       .fill(0)
-      .map(() => `${Math.random() * 80 - 40}px ${Math.random() * 200 + 200}px 8px 4px white`)
+      .map(() => `${Math.random() * 80 - 40}px ${Math.random() * -300 + 100}px 6px 2px white`)
       .join(',')
   );
   return (
@@ -85,7 +86,7 @@ const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive }: S
         className={`relative flex h-full w-full flex-col items-center justify-center ${
           isActive ? 'z-20' : 'z-0'
         }`}>
-        <div className="flex w-[35%] animate-float items-center justify-center">
+        <div className="flex animate-float items-center justify-center">
           <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
         </div>
 
@@ -100,10 +101,10 @@ const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive }: S
           }}
         />
         {isActive && (
-          <div className="absolute bottom-[-50px] h-[200px] w-[150px]">
+          <div className="absolute bottom-[-50px] h-[300px] w-[150px]">
             <div className="relative flex h-full w-full justify-center overflow-hidden">
               <div
-                className="absolute bottom-0 h-[4px] w-[4px] animate-starUp"
+                className="absolute bottom-0 h-[1px] w-[1px] animate-starUp rounded-full"
                 style={{
                   content: '',
                   boxShadow: shadowEffect.current
@@ -117,7 +118,16 @@ const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive }: S
   );
 };
 
-const SigilInfo = ({ id, className, isActive, onActive, onSelect, name, desc }: SigilInfoProps) => {
+const SigilInfo = ({
+  id,
+  className,
+  isActive,
+  onActive,
+  onSelect,
+  name,
+  desc,
+  width
+}: SigilInfoProps) => {
   return (
     <div
       onMouseEnter={() => onActive(id)}
@@ -126,23 +136,23 @@ const SigilInfo = ({ id, className, isActive, onActive, onSelect, name, desc }: 
         isActive ? 'z-20' : 'z-0'
       } absolute bottom-0 flex-col items-center justify-center ${className || ''}`}>
       <div className="flex h-full w-full flex-col items-center justify-center">
-        <div className="relative flex w-[35%] items-center justify-center">
+        <div className="relative flex items-center justify-center">
           <Image
             src="/images/nodes/insignia/sigil_info_box.png"
             alt=""
             layout="intrinsic"
-            width={600}
-            height={978}
+            width={width}
+            height={width * 1.5}
           />
           <div className="absolute bottom-0 flex h-full flex-col items-center justify-end px-[22px]">
-            <span className="mb-2 text-[20px] font-bold 2xl:text-[28px]">{name}</span>
+            <span className="mb-2 text-[28px] font-bold">{name}</span>
             <div
               className={`flex flex-col items-center justify-end transition-all ${
                 isActive ? 'opacity-100' : 'h-[100px] opacity-0'
               }`}>
-              <span className="mb-4 text-center text-[10px] 2xl:text-[14px]">{desc}</span>
+              <span className="mb-4 text-center text-[14px]">{desc}</span>
               <button
-                className="btn-sm btn-primary flex w-[80%] items-center 2xl:btn-md"
+                className="btn-md btn-primary flex w-[80%] items-center"
                 onClick={() => onSelect(id)}>
                 SELECT
               </button>
@@ -172,11 +182,11 @@ const ChooseAlliance = ({ onNext, onHoverSigil }: ChooseAllianceProps) => {
   const handleHoverSigil = (id: string | null) => {
     setActiveSigil(id);
     onHoverSigil(id);
-  }
+  };
   return (
     <>
       <AllianceModal open={false} onClose={() => {}} />
-      <div className="relative grid min-h-screen grid-cols-1 grid-rows-1">
+      <div className="relative grid min-h-screen min-w-[1440px] grid-cols-1 grid-rows-1">
         <div className="pointer-events-none relative h-full w-full object-cover object-center">
           <Image src="/images/nodes/insignia/alliance_bg.png" alt="" layout="fill" />
         </div>
@@ -189,6 +199,7 @@ const ChooseAlliance = ({ onNext, onHoverSigil }: ChooseAllianceProps) => {
                 className={sigil.className}
                 name={sigil.name}
                 desc={sigil.desc}
+                width={sigil.width}
                 isActive={sigil.id === activeSigil}
                 onActive={handleHoverSigil}
                 onSelect={onNext}
