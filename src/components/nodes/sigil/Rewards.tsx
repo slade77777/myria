@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 import BoxIcon from 'src/components/icons/BoxIcon';
 import ClaimModal from './ClaimModal';
@@ -81,13 +82,17 @@ const Rewards: React.FC = () => {
               <div className="absolute top-0 right-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue via-transparent to-transparent" />
             </div>
           </div>
-          <div className="mt-1 flex justify-end">
-            <p className="flex items-center space-x-1 text-[14px] font-extrabold leading-[1.25] text-brand-light-blue">
-              <i className="w-4">
-                <BoxIcon />
-              </i>
-              <span>INVENTORY</span>
-            </p>
+          <div className="relative mt-1 flex justify-end">
+            <Link href='/inventory' passHref>
+              <a className='cursor-pointer'>
+                <p className="flex items-center space-x-1 text-[14px] font-extrabold leading-[1.25] text-brand-light-blue">
+                  <i className="w-4">
+                    <BoxIcon />
+                  </i>
+                  <span>INVENTORY</span>
+                </p>
+              </a>
+            </Link>
           </div>
         </div>
         <div className="mt-6 flex-grow overflow-auto">
