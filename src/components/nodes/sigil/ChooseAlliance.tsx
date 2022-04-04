@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import AllianceModal from './AllianceModal';
 
 interface SigilProps {
@@ -59,7 +59,18 @@ const SIGILS: Sigil[] = [
   }
 ];
 
-const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive, onSelect, name, desc }: SigilProps) => {
+const Sigil = ({
+  id,
+  sigilImg,
+  width,
+  height,
+  className,
+  isActive,
+  onActive,
+  onSelect,
+  name,
+  desc
+}: SigilProps) => {
   const shadowEffect = React.useRef(
     Array(40)
       .fill(0)
@@ -73,7 +84,8 @@ const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive, onS
       className={`absolute bottom-[35%] flex flex-col items-center justify-center pb-[100px] ${
         className || ''
       }`}>
-      <div className={`flex h-full w-full flex-col items-center justify-center mb-6  ${
+      <div
+        className={`mb-6 flex h-full w-full flex-col items-center justify-center  ${
           isActive ? 'z-20' : 'z-0'
         }`}>
         <div className="relative flex items-center justify-center">
@@ -150,14 +162,22 @@ const Sigil = ({ id, sigilImg, width, height, className, isActive, onActive, onS
 };
 
 const ChooseAlliance = ({ onNext, onHoverSigil }: ChooseAllianceProps) => {
-  const [activeSigil, setActiveSigil] = React.useState<string | null>(null);
+  const [activeSigil, setActiveSigil] = useState<string | null>(null);
   const handleHoverSigil = (id: string | null) => {
     setActiveSigil(id);
     onHoverSigil(id);
   };
+
+  const [selectedAlliance, setSelectedAlliance] = useState<Sigil['id'] | null>(null);
   return (
     <>
-      <AllianceModal open={false} onClose={() => {}} />
+      <AllianceModal
+        open={!!selectedAlliance}
+        onJoin={onNext}
+        onClose={() => {
+          setSelectedAlliance(null);
+        }}
+      />
       <div className="relative grid min-h-screen min-w-[1200px] grid-cols-1 grid-rows-1">
         <div className="pointer-events-none relative h-full w-full object-cover object-center">
           <Image src="/images/nodes/insignia/alliance_bg.png" alt="" layout="fill" />
@@ -184,7 +204,7 @@ const ChooseAlliance = ({ onNext, onHoverSigil }: ChooseAllianceProps) => {
                   name={sigil.name}
                   desc={sigil.desc}
                   onActive={handleHoverSigil}
-                  onSelect={(id) => onNext()}
+                  onSelect={(id) => setSelectedAlliance(id)}
                 />
               ))}
             </div>
