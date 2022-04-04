@@ -37,7 +37,7 @@ const Sigil: React.FC = () => {
   }, [currentStep, goToNextStep]);
 
   const soundUrl = React.useMemo(() => {
-    switch(currentStep) {
+    switch (currentStep) {
       case 0:
         return '/sounds/sigil_bg.mp3';
       case 1:
@@ -57,27 +57,27 @@ const Sigil: React.FC = () => {
       {isMobile() ? (
         <WelcomeMobile />
       ) : (
-          <div className="relative min-h-screen bg-dark">
-            {currentStep !== 2 && (
-              <div className="absolute top-[calc(100vh-28px)] left-1/2 z-[2] w-full max-w-[577px] -translate-y-full -translate-x-1/2">
-                <SigilStepper
-                  steps={[
-                    {
-                      title: 'Connect Wallet'
-                    },
-                    {
-                      title: 'Choose Alliance'
-                    },
-                    {
-                      title: 'Claim your NFT reward'
-                    }
-                  ]}
-                  currentStep={currentStep}
-                />
-              </div>
-            )}
-            <div className="min-h-screen">{content}</div>
-          </div>
+        <div className="relative min-h-screen bg-dark">
+          {currentStep !== 2 && (
+            <div className="absolute top-[calc(100vh-28px)] left-1/2 z-[2] w-full max-w-[577px] -translate-y-full -translate-x-1/2">
+              <SigilStepper
+                steps={[
+                  {
+                    title: 'Connect Wallet'
+                  },
+                  {
+                    title: 'Choose Alliance'
+                  },
+                  {
+                    title: 'Claim your NFT reward'
+                  }
+                ]}
+                currentStep={currentStep}
+              />
+            </div>
+          )}
+          <div className="min-h-screen">{content}</div>
+        </div>
       )}
 
       <Sound soundUrl={soundUrl} />

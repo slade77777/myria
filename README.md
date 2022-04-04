@@ -57,14 +57,14 @@ For usages, find out more here: https://lingui.js.org/tutorials/react-patterns.h
 
 ## Structure
 
-- Put all components in `src/components` with PascalCase name, i.e. `src/components/Button.tsx`
-- If a component belongs to a specific page, put it in the respective page folder `src/components/[page]/[ComponentName]`, i.e. `src/components/home/Hero.tsx`
-- If a component has many small separate components/utils, put them in a folder `src/components/[ComponentName]/[ComponentName]`, i.e. `src/components/Header/Header.tsx` and export it in `src/components/Header/index.tsx`
+- Put all components in `src/components` with PascalCase name, e.g. `src/components/Button.tsx`
+- If a component belongs to a specific page, put it in the respective page folder `src/components/[page]/[ComponentName]`, e.g. `src/components/home/Hero.tsx`
+- If a component has many small separate components/utils, put them in a folder `src/components/[ComponentName]/[ComponentName]`, e.g. `src/components/Header/Header.tsx` and export it in `src/components/Header/index.tsx`
 
 ## Images
 
-- Put images in its respective page folder with kebab-case name `public/images/[page]/[image-name]`, i.e. `src/images/home/header-bg.png`
-- If an image need an optimized format, optimize it and name it into `[image-name]_op.[ext]`, i.e. `src/images/home/header-bg_op.png`
+- Put images in its respective page folder with kebab-case name `public/images/[page]/[image-name]`, e.g. `src/images/home/header-bg.png`
+- If an image need an optimized format, optimize it and name it into `[image-name]_op.[ext]`, e.g. `src/images/home/header-bg_op.png`
 
 ## Styling
 
