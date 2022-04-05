@@ -2,6 +2,7 @@ import React from 'react';
 import { useWalletContext } from 'src/context/wallet';
 import { useAuthenticationContext } from 'src/context/authentication';
 import MetaMaskIcon from 'src/components/icons/MetaMaskIcon';
+import { soundService, SUPPORT_SOUND } from 'src/sound';
 
 type Props = {
   onNext: () => void;
@@ -12,6 +13,14 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   const { login } = useAuthenticationContext();
 
   const installedWallet = typeof window != 'undefined' && !!window.ethereum;
+
+  React.useEffect(() => {
+    const bgSound = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG);
+
+    return () => {
+      bgSound.pause();
+    }
+  }, []);
 
   return (
     <div

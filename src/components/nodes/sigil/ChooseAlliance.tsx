@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { SUPPORT_SOUND, soundService } from 'src/sound';
 import AllianceModal from './AllianceModal';
 
 interface SigilProps {
@@ -16,7 +17,6 @@ interface SigilProps {
 }
 interface ChooseAllianceProps {
   onNext: () => void;
-  onHoverSigil: (id: string | null) => void;
 }
 
 type Sigil = {
@@ -79,7 +79,10 @@ const Sigil = ({
   );
   return (
     <div
-      onMouseEnter={() => onActive(id)}
+      onMouseEnter={() => {
+        onActive(id);
+        soundService.playSound(SUPPORT_SOUND.SIGIL_HOVER);
+      }}
       onMouseLeave={() => onActive(null)}
       className={`absolute bottom-[35%] flex flex-col items-center justify-center pb-[100px] ${
         className || ''
@@ -105,7 +108,10 @@ const Sigil = ({
               <span className="mb-4 text-center text-[14px]">{desc}</span>
               <button
                 className="btn-md btn-primary flex w-[80%] items-center"
-                onClick={() => onSelect(id)}>
+                onClick={() => {
+                  onSelect(id);
+                  soundService.playSound(SUPPORT_SOUND.SIGIL_SELECT);
+                }}>
                 SELECT
               </button>
             </div>
@@ -161,12 +167,11 @@ const Sigil = ({
   );
 };
 
-const ChooseAlliance = ({ onNext, onHoverSigil }: ChooseAllianceProps) => {
+const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
   const [improveBadRatio, setImproveBadRatio] = React.useState(false);
   const [activeSigil, setActiveSigil] = useState<string | null>(null);
   const handleHoverSigil = (id: string | null) => {
     setActiveSigil(id);
-    onHoverSigil(id);
   };
 
   const [selectedAlliance, setSelectedAlliance] = useState<Sigil['id'] | null>(null);
