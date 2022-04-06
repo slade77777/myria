@@ -18,7 +18,7 @@ const Games: React.FC = () => {
           <section
             className={clsx(
               negativeMarginXSm,
-              "mt-0 flex h-[479px] bg-[url('/images/games/header-bg-mobile.png')] bg-cover bg-left px-6 pt-[85px] text-center md:mx-0 md:mt-6 md:h-[288px] md:items-center md:rounded-[5px]  md:bg-[url('/images/games/header-bg.png')] md:px-[56px] md:pt-0 md:text-left"
+              "mt-0 flex h-[479px] bg-[url('/images/games/header-bg-mobile.jpg')] bg-cover bg-left px-6 pt-[85px] text-center md:mx-0 md:mt-6 md:h-[288px] md:items-center md:rounded-[5px]  md:bg-[url('/images/games/header-bg.png')] md:px-[56px] md:pt-0 md:text-left"
             )}>
             <p className="heading-lg mx-auto max-w-[420px] md:mx-0 md:font-medium">
               <Trans>

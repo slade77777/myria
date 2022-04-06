@@ -32,7 +32,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   return (
     <div
       className={
-        "relative h-screen min-h-[791px] bg-[url('/images/nodes/sigil/header-bg.png')] bg-cover bg-center bg-no-repeat"
+        "relative h-screen min-h-[791px] bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-center bg-no-repeat"
       }>
       <div className="mx-auto max-w-[408px] pt-[213px] text-center">
         <h1 className="text-[28px] font-bold leading-[1.2]">Welcome to the Myriaverse</h1>
