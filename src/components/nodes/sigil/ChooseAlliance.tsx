@@ -207,7 +207,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
       />
       <div className="relative grid min-h-screen min-w-[1200px] grid-cols-1 grid-rows-1">
         <div className="pointer-events-none relative h-full w-full object-cover object-center">
-          <Image src="/images/nodes/insignia/alliance_bg.png" alt="" layout="fill" />
+          <Image src="/images/nodes/insignia/alliance_bg.jpeg" alt="" layout="fill" />
         </div>
         <div className="absolute left-0 bottom-0 w-full">
           <div className={`relative w-full object-cover object-center ${improveBadRatio ? 'top-[200px]' : ''}`}>
