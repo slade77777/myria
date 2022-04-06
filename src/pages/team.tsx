@@ -136,8 +136,8 @@ const data: Person[] = [
       </Trans>
     ),
     socials: {
-      twitter: 'https://twitter.com/ajdimarucot',
-      linkedin: 'https://linkedin.com/in/ajdimarucot'
+      twitter: '',
+      linkedin: ''
     }
   },
   {
