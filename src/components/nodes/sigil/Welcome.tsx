@@ -15,10 +15,17 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   const installedWallet = typeof window != 'undefined' && !!window.ethereum;
 
   React.useEffect(() => {
-    const bgSound = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG);
+    let bgSound: HTMLAudioElement | null = null;
+    const timeout = setTimeout(() => {
+      bgSound = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG);
+    }, 3000);
 
     return () => {
-      bgSound.pause();
+      bgSound?.pause();
+
+      if (timeout) {
+        clearTimeout(timeout);
+      }
     }
   }, []);
 

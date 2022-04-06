@@ -66,7 +66,9 @@ const Sigil: React.FC = () => {
         </div>
       )}
 
-      <Sound />
+      {
+        [0, 1].includes(currentStep) && (<Sound />)
+      }
     </Page>
   );
 };

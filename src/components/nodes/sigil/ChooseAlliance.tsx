@@ -71,6 +71,7 @@ const Sigil = ({
   name,
   desc
 }: SigilProps) => {
+  const [isFirstTimeActive, setIsFirstTimeActive] = React.useState(false);
   const shadowEffect = React.useRef(
     Array(40)
       .fill(0)
@@ -84,6 +85,13 @@ const Sigil = ({
         soundService.playSound(SUPPORT_SOUND.SIGIL_HOVER);
       }}
       onMouseLeave={() => onActive(null)}
+      onMouseOver={() => {
+        if (!isFirstTimeActive) {
+          onActive(id);
+          soundService.playSound(SUPPORT_SOUND.SIGIL_HOVER);
+        }
+        setIsFirstTimeActive(true);
+      }}
       className={`absolute bottom-[35%] flex flex-col items-center justify-center pb-[100px] ${
         className || ''
       }`}>
