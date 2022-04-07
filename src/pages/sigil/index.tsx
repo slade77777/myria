@@ -8,11 +8,13 @@ import WelcomeMobile from 'src/components/nodes/sigil/WelcomeMobile';
 import Header from 'src/components/nodes/sigil/Header';
 import { isMobile } from 'src/utils';
 import Sound from 'src/components/nodes/sigil/Sound';
+import { soundService, SUPPORT_SOUND } from 'src/sound';
 
 type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<Step>(0);
+  const bgSoundRef = React.useRef<HTMLAudioElement|null>(null);
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {
@@ -35,6 +37,25 @@ const Sigil: React.FC = () => {
         return <Dashboard />;
     }
   }, [currentStep, goToNextStep]);
+
+  React.useEffect(() => {
+    if (!bgSoundRef.current) {
+      setTimeout(() => {
+        bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG);
+      }, 2000);
+    }
+   
+
+    return () => {
+      bgSoundRef.current?.pause();
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (![0, 1].includes(currentStep)) {
+      bgSoundRef.current?.pause();
+    }
+  }, [currentStep]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden">
