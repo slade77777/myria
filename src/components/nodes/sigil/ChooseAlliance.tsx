@@ -92,7 +92,7 @@ const Sigil = ({
         }
         setIsFirstTimeActive(true);
       }}
-      className={`absolute bottom-[35%] flex flex-col items-center justify-center pb-[100px] ${
+      className={`absolute bottom-[25%] 2xl:bottom-[35%] flex flex-col items-center justify-center pb-[100px] ${
         className || ''
       }`}>
       <div
@@ -143,7 +143,7 @@ const Sigil = ({
         className={`relative flex h-full w-full flex-col items-center justify-center ${
           isActive ? 'z-20' : 'z-0'
         }`}>
-        <div className="flex w-[60%] animate-float items-center justify-center">
+        <div className="flex w-[50%] 2xl:w-[60%] animate-float items-center justify-center">
           <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
         </div>
 
@@ -158,7 +158,7 @@ const Sigil = ({
           }}
         />
         {isActive && (
-          <div className="absolute bottom-[-50px] h-[300px] w-[150px]">
+          <div className="absolute bottom-[-20px] 2xl:bottom-[-50px] h-[300px] w-[150px]">
             <div className="relative flex h-full w-full justify-center overflow-hidden">
               <div
                 className="absolute bottom-0 h-[1px] w-[1px] animate-starUp rounded-full"
