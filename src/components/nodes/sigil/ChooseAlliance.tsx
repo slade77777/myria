@@ -35,7 +35,7 @@ const SIGILS: Sigil[] = [
     img: '/images/nodes/insignia/alliance_sigilA.png',
     width: 584 / 2,
     height: 748 / 2,
-    className: 'left-0 w-[30%]',
+    className: 'left-[5%] w-[20%]',
     name: 'Alliance 1',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
   },
@@ -44,7 +44,7 @@ const SIGILS: Sigil[] = [
     img: '/images/nodes/insignia/alliance_sigilB.png',
     width: 584 / 2,
     height: 748 / 2,
-    className: 'w-[30%]',
+    className: 'w-[20%]',
     name: 'Alliance 2',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
   },
@@ -53,7 +53,7 @@ const SIGILS: Sigil[] = [
     img: '/images/nodes/insignia/alliance_sigilC.png',
     width: 584 / 2,
     height: 748 / 2,
-    className: 'right-0 w-[30%]',
+    className: 'right-[5%] w-[20%]',
     name: 'Alliance 3',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
   }
@@ -92,14 +92,14 @@ const Sigil = ({
         }
         setIsFirstTimeActive(true);
       }}
-      className={`absolute bottom-[25%] 2xl:bottom-[35%] flex flex-col items-center justify-center pb-[100px] ${
+      className={`absolute bottom-[25%] flex flex-col items-center justify-center  pb-[100px] 2xl:bottom-[35%]  ${
         className || ''
       }`}>
       <div
         className={`mb-6 flex h-full w-full flex-col items-center justify-center  ${
           isActive ? 'z-20' : 'z-0'
         }`}>
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center ">
           <Image
             src="/images/nodes/insignia/sigil_info_box.png"
             alt=""
@@ -143,7 +143,7 @@ const Sigil = ({
         className={`relative flex h-full w-full flex-col items-center justify-center ${
           isActive ? 'z-20' : 'z-0'
         }`}>
-        <div className="flex w-[50%] 2xl:w-[60%] animate-float items-center justify-center">
+        <div className="flex w-[70%] animate-float items-center justify-center  2xl:w-[60%]">
           <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
         </div>
 
@@ -158,7 +158,7 @@ const Sigil = ({
           }}
         />
         {isActive && (
-          <div className="absolute bottom-[-20px] 2xl:bottom-[-50px] h-[300px] w-[150px]">
+          <div className="absolute bottom-[-20px] h-[300px] w-[150px] 2xl:bottom-[-50px]">
             <div className="relative flex h-full w-full justify-center overflow-hidden">
               <div
                 className="absolute bottom-0 h-[1px] w-[1px] animate-starUp rounded-full"
@@ -191,8 +191,8 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
           setSelectedAlliance(null);
         }}
       />
-      <div className="relative grid min-h-screen min-w-[1200px] grid-cols-1 grid-rows-1">
-        <div className="pointer-events-none relative h-full w-full object-cover object-center">
+      <div className="relative grid min-w-[1200px] top-[80px] min-h-[calc(100vh-80px)] grid-cols-1 grid-rows-1 overflow-hidden">
+        <div className="pointer-events-none fixed top-[-80px] h-full w-full object-cover object-center">
           <Image src="/images/nodes/insignia/alliance_bg.jpeg" alt="" layout="fill" />
         </div>
         <div className="absolute left-0 bottom-0 w-full">
