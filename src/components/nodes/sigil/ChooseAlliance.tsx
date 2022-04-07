@@ -75,7 +75,7 @@ const Sigil = ({
   const shadowEffect = React.useRef(
     Array(40)
       .fill(0)
-      .map(() => `${Math.random() * 80 - 40}px ${Math.random() * -300 + 100}px 6px 2px white`)
+      .map(() => `${Math.random() * 80 - 40}px ${Math.random() * -300 + 100}px 2px 4px white`)
       .join(',')
   );
   return (
