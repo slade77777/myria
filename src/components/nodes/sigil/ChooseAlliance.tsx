@@ -176,26 +176,12 @@ const Sigil = ({
 };
 
 const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
-  const [improveBadRatio, setImproveBadRatio] = React.useState(false);
   const [activeSigil, setActiveSigil] = useState<string | null>(null);
   const handleHoverSigil = (id: string | null) => {
     setActiveSigil(id);
   };
 
   const [selectedAlliance, setSelectedAlliance] = useState<Sigil['id'] | null>(null);
-
-  React.useEffect(() => {
-    const ratio = window.innerWidth/window.innerHeight;
-
-    /**
-     * means the height less than the width in this ratio should cause a bad UI,
-     * check this to add more spacing to make it looks better 
-     */
-    if (ratio > 1.8) {
-      setImproveBadRatio(true);
-    }
-  }, []);
-
   return (
     <>
       <AllianceModal
@@ -210,7 +196,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
           <Image src="/images/nodes/insignia/alliance_bg.jpeg" alt="" layout="fill" />
         </div>
         <div className="absolute left-0 bottom-0 w-full">
-          <div className={`relative w-full object-cover object-center ${improveBadRatio ? 'top-[200px]' : ''}`}>
+          <div className="relative w-full object-cover object-center">
             <Image
               src="/images/nodes/insignia/alliance_stand.png"
               alt=""
