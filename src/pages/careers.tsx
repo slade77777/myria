@@ -17,14 +17,11 @@ const Careers: React.FC = () => {
             paddingTop: headerHeight
           }}
           className={clsx(paddingX, 'relative isolate mb-[152px] md:min-h-screen')}>
-          <div className="mx-auto mt-[60px] max-w-[920px]">
-            <h3 className="heading-sm text-center md:heading-md ">
-              <Trans>Careers</Trans>
-            </h3>
-            <p className="body mt-[50px] text-center md:body-lg">
-              <Trans>Join our team of 100+ to forge to future of blockchain gaming</Trans>
-            </p>
-            <div className="mx-auto mt-[60px] max-w-[923px]">
+          <div className="mx-auto mt-[60px]">
+            <h1 className="heading-sm text-center md:heading-massive md:text-left ml-6">
+              <Trans>Current Openings</Trans>
+            </h1>
+            <div className="mx-auto mt-[60px] px-10">
               <CareersSection />
             </div>
           </div>

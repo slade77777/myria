@@ -5,6 +5,9 @@ type Job = {
   title: string;
   description: string;
   absolute_url: string;
+  location: {
+    name: string;
+  };
 };
 
 type Category = {
