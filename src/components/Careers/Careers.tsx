@@ -16,7 +16,7 @@ const Careers: React.FC = () => {
 
   return (
     <div>
-      <div className="flex -mx-3 -mt-3 overflow-auto">
+      <div className="-mx-3 -mt-3 grid grid-cols-4 gap-4">
         <button
           onClick={() => {
             setSelectedCategory(null);
@@ -32,10 +32,10 @@ const Careers: React.FC = () => {
               setSelectedCategory(item.id);
             }}
             key={item.id}
-            className={clsx('mx-2 my-2 btn-lg btn-dark-blue flex-shrink-0 whitespace-nowrap', {
+            className={clsx('mx-2 my-2 btn-lg btn-dark-blue whitespace-nowrap', {
               active: selectedCategory === item.id
             })}>
-            {item.label}
+            {item.name}
           </button>
         ))}
       </div>
@@ -48,7 +48,7 @@ const Careers: React.FC = () => {
                   <div>
                     <Collapse.Trigger asChild>
                       <div className="flex items-center justify-between cursor-pointer">
-                        <h3 className="heading-list">{pos.label}</h3>
+                        <h3 className="heading-list">{pos.title}</h3>
                         <i
                           className={clsx('w-[24px] transition duration-300', {
                             'rotate-180': open
@@ -68,10 +68,10 @@ const Careers: React.FC = () => {
                         </div>
                         <a
                           target="_blank"
-                          href={pos.link}
+                          href={pos.absolute_url}
                           className="mt-6 btn-lg btn-primary"
                           rel="noreferrer">
-                          <Trans>APPLY NOW</Trans>
+                          <Trans>View job</Trans>
                         </a>
                       </div>
                     </Collapse.Content>
