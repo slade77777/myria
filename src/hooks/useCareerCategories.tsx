@@ -19,15 +19,6 @@ type Category = {
 export default function useCareerCategories() {
   const [data, setData] = useState<Category[]>([]);
 
-  // useEffect(() => {
-  //   fetch('https://api.greenhouse.io/v1/boards/myria/jobs')
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setData(data);
-  //     });
-  // }, []);
-
   useEffect(() => {
     fetch('https://api.greenhouse.io/v1/boards/myria/departments')
       .then((res) => res.json())
@@ -35,5 +26,6 @@ export default function useCareerCategories() {
         setData(data?.departments || []);
       });
   }, []);
+
   return data;
 }

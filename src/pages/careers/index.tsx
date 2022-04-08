@@ -2,10 +2,10 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import { useTabContext } from 'src/context/tabContext';
-import CareersSection from '../components/Careers';
-import { headerHeight } from '../components/Header';
-import Page from '../components/Page';
-import { paddingX } from '../utils';
+import CareersSection from '../../components/Careers';
+import { headerHeight } from '../../components/Header';
+import Page from '../../components/Page';
+import { paddingX } from '../../utils';
 
 const Careers: React.FC = () => {
   const { activatingTab } = useTabContext();

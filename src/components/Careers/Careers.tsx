@@ -5,6 +5,7 @@ import ChevronDownIcon from '../icons/ChevronDownIcon';
 import { Trans } from '@lingui/macro';
 import ArrowRightIcon from '../icons/ArrowRightIcon';
 import useClickOutside from 'src/hooks/useClickOutside';
+import Link from 'next/link';
 
 const Careers: React.FC = () => {
   const categories = useCareerCategories();
@@ -78,16 +79,15 @@ const Careers: React.FC = () => {
                     <h3 className="body ">{pos.title}</h3>
                     <p className="text-light">{pos.location?.name || '-'}</p>
                   </div>
-                  <a
-                    target="_blank"
-                    href={pos.absolute_url}
-                    className="body mt-6 flex font-extrabold text-brand-gold"
-                    rel="noreferrer">
-                    <Trans>View job</Trans>
-                    <div className="ml-2">
-                      <ArrowRightIcon />
-                    </div>
-                  </a>
+                  <Link href={`/careers/${pos.id}`}>
+                    <a
+                      className="body mt-6 flex font-extrabold text-brand-gold">
+                      <Trans>View job</Trans>
+                      <div className="ml-2">
+                        <ArrowRightIcon />
+                      </div>
+                    </a>
+                  </Link>
                 </div>
               ))}
             </div>
