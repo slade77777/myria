@@ -129,7 +129,8 @@ module.exports = {
         'fade-in': 'fadeIn 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
         float: 'float 6s ease-in-out infinite;',
-        starUp: 'starUp 4s ease-in-out infinite'
+        starUp: 'starUp 6s ease-in-out forwards',
+        starUp2x: 'starUp 4s ease-in-out forwards'
       },
       boxShadow: {
         'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)',
