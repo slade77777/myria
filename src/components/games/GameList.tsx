@@ -196,16 +196,19 @@ const Filter: React.FC<{
           </Collapse.Trigger>
           <Collapse.Content className="absolute top-[calc(100%-16px)] left-0 z-[5] w-full rounded-lg bg-brand-dark-blue">
             <div className="space-y-6 p-6">
-              {filters.map((filter, idx) => (
+              {filters.map((f, idx) => (
                 <div key={idx}>
-                  <p className="text-[18px] leading-none">{filter.title}</p>
+                  <p className="text-[18px] leading-none">{f.title}</p>
                   <div className="mt-6 space-y-6">
-                    {filter.options.map((option, idx) => (
+                    {f.options.map((option, idx) => (
                       <label
                         key={idx}
                         className="flex items-center justify-between space-x-2 text-[18px] leading-none text-light">
                         <span>{option}</span>
-                        <Input className="h-4 w-4" type="checkbox" />
+                        <Input className="h-4 w-4"
+                          type="checkbox"
+                          checked={filter[f.title].includes(option)}
+                          onChange={() => handleFilter(f.title, option)} />
                       </label>
                     ))}
                   </div>
