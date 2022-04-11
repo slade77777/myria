@@ -64,6 +64,20 @@ const SIGILS: Sigil[] = [
   }
 ];
 
+const PARTICLES = Array(20)
+  .fill(0)
+  .map((_, index) => {
+    const blur = Math.round(Math.random() * 2 + 1);
+    const spread = Math.round(Math.random() * 3 + 1);
+    const duration = Math.round(Math.random() * 4 + 2);
+    const boxShadow = Array(Math.round(Math.random() * 5))
+      .fill(0)
+      .map(() => `${Math.random() * 100 - 50}px ${Math.random() * -60}px ${blur}px ${spread}px white`)
+      .join(',');
+
+    return { id: index, boxShadow, animationDuration: `${duration}s`, };
+  });
+
 const Sigil = ({
   id,
   sigilImg,
@@ -78,18 +92,7 @@ const Sigil = ({
   order
 }: SigilProps) => {
   const [isFirstTimeActive, setIsFirstTimeActive] = React.useState(false);
-  const shadowEffect = React.useRef(
-    Array(40)
-      .fill(0)
-      .map(() => `${Math.random() * 100 - 50}px ${Math.random() * -70}px 2px 4px white`)
-      .join(',')
-  );
-  const shadowEffect2x = React.useRef(
-    Array(100)
-      .fill(0)
-      .map(() => `${Math.random() * 100 - 50}px ${Math.random() * -150}px 1px 2px white`)
-      .join(',')
-  );
+
   return (
     <div
       onMouseEnter={() => {
@@ -193,21 +196,18 @@ const Sigil = ({
               }}
             />
             {isActive && (
-              <div className="absolute bottom-0 flex h-[230px] w-full justify-center">
-                <div
-                  className="absolute bottom-0 h-[1px] w-[1px] animate-starUp rounded-full"
-                  style={{
-                    content: '',
-                    boxShadow: shadowEffect.current
-                  }}
-                />
-                <div
-                  className="absolute bottom-0 h-[1px] w-[1px] animate-starUp2x rounded-full"
-                  style={{
-                    content: '',
-                    boxShadow: shadowEffect2x.current
-                  }}
-                />
+              <div className="absolute bottom-0 flex h-[100px] w-full justify-center">
+                {PARTICLES.map((particle) => (
+                  <div
+                    key={particle.id}
+                    className="absolute bottom-0 h-[1px] w-[1px] animate-starUp rounded-full"
+                    style={{
+                      content: '',
+                      animationDuration: particle.animationDuration,
+                      boxShadow: particle.boxShadow,
+                    }}
+                  />
+                ))}
               </div>
             )}
           </div>
