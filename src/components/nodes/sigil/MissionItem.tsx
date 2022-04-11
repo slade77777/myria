@@ -108,7 +108,7 @@ const MissionItem: React.FC<Mission> = ({
         style={{
           clipPath: 'polygon(11% 0, 100% 0, 100% 100%, 0% 100%)'
         }}
-        className="flex w-[90px] bg-[rgba(74,94,114,0.2)] px-2 py-3">
+        className="flex w-[90px] px-2 py-3">
         {actionEl}
       </div>
     </div>
