@@ -161,7 +161,7 @@ const data: Person[] = [
     description: (
       <Trans>
         Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting
-        brand identities. He has worked with global companies across industires such as
+        brand identities. He has worked with global companies across industries such as
         communications, financial institutions, media and more.
       </Trans>
     ),
