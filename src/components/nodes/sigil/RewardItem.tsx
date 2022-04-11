@@ -36,7 +36,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
     switch (state) {
       case 'locked':
         return (
-          <div className="flex items-center space-x-1 text-light-red">
+          <div className="flex items-center pt-2 space-x-1 text-light-red">
             <span className="w-[16px]">
               <LockIcon />
             </span>
@@ -62,7 +62,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
         );
       default:
         return (
-          <div className="flex items-center space-x-1 text-green">
+          <div className="flex items-center pt-2 space-x-1 text-green">
             <CheckIcon className="w-4 fill-current" />
             <span className="text-[14px] font-bold leading-[1.25]">Claimed</span>
           </div>

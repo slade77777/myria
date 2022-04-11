@@ -100,7 +100,7 @@ const Missions: React.FC = () => {
       />
       <div className="relative flex h-full flex-col pr-8">
         <div className="flex items-center">
-          <p className="sigil-text mr-4 text-[18px] font-extrabold leading-[1.25]">REWARDS</p>
+          <p className="sigil-text mr-4 text-[18px] font-extrabold leading-[1.25]">MISSIONS</p>
           <div className="h-[1px] flex-1 bg-border-blue opacity-20">
             <div className="absolute top-0 right-0 translate-x-[7px] translate-y-[4px]">
               <SubtractRight />
