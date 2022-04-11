@@ -111,8 +111,8 @@ const Sigil = ({
         className || ''
       }`}>
       <div
-        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b pb-[8px] pt-[12px] xl:px-[8px] xl:pt-[24px]  ${
-          isActive ? 'z-20 from-[rgba(0,0,0,0.5)] to-transparent' : 'z-0 from-transparent'
+        className={`relative flex h-full w-full flex-col items-center justify-end transition-all bg-gradient-to-b pb-[8px] xl:px-[8px] pt-[24px] ${
+          isActive ? 'z-20 from-[rgba(0,0,0,0.5)] to-transparent max-w-full' : 'z-0 from-transparent max-w-[85%]'
         }`}>
         <div className="flex items-center">
           <div className="h-[1px] flex-1 bg-border-blue opacity-20">
@@ -132,7 +132,7 @@ const Sigil = ({
               </svg>
             </div>
             <div
-              className={`absolute top-0 left-0 w-[2px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent transition-all delay-150 ${
+              className={`absolute top-0 left-0 w-[2px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent transition-all delay-100 ${
                 isActive ? 'h-full' : 'h-0'
               }`}
             />
@@ -154,7 +154,7 @@ const Sigil = ({
               </svg>
             </div>
             <div
-              className={`absolute top-0 right-0 w-[2px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent transition-all delay-300 ${
+              className={`absolute top-0 right-0 w-[2px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent transition-all delay-100 ${
                 isActive ? 'h-full' : 'h-0'
               }`}
             />
@@ -171,14 +171,14 @@ const Sigil = ({
           </span>
         </div>
         <span
-          className={`w-full overflow-hidden text-center font-normal text-light transition-all delay-300 ${
+          className={`w-full overflow-hidden text-center font-normal text-light transition-all delay-100 ${
             isActive ? 'h-auto text-[14px] opacity-100' : 'h-0 text-[8px] opacity-0'
           }`}
           style={{ textShadow: '0px 0px 10px rgba(255, 255, 255, 0.2)' }}>
           {desc}
         </span>
         <div
-          className={`flex w-[60%] flex-col items-center 2xl:w-[70%] ${order === 2 ? 'pt-5' : ''}`}>
+          className={`flex flex-col items-center w-[60%] 2xl:w-[70%] ${order === 2 ? 'pt-5' : ''}`}>
           <div className="flex w-full animate-float items-center justify-center">
             <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
           </div>
@@ -215,7 +215,7 @@ const Sigil = ({
         </div>
 
         <div
-          className={`absolute  flex h-[100px] w-full items-end justify-center transition-all delay-300 ${
+          className={`absolute  flex h-[100px] w-full items-end justify-center transition-all delay-100 ${
             isActive ? 'bottom-[-100px] opacity-100' : 'bottom-0 opacity-0'
           }`}>
           <button
@@ -281,7 +281,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
             </div>
           </div>
           <div
-            className={`pointer-events-none fixed top-[80px] left-0 z-[10] h-screen min-h-[calc(100vh-80px)] w-screen bg-gradient-to-t  transition-all delay-200 ${
+            className={`pointer-events-none fixed top-[80px] left-0 z-[10] h-screen min-h-[calc(100vh-80px)] w-screen bg-gradient-to-t  transition-all delay-100 ${
               !!activeSigil
                 ? 'from-[rgba(0,0,0,0.5)] to-transparent backdrop-blur-[2px] '
                 : 'from-black  via-transparent to-transparent backdrop-blur-none'
