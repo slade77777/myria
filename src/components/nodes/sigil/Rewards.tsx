@@ -95,7 +95,7 @@ const Rewards: React.FC = () => {
             </Link>
           </div>
         </div>
-        <div className="mt-6 flex-grow overflow-auto">
+        <div className="mt-6 flex-grow overflow-auto" id="scrollbar">
           <div className="space-y-6">
             {currentRewards.map((rw, idx) => (
               <RewardItem key={idx} item={rw} onClaim={handleClaim} />
