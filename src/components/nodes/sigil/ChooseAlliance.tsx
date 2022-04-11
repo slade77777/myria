@@ -69,13 +69,15 @@ const PARTICLES = Array(20)
   .map((_, index) => {
     const blur = Math.round(Math.random() * 2 + 1);
     const spread = Math.round(Math.random() * 3 + 1);
-    const duration = Math.round(Math.random() * 4 + 2);
+    const duration = Math.round(Math.random() * 12 + 2);
     const boxShadow = Array(Math.round(Math.random() * 5))
       .fill(0)
-      .map(() => `${Math.random() * 100 - 50}px ${Math.random() * -60}px ${blur}px ${spread}px white`)
+      .map(
+        () => `${Math.random() * 100 - 50}px ${Math.random() * -60}px ${blur}px ${spread}px white`
+      )
       .join(',');
 
-    return { id: index, boxShadow, animationDuration: `${duration}s`, };
+    return { id: index, boxShadow, animationDuration: `${duration}s` };
   });
 
 const Sigil = ({
@@ -111,8 +113,10 @@ const Sigil = ({
         className || ''
       }`}>
       <div
-        className={`relative flex h-full w-full flex-col items-center justify-end transition-all bg-gradient-to-b pb-[8px] xl:px-[8px] pt-[24px] ${
-          isActive ? 'z-20 from-[rgba(0,0,0,0.5)] to-transparent max-w-full' : 'z-0 from-transparent max-w-[85%]'
+        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b pb-[8px] pt-[24px] transition-all xl:px-[8px] ${
+          isActive
+            ? 'z-20 max-w-full from-[rgba(0,0,0,0.5)] to-transparent'
+            : 'z-0 max-w-[80%] from-transparent'
         }`}>
         <div className="flex items-center">
           <div className="h-[1px] flex-1 bg-border-blue opacity-20">
@@ -170,15 +174,20 @@ const Sigil = ({
             {name}
           </span>
         </div>
-        <span
-          className={`w-full overflow-hidden text-center font-normal text-light transition-all delay-100 ${
-            isActive ? 'h-auto text-[14px] opacity-100' : 'h-0 text-[8px] opacity-0'
-          }`}
-          style={{ textShadow: '0px 0px 10px rgba(255, 255, 255, 0.2)' }}>
-          {desc}
-        </span>
         <div
-          className={`flex flex-col items-center w-[60%] 2xl:w-[70%] ${order === 2 ? 'pt-5' : ''}`}>
+          className={`h-[70px] overflow-hidden transition-all delay-100 text-center ${
+            isActive ? 'w-full opacity-100' : 'w-0 opacity-0'
+          }`}>
+          <span
+            className="text-[14px] font-normal text-light"
+            style={{ textShadow: '0px 0px 10px rgba(255, 255, 255, 0.2)' }}>
+            {desc}
+          </span>
+        </div>
+        <div
+          className={`flex w-[180px] flex-col items-center 2xl:w-[230px] ${
+            order === 2 ? 'pt-5' : ''
+          }`}>
           <div className="flex w-full animate-float items-center justify-center">
             <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
           </div>
@@ -204,7 +213,7 @@ const Sigil = ({
                     style={{
                       content: '',
                       animationDuration: particle.animationDuration,
-                      boxShadow: particle.boxShadow,
+                      boxShadow: particle.boxShadow
                     }}
                   />
                 ))}
