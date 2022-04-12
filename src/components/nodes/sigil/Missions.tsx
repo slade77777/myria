@@ -108,7 +108,7 @@ const Missions: React.FC = () => {
             <div className="absolute top-0 right-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent" />
           </div>
         </div>
-        <div className="mt-4 flex-grow space-y-4 overflow-auto">
+        <div className="mt-4 flex-grow space-y-4 overflow-auto" id="scrollbar">
           {missions.map((mission, index) => (
             <MissionItem key={index} {...mission} />
           ))}
