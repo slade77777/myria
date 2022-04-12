@@ -32,7 +32,7 @@ const Careers: React.FC = () => {
       <div className="relative">
         <div className="flex justify-center">
           <div
-            className="mb-12 flex w-80 cursor-pointer items-center justify-between rounded-lg bg-brand-deep-blue px-8 py-2 md:mb-[78px]"
+            className="mb-12 inline-flex w-80 cursor-pointer items-center justify-between rounded-lg bg-brand-deep-blue px-8 py-2 md:mb-[78px]"
             onClick={() => setOpenFilter(!openFilter)}>
             <p>{selectedCategory ? currentFilterName : 'Filter by Department'}</p>
             <div className="h-6 w-6">
@@ -69,7 +69,7 @@ const Careers: React.FC = () => {
       <div className="-mx-3">
         {departments.map((item) => (
           <div
-            className="border-t border-light pt-14 md:grid md:grid-cols-3 md:gap-4"
+            className="border-t border-[rgba(151,170,181,0.2)] pt-14 md:grid md:grid-cols-3 md:gap-4"
             key={item.id}>
             <h3 className="heading-list mb-9 md:mb-14 text-left">{item.name}</h3>
             <div className="md:mt-5 md:col-span-2 pb-14">
