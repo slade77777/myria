@@ -38,7 +38,7 @@ const SIGILS: Sigil[] = [
     img: '/images/nodes/insignia/alliance_sigilA.png',
     width: 584 / 2,
     height: 748 / 2,
-    className: 'left-[2%] w-[24%]',
+    className: 'left-[1%] xl:left-[2%] w-[26%] xl:w-[24%]',
     name: 'Alliance ONE',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
   },
@@ -48,7 +48,7 @@ const SIGILS: Sigil[] = [
     img: '/images/nodes/insignia/alliance_sigilB.png',
     width: 584 / 2,
     height: 748 / 2,
-    className: 'w-[24%]',
+    className: 'w-[26%] xl:w-[24%]',
     name: 'Alliance TWO',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
   },
@@ -58,7 +58,7 @@ const SIGILS: Sigil[] = [
     img: '/images/nodes/insignia/alliance_sigilC.png',
     width: 584 / 2,
     height: 748 / 2,
-    className: 'right-[3%] w-[24%]',
+    className: 'right-[2%] xl:right-[3%] w-[26%] xl:w-[24%]',
     name: 'Alliance THREE',
     desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
   }
@@ -113,14 +113,14 @@ const Sigil = ({
         className || ''
       }`}>
       <div
-        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b pb-[8px] pt-[24px] transition-all px-3 xl:px-6 ${
+        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b pb-[8px] pt-[24px] transition-all px-6 xl:px-8 ${
           isActive
-            ? 'z-20 max-w-full from-[rgba(0,0,0,0.5)] to-transparent'
+            ? 'z-20 max-w-full from-transparent via-[rgba(0,0,0,0.5)] to-transparent'
             : 'z-0 max-w-[80%] from-transparent'
         }`}>
         <div className="flex items-center">
           <div className="h-[1px] flex-1 bg-border-blue opacity-20">
-            <div className="absolute top-0 left-0 translate-x-[-7px] translate-y-[-10px]">
+            <div className="absolute top-0 left-0 translate-x-[-6px] translate-y-[-10px]">
               <svg
                 width="80"
                 height="69"
@@ -142,7 +142,7 @@ const Sigil = ({
             />
           </div>
           <div className="h-[1px] flex-1 bg-border-blue opacity-20">
-            <div className="absolute top-0 right-0 translate-x-[7px] translate-y-[-10px]">
+            <div className="absolute top-0 right-0 translate-x-[6px] translate-y-[-10px]">
               <svg
                 width="80"
                 height="69"
@@ -176,7 +176,7 @@ const Sigil = ({
         </div>
         <div
           className={`h-[70px] overflow-hidden transition-all delay-100 text-center ${
-            isActive ? 'w-full opacity-100' : 'w-0 opacity-0'
+            isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
             className="text-[14px] font-normal text-light"
@@ -293,7 +293,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
             className={`pointer-events-none fixed top-[80px] left-0 z-[10] h-screen min-h-[calc(100vh-80px)] w-screen bg-gradient-to-t  transition-all delay-100 ${
               !!activeSigil
                 ? 'from-[rgba(0,0,0,0.5)] to-transparent backdrop-blur-[2px] '
-                : 'from-black  via-transparent to-transparent backdrop-blur-none'
+                : 'from-[rgba(0,0,0,0.3)] via-transparent to-transparent backdrop-blur-none'
             }`}
           />
         </div>
