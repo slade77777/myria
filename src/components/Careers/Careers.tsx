@@ -29,12 +29,12 @@ const Careers: React.FC = () => {
 
   return (
     <div>
-      <div className="relative" ref={filterRef}>
+      <div className="relative">
         <div className="flex justify-center">
           <div
             className="mb-12 flex w-80 cursor-pointer items-center justify-between rounded-lg bg-brand-deep-blue px-8 py-2 md:mb-[78px]"
             onClick={() => setOpenFilter(!openFilter)}>
-            <p>{selectedCategory ? currentFilterName : 'Filer by Department'}</p>
+            <p>{selectedCategory ? currentFilterName : 'Filter by Department'}</p>
             <div className="h-6 w-6">
               <ChevronDownIcon />
             </div>
@@ -45,7 +45,7 @@ const Careers: React.FC = () => {
             'absolute top-14 left-1/2 min-w-[365px] -translate-x-1/2 transform rounded-3xl bg-brand-deep-blue shadow-2xl',
             { hidden: !openFilter }
           )}>
-          <div className="grid grid-cols-3 gap-7 p-7">
+          <div className="grid grid-cols-3 gap-7 p-7"  ref={filterRef}>
             <p
               className={clsx('cursor-pointer text-center', {
                 'text-brand-gold': !selectedCategory
