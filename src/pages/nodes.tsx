@@ -116,7 +116,7 @@ const questions = [
             You can choose whether you prefer to run your node in the cloud or locally.
           </p>
           <p className="mb-2">
-            Myria node software will be available to download on Linux. Our node operation
+            Myria node software will be available to download on Windows, Mac and Linux. Our node operation
             is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able
             to run our node software from your home computer with the following minimum
             requirements:
