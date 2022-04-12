@@ -186,7 +186,7 @@ const Sigil = ({
         </div>
         <div
           className={`flex w-[180px] flex-col items-center 2xl:w-[230px] ${
-            order === 2 ? 'pt-5' : ''
+            order === 2 ? 'pt-[68px]' : 'pt-[48px]'
           }`}>
           <div className="flex w-full animate-float items-center justify-center">
             <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
@@ -224,8 +224,8 @@ const Sigil = ({
         </div>
 
         <div
-          className={`absolute  flex h-[100px] w-full items-end justify-center transition-all delay-100 ${
-            isActive ? 'bottom-[-100px] opacity-100' : 'bottom-0 opacity-0'
+          className={`absolute  flex h-[116px] w-full items-end justify-center transition-all delay-100 ${
+            isActive ? 'bottom-[-80px] xl:bottom-[-100px] 2xl:bottom-[-116px] opacity-100' : 'bottom-0 opacity-0'
           }`}>
           <button
             className="btn-md btn-primary flex w-[60%] items-center"
