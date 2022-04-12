@@ -32,7 +32,7 @@ const Careers: React.FC = () => {
       <div className="relative" ref={filterRef}>
         <div className="flex justify-center">
           <div
-            className="mb-[78px] flex w-80 cursor-pointer items-center justify-between rounded-lg bg-brand-deep-blue px-8 py-2"
+            className="mb-12 flex w-80 cursor-pointer items-center justify-between rounded-lg bg-brand-deep-blue px-8 py-2 md:mb-[78px]"
             onClick={() => setOpenFilter(!openFilter)}>
             <p>{selectedCategory ? currentFilterName : 'Filer by Department'}</p>
             <div className="h-6 w-6">
@@ -42,7 +42,7 @@ const Careers: React.FC = () => {
         </div>
         <div
           className={clsx(
-            'absolute top-14 left-1/2 -translate-x-1/2 transform rounded-3xl bg-brand-deep-blue shadow-2xl',
+            'absolute top-14 left-1/2 min-w-[365px] -translate-x-1/2 transform rounded-3xl bg-brand-deep-blue shadow-2xl',
             { hidden: !openFilter }
           )}>
           <div className="grid grid-cols-3 gap-7 p-7">
@@ -69,25 +69,26 @@ const Careers: React.FC = () => {
       <div className="-mx-3">
         {departments.map((item) => (
           <div
-            className="grid grid-cols-1 gap-4 border-t border-light pt-14 md:grid-cols-3"
+            className="border-t border-light pt-14 md:grid md:grid-cols-3 md:gap-4"
             key={item.id}>
-            <h3 className="heading-list mb-14 text-center md:text-left">{item.name}</h3>
-            <div className="mt-5 md:col-span-2">
+            <h3 className="heading-list mb-9 md:mb-14 text-left">{item.name}</h3>
+            <div className="md:mt-5 md:col-span-2 pb-14">
               {item.jobs?.map((pos) => (
-                <div key={pos.id} className="mb-14 flex flex-col items-center md:flex-row">
-                  <div className="flex-1 text-center md:text-left">
+                <div key={pos.id} className="mb-4 flex flex-row items-baseline">
+                  <div className="flex-1 text-left">
                     <h3 className="body ">{pos.title}</h3>
                     <p className="text-light">{pos.location?.name || '-'}</p>
                   </div>
-                  <Link href={`/careers/${pos.id}`}>
-                    <a
-                      className="body mt-6 flex font-extrabold text-brand-gold">
-                      <Trans>View job</Trans>
-                      <div className="ml-2">
-                        <ArrowRightIcon />
-                      </div>
-                    </a>
-                  </Link>
+                  <a
+                    target="_blank"
+                    href={pos.absolute_url}
+                    className="body mt-6 flex font-extrabold text-brand-gold"
+                    rel="noreferrer">
+                    <Trans>View job</Trans>
+                    <div className="ml-2">
+                      <ArrowRightIcon />
+                    </div>
+                  </a>
                 </div>
               ))}
             </div>
