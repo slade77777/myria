@@ -67,8 +67,8 @@ const SIGILS: Sigil[] = [
 const PARTICLES = Array(20)
   .fill(0)
   .map((_, index) => {
-    const blur = Math.round(Math.random() * 2 + 1);
-    const spread = Math.round(Math.random() * 3 + 1);
+    const blur = Math.round(Math.random() * 1 + 1);
+    const spread = Math.round(Math.random() * 2 + 1);
     const duration = Math.round(Math.random() * 12 + 2);
     const boxShadow = Array(Math.round(Math.random() * 5))
       .fill(0)
@@ -113,7 +113,7 @@ const Sigil = ({
         className || ''
       }`}>
       <div
-        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b pb-[8px] pt-[24px] transition-all xl:px-[8px] ${
+        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b pb-[8px] pt-[24px] transition-all px-3 xl:px-6 ${
           isActive
             ? 'z-20 max-w-full from-[rgba(0,0,0,0.5)] to-transparent'
             : 'z-0 max-w-[80%] from-transparent'
