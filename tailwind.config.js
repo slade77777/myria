@@ -29,7 +29,8 @@ module.exports = {
         'light-red': '#D55E5E',
         purple: '#8E74D3',
         green: '#41F59F',
-        flat: '#A9A6B1'
+        flat: '#A9A6B1',
+        'border-blue': '#5BA7D2'
       },
       maxWidth: {
         content: 1264
@@ -96,30 +97,23 @@ module.exports = {
             transform: 'translatey(0px)'
           },
           '50%': {
-            transform: 'translatey(-20px)',
+            transform: 'translatey(-20px)'
           },
           '100%': {
-            transform: 'translatey(0px)',
+            transform: 'translatey(0px)'
           }
         },
         starUp: {
           '0%': {
             transform: 'translateY(0px)',
-            width: 0,
-            height: 0,
-            opacity: 0,
+            opacity: 0
           },
-          '10%': {
-            transform: 'translateY(0px)',
-            width: 6,
-            height: 6,
-            opacity: 1,
+          '30%': {
+            opacity: 1
           },
           '100%': {
-            transform: 'translateY(-150px)',
+            transform: 'translateY(-50px)',
             opacity: 0,
-            width: 0,
-            height: 0.3,
           }
         }
       },
@@ -134,8 +128,8 @@ module.exports = {
         'slide-left-and-fade': 'slideLeftAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-in': 'fadeIn 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'float': 'float 6s ease-in-out infinite;',
-        'starUp': 'starUp 4s ease-in-out infinite'
+        float: 'float 6s ease-in-out infinite;',
+        starUp: 'starUp 6s ease-in-out infinite'
       },
       boxShadow: {
         'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)',
@@ -465,6 +459,9 @@ module.exports = {
           boxShadow: theme('boxShadow.dark-panel'),
           borderRadius: 12,
           border: '1px solid rgba(154, 201, 227, 0.102)'
+        },
+        '.sigil-text': {
+          textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)'
         }
       });
     })

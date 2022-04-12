@@ -9,7 +9,7 @@ import MonkeyImg from 'public/images/home/monkey-1.png';
 import UnicornImg from 'public/images/home/unicorn-guy-1.png';
 import SkyImg from 'public/images/home/sky.png';
 import LandImg from 'public/images/home/land.png';
-import HeaderBgMobile from 'public/images/home/header-bg-mobile.png';
+import HeaderBgMobile from 'public/images/home/header-bg-mobile.jpeg';
 import Slider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

@@ -6,9 +6,10 @@ import Modal from 'src/components/Modal';
 type Props = {
   open: boolean;
   onClose: () => void;
+  onJoin: () => void;
 };
 
-const AllianceModal: React.FC<Props> = ({ open, onClose }) => {
+const AllianceModal: React.FC<Props> = ({ open, onClose, onJoin }) => {
   return (
     <Modal
       open={open}
@@ -16,9 +17,11 @@ const AllianceModal: React.FC<Props> = ({ open, onClose }) => {
       overlayClassName="bg-[rgba(5,14,21,0.7)] backdrop-blur-[10px]">
       <Modal.Content includingHeader={false} className="!max-w-[380px] bg-transparent">
         <div className="relative rounded-lg bg-[url('/images/nodes/sigil/alliance-modal-bg.png')] bg-cover bg-top p-8 px-[38px]">
-          <span className="absolute top-6 right-6 w-6 text-[#09131A]">
-            <CloseIcon />
-          </span>
+          <Modal.Close asChild>
+            <button className="absolute top-6 right-6 w-6 text-[#09131A]">
+              <CloseIcon />
+            </button>
+          </Modal.Close>
           <img
             src="/images/nodes/sigil/alliance-modal-item.png"
             style={{
@@ -34,7 +37,9 @@ const AllianceModal: React.FC<Props> = ({ open, onClose }) => {
               Shoreditch hell of viral, blog echo park flexitarian tbh seitan cronut taxidermy
               mumblecore hot chicken.
             </p>
-            <button className="btn-lg btn-white mt-10">JOIN ALLIANCE</button>
+            <button className="btn-lg btn-white mt-10" onClick={onJoin}>
+              JOIN ALLIANCE
+            </button>
             <div className="mt-6 flex flex-col items-center text-[12px] leading-[1.2] text-brand-light-blue">
               <div className="flex items-center space-x-[5px]">
                 <span className="w-4">

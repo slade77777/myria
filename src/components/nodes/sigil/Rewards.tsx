@@ -1,7 +1,9 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
+import BoxIcon from 'src/components/icons/BoxIcon';
 import ClaimModal from './ClaimModal';
 import RewardItem, { Reward } from './RewardItem';
-import ShareTwitterModal from './ShareTwitterModal';
+import { SubtractLeft, SubtractRight } from './Subtract';
 
 const currentRewards: Reward[] = [
   {
@@ -63,14 +65,37 @@ const Rewards: React.FC = () => {
         }}
         item={claimItem}
       />
-      <div className="sigil-panel p-6 pb-8">
-        <div className="flex items-center justify-between">
-          <p className="text-[24px] font-extrabold leading-[1.15]">Rewards</p>
-          <button className="rounded-[4px] bg-[#1F2334] py-[9px] px-2 text-[14px] font-bold uppercase leading-[1.14] text-light">
-            MINTING DASHBOARD
-          </button>
+      <div className="relative flex h-full flex-col px-7">
+        <div className="">
+          <div className="flex items-center">
+            <div className="h-[1px] flex-1 bg-border-blue opacity-20">
+              <div className="absolute top-0 left-0 translate-x-[-7px] translate-y-[5px]">
+                <SubtractLeft />
+              </div>
+              <div className="absolute top-0 left-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue via-transparent to-transparent" />
+            </div>
+            <p className="sigil-text mx-8 text-[20px] font-extrabold leading-[1.25]">REWARDS</p>
+            <div className="h-[1px] flex-1 bg-border-blue opacity-20">
+              <div className="absolute top-0 right-0 translate-x-[7px] translate-y-[5px]">
+                <SubtractRight />
+              </div>
+              <div className="absolute top-0 right-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue via-transparent to-transparent" />
+            </div>
+          </div>
+          <div className="relative mt-1 flex justify-end">
+            <Link href='/inventory' passHref>
+              <a className='cursor-pointer'>
+                <p className="flex items-center space-x-1 text-[14px] font-extrabold leading-[1.25] text-brand-light-blue">
+                  <i className="w-4">
+                    <BoxIcon />
+                  </i>
+                  <span>INVENTORY</span>
+                </p>
+              </a>
+            </Link>
+          </div>
         </div>
-        <div className="mt-8">
+        <div className="mt-6 flex-grow overflow-auto">
           <div className="space-y-6">
             {currentRewards.map((rw, idx) => (
               <RewardItem key={idx} item={rw} onClaim={handleClaim} />

@@ -7,14 +7,14 @@ import Welcome from 'src/components/nodes/sigil/Welcome';
 import WelcomeMobile from 'src/components/nodes/sigil/WelcomeMobile';
 import Header from 'src/components/nodes/sigil/Header';
 import { isMobile } from 'src/utils';
-import Footer from 'src/components/nodes/sigil/Footer';
 import Sound from 'src/components/nodes/sigil/Sound';
+import { soundService, SUPPORT_SOUND } from 'src/sound';
 
 type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<Step>(0);
-  const [hoveredSigil, setHoveredSigil] = useState<string | null>(null);
+  const bgSoundRef = React.useRef<HTMLAudioElement|null>(null);
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {
@@ -30,25 +30,32 @@ const Sigil: React.FC = () => {
       case 0:
         return <Welcome onNext={goToNextStep} />;
       case 1:
-        return <ChooseAlliance onHoverSigil={setHoveredSigil} onNext={goToNextStep} />;
+        return <ChooseAlliance onNext={() => {
+          goToNextStep();
+        }} />;
       default:
         return <Dashboard />;
     }
   }, [currentStep, goToNextStep]);
 
-  const soundUrl = React.useMemo(() => {
-    switch(currentStep) {
-      case 0:
-        return '/sounds/sigil_bg.mp3';
-      case 1:
-        if (hoveredSigil) {
-          return '/sounds/sigil.wav';
-        }
-        break;
-      default:
-        return undefined;
+  React.useEffect(() => {
+    if (!bgSoundRef.current) {
+      setTimeout(() => {
+        bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG);
+      }, 2000);
     }
-  }, [currentStep, hoveredSigil]);
+   
+
+    return () => {
+      bgSoundRef.current?.pause();
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (![0, 1].includes(currentStep)) {
+      bgSoundRef.current?.pause();
+    }
+  }, [currentStep]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden">
@@ -57,30 +64,32 @@ const Sigil: React.FC = () => {
       {isMobile() ? (
         <WelcomeMobile />
       ) : (
-          <div className="relative min-h-screen bg-dark">
-            {currentStep !== 2 && (
-              <div className="absolute top-[calc(100vh-28px)] left-1/2 z-[2] w-full max-w-[577px] -translate-y-full -translate-x-1/2">
-                <SigilStepper
-                  steps={[
-                    {
-                      title: 'Connect Wallet'
-                    },
-                    {
-                      title: 'Choose Alliance'
-                    },
-                    {
-                      title: 'Claim your NFT reward'
-                    }
-                  ]}
-                  currentStep={currentStep}
-                />
-              </div>
-            )}
-            <div className="min-h-screen">{content}</div>
-          </div>
+        <div className="relative min-h-screen bg-dark">
+          {currentStep !== 2 && (
+            <div className="absolute z-50 top-[calc(100vh-28px)] left-1/2 w-full max-w-[577px] -translate-y-full -translate-x-1/2">
+              <SigilStepper
+                steps={[
+                  {
+                    title: 'Connect Wallet'
+                  },
+                  {
+                    title: 'Choose Alliance'
+                  },
+                  {
+                    title: 'Claim your NFT reward'
+                  }
+                ]}
+                currentStep={currentStep}
+              />
+            </div>
+          )}
+          <div className="min-h-screen">{content}</div>
+        </div>
       )}
 
-      <Sound soundUrl={soundUrl} />
+      {
+        [0, 1].includes(currentStep) && (<Sound />)
+      }
     </Page>
   );
 };

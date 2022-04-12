@@ -4,6 +4,7 @@ import { socialLinks } from 'src/configs';
 import MissionItem, { Mission } from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
 import ShareTwitterModal from './ShareTwitterModal';
+import { SubtractRight } from './Subtract';
 
 const Missions: React.FC = () => {
   const [openRegisterModal, setOpenRegisterModal] = useState(false);
@@ -97,9 +98,17 @@ const Missions: React.FC = () => {
         onClose={() => setOpenInviteModal(false)}
         link="https://myria.com/r/%112yb877a"
       />
-      <div className="sigil-panel p-4 pt-6">
-        <p className="text-[24px] font-bold leading-[1.2]">Missions</p>
-        <div className="mt-8 space-y-4">
+      <div className="relative flex h-full flex-col pr-8">
+        <div className="flex items-center">
+          <p className="sigil-text mr-4 text-[18px] font-extrabold leading-[1.25]">MISSIONS</p>
+          <div className="h-[1px] flex-1 bg-border-blue opacity-20">
+            <div className="absolute top-0 right-0 translate-x-[7px] translate-y-[4px]">
+              <SubtractRight />
+            </div>
+            <div className="absolute top-0 right-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent" />
+          </div>
+        </div>
+        <div className="mt-4 flex-grow space-y-4 overflow-auto">
           {missions.map((mission, index) => (
             <MissionItem key={index} {...mission} />
           ))}
