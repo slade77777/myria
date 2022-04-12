@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 
 type Job = {
   id: number;
-  label: string;
+  title: string;
   description: string;
-  link: string;
+  absolute_url: string;
+  location: {
+    name: string;
+  };
 };
 
 type Category = {
   id: number;
-  label: string;
+  name: string;
   jobs: Job[];
 };
 
@@ -17,11 +20,12 @@ export default function useCareerCategories() {
   const [data, setData] = useState<Category[]>([]);
 
   useEffect(() => {
-    fetch('https://cms-api.myria.com/position-categories')
+    fetch('https://api.greenhouse.io/v1/boards/myria/departments')
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        setData(data?.departments || []);
       });
   }, []);
+
   return data;
 }
