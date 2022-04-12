@@ -21,11 +21,11 @@ const data = [
     subTitle: <Trans>Unlock immense scale</Trans>,
     title: <Trans>Enabling true scalability while leveraging the Ethereum network</Trans>,
     description:
-      <Trans>Expereince low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution.  </Trans>
+      <Trans>Experience low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution.  </Trans>
   },
   {
     subTitle: <Trans>Save time. Ship faster. </Trans>,
-    title: <Trans>The easiest way to launch your blockchain game</Trans>,
+    title: <Trans>We make everything else easy so you can focus on your product</Trans>,
     description:
       <Trans>Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business.</Trans>
   },

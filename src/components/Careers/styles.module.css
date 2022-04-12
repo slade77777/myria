@@ -1,8 +1,0 @@
-.markdownContainer ul {
-  list-style: disc;
-  list-style-position: inside;
-  padding-left: 16px;
-}
-.markdownContainer p ~ p {
-  margin-top: 16px;
-}

@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
+import { ga, useGA4 } from 'src/lib/ga';
 import Badge from './Badge';
 
 import Logo from './icons/Logo';
@@ -123,6 +124,7 @@ const links = [
 ];
 
 const Footer: React.FC = () => {
+  const { event } = useGA4();
   return (
     <footer className="grid gap-y-[34px] md:gap-y-[50px] lg:grid-cols-[max-content_1fr] lg:grid-rows-[auto_auto] lg:gap-x-[100px] xl:gap-x-[180px]">
       <div>
@@ -131,7 +133,19 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-10 grid grid-flow-col justify-start gap-4 sm:gap-6 md:mt-[48px]">
           {Socials.map((item, idx) => (
-            <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
+            <a href={item.id === 'discord' ? 'https://discord.gg/vJKnWfamW9' : item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer" onClick={() => {
+              if (item.id === 'discord') {
+                event('Dicord Button Clicked', { button_location: 'Footer' });
+              }
+              if (item.id === 'twitter') {
+                event('Twitter Button Clicked', { button_location: 'Footer' });
+              }
+              ga.event('Click', {
+                event_category: 'Button',
+                event_label: `${item.name} Link`,
+                value: 'Footer'
+              })
+            }}>
               {item.icon}
             </a>
           ))}

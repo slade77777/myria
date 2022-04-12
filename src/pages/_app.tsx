@@ -4,11 +4,11 @@ import '../styles/globals.css';
 import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 
-import { useGA } from 'src/lib/ga';
 import { WalletProvider } from 'src/context/wallet';
 import { AuthenticationProvider } from 'src/context/authentication';
 import Tooltip from 'src/components/Tooltip';
 import LanguageProvider, { useLanguage } from 'src/context/language';
+import { useGATrackPageview } from 'src/lib/ga';
 import { t } from '@lingui/macro';
 import TabProvider from 'src/context/tabContext';
 
@@ -18,7 +18,7 @@ const WithLanguageStyle: React.FC<any> = ({ children }) => {
 };
 
 function App({ Component, pageProps }: AppProps) {
-  useGA();
+  useGATrackPageview();
   return (
     <LanguageProvider>
       <DefaultSeo

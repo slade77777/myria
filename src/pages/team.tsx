@@ -46,7 +46,7 @@ const data: Person[] = [
       </Trans>
     ),
     socials: {
-      twitter: 'https://twitter.com/gooseara',
+      twitter: '',
       linkedin: ''
     }
   },
@@ -126,18 +126,18 @@ const data: Person[] = [
     }
   },
   {
-    name: 'AJ Dimarucot',
-    position: <Trans>Art Creative Lead</Trans>,
+    name: 'Nick Baynes',
+    position: <Trans>Global Head of Studios</Trans>,
     description: (
       <Trans>
-        AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to
-        crafting brand identities. He has worked with global brands including Nike, Adidas and
-        Microsoft, among others.{' '}
+        Nick is an industry veteran with over 30 years’ leadership experience in the development,
+        production and business of making games. Previously founding AAA studio Hangar 13, owned by
+        2K.{' '}
       </Trans>
     ),
     socials: {
-      twitter: 'https://twitter.com/ajdimarucot',
-      linkedin: 'https://linkedin.com/in/ajdimarucot'
+      twitter: '',
+      linkedin: ''
     }
   },
   {
@@ -161,7 +161,7 @@ const data: Person[] = [
     description: (
       <Trans>
         Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting
-        brand identities. He has worked with global companies across industires such as
+        brand identities. He has worked with global companies across industries such as
         communications, financial institutions, media and more.
       </Trans>
     ),
@@ -171,17 +171,18 @@ const data: Person[] = [
     }
   },
   {
-    name: 'Antonio Molina',
-    position: <Trans>Games Producer</Trans>,
+    name: 'AJ Dimarucot',
+    position: <Trans>Art Creative Lead</Trans>,
     description: (
       <Trans>
-        With 15+ year experience working in the gaming industry, Antonio has contributed to some of
-        the worlds leading titles and brands such as The Witcher, Disney and more.
+        AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to
+        crafting brand identities. He has worked with global brands including Nike, Adidas and
+        Microsoft, among others.{' '}
       </Trans>
     ),
     socials: {
-      twitter: '',
-      linkedin: 'https://www.linkedin.com/in/antoniomolina34/'
+      twitter: 'https://twitter.com/ajdimarucot',
+      linkedin: 'https://linkedin.com/in/ajdimarucot'
     }
   },
 
@@ -203,17 +204,16 @@ const data: Person[] = [
 ];
 
 const Team: React.FC = () => {
-  
   return (
-    <Page action={"auto"}>
+    <Page action={'auto'}>
       <div className={`relative isolate ${bannerSpacingClassName}`}>
         <div
           style={{
             background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)'
           }}
           className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
-          {/* md:top-[50px]: minus banner */}
-        <div className={`absolute top-0 md:top-[50px] left-0 z-[-1] w-full`}>
+        {/* md:top-[50px]: minus banner */}
+        <div className={`absolute top-0 left-0 z-[-1] w-full md:top-[50px]`}>
           <Image
             src="/images/team/header-bg.png"
             alt=""
@@ -222,7 +222,7 @@ const Team: React.FC = () => {
             layout="responsive"
           />
         </div>
-        <section className={clsx(paddingX, 'hidden md:block pt-[255px] pb-[208px]')}>
+        <section className={clsx(paddingX, 'hidden pt-[255px] pb-[208px] md:block')}>
           <h1 className="mx-auto max-w-[729px] text-center text-[40px] font-bold leading-[1.25]">
             Contributing to the future of a decentralized internet
           </h1>
@@ -269,7 +269,7 @@ const Team: React.FC = () => {
           <h3 className="text-center text-[40px] font-bold leading-[1.25]">
             <Trans>Our Experience</Trans>
           </h3>
-          <div className="mt-[60px]">
+          <div className="mt-[60px] mx-auto max-w-content">
             <ExperenceLogos />
           </div>
         </section>
