@@ -248,6 +248,10 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
   };
 
   const [selectedAlliance, setSelectedAlliance] = useState<Sigil['id'] | null>(null);
+  const activeSigilData = React.useMemo(() => {
+    return SIGILS.find((sigil) => sigil.id === selectedAlliance);
+  }, [selectedAlliance]);
+  
   return (
     <>
       <AllianceModal
@@ -256,6 +260,8 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
         onClose={() => {
           setSelectedAlliance(null);
         }}
+        sigilName={activeSigilData?.name}
+        sigilImage={activeSigilData?.img}
       />
       <div className="relative top-[80px] grid min-h-[calc(100vh-80px)] min-w-[1200px] grid-cols-1 grid-rows-1 overflow-hidden">
         <div className="pointer-events-none fixed top-[-80px] h-full w-full object-cover object-center">
