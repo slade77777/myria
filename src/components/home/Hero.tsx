@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
     <div className="relative">
       <Slider {...settings}>
         <div>
-          <div className="flex h-[615px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:justify-start md:bg-[url('/images/home/banner-1_op.png')] md:pt-[137px] md:pl-[107px]">
+          <div className="flex h-[615px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:justify-start md:bg-[url('/images/home/banner-1_op.jpeg')] md:pt-[137px] md:pl-[107px] rounded-xl">
             <div className="text-center md:max-w-[539px] md:text-left">
               <p className="text-[28px] font-black leading-[1.15] text-[#93F6FF]">
                 <Trans>COMING SOON</Trans>

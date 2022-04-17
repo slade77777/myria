@@ -6,7 +6,7 @@ import BuyANodeLink from './BuyANode';
 const Program: React.FC = () => {
   return (
     <div className="grid gap-8 md:grid-cols-2">
-      <div className="relative isolate rounded-xl bg-[url('/images/program/panel-1.png')] bg-cover bg-center p-8 pb-[32px] md:pb-[86px]">
+      <div className="relative isolate rounded-xl bg-[url('/images/program/panel-1.jpeg')] bg-cover bg-center p-8 pb-[32px] md:pb-[86px]">
         <p className="max-w-[468px] text-[24px] font-bold leading-[1.25] md:text-[28px]">
           <Trans> Become a Myria node owner & receive rewards</Trans>
         </p>
@@ -27,7 +27,7 @@ const Program: React.FC = () => {
         </div>
 
       </div>
-      <div className="relative isolate rounded-xl bg-[url('/images/program/panel-2.png')] bg-cover bg-center p-8 pb-[70px] md:pb-[86px]">
+      <div className="relative isolate rounded-xl bg-[url('/images/program/panel-2.jpeg')] bg-cover bg-center p-8 pb-[70px] md:pb-[86px]">
         <p className="max-w-[468px] text-[24px] font-bold leading-[1.25] md:text-[28px]">
           <Trans> Gaming is evolving. Build with Myria! </Trans>
         </p>
