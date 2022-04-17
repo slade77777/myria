@@ -16,9 +16,9 @@ function Sound() {
 
   return (
     <footer className="fixed bottom-0 z-10 flex h-[80px] w-full items-center justify-end p-4 px-6">
-      <div className="flex cursor-pointer items-center justify-between">
+      <div className="flex cursor-pointer items-center justify-between" onClick={handleToggleSound}>
         {<div className="mr-3">{mute ? <MuteIcon /> : <SpeakerIcon />}</div>}
-        <p className="body-sm font-medium	" onClick={handleToggleSound}>
+        <p className="body-sm font-medium">
           {mute ? 'Unmute sound' : 'Mute sound'}
         </p>
       </div>
