@@ -23,6 +23,7 @@ interface ChooseAllianceProps {
 type Sigil = {
   id: string;
   img: string;
+  selectModalBgImg: string;
   className: string;
   width: number;
   height: number;
@@ -36,6 +37,7 @@ const SIGILS: Sigil[] = [
     id: 'a',
     order: 1,
     img: '/images/nodes/insignia/alliance_sigilA.png',
+    selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
     width: 584 / 2,
     height: 748 / 2,
     className: 'left-[1%] xl:left-[2%] w-[26%] xl:w-[24%]',
@@ -46,6 +48,7 @@ const SIGILS: Sigil[] = [
     id: 'b',
     order: 2,
     img: '/images/nodes/insignia/alliance_sigilB.png',
+    selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
     width: 584 / 2,
     height: 748 / 2,
     className: 'w-[26%] xl:w-[24%]',
@@ -56,6 +59,7 @@ const SIGILS: Sigil[] = [
     id: 'c',
     order: 3,
     img: '/images/nodes/insignia/alliance_sigilC.png',
+    selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
     width: 584 / 2,
     height: 748 / 2,
     className: 'right-[2%] xl:right-[3%] w-[26%] xl:w-[24%]',
@@ -261,7 +265,8 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
           setSelectedAlliance(null);
         }}
         sigilName={activeSigilData?.name}
-        sigilImage={activeSigilData?.img}
+        sigilDesc={activeSigilData?.desc}
+        sigilId={activeSigilData?.id}
       />
       <div className="relative top-[80px] grid min-h-[calc(100vh-80px)] min-w-[1200px] grid-cols-1 grid-rows-1 overflow-hidden">
         <div className="pointer-events-none fixed top-[-80px] h-full w-full object-cover object-center">
