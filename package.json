@@ -41,6 +41,7 @@
     "react-hook-form": "7.25.0",
     "react-markdown": "8.0.0",
     "react-player": "2.9.0",
+    "react-query": "^3.35.0",
     "react-slick": "0.28.1",
     "slick-carousel": "1.8.1",
     "valtio": "1.2.9",

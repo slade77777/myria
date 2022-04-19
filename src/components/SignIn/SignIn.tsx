@@ -1,7 +1,5 @@
-import clsx from 'clsx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../Input';
-import Textarea from '../Textarea';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { t, Trans } from '@lingui/macro';
@@ -10,7 +8,7 @@ import Link from 'next/link';
 import EyeIcon from '../icons/EyeIcon';
 import { useAuthenticationContext } from 'src/context/authentication';
 
-interface IFormSignInInput {
+export interface IFormSignInInput {
   email: string;
   password: string;
 }
@@ -29,9 +27,12 @@ const schema = yup
   .required();
 
 const SignIn: React.FC = () => {
-  const { register, openVerify } = useAuthenticationContext();
+  const { register, openVerify, loginError } = useAuthenticationContext();
   const [error, setError] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
+
+  useEffect(() => { setError(loginError) }, [loginError])
+
   const {
     register: registerForm,
     handleSubmit,
@@ -45,34 +46,10 @@ const SignIn: React.FC = () => {
     setVisiblePassword(!visiblePassword);
   };
 
-  const onSubmit = async (data: IFormSignInInput) => {
-    openVerify();
-    try {
-      setError('');
-      // setIsSubmitSuccess(false);
-
-      // await apiClient
-      //   .put('/subscription', data)
-      //   .then(() => setIsSubmitSuccess(true))
-      //   .catch((error) => {
-      //     setError(error.message);
-      //     setIsSubmitSuccess(false);
-      //   });
-      reset();
-    } catch (error: any) {
-      setError(error?.message);
-      // setIsSubmitSuccess(false);
-    }
-  };
-
-  const onClickSignUp = () => {
-    register();
-  };
-
   return (
     <div className="px-8">
       <p className="body mt-7 text-white">Sign in to your account</p>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(openVerify)} noValidate>
         <div className="mb-2">
           <Input
             placeholder={t`Enter your email`}
@@ -109,7 +86,7 @@ const SignIn: React.FC = () => {
             {t`Don’t have an account?`}{' '}
             <span className="text-gold">
               {/* <Link href="/" passHref> */}
-              <a className="text-brand-gold hover:cursor-pointer" onClick={onClickSignUp}>
+              <a className="text-brand-gold hover:cursor-pointer" onClick={register}>
                 <Trans>Sign up now</Trans>
               </a>
               {/* </Link> */}
