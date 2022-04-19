@@ -39,8 +39,8 @@ const SIGILS: Sigil[] = [
     width: 584 / 2,
     height: 748 / 2,
     className: 'left-[1%] xl:left-[2%] w-[26%] xl:w-[24%]',
-    name: 'Alliance ONE',
-    desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
+    name: 'FEDERATION',
+    desc: "With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts."
   },
   {
     id: 'b',
@@ -49,8 +49,8 @@ const SIGILS: Sigil[] = [
     width: 584 / 2,
     height: 748 / 2,
     className: 'w-[26%] xl:w-[24%]',
-    name: 'Alliance TWO',
-    desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
+    name: 'VECTOR PRIME',
+    desc: "Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion."
   },
   {
     id: 'c',
@@ -59,8 +59,8 @@ const SIGILS: Sigil[] = [
     width: 584 / 2,
     height: 748 / 2,
     className: 'right-[2%] xl:right-[3%] w-[26%] xl:w-[24%]',
-    name: 'Alliance THREE',
-    desc: "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry, drinking vinegar you probably haven't heard of them."
+    name: 'EQUINOX',
+    desc: "Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers."
   }
 ];
 
