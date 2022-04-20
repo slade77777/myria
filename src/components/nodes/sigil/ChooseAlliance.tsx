@@ -179,7 +179,7 @@ const Sigil = ({
           </span>
         </div>
         <div
-          className={`h-[70px] overflow-hidden transition-all delay-100 text-center w-[20vw] ${
+          className={`h-[70px] transition-all delay-100 text-center w-[20vw] ${
             isActive ? 'opacity-100': 'opacity-0'
           }`}>
           <span
