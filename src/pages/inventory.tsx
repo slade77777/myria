@@ -8,6 +8,7 @@ import Filter, { FilterList } from 'src/components/Filter';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import ChevronRightIcon from 'src/components/icons/ChevronRightIcon';
+import OpenInventoryChestModal from 'src/components/inventory/OpenChest';
 import Overlay from 'src/components/overlay/Overlay';
 import Page from 'src/components/Page';
 import SortBy from 'src/components/SortBy';
@@ -66,47 +67,51 @@ export const inventories: Inventory[] = Array(9)
   }));
 
 const InventoryItem = ({ item }: { item: Inventory }) => {
+  const [open, setOpen] = React.useState(false);
   return (
-    <div className="block h-[444px] w-full max-w-[328px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
-      <Overlay className="h-[200px] lg:h-[248px] w-full">
-        <Image src={item.image} alt="" layout="fill" objectFit="cover" />
-      </Overlay>
-      <div className="p-6">
-        <span className="mb-4 block text-[20px] font-extrabold">{item.name}</span>
-        <div className="mb-6 flex items-center justify-between">
-          <Badge>
-            <Trans>{item.type}</Trans>
-          </Badge>
-          <span className="text-[16px] font-normal text-light">
-            {item.qty}/{item.maxSupply}
-          </span>
-        </div>
-        <div className="flex items-center justify-between">
-          <span className="text-[16px] font-normal text-light">
-            <Trans>Sigil Event</Trans>
-          </span>
-          {item.isClaimed ? (
-            <div className="flex items-center font-bold text-green">
-              <span className="mr-2 w-[22px]">
-                <CheckIcon />
-              </span>
-              <span>
-                <Trans>Claimed</Trans>
-              </span>
-            </div>
-          ) : (
-            <button className="btn-sm btn-primary flex items-center">
-              <span className="relative top-[1px]">
-                <Trans>OPEN NOW</Trans>
-              </span>
-              <span className="w-[22px]">
-                <ChevronRightIcon />
-              </span>
-            </button>
-          )}
+    <>
+      <OpenInventoryChestModal open={open} onClose={() => setOpen(false)} />
+      <div className="block h-[444px] w-full max-w-[328px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
+        <Overlay className="h-[200px] lg:h-[248px] w-full">
+          <Image src={item.image} alt="" layout="fill" objectFit="cover" />
+        </Overlay>
+        <div className="p-6">
+          <span className="mb-4 block text-[20px] font-extrabold">{item.name}</span>
+          <div className="mb-6 flex items-center justify-between">
+            <Badge>
+              <Trans>{item.type}</Trans>
+            </Badge>
+            <span className="text-[16px] font-normal text-light">
+              {item.qty}/{item.maxSupply}
+            </span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-[16px] font-normal text-light">
+              <Trans>Sigil Event</Trans>
+            </span>
+            {item.isClaimed ? (
+              <div className="flex items-center font-bold text-green">
+                <span className="mr-2 w-[22px]">
+                  <CheckIcon />
+                </span>
+                <span>
+                  <Trans>Claimed</Trans>
+                </span>
+              </div>
+            ) : (
+              <button className="btn-sm btn-primary flex items-center" onClick={() => setOpen(true)}>
+                <span className="relative top-[1px]">
+                  <Trans>OPEN NOW</Trans>
+                </span>
+                <span className="w-[22px]">
+                  <ChevronRightIcon />
+                </span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
