@@ -1,14 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
-import React, { useCallback } from 'react';
-import WalletConnect from '@walletconnect/web3-provider';
-import Web3Modal from '../components/Web3Modal';
+import React, { useContext, useState } from 'react';
 import Modal from 'src/components/Modal';
 import SignIn from 'src/components/SignIn';
 import Register from 'src/components/Register';
 import { Verify } from 'src/components/SliderCapcha';
 import puzzle from '../../public/images/capcha.png';
+import { IFormSignInInput } from 'src/components/SignIn/SignIn';
+import { IFormRegisterInput } from 'src/components/Register/Register';
+import apiClient from 'src/client';
+import { useMutation } from 'react-query';
 
-const VerifyModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
+const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content
@@ -21,7 +22,7 @@ const VerifyModal = ({ open, onClose }: { open: boolean; onClose?: () => void })
           visible={true}
           imgUrl={puzzle.src}
           text="Slide to complete the puzzle"
-          onSuccess={() => alert('success')}
+          onSuccess={onSuccess}
           onFail={() => alert('fail')}
         />
       </Modal.Content>
@@ -54,8 +55,11 @@ interface IAuthenticationContext {
   login: () => void;
   register: () => void;
   setUser: (user: any) => void;
-  openVerify: () => void;
+  openVerify: (data: IFormSignInInput) => void;
+  doRegister: (data: IFormRegisterInput) => void;
   closeVerify: () => void;
+  loginError: string;
+  registerError: string;
 }
 
 const AuthenticationContext = React.createContext<IAuthenticationContext>(
@@ -67,6 +71,42 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const [openSignIn, setOpenSignIn] = React.useState<boolean>(false);
   const [openRegister, setOpenRegister] = React.useState<boolean>(false);
   const [openVerifyModal, setOpenVerifyModal] = React.useState(false);
+
+  const [loginData, setLoginData] = useState<IFormSignInInput>();
+  const [loginError, setLoginError] = useState<string>('');
+
+  const [registerData, setRegisterData] = useState<IFormRegisterInput>();
+  const [registerError, setRegisterError] = useState<string>('');
+
+  const { isLoading: isPostingLogin, mutate: postLogin } = useMutation(
+    async () => { return await apiClient.post(`/accounts/login`, loginData); },
+    {
+      onSuccess: (res) => {
+        // Todo: Handle result and cache token
+        console.log(res)
+        setOpenSignIn(false);
+      },
+      onError: (err) => {
+        console.log(err)
+        setLoginError("Login error")
+      },
+    }
+  );
+
+  const { isLoading: isPostingRegister, mutate: postRegister } = useMutation(
+    async () => { return await apiClient.post(`/accounts/register`, registerData); },
+    {
+      onSuccess: (res) => {
+        // Todo: Handle result and cache token
+        console.log(res)
+        setOpenRegister(false);
+      },
+      onError: (err) => {
+        console.log(err)
+        setRegisterError("Register error")
+      },
+    }
+  );
 
   const login = () => {
     setOpenSignIn(true);
@@ -80,7 +120,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     setOpenVerifyModal(false);
   };
 
-  const openVerify = () => {
+  const openVerify = (data: IFormSignInInput) => {
+    setLoginData(data)
     setOpenVerifyModal(true);
     setOpenSignIn(false);
   };
@@ -89,12 +130,23 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     setOpenVerifyModal(false);
   };
 
+  const onVerifySuccess = () => {
+    setOpenVerifyModal(false);
+    setOpenSignIn(true)
+    postLogin()
+  }
+
+  const doRegister = (data: IFormRegisterInput) => {
+    setRegisterData(data)
+    postRegister()
+  };
+
   return (
     <AuthenticationContext.Provider
-      value={{ user, login, register, setUser, openVerify, closeVerify }}>
+      value={{ user, login, register, setUser, openVerify, doRegister, closeVerify, loginError, registerError }}>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />
       <RegisterModal open={openRegister} onClose={() => setOpenRegister(false)} />
-      <VerifyModal open={openVerifyModal} onClose={closeVerify} />
+      <VerifyModal open={openVerifyModal} onClose={closeVerify} onSuccess={onVerifySuccess} />
       {children}
     </AuthenticationContext.Provider>
   );

@@ -1,18 +1,16 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../Input';
-import Textarea from '../Textarea';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { t, Trans } from '@lingui/macro';
 import * as yup from 'yup';
-import Link from 'next/link';
 import EyeIcon from '../icons/EyeIcon';
 import CheckIcon from '../icons/CheckIcon';
 import WarningIcon from '../icons/WarningIcon';
 import { useAuthenticationContext } from 'src/context/authentication';
 
-interface IFormRegisterInput {
+export interface IFormRegisterInput {
   firstName: string;
   lastName: string;
   username: string;
@@ -79,7 +77,9 @@ const Register: React.FC = () => {
   });
   const watchFields = watch(['password']);
 
-  const { user, setUser } = useAuthenticationContext();
+  const { doRegister, registerError } = useAuthenticationContext();
+
+  useEffect(() => { setError(registerError) }, [registerError])
 
   const toggleVisiblePassword = () => {
     setVisiblePassword(!visiblePassword);
@@ -97,31 +97,10 @@ const Register: React.FC = () => {
     return () => subscription.unsubscribe();
   }, [watch]);
 
-  const onSubmit = async (data: IFormRegisterInput) => {
-    console.log(data);
-    try {
-      setError('');
-      setUser('xyz');
-      // setIsSubmitSuccess(false);
-
-      // await apiClient
-      //   .put('/subscription', data)
-      //   .then(() => setIsSubmitSuccess(true))
-      //   .catch((error) => {
-      //     setError(error.message);
-      //     setIsSubmitSuccess(false);
-      //   });
-      reset();
-    } catch (error: any) {
-      setError(error?.message);
-      // setIsSubmitSuccess(false);
-    }
-  };
-
   return (
     <div className="px-8 text-white">
       <p className="body mt-7">Register for a Myria account</p>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(doRegister)} noValidate>
         <div className="mb-2 grid grid-cols-1 gap-1 md:grid-cols-2 md:gap-8">
           <Input
             placeholder={t`First name`}
