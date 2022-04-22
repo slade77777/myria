@@ -67,12 +67,20 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                           onClick={() => {
                             if (item.id === 'community') {
                               if (link.id === 'discord') {
-                                event('Dicord Button Clicked', { button_location: 'Community Links' });
+                                event('Dicord Button Clicked', {
+                                  button_location: 'Community Links'
+                                });
                               }
                               if (link.id === 'twitter') {
-                                event('Twitter Button Clicked', { button_location: 'Community Links' });
+                                event('Twitter Button Clicked', {
+                                  button_location: 'Community Links'
+                                });
                               }
-                              ga.event('Click', { event_category: 'Link', event_label: `${link.text} Link`, value: 'Community Links' })
+                              ga.event('Click', {
+                                event_category: 'Link',
+                                event_label: `${link.text} Link`,
+                                value: 'Community Links'
+                              });
                             }
                           }}
                           target={link.target}
@@ -146,7 +154,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
                 filter: 'drop-shadow(0px 0px 10px #F5B941)'
               }}
               className="btn-sm btn-secondary">
-              <Trans>FREE NFT MINT</Trans>
+              <Trans>Free Sigil NFT</Trans>
             </a>
           </Link>
         );
@@ -155,10 +163,14 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           <a
             onClick={() => {
               event('Dicord Button Clicked', { button_location: 'Top Button' });
-              ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Top Button' })
+              ga.event('Click', {
+                event_category: 'Button',
+                event_label: 'Discord Link',
+                value: 'Top Button'
+              });
             }}
             className="btn-sm btn-secondary"
-            href='https://discord.gg/7K49nXJ49R'
+            href="https://discord.gg/7K49nXJ49R"
             target="_blank"
             rel="noreferrer">
             <Trans>JOIN DISCORD</Trans>

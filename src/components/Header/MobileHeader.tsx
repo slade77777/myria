@@ -78,7 +78,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                 filter: 'drop-shadow(0px 0px 10px #F5B941)'
               }}
               className="btn-sm btn-secondary">
-              <Trans>FREE NFT MINT</Trans>
+              <Trans>Free Sigil NFT</Trans>
             </a>
           </Link>
         );
@@ -193,17 +193,28 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                               {item.children!.map((link, idx) => (
                                 <li key={idx}>
                                   <Link href={link.url as string}>
-                                    <a target={link.target} className="text-brand-gold" onClick={() => {
-                                      if (item.id === 'community') {
-                                        if (link.id === 'discord') {
-                                          event('Dicord Button Clicked', { button_location: 'Community Links' });
+                                    <a
+                                      target={link.target}
+                                      className="text-brand-gold"
+                                      onClick={() => {
+                                        if (item.id === 'community') {
+                                          if (link.id === 'discord') {
+                                            event('Dicord Button Clicked', {
+                                              button_location: 'Community Links'
+                                            });
+                                          }
+                                          if (link.id === 'twitter') {
+                                            event('Twitter Button Clicked', {
+                                              button_location: 'Community Links'
+                                            });
+                                          }
+                                          ga.event('Click', {
+                                            event_category: 'Link',
+                                            event_label: `${link.text} Link`,
+                                            value: 'Community Links'
+                                          });
                                         }
-                                        if (link.id === 'twitter') {
-                                          event('Twitter Button Clicked', { button_location: 'Community Links' });
-                                        }
-                                        ga.event('Click', { event_category: 'Link', event_label: `${link.text} Link`, value: 'Community Links' })
-                                      }
-                                    }}>
+                                      }}>
                                       {link.text}
                                     </a>
                                   </Link>

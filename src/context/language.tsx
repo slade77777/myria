@@ -33,7 +33,7 @@ dynamicActivate(i18n, DEFAULT_LANGUAGE, messages);
 const LanguageProvider: React.FC = ({ children }) => {
   const [language, setLang] = useState(DEFAULT_LANGUAGE);
 
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(true);
   const readyRef = useRef(ready);
   readyRef.current = ready;
 
@@ -41,14 +41,14 @@ const LanguageProvider: React.FC = ({ children }) => {
     setLang(getLanguageFromLocalStorage());
   }, []);
 
-  useEffect(() => {
-    (async () => {
-      await dynamicActivate(i18n, language);
-      if (language === getLanguageFromLocalStorage() && !readyRef.current) {
-        setReady(true);
-      }
-    })();
-  }, [language]);
+  // useEffect(() => {
+  //   (async () => {
+  //     await dynamicActivate(i18n, language);
+  //     if (language === getLanguageFromLocalStorage() && !readyRef.current) {
+  //       setReady(true);
+  //     }
+  //   })();
+  // }, [language]);
 
   const handleChangeLanguage = useCallback((language: Language) => {
     setLanguageToLocalStorage(language);

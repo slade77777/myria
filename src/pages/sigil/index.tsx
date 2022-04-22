@@ -13,7 +13,7 @@ import { soundService, SUPPORT_SOUND } from 'src/sound';
 type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState<Step>(2);
+  const [currentStep, setCurrentStep] = useState<Step>(0);
   const bgSoundRef = React.useRef<HTMLAudioElement | null>(null);
 
   const goToNextStep = useCallback(() => {
