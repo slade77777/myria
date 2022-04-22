@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage } from '../context/language';
 import { Language } from '../i18n';
 import DropdownMenu from './DropdownMenu';
 import ChevronDownIcon from './icons/ChevronDownIcon';

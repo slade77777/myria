@@ -70,21 +70,28 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             <button className="btn-lg btn-secondary">Log in</button>
           </>
         );
+      case 'mint':
+        return (
+          <Link href={'/sigil'}>
+            <a
+              style={{
+                filter: 'drop-shadow(0px 0px 10px #F5B941)'
+              }}
+              className="btn-sm btn-secondary">
+              <Trans>Free Sigil NFT</Trans>
+            </a>
+          </Link>
+        );
       default:
         return (
           <div>
-            {/* <a
+            <a
               href={socialLinks.discord}
               target="_blank"
               className="btn-lg btn-primary col-span-2 w-full text-center"
               rel="noreferrer">
               <Trans>JOIN DISCORD</Trans>
-            </a> */}
-            <Link href="/sigil">
-              <a className="btn-lg btn-primary col-span-2 w-full text-center">
-                <Trans>Free Sigil NFT</Trans>
-              </a>
-            </Link>
+            </a>
             <div className="mt-[30px] grid grid-flow-col justify-center gap-4 sm:gap-6">
               {Socials.map((item, idx) => (
                 <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
@@ -139,7 +146,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             'grid flex-grow content-start gap-[33px] overflow-auto px-[24px] pb-4 pt-8 text-[18px] font-medium uppercase leading-[1.25] text-white'
           )}>
           {links
-            .filter((link) => !link.action || link.action === action)
+            .filter((link) => !link.action || link.action.includes(action))
             .map((item, idx) => {
               if (item.inactive) {
                 return (

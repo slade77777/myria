@@ -19,7 +19,7 @@ msgstr ""
 msgid "2 CPU Cores"
 msgstr "2 CPU Çekirdeği"
 
-#: src/pages/nodes.tsx:131
+#: src/pages/nodes/index.tsx:131
 msgid "60 GB Disk Space"
 msgstr "60 GB Disk Alanı"
 
@@ -55,7 +55,7 @@ msgstr "<0>Düğümünüzü bulutta mı yoksa yerel olarak mı çalıştırmayı
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "Blok zinciri oyunları ve dünyalarından oluşan <0>merkezi olmayan bir ekosistem</0>"
 
-#: src/pages/nodes.tsx:137
+#: src/pages/nodes/index.tsx:137
 msgid "A Stable Internet Connection"
 msgstr "Kararlı İnternet Bağlantısı"
 
@@ -69,7 +69,15 @@ msgstr ""
 
 #: src/pages/about-us.tsx:106
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
-msgstr "Verizon, Vanguard, Kayo Streaming gibi birçok global şirket için organizasyonel dönüşümlere odaklanan, yönetim danışmanlığı alanında 8 yılı aşkın süredir dinamik, girişimci bir yönetici. Kısa süre önce aliens.com'u kurdu."
+msgstr ""
+
+#: src/components/Register/Register.tsx:31
+msgid "A mixture of both uppercase and lowercase letters"
+msgstr ""
+
+#: src/components/Register/Register.tsx:35
+msgid "A mixture of letters and numbers"
+msgstr ""
 
 #: src/pages/team.tsx:101
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
@@ -126,7 +134,7 @@ msgstr "Jeton tabanlı oyun ekonomileri ve NFT'ler için topluluğa fayda sağla
 msgid "An objective-based shooter game"
 msgstr "Hedefe dayalı nişancı oyunu"
 
-#: src/pages/nodes.tsx:134
+#: src/pages/nodes/index.tsx:134
 msgid "An x86/X64 Processor"
 msgstr "x86/X64 İşlemci"
 
@@ -162,6 +170,10 @@ msgstr "Sanat Yaratıcı Lideri"
 #: src/components/interop/MobileInterop.tsx:131
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "Myria'da, NFT'lerin oyunculara yalnızca doğrulanabilir sahiplik sağlamaları gerektiğine değil, aynı zamanda NFT'lerini bir oyundan diğerine taşımalarına da izin vermesi gerektiğine inanıyoruz."
+
+#: src/components/Register/Register.tsx:27
+msgid "At least 8 characters—the more characters, the better"
+msgstr ""
 
 #: src/components/Video/Setting.tsx:18
 msgid "Autoplay"
@@ -212,7 +224,7 @@ msgstr "Brock, teknoloji girişimlerinde çalışan 10 yılı aşkın deneyime s
 msgid "Build your blockchain game with Myria"
 msgstr ""
 
-#: src/pages/nodes.tsx:103
+#: src/pages/nodes/index.tsx:103
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "Düğüm lisansı satın almak, sahibine düğümü (yerel veya bulutta) çalıştırma ve yönetim tarafından belirlenen ödülleri alma hakkı verir."
 
@@ -269,6 +281,14 @@ msgstr "Topluluk Lideri"
 msgid "Compliance support"
 msgstr ""
 
+#: src/components/Register/Register.tsx:174
+msgid "Confirm password"
+msgstr ""
+
+#: src/components/Register/Register.tsx:61
+msgid "Confirm password is required!"
+msgstr ""
+
 #: src/pages/contact.tsx:52
 msgid "Connect with us"
 msgstr "Bizimle iletişime geçin"
@@ -309,7 +329,7 @@ msgstr ""
 msgid "Decentralize the network by providing computing resources"
 msgstr "Bilgi işlem kaynakları sunarak ağı merkezi olmayan hale getirin"
 
-#: src/pages/nodes.tsx:154
+#: src/pages/nodes/index.tsx:154
 msgid "Details will be announced soon."
 msgstr "Detaylar yakında açıklanacak."
 
@@ -317,7 +337,11 @@ msgstr "Detaylar yakında açıklanacak."
 msgid "Discover more"
 msgstr ""
 
-#: src/pages/nodes.tsx:37
+#: src/components/SignIn/SignIn.tsx:109
+msgid "Don’t have an account?"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:37
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Her düğümün Myria zincirinde önerilen değişiklikler üzerinde oy kullanmasına izin verilir ve düğümler ayrıca Myriaverse boyunca daha fazla oylama gücüne sahip olacaktır."
 
@@ -330,7 +354,13 @@ msgstr "Ekosistem"
 msgid "Education and support"
 msgstr "Eğitim ve destek"
 
+#: src/components/Register/Register.tsx:150
+msgid "Email"
+msgstr ""
+
 #: src/components/GetInTouch.tsx:27
+#: src/components/Register/Register.tsx:53
+#: src/components/SignIn/SignIn.tsx:23
 #: src/components/Subscribe.tsx:20
 msgid "Email is required!"
 msgstr "Email gereklidir!"
@@ -361,6 +391,10 @@ msgstr ""
 #: src/pages/about-us.tsx:314
 msgid "Enhancing the power of play through blockchain, enabling economic access and ownership, and driving a new era of opportunity, exploration and freedom."
 msgstr "Blok zincir aracılığıyla oyunun gücünü artırmak, ekonomik erişim ve mülkiyeti sağlamak ve dünyadaki her insan için yeni bir fırsat, keşif ve özgürlük çağını başlatmak."
+
+#: src/components/SignIn/SignIn.tsx:78
+msgid "Enter your email"
+msgstr ""
 
 #: src/components/Subscribe.tsx:74
 msgid "Enter your email address"
@@ -481,7 +515,7 @@ msgstr ""
 msgid "Home"
 msgstr "Ana Sayfa"
 
-#: src/pages/nodes.tsx:101
+#: src/pages/nodes/index.tsx:101
 msgid "How can I become a Myria node operator?"
 msgstr "Nasıl Myria düğüm operatörü olabilirim?"
 
@@ -494,11 +528,11 @@ msgstr "Nasıl Myria düğüm operatörü olabilirim?"
 msgid "How it works"
 msgstr "Nasıl çalışır"
 
-#: src/pages/nodes.tsx:163
+#: src/pages/nodes/index.tsx:163
 msgid "How many Myria node licenses will be released?"
 msgstr "Kaç Myria düğüm lisansı yayınlanacak?"
 
-#: src/pages/nodes.tsx:152
+#: src/pages/nodes/index.tsx:152
 msgid "How much will a Myria node license cost?"
 msgstr "Bir Myria düğüm lisansının maliyeti nedir?"
 
@@ -527,6 +561,8 @@ msgid "Instantly reach and build an engaged player community of evangelists arou
 msgstr ""
 
 #: src/components/GetInTouch.tsx:26
+#: src/components/Register/Register.tsx:52
+#: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:19
 msgid "Invalid email!"
 msgstr "Geçersiz e-posta!"
@@ -730,7 +766,7 @@ msgstr ""
 msgid "Myria node license sales are anticipated to commence in March 2022 (subject to change)."
 msgstr "Myria düğümü lisans satışlarının Mart 2022'de başlaması bekleniyor (değişebilir)."
 
-#: src/pages/nodes.tsx:24
+#: src/pages/nodes/index.tsx:24
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Myria düğüm operatörleri, düğüm çalışmaları için günlük $MYRIA jeton ödülleri alacaklar."
 
@@ -780,7 +816,7 @@ msgstr "Avatarınızın şekli ve boyutu ne olursa olsun, hepsinde aynı NFT'yi 
 msgid "Node owner rewards"
 msgstr "Düğüm sahibi ödülleri"
 
-#: src/pages/nodes.tsx:51
+#: src/pages/nodes/index.tsx:51
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "Düğüm sahipleri ayrıca, düğüm operatörleri ve genel topluluk üyeleri olarak itibar puanlarına dayalı olarak NFT hediyeleri ve belirteçleri ile ödüllendirilecekler."
 
@@ -850,6 +886,11 @@ msgstr "Meta veri deposu kimliğine sahip olun. Herhangi bir yerde. Herhangi Oyu
 msgid "Partner Lead"
 msgstr "İş Ortağı Lideri"
 
+#: src/components/Register/Register.tsx:57
+#: src/components/SignIn/SignIn.tsx:27
+msgid "Password is required!"
+msgstr ""
+
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
 msgstr "Oyna ve kazan"
@@ -863,11 +904,11 @@ msgstr "<0>$MYRIA</0> tarafından desteklenir ve yönetilir"
 msgid "Powered by the community"
 msgstr "Topluluk tarafından desteklenmektedir"
 
-#: src/pages/nodes.tsx:200
+#: src/pages/nodes/index.tsx:200
 msgid "Powered by the community of player-run nodes"
 msgstr "Oyuncu tarafından işletilen düğümler topluluğu tarafından desteklenmektedir"
 
-#: src/pages/nodes.tsx:191
+#: src/pages/nodes/index.tsx:191
 msgid "Pre register now"
 msgstr "Şimdi ön kayıt ol"
 
@@ -902,7 +943,7 @@ msgstr ""
 msgid "Releasing soon"
 msgstr "Yakında piyasaya sürülecek"
 
-#: src/pages/nodes.tsx:182
+#: src/pages/nodes/index.tsx:182
 msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
 msgstr "Bir düğüm çalıştırın ve <0>$MYRIA</0> ve NFT ödülleri kazanın"
 
@@ -969,7 +1010,7 @@ msgstr ""
 
 #: src/pages/studios.tsx:268
 msgid "TOKEN LAUNCH COMING SOON"
-msgstr "JETON SATIŞI YAKINDA"
+msgstr ""
 
 #: src/components/Footer.tsx:100
 msgid "Team"
@@ -987,7 +1028,7 @@ msgstr "Mesaj için teşekkürler. 24-48 saat içinde sizinle iletişime geçece
 msgid "Thank you for subscribing!"
 msgstr "Abone olduğunuz için teşekkür ederiz!"
 
-#: src/pages/nodes.tsx:203
+#: src/pages/nodes/index.tsx:203
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "Myria zinciri, oyuncu tarafından işletilen bir düğüm ağı ile desteklenir. Düğüm operatörü olmak için ev bilgisayarınızı kullanın ve ekosisteme katkınız için ödüller ve avantajlar elde edin."
 
@@ -1044,7 +1085,15 @@ msgstr "Myriaverse aracılığıyla birleştirilmiş"
 msgid "Unlock immense scale"
 msgstr ""
 
-#: src/pages/nodes.tsx:35
+#: src/components/Register/Register.tsx:143
+msgid "Username"
+msgstr ""
+
+#: src/components/Register/Register.tsx:49
+msgid "Username is required!"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:35
 msgid "Voting rights"
 msgstr "Oy hakları"
 
@@ -1086,19 +1135,19 @@ msgstr ""
 msgid "We’re hiring, join the future of gaming"
 msgstr "İşe alıyoruz, oyunun geleceğine katılın"
 
-#: src/pages/nodes.tsx:111
+#: src/pages/nodes/index.tsx:111
 msgid "What are the software and hardware requirements to run a node?"
 msgstr "Bir düğümü çalıştırmak için gereken yazılım ve donanım gereksinimleri nelerdir?"
 
-#: src/pages/nodes.tsx:62
+#: src/pages/nodes/index.tsx:62
 msgid "What is a Myria node?"
 msgstr "Myria düğümü nedir?"
 
-#: src/pages/nodes.tsx:82
+#: src/pages/nodes/index.tsx:82
 msgid "What rewards do Myria node operators receive?"
 msgstr "Myria düğüm operatörleri hangi ödülleri alıyor?"
 
-#: src/pages/nodes.tsx:144
+#: src/pages/nodes/index.tsx:144
 msgid "When will Myria node licenses be sold?"
 msgstr "Myria düğüm lisansları ne zaman satılacak?"
 
@@ -1116,7 +1165,7 @@ msgstr "Oyun endüstrisinde 15 yılı aşkın deneyime sahip olan Antonio, The W
 msgid "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
 msgstr "NFT'niz dijital kimliğinizdir. Metaverse keşiflerinizde NFT'nizi yanınıza alın. Farklı oyunlarda ve dünyalarda donanın ve seviye atlayın. Myria ile meta veri tabanı kimliğinize gerçekten sahip olun."
 
-#: src/pages/nodes.tsx:197
+#: src/pages/nodes/index.tsx:197
 msgid "a decentralized ecosystem"
 msgstr "merkezi olmayan bir ekosistem"
 

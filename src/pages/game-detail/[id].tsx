@@ -361,15 +361,15 @@ const GameDetail: React.FC = () => {
           style={{
             paddingTop: headerHeight
           }}
-          className={clsx(paddingX, 'relative isolate md:min-h-screen mb-[120px] ')}>
-          <div className="absolute left-0 h-[809px] w-full z-[-1]">
-            <div className="relative w-full h-full ">
+          className={clsx(paddingX, 'relative isolate mb-[120px] md:min-h-screen ')}>
+          <div className="absolute left-0 z-[-1] h-[809px] w-full">
+            <div className="relative h-full w-full ">
               <Image src={headerBg} alt="" layout="fill" objectFit="cover" />
             </div>
           </div>
-          <div className="w-full mx-auto mt-10 max-w-content">
-            <h3 className="font-extrabold text-center md:text-left heading-lg">{title}</h3>
-            <div className="flex flex-col lg:flex-row mt-[32px] lg:items-start">
+          <div className="mx-auto mt-10 w-full max-w-content">
+            <h3 className="heading-lg text-center font-extrabold md:text-left">{title}</h3>
+            <div className="mt-[32px] flex flex-col lg:flex-row lg:items-start">
               <div className="lg:w-[calc((100%-32px)*0.675)]">
                 <div>
                   <FirstSlider
@@ -386,9 +386,9 @@ const GameDetail: React.FC = () => {
                   />
                 </div>
                 <div className="">
-                  <p className="mt-[70px] body-lg">{description}</p>
+                  <p className="body-lg mt-[70px]">{description}</p>
                   {image && (
-                    <div className="flex mt-[84px] rounded-[5px] overflow-hidden">
+                    <div className="mt-[84px] flex overflow-hidden rounded-[5px]">
                       <Image src={image.src} alt="" width={image.width} height={image.height} />
                     </div>
                   )}
@@ -396,7 +396,7 @@ const GameDetail: React.FC = () => {
                     <div key={idx} className="mt-[48px] ">
                       <h4 className="heading-sm">{item.heading}</h4>
                       {item.paragraph?.map((p, idx) => (
-                        <p className="mt-6 body text-light" key={idx}>
+                        <p className="body mt-6 text-light" key={idx}>
                           {p}
                         </p>
                       ))}
@@ -404,25 +404,25 @@ const GameDetail: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <div className="lg:sticky top-5 order-[-1] mb-6 lg:mb-0 lg:order-1 lg:ml-[32px] lg:w-[calc((100%-32px)*0.325)]">
+              <div className="top-5 order-[-1] mb-6 lg:sticky lg:order-1 lg:mb-0 lg:ml-[32px] lg:w-[calc((100%-32px)*0.325)]">
                 <div className="lg:hidden">
                   <img src={logoMobile} className="w-full" alt="" />
                 </div>
-                <div className="hidden lg:flex px-[30px] justify-center">
+                <div className="hidden justify-center px-[30px] lg:flex">
                   <img src={logo} alt="" />
                 </div>
-                <div className="flex flex-col mt-[32px] bg-brand-deep-blue p-[32px] rounded-[20px]">
+                <div className="mt-[32px] flex flex-col rounded-[20px] bg-brand-deep-blue p-[32px]">
                   <div className="grid gap-6">
                     {info.map((item, idx) => (
                       <div className="flex items-center justify-between" key={idx}>
                         <p className="body-sm">{item.label}</p>
-                        <div className="py-[7px] px-[12px] caption font-bold bg-[#0F2F45] rounded-[8px] text-brand-light-blue">
+                        <div className="caption rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold text-brand-light-blue">
                           {item.value}
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="order-[-1] mb-6 md:mb-0 md:mt-[48px] md:order-1 ">
+                  <div className="order-[-1] mb-6 md:order-1 md:mb-0 md:mt-[48px] ">
                     {/* <button
                       className="justify-center w-full btn-lg bg-[rgba(255,255,255,0.2)] text-[rgba(255,255,255,0.4)]"
                       disabled>
@@ -434,7 +434,7 @@ const GameDetail: React.FC = () => {
                     <a
                       href={game.discord}
                       target="_blank"
-                      className="flex items-center justify-center w-full mt-6 btn-icon btn-white"
+                      className="btn-icon btn-white mt-6 flex w-full items-center justify-center"
                       rel="noreferrer"
                       onClick={() => {
                         event('Dicord Button Clicked', { button_location: 'Game', game_name: game.title })

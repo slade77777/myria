@@ -24,10 +24,19 @@ module.exports = {
         'brand-light-blue': '#9AC9E3',
         'brand-white': '#FFFFFF',
         dark: '#050E15',
-        light: '#97AAB5'
+        light: '#97AAB5',
+        'light-green': '#9ECEAB',
+        'light-red': '#D55E5E',
+        purple: '#8E74D3',
+        green: '#41F59F',
+        flat: '#A9A6B1',
+        'border-blue': '#5BA7D2'
       },
       maxWidth: {
         content: 1264
+      },
+      boxShadow: {
+        'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
       },
       keyframes: {
         slideDown: {
@@ -82,6 +91,30 @@ module.exports = {
         fadeOut: {
           '0%': { opacity: 1 },
           '100%': { opacity: 0 }
+        },
+        float: {
+          '0%': {
+            transform: 'translatey(0px)'
+          },
+          '50%': {
+            transform: 'translatey(-20px)'
+          },
+          '100%': {
+            transform: 'translatey(0px)'
+          }
+        },
+        starUp: {
+          '0%': {
+            transform: 'translateY(0px)',
+            opacity: 0
+          },
+          '30%': {
+            opacity: 1
+          },
+          '100%': {
+            transform: 'translateY(-50px)',
+            opacity: 0,
+          }
         }
       },
       animation: {
@@ -94,11 +127,16 @@ module.exports = {
         'slide-right-and-fade': 'slideRightAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'slide-left-and-fade': 'slideLeftAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-in': 'fadeIn 700ms cubic-bezier(0.16, 1, 0.3, 1)',
-        'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards'
+        'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        float: 'float 6s ease-in-out infinite;',
+        starUp: 'starUp 6s ease-in-out infinite'
       },
       boxShadow: {
         'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)',
         'light-panel': '0px 0px 40px rgba(154, 201, 227, 0.4)'
+      },
+      backgroundImage: {
+        hightlight: 'linear-gradient(135.49deg, #FFFFFF 22.84%, rgba(255, 255, 255, 0) 55.58%)'
       }
     }
   },
@@ -178,6 +216,22 @@ module.exports = {
             '&[data-side="left"]': { animation: theme('animation.slide-right-and-fade') }
           }
         },
+        '.tooltip-content': {
+          background: theme('colors.brand-deep-blue'),
+          color: theme('colors.light'),
+          padding: 16,
+          fontSize: 12,
+          lineHeight: 1.5,
+          borderRadius: 8,
+          boxShadow: theme('boxShadow.dark-panel'),
+          willChange: 'transform, opacity',
+          '&[data-state="open"]': {
+            '&[data-side="top"]': { animation: theme('animation.slide-down-and-fade') },
+            '&[data-side="right"]': { animation: theme('animation.slide-left-and-fade') },
+            '&[data-side="bottom"]': { animation: theme('animation.slide-up-and-fade') },
+            '&[data-side="left"]': { animation: theme('animation.slide-right-and-fade') }
+          }
+        },
         '.heading-massive': {
           fontSize: 60,
           lineHeight: 1.15,
@@ -228,6 +282,18 @@ module.exports = {
         },
         '.btn-lg': {
           padding: '16px 24px',
+          borderRadius: '8px',
+          fontSize: 16,
+          lineHeight: 1,
+          transition: '0.3s',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        '.btn-md': {
+          padding: '12px 24px',
           borderRadius: '8px',
           fontSize: 16,
           lineHeight: 1,
@@ -392,6 +458,15 @@ module.exports = {
           '& .slick-active button': {
             background: '#9AC9E3'
           }
+        },
+        '.sigil-panel': {
+          background: `linear-gradient(174.77deg, rgba(154, 201, 227, 0.05) 5.09%, rgba(154, 201, 227, 0) 47.22%), rgba(5, 15, 23, 0.9)`,
+          boxShadow: theme('boxShadow.dark-panel'),
+          borderRadius: 12,
+          border: '1px solid rgba(154, 201, 227, 0.102)'
+        },
+        '.sigil-text': {
+          textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)'
         }
       });
     })

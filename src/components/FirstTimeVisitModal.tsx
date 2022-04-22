@@ -17,7 +17,7 @@ const FirstTimeVisitModal: React.FC<Props> = ({ open, onClose }) => {
   const { event } = useGA4();
   return (
     <Modal open={open}>
-      <Modal.Content includingHeader={false} className="md:w-[576px]">
+      <Modal.Content includingHeader={false}>
         <div className="relative isolate p-6 text-white md:px-[31px] md:pt-[34px] md:pb-[38px]">
           <div className="absolute bottom-0 right-[-43px] z-[-1] flex">
             <Image src="/images/character-with-glasses.png" alt="" width={331} height={331} />

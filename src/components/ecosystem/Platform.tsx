@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import CartIcon from '../icons/CartIcon';
 import LogoSm from '../icons/LogoSm';
 import MonitorIcon from '../icons/MonitorIcon';
-import WalletIcon from '../icons/WalletIcon';
+import WalletEcosystemIcon from '../icons/WalletEcosystemIcon';
 
 const data = [
   {
@@ -84,7 +84,7 @@ const Platform: React.FC = () => {
           </div>
           <div className=" flex h-[88px] flex-1 flex-col items-center justify-center rounded-xl bg-[#4BB986] px-5 md:h-[135px] md:p-6">
             <span className="w-[24px]">
-              <WalletIcon />
+              <WalletEcosystemIcon />
             </span>
             <p className="mt-2 text-[12px] font-bold leading-[1.25] md:text-[16px]">
               <Trans>Myria Wallet</Trans>

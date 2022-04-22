@@ -19,7 +19,7 @@ msgstr ""
 msgid "2 CPU Cores"
 msgstr "2 CPUコア"
 
-#: src/pages/nodes.tsx:131
+#: src/pages/nodes/index.tsx:131
 msgid "60 GB Disk Space"
 msgstr "60GBディスクスペース"
 
@@ -55,7 +55,7 @@ msgstr "<0>ノードをクラウドで実行するか、ローカルで実行す
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "ブロックチェンと世界の<0>分散型エコシステム</0>"
 
-#: src/pages/nodes.tsx:137
+#: src/pages/nodes/index.tsx:137
 msgid "A Stable Internet Connection"
 msgstr "安定なインターネットの接続"
 
@@ -69,7 +69,15 @@ msgstr ""
 
 #: src/pages/about-us.tsx:106
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Bandai Namco, Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
-msgstr "Verizon、Vanguard、Kayo Streaming等のグローバル企業の組織の変革に焦点を当て、経営コンサルティングにおいて、8年以上携われているダイナミックで起業家精神にあふれたエグゼクティブです。 最近、aliens.comを設立しました。"
+msgstr ""
+
+#: src/components/Register/Register.tsx:31
+msgid "A mixture of both uppercase and lowercase letters"
+msgstr ""
+
+#: src/components/Register/Register.tsx:35
+msgid "A mixture of letters and numbers"
+msgstr ""
 
 #: src/pages/team.tsx:101
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
@@ -126,7 +134,7 @@ msgstr "コミュニティに利益をもたらすトークンベースのゲー
 msgid "An objective-based shooter game"
 msgstr "目的ベースシューターゲーム"
 
-#: src/pages/nodes.tsx:134
+#: src/pages/nodes/index.tsx:134
 msgid "An x86/X64 Processor"
 msgstr "x86/X64のプロセッサ"
 
@@ -162,6 +170,10 @@ msgstr "アート・クリエイティブ・リード"
 #: src/components/interop/MobileInterop.tsx:131
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "Myriaでは、NFTはプレーヤーに検証可能な所有権を与えるだけでなく、プレーヤーがNFTをあるゲームから別のゲームに移動できるようにすると信じています。"
+
+#: src/components/Register/Register.tsx:27
+msgid "At least 8 characters—the more characters, the better"
+msgstr ""
 
 #: src/components/Video/Setting.tsx:18
 msgid "Autoplay"
@@ -212,7 +224,7 @@ msgstr "ブロックは、起業家向けプロダクトリードであり、技
 msgid "Build your blockchain game with Myria"
 msgstr ""
 
-#: src/pages/nodes.tsx:103
+#: src/pages/nodes/index.tsx:103
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "ノードライセンスを購入すると、所有者はノードを（ローカルまたはクラウドで）実行し、ガバナンスによって決定された報酬を受け取る権利が与えられます。"
 
@@ -269,6 +281,14 @@ msgstr "コミュニティーのリード"
 msgid "Compliance support"
 msgstr ""
 
+#: src/components/Register/Register.tsx:174
+msgid "Confirm password"
+msgstr ""
+
+#: src/components/Register/Register.tsx:61
+msgid "Confirm password is required!"
+msgstr ""
+
 #: src/pages/contact.tsx:52
 msgid "Connect with us"
 msgstr "私たちに接続"
@@ -309,7 +329,7 @@ msgstr ""
 msgid "Decentralize the network by providing computing resources"
 msgstr "コンピューティングのリソースの提供によってネットワークを分解化します"
 
-#: src/pages/nodes.tsx:154
+#: src/pages/nodes/index.tsx:154
 msgid "Details will be announced soon."
 msgstr "詳細は近日公開します。"
 
@@ -317,7 +337,11 @@ msgstr "詳細は近日公開します。"
 msgid "Discover more"
 msgstr ""
 
-#: src/pages/nodes.tsx:37
+#: src/components/SignIn/SignIn.tsx:109
+msgid "Don’t have an account?"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:37
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "各ノードは、Myriaチェーンに対する変更に投票することができ、ノードはMyriaverse全体でより大きな投票権を保持します。"
 
@@ -330,7 +354,13 @@ msgstr "エコシステム"
 msgid "Education and support"
 msgstr "勉強とサポート"
 
+#: src/components/Register/Register.tsx:150
+msgid "Email"
+msgstr ""
+
 #: src/components/GetInTouch.tsx:27
+#: src/components/Register/Register.tsx:53
+#: src/components/SignIn/SignIn.tsx:23
 #: src/components/Subscribe.tsx:20
 msgid "Email is required!"
 msgstr "Eメールが必須。"
@@ -361,6 +391,10 @@ msgstr ""
 #: src/pages/about-us.tsx:314
 msgid "Enhancing the power of play through blockchain, enabling economic access and ownership, and driving a new era of opportunity, exploration and freedom."
 msgstr "ブロックチェーンを通じて遊びの力を強化し、経済的なアクセスと所有権を可能にし、地球上の全ての人間に機会、探検、自由の新時代を推進します。"
+
+#: src/components/SignIn/SignIn.tsx:78
+msgid "Enter your email"
+msgstr ""
 
 #: src/components/Subscribe.tsx:74
 msgid "Enter your email address"
@@ -481,7 +515,7 @@ msgstr ""
 msgid "Home"
 msgstr "ホーム"
 
-#: src/pages/nodes.tsx:101
+#: src/pages/nodes/index.tsx:101
 msgid "How can I become a Myria node operator?"
 msgstr "どのようにMyriaノードのプレイヤーになれますか？"
 
@@ -494,11 +528,11 @@ msgstr "どのようにMyriaノードのプレイヤーになれますか？"
 msgid "How it works"
 msgstr "どのように動きますか"
 
-#: src/pages/nodes.tsx:163
+#: src/pages/nodes/index.tsx:163
 msgid "How many Myria node licenses will be released?"
 msgstr "どれくらいのMyriaノードがリリースされますか？"
 
-#: src/pages/nodes.tsx:152
+#: src/pages/nodes/index.tsx:152
 msgid "How much will a Myria node license cost?"
 msgstr "Myriaノードはいくらくらいですか？"
 
@@ -527,6 +561,8 @@ msgid "Instantly reach and build an engaged player community of evangelists arou
 msgstr ""
 
 #: src/components/GetInTouch.tsx:26
+#: src/components/Register/Register.tsx:52
+#: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:19
 msgid "Invalid email!"
 msgstr "無効なEメール！"
@@ -730,7 +766,7 @@ msgstr ""
 msgid "Myria node license sales are anticipated to commence in March 2022 (subject to change)."
 msgstr "Myriaのノードライセンスの販売は、2022年3月に開始される予定があります（変更される可能性があります）。"
 
-#: src/pages/nodes.tsx:24
+#: src/pages/nodes/index.tsx:24
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Myriaのノードのオペレーターは、ノードの動作のため、毎日$MYRIAトークンの報酬を受け取ります。"
 
@@ -780,7 +816,7 @@ msgstr "お客様のアバターの形やサイズを問わず、すべて同じ
 msgid "Node owner rewards"
 msgstr "ノードオーナーのリワード"
 
-#: src/pages/nodes.tsx:51
+#: src/pages/nodes/index.tsx:51
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "ノードの所有者が、ノードオペレーターと一般的なコミュニティーのメンバーとしての評判スコアに基づいて、NFTsドロップとトークンも提供されます。"
 
@@ -850,6 +886,11 @@ msgstr "どこでも、どのゲームでもお客様のメタバースのアイ
 msgid "Partner Lead"
 msgstr "パートナーリード"
 
+#: src/components/Register/Register.tsx:57
+#: src/components/SignIn/SignIn.tsx:27
+msgid "Password is required!"
+msgstr ""
+
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
 msgstr "プレイ＆学ぶ"
@@ -863,11 +904,11 @@ msgstr "<0>$MYRIA</0>によって供給で、支配されています"
 msgid "Powered by the community"
 msgstr "コミュニティーによって供給されています"
 
-#: src/pages/nodes.tsx:200
+#: src/pages/nodes/index.tsx:200
 msgid "Powered by the community of player-run nodes"
 msgstr "プレーヤー・ラン・ノードのコミュニティーによって供給されています"
 
-#: src/pages/nodes.tsx:191
+#: src/pages/nodes/index.tsx:191
 msgid "Pre register now"
 msgstr "今すぐ事前に登録"
 
@@ -902,7 +943,7 @@ msgstr ""
 msgid "Releasing soon"
 msgstr "近いうちにリリースになります"
 
-#: src/pages/nodes.tsx:182
+#: src/pages/nodes/index.tsx:182
 msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
 msgstr "ノードを実行し、<0>$MYRIA</0> とNFTs報酬を獲得します"
 
@@ -969,7 +1010,7 @@ msgstr ""
 
 #: src/pages/studios.tsx:268
 msgid "TOKEN LAUNCH COMING SOON"
-msgstr "トークンのセール　近日公開"
+msgstr ""
 
 #: src/components/Footer.tsx:100
 msgid "Team"
@@ -987,7 +1028,7 @@ msgstr "メッセージありがとうございます。24～48時間以内に�
 msgid "Thank you for subscribing!"
 msgstr "ご登録ありがとうございます。"
 
-#: src/pages/nodes.tsx:203
+#: src/pages/nodes/index.tsx:203
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "Myriaチェーンは、プレーヤーが実行するノードのネットワークによってサポートされています。 自宅のコンピューターを使用してノードオペレーターになり、エコシステムへの貢献に対して報酬と利益を受け取ります。"
 
@@ -1044,7 +1085,15 @@ msgstr "Myriaverseを通じて統一します"
 msgid "Unlock immense scale"
 msgstr ""
 
-#: src/pages/nodes.tsx:35
+#: src/components/Register/Register.tsx:143
+msgid "Username"
+msgstr ""
+
+#: src/components/Register/Register.tsx:49
+msgid "Username is required!"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:35
 msgid "Voting rights"
 msgstr "投票権限"
 
@@ -1086,19 +1135,19 @@ msgstr ""
 msgid "We’re hiring, join the future of gaming"
 msgstr "募集中。ゲームの未来に加盟してください"
 
-#: src/pages/nodes.tsx:111
+#: src/pages/nodes/index.tsx:111
 msgid "What are the software and hardware requirements to run a node?"
 msgstr "ノードを実行するには、どのソフトウェアとハードウェアが要りますか？"
 
-#: src/pages/nodes.tsx:62
+#: src/pages/nodes/index.tsx:62
 msgid "What is a Myria node?"
 msgstr "Myriaノードとは？"
 
-#: src/pages/nodes.tsx:82
+#: src/pages/nodes/index.tsx:82
 msgid "What rewards do Myria node operators receive?"
 msgstr "Myriaノードオペレーターはどのような報酬を受け取りますか？"
 
-#: src/pages/nodes.tsx:144
+#: src/pages/nodes/index.tsx:144
 msgid "When will Myria node licenses be sold?"
 msgstr "Myriaノードライセンスはいつ販売されますか？"
 
@@ -1116,7 +1165,7 @@ msgstr "ゲーム業界において、15年以上の経験を持つアントニ�
 msgid "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
 msgstr "お客様のNFTsは、お客様のデジタル式アイデンティティです。 メタバースの探索にNFTsを持っていきましょう。 いくつかのゲームや世界で装備してレベルアップします。 Myriaでメタバースアイデンティティを本当に所有してください。"
 
-#: src/pages/nodes.tsx:197
+#: src/pages/nodes/index.tsx:197
 msgid "a decentralized ecosystem"
 msgstr "分解型のエコシステム"
 

@@ -8,28 +8,28 @@ export const linkSources: { [key: string]: NavItem } = {
     text: <Trans>Home</Trans>,
     url: '/',
     position: 'left',
-    action: 'join-discord'
+    action: ['join-discord', 'login', 'mint']
   },
   ecosystem: {
     id: 'ecosystem',
     text: <Trans>Ecosystem</Trans>,
     url: '/ecosystem',
     position: 'left',
-    action: 'join-discord'
+    action: ['join-discord', 'login', 'mint']
   },
   games: {
     id: 'games',
     text: <Trans>Games</Trans>,
     url: '/games',
     position: 'left',
-    action: 'join-discord'
+    action: ['join-discord', 'login', 'mint']
   },
   nodes: {
     id: 'nodes',
     text: <Trans>Nodes</Trans>,
     url: '/nodes',
     position: 'left',
-    action: 'join-discord'
+    action: ['join-discord', 'login', 'mint']
   },
   store: {
     id: 'store',
@@ -37,27 +37,27 @@ export const linkSources: { [key: string]: NavItem } = {
     url: '/store',
     inactive: true,
     position: 'left',
-    action: 'join-discord'
+    action: ['join-discord', 'login', 'mint']
   },
   forDevelopers: {
     id: 'forDevelopers',
     text: <Trans>Home</Trans>,
     url: '/for-developers',
     position: 'left',
-    action: 'start-building'
+    action: ['start-building']
   },
   ourSolution: {
     id: 'ourSolution',
     text: <Trans>OUR SOLUTION</Trans>,
     url: '/for-developers/solution',
     position: 'left',
-    action: 'start-building'
+    action: ['start-building']
   },
   // {
   //   text: <Trans>DEVELOPER PROGRAM</Trans>,
   //   url: '/developer-program',
   //   position: 'left',
-  //   action: 'start-building'
+  //   action: ['start-building']
   // },
   about: {
     id: 'about',

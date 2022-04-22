@@ -19,7 +19,7 @@ msgstr ""
 msgid "2 CPU Cores"
 msgstr "2核CPU"
 
-#: src/pages/nodes.tsx:131
+#: src/pages/nodes/index.tsx:131
 msgid "60 GB Disk Space"
 msgstr "60 GB磁盘空间"
 
@@ -55,7 +55,7 @@ msgstr "<0>您可选择在云端或本地运行节点。</0><1>Myria节点软件
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "有关区块链游戏和世界的<0>去中心化生态体系</0>"
 
-#: src/pages/nodes.tsx:137
+#: src/pages/nodes/index.tsx:137
 msgid "A Stable Internet Connection"
 msgstr "稳定的互联网连接"
 
@@ -126,7 +126,7 @@ msgstr "造福社区的基于代币游戏经济和非同质化代币的端到端
 msgid "An objective-based shooter game"
 msgstr "一款第一人称射击游戏"
 
-#: src/pages/nodes.tsx:134
+#: src/pages/nodes/index.tsx:134
 msgid "An x86/X64 Processor"
 msgstr "x86/x64处理器"
 
@@ -162,6 +162,10 @@ msgstr "艺术创意主管"
 #: src/components/interop/MobileInterop.tsx:131
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "在Myria，我们坚信非同质化代币不仅能够赋予玩家可验证的所有权，而且能够使玩家将其所拥有的非同质化代币从一款游戏转移到另一款游戏中。"
+
+#: src/components/Register/Register.tsx:27
+msgid "At least 8 characters—the more characters, the better"
+msgstr ""
 
 #: src/components/Video/Setting.tsx:18
 msgid "Autoplay"
@@ -212,7 +216,7 @@ msgstr "Brock是一位创业型产品主管，曾在科技初创公司具有10�
 msgid "Build your blockchain game with Myria"
 msgstr ""
 
-#: src/pages/nodes.tsx:103
+#: src/pages/nodes/index.tsx:103
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "购买节点许可证后，所有者将有权（在本地或云中）运行节点，并基于治理获取奖励。"
 
@@ -309,7 +313,7 @@ msgstr ""
 msgid "Decentralize the network by providing computing resources"
 msgstr "通过提供计算资源去中心化网络"
 
-#: src/pages/nodes.tsx:154
+#: src/pages/nodes/index.tsx:154
 msgid "Details will be announced soon."
 msgstr "详情将很快公布。"
 
@@ -317,7 +321,11 @@ msgstr "详情将很快公布。"
 msgid "Discover more"
 msgstr ""
 
-#: src/pages/nodes.tsx:37
+#: src/components/SignIn/SignIn.tsx:109
+msgid "Don’t have an account?"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:37
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "每个节点均可对Myria链的拟议修改进行投票。在整个Myriaverse元宇宙中，节点还将拥有更多的投票权。"
 
@@ -330,7 +338,13 @@ msgstr "生态系统"
 msgid "Education and support"
 msgstr "教育和支持"
 
+#: src/components/Register/Register.tsx:150
+msgid "Email"
+msgstr ""
+
 #: src/components/GetInTouch.tsx:27
+#: src/components/Register/Register.tsx:53
+#: src/components/SignIn/SignIn.tsx:23
 #: src/components/Subscribe.tsx:20
 msgid "Email is required!"
 msgstr "电子邮件必填！"
@@ -361,6 +375,10 @@ msgstr ""
 #: src/pages/about-us.tsx:314
 msgid "Enhancing the power of play through blockchain, enabling economic access and ownership, and driving a new era of opportunity, exploration and freedom."
 msgstr "通过区块链提升游戏的力量，实现经济准入和所有权，助推新时代的到来，为地球上的每个人提供机会自由探索。"
+
+#: src/components/SignIn/SignIn.tsx:78
+msgid "Enter your email"
+msgstr ""
 
 #: src/components/Subscribe.tsx:74
 msgid "Enter your email address"
@@ -481,7 +499,7 @@ msgstr ""
 msgid "Home"
 msgstr "主页"
 
-#: src/pages/nodes.tsx:101
+#: src/pages/nodes/index.tsx:101
 msgid "How can I become a Myria node operator?"
 msgstr "如何成为Myria节点操作者？"
 
@@ -494,11 +512,11 @@ msgstr "如何成为Myria节点操作者？"
 msgid "How it works"
 msgstr "如何运作？"
 
-#: src/pages/nodes.tsx:163
+#: src/pages/nodes/index.tsx:163
 msgid "How many Myria node licenses will be released?"
 msgstr "将发布多少份Myria节点许可证？"
 
-#: src/pages/nodes.tsx:152
+#: src/pages/nodes/index.tsx:152
 msgid "How much will a Myria node license cost?"
 msgstr "一份Myria节点许可证的成本是多少？"
 
@@ -527,6 +545,8 @@ msgid "Instantly reach and build an engaged player community of evangelists arou
 msgstr ""
 
 #: src/components/GetInTouch.tsx:26
+#: src/components/Register/Register.tsx:52
+#: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:19
 msgid "Invalid email!"
 msgstr "无效电子邮件地址！"
@@ -568,7 +588,7 @@ msgstr ""
 
 #: src/pages/careers.tsx:21
 msgid "Join our team of 60+ to forge to future of blockchain gaming"
-msgstr "Myria团队由60多人组成，加入我们，共筑区块链游戏的未来"
+msgstr "加入蓬勃发展的Myria生态系统"
 
 #: src/pages/about-us.tsx:199
 #: src/pages/team.tsx:191
@@ -730,7 +750,7 @@ msgstr ""
 msgid "Myria node license sales are anticipated to commence in March 2022 (subject to change)."
 msgstr "Myria节点许可证预计将于2022年3月（日期可能发生变更）起发售。"
 
-#: src/pages/nodes.tsx:24
+#: src/pages/nodes/index.tsx:24
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "每天，Myria节点操作者将从节点作业中获取代币奖励（MYRIA币 ）。"
 
@@ -780,7 +800,7 @@ msgstr "无论您的虚拟形象的形状和大小如何，均采用相同的非
 msgid "Node owner rewards"
 msgstr "节点所有者奖励"
 
-#: src/pages/nodes.tsx:51
+#: src/pages/nodes/index.tsx:51
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "根据作为节点操作者及一般社区成员所得的信誉分数，节点所有者还将获得NFT Drop及代币奖励。"
 
@@ -850,6 +870,11 @@ msgstr "拥有您的元宇宙身份在任何地方任何游戏中"
 msgid "Partner Lead"
 msgstr "合作伙伴主管"
 
+#: src/components/Register/Register.tsx:57
+#: src/components/SignIn/SignIn.tsx:27
+msgid "Password is required!"
+msgstr ""
+
 #: src/pages/about-us.tsx:233
 msgid "Play & earn"
 msgstr "边玩边赚"
@@ -863,11 +888,11 @@ msgstr "由<0>$MYRIA</0>支持和管理"
 msgid "Powered by the community"
 msgstr "由社区支持"
 
-#: src/pages/nodes.tsx:200
+#: src/pages/nodes/index.tsx:200
 msgid "Powered by the community of player-run nodes"
 msgstr "由玩家运营的节点社区支持"
 
-#: src/pages/nodes.tsx:191
+#: src/pages/nodes/index.tsx:191
 msgid "Pre register now"
 msgstr "立即预注册"
 
@@ -902,7 +927,7 @@ msgstr ""
 msgid "Releasing soon"
 msgstr "立即发布"
 
-#: src/pages/nodes.tsx:182
+#: src/pages/nodes/index.tsx:182
 msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
 msgstr "运行节点，赚取<0>$MYRIA</0>和非同质化代币奖励"
 
@@ -969,7 +994,7 @@ msgstr ""
 
 #: src/pages/studios.tsx:268
 msgid "TOKEN LAUNCH COMING SOON"
-msgstr "代币即将发售"
+msgstr ""
 
 #: src/components/Footer.tsx:100
 msgid "Team"
@@ -987,7 +1012,7 @@ msgstr "感谢您的留言。我们将在24-48小时内联系您！"
 msgid "Thank you for subscribing!"
 msgstr "感谢订阅！"
 
-#: src/pages/nodes.tsx:203
+#: src/pages/nodes/index.tsx:203
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "Myria链由玩家运行的节点网络支持。仅需使用家用电脑，便可成为节点操作者，并根据您对生态系统的贡献获取奖励和收益。 "
 
@@ -1044,7 +1069,15 @@ msgstr "通过Myriaverse元宇宙结合在一起"
 msgid "Unlock immense scale"
 msgstr ""
 
-#: src/pages/nodes.tsx:35
+#: src/components/Register/Register.tsx:143
+msgid "Username"
+msgstr ""
+
+#: src/components/Register/Register.tsx:49
+msgid "Username is required!"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:35
 msgid "Voting rights"
 msgstr "投票权"
 
@@ -1086,19 +1119,19 @@ msgstr ""
 msgid "We’re hiring, join the future of gaming"
 msgstr "我们正在招聘英才。加入我们，共筑游戏未来。"
 
-#: src/pages/nodes.tsx:111
+#: src/pages/nodes/index.tsx:111
 msgid "What are the software and hardware requirements to run a node?"
 msgstr "运行节点的软硬件要求是什么？"
 
-#: src/pages/nodes.tsx:62
+#: src/pages/nodes/index.tsx:62
 msgid "What is a Myria node?"
 msgstr "什么是Myria节点？"
 
-#: src/pages/nodes.tsx:82
+#: src/pages/nodes/index.tsx:82
 msgid "What rewards do Myria node operators receive?"
 msgstr "Myria节点操作者将获得什么样的奖励？"
 
-#: src/pages/nodes.tsx:144
+#: src/pages/nodes/index.tsx:144
 msgid "When will Myria node licenses be sold?"
 msgstr "Myria节点许可证何时发售？"
 
@@ -1116,7 +1149,7 @@ msgstr "Antonio在游戏行业具有15多年的工作经验，曾为The Witcher�
 msgid "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
 msgstr "您的非同质化代币是您的数字身份。利用非同质化代币，探索您的元宇宙。在不同游戏和世界中装备和升级。和Myria一起，真正拥有您的元宇宙身份。"
 
-#: src/pages/nodes.tsx:197
+#: src/pages/nodes/index.tsx:197
 msgid "a decentralized ecosystem"
 msgstr "去中心化生态系统"
 

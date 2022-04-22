@@ -1,15 +1,18 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useWalletContext } from 'src/context/wallet';
 import React, { useMemo, useRef } from 'react';
 import { ga, useGA4 } from 'src/lib/ga';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
+import { useAuthenticationContext } from 'src/context/authentication';
 import NotiBanner from '../NotiBanner';
 import { links, navHeight } from './Header';
 import { Action, NavItem } from './type';
+import { useRouter } from 'next/router';
+import ProfileComponent from './ProfileComponent';
 
 type Props = {
   action: Action;
@@ -116,6 +119,8 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const { event } = useGA4();
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
+  const { address, onConnect } = useWalletContext();
+  const { login } = useAuthenticationContext();
 
   const actionElements = useMemo(() => {
     switch (action) {
@@ -128,31 +133,53 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           </Link>
         );
 
-      default:
-        // return (
-        //   <a
-        //     onClick={() => {
-        //       event('Dicord Button Clicked', { button_location: 'Top Button' });
-        //       ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Top Button' })
-        //     }}
-        //     className="btn-sm btn-secondary"
-        //     href='https://discord.gg/7K49nXJ49R'
-        //     target="_blank"
-        //     rel="noreferrer">
-        //     <Trans>JOIN DISCORD</Trans>
-        //   </a>
-        // );
+      case 'login':
+        return address ? (
+          <ProfileComponent />
+        ) : (
+          <div className="flex">
+            <button
+              className="btn-sm btn-secondary min-w-[153px] rounded-lg px-4 py-3"
+              onClick={onConnect}>
+              Connect wallet
+            </button>
+          </div>
+        );
+
+      case 'mint':
         return (
-          <Link href="/sigil">
-            <a className="btn-sm btn-secondary">
+          <Link href={'/sigil'}>
+            <a
+              style={{
+                filter: 'drop-shadow(0px 0px 10px #F5B941)'
+              }}
+              className="btn-sm btn-secondary">
               <Trans>Free Sigil NFT</Trans>
             </a>
           </Link>
         );
+      default:
+        return (
+          <a
+            onClick={() => {
+              event('Dicord Button Clicked', { button_location: 'Top Button' });
+              ga.event('Click', {
+                event_category: 'Button',
+                event_label: 'Discord Link',
+                value: 'Top Button'
+              });
+            }}
+            className="btn-sm btn-secondary"
+            href="https://discord.gg/7K49nXJ49R"
+            target="_blank"
+            rel="noreferrer">
+            <Trans>JOIN DISCORD</Trans>
+          </a>
+        );
     }
-  }, [action]);
+  }, [action, address, onConnect]);
 
-  const filterdLinks = links.filter((link) => !link.action || link.action == action);
+  const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
   return (
     <header ref={headerRef} className="w-full">
       <div className="hidden text-black lg:block">

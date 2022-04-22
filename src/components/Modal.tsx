@@ -1,35 +1,30 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import clsx from 'clsx';
 import CloseIcon from './icons/CloseIcon';
 
 type ModalProps = {
-  title?: string;
-  className?: string;
-  onClose?: (e: any) => void;
-  open?: boolean;
-  children: React.ReactNode | ((props: { title: boolean; onClose: () => void }) => React.ReactNode);
+  overlayClassName?: string;
 };
 
 type ModalContentProps = {
-  onClose?: () => void;
+  title?: string | JSX.Element;
   includingHeader?: boolean;
+  headerClassName?: string;
+  titleClassName?: string;
 };
 
 type ModalType = React.FC<ModalProps & DialogPrimitive.DialogProps> & {
-  Content: React.FC<DialogPrimitive.DialogContentProps & ModalContentProps>;
+  Content: React.FC<Omit<DialogPrimitive.DialogContentProps, 'title'> & ModalContentProps>;
   Trigger: React.FC<DialogPrimitive.DialogTriggerProps>;
   Close: React.FC<DialogPrimitive.DialogCloseProps>;
 };
 
-const Modal: ModalType = ({ title, children, className, onClose, ...props }) => {
+const Modal: ModalType = ({ children, overlayClassName, ...props }) => {
   return (
     <DialogPrimitive.Root {...props}>
-      <DialogPrimitive.Overlay className={clsx('dialog-overlay', className)} onClick={onClose} />
-      {React.Children.map<ReactNode, ReactNode>(
-        children,
-        (child) => React.isValidElement(child) && React.cloneElement(child, { title, onClose })
-      )}
+      <DialogPrimitive.Overlay className={clsx('dialog-overlay', overlayClassName)} />
+      {children}
     </DialogPrimitive.Root>
   );
 };
@@ -37,24 +32,34 @@ const Modal: ModalType = ({ title, children, className, onClose, ...props }) => 
 type ExtractProps<T> = T extends React.FC<infer P> ? P : never;
 
 const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Content']>>(
-  ({ title, children, className, onClose, includingHeader = true, ...props }, forwardedRef) => {
-    const close = (
-      <div className="h-[24px] w-[24px] text-white hover:cursor-pointer">
-        <CloseIcon />
-      </div>
-    );
+  (
+    {
+      title,
+      className,
+      children,
+      includingHeader = true,
+      headerClassName,
+      titleClassName,
+      ...props
+    },
+    forwardedRef
+  ) => {
     return (
       <DialogPrimitive.Content {...props} className={clsx('dialog-content')} ref={forwardedRef}>
-        <div className={clsx('mx-auto my-auto w-full rounded-lg bg-brand-deep-blue', className)}>
+        <div
+          className={clsx(
+            'mx-auto my-auto w-full max-w-[576px] rounded-lg bg-brand-deep-blue',
+            className
+          )}>
           {includingHeader && (
-            <div className="px-8 pt-8">
+            <div className={clsx('px-8 pt-8', headerClassName)}>
               <div className="flex items-center justify-between">
-                <p className="heading-md text-white">{title}</p>
-                {!onClose ? (
-                  <DialogPrimitive.Close>{close}</DialogPrimitive.Close>
-                ) : (
-                  <button onClick={onClose}>{close}</button>
-                )}
+                <div className={clsx('heading-md text-white', titleClassName)}>{title}</div>
+                <DialogPrimitive.Close asChild>
+                  <button className="h-[24px] w-[24px] text-white hover:cursor-pointer">
+                    <CloseIcon />
+                  </button>
+                </DialogPrimitive.Close>
               </div>
             </div>
           )}

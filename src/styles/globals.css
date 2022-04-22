@@ -48,6 +48,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
 @media only screen and (max-width: 768px) {
   [data-aos] {
     transition: none !important;
@@ -58,4 +64,24 @@ body {
 
 .vi * {
   font-family: 'Montserrat', sans-serif;
+}
+
+.fixed.w-full {
+  width: calc(100% - var(--removed-body-scroll-bar-size, 0px));
+  margin-right: var(--removed-body-scroll-bar-size, 0px);
+}
+
+#scrollbar::-webkit-scrollbar {
+	width: 20px;
+  height: 20px;
+}
+
+#scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#scrollbar::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px #0F2F45;
+  border: solid 6px transparent;
+  border-radius: 100vh;
 }
