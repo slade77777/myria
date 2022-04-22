@@ -4,31 +4,21 @@ import CheckIcon from 'src/components/icons/CheckIcon';
 import HistoryIcon from 'src/components/icons/HistoryIcon';
 import LockIcon from 'src/components/icons/LockIcon';
 import Tooltip from 'src/components/Tooltip';
+import { Mission } from 'src/types/sigil';
 import { formatNumber } from 'src/utils';
 
-export type Mission = {
-  title: string;
-  description: string;
-  repeatable?: boolean;
+type Props = {
+  item: Mission;
   action?: {
     label: string;
-    link: string;
+    link?: string;
     onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   };
-  score: number;
-  state: 'locked' | 'avaible' | 'completed' | 'active';
 };
-
-const MissionItem: React.FC<Mission> = ({
-  repeatable,
-  state,
-  title,
-  description,
-  action,
-  score
-}) => {
+const MissionItem: React.FC<Props> = ({ item, action }) => {
+  const { repetition_limit, earned_credits, title, description, status } = item;
   const actionEl = useMemo(() => {
-    if (state == 'locked') {
+    if (status == 'locked') {
       return (
         <div className="flex w-full items-center justify-center">
           <span className="w-[20px] rounded-full bg-light-red p-1 text-[#1F2334]">
@@ -38,14 +28,14 @@ const MissionItem: React.FC<Mission> = ({
       );
     }
 
-    if (action && state != 'completed') {
+    if (action && status != 'completed') {
       return (
         <div className="flex w-full items-center justify-center">
           <a
             href={action.link}
             target="_blank"
             rel="noreferrer"
-            className="flex flex-1 items-center justify-center rounded-[4px] bg-[#1F2334] px-2 py-[5px] text-[12px] font-bold leading-[1.25] text-brand-gold"
+            className=" flex flex-1 items-center justify-center rounded-[4px] bg-[#1F2334] px-2 py-[5px] text-[12px] font-bold uppercase leading-[1.25] text-brand-gold"
             onClick={action.onClick}>
             {action.label}
           </a>
@@ -55,35 +45,35 @@ const MissionItem: React.FC<Mission> = ({
 
     return (
       <div className="w-full pr-2 text-right">
-        <p className="text-[20px] font-bold leading-[1.25]">{formatNumber(score)}</p>
+        <p className="text-[20px] font-bold leading-[1.25]">{formatNumber(earned_credits)}</p>
         <p className="text-[8px] font-medium leading-[1.25] text-light">EARNED</p>
       </div>
     );
-  }, [action, state, score]);
+  }, [action, status, earned_credits]);
   return (
     <div
       className={clsx(
         'flex min-h-[60px] min-w-[260px] overflow-hidden rounded-lg [background:var(--bg)]',
         {
           '[--bg:linear-gradient(140.5deg,rgba(154,_201,_227,_0.7)_-86.06%,_rgba(154,_201,_227,_0)_36.1%),_#1F2334]':
-            !(state == 'completed' || state == 'active'),
+            status != 'completed',
           '[--bg:linear-gradient(110.21deg,_#9AC9E3_-53.9%,_rgba(154,_201,_227,_0)_34.89%),_#1F2334]':
-            state == 'completed' || state == 'active',
-          'opacity-70': state == 'locked'
+            status == 'completed' || status == 'available',
+          'opacity-70': status == 'locked'
         }
       )}>
       <div className="flex-1 py-3 pl-4">
         <p className="text-[14px] font-medium leading-[1.25]">{title}</p>
 
         <p className="mt-1 flex items-center space-x-1 text-[12px] leading-[1.25] text-light">
-          {state === 'completed' ? (
+          {status === 'completed' ? (
             <>
               <span>Complete</span>
-              <CheckIcon className="ml-2 w-4 fill-[#41F59F]" />
+              <CheckIcon className="ml-2 w-4 text-[#41F59F]" />
             </>
           ) : (
             <>
-              {repeatable && (
+              {!!repetition_limit && (
                 <span className="w-4">
                   <HistoryIcon />
                 </span>

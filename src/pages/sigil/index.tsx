@@ -13,8 +13,8 @@ import { soundService, SUPPORT_SOUND } from 'src/sound';
 type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState<Step>(0);
-  const bgSoundRef = React.useRef<HTMLAudioElement|null>(null);
+  const [currentStep, setCurrentStep] = useState<Step>(2);
+  const bgSoundRef = React.useRef<HTMLAudioElement | null>(null);
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {
@@ -30,9 +30,13 @@ const Sigil: React.FC = () => {
       case 0:
         return <Welcome onNext={goToNextStep} />;
       case 1:
-        return <ChooseAlliance onNext={() => {
-          goToNextStep();
-        }} />;
+        return (
+          <ChooseAlliance
+            onNext={() => {
+              goToNextStep();
+            }}
+          />
+        );
       default:
         return <Dashboard />;
     }
@@ -44,11 +48,10 @@ const Sigil: React.FC = () => {
         bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG);
       }, 2000);
     }
-   
 
     return () => {
       bgSoundRef.current?.pause();
-    }
+    };
   }, []);
 
   React.useEffect(() => {
@@ -66,7 +69,7 @@ const Sigil: React.FC = () => {
       ) : (
         <div className="relative min-h-screen bg-dark">
           {currentStep !== 2 && (
-            <div className="absolute z-50 top-[calc(100vh-28px)] left-1/2 w-full max-w-[577px] -translate-y-full -translate-x-1/2">
+            <div className="absolute top-[calc(100vh-28px)] left-1/2 z-50 w-full max-w-[577px] -translate-y-full -translate-x-1/2">
               <SigilStepper
                 steps={[
                   {
@@ -87,9 +90,7 @@ const Sigil: React.FC = () => {
         </div>
       )}
 
-      {
-        [0, 1].includes(currentStep) && (<Sound />)
-      }
+      {[0, 1].includes(currentStep) && <Sound />}
     </Page>
   );
 };
