@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { Loading } from 'src/components/Loading';
 import RegisterModal from 'src/components/Register/Modal';
 import { socialLinks } from 'src/configs';
 import { Mission } from 'src/types/sigil';
@@ -174,10 +175,6 @@ const Missions: React.FC = () => {
     }
   };
 
-  if (!missions) {
-    return null;
-  }
-
   return (
     <>
       <ShareTwitterModal
@@ -200,11 +197,17 @@ const Missions: React.FC = () => {
             <div className="absolute top-0 right-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent" />
           </div>
         </div>
-        <div className="mt-4 flex-grow space-y-4 overflow-auto" id="scrollbar">
-          {missions.map((mission, index) => (
-            <MissionItem key={index} item={mission} action={ActionMap[mission.mission_id]} />
-          ))}
-        </div>
+        {!missions ? (
+          <div className="mt-10 flex justify-center">
+            <Loading />
+          </div>
+        ) : (
+          <div className="mt-4 flex-grow space-y-4 overflow-auto" id="scrollbar">
+            {missions.map((mission, index) => (
+              <MissionItem key={index} item={mission} action={ActionMap[mission.mission_id]} />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

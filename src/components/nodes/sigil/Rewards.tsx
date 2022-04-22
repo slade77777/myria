@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import BoxIcon from 'src/components/icons/BoxIcon';
+import { Loading } from 'src/components/Loading';
 import { Reward } from 'src/types/sigil';
 import ClaimModal from './ClaimModal';
 import RewardItem from './RewardItem';
@@ -72,16 +73,12 @@ const Rewards: React.FC = () => {
     return fakeData;
   });
 
-  if (!data) {
-    return null;
-  }
+  const claimedItems = data?.filter((reward) => reward.status === 'claimed') ?? [];
+  const claimableItems = data?.filter((reward) => reward.status === 'claimable') ?? [];
+  const lockedItems = data?.filter((reward) => reward.status === 'locked') ?? [];
 
-  const claimedItems = data?.filter((reward) => reward.status === 'claimed');
-  const claimableItems = data?.filter((reward) => reward.status === 'claimable');
-  const lockedItems = data?.filter((reward) => reward.status === 'locked');
-
-  const nextReward = lockedItems[0];
-  const otherNextRewards = lockedItems.slice(1);
+  const nextReward = lockedItems?.[0];
+  const otherNextRewards = lockedItems?.slice(1);
 
   const handleClaim = (reward: Reward) => {
     setClaimItem(reward);
@@ -126,36 +123,42 @@ const Rewards: React.FC = () => {
             </Link>
           </div>
         </div>
-        <div className="mt-6 flex-grow overflow-auto" id="scrollbar">
-          <div className="space-y-6">
-            {[...claimedItems, ...claimableItems].map((rw, idx) => (
-              <RewardItem key={idx} item={rw} onClaim={handleClaim} />
-            ))}
+        {!data ? (
+          <div className="mt-10 flex justify-center">
+            <Loading />
           </div>
-          <p className="mt-6 flex items-center space-x-4 text-[18px] font-bold leading-[1.22]">
-            <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
-            <span>Next Reward</span>
-            <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
-          </p>
-          {nextReward && (
-            <div className="mt-6">
-              <RewardItem item={nextReward} onClaim={handleClaim} />
+        ) : (
+          <div className="mt-6 flex-grow overflow-auto" id="scrollbar">
+            <div className="space-y-6">
+              {[...claimedItems, ...claimableItems].map((rw, idx) => (
+                <RewardItem key={idx} item={rw} onClaim={handleClaim} />
+              ))}
             </div>
-          )}
-          {otherNextRewards && (
-            <>
-              <p className="mt-6 flex items-center">
-                <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
-                <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
-              </p>
-              <div className="mt-6 space-y-6 opacity-60">
-                {otherNextRewards.map((rw, idx) => (
-                  <RewardItem key={idx} item={rw} onClaim={handleClaim} />
-                ))}
+            <p className="mt-6 flex items-center space-x-4 text-[18px] font-bold leading-[1.22]">
+              <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
+              <span>Next Reward</span>
+              <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
+            </p>
+            {nextReward && (
+              <div className="mt-6">
+                <RewardItem item={nextReward} onClaim={handleClaim} />
               </div>
-            </>
-          )}
-        </div>
+            )}
+            {otherNextRewards && (
+              <>
+                <p className="mt-6 flex items-center">
+                  <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
+                  <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
+                </p>
+                <div className="mt-6 space-y-6 opacity-60">
+                  {otherNextRewards.map((rw, idx) => (
+                    <RewardItem key={idx} item={rw} onClaim={handleClaim} />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
