@@ -4,7 +4,7 @@ import Header from 'src/components/nodes/sigil/Header';
 
 const Sigil: React.FC = () => {
   return (
-    <>
+    <div className="bg-dark text-white">
       <Header />
       <div
         className={
@@ -24,7 +24,7 @@ const Sigil: React.FC = () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
