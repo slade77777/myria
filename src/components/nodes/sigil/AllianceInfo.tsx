@@ -1,7 +1,25 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import { UserInfo } from 'src/types/sigil';
 import { SubtractLeft } from './Subtract';
+import { format } from 'date-fns';
 
 const AllianceInfo: React.FC = () => {
+  const { data } = useQuery<UserInfo>('sigilUserInfo', async () => {
+    return {
+      user_id: '1234',
+      alliance: 'Equinox',
+      alias: '',
+      credits: 15,
+      date_registered: 1645660800,
+      href: 'http://localhost:8080/v1/accounts/1234'
+    };
+  });
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <div className="relative">
       <div className="flex items-center">
@@ -22,18 +40,20 @@ const AllianceInfo: React.FC = () => {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
         </div>
-        <p className="mt-9 text-[20px] font-medium leading-[1.5]">Alliance 1</p>
+        <p className="mt-9 text-[20px] font-medium leading-[1.5]">{data.alliance}</p>
         <div className="mt-6 ">
           <p className="text-[14px] font-medium leading-[17px] text-light">Alias</p>
-          <p className="mt-1 text-[18px] font-bold leading-[1.22]">The Almighty Myrian</p>
+          <p className="mt-1 text-[18px] font-bold leading-[1.22]">{data.alias}</p>
         </div>
         <div className="mt-6 ">
           <p className="text-[14px] font-medium leading-[17px] text-light">Credits</p>
-          <p className="mt-1 text-[18px] font-bold leading-[1.22]">15</p>
+          <p className="mt-1 text-[18px] font-bold leading-[1.22]">{data.credits}</p>
         </div>
         <div className="mt-6 ">
           <p className="text-[14px] font-medium leading-[17px] text-light">Date Registered</p>
-          <p className="mt-1 text-[18px] font-bold leading-[1.22]">24 Feb 2022</p>
+          <p className="mt-1 text-[18px] font-bold leading-[1.22]">
+            {format(data.date_registered, 'dd MMM yyyy')}
+          </p>
         </div>
       </div>
     </div>

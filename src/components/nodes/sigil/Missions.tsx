@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useQuery } from 'react-query';
 import RegisterModal from 'src/components/Register/Modal';
 import { socialLinks } from 'src/configs';
-import MissionItem, { Mission } from './MissionItem';
+import { Mission } from 'src/types/sigil';
+import MissionItem from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
 import ShareTwitterModal from './ShareTwitterModal';
 import { SubtractRight } from './Subtract';
@@ -10,81 +12,171 @@ const Missions: React.FC = () => {
   const [openRegisterModal, setOpenRegisterModal] = useState(false);
   const [openShareTwitterModal, setOpenShareTwitterModal] = useState(false);
   const [openInviteModal, setOpenInviteModal] = useState(false);
-  const missions: Mission[] = [
-    {
-      title: 'Create a Myria Account',
-      description: 'Earn 5 Credits',
-      score: 10,
-      state: 'active',
-      action: {
-        label: 'Signup',
-        link: 'https://myria.io/signup',
-        onClick: (e) => {
-          e.preventDefault();
-          setOpenRegisterModal(true);
-        }
+
+  const { data: missions } = useQuery<Mission[]>('sigilMissions', async () => {
+    const data: Mission[] = [
+      {
+        mission_id: 'MYRIA_ACCOUNT',
+        title: 'Create a Myria Account',
+        description: 'Create a Myria Account',
+        credits: 5,
+        earned_credits: 5,
+        repetition_limit: 1,
+        repetition_text: null,
+        completed: true,
+        status: 'completed'
+      },
+      {
+        mission_id: 'JOIN_DISCORD',
+        title: 'Join our Discord',
+        description: '',
+        credits: 5,
+        earned_credits: 5,
+        repetition_limit: 1,
+        repetition_text: null,
+        completed: true,
+        status: 'completed'
+      },
+      {
+        mission_id: 'SHARE_TWITTER',
+        title: 'Share our Twitter post',
+        description: '',
+        credits: 5,
+        earned_credits: 5,
+        repetition_limit: 1,
+        repetition_text: null,
+        completed: true,
+        status: 'completed'
+      },
+      {
+        mission_id: 'INVITE_FRIEND',
+        title: 'Invite friends',
+        description: '',
+        credits: 5,
+        earned_credits: 0,
+        repetition_limit: -1,
+        repetition_text: 'Unlimited',
+        completed: false,
+        status: 'available'
+      },
+      {
+        mission_id: 'DAILY_DISCORD_MESSAGE',
+        title: 'Daily login to Discord',
+        description: '',
+        credits: 5,
+        earned_credits: 10,
+        repetition_limit: -1,
+        repetition_text: 'Daily',
+        completed: true,
+        status: 'locked'
+      },
+      {
+        mission_id: 'FIRST_DISCORD_MESSAGE',
+        title: 'Discord introduction',
+        description: '',
+        credits: 5,
+        earned_credits: 0,
+        repetition_limit: 1,
+        repetition_text: null,
+        completed: false,
+        status: 'locked'
+      },
+      {
+        mission_id: 'VOTE_ON_LORE_DISCORD',
+        title: 'Vote on lore / narrative',
+        description: '',
+        credits: 5,
+        earned_credits: 0,
+        repetition_limit: -1,
+        repetition_text: 'Unlimited',
+        completed: false,
+        status: 'locked'
+      },
+      {
+        mission_id: 'SHARE_IDEA_DISCORD',
+        title: 'Share idea on Discord',
+        description: '',
+        credits: 10,
+        earned_credits: 0,
+        repetition_limit: 1,
+        repetition_text: null,
+        completed: false,
+        status: 'locked'
+      },
+      {
+        mission_id: 'SPACE_LORD_ROLE_DISCORD',
+        title: 'Reach lvl 40 on Discord',
+        description: '',
+        credits: 100,
+        earned_credits: 0,
+        repetition_limit: 1,
+        repetition_text: null,
+        completed: false,
+        status: 'locked'
+      }
+    ];
+
+    return data;
+  });
+
+  const ActionMap: {
+    [key in Mission['mission_id']]?: {
+      label: string;
+      link?: string;
+      onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+    };
+  } = {
+    MYRIA_ACCOUNT: {
+      label: 'Sign up',
+      onClick: (e) => {
+        e.preventDefault();
+        setOpenRegisterModal(true);
       }
     },
-    {
-      title: 'Join our Discord',
-      description: 'Earn 5 Credits',
-      score: 10,
-      state: 'active',
-      action: {
-        label: 'Join',
-        link: socialLinks.discord
+    JOIN_DISCORD: {
+      label: 'Join',
+      link: socialLinks.discord
+    },
+    SHARE_TWITTER: {
+      label: 'Join',
+      onClick: (e) => {
+        e.preventDefault();
+        setOpenShareTwitterModal(true);
       }
     },
-    {
-      title: 'Share our Twitter post',
-      description: 'Earn 10 Credits',
-      score: 10,
-      state: 'active',
-      action: {
-        label: 'Join',
-        link: 'https://myria.io/signup',
-        onClick: (e) => {
-          e.preventDefault();
-          setOpenShareTwitterModal(true);
-        }
+    INVITE_FRIEND: {
+      label: 'Invite',
+      link: 'https://myria.io/signup',
+      onClick: (e) => {
+        e.preventDefault();
+        setOpenInviteModal(true);
       }
     },
-    {
-      title: 'Invite friends',
-      description: 'Earn 5 Credits',
-      score: 10,
-      state: 'active',
-      action: {
-        label: 'Invite',
-        link: 'https://myria.io/signup',
-        onClick: (e) => {
-          e.preventDefault();
-          setOpenInviteModal(true);
-        }
-      }
+    DAILY_DISCORD_MESSAGE: {
+      label: 'LOGIN',
+      link: socialLinks.discord
     },
-    {
-      title: 'Create a Myria Account',
-      description: 'Earn 5 Credits',
-      score: 10,
-      state: 'locked',
-      repeatable: true
+    FIRST_DISCORD_MESSAGE: {
+      label: 'INTRODUCE',
+      link: socialLinks.discord
     },
-    {
-      title: 'Create a Myria Account',
-      description: 'Earn 5 Credits',
-      score: 10,
-      state: 'locked',
-      repeatable: true
+    VOTE_ON_LORE_DISCORD: {
+      label: 'Vote',
+      link: socialLinks.discord
     },
-    {
-      title: 'Create a Myria Account',
-      description: 'Earn 5 Credits',
-      score: 10,
-      state: 'locked',
-      repeatable: true
+    SHARE_IDEA_DISCORD: {
+      label: 'Share',
+      link: socialLinks.discord
+    },
+    SPACE_LORD_ROLE_DISCORD: {
+      label: 'Reach',
+      link: socialLinks.discord
     }
-  ];
+  };
+
+  if (!missions) {
+    return null;
+  }
 
   return (
     <>
@@ -98,7 +190,7 @@ const Missions: React.FC = () => {
         onClose={() => setOpenInviteModal(false)}
         link="https://myria.com/r/%112yb877a"
       />
-      <div className="relative flex h-full flex-col pr-8">
+      <div className="relative flex h-full flex-col pr-2">
         <div className="flex items-center">
           <p className="sigil-text mr-4 text-[18px] font-extrabold leading-[1.25]">MISSIONS</p>
           <div className="h-[1px] flex-1 bg-border-blue opacity-20">
@@ -110,7 +202,7 @@ const Missions: React.FC = () => {
         </div>
         <div className="mt-4 flex-grow space-y-4 overflow-auto" id="scrollbar">
           {missions.map((mission, index) => (
-            <MissionItem key={index} {...mission} />
+            <MissionItem key={index} item={mission} action={ActionMap[mission.mission_id]} />
           ))}
         </div>
       </div>

@@ -1,13 +1,7 @@
 import React, { useMemo } from 'react';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import LockIcon from 'src/components/icons/LockIcon';
-
-export type Reward = {
-  state: 'locked' | 'progress' | 'claim-now' | 'claimed';
-  title: string;
-  image?: string;
-  credits: number;
-};
+import { Reward } from 'src/types/sigil';
 
 const Progress: React.FC<{ percentage: number }> = ({ percentage }) => {
   return (
@@ -31,12 +25,12 @@ type Props = {
 };
 
 const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
-  const { title, credits, state, image } = item;
+  const { title, credits_required, status, image_url, progress } = item;
   const content = useMemo(() => {
-    switch (state) {
+    switch (status) {
       case 'locked':
         return (
-          <div className="flex items-center pt-2 space-x-1 text-light-red">
+          <div className="flex items-center space-x-1 pt-2 text-light-red">
             <span className="w-[16px]">
               <LockIcon />
             </span>
@@ -44,15 +38,15 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
           </div>
         );
 
-      case 'progress':
+      case 'in_progress':
         return (
           <div className="space-y-1">
             <p className="text-[12px] font-medium leading-[1.25] text-light">Progress</p>
-            <Progress percentage={23} />
+            <Progress percentage={progress ?? 0} />
           </div>
         );
 
-      case 'claim-now':
+      case 'claimable':
         return (
           <button
             onClick={() => onClaim(item)}
@@ -62,13 +56,13 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
         );
       default:
         return (
-          <div className="flex items-center pt-2 space-x-1 text-green">
+          <div className="flex items-center space-x-1 pt-2 text-green">
             <CheckIcon className="w-4 fill-current" />
             <span className="text-[14px] font-bold leading-[1.25]">Claimed</span>
           </div>
         );
     }
-  }, [state, onClaim, item]);
+  }, [status, onClaim, item, progress]);
 
   return (
     <div
@@ -85,7 +79,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
         }}
         className="relative isolate flex w-[137px] flex-shrink-0 items-center justify-center bg-[url('/images/nodes/sigil/reward-side-panel.png')] bg-cover bg-left shadow-dark-panel">
         <div className="absolute inset-0 z-[-1] opacity-50 [background-color:var(--color)]"></div>
-        <img className="w-[80%]" src={image} alt="" />
+        <img className="w-[80%]" src={image_url} alt="" />
       </div>
       <div className="flex flex-1 justify-between space-x-2 py-3 pr-6 pl-6">
         <div>
@@ -93,7 +87,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
           <div className="mt-[10px] min-w-[195px]">{content}</div>
         </div>
         <div className=" w-[64px] rounded-lg bg-dark px-[14px] py-3 text-center">
-          <p className="text-[20px] font-bold leading-none">{credits}</p>
+          <p className="text-[20px] font-bold leading-none">{credits_required}</p>
           <p className="mt-1 text-[12px] font-medium leading-none text-light">Credits</p>
         </div>
       </div>

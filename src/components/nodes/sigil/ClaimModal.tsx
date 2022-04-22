@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
 import Modal from 'src/components/Modal';
-import { Reward } from './RewardItem';
+import { Reward } from 'src/types/sigil';
 
 type Props = {
   open: boolean;
