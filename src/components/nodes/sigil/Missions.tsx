@@ -69,7 +69,7 @@ const Missions: React.FC = () => {
         repetition_limit: -1,
         repetition_text: 'Daily',
         completed: true,
-        status: 'locked'
+        status: 'available'
       },
       {
         mission_id: 'FIRST_DISCORD_MESSAGE',
@@ -152,26 +152,6 @@ const Missions: React.FC = () => {
         e.preventDefault();
         setOpenInviteModal(true);
       }
-    },
-    DAILY_DISCORD_MESSAGE: {
-      label: 'LOGIN',
-      link: socialLinks.discord
-    },
-    FIRST_DISCORD_MESSAGE: {
-      label: 'INTRODUCE',
-      link: socialLinks.discord
-    },
-    VOTE_ON_LORE_DISCORD: {
-      label: 'Vote',
-      link: socialLinks.discord
-    },
-    SHARE_IDEA_DISCORD: {
-      label: 'Share',
-      link: socialLinks.discord
-    },
-    SPACE_LORD_ROLE_DISCORD: {
-      label: 'Reach',
-      link: socialLinks.discord
     }
   };
 

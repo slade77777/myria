@@ -15,8 +15,9 @@ type Props = {
     onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   };
 };
+
 const MissionItem: React.FC<Props> = ({ item, action }) => {
-  const { repetition_limit, earned_credits, title, description, status } = item;
+  const { earned_credits, title, description, status, credits, repetition_text } = item;
   const actionEl = useMemo(() => {
     if (status == 'locked') {
       return (
@@ -50,6 +51,9 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
       </div>
     );
   }, [action, status, earned_credits]);
+
+  const isRepeatable = repetition_text == 'Daily' || repetition_text == 'Unlimited';
+
   return (
     <div
       className={clsx(
@@ -73,14 +77,18 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
             </>
           ) : (
             <>
-              {!!repetition_limit && (
+              {isRepeatable && (
                 <span className="w-4">
                   <HistoryIcon />
                 </span>
               )}
               <Tooltip>
                 <Tooltip.Trigger>
-                  <span>{description}</span>
+                  {isRepeatable ? (
+                    <span>Unlimited x {credits} Credits </span>
+                  ) : (
+                    <span>{description}</span>
+                  )}
                 </Tooltip.Trigger>
                 <Tooltip.Content className="max-w-[256px]">
                   <Tooltip.Arrow />
