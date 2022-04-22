@@ -33,7 +33,7 @@ export type Mission = {
   description: string;
   credits: number;
   earned_credits: number;
-  repetition_limit: number;
-  repetition_text: null | string;
+  repetition_limit: null | number;
+  repetition_text: null | 'Unlimited' | 'Daily';
   completed: boolean;
 };
