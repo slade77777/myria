@@ -5,17 +5,28 @@ interface Props {
   loadingSize?: number;
   labelSize?: number;
   label?: string;
+  className?: string;
+  color?: string;
 }
 
-function Loading({ loadingSize = 24, labelSize = 14, label }: Props) {
+function Loading({ loadingSize = 24, labelSize = 14, label, className, color }: Props) {
   return (
     <div
-      className="flex flex-col items-center w-fit"
+      className={`flex w-fit flex-col items-center ${className}`}
       style={{
-        fontSize: loadingSize
+        fontSize: loadingSize,
+        borderColor: color || 'inherit'
       }}>
       <div className={`${style.loadingRing}`}></div>
-      {label && <span className={`text-[${labelSize}px] mt-6`}>Stand by</span>}
+      {label && (
+        <span
+          className="mt-6"
+          style={{
+            fontSize: labelSize
+          }}>
+          Stand by
+        </span>
+      )}
     </div>
   );
 }

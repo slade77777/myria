@@ -2,6 +2,7 @@
   display: inline-block;
   width: 1em;
   height: 1em;
+  border-color: inherit;
 }
 .loadingRing:after {
   content: " ";
@@ -10,8 +11,11 @@
   height: 0.8em;
   margin: 0.1em;
   border-radius: 50%;
-  border: 0.075em solid #fff;
-  border-color: #fff transparent #fff transparent;
+  border: 0.075em solid;
+  border-top-color: inherit;
+  border-right-color: transparent;
+  border-bottom-color: inherit;
+  border-left-color: transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
