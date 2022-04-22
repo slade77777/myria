@@ -73,13 +73,18 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
       default:
         return (
           <div>
-            <a
+            {/* <a
               href={socialLinks.discord}
               target="_blank"
               className="btn-lg btn-primary col-span-2 w-full text-center"
               rel="noreferrer">
               <Trans>JOIN DISCORD</Trans>
-            </a>
+            </a> */}
+            <Link href="/sigil">
+              <a className="btn-lg btn-primary col-span-2 w-full text-center">
+                <Trans>Free Sigil NFT</Trans>
+              </a>
+            </Link>
             <div className="mt-[30px] grid grid-flow-col justify-center gap-4 sm:gap-6">
               {Socials.map((item, idx) => (
                 <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
@@ -116,7 +121,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             <Link key={item.href} href={item.href}>
               <a
                 className={clsx(
-                  'inline-block p-4 w-full flex-1 items-center border-[1px] border-solid border-white py-4 text-center text-lg font-normal leading-[22px]',
+                  'inline-block w-full flex-1 items-center border-[1px] border-solid border-white p-4 py-4 text-center text-lg font-normal leading-[22px]',
                   {
                     'bg-white text-black': activatingTab === item.id
                   }
@@ -181,17 +186,28 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                               {item.children!.map((link, idx) => (
                                 <li key={idx}>
                                   <Link href={link.url as string}>
-                                    <a target={link.target} className="text-brand-gold" onClick={() => {
-                                      if (item.id === 'community') {
-                                        if (link.id === 'discord') {
-                                          event('Dicord Button Clicked', { button_location: 'Community Links' });
+                                    <a
+                                      target={link.target}
+                                      className="text-brand-gold"
+                                      onClick={() => {
+                                        if (item.id === 'community') {
+                                          if (link.id === 'discord') {
+                                            event('Dicord Button Clicked', {
+                                              button_location: 'Community Links'
+                                            });
+                                          }
+                                          if (link.id === 'twitter') {
+                                            event('Twitter Button Clicked', {
+                                              button_location: 'Community Links'
+                                            });
+                                          }
+                                          ga.event('Click', {
+                                            event_category: 'Link',
+                                            event_label: `${link.text} Link`,
+                                            value: 'Community Links'
+                                          });
                                         }
-                                        if (link.id === 'twitter') {
-                                          event('Twitter Button Clicked', { button_location: 'Community Links' });
-                                        }
-                                        ga.event('Click', { event_category: 'Link', event_label: `${link.text} Link`, value: 'Community Links' })
-                                      }
-                                    }}>
+                                      }}>
                                       {link.text}
                                     </a>
                                   </Link>
@@ -214,7 +230,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                 );
               }
             })}
-          <li className="mt-[48px] grid gap-y-6 gap-x-4 sm:mt-[62px] max-w-[480px] mx-auto w-full">
+          <li className="mx-auto mt-[48px] grid w-full max-w-[480px] gap-y-6 gap-x-4 sm:mt-[62px]">
             {actionElements}
           </li>
         </ul>

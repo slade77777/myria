@@ -276,6 +276,7 @@ module.exports = {
         },
         '.btn-primary': {
           backgroundColor: theme('colors.brand-gold'),
+          borderColor: '#000',
           color: '#000',
           '&:hover': {
             backgroundColor: theme('colors.brand-orange')
@@ -283,6 +284,7 @@ module.exports = {
         },
         '.btn-secondary': {
           color: theme('colors.brand-gold'),
+          borderColor: theme('colors.brand-gold'),
           border: '1px solid currentColor',
           '&:hover': {
             color: theme('colors.brand-orange')
@@ -291,6 +293,7 @@ module.exports = {
         '.btn-white': {
           backgroundColor: theme('colors.brand-white'),
           color: '#000',
+          borderColor: '#000',
           '&:hover': {
             backgroundColor: '#ccc'
           }
@@ -298,6 +301,7 @@ module.exports = {
         '.btn-light-blue': {
           backgroundColor: theme('colors.brand-light-blue'),
           color: '#000',
+          borderColor: '#000',
           '&:hover': {
             backgroundColor: theme('colors.brand-mid-blue')
           }
@@ -305,6 +309,7 @@ module.exports = {
         '.btn-dark-blue': {
           backgroundColor: theme('colors.brand-deep-blue'),
           color: 'rgba(255, 255, 255, 0.5)',
+          borderColor: 'rgba(255, 255, 255, 0.5)',
 
           '&:hover, &.active': {
             backgroundColor: theme('colors.brand-dark-blue'),
