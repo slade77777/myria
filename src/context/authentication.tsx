@@ -2,10 +2,14 @@ import React, { useContext, useState } from 'react';
 import Modal from 'src/components/Modal';
 import SignIn from 'src/components/SignIn';
 import Register from 'src/components/Register';
+import ForgotPassword from 'src/components/ForgotPassword';
+import ResetPassword from 'src/components/ResetPassword';
 import { Verify } from 'src/components/SliderCapcha';
 import puzzle from '../../public/images/capcha.png';
 import { IFormSignInInput } from 'src/components/SignIn/SignIn';
 import { IFormRegisterInput } from 'src/components/Register/Register';
+import { IFormForgotPasswordInput } from 'src/components/ForgotPassword/ForgotPassword';
+import { IFormResetPasswordInput } from 'src/components/ResetPassword/ResetPassword';
 import apiClient from 'src/client';
 import { useMutation } from 'react-query';
 
@@ -50,16 +54,45 @@ const RegisterModal = ({ open, onClose }: { open: boolean; onClose?: () => void 
   );
 };
 
+const ForgotPasswordModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
+  return (
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title="Forgot Password" className="shadow-[0_0_40px_10px_#0000004D]">
+        <ForgotPassword />
+      </Modal.Content>
+    </Modal>
+  );
+};
+
+const ResetPasswordModal = ({ open, isResetSuccess, onClose }: { open: boolean; isResetSuccess: boolean, onClose?: () => void }) => {
+  return (
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title={isResetSuccess ? "Your password was reset" : "Create a new password"} className="shadow-[0_0_40px_10px_#0000004D]">
+        <ResetPassword />
+      </Modal.Content>
+    </Modal>
+  );
+};
+
 interface IAuthenticationContext {
   user: string | undefined;
   login: () => void;
   register: () => void;
-  setUser: (user: any) => void;
+  forgotPassword: () => void;
+  resetPassword: () => void;
   openVerify: (data: IFormSignInInput) => void;
   doRegister: (data: IFormRegisterInput) => void;
-  closeVerify: () => void;
+  doForgotPassword: (data: IFormForgotPasswordInput) => void;
+  doResetPassword: (data: IFormResetPasswordInput) => void;
+  isPostingLogin: boolean;
+  isPostingRegister: boolean;
+  isPostingForgotPassword: boolean;
+  isPostingResetPassword: boolean;
+  isResetSuccess: boolean;
   loginError: string;
   registerError: string;
+  forgotPasswordError: string;
+  resetPasswordError: string;
 }
 
 const AuthenticationContext = React.createContext<IAuthenticationContext>(
@@ -70,13 +103,22 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const [user, setUser] = React.useState<string | undefined>(undefined);
   const [openSignIn, setOpenSignIn] = React.useState<boolean>(false);
   const [openRegister, setOpenRegister] = React.useState<boolean>(false);
+  const [openForgotPassword, setOpenForgotPassword] = React.useState<boolean>(false);
+  const [openResetPassword, setOpenResetPassword] = React.useState<boolean>(false);
   const [openVerifyModal, setOpenVerifyModal] = React.useState(false);
+  const [isResetSuccess, setResetSuccess] = React.useState(false);
 
   const [loginData, setLoginData] = useState<IFormSignInInput>();
   const [loginError, setLoginError] = useState<string>('');
 
   const [registerData, setRegisterData] = useState<IFormRegisterInput>();
   const [registerError, setRegisterError] = useState<string>('');
+
+  const [forgotPasswordData, setForgotPasswordData] = useState<IFormForgotPasswordInput>();
+  const [forgotPasswordError, setForgotPasswordError] = useState<string>('');
+
+  const [resetPasswordData, setResetPasswordData] = useState<IFormResetPasswordInput>();
+  const [resetPasswordError, setResetPasswordError] = useState<string>('');
 
   const { isLoading: isPostingLogin, mutate: postLogin } = useMutation(
     async () => { return await apiClient.post(`/accounts/login`, loginData); },
@@ -108,17 +150,55 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     }
   );
 
+  const { isLoading: isPostingForgotPassword, mutate: postForgotPassword } = useMutation(
+    async () => { return await apiClient.post(`/accounts/forgotPassword`, forgotPasswordData); },
+    {
+      onSuccess: (res) => {
+        setOpenForgotPassword(false);
+      },
+      onError: (err) => {
+        setForgotPasswordError("Email does not exist")
+      },
+    }
+  );
+
+  const { isLoading: isPostingResetPassword, mutate: postResetPassword } = useMutation(
+    async () => { return await apiClient.post(`/accounts/resetPassword`, resetPasswordData); },
+    {
+      onSuccess: (res) => {
+        setResetSuccess(true)
+      },
+      onError: (err) => {
+        setResetPasswordError("Can't reset your password")
+      },
+    }
+  );
+
   const login = () => {
     setOpenSignIn(true);
     setOpenRegister(false);
     setOpenVerifyModal(false);
+    setOpenForgotPassword(false);
+    setOpenResetPassword(false)
   };
 
   const register = () => {
     setOpenSignIn(false);
     setOpenRegister(true);
     setOpenVerifyModal(false);
+    setOpenForgotPassword(false);
   };
+
+  const forgotPassword = () => {
+    setOpenForgotPassword(true)
+    setOpenSignIn(false);
+    setOpenRegister(false);
+  };
+
+  const resetPassword = () => {
+    setResetSuccess(false)
+    setOpenResetPassword(true)
+  }
 
   const openVerify = (data: IFormSignInInput) => {
     setLoginData(data)
@@ -141,11 +221,44 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     postRegister()
   };
 
+  const doForgotPassword = (data: IFormForgotPasswordInput) => {
+    setForgotPasswordData(data)
+    postForgotPassword()
+  };
+
+  const doResetPassword = (data: IFormResetPasswordInput) => {
+    setResetPasswordData(data)
+    postResetPassword()
+  };
+
   return (
     <AuthenticationContext.Provider
-      value={{ user, login, register, setUser, openVerify, doRegister, closeVerify, loginError, registerError }}>
+      value={
+        {
+          user,
+          login,
+          register,
+          forgotPassword,
+          resetPassword,
+          openVerify,
+          doRegister,
+          doForgotPassword,
+          doResetPassword,
+          isPostingLogin,
+          isPostingRegister,
+          isPostingForgotPassword,
+          isPostingResetPassword,
+          isResetSuccess,
+          loginError,
+          registerError,
+          forgotPasswordError,
+          resetPasswordError
+        }
+      }>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />
       <RegisterModal open={openRegister} onClose={() => setOpenRegister(false)} />
+      <ForgotPasswordModal open={openForgotPassword} onClose={() => setOpenForgotPassword(false)} />
+      <ResetPasswordModal open={openResetPassword} isResetSuccess={isResetSuccess} onClose={() => setOpenResetPassword(false)} />
       <VerifyModal open={openVerifyModal} onClose={closeVerify} onSuccess={onVerifySuccess} />
       {children}
     </AuthenticationContext.Provider>

@@ -27,7 +27,7 @@ const schema = yup
   .required();
 
 const SignIn: React.FC = () => {
-  const { register, openVerify, loginError } = useAuthenticationContext();
+  const { register, forgotPassword, openVerify, loginError } = useAuthenticationContext();
   const [error, setError] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
 
@@ -75,9 +75,7 @@ const SignIn: React.FC = () => {
             </span>
           </div>
         </div>
-        <Link href="/" passHref>
-          <a className="text-brand-gold">Forgot your password?</a>
-        </Link>
+        <a className="text-brand-gold hover:cursor-pointer" onClick={forgotPassword}><Trans>Forgot your password?</Trans></a>
         <button className="btn-lg btn-primary mt-8 w-full">
           <Trans>Sign in</Trans>
         </button>
@@ -85,11 +83,9 @@ const SignIn: React.FC = () => {
           <div className="text-light">
             {t`Don’t have an account?`}{' '}
             <span className="text-gold">
-              {/* <Link href="/" passHref> */}
               <a className="text-brand-gold hover:cursor-pointer" onClick={register}>
                 <Trans>Sign up now</Trans>
               </a>
-              {/* </Link> */}
             </span>
           </div>
         </div>
