@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { convertUtf8ToHex } from "@walletconnect/utils";
 import React, { useCallback } from 'react';
 import WalletConnect from '@walletconnect/web3-provider';
 import Web3Modal from '../components/Web3Modal';
@@ -10,6 +11,7 @@ let web3Modal: Web3Modal;
 
 interface IWalletContext {
   address?: string;
+  providerApi?: ethers.providers.Web3Provider;
   chainId?: number | string;
   onConnect: () => void;
   ready: boolean;
@@ -22,7 +24,8 @@ export const WalletProvider: React.FC = ({ children }) => {
   const [address, setAddress] = React.useState<string | undefined>(undefined);
   const [ready, setReady] = React.useState(false);
   const [chainId, setChainId] = React.useState<number | string | undefined>(undefined);
-  const [provider, setProvider] = useState<any>();
+  const [w3Provider, setW3Provider] = useState<any>();
+  const [providerApi, setProviderApi] = useState<any>();
 
   const getProviderOptions = () => {
     const providerOptions = {
@@ -56,13 +59,13 @@ export const WalletProvider: React.FC = ({ children }) => {
   };
 
   const disconnect = useCallback(async () => {
-    if (provider?.close) {
-      await provider.close();
+    if (w3Provider?.close) {
+      await w3Provider.close();
     }
     await web3Modal.clearCachedProvider();
     reset();
-  }, [provider]);
-
+  }, [w3Provider]);
+  
   const onConnect = async () => {
     web3Modal = new Web3Modal({
       network: 'mainnet',
@@ -78,7 +81,8 @@ export const WalletProvider: React.FC = ({ children }) => {
     const accounts = await providerApi.listAccounts();
     const address = accounts[0];
     const network = await providerApi.getNetwork();
-    setProvider(w3provider);
+    setW3Provider(w3provider);
+    setProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
   };
@@ -87,6 +91,7 @@ export const WalletProvider: React.FC = ({ children }) => {
     <WalletContext.Provider
       value={{
         address,
+        providerApi,
         chainId,
         onConnect,
         ready,
