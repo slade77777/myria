@@ -36,11 +36,6 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
               JOIN NOW
             </button>
-            <button
-              className="btn-sm btn-secondary mt-4 min-w-[171px] rounded-lg px-4 py-3"
-              onClick={login}>
-              Sign in
-            </button>
           </>
         ) : (
           <>
@@ -61,6 +56,11 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 <span>Install Metamask</span>
               </a>
             )}
+            <button
+              className="btn-sm btn-secondary mt-4  h-[40px] w-[194px] rounded-lg px-4 py-3"
+              onClick={login}>
+              Sign in
+            </button>
           </>
         )}
       </div>
