@@ -8,15 +8,18 @@ import useClickOutside from 'src/hooks/useClickOutside';
 import Link from 'next/link';
 
 const Careers: React.FC = () => {
-  const categories = useCareerCategories();
+  const allCategories = useCareerCategories();
   const filterRef = useRef(null);
   const [openFilter, setOpenFilter] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [currentFilterName, setCurrentFilterName] = useState<string | null>(null);
 
+  const categories = allCategories.filter((item) => item.jobs && item.jobs.length > 0);
   const departments = categories.filter((item) => !selectedCategory || item.id === selectedCategory);
 
   const onClickFilter = (filter: typeof categories[number] | null) => {
+    setOpenFilter(false);
+
     if (!filter) {
       setSelectedCategory(null);
       return;
@@ -45,7 +48,7 @@ const Careers: React.FC = () => {
             'absolute top-14 left-1/2 min-w-[365px] -translate-x-1/2 transform rounded-3xl bg-brand-deep-blue shadow-2xl',
             { hidden: !openFilter }
           )}>
-          <div className="grid grid-cols-3 gap-7 p-7"  ref={filterRef}>
+          <div className="grid grid-cols-3 gap-7 p-7" ref={filterRef}>
             <p
               className={clsx('cursor-pointer text-center', {
                 'text-brand-gold': !selectedCategory
@@ -53,14 +56,14 @@ const Careers: React.FC = () => {
               onClick={() => onClickFilter(null)}>
               All
             </p>
-            {categories.map((item) => (
+            {categories.map((category) => (
               <p
                 className={clsx('cursor-pointer text-center', {
-                  'text-brand-gold': selectedCategory === item.id
+                  'text-brand-gold': selectedCategory === category.id
                 })}
-                key={item.id}
-                onClick={() => onClickFilter(item)}>
-                {item.name}
+                key={category.id}
+                onClick={() => onClickFilter(category)}>
+                {category.name}
               </p>
             ))}
           </div>
@@ -71,25 +74,27 @@ const Careers: React.FC = () => {
           <div
             className="border-t border-[rgba(151,170,181,0.2)] pt-14 md:grid md:grid-cols-3 md:gap-4"
             key={item.id}>
-            <h3 className="heading-list mb-9 md:mb-14 text-left">{item.name}</h3>
-            <div className="md:mt-5 md:col-span-2 pb-14">
+            <h3 className="heading-list mb-9 text-left md:mb-14">{item.name}</h3>
+            <div className="pb-14 md:col-span-2 md:mt-5">
               {item.jobs?.map((pos) => (
-                <div key={pos.id} className="mb-4 flex flex-row items-baseline">
-                  <div className="flex-1 text-left">
-                    <h3 className="body ">{pos.title}</h3>
-                    <p className="text-light">{pos.location?.name || '-'}</p>
-                  </div>
-                  <a
-                    target="_blank"
-                    href={pos.absolute_url}
-                    className="body mt-6 flex font-extrabold text-brand-gold"
-                    rel="noreferrer">
-                    <Trans>View job</Trans>
-                    <div className="ml-2">
-                      <ArrowRightIcon />
+                <Link href={pos.absolute_url} key={pos.id} passHref>
+                  <a target="_blank" rel="noreferrer">
+                    <div key={pos.id} className="mb-4 flex flex-row items-baseline">
+                      <div className="flex-1 text-left">
+                        <h3 className="body ">{pos.title}</h3>
+                        <p className="text-light">{pos.location?.name || '-'}</p>
+                      </div>
+                      <div className="mt-6 flex text-brand-gold">
+                        <p className="body font-medium">
+                          <Trans>View job</Trans>
+                        </p>
+                        <div className="ml-2">
+                          <ArrowRightIcon />
+                        </div>
+                      </div>
                     </div>
                   </a>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
