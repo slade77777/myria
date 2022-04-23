@@ -10,6 +10,7 @@ import Tooltip from 'src/components/Tooltip';
 import LanguageProvider, { useLanguage } from 'src/context/language';
 import { useGATrackPageview } from 'src/lib/ga';
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { t } from '@lingui/macro';
 import TabProvider from 'src/context/tabContext';
 
@@ -63,6 +64,7 @@ function App({ Component, pageProps }: AppProps) {
           </WalletProvider>
         </AuthenticationProvider>
       </LanguageProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
