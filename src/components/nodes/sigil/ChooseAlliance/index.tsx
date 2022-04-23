@@ -35,7 +35,7 @@ type Sigil = {
 
 const SIGILS: Sigil[] = [
   {
-    id: 'a',
+    id: 'FEDERATION',
     order: 1,
     img: '/images/nodes/insignia/alliance_sigilA.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
@@ -46,7 +46,7 @@ const SIGILS: Sigil[] = [
     desc: 'With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts.'
   },
   {
-    id: 'b',
+    id: 'VECTOR_PRIME',
     order: 2,
     img: '/images/nodes/insignia/alliance_sigilB.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
@@ -57,7 +57,7 @@ const SIGILS: Sigil[] = [
     desc: 'Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion.'
   },
   {
-    id: 'c',
+    id: 'EQUINOX',
     order: 3,
     img: '/images/nodes/insignia/alliance_sigilC.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
@@ -264,7 +264,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
     <>
       <AllianceModal
         open={!!selectedAlliance}
-        onJoin={onNext}
+        onJoinSuccess={onNext}
         onClose={() => {
           setSelectedAlliance(null);
         }}

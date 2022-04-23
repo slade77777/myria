@@ -1,27 +1,23 @@
 import React from 'react';
+import Button from 'src/components/core/Button';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
 import { useGA4 } from 'src/lib/ga';
+import { useQuery } from './useQuery';
 
 type Props = {
   open: boolean;
   onClose: () => void;
-  onJoin: () => void;
+  onJoinSuccess: () => void;
   sigilName?: string;
   sigilDesc?: string;
   sigilId?: string;
 };
 
-const AllianceModal: React.FC<Props> = ({
-  open,
-  onClose,
-  onJoin,
-  sigilDesc,
-  sigilName,
-  sigilId
-}) => {
+const AllianceModal: React.FC<Props> = ({ open, onClose, onJoinSuccess, sigilDesc, sigilName, sigilId }) => {
   const { event } = useGA4();
+  const { pickAllianceMutation } = useQuery();
   const backgroundImg = React.useMemo(() => {
     if (sigilId === 'a') {
       return "bg-[url('/images/nodes/insignia/sigilA_modal_bg.png')]";
@@ -31,6 +27,18 @@ const AllianceModal: React.FC<Props> = ({
       return "bg-[url('/images/nodes/insignia/sigilC_modal_bg.png')]";
     }
   }, [sigilId]);
+
+  const handleJoin = async (selectedSigilId: string) => {
+    try {
+      await pickAllianceMutation.mutateAsync(selectedSigilId);
+      if (typeof onJoinSuccess === 'function') {
+        onJoinSuccess();
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 
   return (
     <Modal
@@ -51,13 +59,15 @@ const AllianceModal: React.FC<Props> = ({
                   You are joining...
                 </p>
                 <p className="mb-6 text-[32px] font-bold leading-[1.2]">{sigilName || ''}</p>
-                <p className="mb-6 text-[14px] font-normal leading-[1.5] text-white">{sigilDesc}</p>
-                <button className="btn-md btn-primary uppercase" onClick={() => {
-                  onJoin()
+                <p className="mb-6 text-[14px] font-normal leading-[1.5] text-white">
+                  {sigilDesc}
+                </p>
+                <Button className="btn-md btn-primary uppercase" onClick={() => {
+                  sigilId && handleJoin(sigilId)
                   sigilName && event('Alliance Joined', { campaign: 'Sigil', alliance_name: sigilName })
-                }}>
-                  JOIN {sigilName}
-                </button>
+                }} loading={pickAllianceMutation.isLoading}>
+                  JOIN the {sigilName}
+                </Button>
               </div>
 
               <div className="flex flex-col items-start text-[14px] leading-[1.2] text-brand-orange">
