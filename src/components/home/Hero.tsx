@@ -146,21 +146,21 @@ const Hero: React.FC = () => {
                 }
                 className="absolute inset-0"></div>
               <div className="absolute inset-0">
-                {new Array(3).fill(null).map((_, idx) => (
+                {new Array(2).fill(null).map((_, idx) => (
                   <img
                     key={idx}
-                    src={`/images/home/cloud${idx}.png`}
+                    src={`/images/home/cloud${idx + 1}.png`}
                     alt=""
-                    style={{ '--index': idx + 1 } as CSSProperties}
+                    style={{ '--index': idx + 2 } as CSSProperties}
                     className=" absolute -bottom-[120px] left-0 w-full animate-cloud"
                   />
                 ))}
-                {new Array(3).fill(null).map((_, idx) => (
+                {new Array(2).fill(null).map((_, idx) => (
                   <img
                     key={idx + 5}
-                    src={`/images/home/cloud${idx}.png`}
+                    src={`/images/home/cloud${idx + 1}.png`}
                     alt=""
-                    style={{ '--index': 10 - idx } as CSSProperties}
+                    style={{ '--index': 10 - (idx + 1) } as CSSProperties}
                     className=" absolute -bottom-[120px] left-0 w-full animate-cloud"
                   />
                 ))}
@@ -188,10 +188,7 @@ const Hero: React.FC = () => {
               }
               className="mx-auto w-full max-w-content px-6  [background:var(--bg)] md:bg-none md:px-[64px]">
               <div className="hero-text my-[50px] mb-[65px] max-w-[607px] text-center md:mt-0 md:text-left">
-                <h1
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                  className="heading-lg text-brand-white">
+                <h1 className="heading-lg text-brand-white">
                   <Trans>
                     Bringing{' '}
                     <span className=" aos-text-slide-right text-brand-gold [--animated-color:#F5B941]">
@@ -200,10 +197,7 @@ const Hero: React.FC = () => {
                     to the world
                   </Trans>
                 </h1>
-                <h3
-                  data-aos="fade-up"
-                  data-aos-duration="2000"
-                  className="mt-6 text-[18px] leading-[1.3] md:text-[22px]">
+                <h3 className="mt-6 text-[18px] leading-[1.3] md:text-[22px]">
                   <span className="aos-text-slide-right text-white ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
                     <Trans>
                       A decentralised Ethereum scaling platform, purpose built for digital assets
@@ -211,10 +205,7 @@ const Hero: React.FC = () => {
                     </Trans>
                   </span>
                 </h3>
-                <div
-                  data-aos="fade-up"
-                  data-aos-duration="3000"
-                  className="mt-8 flex justify-center space-x-5 md:justify-start">
+                <div className="mt-8 flex justify-center space-x-5 md:justify-start">
                   <Link href={'/ecosystem'}>
                     <a className="btn-lg btn-white min-w-[178px]">
                       <Trans>Learn more</Trans>
@@ -222,9 +213,13 @@ const Hero: React.FC = () => {
                   </Link>
                   <a
                     onClick={() => {
-                      ga.event('Click', { event_category: 'Banner', event_label: 'Discord Link', value: 'Banner' })
+                      ga.event('Click', {
+                        event_category: 'Banner',
+                        event_label: 'Discord Link',
+                        value: 'Banner'
+                      });
                     }}
-                    href='https://discord.gg/VQaPXRGR6S'
+                    href="https://discord.gg/VQaPXRGR6S"
                     target="_blank"
                     className="btn-icon btn-primary inline-flex min-w-[178px] items-center text-[14px]  md:text-[16px]"
                     rel="noreferrer">
