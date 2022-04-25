@@ -1,96 +1,87 @@
-import { useMutation, QueryClient, useQuery } from "react-query";
+import { useMutation, useQuery } from 'react-query';
+import http from 'src/services/http';
 
-export type InventoryType = {
-  id: string;
-  image: string;
+export type AssetStatus = 'off-chain' | 'on-chain';
+
+export type Rarity = 'common' | 'ultra_rare';
+
+export type AssetTypeType = 'sigil' | 'title' | 'chest' | 'credits';
+
+type AssetBaseType = {
+  alliance: string;
+  collection: string;
+  rarity: Rarity;
+  status: AssetStatus;
+  sk: string;
+  pk: string;
   name: string;
-  rarity: 'COMMON' | 'EPIC' | 'ULTRA RARE';
-  type: 'CHEST';
-  qty: string;
-  maxSupply: string;
-  isOpened: boolean;
+  type: AssetTypeType;
 };
 
-export type InventoryItemCreditType = {
-  type: 'CREDITS';
+export type AssetSigilType = AssetBaseType & {
+  type: 'sigil';
+};
+
+export type AssetTitleType = AssetBaseType & {
+  type: 'title';
+};
+
+export type AssetCreditType = Omit<
+  AssetBaseType,
+  'alliance' | 'collection' | 'rarity' | 'status' | 'name'
+> & {
   amount: number;
+  type: 'credits';
 };
 
-export type InventoryItemType = Omit<InventoryType, 'type' | 'isOpened'> & {
-  type: 'SIGIL' | 'TITLE';
+export type ChestItemSigilType = Omit<AssetSigilType, 'alliance' | 'sk' | 'pk'>;
+
+export type ChestItemTitleType = Omit<AssetTitleType, 'alliance' | 'sk' | 'pk'>;
+
+export type ChestItemCreditType = Omit<AssetCreditType, 'sk' | 'pk'>;
+
+export type AssetChestType = AssetBaseType & {
+  opened: boolean;
+  content: (ChestItemCreditType | ChestItemSigilType | ChestItemTitleType)[];
+  type: 'chest';
 };
 
-export type OpenInventoryType = InventoryType & {
-  items: (InventoryItemType | InventoryItemCreditType)[];
-};
+export type AssetType = AssetSigilType | AssetTitleType | AssetChestType;
 
-const inventories: InventoryType[] = Array(9)
-  .fill(0)
-  .map((_, index) => ({
-    id: String(index),
-    image: '/images/our-games/metarush_op.png',
-    name: 'Common Alliance Chest',
-    rarity: 'COMMON',
-    type: 'CHEST',
-    qty: '2,056',
-    maxSupply: '10,000',
-    isOpened: Math.random() > 0.5 ? true : false
-  }));
+export type OpenChestContent = AssetSigilType | AssetTitleType | AssetCreditType;
 
-// MOCK
-const getInventory = () => {
-  return new Promise<InventoryType[]>((resolve) => {
-    setTimeout(() => resolve(inventories), 2000);
-  });
-};
+const getInventory = async (userId = '2789bb16-6e89-4d67-a841-3cd883fe140a') => {
+  const data = await http.get(`/v1/sigil/users/${userId}/assets`).then((res) => res.data?.data);
 
-const openChest = (chestId: string) => {
-  console.log('Opening chest', chestId);
-  return new Promise<OpenInventoryType>((resolve) => {
-    setTimeout(
-      () =>
-        resolve({
-          ...inventories[0],
-          items: [
-            {
-              id: '1',
-              image: '/images/nodes/sigil/alliance-1.png',
-              name: 'x1 Rare Demonic Hell Widget',
-              rarity: 'COMMON',
-              type: 'SIGIL',
-              qty: '2,056',
-              maxSupply: '10,000'
-            },
-            {
-              id: '2',
-              image: '/images/nodes/sigil/alliance-1.png',
-              name: 'x1 Rare Demonic Hell Title',
-              rarity: 'COMMON',
-              type: 'TITLE',
-              qty: '2,056',
-              maxSupply: '10,000'
-            },
-            {
-              type: 'CREDITS',
-              amount: 1000
-            }
-          ]
-        }),
-      2000
+  if (data instanceof Array) {
+    return (data as AssetType[]).filter((asset) =>
+      (['chest', 'sigil', 'title'] as AssetTypeType[]).includes(asset.type)
     );
-  });
+  }
+};
+
+const openChest = async (lootboxId: string, userId = '2789bb16-6e89-4d67-a841-3cd883fe140a') => {
+  const data = await http
+    .post(`/v1/sigil/users/${userId}/lootbox`, {
+      lootbox_id: lootboxId
+    })
+    .then((res) => res.data?.data);
+  
+  if (data?.content) {
+    return data.content as OpenChestContent[]
+  }
 };
 
 export const inventoryQueryKeys = {
-  inventory_getInventory: 'inventory_getInventory',
+  inventory_getInventory: 'inventory_getInventory'
 };
 
 export const useInventoryQuery = () => {
-  const inventoryQuery = useQuery(inventoryQueryKeys.inventory_getInventory, getInventory);
+  const inventoryQuery = useQuery(inventoryQueryKeys.inventory_getInventory, () => getInventory());
   const inventoryOpenChestMutation = useMutation(openChest);
 
   return {
     inventoryQuery,
     inventoryOpenChestMutation
-  }
-}
+  };
+};

@@ -2,39 +2,34 @@ import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
-import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
 import { useGA4 } from 'src/lib/ga';
-import {
-  InventoryItemCreditType,
-  InventoryItemType,
-  OpenInventoryType
-} from 'src/services/api/inventory';
+import { AssetCreditType, AssetSigilType, AssetTitleType, OpenChestContent } from './useQuery';
 
 type Props = {
   open: boolean;
   onClose: () => void;
-  openedChest?: OpenInventoryType;
+  openedChest?: OpenChestContent[];
+  chestName: string;
 };
 
-const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest }) => {
+const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, chestName }) => {
   const { event } = useGA4();
-
-  const credit = React.useMemo<InventoryItemCreditType | undefined>(() => {
-    return openedChest?.items.find((item) => item.type === 'CREDITS') as
-      | InventoryItemCreditType
+  const credit = React.useMemo<AssetCreditType | undefined>(() => {
+    return openedChest?.find((item) => item.type === 'credits') as
+      | AssetCreditType
       | undefined;
   }, [openedChest]);
 
-  const sigil = React.useMemo<InventoryItemType | undefined>(() => {
-    return openedChest?.items.find((item) => item.type === 'SIGIL') as
-      | InventoryItemType
+  const sigil = React.useMemo<AssetSigilType | undefined>(() => {
+    return openedChest?.find((item) => item.type === 'sigil') as
+      | AssetSigilType
       | undefined;
   }, [openedChest]);
 
-  const title = React.useMemo<InventoryItemType | undefined>(() => {
-    return openedChest?.items.find((item) => item.type === 'TITLE') as
-      | InventoryItemType
+  const title = React.useMemo<AssetTitleType | undefined>(() => {
+    return openedChest?.find((item) => item.type === 'title') as
+      | AssetTitleType
       | undefined;
   }, [openedChest]);
 
@@ -66,7 +61,7 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest }
                 <Trans>You have opened</Trans>
               </span>
               <span className="mb-[36px] text-[28px] font-bold text-[#A9CB68]">
-                {openedChest.name}
+                {chestName}
               </span>
 
               {sigil && (
@@ -77,7 +72,7 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest }
                       'linear-gradient(180deg, rgba(169, 203, 104, 0.2) 5.86%, rgba(169, 203, 104, 0) 51.87%)',
                     boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.25)'
                   }}>
-                  <Image src={sigil.image} width={40} height={45} layout="intrinsic" alt="sigil" />
+                  <Image src='/images/nodes/sigil/alliance-1.png' width={40} height={45} layout="intrinsic" alt="sigil" />
                   <span className="ml-4 text-[16px] font-medium text-[#A9CB68]">{sigil.name}</span>
                 </div>
               )}
@@ -91,7 +86,7 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest }
                     boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.25)'
                   }}>
                   <Image
-                    src={title.image}
+                    src='/images/nodes/sigil/alliance-1.png'
                     width={40}
                     height={45}
                     layout="intrinsic"

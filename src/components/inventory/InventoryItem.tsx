@@ -6,18 +6,17 @@ import Badge from 'src/components/Badge';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import ChevronRightIcon from 'src/components/icons/ChevronRightIcon';
 import Overlay from 'src/components/overlay/Overlay';
-import { useInventoryQuery } from './useQuery';
+import { AssetType, OpenChestContent, useInventoryQuery } from './useQuery';
 import Button from '../core/Button';
-import { InventoryType, OpenInventoryType } from 'src/services/api/inventory';
 
 interface Props {
-  item: InventoryType;
+  item: AssetType;
 }
 
 const InventoryItem = ({ item }: Props) => {
   const [open, setOpen] = React.useState(false);
   const { inventoryOpenChestMutation } = useInventoryQuery();
-  const [openedChest, setOpenedChest] = React.useState<OpenInventoryType | undefined>();
+  const [openedChest, setOpenedChest] = React.useState<OpenChestContent[] | undefined>();
 
   const handleOpenChest = async (chestId: string) => {
     try {
@@ -35,26 +34,29 @@ const InventoryItem = ({ item }: Props) => {
         open={open}
         onClose={() => setOpen(false)}
         openedChest={openedChest}
+        chestName={item.name}
       />
       <div className="block h-[444px] w-full max-w-[328px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
         <Overlay className="h-[200px] w-full lg:h-[248px]">
-          <Image src={item.image} alt="" layout="fill" objectFit="cover" />
+          <Image src='/images/our-games/metarush_op.png' alt="" layout="fill" objectFit="cover" />
         </Overlay>
         <div className="p-6">
           <span className="mb-4 block text-[20px] font-extrabold">{item.name}</span>
           <div className="mb-6 flex items-center justify-between">
             <Badge>
-              <Trans>{item.type}</Trans>
+              <span className='uppercase'>
+                <Trans>{item.rarity}</Trans>
+              </span>
             </Badge>
             <span className="text-[16px] font-normal text-light">
-              {item.qty}/{item.maxSupply}
+              2056
             </span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-[16px] font-normal text-light">
-              <Trans>Sigil Event</Trans>
+              <Trans>{item.collection}</Trans>
             </span>
-            {item.isOpened ? (
+            {item.type === 'chest' && item.opened ? (
               <div className="flex items-center font-bold text-green">
                 <span className="mr-2 w-[22px]">
                   <CheckIcon />
@@ -67,7 +69,7 @@ const InventoryItem = ({ item }: Props) => {
               <Button
                 loading={inventoryOpenChestMutation.isLoading}
                 className="btn-sm btn-primary flex items-center"
-                onClick={() => handleOpenChest(item.id)}>
+                onClick={() => handleOpenChest('6b220221-205f-4d0e-a023-25e6a1812436')}>
                 <span className="relative top-[1px]">
                   <Trans>OPEN NOW</Trans>
                 </span>
