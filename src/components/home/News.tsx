@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import useLatestPosts, { mediumPage } from 'src/hooks/useLatestPosts';
+import useLatestPosts from 'src/hooks/useLatestPosts';
 import type { Item as TItem } from 'src/hooks/useLatestPosts';
 import { Trans } from '@lingui/macro';
 import { negativeMarginXSm } from 'src/utils';
