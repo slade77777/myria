@@ -15,16 +15,14 @@ export type Item = {
   link: string;
 };
 
-export const mediumPage ='https://medium.com/feed/@myriagames';
+export const encodedMediumPage ='https%3A%2F%2Fmedium.com%2Ffeed%2F%40@myriagames';
 export default function useLatestPosts() {
   const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
     async function fetchLatestItems() {
       const response = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
-          mediumPage
-        )}&x=${new Date().getTime()}`,
+        `https://api.rss2json.com/v1/api.json?rss_url=${encodedMediumPage}&x=${new Date().getTime()}`,
         {
           mode: 'cors'
         }
@@ -35,7 +33,8 @@ export default function useLatestPosts() {
       }
 
       const json = (await response.json()) as { items: Item[] };
-
+      console.log(json);
+      
       const items = json.items.sort((i1, i2) => {
         return new Date(i2.pubDate).getTime() - new Date(i1.pubDate).getTime();
       });
