@@ -6,6 +6,7 @@ import { t, Trans } from '@lingui/macro';
 import * as yup from 'yup';
 import { useAuthenticationContext } from 'src/context/authentication';
 import EyeIcon from '../icons/EyeIcon';
+import { validatePassword } from 'src/utils';
 
 export interface IFormResetPasswordInput {
   password: string;
@@ -46,7 +47,11 @@ const ResetPassword: React.FC = () => {
     if (isResetSuccess) {
       login()
     } else {
-      doResetPassword(data)
+      const passwordError = validatePassword(data.password)
+      setError(passwordError || '')
+      if (!passwordError) {
+        doResetPassword(data)
+      }
     }
   }
 
@@ -66,8 +71,8 @@ const ResetPassword: React.FC = () => {
           <Input
             placeholder={t`Enter a password`}
             {...register('password')}
-            error={!!errors.password}
-            errorText={errors.password?.message}
+            error={!!errors.password || !!error}
+            errorText={errors.password?.message || error}
             className="w-full pr-9"
             containerClassName={!!errors.password ? 'mt-4' : 'mt-6'}
             type={visiblePassword ? 'text' : 'password'}
