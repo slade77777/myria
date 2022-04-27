@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { tabRoutes, useTabContext } from 'src/context/tabContext';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import { socialLinks } from '../../configs';
 import Collapse from '../Collapse';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
@@ -199,7 +199,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                                       onClick={() => {
                                         if (item.id === 'community') {
                                           if (link.id === 'discord') {
-                                            event('Dicord Button Clicked', {
+                                            event('Discord Button Clicked', {
                                               button_location: 'Community Links'
                                             });
                                           }
@@ -208,11 +208,6 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                                               button_location: 'Community Links'
                                             });
                                           }
-                                          ga.event('Click', {
-                                            event_category: 'Link',
-                                            event_label: `${link.text} Link`,
-                                            value: 'Community Links'
-                                          });
                                         }
                                       }}>
                                       {link.text}

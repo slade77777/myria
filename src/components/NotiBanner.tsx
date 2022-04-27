@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { tabRoutes, useTabContext } from 'src/context/tabContext';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import DiscordIcon from './icons/DiscordIcon';
 
 const NotiBanner: React.FC = () => {
@@ -36,12 +36,7 @@ const NotiBanner: React.FC = () => {
         <a
           href='https://discord.gg/HgXdFqJXmu '
           onClick={() => {
-            event('Dicord Button Clicked', { button_location: 'Top Bar' });
-            ga.event('Click', {
-              event_category: 'Button',
-              event_label: 'Discord Link',
-              value: 'Top Bar'
-            })
+            event('Discord Button Clicked', { button_location: 'Top Bar' });
           }}
           target="_blank"
           className="btn-icon-sm btn-white mt-4 flex items-center px-4 text-[12px] md:mt-0 md:ml-6"

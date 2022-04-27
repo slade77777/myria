@@ -437,8 +437,7 @@ const GameDetail: React.FC = () => {
                       className="btn-icon btn-white mt-6 flex w-full items-center justify-center"
                       rel="noreferrer"
                       onClick={() => {
-                        event('Dicord Button Clicked', { button_location: 'Game', game_name: game.title })
-                        ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Game' })
+                        event('Discord Button Clicked', { button_location: 'Game', game_name: game.title })
                       }}
                     >
                       <span className="w-[30px]">

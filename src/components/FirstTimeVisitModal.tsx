@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React from 'react';
 import { socialLinks } from 'src/configs';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import CloseIcon from './icons/CloseIcon';
 import DiscordIcon from './icons/DiscordIcon';
 import TwitterIcon from './icons/TwitterIcon';
@@ -37,12 +37,7 @@ const FirstTimeVisitModal: React.FC<Props> = ({ open, onClose }) => {
             <a
               href='https://discord.gg/u5UaRHnHHP'
               onClick={() => {
-                event('Dicord Button Clicked', { button_location: 'Pop-up' });
-                ga.event('Click', {
-                  event_category: 'Button',
-                  event_label: 'Discord Link',
-                  value: 'Pop-up'
-                })
+                event('Discord Button Clicked', { button_location: 'Pop-up' });
               }}
               target="_blank"
               className="btn-icon inline-flex w-full items-center justify-center bg-white px-3 text-dark md:w-[251px]"
