@@ -84,14 +84,19 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
         boxShadow:
           '0px 0px 40px 10px rgba(0, 0, 0, 0.3), inset -1px -1px 0 0 rgb(var(--color-value)/ 0.3)'
       }}
-      className=" flex min-h-[88px] overflow-hidden rounded-lg bg-brand-deep-blue [--color-value:169_166_177] [--color:rgb(var(--color-value)/1)]">
-      <div
-        style={{
-          clipPath: 'polygon(0 0, 100% 0, 77% 100%, 0% 100%'
-        }}
-        className="relative isolate flex w-[137px] flex-shrink-0 items-center justify-center bg-[url('/images/nodes/sigil/reward-side-panel.png')] bg-cover bg-left shadow-dark-panel">
-        <div className="absolute inset-0 z-[-1] opacity-50 [background-color:var(--color)]"></div>
-        <img className="w-[80%]" src={image_url} alt="" />
+      className=" flex h-[88px] overflow-hidden rounded-lg bg-brand-deep-blue [--color-value:169_166_177] [--color:rgb(var(--color-value)/1)]">
+      <div className="relative isolate h-full w-[137px]">
+        <div
+          style={{
+            clipPath: 'polygon(0 0, 100% 0, 77% 100%, 0% 100%'
+          }}
+          className="relative isolate flex h-full w-[137px] flex-shrink-0 items-center justify-center bg-[url('/images/nodes/sigil/reward-side-panel.png')] bg-cover bg-left shadow-dark-panel">
+          <div className="absolute inset-0 z-[-1] opacity-50 [background-color:var(--color)]"></div>
+        </div>
+        <div className="absolute top-0 left-0 z-[1] flex h-full w-full items-center">
+          <div className="w-2.5 shrink" />
+          <img className="max-h-full max-w-full" src={image_url} alt="" />
+        </div>
       </div>
       <div className="flex flex-1 justify-between space-x-2 py-3 pr-6 pl-6">
         <div>
