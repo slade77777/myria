@@ -2,6 +2,7 @@ import React from 'react';
 import { useWalletContext } from 'src/context/wallet';
 import { useAuthenticationContext } from 'src/context/authentication';
 import MetaMaskIcon from 'src/components/icons/MetaMaskIcon';
+import { useGA4 } from 'src/lib/ga';
 
 type Props = {
   onNext: () => void;
@@ -10,6 +11,7 @@ type Props = {
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
   const { login } = useAuthenticationContext();
+  const { event } = useGA4();
 
   const installedWallet = typeof window != 'undefined' && !!window.ethereum;
 
@@ -37,7 +39,10 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         {address ? (
           <>
             <button
-              onClick={onNext}
+              onClick={() => {
+                onNext();
+                event('Join Now Selected', { campaign: 'Sigil' })
+              }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
               JOIN NOW
             </button>
@@ -45,7 +50,10 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         ) : (
           <>
             <button
-              onClick={onConnect}
+              onClick={() => {
+                onConnect();
+                event('Connect Wallet Selected', { campaign: 'Sigil' })
+              }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
               CONNECT WALLET
             </button>
@@ -54,7 +62,11 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 href="https://metamask.io/"
                 target="_blank"
                 className="btn-lg btn-secondary mx-auto mt-4 flex h-[40px]  w-[194px] items-center justify-center space-x-2 p-0 text-[16px] normal-case"
-                rel="noreferrer">
+                rel="noreferrer"
+                onClick={() => {
+                  event('Install Metamask Clicked', {})
+                }}
+              >
                 <i className="w-6">
                   <MetaMaskIcon />
                 </i>
@@ -63,7 +75,10 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
             )}
             <button
               className="btn-sm btn-secondary mt-4  h-[40px] w-[194px] rounded-lg px-4 py-3"
-              onClick={login}>
+              onClick={() => {
+                login();
+                event('Sign In Selected', { campaign: 'Sigil' })
+              }}>
               Sign in
             </button>
           </>

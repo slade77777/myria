@@ -11,6 +11,8 @@ export type PageName =
   | 'Career'
   | 'Our Solution'
   | 'Game Detail'
+  | 'Sigil'
+  | 'Inventory'
   | 'Unknown';
 type ButtonLocation =
   | 'Pop-up'

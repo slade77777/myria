@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useCallback } from 'react';
 import ga from '../ga';
 import { BasedParams, EventDefined, PageName, SubPageName } from './event';
 
@@ -27,6 +28,10 @@ const getPageName = (route: string): PageName => {
       return 'Myria Studio';
     case '/careers':
       return 'Career';
+    case '/sigil':
+      return 'Sigil';
+    case '/inventory':
+      return 'Inventory';
     default:
       return 'Unknown';
   }
@@ -40,26 +45,29 @@ export const useGA4 = () => {
     : 'For Gamers';
   const pageName = getPageName(router.route);
 
-  const event = <
-    EventName extends keyof EventDefined,
-    RequiredParams extends EventDefined[EventName],
-    Params extends Omit<RequiredParams, keyof BasedParams>
-  >(
-    eventName: EventName,
-    params: Params
-  ) => {
-    if (typeof window !== 'object') return;
+  const event = useCallback(
+    <
+      EventName extends keyof EventDefined,
+      RequiredParams extends EventDefined[EventName],
+      Params extends Omit<RequiredParams, keyof BasedParams>
+    >(
+      eventName: EventName,
+      params: Params
+    ) => {
+      if (typeof window !== 'object') return;
 
-    const pageTitle = document.title;
-    const gaAttributes: BasedParams & Params = {
-      page_location: pageLocation,
-      page_name: pageName,
-      page_title: pageTitle,
-      subpage_name: subPageName,
-      ...params
-    };
-
-    ga.eventGA4(eventName, gaAttributes);
-  };
+      const pageTitle = document.title;
+      const gaAttributes: BasedParams & Params = {
+        page_location: pageLocation,
+        page_name: pageName,
+        page_title: pageTitle,
+        subpage_name: subPageName,
+        ...params
+      };
+      console.log(eventName, gaAttributes);
+      ga.eventGA4(eventName, gaAttributes);
+    },
+    [pageLocation, pageName, subPageName]
+  );
   return { event };
 };

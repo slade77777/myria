@@ -2,6 +2,7 @@ import React from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
+import { useGA4 } from 'src/lib/ga';
 
 type Props = {
   open: boolean;
@@ -20,6 +21,7 @@ const AllianceModal: React.FC<Props> = ({
   sigilName,
   sigilId
 }) => {
+  const { event } = useGA4();
   const backgroundImg = React.useMemo(() => {
     if (sigilId === 'a') {
       return "bg-[url('/images/nodes/insignia/sigilA_modal_bg.png')]";
@@ -50,7 +52,10 @@ const AllianceModal: React.FC<Props> = ({
                 </p>
                 <p className="mb-6 text-[32px] font-bold leading-[1.2]">{sigilName || ''}</p>
                 <p className="mb-6 text-[14px] font-normal leading-[1.5] text-white">{sigilDesc}</p>
-                <button className="btn-md btn-primary uppercase" onClick={onJoin}>
+                <button className="btn-md btn-primary uppercase" onClick={() => {
+                  onJoin()
+                  sigilName && event('Alliance Joined', { campaign: 'Sigil', alliance_name: sigilName })
+                }}>
                   JOIN {sigilName}
                 </button>
               </div>

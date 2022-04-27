@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { useGA4 } from 'src/lib/ga';
 import { SUPPORT_SOUND, soundService } from 'src/sound';
 import AllianceModal from './AllianceModal';
 
@@ -98,7 +99,7 @@ const Sigil = ({
   order
 }: SigilProps) => {
   const [isFirstTimeActive, setIsFirstTimeActive] = React.useState(false);
-
+  const { event } = useGA4();
   return (
     <div
       onMouseEnter={() => {
@@ -238,6 +239,7 @@ const Sigil = ({
             onClick={() => {
               onSelect(id);
               soundService.playSound(SUPPORT_SOUND.SIGIL_SELECT);
+              event('Alliance Selected', { campaign: 'Sigil', alliance_name: name })
             }}>
             SELECT
           </button>

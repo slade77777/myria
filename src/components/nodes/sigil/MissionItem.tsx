@@ -37,7 +37,14 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
             target="_blank"
             rel="noreferrer"
             className=" flex flex-1 items-center justify-center rounded-[4px] bg-[#1F2334] px-2 py-[5px] text-[12px] font-bold uppercase leading-[1.25] text-brand-gold"
-            onClick={action.onClick}>
+            onClick={(e) => {
+              if (typeof action.onClick === 'function') {
+                action.onClick(e)
+              }
+              if (typeof item.trackGA4 === 'function') {
+                item.trackGA4()
+              }
+            }}>
             {action.label}
           </a>
         </div>

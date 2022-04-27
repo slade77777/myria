@@ -12,6 +12,7 @@ import { IFormForgotPasswordInput } from 'src/components/ForgotPassword/ForgotPa
 import { IFormResetPasswordInput } from 'src/components/ResetPassword/ResetPassword';
 import apiClient from 'src/client';
 import { useMutation } from 'react-query';
+import { useGA4 } from 'src/lib/ga';
 
 const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
   return (
@@ -120,6 +121,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const [resetPasswordData, setResetPasswordData] = useState<IFormResetPasswordInput>();
   const [resetPasswordError, setResetPasswordError] = useState<string>('');
 
+  const { event } = useGA4();
+
   const { isLoading: isPostingLogin, mutate: postLogin } = useMutation(
     async () => { return await apiClient.post(`/accounts/login`, loginData); },
     {
@@ -142,6 +145,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         // Todo: Handle result and cache token
         console.log(res)
         setOpenRegister(false);
+        // TODO mock event
+        event('Account Sign-up Completed', { campaign: 'Sigil', myria_id: undefined, myria_username: '_mock', user_email: '_mock', wallet_address: '_mock' })
       },
       onError: (err) => {
         console.log(err)
