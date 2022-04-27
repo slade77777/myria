@@ -4,8 +4,10 @@ import { UserInfo } from 'src/types/sigil';
 import { SubtractLeft } from './Subtract';
 import { format } from 'date-fns';
 import { Loading } from 'src/components/Loading';
+import { useGA4 } from 'src/lib/ga';
 
 const AllianceInfo: React.FC = () => {
+  const { event } = useGA4()
   const { data } = useQuery<UserInfo>('sigilUserInfo', async () => {
     return {
       user_id: '1234',
@@ -16,6 +18,22 @@ const AllianceInfo: React.FC = () => {
       href: 'http://localhost:8080/v1/accounts/1234'
     };
   });
+
+  React.useEffect(() => {
+    if (data?.alliance) {
+      // TODO mock event
+      event('Sigil Login Completed', {
+        campaign: 'Sigil',
+        myria_id: undefined,
+        myria_username: '_mock',
+        wallet_address: '_mock',
+        alliance_name: data.alliance,
+        sigil_alias: data.alias,
+        credits: data.credits.toString(),
+        date_registered: new Date(data.date_registered).toISOString(),
+      });
+    }
+  }, [event, data?.alliance, data?.alias, data?.credits, data?.date_registered])
 
   return (
     <div className="relative">

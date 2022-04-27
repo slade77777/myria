@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import { Loading } from 'src/components/Loading';
 import RegisterModal from 'src/components/Register/Modal';
 import { socialLinks } from 'src/configs';
+import { useGA4 } from 'src/lib/ga';
 import { Mission } from 'src/types/sigil';
 import MissionItem from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
@@ -13,6 +14,7 @@ const Missions: React.FC = () => {
   const [openRegisterModal, setOpenRegisterModal] = useState(false);
   const [openShareTwitterModal, setOpenShareTwitterModal] = useState(false);
   const [openInviteModal, setOpenInviteModal] = useState(false);
+  const { event } = useGA4();
 
   const { data: missions } = useQuery<Mission[]>('sigilMissions', async () => {
     const data: Mission[] = [
@@ -25,7 +27,9 @@ const Missions: React.FC = () => {
         repetition_limit: 1,
         repetition_text: null,
         completed: true,
-        status: 'completed'
+        status: 'completed',
+        // TODO mock event
+        trackGA4: () => event('Account Sign-up Clicked', { campaign: 'Sigil', wallet_address: '_mock' })
       },
       {
         mission_id: 'JOIN_DISCORD',
@@ -36,7 +40,9 @@ const Missions: React.FC = () => {
         repetition_limit: 1,
         repetition_text: null,
         completed: true,
-        status: 'completed'
+        status: 'completed',
+        // TODO mock event
+        trackGA4: () => event('Sigil Discord Button Clicked', { campaign: 'Sigil', wallet_address: '_mock', myria_username: '_mock', user_email: '_mock' })
       },
       {
         mission_id: 'SHARE_TWITTER',

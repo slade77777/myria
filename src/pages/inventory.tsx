@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Badge from 'src/components/Badge';
 import Filter, { FilterList } from 'src/components/Filter';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
@@ -12,6 +12,7 @@ import OpenInventoryChestModal from 'src/components/inventory/OpenChest';
 import Overlay from 'src/components/overlay/Overlay';
 import Page from 'src/components/Page';
 import SortBy from 'src/components/SortBy';
+import { useGA4 } from 'src/lib/ga';
 import { negativeMarginXSm, paddingX } from 'src/utils';
 
 const filters: FilterList = [
@@ -116,9 +117,15 @@ const InventoryItem = ({ item }: { item: Inventory }) => {
 };
 
 const InventoryPage: React.FC = () => {
+  const { event } = useGA4();
   const [filter, setFilter] = useState<any>({});
 
   const filteredInventory = inventories;
+
+  useEffect(() => {
+    // TODO mock event
+    event('Sigil Inventory Viewed', { campaign: 'Sigil', wallet_address: '_mock' })
+  }, [event])
 
   return (
     <Page>

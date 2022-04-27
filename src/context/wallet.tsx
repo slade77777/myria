@@ -6,6 +6,7 @@ import Web3Modal from '../components/Web3Modal';
 // import Web3Modal from 'web3modal';
 
 import { ethers } from 'ethers';
+import { useGA4 } from 'src/lib/ga';
 
 let web3Modal: Web3Modal;
 
@@ -26,6 +27,7 @@ export const WalletProvider: React.FC = ({ children }) => {
   const [chainId, setChainId] = React.useState<number | string | undefined>(undefined);
   const [w3Provider, setW3Provider] = useState<any>();
   const [providerApi, setProviderApi] = useState<any>();
+  const { event } = useGA4()
 
   const getProviderOptions = () => {
     const providerOptions = {
@@ -64,7 +66,9 @@ export const WalletProvider: React.FC = ({ children }) => {
     }
     await web3Modal.clearCachedProvider();
     reset();
-  }, [w3Provider]);
+
+    address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address })
+  }, [w3Provider, event, address]);
   
   const onConnect = async () => {
     web3Modal = new Web3Modal({
@@ -85,6 +89,8 @@ export const WalletProvider: React.FC = ({ children }) => {
     setProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
+    
+    event('Wallet Connected', { wallet_address: address, campaign: 'Sigil' });
   };
 
   return (

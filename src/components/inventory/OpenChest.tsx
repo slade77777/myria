@@ -1,9 +1,10 @@
 import { Trans } from '@lingui/macro';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
+import { useGA4 } from 'src/lib/ga';
 
 type Props = {
   open: boolean;
@@ -11,6 +12,13 @@ type Props = {
 };
 
 const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose }) => {
+  const { event } = useGA4();
+
+  useEffect(() => {
+    // TODO mock event
+    event('Chest Claimed', { campaign: 'Sigil', wallet_address: '_mock', item_list: '_mock', credit_amount: -111 });
+  }, [event])
+
   return (
     <Modal
       open={open}

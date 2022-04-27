@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import LockIcon from 'src/components/icons/LockIcon';
+import { useGA4 } from 'src/lib/ga';
 import { Reward } from 'src/types/sigil';
 
 const Progress: React.FC<{ percentage: number }> = ({ percentage }) => {
@@ -25,6 +26,7 @@ type Props = {
 };
 
 const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
+  const { event } = useGA4();
   const { title, credits_required, status, image_url, progress } = item;
   const content = useMemo(() => {
     switch (status) {
@@ -49,7 +51,11 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
       case 'claimable':
         return (
           <button
-            onClick={() => onClaim(item)}
+            onClick={() => {
+              onClaim(item)
+              // TODO mock event
+              event('Reward Claimed', { campaign: 'Sigil', wallet_address: '_mock', reward_name: title, credit_amount: -111 })
+            }}
             className="rounded-[4px] bg-[#1F2334] px-4 py-1 text-[12px] font-bold leading-[1.25] text-brand-gold">
             CLAIM NOW
           </button>

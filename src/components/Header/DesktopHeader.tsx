@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useWalletContext } from 'src/context/wallet';
 import React, { useMemo, useRef } from 'react';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
@@ -67,7 +67,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                           onClick={() => {
                             if (item.id === 'community') {
                               if (link.id === 'discord') {
-                                event('Dicord Button Clicked', {
+                                event('Discord Button Clicked', {
                                   button_location: 'Community Links'
                                 });
                               }
@@ -76,11 +76,6 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                                   button_location: 'Community Links'
                                 });
                               }
-                              ga.event('Click', {
-                                event_category: 'Link',
-                                event_label: `${link.text} Link`,
-                                value: 'Community Links'
-                              });
                             }
                           }}
                           target={link.target}
@@ -162,12 +157,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         return (
           <a
             onClick={() => {
-              event('Dicord Button Clicked', { button_location: 'Top Button' });
-              ga.event('Click', {
-                event_category: 'Button',
-                event_label: 'Discord Link',
-                value: 'Top Button'
-              });
+              event('Discord Button Clicked', { button_location: 'Top Button' });
             }}
             className="btn-sm btn-secondary"
             href="https://discord.gg/7K49nXJ49R"

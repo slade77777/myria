@@ -1,6 +1,7 @@
 import React from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
+import { useGA4 } from 'src/lib/ga';
 
 type Props = {
   open: boolean;
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
+  const { event } = useGA4();
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content className="w-[324px] bg-transparent" includingHeader={false}>
@@ -28,7 +30,10 @@ const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
             <div className="mt-10 rounded-lg bg-[#132533] py-[14px] pl-[16px] pr-[25px] text-[16px] leading-[1.25] text-light">
               {link}
             </div>
-            <button className="mt-7 text-[12px] font-bold leading-[1.25] text-brand-gold">
+            <button className="mt-7 text-[12px] font-bold leading-[1.25] text-brand-gold" onClick={() => {
+              // TODO mock event
+              event('Invite Link Copied', { campaign: 'Sigil', myria_username: '_mock', user_email: '_mock', wallet_address: '_mock' })
+            }}>
               COPY LINK
             </button>
           </div>
