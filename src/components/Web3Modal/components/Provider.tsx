@@ -13,7 +13,7 @@ export function Provider(props: IProviderProps) {
   const { name, logo, description, themeColors, onClick, ...otherProps } = props;
   return (
     <div
-      className="px-4 py-6 text-center hover:cursor-pointer hover:bg-[#070F17]"
+      className="rounded-lg px-4 py-6 text-center hover:cursor-pointer hover:bg-[#070F17]"
       onClick={onClick}>
       <div className="mb-6">
         <img src={logo} alt={name} className="m-auto h-[104px] w-[104px]" />

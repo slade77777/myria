@@ -12,7 +12,14 @@ type Props = {
   sigilId?: string;
 };
 
-const AllianceModal: React.FC<Props> = ({ open, onClose, onJoin, sigilDesc, sigilName, sigilId }) => {
+const AllianceModal: React.FC<Props> = ({
+  open,
+  onClose,
+  onJoin,
+  sigilDesc,
+  sigilName,
+  sigilId
+}) => {
   const backgroundImg = React.useMemo(() => {
     if (sigilId === 'a') {
       return "bg-[url('/images/nodes/insignia/sigilA_modal_bg.png')]";
@@ -37,16 +44,14 @@ const AllianceModal: React.FC<Props> = ({ open, onClose, onJoin, sigilDesc, sigi
           </Modal.Close>
           <div className={`flex h-full flex-row bg-brand-deep-blue ${backgroundImg} bg-cover`}>
             <div className="flex flex-col items-start justify-between py-12 px-12">
-              <div className='flex flex-1 flex-col items-start justify-center'>
+              <div className="flex flex-1 flex-col items-start justify-center">
                 <p className="mb-1 text-[14px] font-medium leading-[1.5] text-brand-light-blue">
                   You are joining...
                 </p>
                 <p className="mb-6 text-[32px] font-bold leading-[1.2]">{sigilName || ''}</p>
-                <p className="mb-6 text-[14px] font-normal leading-[1.5] text-white">
-                  {sigilDesc}
-                </p>
+                <p className="mb-6 text-[14px] font-normal leading-[1.5] text-white">{sigilDesc}</p>
                 <button className="btn-md btn-primary uppercase" onClick={onJoin}>
-                  JOIN the {sigilName}
+                  JOIN {sigilName}
                 </button>
               </div>
 

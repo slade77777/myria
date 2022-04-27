@@ -19,16 +19,21 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         "relative h-screen bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat"
       }>
       <div className="mx-auto max-w-[408px] pt-[213px] text-center">
-        <h1 className="text-[28px] font-bold leading-[1.2]">{
-          address ? "Welcome to the Myriaverse" : "Connect to your wallet to enter the Myriaverse"
-        }</h1>
-        <p className="mt-8 text-[16px] leading-[1.5] text-light">
-          {
-            address
-              ? <>Which side of the battlelines will you stand on? <br /> Choose your Alliance and claim your free Sigil NFT.</>
-              : <>Don&apos;t have a wallet yet? <br />Install Metamask below.</>
-          }
-        </p>
+        <h1 className="text-[28px] font-bold leading-[1.2]">
+          {address ? 'Welcome to the Myriaverse' : 'Connect to your wallet to enter the Myriaverse'}
+        </h1>
+        {address && (
+          <p className="mt-8 text-[16px] leading-[1.5] text-light">
+            Which side of the battlelines will you stand on? <br /> Choose your Alliance and claim
+            your free Sigil NFT.
+          </p>
+        )}
+        {!address && !installedWallet && (
+          <p className="mt-8 text-[16px] leading-[1.5] text-light">
+            Don&apos;t have a wallet yet? <br />
+            Install Metamask below.
+          </p>
+        )}
         {address ? (
           <>
             <button
