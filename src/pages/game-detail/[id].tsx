@@ -13,6 +13,7 @@ import SecondSlider from '../../components/game-detail/SecondSlider';
 import { useRouter } from 'next/router';
 import Subscribe from 'src/components/Subscribe';
 import { Trans } from '@lingui/macro';
+import { socialLinks } from 'src/configs';
 
 export type Asset = {
   type: 'video' | 'image';
@@ -46,7 +47,7 @@ const games: Record<
   }
 > = {
   metarush: {
-    discord: 'https://discord.gg/pwHWQgzRRn',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-1.png',
     title: 'Metarush',
     description:
@@ -124,7 +125,7 @@ const games: Record<
     ]
   },
   metakart: {
-    discord: 'https://discord.gg/y2nsGsa5Jq',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-2.png',
     title: 'Metakart',
     description:
@@ -204,7 +205,7 @@ const games: Record<
     ]
   },
   'block-royale': {
-    discord: 'https://discord.gg/RraSMhEpev',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-3.png',
     title: 'Block Royale',
     description:
@@ -281,7 +282,7 @@ const games: Record<
     ]
   },
   starstrike: {
-    discord: 'https://discord.gg/N268ZZa2Ky',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-4.png',
     title: 'Starstrike Legends',
     description:

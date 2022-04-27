@@ -17,6 +17,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
+import { socialLinks } from 'src/configs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -219,7 +220,7 @@ const Hero: React.FC = () => {
                         value: 'Banner'
                       });
                     }}
-                    href="https://discord.gg/VQaPXRGR6S"
+                    href={socialLinks.discord}
                     target="_blank"
                     className="btn-icon btn-primary inline-flex min-w-[178px] items-center text-[14px]  md:text-[16px]"
                     rel="noreferrer">

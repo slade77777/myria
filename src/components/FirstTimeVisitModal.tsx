@@ -35,7 +35,7 @@ const FirstTimeVisitModal: React.FC<Props> = ({ open, onClose }) => {
           </p>
           <div className="mt-[30px] md:mt-8">
             <a
-              href='https://discord.gg/u5UaRHnHHP'
+              href={socialLinks.discord}
               onClick={() => {
                 event('Dicord Button Clicked', { button_location: 'Pop-up' });
                 ga.event('Click', {
