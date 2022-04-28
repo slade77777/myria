@@ -112,8 +112,8 @@ const Register: React.FC = () => {
           <Input
             placeholder={t`Last name`}
             {...register('lastName')}
-            error={!!errors.lastName || !!error}
-            errorText={errors.lastName?.message || error}
+            error={!!errors.lastName}
+            errorText={errors.lastName?.message}
             className={!!errors.lastName ? 'mt-4' : 'mt-6'}
           />
         </div>
@@ -121,15 +121,15 @@ const Register: React.FC = () => {
           <Input
             placeholder={t`Username`}
             {...register('username')}
-            error={!!errors.username || !!error}
-            errorText={errors.username?.message || error}
+            error={!!errors.username}
+            errorText={errors.username?.message}
             className={!!errors.username ? 'mt-4' : 'mt-6'}
           />
           <Input
             placeholder={t`Email`}
             {...register('email')}
-            error={!!errors.email || !!error}
-            errorText={errors.email?.message || error}
+            error={!!errors.email}
+            errorText={errors.email?.message}
             className={!!errors.email ? 'mt-4' : 'mt-6'}
           />
           <div className="relative">

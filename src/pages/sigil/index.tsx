@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Page from 'src/components/Page';
 import Dashboard from 'src/components/nodes/sigil/Dashboard';
 import SigilStepper from 'src/components/nodes/sigil/SigilStepper';
@@ -9,12 +9,21 @@ import Header from 'src/components/nodes/sigil/Header';
 import { isMobile } from 'src/utils';
 import Sound from 'src/components/nodes/sigil/Sound';
 import { soundService, SUPPORT_SOUND } from 'src/sound';
+import { useRouter } from 'next/router'
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { localStorageKeys } from 'src/configs';
 
 type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
+  const router = useRouter()
   const [currentStep, setCurrentStep] = useState<Step>(0);
   const bgSoundRef = React.useRef<HTMLAudioElement | null>(null);
+  const [_, setReferralCode] = useLocalStorage<any>(localStorageKeys.referralCode, undefined);
+
+  useEffect(() => {
+    setReferralCode(router.query.code)
+  }, [router.query.code, setReferralCode])
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {

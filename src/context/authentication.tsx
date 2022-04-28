@@ -12,6 +12,8 @@ import { IFormForgotPasswordInput } from 'src/components/ForgotPassword/ForgotPa
 import { IFormResetPasswordInput } from 'src/components/ResetPassword/ResetPassword';
 import apiClient from 'src/client';
 import { useMutation } from 'react-query';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { localStorageKeys } from 'src/configs';
 
 const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
   return (
@@ -100,6 +102,8 @@ const AuthenticationContext = React.createContext<IAuthenticationContext>(
 );
 
 export const AuthenticationProvider: React.FC = ({ children }) => {
+  const [referalCode] = useLocalStorage(localStorageKeys.referralCode, undefined);
+
   const [user, setUser] = React.useState<string | undefined>(undefined);
   const [openSignIn, setOpenSignIn] = React.useState<boolean>(false);
   const [openRegister, setOpenRegister] = React.useState<boolean>(false);
@@ -136,12 +140,20 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   );
 
   const { isLoading: isPostingRegister, mutate: postRegister } = useMutation(
-    async () => { return await apiClient.post(`/accounts/register`, registerData); },
+    async () => {
+      console.log(referalCode)
+      return await apiClient.post(`/accounts/register`,
+        {
+          ...registerData,
+          code: referalCode,
+          redirect_url: window.location.href
+        });
+    },
     {
       onSuccess: (res) => {
-        // Todo: Handle result and cache token
         console.log(res)
         setOpenRegister(false);
+        setOpenSignIn(true)
       },
       onError: (err) => {
         console.log(err)

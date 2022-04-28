@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: 'http://myriaverse-api-accounts-staging-696385717.us-east-1.elb.amazonaws.com/api/v0.1.0',
+    baseURL: 'https://myriaverse-api-accounts-dev-1002426819.us-east-1.elb.amazonaws.com/v1/',
     timeout: 1000,
     headers: {
         "accept": "application/json",
