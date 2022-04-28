@@ -52,8 +52,8 @@ function App({ Component, pageProps }: AppProps) {
           }}
         />
 
-        <AuthenticationProvider>
-          <WalletProvider>
+        <WalletProvider>
+          <AuthenticationProvider>
             <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
               <WithLanguageStyle>
                 <TabProvider>
@@ -61,8 +61,8 @@ function App({ Component, pageProps }: AppProps) {
                 </TabProvider>
               </WithLanguageStyle>
             </Tooltip.Provider>
-          </WalletProvider>
-        </AuthenticationProvider>
+          </AuthenticationProvider>
+        </WalletProvider>
       </LanguageProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

@@ -3,6 +3,7 @@ import { useWalletContext } from 'src/context/wallet';
 import { useAuthenticationContext } from 'src/context/authentication';
 import MetaMaskIcon from 'src/components/icons/MetaMaskIcon';
 import { useGA4 } from 'src/lib/ga';
+import Button from 'src/components/core/Button';
 
 type Props = {
   onNext: () => void;
@@ -10,10 +11,15 @@ type Props = {
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
-  const { login } = useAuthenticationContext();
+  const { login, registerByWalletMutation } = useAuthenticationContext();
   const { event } = useGA4();
 
   const installedWallet = typeof window != 'undefined' && !!window.ethereum;
+
+  const handleRegisterByWallet = async () => {
+    await registerByWalletMutation.mutateAsync();
+    onNext();
+  }
 
   return (
     <div
@@ -38,14 +44,15 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         )}
         {address ? (
           <>
-            <button
+            <Button
+              loading={registerByWalletMutation.isLoading}
               onClick={() => {
-                onNext();
+                handleRegisterByWallet();
                 event('Join Now Selected', { campaign: 'Sigil' })
               }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
               JOIN NOW
-            </button>
+            </Button>
           </>
         ) : (
           <>
