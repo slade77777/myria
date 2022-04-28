@@ -62,13 +62,13 @@ const schema = yup
   .required();
 
 const Register: React.FC = () => {
-  const [error, setError] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
   const [hints, setHints] = useState(() => passwordHints(''));
   const {
     register,
     handleSubmit,
+    setError,
     reset,
     formState: { errors, isSubmitting },
     watch
@@ -79,7 +79,21 @@ const Register: React.FC = () => {
 
   const { doRegister, registerError } = useAuthenticationContext();
 
-  useEffect(() => { setError(registerError) }, [registerError])
+  useEffect(() => {
+    registerError?.errors.forEach(({ code, detail }) => {
+      if (code === "user_exists") {
+        setError("username", { type: 'custom', message: detail })
+        return
+      }
+
+      if (code === "email_exists") {
+        setError("email", { type: 'custom', message: detail })
+        return
+      }
+
+      setError("firstName", { type: 'custom', message: detail })
+    })
+  }, [registerError, setError])
 
   const toggleVisiblePassword = () => {
     setVisiblePassword(!visiblePassword);
@@ -105,8 +119,8 @@ const Register: React.FC = () => {
           <Input
             placeholder={t`First name`}
             {...register('firstName')}
-            error={!!errors.firstName || !!error}
-            errorText={errors.firstName?.message || error}
+            error={!!errors.firstName}
+            errorText={errors.firstName?.message}
             className={!!errors.firstName ? 'mt-4' : 'mt-6'}
           />
           <Input

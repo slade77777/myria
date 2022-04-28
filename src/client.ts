@@ -1,14 +1,16 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+export interface IResponseError {
+    httpCode: number | undefined;
+    errors: [{ code: string; title: string; detail: string }]
+}
 
 const apiClient = axios.create({
-    baseURL: 'https://myriaverse-api-accounts-dev-1002426819.us-east-1.elb.amazonaws.com/v1/',
-    timeout: 1000,
+    baseURL: 'https://dev.myriaverse-api.myria.com/v1/',
     headers: {
         "accept": "application/json",
         "Content-type": "application/json"
     }
 });
-
 
 apiClient.interceptors.request.use(
     async function (config) {
@@ -23,5 +25,12 @@ apiClient.interceptors.request.use(
         return error;
     },
 );
+
+export function mapError(error: AxiosError): IResponseError {
+    return {
+        httpCode: error.response?.status,
+        errors: error.response?.data.errors ?? []
+    };
+}
 
 export default apiClient;

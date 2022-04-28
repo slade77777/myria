@@ -10,10 +10,11 @@ import { IFormSignInInput } from 'src/components/SignIn/SignIn';
 import { IFormRegisterInput } from 'src/components/Register/Register';
 import { IFormForgotPasswordInput } from 'src/components/ForgotPassword/ForgotPassword';
 import { IFormResetPasswordInput } from 'src/components/ResetPassword/ResetPassword';
-import apiClient from 'src/client';
+import apiClient, { mapError, IResponseError } from 'src/client';
 import { useMutation } from 'react-query';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
+import { AxiosError } from 'axios';
 
 const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
   return (
@@ -76,6 +77,18 @@ const ResetPasswordModal = ({ open, isResetSuccess, onClose }: { open: boolean; 
   );
 };
 
+const RegisterSuccessdModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
+  return (
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title="Email confirmation sent" className="shadow-[0_0_40px_10px_#0000004D]">
+        <div className="px-8">
+          <p className="body my-8 text-light">Please check your inbox and follow the link to to confirm your email.</p>
+        </div>
+      </Modal.Content>
+    </Modal>
+  );
+};
+
 interface IAuthenticationContext {
   user: string | undefined;
   login: () => void;
@@ -92,7 +105,7 @@ interface IAuthenticationContext {
   isPostingResetPassword: boolean;
   isResetSuccess: boolean;
   loginError: string;
-  registerError: string;
+  registerError: IResponseError | undefined;
   forgotPasswordError: string;
   resetPasswordError: string;
 }
@@ -111,12 +124,13 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const [openResetPassword, setOpenResetPassword] = React.useState<boolean>(false);
   const [openVerifyModal, setOpenVerifyModal] = React.useState(false);
   const [isResetSuccess, setResetSuccess] = React.useState(false);
+  const [openRegisterSuccess, setRegisterSuccess] = React.useState(false);
 
   const [loginData, setLoginData] = useState<IFormSignInInput>();
   const [loginError, setLoginError] = useState<string>('');
 
   const [registerData, setRegisterData] = useState<IFormRegisterInput>();
-  const [registerError, setRegisterError] = useState<string>('');
+  const [registerError, setRegisterError] = useState<IResponseError>();
 
   const [forgotPasswordData, setForgotPasswordData] = useState<IFormForgotPasswordInput>();
   const [forgotPasswordError, setForgotPasswordError] = useState<string>('');
@@ -141,23 +155,25 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 
   const { isLoading: isPostingRegister, mutate: postRegister } = useMutation(
     async () => {
-      console.log(referalCode)
-      return await apiClient.post(`/accounts/register`,
-        {
-          ...registerData,
-          code: referalCode,
-          redirect_url: window.location.href
-        });
+      const body = {
+        referral_code: referalCode,
+        redirect_url: window.location.href,
+        first_name: registerData?.firstName,
+        last_name: registerData?.lastName,
+        username: registerData?.username,
+        password: registerData?.password,
+        email: registerData?.email
+      }
+      return await apiClient.post(`/accounts/register`, body);
     },
     {
       onSuccess: (res) => {
-        console.log(res)
+        setRegisterError(undefined)
+        setRegisterSuccess(true)
         setOpenRegister(false);
-        setOpenSignIn(true)
       },
-      onError: (err) => {
-        console.log(err)
-        setRegisterError("Register error")
+      onError: (err: AxiosError) => {
+        setRegisterError(mapError(err))
       },
     }
   );
@@ -229,6 +245,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   }
 
   const doRegister = (data: IFormRegisterInput) => {
+    setRegisterSuccess(false)
     setRegisterData(data)
     postRegister()
   };
@@ -269,6 +286,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       }>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />
       <RegisterModal open={openRegister} onClose={() => setOpenRegister(false)} />
+      <RegisterSuccessdModal open={openRegisterSuccess} onClose={() => setRegisterSuccess(false)} />
       <ForgotPasswordModal open={openForgotPassword} onClose={() => setOpenForgotPassword(false)} />
       <ResetPasswordModal open={openResetPassword} isResetSuccess={isResetSuccess} onClose={() => setOpenResetPassword(false)} />
       <VerifyModal open={openVerifyModal} onClose={closeVerify} onSuccess={onVerifySuccess} />
