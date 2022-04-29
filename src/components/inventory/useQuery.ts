@@ -10,10 +10,10 @@ export type AssetTypeType = 'sigil' | 'title' | 'chest' | 'credits';
 type AssetBaseType = {
   alliance: string;
   collection: string;
+  id: string;
+  image_url: string;
   rarity: Rarity;
   status: AssetStatus;
-  sk: string;
-  pk: string;
   name: string;
   type: AssetTypeType;
 };
@@ -34,11 +34,11 @@ export type AssetCreditType = Omit<
   type: 'credits';
 };
 
-export type ChestItemSigilType = Omit<AssetSigilType, 'alliance' | 'sk' | 'pk'>;
+export type ChestItemSigilType = Omit<AssetSigilType, 'alliance'>;
 
-export type ChestItemTitleType = Omit<AssetTitleType, 'alliance' | 'sk' | 'pk'>;
+export type ChestItemTitleType = Omit<AssetTitleType, 'alliance'>;
 
-export type ChestItemCreditType = Omit<AssetCreditType, 'sk' | 'pk'>;
+export type ChestItemCreditType = AssetCreditType;
 
 export type AssetChestType = AssetBaseType & {
   opened: boolean;
@@ -50,8 +50,8 @@ export type AssetType = AssetSigilType | AssetTitleType | AssetChestType;
 
 export type OpenChestContent = AssetSigilType | AssetTitleType | AssetCreditType;
 
-const getInventory = async (userId = '2789bb16-6e89-4d67-a841-3cd883fe140a') => {
-  const data = await http.get(`/v1/sigil/users/${userId}/assets`).then((res) => res.data?.data);
+const getInventory = async () => {
+  const data = await http.get(`/v1/sigil/users/assets?pageSize=10`).then((res) => res.data?.data);
 
   if (data instanceof Array) {
     return (data as AssetType[]).filter((asset) =>
@@ -60,9 +60,9 @@ const getInventory = async (userId = '2789bb16-6e89-4d67-a841-3cd883fe140a') => 
   }
 };
 
-const openChest = async (lootboxId: string, userId = '2789bb16-6e89-4d67-a841-3cd883fe140a') => {
+const openChest = async (lootboxId: string) => {
   const data = await http
-    .post(`/v1/sigil/users/${userId}/lootbox`, {
+    .post(`/v1/sigil/users/lootbox`, {
       lootbox_id: lootboxId
     })
     .then((res) => res.data?.data);

@@ -10,10 +10,9 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   async function (config) {
-    // Todo: get cached token
-    const token = '';
-    if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`;
+    // MOCK token
+    if (config.headers) {
+      config.headers.Authorization = '2789bb16-6e89-4d67-a841-3cd883fe140a';
     }
     return config;
   },

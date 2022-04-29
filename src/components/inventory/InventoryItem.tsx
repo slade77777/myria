@@ -38,7 +38,7 @@ const InventoryItem = ({ item }: Props) => {
       />
       <div className="block h-[444px] w-full max-w-[328px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
         <Overlay className="h-[200px] w-full lg:h-[248px]">
-          <Image src='/images/our-games/metarush_op.png' alt="" layout="fill" objectFit="cover" />
+          <Image src="/images/nodes/insignia/alliance_sigilB.png" alt="" layout="fill" objectFit="cover" />
         </Overlay>
         <div className="p-6">
           <span className="mb-4 block text-[20px] font-extrabold">{item.name}</span>
@@ -56,7 +56,8 @@ const InventoryItem = ({ item }: Props) => {
             <span className="text-[16px] font-normal text-light">
               <Trans>{item.collection}</Trans>
             </span>
-            {item.type === 'chest' && item.opened ? (
+            {item.type === 'chest' ? (
+              item.opened ? (
               <div className="flex items-center font-bold text-green">
                 <span className="mr-2 w-[22px]">
                   <CheckIcon />
@@ -77,7 +78,8 @@ const InventoryItem = ({ item }: Props) => {
                   <ChevronRightIcon />
                 </span>
               </Button>
-            )}
+            )
+            ) : null}
           </div>
         </div>
       </div>
