@@ -15,6 +15,7 @@ import { useMutation } from 'react-query';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { AxiosError } from 'axios';
+import { Trans } from '@lingui/macro';
 
 const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
   return (
@@ -67,11 +68,25 @@ const ForgotPasswordModal = ({ open, onClose }: { open: boolean; onClose?: () =>
   );
 };
 
-const ResetPasswordModal = ({ open, isResetSuccess, onClose }: { open: boolean; isResetSuccess: boolean, onClose?: () => void }) => {
+const ResetPasswordModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title={isResetSuccess ? "Your password was reset" : "Create a new password"} className="shadow-[0_0_40px_10px_#0000004D]">
+      <Modal.Content title={"Create a new password"} className="shadow-[0_0_40px_10px_#0000004D]">
         <ResetPassword />
+      </Modal.Content>
+    </Modal>
+  );
+};
+
+const ResetSuccessdModal = ({ open, onClose, onLogin }: { open: boolean; onClose?: () => void, onLogin?: () => void }) => {
+  return (
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title="our password was reset" className="shadow-[0_0_40px_10px_#0000004D]">
+        <div className="px-8">
+          <button className="btn-lg btn-primary my-8 w-full" onClick={onLogin}>
+            <Trans>Log in</Trans>
+          </button> 
+        </div>
       </Modal.Content>
     </Modal>
   );
@@ -103,7 +118,6 @@ interface IAuthenticationContext {
   isPostingRegister: boolean;
   isPostingForgotPassword: boolean;
   isPostingResetPassword: boolean;
-  isResetSuccess: boolean;
   loginError: string;
   registerError: IResponseError | undefined;
   forgotPasswordError: string;
@@ -123,8 +137,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const [openForgotPassword, setOpenForgotPassword] = React.useState<boolean>(false);
   const [openResetPassword, setOpenResetPassword] = React.useState<boolean>(false);
   const [openVerifyModal, setOpenVerifyModal] = React.useState(false);
-  const [isResetSuccess, setResetSuccess] = React.useState(false);
-  const [openRegisterSuccess, setRegisterSuccess] = React.useState(false);
+  const [openResetSuccess, setOpenResetSuccess] = React.useState(false);
+  const [openRegisterSuccess, setOpenRegisterSuccess] = React.useState(false);
 
   const [loginData, setLoginData] = useState<IFormSignInInput>();
   const [loginError, setLoginError] = useState<string>('');
@@ -169,7 +183,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     {
       onSuccess: (res) => {
         setRegisterError(undefined)
-        setRegisterSuccess(true)
+        setOpenRegisterSuccess(true)
         setOpenRegister(false);
       },
       onError: (err: AxiosError) => {
@@ -194,7 +208,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     async () => { return await apiClient.post(`/accounts/resetPassword`, resetPasswordData); },
     {
       onSuccess: (res) => {
-        setResetSuccess(true)
+        setOpenResetSuccess(true)
       },
       onError: (err) => {
         setResetPasswordError("Can't reset your password")
@@ -224,7 +238,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   };
 
   const resetPassword = () => {
-    setResetSuccess(false)
+    setOpenResetSuccess(false)
     setOpenResetPassword(true)
   }
 
@@ -245,7 +259,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   }
 
   const doRegister = (data: IFormRegisterInput) => {
-    setRegisterSuccess(false)
+    setOpenRegisterSuccess(false)
     setRegisterData(data)
     postRegister()
   };
@@ -277,7 +291,6 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           isPostingRegister,
           isPostingForgotPassword,
           isPostingResetPassword,
-          isResetSuccess,
           loginError,
           registerError,
           forgotPasswordError,
@@ -286,9 +299,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       }>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />
       <RegisterModal open={openRegister} onClose={() => setOpenRegister(false)} />
-      <RegisterSuccessdModal open={openRegisterSuccess} onClose={() => setRegisterSuccess(false)} />
+      <RegisterSuccessdModal open={openRegisterSuccess} onClose={() => setOpenRegisterSuccess(false)} />
       <ForgotPasswordModal open={openForgotPassword} onClose={() => setOpenForgotPassword(false)} />
-      <ResetPasswordModal open={openResetPassword} isResetSuccess={isResetSuccess} onClose={() => setOpenResetPassword(false)} />
+      <ResetPasswordModal open={openResetPassword} onClose={() => setOpenResetPassword(false)} />
+      <ResetSuccessdModal open={openResetSuccess} onClose={() => setOpenResetSuccess(false)} onLogin={login}/>
       <VerifyModal open={openVerifyModal} onClose={closeVerify} onSuccess={onVerifySuccess} />
       {children}
     </AuthenticationContext.Provider>

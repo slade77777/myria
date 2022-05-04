@@ -147,7 +147,6 @@ const Missions: React.FC = () => {
     },
     INVITE_FRIEND: {
       label: 'Invite',
-      link: 'https://myria.io/signup',
       onClick: (e) => {
         e.preventDefault();
         setOpenInviteModal(true);
@@ -165,7 +164,7 @@ const Missions: React.FC = () => {
       <ReferFriendModal
         open={openInviteModal}
         onClose={() => setOpenInviteModal(false)}
-        link="https://myria.com/r/%112yb877a"
+        link="https://myria.com/sigil?code=%112yb877a"
       />
       <div className="relative flex h-full flex-col pr-2">
         <div className="flex items-center">

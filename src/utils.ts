@@ -26,6 +26,6 @@ export const validatePassword = (password: string) => {
     return t`Password must contain at least one special character`
   }
 
-  return null
+  return undefined
 };
 

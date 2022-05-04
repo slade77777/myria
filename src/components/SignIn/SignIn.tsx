@@ -76,10 +76,10 @@ const SignIn: React.FC = () => {
           </div>
         </div>
         <a className="text-brand-gold hover:cursor-pointer" onClick={forgotPassword}><Trans>Forgot your password?</Trans></a>
-        <button className="btn-lg btn-primary mt-8 w-full">
+        <button className="btn-lg btn-primary my-8 w-full">
           <Trans>Sign in</Trans>
         </button>
-        <div className="mt-6 mb-8 text-center">
+        {/* <div className="mt-6 mb-8 text-center">
           <div className="text-light">
             {t`Don’t have an account?`}{' '}
             <span className="text-gold">
@@ -88,7 +88,7 @@ const SignIn: React.FC = () => {
               </a>
             </span>
           </div>
-        </div>
+        </div> */}
       </form>
     </div>
   );
