@@ -5,7 +5,7 @@ import Filter, { FilterList } from 'src/components/Filter';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import ListInventory from 'src/components/inventory/ListInventory';
 import Page from 'src/components/Page';
-import SortBy from 'src/components/SortBy';
+// import SortBy from 'src/components/SortBy';
 import { useGA4 } from 'src/lib/ga';
 import { negativeMarginXSm, paddingX } from 'src/utils';
 
@@ -76,7 +76,7 @@ const InventoryPage: React.FC = () => {
             <p className="mb-[32px] text-[32px] font-extrabold leading-[1.5]">Inventory</p>
             <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8">
               <div className="min-w-[184px]">
-                <SortBy />
+                {/* <SortBy /> */}
                 <Filter
                   filterList={filters}
                   activeFilter={filter}
