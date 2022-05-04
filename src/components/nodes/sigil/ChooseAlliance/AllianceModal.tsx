@@ -4,7 +4,7 @@ import CloseIcon from 'src/components/icons/CloseIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
 import { useGA4 } from 'src/lib/ga';
-import { useQuery } from './useQuery';
+import { usePickAllianceMutation } from './useChooseAllianceQuery';
 
 type Props = {
   open: boolean;
@@ -17,7 +17,9 @@ type Props = {
 
 const AllianceModal: React.FC<Props> = ({ open, onClose, onJoinSuccess, sigilDesc, sigilName, sigilId }) => {
   const { event } = useGA4();
-  const { pickAllianceMutation } = useQuery();
+  const { mutate: handleJoin, isLoading } = usePickAllianceMutation(onJoinSuccess, () => {
+    console.log("Pick alliance failed");
+  });
   const backgroundImg = React.useMemo(() => {
     if (sigilId === 'a') {
       return "bg-[url('/images/nodes/insignia/sigilA_modal_bg.png')]";
@@ -27,18 +29,6 @@ const AllianceModal: React.FC<Props> = ({ open, onClose, onJoinSuccess, sigilDes
       return "bg-[url('/images/nodes/insignia/sigilC_modal_bg.png')]";
     }
   }, [sigilId]);
-
-  const handleJoin = async (selectedSigilId: string) => {
-    try {
-      await pickAllianceMutation.mutateAsync(selectedSigilId);
-      if (typeof onJoinSuccess === 'function') {
-        onJoinSuccess();
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
 
   return (
     <Modal
@@ -65,7 +55,7 @@ const AllianceModal: React.FC<Props> = ({ open, onClose, onJoinSuccess, sigilDes
                 <Button className="btn-md btn-primary uppercase" onClick={() => {
                   sigilId && handleJoin(sigilId)
                   sigilName && event('Alliance Joined', { campaign: 'Sigil', alliance_name: sigilName })
-                }} loading={pickAllianceMutation.isLoading}>
+                }} loading={isLoading}>
                   JOIN the {sigilName}
                 </Button>
               </div>

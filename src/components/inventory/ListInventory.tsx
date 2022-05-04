@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { useInventoryQuery } from './useQuery';
+import { useInventoryQuery } from './useInventoryQuery';
 import { LoadingStandBy } from '../Loading';
 import InventoryItem from './InventoryItem';
 

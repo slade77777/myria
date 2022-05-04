@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
 import { useGA4 } from 'src/lib/ga';
-import { AssetCreditType, AssetSigilType, AssetTitleType, OpenChestContent } from './useQuery';
+import { AssetCreditType, AssetSigilType, AssetTitleType, OpenChestContent } from './useInventoryQuery';
 
 type Props = {
   open: boolean;

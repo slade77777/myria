@@ -6,7 +6,7 @@ import Badge from 'src/components/Badge';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import ChevronRightIcon from 'src/components/icons/ChevronRightIcon';
 import Overlay from 'src/components/overlay/Overlay';
-import { AssetType, OpenChestContent, useInventoryQuery } from './useQuery';
+import { AssetType, OpenChestContent, useInventoryQuery } from './useInventoryQuery';
 import Button from '../core/Button';
 
 interface Props {
