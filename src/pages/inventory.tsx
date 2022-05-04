@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import Filter, { FilterList } from 'src/components/Filter';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
+import ChevronLeftIcon from 'src/components/icons/ChevronLeftIcon';
 import ListInventory from 'src/components/inventory/ListInventory';
 import Page from 'src/components/Page';
 // import SortBy from 'src/components/SortBy';
@@ -43,12 +44,12 @@ const InventoryPage: React.FC = () => {
   const [filter, setFilter] = useState<any>({});
   useEffect(() => {
     // TODO mock event
-    event('Sigil Inventory Viewed', { campaign: 'Sigil', wallet_address: '_mock' })
-  }, [event])
+    event('Sigil Inventory Viewed', { campaign: 'Sigil', wallet_address: '_mock' });
+  }, [event]);
   return (
     <Page>
       <div className={clsx(paddingX, headerNavSpacingClassName, 'mb-48')}>
-        <div className="mx-auto max-w-content mt-12">
+        <div className="mx-auto mt-12 max-w-content">
           <section
             className={clsx(
               negativeMarginXSm,
@@ -73,6 +74,12 @@ const InventoryPage: React.FC = () => {
             </Trans>
           </section>
           <section className="-mt-7 md:mt-[88px]">
+            <div className='flex items-center text-brand-gold font-medium cursor-pointer mb-3'>
+              <i className="w-6 relative left-[-8px]">
+                <ChevronLeftIcon />
+              </i>
+              <span>BACK TO SIGIL DASHBOARD</span>
+            </div>
             <p className="mb-[32px] text-[32px] font-extrabold leading-[1.5]">Inventory</p>
             <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8">
               <div className="min-w-[184px]">
