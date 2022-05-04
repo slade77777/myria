@@ -40,6 +40,7 @@ class AppDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap"
             rel="stylesheet"
           />
+
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             dangerouslySetInnerHTML={{
@@ -107,8 +108,34 @@ class AppDocument extends Document {
           {/* <!-- End Xandr Universal Pixel --> */}
 
           {/* <!-- Conversion Pixel --> */}
-          <script async src={`https://secure.adnxs.com/px?id=${process.env.NEXT_PUBLIC_CONVERSION_PIXEL_ID}&t=1`} type="text/javascript" />
+          <script
+            async
+            src={`https://secure.adnxs.com/px?id=${process.env.NEXT_PUBLIC_CONVERSION_PIXEL_ID}&t=1`}
+            type="text/javascript"
+          />
           {/* <!-- End Conversion Pixel --> */}
+
+          {/* <!-- Google Tag Manager (noscript) --> */}
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}></iframe>
+          </noscript>
+          {/* <!-- End Google Tag Manager (noscript) --> */}
+
+          {/* <!-- Google Tag Manager --> */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM}');`
+            }}
+          />
+          {/* <!-- End Google Tag Manager --> */}
         </Head>
         <body>
           <Main />
