@@ -12,7 +12,7 @@ apiClient.interceptors.request.use(
   async function (config) {
     // MOCK token
     if (config.headers) {
-      config.headers.Authorization = '2789bb16-6e89-4d67-a841-3cd883fe140a';
+      config.headers.Authorization = 'a8792317-dd49-4ae9-b874-5803c74bcd50';
     }
     return config;
   },

@@ -4,6 +4,7 @@ import { Loading } from 'src/components/Loading';
 import RegisterModal from 'src/components/Register/Modal';
 import { socialLinks } from 'src/configs';
 import { useGA4 } from 'src/lib/ga';
+import http from 'src/services/http';
 import { Mission } from 'src/types/sigil';
 import MissionItem from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
@@ -17,114 +18,33 @@ const Missions: React.FC = () => {
   const { event } = useGA4();
 
   const { data: missions } = useQuery<Mission[]>('sigilMissions', async () => {
-    const data: Mission[] = [
-      {
-        mission_id: 'MYRIA_ACCOUNT',
-        title: 'Create a Myria Account',
-        description: 'Create a Myria Account',
-        credits: 5,
-        earned_credits: 5,
-        repetition_limit: 1,
-        repetition_text: null,
-        completed: true,
-        status: 'completed',
-        // TODO mock event
-        trackGA4: () => event('Account Sign-up Clicked', { campaign: 'Sigil', wallet_address: '_mock' })
-      },
-      {
-        mission_id: 'JOIN_DISCORD',
-        title: 'Join our Discord',
-        description: '',
-        credits: 5,
-        earned_credits: 5,
-        repetition_limit: 1,
-        repetition_text: null,
-        completed: true,
-        status: 'completed',
-        // TODO mock event
-        trackGA4: () => event('Sigil Discord Button Clicked', { campaign: 'Sigil', wallet_address: '_mock', myria_username: '_mock', user_email: '_mock' })
-      },
-      {
-        mission_id: 'SHARE_TWITTER',
-        title: 'Share our Twitter post',
-        description: '',
-        credits: 5,
-        earned_credits: 5,
-        repetition_limit: 1,
-        repetition_text: null,
-        completed: true,
-        status: 'completed'
-      },
-      {
-        mission_id: 'INVITE_FRIEND',
-        title: 'Invite friends',
-        description: '',
-        credits: 5,
-        earned_credits: 0,
-        repetition_limit: -1,
-        repetition_text: 'Unlimited',
-        completed: false,
-        status: 'available'
-      },
-      {
-        mission_id: 'DAILY_DISCORD_MESSAGE',
-        title: 'Daily login to Discord',
-        description: '',
-        credits: 5,
-        earned_credits: 10,
-        repetition_limit: -1,
-        repetition_text: 'Daily',
-        completed: true,
-        status: 'available'
-      },
-      {
-        mission_id: 'FIRST_DISCORD_MESSAGE',
-        title: 'Discord introduction',
-        description: '',
-        credits: 5,
-        earned_credits: 0,
-        repetition_limit: 1,
-        repetition_text: null,
-        completed: false,
-        status: 'locked'
-      },
-      {
-        mission_id: 'VOTE_ON_LORE_DISCORD',
-        title: 'Vote on lore / narrative',
-        description: '',
-        credits: 5,
-        earned_credits: 0,
-        repetition_limit: -1,
-        repetition_text: 'Unlimited',
-        completed: false,
-        status: 'locked'
-      },
-      {
-        mission_id: 'SHARE_IDEA_DISCORD',
-        title: 'Share idea on Discord',
-        description: '',
-        credits: 10,
-        earned_credits: 0,
-        repetition_limit: 1,
-        repetition_text: null,
-        completed: false,
-        status: 'locked'
-      },
-      {
-        mission_id: 'SPACE_LORD_ROLE_DISCORD',
-        title: 'Reach lvl 40 on Discord',
-        description: '',
-        credits: 100,
-        earned_credits: 0,
-        repetition_limit: 1,
-        repetition_text: null,
-        completed: false,
-        status: 'locked'
-      }
-    ];
+    const res = await http.get<{
+      data: {
+        [k: string]: Mission;
+      };
+    }>('/v1/sigil/users/missions');
 
-    return data;
+    return Object.keys(res.data.data).map((k) => res.data.data[k]);
   });
+
+  const TrackingMap: { [key in Mission['mission_id']]?: () => void } = {
+    // TODO mock event
+    MYRIA_ACCOUNT: () =>
+      event('Sigil Discord Button Clicked', {
+        campaign: 'Sigil',
+        wallet_address: '_mock',
+        myria_username: '_mock',
+        user_email: '_mock'
+      }),
+    // TODO mock event
+    JOIN_DISCORD: () =>
+      event('Sigil Discord Button Clicked', {
+        campaign: 'Sigil',
+        wallet_address: '_mock',
+        myria_username: '_mock',
+        user_email: '_mock'
+      })
+  };
 
   const ActionMap: {
     [key in Mission['mission_id']]?: {
@@ -189,9 +109,14 @@ const Missions: React.FC = () => {
           </div>
         ) : (
           <div className="mt-4 flex-grow space-y-4 overflow-auto" id="scrollbar">
-            {missions.map((mission, index) => (
-              <MissionItem key={index} item={mission} action={ActionMap[mission.mission_id]} />
-            ))}
+            {missions.map((mission, index) => {
+              if (TrackingMap[mission.mission_id]) {
+                mission.trackGA4 = TrackingMap[mission.mission_id];
+              }
+              return (
+                <MissionItem key={index} item={mission} action={ActionMap[mission.mission_id]} />
+              );
+            })}
           </div>
         )}
       </div>
