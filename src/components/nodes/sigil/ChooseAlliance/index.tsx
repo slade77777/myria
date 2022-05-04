@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { useGA4 } from 'src/lib/ga';
 import { SUPPORT_SOUND, soundService } from 'src/sound';
 import AllianceModal from './AllianceModal';
 
@@ -34,18 +35,18 @@ type Sigil = {
 
 const SIGILS: Sigil[] = [
   {
-    id: 'a',
+    id: 'federation',
     order: 1,
     img: '/images/nodes/insignia/alliance_sigilA.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
     width: 584 / 2,
     height: 748 / 2,
     className: 'left-[1%] xl:left-[2%] w-[26%] xl:w-[24%]',
-    name: 'FEDERATION',
-    desc: "With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts."
+    name: 'THE FEDERATION',
+    desc: 'With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts.'
   },
   {
-    id: 'b',
+    id: 'vector_prime',
     order: 2,
     img: '/images/nodes/insignia/alliance_sigilB.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
@@ -53,10 +54,10 @@ const SIGILS: Sigil[] = [
     height: 748 / 2,
     className: 'w-[26%] xl:w-[24%]',
     name: 'VECTOR PRIME',
-    desc: "Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion."
+    desc: 'Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion.'
   },
   {
-    id: 'c',
+    id: 'equinox',
     order: 3,
     img: '/images/nodes/insignia/alliance_sigilC.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
@@ -64,7 +65,7 @@ const SIGILS: Sigil[] = [
     height: 748 / 2,
     className: 'right-[2%] xl:right-[3%] w-[26%] xl:w-[24%]',
     name: 'EQUINOX',
-    desc: "Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers."
+    desc: 'Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers.'
   }
 ];
 
@@ -98,7 +99,7 @@ const Sigil = ({
   order
 }: SigilProps) => {
   const [isFirstTimeActive, setIsFirstTimeActive] = React.useState(false);
-
+  const { event } = useGA4();
   return (
     <div
       onMouseEnter={() => {
@@ -117,7 +118,7 @@ const Sigil = ({
         className || ''
       }`}>
       <div
-        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b pb-[8px] pt-[24px] transition-all px-6 xl:px-8 ${
+        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b px-6 pb-[8px] pt-[24px] transition-all xl:px-8 ${
           isActive
             ? 'z-20 max-w-full from-transparent via-[rgba(0,0,0,0.5)] to-transparent'
             : 'z-0 max-w-[80%] from-transparent'
@@ -179,8 +180,8 @@ const Sigil = ({
           </span>
         </div>
         <div
-          className={`h-[70px] transition-all delay-100 text-center w-[20vw] ${
-            isActive ? 'opacity-100': 'opacity-0'
+          className={`h-[70px] w-[20vw] text-center transition-all delay-100 ${
+            isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
             className="text-[14px] font-normal text-light"
@@ -229,13 +230,16 @@ const Sigil = ({
 
         <div
           className={`absolute  flex h-[116px] w-full items-end justify-center transition-all delay-100 ${
-            isActive ? 'bottom-[-80px] xl:bottom-[-85px] 2xl:bottom-[-116px] opacity-100' : 'bottom-0 opacity-0'
+            isActive
+              ? 'bottom-[-80px] opacity-100 xl:bottom-[-85px] 2xl:bottom-[-116px]'
+              : 'bottom-0 opacity-0'
           }`}>
           <button
             className="btn-md btn-primary flex w-[60%] items-center"
             onClick={() => {
               onSelect(id);
               soundService.playSound(SUPPORT_SOUND.SIGIL_SELECT);
+              event('Alliance Selected', { campaign: 'Sigil', alliance_name: name })
             }}>
             SELECT
           </button>
@@ -255,12 +259,12 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
   const activeSigilData = React.useMemo(() => {
     return SIGILS.find((sigil) => sigil.id === selectedAlliance);
   }, [selectedAlliance]);
-  
+
   return (
     <>
       <AllianceModal
         open={!!selectedAlliance}
-        onJoin={onNext}
+        onJoinSuccess={onNext}
         onClose={() => {
           setSelectedAlliance(null);
         }}

@@ -1,18 +1,25 @@
 import React from 'react';
+import Button from 'src/components/core/Button';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
+import { useGA4 } from 'src/lib/ga';
+import { usePickAllianceMutation } from './useChooseAllianceQuery';
 
 type Props = {
   open: boolean;
   onClose: () => void;
-  onJoin: () => void;
+  onJoinSuccess: () => void;
   sigilName?: string;
   sigilDesc?: string;
   sigilId?: string;
 };
 
-const AllianceModal: React.FC<Props> = ({ open, onClose, onJoin, sigilDesc, sigilName, sigilId }) => {
+const AllianceModal: React.FC<Props> = ({ open, onClose, onJoinSuccess, sigilDesc, sigilName, sigilId }) => {
+  const { event } = useGA4();
+  const { mutate: handleJoin, isLoading } = usePickAllianceMutation(onJoinSuccess, () => {
+    console.log("Pick alliance failed");
+  });
   const backgroundImg = React.useMemo(() => {
     if (sigilId === 'a') {
       return "bg-[url('/images/nodes/insignia/sigilA_modal_bg.png')]";
@@ -37,7 +44,7 @@ const AllianceModal: React.FC<Props> = ({ open, onClose, onJoin, sigilDesc, sigi
           </Modal.Close>
           <div className={`flex h-full flex-row bg-brand-deep-blue ${backgroundImg} bg-cover`}>
             <div className="flex flex-col items-start justify-between py-12 px-12">
-              <div className='flex flex-1 flex-col items-start justify-center'>
+              <div className="flex flex-1 flex-col items-start justify-center">
                 <p className="mb-1 text-[14px] font-medium leading-[1.5] text-brand-light-blue">
                   You are joining...
                 </p>
@@ -45,9 +52,12 @@ const AllianceModal: React.FC<Props> = ({ open, onClose, onJoin, sigilDesc, sigi
                 <p className="mb-6 text-[14px] font-normal leading-[1.5] text-white">
                   {sigilDesc}
                 </p>
-                <button className="btn-md btn-primary uppercase" onClick={onJoin}>
+                <Button className="btn-md btn-primary uppercase" onClick={() => {
+                  sigilId && handleJoin(sigilId)
+                  sigilName && event('Alliance Joined', { campaign: 'Sigil', alliance_name: sigilName })
+                }} loading={isLoading}>
                   JOIN the {sigilName}
-                </button>
+                </Button>
               </div>
 
               <div className="flex flex-col items-start text-[14px] leading-[1.2] text-brand-orange">

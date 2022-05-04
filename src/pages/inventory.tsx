@@ -1,17 +1,12 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import Badge from 'src/components/Badge';
+import React, { useEffect, useState } from 'react';
 import Filter, { FilterList } from 'src/components/Filter';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
-import CheckIcon from 'src/components/icons/CheckIcon';
-import ChevronRightIcon from 'src/components/icons/ChevronRightIcon';
-import OpenInventoryChestModal from 'src/components/inventory/OpenChest';
-import Overlay from 'src/components/overlay/Overlay';
+import ListInventory from 'src/components/inventory/ListInventory';
 import Page from 'src/components/Page';
 import SortBy from 'src/components/SortBy';
+import { useGA4 } from 'src/lib/ga';
 import { negativeMarginXSm, paddingX } from 'src/utils';
 
 const filters: FilterList = [
@@ -43,83 +38,13 @@ const filters: FilterList = [
 
 type Filter = typeof filters;
 
-type FilterKey = Filter[number]['title'];
-type Inventory = {
-  id: string;
-  image: string;
-  name: string;
-  type: string;
-  qty: string;
-  maxSupply: string;
-  isClaimed: boolean;
-};
-
-export const inventories: Inventory[] = Array(9)
-  .fill(0)
-  .map((_, index) => ({
-    id: String(index),
-    image: '/images/our-games/metarush_op.png',
-    name: 'Common Alliance Chest has  a long title Max 2 lines',
-    type: 'COMMON',
-    qty: '2,056',
-    maxSupply: '10,000',
-    isClaimed: Math.random() > 0.5 ? true : false
-  }));
-
-const InventoryItem = ({ item }: { item: Inventory }) => {
-  const [open, setOpen] = React.useState(false);
-  return (
-    <>
-      <OpenInventoryChestModal open={open} onClose={() => setOpen(false)} />
-      <div className="block h-[444px] w-full max-w-[328px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
-        <Overlay className="h-[200px] lg:h-[248px] w-full">
-          <Image src={item.image} alt="" layout="fill" objectFit="cover" />
-        </Overlay>
-        <div className="p-6">
-          <span className="mb-4 block text-[20px] font-extrabold">{item.name}</span>
-          <div className="mb-6 flex items-center justify-between">
-            <Badge>
-              <Trans>{item.type}</Trans>
-            </Badge>
-            <span className="text-[16px] font-normal text-light">
-              {item.qty}/{item.maxSupply}
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-[16px] font-normal text-light">
-              <Trans>Sigil Event</Trans>
-            </span>
-            {item.isClaimed ? (
-              <div className="flex items-center font-bold text-green">
-                <span className="mr-2 w-[22px]">
-                  <CheckIcon />
-                </span>
-                <span>
-                  <Trans>Claimed</Trans>
-                </span>
-              </div>
-            ) : (
-              <button className="btn-sm btn-primary flex items-center" onClick={() => setOpen(true)}>
-                <span className="relative top-[1px]">
-                  <Trans>OPEN NOW</Trans>
-                </span>
-                <span className="w-[22px]">
-                  <ChevronRightIcon />
-                </span>
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
 const InventoryPage: React.FC = () => {
+  const { event } = useGA4();
   const [filter, setFilter] = useState<any>({});
-
-  const filteredInventory = inventories;
-
+  useEffect(() => {
+    // TODO mock event
+    event('Sigil Inventory Viewed', { campaign: 'Sigil', wallet_address: '_mock' })
+  }, [event])
   return (
     <Page>
       <div className={clsx(paddingX, headerNavSpacingClassName, 'mb-48')}>
@@ -158,13 +83,7 @@ const InventoryPage: React.FC = () => {
                   setFilter={(activeFilter) => setFilter(activeFilter)}
                 />
               </div>
-              <div className={clsx('mt-7 grid grid-cols-3 gap-x-6 gap-y-8')}>
-                {filteredInventory.map((item, idx) => (
-                  <div key={idx} className="snap-start">
-                    <InventoryItem item={item} />
-                  </div>
-                ))}
-              </div>
+              <ListInventory />
             </div>
           </section>
         </div>

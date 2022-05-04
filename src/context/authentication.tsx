@@ -11,11 +11,19 @@ import { IFormRegisterInput } from 'src/components/Register/Register';
 import { IFormForgotPasswordInput } from 'src/components/ForgotPassword/ForgotPassword';
 import { IFormResetPasswordInput } from 'src/components/ResetPassword/ResetPassword';
 import apiClient, { mapError, IResponseError } from 'src/client';
-import { useMutation } from 'react-query';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { AxiosError } from 'axios';
 import { Trans } from '@lingui/macro';
+import { useMutation, UseMutationResult } from 'react-query';
+import { useGA4 } from 'src/lib/ga';
+import { setAuthToken } from 'src/services/http';
+import { useWalletContext } from './wallet';
+
+type User = {
+  user_id: string;
+  wallet_id?: string;
+}
 
 const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
   return (
@@ -105,7 +113,7 @@ const RegisterSuccessdModal = ({ open, onClose }: { open: boolean; onClose?: () 
 };
 
 interface IAuthenticationContext {
-  user: string | undefined;
+  user: User | undefined;
   login: () => void;
   register: () => void;
   forgotPassword: () => void;
@@ -122,6 +130,7 @@ interface IAuthenticationContext {
   registerError: IResponseError | undefined;
   forgotPasswordError: string;
   resetPasswordError: string;
+  registerByWalletMutation: UseMutationResult<User, unknown, void, unknown>
 }
 
 const AuthenticationContext = React.createContext<IAuthenticationContext>(
@@ -130,8 +139,7 @@ const AuthenticationContext = React.createContext<IAuthenticationContext>(
 
 export const AuthenticationProvider: React.FC = ({ children }) => {
   const [referalCode] = useLocalStorage(localStorageKeys.referralCode, undefined);
-
-  const [user, setUser] = React.useState<string | undefined>(undefined);
+  const [user, setUser] = React.useState<User | undefined>(undefined);
   const [openSignIn, setOpenSignIn] = React.useState<boolean>(false);
   const [openRegister, setOpenRegister] = React.useState<boolean>(false);
   const [openForgotPassword, setOpenForgotPassword] = React.useState<boolean>(false);
@@ -151,6 +159,14 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 
   const [resetPasswordData, setResetPasswordData] = useState<IFormResetPasswordInput>();
   const [resetPasswordError, setResetPasswordError] = useState<string>('');
+
+  const { signMessage, address } = useWalletContext();
+
+  React.useEffect(() => {
+    setAuthToken(user?.user_id || "");
+  }, [user?.user_id]);
+
+  const { event } = useGA4();
 
   const { isLoading: isPostingLogin, mutate: postLogin } = useMutation(
     async () => { return await apiClient.post(`/accounts/login`, loginData); },
@@ -185,6 +201,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         setRegisterError(undefined)
         setOpenRegisterSuccess(true)
         setOpenRegister(false);
+        // TODO mock event
+        event('Account Sign-up Completed', { campaign: 'Sigil', myria_id: undefined, myria_username: '_mock', user_email: '_mock', wallet_address: '_mock' })
       },
       onError: (err: AxiosError) => {
         setRegisterError(mapError(err))
@@ -201,6 +219,36 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       onError: (err) => {
         setForgotPasswordError("Email does not exist")
       },
+    }
+  );
+
+  const registerByWalletMutation = useMutation(
+    async () => {
+      const message = Date.now().toString();
+      const signature = await signMessage(message);
+
+      if (signature && address) {
+        const registerData = {
+          wallet_id: address,
+          signature,
+          message,
+        };
+        const userRes = await apiClient.post(`/accounts/register/wallet`, registerData).then(res => res.data);
+
+        if (userRes?.user_id) {
+          const user: User = {
+            user_id: userRes?.user_id,
+            wallet_id: userRes?.wallet_id,
+          }
+
+          setUser(user);
+
+          return user;
+        } else {
+          throw new Error('Failed to register user by wallet');
+        }
+      }
+      throw new Error('Signature and wallet address are required to register');
     }
   );
 
@@ -294,7 +342,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           loginError,
           registerError,
           forgotPasswordError,
-          resetPasswordError
+          resetPasswordError,
+          registerByWalletMutation,
         }
       }>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />

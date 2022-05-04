@@ -5,7 +5,8 @@ export interface IResponseError {
 }
 
 const apiClient = axios.create({
-    baseURL: 'https://dev.myriaverse-api.myria.com/v1/',
+    baseURL: 'https://dev.myriaverse-api.nonprod-myria.com/v1',
+    timeout: 10000,
     headers: {
         "accept": "application/json",
         "Content-type": "application/json"

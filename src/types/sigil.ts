@@ -36,4 +36,5 @@ export type Mission = {
   repetition_limit: null | number;
   repetition_text: null | 'Unlimited' | 'Daily';
   completed: boolean;
+  trackGA4?: () => void
 };

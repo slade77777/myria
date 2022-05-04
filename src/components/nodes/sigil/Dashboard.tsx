@@ -12,7 +12,7 @@ const Dashboard: React.FC = () => {
         paddingX,
         "h-screen bg-[url('/images/nodes/sigil/dashboard-bg_op.jpg')] bg-top bg-no-repeat pt-[112px] pb-[35px] [background-size:100%_auto]"
       )}>
-      <div className="grid h-full grid-cols-[252fr_616fr_252fr] gap-8">
+      <div className="mx-auto grid h-full max-w-[1440px] grid-cols-[252fr_616fr_252fr] gap-8">
         <div className="h-full pt-[56px]">
           <AllianceInfo />
         </div>

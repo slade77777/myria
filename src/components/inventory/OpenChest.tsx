@@ -1,16 +1,47 @@
 import { Trans } from '@lingui/macro';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
-import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
+import { useGA4 } from 'src/lib/ga';
+import { AssetCreditType, AssetSigilType, AssetTitleType, OpenChestContent } from './useInventoryQuery';
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  openedChest?: OpenChestContent[];
+  chestName: string;
 };
 
-const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose }) => {
+const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, chestName }) => {
+  const { event } = useGA4();
+  const credit = React.useMemo<AssetCreditType | undefined>(() => {
+    return openedChest?.find((item) => item.type === 'credits') as
+      | AssetCreditType
+      | undefined;
+  }, [openedChest]);
+
+  const sigil = React.useMemo<AssetSigilType | undefined>(() => {
+    return openedChest?.find((item) => item.type === 'sigil') as
+      | AssetSigilType
+      | undefined;
+  }, [openedChest]);
+
+  const title = React.useMemo<AssetTitleType | undefined>(() => {
+    return openedChest?.find((item) => item.type === 'title') as
+      | AssetTitleType
+      | undefined;
+  }, [openedChest]);
+
+  useEffect(() => {
+    // TODO mock event
+    event('Chest Claimed', { campaign: 'Sigil', wallet_address: '_mock', item_list: '_mock', credit_amount: -111 });
+  }, [event])
+
+  if (!openedChest) {
+    return null;
+  }
+
   return (
     <Modal
       open={open}
@@ -30,62 +61,64 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose }) => {
                 <Trans>You have opened</Trans>
               </span>
               <span className="mb-[36px] text-[28px] font-bold text-[#A9CB68]">
-                Rare Alliance Chest
+                {chestName}
               </span>
-              <div
-                className="flex h-[77px] w-[316px] items-center justify-center rounded-lg"
-                style={{
-                  background:
-                    'linear-gradient(180deg, rgba(169, 203, 104, 0.2) 5.86%, rgba(169, 203, 104, 0) 51.87%)',
-                  boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.25)'
-                }}>
-                <Image
-                  src="/images/inventory/sigil.png"
-                  width={40}
-                  height={45}
-                  layout="intrinsic"
-                  alt="sigil"
-                />
-                <span className="ml-4 text-[16px] font-medium text-[#A9CB68]">
-                  x1 Rare Demonic Hell Widget
-                </span>
-              </div>
-              <div
-                className="flex h-[77px] w-[316px] items-center justify-center rounded-lg"
-                style={{
-                  background:
-                    'linear-gradient(180deg, rgba(169, 203, 104, 0.2) 5.86%, rgba(169, 203, 104, 0) 51.87%)',
-                  boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.25)'
-                }}>
-                <Image
-                  src="/images/inventory/sigil.png"
-                  width={40}
-                  height={45}
-                  layout="intrinsic"
-                  alt="sigil"
-                />
-                <span className="ml-4 text-[16px] font-medium text-[#A9CB68]">
-                  x1 Rare Demonic Hell Widget
-                </span>
-              </div>
-              <div
-                className="flex h-[77px] w-[316px] items-center justify-center rounded-lg"
-                style={{
-                  background:
-                    'linear-gradient(180deg, rgba(79, 166, 185, 0.2) 5.86%, rgba(79, 166, 185, 0) 51.87%)',
-                  boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.25)'
-                }}>
-                <Image
-                  src="/images/inventory/coin.png"
-                  width={40}
-                  height={40}
-                  layout="intrinsic"
-                  alt="sigil"
-                />
-                <span className="ml-4 text-[16px] font-medium text-[#4FA6B9]">
-                  100 Sigil Event Credits
-                </span>
-              </div>
+
+              {sigil && (
+                <div
+                  className="flex h-[77px] w-[316px] items-center justify-center rounded-lg"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, rgba(169, 203, 104, 0.2) 5.86%, rgba(169, 203, 104, 0) 51.87%)',
+                    boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.25)'
+                  }}>
+                  <Image src='/images/nodes/sigil/alliance-1.png' width={40} height={45} layout="intrinsic" alt="sigil" />
+                  <span className="ml-4 text-[16px] font-medium text-[#A9CB68]">{sigil.name}</span>
+                </div>
+              )}
+
+              {title && (
+                <div
+                  className="flex h-[77px] w-[316px] items-center justify-center rounded-lg"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, rgba(169, 203, 104, 0.2) 5.86%, rgba(169, 203, 104, 0) 51.87%)',
+                    boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.25)'
+                  }}>
+                  <Image
+                    src='/images/nodes/sigil/alliance-1.png'
+                    width={40}
+                    height={45}
+                    layout="intrinsic"
+                    alt="sigil"
+                  />
+                  <span className="ml-4 text-[16px] font-medium text-[#A9CB68]">
+                    {title.name}
+                  </span>
+                </div>
+              )}
+
+              {credit && (
+                <div
+                  className="flex h-[77px] w-[316px] items-center justify-center rounded-lg"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, rgba(79, 166, 185, 0.2) 5.86%, rgba(79, 166, 185, 0) 51.87%)',
+                    boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.25)'
+                  }}>
+                  <Image
+                    src="/images/inventory/coin.png"
+                    width={40}
+                    height={40}
+                    layout="intrinsic"
+                    alt="sigil"
+                  />
+                  <span className="ml-4 text-[16px] font-medium text-[#4FA6B9]">
+                    {credit.amount} Sigil Event Credits
+                  </span>
+                </div>
+              )}
+
               <button className="btn-md btn-primary mt-[48px] uppercase">VIEWS ITEMS</button>
             </div>
           </div>
