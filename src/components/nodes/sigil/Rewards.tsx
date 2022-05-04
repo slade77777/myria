@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import BoxIcon from 'src/components/icons/BoxIcon';
 import { Loading } from 'src/components/Loading';
 import { Reward } from 'src/types/sigil';
@@ -11,9 +11,14 @@ import http from 'src/services/http';
 
 const Rewards: React.FC = () => {
   const [claimItem, setClaimItem] = useState<Reward | null>(null);
+  const queryClient = useQueryClient();
   const { data } = useQuery<Reward[]>('sigilRewards', async () => {
     const res = await http.get<{ data: Reward[] }>('/v1/sigil/users/rewards');
     return res.data.data;
+  });
+
+  const { mutate: onClaim } = useMutation((rewardId: Reward['reward_id']) => {
+    return http.post('/v1/sigil/users/rewards', { reward_id: rewardId });
   });
 
   const claimedItems = data?.filter((reward) => reward.status === 'claimed') ?? [];
@@ -25,6 +30,11 @@ const Rewards: React.FC = () => {
   const otherNextRewards = lockedItems?.slice(1);
 
   const handleClaim = (reward: Reward) => {
+    onClaim(reward.reward_id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries('sigilRewards');
+      }
+    });
     setClaimItem(reward);
   };
 
