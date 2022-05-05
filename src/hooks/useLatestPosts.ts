@@ -8,23 +8,22 @@ function clean(input: string) {
 
 export type Item = {
   title: string;
-  description: string;
+  content: string;
   thumbnail: string;
   pubDate: string;
   guid: string;
   link: string;
 };
 
-export const mediumPage ='https://medium.com/feed/@myriagames';
+export const encodedMediumPage = 'https://medium.com/feed/@myriagames';
 export default function useLatestPosts() {
   const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
     async function fetchLatestItems() {
       const response = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
-          mediumPage
-        )}&x=${new Date().getTime()}`,
+        //temporary fetch from temp external proxy to prevent the cors
+        'https://limitless-falls-89564.herokuapp.com/load-medium-posts',
         {
           mode: 'cors'
         }
@@ -42,7 +41,9 @@ export default function useLatestPosts() {
 
       setItems(
         items.slice(0, 3).map((item) => {
-          item.description = clean(item.description);
+          // extract first image
+          const srcs = item.content.match(/<img.*?src="(.*?)"/g)?.map(x => x.replace(/.*src="([^"]*)".*/, '$1'))
+          item.thumbnail= srcs?.[0] as string;
           return item;
         })
       );
