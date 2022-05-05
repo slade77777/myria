@@ -76,8 +76,7 @@ export const games: {
     feature: 'Single Player',
     genre: ['Casual', 'Simulation'],
     publisher: 'Leapblock Studios',
-    id: 'moonville',
-    disabled: true
+    id: 'moonville-farms'
   },
   {
     image: '/images/our-games/hot-slice_op.png',
@@ -93,7 +92,8 @@ export const games: {
 const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
   return (
     <Link href={'/game-detail/' + item.id}>
-      <a className={clsx('block', {
+      <a
+        className={clsx('block', {
           'pointer-events-none': item.disabled
         })}>
         <Overlay className="h-[232px] overflow-hidden rounded-[5px] md:h-[344px]">
@@ -101,11 +101,13 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
         </Overlay>
         <p className="mt-4 flex text-[14px] font-bold uppercase leading-[1.5] text-brand-light-blue">
           <span>{item.publisher}</span>
-          {item.disabled && <div className="ml-auto">
-            <Badge>
-              <Trans>COMING SOON</Trans>
-            </Badge>
-          </div>}
+          {item.disabled && (
+            <div className="ml-auto">
+              <Badge>
+                <Trans>COMING SOON</Trans>
+              </Badge>
+            </div>
+          )}
         </p>
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[16px] font-medium leading-[1.5] md:text-[18px]">
           {item.title}
@@ -114,7 +116,6 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
     </Link>
   );
 };
-
 
 const GameList: React.FC = () => {
   const [filter, setFilter] = useState<FilterMap>({
@@ -137,7 +138,11 @@ const GameList: React.FC = () => {
     <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8">
       <div className="min-w-[184px]">
         <p className="text-[20px] font-medium leading-[1.5]">Filter</p>
-        <Filter filterList={filters} activeFilter={filter} setFilter={(activeFilter) => setFilter(activeFilter)} />
+        <Filter
+          filterList={filters}
+          activeFilter={filter}
+          setFilter={(activeFilter) => setFilter(activeFilter)}
+        />
       </div>
       <div className={clsx('mt-7 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4')}>
         {filteredGames.map((item, idx) => (
