@@ -82,8 +82,7 @@ export const games: {
     feature: 'Single Player',
     genre: ['Casual', 'Simulation'],
     publisher: 'Leapblock Studios',
-    id: 'moonville',
-    disabled: true
+    id: 'moonville-farms'
   },
   {
     image: '/images/our-games/hot-slice_op.png',
@@ -99,7 +98,8 @@ export const games: {
 const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
   return (
     <Link href={'/game-detail/' + item.id}>
-      <a className={clsx('block', {
+      <a
+        className={clsx('block', {
           'pointer-events-none': item.disabled
         })}>
         <Overlay className="h-[232px] overflow-hidden rounded-[5px] md:h-[344px]">
@@ -107,11 +107,13 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
         </Overlay>
         <p className="mt-4 flex text-[14px] font-bold uppercase leading-[1.5] text-brand-light-blue">
           <span>{item.publisher}</span>
-          {item.disabled && <div className="ml-auto">
-            <Badge>
-              <Trans>COMING SOON</Trans>
-            </Badge>
-          </div>}
+          {item.disabled && (
+            <div className="ml-auto">
+              <Badge>
+                <Trans>COMING SOON</Trans>
+              </Badge>
+            </div>
+          )}
         </p>
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[16px] font-medium leading-[1.5] md:text-[18px]">
           {item.title}
@@ -205,10 +207,12 @@ const Filter: React.FC<{
                         key={idx}
                         className="flex items-center justify-between space-x-2 text-[18px] leading-none text-light">
                         <span>{option}</span>
-                        <Input className="h-4 w-4"
+                        <Input
+                          className="h-4 w-4"
                           type="checkbox"
                           checked={filter[f.title].includes(option)}
-                          onChange={() => handleFilter(f.title, option)} />
+                          onChange={() => handleFilter(f.title, option)}
+                        />
                       </label>
                     ))}
                   </div>
