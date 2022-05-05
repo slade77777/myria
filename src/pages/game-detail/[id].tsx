@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import { headerHeight } from '../../components/Header';
 import DiscordIcon from '../../components/icons/DiscordIcon';
 import Page from '../../components/Page';
@@ -47,7 +47,7 @@ const games: Record<
   }
 > = {
   metarush: {
-    discord: 'https://discord.gg/pwHWQgzRRn',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-1.png',
     title: 'Metarush',
     description:
@@ -125,7 +125,7 @@ const games: Record<
     ]
   },
   metakart: {
-    discord: 'https://discord.gg/y2nsGsa5Jq',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-2.png',
     title: 'Metakart',
     description:
@@ -205,7 +205,7 @@ const games: Record<
     ]
   },
   'block-royale': {
-    discord: 'https://discord.gg/RraSMhEpev',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-3.png',
     title: 'Block Royale',
     description:
@@ -282,7 +282,7 @@ const games: Record<
     ]
   },
   starstrike: {
-    discord: 'https://discord.gg/N268ZZa2Ky',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-4.png',
     title: 'Starstrike Legends',
     description:

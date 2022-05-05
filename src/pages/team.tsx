@@ -126,21 +126,6 @@ const data: Person[] = [
     }
   },
   {
-    name: 'Nick Baynes',
-    position: <Trans>Global Head of Studios</Trans>,
-    description: (
-      <Trans>
-        Nick is an industry veteran with over 30 years’ leadership experience in the development,
-        production and business of making games. Previously founding AAA studio Hangar 13, owned by
-        2K.{' '}
-      </Trans>
-    ),
-    socials: {
-      twitter: '',
-      linkedin: ''
-    }
-  },
-  {
     name: 'Brock Chan',
     position: <Trans>Product Lead - Blockchain</Trans>,
     description: (

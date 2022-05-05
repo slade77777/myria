@@ -18,7 +18,7 @@ const Item: React.FC<{ item: typeof games[number] }> = ({ item }) => {
         <Overlay className="h-[300px] overflow-hidden rounded-[5px]">
           <Image src={item.image} alt="" layout="fill" objectFit="cover" />
         </Overlay>
-        <p className="mt-4 flex text-[14px] font-bold leading-[1.5] text-brand-light-blue">
+        <div className="mt-4 flex text-[14px] font-bold leading-[1.5] text-brand-light-blue">
           <span>{item.publisher}</span>
           {item.disabled && (
             <span className="ml-auto">
@@ -27,7 +27,7 @@ const Item: React.FC<{ item: typeof games[number] }> = ({ item }) => {
               </Badge>
             </span>
           )}
-        </p>
+        </div>
         <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[18px] font-medium leading-[1.5]">
           {item.title}
         </p>
