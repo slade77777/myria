@@ -348,15 +348,15 @@ const games: Record<
     title: 'Moonville Farms',
     description: 'A competitive play-and-earn tycoon farming simulator. ',
     logo: '/images/game-detail/moonville-farms/logo.png',
-    logoMobile: '/images/game-detail/moonville-farms/1.png',
+    logoMobile: '/images/game-detail/moonville-farms/1.jpeg',
     assets: [
       {
         type: 'image',
-        src: '/images/game-detail/moonville-farms/1.png'
+        src: '/images/game-detail/moonville-farms/2.png'
       },
       {
         type: 'image',
-        src: '/images/game-detail/moonville-farms/2.png'
+        src: '/images/game-detail/moonville-farms/1.jpeg'
       },
       {
         type: 'image',
