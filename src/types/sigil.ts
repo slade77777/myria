@@ -38,3 +38,5 @@ export type Mission = {
   completed: boolean;
   trackGA4?: () => void;
 };
+
+export type RarityType = 'common' | 'rare' | 'ultra rare' | 'epic' | 'celestial'
