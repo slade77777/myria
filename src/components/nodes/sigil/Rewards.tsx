@@ -1,79 +1,28 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import BoxIcon from 'src/components/icons/BoxIcon';
 import { Loading } from 'src/components/Loading';
 import { Reward } from 'src/types/sigil';
 import ClaimModal from './ClaimModal';
 import RewardItem from './RewardItem';
 import { SubtractLeft, SubtractRight } from './Subtract';
-
-const fakeData: Reward[] = [
-  {
-    reward_id: 1,
-    title: 'Common Sigil',
-    description: '',
-    image_url: '',
-    credits_required: 20,
-    status: 'claimed'
-  },
-  {
-    reward_id: 2,
-    title: 'Common Alliance Chest',
-    description: '',
-    image_url: '',
-    credits_required: 50,
-    status: 'claimable'
-  },
-  {
-    reward_id: 3,
-    title: 'Common Title',
-    description: '',
-    image_url: '',
-    credits_required: 100,
-    status: 'locked'
-  },
-  {
-    reward_id: 4,
-    title: 'Rare Sigil',
-    description: '',
-    image_url: '',
-    credits_required: 200,
-    status: 'locked'
-  },
-  {
-    reward_id: 5,
-    title: 'Ultra Rare Sigil',
-    description: '',
-    image_url: '',
-    credits_required: 500,
-    status: 'locked'
-  },
-  {
-    reward_id: 6,
-    title: 'Epic Title',
-    description: '',
-    image_url: '',
-    credits_required: 1000,
-    status: 'locked'
-  },
-  {
-    reward_id: 7,
-    title: 'Rare Alliance Chest',
-    description: '',
-    image_url: '',
-    credits_required: 2000,
-    status: 'locked'
-  }
-];
+import http from 'src/services/http';
 
 const Rewards: React.FC = () => {
   const [claimItem, setClaimItem] = useState<Reward | null>(null);
+  const queryClient = useQueryClient();
   const { data } = useQuery<Reward[]>('sigilRewards', async () => {
-    return fakeData;
+    const res = await http.get<{ data: Reward[] }>('/v1/sigil/users/rewards');
+    return res.data.data;
+  });
+
+  const { mutate: onClaim } = useMutation((rewardId: Reward['reward_id']) => {
+    return http.post('/v1/sigil/users/rewards', { reward_id: rewardId });
   });
 
   const claimedItems = data?.filter((reward) => reward.status === 'claimed') ?? [];
+  const inprogressItems = data?.filter((reward) => reward.status === 'in_progress') ?? [];
   const claimableItems = data?.filter((reward) => reward.status === 'claimable') ?? [];
   const lockedItems = data?.filter((reward) => reward.status === 'locked') ?? [];
 
@@ -81,6 +30,11 @@ const Rewards: React.FC = () => {
   const otherNextRewards = lockedItems?.slice(1);
 
   const handleClaim = (reward: Reward) => {
+    onClaim(reward.reward_id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries('sigilRewards');
+      }
+    });
     setClaimItem(reward);
   };
 
@@ -130,7 +84,7 @@ const Rewards: React.FC = () => {
         ) : (
           <div className="mt-6 flex-grow overflow-auto" id="scrollbar">
             <div className="space-y-6">
-              {[...claimedItems, ...claimableItems].map((rw, idx) => (
+              {[...claimedItems, ...inprogressItems, ...claimableItems].map((rw, idx) => (
                 <RewardItem key={idx} item={rw} onClaim={handleClaim} />
               ))}
             </div>

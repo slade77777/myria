@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
         "h-screen bg-[url('/images/nodes/sigil/dashboard-bg_op.jpg')] bg-top bg-no-repeat pt-[112px] pb-[35px] [background-size:100%_auto]"
       )}>
       <div className="mx-auto grid h-full max-w-[1440px] grid-cols-[252fr_616fr_252fr] gap-8">
-        <div className="h-full pt-[56px]">
+        <div className="h-full min-h-0 overflow-auto pt-[56px]">
           <AllianceInfo />
         </div>
         <div className="h-full min-h-0">
