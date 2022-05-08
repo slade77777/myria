@@ -69,7 +69,7 @@ const Sigil: React.FC = () => {
       ) : (
         <div className="relative min-h-screen bg-dark">
           {currentStep !== 2 && (
-            <div className="absolute top-[calc(100vh-28px)] left-1/2 z-50 w-full max-w-[577px] -translate-y-full -translate-x-1/2">
+            <div className="absolute bottom-0 left-1/2 z-50 w-full max-w-[577px] -translate-y-full -translate-x-1/2">
               <SigilStepper
                 steps={[
                   {
@@ -86,7 +86,7 @@ const Sigil: React.FC = () => {
               />
             </div>
           )}
-          <div className="min-h-screen">{content}</div>
+          <div className="min-h-[700px]">{content}</div>
         </div>
       )}
 

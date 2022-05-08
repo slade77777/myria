@@ -24,7 +24,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   return (
     <div
       className={
-        "relative h-screen bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat"
+        "relative min-h-[inherit] h-screen bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat"
       }>
       <div className="mx-auto max-w-[408px] pt-[213px] text-center">
         <h1 className="text-[28px] font-bold leading-[1.2]">
