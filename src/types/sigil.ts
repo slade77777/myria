@@ -39,4 +39,5 @@ export type Mission = {
   trackGA4?: () => void;
 };
 
+export type AllianceName = "equinox" | "federation" | "vector_prime" 
 export type RarityType = 'common' | 'rare' | 'ultra rare' | 'epic' | 'celestial'
