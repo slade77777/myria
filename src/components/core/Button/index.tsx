@@ -7,7 +7,7 @@ interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLB
 
 function Button({ loading = false, children, ...rest }: Props) {
   return (
-    <button {...rest}>
+    <button {...rest} disabled={loading}>
       {children}
       { loading && <Loading className='px-2' /> }
     </button>
