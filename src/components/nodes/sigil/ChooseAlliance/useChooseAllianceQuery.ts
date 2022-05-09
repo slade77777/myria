@@ -1,5 +1,5 @@
 import { useMutation } from 'react-query';
-import http from 'src/services/http';
+import http from 'src/client';
 
 const pickAlliance = (allianceId: string) => {
   return http.post(`/v1/sigil/users/alliance`, {

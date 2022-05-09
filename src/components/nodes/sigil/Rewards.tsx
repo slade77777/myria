@@ -7,7 +7,7 @@ import { Reward } from 'src/types/sigil';
 import ClaimModal from './ClaimModal';
 import RewardItem from './RewardItem';
 import { SubtractLeft, SubtractRight } from './Subtract';
-import http from 'src/services/http';
+import http from 'src/client';
 
 const Rewards: React.FC = () => {
   const [claimItem, setClaimItem] = useState<Reward | null>(null);

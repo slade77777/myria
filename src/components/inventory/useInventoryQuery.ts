@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from 'react-query';
-import http from 'src/services/http';
+import http from 'src/client';
 
 export type AssetStatus = 'off-chain' | 'on-chain';
 

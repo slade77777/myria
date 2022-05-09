@@ -4,7 +4,7 @@ import { Loading } from 'src/components/Loading';
 import RegisterModal from 'src/components/Register/Modal';
 import { socialLinks } from 'src/configs';
 import { useGA4 } from 'src/lib/ga';
-import http from 'src/services/http';
+import http from 'src/client';
 import { Mission } from 'src/types/sigil';
 import MissionItem from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
