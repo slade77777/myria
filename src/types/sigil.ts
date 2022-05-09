@@ -40,4 +40,4 @@ export type Mission = {
 };
 
 export type AllianceName = "equinox" | "federation" | "vector_prime" 
-export type RarityType = 'common' | 'rare' | 'ultra rare' | 'epic' | 'celestial'
+export type RarityType = 'common' | 'rare' | 'ultra_rare' | 'epic' | 'celestial'

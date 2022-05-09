@@ -1,9 +1,10 @@
 import { useMutation, useQuery } from 'react-query';
 import http from 'src/client';
+import { RarityType } from 'src/types/sigil';
 
 export type AssetStatus = 'off-chain' | 'on-chain';
 
-export type Rarity = 'common' | 'ultra_rare';
+export type Rarity = RarityType
 
 export type AssetTypeType = 'sigil' | 'title' | 'chest' | 'credits';
 
@@ -28,7 +29,7 @@ export type AssetTitleType = AssetBaseType & {
 
 export type AssetCreditType = Omit<
   AssetBaseType,
-  'alliance' | 'collection' | 'rarity' | 'status' | 'name'
+  'alliance' | 'collection' | 'rarity' | 'status' | 'name' | 'image_url'
 > & {
   amount: number;
   type: 'credits';
@@ -51,7 +52,7 @@ export type AssetType = AssetSigilType | AssetTitleType | AssetChestType;
 export type OpenChestContent = AssetSigilType | AssetTitleType | AssetCreditType;
 
 const getInventory = async () => {
-  const data = await http.get(`/v1/sigil/users/assets?pageSize=10`).then((res) => res.data?.data);
+  const data = await http.get(`sigil/users/assets?pageSize=10`).then((res) => res.data?.data);
 
   if (data instanceof Array) {
     return (data as AssetType[]).filter((asset) =>
@@ -62,7 +63,7 @@ const getInventory = async () => {
 
 const openChest = async (lootboxId: string) => {
   const data = await http
-    .post(`/v1/sigil/users/lootbox`, {
+    .post(`sigil/users/lootbox`, {
       lootbox_id: lootboxId
     })
     .then((res) => res.data?.data);

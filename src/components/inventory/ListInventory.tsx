@@ -17,7 +17,7 @@ const ListInventory = () => {
   }
 
   return (
-    <div className={clsx('mt-7 grid grid-cols-3 gap-x-6 gap-y-8')}>
+    <div className={clsx('mt-7 grid grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-8')}>
       {inventories.map((item, index) => (
         <InventoryItem key={index} item={item} />
       ))}
