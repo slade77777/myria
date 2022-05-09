@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import { Loading } from 'src/components/Loading';
 import RegisterModal from 'src/components/Register/Modal';
 import { socialLinks } from 'src/configs';
+import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
 import http from 'src/services/http';
 import { Mission } from 'src/types/sigil';
@@ -12,7 +13,7 @@ import ShareTwitterModal from './ShareTwitterModal';
 import { SubtractRight } from './Subtract';
 
 const Missions: React.FC = () => {
-  const [openRegisterModal, setOpenRegisterModal] = useState(false);
+  const { user, register } = useAuthenticationContext();
   const [openShareTwitterModal, setOpenShareTwitterModal] = useState(false);
   const [openInviteModal, setOpenInviteModal] = useState(false);
   const { event } = useGA4();
@@ -57,7 +58,7 @@ const Missions: React.FC = () => {
       label: 'Sign up',
       onClick: (e) => {
         e.preventDefault();
-        setOpenRegisterModal(true);
+        register()
       }
     },
     JOIN_DISCORD: {
@@ -86,11 +87,10 @@ const Missions: React.FC = () => {
         open={openShareTwitterModal}
         onClose={() => setOpenShareTwitterModal(false)}
       />
-      <RegisterModal open={openRegisterModal} onClose={() => setOpenRegisterModal(false)} />
       <ReferFriendModal
         open={openInviteModal}
         onClose={() => setOpenInviteModal(false)}
-        link="https://myria.com/sigil?code=%112yb877a"
+        link={`https://myria.com/sigil?code=${user?.user_id}`}
       />
       <div className="relative flex h-full flex-col pr-2">
         <div className="flex items-center">
