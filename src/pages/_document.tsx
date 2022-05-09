@@ -136,6 +136,10 @@ class AppDocument extends Document {
             }}
           />
           {/* <!-- End Google Tag Manager --> */}
+
+          {
+            process.env.NODE_ENV === 'production' && <meta name="facebook-domain-verification" content="vomj8q0lbft9hb96wa0kp1dq1v7hgc" />
+          }
         </Head>
         <body>
           <Main />
