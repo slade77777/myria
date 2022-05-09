@@ -10,7 +10,8 @@
     "extract": "NODE_ENV=development lingui extract",
     "compile": "lingui compile",
     "sync": "yarn extract && yarn compile",
-    "sync-and-purge": "yarn extract --overwrite --clean && yarn compile"
+    "sync-and-purge": "yarn extract --overwrite --clean && yarn compile",
+    "postbuild:prod": "next-sitemap"
   },
   "dependencies": {
     "@hookform/resolvers": "2.8.8",
@@ -63,6 +64,7 @@
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.7",
     "eslint-config-prettier": "8.3.0",
+    "next-sitemap": "2.5.20",
     "postcss": "8.4.5",
     "prettier": "2.5.1",
     "prettier-plugin-tailwindcss": "0.1.5",
