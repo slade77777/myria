@@ -2,6 +2,7 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
+import { socialLinks } from 'src/configs';
 import { tabRoutes, useTabContext } from 'src/context/tabContext';
 import { useGA4 } from 'src/lib/ga';
 import DiscordIcon from './icons/DiscordIcon';
@@ -34,7 +35,7 @@ const NotiBanner: React.FC = () => {
           </Trans>
         </p>
         <a
-          href='https://discord.gg/HgXdFqJXmu '
+          href={socialLinks.discord}
           onClick={() => {
             event('Discord Button Clicked', { button_location: 'Top Bar' });
           }}

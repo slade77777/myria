@@ -9,32 +9,32 @@ import { paddingX } from 'src/utils';
 
 const data = [
   {
-    title: <Trans>Secure and scalable</Trans>,
+    title: <Trans>Scale with security </Trans>,
     items: [
       <Trans key={0}>Ethereum-level security provided by zk-STARKs</Trans>,
-      <Trans key={1}>Transparent (no trusted setup) and post-quantum secure</Trans>,
+      <Trans key={1}>Transparent and post-quantum secure -  no trusted setup</Trans>,
       <Trans key={2}>
-        High throughput of 1,000+ TPS before sharding and 10,000+ TPS after sharding
+        Instantly able to withdraw assets from the rollup back into ethereum when needed
       </Trans>,
-      <Trans key={3}>Low transaction fees: over 100x lower than fees on Ethereum</Trans>
+      <Trans key={3}>Low transaction fees</Trans>
     ]
   },
   {
-    title: <Trans>Safely programmable</Trans>,
+    title: <Trans>Reliably programmable</Trans>,
     items: [
-      <Trans key={0}>Arbitrary smart contracts written in Solidity and other languages</Trans>,
-      <Trans key={1}>Account abstractions and other features not yet available on Ethereum</Trans>,
+      <Trans key={0}>Cairo, allows for development of provable on-chain complexity</Trans>,
+      <Trans key={1}>Native support for core token types ERC20 and ERC721</Trans>,
       <Trans key={2}>Simpler formal verification of contracts due to safe VM architecture</Trans>,
-      <Trans key={3}>Clear roadmap to privacy-preserving smart contracts</Trans>
+      <Trans key={3}>Complete privacy, not only from other users, but also from the Operator.</Trans>
     ]
   },
   {
     title: <Trans>Open and permissionless</Trans>,
     items: [
-      <Trans key={0}>Arbitrary smart contracts written in Solidity and other languages</Trans>,
-      <Trans key={1}>Account abstractions and other features not yet available on Ethereum</Trans>,
-      <Trans key={2}>Simpler formal verification of contracts due to safe VM architecture</Trans>,
-      <Trans key={3}>Clear roadmap to privacy-preserving smart contracts</Trans>
+      <Trans key={0}>Building towards a decentralized and permissionless network</Trans>,
+      <Trans key={1}>Full ownership of assets, non-custodial architecture</Trans>,
+      <Trans key={2}>Resistent against censorship</Trans>,
+      <Trans key={3}>Fully open-source and community-driven development</Trans>
     ]
   }
 ];

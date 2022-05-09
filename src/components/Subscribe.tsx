@@ -64,7 +64,7 @@ const Subscribe: React.FC = () => {
       <div className="mt-6 w-full max-w-[585px] ">
         <p className="text-base leading-6 max-w-[616px] text-light">
           <Trans>
-            Sign up to our newsletter to for development updates, token and NFT drops, and exclusive
+            Sign up to our newsletter to receive development updates, token and NFT drops, and exclusive
             promotions.
           </Trans>
         </p>

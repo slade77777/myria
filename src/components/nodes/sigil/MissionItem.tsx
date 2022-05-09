@@ -39,10 +39,10 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
             className=" flex flex-1 items-center justify-center rounded-[4px] bg-[#1F2334] px-2 py-[5px] text-[12px] font-bold uppercase leading-[1.25] text-brand-gold"
             onClick={(e) => {
               if (typeof action.onClick === 'function') {
-                action.onClick(e)
+                action.onClick(e);
               }
               if (typeof item.trackGA4 === 'function') {
-                item.trackGA4()
+                item.trackGA4();
               }
             }}>
             {action.label}
@@ -57,7 +57,7 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
         <p className="text-[8px] font-medium leading-[1.25] text-light">EARNED</p>
       </div>
     );
-  }, [action, status, earned_credits]);
+  }, [action, status, earned_credits, item]);
 
   const isRepeatable = repetition_text == 'Daily' || repetition_text == 'Unlimited';
 

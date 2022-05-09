@@ -30,6 +30,7 @@ type Sigil = {
   height: number;
   name: string;
   desc: string;
+  joiningDesc: string;
   order: number;
 };
 
@@ -43,7 +44,8 @@ const SIGILS: Sigil[] = [
     height: 748 / 2,
     className: 'left-[1%] xl:left-[2%] w-[26%] xl:w-[24%]',
     name: 'THE FEDERATION',
-    desc: 'With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts.'
+    desc: 'With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts.',
+    joiningDesc: 'Join The Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end.'
   },
   {
     id: 'vector_prime',
@@ -54,7 +56,8 @@ const SIGILS: Sigil[] = [
     height: 748 / 2,
     className: 'w-[26%] xl:w-[24%]',
     name: 'VECTOR PRIME',
-    desc: 'Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion.'
+    desc: 'Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion.',
+    joiningDesc: 'Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all.'
   },
   {
     id: 'equinox',
@@ -65,7 +68,8 @@ const SIGILS: Sigil[] = [
     height: 748 / 2,
     className: 'right-[2%] xl:right-[3%] w-[26%] xl:w-[24%]',
     name: 'EQUINOX',
-    desc: 'Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers.'
+    desc: 'Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers.',
+    joiningDesc: 'Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle.'
   }
 ];
 
@@ -269,7 +273,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
           setSelectedAlliance(null);
         }}
         sigilName={activeSigilData?.name}
-        sigilDesc={activeSigilData?.desc}
+        sigilDesc={activeSigilData?.joiningDesc}
         sigilId={activeSigilData?.id}
       />
       <div className="relative top-[80px] grid min-h-[calc(100vh-80px)] min-w-[1200px] grid-cols-1 grid-rows-1 overflow-hidden">

@@ -94,7 +94,7 @@ export const linkSources: { [key: string]: NavItem } = {
       {
         id: 'discord',
         text: 'Discord',
-        url: 'https://discord.gg/mxpVXxh55P',
+        url: socialLinks.discord,
         target: '_blank'
       },
       {

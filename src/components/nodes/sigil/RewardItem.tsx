@@ -27,7 +27,8 @@ type Props = {
 
 const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
   const { event } = useGA4();
-  const { title, credits_required, status, image_url, progress } = item;
+  const { title, credits_required, status, image_url, progress_percentage } = item;
+
   const content = useMemo(() => {
     switch (status) {
       case 'locked':
@@ -44,7 +45,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
         return (
           <div className="space-y-1">
             <p className="text-[12px] font-medium leading-[1.25] text-light">Progress</p>
-            <Progress percentage={progress ?? 0} />
+            <Progress percentage={progress_percentage ?? 0} />
           </div>
         );
 
@@ -52,9 +53,14 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
         return (
           <button
             onClick={() => {
-              onClaim(item)
+              onClaim(item);
               // TODO mock event
-              event('Reward Claimed', { campaign: 'Sigil', wallet_address: '_mock', reward_name: title, credit_amount: -111 })
+              event('Reward Claimed', {
+                campaign: 'Sigil',
+                wallet_address: '_mock',
+                reward_name: title,
+                credit_amount: -111
+              });
             }}
             className="rounded-[4px] bg-[#1F2334] px-4 py-1 text-[12px] font-bold leading-[1.25] text-brand-gold">
             CLAIM NOW
@@ -68,7 +74,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
           </div>
         );
     }
-  }, [status, onClaim, item, progress]);
+  }, [status, onClaim, item, progress_percentage, event, title]);
 
   return (
     <div
@@ -92,7 +98,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
           <p className="text-[18px] font-medium leading-[1.22] [color:var(--color)]">{title}</p>
           <div className="mt-[10px] min-w-[195px]">{content}</div>
         </div>
-        <div className=" w-[64px] rounded-lg bg-dark px-[14px] py-3 text-center">
+        <div className=" min-w-[64px] rounded-lg bg-dark px-[14px] py-3 text-center">
           <p className="text-[20px] font-bold leading-none">{credits_required}</p>
           <p className="mt-1 text-[12px] font-medium leading-none text-light">Credits</p>
         </div>

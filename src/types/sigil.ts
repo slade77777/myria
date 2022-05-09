@@ -14,7 +14,7 @@ export type Reward = {
   image_url: string;
   credits_required: number;
   status: 'claimed' | 'claimable' | 'locked' | 'in_progress';
-  progress?: number;
+  progress_percentage?: number;
 };
 
 export type Mission = {
@@ -36,5 +36,7 @@ export type Mission = {
   repetition_limit: null | number;
   repetition_text: null | 'Unlimited' | 'Daily';
   completed: boolean;
-  trackGA4?: () => void
+  trackGA4?: () => void;
 };
+
+export type RarityType = 'common' | 'rare' | 'ultra rare' | 'epic' | 'celestial'

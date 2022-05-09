@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import { headerHeight } from '../../components/Header';
 import DiscordIcon from '../../components/icons/DiscordIcon';
 import Page from '../../components/Page';
@@ -13,6 +13,7 @@ import SecondSlider from '../../components/game-detail/SecondSlider';
 import { useRouter } from 'next/router';
 import Subscribe from 'src/components/Subscribe';
 import { Trans } from '@lingui/macro';
+import { socialLinks } from 'src/configs';
 
 export type Asset = {
   type: 'video' | 'image';
@@ -40,13 +41,13 @@ const games: Record<
     assets: Asset[];
     content: {
       heading?: string;
-      paragraph?: string[];
+      paragraph?: string[] | JSX.Element[];
     }[];
     discord: string;
   }
 > = {
   metarush: {
-    discord: 'https://discord.gg/pwHWQgzRRn',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-1.png',
     title: 'Metarush',
     description:
@@ -124,7 +125,7 @@ const games: Record<
     ]
   },
   metakart: {
-    discord: 'https://discord.gg/y2nsGsa5Jq',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-2.png',
     title: 'Metakart',
     description:
@@ -204,7 +205,7 @@ const games: Record<
     ]
   },
   'block-royale': {
-    discord: 'https://discord.gg/RraSMhEpev',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-3.png',
     title: 'Block Royale',
     description:
@@ -281,7 +282,7 @@ const games: Record<
     ]
   },
   starstrike: {
-    discord: 'https://discord.gg/N268ZZa2Ky',
+    discord: socialLinks.discord,
     headerBg: '/images/game-detail/header-bg-4.png',
     title: 'Starstrike Legends',
     description:
@@ -340,6 +341,93 @@ const games: Record<
         value: 'IN DEVELOPMENT'
       }
     ]
+  },
+  'moonville-farms': {
+    discord: socialLinks.discord,
+    headerBg: '',
+    title: 'Moonville Farms',
+    description: 'A competitive play-and-earn tycoon farming simulator. ',
+    logo: '/images/game-detail/moonville-farms/logo.png',
+    logoMobile: '/images/game-detail/moonville-farms/1.jpeg',
+    assets: [
+      {
+        type: 'image',
+        src: '/images/game-detail/moonville-farms/2.png'
+      },
+      {
+        type: 'image',
+        src: '/images/game-detail/moonville-farms/1.jpeg'
+      },
+      {
+        type: 'image',
+        src: '/images/game-detail/moonville-farms/3.png'
+      }
+    ],
+    content: [
+      {
+        heading: 'About the game',
+        paragraph: [
+          `Easy to play, difficult to master. Select the right terrain to base your industrial revolution. Choose wisely, as this will determine the types of resources and production opportunities available to you. Make sure to look after your base in order to increase your score and climb the ranks. At the end of each tournament, the competition is reset, so don’t worry if you get it wrong the first time!
+          `
+        ]
+      },
+      {
+        heading: 'A rewarding experience',
+        paragraph: [
+          'Once you figure out the optimal production pipeline, the game will start yielding rewards for all your hard work. Are you curious how difficult is to produce a batch of Starberry Jam? What about Moonsteel? It surely can’t be that hard, right?'
+        ]
+      },
+      {
+        heading: 'Build, upgrade, and earn!',
+        paragraph: [
+          'Watch your village grow and flourish as you move up the ranks. Are you able to devise the best strategy and outperform your rivals?'
+        ]
+      },
+      {
+        heading: 'Make it out of this world!',
+        paragraph: [
+          'Customize your Moon Village with a range of cosmetic skins for various buildings and crew. These skins are NFTs, therefore remain yours forever, and are reusable across games.'
+        ]
+      },
+      {
+        heading: 'Features',
+        paragraph: [
+          <ol key="feature-1" className=" body mt-6 list-inside list-decimal space-y-2 text-light">
+            <li>
+              <strong>Play and earn</strong> - Convert your score and time spent into tangible
+              rewards (when Beta kicks in). Addictive fun aside, not a single day of gameplay will
+              be time wasted.
+            </li>
+            <li>
+              <strong>If it’s yours, it stays yours</strong> - You’ve worked hard to build that neat
+              graveyard farm for two whole days and now it’s yours to stay… forever!
+            </li>
+            <li>
+              <strong>Resourcefulness rules!</strong> - Overcome your competition with the best
+              strategy and become the master of Moonville.
+            </li>
+          </ol>
+        ]
+      }
+    ],
+    info: [
+      {
+        label: 'Developer',
+        value: 'LEAPBLOCK STUDIOS'
+      },
+      {
+        label: 'Platform',
+        value: 'WEB'
+      },
+      {
+        label: 'Genre',
+        value: 'SIMULATION'
+      },
+      {
+        label: 'Status',
+        value: 'IN DEVELOPMENT'
+      }
+    ]
   }
 };
 
@@ -362,11 +450,13 @@ const GameDetail: React.FC = () => {
             paddingTop: headerHeight
           }}
           className={clsx(paddingX, 'relative isolate mb-[120px] md:min-h-screen ')}>
-          <div className="absolute left-0 z-[-1] h-[809px] w-full">
-            <div className="relative h-full w-full ">
-              <Image src={headerBg} alt="" layout="fill" objectFit="cover" />
+          {headerBg && (
+            <div className="absolute left-0 z-[-1] h-[809px] w-full">
+              <div className="relative h-full w-full ">
+                <Image src={headerBg} alt="" layout="fill" objectFit="cover" />
+              </div>
             </div>
-          </div>
+          )}
           <div className="mx-auto mt-10 w-full max-w-content">
             <h3 className="heading-lg text-center font-extrabold md:text-left">{title}</h3>
             <div className="mt-[32px] flex flex-col lg:flex-row lg:items-start">
@@ -395,11 +485,17 @@ const GameDetail: React.FC = () => {
                   {content.map((item, idx) => (
                     <div key={idx} className="mt-[48px] ">
                       <h4 className="heading-sm">{item.heading}</h4>
-                      {item.paragraph?.map((p, idx) => (
-                        <p className="body mt-6 text-light" key={idx}>
-                          {p}
-                        </p>
-                      ))}
+                      {item.paragraph?.map((p, idx) => {
+                        if (typeof p === 'string') {
+                          return (
+                            <p className="body mt-6 text-light" key={idx}>
+                              {p}
+                            </p>
+                          );
+                        }
+
+                        return p;
+                      })}
                     </div>
                   ))}
                 </div>
@@ -428,7 +524,7 @@ const GameDetail: React.FC = () => {
                       disabled>
                       IN DEVELOPMENT
                     </button> */}
-                    <button className="justify-center w-full btn-lg btn-primary">
+                    <button className="btn-lg btn-primary w-full justify-center">
                       <Trans>IN DEVELOPMENT</Trans>
                     </button>
                     <a
@@ -437,13 +533,17 @@ const GameDetail: React.FC = () => {
                       className="btn-icon btn-white mt-6 flex w-full items-center justify-center"
                       rel="noreferrer"
                       onClick={() => {
-                        event('Discord Button Clicked', { button_location: 'Game', game_name: game.title })
-                      }}
-                    >
+                        event('Discord Button Clicked', {
+                          button_location: 'Game',
+                          game_name: game.title
+                        });
+                      }}>
                       <span className="w-[30px]">
                         <DiscordIcon />
                       </span>
-                      <span><Trans>JOIN DISCORD</Trans></span>
+                      <span>
+                        <Trans>JOIN DISCORD</Trans>
+                      </span>
                     </a>
                   </div>
                 </div>
@@ -465,7 +565,8 @@ export async function getStaticPaths() {
       { params: { id: 'metarush' } },
       { params: { id: 'metakart' } },
       { params: { id: 'block-royale' } },
-      { params: { id: 'starstrike' } }
+      { params: { id: 'starstrike' } },
+      { params: { id: 'moonville-farms' } }
     ],
     fallback: false
   };
