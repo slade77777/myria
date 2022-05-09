@@ -77,18 +77,18 @@ class AppDocument extends Document {
           />
           {/* <!-- End Google Tag Manager --> */}
 
-          {process.env.NODE_ENV === 'production' && (
-            <meta name="facebook-domain-verification" content="vomj8q0lbft9hb96wa0kp1dq1v7hgc" />
+          {process.env.NEXT_PUBLIC_FB_DOMAIN_VERIFICATION && (
+            <meta name="facebook-domain-verification" content={process.env.NEXT_PUBLIC_FB_DOMAIN_VERIFICATION} />
           )}
         </Head>
         <body>
           <Main />
           <NextScript />
-          {process.env.NODE_ENV === 'production' && (
+          {process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID && (
             <script
               defer
               type="text/javascript"
-              src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Xrs2D4"
+              src={`//static.klaviyo.com/onsite/js/klaviyo.js?company_id=${process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID}`}
             />
           )}
         </body>
