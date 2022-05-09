@@ -13,7 +13,6 @@ import { IFormResetPasswordInput } from 'src/components/ResetPassword/ResetPassw
 import apiClient from 'src/client';
 import { useMutation, UseMutationResult } from 'react-query';
 import { useGA4 } from 'src/lib/ga';
-import { setAuthToken } from 'src/services/http';
 import { useWalletContext } from './wallet';
 
 type User = {
@@ -130,10 +129,6 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const [resetPasswordError, setResetPasswordError] = useState<string>('');
 
   const { signMessage, address } = useWalletContext();
-
-  React.useEffect(() => {
-    setAuthToken(user?.user_id || "");
-  }, [user?.user_id]);
 
   const { event } = useGA4();
 

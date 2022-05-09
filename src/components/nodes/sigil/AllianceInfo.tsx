@@ -5,7 +5,7 @@ import { SubtractLeft } from './Subtract';
 import { format } from 'date-fns';
 import { Loading } from 'src/components/Loading';
 import { useGA4 } from 'src/lib/ga';
-import http from 'src/services/http';
+import http from 'src/client';
 
 const AllianceInfo: React.FC = () => {
   const { event } = useGA4();
