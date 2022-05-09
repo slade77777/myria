@@ -183,7 +183,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 
   const registerByWalletMutation = useMutation(
     async () => {
-      const message = Date.now().toString();
+      const message = JSON.stringify({ created_on: new Date(Date.now() + 60000) }); // add 1 minute to current time
       const signature = await signMessage(message);
 
       if (signature && address) {
@@ -194,10 +194,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         };
         const userRes = await apiClient.post(`/accounts/register/wallet`, registerData).then(res => res.data);
 
-        if (userRes?.user_id) {
+        if (userRes?.status === 'success' && userRes?.data) {
           const user: User = {
-            user_id: userRes?.user_id,
-            wallet_id: userRes?.wallet_id,
+            user_id:  userRes.data?.user_id,
+            wallet_id: userRes.data?.wallet_id,
           }
 
           setUser(user);
