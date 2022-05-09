@@ -2,5 +2,6 @@
 
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://myria.com',
-  generateRobotsTxt: true
+  generateRobotsTxt: true,
+  outDir: 'out'
 };
