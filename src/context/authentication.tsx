@@ -17,7 +17,6 @@ import { AxiosError } from 'axios';
 import { Trans } from '@lingui/macro';
 import { useMutation, UseMutationResult } from 'react-query';
 import { useGA4 } from 'src/lib/ga';
-import { setAuthToken } from 'src/services/http';
 import { useWalletContext } from './wallet';
 
 type User = {
@@ -135,6 +134,7 @@ interface IAuthenticationContext {
   forgotPasswordError: string;
   resetPasswordError: string;
   registerByWalletMutation: UseMutationResult<User, unknown, void, unknown>
+  loginByWalletMutation: UseMutationResult<User, unknown, void, unknown>
 }
 
 const AuthenticationContext = React.createContext<IAuthenticationContext>(
@@ -165,10 +165,6 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const [resetPasswordError, setResetPasswordError] = useState<string>('');
 
   const { signMessage, address } = useWalletContext();
-
-  React.useEffect(() => {
-    setAuthToken(user?.user_id || "");
-  }, [user?.user_id]);
 
   const { event } = useGA4();
 
@@ -260,6 +256,36 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         }
       }
       throw new Error('Signature and wallet address are required to register');
+    }
+  );
+
+  const loginByWalletMutation = useMutation(
+    async () => {
+      const message = JSON.stringify({ created_on: new Date(Date.now() + 60000) }); // add 1 minute to current time
+      const signature = await signMessage(message);
+
+      if (signature && address) {
+        const registerData = {
+          wallet_id: address,
+          signature,
+          message,
+        };
+        const userRes = await apiClient.post(`/accounts/login/wallet`, registerData).then(res => res.data);
+
+        if (userRes?.status === 'success' && userRes?.data) {
+          const user: User = {
+            user_id:  userRes.data?.user_id,
+            wallet_id: userRes.data?.wallet_id,
+          }
+
+          setUser(user);
+
+          return user;
+        } else {
+          throw new Error('Failed to login user by wallet');
+        }
+      }
+      throw new Error('Signature and wallet address are required to login');
     }
   );
 
@@ -355,6 +381,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           forgotPasswordError,
           resetPasswordError,
           registerByWalletMutation,
+          loginByWalletMutation,
         }
       }>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />

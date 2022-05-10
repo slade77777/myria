@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
-import { useWalletContext } from 'src/context/wallet';
+import { usePickSigilQuery } from 'src/components/nodes/sigil/ChooseAlliance/useChooseAllianceQuery';
 
 type Step = 0 | 1 | 2;
 
@@ -23,22 +23,11 @@ const Sigil: React.FC = () => {
   const bgSoundRef = React.useRef<HTMLAudioElement | null>(null);
   const [_, setReferralCode] = useLocalStorage<any>(localStorageKeys.referralCode, undefined);
   const { user } = useAuthenticationContext();
-  const { address, onConnect } = useWalletContext();
-
+  const { sigilProfile } = usePickSigilQuery();
 
   useEffect(() => {
     setReferralCode(router.query.code)
   }, [router.query.code, setReferralCode])
-
-  useEffect(() => {
-    if (user?.email) {
-      if (address) {
-        setCurrentStep(2)
-      } else{
-        onConnect()
-      }
-    }
-  }, [user?.email, address, onConnect])
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {
@@ -83,6 +72,12 @@ const Sigil: React.FC = () => {
       bgSoundRef.current?.pause();
     }
   }, [currentStep]);
+
+  React.useEffect(() => {
+    if (user && sigilProfile.data?.alliance) {
+      setCurrentStep(2);
+    }
+  }, [sigilProfile, user])
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden">

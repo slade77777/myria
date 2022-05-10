@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { useGA4 } from 'src/lib/ga';
 import { SUPPORT_SOUND, soundService } from 'src/sound';
+import { AllianceName } from 'src/types/sigil';
 import AllianceModal from './AllianceModal';
 
 interface SigilProps {
@@ -10,9 +11,9 @@ interface SigilProps {
   height: number;
   className?: string;
   onActive: (id: string | null) => void;
-  onSelect: (id: string | null) => void;
+  onSelect: (id: AllianceName | null) => void;
   isActive: boolean;
-  id: string;
+  id: AllianceName;
   name: string;
   desc: string;
   order: number;
@@ -22,7 +23,7 @@ interface ChooseAllianceProps {
 }
 
 type Sigil = {
-  id: string;
+  id: AllianceName;
   img: string;
   selectModalBgImg: string;
   className: string;

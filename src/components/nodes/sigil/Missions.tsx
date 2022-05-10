@@ -5,7 +5,7 @@ import RegisterModal from 'src/components/Register/Modal';
 import { socialLinks } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
-import http from 'src/services/http';
+import http from 'src/client';
 import { Mission } from 'src/types/sigil';
 import MissionItem from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
@@ -23,7 +23,7 @@ const Missions: React.FC = () => {
       data: {
         [k: string]: Mission;
       };
-    }>('/v1/sigil/users/missions');
+    }>('sigil/users/missions');
 
     return Object.keys(res.data.data).map((k) => res.data.data[k]);
   });
