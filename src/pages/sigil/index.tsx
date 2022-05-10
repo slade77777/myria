@@ -9,12 +9,16 @@ import Header from 'src/components/nodes/sigil/Header';
 import { isMobile } from 'src/utils';
 import Sound from 'src/components/nodes/sigil/Sound';
 import { soundService, SUPPORT_SOUND } from 'src/sound';
+import { usePickSigilQuery } from 'src/components/nodes/sigil/ChooseAlliance/useChooseAllianceQuery';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<Step>(0);
   const bgSoundRef = React.useRef<HTMLAudioElement | null>(null);
+  const { sigilProfile } = usePickSigilQuery();
+  const { user } = useAuthenticationContext();
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {
@@ -59,6 +63,12 @@ const Sigil: React.FC = () => {
       bgSoundRef.current?.pause();
     }
   }, [currentStep]);
+
+  React.useEffect(() => {
+    if (user && sigilProfile.data?.alliance) {
+      setCurrentStep(2);
+    }
+  }, [sigilProfile, user])
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden">

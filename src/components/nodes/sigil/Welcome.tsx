@@ -4,6 +4,7 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import MetaMaskIcon from 'src/components/icons/MetaMaskIcon';
 import { useGA4 } from 'src/lib/ga';
 import Button from 'src/components/core/Button';
+import { LoadingStandBy } from 'src/components/Loading';
 
 type Props = {
   onNext: () => void;
@@ -11,15 +12,32 @@ type Props = {
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
-  const { login, registerByWalletMutation } = useAuthenticationContext();
+  const { login, user, registerByWalletMutation, loginByWalletMutation } = useAuthenticationContext();
   const { event } = useGA4();
 
   const installedWallet = typeof window != 'undefined' && !!window.ethereum;
 
   const handleRegisterByWallet = async () => {
-    await registerByWalletMutation.mutateAsync();
-    onNext();
+    // try login first
+    try {
+      const user = await loginByWalletMutation.mutateAsync().catch(() => null);
+      if (!user) {
+        await registerByWalletMutation.mutateAsync();
+      }
+    } catch (e) {
+      // TODO toast here
+      console.log('Register error');
+    }
   }
+
+  // try to login via wallet
+  React.useEffect(() => {
+    if (user?.user_id) {
+      onNext();
+    } else if (address && !user?.user_id && !loginByWalletMutation.isLoading && !loginByWalletMutation.isError) {
+      loginByWalletMutation.mutate();
+    }
+  }, [address, user, loginByWalletMutation, onNext]);
 
   return (
     <div
@@ -45,13 +63,13 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         {address ? (
           <>
             <Button
-              loading={registerByWalletMutation.isLoading}
+              loading={registerByWalletMutation.isLoading || loginByWalletMutation.isLoading}
               onClick={() => {
                 handleRegisterByWallet();
                 event('Join Now Selected', { campaign: 'Sigil' })
               }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
-              JOIN NOW
+              {loginByWalletMutation.isLoading ? "LOGING IN" : "JOIN NOW"}
             </Button>
           </>
         ) : (

@@ -13,12 +13,12 @@ const Rewards: React.FC = () => {
   const [claimItem, setClaimItem] = useState<Reward | null>(null);
   const queryClient = useQueryClient();
   const { data } = useQuery<Reward[]>('sigilRewards', async () => {
-    const res = await http.get<{ data: Reward[] }>('/v1/sigil/users/rewards');
+    const res = await http.get<{ data: Reward[] }>('sigil/users/rewards');
     return res.data.data;
   });
 
   const { mutate: onClaim } = useMutation((rewardId: Reward['reward_id']) => {
-    return http.post('/v1/sigil/users/rewards', { reward_id: rewardId });
+    return http.post('sigil/users/rewards', { reward_id: rewardId });
   });
 
   const claimedItems = data?.filter((reward) => reward.status === 'claimed') ?? [];

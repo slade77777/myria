@@ -14,7 +14,7 @@ export const getRarityColor = (rarity: RarityType) => {
       return '#A9A6B1';
     case 'rare':
       return '#A9CB68';
-    case 'ultra rare':
+    case 'ultra_rare':
       return '#4FA6B9';
     case 'epic':
       return '#D191E1';

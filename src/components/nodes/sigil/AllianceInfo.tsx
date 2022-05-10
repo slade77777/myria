@@ -10,7 +10,7 @@ import http from 'src/client';
 const AllianceInfo: React.FC = () => {
   const { event } = useGA4();
   const { data } = useQuery<UserInfo>('sigilUserInfo', async () => {
-    const res = await http.get<{ data: UserInfo }>('/v1/sigil/users/profile');
+    const res = await http.get<{ data: UserInfo }>('sigil/users/profile');
     return res.data.data;
   });
 
