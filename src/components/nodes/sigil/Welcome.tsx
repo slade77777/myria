@@ -98,14 +98,14 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 <span>Install Metamask</span>
               </a>
             )}
-            <button
+            {/* <button
               className="btn-sm btn-secondary mt-4  h-[40px] w-[194px] rounded-lg px-4 py-3"
               onClick={() => {
                 login();
                 event('Sign In Selected', { campaign: 'Sigil' })
               }}>
               Sign in
-            </button>
+            </button> */}
           </>
         )}
       </div>

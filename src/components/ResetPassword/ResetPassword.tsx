@@ -6,6 +6,7 @@ import { t, Trans } from '@lingui/macro';
 import * as yup from 'yup';
 import { useAuthenticationContext } from 'src/context/authentication';
 import EyeIcon from '../icons/EyeIcon';
+import { validatePassword } from 'src/utils';
 
 export interface IFormResetPasswordInput {
   password: string;
@@ -27,12 +28,23 @@ const schema = yup
   .required();
 
 const ResetPassword: React.FC = () => {
-  const { login, doResetPassword, isResetSuccess, resetPasswordError } = useAuthenticationContext();
+  const { doResetPassword, resetPasswordError } = useAuthenticationContext();
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
-  const [error, setError] = useState('');
 
-  useEffect(() => { setError(resetPasswordError) }, [resetPasswordError])
+  const {
+    register,
+    handleSubmit,
+    setError,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<IFormResetPasswordInput>({
+    resolver: yupResolver(schema)
+  });
+
+  useEffect(() => { 
+    setError("password", { type: 'custom', message: resetPasswordError })
+  }, [resetPasswordError, setError])
 
   const toggleVisiblePassword = () => {
     setVisiblePassword(!visiblePassword);
@@ -43,26 +55,17 @@ const ResetPassword: React.FC = () => {
   };
 
   const onSubmit = (data: IFormResetPasswordInput) => {
-    if (isResetSuccess) {
-      login()
-    } else {
+    const passwordError = validatePassword(data.password)
+    setError("password", { type: 'custom', message: passwordError })
+    if (!passwordError) {
       doResetPassword(data)
     }
   }
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<IFormResetPasswordInput>({
-    resolver: yupResolver(schema)
-  });
-
   return (
     <div className="px-8">
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        {isResetSuccess == false && <div className="relative">
+        <div className="relative">
           <Input
             placeholder={t`Enter a password`}
             {...register('password')}
@@ -77,8 +80,8 @@ const ResetPassword: React.FC = () => {
             onClick={toggleVisiblePassword}>
             <EyeIcon />
           </span>
-        </div>}
-        {isResetSuccess == false && <div className="relative">
+        </div>
+        <div className="relative">
           <Input
             placeholder={t`Confirm password`}
             {...register('confirmPassword')}
@@ -93,9 +96,9 @@ const ResetPassword: React.FC = () => {
             onClick={toggleVisibleConfirmPassword}>
             <EyeIcon />
           </span>
-        </div>}
+        </div>
         <button className="btn-lg btn-primary my-8 w-full">
-          {isResetSuccess ? <Trans>Log in</Trans> : <Trans>Reset Password</Trans>}
+          <Trans>Reset Password</Trans>
         </button> 
       </form>
     </div>

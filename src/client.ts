@@ -1,4 +1,16 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+
+export interface IResponseError {
+    httpCode: number | undefined;
+    errors: [{ code: string; title: string; detail: string }]
+}
+
+export function mapError(error: AxiosError): IResponseError {
+    return {
+        httpCode: error.response?.status,
+        errors: error.response?.data.errors ?? []
+    };
+}
 
 const apiClient = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -9,20 +21,5 @@ const apiClient = axios.create({
     },
     withCredentials: true,
 });
-
-
-// apiClient.interceptors.request.use(
-//     async function (config) {
-//         // Todo: get cached token
-//         const token = "";
-//         if (token && config.headers) {
-//             config.headers.Authorization = `Bearer ${token}`;
-//         }
-//         return config;
-//     },
-//     function (error) {
-//         return error;
-//     },
-// );
 
 export default apiClient;
