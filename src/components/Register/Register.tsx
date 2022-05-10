@@ -9,6 +9,7 @@ import EyeIcon from '../icons/EyeIcon';
 import CheckIcon from '../icons/CheckIcon';
 import WarningIcon from '../icons/WarningIcon';
 import { useAuthenticationContext } from 'src/context/authentication';
+import { validatePassword } from 'src/utils';
 
 export interface IFormRegisterInput {
   firstName: string;
@@ -103,6 +104,16 @@ const Register: React.FC = () => {
     setVisibleConfirmPassword(!visibleConfirmPassword);
   };
 
+  const onSubmit = (data: IFormRegisterInput) => {
+    const passwordError = validatePassword(data.password)
+    if (passwordError) {
+      setError("password", { type: 'custom', message: passwordError })
+      return;
+    }
+
+    doRegister(data)
+  }
+
   React.useEffect(() => {
     const subscription = watch((value, { name, type }) => {
       setHints(() => passwordHints(value.password || ''));
@@ -114,45 +125,58 @@ const Register: React.FC = () => {
   return (
     <div className="px-8 text-white">
       <p className="body mt-7">Register for a Myria account</p>
-      <form onSubmit={handleSubmit(doRegister)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="mb-2 grid grid-cols-1 gap-1 md:grid-cols-2 md:gap-8">
-          <Input
-            placeholder={t`First name`}
-            {...register('firstName')}
-            error={!!errors.firstName}
-            errorText={errors.firstName?.message}
-            className={!!errors.firstName ? 'mt-4' : 'mt-6'}
-          />
-          <Input
-            placeholder={t`Last name`}
-            {...register('lastName')}
-            error={!!errors.lastName}
-            errorText={errors.lastName?.message}
-            className={!!errors.lastName ? 'mt-4' : 'mt-6'}
-          />
+          <div className="relative">
+            <Input
+              placeholder={t`First name`}
+              {...register('firstName')}
+              error={!!errors.firstName}
+              errorText={errors.firstName?.message}
+              className="w-full bg-input border-none"
+              containerClassName={!!errors.firstName ? 'mt-4' : 'mt-6'}
+            />
+          </div>
+
+          <div className="relative">
+            <Input
+              placeholder={t`Last name`}
+              {...register('lastName')}
+              error={!!errors.lastName}
+              errorText={errors.lastName?.message}
+              className="w-full bg-input border-none"
+              containerClassName={!!errors.lastName ? 'mt-4' : 'mt-6'}
+            />
+          </div>
         </div>
         <div className="mb-2 mt-4">
-          <Input
-            placeholder={t`Username`}
-            {...register('username')}
-            error={!!errors.username}
-            errorText={errors.username?.message}
-            className={!!errors.username ? 'mt-4' : 'mt-6'}
-          />
-          <Input
-            placeholder={t`Email`}
-            {...register('email')}
-            error={!!errors.email}
-            errorText={errors.email?.message}
-            className={!!errors.email ? 'mt-4' : 'mt-6'}
-          />
+          <div className="relative">
+            <Input
+              placeholder={t`Username`}
+              {...register('username')}
+              error={!!errors.username}
+              errorText={errors.username?.message}
+              className="w-full bg-input border-none"
+              containerClassName={!!errors.username ? 'mt-4' : 'mt-6'}
+            />
+          </div>
+          <div className="relative">
+            <Input
+              placeholder={t`Email`}
+              {...register('email')}
+              error={!!errors.email}
+              errorText={errors.email?.message}
+              className="w-full bg-input border-none"
+              containerClassName={!!errors.email ? 'mt-4' : 'mt-6'}
+            />
+          </div>
           <div className="relative">
             <Input
               placeholder={t`Enter your password`}
               {...register('password')}
               error={!!errors.password}
               errorText={errors.password?.message}
-              className="w-full pr-9"
+              className="w-full pr-9 bg-input border-none"
               containerClassName={!!errors.password ? 'mt-4' : 'mt-6'}
               type={visiblePassword ? 'text' : 'password'}
             />
@@ -168,8 +192,8 @@ const Register: React.FC = () => {
               {...register('confirmPassword')}
               error={!!errors.confirmPassword}
               errorText={errors.confirmPassword?.message}
-              className="w-full pr-9"
-              containerClassName={!!errors.email ? 'mt-4' : 'mt-6'}
+              className="w-full pr-9 bg-input border-none"
+              containerClassName={!!errors.email ? 'mt-4 ' : 'mt-6'}
               type={visibleConfirmPassword ? 'text' : 'password'}
             />
             <span
@@ -179,7 +203,7 @@ const Register: React.FC = () => {
             </span>
           </div>
         </div>
-        {hints.map((hint) => {
+        {/* {hints.map((hint) => {
           return (
             <div
               className={clsx('mt-2 flex items-center', { 'opacity-50': !hint.validate })}
@@ -188,7 +212,7 @@ const Register: React.FC = () => {
               <p className=" ml-[10px]">{hint.text}</p>
             </div>
           );
-        })}
+        })} */}
         <button className="btn-lg btn-primary my-8 w-full">
           <Trans>Register</Trans>
         </button>

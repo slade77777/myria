@@ -30,7 +30,8 @@ module.exports = {
         purple: '#8E74D3',
         green: '#41F59F',
         flat: '#A9A6B1',
-        'border-blue': '#5BA7D2'
+        'border-blue': '#5BA7D2',
+        input: '#132533'
       },
       maxWidth: {
         content: 1264
@@ -113,7 +114,7 @@ module.exports = {
           },
           '100%': {
             transform: 'translateY(-50px)',
-            opacity: 0,
+            opacity: 0
           }
         }
       },
