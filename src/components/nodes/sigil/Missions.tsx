@@ -22,7 +22,7 @@ const Missions: React.FC = () => {
       data: {
         [k: string]: Mission;
       };
-    }>('/v1/sigil/users/missions');
+    }>('sigil/users/missions');
 
     return Object.keys(res.data.data).map((k) => res.data.data[k]);
   });
