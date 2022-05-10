@@ -62,7 +62,7 @@ const Missions: React.FC = () => {
     },
     JOIN_DISCORD: {
       label: 'Join',
-      link: socialLinks.discord
+      link: process.env.DISCORD_MISSION_URL || socialLinks.discord
     },
     SHARE_TWITTER: {
       label: 'Join',
