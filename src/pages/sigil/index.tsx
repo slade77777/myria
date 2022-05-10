@@ -12,6 +12,8 @@ import { soundService, SUPPORT_SOUND } from 'src/sound';
 import { useRouter } from 'next/router'
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
+import { useAuthenticationContext } from 'src/context/authentication';
+import { useWalletContext } from 'src/context/wallet';
 
 type Step = 0 | 1 | 2;
 
@@ -20,10 +22,23 @@ const Sigil: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<Step>(0);
   const bgSoundRef = React.useRef<HTMLAudioElement | null>(null);
   const [_, setReferralCode] = useLocalStorage<any>(localStorageKeys.referralCode, undefined);
+  const { user } = useAuthenticationContext();
+  const { address, onConnect } = useWalletContext();
+
 
   useEffect(() => {
     setReferralCode(router.query.code)
   }, [router.query.code, setReferralCode])
+
+  useEffect(() => {
+    if (user?.email) {
+      if (address) {
+        setCurrentStep(2)
+      } else{
+        onConnect()
+      }
+    }
+  }, [user?.email, address, onConnect])
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {

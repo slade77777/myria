@@ -23,6 +23,10 @@ import { useWalletContext } from './wallet';
 type User = {
   user_id: string;
   wallet_id?: string;
+  last_name?: string;
+  first_name?: string;
+  user_name?: string;
+  email?: string;
 }
 
 const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
@@ -169,16 +173,23 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const { event } = useGA4();
 
   const { isLoading: isPostingLogin, mutate: postLogin } = useMutation(
-    async () => { return await apiClient.post(`/accounts/login`, loginData); },
+    
+    async () => { 
+      const body = {
+        login: loginData?.email,
+        password: loginData?.password,
+      }
+      return await apiClient.post(`/accounts/login`, body); 
+    },
     {
       onSuccess: (res) => {
-        // Todo: Handle result and cache token
-        console.log(res)
+        const user = res.data.data
         setOpenSignIn(false);
+        setUser(user)
       },
       onError: (err) => {
         console.log(err)
-        setLoginError("Login error")
+        setLoginError("Username or password is incorrect")
       },
     }
   );

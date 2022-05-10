@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import Link from 'next/link';
 import EyeIcon from '../icons/EyeIcon';
 import { useAuthenticationContext } from 'src/context/authentication';
+import Button from '../core/Button';
 
 export interface IFormSignInInput {
   email: string;
@@ -27,7 +28,7 @@ const schema = yup
   .required();
 
 const SignIn: React.FC = () => {
-  const { register, forgotPassword, openVerify, loginError } = useAuthenticationContext();
+  const { register, forgotPassword, openVerify, loginError, isPostingRegister } = useAuthenticationContext();
   const [error, setError] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
 
@@ -76,9 +77,9 @@ const SignIn: React.FC = () => {
           </div>
         </div>
         <a className="text-brand-gold hover:cursor-pointer" onClick={forgotPassword}><Trans>Forgot your password?</Trans></a>
-        <button className="btn-lg btn-primary my-8 w-full">
+        <Button loading={isPostingRegister} className="btn-lg btn-primary my-8 w-full">
           <Trans>Sign in</Trans>
-        </button>
+        </Button>
         {/* <div className="mt-6 mb-8 text-center">
           <div className="text-light">
             {t`Don’t have an account?`}{' '}
