@@ -1,4 +1,16 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+
+export interface IResponseError {
+    httpCode: number | undefined;
+    errors: [{ code: string; title: string; detail: string }]
+}
+
+export function mapError(error: AxiosError): IResponseError {
+    return {
+        httpCode: error.response?.status,
+        errors: error.response?.data.errors ?? []
+    };
+}
 
 const apiClient = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,

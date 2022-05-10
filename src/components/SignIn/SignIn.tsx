@@ -28,7 +28,7 @@ const schema = yup
   .required();
 
 const SignIn: React.FC = () => {
-  const { register, forgotPassword, openVerify, loginError, isPostingRegister } = useAuthenticationContext();
+  const { forgotPassword, openVerify, loginError, isPostingRegister } = useAuthenticationContext();
   const [error, setError] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
 
