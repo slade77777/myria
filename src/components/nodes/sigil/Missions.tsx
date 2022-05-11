@@ -58,12 +58,12 @@ const Missions: React.FC = () => {
       label: 'Sign up',
       onClick: (e) => {
         e.preventDefault();
-        register()
+        register();
       }
     },
     JOIN_DISCORD: {
       label: 'Join',
-      link: process.env.DISCORD_MISSION_URL || socialLinks.discord
+      link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord
     },
     SHARE_TWITTER: {
       label: 'Join',
