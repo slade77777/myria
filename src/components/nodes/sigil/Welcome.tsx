@@ -23,6 +23,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
       const user = await loginByWalletMutation.mutateAsync().catch(() => null);
       if (!user) {
         await registerByWalletMutation.mutateAsync();
+        loginByWalletMutation.mutate()
       }
     } catch (e) {
       // TODO toast here
