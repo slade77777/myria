@@ -58,7 +58,7 @@ const InventoryItem = ({ item }: Props) => {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-[16px] font-normal text-light">
-              <Trans>{item.collection}</Trans>
+              {item.collection}
             </span>
             {item.type === 'chest' ? (
               item.opened ? (
