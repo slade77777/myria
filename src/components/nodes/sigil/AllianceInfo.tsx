@@ -31,7 +31,7 @@ const AllianceInfo: React.FC = () => {
   }, [event, data]);
 
   return (
-    <div className="relative flex h-full flex-col">
+    <div className="relative flex flex-col">
       <div className="flex items-center">
         <div className="h-[1px] flex-1 bg-border-blue opacity-20">
           <div className="absolute top-0 left-0 translate-x-[-7px] translate-y-[4px]">
