@@ -248,8 +248,6 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
             wallet_id: userRes.data?.wallet_id,
           }
 
-          setUser(user);
-
           return user;
         } else {
           throw new Error('Failed to register user by wallet');
