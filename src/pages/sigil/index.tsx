@@ -6,10 +6,9 @@ import ChooseAlliance from 'src/components/nodes/sigil/ChooseAlliance';
 import Welcome from 'src/components/nodes/sigil/Welcome';
 import WelcomeMobile from 'src/components/nodes/sigil/WelcomeMobile';
 import Header from 'src/components/nodes/sigil/Header';
-import { isMobile } from 'src/utils';
 import Sound from 'src/components/nodes/sigil/Sound';
 import { soundService, SUPPORT_SOUND } from 'src/sound';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
@@ -18,7 +17,7 @@ import { usePickSigilQuery } from 'src/components/nodes/sigil/ChooseAlliance/use
 type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState<Step>(0);
   const bgSoundRef = React.useRef<HTMLAudioElement | null>(null);
   const [_, setReferralCode] = useLocalStorage<any>(localStorageKeys.referralCode, undefined);
@@ -26,8 +25,8 @@ const Sigil: React.FC = () => {
   const { sigilProfile } = usePickSigilQuery();
 
   useEffect(() => {
-    setReferralCode(router.query.code)
-  }, [router.query.code, setReferralCode])
+    setReferralCode(router.query.code);
+  }, [router.query.code, setReferralCode]);
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {
@@ -77,15 +76,16 @@ const Sigil: React.FC = () => {
     if (user && sigilProfile.data?.alliance) {
       setCurrentStep(2);
     }
-  }, [sigilProfile, user])
+  }, [sigilProfile, user]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden">
       <Header step={currentStep} />
 
-      {isMobile() ? (
+      <div className="md:hidden">
         <WelcomeMobile />
-      ) : (
+      </div>
+      <div className="hidden md:block">
         <div className="relative min-h-screen bg-dark">
           {currentStep !== 2 && (
             <div className="absolute bottom-0 left-1/2 z-50 w-full max-w-[577px] -translate-y-full -translate-x-1/2">
@@ -107,7 +107,7 @@ const Sigil: React.FC = () => {
           )}
           <div className="min-h-[700px]">{content}</div>
         </div>
-      )}
+      </div>
 
       {[0, 1].includes(currentStep) && <Sound />}
     </Page>
