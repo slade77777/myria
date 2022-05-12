@@ -69,13 +69,13 @@ const InventoryPage: React.FC = () => {
             </p>
             <Trans>
               <span className="text-[16px] font-normal text-brand-light-blue">
-                Once the Sigils are active, they will be minted directly on the Myriachain
+                Once the Sigils are active, they will be minted directly on the Myria
               </span>
             </Trans>
           </section>
           <section className="-mt-7 md:mt-[88px]">
-            <div className='flex items-center text-brand-gold font-medium cursor-pointer mb-3'>
-              <i className="w-6 relative left-[-8px]">
+            <div className="mb-3 flex cursor-pointer items-center font-medium text-brand-gold">
+              <i className="relative left-[-8px] w-6">
                 <ChevronLeftIcon />
               </i>
               <span>BACK TO SIGIL DASHBOARD</span>
