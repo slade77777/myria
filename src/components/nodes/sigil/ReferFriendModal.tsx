@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
 import { useGA4 } from 'src/lib/ga';
+import copy from 'clipboard-copy';
 
 type Props = {
   open: boolean;
@@ -11,6 +12,21 @@ type Props = {
 
 const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
   const { event } = useGA4();
+  const [copied, setCopied] = React.useState(false);
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    if (copied) {
+      timeout = setTimeout(() => {
+        setCopied(false);
+      }, 700);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [copied]);
+
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content className="w-[324px] bg-transparent" includingHeader={false}>
@@ -30,11 +46,20 @@ const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
             <div className="mt-10 rounded-lg bg-[#132533] py-[14px] pl-[16px] pr-[25px] text-[16px] leading-[1.25] text-light">
               {link}
             </div>
-            <button className="mt-7 text-[12px] font-bold leading-[1.25] text-brand-gold" onClick={() => {
-              // TODO mock event
-              event('Invite Link Copied', { campaign: 'Sigil', myria_username: '_mock', user_email: '_mock', wallet_address: '_mock' })
-            }}>
-              COPY LINK
+            <button
+              className="mt-7 text-[12px] font-bold leading-[1.25] text-brand-gold"
+              onClick={async () => {
+                // TODO mock event
+                event('Invite Link Copied', {
+                  campaign: 'Sigil',
+                  myria_username: '_mock',
+                  user_email: '_mock',
+                  wallet_address: '_mock'
+                });
+                await copy(link);
+                setCopied(true);
+              }}>
+              {copied ? 'COPIED' : 'COPY LINK'}
             </button>
           </div>
         </div>
