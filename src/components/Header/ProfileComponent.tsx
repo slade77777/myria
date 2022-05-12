@@ -16,7 +16,12 @@ const ProfileMenus = [
 
 const ProfileComponent = () => {
   const { address, disconnect } = useWalletContext();
-  const { user } = useAuthenticationContext();
+  const { user, logout } = useAuthenticationContext();
+
+  const onDisconnect = () => {
+    disconnect();
+    logout();
+  }
 
   if (!user && !address) {
     return null;
@@ -44,9 +49,9 @@ const ProfileComponent = () => {
               );
             })}
           {address && (
-            <div className="flex items-center hover:cursor-pointer" onClick={disconnect}>
+            <div className="flex items-center hover:cursor-pointer" onClick={onDisconnect}>
               <DisconnectIcon />
-              <p className="ml-2">Disconnect</p>
+              <p className="ml-2">Logout</p>
             </div>
           )}
         </div>

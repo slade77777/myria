@@ -12,7 +12,7 @@ type Props = {
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
-  const { login, user, registerByWalletMutation, loginByWalletMutation } = useAuthenticationContext();
+  const { user, registerByWalletMutation, loginByWalletMutation } = useAuthenticationContext();
   const { event } = useGA4();
 
   const installedWallet = typeof window != 'undefined' && !!window.ethereum;
