@@ -78,6 +78,12 @@ const Sigil: React.FC = () => {
     }
   }, [sigilProfile, user]);
 
+  React.useEffect(() => {
+    if (!user) {
+      setCurrentStep(0);
+    }
+  }, [user]);
+
   return (
     <Page headerClassName="hidden" footerClassName="hidden">
       <Header step={currentStep} />

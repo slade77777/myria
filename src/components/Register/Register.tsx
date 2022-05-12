@@ -158,6 +158,7 @@ const Register: React.FC = () => {
               errorText={errors.username?.message}
               className="w-full bg-input border-none"
               containerClassName={!!errors.username ? 'mt-4' : 'mt-6'}
+              autoComplete="off"
             />
           </div>
           <div className="relative">
@@ -168,6 +169,7 @@ const Register: React.FC = () => {
               errorText={errors.email?.message}
               className="w-full bg-input border-none"
               containerClassName={!!errors.email ? 'mt-4' : 'mt-6'}
+              autoComplete="off"
             />
           </div>
           <div className="relative">

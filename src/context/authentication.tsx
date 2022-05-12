@@ -121,6 +121,7 @@ interface IAuthenticationContext {
   register: () => void;
   forgotPassword: () => void;
   resetPassword: () => void;
+  logout: () => void;
   openVerify: (data: IFormSignInInput) => void;
   doRegister: (data: IFormRegisterInput) => void;
   doForgotPassword: (data: IFormForgotPasswordInput) => void;
@@ -190,6 +191,13 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     }
   );
 
+  const logoutMutation = useMutation(
+    async () => {
+      await apiClient.post(`/accounts/logout`);
+      setUser(undefined);
+    },
+  );
+
   const { isLoading: isPostingRegister, mutate: postRegister } = useMutation(
     async () => {
       const body = {
@@ -201,7 +209,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         password: registerData?.password,
         email: registerData?.email
       }
-      return await apiClient.post(`/accounts/register`, body);
+      return await apiClient.post(`/accounts/link`, body);
     },
     {
       onSuccess: (res) => {
@@ -307,6 +315,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     setOpenResetPassword(false)
   };
 
+  const logout = () => {
+    logoutMutation.mutate()
+  };
+
   const register = () => {
     setOpenSignIn(false);
     setOpenRegister(true);
@@ -366,6 +378,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           register,
           forgotPassword,
           resetPassword,
+          logout,
           openVerify,
           doRegister,
           doForgotPassword,
