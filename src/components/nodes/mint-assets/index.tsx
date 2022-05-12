@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React, { useState } from 'react';
 import Asset from './Asset';
 
@@ -65,20 +66,20 @@ const MinAssetList: React.FC = () => {
             <button
               onClick={() => alert('MINT ALL')}
               className="btn-sm btn-white flex items-center px-4 md:btn-lg">
-              MINT ALL
+              <Trans>MINT ALL</Trans>
             </button>
             <button
               onClick={() => alert('MINT SELECTED')}
               disabled={checkedItems.length === 0}
               className="btn-sm btn-dark-blue flex items-center px-4 md:btn-lg">
-              MINT SELECTED
+              <Trans>MINT SELECTED</Trans>
             </button>
           </div>
         </div>
         <div className="max-h-[1014px] space-y-10 overflow-auto p-4 md:px-8 md:py-[6px]">
           <div className="space-y-4">
             <p className="text-[14px] font-medium leading-[1.25] text-light md:text-[16px]">
-              Available to mint
+              <Trans>Available to mint</Trans>
             </p>
             {availableMint.map((i, idx) => (
               <Asset
@@ -96,7 +97,7 @@ const MinAssetList: React.FC = () => {
           </div>
           <div className="space-y-4">
             <p className="text-[14px] font-medium leading-[1.25] text-light md:text-[16px]">
-              Off Chain Assets
+              <Trans>Off Chain Assets</Trans>
             </p>
             {offchainAssets.map((i, idx) => (
               <Asset

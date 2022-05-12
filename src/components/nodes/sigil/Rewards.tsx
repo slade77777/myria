@@ -8,6 +8,7 @@ import ClaimModal from './ClaimModal';
 import RewardItem from './RewardItem';
 import { SubtractLeft, SubtractRight } from './Subtract';
 import http from 'src/client';
+import { Trans } from '@lingui/macro';
 
 const DELAY_TIME_AUTO_SCROLL_TO_NEXT_REWARD = 500;
 
@@ -74,7 +75,9 @@ const Rewards: React.FC = () => {
               </div>
               <div className="absolute top-0 left-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue via-transparent to-transparent" />
             </div>
-            <p className="sigil-text mx-8 text-[20px] font-extrabold leading-[1.25]">REWARDS</p>
+            <p className="sigil-text mx-8 text-[20px] font-extrabold leading-[1.25]">
+              <Trans>REWARDS</Trans>
+            </p>
             <div className="h-[1px] flex-1 bg-border-blue opacity-20">
               <div className="absolute top-0 right-0 translate-x-[7px] translate-y-[5px]">
                 <SubtractRight />
@@ -89,7 +92,9 @@ const Rewards: React.FC = () => {
                   <i className="w-4">
                     <BoxIcon />
                   </i>
-                  <span>INVENTORY</span>
+                  <span>
+                    <Trans>INVENTORY</Trans>
+                  </span>
                 </p>
               </a>
             </Link>
@@ -110,7 +115,9 @@ const Rewards: React.FC = () => {
               ref={nextRewardRef}
               className="mt-6 flex items-center space-x-4 text-[18px] font-bold leading-[1.22]">
               <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
-              <span>Next Reward</span>
+              <span>
+                <Trans>Next Reward</Trans>
+              </span>
               <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>
             </p>
             {nextReward && (

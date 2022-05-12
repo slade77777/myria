@@ -7,6 +7,7 @@ import { Loading } from 'src/components/Loading';
 import { useGA4 } from 'src/lib/ga';
 import http from 'src/client';
 import { useAuthenticationContext } from 'src/context/authentication';
+import { Trans } from '@lingui/macro';
 
 const AllianceInfo: React.FC = () => {
   const { event } = useGA4();
@@ -23,7 +24,8 @@ const AllianceInfo: React.FC = () => {
         alliance_name: data.alliance,
         sigil_alias: data.user_name || '',
         credits: data.credits?.toString() || '',
-        date_registered: data.date_registered && new Date(data.date_registered).toISOString() || ''
+        date_registered:
+          (data.date_registered && new Date(data.date_registered).toISOString()) || ''
       });
     }
   }, [event, data]);
@@ -37,7 +39,9 @@ const AllianceInfo: React.FC = () => {
           </div>
           <div className="absolute top-0 left-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent" />
         </div>
-        <p className="sigil-text ml-4 text-[18px] font-extrabold leading-[1.25]">PROFILE</p>
+        <p className="sigil-text ml-4 text-[18px] font-extrabold leading-[1.25]">
+          <Trans>PROFILE</Trans>
+        </p>
       </div>
       {!data ? (
         <div className="mt-10 flex justify-center">
@@ -56,15 +60,21 @@ const AllianceInfo: React.FC = () => {
             </div>
             <p className="mt-9 text-[20px] font-medium leading-[1.5]">{data.alliance}</p>
             <div className="mt-6 ">
-              <p className="text-[14px] font-medium leading-[17px] text-light">Alias</p>
+              <p className="text-[14px] font-medium leading-[17px] text-light">
+                <Trans>Alias</Trans>
+              </p>
               <p className="mt-1 text-[18px] font-bold leading-[1.22]">{data.user_name}</p>
             </div>
             <div className="mt-6 ">
-              <p className="text-[14px] font-medium leading-[17px] text-light">Points</p>
+              <p className="text-[14px] font-medium leading-[17px] text-light">
+                <Trans>Points</Trans>
+              </p>
               <p className="mt-1 text-[18px] font-bold leading-[1.22]">{data.credits}</p>
             </div>
             <div className="mt-6 ">
-              <p className="text-[14px] font-medium leading-[17px] text-light">Date Registered</p>
+              <p className="text-[14px] font-medium leading-[17px] text-light">
+                <Trans>Date Registered</Trans>
+              </p>
               <p className="mt-1 text-[18px] font-bold leading-[1.22]">
                 {data.date_registered && format(new Date(data.date_registered), 'dd MMM yyyy')}
               </p>

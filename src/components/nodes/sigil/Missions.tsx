@@ -11,6 +11,7 @@ import MissionItem from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
 import ShareTwitterModal from './ShareTwitterModal';
 import { SubtractRight } from './Subtract';
+import { t, Trans } from '@lingui/macro';
 
 const Missions: React.FC = () => {
   const { user, register } = useAuthenticationContext();
@@ -55,25 +56,25 @@ const Missions: React.FC = () => {
     };
   } = {
     MYRIA_ACCOUNT: {
-      label: 'Sign up',
+      label: t`Sign up`,
       onClick: (e) => {
         e.preventDefault();
         register();
       }
     },
     JOIN_DISCORD: {
-      label: 'Join',
+      label: t`Join`,
       link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord
     },
     SHARE_TWITTER: {
-      label: 'Join',
+      label: t`Join`,
       onClick: (e) => {
         e.preventDefault();
         setOpenShareTwitterModal(true);
       }
     },
     INVITE_FRIEND: {
-      label: 'Invite',
+      label: t`Invite`,
       onClick: (e) => {
         e.preventDefault();
         setOpenInviteModal(true);
@@ -94,7 +95,9 @@ const Missions: React.FC = () => {
       />
       <div className="relative flex h-full flex-col pr-2">
         <div className="flex items-center">
-          <p className="sigil-text mr-4 text-[18px] font-extrabold leading-[1.25]">MISSIONS</p>
+          <p className="sigil-text mr-4 text-[18px] font-extrabold leading-[1.25]">
+            <Trans>MISSIONS</Trans>
+          </p>
           <div className="h-[1px] flex-1 bg-border-blue opacity-20">
             <div className="absolute top-0 right-0 translate-x-[7px] translate-y-[4px]">
               <SubtractRight />

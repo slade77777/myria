@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { useGA4 } from 'src/lib/ga';
@@ -15,7 +16,7 @@ interface SigilProps {
   isActive: boolean;
   id: AllianceName;
   name: string;
-  desc: string;
+  desc: string | JSX.Element;
   order: number;
 }
 interface ChooseAllianceProps {
@@ -30,8 +31,8 @@ type Sigil = {
   width: number;
   height: number;
   name: string;
-  desc: string;
-  joiningDesc: string;
+  desc: JSX.Element | string;
+  joiningDesc: JSX.Element | string;
   order: number;
 };
 
@@ -45,9 +46,19 @@ const SIGILS: Sigil[] = [
     height: 748 / 4,
     className: 'left-[17%] w-[22%]',
     name: 'THE FEDERATION',
-    desc: 'With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts.',
-    joiningDesc:
-      'Join The Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end.'
+    desc: (
+      <Trans>
+        With ships equipped with technology both ancient and cutting edge, the Federation Alliance
+        patrols space, combating the expansion of the Rift on all fronts.
+      </Trans>
+    ),
+    joiningDesc: (
+      <Trans>
+        Join The Federation alongside mercenaries, militants, and anyone with a weapon and the
+        desire to knock the Rift back to where it came from. There might be a place for you here, if
+        you’re dedicated enough to fight until the very end.
+      </Trans>
+    )
   },
   {
     id: 'vector_prime',
@@ -58,9 +69,19 @@ const SIGILS: Sigil[] = [
     height: 748 / 4,
     className: 'w-[22%]',
     name: 'VECTOR PRIME',
-    desc: 'Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion.',
-    joiningDesc:
-      'Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all.'
+    desc: (
+      <Trans>
+        Vector Prime believe the Rift is the next step of evolution and will do anything in their
+        power to accelerate its expansion.
+      </Trans>
+    ),
+    joiningDesc: (
+      <Trans>
+        Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them.
+        Many factors will fight against you, but you know that science and logic are the best laws
+        to rule us all.
+      </Trans>
+    )
   },
   {
     id: 'equinox',
@@ -71,9 +92,19 @@ const SIGILS: Sigil[] = [
     height: 748 / 4,
     className: 'right-[17%] w-[22%]',
     name: 'EQUINOX',
-    desc: 'Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers.',
-    joiningDesc:
-      'Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle.'
+    desc: (
+      <Trans>
+        Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can
+        coexist. They actively explore the Rift, searching for answers.
+      </Trans>
+    ),
+    joiningDesc: (
+      <Trans>
+        Driven by the search for knowledge, the Equinox collect every piece of information they can
+        find. Somewhere in all this data must be the answer to peace. You might be the one to
+        finally unlock that puzzle.
+      </Trans>
+    )
   }
 ];
 
@@ -222,7 +253,7 @@ const Sigil = ({
                 {PARTICLES.map((particle) => (
                   <div
                     key={particle.id}
-                    className="absolute bottom-0 h-[4px] w-[4px] animate-starUp rounded-full overflow-hidden"
+                    className="absolute bottom-0 h-[4px] w-[4px] animate-starUp overflow-hidden rounded-full"
                     style={{
                       content: '',
                       animationDuration: particle.animationDuration,
@@ -249,7 +280,7 @@ const Sigil = ({
               soundService.playSound(SUPPORT_SOUND.SIGIL_SELECT);
               event('Alliance Selected', { campaign: 'Sigil', alliance_name: name });
             }}>
-            SELECT
+            <Trans>SELECT</Trans>
           </button>
         </div>
       </div>

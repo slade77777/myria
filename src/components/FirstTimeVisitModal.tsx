@@ -28,10 +28,10 @@ const FirstTimeVisitModal: React.FC<Props> = ({ open, onClose }) => {
             <CloseIcon />
           </button>
           <h1 className="text-[24px] font-extrabold leading-[1.15] md:text-[32px]">
-            Join our community!
+            <Trans>Join our community!</Trans>
           </h1>
           <p className="mt-5 text-[18px] leading-[1.5] text-light md:max-w-[295px]">
-            Stay update to date with our project announcements and updates!
+            <Trans>Stay update to date with our project announcements and updates!</Trans>
           </p>
           <div className="mt-[30px] md:mt-8">
             <a

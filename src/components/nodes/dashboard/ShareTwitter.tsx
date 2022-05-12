@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import LinkIcon from 'src/components/icons/LinkIcon';
@@ -40,7 +41,9 @@ const ShareTwitter: React.FC = () => {
                 </p>
               </div>
             </div>
-            <button className="btn-lg btn-primary mt-4 w-full">Share now</button>
+            <button className="btn-lg btn-primary mt-4 w-full">
+              <Trans>Share now</Trans>
+            </button>
           </div>
         </Modal.Content>
       </Modal>
@@ -53,7 +56,7 @@ const ShareTwitter: React.FC = () => {
           </span>
         </div>
         <p className="flex flex-grow items-center justify-center bg-brand-deep-blue text-[20px] leading-[1.15]">
-          Share this on Twitter
+          <Trans>Share this on Twitter</Trans>
         </p>
       </button>
     </>

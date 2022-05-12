@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
@@ -28,12 +29,16 @@ const ClaimModal: React.FC<Props> = ({ open, onClose, item }) => {
               <img src={item?.image_url} alt="" />
             </div>
             <div className="flex flex-col items-center text-center">
-              <p className="text-[12px] font-medium leading-[1.5]">You have just claimed</p>
+              <p className="text-[12px] font-medium leading-[1.5]">
+                <Trans>You have just claimed</Trans>
+              </p>
               <p className="mt-4 text-[20px] font-medium leading-[1.2] text-flat">
                 x1 {item?.title}
               </p>
               <Link href="/inventory">
-                <a className="btn-lg btn-primary mt-8 min-w-[171px]">VIEW ITEM</a>
+                <a className="btn-lg btn-primary mt-8 min-w-[171px]">
+                  <Trans>VIEW ITEM</Trans>
+                </a>
               </Link>
               {/* <button className="mt-6 flex items-center space-x-2 text-brand-gold">
                 <span className="w-4">

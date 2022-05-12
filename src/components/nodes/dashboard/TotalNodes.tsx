@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import NodeIcon from 'src/components/icons/NodeIcon';
 
@@ -5,7 +6,7 @@ const TotalNodes: React.FC = () => {
   return (
     <div className="rounded-xl bg-brand-deep-blue p-6 shadow-dark-panel md:p-8">
       <p className="text-[20px] font-medium leading-[1.25] text-light">
-        Total nodes in Myria network
+        <Trans>Total nodes in Myria network</Trans>
       </p>
       <div className="mt-2 flex items-center md:mt-8">
         <span className="w-8 text-brand-light-blue">

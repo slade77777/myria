@@ -17,21 +17,26 @@ const LinkWalletConfirmModal: React.FC<Props> = ({ open, onClose, onLink }) => {
       <Modal.Content title="Link Wallet Confirmation">
         <div className="space-y-8 p-8 pt-10">
           <p className="text-[20px] leading-[1.5] text-light">
-            {address ? 
+            {address ? (
               <Trans>
                 Do you want to link your wallet {address.substring(0, 5)} to your Myria account?
               </Trans>
-              :
+            ) : (
               <Trans>
-                No web wallet is detected, please ensure that you have one setup to claim your rewards.
+                No web wallet is detected, please ensure that you have one setup to claim your
+                rewards.
               </Trans>
-            }
+            )}
           </p>
-          {address ?
-            <button onClick={onLink} className="btn-lg btn-primary w-full">LINK WALLET</button>
-            :
-            <button onClick={onConnect} className="btn-lg btn-primary w-full">CONNECT WALLET</button>
-          }
+          {address ? (
+            <button onClick={onLink} className="btn-lg btn-primary w-full">
+              <Trans>LINK WALLET</Trans>
+            </button>
+          ) : (
+            <button onClick={onConnect} className="btn-lg btn-primary w-full">
+              <Trans>CONNECT WALLET</Trans>
+            </button>
+          )}
         </div>
       </Modal.Content>
     </Modal>

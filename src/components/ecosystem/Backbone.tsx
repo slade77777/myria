@@ -13,24 +13,26 @@ const CustomLink: React.FC<{
   <Link href={href}>
     <a className="link text-brand-gold no-underline hover:underline	">{title}</a>
   </Link>
-)
+);
 const data = [
   {
     icon: <CPUIcon />,
-    title: 'Myria Infrastructure',
+    title: <Trans>Myria Infrastructure</Trans>,
     description: (
       <Trans>
-        Myria’s <CustomLink title='Ethereum L2 scaling solution' href='/for-developers/solution' /> uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on security.
+        Myria’s <CustomLink title="Ethereum L2 scaling solution" href="/for-developers/solution" />{' '}
+        uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without
+        sacrificing on security.
       </Trans>
     )
   },
   {
     icon: <PeopleIcon />,
-    title: 'Myria Partners',
+    title: <Trans>Myria Partners</Trans>,
     description: (
       <Trans>
         Myria help project partners set up for success.{' '}
-        <CustomLink title='Learn more' href='/for-developers' /> about our easy-to-use, full stack
+        <CustomLink title="Learn more" href="/for-developers" /> about our easy-to-use, full stack
         solution and build with Myria today.
       </Trans>
     )
@@ -38,10 +40,10 @@ const data = [
 
   {
     icon: <BrushIcon />,
-    title: 'Myria Studios',
+    title: <Trans>Myria Studios</Trans>,
     description: (
       <Trans>
-        <CustomLink title='Myria Studios' href='/studios' /> creates a range of free-to-play AAA
+        <CustomLink title="Myria Studios" href="/studios" /> creates a range of free-to-play AAA
         games spans across an entire interconnected ecosystem, built with the new standard of
         interoperable NFTs.
       </Trans>
@@ -49,12 +51,12 @@ const data = [
   },
   {
     icon: <CloudIcon />,
-    title: 'Myria Nodes',
+    title: <Trans>Myria Nodes</Trans>,
     description: (
       <Trans>
         The Myria platform is supported by Myria Nodes. Being a{' '}
-        <CustomLink href='/nodes' title='Myria Node'/> operator means that you will receive
-        limited edition NFTs, token rewards and more.
+        <CustomLink href="/nodes" title="Myria Node" /> operator means that you will receive limited
+        edition NFTs, token rewards and more.
       </Trans>
     )
   }
@@ -66,8 +68,10 @@ const Backbone: React.FC = () => {
         <Trans>Myria is the backbone of blockchain gaming</Trans>
       </h2>
       <p className="mx-auto mt-6 max-w-[713px] text-center text-[18px] leading-[1.5] text-light md:text-[20px]">
-        <Trans>We bring together everything that is required to build a decentralized, scalable and secure
-          digital asset and blockchain gaming platform</Trans>
+        <Trans>
+          We bring together everything that is required to build a decentralized, scalable and
+          secure digital asset and blockchain gaming platform
+        </Trans>
       </p>
       <div className="mt-10 grid gap-x-[100px] gap-y-10 md:mt-[64px] md:grid-cols-2 md:gap-y-8">
         {data.map((item, idx) => (

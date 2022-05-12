@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { t, Trans } from '@lingui/macro';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
 import { useGA4 } from 'src/lib/ga';
@@ -39,9 +40,13 @@ const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
             </Modal.Close>
           </div>
           <div className="mt-6 px-2 pb-5 text-center">
-            <p className="text-[20px] font-medium leading-[1.2]">Refer your friends</p>
+            <p className="text-[20px] font-medium leading-[1.2]">
+              <Trans>Refer your friends</Trans>
+            </p>
             <p className="mt-6 text-[16px] leading-[1.5] text-light">
-              I&apos;m baby whatever small batch chicharrones kale chips unicorn everyday carry.
+              <Trans>
+                I&apos;m baby whatever small batch chicharrones kale chips unicorn everyday carry.
+              </Trans>
             </p>
             <div className="mt-10 rounded-lg bg-[#132533] py-[14px] pl-[16px] pr-[25px] text-[16px] leading-[1.25] text-light">
               {link}
@@ -59,7 +64,7 @@ const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
                 await copy(link);
                 setCopied(true);
               }}>
-              {copied ? 'COPIED' : 'COPY LINK'}
+              {copied ? t`COPIED` : t`COPY LINK`}
             </button>
           </div>
         </div>

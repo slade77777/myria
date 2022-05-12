@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React from 'react';
 import ChevronRightIcon from 'src/components/icons/ChevronRightIcon';
@@ -113,7 +114,9 @@ const LatestReward: React.FC = () => {
         className="flex items-center justify-between space-x-4 p-6 md:px-8 md:py-9">
         <p className="text-[20px] leading-[1.25]">Latest Rewards</p>
         <button className="btn-icon-sm btn-primary flex items-center px-4 text-dark">
-          <span>CLAIM REWARDS</span>
+          <span>
+            <Trans>CLAIM REWARDS</Trans>
+          </span>
           <span className="w-[22px]">
             <ChevronRightIcon />
           </span>

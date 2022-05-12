@@ -59,34 +59,38 @@ const InventoryPage: React.FC = () => {
             <p className="mx-auto font-extrabold md:mx-0">
               <Trans>
                 <span className="text-[20px] text-brand-white">
-                  Sigils are inactive until the Sigma mission is set into motion.
+                  <Trans>Sigils are inactive until the Sigma mission is set into motion.</Trans>
                 </span>
               </Trans>
               <Trans>
                 <span className="ml-1 text-[20px] text-brand-light-blue">
-                  T-minus 47 gigaquarks
+                  <Trans>T-minus 47 gigaquarks</Trans>
                 </span>
               </Trans>
             </p>
             <Trans>
               <span className="text-[16px] font-normal text-brand-light-blue">
-                Once the Sigils are active, they will be minted directly on the Myria
+                <Trans>Once the Sigils are active, they will be minted directly on the Myria</Trans>
               </span>
             </Trans>
           </section>
           <section className="-mt-7 md:mt-[88px]">
-            <Link href='sigil' passHref>
+            <Link href="sigil" passHref>
               <a>
                 <div className="mb-3 flex cursor-pointer items-center font-medium text-brand-gold">
                   <i className="relative left-[-8px] w-6">
                     <ChevronLeftIcon />
                   </i>
-                  <span>BACK TO SIGIL DASHBOARD</span>
+                  <span>
+                    <Trans>BACK TO SIGIL DASHBOARD</Trans>
+                  </span>
                 </div>
               </a>
             </Link>
-            
-            <p className="mb-[32px] text-[32px] font-extrabold leading-[1.5]">Inventory</p>
+
+            <p className="mb-[32px] text-[32px] font-extrabold leading-[1.5]">
+              <Trans>Inventory</Trans>
+            </p>
             <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8">
               <div className="min-w-[184px]">
                 {/* <SortBy /> */}

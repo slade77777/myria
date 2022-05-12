@@ -6,6 +6,7 @@ import { useGA4 } from 'src/lib/ga';
 import Button from 'src/components/core/Button';
 import * as env from 'detect-browser';
 import Link from 'next/link';
+import { t, Trans } from '@lingui/macro';
 
 type Props = {
   onNext: () => void;
@@ -82,25 +83,26 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   const content = (() => {
     if (!isSupportedBrowser) {
       return {
-        title: 'Unsupported Browser',
-        message:
-          'Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge'
+        title: t`Unsupported Browser`,
+        message: t`Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge`
       };
     }
 
     if (address) {
       return {
-        title: 'Welcome to the Myriaverse',
+        title: t`Welcome to the Myriaverse`,
         message: (
           <span>
-            Which side of the battlelines will you stand on? <br /> Choose your Alliance and claim
-            your free Sigil NFT.
+            <Trans>
+              Which side of the battlelines will you stand on? <br /> Choose your Alliance and claim
+              your free Sigil NFT.
+            </Trans>
           </span>
         )
       };
     }
 
-    return { title: 'Connect to your wallet to enter the Myriaverse' };
+    return { title: t`Connect to your wallet to enter the Myriaverse` };
   })();
 
   return (
@@ -115,8 +117,10 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         )}
         {!address && !installedWallet && isSupportedBrowser && (
           <p className="mt-8 text-[16px] leading-[1.5] text-light">
-            Don&apos;t have a wallet yet? <br />
-            Install Metamask below.
+            <Trans>
+              Don&apos;t have a wallet yet? <br />
+              Install Metamask below.
+            </Trans>
           </p>
         )}
         {address && isSupportedBrowser ? (
@@ -128,7 +132,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 event('Join Now Selected', { campaign: 'Sigil' });
               }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
-              {loginByWalletMutation.isLoading ? 'LOGING IN' : 'JOIN NOW'}
+              {loginByWalletMutation.isLoading ? t`LOGING IN` : t`JOIN NOW`}
             </Button>
           </>
         ) : (
@@ -140,7 +144,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                   event('Connect Wallet Selected', { campaign: 'Sigil' });
                 }}
                 className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
-                CONNECT WALLET
+                <Trans>CONNECT WALLET</Trans>
               </button>
             )}
             {installedWallet === false && isSupportedBrowser && (
@@ -155,7 +159,9 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 <i className="w-6">
                   <MetaMaskIcon />
                 </i>
-                <span>Install Metamask</span>
+                <span>
+                  <Trans>Install Metamask</Trans>
+                </span>
               </a>
             )}
             {/* <button
@@ -171,7 +177,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         {!isSupportedBrowser && (
           <Link href="/">
             <a className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
-              Go back
+              <Trans>Go back</Trans>
             </a>
           </Link>
         )}

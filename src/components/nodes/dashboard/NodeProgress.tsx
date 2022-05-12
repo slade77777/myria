@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import NodeIcon from 'src/components/icons/NodeIcon';
 
@@ -14,7 +15,9 @@ const Progress: React.FC<{ percentage: number }> = ({ percentage }) => {
 const NodeProgress: React.FC = () => {
   return (
     <div className="rounded-xl bg-brand-deep-blue p-6 shadow-dark-panel md:p-8">
-      <p className="text-[20px] leading-[1.25] text-light">Node progress this cycle</p>
+      <p className="text-[20px] leading-[1.25] text-light">
+        <Trans>Node progress this cycle</Trans>
+      </p>
       <div className="mt-6 space-y-6 md:mt-8">
         <div className="flex items-center">
           <span className="w-5 text-light-green">
