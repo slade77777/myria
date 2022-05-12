@@ -46,7 +46,8 @@ const SIGILS: Sigil[] = [
     className: 'left-[1%] xl:left-[2%] w-[26%] xl:w-[24%]',
     name: 'THE FEDERATION',
     desc: 'With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts.',
-    joiningDesc: 'Join The Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end.'
+    joiningDesc:
+      'Join The Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end.'
   },
   {
     id: 'vector_prime',
@@ -58,7 +59,8 @@ const SIGILS: Sigil[] = [
     className: 'w-[26%] xl:w-[24%]',
     name: 'VECTOR PRIME',
     desc: 'Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion.',
-    joiningDesc: 'Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all.'
+    joiningDesc:
+      'Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all.'
   },
   {
     id: 'equinox',
@@ -70,7 +72,8 @@ const SIGILS: Sigil[] = [
     className: 'right-[2%] xl:right-[3%] w-[26%] xl:w-[24%]',
     name: 'EQUINOX',
     desc: 'Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers.',
-    joiningDesc: 'Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle.'
+    joiningDesc:
+      'Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle.'
   }
 ];
 
@@ -119,7 +122,7 @@ const Sigil = ({
         }
         setIsFirstTimeActive(true);
       }}
-      className={`absolute bottom-[40%] flex flex-col items-center justify-center ${
+      className={`absolute bottom-[25%] flex flex-col items-center justify-center ${
         className || ''
       }`}>
       <div
@@ -185,7 +188,7 @@ const Sigil = ({
           </span>
         </div>
         <div
-          className={`h-[70px] w-[20vw] text-center transition-all delay-100 ${
+          className={`h-[70px] w-[300px] text-center transition-all delay-100 ${
             isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
@@ -244,7 +247,7 @@ const Sigil = ({
             onClick={() => {
               onSelect(id);
               soundService.playSound(SUPPORT_SOUND.SIGIL_SELECT);
-              event('Alliance Selected', { campaign: 'Sigil', alliance_name: name })
+              event('Alliance Selected', { campaign: 'Sigil', alliance_name: name });
             }}>
             SELECT
           </button>
@@ -277,18 +280,15 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
         sigilDesc={activeSigilData?.joiningDesc}
         sigilId={activeSigilData?.id}
       />
-      <div className="relative top-[80px] grid min-h-[calc(100vh-80px)] min-w-[1200px] grid-cols-1 grid-rows-1 overflow-hidden">
-        <div className="pointer-events-none fixed top-[-80px] h-full w-full object-cover object-center">
-          <Image src="/images/nodes/insignia/alliance_bg.jpeg" alt="" layout="fill" />
-        </div>
-        <div className="absolute left-0 bottom-0 w-full">
-          <div className="relative w-full object-cover  object-center">
+      <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[800px] min-w-[1300px] items-center justify-center overflow-hidden">
+        <div className="absolute w-full max-w-[1300px]">
+          <div className="relative w-full object-cover object-center">
             <Image
-              src="/images/nodes/insignia/alliance_stand.png"
+              src="/images/nodes/insignia/bg.png"
               alt=""
               layout="responsive"
               width={3840}
-              height={1434}
+              height={2164}
             />
             <div className="absolute top-0 flex h-full w-full items-center justify-center">
               {SIGILS.map((sigil) => (
@@ -308,14 +308,14 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
                 />
               ))}
             </div>
+            <div
+              className={`pointer-events-none fixed top-[80px] left-0 h-full w-full bg-gradient-to-t  transition-all delay-100 ${
+                !!activeSigil
+                  ? 'from-[rgba(0,0,0,0.5)] to-transparent backdrop-blur-[2px] '
+                  : 'from-[rgba(0,0,0,0.3)] via-transparent to-transparent backdrop-blur-none'
+              }`}
+            />
           </div>
-          <div
-            className={`pointer-events-none fixed top-[80px] left-0 z-[10] h-screen min-h-[calc(100vh-80px)] w-screen bg-gradient-to-t  transition-all delay-100 ${
-              !!activeSigil
-                ? 'from-[rgba(0,0,0,0.5)] to-transparent backdrop-blur-[2px] '
-                : 'from-[rgba(0,0,0,0.3)] via-transparent to-transparent backdrop-blur-none'
-            }`}
-          />
         </div>
       </div>
     </>

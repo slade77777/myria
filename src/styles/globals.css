@@ -41,6 +41,7 @@
 
 html {
   scroll-behavior: smooth;
+  min-width: 1300px;
 }
 
 body {
