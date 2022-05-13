@@ -80,8 +80,8 @@ const SIGILS: Sigil[] = [
 const PARTICLES = Array(20)
   .fill(0)
   .map((_, index) => {
-    const blur = Math.round(Math.random() * 1 + 1);
-    const spread = Math.round(Math.random() * 2 + 1);
+    const blur = Math.random() * 1 + 0.1;
+    const spread = Math.random() * 2 + 0.1;
     const duration = Math.round(Math.random() * 12 + 2);
     const boxShadow = Array(Math.round(Math.random() * 5))
       .fill(0)
@@ -122,7 +122,7 @@ const Sigil = ({
         }
         setIsFirstTimeActive(true);
       }}
-      className={`absolute bottom-[25%] flex flex-col items-center justify-center ${
+      className={`absolute bottom-[20%] flex flex-col items-center justify-center ${
         className || ''
       }`}>
       <div
@@ -188,7 +188,7 @@ const Sigil = ({
           </span>
         </div>
         <div
-          className={`h-[70px] w-[300px] text-center transition-all delay-100 ${
+          className={`h-[70px] w-[280px] text-center transition-all delay-100 ${
             isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
@@ -199,7 +199,7 @@ const Sigil = ({
         </div>
         <div
           className={`flex w-[180px] flex-col items-center 2xl:w-[230px] ${
-            order === 2 ? 'pt-[48px] 2xl:pt-[68px]' : 'pt-[28px] 2xl:pt-[48px]'
+            order === 2 ? 'pt-[40px] 2xl:pt-[48px]' : 'pt-[20px] 2xl:pt-[30px]'
           }`}>
           <div className="flex w-full animate-float items-center justify-center">
             <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
@@ -222,7 +222,7 @@ const Sigil = ({
                 {PARTICLES.map((particle) => (
                   <div
                     key={particle.id}
-                    className="absolute bottom-0 h-[1px] w-[1px] animate-starUp rounded-full"
+                    className="absolute bottom-0 h-[4px] w-[4px] animate-starUp rounded-full overflow-hidden"
                     style={{
                       content: '',
                       animationDuration: particle.animationDuration,
@@ -239,7 +239,7 @@ const Sigil = ({
         <div
           className={`absolute  flex h-[116px] w-full items-end justify-center transition-all delay-100 ${
             isActive
-              ? 'bottom-[-80px] opacity-100 xl:bottom-[-85px] 2xl:bottom-[-116px]'
+              ? 'bottom-[-70px] opacity-100 xl:bottom-[-75px] 2xl:bottom-[-100px]'
               : 'bottom-0 opacity-0'
           }`}>
           <button
@@ -280,15 +280,15 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
         sigilDesc={activeSigilData?.joiningDesc}
         sigilId={activeSigilData?.id}
       />
-      <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[800px] min-w-[1300px] items-center justify-center overflow-hidden">
+      <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[920px] min-w-[1300px] items-center justify-center overflow-hidden">
         <div className="absolute w-full max-w-[1300px]">
-          <div className="relative w-full object-cover object-center">
+          <div className="relative w-full object-cover">
             <Image
               src="/images/nodes/insignia/bg.png"
               alt=""
               layout="responsive"
               width={3840}
-              height={2164}
+              height={2880}
             />
             <div className="absolute top-0 flex h-full w-full items-center justify-center">
               {SIGILS.map((sigil) => (
