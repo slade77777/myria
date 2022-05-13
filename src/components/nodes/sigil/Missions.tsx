@@ -90,7 +90,7 @@ const Missions: React.FC = () => {
       <ReferFriendModal
         open={openInviteModal}
         onClose={() => setOpenInviteModal(false)}
-        link={`https://myria.com/sigil?code=${user?.user_id}`}
+        link={`${window.location.href}?code=${user?.user_id}`}
       />
       <div className="relative flex h-full flex-col pr-2">
         <div className="flex items-center">
