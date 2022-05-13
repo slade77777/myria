@@ -12,7 +12,7 @@ import http from 'src/client';
 const DELAY_TIME_AUTO_SCROLL_TO_NEXT_REWARD = 500;
 
 const Rewards: React.FC = () => {
-  const nextRewardRef = useRef<HTMLDivElement | null>(null)
+  const nextRewardRef = useRef<HTMLDivElement | null>(null);
   const [claimItem, setClaimItem] = useState<Reward | null>(null);
   const queryClient = useQueryClient();
   const { data } = useQuery<Reward[]>('sigilRewards', async () => {
@@ -45,16 +45,16 @@ const Rewards: React.FC = () => {
     let timeout: ReturnType<typeof setTimeout>;
     if (data && data.length > 0) {
       timeout = setTimeout(() => {
-        nextRewardRef.current?.scrollIntoView({ behavior: "smooth" })
-      }, DELAY_TIME_AUTO_SCROLL_TO_NEXT_REWARD)
+        nextRewardRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, DELAY_TIME_AUTO_SCROLL_TO_NEXT_REWARD);
     }
-    
+
     return () => {
       if (timeout) {
         clearTimeout(timeout);
       }
     };
-  }, [data])
+  }, [data]);
 
   return (
     <>
@@ -106,7 +106,9 @@ const Rewards: React.FC = () => {
                 <RewardItem key={idx} item={rw} onClaim={handleClaim} />
               ))}
             </div>
-            <p ref={nextRewardRef} className="mt-6 flex items-center space-x-4 text-[18px] font-bold leading-[1.22]">
+            <p
+              ref={nextRewardRef}
+              className="mt-6 flex items-center space-x-4 text-[18px] font-bold leading-[1.22]">
               <span className="h-[2px] flex-1 bg-gradient-to-l from-white to-white/0 "></span>
               <span>Next Reward</span>
               <span className="h-[2px] flex-1 bg-gradient-to-r from-white to-white/0"></span>

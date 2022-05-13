@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
@@ -24,20 +25,22 @@ const ClaimModal: React.FC<Props> = ({ open, onClose, item }) => {
               </Modal.Close>
             </div>
             <div className="flex justify-center">
-              <img src="/images/nodes/sigil/sample-item.png" alt="" />
+              <img src={item?.image_url} alt="" />
             </div>
             <div className="flex flex-col items-center text-center">
               <p className="text-[12px] font-medium leading-[1.5]">You have just claimed</p>
               <p className="mt-4 text-[20px] font-medium leading-[1.2] text-flat">
                 x1 {item?.title}
               </p>
-              <button className="btn-lg btn-primary mt-8 min-w-[171px]">VIEW ITEM</button>
-              <button className="mt-6 flex items-center space-x-2 text-brand-gold">
+              <Link href="/inventory">
+                <a className="btn-lg btn-primary mt-8 min-w-[171px]">VIEW ITEM</a>
+              </Link>
+              {/* <button className="mt-6 flex items-center space-x-2 text-brand-gold">
                 <span className="w-4">
                   <ShareIcon />
                 </span>
                 <span className="text-[14px] font-medium leading-[1.5]">Share</span>
-              </button>
+              </button> */}
             </div>
           </div>
         </Modal.Content>
