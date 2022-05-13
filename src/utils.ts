@@ -30,24 +30,6 @@ export const validatePassword = (password: string) => {
   return undefined
 };
 
-export const removeParamFromURL = (key: string, sourceURL: string) => {
-  let rtn = sourceURL.split("?")[0],
-    param,
-    paramsArr = [],
-    queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
-  if (queryString !== "") {
-    paramsArr = queryString.split("&");
-    for (let i = paramsArr.length - 1; i >= 0; i -= 1) {
-      param = paramsArr[i].split("=")[0];
-      if (param === key) {
-        paramsArr.splice(i, 1);
-      }
-    }
-    if (paramsArr.length) rtn = rtn + "?" + paramsArr.join("&");
-  }
-  return rtn;
-}
-
 export const getRarityColor = (rarity: RarityType) => {
   switch (rarity) {
     case 'common':
