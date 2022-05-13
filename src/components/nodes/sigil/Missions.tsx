@@ -11,7 +11,6 @@ import MissionItem from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
 import ShareTwitterModal from './ShareTwitterModal';
 import { SubtractRight } from './Subtract';
-import { removeParamFromURL } from 'src/utils';
 
 const Missions: React.FC = () => {
   const { user, register } = useAuthenticationContext();
@@ -91,7 +90,7 @@ const Missions: React.FC = () => {
       <ReferFriendModal
         open={openInviteModal}
         onClose={() => setOpenInviteModal(false)}
-        link={`${removeParamFromURL('code', window.location.href)}?code=${user?.user_id}`}
+        link={`${window.location.origin}/sigil?code=${user?.user_id}`}
       />
       <div className="relative flex h-full flex-col pr-2">
         <div className="flex items-center">
