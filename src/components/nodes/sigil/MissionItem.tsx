@@ -36,7 +36,7 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
             href={action.link}
             target="_blank"
             rel="noreferrer"
-            className=" flex flex-1 items-center justify-center rounded-[4px] bg-[#1F2334] px-2 py-[5px] text-[12px] font-bold uppercase leading-[1.25] text-brand-gold"
+            className=" flex flex-1 cursor-pointer items-center justify-center rounded-[4px] bg-[#1F2334] px-2 py-[5px] text-[12px] font-bold uppercase leading-[1.25] text-brand-gold"
             onClick={(e) => {
               if (typeof action.onClick === 'function') {
                 action.onClick(e);
