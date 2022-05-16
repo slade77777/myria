@@ -1,8 +1,10 @@
 import 'video.js/dist/video-js.css';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
 
 import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
+import { ToastContainer } from 'react-toastify';
 
 import { WalletProvider } from 'src/context/wallet';
 import { AuthenticationProvider } from 'src/context/authentication';
@@ -51,7 +53,7 @@ function App({ Component, pageProps }: AppProps) {
             cardType: 'summary_large_image'
           }}
         />
-
+        <ToastContainer hideProgressBar />
         <WalletProvider>
           <AuthenticationProvider>
             <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>

@@ -18,6 +18,7 @@ import { Trans } from '@lingui/macro';
 import { useMutation, UseMutationResult } from 'react-query';
 import { useGA4 } from 'src/lib/ga';
 import { useWalletContext } from './wallet';
+import { toast } from 'react-toastify';
 
 type User = {
   user_id: string;
@@ -255,9 +256,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
             user_id:  userRes.data?.user_id,
             wallet_id: userRes.data?.wallet_id,
           }
-
+          toast('Register success', { type: 'success' });
           return user;
         } else {
+          toast('Register failed, please try again.', { type: 'error' });
           throw new Error('Failed to register user by wallet');
         }
       }
@@ -285,9 +287,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           }
 
           setUser(user);
-
+          toast('Login success', { type: 'success' });
           return user;
         } else {
+          toast('Login failed, please try again.', { type: 'error' });
           throw new Error('Failed to login user by wallet');
         }
       }
