@@ -52,7 +52,7 @@ export type AssetType = AssetSigilType | AssetTitleType | AssetChestType;
 export type OpenChestContent = AssetSigilType | AssetTitleType | AssetCreditType;
 
 const getInventory = async () => {
-  const data = await http.get(`sigil/users/assets?pageSize=10`).then((res) => res.data?.data);
+  const data = await http.get(`sigil/users/assets?pageSize=100`).then((res) => res.data?.data);
 
   if (data instanceof Array) {
     return (data as AssetType[]).filter((asset) =>

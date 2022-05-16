@@ -10,9 +10,10 @@ import { getRarityColor } from 'src/utils';
 
 interface Props {
   item: AssetType;
+  onClaimed: () => void;
 }
 
-const InventoryItem = ({ item }: Props) => {
+const InventoryItem = ({ item, onClaimed }: Props) => {
   const [open, setOpen] = React.useState(false);
   const { inventoryOpenChestMutation } = useInventoryQuery();
   const [openedChest, setOpenedChest] = React.useState<OpenChestContent[] | undefined>();
@@ -23,6 +24,7 @@ const InventoryItem = ({ item }: Props) => {
       const openedChest = await inventoryOpenChestMutation.mutateAsync(chestId);
       setOpenedChest(openedChest);
       setOpen(true);
+      onClaimed();
     } catch (e) {
       console.log(e);
     }
