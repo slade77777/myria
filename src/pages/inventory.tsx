@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Filter, { FilterList } from 'src/components/Filter';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import ChevronLeftIcon from 'src/components/icons/ChevronLeftIcon';
@@ -74,12 +75,17 @@ const InventoryPage: React.FC = () => {
             </Trans>
           </section>
           <section className="-mt-7 md:mt-[88px]">
-            <div className="mb-3 flex cursor-pointer items-center font-medium text-brand-gold">
-              <i className="relative left-[-8px] w-6">
-                <ChevronLeftIcon />
-              </i>
-              <span>BACK TO SIGIL DASHBOARD</span>
-            </div>
+            <Link href='sigil' passHref>
+              <a>
+                <div className="mb-3 flex cursor-pointer items-center font-medium text-brand-gold">
+                  <i className="relative left-[-8px] w-6">
+                    <ChevronLeftIcon />
+                  </i>
+                  <span>BACK TO SIGIL DASHBOARD</span>
+                </div>
+              </a>
+            </Link>
+            
             <p className="mb-[32px] text-[32px] font-extrabold leading-[1.5]">Inventory</p>
             <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8">
               <div className="min-w-[184px]">
