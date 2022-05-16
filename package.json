@@ -45,6 +45,7 @@
     "react-player": "2.9.0",
     "react-query": "^3.35.0",
     "react-slick": "0.28.1",
+    "react-toastify": "^9.0.1",
     "slick-carousel": "1.8.1",
     "valtio": "1.2.9",
     "video.js": "7.17.0",
