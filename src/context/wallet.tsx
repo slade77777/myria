@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { convertUtf8ToHex } from "@walletconnect/utils";
+import { convertUtf8ToHex } from '@walletconnect/utils';
 import React, { useCallback } from 'react';
 import WalletConnect from '@walletconnect/web3-provider';
 import Web3Modal from '../components/Web3Modal';
@@ -28,19 +28,19 @@ export const WalletProvider: React.FC = ({ children }) => {
   const [chainId, setChainId] = React.useState<number | string | undefined>(undefined);
   const [w3Provider, setW3Provider] = useState<any>();
   const [providerApi, setProviderApi] = useState<ethers.providers.Web3Provider>();
-  const { event } = useGA4()
+  const { event } = useGA4();
 
-  const getProviderOptions = () => {
-    const providerOptions = {
-      walletconnect: {
-        package: WalletConnect,
-        options: {
-          infuraId: '27e484dcd9e3efcfd25a83a78777cdf1' // TODO replace with real id
-        }
+const getProviderOptions = () => {
+  const providerOptions = {
+    walletconnect: {
+      package: WalletConnect,
+      options: {
+        infuraId: '27e484dcd9e3efcfd25a83a78777cdf1' // TODO replace with real id
       }
-    };
-    return providerOptions;
+    }
   };
+  return providerOptions;
+};
 
   const subscribeProvider = useCallback(async (provider) => {
     if (!provider.on) {
@@ -68,18 +68,16 @@ export const WalletProvider: React.FC = ({ children }) => {
     await web3Modal.clearCachedProvider();
     reset();
 
-    address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address })
+    address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
   }, [w3Provider, event, address]);
-  
+
   const onConnect = async () => {
-    web3Modal = new Web3Modal({
+    const web3Modal = new Web3Modal({
       network: 'mainnet',
-      cacheProvider: false,
+      cacheProvider: true,
       providerOptions: getProviderOptions()
     });
-
     const w3provider = await web3Modal.connect();
-
     await subscribeProvider(w3provider);
 
     const providerApi = new ethers.providers.Web3Provider(w3provider);
@@ -90,11 +88,12 @@ export const WalletProvider: React.FC = ({ children }) => {
     setProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
-
-    
-    
     event('Wallet Connected', { wallet_address: address, campaign: 'Sigil' });
   };
+
+  useEffect(() => {
+    onConnect();
+  }, []);
 
   const signMessage = (message: string) => {
     return providerApi?.getSigner().signMessage(message);
@@ -109,7 +108,7 @@ export const WalletProvider: React.FC = ({ children }) => {
         onConnect,
         ready,
         disconnect,
-        signMessage,
+        signMessage
       }}>
       {children}
     </WalletContext.Provider>
