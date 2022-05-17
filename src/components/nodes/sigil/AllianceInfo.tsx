@@ -21,7 +21,7 @@ const AllianceInfo: React.FC = () => {
         myria_username: '_mock',
         wallet_address: '_mock',
         alliance_name: data.alliance,
-        sigil_alias: '_mock',
+        sigil_alias: data.user_name || '',
         credits: data.credits?.toString() || '',
         date_registered: data.date_registered && new Date(data.date_registered).toISOString() || ''
       });
@@ -57,7 +57,7 @@ const AllianceInfo: React.FC = () => {
             <p className="mt-9 text-[20px] font-medium leading-[1.5]">{data.alliance}</p>
             <div className="mt-6 ">
               <p className="text-[14px] font-medium leading-[17px] text-light">Alias</p>
-              <p className="mt-1 text-[18px] font-bold leading-[1.22]"></p>
+              <p className="mt-1 text-[18px] font-bold leading-[1.22]">{data.user_name}</p>
             </div>
             <div className="mt-6 ">
               <p className="text-[14px] font-medium leading-[17px] text-light">Points</p>
