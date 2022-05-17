@@ -23,19 +23,24 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
       const user = await loginByWalletMutation.mutateAsync().catch(() => null);
       if (!user) {
         await registerByWalletMutation.mutateAsync();
-        loginByWalletMutation.mutate()
+        loginByWalletMutation.mutate();
       }
     } catch (e) {
       // TODO toast here
       console.log('Register error');
     }
-  }
+  };
 
   // try to login via wallet
   React.useEffect(() => {
     if (user?.user_id) {
       onNext();
-    } else if (address && !user?.user_id && !loginByWalletMutation.isLoading && !loginByWalletMutation.isError) {
+    } else if (
+      address &&
+      !user?.user_id &&
+      !loginByWalletMutation.isLoading &&
+      !loginByWalletMutation.isError
+    ) {
       loginByWalletMutation.mutate();
     }
   }, [address, user, loginByWalletMutation, onNext]);
@@ -43,7 +48,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   return (
     <div
       className={
-        "relative min-h-[inherit] h-screen bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat"
+        "relative h-screen min-h-[inherit] bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat"
       }>
       <div className="mx-auto max-w-[408px] pt-[213px] text-center">
         <h1 className="text-[28px] font-bold leading-[1.2]">
@@ -67,32 +72,32 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
               loading={registerByWalletMutation.isLoading || loginByWalletMutation.isLoading}
               onClick={() => {
                 handleRegisterByWallet();
-                event('Join Now Selected', { campaign: 'Sigil' })
+                event('Join Now Selected', { campaign: 'Sigil' });
               }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
-              {loginByWalletMutation.isLoading ? "LOGING IN" : "JOIN NOW"}
+              {loginByWalletMutation.isLoading ? 'LOGING IN' : 'JOIN NOW'}
             </Button>
           </>
         ) : (
           <>
-            <button
-              onClick={() => {
-                onConnect();
-                event('Connect Wallet Selected', { campaign: 'Sigil' })
-              }}
-              className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
-              CONNECT WALLET
-            </button>
-            {!installedWallet && (
+            {installedWallet ? (
+              <button
+                onClick={() => {
+                  onConnect();
+                  event('Connect Wallet Selected', { campaign: 'Sigil' });
+                }}
+                className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
+                CONNECT WALLET
+              </button>
+            ) : (
               <a
                 href="https://metamask.io/"
                 target="_blank"
-                className="btn-lg btn-secondary mx-auto mt-4 flex h-[40px]  w-[194px] items-center justify-center space-x-2 p-0 text-[16px] normal-case"
+                className="btn-lg btn-secondary mx-auto mt-10 flex h-[40px]  w-[194px] items-center justify-center space-x-2 p-0 text-[16px] normal-case"
                 rel="noreferrer"
                 onClick={() => {
-                  event('Install Metamask Clicked', {})
-                }}
-              >
+                  event('Install Metamask Clicked', {});
+                }}>
                 <i className="w-6">
                   <MetaMaskIcon />
                 </i>
