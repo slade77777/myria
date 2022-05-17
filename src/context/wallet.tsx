@@ -30,6 +30,8 @@ export const WalletProvider: React.FC = ({ children }) => {
   const [providerApi, setProviderApi] = useState<ethers.providers.Web3Provider>();
   const { event } = useGA4();
 
+  const installedWallet = typeof window != 'undefined' && !!window.ethereum;
+
 const getProviderOptions = () => {
   const providerOptions = {
     walletconnect: {
@@ -97,7 +99,9 @@ const getProviderOptions = () => {
   };
 
   useEffect(() => {
-    onConnect();
+    if(installedWallet) {
+      onConnect();
+    }
   }, []);
 
   const signMessage = (message: string) => {
