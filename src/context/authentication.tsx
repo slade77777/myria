@@ -385,6 +385,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           credits: data.credits,
           alliance: data.alliance as AllianceName,
           date_registered: new Date(data.date_registered),
+          wallet_id: data.wallet_id,
         };
         return user;
       }

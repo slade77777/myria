@@ -114,8 +114,8 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const { event } = useGA4();
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
-  const { address, onConnect } = useWalletContext();
-  const { login } = useAuthenticationContext();
+  const { onConnect } = useWalletContext();
+  const { login, user } = useAuthenticationContext();
 
   const actionElements = useMemo(() => {
     switch (action) {
@@ -129,7 +129,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         );
 
       case 'login':
-        return address ? (
+        return user?.wallet_id ? (
           <ProfileComponent />
         ) : (
           <div className="flex">
@@ -167,7 +167,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           </a>
         );
     }
-  }, [action, address, onConnect]);
+  }, [action, user?.wallet_id, onConnect]);
 
   const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
   return (

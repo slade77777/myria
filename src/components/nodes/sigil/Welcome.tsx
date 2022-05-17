@@ -13,7 +13,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
   const { user, registerByWalletMutation, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
-
+  
   const [installedWallet, setInstalledWallet] = useState<'PENDING' | boolean>('PENDING');
 
   useEffect(() => {
