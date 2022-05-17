@@ -87,7 +87,7 @@ const data: Person[] = [
       <Trans>
         In his role leading the People team, Damian helps Myria connect, develop and care for its
         global team. Damian brings decades of experience to Myria and was previously Global Head of
-        People for Bitmex and Goldman Sachs.
+        People for Bitmex and prior to that a Managing Director in HR at Goldman Sachs.
       </Trans>
     ),
     socials: {
@@ -254,7 +254,7 @@ const Team: React.FC = () => {
           <h3 className="text-center text-[40px] font-bold leading-[1.25]">
             <Trans>Our Experience</Trans>
           </h3>
-          <div className="mt-[60px] mx-auto max-w-content">
+          <div className="mx-auto mt-[60px] max-w-content">
             <ExperenceLogos />
           </div>
         </section>
