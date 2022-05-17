@@ -6,7 +6,7 @@ import { Reward } from 'src/types/sigil';
 
 const Progress: React.FC<{ percentage: number }> = ({ percentage }) => {
   return (
-    <div className="relative h-[5px] w-[102px] rounded-2xl bg-dark">
+    <div className="relative h-[5px] rounded-2xl bg-dark">
       <div
         style={{
           boxShadow: '0px 0px 5px rgba(245, 185, 65, 0.5)',
@@ -29,6 +29,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
   const { event } = useGA4();
   const { title, credits_required, status, image_url, progress_percentage } = item;
 
+  const percentage = progress_percentage ?? 0;
   const content = useMemo(() => {
     switch (status) {
       case 'locked':
@@ -43,9 +44,12 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
 
       case 'in_progress':
         return (
-          <div className="space-y-1">
-            <p className="text-[12px] font-medium leading-[1.25] text-light">Progress</p>
-            <Progress percentage={progress_percentage ?? 0} />
+          <div className="w-[192px] space-y-1">
+            <p className="flex items-baseline justify-between text-[12px] font-medium leading-[1.25] text-light">
+              <span>Progress</span>
+              <span>{percentage}%</span>
+            </p>
+            <Progress percentage={percentage} />
           </div>
         );
 
