@@ -15,7 +15,7 @@ const ProfileMenus = [
 ];
 
 const ProfileComponent = () => {
-  const { address, disconnect } = useWalletContext();
+  const { disconnect } = useWalletContext();
   const { user, logout } = useAuthenticationContext();
 
   const onDisconnect = () => {
@@ -23,7 +23,7 @@ const ProfileComponent = () => {
     logout();
   }
 
-  if (!user && !address) {
+  if (!user) {
     return null;
   }
 
@@ -31,8 +31,8 @@ const ProfileComponent = () => {
     <Popover modal>
       <Popover.Trigger asChild>
         <div className="flex w-[172px] items-center rounded-lg bg-[#081824] px-6 py-3 hover:cursor-pointer">
-          <img src={'/images/header-user.png'} alt={address} className="mr-3" />
-          <div>{truncateString(address || '')}</div>
+          <img src={'/images/header-user.png'} alt={user?.wallet_id} className="mr-3" />
+          <div>{truncateString(user?.wallet_id || '')}</div>
         </div>
       </Popover.Trigger>
       <Popover.Content asChild side="bottom" sideOffset={5}>
@@ -48,7 +48,7 @@ const ProfileComponent = () => {
                 </Link>
               );
             })}
-          {address && (
+          {user?.wallet_id && (
             <div className="flex items-center hover:cursor-pointer" onClick={onDisconnect}>
               <DisconnectIcon />
               <p className="ml-2">Logout</p>

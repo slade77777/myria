@@ -4,7 +4,6 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import MetaMaskIcon from 'src/components/icons/MetaMaskIcon';
 import { useGA4 } from 'src/lib/ga';
 import Button from 'src/components/core/Button';
-import { LoadingStandBy } from 'src/components/Loading';
 
 type Props = {
   onNext: () => void;
@@ -12,9 +11,9 @@ type Props = {
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
-  const { user, registerByWalletMutation, loginByWalletMutation } = useAuthenticationContext();
+  const { user, registerByWalletMutation, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
-
+  
   const [installedWallet, setInstalledWallet] = useState<'PENDING' | boolean>('PENDING');
 
   useEffect(() => {
@@ -41,17 +40,14 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
 
   // try to login via wallet
   React.useEffect(() => {
+    if (userProfileQuery.isFetching) { return; }
     if (user?.user_id) {
       onNext();
-    } else if (
-      address &&
-      !user?.user_id &&
-      !loginByWalletMutation.isLoading &&
-      !loginByWalletMutation.isError
-    ) {
+    }
+    if (address && !user?.user_id && !loginByWalletMutation.isLoading && !loginByWalletMutation.isError && userProfileQuery.isFetched && !userProfileQuery.data) {
       loginByWalletMutation.mutate();
     }
-  }, [address, user, loginByWalletMutation, onNext]);
+  }, [address, user, loginByWalletMutation, onNext, userProfileQuery]);
 
   return (
     <div

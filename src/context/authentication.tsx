@@ -15,10 +15,11 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { AxiosError } from 'axios';
 import { Trans } from '@lingui/macro';
-import { useMutation, UseMutationResult } from 'react-query';
+import { useMutation, UseMutationResult, useQuery, UseQueryResult } from 'react-query';
 import { useGA4 } from 'src/lib/ga';
 import { useWalletContext } from './wallet';
 import { toast } from 'react-toastify';
+import { AllianceName } from 'src/types/sigil';
 
 type User = {
   user_id: string;
@@ -27,6 +28,9 @@ type User = {
   first_name?: string;
   user_name?: string;
   email?: string;
+  alliance?: AllianceName;
+  credits?: number;
+  date_registered?: Date;
 }
 
 const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
@@ -137,6 +141,7 @@ interface IAuthenticationContext {
   resetPasswordError: string;
   registerByWalletMutation: UseMutationResult<User, unknown, void, unknown>
   loginByWalletMutation: UseMutationResult<User, unknown, void, unknown>
+  userProfileQuery: UseQueryResult<User | null, unknown>
 }
 
 const AuthenticationContext = React.createContext<IAuthenticationContext>(
@@ -372,6 +377,31 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     postResetPassword()
   };
 
+  const userProfileQuery = useQuery('getUserProfile', () => apiClient.get('sigil/users/profile').then(res => {
+      const data = res.data?.data;
+      if (data) {
+        const user: User = {
+          user_id: data.user_id,
+          credits: data.credits,
+          alliance: data.alliance as AllianceName,
+          date_registered: new Date(data.date_registered),
+          wallet_id: data.wallet_id,
+        };
+        return user;
+      }
+    
+      return null;
+    })
+  );
+
+  const { data: userProfile } = userProfileQuery;
+
+  React.useEffect(() => {
+    if (userProfile) {
+      setUser(userProfile);
+    }
+  }, [userProfile]);
+
   return (
     <AuthenticationContext.Provider
       value={
@@ -396,6 +426,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           resetPasswordError,
           registerByWalletMutation,
           loginByWalletMutation,
+          userProfileQuery,
         }
       }>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />

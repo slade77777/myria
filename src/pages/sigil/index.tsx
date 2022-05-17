@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
-import { usePickSigilQuery } from 'src/components/nodes/sigil/ChooseAlliance/useChooseAllianceQuery';
+import { LoadingStandBy } from 'src/components/Loading';
 
 type Step = 0 | 1 | 2;
 
@@ -20,9 +20,9 @@ const Sigil: React.FC = () => {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState<Step>(0);
   const bgSoundRef = React.useRef<HTMLAudioElement | null>(null);
+  const timerBgSoundRef = React.useRef<NodeJS.Timeout | null>(null);
   const [_, setReferralCode] = useLocalStorage<any>(localStorageKeys.referralCode, undefined);
-  const { user } = useAuthenticationContext();
-  const { sigilProfile } = usePickSigilQuery();
+  const { user, userProfileQuery } = useAuthenticationContext();
 
   useEffect(() => {
     setReferralCode(router.query.code);
@@ -55,34 +55,36 @@ const Sigil: React.FC = () => {
   }, [currentStep, goToNextStep]);
 
   React.useEffect(() => {
-    if (!bgSoundRef.current) {
-      setTimeout(() => {
-        bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG);
-      }, 2000);
+    if ([0, 1].includes(currentStep)) {
+      if (!bgSoundRef.current) {
+        timerBgSoundRef.current = setTimeout(() => {
+          bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG, { loop: true });
+        }, 2000);
+      }
+    } else {
+      timerBgSoundRef.current && clearTimeout(timerBgSoundRef.current);
+      bgSoundRef.current?.pause();
     }
 
     return () => {
+      timerBgSoundRef.current && clearTimeout(timerBgSoundRef.current);
       bgSoundRef.current?.pause();
     };
-  }, []);
-
-  React.useEffect(() => {
-    if (![0, 1].includes(currentStep)) {
-      bgSoundRef.current?.pause();
-    }
   }, [currentStep]);
-
-  React.useEffect(() => {
-    if (user && sigilProfile.data?.alliance) {
-      setCurrentStep(2);
-    }
-  }, [sigilProfile, user]);
 
   React.useEffect(() => {
     if (!user) {
       setCurrentStep(0);
     }
+
+    if (user && user.alliance) {
+      setCurrentStep(2);
+    }
   }, [user]);
+
+  if (userProfileQuery.isFetching) {
+    return <div className='bg-dark h-screen w-full text-white flex justify-center items-center'><LoadingStandBy /></div>;
+  }
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden">
@@ -93,7 +95,7 @@ const Sigil: React.FC = () => {
       </div>
       <div className="hidden md:block">
         <div className="relative min-h-screen bg-dark">
-          <div className="min-h-[700px]">{content}</div>
+          <div>{content}</div>
           {currentStep !== 2 && (
             <div className="ml-auto mr-auto w-full max-w-[577px]">
               <SigilStepper
