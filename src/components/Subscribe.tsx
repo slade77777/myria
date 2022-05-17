@@ -1,12 +1,13 @@
 import Axios from 'axios';
 import * as yup from 'yup';
 import React, { useState } from 'react';
-import apiClient from 'src/client';
+import apiClient, { additionalApiClient } from 'src/client';
 import CircleCheck from './icons/CircleCheck';
 import Input from './Input';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { t, Trans } from '@lingui/macro';
+import axios from 'axios';
 
 interface IFormInputs {
   email: string;
@@ -38,8 +39,8 @@ const Subscribe: React.FC = () => {
       setError('');
       setIsSubmitSuccess(false);
 
-      await apiClient
-        .put('/subscription', data)
+      await additionalApiClient
+        .post(`/subscribe`, data)
         .then(() => setIsSubmitSuccess(true))
         .catch((error) => {
           setError(error.message);
@@ -62,10 +63,10 @@ const Subscribe: React.FC = () => {
         <Trans>Pre register to stay up to date</Trans>
       </h2>
       <div className="mt-6 w-full max-w-[585px] ">
-        <p className="text-base leading-6 max-w-[616px] text-light">
+        <p className="max-w-[616px] text-base leading-6 text-light">
           <Trans>
-            Sign up to our newsletter to receive development updates, token and NFT drops, and exclusive
-            promotions.
+            Sign up to our newsletter to receive development updates, token and NFT drops, and
+            exclusive promotions.
           </Trans>
         </p>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
