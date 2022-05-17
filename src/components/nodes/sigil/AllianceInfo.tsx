@@ -6,13 +6,11 @@ import { format } from 'date-fns';
 import { Loading } from 'src/components/Loading';
 import { useGA4 } from 'src/lib/ga';
 import http from 'src/client';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 const AllianceInfo: React.FC = () => {
   const { event } = useGA4();
-  const { data } = useQuery<UserInfo>('sigilUserInfo', async () => {
-    const res = await http.get<{ data: UserInfo }>('sigil/users/profile');
-    return res.data.data;
-  });
+  const { user: data } = useAuthenticationContext();
 
   React.useEffect(() => {
     if (data?.alliance) {
@@ -23,9 +21,9 @@ const AllianceInfo: React.FC = () => {
         myria_username: '_mock',
         wallet_address: '_mock',
         alliance_name: data.alliance,
-        sigil_alias: data.alias,
-        credits: data.credits.toString(),
-        date_registered: new Date(data.date_registered).toISOString()
+        sigil_alias: '_mock',
+        credits: data.credits?.toString() || '',
+        date_registered: data.date_registered && new Date(data.date_registered).toISOString() || ''
       });
     }
   }, [event, data]);
@@ -59,7 +57,7 @@ const AllianceInfo: React.FC = () => {
             <p className="mt-9 text-[20px] font-medium leading-[1.5]">{data.alliance}</p>
             <div className="mt-6 ">
               <p className="text-[14px] font-medium leading-[17px] text-light">Alias</p>
-              <p className="mt-1 text-[18px] font-bold leading-[1.22]">{data.alias}</p>
+              <p className="mt-1 text-[18px] font-bold leading-[1.22]"></p>
             </div>
             <div className="mt-6 ">
               <p className="text-[14px] font-medium leading-[17px] text-light">Points</p>
@@ -68,7 +66,7 @@ const AllianceInfo: React.FC = () => {
             <div className="mt-6 ">
               <p className="text-[14px] font-medium leading-[17px] text-light">Date Registered</p>
               <p className="mt-1 text-[18px] font-bold leading-[1.22]">
-                {format(new Date(data.date_registered), 'dd MMM yyyy')}
+                {data.date_registered && format(new Date(data.date_registered), 'dd MMM yyyy')}
               </p>
             </div>
           </div>
