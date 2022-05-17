@@ -62,7 +62,7 @@ const AllianceInfo: React.FC = () => {
               <p className="mt-1 text-[18px] font-bold leading-[1.22]">{data.alias}</p>
             </div>
             <div className="mt-6 ">
-              <p className="text-[14px] font-medium leading-[17px] text-light">Credits</p>
+              <p className="text-[14px] font-medium leading-[17px] text-light">Points</p>
               <p className="mt-1 text-[18px] font-bold leading-[1.22]">{data.credits}</p>
             </div>
             <div className="mt-6 ">

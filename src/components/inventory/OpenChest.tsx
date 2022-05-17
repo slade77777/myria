@@ -30,22 +30,22 @@ interface ChestItemProps {
 }
 const ChestItem = ({ type, rarity, image, name, credit }: ChestItemProps) => {
   const rarityColor = rarity && getRarityColor(rarity);
-  const itemImageUrl = type === 'credits' ? "/images/inventory/coin.png" : image
-  const itemName = type === 'credits' ? `${credit} Sigil Event Credits` : name
+  const itemImageUrl = type === 'credits' ? '/images/inventory/coin.png' : image;
+  const itemName = type === 'credits' ? `${credit} Sigil Event Points` : name;
   const bgColor = React.useMemo(() => {
-    switch(rarity) {
+    switch (rarity) {
       case 'rare':
-        return "linear-gradient(180deg, rgba(169, 203, 104, 0.2) 5.86%, rgba(169, 203, 104, 0) 51.87%)";
+        return 'linear-gradient(180deg, rgba(169, 203, 104, 0.2) 5.86%, rgba(169, 203, 104, 0) 51.87%)';
       case 'epic':
-        return "linear-gradient(180deg, rgba(168, 121, 180, 0.2) 5.86%, rgba(168, 121, 180, 0) 51.87%)";
+        return 'linear-gradient(180deg, rgba(168, 121, 180, 0.2) 5.86%, rgba(168, 121, 180, 0) 51.87%)';
       case 'ultra_rare':
-        return "linear-gradient(180deg, rgba(79, 166, 185, 0.2) 5.86%, rgba(79, 166, 185, 0) 51.87%)";
+        return 'linear-gradient(180deg, rgba(79, 166, 185, 0.2) 5.86%, rgba(79, 166, 185, 0) 51.87%)';
       case 'common':
-        return "linear-gradient(180deg, rgba(169, 166, 177, 0.2) 5.86%, rgba(169, 166, 177, 0) 51.87%)";
+        return 'linear-gradient(180deg, rgba(169, 166, 177, 0.2) 5.86%, rgba(169, 166, 177, 0) 51.87%)';
       default:
-        return "linear-gradient(180deg, rgba(169, 166, 177, 0.2) 5.86%, rgba(169, 166, 177, 0) 51.87%)";
+        return 'linear-gradient(180deg, rgba(169, 166, 177, 0.2) 5.86%, rgba(169, 166, 177, 0) 51.87%)';
     }
-  }, [rarity])
+  }, [rarity]);
 
   return (
     <div
@@ -108,10 +108,22 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
               </span>
               <span className="mb-[36px] text-[28px] font-bold text-[#A9CB68]">{chestName}</span>
 
-
-
-              {sigil && <ChestItem type={sigil.type} name={sigil.name} image={sigil.image_url} rarity={sigil.rarity} />}
-              {title && <ChestItem type={title.type} name={title.name} image={title.image_url} rarity={title.rarity} />}
+              {sigil && (
+                <ChestItem
+                  type={sigil.type}
+                  name={sigil.name}
+                  image={sigil.image_url}
+                  rarity={sigil.rarity}
+                />
+              )}
+              {title && (
+                <ChestItem
+                  type={title.type}
+                  name={title.name}
+                  image={title.image_url}
+                  rarity={title.rarity}
+                />
+              )}
               {credit && <ChestItem type={credit.type} credit={credit.amount} />}
 
               <button className="btn-md btn-primary mt-[48px] uppercase" onClick={onClose}>
