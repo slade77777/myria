@@ -27,8 +27,6 @@ export const WalletProvider: React.FC = ({ children }) => {
   const [providerApi, setProviderApi] = useState<ethers.providers.Web3Provider>();
   const { event } = useGA4();
 
-  const installedWallet = typeof window != 'undefined' && !!window.ethereum;
-
   const subscribeProvider = useCallback(async (provider) => {
     if (!provider.on) {
       return;
@@ -76,12 +74,6 @@ export const WalletProvider: React.FC = ({ children }) => {
     setAddress(address);
     event('Wallet Connected', { wallet_address: address, campaign: 'Sigil' });
   };
-
-  useEffect(() => {
-    if(installedWallet) {
-      onConnect();
-    }
-  }, []);
 
   const signMessage = (message: string) => {
     return providerApi?.getSigner().signMessage(message);
