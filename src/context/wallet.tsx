@@ -1,9 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import { convertUtf8ToHex } from '@walletconnect/utils';
 import React, { useCallback } from 'react';
-import WalletConnect from '@walletconnect/web3-provider';
 import Web3Modal from '../components/Web3Modal';
-// import Web3Modal from 'web3modal';
 
 import { ethers } from 'ethers';
 import { useGA4 } from 'src/lib/ga';
@@ -31,23 +28,6 @@ export const WalletProvider: React.FC = ({ children }) => {
   const { event } = useGA4();
 
   const installedWallet = typeof window != 'undefined' && !!window.ethereum;
-
-const getProviderOptions = () => {
-  const providerOptions = {
-    walletconnect: {
-      package: WalletConnect,
-      options: {
-        infuraId: '27e484dcd9e3efcfd25a83a78777cdf1', // TODO replace with real id
-        qrcodeModalOptions: {
-          mobileLinks: [],
-          desktopLinks: [],
-        },
-      },
-
-    }
-  };
-  return providerOptions;
-};
 
   const subscribeProvider = useCallback(async (provider) => {
     if (!provider.on) {
@@ -82,7 +62,6 @@ const getProviderOptions = () => {
     const web3Modal = new Web3Modal({
       network: 'mainnet',
       cacheProvider: true,
-      providerOptions: getProviderOptions()
     });
     const w3provider = await web3Modal.connect();
     await subscribeProvider(w3provider);
