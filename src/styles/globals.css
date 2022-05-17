@@ -51,8 +51,6 @@ body {
 
 button:disabled {
   cursor: not-allowed;
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: rgba(255, 255, 255, 0.4) !important;
 }
 
 @media only screen and (max-width: 768px) {
