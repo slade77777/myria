@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import LockIcon from 'src/components/icons/LockIcon';
+import PointIcon from 'src/components/icons/PointIcon';
 import { useGA4 } from 'src/lib/ga';
 import { Reward } from 'src/types/sigil';
 
@@ -108,7 +109,12 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
           <div className="mt-[10px] min-w-[195px]">{content}</div>
         </div>
         <div className=" min-w-[64px] rounded-lg bg-dark px-[14px] py-3 text-center">
-          <p className="text-[20px] font-bold leading-none">{credits_required}</p>
+          <div className="flex items-center space-x-1">
+            <i className="w-[9px]">
+              <PointIcon />
+            </i>
+            <p className="text-[20px] font-bold leading-none">{credits_required}</p>
+          </div>
           <p className="mt-1 text-[12px] font-medium leading-none text-light">Points</p>
         </div>
       </div>
