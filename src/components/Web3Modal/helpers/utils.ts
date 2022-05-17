@@ -13,7 +13,8 @@ import {
 
 export function checkInjectedProviders(): IInjectedProvidersMap {
   const result = {
-    injectedAvailable: !!window.ethereum || !!window.web3 
+    // injectedAvailable: !!window.ethereum || !!window.web3 ,
+    injectedAvailable: !!window.ethereum // only support metamask for now
   };
   if (result.injectedAvailable) {
     let fallbackProvider = true;
