@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useWalletContext } from 'src/context/wallet';
 import { useAuthenticationContext } from 'src/context/authentication';
 import MetaMaskIcon from 'src/components/icons/MetaMaskIcon';
@@ -15,7 +15,15 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   const { user, registerByWalletMutation, loginByWalletMutation } = useAuthenticationContext();
   const { event } = useGA4();
 
-  const installedWallet = typeof window != 'undefined' && !!window.ethereum;
+  const [installedWallet, setInstalledWallet] = useState<'PENDING' | boolean>('PENDING');
+
+  useEffect(() => {
+    if (!!window.ethereum) {
+      setInstalledWallet(true);
+    } else {
+      setInstalledWallet(false);
+    }
+  }, []);
 
   const handleRegisterByWallet = async () => {
     // try login first
@@ -80,7 +88,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
           </>
         ) : (
           <>
-            {installedWallet ? (
+            {installedWallet === true && (
               <button
                 onClick={() => {
                   onConnect();
@@ -89,7 +97,8 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
                 CONNECT WALLET
               </button>
-            ) : (
+            )}
+            {installedWallet === false && (
               <a
                 href="https://metamask.io/"
                 target="_blank"
