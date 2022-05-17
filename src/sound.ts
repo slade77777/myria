@@ -13,11 +13,12 @@ class SoundService {
     this.playing = {};
   }
 
-  playSound(sound: SUPPORT_SOUND) {
+  playSound(sound: SUPPORT_SOUND, { loop = false } = {}) {
     const audio = new Audio(sound);
     audio.id = Date.now().toString();
     audio.muted = this.mute;
     audio.play();
+    audio.loop = loop;
     audio.onended = () => {
       delete this.playing[audio.id];
     }

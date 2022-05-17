@@ -55,34 +55,30 @@ const Sigil: React.FC = () => {
   }, [currentStep, goToNextStep]);
 
   React.useEffect(() => {
-    if (!bgSoundRef.current) {
-      setTimeout(() => {
-        bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG);
-      }, 2000);
+    if ([0, 1].includes(currentStep)) {
+      if (!bgSoundRef.current) {
+        setTimeout(() => {
+          bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG, { loop: true });
+        }, 2000);
+      }
+    } else {
+      bgSoundRef.current?.pause();
     }
 
     return () => {
       bgSoundRef.current?.pause();
     };
-  }, []);
-
-  React.useEffect(() => {
-    if (![0, 1].includes(currentStep)) {
-      bgSoundRef.current?.pause();
-    }
   }, [currentStep]);
-
-  React.useEffect(() => {
-    if (user && sigilProfile.data?.alliance) {
-      setCurrentStep(2);
-    }
-  }, [sigilProfile, user]);
 
   React.useEffect(() => {
     if (!user) {
       setCurrentStep(0);
     }
-  }, [user]);
+
+    if (user && sigilProfile.data?.alliance) {
+      setCurrentStep(2);
+    }
+  }, [sigilProfile, user]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden">
