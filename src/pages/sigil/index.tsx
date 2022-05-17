@@ -93,7 +93,7 @@ const Sigil: React.FC = () => {
       </div>
       <div className="hidden md:block">
         <div className="relative min-h-screen bg-dark">
-          <div className="min-h-[700px]">{content}</div>
+          <div>{content}</div>
           {currentStep !== 2 && (
             <div className="ml-auto mr-auto w-full max-w-[577px]">
               <SigilStepper

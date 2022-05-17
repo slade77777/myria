@@ -41,9 +41,9 @@ const SIGILS: Sigil[] = [
     order: 1,
     img: '/images/nodes/insignia/alliance_sigilA.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
-    width: 584 / 2,
-    height: 748 / 2,
-    className: 'left-[1%] xl:left-[2%] w-[26%] xl:w-[24%]',
+    width: 584 / 4,
+    height: 748 / 4,
+    className: 'left-[17%] w-[22%]',
     name: 'THE FEDERATION',
     desc: 'With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts.',
     joiningDesc:
@@ -54,9 +54,9 @@ const SIGILS: Sigil[] = [
     order: 2,
     img: '/images/nodes/insignia/alliance_sigilB.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
-    width: 584 / 2,
-    height: 748 / 2,
-    className: 'w-[26%] xl:w-[24%]',
+    width: 584 / 4,
+    height: 748 / 4,
+    className: 'w-[22%]',
     name: 'VECTOR PRIME',
     desc: 'Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion.',
     joiningDesc:
@@ -67,9 +67,9 @@ const SIGILS: Sigil[] = [
     order: 3,
     img: '/images/nodes/insignia/alliance_sigilC.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
-    width: 584 / 2,
-    height: 748 / 2,
-    className: 'right-[2%] xl:right-[3%] w-[26%] xl:w-[24%]',
+    width: 584 / 4,
+    height: 748 / 4,
+    className: 'right-[17%] w-[22%]',
     name: 'EQUINOX',
     desc: 'Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers.',
     joiningDesc:
@@ -122,7 +122,7 @@ const Sigil = ({
         }
         setIsFirstTimeActive(true);
       }}
-      className={`absolute bottom-[20%] flex flex-col items-center justify-center ${
+      className={`absolute bottom-[30%] flex flex-col items-center justify-center ${
         className || ''
       }`}>
       <div
@@ -280,7 +280,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
         sigilDesc={activeSigilData?.joiningDesc}
         sigilId={activeSigilData?.id}
       />
-      <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[920px] min-w-[1300px] items-center justify-center overflow-hidden">
+      <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[600px] min-w-[1300px] items-center justify-center overflow-hidden">
         <div className="absolute w-full max-w-[1300px]">
           <div className="relative w-full object-cover">
             <Image
@@ -288,7 +288,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
               alt=""
               layout="responsive"
               width={3840}
-              height={2880}
+              height={2164}
             />
             <div className="absolute top-0 flex h-full w-full items-center justify-center">
               {SIGILS.map((sigil) => (
