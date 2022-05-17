@@ -183,7 +183,6 @@ export class Core {
     Object.keys(state).forEach((key) => {
       this[key as keyof typeof this] = state[key];
     });
-    console.log(window);
     await window.updateWeb3Modal(state);
   };
 
