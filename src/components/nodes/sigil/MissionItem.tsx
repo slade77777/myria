@@ -92,7 +92,7 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
               <Tooltip>
                 <Tooltip.Trigger>
                   {isRepeatable ? (
-                    <span>Unlimited x {credits} Credits </span>
+                    <span>Unlimited x {credits} Points </span>
                   ) : (
                     <span>{description}</span>
                   )}

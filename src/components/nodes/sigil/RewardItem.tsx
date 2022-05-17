@@ -109,7 +109,7 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
         </div>
         <div className=" min-w-[64px] rounded-lg bg-dark px-[14px] py-3 text-center">
           <p className="text-[20px] font-bold leading-none">{credits_required}</p>
-          <p className="mt-1 text-[12px] font-medium leading-none text-light">Credits</p>
+          <p className="mt-1 text-[12px] font-medium leading-none text-light">Points</p>
         </div>
       </div>
     </div>
