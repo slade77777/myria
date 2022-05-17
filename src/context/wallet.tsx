@@ -35,8 +35,13 @@ const getProviderOptions = () => {
     walletconnect: {
       package: WalletConnect,
       options: {
-        infuraId: '27e484dcd9e3efcfd25a83a78777cdf1' // TODO replace with real id
-      }
+        infuraId: '27e484dcd9e3efcfd25a83a78777cdf1', // TODO replace with real id
+        qrcodeModalOptions: {
+          mobileLinks: [],
+          desktopLinks: [],
+        },
+      },
+
     }
   };
   return providerOptions;
