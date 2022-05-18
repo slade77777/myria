@@ -4,6 +4,8 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import MetaMaskIcon from 'src/components/icons/MetaMaskIcon';
 import { useGA4 } from 'src/lib/ga';
 import Button from 'src/components/core/Button';
+import * as env from 'detect-browser';
+import Link from 'next/link';
 
 type Props = {
   onNext: () => void;
@@ -11,9 +13,13 @@ type Props = {
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
-  const { user, registerByWalletMutation, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
+  const { user, registerByWalletMutation, loginByWalletMutation, userProfileQuery } =
+    useAuthenticationContext();
   const { event } = useGA4();
-  
+  const [isSupportedBrowser, setIsSupportedBrowser] = React.useState(true);
+
+  // const isSupportBrowsers = browser && (browser.name === "chrome" || browser.name === "edge")
+
   const [installedWallet, setInstalledWallet] = useState<'PENDING' | boolean>('PENDING');
 
   useEffect(() => {
@@ -40,14 +46,65 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
 
   // try to login via wallet
   React.useEffect(() => {
-    if (userProfileQuery.isFetching) { return; }
+    if (userProfileQuery.isFetching) {
+      return;
+    }
     if (user?.user_id) {
       onNext();
     }
-    if (address && !user?.user_id && !loginByWalletMutation.isLoading && !loginByWalletMutation.isError && userProfileQuery.isFetched && !userProfileQuery.data) {
+    if (
+      address &&
+      !user?.user_id &&
+      !loginByWalletMutation.isLoading &&
+      !loginByWalletMutation.isError &&
+      userProfileQuery.isFetched &&
+      !userProfileQuery.data
+    ) {
       loginByWalletMutation.mutate();
     }
   }, [address, user, loginByWalletMutation, onNext, userProfileQuery]);
+
+  React.useEffect(() => {
+    const { navigator } = window;
+    const browser = env.detect();
+    async function checkBrowser() {
+      // @ts-ignore
+      const isBraveBrowser = (navigator.brave && (await navigator.brave.isBrave())) || false;
+      setIsSupportedBrowser(
+        Boolean(browser) &&
+          (browser?.name === 'chrome' ||
+            browser?.name === 'edge' ||
+            browser?.name === 'firefox' ||
+            isBraveBrowser)
+      );
+    }
+
+    checkBrowser();
+  }, []);
+
+  const content = (() => {
+    if (!isSupportedBrowser) {
+      return {
+        title: 'Unsupported Browser',
+        message:
+          'Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge'
+      };
+    }
+
+    if (address) {
+      return {
+        title: 'Welcome to the Myriaverse',
+        message: (
+          <span>
+            Which side of the battlelines will you stand on? <br /> Choose your Alliance and claim
+            your free Sigil NFT.
+          </span>
+        )
+      };
+    }
+
+    return { title: 'Connect to your wallet to enter the Myriaverse' };
+  })();
 
   return (
     <div
@@ -55,22 +112,17 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         "relative h-screen min-h-[inherit] bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat"
       }>
       <div className="mx-auto max-w-[408px] pt-[213px] text-center">
-        <h1 className="text-[28px] font-bold leading-[1.2]">
-          {address ? 'Welcome to the Myriaverse' : 'Connect to your wallet to enter the Myriaverse'}
-        </h1>
-        {address && (
-          <p className="mt-8 text-[16px] leading-[1.5] text-light">
-            Which side of the battlelines will you stand on? <br /> Choose your Alliance and claim
-            your free Sigil NFT.
-          </p>
+        <h1 className="text-[28px] font-bold leading-[1.2]">{content.title}</h1>
+        {(address || !isSupportedBrowser) && (
+          <p className="mt-8 text-[16px] leading-[1.5] text-light">{content.message}</p>
         )}
-        {!address && !installedWallet && (
+        {!address && !installedWallet && isSupportedBrowser && (
           <p className="mt-8 text-[16px] leading-[1.5] text-light">
             Don&apos;t have a wallet yet? <br />
             Install Metamask below.
           </p>
         )}
-        {address ? (
+        {address && isSupportedBrowser ? (
           <>
             <Button
               loading={registerByWalletMutation.isLoading || loginByWalletMutation.isLoading}
@@ -84,7 +136,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
           </>
         ) : (
           <>
-            {installedWallet === true && (
+            {installedWallet === true && isSupportedBrowser && (
               <button
                 onClick={() => {
                   onConnect();
@@ -94,7 +146,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 CONNECT WALLET
               </button>
             )}
-            {installedWallet === false && (
+            {installedWallet === false && isSupportedBrowser && (
               <a
                 href="https://metamask.io/"
                 target="_blank"
@@ -118,6 +170,13 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
               Sign in
             </button> */}
           </>
+        )}
+        {!isSupportedBrowser && (
+          <Link href="/">
+            <a className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
+              Go back
+            </a>
+          </Link>
         )}
       </div>
     </div>
