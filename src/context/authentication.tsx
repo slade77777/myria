@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Modal from 'src/components/Modal';
 import SignIn from 'src/components/SignIn';
 import Register from 'src/components/Register';
@@ -186,20 +186,22 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     },
     {
       onSuccess: (res) => {
-        const user = res.data.data
+        const user = res.data.data;
         setOpenSignIn(false);
-        setUser(user)
+        setUser(user);
       },
       onError: (err) => {
-        console.log(err)
-        setLoginError("Username or password is incorrect")
+        console.log(err);
+        setLoginError("Username or password is incorrect");
       },
     }
   );
 
   const logoutMutation = useMutation(
     async () => {
-      await apiClient.post(`/accounts/logout`);
+      try {
+        await apiClient.post(`/accounts/logout`);
+      } catch (err) {}
       setUser(undefined);
     },
   );
@@ -219,14 +221,15 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     },
     {
       onSuccess: (res) => {
-        setRegisterError(undefined)
-        setOpenRegisterSuccess(true)
+        setRegisterError(undefined);
+        setOpenRegisterSuccess(true);
         setOpenRegister(false);
         // TODO mock event
         event('Account Sign-up Completed', { campaign: 'Sigil', myria_id: undefined, myria_username: '_mock', user_email: '_mock', wallet_address: '_mock' })
       },
       onError: (err: AxiosError) => {
-        setRegisterError(mapError(err))
+        setRegisterError(mapError(err));
+        toast('There is an error occured', { type: 'error' });
       },
     }
   );
@@ -238,7 +241,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         setOpenForgotPassword(false);
       },
       onError: (err) => {
-        setForgotPasswordError("Email does not exist")
+        setForgotPasswordError("Email does not exist");
       },
     }
   );
@@ -307,10 +310,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     async () => { return await apiClient.post(`/accounts/resetPassword`, resetPasswordData); },
     {
       onSuccess: (res) => {
-        setOpenResetSuccess(true)
+        setOpenResetSuccess(true);
       },
       onError: (err) => {
-        setResetPasswordError("Can't reset your password")
+        setResetPasswordError("Can't reset your password");
       },
     }
   );
@@ -320,11 +323,11 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     setOpenRegister(false);
     setOpenVerifyModal(false);
     setOpenForgotPassword(false);
-    setOpenResetPassword(false)
+    setOpenResetPassword(false);
   };
 
   const logout = () => {
-    logoutMutation.mutate()
+    logoutMutation.mutate();
   };
 
   const register = () => {
@@ -335,14 +338,14 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   };
 
   const forgotPassword = () => {
-    setOpenForgotPassword(true)
+    setOpenForgotPassword(true);
     setOpenSignIn(false);
     setOpenRegister(false);
   };
 
   const resetPassword = () => {
-    setOpenResetSuccess(false)
-    setOpenResetPassword(true)
+    setOpenResetSuccess(false);
+    setOpenResetPassword(true);
   }
 
   const openVerify = (data: IFormSignInInput) => {
@@ -357,14 +360,14 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 
   const onVerifySuccess = () => {
     setOpenVerifyModal(false);
-    setOpenSignIn(true)
-    postLogin()
+    setOpenSignIn(true);
+    postLogin();
   }
 
   const doRegister = (data: IFormRegisterInput) => {
-    setOpenRegisterSuccess(false)
-    setRegisterData(data)
-    postRegister()
+    setOpenRegisterSuccess(false);
+    setRegisterData(data);
+    postRegister();
   };
 
   const doForgotPassword = (data: IFormForgotPasswordInput) => {
@@ -373,8 +376,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   };
 
   const doResetPassword = (data: IFormResetPasswordInput) => {
-    setResetPasswordData(data)
-    postResetPassword()
+    setResetPasswordData(data);
+    postResetPassword();
   };
 
   const userProfileQuery = useQuery('getUserProfile', () => apiClient.get('sigil/users/profile').then(res => {
