@@ -47,6 +47,9 @@ export const WalletProvider: React.FC = ({ children }) => {
   };
 
   const disconnect = useCallback(async () => {
+    if (!web3Modal) {
+      return;
+    }
     if (w3Provider?.close) {
       await w3Provider.close();
     }
@@ -57,7 +60,7 @@ export const WalletProvider: React.FC = ({ children }) => {
   }, [w3Provider, event, address]);
 
   const onConnect = async () => {
-    const web3Modal = new Web3Modal({
+    web3Modal = new Web3Modal({
       network: 'mainnet',
       cacheProvider: true,
     });

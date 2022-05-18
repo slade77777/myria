@@ -82,7 +82,7 @@ const Sigil: React.FC = () => {
     }
   }, [user]);
 
-  if (userProfileQuery.isFetching) {
+  if (userProfileQuery.isFetching && currentStep === 0) {
     return <div className='bg-dark h-screen w-full text-white flex justify-center items-center'><LoadingStandBy /></div>;
   }
 
