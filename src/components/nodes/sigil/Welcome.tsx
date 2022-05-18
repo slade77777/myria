@@ -16,10 +16,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   const { user, registerByWalletMutation, loginByWalletMutation, userProfileQuery } =
     useAuthenticationContext();
   const { event } = useGA4();
-  const [isSupportedBrowser, setIsSupportedBrowser] = React.useState(true);
-
-  // const isSupportBrowsers = browser && (browser.name === "chrome" || browser.name === "edge")
-
+  const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
   const [installedWallet, setInstalledWallet] = useState<'PENDING' | boolean>('PENDING');
 
   useEffect(() => {
