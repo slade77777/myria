@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useGA4 } from 'src/lib/ga';
 import { SUPPORT_SOUND, soundService } from 'src/sound';
 import { AllianceName } from 'src/types/sigil';
+import { getAllianceInfo } from 'src/utils';
 import AllianceModal from './AllianceModal';
 
 interface SigilProps {
@@ -38,14 +39,12 @@ type Sigil = {
 
 const SIGILS: Sigil[] = [
   {
-    id: 'federation',
+    ...getAllianceInfo("federation"),
     order: 1,
-    img: '/images/nodes/insignia/alliance_sigilA.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
     width: 584 / 4,
     height: 748 / 4,
     className: 'left-[17%] w-[22%]',
-    name: 'THE FEDERATION',
     desc: (
       <Trans>
         With ships equipped with technology both ancient and cutting edge, the Federation Alliance
@@ -61,7 +60,7 @@ const SIGILS: Sigil[] = [
     )
   },
   {
-    id: 'vector_prime',
+    ...getAllianceInfo("vector_prime"),
     order: 2,
     img: '/images/nodes/insignia/alliance_sigilB.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
@@ -84,7 +83,7 @@ const SIGILS: Sigil[] = [
     )
   },
   {
-    id: 'equinox',
+    ...getAllianceInfo("equinox"),
     order: 3,
     img: '/images/nodes/insignia/alliance_sigilC.png',
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',

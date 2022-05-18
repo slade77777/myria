@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro";
-import { RarityType } from './types/sigil';
+import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
 export const formatNumber = (num: number) => {
   return new Intl.NumberFormat('en').format(num);
@@ -46,3 +46,27 @@ export const getRarityColor = (rarity: RarityType) => {
       return '#A9A6B1';
   }
 };
+
+
+export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
+  switch (allianceId) {
+    case "equinox":
+      return {
+        id: allianceId,
+        name: "EQUINOX",
+        img: "/images/nodes/insignia/alliance_sigilC.png"
+      };
+    case "federation":
+      return {
+        id: allianceId,
+        name: "THE FEDERATION",
+        img: "/images/nodes/insignia/alliance_sigilA.png"
+      };
+    case "vector_prime":
+      return {
+        id: allianceId,
+        name: "VECTOR PRIME",
+        img: "/images/nodes/insignia/alliance_sigilB.png"
+      };
+  }
+}
