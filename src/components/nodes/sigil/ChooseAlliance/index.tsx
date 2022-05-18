@@ -284,7 +284,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
         <div className="absolute w-full max-w-[1300px]">
           <div className="relative w-full object-cover">
             <Image
-              src="/images/nodes/insignia/bg.png"
+              src="/images/nodes/insignia/background.png"
               alt=""
               layout="responsive"
               width={3840}
