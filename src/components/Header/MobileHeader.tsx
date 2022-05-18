@@ -10,6 +10,7 @@ import { socialLinks } from '../../configs';
 import Collapse from '../Collapse';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
+import LanguageSwitcher from '../LanguageSwitcher';
 import Socials from '../Social';
 import { linkSources } from './linkSources';
 import { Action, NavItem } from './type';
@@ -66,8 +67,12 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
       case 'login':
         return (
           <>
-            <button className="btn-lg btn-primary">Sign up</button>
-            <button className="btn-lg btn-secondary">Log in</button>
+            <button className="btn-lg btn-primary">
+              <Trans>Sign up</Trans>
+            </button>
+            <button className="btn-lg btn-secondary">
+              <Trans>Log in</Trans>
+            </button>
           </>
         );
       case 'mint':
@@ -158,7 +163,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                           boxShadow: '0 0 0 0.5px #9AC9E3'
                         }}
                         className="bg-opacity-4 absolute -top-[9px] -right-6 rounded-sm bg-brand-light-blue/40 p-[3px] text-[6px] font-extrabold">
-                        Soon!
+                        <Trans>Soon!</Trans>
                       </div>
                     </div>
                   </li>
@@ -274,9 +279,9 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
               <Logo />
             </a>
           </Link>
-          {/* <div className="ml-auto mr-6 flex">
+          <div className="ml-auto mr-6 flex">
             <LanguageSwitcher isMobile />
-          </div> */}
+          </div>
           <button onClick={toggleMenu} className="">
             <Hamburger size={24} direction="right" toggled={openMenu} />
           </button>

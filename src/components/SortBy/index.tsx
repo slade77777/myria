@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 
@@ -7,8 +8,10 @@ import ChevronDownIcon from '../icons/ChevronDownIcon';
 
 function SortBy() {
   return (
-    <div className='h-[32px] flex items-center justify-between px-4 bg-brand-dark-blue rounded-[4px] text-white cursor-pointer'>
-      <span className="uppercase text-[14px] font-bold">Sort By</span>
+    <div className="flex h-[32px] cursor-pointer items-center justify-between rounded-[4px] bg-brand-dark-blue px-4 text-white">
+      <span className="text-[14px] font-bold uppercase">
+        <Trans>Sort By</Trans>
+      </span>
       <i className="w-[24px]">
         <ChevronDownIcon />
       </i>

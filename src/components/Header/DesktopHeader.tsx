@@ -13,6 +13,7 @@ import { links, navHeight } from './Header';
 import { Action, NavItem } from './type';
 import { useRouter } from 'next/router';
 import ProfileComponent from './ProfileComponent';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 type Props = {
   action: Action;
@@ -42,7 +43,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                     boxShadow: '0 0 0 0.5px #9AC9E3'
                   }}
                   className="bg-opacity-4 absolute -top-[9px] -right-7 rounded-sm bg-brand-light-blue/40 p-[3px] pb-[1px] text-[6px] font-extrabold">
-                  Soon!
+                  <Trans>Soon!</Trans>
                 </div>
               </div>
             </li>
@@ -136,7 +137,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
             <button
               className="btn-sm btn-secondary min-w-[153px] rounded-lg px-4 py-3"
               onClick={onConnect}>
-              Connect wallet
+              <Trans>Connect wallet</Trans>
             </button>
           </div>
         );
@@ -191,9 +192,9 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         </div>
         <div className="flex flex-shrink-0 items-center justify-end space-x-9">
           <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
-          {/* <div>
+          <div>
             <LanguageSwitcher />
-          </div> */}
+          </div>
           {actionElements}
         </div>
       </nav>

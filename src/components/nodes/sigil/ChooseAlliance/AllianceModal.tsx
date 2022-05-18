@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import Button from 'src/components/core/Button';
 import CloseIcon from 'src/components/icons/CloseIcon';
@@ -11,7 +12,7 @@ type Props = {
   onClose: () => void;
   onJoinSuccess: () => void;
   sigilName?: string;
-  sigilDesc?: string;
+  sigilDesc?: JSX.Element | string;
   sigilId?: string;
 };
 
@@ -57,7 +58,7 @@ const AllianceModal: React.FC<Props> = ({
             <div className="flex flex-col items-start justify-between py-12 px-12">
               <div className="flex flex-1 flex-col items-start justify-center">
                 <p className="mb-1 text-[14px] font-medium leading-[1.5] text-brand-light-blue">
-                  You are joining...
+                  <Trans>You are joining...</Trans>
                 </p>
                 <p className="mb-6 text-[32px] font-bold leading-[1.2]">{sigilName || ''}</p>
                 <p className="mb-6 text-[14px] font-normal leading-[1.5] text-white">{sigilDesc}</p>
@@ -69,7 +70,7 @@ const AllianceModal: React.FC<Props> = ({
                       event('Alliance Joined', { campaign: 'Sigil', alliance_name: sigilName });
                   }}
                   loading={isLoading}>
-                  JOIN the {sigilName}
+                  <Trans>JOIN the {sigilName}</Trans>
                 </Button>
               </div>
 
@@ -78,10 +79,14 @@ const AllianceModal: React.FC<Props> = ({
                   <span className="w-4">
                     <InfoIcon />
                   </span>
-                  <p className="font-bold">Choose Wisely!</p>
+                  <p className="font-bold">
+                    <Trans>Choose Wisely!</Trans>
+                  </p>
                 </div>
                 <p className="mx-auto font-normal">
-                  This decision is permanent. Once you choose your alliance you cannot change it!
+                  <Trans>
+                    This decision is permanent. Once you choose your alliance you cannot change it!
+                  </Trans>
                 </p>
               </div>
             </div>

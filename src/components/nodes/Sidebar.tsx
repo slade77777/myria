@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -7,23 +8,23 @@ import ChevronDownIcon from '../icons/ChevronDownIcon';
 
 const menus = [
   {
-    label: 'Dashboard',
+    label: <Trans>Dashboard</Trans>,
     path: '/nodes/dashboard'
   },
   {
-    label: 'Reward Vault',
+    label: <Trans>Reward Vault</Trans>,
     path: '/nodes/rewards'
   },
   {
-    label: 'Mint Assets',
+    label: <Trans>Mint Assets</Trans>,
     path: '/nodes/mint-assets'
   },
   {
-    label: 'Transaction List',
+    label: <Trans>Transaction List</Trans>,
     path: '/nodes/transactions'
   },
   {
-    label: 'More coming soon!',
+    label: <Trans>More coming soon!</Trans>,
     path: '/nodes/dashboard'
   }
 ];

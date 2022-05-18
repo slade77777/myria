@@ -15,7 +15,7 @@ const schema = yup
     email: yup
       .string()
       .email(t`Invalid email!`)
-      .required(t`Email is required!`),
+      .required(t`Email is required!`)
   })
   .required();
 
@@ -23,7 +23,9 @@ const ForgotPassword: React.FC = () => {
   const { login, doForgotPassword, forgotPasswordError } = useAuthenticationContext();
   const [error, setError] = useState('');
 
-  useEffect(() => { setError(forgotPasswordError) }, [forgotPasswordError])
+  useEffect(() => {
+    setError(forgotPasswordError);
+  }, [forgotPasswordError]);
 
   const {
     register: registerForm,
@@ -36,7 +38,9 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <div className="px-8">
-      <p className="body mt-7 text-white">Enter your email address to reset your password</p>
+      <p className="body mt-7 text-white">
+        <Trans>Enter your email address to reset your password</Trans>
+      </p>
       <form onSubmit={handleSubmit(doForgotPassword)} noValidate>
         <div className="mb-2">
           <Input

@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React, { useMemo } from 'react';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import LockIcon from 'src/components/icons/LockIcon';
@@ -30,8 +31,8 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
   const { event } = useGA4();
   const { title, credits_required, status, image_url, progress_percentage } = item;
 
-  const percentage = progress_percentage ?? 0;
   const content = useMemo(() => {
+    const percentage = progress_percentage ?? 0;
     switch (status) {
       case 'locked':
         return (
@@ -68,14 +69,16 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
               });
             }}
             className="rounded-[4px] bg-[#1F2334] px-4 py-1 text-[12px] font-bold leading-[1.25] text-brand-gold">
-            CLAIM NOW
+            <Trans>CLAIM NOW</Trans>
           </button>
         );
       default:
         return (
           <div className="flex items-center space-x-1 pt-2 text-green">
             <CheckIcon className="w-4 fill-current" />
-            <span className="text-[14px] font-bold leading-[1.25]">Claimed</span>
+            <span className="text-[14px] font-bold leading-[1.25]">
+              <Trans>Claimed</Trans>
+            </span>
           </div>
         );
     }
@@ -115,7 +118,9 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
             </i>
             <p className="text-[20px] font-bold leading-none">{credits_required}</p>
           </div>
-          <p className="mt-1 text-[12px] font-medium leading-none text-light">Points</p>
+          <p className="mt-1 text-[12px] font-medium leading-none text-light">
+            <Trans>Points</Trans>
+          </p>
         </div>
       </div>
     </div>

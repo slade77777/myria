@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import Input from 'src/components/Input';
@@ -145,13 +146,13 @@ const RewardList: React.FC = () => {
             <button
               onClick={() => setOpenClaimModal(true)}
               className="btn-sm btn-white flex items-center px-4 md:btn-lg">
-              Collect ALL
+              <Trans>Collect ALL</Trans>
             </button>
             <button
               onClick={() => setOpenWalletModal(true)}
               disabled={checkedItems.length === 0}
               className="btn-sm btn-primary flex items-center px-4 md:btn-lg">
-              Collect REWARDS
+              <Trans>Collect REWARDS</Trans>
             </button>
           </div>
         </div>

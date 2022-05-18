@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React, { useRef, useState } from 'react';
 import useCareerCategories from 'src/hooks/useCareerCategories';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
-import { Trans } from '@lingui/macro';
+import { t, Trans } from '@lingui/macro';
 import ArrowRightIcon from '../icons/ArrowRightIcon';
 import useClickOutside from 'src/hooks/useClickOutside';
 import Link from 'next/link';
@@ -15,7 +15,9 @@ const Careers: React.FC = () => {
   const [currentFilterName, setCurrentFilterName] = useState<string | null>(null);
 
   const categories = allCategories.filter((item) => item.jobs && item.jobs.length > 0);
-  const departments = categories.filter((item) => !selectedCategory || item.id === selectedCategory);
+  const departments = categories.filter(
+    (item) => !selectedCategory || item.id === selectedCategory
+  );
 
   const onClickFilter = (filter: typeof categories[number] | null) => {
     setOpenFilter(false);
@@ -24,9 +26,9 @@ const Careers: React.FC = () => {
       setSelectedCategory(null);
       return;
     }
-    setSelectedCategory(filter.id)
+    setSelectedCategory(filter.id);
     setCurrentFilterName(filter.name);
-  }
+  };
 
   useClickOutside(filterRef, () => setOpenFilter(false));
 
@@ -37,7 +39,7 @@ const Careers: React.FC = () => {
           <div
             className="mb-12 inline-flex w-80 cursor-pointer items-center justify-between rounded-lg bg-brand-deep-blue px-8 py-2 md:mb-[78px]"
             onClick={() => setOpenFilter(!openFilter)}>
-            <p>{selectedCategory ? currentFilterName : 'Filter by Department'}</p>
+            <p>{selectedCategory ? currentFilterName : t`Filter by Department`}</p>
             <div className="h-6 w-6">
               <ChevronDownIcon />
             </div>
@@ -54,7 +56,7 @@ const Careers: React.FC = () => {
                 'text-brand-gold': !selectedCategory
               })}
               onClick={() => onClickFilter(null)}>
-              All
+              <Trans>All</Trans>
             </p>
             {categories.map((category) => (
               <p

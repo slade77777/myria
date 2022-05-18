@@ -9,13 +9,14 @@ import MuteIcon from 'src/components/icons/MuteIcon';
 
 const Footer: React.FC = () => {
   return (
-    <footer
-      className="fixed bottom-0 z-10 flex h-[80px] w-full items-center justify-end p-4 px-6">
-      <div className='flex items-center justify-between cursor-pointer'>
-        <div className='mr-3'>
-        <MuteIcon />
+    <footer className="fixed bottom-0 z-10 flex h-[80px] w-full items-center justify-end p-4 px-6">
+      <div className="flex cursor-pointer items-center justify-between">
+        <div className="mr-3">
+          <MuteIcon />
         </div>
-        <p className="body-sm font-medium	">Mute sound</p>
+        <p className="body-sm font-medium	">
+          <Trans>Mute sound</Trans>
+        </p>
       </div>
     </footer>
   );

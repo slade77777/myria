@@ -7,6 +7,7 @@ import styles from './styles.module.css';
 import { useWalletContext } from 'src/context/wallet';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Input from '../Input';
+import { Trans } from '@lingui/macro';
 
 const licenses = [
   {
@@ -54,7 +55,9 @@ const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
   return (
     <div className="rounded-t-lg bg-brand-deep-blue p-6 md:rounded-lg md:p-8">
       <div className="flex items-center justify-between md:block">
-        <p className="caption hidden font-bold text-light md:body-sm md:block">Price</p>
+        <p className="caption hidden font-bold text-light md:body-sm md:block">
+          <Trans>Price</Trans>
+        </p>
         <div className="flex items-baseline justify-between md:mt-[7px] md:items-center">
           <div className="flex items-center">
             <ETH /> <p className="heading-md ml-[9px] ">1.5 </p>
@@ -63,7 +66,9 @@ const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
         </div>
 
         <div className="ml-[100px] md:ml-0 md:mt-6">
-          <p className="body-sm mb-2 hidden md:block">Quantity</p>
+          <p className="body-sm mb-2 hidden md:block">
+            <Trans>Quantity</Trans>
+          </p>
           <NumberInput />
         </div>
       </div>
@@ -81,7 +86,7 @@ const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
         <button
           className="btn-lg w-full bg-brand-gold px-4 uppercase text-black"
           onClick={onClickPurchase}>
-          PURCHASE NOW
+          <Trans>PURCHASE NOW</Trans>
         </button>
       </div>
     </div>

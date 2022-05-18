@@ -7,7 +7,9 @@ const TotalRewards: React.FC = () => {
   const totalRewards = 999999999.999;
   return (
     <div className="grid grid-cols-[auto_auto] grid-rows-[auto_auto] items-center justify-between gap-x-2 gap-y-6 rounded-xl bg-brand-deep-blue p-6 shadow-dark-panel md:gap-y-4 md:p-8">
-      <p className="text-[20px] font-medium leading-[1.25]">Token Rewards</p>
+      <p className="text-[20px] font-medium leading-[1.25]">
+        <Trans>Token Rewards</Trans>
+      </p>
       <div className="flex flex-col justify-center md:row-span-2">
         <button className="btn-sm btn-primary md:btn-lg" disabled={totalRewards <= 0}>
           <Trans>Claim All</Trans>

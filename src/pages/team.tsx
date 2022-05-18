@@ -209,7 +209,7 @@ const Team: React.FC = () => {
         </div>
         <section className={clsx(paddingX, 'hidden pt-[255px] pb-[208px] md:block')}>
           <h1 className="mx-auto max-w-[729px] text-center text-[40px] font-bold leading-[1.25]">
-            Contributing to the future of a decentralized internet
+            <Trans>Contributing to the future of a decentralized internet</Trans>
           </h1>
         </section>
         <section className={clsx(paddingX, 'pt-[150px] md:pt-0')}>

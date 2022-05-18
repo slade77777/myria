@@ -7,7 +7,7 @@ import License from '../../components/Purchase/License';
 import ModalPurchase from 'src/components/Purchase/Modals';
 import Subscribe from 'src/components/Subscribe';
 import Stepper, { Step } from 'src/components/Stepper';
-import { t } from '@lingui/macro';
+import { t, Trans } from '@lingui/macro';
 
 const trophy = (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,24 +67,32 @@ const PurchaseComplete: React.FC = () => {
             <Stepper steps={steps} currentStep={currentStep} contentClassName="max-w-[149px]" />
           </div>
           <h1 className="heading-md mt-[64px] text-center font-extrabold text-brand-mid-blue md:heading-massive">
-            Congratulations!
+            <Trans>Congratulations!</Trans>
             <br />
-            <span className="text-brand-white">Your purchase is complete.</span>
+            <span className="text-brand-white">
+              <Trans>Your purchase is complete.</Trans>
+            </span>
           </h1>
 
-          <div className="heading-sm mt-8 mb-12 text-center">Get started with your Myria node.</div>
-          <button className="btn-lg btn-primary">Create an account</button>
+          <div className="heading-sm mt-8 mb-12 text-center">
+            <Trans>Get started with your Myria node.</Trans>
+          </div>
+          <button className="btn-lg btn-primary">
+            <Trans>Create an account</Trans>
+          </button>
           <div className="mt-[148px] grid grid-cols-1 gap-20 md:grid-cols-2 md:gap-10">
             <div className="relative rounded-xl bg-brand-deep-blue px-[43px]">
               <div className="absolute -top-12 left-0 right-0 m-auto flex h-[104px] w-[104px] items-center justify-center rounded-full bg-[#0E2A3C]">
                 {dashboard}
               </div>
-              <h1 className="heading-sm mt-[84px]">Your Myria Dashboard</h1>
+              <h1 className="heading-sm mt-[84px]">
+                <Trans>Your Myria Dashboard</Trans>
+              </h1>
               <p className="body-sm mt-6 text-center text-light">
-                Configure your node and view your rewards in the dashboard
+                <Trans>Configure your node and view your rewards in the dashboard</Trans>
               </p>
               <a href="#" className="btn-lg btn-primary mt-10 mb-8">
-                Go to my dashboard
+                <Trans>Go to my dashboard</Trans>
               </a>
             </div>
 
@@ -92,12 +100,14 @@ const PurchaseComplete: React.FC = () => {
               <div className="absolute -top-12 left-0 right-0 m-auto flex h-[104px] w-[104px] items-center justify-center rounded-full bg-[#0E2A3C]">
                 {trophy}
               </div>
-              <h1 className="heading-sm mt-[84px]">Purchase more nodes</h1>
+              <h1 className="heading-sm mt-[84px]">
+                <Trans>Purchase more nodes</Trans>
+              </h1>
               <p className="body-sm mt-6 text-center text-light">
-                Purchase more nodes to increase your rewards and passive invome
+                <Trans>Purchase more nodes to increase your rewards and passive invome</Trans>
               </p>
               <a href="#" className="btn-lg btn-primary mt-10 mb-8">
-                LEARN MORE
+                <Trans>LEARN MORE</Trans>
               </a>
             </div>
           </div>

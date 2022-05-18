@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import KeyIcon from 'src/components/icons/KeyIcon';
 import LogoSmallIcon from 'src/components/icons/LogoSmallIcon';
@@ -13,7 +14,9 @@ const GeneralInfo: React.FC = () => {
           </span>
         </div>
         <div className="ml-3">
-          <p className="text-[20px] font-medium leading-[1.25] text-light">Total $MYRIA Mined</p>
+          <p className="text-[20px] font-medium leading-[1.25] text-light">
+            <Trans>Total $MYRIA Mined</Trans>
+          </p>
           <p className="mt-2 flex flex-col text-[32px] font-extrabold leading-[1.15] md:flex-row">
             <span>9,999,999.999</span>
             <span className="text-[16px] font-normal text-light md:ml-2">$MYRIA</span>
@@ -27,7 +30,9 @@ const GeneralInfo: React.FC = () => {
           </span>
         </div>
         <div className="ml-3">
-          <p className="text-[20px] font-medium leading-[1.25] text-light">Total NFT Rewards</p>
+          <p className="text-[20px] font-medium leading-[1.25] text-light">
+            <Trans>Total NFT Rewards</Trans>
+          </p>
           <p className="mt-2 text-[32px] font-extrabold leading-[1.15]">
             <span>4,291</span>
             <span className="ml-2 text-[16px] font-normal text-light">NFTs</span>
@@ -41,7 +46,9 @@ const GeneralInfo: React.FC = () => {
           </span>
         </div>
         <div className="ml-3">
-          <p className="text-[20px] font-medium leading-[1.25] text-light">My Node Licenses</p>
+          <p className="text-[20px] font-medium leading-[1.25] text-light">
+            <Trans>My Node Licenses</Trans>
+          </p>
           <p className="mt-2 flex items-baseline text-[32px] font-extrabold leading-[1.15]">
             <span>25</span>
             <div className="ml-4 flex items-center">

@@ -1,15 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import Slider, { Settings, CustomArrowProps } from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import clsx from 'clsx';
-import ChevronLeftIcon from '../icons/ChevronLeftIcon';
-import ChevronRightIcon from '../icons/ChevronRightIcon';
-import { Asset } from '../../pages/game-detail/[id]';
-import Video from '../Video';
-import { useAutoPlayInGameDetail } from '../../valtio/autoPlayInGameDetail';
-import Image from 'next/image';
+import { t, Trans } from '@lingui/macro';
+import React from 'react';
 
 const tree = (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,29 +67,33 @@ const gaming = (
 const License: React.FC = () => {
   const licenses = [
     {
-      title: 'Be rewarded for your contribution',
-      content: `Node owners will be rewarded with exclusive NFT drops and daily MYRIA token rewards for their contribution to the network.`,
+      title: t`Be rewarded for your contribution`,
+      content: t`Node owners will be rewarded with exclusive NFT drops and daily MYRIA token rewards for their contribution to the network.`,
       icon: tree
     },
     {
-      title: 'Limited supply available',
-      content: `Only 50,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded.`,
+      title: t`Limited supply available`,
+      content: t`Only 50,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded.`,
       icon: key
     },
     {
-      title: 'More power than just network support',
-      content: `Nodes are an integral part of the Myria universe, with dedicated lore, gaming access, and exclusive voting power granted to node owners.`,
+      title: t`More power than just network support`,
+      content: t`Nodes are an integral part of the Myria universe, with dedicated lore, gaming access, and exclusive voting power granted to node owners.`,
       icon: gaming
     }
   ];
 
   return (
     <div className="w-full rounded-lg p-8 text-center md:bg-brand-deep-blue md:text-left">
-      <p className="heading-list text-white md:heading-md">Myria Node License</p>
+      <p className="heading-list text-white md:heading-md">
+        <Trans>Myria Node License</Trans>
+      </p>
       <p className="body-sm mt-6 font-normal text-light md:mr-[42px]">
-        Grow with us and be rewarded. A Myria Node License allows you to operate a node from your
-        home computer to support the growth of Myria’s decentralized network. As a node owner,
-        you’ll earn daily rewards and exclusive benefits for your contribution.
+        <Trans>
+          Grow with us and be rewarded. A Myria Node License allows you to operate a node from your
+          home computer to support the growth of Myria’s decentralized network. As a node owner,
+          you’ll earn daily rewards and exclusive benefits for your contribution.
+        </Trans>
       </p>
       <img src={'/images/dashboard.png'} className="mt-[59px] w-full" alt="" />
       {licenses.map((item, idx) => {

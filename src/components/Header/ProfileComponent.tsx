@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import Link from 'next/link';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { useWalletContext } from 'src/context/wallet';
@@ -8,7 +9,7 @@ import Popover from '../Popover';
 
 const ProfileMenus = [
   {
-    text: 'Inventory',
+    text: <Trans>Inventory</Trans>,
     href: '/inventory',
     icon: <DashboardIcon />
   }
@@ -21,7 +22,7 @@ const ProfileComponent = () => {
   const onDisconnect = () => {
     disconnect();
     logout();
-  }
+  };
 
   if (!user) {
     return null;
@@ -51,7 +52,9 @@ const ProfileComponent = () => {
           {user?.wallet_id && (
             <div className="flex items-center hover:cursor-pointer" onClick={onDisconnect}>
               <DisconnectIcon />
-              <p className="ml-2">Logout</p>
+              <p className="ml-2">
+                <Trans>Logout</Trans>
+              </p>
             </div>
           )}
         </div>

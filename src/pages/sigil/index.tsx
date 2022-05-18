@@ -13,6 +13,7 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { LoadingStandBy } from 'src/components/Loading';
+import { t } from '@lingui/macro';
 
 type Step = 0 | 1 | 2;
 
@@ -58,7 +59,9 @@ const Sigil: React.FC = () => {
     if ([0, 1].includes(currentStep)) {
       if (!bgSoundRef.current) {
         timerBgSoundRef.current = setTimeout(() => {
-          bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG, { loop: true });
+          bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG, {
+            loop: true
+          });
         }, 2000);
       }
     } else {
@@ -83,7 +86,11 @@ const Sigil: React.FC = () => {
   }, [user]);
 
   if (userProfileQuery.isFetching && currentStep === 0) {
-    return <div className='bg-dark h-screen w-full text-white flex justify-center items-center'><LoadingStandBy /></div>;
+    return (
+      <div className="flex h-screen w-full items-center justify-center bg-dark text-white">
+        <LoadingStandBy />
+      </div>
+    );
   }
 
   return (
@@ -101,13 +108,13 @@ const Sigil: React.FC = () => {
               <SigilStepper
                 steps={[
                   {
-                    title: 'Connect Wallet'
+                    title: t`Connect Wallet`
                   },
                   {
-                    title: 'Choose Alliance'
+                    title: t`Choose Alliance`
                   },
                   {
-                    title: 'Claim your NFT reward'
+                    title: t`Claim your NFT reward`
                   }
                 ]}
                 currentStep={currentStep}

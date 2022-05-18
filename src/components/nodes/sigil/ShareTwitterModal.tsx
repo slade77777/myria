@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
@@ -15,7 +16,9 @@ const ShareTwitterModal: React.FC<Props> = ({ open, onClose }) => {
       <Modal.Content includingHeader={false}>
         <div className="flex flex-col p-8 shadow-dark-panel">
           <div className="flex items-center justify-between">
-            <p className="text-[32px] font-extrabold leading-[1.15]">Share this on Twitter</p>
+            <p className="text-[32px] font-extrabold leading-[1.15]">
+              <Trans>Share this on Twitter</Trans>
+            </p>
             <Modal.Close asChild>
               <button className="w-8 text-white/50">
                 <CloseIcon />
@@ -26,11 +29,13 @@ const ShareTwitterModal: React.FC<Props> = ({ open, onClose }) => {
             <div className="h-[268px] bg-dark"></div>
             <div className="space-y-1 p-4">
               <p className="text-[16px] font-medium leading-[1.47]">
-                I just claimed a Rare Alliance Sigil on Myria
+                <Trans>I just claimed a Rare Alliance Sigil on Myria</Trans>
               </p>
               <p className="text-[16px] leading-[1.47] text-light">
-                I am now a $MYRIA node owner! Join us to earn rewards, govern and build the future
-                of virtual worlds! @MyriaGames
+                <Trans>
+                  I am now a $MYRIA node owner! Join us to earn rewards, govern and build the future
+                  of virtual worlds! @MyriaGames
+                </Trans>
               </p>
               <div className="flex items-center space-x-1 text-light">
                 <span className="w-4">
@@ -40,7 +45,9 @@ const ShareTwitterModal: React.FC<Props> = ({ open, onClose }) => {
               </div>
             </div>
           </div>
-          <button className="btn-lg btn-primary mt-4">Share now</button>
+          <button className="btn-lg btn-primary mt-4">
+            <Trans>Share now</Trans>
+          </button>
         </div>
       </Modal.Content>
     </Modal>

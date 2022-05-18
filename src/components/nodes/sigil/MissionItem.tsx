@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 import CheckIcon from 'src/components/icons/CheckIcon';
@@ -54,7 +55,9 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
     return (
       <div className="w-full pr-2 text-right">
         <p className="text-[20px] font-bold leading-[1.25]">{formatNumber(earned_credits)}</p>
-        <p className="text-[8px] font-medium leading-[1.25] text-light">EARNED</p>
+        <p className="text-[8px] font-medium leading-[1.25] text-light">
+          <Trans>EARNED</Trans>
+        </p>
       </div>
     );
   }, [action, status, earned_credits, item]);
@@ -79,7 +82,9 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
         <p className="mt-1 flex items-center space-x-1 text-[12px] leading-[1.25] text-light">
           {status === 'completed' ? (
             <>
-              <span>Complete</span>
+              <span>
+                <Trans>Complete</Trans>
+              </span>
               <CheckIcon className="ml-2 w-4 text-[#41F59F]" />
             </>
           ) : (
@@ -92,7 +97,9 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
               <Tooltip>
                 <Tooltip.Trigger>
                   {isRepeatable ? (
-                    <span>Unlimited x {credits} Points </span>
+                    <span>
+                      <Trans>Unlimited x {credits} Points</Trans>
+                    </span>
                   ) : (
                     <span>{description}</span>
                   )}
@@ -100,8 +107,10 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
                 <Tooltip.Content className="max-w-[256px]">
                   <Tooltip.Arrow />
                   <p>
-                    Share an original idea on Discord and receive 20 or more upvotes to complete
-                    this mission.
+                    <Trans>
+                      Share an original idea on Discord and receive 20 or more upvotes to complete
+                      this mission.
+                    </Trans>
                   </p>
                 </Tooltip.Content>
               </Tooltip>
