@@ -8,10 +8,12 @@ import { useGA4 } from 'src/lib/ga';
 import http from 'src/client';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { Trans } from '@lingui/macro';
+import { getAllianceInfo } from 'src/utils';
 
 const AllianceInfo: React.FC = () => {
   const { event } = useGA4();
   const { user: data } = useAuthenticationContext();
+  const allianceInfo = data?.alliance && getAllianceInfo(data.alliance);
 
   React.useEffect(() => {
     if (data?.alliance) {
@@ -52,13 +54,17 @@ const AllianceInfo: React.FC = () => {
           <div className="flex h-[441px] flex-col items-center px-4 pt-[47px] pb-[30px] text-center">
             <div className="relative">
               <div className="relative h-[108px] w-[108px] rounded-full border border-[#A077DE] bg-[#A077DE]/50 opacity-50 shadow-[0px_0px_30px_#A077DE]"></div>
-              <img
-                src="/images/nodes/sigil/alliance-1.png"
-                alt=""
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              />
+              {
+                allianceInfo && (
+                  <img
+                    src={allianceInfo.img}
+                    alt=""
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  />
+                )
+              }
             </div>
-            <p className="mt-9 text-[20px] font-medium leading-[1.5]">{data.alliance}</p>
+            <p className="mt-9 text-[20px] font-medium leading-[1.5]">{allianceInfo?.name}</p>
             <div className="mt-6 ">
               <p className="text-[14px] font-medium leading-[17px] text-light">
                 <Trans>Alias</Trans>
