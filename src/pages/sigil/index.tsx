@@ -14,6 +14,7 @@ import { localStorageKeys } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { LoadingStandBy } from 'src/components/Loading';
 import { t } from '@lingui/macro';
+import { toast } from 'react-toastify';
 
 type Step = 0 | 1 | 2;
 
@@ -24,10 +25,18 @@ const Sigil: React.FC = () => {
   const timerBgSoundRef = React.useRef<NodeJS.Timeout | null>(null);
   const [_, setReferralCode] = useLocalStorage<any>(localStorageKeys.referralCode, undefined);
   const { user, userProfileQuery } = useAuthenticationContext();
+  const { code, status, message } = router.query;
 
   useEffect(() => {
-    setReferralCode(router.query.code);
-  }, [router.query.code, setReferralCode]);
+    setReferralCode(code);
+  }, [code, setReferralCode]);
+
+  useEffect(() => {
+    if ((status === 'error' || status === 'success') && message !== undefined) {
+      router.replace('/sigil', undefined, { shallow: true });
+      toast(message, { type: status });
+    }
+  }, [status, message, router]);
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {

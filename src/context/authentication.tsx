@@ -229,7 +229,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       },
       onError: (err: AxiosError) => {
         setRegisterError(mapError(err));
-        toast('There is an error occured', { type: 'error' });
+        toast('There is an error occurred', { type: 'error' });
       },
     }
   );
