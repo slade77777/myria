@@ -10,6 +10,7 @@ import CheckIcon from '../icons/CheckIcon';
 import WarningIcon from '../icons/WarningIcon';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { validatePassword } from 'src/utils';
+import Button from '../core/Button';
 
 export interface IFormRegisterInput {
   firstName: string;
@@ -78,16 +79,16 @@ const Register: React.FC = () => {
   });
   const watchFields = watch(['password']);
 
-  const { doRegister, registerError } = useAuthenticationContext();
+  const { doRegister, registerError, isPostingRegister } = useAuthenticationContext();
 
   useEffect(() => {
     registerError?.errors.forEach(({ code, detail }) => {
-      if (code === "user_exists") {
+      if (code === "username_in_use") {
         setError("username", { type: 'custom', message: detail })
         return
       }
 
-      if (code === "email_exists") {
+      if (code === "email_in_use") {
         setError("email", { type: 'custom', message: detail })
         return
       }
@@ -215,9 +216,11 @@ const Register: React.FC = () => {
             </div>
           );
         })} */}
-        <button className="btn-lg btn-primary my-8 w-full">
+        <Button
+          loading={isPostingRegister}
+          className="btn-lg btn-primary my-8 w-full">
           <Trans>Register</Trans>
-        </button>
+        </Button>
       </form>
     </div>
   );
