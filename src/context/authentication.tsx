@@ -293,7 +293,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
             wallet_id: userRes.data?.wallet_id,
           }
 
-          setUser(user);
+
+          userProfileQuery.refetch();
           toast('Login success', { type: 'success' });
           return user;
         } else {
@@ -389,20 +390,14 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           date_registered: new Date(data.date_registered),
           wallet_id: data.wallet_id,
         };
+        setUser(user);
         return user;
       }
     
       return null;
-    })
+    }),
+    { retry: false }
   );
-
-  const { data: userProfile } = userProfileQuery;
-
-  React.useEffect(() => {
-    if (userProfile) {
-      setUser(userProfile);
-    }
-  }, [userProfile]);
 
   return (
     <AuthenticationContext.Provider
