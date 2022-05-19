@@ -110,13 +110,13 @@ const SIGILS: Sigil[] = [
 const PARTICLES = Array(20)
   .fill(0)
   .map((_, index) => {
-    const blur = Math.random() * 1 + 0.1;
-    const spread = Math.random() * 2 + 0.1;
+    const blur = Math.random() * 0.5 + 0.05;
+    const spread = Math.random() * 1 + 0.1;
     const duration = Math.round(Math.random() * 12 + 2);
     const boxShadow = Array(Math.round(Math.random() * 5))
       .fill(0)
       .map(
-        () => `${Math.random() * 100 - 50}px ${Math.random() * -60}px ${blur}px ${spread}px white`
+        () => `${Math.random() * 60 - 30}px ${Math.random() * -60}px ${blur}px ${spread}px white`
       )
       .join(',');
 
@@ -212,13 +212,13 @@ const Sigil = ({
             isActive ? 'top-[-15px]' : 'top-[10px]'
           }`}>
           <span
-            className="text-[20px] font-extrabold uppercase tracking-tight text-white"
+            className="text-[18px] font-extrabold uppercase tracking-tight text-white"
             style={{ textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)' }}>
             {name}
           </span>
         </div>
         <div
-          className={`h-[70px] w-[280px] text-center transition-all delay-100 ${
+          className={`h-[70px] w-[260px] text-center transition-all delay-100 ${
             isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
@@ -229,14 +229,14 @@ const Sigil = ({
         </div>
         <div
           className={`flex w-[180px] flex-col items-center 2xl:w-[230px] ${
-            order === 2 ? 'pt-[40px] 2xl:pt-[48px]' : 'pt-[20px] 2xl:pt-[30px]'
+            order === 2 ? 'pt-[56px]' : 'pt-[40px]'
           }`}>
           <div className="flex w-full animate-float items-center justify-center">
             <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
           </div>
 
           {/* glow effect */}
-          <div className="relative flex h-[40px] w-[150px] justify-center xl:w-[200px]">
+          <div className="relative flex h-[40px] w-[80px] justify-center">
             <div
               className="absolute bottom-0 h-[100px] w-0"
               style={{

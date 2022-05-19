@@ -96,7 +96,7 @@ const Sigil: React.FC = () => {
     }
   }, [user]);
 
-  if (userProfileQuery.isFetching && currentStep === 0) {
+  if (!userProfileQuery.isFetched && userProfileQuery.isFetching && currentStep === 0) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-dark text-white">
         <LoadingStandBy />

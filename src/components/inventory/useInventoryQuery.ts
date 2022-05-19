@@ -51,8 +51,10 @@ export type AssetType = AssetSigilType | AssetTitleType | AssetChestType;
 
 export type OpenChestContent = AssetSigilType | AssetTitleType | AssetCreditType;
 
-const getInventory = async () => {
-  const data = await http.get(`sigil/users/assets?pageSize=100`).then((res) => res.data?.data);
+export type GetInventoryParams = { collection?: string[], type?: string[], rarity?: string[], status?: string[] };
+
+const getInventory = async (params?: GetInventoryParams) => {
+  const data = await http.get(`sigil/users/assets?pageSize=100`, { params }).then((res) => res.data?.data);
 
   if (data instanceof Array) {
     return (data as AssetType[]).filter((asset) =>
@@ -77,8 +79,8 @@ export const inventoryQueryKeys = {
   inventory_getInventory: 'inventory_getInventory'
 };
 
-export const useInventoryQuery = () => {
-  const inventoryQuery = useQuery(inventoryQueryKeys.inventory_getInventory, () => getInventory());
+export const useInventoryQuery = ({ getInventoryParams }: { getInventoryParams?: GetInventoryParams } = {}) => {
+  const inventoryQuery = useQuery([inventoryQueryKeys.inventory_getInventory, getInventoryParams], () => getInventory(getInventoryParams));
   const inventoryOpenChestMutation = useMutation(openChest);
 
   return {

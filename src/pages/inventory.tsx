@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Filter, { FilterList } from 'src/components/Filter';
+import Filter, { ActiveFilter, FilterList } from 'src/components/Filter';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import ChevronLeftIcon from 'src/components/icons/ChevronLeftIcon';
 import ListInventory from 'src/components/inventory/ListInventory';
@@ -10,31 +10,53 @@ import Page from 'src/components/Page';
 // import SortBy from 'src/components/SortBy';
 import { useGA4 } from 'src/lib/ga';
 import { negativeMarginXSm, paddingX } from 'src/utils';
+import { GetInventoryParams } from 'src/components/inventory/useInventoryQuery';
 
 const filters: FilterList = [
   {
     title: 'Game',
+    id: 'collection',
     options: [
-      'MyriaVerse',
-      'Metarush',
-      'Metakart',
-      'Block Royale',
-      'Startstrike Legends',
-      'Moonville Farms',
-      'Hot Slice Tycoon'
+      { id: 'MyriaVerse', name: 'MyriaVerse' },
+      { id: 'Metarush', name: 'Metarush' },
+      { id: 'Metakart', name: 'Metakart' },
+      { id: 'Block Royale', name: 'Block Royale' },
+      { id: 'Startstrike Legends', name: 'Startstrike Legends' },
+      { id: 'Moonville Farms', name: 'Moonville Farms' },
+      { id: 'Hot Slice Tycoon', name: 'Hot Slice Tycoon' },
     ]
   },
   {
     title: 'Status',
-    options: ['On chain', 'Ready to mint', 'Awaiting mint', 'Off chain']
+    id: 'status',
+    options: [
+      { id: 'on-chain', name: 'On chain' },
+      { id: 'ready-to-mint', name: 'Ready to mint' },
+      { id: 'awaiting-mint', name: 'Awaiting mint' },
+      { id: 'off-chain', name: 'Off chain' },
+    ]
   },
   {
     title: 'Type',
-    options: ['Chest', 'Sigil', 'Title']
+    id: 'type',
+    options: [
+      { id: 'chest', name: 'Chest' },
+      { id: 'sigil', name: 'Sigil' },
+      { id: 'title', name: 'Title' },
+    ]
   },
   {
     title: 'Rarity',
-    options: ['Common', 'Rare', 'Ultra Rare', 'Epic', 'Legendary', 'Cosmic', 'Celestial']
+    id: 'rarity',
+    options: [
+      { id: 'common', name: 'Common' },
+      { id: 'rare', name: 'Rare' },
+      { id: 'ultra_rare', name: 'Ultra Rare' },
+      { id: 'epic', name: 'Epic' },
+      { id: 'legendary', name: 'Legendary' },
+      { id: 'cosmic', name: 'Cosmic' },
+      { id: 'celestial', name: 'Celestial' },
+    ]
   }
 ];
 
@@ -42,7 +64,16 @@ type Filter = typeof filters;
 
 const InventoryPage: React.FC = () => {
   const { event } = useGA4();
-  const [filter, setFilter] = useState<any>({});
+  const [filter, setFilter] = useState<ActiveFilter>({});
+  const inventoryFilter = React.useMemo<GetInventoryParams>(() => {
+    return {
+      rarity: filter['rarity']?.map(r => r.id),
+      collection: filter['collection']?.map(r => r.id),
+      type: filter['type']?.map(r => r.id),
+      status: filter['status']?.map(r => r.id),
+    };
+  }, [filter]);
+
   useEffect(() => {
     // TODO mock event
     event('Sigil Inventory Viewed', { campaign: 'Sigil', wallet_address: '_mock' });
@@ -100,7 +131,7 @@ const InventoryPage: React.FC = () => {
                   setFilter={(activeFilter) => setFilter(activeFilter)}
                 />
               </div>
-              <ListInventory />
+              <ListInventory filterParams={inventoryFilter} />
             </div>
           </section>
         </div>

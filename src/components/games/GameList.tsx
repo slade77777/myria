@@ -4,21 +4,71 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Badge from '../Badge';
-import Filter, { FilterList } from '../Filter';
+import Filter, { ActiveFilter, FilterList } from '../Filter';
 import Overlay from '../overlay/Overlay';
 
 const filters: FilterList = [
   {
     title: 'Features',
-    options: ['Single Player', 'Multi Player']
+    id: 'Features',
+    options: [
+      {
+          "id": "Single Player",
+          "name": "Single Player"
+      },
+      {
+          "id": "Multi Player",
+          "name": "Multi Player"
+      }
+    ]
   },
   {
     title: 'Genre',
-    options: ['Simulation', 'Casual', 'Survival', 'Action', 'Racing', 'Shooter']
+    id: 'Genre',
+    options: [
+      {
+          "id": "Simulation",
+          "name": "Simulation"
+      },
+      {
+          "id": "Casual",
+          "name": "Casual"
+      },
+      {
+          "id": "Survival",
+          "name": "Survival"
+      },
+      {
+          "id": "Action",
+          "name": "Action"
+      },
+      {
+          "id": "Racing",
+          "name": "Racing"
+      },
+      {
+          "id": "Shooter",
+          "name": "Shooter"
+      }
+    ]
   },
   {
     title: 'Publisher',
-    options: ['Myria Studios', 'Leapblock Studios', 'Playware Games']
+    id: 'Publisher',
+    options: [
+      {
+          "id": "Myria Studios",
+          "name": "Myria Studios"
+      },
+      {
+          "id": "Leapblock Studios",
+          "name": "Leapblock Studios"
+      },
+      {
+          "id": "Playware Games",
+          "name": "Playware Games"
+      }
+    ]
   }
 ];
 
@@ -32,9 +82,9 @@ type FilterMap = {
 export const games: {
   image: string;
   title: string;
-  feature: Filter[0]['options'][number];
-  genre: Filter[1]['options'][number][];
-  publisher: Filter[2]['options'][number];
+  feature: string;
+  genre: string[];
+  publisher: string;
   id: string;
   disabled?: true;
 }[] = [
@@ -118,21 +168,22 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
 };
 
 const GameList: React.FC = () => {
-  const [filter, setFilter] = useState<FilterMap>({
+  const [filter, setFilter] = useState<ActiveFilter>({
     Features: [],
     Genre: [],
-    Publisher: []
+    Publisher: [],
   });
 
   const filteredGames = games.filter((game) => {
     return (
-      (filter['Features'].length == 0 || filter['Features'].includes(game.feature)) &&
-      (filter['Genre'].length == 0 ||
-        filter['Genre'].includes(game.genre[0]) ||
-        filter['Genre'].includes(game.genre[1])) &&
-      (filter['Publisher'].length == 0 || filter['Publisher'].includes(game.publisher))
+      (filter['Features']?.length == 0 || filter['Features']?.find(f => f.id === game.feature)) &&
+      (filter['Genre']?.length == 0 ||
+        filter['Genre']?.find(f => f.id === game.genre[0]) ||
+        filter['Genre']?.find(f => f.id === game.genre[1])) &&
+      (filter['Publisher']?.length == 0 || filter['Publisher']?.find(f => f.id === game.publisher))
     );
   });
+
 
   return (
     <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8">
