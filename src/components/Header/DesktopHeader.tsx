@@ -130,17 +130,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         );
 
       case 'login':
-        return user?.wallet_id ? (
-          <ProfileComponent />
-        ) : (
-          <div className="flex">
-            <button
-              className="btn-sm btn-secondary min-w-[153px] rounded-lg px-4 py-3"
-              onClick={onConnect}>
-              <Trans>Connect wallet</Trans>
-            </button>
-          </div>
-        );
+        return user?.wallet_id ? <ProfileComponent /> : <></>;
 
       case 'mint':
         return (
