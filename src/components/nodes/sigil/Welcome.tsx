@@ -71,6 +71,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
       setIsSupportedBrowser(
         Boolean(browser) &&
           (browser?.name === 'chrome' ||
+            browser?.name === 'edge-chromium' ||
             browser?.name === 'edge' ||
             browser?.name === 'firefox' ||
             isBraveBrowser)
