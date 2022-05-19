@@ -1,11 +1,15 @@
 import React from 'react';
 import clsx from 'clsx';
-import { useInventoryQuery } from './useInventoryQuery';
+import { GetInventoryParams, useInventoryQuery } from './useInventoryQuery';
 import { LoadingStandBy } from '../Loading';
 import InventoryItem from './InventoryItem';
 
-const ListInventory = () => {
-  const { inventoryQuery } = useInventoryQuery();
+interface Props {
+  filterParams: GetInventoryParams
+}
+
+const ListInventory = ({ filterParams }: Props) => {
+  const { inventoryQuery } = useInventoryQuery({ getInventoryParams: filterParams });
   const inventories = inventoryQuery.data || [];
 
   const handleChestClaimed = () => {

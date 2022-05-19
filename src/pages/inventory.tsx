@@ -10,6 +10,7 @@ import Page from 'src/components/Page';
 // import SortBy from 'src/components/SortBy';
 import { useGA4 } from 'src/lib/ga';
 import { negativeMarginXSm, paddingX } from 'src/utils';
+import { GetInventoryParams } from 'src/components/inventory/useInventoryQuery';
 
 const filters: FilterList = [
   {
@@ -50,7 +51,7 @@ const filters: FilterList = [
     options: [
       { id: 'common', name: 'Common' },
       { id: 'rare', name: 'Rare' },
-      { id: 'ultra-rare', name: 'Ultra Rare' },
+      { id: 'ultra_rare', name: 'Ultra Rare' },
       { id: 'epic', name: 'Epic' },
       { id: 'legendary', name: 'Legendary' },
       { id: 'cosmic', name: 'Cosmic' },
@@ -64,6 +65,14 @@ type Filter = typeof filters;
 const InventoryPage: React.FC = () => {
   const { event } = useGA4();
   const [filter, setFilter] = useState<ActiveFilter>({});
+  const inventoryFilter = React.useMemo<GetInventoryParams>(() => {
+    return {
+      rarity: filter['rarity']?.map(r => r.id),
+      collection: filter['collection']?.map(r => r.id),
+      type: filter['type']?.map(r => r.id),
+      status: filter['status']?.map(r => r.id),
+    };
+  }, [filter]);
 
   useEffect(() => {
     // TODO mock event
@@ -122,7 +131,7 @@ const InventoryPage: React.FC = () => {
                   setFilter={(activeFilter) => setFilter(activeFilter)}
                 />
               </div>
-              <ListInventory />
+              <ListInventory filterParams={inventoryFilter} />
             </div>
           </section>
         </div>
