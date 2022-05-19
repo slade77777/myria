@@ -6,12 +6,17 @@ import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import Input from '../Input';
 
+type FilterOption = {
+  id: string;
+  name: string;
+}
 export type FilterList = {
+  id: string;
   title: string;
-  options: string[]
+  options: FilterOption[]
 }[]
-export type ActiveFilter = { [k: string]: string[]; }
-type FilterKey = FilterList[number]['title'];
+export type ActiveFilter = { [filterId: string]: FilterOption[]; }
+
 interface Props {
   filterList: FilterList;
   setFilter: (activeFilter: ActiveFilter) => void;
@@ -19,14 +24,14 @@ interface Props {
 }
 
 const Filter = ({ filterList, activeFilter, setFilter }: Props) => {
-  const handleFilter = (filterKey: FilterKey, value: string) => {
-    const newFilterOption = activeFilter[filterKey]?.includes(value)
-      ? activeFilter[filterKey]?.filter((v) => v !== value)
-      : [...(activeFilter[filterKey] || []), value];
+  const handleFilter = (filterId: string, option: FilterOption) => {
+    const newFilterOption = activeFilter[filterId]?.find(filter => filter.id === option.id)
+      ? activeFilter[filterId]?.filter((v) => v.id !== option.id)
+      : [...(activeFilter[filterId] || []), option];
 
     setFilter({
       ...(activeFilter || {}),
-      [filterKey]: newFilterOption
+      [filterId]: newFilterOption
     });
   };
 
@@ -64,10 +69,10 @@ const Filter = ({ filterList, activeFilter, setFilter }: Props) => {
                         <Input
                           className="h-4 w-4"
                           type="checkbox"
-                          checked={activeFilter[f.title]?.includes(option)}
-                          onChange={() => handleFilter(f.title, option)}
+                          checked={activeFilter[f.id]?.findIndex(filter => filter.id === option.id) >= 0}
+                          onChange={() => handleFilter(f.id, option)}
                         />
-                        <span>{option}</span>
+                        <span>{option.name}</span>
                       </label>
                     ))}
                   </div>
@@ -97,7 +102,7 @@ const Filter = ({ filterList, activeFilter, setFilter }: Props) => {
                       <label
                         key={idx}
                         className="flex items-center justify-between space-x-2 text-[18px] leading-none text-light">
-                        <span>{option}</span>
+                        <span>{option.name}</span>
                         <Input className="h-4 w-4" type="checkbox" />
                       </label>
                     ))}
