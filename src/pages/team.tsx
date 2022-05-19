@@ -112,7 +112,7 @@ const data: Person[] = [
   },
   {
     name: 'Ivan Fortunov',
-    position: <Trans>Head of Game Design</Trans>,
+    position: <Trans>Co-Founder, VP Games</Trans>,
     description: (
       <Trans>
         Ivan has 10+ years of experience in the game industry. He has been a lead game designer at
