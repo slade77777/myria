@@ -28,7 +28,9 @@ const Sigil: React.FC = () => {
   const { code, status, message } = router.query;
 
   useEffect(() => {
-    setReferralCode(code);
+    if (code) {
+      setReferralCode(code);
+    }
   }, [code, setReferralCode]);
 
   useEffect(() => {
