@@ -108,8 +108,7 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
                   <Tooltip.Arrow />
                   <p>
                     <Trans>
-                      Share an original idea on Discord and receive 20 or more upvotes to complete
-                      this mission.
+                      {`Complete ${title} mission to earn ${credits} Points`}
                     </Trans>
                   </p>
                 </Tooltip.Content>
