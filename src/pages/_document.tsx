@@ -29,92 +29,6 @@ class AppDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
 
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-          />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap"
-            rel="stylesheet"
-          />
-
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', "${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}", {
-              page_path: window.location.pathname,
-            });
-          `
-            }}
-          />
-          {/* <!-- Meta Pixel Code --> */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `!function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-              n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];
-              s.parentNode.insertBefore(t,s)}(window,document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-               fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID}');
-              fbq('track', 'PageView');`
-            }}
-          />
-          <noscript>
-            <img
-              alt=""
-              height="1"
-              width="1"
-              src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FB_PIXEL_ID}&ev=PageView&noscript=1`}
-            />
-          </noscript>
-          {/* <!-- Meta Pixel Code --> */}
-
-          {/* <!-- Reddit Pixel --> */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','${process.env.NEXT_PUBLIC_REDDIT_PIXEL_ID}');rdt('track', 'PageVisit');`
-            }}
-          />
-          {/* <!-- DO NOT MODIFY --> */}
-          {/* <!-- End Reddit Pixel --> */}
-
-          {/* <!-- Xandr Universal Pixel --> */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `!function(e,i){if(!e.pixie){var n=e.pixie=function(e,i,a){n.actionQueue.push({action:e,actionValue:i,params:a})};n.actionQueue=[];var a=i.createElement("script");a.async=!0,a.src="//acdn.adnxs.com/dmp/up/pixie.js";var t=i.getElementsByTagName("head")[0];t.insertBefore(a,t.firstChild)}}(window,document);
-              pixie('init', '${process.env.NEXT_PUBLIC_UNIVERSAL_PIXEL_ID}');
-              pixie('event', 'PageView');`
-            }}
-          />
-          <noscript>
-            <img
-              alt=""
-              src={`https://ib.adnxs.com/pixie?pi=${process.env.NEXT_PUBLIC_UNIVERSAL_PIXEL_ID}&e=PageView&script=0`}
-              width="1"
-              height="1"
-              style={{ display: 'none' }}
-            />
-          </noscript>
-          {/* <!-- End Xandr Universal Pixel --> */}
-
-          {/* <!-- Conversion Pixel --> */}
-          <script
-            async
-            src={`https://secure.adnxs.com/px?id=${process.env.NEXT_PUBLIC_CONVERSION_PIXEL_ID}&t=1`}
-            type="text/javascript"
-          />
-          {/* <!-- End Conversion Pixel --> */}
-
           {/* <!-- Google Tag Manager (noscript) --> */}
           <noscript>
             <iframe
@@ -136,10 +50,21 @@ class AppDocument extends Document {
             }}
           />
           {/* <!-- End Google Tag Manager --> */}
+
+          {process.env.NEXT_PUBLIC_FB_DOMAIN_VERIFICATION && (
+            <meta name="facebook-domain-verification" content={process.env.NEXT_PUBLIC_FB_DOMAIN_VERIFICATION} />
+          )}
         </Head>
         <body>
           <Main />
           <NextScript />
+          {process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID && (
+            <script
+              defer
+              type="text/javascript"
+              src={`//static.klaviyo.com/onsite/js/klaviyo.js?company_id=${process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID}`}
+            />
+          )}
         </body>
       </Html>
     );
