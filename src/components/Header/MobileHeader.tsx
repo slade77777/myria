@@ -279,9 +279,9 @@ const MobileHeader: React.FC<Props> = ({ action }) => {
               <Logo />
             </a>
           </Link>
-          <div className="ml-auto mr-6 flex">
+          {/* <div className="ml-auto mr-6 flex">
             <LanguageSwitcher isMobile />
-          </div>
+          </div> */}
           <button onClick={toggleMenu} className="">
             <Hamburger size={24} direction="right" toggled={openMenu} />
           </button>
