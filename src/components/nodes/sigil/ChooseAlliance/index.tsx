@@ -314,7 +314,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
         <div className="absolute w-full max-w-[1300px]">
           <div className="relative w-full object-cover">
             <Image
-              src="/images/nodes/insignia/background.png"
+              src="/images/nodes/insignia/faded_scene_v3.png"
               alt=""
               layout="responsive"
               width={3840}
