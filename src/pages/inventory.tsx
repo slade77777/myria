@@ -17,7 +17,7 @@ const filters: FilterList = [
     title: 'Game',
     id: 'collection',
     options: [
-      { id: 'MyriaVerse', name: 'MyriaVerse' },
+      { id: 'Myriaverse', name: 'MyriaVerse' },
       { id: 'Metarush', name: 'Metarush' },
       { id: 'Metakart', name: 'Metakart' },
       { id: 'Block Royale', name: 'Block Royale' },
