@@ -11,23 +11,23 @@ export const negativeMarginXXl = 'xl:-mx-16';
 export const isMobile = () => process.browser && screen && screen.width <= 480;
 
 export const validatePassword = (password: string) => {
-  if (!/^(?=.*\d).{8,}$/.test(password)) {
-    return t`Password must have at least 8 characters—the more characters, the better`
+  if (!/^.{8,}$/.test(password)) {
+    return t`Password must have at least 8 characters—the more characters, the better`;
   }
 
-  if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/.test(password)) {
-    return t`Password must have both uppercase and lowercase letters`
+  if (!/[a-z].*[A-Z]|[A-Z].*[a-z]/.test(password)) {
+    return t`Password must have both uppercase and lowercase letters`;
   }
 
   if (!/\d/.test(password) || !/[a-zA-Z]/g.test(password)) {
-    return t`Password must be mixture of letters and numbers`
+    return t`Password must be mixture of letters and numbers`;
   }
 
-  if (/^[a-zA-Z0-9 ]*$/.test(password)) {
-    return t`Password must contain at least one special character`
+  if (/^[a-zA-Z0-9]*$/.test(password)) {
+    return t`Password must contain at least one special character`;
   }
 
-  return undefined
+  return undefined;
 };
 
 export const getRarityColor = (rarity: RarityType) => {
