@@ -25,11 +25,11 @@ const passwordHints = (text: string) => {
   return [
     {
       text: t`At least 8 characters—the more characters, the better`,
-      validate: /^(?=.*\d).{8,}$/.test(text)
+      validate: /^.{8,}$/.test(text)
     },
     {
       text: t`A mixture of both uppercase and lowercase letters`,
-      validate: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/.test(text)
+      validate: /[a-z].*[A-Z]|[A-Z].*[a-z]/.test(text)
     },
     {
       text: t`A mixture of letters and numbers`,
@@ -37,7 +37,7 @@ const passwordHints = (text: string) => {
     },
     {
       text: t`Inclusion of at least one special character`,
-      validate: !/^[a-zA-Z0-9 ]*$/.test(text)
+      validate: !/^[a-zA-Z0-9]*$/.test(text)
     }
   ];
 };
@@ -83,18 +83,24 @@ const Register: React.FC = () => {
 
   useEffect(() => {
     registerError?.errors.forEach(({ code, detail }) => {
+
+      if (code === "invalid_password") {
+        setError("password", { type: 'custom', message: detail });
+        return;
+      }
+
       if (code === "username_in_use") {
-        setError("username", { type: 'custom', message: detail })
-        return
+        setError("username", { type: 'custom', message: detail });
+        return;
       }
 
       if (code === "email_in_use") {
-        setError("email", { type: 'custom', message: detail })
-        return
+        setError("email", { type: 'custom', message: detail });
+        return;
       }
 
-      setError("firstName", { type: 'custom', message: detail })
-    })
+      setError("firstName", { type: 'custom', message: detail });
+    });
   }, [registerError, setError])
 
   const toggleVisiblePassword = () => {
@@ -206,7 +212,7 @@ const Register: React.FC = () => {
             </span>
           </div>
         </div>
-        {/* {hints.map((hint) => {
+        {hints.map((hint) => {
           return (
             <div
               className={clsx('mt-2 flex items-center', { 'opacity-50': !hint.validate })}
@@ -215,7 +221,7 @@ const Register: React.FC = () => {
               <p className=" ml-[10px]">{hint.text}</p>
             </div>
           );
-        })} */}
+        })}
         <Button
           loading={isPostingRegister}
           className="btn-lg btn-primary my-8 w-full">
