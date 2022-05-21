@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-05-18 12:10+0700\n"
+"POT-Creation-Date: 2022-05-21 09:58+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,7 +51,7 @@ msgstr "<0>Birlikte Çalışabilir</0> ve Birbirine Bağlı NFT'ler"
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>Myria düğüm operatörleri, düğümlerin çalışması için günlük $MYRIA jeton ödülleri alacaklar.</0><1>Düğüm sahipleri ayrıca, düğüm operatörleri ve genel topluluk üyeleri olarak itibar puanlarına dayalı olarak NFT hediyeleri ve jetonlarla ödüllendirilecekler.</1><2>İtibar puanı, düğüm sahiplerinin oynama etkinliğine, sahip oldukları ve bahis oynadıkları jeton sayısına, önceki çalışma süresi metriklerine ve ağ desteği geçmişine (ör. doğrulama veya oracle sağlayıcısı) göre belirlenir.</2>"
 
-#: src/pages/inventory.tsx:71
+#: src/pages/inventory.tsx:102
 msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
 msgstr ""
 
@@ -67,11 +67,11 @@ msgstr ""
 msgid "<0>Resourcefulness rules!</0> - Overcome your competition with the best strategy and become the master of Moonville."
 msgstr ""
 
-#: src/pages/inventory.tsx:60
+#: src/pages/inventory.tsx:91
 msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
 msgstr ""
 
-#: src/pages/inventory.tsx:65
+#: src/pages/inventory.tsx:96
 msgid "<0>T-minus 47 gigaquarks</0>"
 msgstr ""
 
@@ -107,11 +107,11 @@ msgstr ""
 msgid "A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory."
 msgstr ""
 
-#: src/components/Register/Register.tsx:30
+#: src/components/Register/Register.tsx:31
 msgid "A mixture of both uppercase and lowercase letters"
 msgstr ""
 
-#: src/components/Register/Register.tsx:34
+#: src/components/Register/Register.tsx:35
 msgid "A mixture of letters and numbers"
 msgstr ""
 
@@ -156,7 +156,7 @@ msgstr ""
 msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
 msgstr "Blok zincirine başarılı katılım sağlamak için devam eden eğitim ve teknik desteğe erişin."
 
-#: src/components/nodes/sigil/AllianceInfo.tsx:64
+#: src/components/nodes/sigil/AllianceInfo.tsx:70
 msgid "Alias"
 msgstr ""
 
@@ -205,7 +205,7 @@ msgstr "Sanat Yaratıcı Lideri"
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "Myria'da, NFT'lerin oyunculara yalnızca doğrulanabilir sahiplik sağlamaları gerektiğine değil, aynı zamanda NFT'lerini bir oyundan diğerine taşımalarına da izin vermesi gerektiğine inanıyoruz."
 
-#: src/components/Register/Register.tsx:26
+#: src/components/Register/Register.tsx:27
 msgid "At least 8 characters—the more characters, the better"
 msgstr ""
 
@@ -221,7 +221,7 @@ msgstr ""
 msgid "BACK TO MYRIA HOME"
 msgstr ""
 
-#: src/pages/inventory.tsx:85
+#: src/pages/inventory.tsx:116
 msgid "BACK TO SIGIL DASHBOARD"
 msgstr ""
 
@@ -303,7 +303,7 @@ msgstr ""
 msgid "COLLECT NOW"
 msgstr ""
 
-#: src/components/games/GameList.tsx:107
+#: src/components/games/GameList.tsx:157
 #: src/components/home/Hero.tsx:76
 #: src/components/home/Hero.tsx:82
 #: src/components/home/OurGames.tsx:26
@@ -311,7 +311,7 @@ msgid "COMING SOON"
 msgstr ""
 
 #: src/components/nodes/sigil/LinkWalletConfirmModal.tsx:37
-#: src/components/nodes/sigil/Welcome.tsx:147
+#: src/components/nodes/sigil/Welcome.tsx:148
 msgid "CONNECT WALLET"
 msgstr ""
 
@@ -340,7 +340,7 @@ msgstr "Kariyer"
 msgid "Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?"
 msgstr ""
 
-#: src/pages/sigil/index.tsx:114
+#: src/pages/sigil/index.tsx:125
 msgid "Choose Alliance"
 msgstr ""
 
@@ -372,7 +372,7 @@ msgstr ""
 msgid "Claim rewards"
 msgstr ""
 
-#: src/pages/sigil/index.tsx:117
+#: src/pages/sigil/index.tsx:128
 msgid "Claim your NFT reward"
 msgstr ""
 
@@ -396,6 +396,10 @@ msgstr ""
 #: src/pages/team.tsx:100
 msgid "Co-Founder - Operations"
 msgstr "Kurucu Ortak - Operasyon"
+
+#: src/pages/team.tsx:115
+msgid "Co-Founder, VP Games"
+msgstr ""
 
 #: src/components/nodes/rewards/RewardList.tsx:149
 msgid "Collect ALL"
@@ -429,6 +433,10 @@ msgstr ""
 msgid "Complete privacy, not only from other users, but also from the Operator."
 msgstr ""
 
+#: src/components/nodes/sigil/MissionItem.tsx:110
+msgid "Complete {title} mission to earn {credits} Points"
+msgstr ""
+
 #: src/components/for-developers/Myria.tsx:45
 msgid "Compliance support"
 msgstr ""
@@ -437,12 +445,12 @@ msgstr ""
 msgid "Configure your node and view your rewards in the dashboard"
 msgstr ""
 
-#: src/components/Register/Register.tsx:193
+#: src/components/Register/Register.tsx:200
 #: src/components/ResetPassword/ResetPassword.tsx:86
 msgid "Confirm password"
 msgstr ""
 
-#: src/components/Register/Register.tsx:60
+#: src/components/Register/Register.tsx:61
 #: src/components/ResetPassword/ResetPassword.tsx:25
 msgid "Confirm password is required!"
 msgstr ""
@@ -451,16 +459,12 @@ msgstr ""
 msgid "Congratulations!"
 msgstr ""
 
-#: src/pages/sigil/index.tsx:111
+#: src/pages/sigil/index.tsx:122
 msgid "Connect Wallet"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:105
+#: src/components/nodes/sigil/Welcome.tsx:106
 msgid "Connect to your wallet to enter the Myriaverse"
-msgstr ""
-
-#: src/components/Header/DesktopHeader.tsx:140
-msgid "Connect wallet"
 msgstr ""
 
 #: src/pages/contact.tsx:52
@@ -520,7 +524,7 @@ msgstr "Günlük $MYRIA jeton ödülleri"
 msgid "Dashboard"
 msgstr ""
 
-#: src/components/nodes/sigil/AllianceInfo.tsx:76
+#: src/components/nodes/sigil/AllianceInfo.tsx:82
 msgid "Date Registered"
 msgstr ""
 
@@ -548,7 +552,7 @@ msgstr ""
 msgid "Do you want to link your wallet {0} to your Myria account?"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:120
+#: src/components/nodes/sigil/Welcome.tsx:121
 msgid "Don't have a wallet yet? <0/>Install Metamask below."
 msgstr ""
 
@@ -560,7 +564,7 @@ msgstr ""
 msgid "Drift it up!"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:102
+#: src/components/nodes/sigil/ChooseAlliance/index.tsx:101
 msgid "Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle."
 msgstr ""
 
@@ -590,15 +594,15 @@ msgid "Eliminate your opponents in this fast-paced-action-packed-survival game, 
 msgstr ""
 
 #: src/components/GetInTouch.tsx:82
-#: src/components/Register/Register.tsx:166
+#: src/components/Register/Register.tsx:173
 msgid "Email"
 msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
 #: src/components/GetInTouch.tsx:27
-#: src/components/Register/Register.tsx:52
+#: src/components/Register/Register.tsx:53
 #: src/components/SignIn/SignIn.tsx:22
-#: src/components/Subscribe.tsx:20
+#: src/components/Subscribe.tsx:21
 #: src/components/for-developers/BuildYourBlockchain.tsx:35
 msgid "Email is required!"
 msgstr "Email gereklidir!"
@@ -640,7 +644,7 @@ msgstr ""
 msgid "Enter your email"
 msgstr ""
 
-#: src/components/Subscribe.tsx:74
+#: src/components/Subscribe.tsx:75
 msgid "Enter your email address"
 msgstr "E-posta adresinizi girin"
 
@@ -648,12 +652,12 @@ msgstr "E-posta adresinizi girin"
 msgid "Enter your email address to reset your password"
 msgstr ""
 
-#: src/components/Register/Register.tsx:177
+#: src/components/Register/Register.tsx:184
 #: src/components/SignIn/SignIn.tsx:64
 msgid "Enter your password"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:96
+#: src/components/nodes/sigil/ChooseAlliance/index.tsx:95
 msgid "Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers."
 msgstr ""
 
@@ -697,11 +701,11 @@ msgstr ""
 msgid "Filter by Department"
 msgstr ""
 
-#: src/components/Register/Register.tsx:132
+#: src/components/Register/Register.tsx:139
 msgid "First name"
 msgstr ""
 
-#: src/components/Register/Register.tsx:46
+#: src/components/Register/Register.tsx:47
 msgid "First name is required!"
 msgstr ""
 
@@ -718,7 +722,7 @@ msgstr ""
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "Önde gelen oyun ve blockchain endüstrisi uzmanları tarafından kuruldu"
 
-#: src/components/Header/DesktopHeader.tsx:153
+#: src/components/Header/DesktopHeader.tsx:143
 #: src/components/Header/MobileHeader.tsx:86
 msgid "Free Sigil NFT"
 msgstr ""
@@ -798,7 +802,7 @@ msgstr "Bugün bir kurucu düğüm edinin"
 msgid "Get started with your Myria node."
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:180
+#: src/components/nodes/sigil/Welcome.tsx:181
 #: src/components/nodes/sigil/WelcomeMobile.tsx:21
 msgid "Go back"
 msgstr ""
@@ -814,10 +818,6 @@ msgstr "Yenilikçi bir oyun fikriniz mi var? Myria zincirinde vizyonunuzu sergil
 #: src/components/Purchase/License.tsx:92
 msgid "Grow with us and be rewarded. A Myria Node License allows you to operate a node from your home computer to support the growth of Myria’s decentralized network. As a node owner, you’ll earn daily rewards and exclusive benefits for your contribution."
 msgstr ""
-
-#: src/pages/team.tsx:115
-msgid "Head of Game Design"
-msgstr "Oyun Tasarımı Başkanı"
 
 #: src/hooks/useGamesData.tsx:294
 msgid "Heroes don’t all wear capes"
@@ -885,7 +885,7 @@ msgstr ""
 msgid "In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later."
 msgstr ""
 
-#: src/components/Register/Register.tsx:38
+#: src/components/Register/Register.tsx:39
 msgid "Inclusion of at least one special character"
 msgstr ""
 
@@ -893,7 +893,7 @@ msgstr ""
 msgid "Infrastructure & Tools"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:163
+#: src/components/nodes/sigil/Welcome.tsx:164
 msgid "Install Metamask"
 msgstr ""
 
@@ -919,15 +919,15 @@ msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:17
 #: src/components/GetInTouch.tsx:26
-#: src/components/Register/Register.tsx:51
+#: src/components/Register/Register.tsx:52
 #: src/components/SignIn/SignIn.tsx:21
-#: src/components/Subscribe.tsx:19
+#: src/components/Subscribe.tsx:20
 #: src/components/for-developers/BuildYourBlockchain.tsx:34
 msgid "Invalid email!"
 msgstr "Geçersiz e-posta!"
 
 #: src/components/Header/ProfileComponent.tsx:12
-#: src/pages/inventory.tsx:92
+#: src/pages/inventory.tsx:123
 msgid "Inventory"
 msgstr ""
 
@@ -949,7 +949,7 @@ msgstr ""
 
 #: src/components/ComingSoon.tsx:59
 #: src/components/FirstTimeVisitModal.tsx:49
-#: src/components/Header/DesktopHeader.tsx:167
+#: src/components/Header/DesktopHeader.tsx:157
 #: src/components/Header/MobileHeader.tsx:55
 #: src/components/Header/MobileHeader.tsx:98
 #: src/components/NotiBanner.tsx:49
@@ -958,7 +958,7 @@ msgstr ""
 msgid "JOIN DISCORD"
 msgstr "DISCORD'A KATIL"
 
-#: src/components/nodes/sigil/Welcome.tsx:135
+#: src/components/nodes/sigil/Welcome.tsx:136
 msgid "JOIN NOW"
 msgstr ""
 
@@ -983,11 +983,11 @@ msgstr ""
 msgid "Join Myria in building the next blockchain revolution"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:56
+#: src/components/nodes/sigil/ChooseAlliance/index.tsx:55
 msgid "Join The Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:79
+#: src/components/nodes/sigil/ChooseAlliance/index.tsx:78
 msgid "Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all."
 msgstr ""
 
@@ -1012,15 +1012,15 @@ msgstr "DAHA FAZLA BİLGİ EDİN"
 msgid "LINK WALLET"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:135
+#: src/components/nodes/sigil/Welcome.tsx:136
 msgid "LOGING IN"
 msgstr ""
 
-#: src/components/Register/Register.tsx:143
+#: src/components/Register/Register.tsx:150
 msgid "Last name"
 msgstr ""
 
-#: src/components/Register/Register.tsx:47
+#: src/components/Register/Register.tsx:48
 msgid "Last name is required!"
 msgstr ""
 
@@ -1436,7 +1436,7 @@ msgstr "Meta veri deposu kimliğine sahip olun"
 msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "Meta veri deposu kimliğine sahip olun. Herhangi bir yerde. Herhangi Oyun."
 
-#: src/components/nodes/sigil/AllianceInfo.tsx:43
+#: src/components/nodes/sigil/AllianceInfo.tsx:45
 msgid "PROFILE"
 msgstr ""
 
@@ -1460,7 +1460,7 @@ msgstr ""
 msgid "Partner Lead"
 msgstr "İş Ortağı Lideri"
 
-#: src/components/Register/Register.tsx:56
+#: src/components/Register/Register.tsx:57
 #: src/components/ResetPassword/ResetPassword.tsx:21
 #: src/components/SignIn/SignIn.tsx:26
 msgid "Password is required!"
@@ -1498,11 +1498,11 @@ msgstr ""
 msgid "Please view this experience on a desktop browser"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:87
+#: src/components/nodes/sigil/Welcome.tsx:88
 msgid "Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge"
 msgstr ""
 
-#: src/components/nodes/sigil/AllianceInfo.tsx:70
+#: src/components/nodes/sigil/AllianceInfo.tsx:76
 #: src/components/nodes/sigil/RewardItem.tsx:122
 msgid "Points"
 msgstr ""
@@ -1523,7 +1523,7 @@ msgstr "Oyuncu tarafından işletilen düğümler topluluğu tarafından destekl
 msgid "Pre register now"
 msgstr "Şimdi ön kayıt ol"
 
-#: src/components/Subscribe.tsx:62
+#: src/components/Subscribe.tsx:63
 msgid "Pre register to stay up to date"
 msgstr "Güncel kalmak için ön kayıt"
 
@@ -1582,7 +1582,7 @@ msgstr ""
 msgid "Refer your friends"
 msgstr ""
 
-#: src/components/Register/Register.tsx:219
+#: src/components/Register/Register.tsx:228
 msgid "Register"
 msgstr ""
 
@@ -1619,7 +1619,7 @@ msgstr ""
 msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
 msgstr "Bir düğüm çalıştırın ve <0>$MYRIA</0> ve NFT ödülleri kazanın"
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:283
+#: src/components/nodes/sigil/ChooseAlliance/index.tsx:282
 msgid "SELECT"
 msgstr ""
 
@@ -1632,7 +1632,7 @@ msgstr "GÜCÜ TEKRAR İNSANA VERMEK"
 msgid "START BUILDING"
 msgstr ""
 
-#: src/components/Subscribe.tsx:91
+#: src/components/Subscribe.tsx:92
 msgid "SUBMIT"
 msgstr "GÖNDER"
 
@@ -1646,10 +1646,6 @@ msgstr ""
 
 #: src/components/for-developers/Ethereum.tsx:325
 msgid "Scaling blockchain gaming on Ethereum"
-msgstr ""
-
-#: src/components/nodes/sigil/MissionItem.tsx:110
-msgid "Share an original idea on Discord and receive 20 or more upvotes to complete this mission."
 msgstr ""
 
 #: src/components/nodes/dashboard/ShareTwitter.tsx:45
@@ -1671,7 +1667,7 @@ msgstr ""
 msgid "Sign up"
 msgstr ""
 
-#: src/components/Subscribe.tsx:66
+#: src/components/Subscribe.tsx:67
 msgid "Sign up to our newsletter to receive development updates, token and NFT drops, and exclusive promotions."
 msgstr ""
 
@@ -1764,7 +1760,7 @@ msgstr "Koşullar | Gizlilik"
 msgid "Thank you for message. We will be in touch within 24-48 hours!"
 msgstr "Mesaj için teşekkürler. 24-48 saat içinde sizinle iletişime geçeceğiz!"
 
-#: src/components/Subscribe.tsx:84
+#: src/components/Subscribe.tsx:85
 msgid "Thank you for subscribing!"
 msgstr "Abone olduğunuz için teşekkür ederiz!"
 
@@ -1884,15 +1880,15 @@ msgstr ""
 msgid "Unmute sound"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:86
+#: src/components/nodes/sigil/Welcome.tsx:87
 msgid "Unsupported Browser"
 msgstr ""
 
-#: src/components/Register/Register.tsx:155
+#: src/components/Register/Register.tsx:162
 msgid "Username"
 msgstr ""
 
-#: src/components/Register/Register.tsx:48
+#: src/components/Register/Register.tsx:49
 msgid "Username is required!"
 msgstr ""
 
@@ -1912,7 +1908,7 @@ msgstr ""
 msgid "Vanity factor number 1"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:73
+#: src/components/nodes/sigil/ChooseAlliance/index.tsx:72
 msgid "Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion."
 msgstr ""
 
@@ -1964,7 +1960,7 @@ msgstr ""
 msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:93
+#: src/components/nodes/sigil/Welcome.tsx:94
 #: src/components/nodes/sigil/WelcomeMobile.tsx:13
 msgid "Welcome to the Myriaverse"
 msgstr ""
@@ -1989,7 +1985,7 @@ msgstr "Myria düğüm operatörleri hangi ödülleri alıyor?"
 msgid "When will Myria node licenses be sold?"
 msgstr "Myria düğüm lisansları ne zaman satılacak?"
 
-#: src/components/nodes/sigil/Welcome.tsx:96
+#: src/components/nodes/sigil/Welcome.tsx:97
 msgid "Which side of the battlelines will you stand on? <0/> Choose your Alliance and claim your free Sigil NFT."
 msgstr ""
 
@@ -1997,7 +1993,7 @@ msgstr ""
 msgid "Whitepaper"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:50
+#: src/components/nodes/sigil/ChooseAlliance/index.tsx:49
 msgid "With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts."
 msgstr ""
 
