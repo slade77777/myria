@@ -10,17 +10,23 @@ const Dashboard: React.FC = () => {
     <div
       className={clsx(
         paddingX,
-        "h-screen bg-[url('/images/nodes/sigil/dashboard-bg_op.jpg')] bg-cover bg-top bg-no-repeat pt-[112px] pb-[35px]"
+        "flex min-h-screen bg-[url('/images/nodes/sigil/dashboard-bg_op.jpg')] bg-cover bg-top bg-no-repeat pt-[112px] pb-9"
       )}>
-      <div className="mx-auto grid h-full max-w-[1440px] grid-cols-[252fr_616fr_252fr] gap-8">
-        <div className="h-full min-h-0 overflow-auto pt-[56px]">
+      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[252fr_616fr_291px] gap-8">
+        <div className="pt-[56px]">
           <AllianceInfo />
         </div>
-        <div className="h-full min-h-0">
-          <Rewards />
+        <div className="relative">
+          <div className="absolute inset-0">
+            <Rewards />
+          </div>
         </div>
-        <div className="h-full min-h-0 pt-[56px]">
-          <Missions />
+        <div className="flex pt-[56px]">
+          <div className="relative w-full">
+            <div className="absolute inset-0">
+              <Missions />
+            </div>
+          </div>
         </div>
       </div>
     </div>
