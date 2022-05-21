@@ -34,7 +34,7 @@ export type Mission = {
   credits: number;
   earned_credits: number;
   repetition_limit: null | number;
-  repetition_text: null | 'Unlimited' | 'Daily';
+  repetition_type?: 'Unlimited' | 'Daily';
   completed: boolean;
   trackGA4?: () => void;
 };
@@ -43,6 +43,6 @@ export type AllianceInfo = {
   id: AllianceName;
   img: string;
   name: string;
-}
-export type AllianceName = "equinox" | "federation" | "vector_prime" 
-export type RarityType = 'common' | 'rare' | 'ultra_rare' | 'epic' | 'celestial'
+};
+export type AllianceName = 'equinox' | 'federation' | 'vector_prime';
+export type RarityType = 'common' | 'rare' | 'ultra_rare' | 'epic' | 'celestial';

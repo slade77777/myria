@@ -18,7 +18,7 @@ type Props = {
 };
 
 const MissionItem: React.FC<Props> = ({ item, action }) => {
-  const { earned_credits, title, description, status, credits, repetition_text } = item;
+  const { earned_credits, title, status, credits, repetition_type } = item;
   const actionEl = useMemo(() => {
     if (status == 'locked') {
       return (
@@ -62,7 +62,7 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
     );
   }, [action, status, earned_credits, item]);
 
-  const isRepeatable = repetition_text == 'Daily' || repetition_text == 'Unlimited';
+  const isRepeatable = repetition_type == 'Daily' || repetition_type == 'Unlimited';
 
   return (
     <div
@@ -98,18 +98,22 @@ const MissionItem: React.FC<Props> = ({ item, action }) => {
                 <Tooltip.Trigger>
                   {isRepeatable ? (
                     <span>
-                      <Trans>Unlimited x {credits} Points</Trans>
+                      {repetition_type === 'Daily' ? (
+                        <Trans>Daily x {credits} Points</Trans>
+                      ) : (
+                        <Trans>Unlimited x {credits} Points</Trans>
+                      )}
                     </span>
                   ) : (
-                    <span>{description}</span>
+                    <span>
+                      <Trans>Earn {credits} Points</Trans>
+                    </span>
                   )}
                 </Tooltip.Trigger>
                 <Tooltip.Content className="max-w-[256px]">
                   <Tooltip.Arrow />
                   <p>
-                    <Trans>
-                      {`Complete ${title} mission to earn ${credits} Points`}
-                    </Trans>
+                    <Trans>{`Complete ${title} mission to earn ${credits} Points`}</Trans>
                   </p>
                 </Tooltip.Content>
               </Tooltip>
