@@ -15,6 +15,7 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import { LoadingStandBy } from 'src/components/Loading';
 import { t } from '@lingui/macro';
 import { toast } from 'react-toastify';
+import clsx from 'clsx';
 
 type Step = 0 | 1 | 2;
 
@@ -96,47 +97,52 @@ const Sigil: React.FC = () => {
     }
   }, [user]);
 
-  if (!userProfileQuery.isFetched && userProfileQuery.isFetching && currentStep === 0) {
-    return (
-      <div className="flex h-screen w-full items-center justify-center bg-dark text-white">
-        <LoadingStandBy />
-      </div>
-    );
-  }
+  const isLoading = !userProfileQuery.isFetched && userProfileQuery.isFetching && currentStep === 0;
 
   return (
-    <Page headerClassName="hidden" footerClassName="hidden">
-      <Header step={currentStep} />
-
-      <div className="md:hidden">
-        <WelcomeMobile />
-      </div>
-      <div className="hidden md:block">
-        <div className="relative min-h-screen bg-dark">
-          <div>{content}</div>
-          {currentStep !== 2 && (
-            <div className="ml-auto mr-auto w-full max-w-[577px]">
-              <SigilStepper
-                steps={[
-                  {
-                    title: t`Connect Wallet`
-                  },
-                  {
-                    title: t`Choose Alliance`
-                  },
-                  {
-                    title: t`Claim your NFT reward`
-                  }
-                ]}
-                currentStep={currentStep}
-              />
-            </div>
-          )}
+    <div className="relative">
+      {isLoading && (
+        <div className="absolute inset-0 z-10 flex w-full items-center justify-center bg-dark/10 text-white">
+          <LoadingStandBy />
         </div>
-      </div>
+      )}
+      <Page headerClassName="hidden" footerClassName="hidden">
+        <Header step={currentStep} />
 
-      {[0, 1].includes(currentStep) && <Sound />}
-    </Page>
+        <div className="md:hidden">
+          <WelcomeMobile />
+        </div>
+        <div className="hidden md:block">
+          <div
+            className={clsx('relative flex min-h-screen flex-col ', {
+              "bg-dark bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat":
+                isLoading
+            })}>
+            {!isLoading && <div>{content}</div>}
+            {currentStep !== 2 && (
+              <div className="ml-auto mr-auto mt-auto w-full max-w-[577px]">
+                <SigilStepper
+                  steps={[
+                    {
+                      title: t`Connect Wallet`
+                    },
+                    {
+                      title: t`Choose Alliance`
+                    },
+                    {
+                      title: t`Claim your NFT reward`
+                    }
+                  ]}
+                  currentStep={currentStep}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {[0, 1].includes(currentStep) && <Sound />}
+      </Page>
+    </div>
   );
 };
 
