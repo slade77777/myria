@@ -9,7 +9,7 @@ function Button({ loading = false, children, disabled, ...rest }: Props) {
   return (
     <button {...rest} disabled={disabled || loading}>
       {children}
-      { loading && <Loading className='px-2' /> }
+      { loading && <Loading loadingSize={16} className='px-2' /> }
     </button>
   );
 }
