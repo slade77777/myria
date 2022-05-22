@@ -1,5 +1,6 @@
 import { Trans } from '@lingui/macro';
 import React from 'react';
+import { toast } from 'react-toastify';
 import Button from 'src/components/core/Button';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
@@ -28,7 +29,7 @@ const AllianceModal: React.FC<Props> = ({
   const { pickSigilMutation } = usePickSigilQuery({
     onPickSigilSuccess: onJoinSuccess,
     onPickSigilError: () => {
-      console.log('Pick alliance failed');
+      toast("Sorry, can not join the alliance.", { type: "error" })
     }
   });
   const { mutate: handleJoin, isLoading } = pickSigilMutation;
