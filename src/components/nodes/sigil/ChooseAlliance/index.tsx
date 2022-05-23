@@ -209,10 +209,10 @@ const Sigil = ({
         </div>
         <div
           className={`absolute px-1 transition-all delay-100 ${
-            isActive ? 'top-[-15px]' : 'top-[10px]'
+            isActive ? 'top-[-18px]' : 'top-[10px]'
           }`}>
           <span
-            className="text-[18px] font-extrabold uppercase tracking-tight text-white"
+            className="text-[16px] font-extrabold uppercase tracking-tight text-white"
             style={{ textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)' }}>
             {name}
           </span>
@@ -222,7 +222,7 @@ const Sigil = ({
             isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
-            className="text-[14px] font-normal text-light"
+            className="text-[13px] leading-5 font-normal text-light"
             style={{ textShadow: '0px 0px 10px rgba(255, 255, 255, 0.2)' }}>
             {desc}
           </span>
