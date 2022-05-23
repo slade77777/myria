@@ -99,6 +99,21 @@ const Register: React.FC = () => {
         return;
       }
 
+      if (code === "firstname_contains_profanity") {
+        setError("firstName", { type: 'custom', message: detail });
+        return;
+      }
+
+      if (code === "lastname_contains_profanity") {
+        setError("lastName", { type: 'custom', message: detail });
+        return;
+      }
+
+      if (code === "username_contains_profanity") {
+        setError("username", { type: 'custom', message: detail });
+        return;
+      }
+
       setError("firstName", { type: 'custom', message: detail });
     });
   }, [registerError, setError])
@@ -112,13 +127,19 @@ const Register: React.FC = () => {
   };
 
   const onSubmit = (data: IFormRegisterInput) => {
-    const passwordError = validatePassword(data.password)
+    const passwordError = validatePassword(data.password);
     if (passwordError) {
       setError("password", { type: 'custom', message: passwordError })
       return;
-    }
+    };
 
-    doRegister(data)
+    const usernameLength = data.username.length;
+    if (usernameLength < 3 || usernameLength > 16) {
+      setError("username", { type: 'custom', message: t`The name must be between 3 and 16 characters long.` });
+      return;
+    };
+
+    doRegister(data);
   }
 
   React.useEffect(() => {
