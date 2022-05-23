@@ -101,7 +101,7 @@ const ResetSuccessdModal = ({ open, onClose, onLogin }: { open: boolean; onClose
         <div className="px-8">
           <button className="btn-lg btn-primary my-8 w-full" onClick={onLogin}>
             <Trans>Log in</Trans>
-          </button> 
+          </button>
         </div>
       </Modal.Content>
     </Modal>
@@ -150,7 +150,7 @@ const AuthenticationContext = React.createContext<IAuthenticationContext>(
 
 export const AuthenticationProvider: React.FC = ({ children }) => {
   const [referalCode] = useLocalStorage(localStorageKeys.referralCode, undefined);
-  const [user, setUser] = React.useState<User | undefined>(undefined);
+  const [user, setUser] = useLocalStorage<User | undefined>(localStorageKeys.userInfo, undefined);
   const [openSignIn, setOpenSignIn] = React.useState<boolean>(false);
   const [openRegister, setOpenRegister] = React.useState<boolean>(false);
   const [openForgotPassword, setOpenForgotPassword] = React.useState<boolean>(false);
@@ -176,13 +176,12 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const { event } = useGA4();
 
   const { isLoading: isPostingLogin, mutate: postLogin } = useMutation(
-    
-    async () => { 
+    async () => {
       const body = {
         login: loginData?.email,
         password: loginData?.password,
       }
-      return await apiClient.post(`/accounts/login`, body); 
+      return await apiClient.post(`/accounts/login`, body);
     },
     {
       onSuccess: (res) => {
@@ -201,7 +200,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     async () => {
       try {
         await apiClient.post(`/accounts/logout`);
-      } catch (err) {}
+      } catch (err) { }
       setUser(undefined);
     },
   );
@@ -260,7 +259,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 
         if (userRes?.status === 'success' && userRes?.data) {
           const user: User = {
-            user_id:  userRes.data?.user_id,
+            user_id: userRes.data?.user_id,
             wallet_id: userRes.data?.wallet_id,
           }
           toast('Register success', { type: 'success' });
@@ -289,7 +288,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 
         if (userRes?.status === 'success' && userRes?.data) {
           const user: User = {
-            user_id:  userRes.data?.user_id,
+            user_id: userRes.data?.user_id,
             wallet_id: userRes.data?.wallet_id,
           }
 
@@ -381,22 +380,22 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   };
 
   const userProfileQuery = useQuery('getUserProfile', () => apiClient.get('sigil/users/profile').then(res => {
-      const data = res.data?.data;
-      if (data) {
-        const user: User = {
-          user_id: data.user_id,
-          credits: data.credits,
-          alliance: data.alliance as AllianceName,
-          date_registered: new Date(data.date_registered),
-          wallet_id: data.wallet_id,
-          user_name: data.user_name,
-        };
-        setUser(user);
-        return user;
-      }
-    
-      return null;
-    }),
+    const data = res.data?.data;
+    if (data) {
+      const user: User = {
+        user_id: data.user_id,
+        credits: data.credits,
+        alliance: data.alliance as AllianceName,
+        date_registered: new Date(data.date_registered),
+        wallet_id: data.wallet_id,
+        user_name: data.user_name,
+      };
+      setUser(user);
+      return user;
+    }
+
+    return null;
+  }),
     { retry: false }
   );
 
@@ -432,7 +431,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       <RegisterSuccessdModal open={openRegisterSuccess} onClose={() => setOpenRegisterSuccess(false)} />
       <ForgotPasswordModal open={openForgotPassword} onClose={() => setOpenForgotPassword(false)} />
       <ResetPasswordModal open={openResetPassword} onClose={() => setOpenResetPassword(false)} />
-      <ResetSuccessdModal open={openResetSuccess} onClose={() => setOpenResetSuccess(false)} onLogin={login}/>
+      <ResetSuccessdModal open={openResetSuccess} onClose={() => setOpenResetSuccess(false)} onLogin={login} />
       <VerifyModal open={openVerifyModal} onClose={closeVerify} onSuccess={onVerifySuccess} />
       {children}
     </AuthenticationContext.Provider>
