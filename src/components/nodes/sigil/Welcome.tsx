@@ -156,10 +156,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
             )}
             {installedWallet === false && isSupportedBrowser && (
               <a
-                href="https://metamask.io/"
-                target="_blank"
                 className="btn-lg btn-secondary mx-auto mt-10 flex h-[40px]  w-[194px] items-center justify-center space-x-2 p-0 text-[16px] normal-case"
-                rel="noreferrer"
                 onClick={() => {
                     if (onboarding.current) {
                       onboarding.current.startOnboarding();
