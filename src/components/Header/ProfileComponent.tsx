@@ -53,7 +53,7 @@ const ProfileComponent = () => {
             <div className="flex items-center hover:cursor-pointer" onClick={onDisconnect}>
               <DisconnectIcon />
               <p className="ml-2">
-                <Trans>Logout</Trans>
+                <Trans>Log out</Trans>
               </p>
             </div>
           )}
