@@ -23,7 +23,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   const onboarding = React.useRef<MetaMaskOnboarding | null>(null);
 
   useEffect(() => {
-    if (MetaMaskOnboarding.isMetaMaskInstalled()) {
+    if (!!window.ethereum) {
       setInstalledWallet(true);
     } else {
       setInstalledWallet(false);
@@ -65,6 +65,10 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   }, [address, user, loginByWalletMutation, onNext, userProfileQuery]);
 
   React.useEffect(() => {
+    if (!onboarding.current) {
+      onboarding.current = new MetaMaskOnboarding();
+    }
+
     const { navigator } = window;
     const browser = env.detect();
     async function checkBrowser() {
@@ -82,17 +86,6 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
 
     checkBrowser();
   }, []);
-
-  React.useEffect(() => {
-    if (!onboarding.current && !installedWallet) {
-      onboarding.current = new MetaMaskOnboarding();
-      onboarding.current.startOnboarding();
-    }
-
-    if (installedWallet && onboarding && onboarding.current) {
-      onboarding.current.stopOnboarding();
-    }
-  }, [installedWallet]);
 
   const content = (() => {
     if (!isSupportedBrowser) {
@@ -168,7 +161,10 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 className="btn-lg btn-secondary mx-auto mt-10 flex h-[40px]  w-[194px] items-center justify-center space-x-2 p-0 text-[16px] normal-case"
                 rel="noreferrer"
                 onClick={() => {
-                  event('Install Metamask Clicked', {});
+                    if (onboarding.current) {
+                      onboarding.current.startOnboarding();
+                    }
+                    event('Install Metamask Clicked', {});
                 }}>
                 <i className="w-6">
                   <MetaMaskIcon />
