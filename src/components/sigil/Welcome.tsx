@@ -139,7 +139,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
                 event('Join Now Selected', { campaign: 'Sigil' });
               }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
-              {loginByWalletMutation.isLoading ? t`LOGING IN` : t`JOIN NOW`}
+              {loginByWalletMutation.isLoading ? t`LOGGING IN` : t`JOIN NOW`}
             </Button>
           </>
         ) : (
