@@ -116,113 +116,115 @@ const MissionV2: React.FC = () => {
         link={`${window.location.origin}/sigil?code=${user?.user_id}`}
       />
 
-      <p className="text-base font-medium text-light">
+      <p className="text-base font-medium text-light mb-6">
         Complete the missions below to unlock your rewards
       </p>
       {!missions ? (
-        <div className="mt-10 flex justify-center">
+        <div className="flex justify-center">
           <Loading />
         </div>
       ) : (
-        (missions || []).map((mission) => {
-          const isRepeatable =
-            mission.repetition_type == 'Daily' || mission.repetition_type == 'Unlimited';
-          const { earned_credits, title, status, credits, repetition_type, mission_id } = mission;
-          const action = ActionMap[mission.mission_id];
+        <div className={`overflow-auto max-h-[65vh] pr-[43px] pl-[3px] pt-[3px]`}>
+          {(missions || []).map((mission) => {
+            const isRepeatable =
+              mission.repetition_type == 'Daily' || mission.repetition_type == 'Unlimited';
+            const { earned_credits, title, status, credits, repetition_type, mission_id } = mission;
+            const action = ActionMap[mission.mission_id];
 
-          const actionLabel = (() => {
-            if (status === 'locked') {
-              return 'Locked';
+            const actionLabel = (() => {
+              if (status === 'locked') {
+                return 'Locked';
+              }
+              return ActionMap[mission.mission_id]?.label;
+            })();
+
+            if (TrackingMap[mission.mission_id]) {
+              mission.trackGA4 = TrackingMap[mission.mission_id];
             }
-            return ActionMap[mission.mission_id]?.label;
-          })();
 
-          if (TrackingMap[mission.mission_id]) {
-            mission.trackGA4 = TrackingMap[mission.mission_id];
-          }
-
-          return (
-            <div
-              key={mission.title}
-              className={clsx('my-[22px]', {
-                'opacity-50': status === 'completed' || status == 'locked'
-              })}>
-              <div className="relative">
-                <div className="absolute -top-[3px] -right-[3px]">
-                  <SubtractRight />
+            return (
+              <div
+                key={mission.title}
+                className={clsx('mb-6', {
+                  'opacity-50': status === 'completed' || status == 'locked'
+                })}>
+                <div className="relative">
+                  <div className="absolute -top-[3px] -right-[3px]">
+                    <SubtractRight />
+                  </div>
                 </div>
-              </div>
 
-              <div className="relative z-20 min-h-[128px] w-full rounded-lg bg-brand-deep-blue">
-                <div className="flex w-full px-8 py-6">
-                  <div className="flex-1">
-                    <div className="flex items-center">
-                      <h3 className="mr-5 text-xl font-bold uppercase leading-6">
-                        {mission.title}
-                      </h3>
-                      <div className="rounded-lg bg-[#0D273A] px-[10px] py-[6px] text-sm font-medium leading-5">
-                        {credits} POINTS
+                <div className="relative z-20 min-h-[128px] w-full rounded-lg bg-brand-deep-blue">
+                  <div className="flex w-full px-8 py-6">
+                    <div className="flex-1">
+                      <div className="flex items-center">
+                        <h3 className="mr-5 text-xl font-bold uppercase leading-6">
+                          {mission.title}
+                        </h3>
+                        <div className="rounded-lg bg-[#0D273A] px-[10px] py-[6px] text-sm font-medium leading-5">
+                          {credits} POINTS
+                        </div>
+                      </div>
+                      <p className="mt-4 max-w-[379px] text-base font-normal text-light">
+                        {mission.description}
+                      </p>
+                    </div>
+                    <div className="flex h-[80px] flex-col">
+                      {action && status != 'completed' && status !== 'locked' ? (
+                        <a
+                          href={action.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={clsx(
+                            'sigil-btn-mission w-[202px] cursor-pointer py-[14px] text-center text-base font-bold uppercase'
+                          )}
+                          onClick={(e) => {
+                            if (typeof action.onClick === 'function') {
+                              action.onClick(e);
+                            }
+                            if (typeof mission.trackGA4 === 'function') {
+                              mission.trackGA4();
+                            }
+                          }}>
+                          {actionLabel}
+                        </a>
+                      ) : (
+                        <button
+                          disabled={status === 'completed' || status == 'locked'}
+                          className={clsx(
+                            ' w-[202px] py-[14px] text-center text-base font-bold uppercase leading-5',
+                            {
+                              'sigil-btn-mission-locked': status === 'locked',
+                              'sigil-btn-mission-disable': status === 'completed'
+                            }
+                          )}>
+                          {actionLabel}
+                        </button>
+                      )}
+                      <div className="m-auto mt-2 flex items-center">
+                        {isRepeatable && (
+                          <span className="w-5">
+                            <HistoryIcon />
+                          </span>
+                        )}
+                        {(status === 'completed' || isRepeatable) && (
+                          <span className="ml-1 text-xs font-medium leading-3 text-light">
+                            {earned_credits} POINTS EARNED
+                          </span>
+                        )}
                       </div>
                     </div>
-                    <p className="mt-4 max-w-[379px] text-base font-normal text-light">
-                      {mission.description}
-                    </p>
                   </div>
-                  <div className="flex h-[80px] flex-col">
-                    {action && status != 'completed' && status !== 'locked' ? (
-                      <a
-                        href={action.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={clsx(
-                          'sigil-btn-mission w-[202px] cursor-pointer py-[14px] text-center text-base font-bold uppercase'
-                        )}
-                        onClick={(e) => {
-                          if (typeof action.onClick === 'function') {
-                            action.onClick(e);
-                          }
-                          if (typeof mission.trackGA4 === 'function') {
-                            mission.trackGA4();
-                          }
-                        }}>
-                        {actionLabel}
-                      </a>
-                    ) : (
-                      <button
-                        disabled={status === 'completed' || status == 'locked'}
-                        className={clsx(
-                          ' w-[202px] py-[14px] text-center text-base font-bold uppercase leading-5',
-                          {
-                            'sigil-btn-mission-locked': status === 'locked',
-                            'sigil-btn-mission-disable': status === 'completed'
-                          }
-                        )}>
-                        {actionLabel}
-                      </button>
-                    )}
-                    <div className="m-auto mt-2 flex items-center">
-                      {isRepeatable && (
-                        <span className="w-5">
-                          <HistoryIcon />
-                        </span>
-                      )}
-                      {(status === 'completed' || isRepeatable) && (
-                        <span className="ml-1 text-xs font-medium leading-3 text-light">
-                          {earned_credits} POINTS EARNED
-                        </span>
-                      )}
-                    </div>
+                </div>
+                <div className="relative z-10">
+                  <div className="absolute -bottom-[3px] -left-[3px]">
+                    <SubtractLeft />
                   </div>
                 </div>
               </div>
-              <div className="relative z-10">
-                <div className="absolute -bottom-[3px] -left-[3px]">
-                  <SubtractLeft />
-                </div>
-              </div>
-            </div>
-          );
-        })
+            );
+          })}
+        </div>
       )}
     </div>
   );
