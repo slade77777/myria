@@ -4,6 +4,7 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import Profile from './Profile';
 import { paddingX } from 'src/utils';
 import Mission from './MissionV2';
+import Inventory from './Inventory';
 
 const Dashboard: React.FC = () => {
   const [tab, setTab] = useState<'rewards' | 'inventory'>('rewards');
@@ -60,7 +61,7 @@ const Dashboard: React.FC = () => {
                 <Mission />
               </div>
             ) : (
-              <div>Inventory</div>
+              <Inventory />
             )}
           </div>
         </div>
