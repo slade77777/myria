@@ -469,6 +469,93 @@ module.exports = {
         },
         '.sigil-text': {
           textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)'
+        },
+        '.sigil-btn-mission': {
+          background: `linear-gradient(180deg ,rgba(158, 206, 171, 0.2) 0%, rgba(158, 206, 171, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #9ECEAB',
+          color: '#9ECEAB',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #9ECEAB`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #9ECEAB`
+          }
+        },
+        '.sigil-btn-mission-locked': {
+          background: `linear-gradient(180deg, rgba(213, 94, 94, 0.2) 0%, rgba(213, 94, 94, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #D55E5E',
+          color: '#D55E5E',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #D55E5E`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #D55E5E`
+          }
+        },
+        '.sigil-btn-mission-disable': {
+          background: `linear-gradient(180deg, rgba(172, 172, 172, 0.2) 0%, rgba(172, 172, 172, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #ACACAC',
+          color: '#ACACAC',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #ACACAC`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #ACACAC`
+          }
         }
       });
     })

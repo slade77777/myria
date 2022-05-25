@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Profile from './Profile';
+import { paddingX } from 'src/utils';
+import Mission from './MissionV2';
 
 const Dashboard: React.FC = () => {
   const [tab, setTab] = useState<'rewards' | 'inventory'>('rewards');
@@ -55,7 +57,7 @@ const Dashboard: React.FC = () => {
             {tab === 'rewards' ? (
               <div className="space-y-8">
                 <div>Rewards</div>
-                <div>Missions</div>
+                <Mission />
               </div>
             ) : (
               <div>Inventory</div>
