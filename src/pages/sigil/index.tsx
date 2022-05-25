@@ -32,7 +32,10 @@ const Sigil: React.FC = () => {
     if (code) {
       setReferralCode(code);
     }
-  }, [code, setReferralCode]);
+    // we need to disable react-hooks/exhaustive-deps because
+    // adding setReferralCode will cause infinite loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [code]);
 
   useEffect(() => {
     if ((status === 'error' || status === 'success') && message !== undefined) {
