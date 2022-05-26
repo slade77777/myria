@@ -7,6 +7,7 @@ interface Props {
   isNextReward?: boolean;
   isBlur?: boolean;
   isBlurButton?: boolean;
+  isClaiming?: boolean;
   onClaim?: () => void;
   titleText: string;
   buttonText: string;
@@ -20,7 +21,8 @@ function NftBox({
   titleText,
   buttonText,
   imageUrl,
-  isBlurButton
+  isBlurButton,
+  isClaiming,
 }: Props) {
   const option = React.useMemo(() => {
     // default
@@ -47,9 +49,8 @@ function NftBox({
   return (
     <div className={`relative h-[200px] w-[176px] ${style.container}`}>
       <div
-        className={`relative flex h-full w-full flex-col items-center justify-evenly rounded-xl bg-[#081824] px-1 pt-3 pb-8 ${
-          isBlur ? 'opacity-50' : ''
-        } ${isNextReward && style.nextRewardBox}`}
+        className={`relative flex h-full w-full flex-col items-center justify-evenly rounded-xl bg-[#081824] px-1 pt-3 pb-8 ${isBlur ? 'opacity-50' : ''
+          } ${isNextReward && style.nextRewardBox}`}
         style={{
           border: `1px solid ${option.borderColor}`
         }}>
@@ -64,7 +65,9 @@ function NftBox({
         <span className="text-xs font-medium text-white">{titleText}</span>
       </div>
       <Button
-        className={`absolute bottom-[10px] right-2/4 h-[24px] translate-x-2/4 rounded-[4px] px-2 text-[12px] font-bold leading-[1.25] ${option.buttonClass}`}>
+        className={`absolute bottom-[10px] right-2/4 h-[24px] translate-x-2/4 rounded-[4px] px-2 text-[12px] font-bold leading-[1.25] ${option.buttonClass}`}
+        onClick={onClaim}
+        loading={isClaiming}>
         {buttonText}
       </Button>
     </div>
