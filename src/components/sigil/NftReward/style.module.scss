@@ -1,0 +1,25 @@
+.container {
+  .nextRewardBox {
+    border-top: none !important;
+    &::before {
+      content: '';
+      width: 40px;
+      height: 20px;
+      position: absolute;
+      top: 0px;
+      left: -0px;
+      border-top: solid 1px #9ECEAB;
+      border-top-left-radius: 10px;
+    }
+    &::after {
+      content: '';
+      width: 40px;
+      height: 20px;
+      position: absolute;
+      top: 0px;
+      right: -0px;
+      border-top: solid 1px #9ECEAB;
+      border-top-right-radius: 10px;
+    }
+  }
+}
