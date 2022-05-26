@@ -8,5 +8,6 @@ export const socialLinks = {
 export const localStorageKeys = {
   language: 'LANG',
   firstTime: 'FIRST_TIME',
-  referralCode: "REFERRAL_CODE"
+  referralCode: "REFERRAL_CODE",
+  userInfo: "USER_INFO"
 };
