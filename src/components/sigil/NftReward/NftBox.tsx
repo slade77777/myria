@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { toast } from 'react-toastify';
 import Button from '../../core/Button';
 import style from './style.module.scss';
 
@@ -7,28 +8,33 @@ interface Props {
   isNextReward?: boolean;
   isBlur?: boolean;
   isBlurButton?: boolean;
-  onClaim?: () => void;
+  onClaim?: () => Promise<void>;
+  onClaimSuccess?: () => void;
   titleText: string;
   buttonText: string;
   imageUrl: string;
+  containerClassname?: string;
 }
 
 function NftBox({
   onClaim,
+  onClaimSuccess,
   isBlur,
   isNextReward,
   titleText,
   buttonText,
   imageUrl,
-  isBlurButton
+  isBlurButton,
+  containerClassname,
 }: Props) {
+  const [isClaiming, setIsClaiming] = React.useState(false);
   const option = React.useMemo(() => {
     // default
     let borderColor = '#162B39';
-    let buttonClass = 'bg-[#0D273A] text-[white]';
+    let buttonClass = 'bg-[#0D273A] text-[white] cursor-default';
 
     if (typeof onClaim === 'function') {
-      buttonClass = 'bg-brand-gold text-[#081824]';
+      buttonClass = 'btn-primary cursor-pointer';
     }
 
     if (isNextReward) {
@@ -36,7 +42,7 @@ function NftBox({
     }
 
     if (isBlurButton) {
-      buttonClass = 'bg-[#0D273A] text-[#97AAB5]';
+      buttonClass = 'bg-[#0D273A] text-[#97AAB5] cursor-default';
     }
 
     return {
@@ -44,8 +50,25 @@ function NftBox({
       buttonClass
     };
   }, [onClaim, isNextReward, isBlurButton]);
+
+  const handleClaim = async () => {
+    try {
+      setIsClaiming(true);
+      if (typeof onClaim === 'function') {
+        await onClaim();
+        
+        onClaimSuccess?.();
+        toast('Claimed successfully.', { type: 'success' });
+      }
+    } catch (e) {
+      toast('Claimed unsuccessfully.', { type: 'error' });
+    } finally {
+      setIsClaiming(false);
+    }
+  }
+
   return (
-    <div className={`relative h-[200px] w-[176px] ${style.container}`}>
+    <div className={`relative h-[200px] min-w-[176px] max-w-[176px] ${style.container} ${containerClassname}`}>
       <div
         className={`relative flex h-full w-full flex-col items-center justify-evenly rounded-xl bg-[#081824] px-1 pt-3 pb-8 ${
           isBlur ? 'opacity-50' : ''
@@ -64,8 +87,10 @@ function NftBox({
         <span className="text-xs font-medium text-white">{titleText}</span>
       </div>
       <Button
-        className={`absolute bottom-[10px] right-2/4 h-[24px] translate-x-2/4 rounded-[4px] px-2 text-[12px] font-bold leading-[1.25] ${option.buttonClass}`}>
-        {buttonText}
+        loading={isClaiming}
+        onClick={handleClaim}
+        className={`absolute bottom-[10px] right-2/4 h-[24px] translate-x-2/4 rounded-[4px] w-fit px-2 text-[12px] font-bold leading-[1.25] ${option.buttonClass}`}>
+        {!isClaiming && buttonText}
       </Button>
     </div>
   );

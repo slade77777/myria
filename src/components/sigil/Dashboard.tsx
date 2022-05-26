@@ -2,9 +2,8 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Profile from './Profile';
-import { paddingX } from 'src/utils';
 import Mission from './MissionV2';
-import NftBox from './NftReward/NftBox';
+import NftReward from './NftReward';
 
 const Dashboard: React.FC = () => {
   const [tab, setTab] = useState<'rewards' | 'inventory'>('rewards');
@@ -19,7 +18,7 @@ const Dashboard: React.FC = () => {
         <div className="">
           <Profile />
         </div>
-        <div>
+        <div className='overflow-auto'>
           <div className="flex w-full items-center">
             {(
               [
@@ -57,25 +56,7 @@ const Dashboard: React.FC = () => {
           <div className="mt-7">
             {tab === 'rewards' ? (
               <div className="space-y-8">
-                <NftBox
-                  imageUrl='https://assets-dev.nonprod-myria.com/sigil/Sigil/VectorPrime/Common@2x.png'
-                  buttonText='CLAIMED'
-                  titleText='Common Federation Sigil'
-                  isBlur
-                  isBlurButton
-                />
-                <NftBox
-                  imageUrl='https://assets-dev.nonprod-myria.com/sigil/Sigil/VectorPrime/Common@2x.png'
-                  buttonText='CLAIM NOW'
-                  titleText='Common Federation Sigil'
-                  onClaim={() => null}
-                />
-                <NftBox
-                  imageUrl='https://assets-dev.nonprod-myria.com/sigil/Sigil/VectorPrime/Common@2x.png'
-                  buttonText='810 POINTS'
-                  titleText='Common Federation Sigil'
-                  isNextReward
-                />
+                <NftReward />
                 <Mission />
               </div>
             ) : (
