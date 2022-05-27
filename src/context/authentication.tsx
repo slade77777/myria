@@ -209,7 +209,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     async () => {
       const body = {
         referral_code: referalCode,
-        redirect_url: `${window.location.origin}/sigil`,
+        redirect: 0,
         first_name: registerData?.firstName,
         last_name: registerData?.lastName,
         username: registerData?.username,
