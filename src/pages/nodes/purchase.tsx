@@ -5,15 +5,13 @@ import { headerHeight } from '../../components/Header';
 import Page from '../../components/Page';
 import License from '../../components/Purchase/License';
 import ModalPurchase from 'src/components/Purchase/Modals';
-import SignInModal from 'src/components/SignIn/Modal';
-import RegisterModal from 'src/components/Register/Modal';
 import { paddingX } from 'src/utils';
 
 const Nodes: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
 
   const onPlaceOrder = () => {
-    // setOpenModal(true);
+    setOpenModal(true);
     // login();
   };
 
