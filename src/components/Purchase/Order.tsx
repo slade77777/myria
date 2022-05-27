@@ -43,15 +43,6 @@ const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
   const { onConnect, address } = useWalletContext();
   const { login } = useAuthenticationContext();
 
-  const onClickPurchase = () => {
-    if (address) {
-      onPlaceOrder();
-    } else {
-      login();
-      // onConnect();
-    }
-  };
-
   return (
     <div className="rounded-t-lg bg-brand-deep-blue p-6 md:rounded-lg md:p-8">
       <div className="flex items-center justify-between md:block">
@@ -85,7 +76,7 @@ const Order: React.FC<{ onPlaceOrder: () => void }> = ({ onPlaceOrder }) => {
       <div className="mt-2 md:mt-12">
         <button
           className="btn-lg w-full bg-brand-gold px-4 uppercase text-black"
-          onClick={onClickPurchase}>
+          onClick={onPlaceOrder}>
           <Trans>PURCHASE NOW</Trans>
         </button>
       </div>
