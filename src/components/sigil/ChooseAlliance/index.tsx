@@ -270,7 +270,7 @@ const Sigil = ({
           className={`absolute  flex h-[116px] w-full items-end justify-center transition-all delay-100 ${
             isActive
               ? 'bottom-[-70px] opacity-100 xl:bottom-[-75px] 2xl:bottom-[-100px]'
-              : 'bottom-0 opacity-0'
+              : 'bottom-0 opacity-0 pointer-events-none'
           }`}>
           <button
             className="btn-md btn-primary flex w-[60%] items-center"
