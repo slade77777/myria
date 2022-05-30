@@ -31,10 +31,10 @@ export const useNftRewardQuery = () => {
   });
 
   const claimRewardMutation = useMutation((rewardId: number ) => {
-    // apiClient.post('sigil/users/rewards', { reward_id: rewardId }).then(() => {})
-    return new Promise((r) => {
-      setTimeout(() => r(true), 2000)
-    }).then(() => {});
+    return apiClient.post('sigil/users/rewards', { reward_id: rewardId }).then(() => {})
+    // return new Promise((r) => {
+    //   setTimeout(() => r(true), 2000)
+    // }).then(() => {});
   })
 
   return { getRewardQuery, claimRewardMutation };
