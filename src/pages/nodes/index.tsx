@@ -179,20 +179,21 @@ const Nodes: React.FC = () => {
         style={{
           paddingTop: headerHeight
         }}>
-        <div
-          className={clsx(
-            paddingX,
-            "bg-[url('/images/nodes/page-bg_op.png')] bg-right-bottom bg-no-repeat "
-          )}>
+        <div className={clsx(paddingX, 'relative isolate')}>
+          <img
+            src="/images/globe_op.png"
+            alt=""
+            className="absolute top-[-50px] left-1/2 z-[-1] w-full max-w-[1256px] -translate-x-1/2 opacity-30 md:top-[-300px]"
+          />
           <div className="mx-auto w-full max-w-content">
             <section className={'text-center '}>
-              <h1 className="heading-lg mx-auto mt-[50px] max-w-[756px] text-center text-brand-white md:heading-massive md:mt-[120px]">
+              <h1 className="heading-lg mx-auto mt-[50px] max-w-[756px] text-center text-brand-white md:heading-massive md:mt-[200px]">
                 <Trans>
-                  Run a node and earn <span className="text-brand-mid-blue">$MYRIA</span> and NFT
-                  rewards
+                  Run a node and earn{' '}
+                  <span className="text-brand-light-blue">$MYRIA and NFT rewards</span>
                 </Trans>
               </h1>
-              <p className="heading-sm mx-auto mt-[32px] max-w-[518px]">
+              <p className="mx-auto mt-6 max-w-[677px] text-[24px] leading-[1.7]">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
               <button
@@ -208,9 +209,9 @@ const Nodes: React.FC = () => {
                 {address != undefined ? <Trans>Buy a node</Trans> : <Trans>Connect wallet</Trans>}
               </button>
             </section>
-            <section className="mt-[100px]">
-              <div className="max-w-[715px]">
-                <p className="caption text-brand-light-blue">
+            <section className="mt-[134px]">
+              <div className="mx-auto flex max-w-[642px] flex-col items-center text-center text-[#E7EBEE]">
+                <p className=" caption text-brand-gold">
                   <Trans>a decentralized ecosystem</Trans>
                 </p>
                 <h2 className="heading-lg mt-4">
@@ -249,7 +250,7 @@ const Nodes: React.FC = () => {
         </div>
         <section className={clsx(paddingX, 'mx-auto mt-[152px] w-full max-w-[832px]')}>
           <h3 className="heading-sm text-center md:heading-md">
-            <Trans>Myria FAQ</Trans>
+            <Trans>Validating on Myria</Trans>
           </h3>
           <div className="mt-[48px]">
             {questions.map((item, idx) => (
