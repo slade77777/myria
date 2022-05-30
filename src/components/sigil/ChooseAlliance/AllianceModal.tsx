@@ -71,7 +71,7 @@ const AllianceModal: React.FC<Props> = ({
                       event('Alliance Joined', { campaign: 'Sigil', alliance_name: sigilName });
                   }}
                   loading={isLoading}>
-                  <Trans>JOIN the {sigilName}</Trans>
+                  <Trans>JOIN {sigilName}</Trans>
                 </Button>
               </div>
 
