@@ -15,6 +15,13 @@ const Nodes: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const [balance, setBalance] = React.useState('0.0000');
   const { onConnect, address } = useWalletContext();
+  const [quantity, setQuantity] = React.useState(0);
+  
+  const setQuantityNumberOrder = (childdata:number):void => {
+    setQuantity(childdata);
+    // console.log("$$$$$$$$$$$$", childdata);
+  }
+
   async function getBalance(address: string | undefined) {
     let provider = ethers.getDefaultProvider();
     if (address != undefined) {
@@ -27,7 +34,9 @@ const Nodes: React.FC = () => {
   }
   const onPlaceOrder = async () => {
     await onConnect();
-    setOpenModal(true);
+    if(quantity>0){
+      setOpenModal(true);
+    }
     // login();
   };
   useEffect(() => {
@@ -51,12 +60,12 @@ const Nodes: React.FC = () => {
               <License />
             </div>
             <div className="sticky bottom-0 -mx-6 mt-[80px] md:top-5 md:mx-0 md:mt-0">
-              <Order onPlaceOrder={onPlaceOrder} />
+              <Order onPlaceOrder={onPlaceOrder}  setQuantityNumberOrder={setQuantityNumberOrder} />
             </div>
           </div>
         </div>
       </div>
-      <ModalPurchase balance={balance} open={openModal} onClose={() => setOpenModal(false)} />
+      <ModalPurchase balance={balance} quantity={quantity} open={openModal} onClose={() => setOpenModal(false)} />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
     </Page>

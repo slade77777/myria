@@ -6,14 +6,18 @@ import Modal from 'src/components/Modal';
 
 const ModalPurchase = ({
   balance,
+  quantity,
   open,
   onClose
 }: {
-  balance: string|undefined;
+  balance: string | undefined;
+  quantity: number | 0;
   open: boolean;
   onClose: () => void;
 }) => {
-  const qty = 3;
+  // const qty = 3;
+  const priceEth = 1839.04;
+  const unitNodeEth = 1.5;
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content
@@ -26,15 +30,15 @@ const ModalPurchase = ({
                 <Trans>Myria Founder’s Node</Trans>
               </p>
               <p className="body-sm text-light">
-                <Trans>Quantity: {qty}</Trans>
+                <Trans>Quantity: {quantity}</Trans>
               </p>
             </div>
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">4.5</p>
+                <p className="heading-md ml-2">{quantity*unitNodeEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~$13,824.90</p>
+              <p className="body-sm text-right text-light">~${quantity*priceEth}</p>
             </div>
           </div>
 
@@ -46,9 +50,9 @@ const ModalPurchase = ({
             </div>
             <div>
               <div className="flex items-center justify-end">
-                <ETH /> <p className="heading-list ml-2">4.5</p>
+                <ETH /> <p className="heading-list ml-2">{quantity*unitNodeEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~$13,824.90</p>
+              <p className="body-sm text-right text-light">~${quantity*priceEth}</p>
             </div>
           </div>
         </div>
@@ -61,9 +65,9 @@ const ModalPurchase = ({
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">4.5</p>
+                <p className="heading-md ml-2">{quantity*unitNodeEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~$13,824.90</p>
+              <p className="body-sm text-right text-light">~${quantity*priceEth}</p>
             </div>
           </div>
           <div className="mt-1 flex">
