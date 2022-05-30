@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
-import ChevronLeftIcon from 'src/components/icons/ChevronLeftIcon';
-import Logo from 'src/components/icons/Logo';
-import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { t, Trans } from '@lingui/macro';
-import ProfileComponent from 'src/components/Header/ProfileComponent';
 import clsx from 'clsx';
 import { useGA4 } from 'src/lib/ga';
 import http from 'src/client';
@@ -74,6 +69,7 @@ const MissionV2: React.FC = () => {
     [key in Mission['mission_id']]?: {
       label: string;
       link?: string;
+      description: (param: any) => string;
       onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
     };
   } = {
@@ -82,25 +78,58 @@ const MissionV2: React.FC = () => {
       onClick: (e) => {
         e.preventDefault();
         register();
+      },
+      description: (point: number) => {
+        return t`Earn ${point} points by completing account creation and becoming a true Myrian`;
       }
     },
     JOIN_DISCORD: {
-      label: t`Go to discord`,
-      link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord
-    },
-    SHARE_TWITTER: {
-      label: t`Go to twitter`,
-      onClick: (e) => {
-        e.preventDefault();
-        setOpenShareTwitterModal(true);
+      label: t`Lauch discord`,
+      link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
+      description: (point: number) => {
+        return t`Earn ${point} points by joining the Myria Discord server`;
       }
     },
+
     INVITE_FRIEND: {
       label: t`Copy invite link`,
       onClick: (e) => {
         e.preventDefault();
         setOpenInviteModal(true);
+      },
+      description: (point: number) => {
+        return t`Earn ${point} points for each successful friend invite. You will earn ${point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link`;
       }
+    },
+    DAILY_DISCORD_MESSAGE: {
+      label: t`Lauch discord`,
+      link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
+      description: (point: number) =>
+        t`Earn ${point} points for each day you send a message to any Myria Discord channel`
+    },
+    FIRST_DISCORD_MESSAGE: {
+      label: t`Lauch discord`,
+      link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
+      description: (point: number) =>
+        t`Earn ${point} points when you send your first message on any Myria Discord channel`
+    },
+    SHARE_IDEA_DISCORD: {
+      label: t`Lauch discord`,
+      link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
+      description: (point: number) =>
+        t`Earn ${point} points when you send a message in Myria Discord general-chat channel that receives at least 20 reactions `
+    },
+    VOTE_ON_LORE_DISCORD: {
+      label: t`Lauch discord`,
+      link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
+      description: (point: number) =>
+        t`Earn $${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
+    },
+    SPACE_LORD_ROLE_DISCORD: {
+      label: t`Lauch discord`,
+      link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
+      description: (point: number) =>
+        t`Earn $${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
     }
   };
 
@@ -115,8 +144,7 @@ const MissionV2: React.FC = () => {
         onClose={() => setOpenInviteModal(false)}
         link={`${window.location.origin}/sigil?code=${user?.user_id}`}
       />
-
-      <p className="text-base font-medium text-light mb-6">
+      <p className="mb-6 text-base font-medium text-light">
         Complete the missions below to unlock your rewards
       </p>
       {!missions ? (
@@ -124,7 +152,7 @@ const MissionV2: React.FC = () => {
           <Loading />
         </div>
       ) : (
-        <div className={`overflow-auto max-h-[65vh] pr-[43px] pl-[3px] pt-[3px]`}>
+        <div className={`max-h-[65vh] overflow-auto pr-[43px] pl-[3px] pt-[3px]`}>
           {(missions || []).map((mission) => {
             const isRepeatable =
               mission.repetition_type == 'Daily' || mission.repetition_type == 'Unlimited';
@@ -165,8 +193,10 @@ const MissionV2: React.FC = () => {
                           {credits} POINTS
                         </div>
                       </div>
-                      <p className="mt-4 max-w-[379px] text-base font-normal text-light">
-                        {mission.description}
+                      <p className="mt-4 max-w-[70%] text-base font-normal text-light">
+                        {ActionMap[mission.mission_id]?.description &&
+                          typeof ActionMap[mission.mission_id]?.description === 'function' &&
+                          ActionMap[mission.mission_id]?.description(credits)}
                       </p>
                     </div>
                     <div className="flex h-[80px] flex-col">
@@ -176,7 +206,7 @@ const MissionV2: React.FC = () => {
                           target="_blank"
                           rel="noreferrer"
                           className={clsx(
-                            'sigil-btn-mission w-[202px] cursor-pointer py-[14px] text-center text-base font-bold uppercase'
+                            'sigil-btn-mission cursor-pointer text-center text-base font-bold uppercase'
                           )}
                           onClick={(e) => {
                             if (typeof action.onClick === 'function') {
@@ -186,7 +216,9 @@ const MissionV2: React.FC = () => {
                               mission.trackGA4();
                             }
                           }}>
-                          {actionLabel}
+                          <div className="label">
+                            <div className="mask">{actionLabel}</div>
+                          </div>
                         </a>
                       ) : (
                         <button

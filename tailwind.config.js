@@ -471,32 +471,47 @@ module.exports = {
           textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)'
         },
         '.sigil-btn-mission': {
-          background: `linear-gradient(180deg ,rgba(158, 206, 171, 0.2) 0%, rgba(158, 206, 171, 0) 100%)`,
           borderRadius: 4,
-          position: 'relative',
-          border: '1px solid #9ECEAB',
           color: '#9ECEAB',
-          '&::before': {
-            position: `absolute`,
-            left: `-5px`,
-            top: `-6px`,
-            content: "'' !important",
-            width: '11px',
-            height: '13px',
-            borderRight: `1px solid #9ECEAB`,
-            transform: `rotate(45deg)`,
-            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          background: `linear-gradient(-45deg, transparent 6px, #9ECEAB 0) right,
+          linear-gradient(135deg, transparent 6px, #9ECEAB 0) left`,
+          backgroundSize: `50% 100%`,
+          backgroundRepeat: `no-repeat`,
+          display: `flex`,
+          alignItems: `center`,
+          justifyContent: `center`,
+          width: `202px`,
+          height: `48px`,
+          '&:hover': {
+            filter: `drop-shadow(0 0px 5px rgba(158, 206, 171, 0.5))`,
           },
-          '&::after': {
-            position: `absolute`,
-            right: `-5px`,
-            bottom: `-6px`,
-            content: "'' !important",
-            width: '11px',
-            height: '13px',
-            transform: `rotate(45deg)`,
-            backgroundColor: `${theme('colors.brand-deep-blue')}`,
-            borderLeft: `1px solid #9ECEAB`
+          '.label': {
+            position: `relative`,
+            display: `flex`,
+            alignItems: `center`,
+            justifyContent: `center`,
+            width: `calc(100% - 2px)`,
+            height: `calc(100% - 2px)`,
+            background: `linear-gradient(-45deg, transparent 6px,#081824 0) right,
+            linear-gradient(135deg, transparent 6px, #081824 0) left`,
+            borderRadius: 4,
+            clipPath: `polygon(
+              0 8px,
+              8px 0,
+              100% 0,
+              100% calc(100% - 8px),
+              calc(100% - 8px) 100%,
+              0 100%
+            )`,
+            '.mask': {
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              borderRadius: 4,
+              width: '100%',
+              height: '100%',
+              background: `linear-gradient(180deg, rgba(158, 206, 171, 0.2) 0%, rgba(158, 206, 171, 0) 100%)`
+            },
           }
         },
         '.sigil-btn-mission-locked': {
