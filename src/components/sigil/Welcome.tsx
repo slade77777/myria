@@ -15,7 +15,7 @@ type Props = {
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
-  const { user, registerByWalletMutation, loginByWalletMutation, userProfileQuery } =
+  const { user, loginByWalletMutation, userProfileQuery } =
     useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -29,20 +29,6 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
       setInstalledWallet(false);
     }
   }, []);
-
-  const handleRegisterByWallet = async () => {
-    // try login first
-    try {
-      const user = await loginByWalletMutation.mutateAsync().catch(() => null);
-      if (!user) {
-        await registerByWalletMutation.mutateAsync();
-        loginByWalletMutation.mutate();
-      }
-    } catch (e) {
-      // TODO toast here
-      console.log('Register error');
-    }
-  };
 
   // try to login via wallet
   React.useEffect(() => {
@@ -133,9 +119,9 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         {address && isSupportedBrowser ? (
           <>
             <Button
-              loading={registerByWalletMutation.isLoading || loginByWalletMutation.isLoading}
+              loading={loginByWalletMutation.isLoading}
               onClick={() => {
-                handleRegisterByWallet();
+                loginByWalletMutation.mutate();
                 event('Join Now Selected', { campaign: 'Sigil' });
               }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
