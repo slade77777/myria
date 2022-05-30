@@ -195,18 +195,9 @@ const Nodes: React.FC = () => {
               <p className="heading-sm mx-auto mt-[32px] max-w-[518px]">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              <button
-                className="btn-lg btn-primary mt-[38px]"
-                onClick={async () => {
-                  if (address != undefined) {
-                    router.push('/nodes/purchase');
-                  } else {
-                    await onConnect();
-                    event('Connect Wallet Selected', { campaign: 'Sigil' });
-                  }
-                }}>
-                {address != undefined ? <Trans>Buy a node</Trans> : <Trans>Connect wallet</Trans>}
-              </button>
+              <a className="btn-lg btn-primary mt-[38px]" href="#subcribe">
+                <Trans>Pre register now</Trans>
+              </a>
             </section>
             <section className="mt-[100px]">
               <div className="max-w-[715px]">
