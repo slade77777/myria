@@ -22,8 +22,6 @@ const Inventory: React.FC = () => {
     );
   }
 
-  const data = [...inventories, ...inventories]
-
   return (
     <div className="w-full">
       <section
