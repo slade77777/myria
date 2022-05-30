@@ -205,7 +205,7 @@ const Nodes: React.FC = () => {
                     event('Connect Wallet Selected', { campaign: 'Sigil' });
                   }
                 }}>
-                <Trans>{address != undefined ? 'Buy a node' : 'Connect wallet'}</Trans>
+                {address != undefined ? <Trans>Buy a node</Trans> : <Trans>Connect wallet</Trans>}
               </button>
             </section>
             <section className="mt-[100px]">
