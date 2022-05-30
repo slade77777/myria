@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Profile from './Profile';
 import Mission from './MissionV2';
+import Inventory from './Inventory';
 import NftReward from './NftReward';
 
 const Dashboard: React.FC = () => {
@@ -60,7 +61,7 @@ const Dashboard: React.FC = () => {
                 <Mission />
               </div>
             ) : (
-              <div>Inventory</div>
+              <Inventory />
             )}
           </div>
         </div>
