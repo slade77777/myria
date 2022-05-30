@@ -1,8 +1,18 @@
+import { useEffect } from 'react';
 import { Trans } from '@lingui/macro';
 import ETH from 'src/components/icons/ETHIcon';
 import Modal from 'src/components/Modal';
+// import { useWalletContext } from 'src/context/wallet';
 
-const ModalPurchase = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
+const ModalPurchase = ({
+  balance,
+  open,
+  onClose
+}: {
+  balance: string|undefined;
+  open: boolean;
+  onClose: () => void;
+}) => {
   const qty = 3;
   return (
     <Modal open={open} onOpenChange={onClose}>
@@ -58,7 +68,7 @@ const ModalPurchase = ({ open, onClose }: { open: boolean; onClose: () => void }
           </div>
           <div className="mt-1 flex">
             <p className="body-sm flex-1 text-light">
-              <Trans>From wallet</Trans>
+              <Trans>{balance} ETH</Trans>
             </p>
             <button className="btn-lg btn-primary mt-2 justify-end">
               <Trans>Purchase now</Trans>

@@ -12,6 +12,9 @@ import UserIcon from '../../components/icons/UserIcon';
 import Page from '../../components/Page';
 import { paddingX } from '../../utils';
 
+import { useWalletContext } from 'src/context/wallet';
+import { useGA4 } from 'src/lib/ga';
+
 const rewards = [
   {
     icon: (
@@ -165,6 +168,8 @@ const questions = [
   }
 ];
 const Nodes: React.FC = () => {
+  const { address, onConnect } = useWalletContext();
+  const { event } = useGA4();
   return (
     <Page>
       <div
@@ -187,9 +192,12 @@ const Nodes: React.FC = () => {
               <p className="heading-sm mx-auto mt-[32px] max-w-[518px]">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              <a className="btn-lg btn-primary mt-[38px]" href="#subcribe">
-                <Trans>Pre register now</Trans>
-              </a>
+              <button className="btn-lg btn-primary mt-[38px]" onClick={() => {
+                  onConnect();
+                  event('Connect Wallet Selected', { campaign: 'Sigil' });
+                }}>
+                <Trans>Buy a node {address}</Trans>
+              </button>
             </section>
             <section className="mt-[100px]">
               <div className="max-w-[715px]">

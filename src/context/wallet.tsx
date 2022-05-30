@@ -4,6 +4,7 @@ import Web3Modal from '../components/Web3Modal';
 
 import { ethers } from 'ethers';
 import { useGA4 } from 'src/lib/ga';
+import { bal } from 'make-plural';
 
 let web3Modal: Web3Modal;
 
