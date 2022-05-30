@@ -5,7 +5,7 @@ import { headerHeight } from '../Header';
 import Page from '../Page';
 import Banner from './Banner';
 import ProfileHeader from './ProfileHeader';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar2';
 
 const NodesPage: React.FC = ({ children }) => {
   return (
