@@ -117,19 +117,29 @@ const MissionV2: React.FC = () => {
       label: t`Lauch discord`,
       link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
       description: (point: number) =>
-        t`Earn ${point} points when you send a message in Myria Discord general-chat channel that receives at least 20 reactions `
+        t`Earn ${point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions`
     },
     VOTE_ON_LORE_DISCORD: {
       label: t`Lauch discord`,
       link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
       description: (point: number) =>
-        t`Earn $${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
+        t`Earn $${point} points  when you add your reaction to a message on the #myria-lore channel`
     },
     SPACE_LORD_ROLE_DISCORD: {
       label: t`Lauch discord`,
       link: process.env.NEXT_PUBLIC_DISCORD_MISSION_URL || socialLinks.discord,
       description: (point: number) =>
         t`Earn $${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
+    },
+    SHARE_ON_TWITTER: {
+      label: '',
+      onClick: (e) => {},
+      description: (point: number) => t`Earn ${point} points by sharing a tweet about Myria`
+    },
+    FOLLOW_ON_TWITTER: {
+      label: '',
+      onClick: (e) => {},
+      description: (point: number) => t`Earn ${point} points by following @myriagames on Twitter`
     }
   };
 
