@@ -16,6 +16,7 @@ import { useWalletContext } from 'src/context/wallet';
 import { useGA4 } from 'src/lib/ga';
 
 import { useRouter } from 'next/router';
+import Header from 'src/components/nodes/Header';
 
 const rewards = [
   {
@@ -174,7 +175,8 @@ const Nodes: React.FC = () => {
   const { event } = useGA4();
   const router = useRouter();
   return (
-    <Page>
+    <Page headerClassName="hidden" footerClassName="hidden">
+      <Header />
       <div
         style={{
           paddingTop: headerHeight
@@ -307,7 +309,7 @@ const Nodes: React.FC = () => {
             </div>
           </div>
         </section>
-        <section className={clsx(paddingX, 'mb-[124px]')} id="subcribe">
+        <section className={clsx(paddingX, 'pb-[124px]')} id="subcribe">
           <div className="mx-auto max-w-content">
             <Subscribe />
           </div>
