@@ -201,7 +201,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       try {
         await apiClient.post(`/accounts/logout`);
       } catch (err) { }
-      setUser(undefined);
+      window.location.reload()
     },
   );
 
