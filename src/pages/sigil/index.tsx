@@ -91,7 +91,7 @@ const Sigil: React.FC = () => {
   }, [currentStep]);
 
   React.useEffect(() => {
-    if (!user) {
+    if (!user?.user_id) {
       setCurrentStep(0);
     }
 
