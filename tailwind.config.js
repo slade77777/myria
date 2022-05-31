@@ -31,7 +31,8 @@ module.exports = {
         green: '#41F59F',
         flat: '#A9A6B1',
         'border-blue': '#5BA7D2',
-        input: '#132533'
+        input: '#132533',
+        blue: '#5BA7D2'
       },
       maxWidth: {
         content: 1264
@@ -468,6 +469,108 @@ module.exports = {
         },
         '.sigil-text': {
           textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)'
+        },
+        '.sigil-btn-mission': {
+          borderRadius: 4,
+          color: '#9ECEAB',
+          background: `linear-gradient(-45deg, transparent 6px, #9ECEAB 0) right,
+          linear-gradient(135deg, transparent 6px, #9ECEAB 0) left`,
+          backgroundSize: `50% 100%`,
+          backgroundRepeat: `no-repeat`,
+          display: `flex`,
+          alignItems: `center`,
+          justifyContent: `center`,
+          width: `202px`,
+          height: `48px`,
+          '&:hover': {
+            filter: `drop-shadow(0 0px 5px rgba(158, 206, 171, 0.5))`,
+          },
+          '.label': {
+            position: `relative`,
+            display: `flex`,
+            alignItems: `center`,
+            justifyContent: `center`,
+            width: `calc(100% - 2px)`,
+            height: `calc(100% - 2px)`,
+            background: `linear-gradient(-45deg, transparent 6px,#081824 0) right,
+            linear-gradient(135deg, transparent 6px, #081824 0) left`,
+            borderRadius: 4,
+            clipPath: `polygon(
+              0 8px,
+              8px 0,
+              100% 0,
+              100% calc(100% - 8px),
+              calc(100% - 8px) 100%,
+              0 100%
+            )`,
+            '.mask': {
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              borderRadius: 4,
+              width: '100%',
+              height: '100%',
+              background: `linear-gradient(180deg, rgba(158, 206, 171, 0.2) 0%, rgba(158, 206, 171, 0) 100%)`
+            },
+          }
+        },
+        '.sigil-btn-mission-locked': {
+          background: `linear-gradient(180deg, rgba(213, 94, 94, 0.2) 0%, rgba(213, 94, 94, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #D55E5E',
+          color: '#D55E5E',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #D55E5E`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #D55E5E`
+          }
+        },
+        '.sigil-btn-mission-disable': {
+          background: `linear-gradient(180deg, rgba(172, 172, 172, 0.2) 0%, rgba(172, 172, 172, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #ACACAC',
+          color: '#ACACAC',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #ACACAC`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #ACACAC`
+          }
         }
       });
     })

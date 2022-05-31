@@ -10,7 +10,6 @@ import { Mission } from 'src/types/sigil';
 import MissionItem from './MissionItem';
 import ReferFriendModal from './ReferFriendModal';
 import ShareTwitterModal from './ShareTwitterModal';
-import { SubtractRight } from './Subtract';
 import { t, Trans } from '@lingui/macro';
 
 const Missions: React.FC = () => {
@@ -100,7 +99,6 @@ const Missions: React.FC = () => {
           </p>
           <div className="h-[1px] flex-1 bg-border-blue opacity-20">
             <div className="absolute top-0 right-0 translate-x-[7px] translate-y-[4px]">
-              <SubtractRight />
             </div>
             <div className="absolute top-0 right-0 h-full w-[1px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent" />
           </div>
