@@ -83,3 +83,8 @@ button:disabled {
   border: solid 1px transparent;
   border-radius: 100vh;
 }
+
+input::-ms-reveal,
+input::-ms-clear {
+ display: none;
+}
