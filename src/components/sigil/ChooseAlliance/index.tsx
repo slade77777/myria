@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
 import { SUPPORT_SOUND, soundService } from 'src/sound';
 import { AllianceName } from 'src/types/sigil';
@@ -288,6 +289,7 @@ const Sigil = ({
 };
 
 const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
+  const { userProfileQuery } = useAuthenticationContext();
   const [activeSigil, setActiveSigil] = useState<string | null>(null);
   const handleHoverSigil = (id: string | null) => {
     setActiveSigil(id);
@@ -298,11 +300,16 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
     return SIGILS.find((sigil) => sigil.id === selectedAlliance);
   }, [selectedAlliance]);
 
+  const onJoinSuccess = React.useCallback(() => {
+    userProfileQuery.refetch();
+    onNext?.();
+  }, [onNext, userProfileQuery]);
+
   return (
     <>
       <AllianceModal
         open={!!selectedAlliance}
-        onJoinSuccess={onNext}
+        onJoinSuccess={onJoinSuccess}
         onClose={() => {
           setSelectedAlliance(null);
         }}
