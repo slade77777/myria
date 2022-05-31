@@ -31,7 +31,98 @@ module.exports = {
         green: '#41F59F',
         flat: '#A9A6B1',
         'border-blue': '#5BA7D2',
-        input: '#132533'
+        input: '#132533',
+        blue: '#5BA7D2',
+        'primary/1': '#181206',
+        'primary/2': '#31250D',
+        'primary/3': '#624A1A',
+        'primary/4': '#936F27',
+        'primary/5': '#C49434',
+        'primary/6': '#F5B941',
+        'primary/7': '#F7C767',
+        'primary/8': '#F9D58D',
+        'primary/9': '#FCEAC6',
+        'primary/10': '#FEF8EC',
+        'base/1': '#040B10',
+        'base/2': '#050E15',
+        'base/3': '#081824',
+        'base/4': '#0B2231',
+        'base/5': '#0F2D42',
+        'base/6': '#0F2F45',
+        'base/7': '#2B4C63',
+        'base/8': '#5A7486',
+        'base/9': '#A1AFBA',
+        'base/10': '#E7EBEE',
+        'blue/1': '#071012',
+        'blue/2': '#0F1F25',
+        'blue/3': '#1F282D',
+        'blue/4': '#5C7988',
+        'blue/5': '#8BB5CC',
+        'blue/6': '#9AC9E3',
+        'blue/7': '#A4CEE6',
+        'blue/8': '#B8D9EB',
+        'blue/9': '#D7E9F4',
+        'blue/10': '#F5FAFC',
+        'teal/1': '#021312',
+        'teal/2': '#042723',
+        'teal/3': '#084D47',
+        'teal/4': '#0B746A',
+        'teal/5': '#0F9A8E',
+        'teal/6': '#13C1B1',
+        'teal/7': '#42CDC1',
+        'teal/8': '#5AD4C8',
+        'teal/9': '#B8ECE8',
+        'teal/10': '#E7F9F7',
+        'purple/1': '#100712',
+        'purple/2': '#1F0F25',
+        'purple/3': '#3E1E4A',
+        'purple/4': '#5E2D6F',
+        'purple/5': '#7D3C94',
+        'purple/6': '#9C4BB9',
+        'purple/7': '#B06FC7',
+        'purple/8': '#D191E1',
+        'purple/9': '#E1C9EA',
+        'purple/10': '#F5EDF8',
+        'error/1': '#180B0B',
+        'error/2': '#311717',
+        'error/3': '#492222',
+        'error/4': '#924444',
+        'error/5': '#C25B5B',
+        'error/6': '#F37272',
+        'error/7': '#F58E8E',
+        'error/8': '#F9B9B9',
+        'error/9': '#FBD5D5',
+        'error/10': '#FEF1F1',
+        'success/1': '#041108',
+        'success/2': '#0D3218',
+        'success/3': '#175328',
+        'success/4': '#1B642F',
+        'success/5': '#24853F',
+        'success/6': '#2DA64F',
+        'success/7': '#57B872',
+        'success/8': '#81CA95',
+        'success/9': '#C0E4CA',
+        'success/10': '#EAF6ED',
+        'warning/1': '#18160E',
+        'warning/2': '#494229',
+        'warning/3': '#796E45',
+        'warning/4': '#918453',
+        'warning/5': '#C2B06E',
+        'warning/6': '#F2DC8A',
+        'warning/7': '#F5E3A1',
+        'warning/8': '#F9EEC5',
+        'warning/9': '#FBF5DC',
+        'warning/10': '#FEFCF3',
+        'gray/1': '#111827',
+        'gray/2': '#1F2937',
+        'gray/3': '#374151',
+        'gray/4': '#4B5563',
+        'gray/5': '#6B7280',
+        'gray/6': '#9CA3AF',
+        'gray/7': '#D1D5DB',
+        'gray/8': '#E5E7EB',
+        'gray/9': '#F3F4F6',
+        'gray/10': '#F9FAFB'
       },
       maxWidth: {
         content: 1264
@@ -468,6 +559,278 @@ module.exports = {
         },
         '.sigil-text': {
           textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)'
+        },
+        '.sigil-btn-mission': {
+          borderRadius: 4,
+          color: '#9ECEAB',
+          background: `linear-gradient(-45deg, transparent 6px, #9ECEAB 0) right,
+          linear-gradient(135deg, transparent 6px, #9ECEAB 0) left`,
+          backgroundSize: `50% 100%`,
+          backgroundRepeat: `no-repeat`,
+          display: `flex`,
+          alignItems: `center`,
+          justifyContent: `center`,
+          width: `202px`,
+          height: `48px`,
+          '&:hover': {
+            filter: `drop-shadow(0 0px 5px rgba(158, 206, 171, 0.5))`
+          },
+          '.label': {
+            position: `relative`,
+            display: `flex`,
+            alignItems: `center`,
+            justifyContent: `center`,
+            width: `calc(100% - 2px)`,
+            height: `calc(100% - 2px)`,
+            background: `linear-gradient(-45deg, transparent 6px,#081824 0) right,
+            linear-gradient(135deg, transparent 6px, #081824 0) left`,
+            borderRadius: 4,
+            clipPath: `polygon(
+              0 8px,
+              8px 0,
+              100% 0,
+              100% calc(100% - 8px),
+              calc(100% - 8px) 100%,
+              0 100%
+            )`,
+            '.mask': {
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              borderRadius: 4,
+              width: '100%',
+              height: '100%',
+              background: `linear-gradient(180deg, rgba(158, 206, 171, 0.2) 0%, rgba(158, 206, 171, 0) 100%)`
+            }
+          }
+        },
+        '.sigil-btn-mission-locked': {
+          background: `linear-gradient(180deg, rgba(213, 94, 94, 0.2) 0%, rgba(213, 94, 94, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #D55E5E',
+          color: '#D55E5E',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #D55E5E`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #D55E5E`
+          }
+        },
+        '.sigil-btn-mission-disable': {
+          background: `linear-gradient(180deg, rgba(172, 172, 172, 0.2) 0%, rgba(172, 172, 172, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #ACACAC',
+          color: '#ACACAC',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #ACACAC`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #ACACAC`
+          }
+        },
+        '.h1': {
+          fontSize: '60px',
+          lineHeight: 1,
+          fontWeight: 800
+        },
+        '.h2': {
+          fontSize: 48,
+          lineHeight: 1.25,
+          fontWeight: 700
+        },
+        '.h3': {
+          fontSize: 40,
+          lineHeight: 1.5,
+          fontWeight: 700
+        },
+        '.h4': {
+          fontSize: 32,
+          lineHeight: 1.47,
+          fontWeight: 500
+        },
+        '.h5': {
+          fontSize: 28,
+          lineHeight: 1.5,
+          fontWeight: 500
+        },
+        '.h6': {
+          fontSize: 24,
+          lineHeight: 1.33,
+          fontWeight: 700
+        },
+        '.body-36-medium': {
+          fontSize: 36,
+          lineHeight: 1.31,
+          fontWeight: 500
+        },
+        'body-36-regular': {
+          fontSize: 36,
+          lineHeight: 1.11,
+          fontWeight: 400
+        },
+        '.body-32-medium': {
+          fontSize: 32,
+          lineHeight: 1.31,
+          fontWeight: 500
+        },
+        'body-32-regular': {
+          fontSize: 32,
+          lineHeight: 1.31,
+          fontWeight: 400
+        },
+        '.body-28-medium': {
+          fontSize: 28,
+          lineHeight: 1.43,
+          fontWeight: 500
+        },
+        'body-28-regular': {
+          fontSize: 28,
+          lineHeight: 1.43,
+          fontWeight: 400
+        },
+        '.body-24-medium': {
+          fontSize: 24,
+          lineHeight: 1.17,
+          fontWeight: 500
+        },
+        'body-24-regular': {
+          fontSize: 24,
+          lineHeight: 1.17,
+          fontWeight: 400
+        },
+        '.body-24-medium': {
+          fontSize: 24,
+          lineHeight: 1.17,
+          fontWeight: 500
+        },
+        'body-24-regular': {
+          fontSize: 24,
+          lineHeight: 1.17,
+          fontWeight: 400
+        },
+        '.body-20-semibold': {
+          fontSize: 20,
+          lineHeight: 1.3,
+          fontWeight: 600
+        },
+        '.body-20-medium': {
+          fontSize: 20,
+          lineHeight: 1.3,
+          fontWeight: 500
+        },
+        'body-20-regular': {
+          fontSize: 20,
+          lineHeight: 1.3,
+          fontWeight: 400
+        },
+        '.body-18-bold': {
+          fontSize: 18,
+          lineHeight: 1.33,
+          fontWeight: 700
+        },
+        '.body-18-medium': {
+          fontSize: 18,
+          lineHeight: 1.33,
+          fontWeight: 500
+        },
+        'body-18-regular': {
+          fontSize: 18,
+          lineHeight: 1.33,
+          fontWeight: 400
+        },
+        '.body-16-bold': {
+          fontSize: 16,
+          lineHeight: 1.44,
+          fontWeight: 700
+        },
+        '.body-16-medium': {
+          fontSize: 16,
+          lineHeight: 1.44,
+          fontWeight: 500
+        },
+        'body-16-regular': {
+          fontSize: 16,
+          lineHeight: 1.44,
+          fontWeight: 400
+        },
+        '.body-14-medium': {
+          fontSize: 14,
+          lineHeight: 1.57,
+          fontWeight: 500
+        },
+        'body-14-regular': {
+          fontSize: 14,
+          lineHeight: 1.57,
+          fontWeight: 400
+        },
+        '.body-12-medium': {
+          fontSize: 12,
+          lineHeight: 1.17,
+          fontWeight: 500
+        },
+        'body-12-regular': {
+          fontSize: 12,
+          lineHeight: 1.17,
+          fontWeight: 400
+        },
+        'caption-small': {
+          fontSize: 10,
+          lineHeight: 1.4,
+          fontWeight: 400
+        },
+        'caption-medium': {
+          fontSize: 14,
+          lineHeight: 1.5,
+          fontWeight: 700
+        },
+        'caption-default': {
+          fontSize: 12,
+          lineHeight: 1.5,
+          fontWeight: 700
+        },
+        'caption-overline-small': {
+          fontSize: 10,
+          lineHeight: 1.2,
+          fontWeight: 600
+        },
+        'caption-overline-default': {
+          fontSize: 12,
+          lineHeight: 1.5,
+          fontWeight: 600
         }
       });
     })
