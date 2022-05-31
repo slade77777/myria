@@ -30,4 +30,16 @@ export const additionalApiClient = axios.create({
   }
 });
 
+export const noCacheApiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  timeout: 10000,
+  headers: {
+    accept: 'application/json',
+    'Content-type': 'application/json',
+    'Cache-Control': 'no-cache'
+  },
+  withCredentials: true
+});
+
+
 export default apiClient;
