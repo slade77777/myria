@@ -9,9 +9,34 @@ type NftReward = {
   creditsRequired?: number;
   progressPercentage?: number;
 }
-
+// let t = false;
 export const useNftRewardQuery = () => {
   const getRewardQuery = useQuery('getNftRewardQuery', () => {
+    
+    // return new Promise<NftReward[]>((r) => {
+    //   setTimeout(() => {
+    //       const rewards: NftReward[] = [
+    //         {
+    //           rewardId: 2,
+    //           title: 'Ultra rare',
+    //           imageUrl: 'https://assets-dev.nonprod-myria.com/sigil/Sigil/VectorPrime/Ultra%20Rare@2x.png',
+    //           creditsRequired: 1,
+    //           progressPercentage: 1,
+    //           status: 'locked',
+    //         },
+    //         {
+    //           rewardId: 1,
+    //           title: 'Ultra rare',
+    //           imageUrl: 'https://assets-dev.nonprod-myria.com/sigil/Sigil/VectorPrime/Ultra%20Rare@2x.png',
+    //           creditsRequired: 1,
+    //           progressPercentage: 1,
+    //           status: t ? 'claimed' : 'claimable',
+    //         }
+    //       ]
+    //       t = true;
+    //       return r(rewards);
+    //   }, 1000);
+    // })
     return apiClient.get('sigil/users/rewards')
       .then(res => {
         if (res.data && res.data.data && res.data.data instanceof Array) {
@@ -33,7 +58,7 @@ export const useNftRewardQuery = () => {
   const claimRewardMutation = useMutation((rewardId: number ) => {
     return apiClient.post('sigil/users/rewards', { reward_id: rewardId }).then(() => {})
     // return new Promise((r) => {
-    //   setTimeout(() => r(true), 2000)
+    //   setTimeout(() => r(true), 1000)
     // }).then(() => {});
   })
 

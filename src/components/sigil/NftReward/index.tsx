@@ -19,7 +19,7 @@ function NftReward() {
   }
 
   return (
-    <div className="overflow-x-auto py-3">
+    <div className="overflow-x-auto py-8">
       <div className="flex w-full">
         {rewards?.map((reward) => {
           if (!reward || !reward.rewardId) {
