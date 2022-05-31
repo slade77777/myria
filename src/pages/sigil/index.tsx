@@ -103,7 +103,7 @@ const Sigil: React.FC = () => {
   const isLoading = !userProfileQuery.isFetched && userProfileQuery.isFetching && currentStep === 0;
 
   return (
-    <div className="relative min-w-[1300px]">
+    <div className={`relative ${currentStep === 1 ? 'min-w-[1300px]' : ''}`}>
       {isLoading && (
         <div className="absolute inset-0 z-10 flex w-full items-center justify-center bg-dark/10 text-white">
           <LoadingStandBy />
