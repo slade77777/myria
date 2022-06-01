@@ -21,8 +21,8 @@ export type Mission = {
   mission_id:
     | 'MYRIA_ACCOUNT'
     | 'JOIN_DISCORD'
-    | 'SHARE_ON_TWITTER'
-    | 'FOLLOW_ON_TWITTER'
+    | 'SHARE_TWITTER'
+    | 'FOLLOW_TWITTER'
     | 'INVITE_FRIEND'
     | 'DAILY_DISCORD_MESSAGE'
     | 'FIRST_DISCORD_MESSAGE'
