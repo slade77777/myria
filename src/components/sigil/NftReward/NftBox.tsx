@@ -53,11 +53,12 @@ function NftBox({
 
   const handleClaim = async () => {
     try {
-      if (animationRef.current) {
-        animationRef.current.style.display = 'flex';
-      }
-      setIsClaiming(true);
       if (typeof onClaim === 'function') {
+        if (animationRef.current) {
+          animationRef.current.style.display = 'flex';
+        }
+        setIsClaiming(true);
+
         await onClaim();
 
         onClaimSuccess?.();
