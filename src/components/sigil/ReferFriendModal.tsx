@@ -45,7 +45,7 @@ const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
             </p>
             <p className="mt-6 text-[16px] leading-[1.5] text-light">
               <Trans>
-                I&apos;m baby whatever small batch chicharrones kale chips unicorn everyday carry.
+                Invite your friends to Myria by sharing the following link with them.
               </Trans>
             </p>
             <div className="mt-10 rounded-lg bg-[#132533] py-[14px] pl-[16px] pr-[25px] text-[16px] leading-[1.25] text-light">
