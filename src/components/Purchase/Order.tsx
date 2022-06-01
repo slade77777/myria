@@ -7,7 +7,9 @@ import styles from './styles.module.css';
 import { useWalletContext } from 'src/context/wallet';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Input from '../Input';
+import TermsOfServiceModal from './Modals/TermsOfServiceModal';
 import { Trans } from '@lingui/macro';
+import { listenerCount } from 'process';
 
 const licenses = [
   {
@@ -15,27 +17,27 @@ const licenses = [
     content: (
       <span>
         I have read, understood and agree to the{' '}
-        <span className="text-brand-gold">terms of service </span>
       </span>
-    )
+    ),
+    action: 'terms of service'
   },
   {
     value: 1,
     content: (
       <span>
         I have read, understood and agree to the{' '}
-        <span className="text-brand-gold">privacy policy</span>
       </span>
-    )
+    ),
+    action: 'privacy policy'
   },
   {
     value: 2,
     content: (
       <span>
         I have read, understand and agree that Myria Founder’s nodes are{' '}
-        <span className="text-brand-gold">not investments</span>
       </span>
-    )
+    ),
+    action: 'not investments'
   }
 ];
 
@@ -69,50 +71,69 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, setQuantityNumberOrder }) 
       onPlaceOrder();
     }
   }
+
+  const handleClickLicense = (licenseId: number) => {
+    switch (licenseId) {
+      case 0:
+        setFirstLicense(true);
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+    }
+  }
+
   return (
-    <div className="rounded-t-lg bg-brand-deep-blue p-6 md:rounded-lg md:p-8">
-      <div className="flex items-center justify-between md:block">
-        <p className="caption hidden font-bold text-light md:body-sm md:block">
-          <Trans>Price</Trans>
-        </p>
-        <div className="flex items-baseline justify-between md:mt-[7px] md:items-center">
-          <div className="flex items-center">
-            <ETH /> <p className="heading-md ml-[9px] ">1.5 </p>
-          </div>
-          <p className="caption ml-2 font-normal text-light md:body-sm md:ml-0">~$1839.04</p>
-        </div>
-
-        <div className="ml-[100px] md:ml-0 md:mt-6">
-          <p className="body-sm mb-2 hidden md:block">
-            <Trans>Quantity</Trans>
+    <>
+      <TermsOfServiceModal open={firstLicense} onClose={() => setFirstLicense(false)} onAgree={() => alert('Agree')} />
+      <div className="rounded-t-lg bg-brand-deep-blue p-6 md:rounded-lg md:p-8">
+        <div className="flex items-center justify-between md:block">
+          <p className="caption hidden font-bold text-light md:body-sm md:block">
+            <Trans>Price</Trans>
           </p>
-          <NumberInput setQuantityNumber={setQuantityNumber} />
+          <div className="flex items-baseline justify-between md:mt-[7px] md:items-center">
+            <div className="flex items-center">
+              <ETH /> <p className="heading-md ml-[9px] ">1.5 </p>
+            </div>
+            <p className="caption ml-2 font-normal text-light md:body-sm md:ml-0">~$1839.04</p>
+          </div>
+
+          <div className="ml-[100px] md:ml-0 md:mt-6">
+            <p className="body-sm mb-2 hidden md:block">
+              <Trans>Quantity</Trans>
+            </p>
+            <NumberInput setQuantityNumber={setQuantityNumber} />
+          </div>
+        </div>
+
+        <div className="caption mt-6 font-normal normal-case text-light md:body-sm md:mt-10">
+          {licenses.map((license) => (
+            <div className="mb-4 flex" key={license.value}>
+              <Input
+                type="checkbox"
+                onClick={() => {
+                  changeLicense(license.value);
+                }}
+                className="mt-1"
+              />
+              <p className="ml-4">
+                {license.content}
+                <span className="text-brand-gold cursor-pointer" onClick={() => handleClickLicense(license.value)}>{license.action}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-2 md:mt-12">
+          <button
+            className="btn-lg w-full bg-brand-gold px-4 uppercase text-black"
+            onClick={()=>{doPurchase()}}>
+            <Trans>PURCHASE NOW</Trans>
+          </button>
         </div>
       </div>
-
-      <div className="caption mt-6 font-normal normal-case text-light md:body-sm md:mt-10">
-        {licenses.map((license) => (
-          <div className="mb-4 flex" key={license.value}>
-            <Input
-              type="checkbox"
-              onClick={() => {
-                changeLicense(license.value);
-              }}
-              className="mt-1"
-            />
-            <p className="ml-4">{license.content}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-2 md:mt-12">
-        <button
-          className="btn-lg w-full bg-brand-gold px-4 uppercase text-black"
-          onClick={()=>{doPurchase()}}>
-          <Trans>PURCHASE NOW</Trans>
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 
