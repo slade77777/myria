@@ -14,9 +14,9 @@ import HistoryIcon from 'src/components/icons/HistoryIcon';
 import {
   TwitterShareDefaultHashtags,
   TwitterShareDefaultMessage,
-  TwitterShareLink,
   useMission
 } from './useMission';
+import Button from '../../core/Button';
 
 const SubtractLeft = () => (
   <svg width="128" height="69" viewBox="0 0 128 69" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,9 +38,10 @@ const SubtractRight = () => (
 
 const MissionV2: React.FC = () => {
   const { user, register } = useAuthenticationContext();
-  const { completeMission, missions } = useMission();
+  const { completeMission, missions, fetchMissions } = useMission();
   const [openShareTwitterModal, setOpenShareTwitterModal] = useState(false);
   const [openInviteModal, setOpenInviteModal] = useState(false);
+
   const { event } = useGA4();
 
   const TrackingMap: { [key in Mission['mission_id']]?: () => void } = {
@@ -127,17 +128,17 @@ const MissionV2: React.FC = () => {
       description: (point: number) =>
         t`Earn ${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
     },
-    SHARE_ON_TWITTER: {
+    SHARE_TWITTER: {
       label: t`Share on Twitter`,
       onClick: (e, missionId) => {
         completeMission(missionId);
       },
       link: `https://twitter.com/intent/tweet?text=${encodeURI(
         TwitterShareDefaultMessage
-      )}&hashtags=${TwitterShareDefaultHashtags}&url=${TwitterShareLink}`,
+      )}&hashtags=${TwitterShareDefaultHashtags}&url=${window?.location.origin}/sigil`,
       description: (point: number) => t`Earn ${point} points by sharing a tweet about Myria`
     },
-    FOLLOW_ON_TWITTER: {
+    FOLLOW_TWITTER: {
       label: t`Follow on Twitter`,
       onClick: (e, missionId) => {
         completeMission(missionId);
@@ -146,6 +147,10 @@ const MissionV2: React.FC = () => {
       description: (point: number) => t`Earn ${point} points by following @myriagames on Twitter`
     }
   };
+
+  React.useEffect(() => {
+    fetchMissions();
+  }, []);
 
   return (
     <div>
