@@ -29,7 +29,7 @@ const Sigil: React.FC = () => {
   const { code, status, message } = router.query;
 
   useEffect(() => {
-    if (code) {
+    if (code !== undefined && code !== "") {
       setReferralCode(code);
     }
     // we need to disable react-hooks/exhaustive-deps because
@@ -39,7 +39,6 @@ const Sigil: React.FC = () => {
 
   useEffect(() => {
     if ((status === 'error' || status === 'success') && message !== undefined) {
-      router.replace('/sigil', undefined, { shallow: true });
       toast(message, { type: status });
     }
   }, [status, message, router]);
