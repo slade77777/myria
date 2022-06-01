@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import { useGA4 } from 'src/lib/ga';
-import http from 'src/client';
 import { Mission } from 'src/types/sigil';
 import ReferFriendModal from '../ReferFriendModal';
 import ShareTwitterModal from '../ShareTwitterModal';
 import { socialLinks } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
-import { useQuery } from 'react-query';
 import { Loading } from 'src/components/Loading';
 import HistoryIcon from 'src/components/icons/HistoryIcon';
 import {
@@ -16,7 +14,6 @@ import {
   TwitterShareDefaultMessage,
   useMission
 } from './useMission';
-import Button from '../../core/Button';
 
 const SubtractLeft = () => (
   <svg width="128" height="69" viewBox="0 0 128 69" fill="none" xmlns="http://www.w3.org/2000/svg">
