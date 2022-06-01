@@ -4,13 +4,19 @@ import clsx from 'clsx';
 import { useGA4 } from 'src/lib/ga';
 import http from 'src/client';
 import { Mission } from 'src/types/sigil';
-import ReferFriendModal from './ReferFriendModal';
-import ShareTwitterModal from './ShareTwitterModal';
+import ReferFriendModal from '../ReferFriendModal';
+import ShareTwitterModal from '../ShareTwitterModal';
 import { socialLinks } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { useQuery } from 'react-query';
 import { Loading } from 'src/components/Loading';
 import HistoryIcon from 'src/components/icons/HistoryIcon';
+import {
+  TwitterShareDefaultHashtags,
+  TwitterShareDefaultMessage,
+  TwitterShareLink,
+  useMission
+} from './useMission';
 
 const SubtractLeft = () => (
   <svg width="128" height="69" viewBox="0 0 128 69" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,19 +38,10 @@ const SubtractRight = () => (
 
 const MissionV2: React.FC = () => {
   const { user, register } = useAuthenticationContext();
+  const { completeMission, missions } = useMission();
   const [openShareTwitterModal, setOpenShareTwitterModal] = useState(false);
   const [openInviteModal, setOpenInviteModal] = useState(false);
   const { event } = useGA4();
-
-  const { data: missions } = useQuery<Mission[]>('sigilMissions', async () => {
-    const res = await http.get<{
-      data: {
-        [k: string]: Mission;
-      };
-    }>('sigil/users/missions');
-
-    return Object.keys(res.data.data).map((k) => res.data.data[k]);
-  });
 
   const TrackingMap: { [key in Mission['mission_id']]?: () => void } = {
     // TODO mock event
@@ -70,7 +67,7 @@ const MissionV2: React.FC = () => {
       label: string;
       link?: string;
       description: (param: any) => string;
-      onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+      onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, missionId: string) => void;
     };
   } = {
     MYRIA_ACCOUNT: {
@@ -131,13 +128,21 @@ const MissionV2: React.FC = () => {
         t`Earn $${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
     },
     SHARE_ON_TWITTER: {
-      label: '',
-      onClick: (e) => {},
+      label: t`Share on Twitter`,
+      onClick: (e, missionId) => {
+        completeMission(missionId);
+      },
+      link: `https://twitter.com/intent/tweet?text=${encodeURI(
+        TwitterShareDefaultMessage
+      )}&hashtags=${TwitterShareDefaultHashtags}&url=${TwitterShareLink}`,
       description: (point: number) => t`Earn ${point} points by sharing a tweet about Myria`
     },
     FOLLOW_ON_TWITTER: {
-      label: '',
-      onClick: (e) => {},
+      label: t`Follow on Twitter`,
+      onClick: (e, missionId) => {
+        completeMission(missionId);
+      },
+      link: socialLinks.twitter,
       description: (point: number) => t`Earn ${point} points by following @myriagames on Twitter`
     }
   };
@@ -219,7 +224,7 @@ const MissionV2: React.FC = () => {
                           )}
                           onClick={(e) => {
                             if (typeof action.onClick === 'function') {
-                              action.onClick(e);
+                              action.onClick(e, mission.mission_id);
                             }
                             if (typeof mission.trackGA4 === 'function') {
                               mission.trackGA4();

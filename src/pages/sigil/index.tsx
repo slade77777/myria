@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Page from 'src/components/Page';
-import Dashboard from 'src/components/sigil/Dashboard';
+import Dashboard from 'src/components/sigil/Dashboard/Dashboard';
 import SigilStepper from 'src/components/sigil/SigilStepper';
 import ChooseAlliance from 'src/components/sigil/ChooseAlliance';
 import Welcome from 'src/components/sigil/Welcome';

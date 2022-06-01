@@ -33,8 +33,7 @@ const ShareTwitterModal: React.FC<Props> = ({ open, onClose }) => {
               </p>
               <p className="text-[16px] leading-[1.47] text-light">
                 <Trans>
-                  I am now a $MYRIA node owner! Join us to earn rewards, govern and build the future
-                  of virtual worlds! @MyriaGames
+                Join a Myria alliance and claim your free NFT! #myria #myriagames
                 </Trans>
               </p>
               <div className="flex items-center space-x-1 text-light">
