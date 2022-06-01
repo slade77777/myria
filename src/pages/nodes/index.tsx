@@ -177,29 +177,26 @@ const Nodes: React.FC = () => {
   return (
     <Page headerClassName="hidden" footerClassName="hidden">
       <Header />
-      <div
-        style={{
-          paddingTop: headerHeight
-        }}>
-        <div className={clsx(paddingX, 'relative isolate')}>
+      <div className="pt-[120px]">
+        <div className={clsx(paddingX, 'relative isolate mt-10 pt-12 md:pt-[150px]')}>
           <img
-            src="/images/globe_op.png"
+            src="/images/nodes/globe_op.png"
             alt=""
-            className="absolute top-[-50px] left-1/2 z-[-1] w-full max-w-[1256px] -translate-x-1/2 opacity-30 md:top-[-300px]"
+            className="absolute top-0 left-1/2 z-[-1] w-full max-w-[900px] -translate-x-1/2"
           />
           <div className="mx-auto w-full max-w-content">
             <section className={'text-center '}>
-              <h1 className="heading-lg mx-auto mt-[50px] max-w-[756px] text-center text-brand-white md:heading-massive md:mt-[200px]">
+              <h1 className="h6 mx-auto max-w-[756px] text-center text-brand-white md:h1">
                 <Trans>
                   Run a node and earn{' '}
                   <span className="text-brand-light-blue">$MYRIA and NFT rewards</span>
                 </Trans>
               </h1>
-              <p className="mx-auto mt-6 max-w-[677px] text-[24px] leading-[1.7]">
+              <p className=" body-18-medium mx-auto mt-4 max-w-[677px] md:body-24-regular md:mt-6">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
               <button
-                className="btn-lg btn-primary mt-[38px]"
+                className="btn-lg btn-primary mt-4 md:mt-[38px]"
                 onClick={async () => {
                   if (address != undefined) {
                     router.push('/nodes/purchase');
@@ -211,15 +208,15 @@ const Nodes: React.FC = () => {
                 {address != undefined ? <Trans>Buy a node</Trans> : <Trans>Connect wallet</Trans>}
               </button>
             </section>
-            <section className="mt-[134px]">
-              <div className="mx-auto flex max-w-[642px] flex-col items-center text-center text-[#E7EBEE]">
-                <p className=" caption text-brand-gold">
+            <section className="mt-[96px] md:mt-[134px]">
+              <div className="mx-auto flex max-w-[608px] flex-col items-center text-center text-[#E7EBEE]">
+                <p className="caption text-brand-gold">
                   <Trans>a decentralized ecosystem</Trans>
                 </p>
-                <h2 className="heading-lg mt-4">
+                <h2 className="h6 mt-4 md:body-36-medium">
                   <Trans>Powered by the community of player-run nodes</Trans>
                 </h2>
-                <p className="body mt-6 text-light">
+                <p className="body-14-regular mt-2 text-light md:body-18-regular md:mt-4">
                   <Trans>
                     The Myria chain is supported by a network of player-run nodes. Use your home
                     computer to become a node operator and receive rewards and benefits for your

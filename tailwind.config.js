@@ -697,7 +697,7 @@ module.exports = {
           lineHeight: 1.31,
           fontWeight: 500
         },
-        'body-36-regular': {
+        '.body-36-regular': {
           fontSize: 36,
           lineHeight: 1.11,
           fontWeight: 400
@@ -707,7 +707,7 @@ module.exports = {
           lineHeight: 1.31,
           fontWeight: 500
         },
-        'body-32-regular': {
+        '.body-32-regular': {
           fontSize: 32,
           lineHeight: 1.31,
           fontWeight: 400
@@ -717,7 +717,7 @@ module.exports = {
           lineHeight: 1.43,
           fontWeight: 500
         },
-        'body-28-regular': {
+        '.body-28-regular': {
           fontSize: 28,
           lineHeight: 1.43,
           fontWeight: 400
@@ -727,7 +727,7 @@ module.exports = {
           lineHeight: 1.17,
           fontWeight: 500
         },
-        'body-24-regular': {
+        '.body-24-regular': {
           fontSize: 24,
           lineHeight: 1.17,
           fontWeight: 400
@@ -737,7 +737,7 @@ module.exports = {
           lineHeight: 1.17,
           fontWeight: 500
         },
-        'body-24-regular': {
+        '.body-24-regular': {
           fontSize: 24,
           lineHeight: 1.17,
           fontWeight: 400
@@ -752,7 +752,7 @@ module.exports = {
           lineHeight: 1.3,
           fontWeight: 500
         },
-        'body-20-regular': {
+        '.body-20-regular': {
           fontSize: 20,
           lineHeight: 1.3,
           fontWeight: 400
@@ -767,7 +767,7 @@ module.exports = {
           lineHeight: 1.33,
           fontWeight: 500
         },
-        'body-18-regular': {
+        '.body-18-regular': {
           fontSize: 18,
           lineHeight: 1.33,
           fontWeight: 400
@@ -782,7 +782,7 @@ module.exports = {
           lineHeight: 1.44,
           fontWeight: 500
         },
-        'body-16-regular': {
+        '.body-16-regular': {
           fontSize: 16,
           lineHeight: 1.44,
           fontWeight: 400
@@ -797,7 +797,7 @@ module.exports = {
           lineHeight: 1.57,
           fontWeight: 500
         },
-        'body-14-regular': {
+        '.body-14-regular': {
           fontSize: 14,
           lineHeight: 1.57,
           fontWeight: 400
@@ -807,32 +807,32 @@ module.exports = {
           lineHeight: 1.17,
           fontWeight: 500
         },
-        'body-12-regular': {
+        '.body-12-regular': {
           fontSize: 12,
           lineHeight: 1.17,
           fontWeight: 400
         },
-        'caption-small': {
+        '.caption-small': {
           fontSize: 10,
           lineHeight: 1.4,
           fontWeight: 400
         },
-        'caption-medium': {
+        '.caption-medium': {
           fontSize: 14,
           lineHeight: 1.5,
           fontWeight: 700
         },
-        'caption-default': {
+        '.caption-default': {
           fontSize: 12,
           lineHeight: 1.5,
           fontWeight: 700
         },
-        'caption-overline-small': {
+        '.caption-overline-small': {
           fontSize: 10,
           lineHeight: 1.2,
           fontWeight: 600
         },
-        'caption-overline-default': {
+        '.caption-overline-default': {
           fontSize: 12,
           lineHeight: 1.5,
           fontWeight: 600
