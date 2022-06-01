@@ -62,6 +62,7 @@ const MissionV2: React.FC = () => {
       })
   };
 
+  const discordLink = 'https://discord.com/login';
   const ActionMap: {
     [key in Mission['mission_id']]?: {
       label: string;
@@ -99,31 +100,31 @@ const MissionV2: React.FC = () => {
     },
     DAILY_DISCORD_MESSAGE: {
       label: t`Launch Discord`,
-      link: socialLinks.discord,
+      link: discordLink,
       description: (point: number) =>
         t`Earn ${point} points for each day you send a message to any Myria Discord channel`
     },
     FIRST_DISCORD_MESSAGE: {
       label: t`Launch Discord`,
-      link: socialLinks.discord,
+      link: discordLink,
       description: (point: number) =>
         t`Earn ${point} points when you send your first message on any Myria Discord channel`
     },
     SHARE_IDEA_DISCORD: {
       label: t`Launch Discord`,
-      link: socialLinks.discord,
+      link: discordLink,
       description: (point: number) =>
         t`Earn ${point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions`
     },
     VOTE_ON_LORE_DISCORD: {
       label: t`Launch Discord`,
-      link: socialLinks.discord,
+      link: discordLink,
       description: (point: number) =>
         t`Earn ${point} points  when you add your reaction to a message on the #myria-lore channel`
     },
     SPACE_LORD_ROLE_DISCORD: {
       label: t`Launch Discord`,
-      link: socialLinks.discord,
+      link: discordLink,
       description: (point: number) =>
         t`Earn ${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
     },

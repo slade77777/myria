@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-05-31 11:42+0700\n"
+"POT-Creation-Date: 2022-06-01 20:14+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,6 +52,9 @@ msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the n
 msgstr "<0>Myriaノードのオペレーターは、ノードの動作のおかげで、毎日$ MYRIAトークンの報酬を受け取ります。</0><1>ノードの所有者が、ノードのオペレーターと一般的なコミュニティメンバーとしての評判スコアに基づいて、NFTドロップとトークンも提供されます。</1><2>レピュテーション・スコアは、ノードの所有者のプレイアクティビティ、所有し賭けているトークンの数、以前の稼働時間メトリック、とネットワークサポーの履歴（検証またはOracleプロバイダーなど）によって決定されます。</2>"
 
 #: src/components/sigil/Inventory.tsx:41
+msgid "<0>Once the Sigils are active, they will be minted directly on Myria</0>"
+msgstr ""
+
 #: src/pages/inventory.tsx:104
 msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
 msgstr ""
@@ -110,11 +113,11 @@ msgstr ""
 msgid "A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory."
 msgstr ""
 
-#: src/components/Register/Register.tsx:31
+#: src/components/Register/Register.tsx:32
 msgid "A mixture of both uppercase and lowercase letters"
 msgstr ""
 
-#: src/components/Register/Register.tsx:35
+#: src/components/Register/Register.tsx:36
 msgid "A mixture of letters and numbers"
 msgstr ""
 
@@ -204,7 +207,7 @@ msgstr "アート・クリエイティブ・リード"
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "Myriaでは、NFTはプレーヤーに検証可能な所有権を与えるだけでなく、プレーヤーがNFTをあるゲームから別のゲームに移動できるようにすると信じています。"
 
-#: src/components/Register/Register.tsx:27
+#: src/components/Register/Register.tsx:28
 msgid "At least 8 characters—the more characters, the better"
 msgstr ""
 
@@ -348,7 +351,7 @@ msgstr ""
 msgid "Choose Alliance"
 msgstr ""
 
-#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:84
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:78
 msgid "Choose Wisely!"
 msgstr ""
 
@@ -428,16 +431,12 @@ msgstr "コミュニティ"
 msgid "Compete, survive, win and earn!"
 msgstr ""
 
-#: src/components/sigil/MissionItem.tsx:86
+#: src/components/sigil/Dashboard/MissionV2.tsx:182
 msgid "Complete"
 msgstr ""
 
 #: src/pages/for-developers/solution.tsx:28
 msgid "Complete privacy, not only from other users, but also from the Operator."
-msgstr ""
-
-#: src/components/sigil/MissionItem.tsx:116
-msgid "Complete {title} mission to earn {credits} Points"
 msgstr ""
 
 #: src/components/for-developers/Myria.tsx:45
@@ -448,12 +447,12 @@ msgstr ""
 msgid "Configure your node and view your rewards in the dashboard"
 msgstr ""
 
-#: src/components/Register/Register.tsx:221
+#: src/components/Register/Register.tsx:222
 #: src/components/ResetPassword/ResetPassword.tsx:86
 msgid "Confirm password"
 msgstr ""
 
-#: src/components/Register/Register.tsx:61
+#: src/components/Register/Register.tsx:62
 #: src/components/ResetPassword/ResetPassword.tsx:25
 msgid "Confirm password is required!"
 msgstr ""
@@ -494,7 +493,7 @@ msgstr "私たちに連絡"
 msgid "Contributing to the future of a decentralized internet"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:95
+#: src/components/sigil/Dashboard/MissionV2.tsx:92
 msgid "Copy invite link"
 msgstr ""
 
@@ -526,10 +525,6 @@ msgstr ""
 #: src/pages/nodes/index.tsx:27
 msgid "Daily $MYRIA token rewards"
 msgstr "日刊$MYRIAトークンリワード"
-
-#: src/components/sigil/MissionItem.tsx:102
-msgid "Daily x {credits} Points"
-msgstr ""
 
 #: src/components/nodes/Sidebar2.tsx:11
 msgid "Dashboard"
@@ -579,55 +574,47 @@ msgstr ""
 msgid "Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle."
 msgstr ""
 
-#: src/components/sigil/MissionItem.tsx:59
-msgid "EARNED"
-msgstr ""
-
 #: src/pages/nodes/index.tsx:42
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "各ノードは、Myriaチェーンに対する変更に投票することができ、ノードはMyriaverse全体でより大きな投票権を保持します。"
 
-#: src/components/sigil/MissionV2.tsx:126
-msgid "Earn ${point} points  when you add your reaction to a message on the #myria-lore channel"
+#: src/components/sigil/Dashboard/MissionV2.tsx:123
+msgid "Earn {point} points  when you add your reaction to a message on the #myria-lore channel"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:132
-msgid "Earn ${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
-msgstr ""
-
-#: src/components/sigil/MissionItem.tsx:109
-msgid "Earn {credits} Points"
-msgstr ""
-
-#: src/components/sigil/MissionV2.tsx:120
+#: src/components/sigil/Dashboard/MissionV2.tsx:117
 msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:83
+#: src/components/sigil/Dashboard/MissionV2.tsx:81
 msgid "Earn {point} points by completing account creation and becoming a true Myrian"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:142
+#: src/components/sigil/Dashboard/MissionV2.tsx:147
 msgid "Earn {point} points by following @myriagames on Twitter"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:90
+#: src/components/sigil/Dashboard/MissionV2.tsx:88
 msgid "Earn {point} points by joining the Myria Discord server"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:137
+#: src/components/sigil/Dashboard/MissionV2.tsx:129
+msgid "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:139
 msgid "Earn {point} points by sharing a tweet about Myria"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:108
+#: src/components/sigil/Dashboard/MissionV2.tsx:105
 msgid "Earn {point} points for each day you send a message to any Myria Discord channel"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:101
+#: src/components/sigil/Dashboard/MissionV2.tsx:98
 msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:114
+#: src/components/sigil/Dashboard/MissionV2.tsx:111
 msgid "Earn {point} points when you send your first message on any Myria Discord channel"
 msgstr ""
 
@@ -649,13 +636,13 @@ msgid "Eliminate your opponents in this fast-paced-action-packed-survival game, 
 msgstr ""
 
 #: src/components/GetInTouch.tsx:82
-#: src/components/Register/Register.tsx:194
+#: src/components/Register/Register.tsx:195
 msgid "Email"
 msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
 #: src/components/GetInTouch.tsx:27
-#: src/components/Register/Register.tsx:53
+#: src/components/Register/Register.tsx:54
 #: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:21
 #: src/components/for-developers/BuildYourBlockchain.tsx:35
@@ -707,7 +694,7 @@ msgstr "Eメールアドレスを入力します"
 msgid "Enter your email address to reset your password"
 msgstr ""
 
-#: src/components/Register/Register.tsx:205
+#: src/components/Register/Register.tsx:206
 #: src/components/SignIn/SignIn.tsx:64
 msgid "Enter your password"
 msgstr ""
@@ -756,12 +743,16 @@ msgstr ""
 msgid "Filter by Department"
 msgstr ""
 
-#: src/components/Register/Register.tsx:160
+#: src/components/Register/Register.tsx:161
 msgid "First name"
 msgstr ""
 
-#: src/components/Register/Register.tsx:47
+#: src/components/Register/Register.tsx:48
 msgid "First name is required!"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:142
+msgid "Follow on Twitter"
 msgstr ""
 
 #: src/components/Footer.tsx:62
@@ -937,7 +928,7 @@ msgstr ""
 msgid "In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later."
 msgstr ""
 
-#: src/components/Register/Register.tsx:39
+#: src/components/Register/Register.tsx:40
 msgid "Inclusion of at least one special character"
 msgstr ""
 
@@ -971,7 +962,7 @@ msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:17
 #: src/components/GetInTouch.tsx:26
-#: src/components/Register/Register.tsx:52
+#: src/components/Register/Register.tsx:53
 #: src/components/SignIn/SignIn.tsx:21
 #: src/components/Subscribe.tsx:20
 #: src/components/for-developers/BuildYourBlockchain.tsx:34
@@ -1015,7 +1006,7 @@ msgstr ""
 msgid "JOIN THE TEAM"
 msgstr "チームに参加"
 
-#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:74
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:68
 msgid "JOIN {sigilName}"
 msgstr ""
 
@@ -1060,11 +1051,11 @@ msgstr ""
 msgid "LOGGING IN"
 msgstr ""
 
-#: src/components/Register/Register.tsx:171
+#: src/components/Register/Register.tsx:172
 msgid "Last name"
 msgstr ""
 
-#: src/components/Register/Register.tsx:48
+#: src/components/Register/Register.tsx:49
 msgid "Last name is required!"
 msgstr ""
 
@@ -1072,13 +1063,13 @@ msgstr ""
 msgid "Latest Updates & News"
 msgstr ""
 
-#: src/components/sigil/MissionV2.tsx:87
-#: src/components/sigil/MissionV2.tsx:105
-#: src/components/sigil/MissionV2.tsx:111
-#: src/components/sigil/MissionV2.tsx:117
-#: src/components/sigil/MissionV2.tsx:123
-#: src/components/sigil/MissionV2.tsx:129
-msgid "Lauch discord"
+#: src/components/sigil/Dashboard/MissionV2.tsx:85
+#: src/components/sigil/Dashboard/MissionV2.tsx:102
+#: src/components/sigil/Dashboard/MissionV2.tsx:108
+#: src/components/sigil/Dashboard/MissionV2.tsx:114
+#: src/components/sigil/Dashboard/MissionV2.tsx:120
+#: src/components/sigil/Dashboard/MissionV2.tsx:126
+msgid "Launch Discord"
 msgstr ""
 
 #: src/components/for-developers/Myria.tsx:40
@@ -1109,6 +1100,10 @@ msgstr ""
 msgid "Limited supply available"
 msgstr ""
 
+#: src/components/sigil/Dashboard/MissionV2.tsx:180
+msgid "Locked"
+msgstr ""
+
 #: src/components/ForgotPassword/ForgotPassword.tsx:63
 #: src/components/Header/MobileHeader.tsx:74
 #: src/context/authentication.tsx:103
@@ -1120,7 +1115,7 @@ msgid "Log out"
 msgstr ""
 
 #: src/components/Header/ProfileComponent.tsx:64
-msgid "Logout of Myria, your assets will be safe, this does not disconnect your wallet from you Myria account"
+msgid "Logout of your Myria account. Your progress will be accessible in future by logging into your Myria account via your wallet."
 msgstr ""
 
 #: src/pages/for-developers/solution.tsx:19
@@ -1502,7 +1497,7 @@ msgstr ""
 msgid "Partner Lead"
 msgstr "パートナーリード"
 
-#: src/components/Register/Register.tsx:57
+#: src/components/Register/Register.tsx:58
 #: src/components/ResetPassword/ResetPassword.tsx:21
 #: src/components/SignIn/SignIn.tsx:26
 msgid "Password is required!"
@@ -1622,7 +1617,7 @@ msgstr ""
 msgid "Refer your friends"
 msgstr ""
 
-#: src/components/Register/Register.tsx:249
+#: src/components/Register/Register.tsx:250
 msgid "Register"
 msgstr ""
 
@@ -1701,6 +1696,10 @@ msgstr ""
 msgid "Share now"
 msgstr ""
 
+#: src/components/sigil/Dashboard/MissionV2.tsx:132
+msgid "Share on Twitter"
+msgstr ""
+
 #: src/components/nodes/dashboard/ShareTwitter.tsx:59
 #: src/components/sigil/ShareTwitterModal.tsx:20
 msgid "Share this on Twitter"
@@ -1711,7 +1710,7 @@ msgid "Sign in"
 msgstr ""
 
 #: src/components/Header/MobileHeader.tsx:71
-#: src/components/sigil/MissionV2.tsx:77
+#: src/components/sigil/Dashboard/MissionV2.tsx:75
 msgid "Sign up"
 msgstr ""
 
@@ -1832,7 +1831,7 @@ msgstr ""
 msgid "The easiest way to launch your blockchain game"
 msgstr ""
 
-#: src/components/Register/Register.tsx:138
+#: src/components/Register/Register.tsx:139
 msgid "The name must be between 3 and 16 characters long."
 msgstr ""
 
@@ -1858,7 +1857,7 @@ msgstr "世界初Morphing NFTs™"
 msgid "Think before you shoot!"
 msgstr ""
 
-#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:88
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:82
 msgid "This decision is permanent. Once you choose your alliance you cannot change it!"
 msgstr ""
 
@@ -1920,10 +1919,6 @@ msgstr "UI/UX リード"
 msgid "Unified through the Myriaverse"
 msgstr "Myriaverseを通じて統一します"
 
-#: src/components/sigil/MissionItem.tsx:104
-msgid "Unlimited x {credits} Points"
-msgstr ""
-
 #: src/components/for-developers/Myria.tsx:21
 msgid "Unlock immense scale"
 msgstr ""
@@ -1936,11 +1931,11 @@ msgstr ""
 msgid "Unsupported Browser"
 msgstr ""
 
-#: src/components/Register/Register.tsx:183
+#: src/components/Register/Register.tsx:184
 msgid "Username"
 msgstr ""
 
-#: src/components/Register/Register.tsx:49
+#: src/components/Register/Register.tsx:50
 msgid "Username is required!"
 msgstr ""
 
@@ -2053,7 +2048,7 @@ msgstr ""
 msgid "Work with our experienced legal team"
 msgstr ""
 
-#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:62
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:56
 msgid "You are joining..."
 msgstr ""
 
