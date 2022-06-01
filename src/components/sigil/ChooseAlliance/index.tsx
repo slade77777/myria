@@ -64,7 +64,7 @@ const SIGILS: Sigil[] = [
     ...getAllianceInfo("vector_prime"),
     order: 2,
     img: '/images/nodes/insignia/alliance_sigilB.png',
-    selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
+    selectModalBgImg: '/images/nodes/insignia/sigilB_modal_bg.png',
     width: 584 / 4,
     height: 748 / 4,
     className: 'w-[22%]',
@@ -87,7 +87,7 @@ const SIGILS: Sigil[] = [
     ...getAllianceInfo("equinox"),
     order: 3,
     img: '/images/nodes/insignia/alliance_sigilC.png',
-    selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
+    selectModalBgImg: '/images/nodes/insignia/sigilC_modal_bg.png',
     width: 584 / 4,
     height: 748 / 4,
     className: 'right-[17%] w-[22%]',
@@ -316,6 +316,7 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
         sigilName={activeSigilData?.name}
         sigilDesc={activeSigilData?.joiningDesc}
         sigilId={activeSigilData?.id}
+        selectModalBgImg={activeSigilData?.selectModalBgImg}
       />
       <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[600px] min-w-[1300px] items-center justify-center overflow-hidden">
         <div className="absolute w-full max-w-[1300px]">
