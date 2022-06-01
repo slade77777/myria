@@ -119,13 +119,13 @@ const MissionV2: React.FC = () => {
       label: t`Launch Discord`,
       link: socialLinks.discord,
       description: (point: number) =>
-        t`Earn $${point} points  when you add your reaction to a message on the #myria-lore channel`
+        t`Earn ${point} points  when you add your reaction to a message on the #myria-lore channel`
     },
     SPACE_LORD_ROLE_DISCORD: {
       label: t`Launch Discord`,
       link: socialLinks.discord,
       description: (point: number) =>
-        t`Earn $${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
+        t`Earn ${point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role`
     },
     SHARE_ON_TWITTER: {
       label: t`Share on Twitter`,
@@ -174,10 +174,14 @@ const MissionV2: React.FC = () => {
             const action = ActionMap[mission.mission_id];
 
             const actionLabel = (() => {
-              if (status === 'locked') {
-                return 'Locked';
+              switch (status) {
+                case 'locked':
+                  return t`Locked`;
+                case 'completed':
+                  return t`Complete`;
+                default:
+                  return ActionMap[mission.mission_id]?.label;
               }
-              return ActionMap[mission.mission_id]?.label;
             })();
 
             if (TrackingMap[mission.mission_id]) {
