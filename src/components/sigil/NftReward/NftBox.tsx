@@ -7,6 +7,7 @@ interface Props {
   isNextReward?: boolean;
   isBlur?: boolean;
   isBlurButton?: boolean;
+  disableClaimingAnimation?: boolean;
   onClaim?: () => Promise<void>;
   onClaimSuccess?: () => void;
   titleText: string;
@@ -24,6 +25,7 @@ function NftBox({
   buttonText,
   imageUrl,
   isBlurButton,
+  disableClaimingAnimation,
   containerClassname
 }: Props) {
   const animationRef = React.useRef<HTMLDivElement>(null);
@@ -54,7 +56,7 @@ function NftBox({
   const handleClaim = async () => {
     try {
       if (typeof onClaim === 'function') {
-        if (animationRef.current) {
+        if (animationRef.current && disableClaimingAnimation !== true) {
           animationRef.current.style.display = 'flex';
         }
         setIsClaiming(true);

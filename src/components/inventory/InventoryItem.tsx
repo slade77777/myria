@@ -35,6 +35,7 @@ const InventoryItem = ({ item, onClaimed }: Props) => {
         buttonText={claimable ? t`CLAIM NOW` : t`CLAIMED`}
         titleText={item.name}
         onClaim={claimable ? handleClaim : undefined}
+        disableClaimingAnimation
         isBlurButton={!claimable}
       />
     </div>
