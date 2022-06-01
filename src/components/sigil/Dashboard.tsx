@@ -54,7 +54,7 @@ const Dashboard: React.FC = () => {
               </span>
             </p>
           </div>
-          <div className="mt-7">
+          <div>
             {tab === 'rewards' ? (
               <div className="space-y-8">
                 <NftReward />

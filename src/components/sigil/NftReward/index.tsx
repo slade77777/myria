@@ -8,18 +8,8 @@ function NftReward() {
   const { data: rewards } = getRewardQuery;
   const nextReward = React.useMemo(() => rewards?.find((r) => r.status === 'locked'), [rewards]);
 
-  const handleClaim = async (rewardId: number) => {
-    try {
-      await claimRewardMutation.mutateAsync(rewardId);
-      getRewardQuery.refetch();
-      toast('Claimed successfully.', { type: 'success' });
-    } catch (e) {
-      toast('Claimed unsuccessfully.', { type: 'error' });
-    }
-  }
-
   return (
-    <div className="overflow-x-auto py-3">
+    <div className="overflow-x-auto py-8">
       <div className="flex w-full">
         {rewards?.map((reward) => {
           if (!reward || !reward.rewardId) {
