@@ -62,8 +62,7 @@ const ProfileComponent = () => {
                 <Tooltip.Arrow />
                 <p>
                   <Trans>
-                    Logout of Myria, your assets will be safe, this does not disconnect your
-                    wallet from you Myria account
+                    Logout of your Myria account. Your progress will be accessible in future by logging into your Myria account via your wallet.
                   </Trans>
                 </p>
               </Tooltip.Content>
