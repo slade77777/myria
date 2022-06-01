@@ -49,7 +49,7 @@ export const useNftRewardQuery = () => {
             status: raw.status,
           }))
 
-          return rewards;
+          return rewards.filter(reward => ['locked', 'claimable', 'claimed'].includes(reward.status || ''));
         }
         return null;
       })
