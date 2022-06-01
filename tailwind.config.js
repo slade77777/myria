@@ -787,6 +787,11 @@ module.exports = {
           lineHeight: 1.44,
           fontWeight: 400
         },
+        '.body-14-bold': {
+          fontSize: 14,
+          lineHeight: 1.57,
+          fontWeight: 700
+        },
         '.body-14-medium': {
           fontSize: 14,
           lineHeight: 1.57,

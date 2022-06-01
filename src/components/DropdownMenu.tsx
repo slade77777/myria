@@ -8,6 +8,7 @@ type DropdownMenu = React.FC<DropdownMenuProps & DropdownMenuPrimitive.DropdownM
   Trigger: React.FC<DropdownMenuPrimitive.DropdownMenuTriggerProps>;
   Content: React.FC<DropdownMenuPrimitive.DropdownMenuContentProps>;
   Item: React.FC<DropdownMenuPrimitive.DropdownMenuItemProps>;
+  Arrow: React.FC<DropdownMenuPrimitive.DropdownMenuArrowProps>;
 };
 
 const DropdownMenu: DropdownMenu = ({ children, ...props }) => {
@@ -23,5 +24,6 @@ const DropdownContent: DropdownMenu['Content'] = ({ className, ...props }) => {
 DropdownMenu.Trigger = DropdownMenuPrimitive.Trigger;
 DropdownMenu.Content = DropdownContent;
 DropdownMenu.Item = DropdownMenuPrimitive.Item;
+DropdownMenu.Arrow = DropdownMenuPrimitive.Arrow;
 
 export default DropdownMenu;
