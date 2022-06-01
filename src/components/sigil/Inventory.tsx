@@ -40,7 +40,7 @@ const Inventory: React.FC = () => {
         </p>
         <Trans>
           <span className="text-[16px] font-normal text-brand-light-blue">
-            <Trans>Once the Sigils are active, they will be minted directly on the Myria</Trans>
+            <Trans>Once the Sigils are active, they will be minted directly on Myria</Trans>
           </span>
         </Trans>
       </section>
