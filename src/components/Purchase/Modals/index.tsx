@@ -1,7 +1,13 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { TransactionRequest, TransactionResponse } from '@ethersproject/abstract-provider';
 import { Trans } from '@lingui/macro';
 import ETH from 'src/components/icons/ETHIcon';
 import Modal from 'src/components/Modal';
+import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
+import { useWalletContext } from 'src/context/wallet';
+import { BigNumber, ethers } from 'ethers';
+import { useMutation, useQuery } from 'react-query';
+import Button from 'src/components/core/Button';
 // import { useWalletContext } from 'src/context/wallet';
 
 const ModalPurchase = ({
@@ -15,9 +21,44 @@ const ModalPurchase = ({
   open: boolean;
   onClose: () => void;
 }) => {
+  const [txRequest, setTxRequest] = useState<TransactionRequest>();
+  const { providerApi, address } = useWalletContext();
+
+  const { mutate,  isLoading } = useMutation(async () => {
+    if (txRequest && providerApi) {
+      const res = await transferEth(providerApi?.getSigner(), txRequest);
+      const tx = await res.wait();
+      console.log(tx);
+      
+      return tx;
+    }
+  });
+
   // const qty = 3;
   const priceEth = 1839.04;
   const unitNodeEth = 1.5;
+
+  const buildTransferRequest = useCallback(async () => {
+    if (providerApi && address) {
+      setTxRequest(
+        await formatTransferTxRequest(
+          providerApi,
+          quantity / 10,
+          address,
+          process.env.NEXT_NODE_RECIEVER_ADDRESS as string,
+          process.env.NEXT_NODE_GAS_LIMIT as string
+        )
+      );
+    }
+  }, [quantity, balance, open, providerApi]);
+
+  useEffect(() => {
+    buildTransferRequest();
+  }, [buildTransferRequest]);
+
+  const onPurchase = async () => {
+    mutate();
+  };
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content
@@ -36,9 +77,9 @@ const ModalPurchase = ({
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">{quantity*unitNodeEth}</p>
+                <p className="heading-md ml-2">{quantity * unitNodeEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity*priceEth}</p>
+              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
             </div>
           </div>
 
@@ -50,9 +91,9 @@ const ModalPurchase = ({
             </div>
             <div>
               <div className="flex items-center justify-end">
-                <ETH /> <p className="heading-list ml-2">{quantity*unitNodeEth}</p>
+                <ETH /> <p className="heading-list ml-2">{quantity * unitNodeEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity*priceEth}</p>
+              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
             </div>
           </div>
         </div>
@@ -65,18 +106,18 @@ const ModalPurchase = ({
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">{quantity*unitNodeEth}</p>
+                <p className="heading-md ml-2">{quantity * unitNodeEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity*priceEth}</p>
+              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
             </div>
           </div>
           <div className="mt-1 flex">
             <p className="body-sm flex-1 text-light">
               <Trans>{balance} ETH</Trans>
             </p>
-            <button className="btn-lg btn-primary mt-2 justify-end">
+            <Button className="btn-lg btn-primary mt-2 justify-end" onClick={onPurchase} loading={isLoading}>
               <Trans>Purchase now</Trans>
-            </button>
+            </Button>
           </div>
         </section>
       </Modal.Content>
