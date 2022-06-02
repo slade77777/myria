@@ -159,7 +159,7 @@ const MissionV2: React.FC = () => {
       <ReferFriendModal
         open={openInviteModal}
         onClose={() => setOpenInviteModal(false)}
-        link={`${window.location.origin}/sigil?code=${user?.user_id}`}
+        link={`${window.location.origin}/sigil/?code=${user?.user_id}`}
       />
       <p className="mb-6 text-base font-medium text-light">
         Complete the missions below to unlock your rewards
