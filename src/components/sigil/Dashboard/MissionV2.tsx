@@ -76,7 +76,7 @@ const MissionV2: React.FC = () => {
         register();
       },
       description: (point: number) => {
-        return t`Earn ${point} points by completing account creation and becoming a true Myrian`;
+        return t`Earn ${point} points by completing account creation`;
       }
     },
     JOIN_DISCORD: {
