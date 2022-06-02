@@ -62,7 +62,7 @@ export const WalletProvider: React.FC = ({ children }) => {
 
   const onConnect = async () => {
     web3Modal = new Web3Modal({
-      network: process.env.NEXT_ETH_ENV,
+      network: process.env.NEXT_PUBLIC_ETH_ENV,
       cacheProvider: false,
     });
     
