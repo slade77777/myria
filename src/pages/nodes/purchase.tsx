@@ -10,17 +10,18 @@ import { paddingX } from 'src/utils';
 import { useWalletContext } from 'src/context/wallet';
 
 import { ethers } from 'ethers';
+import Header from 'src/components/nodes/Header';
 
 const Nodes: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const [balance, setBalance] = React.useState('0.0000');
   const { onConnect, address } = useWalletContext();
   const [quantity, setQuantity] = React.useState(0);
-  
-  const setQuantityNumberOrder = (childdata:number):void => {
+
+  const setQuantityNumberOrder = (childdata: number): void => {
     setQuantity(childdata);
     // console.log("$$$$$$$$$$$$", childdata);
-  }
+  };
 
   async function getBalance(address: string | undefined) {
     let provider = ethers.getDefaultProvider();
@@ -34,7 +35,7 @@ const Nodes: React.FC = () => {
   }
   const onPlaceOrder = async () => {
     await onConnect();
-    if(quantity>0){
+    if (quantity > 0) {
       setOpenModal(true);
     }
     // login();
@@ -44,7 +45,8 @@ const Nodes: React.FC = () => {
   }, [address]);
 
   return (
-    <Page footerClassName="hidden md:block">
+    <Page headerClassName="hidden" footerClassName="hidden md:block">
+      <Header />
       <div
         style={{
           paddingTop: headerHeight,
@@ -59,13 +61,18 @@ const Nodes: React.FC = () => {
             <div className="md:mt-0">
               <License />
             </div>
-            <div className="sticky bottom-0 -mx-6 mt-[80px] md:top-5 md:mx-0 md:mt-0">
-              <Order onPlaceOrder={onPlaceOrder}  setQuantityNumberOrder={setQuantityNumberOrder} />
+            <div className="sticky bottom-0 -mx-6 mt-[130px] md:top-5 md:mx-0 md:mt-0">
+              <Order onPlaceOrder={onPlaceOrder} setQuantityNumberOrder={setQuantityNumberOrder} />
             </div>
           </div>
         </div>
       </div>
-      <ModalPurchase balance={balance} quantity={quantity} open={openModal} onClose={() => setOpenModal(false)} />
+      <ModalPurchase
+        balance={balance}
+        quantity={quantity}
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+      />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
     </Page>
