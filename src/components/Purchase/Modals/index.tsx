@@ -33,6 +33,7 @@ const ModalPurchase = ({
       return tx;
     }
   });
+  
 
   // const qty = 3;
   const priceEth = 1839.04;
@@ -45,8 +46,8 @@ const ModalPurchase = ({
           providerApi,
           quantity / 10,
           address,
-          process.env.NEXT_NODE_RECIEVER_ADDRESS as string,
-          process.env.NEXT_NODE_GAS_LIMIT as string
+          process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string,
+          process.env.NEXT_PUBLIC_NODE_GAS_LIMIT as string
         )
       );
     }

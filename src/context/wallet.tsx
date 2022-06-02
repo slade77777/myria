@@ -65,7 +65,6 @@ export const WalletProvider: React.FC = ({ children }) => {
       network: process.env.NEXT_ETH_ENV,
       cacheProvider: false,
     });
-    console.log(process.env.NEXT_ETH_ENV);
     
     const w3provider = await web3Modal.connect();
     await subscribeProvider(w3provider);
