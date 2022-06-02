@@ -6,6 +6,7 @@ import CloseIcon from 'src/components/icons/CloseIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
 import { useGA4 } from 'src/lib/ga';
+import { AllianceName } from 'src/types/sigil';
 import { usePickSigilQuery } from './useChooseAllianceQuery';
 
 type Props = {
@@ -14,7 +15,8 @@ type Props = {
   onJoinSuccess: () => void;
   sigilName?: string;
   sigilDesc?: JSX.Element | string;
-  sigilId?: string;
+  sigilId?: AllianceName;
+  selectModalBgImg?: string;
 };
 
 const AllianceModal: React.FC<Props> = ({
@@ -23,7 +25,8 @@ const AllianceModal: React.FC<Props> = ({
   onJoinSuccess,
   sigilDesc,
   sigilName,
-  sigilId
+  sigilId,
+  selectModalBgImg
 }) => {
   const { event } = useGA4();
   const { pickSigilMutation } = usePickSigilQuery({
@@ -33,15 +36,6 @@ const AllianceModal: React.FC<Props> = ({
     }
   });
   const { mutate: handleJoin, isLoading } = pickSigilMutation;
-  const backgroundImg = React.useMemo(() => {
-    if (sigilId === 'a') {
-      return "bg-[url('/images/nodes/insignia/sigilA_modal_bg.png')]";
-    } else if (sigilId === 'b') {
-      return "bg-[url('/images/nodes/insignia/sigilB_modal_bg.png')]";
-    } else {
-      return "bg-[url('/images/nodes/insignia/sigilC_modal_bg.png')]";
-    }
-  }, [sigilId]);
 
   return (
     <Modal
@@ -55,7 +49,7 @@ const AllianceModal: React.FC<Props> = ({
               <CloseIcon />
             </button>
           </Modal.Close>
-          <div className={`flex h-full flex-row bg-brand-deep-blue ${backgroundImg} bg-cover`}>
+          <div className={`flex h-full flex-row bg-brand-deep-blue bg-cover`} style={{ backgroundImage: `url('${selectModalBgImg}')` }}>
             <div className="flex flex-col items-start justify-between py-12 px-12">
               <div className="flex flex-1 flex-col items-start justify-center">
                 <p className="mb-1 text-[14px] font-medium leading-[1.5] text-brand-light-blue">
@@ -71,7 +65,7 @@ const AllianceModal: React.FC<Props> = ({
                       event('Alliance Joined', { campaign: 'Sigil', alliance_name: sigilName });
                   }}
                   loading={isLoading}>
-                  <Trans>JOIN the {sigilName}</Trans>
+                  <Trans>JOIN {sigilName}</Trans>
                 </Button>
               </div>
 

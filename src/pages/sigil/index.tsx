@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Page from 'src/components/Page';
-import Dashboard from 'src/components/nodes/sigil/Dashboard';
-import SigilStepper from 'src/components/nodes/sigil/SigilStepper';
-import ChooseAlliance from 'src/components/nodes/sigil/ChooseAlliance';
-import Welcome from 'src/components/nodes/sigil/Welcome';
-import WelcomeMobile from 'src/components/nodes/sigil/WelcomeMobile';
-import Header from 'src/components/nodes/sigil/Header';
-import Sound from 'src/components/nodes/sigil/Sound';
+import Dashboard from 'src/components/sigil/Dashboard';
+import SigilStepper from 'src/components/sigil/SigilStepper';
+import ChooseAlliance from 'src/components/sigil/ChooseAlliance';
+import Welcome from 'src/components/sigil/Welcome';
+import WelcomeMobile from 'src/components/sigil/WelcomeMobile';
+import Header from 'src/components/sigil/Header';
+import Sound from 'src/components/sigil/Sound';
 import { soundService, SUPPORT_SOUND } from 'src/sound';
 import { useRouter } from 'next/router';
 import useLocalStorage from 'src/hooks/useLocalStorage';
@@ -38,9 +38,9 @@ const Sigil: React.FC = () => {
   }, [code]);
 
   useEffect(() => {
-    if ((status === 'error' || status === 'success') && message !== undefined) {
+    if (status && message) {
       router.replace('/sigil', undefined, { shallow: true });
-      toast(message, { type: status });
+      toast(message, { type: status === 'error' ? 'error' : 'success' });
     }
   }, [status, message, router]);
 
@@ -91,7 +91,7 @@ const Sigil: React.FC = () => {
   }, [currentStep]);
 
   React.useEffect(() => {
-    if (!user) {
+    if (!user?.user_id) {
       setCurrentStep(0);
     }
 
@@ -103,7 +103,7 @@ const Sigil: React.FC = () => {
   const isLoading = !userProfileQuery.isFetched && userProfileQuery.isFetching && currentStep === 0;
 
   return (
-    <div className="relative min-w-[1300px]">
+    <div className={`relative ${currentStep === 1 ? 'min-w-[1300px]' : ''}`}>
       {isLoading && (
         <div className="absolute inset-0 z-10 flex w-full items-center justify-center bg-dark/10 text-white">
           <LoadingStandBy />

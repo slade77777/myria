@@ -10,7 +10,7 @@ import { IFormSignInInput } from 'src/components/SignIn/SignIn';
 import { IFormRegisterInput } from 'src/components/Register/Register';
 import { IFormForgotPasswordInput } from 'src/components/ForgotPassword/ForgotPassword';
 import { IFormResetPasswordInput } from 'src/components/ResetPassword/ResetPassword';
-import apiClient, { mapError, IResponseError } from 'src/client';
+import apiClient, { mapError, IResponseError, noCacheApiClient } from 'src/client';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { AxiosError } from 'axios';
@@ -150,7 +150,7 @@ const AuthenticationContext = React.createContext<IAuthenticationContext>(
 
 export const AuthenticationProvider: React.FC = ({ children }) => {
   const [referalCode] = useLocalStorage(localStorageKeys.referralCode, undefined);
-  const [user, setUser] = useLocalStorage<User | undefined>(localStorageKeys.userInfo, undefined);
+  const [user, setUser] = React.useState<User | undefined>();
   const [openSignIn, setOpenSignIn] = React.useState<boolean>(false);
   const [openRegister, setOpenRegister] = React.useState<boolean>(false);
   const [openForgotPassword, setOpenForgotPassword] = React.useState<boolean>(false);
@@ -201,7 +201,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       try {
         await apiClient.post(`/accounts/logout`);
       } catch (err) { }
-      setUser(undefined);
+      window.location.reload()
     },
   );
 
@@ -379,7 +379,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     postResetPassword();
   };
 
-  const userProfileQuery = useQuery('getUserProfile', () => apiClient.get('sigil/users/profile').then(res => {
+  const userProfileQuery = useQuery('getUserProfile', () => noCacheApiClient.get('sigil/users/profile').then(res => {
     const data = res.data?.data;
     if (data) {
       const user: User = {

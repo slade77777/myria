@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
 import { SUPPORT_SOUND, soundService } from 'src/sound';
 import { AllianceName } from 'src/types/sigil';
@@ -63,7 +64,7 @@ const SIGILS: Sigil[] = [
     ...getAllianceInfo("vector_prime"),
     order: 2,
     img: '/images/nodes/insignia/alliance_sigilB.png',
-    selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
+    selectModalBgImg: '/images/nodes/insignia/sigilB_modal_bg.png',
     width: 584 / 4,
     height: 748 / 4,
     className: 'w-[22%]',
@@ -86,7 +87,7 @@ const SIGILS: Sigil[] = [
     ...getAllianceInfo("equinox"),
     order: 3,
     img: '/images/nodes/insignia/alliance_sigilC.png',
-    selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
+    selectModalBgImg: '/images/nodes/insignia/sigilC_modal_bg.png',
     width: 584 / 4,
     height: 748 / 4,
     className: 'right-[17%] w-[22%]',
@@ -270,7 +271,7 @@ const Sigil = ({
           className={`absolute  flex h-[116px] w-full items-end justify-center transition-all delay-100 ${
             isActive
               ? 'bottom-[-70px] opacity-100 xl:bottom-[-75px] 2xl:bottom-[-100px]'
-              : 'bottom-0 opacity-0'
+              : 'bottom-0 opacity-0 pointer-events-none'
           }`}>
           <button
             className="btn-md btn-primary flex w-[60%] items-center"
@@ -288,6 +289,7 @@ const Sigil = ({
 };
 
 const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
+  const { userProfileQuery } = useAuthenticationContext();
   const [activeSigil, setActiveSigil] = useState<string | null>(null);
   const handleHoverSigil = (id: string | null) => {
     setActiveSigil(id);
@@ -298,17 +300,23 @@ const ChooseAlliance = ({ onNext }: ChooseAllianceProps) => {
     return SIGILS.find((sigil) => sigil.id === selectedAlliance);
   }, [selectedAlliance]);
 
+  const onJoinSuccess = React.useCallback(() => {
+    userProfileQuery.refetch();
+    onNext?.();
+  }, [onNext, userProfileQuery]);
+
   return (
     <>
       <AllianceModal
         open={!!selectedAlliance}
-        onJoinSuccess={onNext}
+        onJoinSuccess={onJoinSuccess}
         onClose={() => {
           setSelectedAlliance(null);
         }}
         sigilName={activeSigilData?.name}
         sigilDesc={activeSigilData?.joiningDesc}
         sigilId={activeSigilData?.id}
+        selectModalBgImg={activeSigilData?.selectModalBgImg}
       />
       <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[600px] min-w-[1300px] items-center justify-center overflow-hidden">
         <div className="absolute w-full max-w-[1300px]">

@@ -59,7 +59,7 @@ export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
     case "federation":
       return {
         id: allianceId,
-        name: "THE FEDERATION",
+        name: "FEDERATION",
         img: "/images/nodes/insignia/alliance_sigilA.png"
       };
     case "vector_prime":

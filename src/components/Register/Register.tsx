@@ -11,6 +11,7 @@ import WarningIcon from '../icons/WarningIcon';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { validatePassword } from 'src/utils';
 import Button from '../core/Button';
+import StrickOutEyeIcon from '../icons/StrickOutEyeIcon';
 
 export interface IFormRegisterInput {
   firstName: string;
@@ -213,7 +214,7 @@ const Register: React.FC = () => {
             <span
               className="absolute top-[17px] right-2 cursor-pointer"
               onClick={toggleVisiblePassword}>
-              <EyeIcon />
+              {visiblePassword ? <StrickOutEyeIcon /> : <EyeIcon />}
             </span>
           </div>
           <div className="relative">
@@ -229,7 +230,7 @@ const Register: React.FC = () => {
             <span
               className="absolute top-[17px] right-2 cursor-pointer"
               onClick={toggleVisibleConfirmPassword}>
-              <EyeIcon />
+              {visibleConfirmPassword ? <StrickOutEyeIcon /> : <EyeIcon />}
             </span>
           </div>
         </div>

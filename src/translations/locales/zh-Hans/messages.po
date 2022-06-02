@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-05-21 09:58+0700\n"
+"POT-Creation-Date: 2022-06-01 20:14+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,11 +19,11 @@ msgstr "MYRIA币是指封装于Myria生态系统的原生治理和实用型代�
 msgid "100% Ethereum-level security guarantees; whilst increase transaction speed and throughput"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:128
+#: src/pages/nodes/index.tsx:133
 msgid "2 CPU Cores"
 msgstr "2核CPU"
 
-#: src/pages/nodes/index.tsx:131
+#: src/pages/nodes/index.tsx:136
 msgid "60 GB Disk Space"
 msgstr "60 GB磁盘空间"
 
@@ -39,7 +39,7 @@ msgstr ""
 msgid "<0>If it’s yours, it stays yours</0> - You’ve worked hard to build that neat graveyard farm for two whole days and now it’s yours to stay… forever!"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:64
+#: src/pages/nodes/index.tsx:69
 msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
 msgstr "<0>在运行任何区块链（包括Myria链）前，需使用节点验证网络交易。Myria生态系统中的节点将用于各种网络支持活动，包括初始测试网络、区块生产和验证。</0><1>除作为潜在验证者外，随着Myria生态系统的发展，节点所有者将可被要求开展辅助区块链网络功能，并给予奖励。包括需在Myria生态系统中去中心化存储特定关键信息、预言机、治理投票以及特定游戏概念投票。</1>"
 
@@ -47,11 +47,15 @@ msgstr "<0>在运行任何区块链（包括Myria链）前，需使用节点验�
 msgid "<0>Interoperable</0> & Interconnected NFTs"
 msgstr "<0>互操作性</0>及互联非同质化代币（NFT）"
 
-#: src/pages/nodes/index.tsx:84
+#: src/pages/nodes/index.tsx:89
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>针对所开展的节点工作，Myria节点操作者将于每日收到代币奖励（MYRIA币）。</0><1>根据作为节点操作者及一般社区成员所得的信誉分数，节点所有者还将获得NFT Drop及代币奖励。</1><2>信誉分数将根据节点所有者的游戏活动、其拥有及持有的代币数量、往常正常运行时间指标及其过往的网络支持情况（例如：验证或预言机提供者）决定。</2>"
 
-#: src/pages/inventory.tsx:102
+#: src/components/sigil/Inventory.tsx:41
+msgid "<0>Once the Sigils are active, they will be minted directly on Myria</0>"
+msgstr ""
+
+#: src/pages/inventory.tsx:104
 msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
 msgstr ""
 
@@ -67,15 +71,17 @@ msgstr ""
 msgid "<0>Resourcefulness rules!</0> - Overcome your competition with the best strategy and become the master of Moonville."
 msgstr ""
 
-#: src/pages/inventory.tsx:91
+#: src/components/sigil/Inventory.tsx:30
+#: src/pages/inventory.tsx:93
 msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
 msgstr ""
 
-#: src/pages/inventory.tsx:96
+#: src/components/sigil/Inventory.tsx:35
+#: src/pages/inventory.tsx:98
 msgid "<0>T-minus 47 gigaquarks</0>"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:114
+#: src/pages/nodes/index.tsx:119
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows, Mac and Linux. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
 msgstr ""
 
@@ -83,7 +89,7 @@ msgstr ""
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "有关区块链游戏和世界的<0>去中心化生态体系</0>"
 
-#: src/pages/nodes/index.tsx:137
+#: src/pages/nodes/index.tsx:142
 msgid "A Stable Internet Connection"
 msgstr "稳定的互联网连接"
 
@@ -107,11 +113,11 @@ msgstr ""
 msgid "A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory."
 msgstr ""
 
-#: src/components/Register/Register.tsx:31
+#: src/components/Register/Register.tsx:32
 msgid "A mixture of both uppercase and lowercase letters"
 msgstr ""
 
-#: src/components/Register/Register.tsx:35
+#: src/components/Register/Register.tsx:36
 msgid "A mixture of letters and numbers"
 msgstr ""
 
@@ -156,10 +162,6 @@ msgstr ""
 msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
 msgstr "获取持续教育和技术支持，以成功进军区块链领域"
 
-#: src/components/nodes/sigil/AllianceInfo.tsx:70
-msgid "Alias"
-msgstr ""
-
 #: src/components/Careers/Careers.tsx:59
 msgid "All"
 msgstr ""
@@ -176,7 +178,7 @@ msgstr "造福社区的基于代币游戏经济和非同质化代币的端到端
 msgid "An objective-based shooter game"
 msgstr "一款第一人称射击游戏"
 
-#: src/pages/nodes/index.tsx:134
+#: src/pages/nodes/index.tsx:139
 msgid "An x86/X64 Processor"
 msgstr "x86/x64处理器"
 
@@ -205,7 +207,7 @@ msgstr "艺术创意主管"
 msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
 msgstr "在Myria，我们坚信非同质化代币不仅能够赋予玩家可验证的所有权，而且能够使玩家将其所拥有的非同质化代币从一款游戏转移到另一款游戏中。"
 
-#: src/components/Register/Register.tsx:27
+#: src/components/Register/Register.tsx:28
 msgid "At least 8 characters—the more characters, the better"
 msgstr ""
 
@@ -217,16 +219,16 @@ msgstr "自动播放"
 msgid "Available to mint"
 msgstr ""
 
-#: src/components/nodes/sigil/Header.tsx:27
+#: src/components/sigil/Header.tsx:27
 msgid "BACK TO MYRIA HOME"
 msgstr ""
 
-#: src/pages/inventory.tsx:116
+#: src/pages/inventory.tsx:120
 msgid "BACK TO SIGIL DASHBOARD"
 msgstr ""
 
 #: src/components/BuyANode.tsx:6
-#: src/pages/nodes/index.tsx:288
+#: src/pages/nodes/index.tsx:295
 msgid "BUY A NODE"
 msgstr "购买节点"
 
@@ -243,7 +245,7 @@ msgstr ""
 msgid "Become a Myria node owner & receive rewards"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:281
+#: src/pages/nodes/index.tsx:288
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "成为Myria生态系统中不可或缺的一部分，并基于自身贡献获益。作为早期创始人的节点操作者可获得优惠价格。随着节点售出，节点价格将不断提高。"
 
@@ -283,16 +285,21 @@ msgstr ""
 msgid "Building towards a decentralized and permissionless network"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:103
+#: src/pages/nodes/index.tsx:108
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "购买节点许可证后，所有者将有权（在本地或云中）运行节点，并基于治理获取奖励。"
 
-#: src/components/nodes/sigil/RewardItem.tsx:72
+#: src/components/inventory/InventoryItem.tsx:35
+#: src/components/sigil/RewardItem.tsx:72
 msgid "CLAIM NOW"
 msgstr ""
 
 #: src/components/nodes/dashboard/LatestReward.tsx:118
 msgid "CLAIM REWARDS"
+msgstr ""
+
+#: src/components/inventory/InventoryItem.tsx:35
+msgid "CLAIMED"
 msgstr ""
 
 #: src/pages/team.tsx:70
@@ -310,16 +317,16 @@ msgstr ""
 msgid "COMING SOON"
 msgstr ""
 
-#: src/components/nodes/sigil/LinkWalletConfirmModal.tsx:37
-#: src/components/nodes/sigil/Welcome.tsx:148
+#: src/components/sigil/LinkWalletConfirmModal.tsx:37
+#: src/components/sigil/Welcome.tsx:140
 msgid "CONNECT WALLET"
 msgstr ""
 
-#: src/components/nodes/sigil/ReferFriendModal.tsx:67
+#: src/components/sigil/ReferFriendModal.tsx:67
 msgid "COPIED"
 msgstr ""
 
-#: src/components/nodes/sigil/ReferFriendModal.tsx:67
+#: src/components/sigil/ReferFriendModal.tsx:67
 msgid "COPY LINK"
 msgstr ""
 
@@ -340,11 +347,11 @@ msgstr "招贤纳士"
 msgid "Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?"
 msgstr ""
 
-#: src/pages/sigil/index.tsx:125
+#: src/pages/sigil/index.tsx:133
 msgid "Choose Alliance"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/AllianceModal.tsx:83
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:78
 msgid "Choose Wisely!"
 msgstr ""
 
@@ -372,12 +379,11 @@ msgstr ""
 msgid "Claim rewards"
 msgstr ""
 
-#: src/pages/sigil/index.tsx:128
+#: src/pages/sigil/index.tsx:136
 msgid "Claim your NFT reward"
 msgstr ""
 
-#: src/components/inventory/InventoryItem.tsx:75
-#: src/components/nodes/sigil/RewardItem.tsx:80
+#: src/components/sigil/RewardItem.tsx:80
 msgid "Claimed"
 msgstr ""
 
@@ -425,16 +431,12 @@ msgstr "社区"
 msgid "Compete, survive, win and earn!"
 msgstr ""
 
-#: src/components/nodes/sigil/MissionItem.tsx:86
+#: src/components/sigil/Dashboard/MissionV2.tsx:182
 msgid "Complete"
 msgstr ""
 
 #: src/pages/for-developers/solution.tsx:28
 msgid "Complete privacy, not only from other users, but also from the Operator."
-msgstr ""
-
-#: src/components/nodes/sigil/MissionItem.tsx:110
-msgid "Complete {title} mission to earn {credits} Points"
 msgstr ""
 
 #: src/components/for-developers/Myria.tsx:45
@@ -445,12 +447,12 @@ msgstr ""
 msgid "Configure your node and view your rewards in the dashboard"
 msgstr ""
 
-#: src/components/Register/Register.tsx:200
+#: src/components/Register/Register.tsx:222
 #: src/components/ResetPassword/ResetPassword.tsx:86
 msgid "Confirm password"
 msgstr ""
 
-#: src/components/Register/Register.tsx:61
+#: src/components/Register/Register.tsx:62
 #: src/components/ResetPassword/ResetPassword.tsx:25
 msgid "Confirm password is required!"
 msgstr ""
@@ -459,11 +461,11 @@ msgstr ""
 msgid "Congratulations!"
 msgstr ""
 
-#: src/pages/sigil/index.tsx:122
+#: src/pages/sigil/index.tsx:130
 msgid "Connect Wallet"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:106
+#: src/components/sigil/Welcome.tsx:98
 msgid "Connect to your wallet to enter the Myriaverse"
 msgstr ""
 
@@ -491,6 +493,10 @@ msgstr "联系我们"
 msgid "Contributing to the future of a decentralized internet"
 msgstr ""
 
+#: src/components/sigil/Dashboard/MissionV2.tsx:92
+msgid "Copy invite link"
+msgstr ""
+
 #: src/pages/team.tsx:147
 msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
 msgstr "在领导网页和应用程序的用户界面/用户体验设计及品牌身份创建方面，Craig拥有10多年经验。他曾与通信、金融机构、媒体等行业的跨国公司合作。"
@@ -516,15 +522,15 @@ msgstr ""
 msgid "Customize your Moon Village with a range of cosmetic skins for various buildings and crew. These skins are NFTs, therefore remain yours forever, and are reusable across games."
 msgstr ""
 
-#: src/pages/nodes/index.tsx:22
+#: src/pages/nodes/index.tsx:27
 msgid "Daily $MYRIA token rewards"
 msgstr "每日代币奖励 （MYRIA币）"
 
-#: src/components/nodes/Sidebar.tsx:11
+#: src/components/nodes/Sidebar2.tsx:11
 msgid "Dashboard"
 msgstr ""
 
-#: src/components/nodes/sigil/AllianceInfo.tsx:82
+#: src/components/sigil/Profile.tsx:72
 msgid "Date Registered"
 msgstr ""
 
@@ -532,11 +538,11 @@ msgstr ""
 msgid "Dave has over 25 years of marketing and management experience. He previously led marketing at Banxa and Rockstar Games. Dave also founded Marley Spoon; taking the company from inception to IPO."
 msgstr ""
 
-#: src/pages/nodes/index.tsx:188
+#: src/pages/nodes/index.tsx:196
 msgid "Decentralize the network by providing computing resources"
 msgstr "通过提供计算资源去中心化网络"
 
-#: src/pages/nodes/index.tsx:154
+#: src/pages/nodes/index.tsx:159
 msgid "Details will be announced soon."
 msgstr "详情将很快公布。"
 
@@ -548,11 +554,11 @@ msgstr ""
 msgid "Dive in, we dare you. You’ll find yourself gracefully descending from the sky while you survey the lands to select your ideal landing spot. Enjoy that moment of peace, because once your feet touch the ground you’ll be plunged into an intense battle for loot and powerful equipment.As expected, life in this world ain’t easy, and at given intervals of time the playable area of the map will shrink, pushing you closer to your enemies. Needless to say, they ain’t waiting for you in a bed of roses, so be prepared!"
 msgstr ""
 
-#: src/components/nodes/sigil/LinkWalletConfirmModal.tsx:21
+#: src/components/sigil/LinkWalletConfirmModal.tsx:21
 msgid "Do you want to link your wallet {0} to your Myria account?"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:121
+#: src/components/sigil/Welcome.tsx:113
 msgid "Don't have a wallet yet? <0/>Install Metamask below."
 msgstr ""
 
@@ -564,17 +570,53 @@ msgstr ""
 msgid "Drift it up!"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:101
+#: src/components/sigil/ChooseAlliance/index.tsx:102
 msgid "Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle."
 msgstr ""
 
-#: src/components/nodes/sigil/MissionItem.tsx:59
-msgid "EARNED"
-msgstr ""
-
-#: src/pages/nodes/index.tsx:37
+#: src/pages/nodes/index.tsx:42
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "每个节点均可对Myria链的拟议修改进行投票。在整个Myriaverse元宇宙中，节点还将拥有更多的投票权。"
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:123
+msgid "Earn {point} points  when you add your reaction to a message on the #myria-lore channel"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:117
+msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:81
+msgid "Earn {point} points by completing account creation and becoming a true Myrian"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:147
+msgid "Earn {point} points by following @myriagames on Twitter"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:88
+msgid "Earn {point} points by joining the Myria Discord server"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:129
+msgid "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:139
+msgid "Earn {point} points by sharing a tweet about Myria"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:105
+msgid "Earn {point} points for each day you send a message to any Myria Discord channel"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:98
+msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:111
+msgid "Earn {point} points when you send your first message on any Myria Discord channel"
+msgstr ""
 
 #: src/hooks/useGamesData.tsx:350
 msgid "Easy to play, difficult to master. Select the right terrain to base your industrial revolution. Choose wisely, as this will determine the types of resources and production opportunities available to you. Make sure to look after your base in order to increase your score and climb the ranks. At the end of each tournament, the competition is reset, so don’t worry if you get it wrong the first time!"
@@ -594,13 +636,13 @@ msgid "Eliminate your opponents in this fast-paced-action-packed-survival game, 
 msgstr ""
 
 #: src/components/GetInTouch.tsx:82
-#: src/components/Register/Register.tsx:173
+#: src/components/Register/Register.tsx:195
 msgid "Email"
 msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
 #: src/components/GetInTouch.tsx:27
-#: src/components/Register/Register.tsx:53
+#: src/components/Register/Register.tsx:54
 #: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:21
 #: src/components/for-developers/BuildYourBlockchain.tsx:35
@@ -652,12 +694,12 @@ msgstr "输入您的电子邮件地址"
 msgid "Enter your email address to reset your password"
 msgstr ""
 
-#: src/components/Register/Register.tsx:184
+#: src/components/Register/Register.tsx:206
 #: src/components/SignIn/SignIn.tsx:64
 msgid "Enter your password"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:95
+#: src/components/sigil/ChooseAlliance/index.tsx:96
 msgid "Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers."
 msgstr ""
 
@@ -669,7 +711,7 @@ msgstr ""
 msgid "Every hero has three unique abilities, each requiring charges, as well as one ultimate ability that requires charging through kills, deaths, collectibles, or objectives. It’s easier than it sounds, and even funnier…"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:49
+#: src/pages/nodes/index.tsx:54
 msgid "Exclusive NFTs"
 msgstr "专属非同质化代币 "
 
@@ -701,12 +743,16 @@ msgstr ""
 msgid "Filter by Department"
 msgstr ""
 
-#: src/components/Register/Register.tsx:139
+#: src/components/Register/Register.tsx:161
 msgid "First name"
 msgstr ""
 
-#: src/components/Register/Register.tsx:47
+#: src/components/Register/Register.tsx:48
 msgid "First name is required!"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:142
+msgid "Follow on Twitter"
 msgstr ""
 
 #: src/components/Footer.tsx:62
@@ -727,7 +773,6 @@ msgstr "由游戏和区块链行业的顶尖人士创立"
 msgid "Free Sigil NFT"
 msgstr ""
 
-#: src/components/Purchase/Modals/index.tsx:61
 #: src/components/nodes/rewards/ClaimModal.tsx:55
 msgid "From wallet"
 msgstr ""
@@ -759,6 +804,7 @@ msgstr "游戏第一"
 #: src/components/Footer.tsx:14
 #: src/components/Footer.tsx:45
 #: src/components/Header/linkSources.tsx:22
+#: src/components/nodes/NodesLayout.tsx:30
 msgid "Games"
 msgstr "游戏"
 
@@ -794,7 +840,7 @@ msgstr ""
 msgid "Get Started"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:278
+#: src/pages/nodes/index.tsx:285
 msgid "Get a founders node today"
 msgstr "现在就获取创始人节点"
 
@@ -802,8 +848,8 @@ msgstr "现在就获取创始人节点"
 msgid "Get started with your Myria node."
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:181
-#: src/components/nodes/sigil/WelcomeMobile.tsx:21
+#: src/components/sigil/Welcome.tsx:173
+#: src/components/sigil/WelcomeMobile.tsx:21
 msgid "Go back"
 msgstr ""
 
@@ -825,10 +871,11 @@ msgstr ""
 
 #: src/components/Header/linkSources.tsx:8
 #: src/components/Header/linkSources.tsx:44
+#: src/components/nodes/Sidebar.tsx:19
 msgid "Home"
 msgstr "主页"
 
-#: src/pages/nodes/index.tsx:101
+#: src/pages/nodes/index.tsx:106
 msgid "How can I become a Myria node operator?"
 msgstr "如何成为Myria节点操作者？"
 
@@ -841,32 +888,28 @@ msgstr "如何成为Myria节点操作者？"
 msgid "How it works"
 msgstr "如何运作？"
 
-#: src/pages/nodes/index.tsx:163
+#: src/pages/nodes/index.tsx:168
 msgid "How many Myria node licenses will be released?"
 msgstr "将发布多少份Myria节点许可证？"
 
-#: src/pages/nodes/index.tsx:152
+#: src/pages/nodes/index.tsx:157
 msgid "How much will a Myria node license cost?"
 msgstr "一份Myria节点许可证的成本是多少？"
 
-#: src/components/nodes/sigil/ShareTwitterModal.tsx:35
+#: src/components/sigil/ShareTwitterModal.tsx:35
 msgid "I am now a $MYRIA node owner! Join us to earn rewards, govern and build the future of virtual worlds! @MyriaGames"
 msgstr ""
 
-#: src/components/nodes/sigil/ShareTwitterModal.tsx:32
+#: src/components/sigil/ShareTwitterModal.tsx:32
 msgid "I just claimed a Rare Alliance Sigil on Myria"
 msgstr ""
 
-#: src/components/nodes/sigil/ReferFriendModal.tsx:47
+#: src/components/sigil/ReferFriendModal.tsx:47
 msgid "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry."
 msgstr ""
 
 #: src/pages/game-detail/[id].tsx:121
 msgid "IN DEVELOPMENT"
-msgstr ""
-
-#: src/components/nodes/sigil/Rewards.tsx:96
-msgid "INVENTORY"
 msgstr ""
 
 #: src/components/JoinTheRevolution.tsx:28
@@ -885,7 +928,7 @@ msgstr ""
 msgid "In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later."
 msgstr ""
 
-#: src/components/Register/Register.tsx:39
+#: src/components/Register/Register.tsx:40
 msgid "Inclusion of at least one special character"
 msgstr ""
 
@@ -893,7 +936,7 @@ msgstr ""
 msgid "Infrastructure & Tools"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:164
+#: src/components/sigil/Welcome.tsx:156
 msgid "Install Metamask"
 msgstr ""
 
@@ -919,7 +962,7 @@ msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:17
 #: src/components/GetInTouch.tsx:26
-#: src/components/Register/Register.tsx:52
+#: src/components/Register/Register.tsx:53
 #: src/components/SignIn/SignIn.tsx:21
 #: src/components/Subscribe.tsx:20
 #: src/components/for-developers/BuildYourBlockchain.tsx:34
@@ -927,12 +970,9 @@ msgid "Invalid email!"
 msgstr "无效电子邮件地址！"
 
 #: src/components/Header/ProfileComponent.tsx:12
-#: src/pages/inventory.tsx:123
+#: src/components/nodes/Sidebar.tsx:26
+#: src/pages/inventory.tsx:127
 msgid "Inventory"
-msgstr ""
-
-#: src/components/nodes/sigil/Missions.tsx:77
-msgid "Invite"
 msgstr ""
 
 #: src/hooks/useGamesData.tsx:75
@@ -958,7 +998,7 @@ msgstr ""
 msgid "JOIN DISCORD"
 msgstr "加入Discord"
 
-#: src/components/nodes/sigil/Welcome.tsx:136
+#: src/components/sigil/Welcome.tsx:128
 msgid "JOIN NOW"
 msgstr ""
 
@@ -966,13 +1006,8 @@ msgstr ""
 msgid "JOIN THE TEAM"
 msgstr "加入团队"
 
-#: src/components/nodes/sigil/ChooseAlliance/AllianceModal.tsx:73
-msgid "JOIN the {sigilName}"
-msgstr ""
-
-#: src/components/nodes/sigil/Missions.tsx:66
-#: src/components/nodes/sigil/Missions.tsx:70
-msgid "Join"
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:68
+msgid "JOIN {sigilName}"
 msgstr ""
 
 #: src/components/JoinMyriaCard.tsx:14
@@ -983,11 +1018,11 @@ msgstr ""
 msgid "Join Myria in building the next blockchain revolution"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:55
+#: src/components/sigil/ChooseAlliance/index.tsx:56
 msgid "Join The Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:78
+#: src/components/sigil/ChooseAlliance/index.tsx:79
 msgid "Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all."
 msgstr ""
 
@@ -1008,24 +1043,33 @@ msgstr "Kidono是一名经验丰富的合作伙伴主管，在管理外部开发
 msgid "LEARN MORE"
 msgstr "了解更多"
 
-#: src/components/nodes/sigil/LinkWalletConfirmModal.tsx:33
+#: src/components/sigil/LinkWalletConfirmModal.tsx:33
 msgid "LINK WALLET"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:136
-msgid "LOGING IN"
+#: src/components/sigil/Welcome.tsx:128
+msgid "LOGGING IN"
 msgstr ""
 
-#: src/components/Register/Register.tsx:150
+#: src/components/Register/Register.tsx:172
 msgid "Last name"
 msgstr ""
 
-#: src/components/Register/Register.tsx:48
+#: src/components/Register/Register.tsx:49
 msgid "Last name is required!"
 msgstr ""
 
 #: src/components/home/News.tsx:33
 msgid "Latest Updates & News"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:85
+#: src/components/sigil/Dashboard/MissionV2.tsx:102
+#: src/components/sigil/Dashboard/MissionV2.tsx:108
+#: src/components/sigil/Dashboard/MissionV2.tsx:114
+#: src/components/sigil/Dashboard/MissionV2.tsx:120
+#: src/components/sigil/Dashboard/MissionV2.tsx:126
+msgid "Launch Discord"
 msgstr ""
 
 #: src/components/for-developers/Myria.tsx:40
@@ -1056,14 +1100,22 @@ msgstr ""
 msgid "Limited supply available"
 msgstr ""
 
+#: src/components/sigil/Dashboard/MissionV2.tsx:180
+msgid "Locked"
+msgstr ""
+
 #: src/components/ForgotPassword/ForgotPassword.tsx:63
 #: src/components/Header/MobileHeader.tsx:74
 #: src/context/authentication.tsx:103
 msgid "Log in"
 msgstr ""
 
-#: src/components/Header/ProfileComponent.tsx:56
-msgid "Logout"
+#: src/components/Header/ProfileComponent.tsx:58
+msgid "Log out"
+msgstr ""
+
+#: src/components/Header/ProfileComponent.tsx:64
+msgid "Logout of your Myria account. Your progress will be accessible in future by logging into your Myria account via your wallet."
 msgstr ""
 
 #: src/pages/for-developers/solution.tsx:19
@@ -1076,10 +1128,6 @@ msgstr ""
 
 #: src/components/nodes/mint-assets/index.tsx:75
 msgid "MINT SELECTED"
-msgstr ""
-
-#: src/components/nodes/sigil/Missions.tsx:99
-msgid "MISSIONS"
 msgstr ""
 
 #: src/components/Header/linkSources.tsx:79
@@ -1115,11 +1163,11 @@ msgstr ""
 msgid "Message is required!"
 msgstr "信息必填！"
 
-#: src/components/nodes/Sidebar.tsx:19
+#: src/components/nodes/Sidebar2.tsx:19
 msgid "Mint Assets"
 msgstr ""
 
-#: src/components/nodes/Sidebar.tsx:27
+#: src/components/nodes/Sidebar2.tsx:27
 msgid "More coming soon!"
 msgstr ""
 
@@ -1145,8 +1193,8 @@ msgstr "适应您的虚拟形象的Morphing NFT™"
 msgid "Morphing interoperable NFTs is the new standard created by Myria. Players will be able to utilize their NFTs across different avatars, games and metaverses. Truly own your digital assets and collectibles."
 msgstr ""
 
-#: src/components/nodes/sigil/Footer.tsx:18
-#: src/components/nodes/sigil/Sound.tsx:29
+#: src/components/sigil/Footer.tsx:18
+#: src/components/sigil/Sound.tsx:29
 msgid "Mute sound"
 msgstr ""
 
@@ -1154,11 +1202,11 @@ msgstr ""
 msgid "My Node Licenses"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:236
+#: src/pages/nodes/index.tsx:243
 msgid "Myria FAQ"
 msgstr "Myria 常见问题"
 
-#: src/components/Purchase/Modals/index.tsx:16
+#: src/components/Purchase/Modals/index.tsx:30
 msgid "Myria Founder’s Node"
 msgstr ""
 
@@ -1254,11 +1302,11 @@ msgstr "Myria由社区赋能的节点网络支持，各节点根据其贡献而�
 msgid "Myria is the backbone of blockchain gaming"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:146
+#: src/pages/nodes/index.tsx:151
 msgid "Myria node license sales are anticipated to commence in Q2 2022 (subject to change)."
 msgstr ""
 
-#: src/pages/nodes/index.tsx:24
+#: src/pages/nodes/index.tsx:29
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "每天，Myria节点操作者将从节点作业中获取代币奖励（MYRIA币 ）。"
 
@@ -1312,16 +1360,12 @@ msgstr ""
 msgid "News"
 msgstr "新闻资讯"
 
-#: src/components/nodes/sigil/Rewards.tsx:119
-msgid "Next Reward"
-msgstr ""
-
 #: src/components/interop/DesktopInterop.tsx:263
 #: src/components/interop/MobileInterop.tsx:178
 msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
 msgstr "无论您的虚拟形象的形状和大小如何，均采用相同的非同质化代币。只需购买一次，即可在任何角色上使用。可交互操作设计"
 
-#: src/components/nodes/sigil/LinkWalletConfirmModal.tsx:25
+#: src/components/sigil/LinkWalletConfirmModal.tsx:25
 msgid "No web wallet is detected, please ensure that you have one setup to claim your rewards."
 msgstr ""
 
@@ -1329,11 +1373,11 @@ msgstr ""
 msgid "Nobody lives forever, and these heroes sure as hell don’t care – they literally die for the sake of fun. Dive into a series of short combat rounds to win a match of 5 vs 5. The attacking team must activate a bomb on a specified location on the map. If you’re on the defending side…you know what you need to do, right?"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:213
+#: src/pages/nodes/index.tsx:221
 msgid "Node owner rewards"
 msgstr "节点所有者奖励"
 
-#: src/pages/nodes/index.tsx:51
+#: src/pages/nodes/index.tsx:56
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "根据作为节点操作者及一般社区成员所得的信誉分数，节点所有者还将获得NFT Drop及代币奖励。"
 
@@ -1351,6 +1395,7 @@ msgstr ""
 
 #: src/components/Footer.tsx:49
 #: src/components/Header/linkSources.tsx:29
+#: src/components/nodes/Sidebar.tsx:32
 msgid "Nodes"
 msgstr "节点"
 
@@ -1360,10 +1405,6 @@ msgstr ""
 
 #: src/hooks/useGamesData.tsx:300
 msgid "Not the face!"
-msgstr ""
-
-#: src/components/inventory/InventoryItem.tsx:84
-msgid "OPEN NOW"
 msgstr ""
 
 #: src/components/Header/linkSources.tsx:51
@@ -1386,7 +1427,7 @@ msgstr ""
 msgid "Only 50,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded."
 msgstr ""
 
-#: src/pages/nodes/index.tsx:164
+#: src/pages/nodes/index.tsx:169
 msgid "Only 55,000 Myria node licenses will ever be released."
 msgstr "仅会发布 55,000 个 Myria 节点许可证。"
 
@@ -1436,11 +1477,7 @@ msgstr "拥有您的元宇宙身份"
 msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "拥有您的元宇宙身份在任何地方任何游戏中"
 
-#: src/components/nodes/sigil/AllianceInfo.tsx:45
-msgid "PROFILE"
-msgstr ""
-
-#: src/components/Purchase/Order.tsx:89
+#: src/components/Purchase/Order.tsx:112
 msgid "PURCHASE NOW"
 msgstr ""
 
@@ -1460,7 +1497,7 @@ msgstr ""
 msgid "Partner Lead"
 msgstr "合作伙伴主管"
 
-#: src/components/Register/Register.tsx:57
+#: src/components/Register/Register.tsx:58
 #: src/components/ResetPassword/ResetPassword.tsx:21
 #: src/components/SignIn/SignIn.tsx:26
 msgid "Password is required!"
@@ -1494,16 +1531,15 @@ msgstr ""
 msgid "Please enter correct url!"
 msgstr ""
 
-#: src/components/nodes/sigil/WelcomeMobile.tsx:16
+#: src/components/sigil/WelcomeMobile.tsx:16
 msgid "Please view this experience on a desktop browser"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:88
+#: src/components/sigil/Welcome.tsx:80
 msgid "Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge"
 msgstr ""
 
-#: src/components/nodes/sigil/AllianceInfo.tsx:76
-#: src/components/nodes/sigil/RewardItem.tsx:122
+#: src/components/sigil/RewardItem.tsx:122
 msgid "Points"
 msgstr ""
 
@@ -1515,11 +1551,11 @@ msgstr "由<0>$MYRIA</0>支持和管理"
 msgid "Powered by the community"
 msgstr "由社区支持"
 
-#: src/pages/nodes/index.tsx:200
+#: src/pages/nodes/index.tsx:208
 msgid "Powered by the community of player-run nodes"
 msgstr "由玩家运营的节点社区支持"
 
-#: src/pages/nodes/index.tsx:191
+#: src/pages/nodes/index.tsx:199
 msgid "Pre register now"
 msgstr "立即预注册"
 
@@ -1527,7 +1563,7 @@ msgstr "立即预注册"
 msgid "Pre register to stay up to date"
 msgstr "预注册，获取最新资讯"
 
-#: src/components/Purchase/Order.tsx:59
+#: src/components/Purchase/Order.tsx:76
 msgid "Price"
 msgstr ""
 
@@ -1551,21 +1587,20 @@ msgstr ""
 msgid "Purchase more nodes to increase your rewards and passive invome"
 msgstr ""
 
-#: src/components/Purchase/Modals/index.tsx:64
+#: src/components/Purchase/Modals/index.tsx:78
 msgid "Purchase now"
 msgstr ""
 
-#: src/components/Purchase/Order.tsx:70
+#: src/components/Purchase/Order.tsx:87
 msgid "Quantity"
 msgstr ""
 
-#: src/components/Purchase/Modals/index.tsx:19
 #: src/components/nodes/rewards/ClaimModal.tsx:22
 msgid "Quantity: {qty}"
 msgstr ""
 
-#: src/components/nodes/sigil/Rewards.tsx:79
-msgid "REWARDS"
+#: src/components/Purchase/Modals/index.tsx:33
+msgid "Quantity: {quantity}"
 msgstr ""
 
 #: src/components/home/News.tsx:20
@@ -1578,15 +1613,15 @@ msgstr ""
 msgid "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
 msgstr ""
 
-#: src/components/nodes/sigil/ReferFriendModal.tsx:44
+#: src/components/sigil/ReferFriendModal.tsx:44
 msgid "Refer your friends"
 msgstr ""
 
-#: src/components/Register/Register.tsx:228
+#: src/components/Register/Register.tsx:250
 msgid "Register"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:224
+#: src/pages/nodes/index.tsx:231
 msgid "Releasing soon"
 msgstr "立即发布"
 
@@ -1603,8 +1638,12 @@ msgstr ""
 msgid "Resistent against censorship"
 msgstr ""
 
-#: src/components/nodes/Sidebar.tsx:15
+#: src/components/nodes/Sidebar2.tsx:15
 msgid "Reward Vault"
+msgstr ""
+
+#: src/components/nodes/Sidebar.tsx:37
+msgid "Rewards"
 msgstr ""
 
 #: src/components/nodes/Banner.tsx:12
@@ -1615,11 +1654,11 @@ msgstr ""
 msgid "Roll with style!"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:182
+#: src/pages/nodes/index.tsx:190
 msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
 msgstr "运行节点，赚取<0>$MYRIA</0>和非同质化代币奖励"
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:282
+#: src/components/sigil/ChooseAlliance/index.tsx:283
 msgid "SELECT"
 msgstr ""
 
@@ -1648,13 +1687,21 @@ msgstr ""
 msgid "Scaling blockchain gaming on Ethereum"
 msgstr ""
 
+#: src/components/nodes/Sidebar.tsx:43
+msgid "Settings"
+msgstr ""
+
 #: src/components/nodes/dashboard/ShareTwitter.tsx:45
-#: src/components/nodes/sigil/ShareTwitterModal.tsx:49
+#: src/components/sigil/ShareTwitterModal.tsx:49
 msgid "Share now"
 msgstr ""
 
+#: src/components/sigil/Dashboard/MissionV2.tsx:132
+msgid "Share on Twitter"
+msgstr ""
+
 #: src/components/nodes/dashboard/ShareTwitter.tsx:59
-#: src/components/nodes/sigil/ShareTwitterModal.tsx:20
+#: src/components/sigil/ShareTwitterModal.tsx:20
 msgid "Share this on Twitter"
 msgstr ""
 
@@ -1663,7 +1710,7 @@ msgid "Sign in"
 msgstr ""
 
 #: src/components/Header/MobileHeader.tsx:71
-#: src/components/nodes/sigil/Missions.tsx:59
+#: src/components/sigil/Dashboard/MissionV2.tsx:75
 msgid "Sign up"
 msgstr ""
 
@@ -1764,7 +1811,7 @@ msgstr "感谢您的留言。我们将在24-48小时内联系您！"
 msgid "Thank you for subscribing!"
 msgstr "感谢订阅！"
 
-#: src/pages/nodes/index.tsx:203
+#: src/pages/nodes/index.tsx:211
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "Myria链由玩家运行的节点网络支持。仅需使用家用电脑，便可成为节点操作者，并根据您对生态系统的贡献获取奖励和收益。 "
 
@@ -1782,6 +1829,10 @@ msgstr ""
 
 #: src/components/for-developers/Myria.tsx:10
 msgid "The easiest way to launch your blockchain game"
+msgstr ""
+
+#: src/components/Register/Register.tsx:139
+msgid "The name must be between 3 and 16 characters long."
 msgstr ""
 
 #: src/components/interop/DesktopInterop.tsx:224
@@ -1806,7 +1857,7 @@ msgstr "全球首个Morphing NFT™"
 msgid "Think before you shoot!"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/AllianceModal.tsx:87
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:82
 msgid "This decision is permanent. Once you choose your alliance you cannot change it!"
 msgstr ""
 
@@ -1826,7 +1877,7 @@ msgstr ""
 msgid "Tokenomics consultancy"
 msgstr ""
 
-#: src/components/Purchase/Modals/index.tsx:49
+#: src/components/Purchase/Modals/index.tsx:63
 #: src/components/nodes/rewards/ClaimModal.tsx:42
 msgid "Total"
 msgstr ""
@@ -1848,11 +1899,11 @@ msgstr ""
 msgid "Trailer Coming Soon"
 msgstr "预告片即将推出"
 
-#: src/components/nodes/Sidebar.tsx:23
+#: src/components/nodes/Sidebar2.tsx:23
 msgid "Transaction List"
 msgstr ""
 
-#: src/components/Purchase/Modals/index.tsx:34
+#: src/components/Purchase/Modals/index.tsx:48
 msgid "Transaction fee"
 msgstr ""
 
@@ -1868,27 +1919,23 @@ msgstr "用户界面/用户体验主管"
 msgid "Unified through the Myriaverse"
 msgstr "通过Myriaverse元宇宙结合在一起"
 
-#: src/components/nodes/sigil/MissionItem.tsx:101
-msgid "Unlimited x {credits} Points"
-msgstr ""
-
 #: src/components/for-developers/Myria.tsx:21
 msgid "Unlock immense scale"
 msgstr ""
 
-#: src/components/nodes/sigil/Sound.tsx:29
+#: src/components/sigil/Sound.tsx:29
 msgid "Unmute sound"
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:87
+#: src/components/sigil/Welcome.tsx:79
 msgid "Unsupported Browser"
 msgstr ""
 
-#: src/components/Register/Register.tsx:162
+#: src/components/Register/Register.tsx:184
 msgid "Username"
 msgstr ""
 
-#: src/components/Register/Register.tsx:49
+#: src/components/Register/Register.tsx:50
 msgid "Username is required!"
 msgstr ""
 
@@ -1896,7 +1943,7 @@ msgstr ""
 msgid "Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning."
 msgstr ""
 
-#: src/components/nodes/sigil/ClaimModal.tsx:40
+#: src/components/sigil/ClaimModal.tsx:40
 msgid "VIEW ITEM"
 msgstr ""
 
@@ -1908,7 +1955,7 @@ msgstr ""
 msgid "Vanity factor number 1"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:72
+#: src/components/sigil/ChooseAlliance/index.tsx:73
 msgid "Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion."
 msgstr ""
 
@@ -1916,7 +1963,7 @@ msgstr ""
 msgid "View job"
 msgstr ""
 
-#: src/pages/nodes/index.tsx:35
+#: src/pages/nodes/index.tsx:40
 msgid "Voting rights"
 msgstr "投票权"
 
@@ -1960,8 +2007,8 @@ msgstr ""
 msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 msgstr ""
 
-#: src/components/nodes/sigil/Welcome.tsx:94
-#: src/components/nodes/sigil/WelcomeMobile.tsx:13
+#: src/components/sigil/Welcome.tsx:86
+#: src/components/sigil/WelcomeMobile.tsx:13
 msgid "Welcome to the Myriaverse"
 msgstr ""
 
@@ -1969,23 +2016,23 @@ msgstr ""
 msgid "We’re hiring, join the future of gaming"
 msgstr "我们正在招聘英才。加入我们，共筑游戏未来。"
 
-#: src/pages/nodes/index.tsx:111
+#: src/pages/nodes/index.tsx:116
 msgid "What are the software and hardware requirements to run a node?"
 msgstr "运行节点的软硬件要求是什么？"
 
-#: src/pages/nodes/index.tsx:62
+#: src/pages/nodes/index.tsx:67
 msgid "What is a Myria node?"
 msgstr "什么是Myria节点？"
 
-#: src/pages/nodes/index.tsx:82
+#: src/pages/nodes/index.tsx:87
 msgid "What rewards do Myria node operators receive?"
 msgstr "Myria节点操作者将获得什么样的奖励？"
 
-#: src/pages/nodes/index.tsx:144
+#: src/pages/nodes/index.tsx:149
 msgid "When will Myria node licenses be sold?"
 msgstr "Myria节点许可证何时发售？"
 
-#: src/components/nodes/sigil/Welcome.tsx:97
+#: src/components/sigil/Welcome.tsx:89
 msgid "Which side of the battlelines will you stand on? <0/> Choose your Alliance and claim your free Sigil NFT."
 msgstr ""
 
@@ -1993,7 +2040,7 @@ msgstr ""
 msgid "Whitepaper"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/index.tsx:49
+#: src/components/sigil/ChooseAlliance/index.tsx:50
 msgid "With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts."
 msgstr ""
 
@@ -2001,11 +2048,11 @@ msgstr ""
 msgid "Work with our experienced legal team"
 msgstr ""
 
-#: src/components/nodes/sigil/ChooseAlliance/AllianceModal.tsx:61
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:56
 msgid "You are joining..."
 msgstr ""
 
-#: src/components/nodes/sigil/ClaimModal.tsx:33
+#: src/components/sigil/ClaimModal.tsx:33
 msgid "You have just claimed"
 msgstr ""
 
@@ -2026,7 +2073,7 @@ msgstr "您的非同质化代币是您的数字身份。利用非同质化代币
 msgid "Your purchase is complete."
 msgstr ""
 
-#: src/pages/nodes/index.tsx:197
+#: src/pages/nodes/index.tsx:205
 msgid "a decentralized ecosystem"
 msgstr "去中心化生态系统"
 
@@ -2037,6 +2084,10 @@ msgstr "加入变革"
 #: src/components/ecosystem/Diagram.tsx:13
 msgid "view now"
 msgstr "立即查看"
+
+#: src/components/Purchase/Modals/index.tsx:75
+msgid "{balance} ETH"
+msgstr ""
 
 #: src/hooks/useGamesData.tsx:165
 msgid ""
