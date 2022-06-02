@@ -24,6 +24,29 @@ deploy to s3 staging:
   only:
     - staging
 
+build-dev:
+  environment: dev
+  image: node:14
+  script:
+  - yarn
+  - yarn build:dev
+  artifacts:
+    paths:
+      - out  
+  only:
+    - staging
+deploy to s3 dev:
+  stage: deploy
+  image: 
+    name: amazon/aws-cli
+    entrypoint: [""]
+  script:
+    - aws --version
+    - aws s3 rm s3://myria-dev.nonprod-myria.com --recursive
+    - aws s3 sync out s3://myria-dev.nonprod-myria.com
+  only:
+    - dev
+
 build-production:
   environment: production
   image: node:14

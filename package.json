@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "env-cmd -f env.local next dev",
     "build:staging": "env-cmd -f env.staging next build && next export",
+    "build:dev": "env-cmd -f env.dev next build && next export",
     "build:prod": "env-cmd -f env.production next build && next export",
     "start": "next start",
     "lint": "next lint",
