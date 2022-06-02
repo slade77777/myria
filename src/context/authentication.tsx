@@ -275,7 +275,12 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 
   const loginByWalletMutation = useMutation(
     async () => {
-      const message = JSON.stringify({ created_on: new Date(Date.now() + 60000) }); // add 1 minute to current time
+      const timestamp =  await apiClient.get(`/timse`)
+        .then(res => res.data?.data?.time)
+        .catch(() => null)
+      || new Date(Date.now() + 20000).toISOString();
+
+      const message = JSON.stringify({ created_on: timestamp });
       const signature = await signMessage(message);
 
       if (signature && address) {
