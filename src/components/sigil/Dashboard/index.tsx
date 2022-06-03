@@ -13,9 +13,9 @@ const Dashboard: React.FC = () => {
   return (
     <div
       className={clsx(
-        "flex min-h-screen flex-col bg-[url('/images/nodes/sigil/dashboard-bg_op.jpg')] bg-cover bg-top bg-no-repeat pt-[112px] pb-9 pl-[43px]"
+        "fixed w-full h-full flex min-h-screen flex-col bg-[url('/images/nodes/sigil/dashboard-bg_op.jpg')] bg-cover bg-top bg-no-repeat pb-9 pl-[43px]"
       )}>
-      <div className="grid w-full flex-grow grid-cols-[266px_1fr] gap-10">
+      <div className="grid w-full overflow-auto mt-[112px] flex-grow grid-cols-[266px_1fr] gap-10">
         <div className="">
           <Profile />
         </div>

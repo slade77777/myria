@@ -169,7 +169,7 @@ const MissionV2: React.FC = () => {
           <Loading />
         </div>
       ) : (
-        <div className={`max-h-[65vh] overflow-auto pr-[43px] pl-[3px] pt-[3px]`}>
+        <div className={`max-h-[65vh] overflow-hide pr-[43px] pl-[3px] pt-[3px]`}>
           {(missions || []).map((mission) => {
             const isRepeatable =
               mission.repetition_type == 'Daily' || mission.repetition_type == 'Unlimited';
