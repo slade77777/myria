@@ -517,7 +517,7 @@ msgstr "Community"
 msgid "Compete, survive, win and earn!"
 msgstr "Compete, survive, win and earn!"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:182
+#: src/components/sigil/Dashboard/MissionV2.tsx:184
 msgid "Complete"
 msgstr "Complete"
 
@@ -587,7 +587,7 @@ msgstr "Contact us"
 msgid "Contributing to the future of a decentralized internet"
 msgstr "Contributing to the future of a decentralized internet"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:92
+#: src/components/sigil/Dashboard/MissionV2.tsx:90
 msgid "Copy invite link"
 msgstr "Copy invite link"
 
@@ -717,43 +717,47 @@ msgstr "Each node is allowed to vote on proposed changes to the Myria chain and 
 #~ msgid "Earn {credits} Points"
 #~ msgstr "Earn {credits} Points"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:123
+#: src/components/sigil/Dashboard/MissionV2.tsx:121
 msgid "Earn {point} points  when you add your reaction to a message on the #myria-lore channel"
 msgstr "Earn {point} points  when you add your reaction to a message on the #myria-lore channel"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:117
+#: src/components/sigil/Dashboard/MissionV2.tsx:115
 msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
 msgstr "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:81
-msgid "Earn {point} points by completing account creation and becoming a true Myrian"
-msgstr "Earn {point} points by completing account creation and becoming a true Myrian"
+#: src/components/sigil/Dashboard/MissionV2.tsx:79
+msgid "Earn {point} points by completing account creation"
+msgstr "Earn {point} points by completing account creation"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:147
+#: src/components/sigil/Dashboard/MissionV2.tsx:81
+#~ msgid "Earn {point} points by completing account creation and becoming a true Myrian"
+#~ msgstr "Earn {point} points by completing account creation and becoming a true Myrian"
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:145
 msgid "Earn {point} points by following @myriagames on Twitter"
 msgstr "Earn {point} points by following @myriagames on Twitter"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:88
+#: src/components/sigil/Dashboard/MissionV2.tsx:86
 msgid "Earn {point} points by joining the Myria Discord server"
 msgstr "Earn {point} points by joining the Myria Discord server"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:129
+#: src/components/sigil/Dashboard/MissionV2.tsx:127
 msgid "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
 msgstr "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:139
+#: src/components/sigil/Dashboard/MissionV2.tsx:137
 msgid "Earn {point} points by sharing a tweet about Myria"
 msgstr "Earn {point} points by sharing a tweet about Myria"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:105
+#: src/components/sigil/Dashboard/MissionV2.tsx:103
 msgid "Earn {point} points for each day you send a message to any Myria Discord channel"
 msgstr "Earn {point} points for each day you send a message to any Myria Discord channel"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:98
+#: src/components/sigil/Dashboard/MissionV2.tsx:96
 msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
 msgstr "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:111
+#: src/components/sigil/Dashboard/MissionV2.tsx:109
 msgid "Earn {point} points when you send your first message on any Myria Discord channel"
 msgstr "Earn {point} points when you send your first message on any Myria Discord channel"
 
@@ -902,7 +906,7 @@ msgstr "First name"
 msgid "First name is required!"
 msgstr "First name is required!"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:142
+#: src/components/sigil/Dashboard/MissionV2.tsx:140
 msgid "Follow on Twitter"
 msgstr "Follow on Twitter"
 
@@ -1115,8 +1119,8 @@ msgid "I just claimed a Rare Alliance Sigil on Myria"
 msgstr "I just claimed a Rare Alliance Sigil on Myria"
 
 #: src/components/sigil/ReferFriendModal.tsx:47
-msgid "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry."
-msgstr "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry."
+#~ msgid "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry."
+#~ msgstr "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry."
 
 #: src/pages/game-detail/[id].tsx:121
 msgid "IN DEVELOPMENT"
@@ -1196,6 +1200,10 @@ msgstr "Inventory"
 #: src/components/nodes/sigil/Missions.tsx:77
 #~ msgid "Invite"
 #~ msgstr "Invite"
+
+#: src/components/sigil/ReferFriendModal.tsx:47
+msgid "Invite your friends to Myria by sharing the following link with them."
+msgstr "Invite your friends to Myria by sharing the following link with them."
 
 #: src/hooks/useGamesData.tsx:75
 msgid "It was a calm day in the land of candy hammers and fiery strawberry lakes when a mysterious portal suddenly spawned a roaring crowd of brave players. Ready to rock, they started to roll down the hill of chocolate donuts in a chaotic race for the win."
@@ -1323,12 +1331,12 @@ msgstr "Latest Updates & News"
 #~ msgid "Lauch discord"
 #~ msgstr "Lauch discord"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:85
-#: src/components/sigil/Dashboard/MissionV2.tsx:102
-#: src/components/sigil/Dashboard/MissionV2.tsx:108
-#: src/components/sigil/Dashboard/MissionV2.tsx:114
-#: src/components/sigil/Dashboard/MissionV2.tsx:120
-#: src/components/sigil/Dashboard/MissionV2.tsx:126
+#: src/components/sigil/Dashboard/MissionV2.tsx:83
+#: src/components/sigil/Dashboard/MissionV2.tsx:100
+#: src/components/sigil/Dashboard/MissionV2.tsx:106
+#: src/components/sigil/Dashboard/MissionV2.tsx:112
+#: src/components/sigil/Dashboard/MissionV2.tsx:118
+#: src/components/sigil/Dashboard/MissionV2.tsx:124
 msgid "Launch Discord"
 msgstr "Launch Discord"
 
@@ -1360,7 +1368,7 @@ msgstr "Leverage prebuilt Myria platform and tools - we take care of the support
 msgid "Limited supply available"
 msgstr "Limited supply available"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:180
+#: src/components/sigil/Dashboard/MissionV2.tsx:182
 msgid "Locked"
 msgstr "Locked"
 
@@ -2134,7 +2142,7 @@ msgstr "Settings"
 msgid "Share now"
 msgstr "Share now"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:132
+#: src/components/sigil/Dashboard/MissionV2.tsx:130
 msgid "Share on Twitter"
 msgstr "Share on Twitter"
 
@@ -2148,7 +2156,7 @@ msgid "Sign in"
 msgstr "Sign in"
 
 #: src/components/Header/MobileHeader.tsx:71
-#: src/components/sigil/Dashboard/MissionV2.tsx:75
+#: src/components/sigil/Dashboard/MissionV2.tsx:73
 msgid "Sign up"
 msgstr "Sign up"
 
