@@ -13,11 +13,13 @@ import InfoIcon from 'src/components/icons/InfoIcon';
 
 const ModalPurchase = ({
   balance,
+  priceEth,
   quantity,
   open,
   onClose,
   onPurchaseComplete
 }: {
+  priceEth: number,
   balance: string | undefined;
   quantity: number | 0;
   open: boolean;
@@ -38,8 +40,6 @@ const ModalPurchase = ({
     }
   });
 
-  // const qty = 3;
-  const priceEth = 1839.04;
   const unitNodeEth = 1.5;
   const totalPrice = Math.max(quantity * unitNodeEth, 0);
   const isInsufficientBalance = totalPrice > Number(balance);
