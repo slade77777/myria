@@ -14,12 +14,14 @@ const ModalPurchase = ({
   balance,
   quantity,
   open,
-  onClose
+  onClose,
+  onPurchaseComplete
 }: {
   balance: string | undefined;
   quantity: number | 0;
   open: boolean;
   onClose: () => void;
+  onPurchaseComplete?: (tx: string) => void;
 }) => {
   const [txRequest, setTxRequest] = useState<TransactionRequest>();
   const { providerApi, address } = useWalletContext();
@@ -29,6 +31,8 @@ const ModalPurchase = ({
       const res = await transferEth(providerApi?.getSigner(), txRequest);
       const tx = await res.wait();
       console.log(tx);
+
+      onPurchaseComplete?.(tx.transactionHash);
       return tx;
     }
   });
@@ -47,7 +51,7 @@ const ModalPurchase = ({
           quantity / 100,
           address,
           process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string,
-          0
+          Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT),
         )
       );
     }

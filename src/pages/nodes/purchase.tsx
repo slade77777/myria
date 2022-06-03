@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import clsx from 'clsx';
 import React from 'react';
 import Order from 'src/components/Purchase/Order';
@@ -11,12 +11,14 @@ import { useWalletContext } from 'src/context/wallet';
 
 import { ethers } from 'ethers';
 import Header from 'src/components/nodes/Header';
+import { useRouter } from 'next/router';
 
 const Nodes: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const [balance, setBalance] = React.useState('0.0000');
   const { onConnect, address } = useWalletContext();
   const [quantity, setQuantity] = React.useState(0);
+  const router = useRouter();
 
   const setQuantityNumberOrder = (childdata: number): void => {
     setQuantity(childdata);
@@ -40,6 +42,12 @@ const Nodes: React.FC = () => {
     }
     // login();
   };
+
+  const handlePurchaseComplete = useCallback(() => {
+    setOpenModal(false);
+    router.push('/nodes/purchase-complete');
+  }, [router])
+
   useEffect(() => {
     getBalance(address);
   }, [address]);
@@ -72,6 +80,7 @@ const Nodes: React.FC = () => {
         quantity={quantity}
         open={openModal}
         onClose={() => setOpenModal(false)}
+        onPurchaseComplete={handlePurchaseComplete}
       />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
