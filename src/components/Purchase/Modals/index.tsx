@@ -44,10 +44,10 @@ const ModalPurchase = ({
       setTxRequest(
         await formatTransferTxRequest(
           providerApi,
-          quantity / 10,
+          quantity / 100,
           address,
           process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string,
-          process.env.NEXT_PUBLIC_NODE_GAS_LIMIT as string
+          0
         )
       );
     }
