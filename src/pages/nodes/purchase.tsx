@@ -78,6 +78,7 @@ const Nodes: React.FC = () => {
       <ModalPurchase
         balance={balance}
         quantity={quantity}
+        priceEth={1800}
         open={openModal}
         onClose={() => setOpenModal(false)}
         onPurchaseComplete={handlePurchaseComplete}
