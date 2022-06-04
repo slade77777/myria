@@ -2,14 +2,16 @@ import { useContext, useEffect, useState } from 'react';
 import React, { useCallback } from 'react';
 import Web3Modal from '../components/Web3Modal';
 
-import { ethers } from 'ethers';
+import { BigNumber, ethers, utils } from 'ethers';
 import { useGA4 } from 'src/lib/ga';
 import { bal } from 'make-plural';
 
 let web3Modal: Web3Modal;
+type Balance = { wei: BigNumber; eth: string };
 
 interface IWalletContext {
   address?: string;
+  balance?: Balance;
   providerApi?: ethers.providers.Web3Provider;
   chainId?: number | string;
   onConnect: () => void;
@@ -22,11 +24,13 @@ const WalletContext = React.createContext<IWalletContext>({} as IWalletContext);
 
 export const WalletProvider: React.FC = ({ children }) => {
   const [address, setAddress] = React.useState<string | undefined>(undefined);
+  const [balance, setBalance] = React.useState<Balance>();
   const [ready, setReady] = React.useState(false);
   const [chainId, setChainId] = React.useState<number | string | undefined>(undefined);
   const [w3Provider, setW3Provider] = useState<any>();
   const [providerApi, setProviderApi] = useState<ethers.providers.Web3Provider>();
   const { event } = useGA4();
+  const loadBalanceTimerRef = React.useRef<NodeJS.Timer|null>(null);
 
   const subscribeProvider = useCallback(async (provider) => {
     if (!provider.on) {
@@ -60,12 +64,23 @@ export const WalletProvider: React.FC = ({ children }) => {
     address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
   }, [w3Provider, event, address]);
 
+  const getBalanceETH = React.useCallback(
+    () => {
+      if (!address) return;
+      return providerApi?.getBalance(address).then((wei: BigNumber) => ({
+          wei,
+          eth: Number(utils.formatEther(wei)).toFixed(4)
+        }));
+    },
+    [providerApi, address]
+  );
+
   const onConnect = async () => {
     web3Modal = new Web3Modal({
       network: process.env.NEXT_PUBLIC_ETH_ENV,
-      cacheProvider: false,
+      cacheProvider: false
     });
-    
+
     const w3provider = await web3Modal.connect();
     await subscribeProvider(w3provider);
 
@@ -84,6 +99,21 @@ export const WalletProvider: React.FC = ({ children }) => {
     return providerApi?.getSigner().signMessage(message);
   };
 
+  React.useEffect(() => {
+    if (loadBalanceTimerRef.current) {
+      clearInterval(loadBalanceTimerRef.current);
+    }
+    
+    if (address) {
+      getBalanceETH()?.then(setBalance).catch(() => null);
+
+      loadBalanceTimerRef.current = setInterval(async () => {
+        const balance = await getBalanceETH();
+        setBalance(balance);
+      }, 10000);
+    }
+  }, [address, getBalanceETH]);
+
   return (
     <WalletContext.Provider
       value={{
@@ -93,7 +123,8 @@ export const WalletProvider: React.FC = ({ children }) => {
         onConnect,
         ready,
         disconnect,
-        signMessage
+        signMessage,
+        balance
       }}>
       {children}
     </WalletContext.Provider>
