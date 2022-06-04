@@ -5,30 +5,27 @@ import ETH from 'src/components/icons/ETHIcon';
 import Modal from 'src/components/Modal';
 import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
 import { useWalletContext } from 'src/context/wallet';
-import { BigNumber, ethers } from 'ethers';
+import { BigNumber, ethers, utils } from 'ethers';
 import { useMutation, useQuery } from 'react-query';
 import Button from 'src/components/core/Button';
 import InfoIcon from 'src/components/icons/InfoIcon';
 // import { useWalletContext } from 'src/context/wallet';
 
 const ModalPurchase = ({
-  balance,
-  priceEth,
+  priceEthUsd,
   quantity,
   open,
   onClose,
   onPurchaseComplete
 }: {
-  priceEth: number,
-  balance: string | undefined;
+  priceEthUsd: number,
   quantity: number | 0;
   open: boolean;
   onClose: () => void;
   onPurchaseComplete?: (tx: string) => void;
 }) => {
   const [txRequest, setTxRequest] = useState<TransactionRequest>();
-  const { providerApi, address } = useWalletContext();
-
+  const { providerApi, address, balance } = useWalletContext();
   const { mutate, isLoading: isPurchasing } = useMutation(async () => {
     if (txRequest && providerApi) {
       const res = await transferEth(providerApi?.getSigner(), txRequest);
@@ -41,22 +38,23 @@ const ModalPurchase = ({
   });
 
   const unitNodeEth = 1.5;
-  const totalPrice = Math.max(quantity * unitNodeEth, 0);
-  const isInsufficientBalance = totalPrice > Number(balance);
+  const totalPriceEth = Math.max(quantity * unitNodeEth, 0);
+  const totalPriceUsd = Math.max(quantity * priceEthUsd, 0);
+  const isInsufficientBalance = !!balance?.wei && utils.parseEther(totalPriceEth.toString()).gt(balance.wei)
 
   const buildTransferRequest = useCallback(async () => {
     if (providerApi && address) {
       setTxRequest(
         await formatTransferTxRequest(
           providerApi,
-          quantity / 100,
+          totalPriceEth / 100,
           address,
           process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string,
           Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
         )
       );
     }
-  }, [quantity, providerApi, address]);
+  }, [totalPriceEth, providerApi, address]);
 
   const onPurchase = useCallback(async () => {
     mutate();
@@ -109,9 +107,9 @@ const ModalPurchase = ({
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">{totalPrice}</p>
+                <p className="heading-md ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
+              <p className="body-sm text-right text-light">~${totalPriceUsd}</p>
             </div>
           </div>
 
@@ -123,9 +121,9 @@ const ModalPurchase = ({
             </div>
             <div>
               <div className="flex items-center justify-end">
-                <ETH /> <p className="heading-list ml-2">{totalPrice}</p>
+                <ETH /> <p className="heading-list ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
+              <p className="body-sm text-right text-light">~${totalPriceUsd}</p>
             </div>
           </div>
         </div>
@@ -138,9 +136,9 @@ const ModalPurchase = ({
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">{totalPrice}</p>
+                <p className="heading-md ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
+              <p className="body-sm text-right text-light">~${totalPriceUsd}</p>
             </div>
           </div>
           <div className="mb-4 flex items-center justify-between">
@@ -151,7 +149,7 @@ const ModalPurchase = ({
               <div className="flex">
                 <ETH />
                 <p className="body-sm ml-2 flex-1 text-light">
-                  <Trans>{balance} ETH</Trans>
+                  <Trans>{balance?.eth} ETH</Trans>
                 </p>
               </div>
             </div>
