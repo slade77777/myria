@@ -9,48 +9,30 @@ import ModalPurchase from 'src/components/Purchase/Modals';
 import { paddingX } from 'src/utils';
 import { useWalletContext } from 'src/context/wallet';
 
-import { ethers } from 'ethers';
 import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
 
-const Nodes: React.FC = () => {
+const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
-  const [balance, setBalance] = React.useState('0.0000');
-  const { onConnect, address } = useWalletContext();
+  const { onConnect } = useWalletContext();
   const [quantity, setQuantity] = React.useState(0);
   const router = useRouter();
 
   const setQuantityNumberOrder = (childdata: number): void => {
     setQuantity(childdata);
-    // console.log("$$$$$$$$$$$$", childdata);
   };
 
-  async function getBalance(address: string | undefined) {
-    let provider = ethers.getDefaultProvider();
-    if (address != undefined) {
-      let balance = await provider.getBalance(address);
-      let balanceInEth = ethers.utils.formatEther(balance);
-      balanceInEth = parseFloat(balanceInEth).toFixed(4);
-      // console.log(`balance11111111111111: ${balanceInEth} ETH`);
-      setBalance(balanceInEth);
-    }
-  }
   const onPlaceOrder = async () => {
     await onConnect();
     if (quantity > 0) {
       setOpenModal(true);
     }
-    // login();
   };
 
   const handlePurchaseComplete = useCallback(() => {
     setOpenModal(false);
     router.push('/nodes/purchase-complete');
   }, [router])
-
-  useEffect(() => {
-    getBalance(address);
-  }, [address]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden md:block">
@@ -88,4 +70,4 @@ const Nodes: React.FC = () => {
   );
 };
 
-export default Nodes;
+export default Purchase;

@@ -1,15 +1,15 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { TransactionRequest, TransactionResponse } from '@ethersproject/abstract-provider';
+import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Trans } from '@lingui/macro';
-import ETH from 'src/components/icons/ETHIcon';
-import Modal from 'src/components/Modal';
-import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
-import { useWalletContext } from 'src/context/wallet';
 import { BigNumber, ethers, utils } from 'ethers';
-import { useMutation, useQuery } from 'react-query';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useMutation } from 'react-query';
+
 import Button from 'src/components/core/Button';
+import ETH from 'src/components/icons/ETHIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
-// import { useWalletContext } from 'src/context/wallet';
+import Modal from 'src/components/Modal';
+import { useWalletContext } from 'src/context/wallet';
+import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
 
 const ModalPurchase = ({
   priceEthUsd,
@@ -18,7 +18,7 @@ const ModalPurchase = ({
   onClose,
   onPurchaseComplete
 }: {
-  priceEthUsd: number,
+  priceEthUsd: number;
   quantity: number | 0;
   open: boolean;
   onClose: () => void;
@@ -40,7 +40,9 @@ const ModalPurchase = ({
   const unitNodeEth = 1.5;
   const totalPriceEth = Math.max(quantity * unitNodeEth, 0);
   const totalPriceUsd = Math.max(quantity * priceEthUsd, 0);
-  const isInsufficientBalance = !!balance?.wei && utils.parseEther(totalPriceEth.toString()).gt(balance.wei)
+  const isInsufficientBalance = utils
+    .parseEther(totalPriceEth.toString())
+    .gt(balance ?? BigNumber.from(0));
 
   const buildTransferRequest = useCallback(async () => {
     if (providerApi && address) {
@@ -148,9 +150,9 @@ const ModalPurchase = ({
               </span>
               <div className="flex">
                 <ETH />
-                <p className="body-sm ml-2 flex-1 text-light">
-                  <Trans>{balance?.eth} ETH</Trans>
-                </p>
+                {balance && <p className="body-sm ml-2 flex-1 text-light">
+                  <Trans>{Number(ethers.utils.formatEther(balance)).toFixed(4)} ETH</Trans>
+                </p>}
               </div>
             </div>
 
@@ -162,13 +164,15 @@ const ModalPurchase = ({
               border: isPurchasing ? 'solid 1px rgba(154, 201, 227, 0.2)' : 'none',
               background: 'rgba(154, 201, 227, 0.1)',
               transition: 'all 0.1s',
-              ...(!isPurchasing ? {
-                overflow: 'hidden',
-                padding: '0px',
-                height: '0px'
-              } : {})
+              ...(!isPurchasing
+                ? {
+                    overflow: 'hidden',
+                    padding: '0px',
+                    height: '0px'
+                  }
+                : {})
             }}>
-            <div className='w-4 h-4 text-[#9AC9E3] mr-2'>
+            <div className="mr-2 h-4 w-4 text-[#9AC9E3]">
               <InfoIcon />
             </div>
             <span className="text-[12px] font-normal text-[#9AC9E3]">
