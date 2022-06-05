@@ -7,11 +7,12 @@ import { useGA4 } from 'src/lib/ga';
 import { bal } from 'make-plural';
 
 let web3Modal: Web3Modal;
-
+export type ReaderProvider = ethers.providers.InfuraProvider;
 interface IWalletContext {
   address?: string;
   balance?: BigNumber;
-  providerApi?: ethers.providers.Web3Provider;
+  signerProviderApi?: ethers.providers.Web3Provider;
+  readerProviderApi?: ReaderProvider;
   chainId?: number | string;
   onConnect: () => void;
   ready: boolean;
@@ -22,7 +23,7 @@ interface IWalletContext {
 const WalletContext = React.createContext<IWalletContext>({} as IWalletContext);
 const defaultEnvChainId =  parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '0x1');
 
-function createInfuraProvider(chainid: number = defaultEnvChainId): ethers.providers.InfuraProvider {
+function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvider {
   return new ethers.providers.InfuraProvider(
     chainid,
       {
@@ -37,9 +38,9 @@ export const WalletProvider: React.FC = ({ children }) => {
   const [ready, setReady] = React.useState(false);
   const [chainId, setChainId] = React.useState<number | undefined>(undefined);
   const [w3Provider, setW3Provider] = useState<any>();
-  const [providerApi, setProviderApi] = useState<ethers.providers.Web3Provider>();
-  const [readerProvider, setReaderProvider] = useState<ethers.providers.InfuraProvider | undefined>(
-    createInfuraProvider()
+  const [signerProviderApi, setSignerProviderApi] = useState<ethers.providers.Web3Provider>();
+  const [readerProviderApi, setReaderProvider] = useState<ReaderProvider | undefined>(
+    createReaderProvider()
   );
   const { event } = useGA4();
 
@@ -59,9 +60,10 @@ export const WalletProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     if (chainId) {
-      setReaderProvider(createInfuraProvider(chainId));
+      setReaderProvider(createReaderProvider(chainId));
     }
-  }, [chainId])
+  }, [chainId]);
+
   const reset = () => {
     setAddress(undefined);
     setChainId(undefined);
@@ -83,9 +85,9 @@ export const WalletProvider: React.FC = ({ children }) => {
   const getBalanceETH = React.useCallback(
     () => {
       if (!address) return;
-      return readerProvider?.getBalance(address);
+      return readerProviderApi?.getBalance(address);
     },
-    [readerProvider, address]
+    [readerProviderApi, address]
   );
 
   const onConnect = async () => {
@@ -102,14 +104,14 @@ export const WalletProvider: React.FC = ({ children }) => {
     const address = accounts[0];
     const network = await providerApi.getNetwork();
     setW3Provider(w3provider);
-    setProviderApi(providerApi);
+    setSignerProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
     event('Wallet Connected', { wallet_address: address, campaign: 'Sigil' });
   };
 
   const signMessage = (message: string) => {
-    return providerApi?.getSigner().signMessage(message);
+    return signerProviderApi?.getSigner().signMessage(message);
   };
 
   React.useEffect(() => {
@@ -120,7 +122,8 @@ export const WalletProvider: React.FC = ({ children }) => {
     <WalletContext.Provider
       value={{
         address,
-        providerApi,
+        signerProviderApi: signerProviderApi,
+        readerProviderApi,
         chainId,
         onConnect,
         ready,

@@ -2,7 +2,7 @@ import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Trans } from '@lingui/macro';
 import { BigNumber, ethers, utils } from 'ethers';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 
 import Button from 'src/components/core/Button';
 import ETH from 'src/components/icons/ETHIcon';
@@ -24,18 +24,7 @@ const ModalPurchase = ({
   onClose: () => void;
   onPurchaseComplete?: (tx: string) => void;
 }) => {
-  const [txRequest, setTxRequest] = useState<TransactionRequest>();
-  const { providerApi, address, balance } = useWalletContext();
-  const { mutate, isLoading: isPurchasing } = useMutation(async () => {
-    if (txRequest && providerApi) {
-      const res = await transferEth(providerApi?.getSigner(), txRequest);
-      const tx = await res.wait();
-      console.log(tx);
-
-      onPurchaseComplete?.(tx.transactionHash);
-      return tx;
-    }
-  });
+  const { readerProviderApi, signerProviderApi,address, balance } = useWalletContext();
 
   const unitNodeEth = 1.5;
   const totalPriceEth = Math.max(quantity * unitNodeEth, 0);
@@ -44,19 +33,37 @@ const ModalPurchase = ({
     .parseEther(totalPriceEth.toString())
     .gt(balance ?? BigNumber.from(0));
 
-  const buildTransferRequest = useCallback(async () => {
-    if (providerApi && address) {
-      setTxRequest(
-        await formatTransferTxRequest(
-          providerApi,
-          totalPriceEth / 100,
-          address,
-          process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string,
-          Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
-        )
+  const { data: txRequest } = useQuery<TransactionRequest | undefined>(
+    ['tx-transfer-request', totalPriceEth, address, open, isInsufficientBalance],
+    async () => {
+      // this never happens due to line 53 but just by pass ts check
+      // TODO: check if useQuery has some ts supports
+      if (!address || !readerProviderApi  || isInsufficientBalance) {
+        return;
+      }
+      return await formatTransferTxRequest(
+        readerProviderApi,
+        totalPriceEth,
+        address,
+        process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string,
+        Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
       );
+    },
+    {
+      enabled: !!address && !!readerProviderApi && !isInsufficientBalance
     }
-  }, [totalPriceEth, providerApi, address]);
+  );
+  
+  const { mutate, isLoading: isPurchasing } = useMutation(async () => {
+    if (txRequest && signerProviderApi) {
+      const res = await transferEth(signerProviderApi?.getSigner(), txRequest);
+      const tx = await res.wait();
+      console.log(tx);
+
+      onPurchaseComplete?.(tx.transactionHash);
+      return tx;
+    }
+  });
 
   const onPurchase = useCallback(async () => {
     mutate();
@@ -86,10 +93,6 @@ const ModalPurchase = ({
       </Button>
     );
   }, [isInsufficientBalance, isPurchasing, onPurchase]);
-
-  useEffect(() => {
-    buildTransferRequest();
-  }, [buildTransferRequest]);
 
   return (
     <Modal open={open} onOpenChange={onClose}>
@@ -150,9 +153,11 @@ const ModalPurchase = ({
               </span>
               <div className="flex">
                 <ETH />
-                {balance && <p className="body-sm ml-2 flex-1 text-light">
-                  <Trans>{Number(ethers.utils.formatEther(balance)).toFixed(4)} ETH</Trans>
-                </p>}
+                {balance && (
+                  <p className="body-sm ml-2 flex-1 text-light">
+                    <Trans>{Number(ethers.utils.formatEther(balance)).toFixed(4)} ETH</Trans>
+                  </p>
+                )}
               </div>
             </div>
 
