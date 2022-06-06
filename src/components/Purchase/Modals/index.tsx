@@ -89,7 +89,7 @@ const ModalPurchase = ({
         onClick={onPurchase}
         loading={isPurchasing}
         disabled={isPurchasing || isInsufficientBalance}>
-        <Trans>{label}</Trans>
+        {label}
       </Button>
     );
   }, [isInsufficientBalance, isPurchasing, onPurchase]);
