@@ -84,8 +84,6 @@ For usages, find out more here: https://lingui.js.org/tutorials/react-patterns.h
 - Remember remove `width`, `height` and fill color with `currentColor`, refer to `src/components/icons/ArrowDownIcon.tsx` and its usage as an example, then the parent container must define `width`, `height` and `color` to use it
 
 ## Node test accounts
-- test accounts:
-
 - User wallet:
 public key: `0x4adBbf279113e52A0368eeF6B3B00432125Cf8b0`
 private key: `af6a44d6e29c3aaedae688d4a4f8c8ae7564b5750203684c42199098a2a2ad9c`
@@ -94,10 +92,12 @@ myria wallet:
 public key: `0xC0C0403307D2a89ed4aae3Fa4bD32F518398C6C5`
 private key: `7e1e49781b9fb7e52c861adbd156323b948ebfc71c705222fc06ed4b6f2bc73d`
 
-test steps:
+# setup wallet and import test accounts:
 - import test accounts into your wallet
 - change wallet network to rinkeby
+
+# test steps:
 - select user wallet in metamask
 - in node page, connect to user wallet
-- go through purchase flow
+- purchase node
 - check myria wallet balance
