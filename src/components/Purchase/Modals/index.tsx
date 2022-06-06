@@ -10,25 +10,28 @@ import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
 import { useWalletContext } from 'src/context/wallet';
 import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
+import { formatCurrency } from 'src/lib/formatter';
+
+export type PurchaseInformationProps = {
+  quantity: number,
+  totalPriceEth: number,
+  totalPriceUsd: number
+}
 
 const ModalPurchase = ({
-  priceEthUsd,
-  quantity,
+  data,
   open,
   onClose,
   onPurchaseComplete
 }: {
-  priceEthUsd: number;
-  quantity: number | 0;
+  data: PurchaseInformationProps;
   open: boolean;
   onClose: () => void;
   onPurchaseComplete?: (tx: string) => void;
 }) => {
   const { readerProviderApi, signerProviderApi,address, balance } = useWalletContext();
-
+  const {quantity, totalPriceEth, totalPriceUsd} = data;
   const unitNodeEth = 1.5;
-  const totalPriceEth = Math.max(quantity * unitNodeEth, 0);
-  const totalPriceUsd = Math.max(quantity * priceEthUsd, 0);
   const isInsufficientBalance = utils
     .parseEther(totalPriceEth.toString())
     .gt(balance ?? BigNumber.from(0));
@@ -53,7 +56,7 @@ const ModalPurchase = ({
       enabled: !!address && !!readerProviderApi && !isInsufficientBalance
     }
   );
-  
+
   const { mutate, isLoading: isPurchasing } = useMutation(async () => {
     if (txRequest && signerProviderApi) {
       const res = await transferEth(signerProviderApi?.getSigner(), txRequest);
@@ -114,7 +117,7 @@ const ModalPurchase = ({
                 <ETH />
                 <p className="heading-md ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${totalPriceUsd}</p>
+              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
             </div>
           </div>
 
@@ -128,7 +131,7 @@ const ModalPurchase = ({
               <div className="flex items-center justify-end">
                 <ETH /> <p className="heading-list ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${totalPriceUsd}</p>
+              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
             </div>
           </div>
         </div>
@@ -143,7 +146,7 @@ const ModalPurchase = ({
                 <ETH />
                 <p className="heading-md ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${totalPriceUsd}</p>
+              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
             </div>
           </div>
           <div className="mb-4 flex items-center justify-between">
