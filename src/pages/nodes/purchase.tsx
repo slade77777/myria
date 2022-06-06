@@ -32,7 +32,7 @@ const Purchase: React.FC = () => {
   const handlePurchaseComplete = useCallback(() => {
     setOpenModal(false);
     router.push('/nodes/purchase-complete');
-  }, [router])
+  }, [router]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden md:block">
@@ -46,12 +46,12 @@ const Purchase: React.FC = () => {
           paddingX,
           "bg-[url('/images/nodes/purchase-page-bg.png')] bg-top bg-no-repeat md:mb-[120px]"
         )}>
-        <div className="mx-auto mt-[30px] w-full max-w-[1734] md:mt-[109px]">
+        <div className="mx-auto mt-[30px] w-full max-w-[1734]">
           <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[67.5fr_32.5fr]">
-            <div className="md:mt-0">
+            <div className="relative float-left h-[calc(100vh_-_160px)] w-full overflow-hidden md:mt-0">
               <License />
             </div>
-            <div className="sticky bottom-0 -mx-6 mt-[130px] md:top-5 md:mx-0 md:mt-0">
+            <div className="float-right -mx-6 mt-[130px] md:mx-0 md:mt-0">
               <Order onPlaceOrder={onPlaceOrder} setQuantityNumberOrder={setQuantityNumberOrder} />
             </div>
           </div>
