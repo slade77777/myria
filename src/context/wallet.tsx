@@ -2,17 +2,17 @@ import { useContext, useEffect, useState } from 'react';
 import React, { useCallback } from 'react';
 import Web3Modal from '../components/Web3Modal';
 
-import { BigNumber, ethers, utils } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { useGA4 } from 'src/lib/ga';
 import { bal } from 'make-plural';
 
 let web3Modal: Web3Modal;
-type Balance = { wei: BigNumber; eth: string };
-
+export type ReaderProvider = ethers.providers.InfuraProvider;
 interface IWalletContext {
   address?: string;
-  balance?: Balance;
-  providerApi?: ethers.providers.Web3Provider;
+  balance?: BigNumber;
+  signerProviderApi?: ethers.providers.Web3Provider;
+  readerProviderApi?: ReaderProvider;
   chainId?: number | string;
   onConnect: () => void;
   ready: boolean;
@@ -21,16 +21,28 @@ interface IWalletContext {
 }
 
 const WalletContext = React.createContext<IWalletContext>({} as IWalletContext);
+const defaultEnvChainId =  parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '0x1');
+
+function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvider {
+  return new ethers.providers.InfuraProvider(
+    chainid,
+      {
+        projectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_SECRET,
+      }
+  )
+}
 
 export const WalletProvider: React.FC = ({ children }) => {
   const [address, setAddress] = React.useState<string | undefined>(undefined);
-  const [balance, setBalance] = React.useState<Balance>();
+  const [balance, setBalance] = React.useState<BigNumber>();
   const [ready, setReady] = React.useState(false);
-  const [chainId, setChainId] = React.useState<number | string | undefined>(undefined);
+  const [chainId, setChainId] = React.useState<number | undefined>(undefined);
   const [w3Provider, setW3Provider] = useState<any>();
-  const [providerApi, setProviderApi] = useState<ethers.providers.Web3Provider>();
+  const [signerProviderApi, setSignerProviderApi] = useState<ethers.providers.Web3Provider>();
+  const [readerProviderApi, setReaderProvider] = useState<ReaderProvider | undefined>(
+    createReaderProvider()
+  );
   const { event } = useGA4();
-  const loadBalanceTimerRef = React.useRef<NodeJS.Timer|null>(null);
 
   const subscribeProvider = useCallback(async (provider) => {
     if (!provider.on) {
@@ -42,9 +54,15 @@ export const WalletProvider: React.FC = ({ children }) => {
     });
 
     provider.on('chainChanged', async (chainId: string) => {
-      setChainId(chainId);
+      setChainId(parseInt(chainId));
     });
   }, []);
+
+  useEffect(() => {
+    if (chainId) {
+      setReaderProvider(createReaderProvider(chainId));
+    }
+  }, [chainId]);
 
   const reset = () => {
     setAddress(undefined);
@@ -67,12 +85,9 @@ export const WalletProvider: React.FC = ({ children }) => {
   const getBalanceETH = React.useCallback(
     () => {
       if (!address) return;
-      return providerApi?.getBalance(address).then((wei: BigNumber) => ({
-          wei,
-          eth: Number(utils.formatEther(wei)).toFixed(4)
-        }));
+      return readerProviderApi?.getBalance(address);
     },
-    [providerApi, address]
+    [readerProviderApi, address]
   );
 
   const onConnect = async () => {
@@ -89,36 +104,26 @@ export const WalletProvider: React.FC = ({ children }) => {
     const address = accounts[0];
     const network = await providerApi.getNetwork();
     setW3Provider(w3provider);
-    setProviderApi(providerApi);
+    setSignerProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
     event('Wallet Connected', { wallet_address: address, campaign: 'Sigil' });
   };
 
   const signMessage = (message: string) => {
-    return providerApi?.getSigner().signMessage(message);
+    return signerProviderApi?.getSigner().signMessage(message);
   };
 
   React.useEffect(() => {
-    if (loadBalanceTimerRef.current) {
-      clearInterval(loadBalanceTimerRef.current);
-    }
-    
-    if (address) {
-      getBalanceETH()?.then(setBalance).catch(() => null);
-
-      loadBalanceTimerRef.current = setInterval(async () => {
-        const balance = await getBalanceETH();
-        setBalance(balance);
-      }, 10000);
-    }
-  }, [address, getBalanceETH]);
+    getBalanceETH()?.then(setBalance).catch(() => null);
+  }, [getBalanceETH]);
 
   return (
     <WalletContext.Provider
       value={{
         address,
-        providerApi,
+        signerProviderApi: signerProviderApi,
+        readerProviderApi,
         chainId,
         onConnect,
         ready,
