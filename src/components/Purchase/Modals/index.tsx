@@ -106,7 +106,7 @@ const ModalPurchase = ({
                 <Trans>Myria Founder’s Node</Trans>
               </p>
               <p className="body-sm text-light">
-                <Trans>Quantity: {quantity}</Trans>
+                Quantity: {quantity}
               </p>
             </div>
             <div>
@@ -155,7 +155,7 @@ const ModalPurchase = ({
                 <ETH />
                 {balance && (
                   <p className="body-sm ml-2 flex-1 text-light">
-                    <Trans>{Number(ethers.utils.formatEther(balance)).toFixed(4)} ETH</Trans>
+                    {Number(ethers.utils.formatEther(balance)).toFixed(4)} ETH
                   </p>
                 )}
               </div>
