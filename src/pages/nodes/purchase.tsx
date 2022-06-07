@@ -5,7 +5,7 @@ import Order from 'src/components/Purchase/Order';
 import { headerHeight } from '../../components/Header';
 import Page from '../../components/Page';
 import License from '../../components/Purchase/License';
-import ModalPurchase from 'src/components/Purchase/Modals';
+import ModalPurchase, { PurchaseInformationProps } from 'src/components/Purchase/Modals';
 import { paddingX } from 'src/utils';
 import { useWalletContext } from 'src/context/wallet';
 
@@ -15,17 +15,26 @@ import { useMutation } from 'react-query';
 
 const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
-  const { onConnect } = useWalletContext();
-  const [quantity, setQuantity] = React.useState(0);
+  const [modalData, setModalData] = React.useState<PurchaseInformationProps>({
+    quantity: 0,
+    totalPriceEth: 0,
+    totalPriceUsd: 0
+  });
+  const { onConnect, address } = useWalletContext();
+
   const router = useRouter();
 
-  const setQuantityNumberOrder = (childdata: number): void => {
-    setQuantity(childdata);
-  };
+  useEffect(() => {
+    // validate either wallet is connected
+    if (!address) {
+      router.push('/nodes');
+    }
+  }, [address, router]);
 
-  const onPlaceOrder = async () => {
+  const onPlaceOrder = async (data: PurchaseInformationProps) => {
     await onConnect();
-    if (quantity > 0) {
+    if (data.quantity > 0) {
+      setModalData(data);
       setOpenModal(true);
     }
   };
@@ -56,18 +65,17 @@ const Purchase: React.FC = () => {
         )}>
         <div className="mx-auto mt-[30px] w-full max-w-[1734]">
           <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[67.5fr_32.5fr]">
-            <div className="relative float-left h-[calc(100vh_-_160px)] w-full overflow-hidden md:mt-0">
+            <div className="relative float-left h-[calc(100vh_-_80px)] w-full overflow-hidden md:mt-0">
               <License />
             </div>
             <div className="float-right -mx-6 mt-[130px] md:mx-0 md:mt-0">
-              <Order onPlaceOrder={onPlaceOrder} setQuantityNumberOrder={setQuantityNumberOrder} />
+              <Order onPlaceOrder={onPlaceOrder} />
             </div>
           </div>
         </div>
       </div>
       <ModalPurchase
-        quantity={quantity}
-        priceEthUsd={1800}
+        data={modalData}
         open={openModal}
         onClose={() => setOpenModal(false)}
         onPurchaseComplete={handlePurchaseComplete}

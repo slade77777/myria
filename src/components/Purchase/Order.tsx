@@ -1,17 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useCallback, useEffect } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import clsx from 'clsx';
 import ETH from '../icons/ETHIcon';
 import NumberInput from './NumberInput';
 import * as yup from 'yup';
-import { useWalletContext } from 'src/context/wallet';
-import { useAuthenticationContext } from 'src/context/authentication';
+import {useWalletContext} from 'src/context/wallet';
+import {useAuthenticationContext} from 'src/context/authentication';
 import Input from '../Input';
 import TermsOfServiceModal from './Modals/TermsOfServiceModal';
-import { t, Trans } from '@lingui/macro';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Controller, useForm, useWatch } from 'react-hook-form';
+import {t, Trans} from '@lingui/macro';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {Controller, useForm, useWatch} from 'react-hook-form';
 import usePurchaseInfo from '../../hooks/usePurchaseInfo';
+import axios from 'axios';
+import { PurchaseInformationProps } from './Modals';
+import { formatCurrency } from 'src/lib/formatter';
 
 const licenses = [
   {
@@ -27,8 +30,7 @@ const licenses = [
 ];
 
 interface IOrderProps {
-  setQuantityNumberOrder: (arg: number) => void;
-  onPlaceOrder: () => void;
+  onPlaceOrder: (data: PurchaseInformationProps) => void;
 }
 
 const schema = yup.object({
@@ -42,31 +44,50 @@ const schema = yup.object({
   privacy: yup.boolean().required().oneOf([true])
 });
 
-const Order: React.FC<IOrderProps> = ({ onPlaceOrder, setQuantityNumberOrder }) => {
-  const { onConnect, address } = useWalletContext();
-  const { login } = useAuthenticationContext();
-  const [firstLicense, setFirstLicense] = React.useState(false);
-  const [secondLicense, setSecondLicense] = React.useState(false);
-  const { data } = usePurchaseInfo();
+const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
+  const {onConnect, address} = useWalletContext();
+  const {login} = useAuthenticationContext();
+  const [firstLicense, setFirstLicense] = useState(false);
+  const [secondLicense, setSecondLicense] = useState(false);
+  const [etheCost, setEtheCost] = useState(0)
+  const {data} = usePurchaseInfo();
   const {
     register,
     handleSubmit,
     control,
     setValue,
     watch,
-    formState: { errors, isValid }
-  } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
+    formState: {errors, isValid}
+  } = useForm({resolver: yupResolver(schema), mode: 'onChange' });
+
   useEffect(() => {
-    setValue('remainNumberOfNodes', data?.remainNumberOfNodes, { shouldValidate: true });
+    setValue('remainNumberOfNodes', data?.remainNumberOfNodes, {shouldValidate: true});
   }, [data?.remainNumberOfNodes, setValue]);
+
+  const price = data?.price || 1.5;
+  const quantity = useWatch({control, name: 'quantity'}) || 0;
+
+  useEffect(() => {
+    // get etherium cost
+    axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd').then(data => {
+      if (data?.data?.ethereum?.usd) {
+        setEtheCost(data?.data?.ethereum?.usd)
+      }
+    });
+  }, [])
+
 
   const doPurchase = useCallback(
     (data: any) => {
-      onPlaceOrder();
+      const {quantity} = data;
+      onPlaceOrder({
+        quantity,
+        totalPriceEth: price * quantity,
+        totalPriceUsd: price * quantity * etheCost
+      });
     },
-    [onPlaceOrder]
+    [onPlaceOrder, price, etheCost]
   );
-  const quantity = useWatch({ control, name: 'quantity' });
 
   const handleClickLicense = (licenseId: string) => {
     switch (licenseId) {
@@ -85,7 +106,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, setQuantityNumberOrder }) 
         onClose={() => setFirstLicense(false)}
         onAgree={() => alert('Agree')}
       />
-      <form onSubmit={handleSubmit(doPurchase)}>
+      <div>
         <div className="rounded-t-lg bg-brand-deep-blue p-6 md:rounded-lg md:p-8">
           <div className="flex items-center justify-between md:block">
             <p className="caption hidden font-bold text-light md:body-sm md:block">
@@ -93,9 +114,9 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, setQuantityNumberOrder }) 
             </p>
             <div className="flex items-baseline justify-between md:mt-[7px] md:items-center">
               <div className="flex items-center">
-                <ETH /> <p className="heading-md ml-[9px] ">1,5 </p>
+                <ETH/> <p className="heading-md ml-[9px] ">{price * quantity}</p>
               </div>
-              <p className="caption ml-2 font-normal text-light md:body-sm md:ml-0">~$1839.04</p>
+              <p className="caption ml-2 font-normal text-light md:body-sm md:ml-0">~${formatCurrency(price * quantity * etheCost, 2)}</p>
             </div>
 
             <div className="ml-[100px] md:ml-0 md:mt-6">
@@ -105,10 +126,9 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, setQuantityNumberOrder }) 
               <Controller
                 name="quantity"
                 control={control}
-                render={({ field }) => (
+                render={({field}) => (
                   <NumberInput
                     setQuantityNumber={(val: number) => {
-                      setQuantityNumberOrder(val);
                       field.onChange(val);
                     }}
                   />
@@ -136,7 +156,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, setQuantityNumberOrder }) 
                 <Controller
                   name={license.key}
                   control={control}
-                  render={({ field }) => (
+                  render={({field}) => (
                     <Input
                       type="checkbox"
                       onChange={(val) => field.onChange(val)}
@@ -162,14 +182,14 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, setQuantityNumberOrder }) 
                 'btn-lg w-full px-4 uppercase text-black',
                 isValid ? 'bg-brand-gold' : 'bg-gray/4'
               )}
-              type="submit"
+              onClick={handleSubmit(doPurchase)}
               disabled={!isValid}>
               <Trans>PLACE ORDER</Trans>
             </button>
             <p className="mt-2 text-center">Please tick all boxes to continue</p>
           </div>
         </div>
-      </form>
+      </div>
     </>
   );
 };
