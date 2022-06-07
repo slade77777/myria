@@ -11,6 +11,7 @@ import { useWalletContext } from 'src/context/wallet';
 
 import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
+import { useMutation } from 'react-query';
 
 const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -29,10 +30,17 @@ const Purchase: React.FC = () => {
     }
   };
 
-  const handlePurchaseComplete = useCallback(() => {
+  const { mutateAsync: submitTx } = useMutation((txId: string) => {
+    return Promise.resolve(txId); // MOCK
+  });
+
+  const handlePurchaseComplete = useCallback(async (txId: string) => {
+    // submit tx
+    await submitTx(txId);
+
     setOpenModal(false);
     router.push('/nodes/purchase-complete');
-  }, [router]);
+  }, [router, submitTx]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden md:block">
