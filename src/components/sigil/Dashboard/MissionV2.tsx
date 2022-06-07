@@ -60,7 +60,7 @@ const MissionV2: React.FC = () => {
       })
   };
 
-  const discordLink = 'https://discord.com/login';
+  const discordLink = 'https://discord.gg/myria';
   const ActionMap: {
     [key in Mission['mission_id']]?: {
       label: string;
