@@ -29,23 +29,18 @@ const Inventory: React.FC = () => {
         <p className="mx-auto font-extrabold md:mx-0">
           <Trans>
             <span className="text-[20px] text-brand-white">
-              <Trans>Sigils are inactive until the Sigma mission is set into motion.</Trans>
-            </span>
-          </Trans>
-          <Trans>
-            <span className="ml-1 text-[20px] text-brand-light-blue">
-              <Trans>T-minus 47 gigaquarks</Trans>
+              <Trans>Sigils are going to be activated later in time when the mysterious Sigma mission is set into motion.</Trans>
             </span>
           </Trans>
         </p>
         <Trans>
           <span className="text-[16px] font-normal text-brand-light-blue">
-            <Trans>Once the Sigils are active, they will be minted directly on Myria</Trans>
+            <Trans>Be prepared as this might be the key to survival in the Myriaverse.</Trans>
           </span>
         </Trans>
       </section>
       <section className="mt-12 mr-10">
-        <div className="grid grid-cols-4 xl:grid-cols-6 gap-8">
+        <div className="flex flex-row flex-wrap w-full gap-8">
           {inventories.map((item, index) => (
             <InventoryItem key={index} item={item} onClaimed={handleChestClaimed} />
           ))}

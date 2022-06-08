@@ -1,7 +1,8 @@
 export enum SUPPORT_SOUND {
   SIGIL_HOVER = '/sounds/sigil.wav',
   SIGIL_SELECT = '/sounds/sigil_select.wav',
-  SIGIL_DASHBOARD_BG = '/sounds/sigil_bg.mp3'
+  SIGIL_DASHBOARD_BG = '/sounds/sigil_bg.mp3',
+  SIGIL_CLAIM_REWARD = '/sounds/claim_reward.wav',
 }
 
 class SoundService {

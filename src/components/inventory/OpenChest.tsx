@@ -127,7 +127,7 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
               {credit && <ChestItem type={credit.type} credit={credit.amount} />}
 
               <button className="btn-md btn-primary mt-[48px] uppercase" onClick={onClose}>
-                <Trans>VIEWS ITEMS</Trans>
+                <Trans>VIEW ITEMS</Trans>
               </button>
             </div>
           </div>

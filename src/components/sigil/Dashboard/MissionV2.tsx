@@ -60,7 +60,7 @@ const MissionV2: React.FC = () => {
       })
   };
 
-  const discordLink = 'https://discord.com/login';
+  const discordLink = 'https://discord.gg/myria';
   const ActionMap: {
     [key in Mission['mission_id']]?: {
       label: string;
@@ -118,7 +118,7 @@ const MissionV2: React.FC = () => {
       label: t`Launch Discord`,
       link: discordLink,
       description: (point: number) =>
-        t`Earn ${point} points  when you add your reaction to a message on the #myria-lore channel`
+        t`Earn ${point} points when you add a thumbs up reaction to a message on the #myria-lore channel`
     },
     SPACE_LORD_ROLE_DISCORD: {
       label: t`Launch Discord`,
@@ -169,7 +169,7 @@ const MissionV2: React.FC = () => {
           <Loading />
         </div>
       ) : (
-        <div className={`max-h-[65vh] overflow-auto pr-[43px] pl-[3px] pt-[3px]`}>
+        <div className={`max-h-[65vh] overflow-hide pr-[43px] pl-[3px] pt-[3px]`}>
           {(missions || []).map((mission) => {
             const isRepeatable =
               mission.repetition_type == 'Daily' || mission.repetition_type == 'Unlimited';

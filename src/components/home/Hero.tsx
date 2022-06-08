@@ -70,7 +70,27 @@ const Hero: React.FC = () => {
     <div className="relative">
       <Slider {...settings}>
         <div>
-          <div className="flex h-[615px] flex-col justify-end rounded-xl bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:justify-start md:bg-[url('/images/home/banner-1_op.jpeg')] md:pt-[137px] md:pl-[107px]">
+          <div className="flex h-[615px] flex-col justify-end bg-[url('/images/home/banner-2-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:justify-start md:rounded-xl md:bg-[url('/images/home/banner-2_op.png')] md:pt-[137px] md:pl-[107px]">
+            <div className="text-center md:text-left">
+              <p className="text-[40px] font-bold leading-[1.25] text-[#FFFDFD] md:text-[60px]">
+                <Trans>Alliance Sigil NFT Launch</Trans>
+              </p>
+              <p className="mt-8 text-[18px] leading-[1.5] md:text-[22px]">
+                <Trans>
+                  Begin your adventure, choose your alliance and claim your free NFT rewards
+                </Trans>
+              </p>
+              <Link href="/sigil">
+                <a className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[50px]">
+                  <Trans>CLAIM NOW</Trans>
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="flex h-[615px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:justify-start md:rounded-xl md:bg-[url('/images/home/banner-1_op.jpeg')] md:pt-[137px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
               <p className="text-[28px] font-black leading-[1.15] text-[#93F6FF]">
                 <Trans>COMING SOON</Trans>
