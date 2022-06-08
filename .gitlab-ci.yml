@@ -46,3 +46,4 @@ sync to s3 production:
     - aws s3 sync out s3://website-dapp
   only:
     - main
+  when: manual
