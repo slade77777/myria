@@ -24,6 +24,6 @@ const eventGA4 = (eventName: string, params: any) => {
 
 export default {
   pageview,
-  event,
-  eventGA4
+  eventGA4,
+  event
 };

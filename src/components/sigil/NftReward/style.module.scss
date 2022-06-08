@@ -1,0 +1,198 @@
+@keyframes glow {
+  0%   {
+    border: 0.5px solid #F5B941;
+    box-shadow: 0px 0px 5px rgba(245, 185, 65, 0.1);
+  }
+  20%  {
+    border: 0.5px solid #F5B941;
+    box-shadow: 0px 0px 20px rgba(245, 185, 65, 0.8);
+  }
+  100% {
+    border: 0px solid #F5B941;
+    box-shadow: 0px 0px 2px rgba(245, 185, 65, 0.5);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  position: relative;
+
+  .animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    opacity: 0;
+    animation: appear 3s alternate, glow 3s alternate, fadeOut 2s 1s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0px;
+      width: 30%;
+      height: 1px;
+      box-shadow: 0px -5px 20px 8px rgba(245, 185, 65, 0.4);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      width: 30%;
+      height: 1px;
+      box-shadow: 0px 5px 20px 8px rgba(245, 185, 65, 0.4);
+    }
+
+    .particles {
+      width: 100%;
+      height: 100%;
+      > div:nth-child(1) {
+        animation: fadeIn 2s alternate;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          box-shadow: 10px 50px 1px 1px #F5B941, 30px 20px 1px 1px #F5B941, -10px -20px 1px 1px #F5B941, -30px -10px 1px 1px rgba(245, 185, 65, 0.4), 30px -15px 1px 1px rgba(245, 185, 65, 0.4);
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          box-shadow: -10px 10px 1px 1px rgba(245, 185, 65, 0.4), -30px 25px 1px 1px #F5B941, 10px 20px 1px 1px #F5B941, -20px 40px 1px 1px rgba(245, 185, 65, 0.4), -30px -15px 1px 1px rgba(245, 185, 65, 0.4);
+        }
+      }
+      > div:nth-child(2) {
+        animation: fadeIn 1s alternate;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          transform: scale(0.7);
+          box-shadow: 10px 50px 1px 1px #F5B941, 30px 20px 1px 1px #F5B941, -10px -20px 1px 1px #F5B941, -30px -10px 1px 1px rgba(245, 185, 65, 0.4), 30px -15px 1px 1px rgba(245, 185, 65, 0.4);
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          transform: scale(0.6);
+          box-shadow: -10px 10px 1px 1px rgba(245, 185, 65, 0.4), -30px 25px 1px 1px #F5B941, 10px 20px 1px 1px #F5B941, -20px 40px 1px 1px rgba(245, 185, 65, 0.4), -30px -15px 1px 1px rgba(245, 185, 65, 0.4);
+        }
+      }
+      > div:nth-child(3) {
+        animation: fadeIn 2s alternate;
+        &::before {
+          content: '';
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          transform: scale(1.2) translateX(-15px) translateY(4px);
+          box-shadow: 10px 50px 1px 1px #F5B941, 30px 20px 1px 1px #F5B941, -10px -20px 1px 1px #F5B941, -30px -10px 1px 1px rgba(245, 185, 65, 0.4), 30px -15px 1px 1px rgba(245, 185, 65, 0.4);
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          width: 4px;
+          height: 4px;
+          border-radius: 100%;
+          transform: scale(1.5) translateY(20px);
+          box-shadow: -10px 10px 1px 1px rgba(245, 185, 65, 0.4), -30px 25px 1px 1px #F5B941, 10px 20px 1px 1px #F5B941, -20px 40px 1px 1px rgba(245, 185, 65, 0.4), -30px -15px 1px 1px rgba(245, 185, 65, 0.4);
+        }
+      }
+      > div:nth-child(4) {
+        > svg {
+          animation: rotate 1s alternate;
+          position: absolute;
+          top: -30px;
+          left: -30px;
+        }
+      }
+    }
+  }
+
+  .nextRewardBox {
+    border-top: none !important;
+    &::before {
+      content: '';
+      width: 40px;
+      height: 20px;
+      position: absolute;
+      top: 0px;
+      left: -0px;
+      border-top: solid 1px #9ECEAB;
+      border-top-left-radius: 10px;
+    }
+    &::after {
+      content: '';
+      width: 40px;
+      height: 20px;
+      position: absolute;
+      top: 0px;
+      right: -0px;
+      border-top: solid 1px #9ECEAB;
+      border-top-right-radius: 10px;
+    }
+  }
+}

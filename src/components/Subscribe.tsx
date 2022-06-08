@@ -58,7 +58,7 @@ const Subscribe: React.FC = () => {
       style={{
         boxShadow: '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
       }}
-      className="mx-auto flex max-w-content flex-col items-center rounded-[20px] bg-[url('/images/games/panel_op.png')] bg-cover bg-center p-[32px] md:py-[158px]">
+      className="mx-auto flex max-w-content flex-col items-center rounded-[20px] bg-[url('/images/games/panel_op.jpeg')] bg-cover bg-center p-[32px] md:py-[158px]">
       <h2 className="heading-list leading-[30px] md:heading-lg md:mt-4">
         <Trans>Pre register to stay up to date</Trans>
       </h2>

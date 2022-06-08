@@ -1,3 +1,4 @@
+import { additionalApiClient } from './../client';
 import { useState, useEffect } from 'react';
 
 function clean(input: string) {
@@ -21,19 +22,9 @@ export default function useLatestPosts() {
 
   useEffect(() => {
     async function fetchLatestItems() {
-      const response = await fetch(
-        //temporary fetch from temp external proxy to prevent the cors
-        'https://limitless-falls-89564.herokuapp.com/load-medium-posts',
-        {
-          mode: 'cors'
-        }
-      );
+      const response = await additionalApiClient.get<{ items: Item[] }>('/load-medium-posts');
 
-      if (!response.ok) {
-        return;
-      }
-
-      const json = (await response.json()) as { items: Item[] };
+      const json = response.data;
 
       const items = json.items.sort((i1, i2) => {
         return new Date(i2.pubDate).getTime() - new Date(i1.pubDate).getTime();
@@ -42,8 +33,10 @@ export default function useLatestPosts() {
       setItems(
         items.slice(0, 3).map((item) => {
           // extract first image
-          const srcs = item.content.match(/<img.*?src="(.*?)"/g)?.map(x => x.replace(/.*src="([^"]*)".*/, '$1'))
-          item.thumbnail= srcs?.[0] as string;
+          const srcs = item.content
+            .match(/<img.*?src="(.*?)"/g)
+            ?.map((x) => x.replace(/.*src="([^"]*)".*/, '$1'));
+          item.thumbnail = srcs?.[0] as string;
           return item;
         })
       );

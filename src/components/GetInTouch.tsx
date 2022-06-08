@@ -73,27 +73,27 @@ const GetInTouch: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="mt-[48px] grid gap-[32px] gap-x-[28px] md:grid-cols-2">
           <Input
-            placeholder="Name"
+            placeholder={t`Name`}
             {...register('name')}
             error={!!errors.name}
             errorText={errors.name?.message}
           />
           <Input
-            placeholder="Email"
+            placeholder={t`Email`}
             type="email"
             {...register('fromEmail')}
             error={!!errors.fromEmail}
             errorText={errors.fromEmail?.message}
           />
           <Input
-            placeholder="Subject"
+            placeholder={t`Subject`}
             containerClassName="md:col-span-2"
             {...register('subject')}
             error={!!errors.subject}
             errorText={errors.subject?.message}
           />
           <Textarea
-            placeholder="Message"
+            placeholder={t`Message`}
             containerClassName="md:col-span-2"
             className="h-[180px]"
             {...register('message')}
@@ -112,7 +112,7 @@ const GetInTouch: React.FC = () => {
         </div>
         <div className="mt-6 flex justify-end">
           <button disabled={isSubmitting} className="btn-lg btn-primary">
-            {isSubmitting ? 'Submitting...' : 'Submit'}
+            {isSubmitting ? t`Submitting...` : t`Submit`}
           </button>
         </div>
       </form>

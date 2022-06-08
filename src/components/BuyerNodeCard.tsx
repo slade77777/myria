@@ -2,7 +2,7 @@ import { Trans } from "@lingui/macro";
 import BuyANodeLink from "./BuyANode";
 
 const BuyerNode = () => (
-    <div className="relative isolate rounded-xl bg-[url('/images/program/panel-1.png')] bg-cover bg-center p-8 pb-[230px] md:pb-[86px]">
+    <div className="relative isolate rounded-xl bg-[url('/images/program/panel-1.jpeg')] bg-cover bg-center p-8 pb-[230px] md:pb-[86px]">
         <p className="max-w-[468px] text-[24px] font-bold leading-[1.25] md:text-[28px]">
             <Trans>Become a Myria node owner & receive rewards</Trans>
         </p>

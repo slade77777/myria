@@ -17,7 +17,7 @@ const JoinTheRevolution: React.FC<Props> = ({ textAnimation }) => {
           height={258}
         />
       </div>
-      <div className="relative isolate w-full rounded-[20px] bg-brand-deep-blue bg-[url('/images/join-the-revolution/panel_op.png')] bg-cover bg-left-top p-[32px] md:py-[107px] md:px-[81px]">
+      <div className="relative isolate w-full rounded-[22px] bg-brand-deep-blue bg-[url('/images/join-the-revolution/panel_op.jpeg')] bg-cover bg-left-top p-[32px] md:py-[107px] md:px-[81px]">
         <p data-aos={textAnimation} className="caption hidden text-brand-light-blue md:block">
           <Trans>join the revolution</Trans>
         </p>

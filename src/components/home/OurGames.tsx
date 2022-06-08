@@ -21,11 +21,11 @@ const Item: React.FC<{ item: typeof games[number] }> = ({ item }) => {
         <div className="mt-4 flex text-[14px] font-bold leading-[1.5] text-brand-light-blue">
           <span>{item.publisher}</span>
           {item.disabled && (
-            <div className="ml-auto">
+            <span className="ml-auto">
               <Badge>
                 <Trans>COMING SOON</Trans>
               </Badge>
-            </div>
+            </span>
           )}
         </div>
         <p className="mt-2 overflow-hidden text-ellipsis whitespace-nowrap text-[18px] font-medium leading-[1.5]">

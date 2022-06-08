@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
 import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
-import CheckIcon from 'src/components/icons/CheckIcon';
+import CheckSolutionIcon from 'src/components/icons/CheckSolutionIcon';
 import Page from 'src/components/Page';
 import { paddingX } from 'src/utils';
 
@@ -105,7 +105,7 @@ const Solution: React.FC = () => {
                   {i.items.map((item, idx) => (
                     <div key={idx} className="flex items-baseline space-x-2">
                       <span className="w-[18px] flex-shrink-0 translate-y-1 rounded-full bg-brand-light-blue p-0.5 text-[#1F2334]">
-                        <CheckIcon />
+                        <CheckSolutionIcon />
                       </span>
                       <p className="text-[16px] leading-[1.5] text-light">{item}</p>
                     </div>
