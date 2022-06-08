@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-06-03 09:57+0700\n"
+"POT-Creation-Date: 2022-06-08 16:00+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: vi\n"
 
-#: src/components/home/Hero.tsx:79
+#: src/components/home/Hero.tsx:99
 msgid "$MYRIA Token"
 msgstr ""
 
@@ -35,6 +35,10 @@ msgstr ""
 msgid "<0>$MYRIA</0> Node & Token coming soon!"
 msgstr ""
 
+#: src/components/sigil/Inventory.tsx:36
+msgid "<0>Be prepared as this might be the key to survival in the Myriaverse.</0>"
+msgstr ""
+
 #: src/hooks/useGamesData.tsx:386
 msgid "<0>If it’s yours, it stays yours</0> - You’ve worked hard to build that neat graveyard farm for two whole days and now it’s yours to stay… forever!"
 msgstr ""
@@ -50,10 +54,6 @@ msgstr "<0>Các NFT có thể tương tác</0> & được kết nối với nhau
 #: src/pages/nodes/index.tsx:89
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>Các nhà khai thác node Myria sẽ nhận được phần thưởng mã token $MYRIA hàng ngày cho các node hoạt động.</0><1>Người sở hữu node cũng sẽ được thưởng NFT và mã token trên cơ sở số điểm danh tiếng của họ với tư cách là nhà khai thác node và thành viên cộng đồng nói chung.</1><2>Số điểm danh tiếng sẽ được xác định bởi hoạt động chơi của các người sở hữu node, số mã token họ sở hữu và đặt cược, các chỉ số thời gian hoạt động trước đó, và lịch sử hỗ trợ mạng của họ (ví dụ: xác thực hoặc nhà cung cấp oracle) </2>"
-
-#: src/components/sigil/Inventory.tsx:41
-msgid "<0>Once the Sigils are active, they will be minted directly on Myria</0>"
-msgstr ""
 
 #: src/pages/inventory.tsx:104
 msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
@@ -72,11 +72,13 @@ msgid "<0>Resourcefulness rules!</0> - Overcome your competition with the best s
 msgstr ""
 
 #: src/components/sigil/Inventory.tsx:30
+msgid "<0>Sigils are going to be activated later in time when the mysterious Sigma mission is set into motion.</0>"
+msgstr ""
+
 #: src/pages/inventory.tsx:93
 msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
 msgstr ""
 
-#: src/components/sigil/Inventory.tsx:35
 #: src/pages/inventory.tsx:98
 msgid "<0>T-minus 47 gigaquarks</0>"
 msgstr ""
@@ -101,7 +103,7 @@ msgstr "Trò chơi bắn súng battle royale"
 msgid "A competitive play-and-earn tycoon farming simulator."
 msgstr ""
 
-#: src/components/home/Hero.tsx:201
+#: src/components/home/Hero.tsx:221
 msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 msgstr ""
 
@@ -164,6 +166,10 @@ msgstr "Tiếp cận hỗ trợ giáo dục và kỹ thuật liên tục để �
 
 #: src/components/Careers/Careers.tsx:59
 msgid "All"
+msgstr ""
+
+#: src/components/home/Hero.tsx:76
+msgid "Alliance Sigil NFT Launch"
 msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:59
@@ -249,6 +255,10 @@ msgstr ""
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Trở thành một phần không thể thiếu của hệ sinh thái Myria và thu được những lợi ích từ sự đóng góp của bạn. Các nhà khai thác node của người sáng lập sớm nhận được giá ưu đãi, giá này sẽ tăng lên khi các node được bán."
 
+#: src/components/home/Hero.tsx:79
+msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
+msgstr ""
+
 #: src/components/for-developers/Myria.tsx:33
 msgid "Blockchain consultancy"
 msgstr ""
@@ -265,7 +275,7 @@ msgstr "Nền tảng blockchain cho các Game Studio"
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "Brendan có mười năm kinh nghiệm trong lĩnh vực blockchain. Ngài ấy đã sáng lập một giải pháp ký quỹ trên blockchain của Bitcoin, một quỹ ETF tiền điện tử trên ethereum và là trưởng nhóm blockchain cho mạng lưới blockchain tài trợ thương mại lớn nhất thế giới."
 
-#: src/components/home/Hero.tsx:191
+#: src/components/home/Hero.tsx:211
 msgid "Bringing <0>blockchain gaming </0>to the world"
 msgstr ""
 
@@ -289,6 +299,7 @@ msgstr ""
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "Mua giấy phép node sẽ mang đến cho người sở hữu quyền cvận hành node (cục bộ hoặc trên đám mây) và nhận phần thưởng theo quyết định của ban quản trị."
 
+#: src/components/home/Hero.tsx:85
 #: src/components/inventory/InventoryItem.tsx:35
 #: src/components/sigil/RewardItem.tsx:72
 msgid "CLAIM NOW"
@@ -311,8 +322,8 @@ msgid "COLLECT NOW"
 msgstr ""
 
 #: src/components/games/GameList.tsx:157
-#: src/components/home/Hero.tsx:76
-#: src/components/home/Hero.tsx:82
+#: src/components/home/Hero.tsx:96
+#: src/components/home/Hero.tsx:102
 #: src/components/home/OurGames.tsx:26
 msgid "COMING SOON"
 msgstr ""
@@ -578,10 +589,6 @@ msgstr ""
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Mỗi node được phép bỏ phiếu về các thay đổi được đề xuất đối với chuỗi Myria và các node cũng sẽ có quyền bỏ phiếu lớn hơn trong toàn bộ Myriaverse"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:121
-msgid "Earn {point} points  when you add your reaction to a message on the #myria-lore channel"
-msgstr ""
-
 #: src/components/sigil/Dashboard/MissionV2.tsx:115
 msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
 msgstr ""
@@ -612,6 +619,10 @@ msgstr ""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:96
 msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:121
+msgid "Earn {point} points when you add a thumbs up reaction to a message on the #myria-lore channel"
 msgstr ""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:109
@@ -993,7 +1004,7 @@ msgstr ""
 #: src/components/Header/MobileHeader.tsx:55
 #: src/components/Header/MobileHeader.tsx:98
 #: src/components/NotiBanner.tsx:49
-#: src/components/home/Hero.tsx:222
+#: src/components/home/Hero.tsx:242
 #: src/pages/game-detail/[id].tsx:138
 msgid "JOIN DISCORD"
 msgstr "THAM GIA DISCORD"
@@ -1018,16 +1029,16 @@ msgstr ""
 msgid "Join Myria in building the next blockchain revolution"
 msgstr ""
 
-#: src/components/sigil/ChooseAlliance/index.tsx:56
-msgid "Join The Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
-msgstr ""
-
 #: src/components/sigil/ChooseAlliance/index.tsx:79
 msgid "Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all."
 msgstr ""
 
 #: src/components/FirstTimeVisitModal.tsx:31
 msgid "Join our community!"
+msgstr ""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:56
+msgid "Join the Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
 msgstr ""
 
 #: src/hooks/useGamesData.tsx:283
@@ -1080,7 +1091,7 @@ msgstr ""
 msgid "Layer 2 scalability solution"
 msgstr ""
 
-#: src/components/home/Hero.tsx:210
+#: src/components/home/Hero.tsx:230
 msgid "Learn more"
 msgstr "Tìm hiểu thêm"
 
@@ -1948,7 +1959,7 @@ msgid "VIEW ITEM"
 msgstr ""
 
 #: src/components/inventory/OpenChest.tsx:130
-msgid "VIEWS ITEMS"
+msgid "VIEW ITEMS"
 msgstr ""
 
 #: src/hooks/useGamesData.tsx:163
