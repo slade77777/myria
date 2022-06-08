@@ -449,11 +449,11 @@ module.exports = {
           transform: 'translate(-50%, -50%)',
           zIndex: '2',
           display: 'grid !important',
-          gap: 25,
+          gap: 16,
           gridAutoFlow: 'column',
           '& button': {
             background: 'rgba(154, 201, 227, 0.5)',
-            width: 94,
+            width: 45,
             height: 7,
             fontSize: 0
           },
@@ -483,7 +483,7 @@ module.exports = {
           width: `202px`,
           height: `48px`,
           '&:hover': {
-            filter: `drop-shadow(0 0px 5px rgba(158, 206, 171, 0.5))`,
+            filter: `drop-shadow(0 0px 5px rgba(158, 206, 171, 0.5))`
           },
           '.label': {
             position: `relative`,
@@ -511,7 +511,7 @@ module.exports = {
               width: '100%',
               height: '100%',
               background: `linear-gradient(180deg, rgba(158, 206, 171, 0.2) 0%, rgba(158, 206, 171, 0) 100%)`
-            },
+            }
           }
         },
         '.sigil-btn-mission-locked': {
