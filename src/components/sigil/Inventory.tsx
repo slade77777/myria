@@ -40,7 +40,7 @@ const Inventory: React.FC = () => {
         </Trans>
       </section>
       <section className="mt-12 mr-10">
-        <div className="grid grid-cols-4 xl:grid-cols-5 gap-8">
+        <div className="flex flex-row flex-wrap w-full gap-8">
           {inventories.map((item, index) => (
             <InventoryItem key={index} item={item} onClaimed={handleChestClaimed} />
           ))}
