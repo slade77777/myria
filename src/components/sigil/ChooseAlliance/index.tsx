@@ -54,7 +54,7 @@ const SIGILS: Sigil[] = [
     ),
     joiningDesc: (
       <Trans>
-        Join The Federation alongside mercenaries, militants, and anyone with a weapon and the
+        Join the Federation alongside mercenaries, militants, and anyone with a weapon and the
         desire to knock the Rift back to where it came from. There might be a place for you here, if
         you’re dedicated enough to fight until the very end.
       </Trans>
