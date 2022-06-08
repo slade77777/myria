@@ -29,8 +29,8 @@ class AppDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
 
-          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
-          {/* {
+          {/* <!-- Global site tag (gtag.js) - GA4 --> */}
+          {
             process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
               <>
                 <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}></script>
@@ -43,7 +43,24 @@ class AppDocument extends Document {
                 }} />
               </>
             )
-          } */}
+          }
+          {/* <!-- End Global site tag (gtag.js) - Google Analytics --> */}
+
+          {/* <!-- Global site tag (gtag.js) - GA --> */}
+          {
+            process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_UA && (
+              <>
+                <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_UA}`}></script>
+                <script dangerouslySetInnerHTML={{
+                  __html: `window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_UA}');`
+                }} />
+              </>
+            )
+          }
           {/* <!-- End Global site tag (gtag.js) - Google Analytics --> */}
 
           {/* <!-- Google Tag Manager (noscript) --> */}
