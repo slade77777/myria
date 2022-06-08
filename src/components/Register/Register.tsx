@@ -83,39 +83,39 @@ const Register: React.FC = () => {
   const { doRegister, registerError, isPostingRegister } = useAuthenticationContext();
 
   useEffect(() => {
-    registerError?.errors.forEach(({ code, detail }) => {
+    registerError?.errors.forEach(({ code, details }) => {
 
       if (code === "invalid_password") {
-        setError("password", { type: 'custom', message: detail });
+        setError("password", { type: 'custom', message: details });
         return;
       }
 
       if (code === "username_in_use") {
-        setError("username", { type: 'custom', message: detail });
+        setError("username", { type: 'custom', message: details });
         return;
       }
 
       if (code === "email_in_use") {
-        setError("email", { type: 'custom', message: detail });
+        setError("email", { type: 'custom', message: details });
         return;
       }
 
       if (code === "firstname_contains_profanity") {
-        setError("firstName", { type: 'custom', message: detail });
+        setError("firstName", { type: 'custom', message: 'First name contains profanity' });
         return;
       }
 
       if (code === "lastname_contains_profanity") {
-        setError("lastName", { type: 'custom', message: detail });
+        setError("lastName", { type: 'custom', message: 'Last name contains profanity'});
         return;
       }
 
       if (code === "username_contains_profanity") {
-        setError("username", { type: 'custom', message: detail });
+        setError("username", { type: 'custom', message: 'Username contains profanity'});
         return;
       }
 
-      setError("firstName", { type: 'custom', message: detail });
+      setError("firstName", { type: 'custom', message: details });
     });
   }, [registerError, setError])
 
