@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React from 'react';
 import style from './loading.module.css';
 
@@ -24,7 +25,7 @@ function Loading({ loadingSize = 24, labelSize = 14, label, className, color }: 
           style={{
             fontSize: labelSize
           }}>
-          Stand by
+          {label}
         </span>
       )}
     </div>

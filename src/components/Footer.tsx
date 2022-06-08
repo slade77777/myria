@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import Badge from './Badge';
 
 import Logo from './icons/Logo';
@@ -135,16 +135,11 @@ const Footer: React.FC = () => {
           {Socials.map((item, idx) => (
             <a href={item.id === 'discord' ? socialLinks.discord : item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer" onClick={() => {
               if (item.id === 'discord') {
-                event('Dicord Button Clicked', { button_location: 'Footer' });
+                event('Discord Button Clicked', { button_location: 'Footer' });
               }
               if (item.id === 'twitter') {
                 event('Twitter Button Clicked', { button_location: 'Footer' });
               }
-              ga.event('Click', {
-                event_category: 'Button',
-                event_label: `${item.name} Link`,
-                value: 'Footer'
-              })
             }}>
               {item.icon}
             </a>

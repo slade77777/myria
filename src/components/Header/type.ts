@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type Action = 'login' | 'join-discord' | 'start-building' | 'auto';
+export type Action = 'login' | 'join-discord' | 'start-building' | 'mint' | 'auto';
 
 export type NavItem = {
   id: string;
@@ -10,5 +10,5 @@ export type NavItem = {
   children?: Omit<NavItem, 'position'>[];
   inactive?: boolean;
   position: 'left' | 'right';
-  action?: Action;
+  action?: Action[];
 };

@@ -1,15 +1,19 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useWalletContext } from 'src/context/wallet';
 import React, { useMemo, useRef } from 'react';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
+import { useAuthenticationContext } from 'src/context/authentication';
 import NotiBanner from '../NotiBanner';
 import { links, navHeight } from './Header';
 import { Action, NavItem } from './type';
+import { useRouter } from 'next/router';
+import ProfileComponent from './ProfileComponent';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 type Props = {
   action: Action;
@@ -39,7 +43,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                     boxShadow: '0 0 0 0.5px #9AC9E3'
                   }}
                   className="bg-opacity-4 absolute -top-[9px] -right-7 rounded-sm bg-brand-light-blue/40 p-[3px] pb-[1px] text-[6px] font-extrabold">
-                  Soon!
+                  <Trans>Soon!</Trans>
                 </div>
               </div>
             </li>
@@ -64,7 +68,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                           onClick={() => {
                             if (item.id === 'community') {
                               if (link.id === 'discord') {
-                                event('Dicord Button Clicked', {
+                                event('Discord Button Clicked', {
                                   button_location: 'Community Links'
                                 });
                               }
@@ -73,11 +77,6 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                                   button_location: 'Community Links'
                                 });
                               }
-                              ga.event('Click', {
-                                event_category: 'Link',
-                                event_label: `${link.text} Link`,
-                                value: 'Community Links'
-                              });
                             }
                           }}
                           target={link.target}
@@ -116,6 +115,8 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const { event } = useGA4();
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
+  const { onConnect } = useWalletContext();
+  const { login, user } = useAuthenticationContext();
 
   const actionElements = useMemo(() => {
     switch (action) {
@@ -128,31 +129,38 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           </Link>
         );
 
-      default:
-        // return (
-        //   <a
-        //     onClick={() => {
-        //       event('Dicord Button Clicked', { button_location: 'Top Button' });
-        //       ga.event('Click', { event_category: 'Button', event_label: 'Discord Link', value: 'Top Button' })
-        //     }}
-        //     className="btn-sm btn-secondary"
-        //     href='https://discord.gg/7K49nXJ49R'
-        //     target="_blank"
-        //     rel="noreferrer">
-        //     <Trans>JOIN DISCORD</Trans>
-        //   </a>
-        // );
+      case 'login':
+        return user?.wallet_id ? <ProfileComponent /> : <></>;
+
+      case 'mint':
         return (
-          <Link href="/sigil">
-            <a className="btn-sm btn-secondary">
+          <Link href={'/sigil'}>
+            <a
+              style={{
+                filter: 'drop-shadow(0px 0px 10px #F5B941)'
+              }}
+              className="btn-sm btn-secondary">
               <Trans>Free Sigil NFT</Trans>
             </a>
           </Link>
         );
+      default:
+        return (
+          <a
+            onClick={() => {
+              event('Discord Button Clicked', { button_location: 'Top Button' });
+            }}
+            className="btn-sm btn-secondary"
+            href="https://discord.gg/7K49nXJ49R"
+            target="_blank"
+            rel="noreferrer">
+            <Trans>JOIN DISCORD</Trans>
+          </a>
+        );
     }
-  }, [action]);
+  }, [action, user?.wallet_id, onConnect]);
 
-  const filterdLinks = links.filter((link) => !link.action || link.action == action);
+  const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
   return (
     <header ref={headerRef} className="w-full">
       <div className="hidden text-black lg:block">

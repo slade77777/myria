@@ -5,11 +5,12 @@ import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { tabRoutes, useTabContext } from 'src/context/tabContext';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
-import { ga, useGA4 } from 'src/lib/ga';
+import { useGA4 } from 'src/lib/ga';
 import { socialLinks } from '../../configs';
 import Collapse from '../Collapse';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
+import LanguageSwitcher from '../LanguageSwitcher';
 import Socials from '../Social';
 import { linkSources } from './linkSources';
 import { Action, NavItem } from './type';
@@ -66,25 +67,36 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
       case 'login':
         return (
           <>
-            <button className="btn-lg btn-primary">Sign up</button>
-            <button className="btn-lg btn-secondary">Log in</button>
+            <button className="btn-lg btn-primary">
+              <Trans>Sign up</Trans>
+            </button>
+            <button className="btn-lg btn-secondary">
+              <Trans>Log in</Trans>
+            </button>
           </>
+        );
+      case 'mint':
+        return (
+          <Link href={'/sigil'}>
+            <a
+              style={{
+                filter: 'drop-shadow(0px 0px 10px #F5B941)'
+              }}
+              className="btn-sm btn-secondary">
+              <Trans>Free Sigil NFT</Trans>
+            </a>
+          </Link>
         );
       default:
         return (
           <div>
-            {/* <a
+            <a
               href={socialLinks.discord}
               target="_blank"
               className="btn-lg btn-primary col-span-2 w-full text-center"
               rel="noreferrer">
               <Trans>JOIN DISCORD</Trans>
-            </a> */}
-            <Link href="/sigil">
-              <a className="btn-lg btn-primary col-span-2 w-full text-center">
-                <Trans>Free Sigil NFT</Trans>
-              </a>
-            </Link>
+            </a>
             <div className="mt-[30px] grid grid-flow-col justify-center gap-4 sm:gap-6">
               {Socials.map((item, idx) => (
                 <a href={item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer">
@@ -139,7 +151,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             'grid flex-grow content-start gap-[33px] overflow-auto px-[24px] pb-4 pt-8 text-[18px] font-medium uppercase leading-[1.25] text-white'
           )}>
           {links
-            .filter((link) => !link.action || link.action === action)
+            .filter((link) => !link.action || link.action.includes(action))
             .map((item, idx) => {
               if (item.inactive) {
                 return (
@@ -151,7 +163,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                           boxShadow: '0 0 0 0.5px #9AC9E3'
                         }}
                         className="bg-opacity-4 absolute -top-[9px] -right-6 rounded-sm bg-brand-light-blue/40 p-[3px] text-[6px] font-extrabold">
-                        Soon!
+                        <Trans>Soon!</Trans>
                       </div>
                     </div>
                   </li>
@@ -192,7 +204,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                                       onClick={() => {
                                         if (item.id === 'community') {
                                           if (link.id === 'discord') {
-                                            event('Dicord Button Clicked', {
+                                            event('Discord Button Clicked', {
                                               button_location: 'Community Links'
                                             });
                                           }
@@ -201,11 +213,6 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                                               button_location: 'Community Links'
                                             });
                                           }
-                                          ga.event('Click', {
-                                            event_category: 'Link',
-                                            event_label: `${link.text} Link`,
-                                            value: 'Community Links'
-                                          });
                                         }
                                       }}>
                                       {link.text}

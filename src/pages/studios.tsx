@@ -160,7 +160,7 @@ const Index = () => {
             <p
               data-aos="fade-right"
               className="mt-4 max-w-[447px] text-[20px] leading-[1.5] md:mt-6 md:text-[24px]">
-              Creating the new standard for blockchain games and experiences{' '}
+              <Trans>Creating the new standard for blockchain games and experiences</Trans>
             </p>
           </div>
         </section>
@@ -217,9 +217,11 @@ const Index = () => {
                 </Trans>
               </h2>
               <p data-aos="fade-up" className="body mt-6 text-light">
-                Morphing interoperable NFTs is the new standard created by Myria. Players will be
-                able to utilize their NFTs across different avatars, games and metaverses. Truly own
-                your digital assets and collectibles.
+                <Trans>
+                  Morphing interoperable NFTs is the new standard created by Myria. Players will be
+                  able to utilize their NFTs across different avatars, games and metaverses. Truly
+                  own your digital assets and collectibles.
+                </Trans>
               </p>
               <Link href={'/interoperability'}>
                 <a data-aos="fade-up" className="btn-lg btn-primary mt-[45px]">

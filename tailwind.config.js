@@ -24,10 +24,21 @@ module.exports = {
         'brand-light-blue': '#9AC9E3',
         'brand-white': '#FFFFFF',
         dark: '#050E15',
-        light: '#97AAB5'
+        light: '#97AAB5',
+        'light-green': '#9ECEAB',
+        'light-red': '#D55E5E',
+        purple: '#8E74D3',
+        green: '#41F59F',
+        flat: '#A9A6B1',
+        'border-blue': '#5BA7D2',
+        input: '#132533',
+        blue: '#5BA7D2'
       },
       maxWidth: {
         content: 1264
+      },
+      boxShadow: {
+        'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
       },
       keyframes: {
         slideDown: {
@@ -82,6 +93,30 @@ module.exports = {
         fadeOut: {
           '0%': { opacity: 1 },
           '100%': { opacity: 0 }
+        },
+        float: {
+          '0%': {
+            transform: 'translatey(0px)'
+          },
+          '50%': {
+            transform: 'translatey(-20px)'
+          },
+          '100%': {
+            transform: 'translatey(0px)'
+          }
+        },
+        starUp: {
+          '0%': {
+            transform: 'translateY(0px)',
+            opacity: 0
+          },
+          '30%': {
+            opacity: 1
+          },
+          '100%': {
+            transform: 'translateY(-50px)',
+            opacity: 0
+          }
         }
       },
       animation: {
@@ -94,11 +129,16 @@ module.exports = {
         'slide-right-and-fade': 'slideRightAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'slide-left-and-fade': 'slideLeftAndFade 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-in': 'fadeIn 700ms cubic-bezier(0.16, 1, 0.3, 1)',
-        'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards'
+        'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        float: 'float 6s ease-in-out infinite;',
+        starUp: 'starUp 6s ease-in-out infinite'
       },
       boxShadow: {
         'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)',
         'light-panel': '0px 0px 40px rgba(154, 201, 227, 0.4)'
+      },
+      backgroundImage: {
+        hightlight: 'linear-gradient(135.49deg, #FFFFFF 22.84%, rgba(255, 255, 255, 0) 55.58%)'
       }
     }
   },
@@ -151,7 +191,7 @@ module.exports = {
         '.dialog-content': {
           position: 'fixed',
           zIndex: 30,
-          top: 0,
+          top: 60,
           left: 0,
           width: '100%',
           height: '100%',
@@ -170,6 +210,22 @@ module.exports = {
           }
         },
         '.dropdown-content': {
+          willChange: 'transform, opacity',
+          '&[data-state="open"]': {
+            '&[data-side="top"]': { animation: theme('animation.slide-down-and-fade') },
+            '&[data-side="right"]': { animation: theme('animation.slide-left-and-fade') },
+            '&[data-side="bottom"]': { animation: theme('animation.slide-up-and-fade') },
+            '&[data-side="left"]': { animation: theme('animation.slide-right-and-fade') }
+          }
+        },
+        '.tooltip-content': {
+          background: theme('colors.brand-deep-blue'),
+          color: theme('colors.light'),
+          padding: 16,
+          fontSize: 12,
+          lineHeight: 1.5,
+          borderRadius: 8,
+          boxShadow: theme('boxShadow.dark-panel'),
           willChange: 'transform, opacity',
           '&[data-state="open"]': {
             '&[data-side="top"]': { animation: theme('animation.slide-down-and-fade') },
@@ -228,6 +284,18 @@ module.exports = {
         },
         '.btn-lg': {
           padding: '16px 24px',
+          borderRadius: '8px',
+          fontSize: 16,
+          lineHeight: 1,
+          transition: '0.3s',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        '.btn-md': {
+          padding: '12px 24px',
           borderRadius: '8px',
           fontSize: 16,
           lineHeight: 1,
@@ -381,16 +449,127 @@ module.exports = {
           transform: 'translate(-50%, -50%)',
           zIndex: '2',
           display: 'grid !important',
-          gap: 25,
+          gap: 16,
           gridAutoFlow: 'column',
           '& button': {
             background: 'rgba(154, 201, 227, 0.5)',
-            width: 94,
+            width: 45,
             height: 7,
             fontSize: 0
           },
           '& .slick-active button': {
             background: '#9AC9E3'
+          }
+        },
+        '.sigil-panel': {
+          background: `linear-gradient(174.77deg, rgba(154, 201, 227, 0.05) 5.09%, rgba(154, 201, 227, 0) 47.22%), rgba(5, 15, 23, 0.9)`,
+          boxShadow: theme('boxShadow.dark-panel'),
+          borderRadius: 12,
+          border: '1px solid rgba(154, 201, 227, 0.102)'
+        },
+        '.sigil-text': {
+          textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)'
+        },
+        '.sigil-btn-mission': {
+          borderRadius: 4,
+          color: '#9ECEAB',
+          background: `linear-gradient(-45deg, transparent 6px, #9ECEAB 0) right,
+          linear-gradient(135deg, transparent 6px, #9ECEAB 0) left`,
+          backgroundSize: `50% 100%`,
+          backgroundRepeat: `no-repeat`,
+          display: `flex`,
+          alignItems: `center`,
+          justifyContent: `center`,
+          width: `202px`,
+          height: `48px`,
+          '&:hover': {
+            filter: `drop-shadow(0 0px 5px rgba(158, 206, 171, 0.5))`
+          },
+          '.label': {
+            position: `relative`,
+            display: `flex`,
+            alignItems: `center`,
+            justifyContent: `center`,
+            width: `calc(100% - 2px)`,
+            height: `calc(100% - 2px)`,
+            background: `linear-gradient(-45deg, transparent 6px,#081824 0) right,
+            linear-gradient(135deg, transparent 6px, #081824 0) left`,
+            borderRadius: 4,
+            clipPath: `polygon(
+              0 8px,
+              8px 0,
+              100% 0,
+              100% calc(100% - 8px),
+              calc(100% - 8px) 100%,
+              0 100%
+            )`,
+            '.mask': {
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              borderRadius: 4,
+              width: '100%',
+              height: '100%',
+              background: `linear-gradient(180deg, rgba(158, 206, 171, 0.2) 0%, rgba(158, 206, 171, 0) 100%)`
+            }
+          }
+        },
+        '.sigil-btn-mission-locked': {
+          background: `linear-gradient(180deg, rgba(213, 94, 94, 0.2) 0%, rgba(213, 94, 94, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #D55E5E',
+          color: '#D55E5E',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #D55E5E`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #D55E5E`
+          }
+        },
+        '.sigil-btn-mission-disable': {
+          background: `linear-gradient(180deg, rgba(172, 172, 172, 0.2) 0%, rgba(172, 172, 172, 0) 100%)`,
+          borderRadius: 4,
+          position: 'relative',
+          border: '1px solid #ACACAC',
+          color: '#ACACAC',
+          '&::before': {
+            position: `absolute`,
+            left: `-5px`,
+            top: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            borderRight: `1px solid #ACACAC`,
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`
+          },
+          '&::after': {
+            position: `absolute`,
+            right: `-5px`,
+            bottom: `-6px`,
+            content: "'' !important",
+            width: '11px',
+            height: '13px',
+            transform: `rotate(45deg)`,
+            backgroundColor: `${theme('colors.brand-deep-blue')}`,
+            borderLeft: `1px solid #ACACAC`
           }
         }
       });

@@ -1,28 +1,29 @@
-import SettingIcon from "../icons/SettingIcon";
-import ReactDOM from "react-dom";
-import videojs from "video.js";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
-import Switch from "../Switch";
+import SettingIcon from '../icons/SettingIcon';
+import ReactDOM from 'react-dom';
+import videojs from 'video.js';
+import Switch from '../Switch';
 import {
   toggleAutoPlayInGameDetail,
-  useAutoPlayInGameDetail,
-} from "../../valtio/autoPlayInGameDetail";
-import { Trans } from "@lingui/macro";
+  useAutoPlayInGameDetail
+} from '../../valtio/autoPlayInGameDetail';
+import { Trans } from '@lingui/macro';
+import Popover from '../Popover';
 
 const SettingContent: React.FC = () => {
   const autoPlay = useAutoPlayInGameDetail();
 
   return (
-    <label className="flex items-center py-2 px-4 text-white bg-brand-dark-blue rounded-[5px]">
+    <label className="flex items-center rounded-[5px] bg-brand-dark-blue py-2 px-4 text-white">
       <div>
-        <p className="text-[14px]"><Trans>Autoplay</Trans></p>
-        <p className="text-[12px] text-light"><Trans>Applies to all videos</Trans></p>
+        <p className="text-[14px]">
+          <Trans>Autoplay</Trans>
+        </p>
+        <p className="text-[12px] text-light">
+          <Trans>Applies to all videos</Trans>
+        </p>
       </div>
       <div className="ml-4">
-        <Switch
-          defaultChecked={autoPlay}
-          onChange={toggleAutoPlayInGameDetail}
-        />
+        <Switch defaultChecked={autoPlay} onChange={toggleAutoPlayInGameDetail} />
       </div>
     </label>
   );
@@ -30,22 +31,22 @@ const SettingContent: React.FC = () => {
 
 const SettingComponent: React.FC<{}> = ({}) => {
   return (
-    <PopoverPrimitive.Root modal>
-      <PopoverPrimitive.Trigger asChild>
-        <span className="w-[13px] inline-flex cursor-pointer">
+    <Popover modal>
+      <Popover.Trigger asChild>
+        <span className="inline-flex w-[13px] cursor-pointer">
           <SettingIcon />
         </span>
-      </PopoverPrimitive.Trigger>
-      <PopoverPrimitive.Content asChild side="top" sideOffset={10}>
+      </Popover.Trigger>
+      <Popover.Content asChild side="top" sideOffset={10}>
         <div>
           <SettingContent />
         </div>
-      </PopoverPrimitive.Content>
-    </PopoverPrimitive.Root>
+      </Popover.Content>
+    </Popover>
   );
 };
 
-const vjsComponent = videojs.getComponent("Component");
+const vjsComponent = videojs.getComponent('Component');
 
 class ControlBarSettings extends vjsComponent {
   constructor(player: videojs.Player, options: videojs.PlayerOptions) {
@@ -54,7 +55,7 @@ class ControlBarSettings extends vjsComponent {
     player.ready(() => {
       this.mount();
     });
-    this.on("dispose", () => {
+    this.on('dispose', () => {
       ReactDOM.unmountComponentAtNode(this.el());
     });
   }
@@ -64,4 +65,4 @@ class ControlBarSettings extends vjsComponent {
   }
 }
 
-vjsComponent.registerComponent("ControlBarSettings", ControlBarSettings);
+vjsComponent.registerComponent('ControlBarSettings', ControlBarSettings);

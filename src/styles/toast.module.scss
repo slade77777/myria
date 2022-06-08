@@ -1,0 +1,45 @@
+
+.toast {
+  :global {
+    .Toastify__toast {
+      background-color: #081824;
+      border-radius: 12px;
+      box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .Toastify__toast-body {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+    }
+
+    .Toastify__toast--default {
+      color: #9AC9E3;
+    }
+
+    .Toastify__toast--warning {
+      color: #F2DC8A;
+    }
+
+    .Toastify__toast--success {
+      color: #2DA64F;
+    }
+
+    .Toastify__toast--info {
+      color: #9AC9E3;
+    }
+
+    .Toastify__toast--error {
+      color: #F37272;
+    }
+
+    .Toastify__close-button {
+      color: white;
+      align-self: center;
+      svg {
+        height: 18px;
+        width: 18px;
+      }
+    }
+  }
+}
