@@ -32,7 +32,7 @@ const InventoryItem = ({ item, onClaimed }: Props) => {
       />
       <NftBox
         imageUrl={item.image_url}
-        buttonText={claimable ? t`CLAIM NOW` : t`CLAIMED`}
+        buttonText={claimable ? t`OPEN` : t`CLAIMED`}
         titleText={item.name}
         onClaim={claimable ? handleClaim : undefined}
         disableClaimingAnimation
