@@ -112,7 +112,7 @@ const MissionV2: React.FC = () => {
       label: t`Launch Discord`,
       link: discordLink,
       description: (point: number) =>
-        t`Earn ${point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions`
+        t`Earn ${point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)`
     },
     VOTE_ON_LORE_DISCORD: {
       label: t`Launch Discord`,

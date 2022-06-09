@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-06-08 16:00+0700\n"
+"POT-Creation-Date: 2022-06-09 11:55+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -464,7 +464,7 @@ msgstr ""
 "Al comienzo de la ronda, seleccione cuidadosamente el equipo apropiado. Depende de ti si quieres disparar a tus oponentes desde lejos o quemar todo el nivel hasta los cimientos. - Es tu elección. ¿Tienes lo que se necesita para ser el maestro de la destrucción?\n"
 ""
 
-#: src/pages/sigil/index.tsx:133
+#: src/pages/sigil/index.tsx:135
 msgid "Choose Alliance"
 msgstr ""
 "Elegir alianza\n"
@@ -512,7 +512,7 @@ msgstr ""
 "Reclamar premios\n"
 ""
 
-#: src/pages/sigil/index.tsx:136
+#: src/pages/sigil/index.tsx:138
 msgid "Claim your NFT reward"
 msgstr ""
 "Reclame sua recompensa NFT\n"
@@ -626,7 +626,7 @@ msgstr ""
 "¡Felicidades!\n"
 ""
 
-#: src/pages/sigil/index.tsx:130
+#: src/pages/sigil/index.tsx:132
 msgid "Connect Wallet"
 msgstr ""
 "Conectar cartera\n"
@@ -789,7 +789,7 @@ msgid "Each node is allowed to vote on proposed changes to the Myria chain and n
 msgstr "Cada nodo puede votar sobre los cambios propuestos en la cadena Myria y los nodos también tendrán mayor poder de voto en todo el Myriaverse"
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:115
-msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
+msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)"
 msgstr ""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:79
@@ -1697,10 +1697,8 @@ msgstr ""
 ""
 
 #: src/pages/index.tsx:75
-msgid "Myria has been built by an all-star team of over 100 people, united with a common vision of revolutionizing gaming with blockchain technology."
+msgid "Myria has been built by an all-star team of over 150 people, united with a common vision of revolutionizing gaming with blockchain technology."
 msgstr ""
-"Myria fue creado por un equipo estelar de más de 100 personas, unidas con una visión común para revolucionar los juegos con tecnología blockchain.\n"
-""
 
 #: src/components/ecosystem/Backbone.tsx:33
 msgid "Myria help project partners set up for success. <0/> about our easy-to-use, full stack solution and build with Myria today."
@@ -1714,8 +1712,11 @@ msgstr ""
 "Myria ayuda a escalar proyectos de blockchain. Ya sea que tenga un negocio de criptomonedas establecido o simplemente esté explorando nuevas posibilidades, ¡Myria tiene una solución para usted!\n"
 ""
 
-#: src/components/ComingSoon.tsx:48
 #: src/pages/_app.tsx:34
+msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
+msgstr ""
+
+#: src/components/ComingSoon.tsx:48
 #: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria es un ecosistema de juego basado en la blockchain Myria."

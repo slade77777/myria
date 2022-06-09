@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-06-08 16:00+0700\n"
+"POT-Creation-Date: 2022-06-09 11:55+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,8 @@ msgstr ""
 #: src/components/home/Hero.tsx:99
 msgid "$MYRIA Token"
 msgstr ""
+"$미리아 토큰\n"
+""
 
 #: src/pages/studios.tsx:277
 msgid "$MYRIA is the native governance and utility token that encapsulates the Myria ecosystem. Players will be able to use $MYRIA to buy, trade, upgrade, vote and more!"
@@ -18,6 +20,8 @@ msgstr "$MYRIA는 Myria 생태계를 압축하는 토착 관리 및 유틸리티
 #: src/components/for-developers/Ethereum.tsx:318
 msgid "100% Ethereum-level security guarantees; whilst increase transaction speed and throughput"
 msgstr ""
+"100% 이더리움 수준의 보안 보장;반면에 거래 속도 및 처리량 증대\n"
+""
 
 #: src/pages/nodes/index.tsx:134
 msgid "2 CPU Cores"
@@ -30,10 +34,14 @@ msgstr "60 GB 디스크 공간"
 #: src/components/ecosystem/Backbone.tsx:45
 msgid "<0/> creates a range of free-to-play AAA games spans across an entire interconnected ecosystem, built with the new standard of interoperable NFTs."
 msgstr ""
+"<0/>은 상호운용적 NFT 신규 표준으로 수립되어, 전체 상호 연결된 생태계를 넘어 일정 범위의 부분유료화 AAA게임 기간을 창출합니다.\n"
+""
 
 #: src/components/NotiBanner.tsx:33
 msgid "<0>$MYRIA</0> Node & Token coming soon!"
 msgstr ""
+"<0>$미리아</0> 노드 & 토큰 개봉 박두! \n"
+""
 
 #: src/components/sigil/Inventory.tsx:36
 msgid "<0>Be prepared as this might be the key to survival in the Myriaverse.</0>"
@@ -42,6 +50,8 @@ msgstr ""
 #: src/hooks/useGamesData.tsx:386
 msgid "<0>If it’s yours, it stays yours</0> - You’ve worked hard to build that neat graveyard farm for two whole days and now it’s yours to stay… forever!"
 msgstr ""
+"<0>그것이 당신의 것이라면, 그것은 당신의 것에 머물게 됩니다.</0> - 당신은 그렇게 깔끔한 묘지를 이틀 내내 만들기 위해 열심히 작업한 결과 이제 그것은 머물 수 있는 당신의 것이 됩니다….영원히!\n"
+""
 
 #: src/pages/nodes/index.tsx:70
 msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
@@ -62,18 +72,26 @@ msgstr ""
 #: src/hooks/useGamesData.tsx:379
 msgid "<0>Play and earn</0> - Convert your score and time spent into tangible rewards (when Beta kicks in). Addictive fun aside, not a single day of gameplay will be time wasted."
 msgstr ""
+"<0>플레이 그리고 벌기</0> - 당신의 점수와 보낸 시간을 유형의 보상으로 전환할 것. (베타가 시작하면) 중독에 빠질 만한 재미가 옆에 있고, 게임플레이 한 지 단 하루도 지나지 않은 스토리가 낭비한 시간이 될 것입니다.\n"
+""
 
 #: src/pages/games.tsx:26
 msgid "<0>Play</0> and earn <1/> rewards and NFTs"
 msgstr ""
+"<0>플레이</0> 그리고 벌기 <1/>보상 및 NFTs\n"
+""
 
 #: src/hooks/useGamesData.tsx:392
 msgid "<0>Resourcefulness rules!</0> - Overcome your competition with the best strategy and become the master of Moonville."
 msgstr ""
+"<0>풍부한 자원 원칙!</0> - 최상의 전략으로 자신의 경쟁을 극복하여 문 빌(Moonville)의 마스터가 되기 바랍니다.\n"
+""
 
 #: src/components/sigil/Inventory.tsx:30
 msgid "<0>Sigils are going to be activated later in time when the mysterious Sigma mission is set into motion.</0>"
 msgstr ""
+"<0> 시길스는 미그마 미션이 모션에 설정될 때까지 비활성입니다.</0>\n"
+""
 
 #: src/pages/inventory.tsx:93
 msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
@@ -82,10 +100,14 @@ msgstr ""
 #: src/pages/inventory.tsx:98
 msgid "<0>T-minus 47 gigaquarks</0>"
 msgstr ""
+"<0>T-마이너스 47 기가퀄크 </0>\n"
+""
 
 #: src/pages/nodes/index.tsx:120
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows, Mac and Linux. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
 msgstr ""
+"<0> 당신은 클라우드나 현지에서 당신의 노드 운영을 선호할 지 선택할 수 있습니다. </0><1>미리아 노드 소프트웨어는 윈도우, 맥 그리고 리눅스에서 다움로드하여 사용할 수 있습니다. 우리의 노든 운영은 기존의 암호 화폐 채굴처럼 심하게 자원 집약적이지는 않습니다. 당신은 다음의 최소 요건으로 집의 컴퓨터에서 우리의 노드 소프트웨어를 가동할 수 있을 것입니다:</1>\n"
+""
 
 #: src/pages/studios.tsx:187
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
@@ -102,26 +124,38 @@ msgstr "베틀 로얄 슈팅 게임"
 #: src/hooks/useGamesData.tsx:329
 msgid "A competitive play-and-earn tycoon farming simulator."
 msgstr ""
+"경쟁력이 있는 플레이-및-벌기 타이쿤 농장 시뮬레이터.\n"
+""
 
 #: src/components/home/Hero.tsx:221
 msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 msgstr ""
+"분권화된 이더리움 스케일링 플랫폼, 디지털 자산 및 게이밍으로 세워진 목적.\n"
+""
 
 #: src/pages/team.tsx:102
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
 msgstr ""
+"베리 존, 뱅가드, 카요 스트리밍 그 이상의 글로벌 기업들을 대상으로 조직 변형에 집중하는 관리 컨설팅에 8년 이상의 동적이고 기업가적인 마인드를 갖춘 임원진.\n"
+""
 
 #: src/hooks/useGamesData.tsx:37
 msgid "A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory."
 msgstr ""
+"당신이 튀고, 비틀거리며 당신의 친구들과 적에 대해 공을 전질 때, 당신 편들이 쪼개어 지게 될 아주 재미있는 멀티플레이어 게임. 점점 더 익살스러운 풍경을 통하여 끝까지 싸워 명예의 전당에 당신의 입지를 세울 것.\n"
+""
 
 #: src/components/Register/Register.tsx:32
 msgid "A mixture of both uppercase and lowercase letters"
 msgstr ""
+"대문자 및 소문자 혼합\n"
+""
 
 #: src/components/Register/Register.tsx:36
 msgid "A mixture of letters and numbers"
 msgstr ""
+"글자와 숫자의 혼합\n"
+""
 
 #: src/components/OurGames.tsx:59
 msgid "A multiplayer go-kart racing game"
@@ -134,10 +168,14 @@ msgstr "멀티플레이어 장애물 코스 게임"
 #: src/hooks/useGamesData.tsx:355
 msgid "A rewarding experience"
 msgstr ""
+"보람 있는 경험\n"
+""
 
 #: src/pages/team.tsx:42
 msgid "A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain SAAS platform."
 msgstr ""
+"전통 기술에 있어 4개의 북수 국가 VC-후원 기업들을 포함하여 15년 이상의 주조 경험이 있는 일련의 기업가 및 웹3 제안자. 좀 더 최신 주조 aliens.com 및 블록 체인 SAAS 플랫폼.\n"
+""
 
 #: src/pages/team.tsx:162
 msgid "AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others."
@@ -155,6 +193,8 @@ msgstr "에 관하여"
 #: src/hooks/useGamesData.tsx:348
 msgid "About the game"
 msgstr ""
+"게임에 관하여\n"
+""
 
 #: src/components/Purchase/Modals/TermsOfServiceModal.tsx:65
 msgid "Accept"
@@ -163,6 +203,8 @@ msgstr ""
 #: src/pages/nodes/purchase-complete.tsx:45
 msgid "Access node dashboard"
 msgstr ""
+"접속 노드 대시보드\n"
+""
 
 #: src/pages/for-studios.tsx:50
 msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
@@ -171,6 +213,8 @@ msgstr "블록 체인으로의 성공적인 탑승을 보장하고자 지속적�
 #: src/components/Careers/Careers.tsx:59
 msgid "All"
 msgstr ""
+"전체\n"
+""
 
 #: src/components/home/Hero.tsx:76
 msgid "Alliance Sigil NFT Launch"
@@ -179,6 +223,8 @@ msgstr ""
 #: src/components/ForgotPassword/ForgotPassword.tsx:59
 msgid "Already have an account?"
 msgstr ""
+"계정이 이미 있음?\n"
+""
 
 #: src/pages/for-studios.tsx:82
 msgid "An end-to-end solution for token-based game economies and NFTs that benefits the community"
@@ -203,10 +249,14 @@ msgstr "모든 동영상에 적용됨"
 #: src/pages/for-developers/solution.tsx:121
 msgid "Architecture"
 msgstr ""
+"아키텍처\n"
+""
 
 #: src/hooks/useGamesData.tsx:145
 msgid "Are you ready for a crazy ride that is nothing short of hilarious? Hop into your shiny kart and race till your wheels burn. Can you handle the heat and destroy your opponents before they throw you off the track?"
 msgstr ""
+"당신은 재미로 만땅인 미친 타기할 준비가 되어 있나요? 당신의 반짝거리는 카트로 껑충 뛰어들어 당신의 바퀴가 탈 때까지 경주하기 바랍니다. 당신은 스스로 트랙에서 벗어나기 전에 흥분을 조절하고 적들을 파괴할 수 있나요?\n"
+""
 
 #: src/pages/team.tsx:160
 msgid "Art Creative Lead"
@@ -220,6 +270,8 @@ msgstr "Myria에서 우리는 NFT가 플레이어들에게 입증 가능한 소�
 #: src/components/Register/Register.tsx:28
 msgid "At least 8 characters—the more characters, the better"
 msgstr ""
+"적어도 8개의 캐릭터 - 캐릭터가 많으면 많을수록 더 좋습니다.\n"
+""
 
 #: src/components/Video/Setting.tsx:19
 msgid "Autoplay"
@@ -228,14 +280,20 @@ msgstr "오토플레이"
 #: src/components/nodes/mint-assets/index.tsx:82
 msgid "Available to mint"
 msgstr ""
+"주조 이용 가능\n"
+""
 
 #: src/components/sigil/Header.tsx:27
 msgid "BACK TO MYRIA HOME"
 msgstr ""
+"미리아 홈으로 돌아가기\n"
+""
 
 #: src/pages/inventory.tsx:120
 msgid "BACK TO SIGIL DASHBOARD"
 msgstr ""
+"시길 대시보드로 돌아가기\n"
+""
 
 #: src/components/BuyANode.tsx:6
 #: src/pages/nodes/index.tsx:304
@@ -245,15 +303,21 @@ msgstr "노드 구매"
 #: src/hooks/useGamesData.tsx:240
 msgid "Battle with style!"
 msgstr ""
+"스타일 넘치는 전투!\n"
+""
 
 #: src/components/Purchase/License.tsx:70
 msgid "Be rewarded for your contribution"
 msgstr ""
+"당신의 기여로 보상을 받을 것\n"
+""
 
 #: src/components/BuyerNodeCard.tsx:7
 #: src/components/Program.tsx:11
 msgid "Become a Myria node owner & receive rewards"
 msgstr ""
+"미리아 노드 소유자가 되어 & 보상 받기\n"
+""
 
 #: src/pages/nodes/index.tsx:297
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
@@ -266,6 +330,8 @@ msgstr ""
 #: src/components/for-developers/Myria.tsx:33
 msgid "Blockchain consultancy"
 msgstr ""
+"블록 체인 컨설턴시\n"
+""
 
 #: src/pages/for-studios.tsx:79
 msgid "Blockchain infrastructure for Game Studios"
@@ -282,6 +348,8 @@ msgstr "브랜든(Brendan)은 블록 체인에서 10년간의 경험을 가지�
 #: src/components/home/Hero.tsx:211
 msgid "Bringing <0>blockchain gaming </0>to the world"
 msgstr ""
+"가져오기 <0>블록 체인 게임하기 </0>세상에\n"
+""
 
 #: src/pages/team.tsx:132
 msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
@@ -290,14 +358,20 @@ msgstr "브록(Brock)은 기술 스타트업에서 일하며 10년 이상의 경
 #: src/components/for-developers/BuildYourBlockchain.tsx:80
 msgid "Build your blockchain game with Myria"
 msgstr ""
+"미리아와 함께 당신의 블록 체임 게임을 만드세요.\n"
+""
 
 #: src/hooks/useGamesData.tsx:361
 msgid "Build, upgrade, and earn!"
 msgstr ""
+"만들고 업그레이드하고 버는다!\n"
+""
 
 #: src/pages/for-developers/solution.tsx:34
 msgid "Building towards a decentralized and permissionless network"
 msgstr ""
+"분권화 되고 허용 불가한 네트워크 수립\n"
+""
 
 #: src/pages/nodes/index.tsx:208
 msgid "Buy a node"
@@ -312,10 +386,14 @@ msgstr "노드 라이선스 구매는 소유자에게 노드를 가동할 권리
 #: src/components/sigil/RewardItem.tsx:72
 msgid "CLAIM NOW"
 msgstr ""
+"지금 요청하기\n"
+""
 
 #: src/components/nodes/dashboard/LatestReward.tsx:118
 msgid "CLAIM REWARDS"
 msgstr ""
+"보상 청구하기\n"
+""
 
 #: src/components/inventory/InventoryItem.tsx:35
 msgid "CLAIMED"
@@ -324,10 +402,14 @@ msgstr ""
 #: src/pages/team.tsx:70
 msgid "CMO"
 msgstr ""
+"CMO\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:63
 msgid "COLLECT NOW"
 msgstr ""
+"지금 회수하기\n"
+""
 
 #: src/components/games/GameList.tsx:157
 #: src/components/home/Hero.tsx:96
@@ -335,27 +417,39 @@ msgstr ""
 #: src/components/home/OurGames.tsx:26
 msgid "COMING SOON"
 msgstr ""
+"개봉 박두\n"
+""
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:37
 #: src/components/sigil/Welcome.tsx:140
 msgid "CONNECT WALLET"
 msgstr ""
+"지갑 연결하기\n"
+""
 
 #: src/components/sigil/ReferFriendModal.tsx:67
 msgid "COPIED"
 msgstr ""
+"복사됨\n"
+""
 
 #: src/components/sigil/ReferFriendModal.tsx:67
 msgid "COPY LINK"
 msgstr ""
+"링크 복사\n"
+""
 
 #: src/pages/team.tsx:85
 msgid "CPO (People)"
 msgstr ""
+"CPO(피플)\n"
+""
 
 #: src/pages/for-developers/solution.tsx:25
 msgid "Cairo, allows for development of provable on-chain complexity"
 msgstr ""
+"카이로, 입증할 수 있는 복잡성 개발 참작\n"
+""
 
 #: src/components/Footer.tsx:108
 #: src/components/Header/linkSources.tsx:84
@@ -365,50 +459,74 @@ msgstr "경력"
 #: src/hooks/useGamesData.tsx:290
 msgid "Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?"
 msgstr ""
+"라운드 시초에 올바른 장비를 신중하게 고를 것. 당신은 멀리서 당신의 적들을 쏘기 원하거나, 전 레벨을 바닥으로 태우기 원할지도 모릅니다 – 그것은 당신은 선택입니다. 당신은 파괴의 마스터가 되기 위해 취할 것을 가지고 있나요?\n"
+""
 
-#: src/pages/sigil/index.tsx:133
+#: src/pages/sigil/index.tsx:135
 msgid "Choose Alliance"
 msgstr ""
+"동맹 선택하기\n"
+""
 
 #: src/components/sigil/ChooseAlliance/AllianceModal.tsx:78
 msgid "Choose Wisely!"
 msgstr ""
+"현명하게 선택하기!\n"
+""
 
 #: src/hooks/useGamesData.tsx:242
 msgid "Choose the best outfit that expresses your inner self. Unlock and collect multiple cosmetic skins and items that will carry across other games as interoperable NFTs."
 msgstr ""
+"자신의 내면을 표현하는 최상의 의상을 선택합니다. 다른 게임을 넘어 상호 운용 가능한 NFTs로 가져갈 여러 복수의 화장품 스킨과 아이템을 열어 수집합니다. \n"
+""
 
 #: src/hooks/useGamesData.tsx:87
 msgid "Choose the best outfit that expresses your personality. Unlock and collect multiple cosmetic skins and items that will carry over to other games as interoperable NFTs."
 msgstr ""
+"당신의 개성을 표현하는 최상의 의상을 선택합니다. 상호 운용 가능한 NFTs로서 다른 게임으로 이어지게 될 복수의 화장품 스킨과 아이템을 열어 수집합니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:81
 msgid "Choose the game mode that best suits your playstyle and fight for your right to party! Play alone or with friends and collect endless rewards."
 msgstr ""
+"당신의 플레이 스타일에 가장 잘 어울리는 게임 모드를 선택하여 자기편의 권리를 위해 싸울 것! 혼자 아니면 친구들과 플레이하고 무한 보상을 수집합니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:234
 msgid "Choose your champion"
 msgstr ""
+"당신의 챔피언 선택하기\n"
+""
 
 #: src/components/nodes/rewards/TotalRewards.tsx:15
 msgid "Claim All"
 msgstr ""
+"전체 청구하기\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:49
 msgid "Claim rewards"
 msgstr ""
+"보상 요구하기\n"
+""
 
-#: src/pages/sigil/index.tsx:136
+#: src/pages/sigil/index.tsx:138
 msgid "Claim your NFT reward"
 msgstr ""
+"당신의 NFT 보상 청구하기\n"
+""
 
 #: src/components/sigil/RewardItem.tsx:80
 msgid "Claimed"
 msgstr ""
+"청구됨\n"
+""
 
 #: src/pages/team.tsx:40
 msgid "Co-Founder - CEO"
 msgstr ""
+"공동 설립자 – CEO\n"
+""
 
 #: src/pages/team.tsx:25
 msgid "Co-Founder - CTO"
@@ -417,6 +535,8 @@ msgstr "공동 창설자 - CTO"
 #: src/pages/team.tsx:55
 msgid "Co-Founder - Head of Blockchain"
 msgstr ""
+"공동 설립자- 블록 체인 헤드\n"
+""
 
 #: src/pages/team.tsx:100
 msgid "Co-Founder - Operations"
@@ -425,18 +545,26 @@ msgstr "공동 창설자 – 가동"
 #: src/pages/team.tsx:115
 msgid "Co-Founder, VP Games"
 msgstr ""
+"공동 설립자, VP 게임\n"
+""
 
 #: src/components/nodes/rewards/RewardList.tsx:149
 msgid "Collect ALL"
 msgstr ""
+"전체 수집하기\n"
+""
 
 #: src/components/nodes/rewards/RewardList.tsx:155
 msgid "Collect REWARDS"
 msgstr ""
+"보상 수집하기\n"
+""
 
 #: src/hooks/useGamesData.tsx:159
 msgid "Combine the right amount of acceleration, handling, and looks to nail the right recipe for the current track. You can also sprinkle in a bit of armour – just to play it safe – because, as my grandma always says, “if you ain’t ready for some rockets down the road, boy, you better come home!”"
 msgstr ""
+"현 트랙에 대한 올바른 방안을 찾기 위해 가속화, 취급 및 모습의 적절한 양을 결합할 것. 당신은 또한 약간의 갑옷을 입고 섞을 수 있습니다-단지 안전하게 게임을 할 뿐 – 왜냐하면, 나의 할머니가 항상 말하였듯이, “만약 네가 앞으로 약간의 로켓이 준비되어 있지 않다면, 너는 집에 가는 편이 낫단다!”\n"
+""
 
 #: src/components/ComingSoon.tsx:46
 msgid "Coming Soon"
@@ -449,44 +577,64 @@ msgstr "커뮤니티"
 #: src/hooks/useGamesData.tsx:79
 msgid "Compete, survive, win and earn!"
 msgstr ""
+"경쟁하고, 살아남고, 이기고 벌어라!\n"
+""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:184
 msgid "Complete"
 msgstr ""
+"완수하라\n"
+""
 
 #: src/pages/for-developers/solution.tsx:28
 msgid "Complete privacy, not only from other users, but also from the Operator."
 msgstr ""
+"프라이버시를 다른 사용자들뿐아니라 운영자로부터 완수할 것.\n"
+""
 
 #: src/components/for-developers/Myria.tsx:45
 msgid "Compliance support"
 msgstr ""
+"컴플라이언스 지원\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:92
 msgid "Configure your node and view your rewards in the dashboard"
 msgstr ""
+"당신의 노드를 설정하여 대시보드 안에서 당신의 보상을 볼 것.\n"
+""
 
 #: src/components/Register/Register.tsx:222
 #: src/components/ResetPassword/ResetPassword.tsx:86
 msgid "Confirm password"
 msgstr ""
+"패스워드 확인\n"
+""
 
 #: src/components/Register/Register.tsx:62
 #: src/components/ResetPassword/ResetPassword.tsx:25
 msgid "Confirm password is required!"
 msgstr ""
+"패스워드가 필수인지 확인할 것!\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:70
 msgid "Congratulations!"
 msgstr ""
+"축하합니다!\n"
+""
 
-#: src/pages/sigil/index.tsx:130
+#: src/pages/sigil/index.tsx:132
 msgid "Connect Wallet"
 msgstr ""
+"지갑 연결\n"
+""
 
 #: src/components/sigil/Welcome.tsx:98
 msgid "Connect to your wallet to enter the Myriaverse"
 msgstr ""
+"미리아버스에 들어가기 위해 당신의 지갑을 연결할 것\n"
+""
 
 #: src/components/nodes/Header.tsx:152
 #: src/pages/nodes/index.tsx:208
@@ -516,6 +664,8 @@ msgstr "당사 연락처"
 #: src/pages/team.tsx:212
 msgid "Contributing to the future of a decentralized internet"
 msgstr ""
+"분권화된 인터넷 장래에 대한 기여\n"
+""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:90
 msgid "Copy invite link"
@@ -529,22 +679,32 @@ msgstr "크레이그는 웹 & 앱 UI/UX 디자인을 리드하고 브랜드 아�
 #: src/pages/nodes/purchase-complete.tsx:81
 msgid "Create an account"
 msgstr ""
+"계정 창출\n"
+""
 
 #: src/pages/studios.tsx:163
 msgid "Creating the new standard for blockchain games and experiences"
 msgstr ""
+"블록 체인 게임 및 경험을 위한 새로운 기준 만들기\n"
+""
 
 #: src/components/nodes/dashboard/TimeOnline.tsx:9
 msgid "Current Node Cycle"
 msgstr ""
+"현재의 노드 사이클\n"
+""
 
 #: src/pages/careers/index.tsx:22
 msgid "Current Openings"
 msgstr ""
+"현재의 개통\n"
+""
 
 #: src/hooks/useGamesData.tsx:369
 msgid "Customize your Moon Village with a range of cosmetic skins for various buildings and crew. These skins are NFTs, therefore remain yours forever, and are reusable across games."
 msgstr ""
+"다양한 빌딩과 크루에 대해 일정 범위의 화장품 스킨으로 당신의 문 빌리지를 주문 제작할 것.\n"
+""
 
 #: src/pages/nodes/index.tsx:28
 msgid "Daily $MYRIA token rewards"
@@ -553,14 +713,20 @@ msgstr "매일의 $MYRIA 토큰 보상"
 #: src/components/nodes/Sidebar2.tsx:11
 msgid "Dashboard"
 msgstr ""
+"대시보드\n"
+""
 
 #: src/components/sigil/Profile.tsx:72
 msgid "Date Registered"
 msgstr ""
+"등록 날짜\n"
+""
 
 #: src/pages/team.tsx:72
 msgid "Dave has over 25 years of marketing and management experience. He previously led marketing at Banxa and Rockstar Games. Dave also founded Marley Spoon; taking the company from inception to IPO."
 msgstr ""
+"데이브는 25년 이상의 마케팅 및 관련 경험이 있습니다. 그는 이전에 방사 및 록 스타 게임에서 마케팅을 주도하였습니다. 데이브는 또한 말리 스푼을 창설하여, 시작부터 IPO까지 회사를 세웠습니다.\n"
+""
 
 #: src/pages/nodes/index.tsx:196
 msgid "Decentralize the network by providing computing resources"
@@ -577,37 +743,51 @@ msgstr ""
 #: src/components/home/OurGames.tsx:46
 msgid "Discover more"
 msgstr ""
+"더 많이 발견함\n"
+""
 
 #: src/hooks/useGamesData.tsx:224
 msgid "Dive in, we dare you. You’ll find yourself gracefully descending from the sky while you survey the lands to select your ideal landing spot. Enjoy that moment of peace, because once your feet touch the ground you’ll be plunged into an intense battle for loot and powerful equipment.As expected, life in this world ain’t easy, and at given intervals of time the playable area of the map will shrink, pushing you closer to your enemies. Needless to say, they ain’t waiting for you in a bed of roses, so be prepared!"
 msgstr ""
+"몰두할 것, 우리는 감히 당신에게 말합니다. 당신은 자신의 이상적인 착륙 지점을 선택하기 위해 땅 조사를 하는 동안 당신은 스스로 하늘에서 우아하게 내려가는 자신을 발견하게 될 것입니다. 평화의 순간을 즐길 것, 왜냐하면, 일단 당신의 발이 땅이 닿으면, 전리품과 강력한 장비를 위해 강력한 전투로 뛰어들게 될 것입니다. 예상한 대로, 이 세상에서의 삶은 만만하지 않으며, 주어진 시간 간격 사이에, 지도의  경기하기 좋은 구역이 줄어들어, 당신을 적들에게 더 가까이 밀어 넣게 될 것입니다. 말할 필요도 없이, 그들은 꽃밭에서 당신을 기다리고 있지 않기에, 준비를 하기 바랍니다!\n"
+""
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:21
 msgid "Do you want to link your wallet {0} to your Myria account?"
 msgstr ""
+"당신은 자신의 지갑을 {0}자신의 미리아 계정에 연결시키기 원하나요??\n"
+""
 
 #: src/components/sigil/Welcome.tsx:113
 msgid "Don't have a wallet yet? <0/>Install Metamask below."
 msgstr ""
+"아직 지갑이 없다고요? <0/>아래에 메타마스크를 설치할 것.\n"
+""
 
 #: src/hooks/useGamesData.tsx:114
 msgid "Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse."
 msgstr ""
+"결승선을 향해 경주에서 스릴 넘치는 트랙 주위를 이동할 것. 추가 점수를 얻고 리더 보드에 오르기 위해 당신의 적들을 쏘고 당신 주위에 있는 혼란을 입히는 끝없는 재미를 즐기기 바랍니다. 미리아버스의 레이싱 전설 가운데 당신의 합법적인 장소를 주장하고자 우리의 무수한 게임 모드와 트랙으로 뛰어들 것.\n"
+""
 
 #: src/hooks/useGamesData.tsx:151
 msgid "Drift it up!"
 msgstr ""
+"이동하기!\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:102
 msgid "Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle."
 msgstr ""
+"지식 검색에 의해 몰려, 에퀴녹스는 그들이 재미있다고 느낄 수 있는 모든 지식의 단편들을 수집합니다. 이 모든 데이터 어디에선가, 평화에 대한 대답이 틀림없이 존재합니다. 당신은 그 퍼즐을 결국에는 풀 자 일지도 모릅니다.\n"
+""
 
 #: src/pages/nodes/index.tsx:43
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "각 노드는 Myria 체인에 제시된 변화에 대해 투표하는 것이 허용되고 노드는 또한 Myriaverse를 통하여 더 큰 투표 권한을 유지할 것이다."
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:115
-msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
+msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)"
 msgstr ""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:79
@@ -649,6 +829,8 @@ msgstr ""
 #: src/hooks/useGamesData.tsx:350
 msgid "Easy to play, difficult to master. Select the right terrain to base your industrial revolution. Choose wisely, as this will determine the types of resources and production opportunities available to you. Make sure to look after your base in order to increase your score and climb the ranks. At the end of each tournament, the competition is reset, so don’t worry if you get it wrong the first time!"
 msgstr ""
+"게임 하기 쉽고, 마스터하기는 힘듦. 올바른 지형을 선택하여 당신의 산업 혁명을 근거지로 둘 것. 현명하게 선택할 것, 왜냐하면, 이것은 당신에게 이용 가능한 자원 유형과 생산 기회를 결정해 줄 것이기 때문이다. 당신의 점수를 증대시키고 등급을 올리기 위해 당신의 근거지를 반드시 돌볼 것. 각 시합 끝에, 경쟁이 리셋 되므로, 당신이 처음에 잘못될 까봐 걱정하지 말 것!\n"
+""
 
 #: src/components/Footer.tsx:41
 #: src/components/Header/linkSources.tsx:15
@@ -662,11 +844,15 @@ msgstr "교육과 지원"
 #: src/hooks/useGamesData.tsx:193
 msgid "Eliminate your opponents in this fast-paced-action-packed-survival game, to achieve victory and claim the spoils of war. There can be only one hero or team standing when the crimson curtain hits the ground."
 msgstr ""
+"승리를 달성하고 전쟁 성과를 주장하기 위해 이러한 빠른 속도의 행동과 단단한 생존 게임에서 당신의 적들을 제거할 것.크림슨 커튼이 바닥을 치면 오직 한 명의 영웅 팀 만이 대기해 있을 수 있습니다.\n"
+""
 
 #: src/components/GetInTouch.tsx:82
 #: src/components/Register/Register.tsx:195
 msgid "Email"
 msgstr ""
+"이메일\n"
+""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
 #: src/components/GetInTouch.tsx:27
@@ -680,6 +866,8 @@ msgstr "이-메일이 요구됨!"
 #: src/components/for-developers/Ethereum.tsx:148
 msgid "Empower mainstream adoption to Ethereum using Myria’s scaling solution"
 msgstr ""
+"미리아 스케일링 솔루션을 사용하는 이더라 움에 주류 채택 권한을 부여할 것.\n"
+""
 
 #: src/pages/for-gamers.tsx:33
 msgid "Empowering players"
@@ -688,31 +876,45 @@ msgstr "선수들에게 권한 부여"
 #: src/pages/for-developers/index.tsx:40
 msgid "Enabling digital asset scalabiltiy on Ethereum"
 msgstr ""
+"이더리움에서자산 확장성 가능하게 하기\n"
+""
 
 #: src/components/for-developers/Myria.tsx:22
 msgid "Enabling true scalability while leveraging the Ethereum network"
 msgstr ""
+"이더리움 네트워크에 영향을 미치는 동안 확장성 가능하게 하기 \n"
+""
 
 #: src/hooks/useGamesData.tsx:73
 msgid "Endless online fun"
 msgstr ""
+"무한한 온라인 재미\n"
+""
 
 #: src/pages/ecosystem.tsx:25
 msgid "Enhancing the power of play through blockchain"
 msgstr ""
+"블록 체인을 통하여 게임 능력 향상시키기\n"
+""
 
 #: src/components/ResetPassword/ResetPassword.tsx:70
 msgid "Enter a password"
 msgstr ""
+"패스워드 입력\n"
+""
 
 #: src/components/for-developers/Myria.tsx:34
 msgid "Enter the new era of web3.0 with confidence"
 msgstr ""
+"확신을 가지고 웹 3.0 새로운 시대 입력\n"
+""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:47
 #: src/components/SignIn/SignIn.tsx:56
 msgid "Enter your email"
 msgstr ""
+"이메일 주소 입력\n"
+""
 
 #: src/components/Subscribe.tsx:75
 msgid "Enter your email address"
@@ -721,23 +923,33 @@ msgstr "당신의 이 메일 주소 입력"
 #: src/components/ForgotPassword/ForgotPassword.tsx:42
 msgid "Enter your email address to reset your password"
 msgstr ""
+"패스워드를 리셋하기 위해 이메일 주소 입력하세요.\n"
+""
 
 #: src/components/Register/Register.tsx:206
 #: src/components/SignIn/SignIn.tsx:64
 msgid "Enter your password"
 msgstr ""
+"패스워드 입력\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:96
 msgid "Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers."
 msgstr ""
+"미리아버스에서 에퀴녹스 추구 균형 및 아마도 휴머니티를 믿게 되면 리프트가 공존할 수 있습니다. 그것들은 활발하게 리프트를 개발하여, 해답을 찾게 됩니다.\n"
+""
 
 #: src/pages/for-developers/solution.tsx:14
 msgid "Ethereum-level security provided by zk-STARKs"
 msgstr ""
+"zk-STARKs가 제공하는 이더리움 수준의 보안\n"
+""
 
 #: src/hooks/useGamesData.tsx:296
 msgid "Every hero has three unique abilities, each requiring charges, as well as one ultimate ability that requires charging through kills, deaths, collectibles, or objectives. It’s easier than it sounds, and even funnier…"
 msgstr ""
+"모든 영웅은 세 개의 고유한 능력을 갖추고 있는데, 각각은 충전을 해야 하고 또한 살인, 죽음, 수집 대상물 혹은 목표를 통하여 충전을 요하는 하나의 궁극적 능력을 요함. 그것은 들리는 것보다 훨씬 더 쉽고 더 재미있기까지 함…\n"
+""
 
 #: src/pages/nodes/index.tsx:55
 msgid "Exclusive NFTs"
@@ -746,6 +958,8 @@ msgstr "독점적 NFT"
 #: src/components/for-developers/Myria.tsx:24
 msgid "Experience low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution."
 msgstr ""
+"우리의 미리아 스케일링 솔루션으로 초당 9,000 거래까지 낮은 거래 수수료와 높은 처리율을 경험하기 바랍니다.\n"
+""
 
 #: src/components/FirstTimeVisitModal.tsx:63
 msgid "FOLLOW US ON TWITTER"
@@ -754,30 +968,44 @@ msgstr "트위터에서 우리를 따를 것."
 #: src/context/tabContext.tsx:33
 msgid "FOR DEVELOPERS"
 msgstr ""
+"개발자용\n"
+""
 
 #: src/context/tabContext.tsx:27
 msgid "FOR GAMERS"
 msgstr ""
+"게이머용\n"
+""
 
 #: src/pages/for-developers/solution.tsx:127
 msgid "Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1 data availability provide Ethereum-level security."
 msgstr ""
+"L2 체인이 제공하는 빠른 거래 확인 시간, 반면 카 프루프 및 L1 데이터 이용 가능성은 이더리움 수준의 보안을 제공합니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:373
 msgid "Features"
 msgstr ""
+"특성\n"
+""
 
 #: src/components/Careers/Careers.tsx:42
 msgid "Filter by Department"
 msgstr ""
+"부분별 여과\n"
+""
 
 #: src/components/Register/Register.tsx:161
 msgid "First name"
 msgstr ""
+"이름\n"
+""
 
 #: src/components/Register/Register.tsx:48
 msgid "First name is required!"
 msgstr ""
+"이름 필수!\n"
+""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:140
 msgid "Follow on Twitter"
@@ -787,10 +1015,14 @@ msgstr ""
 #: src/components/Footer.tsx:69
 msgid "For Developers"
 msgstr ""
+"개발자용\n"
+""
 
 #: src/components/SignIn/SignIn.tsx:79
 msgid "Forgot your password?"
 msgstr ""
+"패스워드를 잊어버렸나요?\n"
+""
 
 #: src/pages/index.tsx:70
 msgid "Founded by leading gaming and blockchain industry veterans"
@@ -800,18 +1032,26 @@ msgstr "주도적인 게이밍 및 블록 체인 산업 베테랑에 의해 창�
 #: src/components/Header/MobileHeader.tsx:86
 msgid "Free Sigil NFT"
 msgstr ""
+"무료 시길NFT\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:55
 msgid "From wallet"
 msgstr ""
+"지갑에서\n"
+""
 
 #: src/pages/for-developers/solution.tsx:35
 msgid "Full ownership of assets, non-custodial architecture"
 msgstr ""
+"온전한 자산 소유권, 비-구금형 아키텍처\n"
+""
 
 #: src/pages/for-developers/solution.tsx:37
 msgid "Fully open-source and community-driven development"
 msgstr ""
+"완전한 오픈-소스 및 커뮤니티-기반 개발\n"
+""
 
 #: src/pages/for-gamers.tsx:178
 msgid "GET A NODE"
@@ -820,6 +1060,8 @@ msgstr "노드 획득"
 #: src/components/nodes/dashboard/Licenses.tsx:11
 msgid "GET MORE LICENSES"
 msgstr ""
+"더 많은 라이선스 획득\n"
+""
 
 #: src/pages/_app.tsx:42
 msgid "Game NFT"
@@ -839,34 +1081,50 @@ msgstr "게임"
 #: src/components/ecosystem/Platform.tsx:12
 msgid "Games & Applications"
 msgstr ""
+"게임 & 애플리케이션\n"
+""
 
 #: src/components/Program.tsx:31
 msgid "Gaming is evolving. Build with Myria!"
 msgstr ""
+"게이밍이 진화하고 있음. 미리아로 만드세요!\n"
+""
 
 #: src/components/for-developers/Myria.tsx:62
 msgid "Gaming is evolving. Build with Myria."
 msgstr ""
+"게이밍이 진화하고 있음. 미리아로 만드세요!\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:28
 msgid "Gas Fee"
 msgstr ""
+"가스 비\n"
+""
 
 #: src/hooks/useGamesData.tsx:230
 msgid "Gather and upgrade the best equipment on the battlefield. Collect power-ups and build combat facilities to overcome your foes. You can deal with this harsh reality alone or with your friends in a team of three."
 msgstr ""
+"전투지에서 최상의 장비를 모으고 업그레이드 할 것. 파워-업을 모아 전투 능력을 정립하여 당신의 적들을 극복할 것. 당신은 이 가혹한 현실을 혼자 아니면 세 개의 팀에서 당신의 친구들과 함께 다룰 수 있습니다.\n"
+""
 
 #: src/components/Footer.tsx:88
 msgid "General"
 msgstr ""
+"일반\n"
+""
 
 #: src/pages/for-developers/solution.tsx:68
 msgid "General purpose zk-rollup"
 msgstr ""
+"일반 목적의 zk-롤업\n"
+""
 
 #: src/components/Footer.tsx:73
 msgid "Get Started"
 msgstr ""
+"시작하기\n"
+""
 
 #: src/pages/nodes/index.tsx:294
 msgid "Get a founders node today"
@@ -875,15 +1133,21 @@ msgstr "오늘 창설자 노드 획득"
 #: src/pages/nodes/purchase-complete.tsx:78
 msgid "Get started with your Myria node."
 msgstr ""
+"당신의 미리아 노드로 시작하기.\n"
+""
 
 #: src/components/sigil/Welcome.tsx:173
 #: src/components/sigil/WelcomeMobile.tsx:21
 msgid "Go back"
 msgstr ""
+"돌아가기\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:95
 msgid "Go to my dashboard"
 msgstr ""
+"나의 대시보드로 갈 것.\n"
+""
 
 #: src/pages/for-studios.tsx:37
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
@@ -892,10 +1156,14 @@ msgstr "혁신적 게임 아이디어를 얻었다고? Myria 체인 상 당신�
 #: src/components/Purchase/License.tsx:92
 msgid "Grow with us and be rewarded. A Myria Node License allows you to operate a node from your home computer to support the growth of Myria’s decentralized network. As a node owner, you’ll earn daily rewards and exclusive benefits for your contribution."
 msgstr ""
+"우리들과 함께 성장하여 보상을 받을 것. 미리아 노드 라이선스는 당신이 당신의 가정용 컴퓨터에서 노드를 작동시킬 수 있고 미리아의 분권화된 네트워크 성장을 지원할 수 있습니다. 노드 소유자로서, 당신은 매일 보상과 당신의 기여로 독점적인 혜택을 받게 될 것입니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:294
 msgid "Heroes don’t all wear capes"
 msgstr ""
+"영웅들은 모두가 다 케이프를 착용하지는 않습니다.\n"
+""
 
 #: src/components/Header/linkSources.tsx:8
 #: src/components/Header/linkSources.tsx:44
@@ -927,14 +1195,20 @@ msgstr "Myria 노드 라이선스 얼마나 많은 비용이 들까?"
 #: src/components/sigil/ShareTwitterModal.tsx:35
 msgid "I am now a $MYRIA node owner! Join us to earn rewards, govern and build the future of virtual worlds! @MyriaGames"
 msgstr ""
+"나는 이제 $미리아 노드 소유자입니다! 보상을 받기 위해 우리들에게 가입하고, 가상 세계의 미래 지배하고 세우기 바랍니다! @MyriaGames\n"
+""
 
 #: src/components/Purchase/Modals/TermsOfServiceModal.tsx:57
 msgid "I have read, understood and agree to the terms of service"
 msgstr ""
+"나는 방금 미리아에서 래어 얼라이언스(희귀 동맹)을 청구하였습니다.\n"
+""
 
 #: src/pages/game-detail/[id].tsx:121
 msgid "IN DEVELOPMENT"
 msgstr ""
+"개발 내\n"
+""
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
@@ -943,46 +1217,68 @@ msgstr "만일 당신이 게이밍과 불록 체인에 진정한 영향을 미�
 #: src/pages/team.tsx:87
 msgid "In his role leading the People team, Damian helps Myria connect, develop and care for its global team. Damian brings decades of experience to Myria and was previously Global Head of People for Bitmex and prior to that a Managing Director in HR at Goldman Sachs."
 msgstr ""
+"피플 팀을 이끄는 그의 역할에서, 다미안은 미리아가 자산의 글로벌 팀을 연결, 개발 및 돌보는데 도움을 줍니다. 다미안은 미리아에 수십 년간의 경험을 살렸고 이전에는 비트멕스 글로벌 피플 수장이자 골드맨 삭스의 HR 관리 책임자였습니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:147
 msgid "In this lawless racing game, you’ll need to do whatever it takes to thwart your rivals’ attempts at reaching the finish line before you. Choosing the optimal combination of driver and kart parts could be the difference between triumph and defeat. But don’t worry if your ride isn’t souped-up, you still have your shot at 1st place. Just make good use of the vicious power-ups scattered around the track to literally blast your competition into oblivion!"
 msgstr ""
+"이러한 무법 레이싱 게임에서, 당신은 당신보다 먼저 결승선에 도달하기 위한 당신 라이벌들의 시도를 좌절시키기 위해 할 수 잇는 일이라면 무엇이든 할 필요가 있을 것입니다. 운전자와 소형 자동차 파트의 적절한 결합 선택은 승리와 패배의 차이가 될  것입니다. 그러나, 당신의 타기가 자극적이지 않다 해도 걱정하지 마시길, 당신은 여전히 1순위로 여유가 있습니다. 당신의 경쟁을 문자 그대로 망각으로 날려 보내기 위해 트랙 주변에 흩어진 악랄한 파워-업을 잘 활용만 하기 바랍니다!\n"
+""
 
 #: src/hooks/useGamesData.tsx:69
 msgid "In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later."
 msgstr ""
+"미리아버스의 이 부분에서, 방문자들은 버블-헤드 형식으로 변합니다. 이억은 이 세계의 사용 조건과 신비로운 관리자들에 의해서만 파괴 가능한….하지만 그 후에는 그 이상도 가능한 메타 버스의 법칙에 따른 것입니다.\n"
+""
 
 #: src/components/Register/Register.tsx:40
 msgid "Inclusion of at least one special character"
 msgstr ""
+"적어도 한 개의 특수 캐릭터 포함\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:29
 msgid "Infrastructure & Tools"
 msgstr ""
+"기반시설 & 도구\n"
+""
 
 #: src/components/sigil/Welcome.tsx:156
 msgid "Install Metamask"
 msgstr ""
+"메타 마스크 설치\n"
+""
 
 #: src/components/for-developers/Myria.tsx:51
 msgid "Instant project visibility"
 msgstr ""
+"즉각적인 프로젝트 가시성\n"
+""
 
 #: src/pages/for-developers/solution.tsx:16
 msgid "Instantly able to withdraw assets from the rollup back into ethereum when needed"
 msgstr ""
+"필요 시 롤업 백에서 이더리움으로 자산을 바로 인출 가능\n"
+""
 
 #: src/components/for-developers/Myria.tsx:54
 msgid "Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners."
 msgstr ""
+"미리아 플랫폼 및 네트워크 파트너들을 통하여 당신의 프로젝트 주변에 전도사들의 분주한 선수 커뮤니티에 바로 도달하여 수립할 것.\n"
+""
 
 #: src/hooks/useGamesData.tsx:228
 msgid "Intense battle to the very end"
 msgstr ""
+"바로 끝까지 강력한 전투\n"
+""
 
 #: src/hooks/useGamesData.tsx:302
 msgid "Interoperability FTW! Yes, we’ve got you covered - you can bring those crazy skins, sprays, hats, and every other exclusive NFT you’ve gathered along your journey through the Myriaverse. The last thing I want to see on the battlefield is tie-dye tights, but hey – it’s your party after all!"
 msgstr ""
+"상호 운영 가능성FTW! 예, 우리는 당신이 다룬 것을 얻었고 – 당신은 미리아버스를 통해 당신의 여정을 따라 당시이 수집한 모든 다른 독점 NFT, 미친 스킨, 스프레이, 모자 등을 가져올 수 있습니다. 내가 전투에서 보기를 원하는 마지막은  홀치기-염색 타이츠 이지만, 이봐요, 어쨌든 그것은 당신의 파티예요!\n"
+""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:17
 #: src/components/GetInTouch.tsx:26
@@ -998,6 +1294,8 @@ msgstr "무효인 이 메일!"
 #: src/pages/inventory.tsx:127
 msgid "Inventory"
 msgstr ""
+"재고 목록\n"
+""
 
 #: src/components/sigil/ReferFriendModal.tsx:47
 msgid "Invite your friends to Myria by sharing the following link with them."
@@ -1006,14 +1304,20 @@ msgstr ""
 #: src/hooks/useGamesData.tsx:75
 msgid "It was a calm day in the land of candy hammers and fiery strawberry lakes when a mysterious portal suddenly spawned a roaring crowd of brave players. Ready to rock, they started to roll down the hill of chocolate donuts in a chaotic race for the win."
 msgstr ""
+"그날은 신비로운 포털이 갑자기 용감한 플레이어들의 아우성을 낳은 캔디 망치와 불타는 딸기의 땅에 있는 고요의 날이었습니다. 흔들 준비가 되어, 그들은 승리를 위한 혼돈의 경주에서 초콜릿 도넛의 언덕 아래로 굴러가기 시작하였습니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:157
 msgid "It’s all in your hands"
 msgstr ""
+"그것은 모두 당신의 손 안에 있습니다!\n"
+""
 
 #: src/pages/team.tsx:117
 msgid "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads."
 msgstr ""
+"이반은 게임 산업에 10년 이상의 경력을 가지고 있습니다. 그는 게임로프트, 크레이지 랩, GPG(우비소푸트), 스페라소프트 그 이상에서, 수십억 건의 다운로드를 축적한 자신의 게임을 갖춘 게임 리드 디자이너입니다.\n"
+""
 
 #: src/components/ComingSoon.tsx:59
 #: src/components/FirstTimeVisitModal.tsx:49
@@ -1029,6 +1333,8 @@ msgstr "DISCORD에 합류하기"
 #: src/components/sigil/Welcome.tsx:128
 msgid "JOIN NOW"
 msgstr ""
+"지금 가입할 것\n"
+""
 
 #: src/components/JoinTheRevolution.tsx:35
 msgid "JOIN THE TEAM"
@@ -1041,18 +1347,26 @@ msgstr ""
 #: src/components/JoinMyriaCard.tsx:14
 msgid "Join MYRIA"
 msgstr ""
+"미리아에 가입하기\n"
+""
 
 #: src/components/JoinMyriaCard.tsx:7
 msgid "Join Myria in building the next blockchain revolution"
 msgstr ""
+"다음 블록체인 혁명을 건설하는데 미리아 가입하기\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:79
 msgid "Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all."
 msgstr ""
+"벡토르 프라임에 가입하면 당신은 리프트가 세상과  그들에 의존해 살고 있는 모든 이들을 디지털화 하는데 돕게 될 것입니다. 수많은 요소들이 당신과 대항에서 싸우게 되겠지만, 당신은 과학과 논리가 우리 모두를 지배할 최상의 법칙 임을 알게 됩니다.\n"
+""
 
 #: src/components/FirstTimeVisitModal.tsx:31
 msgid "Join our community!"
 msgstr ""
+"우리의 커뮤니티에 합류하시기를!\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:56
 msgid "Join the Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
@@ -1061,6 +1375,8 @@ msgstr ""
 #: src/hooks/useGamesData.tsx:283
 msgid "Just make sure you’re still alive till the end of the round or you’ll be spectating from the sidelines. And that means nobody will be able to appreciate your cute hot-dog suit that you’ve just brought over from a zany skirmish in the Metarush world."
 msgstr ""
+"단지 당신은 그래도 마지막 라운드까지 살아 있거나 당신이 측면에서 반드시 지켜보게 될 것입니다. 그리고 그것은 그 누구도 당신이 메타러쉬 월드에서 엉뚱한 충돌로부터 가져온 당신의 귀여운 핫도그 수트를 평가하지 못할 것이라는 뜻입니다.\n"
+""
 
 #: src/pages/team.tsx:178
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
@@ -1074,22 +1390,32 @@ msgstr "더 많이 배우기"
 #: src/components/sigil/LinkWalletConfirmModal.tsx:33
 msgid "LINK WALLET"
 msgstr ""
+"링크 지갑\n"
+""
 
 #: src/components/sigil/Welcome.tsx:128
 msgid "LOGGING IN"
 msgstr ""
+"로그 인\n"
+""
 
 #: src/components/Register/Register.tsx:172
 msgid "Last name"
 msgstr ""
+"성\n"
+""
 
 #: src/components/Register/Register.tsx:49
 msgid "Last name is required!"
 msgstr ""
+"성은 필수임!\n"
+""
 
 #: src/components/home/News.tsx:33
 msgid "Latest Updates & News"
 msgstr ""
+"최신 업데이트 & 뉴스\n"
+""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:83
 #: src/components/sigil/Dashboard/MissionV2.tsx:100
@@ -1103,10 +1429,14 @@ msgstr ""
 #: src/components/for-developers/Myria.tsx:40
 msgid "Launch with full support from our tokenomics experts"
 msgstr ""
+"우리의 토큰 경제 전문가들로부터 온전한 지원을 받고 시작하기 바랍니다.\n"
+""
 
 #: src/pages/for-developers/solution.tsx:124
 msgid "Layer 2 scalability solution"
 msgstr ""
+"2층 확장성 솔루션\n"
+""
 
 #: src/components/home/Hero.tsx:230
 msgid "Learn more"
@@ -1115,6 +1445,8 @@ msgstr "더 많이 배우기"
 #: src/components/JoinMyriaCard.tsx:10
 msgid "Learn more about our job current openings and see how you can get involved!"
 msgstr ""
+"우리 잡 현재의 오프닝에 대해 좀 더 알아보고 당신이 어떻게 연관될 수 있는지 참조할 것!\n"
+""
 
 #: src/pages/team.tsx:218
 msgid "Led by industry experts"
@@ -1127,10 +1459,14 @@ msgstr ""
 #: src/components/for-developers/Myria.tsx:30
 msgid "Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business."
 msgstr ""
+"사전수립된 미리아 플랫폼 및 툴 지렛대 – 우리는 지지 툴을 돌보아 당신이 자신의 사업을 수립하는데 집중할 수 있습니다.\n"
+""
 
 #: src/components/Purchase/License.tsx:75
 msgid "Limited supply available"
 msgstr ""
+"이용 가능한 제한된 공급\n"
+""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:182
 msgid "Locked"
@@ -1141,10 +1477,14 @@ msgstr ""
 #: src/context/authentication.tsx:103
 msgid "Log in"
 msgstr ""
+"로그 인\n"
+""
 
 #: src/components/Header/ProfileComponent.tsx:58
 msgid "Log out"
 msgstr ""
+"로그 아웃\n"
+""
 
 #: src/components/Header/ProfileComponent.tsx:64
 msgid "Logout of your Myria account. Your progress will be accessible in future by logging into your Myria account via your wallet."
@@ -1153,38 +1493,56 @@ msgstr ""
 #: src/pages/for-developers/solution.tsx:19
 msgid "Low transaction fees"
 msgstr ""
+"낮은 거래 수수료\n"
+""
 
 #: src/components/nodes/mint-assets/index.tsx:69
 msgid "MINT ALL"
 msgstr ""
+"전부 주조\n"
+""
 
 #: src/components/nodes/mint-assets/index.tsx:75
 msgid "MINT SELECTED"
 msgstr ""
+"선별 주조\n"
+""
 
 #: src/components/Header/linkSources.tsx:79
 msgid "MYRIA STUDIOS"
 msgstr ""
+"미리아 스튜디오\n"
+""
 
 #: src/hooks/useGamesData.tsx:367
 msgid "Make it out of this world!"
 msgstr ""
+"이 세계로부터 벗어나기!\n"
+""
 
 #: src/components/for-developers/Myria.tsx:15
 msgid "Manage your NFT & digital assets"
 msgstr ""
+"당신의 NFT & 디지털 자산 관리\n"
+""
 
 #: src/components/for-developers/Myria.tsx:16
 msgid "Manage your digital storefront and marketplace"
 msgstr ""
+"당신의 디지털 상점 및 시장 터 관리하기.\n"
+""
 
 #: src/components/for-developers/Myria.tsx:52
 msgid "Market your project across our platforms"
 msgstr ""
+"우리의 플랫폼을 넘어 당신의 프로젝트 마케팅 하기\n"
+""
 
 #: src/components/nodes/dashboard/Licenses.tsx:8
 msgid "Maximise your network"
 msgstr ""
+"당신의 네트워크를 최대화할 것\n"
+""
 
 #: src/components/Purchase/Modals/TermsOfServiceModal.tsx:36
 msgid "Meditation ramps offal direct trade raclette disrupt vice. Neutra kogi mixtape 3 wolf moon. Organic mustache chia vape, la croix austin man bun small batch meh bushwick locavore. Biodiesel shabby chic butcher franzen pork belly microdosing, tattooed chambray twee meditation offal YOLO pour-over."
@@ -1193,6 +1551,8 @@ msgstr ""
 #: src/components/GetInTouch.tsx:96
 msgid "Message"
 msgstr ""
+"메시지\n"
+""
 
 #: src/components/GetInTouch.tsx:35
 #: src/components/for-developers/BuildYourBlockchain.tsx:39
@@ -1202,10 +1562,14 @@ msgstr "메시지가 요구됨!"
 #: src/components/nodes/Sidebar2.tsx:19
 msgid "Mint Assets"
 msgstr ""
+"자산 주조\n"
+""
 
 #: src/components/nodes/Sidebar2.tsx:27
 msgid "More coming soon!"
 msgstr ""
+"좀 더 개봉 박두!\n"
+""
 
 #: src/pages/studios.tsx:360
 msgid "More details coming soon"
@@ -1214,6 +1578,8 @@ msgstr "좀 더 세부 내용 개봉 박두"
 #: src/components/Purchase/License.tsx:80
 msgid "More power than just network support"
 msgstr ""
+"단순한 네트워크 지원 이상의 강력한 힘\n"
+""
 
 #: src/components/interop/DesktopInterop.tsx:322
 #: src/components/interop/MobileInterop.tsx:196
@@ -1228,61 +1594,89 @@ msgstr "당신의 아바타에 적응되는 모핑 NFTs™"
 #: src/pages/studios.tsx:220
 msgid "Morphing interoperable NFTs is the new standard created by Myria. Players will be able to utilize their NFTs across different avatars, games and metaverses. Truly own your digital assets and collectibles."
 msgstr ""
+"상호 운용 가능한 NFT 변경은 미리아가 창출하는 새로운 표준입니다. 플레이어들은  다른 아바타, 게임 및 메타 버스를 넘어 그들의 NFT를 이용할 수 있을 것입니다. 진정으로 당신의 디지털 자산과 수집품들을 소유하기 바랍니다.\n"
+""
 
 #: src/components/sigil/Footer.tsx:18
 #: src/components/sigil/Sound.tsx:29
 msgid "Mute sound"
 msgstr ""
+"음 소거\n"
+""
 
 #: src/components/nodes/dashboard/GeneralInfo.tsx:50
 msgid "My Node Licenses"
 msgstr ""
+"나의 노드 라이선스\n"
+""
 
 #: src/components/Purchase/Modals/index.tsx:71
 msgid "Myria Founder’s Node"
 msgstr ""
+"미리아 설립자 노드\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:113
 msgid "Myria Game Platform"
 msgstr ""
+"미리아 게임 플랫폼\n"
+""
 
 #: src/components/ecosystem/Backbone.tsx:20
 msgid "Myria Infrastructure"
 msgstr ""
+"미리아 기반시설\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:97
 msgid "Myria NFT Marketplace"
 msgstr ""
+"미리아 NFT 장터\n"
+""
 
 #: src/components/Purchase/License.tsx:89
 msgid "Myria Node License"
 msgstr ""
+"미리아 노드 라이선스\n"
+""
 
 #: src/components/ecosystem/Backbone.tsx:54
 msgid "Myria Nodes"
 msgstr ""
+"미리아 노드\n"
+""
 
 #: src/components/ecosystem/Backbone.tsx:31
 msgid "Myria Partners"
 msgstr ""
+"미리아 파트너들\n"
+""
 
 #: src/components/Footer.tsx:58
 #: src/components/ecosystem/Backbone.tsx:43
 #: src/components/ecosystem/Platform.tsx:70
 msgid "Myria Studios"
 msgstr ""
+"미리아 스튜디오\n"
+""
 
 #: src/pages/studios.tsx:196
 msgid "Myria Studios is building a range of free-to-play AAA games spans across an entire interconnected ecosystem. Players experience intertwining lore, characters, and rich storylines that carry across each game world, and Myria tokens and NFTs can be used across the Myriaverse."
 msgstr ""
+"미리아 스튜디오는 전체 상호 연결된 생태계를 넘어 일정 범위의 무료 플레이 AAA 게임 기간을 수립하고 있습니다. 플레이어들은 상호 섞인 구전, 캐릭터 및 각 게임 세계 너머 전달되는 풍부한 스토리라인을 경험한 다음, 미리아 토큰과 NFT는 미리아버스를 넘어 사용될 수 있습니다.\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:105
 msgid "Myria Wallet"
 msgstr ""
+"미리아 지갑\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:56
 msgid "Myria combines a gaming platform with applications, tools and scaling infrastructure needed to bring blockchain gaming to life."
 msgstr ""
+"미리아는 게이밍 플랫폼을 블록체인 게이밍을 활성화시키는데 필요한 애플리케이션, 툴 및 스케일링 기반시설과 결합시킵니다.\n"
+""
 
 #: src/pages/for-gamers.tsx:22
 msgid "Myria develops fun AAA games that are enhanced by the blockchain, not vice versa."
@@ -1295,21 +1689,30 @@ msgstr "Myria 생태계 기금"
 #: src/components/for-developers/Myria.tsx:42
 msgid "Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives."
 msgstr ""
+"미리아는 토큰 경제 컨설턴시, 플레이 및 벌기 게임 설계의 최상 실습을 용이하게 하여 당신의 사업 목표를 달성할 수 있습니다.\n"
+""
 
 #: src/pages/index.tsx:75
-msgid "Myria has been built by an all-star team of over 100 people, united with a common vision of revolutionizing gaming with blockchain technology."
+msgid "Myria has been built by an all-star team of over 150 people, united with a common vision of revolutionizing gaming with blockchain technology."
 msgstr ""
 
 #: src/components/ecosystem/Backbone.tsx:33
 msgid "Myria help project partners set up for success. <0/> about our easy-to-use, full stack solution and build with Myria today."
 msgstr ""
+"미리아는 성공을 목표로 프로젝트 파트너들이 설정하도록 돕습니다. <0/>사용하기 쉬운, 풀 스택 솔루에 대하여 그리고 오늘 미리아와 함께 세웁니다. \n"
+""
 
 #: src/components/Program.tsx:34
 msgid "Myria helps blockchain projects scale. Whether you’re an established crypto business or simply exploring new possibilities, Myria has a solution for you!"
 msgstr ""
+"미리아는 블록체인 프로젝트 규모에 일조합니다. 당신이 수립된 암호 사업체이거나 단순히 새로운 가능성을 단지 탐구하고 있을 뿐이라면, 미리아는 당신을 위한 솔루션을 소유하게 됩니다!\n"
+""
+
+#: src/pages/_app.tsx:34
+msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
+msgstr ""
 
 #: src/components/ComingSoon.tsx:48
-#: src/pages/_app.tsx:34
 #: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria는 Myria 블록체인에 의해 가동되는 블록 체인 게이밍 생태계이다."
@@ -1317,14 +1720,20 @@ msgstr "Myria는 Myria 블록체인에 의해 가동되는 블록 체인 게이�
 #: src/pages/ecosystem.tsx:28
 msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT and blockchain gaming."
 msgstr ""
+"미리아는 디지털 자산, NFT 및 블록체인 게이밍에 권한을 부여할 목적으로 수립된 분권화된 이더리움 층 2에 해당됩니다.\n"
+""
 
 #: src/pages/for-developers/solution.tsx:71
 msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT, blockchain gaming and more."
 msgstr ""
+"미리아는 디지털 자산, NFT 및 블록체인 게이밍에 권한을 부여할 목적으로 수립된 분권화된 이더리움 층 2에 해당됩니다.\n"
+""
 
 #: src/pages/for-developers/index.tsx:43
 msgid "Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and blockchain gaming."
 msgstr ""
+"미리아는 규모의 디지털 자산, NFT 및 블록체인 게이밍에 수립된 분권화된 이더리움 층 2에 해당됩니다.\n"
+""
 
 #: src/pages/for-gamers.tsx:48
 msgid "Myria is supported by a network of community-powered nodes, who receive rewards for their contributions."
@@ -1333,10 +1742,14 @@ msgstr "Myria는 커뮤니티에 가동되는 노드 네트워크로 지원을 �
 #: src/components/ecosystem/Backbone.tsx:68
 msgid "Myria is the backbone of blockchain gaming"
 msgstr ""
+"미리아는 블록체인 게이밍의 중추입니다.\n"
+""
 
 #: src/pages/nodes/index.tsx:152
 msgid "Myria node license sales are anticipated to commence in Q2 2022 (subject to change)."
 msgstr ""
+"미리아 노드 라이선스 판매는 Q2 2022에 시작할 것으로 예상됩니다. (변경에 따름)\n"
+""
 
 #: src/pages/nodes/index.tsx:30
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
@@ -1345,10 +1758,14 @@ msgstr "Myria 노드 운영자들은 노드 작업에 대해 매일 $MYRIA 토�
 #: src/components/for-developers/Myria.tsx:65
 msgid "Myria provides an end-to-end solution for developers and publishers, and help you unlock the blockchain potential of your business"
 msgstr ""
+"미리아는 개발자 및 공개자에 대한 끝에서 끝을 보는 솔루션을 제공하고 당신이 당신 사업의 블록체인 잠재적 가능성을 열도록 도와 줍니다.\n"
+""
 
 #: src/components/for-developers/Myria.tsx:36
 msgid "Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support."
 msgstr ""
+"미리아는 NFT 판매에 관한 블록체인 컨설턴시 서비스, 블록체인 통합 및 플랫폼 지원을 제공합니다.\n"
+""
 
 #: src/pages/_app.tsx:35
 #: src/pages/_app.tsx:46
@@ -1362,22 +1779,32 @@ msgstr "미리아버스는 플레이어들, 커뮤니티 및 길드를 연결시
 #: src/components/ecosystem/Backbone.tsx:22
 msgid "Myria’s <0/> uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
 msgstr ""
+"dApps가 무한한 규모, 보안에 관한 희생 없이 낮은 거래 수수료를 달성할 수 있도록 미리아의 <0/>은 ZK-롤업을 사용합니다.\n"
+""
 
 #: src/pages/for-developers/solution.tsx:86
 msgid "Myria’s <0>Ethereum L2 scaling solution</0> uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2 transactions into one single transaction. This then sends a validity proof back to the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based zkrollup solution enable NFTs and dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
 msgstr ""
+"미리아의 <0>이더리움 L2 스케일링 솔루션</0>은 제로 지식 기술을 사용하여 (zk-스타크)  수 천개의 L2 거래를 한 개의 단일 거래로 “올리거나” 묶을 수 있습니다. 그런 다음 이것은 주된 블록체인으로 효력 증거를 발송하여, L1 이더리움 보안을 보존합니다. 미리아의 스타크-기반 zk 롤업 솔루션은 NFT와 dAAPs가 보안에 대한 희생 없이 무한한 스케일, 낮은 거래 수수료를 달성할 수 있게 해 줍니다.\n"
+""
 
 #: src/components/for-developers/Myria.tsx:18
 msgid "Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey."
 msgstr ""
+"미리아의 NFT 상점 및 시장 터 기반 시설은 플레이어들의 여정을 지원하고자 블록체인 게임을 목적으로 세워지고 최적화 된 것입니다.\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:19
 msgid "NFT Rewards"
 msgstr ""
+"NFT 보상\n"
+""
 
 #: src/components/GetInTouch.tsx:76
 msgid "Name"
 msgstr ""
+"성명\n"
+""
 
 #: src/components/GetInTouch.tsx:23
 #: src/components/for-developers/BuildYourBlockchain.tsx:26
@@ -1387,6 +1814,8 @@ msgstr "이름을 요구함!"
 #: src/pages/for-developers/solution.tsx:26
 msgid "Native support for core token types ERC20 and ERC721"
 msgstr ""
+"핵심 토큰 유형 ERC20 및 ERC721에 대한 자연스런 지원\n"
+""
 
 #: src/components/Footer.tsx:113
 msgid "News"
@@ -1400,10 +1829,14 @@ msgstr "당신의 아바타의 모양과 크기가 어떠하든, 그들 모두�
 #: src/components/sigil/LinkWalletConfirmModal.tsx:25
 msgid "No web wallet is detected, please ensure that you have one setup to claim your rewards."
 msgstr ""
+"그 어떤 웹 지갑도 감지되지 않음, 당신이 자신의 보상을 청구하기 위해 한 가지 설정을 갖추고 잇는지 반드시 확인하기 바랍니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:282
 msgid "Nobody lives forever, and these heroes sure as hell don’t care – they literally die for the sake of fun. Dive into a series of short combat rounds to win a match of 5 vs 5. The attacking team must activate a bomb on a specified location on the map. If you’re on the defending side…you know what you need to do, right?"
 msgstr ""
+"그 누구도 영원히 살 수는 없으며, 이러한 영웅들은 지옥조차도 개의치 않고- 그들은 문자 그대로 재미 그 자체를 위해 죽습니다. 5 대 5 매치에 이기기 위해, 각 회마다 일련의 짧은 전투 속으로 뛰어들 것. 공격하는 팀은 지도에서 특정 장소에 폭탄을 활성화하여야 합니다. 만약 당신이 측면을 방어하지 못하면, 당신은 당신이 해야 할 일을 알게 되죠? 그렇죠?\n"
+""
 
 #: src/pages/nodes/index.tsx:230
 msgid "Node owner rewards"
@@ -1416,14 +1849,20 @@ msgstr "노드 소유자들은 또한 노드 운영자 및 일반 커뮤니티 �
 #: src/components/Purchase/License.tsx:71
 msgid "Node owners will be rewarded with exclusive NFT drops and daily MYRIA token rewards for their contribution to the network."
 msgstr ""
+"노드 소유자들은 네트워크에 대한 자신의 기여 때문에 NFT 드롭 및 매일의 미리아 토큰 보상으로 보상을 받을 것입니다.\n"
+""
 
 #: src/components/nodes/dashboard/NodeProgress.tsx:19
 msgid "Node progress this cycle"
 msgstr ""
+"노드 이 사이클을 진행함.\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:37
 msgid "Node purchase"
 msgstr ""
+"노드 구매\n"
+""
 
 #: src/components/Footer.tsx:49
 #: src/components/Header/linkSources.tsx:29
@@ -1434,30 +1873,44 @@ msgstr "노드"
 #: src/components/Purchase/License.tsx:81
 msgid "Nodes are an integral part of the Myria universe, with dedicated lore, gaming access, and exclusive voting power granted to node owners."
 msgstr ""
+"노드는  노드 소유자들에게 부여된 독점 선거권과 헌신적인 전승, 게이밍 접속을 갖춘 미리아 유니버스의 통합 부분에 해당합니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:300
 msgid "Not the face!"
 msgstr ""
+"얼굴에 하지 말 것!\n"
+""
 
 #: src/components/Header/linkSources.tsx:51
 msgid "OUR SOLUTION"
 msgstr ""
+"우리의 솔루션\n"
+""
 
 #: src/components/nodes/mint-assets/index.tsx:100
 msgid "Off Chain Assets"
 msgstr ""
+"체인 자산을 벗어남\n"
+""
 
 #: src/hooks/useGamesData.tsx:223
 msgid "Once in a while, a portal opens to a special game world – the BR Arena."
 msgstr ""
+"가끔씩, 포털이 특별한 게임 세상-BR 아레나-을 개장합니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:357
 msgid "Once you figure out the optimal production pipeline, the game will start yielding rewards for all your hard work. Are you curious how difficult is to produce a batch of Starberry Jam? What about Moonsteel? It surely can’t be that hard, right?"
 msgstr ""
+"일단 당신이 최적 생산 파이프라인을 이해하게 되면, 게임은 당신의 모든 노고에 대해 보상을 수확하기 시작할 것입니다. 당신은 딸기 잼 한 묶음을 생산하는 일이 얼마나 힘든지 호기심이 생기나요? 문 스틸에 대해서는? 확실이 그렇게 힘들지 않죠, 그렇죠?\n"
+""
 
 #: src/components/Purchase/License.tsx:76
 msgid "Only 50,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded."
 msgstr ""
+"단지 50,000 노드 라이선스 만이 출시될 것입니다. 우리의 초기 지지자들이 보상받음을 확인하고자 가격은 노드가 판매된 만큼 증가될 것입니다.\n"
+""
 
 #: src/pages/nodes/index.tsx:170
 msgid "Only 55,000 Myria node licenses will ever be released."
@@ -1466,10 +1919,14 @@ msgstr "단지 55,000 Myria 노드 라이선스가 출시될 것입니다."
 #: src/pages/for-developers/solution.tsx:32
 msgid "Open and permissionless"
 msgstr ""
+"열림 그리고 무허가 성\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:31
 msgid "Our Ethereum L2 scaling solution provides reliability, scalability and security. Making it easy for developers to build and manage their projects."
 msgstr ""
+"우리의 이더리움 L2 스케일링 솔루션은 신뢰성, 확장성 및 보안성을 제공합니다. 개발자들이 그들의 프로젝트를 수립하여 관리하기가 쉽게 만듦.\n"
+""
 
 #: src/pages/team.tsx:255
 msgid "Our Experience"
@@ -1482,6 +1939,8 @@ msgstr "우리의 원칙"
 #: src/components/Footer.tsx:77
 msgid "Our Solutions"
 msgstr ""
+"우리의 솔루션\n"
+""
 
 #: src/pages/for-gamers.tsx:152
 msgid "Our games"
@@ -1490,6 +1949,8 @@ msgstr "우리의 게임"
 #: src/pages/for-developers/solution.tsx:80
 msgid "Our solution"
 msgstr ""
+"우리의 솔루션\n"
+""
 
 #: src/components/Header/linkSources.tsx:74
 msgid "Our team"
@@ -1512,18 +1973,26 @@ msgstr "당신의 메타버스 아이덴티티 소유: 어디든. 모든 게임.
 #: src/components/Purchase/Order.tsx:132
 msgid "PURCHASE NOW"
 msgstr ""
+"지금 구매하기\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:80
 msgid "Partner Dapps"
 msgstr ""
+"파트너 Dapps\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:85
 msgid "Partner Experiences"
 msgstr ""
+"파트너 경험\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:75
 msgid "Partner Games"
 msgstr ""
+"파트너 게임\n"
+""
 
 #: src/pages/team.tsx:176
 msgid "Partner Lead"
@@ -1534,46 +2003,68 @@ msgstr "파트너 리드"
 #: src/components/SignIn/SignIn.tsx:26
 msgid "Password is required!"
 msgstr ""
+"패스워드는 필수!\n"
+""
 
 #: src/utils.ts:23
 msgid "Password must be mixture of letters and numbers"
 msgstr ""
+"패스워드는 문자와 숫자를 혼합하여야 합니다.\n"
+""
 
 #: src/utils.ts:27
 msgid "Password must contain at least one special character"
 msgstr ""
+"패스워드는 적어도 한 개의 특수문자를 포함할 것.\n"
+""
 
 #: src/utils.ts:15
 msgid "Password must have at least 8 characters—the more characters, the better"
 msgstr ""
+"패스워드는 적어도 8개 문자 이상이되 – 글자 수가 많으면 더 좋습니다.\n"
+""
 
 #: src/utils.ts:19
 msgid "Password must have both uppercase and lowercase letters"
 msgstr ""
+"패스워드는 대문자와 소문자 둘다 있어야 합니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:236
 msgid "Pick one of the available warrior classes that best suits your playstyle. Are you a one-man army or a silent assassin who strikes from the shadows? Or maybe you’re a mysterious alien psychic who can suck the life out of his enemies..."
 msgstr ""
+"당신의 플레이 스타일에 가장 잘 어울리는 이용 가능한 전자 계급 중 하나를 고를 것. 당신은 그림자로부터 치는 무언의 암살자나 1인 군대 입니까? 아니면 아마도 당신은 자신의 적들로부터 생명을 빨아들일 수 있는 신비로운 외계인 초능력자일지 모릅니다.\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:21
 msgid "Platform"
 msgstr ""
+"플랫폼\n"
+""
 
 #: src/components/for-developers/BuildYourBlockchain.tsx:29
 msgid "Please enter correct url!"
 msgstr ""
+"정확한 url을 입력하기 바랍니다!\n"
+""
 
 #: src/components/sigil/WelcomeMobile.tsx:16
 msgid "Please view this experience on a desktop browser"
 msgstr ""
+"데스크톱 브라우저에서 이 체험을 보기 바랍니다.\n"
+""
 
 #: src/components/sigil/Welcome.tsx:80
 msgid "Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge"
 msgstr ""
+"크롬, 브레이브, 파어어폭스 혹은 에지와 같은 지원되는 브라우저에서 이 체험을 보기 바랍니다.\n"
+""
 
 #: src/components/sigil/RewardItem.tsx:122
 msgid "Points"
 msgstr ""
+"포인트\n"
+""
 
 #: src/pages/studios.tsx:271
 msgid "Powered and governed by <0>$MYRIA</0>"
@@ -1594,6 +2085,8 @@ msgstr "현재까지 사전 등록 유지"
 #: src/components/Purchase/Order.tsx:93
 msgid "Price"
 msgstr ""
+"가격\n"
+""
 
 #: src/pages/team.tsx:130
 msgid "Product Lead - Blockchain"
@@ -1602,6 +2095,8 @@ msgstr "제품 리드 – 블록 체인"
 #: src/components/for-developers/Myria.tsx:48
 msgid "Provide your players with a protected experience and ensure your business understands critical regulatory compliance components."
 msgstr ""
+"당신의 플레이어들에게 보호되는 체험을 제공하고 당신의 사업이 중대한 규정 부합 요소들을 이해하고 있는지 확인 바랍니다.\n"
+""
 
 #: src/pages/for-gamers.tsx:167
 msgid "Pupose-built infrastructure"
@@ -1610,22 +2105,32 @@ msgstr "목적-기반 시설"
 #: src/pages/nodes/purchase-complete.tsx:104
 msgid "Purchase more nodes"
 msgstr ""
+"더 많은 노드 구매하기\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:107
 msgid "Purchase more nodes to increase your rewards and passive invome"
 msgstr ""
+"당신의 보상과  수동적인 수입을 증대시키기 위해 더 많은 노드를 구매할 것.\n"
+""
 
 #: src/components/Purchase/Modals/index.tsx:119
 msgid "Purchase now"
 msgstr ""
+"지금 구매하기\n"
+""
 
 #: src/components/Purchase/Order.tsx:104
 msgid "Quantity"
 msgstr ""
+"수량\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:22
 msgid "Quantity: {qty}"
 msgstr ""
+"수량: {qty}\n"
+""
 
 #: src/components/Purchase/Modals/index.tsx:74
 msgid "Quantity: {quantity}"
@@ -1635,19 +2140,27 @@ msgstr ""
 #: src/components/home/News.tsx:36
 msgid "Read more"
 msgstr ""
+"더 많이 읽기\n"
+""
 
 #: src/components/BuyerNodeCard.tsx:10
 #: src/components/Program.tsx:14
 msgid "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
 msgstr ""
+"$미리아와 한정판 NFT 보상을 미리아 네트워크를 지원하는 동안 수령할 것.\n"
+""
 
 #: src/components/sigil/ReferFriendModal.tsx:44
 msgid "Refer your friends"
 msgstr ""
+"당신의 친구들을 언급할 것.\n"
+""
 
 #: src/components/Register/Register.tsx:250
 msgid "Register"
 msgstr ""
+"등록하기\n"
+""
 
 #: src/pages/nodes/index.tsx:240
 msgid "Releasing soon"
@@ -1656,19 +2169,27 @@ msgstr "조만간 출시"
 #: src/pages/for-developers/solution.tsx:23
 msgid "Reliably programmable"
 msgstr ""
+"신뢰할 만큼 프로그램화 할 수 있음\n"
+""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:55
 #: src/components/ResetPassword/ResetPassword.tsx:101
 msgid "Reset Password"
 msgstr ""
+"패스워드 재설정\n"
+""
 
 #: src/pages/for-developers/solution.tsx:36
 msgid "Resistent against censorship"
 msgstr ""
+"검열에 대항함\n"
+""
 
 #: src/components/nodes/Sidebar2.tsx:15
 msgid "Reward Vault"
 msgstr ""
+"보상 금고\n"
+""
 
 #: src/components/nodes/Sidebar.tsx:37
 msgid "Rewards"
@@ -1677,10 +2198,14 @@ msgstr ""
 #: src/components/nodes/Banner.tsx:12
 msgid "Rewards are coming soon! Information on how to install your node client will be released shortly."
 msgstr ""
+"보상 개봉 박두! 당신의 노드 클라이언트를 설치하는 방법에 관한 정보가 곧 공개될 것입니다.\n"
+""
 
 #: src/hooks/useGamesData.tsx:85
 msgid "Roll with style!"
 msgstr ""
+"스타일에 대처하기!\n"
+""
 
 #: src/pages/nodes/index.tsx:190
 msgid "Run a node and earn <0>$MYRIA and NFT rewards</0>"
@@ -1689,6 +2214,8 @@ msgstr ""
 #: src/components/sigil/ChooseAlliance/index.tsx:283
 msgid "SELECT"
 msgstr ""
+"선택하기\n"
+""
 
 #: src/pages/for-gamers.tsx:119
 msgid "SHIFTING POWER BACK TO THE PEOPLE"
@@ -1698,6 +2225,8 @@ msgstr "사람들에게 동력을 돌려줄 것"
 #: src/pages/for-developers/index.tsx:50
 msgid "START BUILDING"
 msgstr ""
+"건축 시작\n"
+""
 
 #: src/components/Subscribe.tsx:92
 msgid "SUBMIT"
@@ -1706,14 +2235,20 @@ msgstr "제출"
 #: src/components/for-developers/Myria.tsx:27
 msgid "Save time. Ship faster."
 msgstr ""
+"시간 절약. 더 빨리 선적하기.\n"
+""
 
 #: src/pages/for-developers/solution.tsx:12
 msgid "Scale with security"
 msgstr ""
+"보안 규모\n"
+""
 
 #: src/components/for-developers/Ethereum.tsx:325
 msgid "Scaling blockchain gaming on Ethereum"
 msgstr ""
+"이더리움에서 스케일링 블록체인 게이밍\n"
+""
 
 #: src/components/nodes/Sidebar.tsx:43
 msgid "Settings"
@@ -1723,6 +2258,8 @@ msgstr ""
 #: src/components/sigil/ShareTwitterModal.tsx:49
 msgid "Share now"
 msgstr ""
+"지금 공유하기\n"
+""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:130
 msgid "Share on Twitter"
@@ -1732,62 +2269,90 @@ msgstr ""
 #: src/components/sigil/ShareTwitterModal.tsx:20
 msgid "Share this on Twitter"
 msgstr ""
+"이것을 트위터에서 공유하기\n"
+""
 
 #: src/components/SignIn/SignIn.tsx:81
 #: src/components/nodes/Header.tsx:156
 #: src/components/nodes/Header.tsx:235
 msgid "Sign in"
 msgstr ""
+"서명 가입\n"
+""
 
 #: src/components/Header/MobileHeader.tsx:71
 #: src/components/sigil/Dashboard/MissionV2.tsx:73
 msgid "Sign up"
 msgstr ""
+"등록하기\n"
+""
 
 #: src/components/Subscribe.tsx:67
 msgid "Sign up to our newsletter to receive development updates, token and NFT drops, and exclusive promotions."
 msgstr ""
+"개발 업데이트, 토큰 및 NFT 드롭 및 독점 프로모션을 받고자 우리의 소식지에 등록하기.\n"
+""
 
 #: src/pages/for-developers/solution.tsx:27
 msgid "Simpler formal verification of contracts due to safe VM architecture"
 msgstr ""
+"안전한 VM 구조로 인해 계약의 보다 더 형식적인 검증\n"
+""
 
 #: src/components/Header/DesktopHeader.tsx:46
 #: src/components/Header/MobileHeader.tsx:166
 msgid "Soon!"
 msgstr ""
+"조만간!\n"
+""
 
 #: src/components/SortBy/index.tsx:13
 msgid "Sort By"
 msgstr ""
+"분류\n"
+""
 
 #: src/components/Loading/LoadingStandBy.tsx:6
 msgid "Stand by"
 msgstr ""
+"대기\n"
+""
 
 #: src/components/Program.tsx:41
 msgid "Start now"
 msgstr ""
+"지금 시작\n"
+""
 
 #: src/components/FirstTimeVisitModal.tsx:34
 msgid "Stay update to date with our project announcements and updates!"
 msgstr ""
+"우리의 프로젝트 발표 및 업데이트로 현재까지 업데이트 유지!\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:36
 msgid "Step 1"
 msgstr ""
+"1단계\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:40
 msgid "Step 2"
 msgstr ""
+"2단계\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:44
 msgid "Step 3"
 msgstr ""
+"3단계\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:48
 msgid "Step 4"
 msgstr ""
+"4단계\n"
+""
 
 #: src/components/Footer.tsx:53
 #: src/components/Header/linkSources.tsx:36
@@ -1797,6 +2362,8 @@ msgstr "스토어"
 #: src/components/GetInTouch.tsx:89
 msgid "Subject"
 msgstr ""
+"주제\n"
+""
 
 #: src/components/GetInTouch.tsx:31
 msgid "Subject is required!"
@@ -1806,23 +2373,33 @@ msgstr "대상 필수!"
 #: src/components/for-developers/BuildYourBlockchain.tsx:144
 msgid "Submit"
 msgstr ""
+"제출하기\n"
+""
 
 #: src/components/GetInTouch.tsx:115
 #: src/components/for-developers/BuildYourBlockchain.tsx:144
 msgid "Submitting..."
 msgstr ""
+"제출하기...\n"
+""
 
 #: src/components/for-developers/Myria.tsx:9
 msgid "Supercharge your project"
 msgstr ""
+"당신의 프로젝트 과급\n"
+""
 
 #: src/components/for-developers/Ethereum.tsx:96
 msgid "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
 msgstr ""
+"무제한 확장성 지원, 9,000+ TPS까지 인도\n"
+""
 
 #: src/pages/studios.tsx:284
 msgid "TOKEN LAUNCH COMING SOON"
 msgstr ""
+"토큰 출시 개봉 박두>>>>>>> 원본/각색\n"
+""
 
 #: src/components/Footer.tsx:102
 msgid "Team"
@@ -1852,14 +2429,20 @@ msgstr "Myria 생태계는 Myria 블록 체인에 기반하고, 게이밍에 대
 #: src/components/ecosystem/Backbone.tsx:56
 msgid "The Myria platform is supported by Myria Nodes. Being a <0/> operator means that you will receive limited edition NFTs, token rewards and more."
 msgstr ""
+"미리아 플랫폼은 미리아 노드에 의해 지원됩니다. 운영자<0/>가 된다는 것은 당신이 한정판 NFTs, 토큰 보상 및 그 이상을 받을 것이라는 뜻입니다.\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:53
 msgid "The comprehensive blockchain gaming platform"
 msgstr ""
+"통합 블록체인 게이밍 플랫폼\n"
+""
 
 #: src/components/for-developers/Myria.tsx:10
 msgid "The easiest way to launch your blockchain game"
 msgstr ""
+"당신의 블록체인 게임을 시작하는 가장 쉬운 방법\n"
+""
 
 #: src/components/Register/Register.tsx:139
 msgid "The name must be between 3 and 16 characters long."
@@ -1873,10 +2456,14 @@ msgstr "상호 운용 가능한 NFT 용 신규 기준"
 #: src/hooks/useGamesData.tsx:68
 msgid "The objective is simple – get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing."
 msgstr ""
+"목표는 간단함 – 결승선에 도달하여 시도 중에 비운에 빠지지 않는 것임. 각 매치는 마지막 코스를 따라 일련의 장애를 통해 제거되는 한 무리의 플레이어들과 시작함. 살아남은 플레이어들은 각 라운드에서 대기하는 오직 하나의 러싱만 존재할 때까지 어려움이 점점 증대되면서 전투를 계속하게 됩니다.\n"
+""
 
 #: src/components/nodes/rewards/WalletModal.tsx:14
 msgid "The wallet currently connected does not match your designated reward wallet. Please connect the correct wallet or click below to change it."
 msgstr ""
+"현재 연결된 지갑은 당신의 지정된 보상 지갑과 어울리지 않습니다. 정확한 지갑을 연결하거나 그것을 바꾸기 위해 아래를 클릭할 것.\n"
+""
 
 #: src/components/interop/DesktopInterop.tsx:165
 #: src/components/interop/MobileInterop.tsx:64
@@ -1886,43 +2473,63 @@ msgstr "세계 최초 모핑 NFTs™"
 #: src/hooks/useGamesData.tsx:288
 msgid "Think before you shoot!"
 msgstr ""
+"당신이 사격하기 전에 생각할 것!\n"
+""
 
 #: src/components/sigil/ChooseAlliance/AllianceModal.tsx:82
 msgid "This decision is permanent. Once you choose your alliance you cannot change it!"
 msgstr ""
+"이 결정은 영구적입니다. 일단 당신이 자신의 동맹을 선택하면, 그것을 바꿀 수 없습니다!\n"
+""
 
 #: src/hooks/useGamesData.tsx:153
 msgid "Throw your prized vehicle around the deadly turns of the track as you throw a dice to decide your destiny. Drifting and performing crazy stunts is your way of expressing your inner speed demons, so don’t be shy– let them come out and play!"
 msgstr ""
+"당신이 자신의 운명을 결정하고자 주사위를 던지면 트랙의 치명적인 전환 주변으로 당신의 소중한 차량을 던질 것. 미친 스턴트를 행하고 이동하는 것은 당신의 내부 가속 악마를 표현하는 방식이기에, 부끄러워 하지 말고 – 그들로 하여금 나와서 플레이하게 할 것!\n"
+""
 
 #: src/components/nodes/dashboard/TimeOnline.tsx:15
 msgid "Time Online"
 msgstr ""
+"온라인 시간\n"
+""
 
 #: src/components/nodes/rewards/TotalRewards.tsx:11
 msgid "Token Rewards"
 msgstr ""
+"토큰 보상\n"
+""
 
 #: src/components/for-developers/Myria.tsx:39
 msgid "Tokenomics consultancy"
 msgstr ""
+"토큰 경제 컨설턴시\n"
+""
 
 #: src/components/Purchase/Modals/index.tsx:104
 #: src/components/nodes/rewards/ClaimModal.tsx:42
 msgid "Total"
 msgstr ""
+"전체\n"
+""
 
 #: src/components/nodes/dashboard/GeneralInfo.tsx:18
 msgid "Total $MYRIA Mined"
 msgstr ""
+"전체 $채굴된 미리아\n"
+""
 
 #: src/components/nodes/dashboard/GeneralInfo.tsx:34
 msgid "Total NFT Rewards"
 msgstr ""
+"전체 NFT 보상\n"
+""
 
 #: src/components/nodes/dashboard/TotalNodes.tsx:9
 msgid "Total nodes in Myria network"
 msgstr ""
+"미리아 네트워크에 있는 전체 노드\n"
+""
 
 #: src/components/interop/DesktopInterop.tsx:205
 #: src/components/interop/MobileInterop.tsx:105
@@ -1932,14 +2539,20 @@ msgstr "트레일러 개봉 박두"
 #: src/components/nodes/Sidebar2.tsx:23
 msgid "Transaction List"
 msgstr ""
+"거래 목록\n"
+""
 
 #: src/components/Purchase/Modals/index.tsx:89
 msgid "Transaction fee"
 msgstr ""
+"거래 수수료\n"
+""
 
 #: src/pages/for-developers/solution.tsx:15
 msgid "Transparent and post-quantum secure -  no trusted setup"
 msgstr ""
+"투명하고 사후 퀀텀 확보 - 믿는 설정 금지\n"
+""
 
 #: src/pages/team.tsx:145
 msgid "UI/UX Lead"
@@ -1952,34 +2565,50 @@ msgstr "미리아버스를 통하여 통일됨"
 #: src/components/for-developers/Myria.tsx:21
 msgid "Unlock immense scale"
 msgstr ""
+"거대한 스케일 열기\n"
+""
 
 #: src/components/sigil/Sound.tsx:29
 msgid "Unmute sound"
 msgstr ""
+"소리 껐다 켜기\n"
+""
 
 #: src/components/sigil/Welcome.tsx:79
 msgid "Unsupported Browser"
 msgstr ""
+"미 지원 브라우저\n"
+""
 
 #: src/components/Register/Register.tsx:184
 msgid "Username"
 msgstr ""
+"사용자 명\n"
+""
 
 #: src/components/Register/Register.tsx:50
 msgid "Username is required!"
 msgstr ""
+"사용자 명 필수!\n"
+""
 
 #: src/hooks/useGamesData.tsx:269
 msgid "Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning."
 msgstr ""
+"일련의 팀 전투나 다른 게임 모드에서 이길 수 있는 특별한 영웅 능력과의 결합으로 당신의 총 싸움 기술을 이용할 것. 당신의 능력 업그레이드와 선택 무기를 관리하여 이길 수 있는 확률을 최적화할 것.\n"
+""
 
 #: src/components/sigil/ClaimModal.tsx:40
 msgid "VIEW ITEM"
 msgstr ""
+"아이템 보기\n"
+""
 
 #: src/components/inventory/OpenChest.tsx:130
 msgid "VIEW ITEMS"
 msgstr ""
+"아이템 보기\n"
+""
 
 #: src/pages/nodes/index.tsx:252
 msgid "Validating on Myria"
@@ -1988,10 +2617,14 @@ msgstr ""
 #: src/hooks/useGamesData.tsx:163
 msgid "Vanity factor number 1"
 msgstr ""
+"자만심 요소 넘버 1\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:73
 msgid "Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion."
 msgstr ""
+"벡터 프라임은 리프트가 진화의 다음 단계이며 확대를 가속화하기 위해 그들의 힘으로 무엇이든 할 것입니다.\n"
+""
 
 #: src/components/Purchase/Modals/TermsOfServiceModal.tsx:26
 msgid "Vegan PBR&B listicle sriracha. Migas lomo helvetica, listicle paleo salvia sartorial crucifix dreamcatcher try-hard ugh lyft. Intelligentsia whatever mlkshk salvia, authentic jianbing wolf coloring book echo park fam. Iceland cray occupy ennui, franzen tilde poke. Poutine echo park meditation cliche franzen, shaman messenger bag. Hot chicken umami adaptogen DIY yuccie whatever subway tile, narwhal helvetica meggings scenester twee iPhone tumblr lumbersexual."
@@ -2000,6 +2633,8 @@ msgstr ""
 #: src/components/Careers/Careers.tsx:91
 msgid "View job"
 msgstr ""
+"업무 보기\n"
+""
 
 #: src/pages/nodes/index.tsx:41
 msgid "Voting rights"
@@ -2008,10 +2643,14 @@ msgstr "투표권"
 #: src/hooks/useGamesData.tsx:363
 msgid "Watch your village grow and flourish as you move up the ranks. Are you able to devise the best strategy and outperform your rivals?"
 msgstr ""
+"당신의 마을이 랭크를 이동함에 따라 성장하고 번성하는 것을 볼 것. 당신은 최상의 전략을 창안하여 당신의 경쟁자들을 능가할 수 있습니까?\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:14
 msgid "We believe in open and equitable access, enabling more people to build, experience and enjoy the benefits of blockchain and the metaverse."
 msgstr ""
+"우리는 열린 공정한 접속을 믿으며, 더 많은 사람들이 블록 체인과 메타 버스의 혜택을 수립하고, 경험하며 또 즐길 수 있습니다.\n"
+""
 
 #: src/pages/for-gamers.tsx:35
 msgid "We believe players should have true verifiable ownership and control over in-game assets."
@@ -2020,14 +2659,20 @@ msgstr "우리는 플레이어들이 진실로 인증 가능한 소유권을 가
 #: src/components/ecosystem/Backbone.tsx:71
 msgid "We bring together everything that is required to build a decentralized, scalable and secure digital asset and blockchain gaming platform"
 msgstr ""
+"우리는 분권화 되고, 확장 가능하며 안전한 디지털 자산과 블록체인 게이밍 플랫폼을 반드시 수립하여야 하는 모든 것을 합칩니다.\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:23
 msgid "We make digital asset trading and blockchain gaming easy with our all-in-one platform."
 msgstr ""
+"우리는 우리의 일체형 플랫폼으로 디지털 자산 거래 및 블록체인 게이밍을 수월하게 만듭니다.\n"
+""
 
 #: src/components/for-developers/Myria.tsx:28
 msgid "We make everything else easy so you can focus on your product"
 msgstr ""
+"우리는 모든 것을 쉽게 만들어 주기 때문에 제품에 집중할 수 있습니다.\n"
+""
 
 #: src/pages/for-studios.tsx:23
 msgid "We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming."
@@ -2036,19 +2681,27 @@ msgstr "우리는 Myria 체인에서 블록 체인 기반시설, 게임용 기�
 #: src/components/for-developers/Ethereum.tsx:221
 msgid "We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey"
 msgstr ""
+"우리는 프로젝트가 블록체인 게이밍 여정을 시동을 걸 수 있도록 돕고자 사용하기 쉬운 솔루션을 제공합니다.\n"
+""
 
 #: src/components/for-developers/Myria.tsx:12
 msgid "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
 msgstr ""
+"우리는 신규 직원 교육부터 개발까지 당신과 긴밀하게 작업하며, 기술 지원으로부터 조언을 제공하여 최상의 실무 추천으로 새로운 수익 기류와 기회를 열게 됩니다.\n"
+""
 
 #: src/components/for-developers/BuildYourBlockchain.tsx:83
 msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 msgstr ""
+"우리는 당신으로부터 직접 소식을 듣기 원합니다. 우리들에게 연락을 주시고 오늘 당신의 블록체인 게이밍 여정으로 시작하기로 합시다.\n"
+""
 
 #: src/components/sigil/Welcome.tsx:86
 #: src/components/sigil/WelcomeMobile.tsx:13
 msgid "Welcome to the Myriaverse"
 msgstr ""
+"미리아버스로 오신 것을 환영합니다\n"
+""
 
 #: src/components/JoinTheRevolution.tsx:25
 msgid "We’re hiring, join the future of gaming"
@@ -2073,34 +2726,50 @@ msgstr "Myria 노드 라이선스는 언제 판매될 것인가?"
 #: src/components/sigil/Welcome.tsx:89
 msgid "Which side of the battlelines will you stand on? <0/> Choose your Alliance and claim your free Sigil NFT."
 msgstr ""
+"당신은 다음 전투에서 누구의 편에 설 예정인가요? <0/>당신의 동맹을 선택한 다음 당신의 공짜 시길 NFT를 청구할 것.\n"
+""
 
 #: src/components/Footer.tsx:96
 msgid "Whitepaper"
 msgstr ""
+"백서\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:50
 msgid "With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts."
 msgstr ""
+"고대 및 첨단 모두의 기술로 장착된 선박으로, 연합 동맹 정찰 스페이스, 모든 전면에서 리프트의 확장을 방지할 것.\n"
+""
 
 #: src/components/for-developers/Myria.tsx:46
 msgid "Work with our experienced legal team"
 msgstr ""
+"당신의 노련한 법률 팀과의 작업\n"
+""
 
 #: src/components/sigil/ChooseAlliance/AllianceModal.tsx:56
 msgid "You are joining..."
 msgstr ""
+"당신은 합류하고 있습니다...\n"
+""
 
 #: src/components/sigil/ClaimModal.tsx:33
 msgid "You have just claimed"
 msgstr ""
+"당신은 방금 청구하였습니다\n"
+""
 
 #: src/components/inventory/OpenChest.tsx:107
 msgid "You have opened"
 msgstr ""
+"당신은 열었습니다.\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:89
 msgid "Your Myria Dashboard"
 msgstr ""
+"당신의 미리아 대시보드\n"
+""
 
 #: src/components/interop/DesktopInterop.tsx:245
 #: src/components/interop/MobileInterop.tsx:154
@@ -2110,6 +2779,8 @@ msgstr "당신의 NFT는 당신의 디지털 아이덴티티이다. 당신의 �
 #: src/pages/nodes/purchase-complete.tsx:73
 msgid "Your purchase is complete."
 msgstr ""
+"당신의 구매가 완수되었습니다.\n"
+""
 
 #: src/pages/nodes/index.tsx:214
 msgid "a decentralized ecosystem"
@@ -2132,3 +2803,5 @@ msgid ""
 "“Mirror, mirror on the wall, who's the fairest of them all?”\n"
 "If you’re still wondering whether those shiny pink rims or the NFT unicorn sticker on the hood are going to make you stand out on the track, then wonder no more. You're gonna shine like a star as your opponents remain a distant glimpse in the rear-view mirror."
 msgstr ""
+"“거울아, 거울아, 그들 중에서 누가 가장 희니?” 만약 당신이 아직도 그렇게 반짝이는 핑크 테두리나 후드에서 NFT 유니콘 스티커가 당신으로 하여금 트랙에서 눈에 띄게 한다면, 더 이상 궁금해 하지 말 것. 당신은 자신의 적들이 백미러에서 멀리 힐끗 보일 때, 별처럼 반짝일 것입니다.\n"
+""
