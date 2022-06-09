@@ -167,7 +167,7 @@ const Nodes: React.FC = () => {
   const { event } = useGA4();
   const router = useRouter();
   return (
-    <Page headerClassName="hidden" footerClassName="hidden">
+    <Page headerClassName="hidden">
       <Header />
       <div className="pt-[120px]">
         <div className={clsx(paddingX, 'relative isolate mt-10 pt-12 md:pt-[150px]')}>
