@@ -4,25 +4,27 @@ import React from "react";
 type Props = {
   icon: JSX.Element;
   className?: string;
+  iconClassName?: string;
 };
 
-const CardWithIcon: React.FC<Props> = ({ icon, children, className }) => {
+const CardWithIcon: React.FC<Props> = ({ icon, children, className, iconClassName }) => {
   return (
     <article
       style={{
-        boxShadow: "0px 0px 40px 10px rgba(0, 0, 0, 0.3)",
+        boxShadow: '0px 0px 40px 10px rgba(0, 0, 0, 0.3)'
       }}
       className={clsx(
-        "relative rounded-[20px] bg-brand-deep-blue pt-[80px] px-[32px] text-center",
+        'relative rounded-[20px] bg-brand-deep-blue px-[32px] pt-[80px] text-center',
         className
-      )}
-    >
+      )}>
       <div
         style={{
-          boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.5)",
+          boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.5)'
         }}
-        className="bg-brand-deep-blue absolute top-0 flex items-center justify-center  w-[104px] h-[104px] -translate-x-1/2 -translate-y-1/2 rounded-full left-1/2"
-      >
+        className={clsx(
+          'absolute top-0 left-1/2 flex h-[104px] w-[104px]  -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-brand-deep-blue',
+          iconClassName
+        )}>
         {icon}
       </div>
       {children}
