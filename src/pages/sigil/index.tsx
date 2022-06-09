@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
 
 import Page from 'src/components/Page';
 import Dashboard from 'src/components/sigil/Dashboard';
@@ -106,12 +105,6 @@ const Sigil: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
-        />
-      </Head>
       <div className={`relative ${currentStep === 1 ? 'min-w-[1300px]' : ''}`}>
         {isLoading && (
           <div className="absolute inset-0 z-10 flex w-full items-center justify-center bg-dark/10 text-white">
