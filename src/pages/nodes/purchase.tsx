@@ -18,7 +18,10 @@ const Purchase: React.FC = () => {
   const [modalData, setModalData] = React.useState<PurchaseInformationProps>({
     quantity: 0,
     totalPriceEth: 0,
-    totalPriceUsd: 0
+    totalPriceUsd: 0,
+    toAddress: "",
+    nonce: "",
+    transactionId: ""
   });
   const { onConnect, address } = useWalletContext();
 
@@ -39,17 +42,10 @@ const Purchase: React.FC = () => {
     }
   };
 
-  const { mutateAsync: submitTx } = useMutation((txId: string) => {
-    return Promise.resolve(txId); // MOCK
-  });
-
   const handlePurchaseComplete = useCallback(async (txId: string) => {
-    // submit tx
-    await submitTx(txId);
-
     setOpenModal(false);
     router.push('/nodes/purchase-complete');
-  }, [router, submitTx]);
+  }, [router]);
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden md:block">

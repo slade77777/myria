@@ -3,6 +3,7 @@ import { Trans } from '@lingui/macro';
 import { BigNumber, ethers, utils } from 'ethers';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 
 import Button from 'src/components/core/Button';
 import ETH from 'src/components/icons/ETHIcon';
@@ -15,7 +16,10 @@ import { formatCurrency } from 'src/lib/formatter';
 export type PurchaseInformationProps = {
   quantity: number,
   totalPriceEth: number,
-  totalPriceUsd: number
+  totalPriceUsd: number,
+  toAddress: string,
+  transactionId: string, // TODO
+  nonce: string, // TODO
 }
 
 const ModalPurchase = ({
@@ -30,14 +34,14 @@ const ModalPurchase = ({
   onPurchaseComplete?: (tx: string) => void;
 }) => {
   const { readerProviderApi, signerProviderApi,address, balance } = useWalletContext();
-  const {quantity, totalPriceEth, totalPriceUsd} = data;
-  const unitNodeEth = 1.5;
+  const {quantity, totalPriceEth, totalPriceUsd, transactionId, nonce, toAddress} = data;
+
   const isInsufficientBalance = utils
     .parseEther(totalPriceEth.toString())
     .gt(balance ?? BigNumber.from(0));
 
   const { data: txRequest } = useQuery<TransactionRequest | undefined>(
-    ['tx-transfer-request', totalPriceEth, address, open, isInsufficientBalance],
+    ['tx-transfer-request', totalPriceEth, address, open, isInsufficientBalance, toAddress],
     async () => {
       // this never happens due to line 53 but just by pass ts check
       // TODO: check if useQuery has some ts supports
@@ -48,7 +52,7 @@ const ModalPurchase = ({
         readerProviderApi,
         totalPriceEth,
         address,
-        process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string,
+        toAddress,
         Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
       );
     },
@@ -57,20 +61,48 @@ const ModalPurchase = ({
     }
   );
 
-  const { mutate, isLoading: isPurchasing } = useMutation(async () => {
+  const { mutateAsync: handleTransferETH, isLoading: isPurchasing } = useMutation(async () => {
     if (txRequest && signerProviderApi) {
       const res = await transferEth(signerProviderApi?.getSigner(), txRequest);
       const tx = await res.wait();
-      console.log(tx);
 
-      onPurchaseComplete?.(tx.transactionHash);
-      return tx;
+      return tx.transactionHash;
+    }
+    throw new Error('Missing params');
+  });
+
+  // submit purchase
+  const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(async ({ txHash, nonce, transactionId}: { txHash: string; nonce: string; transactionId: string }) => {
+    if (txHash && nonce && transactionId) {
+      await (new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('Submited', { txHash, nonce, transactionId });
+          resolve(txHash);
+        }, 2000);
+      }));
+
+      onPurchaseComplete?.(txHash);
+    } else {
+      throw new Error('Missing params');
     }
   });
 
   const onPurchase = useCallback(async () => {
-    mutate();
-  }, [mutate]);
+    try {
+      const txHash = await handleTransferETH();
+
+      if (!txHash) {
+        throw new Error("Empty transaction hash");
+      }
+
+      await submitPurchase({ txHash, nonce, transactionId });
+
+      toast.success('Purchase completed');
+    } catch (e) {
+      toast.error('Purchase uncompleted');
+    }
+  }, [handleTransferETH, submitPurchase, nonce, transactionId]);
+
 
   const button = useMemo(() => {
     let className = 'btn-primary';
@@ -90,12 +122,12 @@ const ModalPurchase = ({
       <Button
         className={`btn-lg justify-end ${className}`}
         onClick={onPurchase}
-        loading={isPurchasing}
-        disabled={isPurchasing || isInsufficientBalance}>
+        loading={isPurchasing || isSubmiting}
+        disabled={isPurchasing || isSubmiting || isInsufficientBalance}>
         {label}
       </Button>
     );
-  }, [isInsufficientBalance, isPurchasing, onPurchase]);
+  }, [isInsufficientBalance, isPurchasing, isSubmiting, onPurchase]);
 
   return (
     <Modal open={open} onOpenChange={onClose}>
