@@ -13,10 +13,10 @@ const Dashboard: React.FC = () => {
   return (
     <div
       className={clsx(
-        "fixed w-full h-full flex min-h-screen flex-col bg-[url('/images/nodes/sigil/dashboard-bg_op.jpg')] bg-cover bg-top bg-no-repeat pb-9 pl-[43px]"
+        "fixed w-full h-full flex min-h-screen flex-col bg-[url('/images/nodes/sigil/dashboard-bg_op.jpg')] bg-cover bg-top bg-no-repeat pb-9 pl-[35px]"
       )}>
       <div className="grid w-full overflow-auto mt-[112px] flex-grow grid-cols-[266px_1fr] gap-10">
-        <div className="">
+        <div className="pl-2">
           <Profile />
         </div>
         <div className='overflow-auto'>
