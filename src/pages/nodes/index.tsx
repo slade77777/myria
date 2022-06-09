@@ -35,7 +35,7 @@ const rewards = [
   {
     icon: (
       <div className="w-[64px]">
-        <ChartIcon />
+        <UserIcon />
       </div>
     ),
     title: <Trans>Voting rights</Trans>,
@@ -49,7 +49,7 @@ const rewards = [
   {
     icon: (
       <div className="w-[64px]">
-        <StarIcon />
+        <UserIcon />
       </div>
     ),
     title: <Trans>Exclusive NFTs</Trans>,
@@ -74,13 +74,15 @@ const questions = [
           variety of network-supporting activities including initial test networks, block production
           and validation.
         </p>
-        <p>
-          In addition to their role as potential validators, node owners will also be asked to - and
-          rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more
-          advanced. These include the need for decentralized storage of certain critical information
-          in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific
-          concepts.
-        </p>
+      </Trans>
+    )
+  },
+  {
+    title: <Trans>How can I become a Myria node operator?</Trans>,
+    content: (
+      <Trans>
+        Buying a node license will give the owner the right to run the node (either locally or in
+        the cloud) and receive rewards as determined by governance.
       </Trans>
     )
   },
@@ -103,16 +105,6 @@ const questions = [
       </Trans>
     )
   },
-  {
-    title: <Trans>How can I become a Myria node operator?</Trans>,
-    content: (
-      <Trans>
-        Buying a node license will give the owner the right to run the node (either locally or in
-        the cloud) and receive rewards as determined by governance.
-      </Trans>
-    )
-  },
-
   {
     title: <Trans>What are the software and hardware requirements to run a node?</Trans>,
     content: (
@@ -192,7 +184,7 @@ const Nodes: React.FC = () => {
                   <span className="text-brand-light-blue">$MYRIA and NFT rewards</span>
                 </Trans>
               </h1>
-              <p className=" body-18-medium mx-auto mt-4 max-w-[677px] md:body-24-regular md:mt-6">
+              <p className=" body-18-medium mx-auto mt-4 max-w-[677px] md:body-24-regular md:mt-6 text-base/10">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
               <button
@@ -216,7 +208,7 @@ const Nodes: React.FC = () => {
                 <h2 className="h6 mt-4 md:body-36-medium">
                   <Trans>Powered by the community of player-run nodes</Trans>
                 </h2>
-                <p className="body-14-regular mt-2 text-light md:body-18-regular md:mt-4">
+                <p className="body-14-regular mt-2 text-base/10 md:body-18-regular md:mt-4">
                   <Trans>
                     The Myria chain is supported by a network of player-run nodes. Use your home
                     computer to become a node operator and receive rewards and benefits for your
@@ -231,12 +223,12 @@ const Nodes: React.FC = () => {
               </h2>
               <div className="mt-[92px] grid gap-[32px] gap-y-[76px] md:grid-cols-2 lg:grid-cols-3">
                 {rewards.map((item, idx) => (
-                  <CardWithIcon icon={item.icon} key={idx}>
+                  <CardWithIcon icon={item.icon} key={idx} className="bg-base/4" iconClassName='bg-base/4'>
                     <div className="pb-[48px]">
-                      <h3 className="heading-sm md:heading-md">{item.title}</h3>
-                      <p className="body-sm mt-6">{item.description}</p>
+                      <h3 className="heading-sm font-bold mt-4">{item.title}</h3>
+                      <p className="body-xs mt-8 text-base/9 px-2">{item.description}</p>
                       {item.learnMore && (
-                        <button className="btn-lg btn-primary mt-[22px] inline-block">
+                        <button className="btn-lg btn-primary mt-[36px] inline-block">
                           <Trans>Releasing soon</Trans>
                         </button>
                       )}
@@ -247,14 +239,14 @@ const Nodes: React.FC = () => {
             </section>
           </div>
         </div>
-        <section className={clsx(paddingX, 'mx-auto mt-[152px] w-full max-w-[832px]')}>
+        <section className={clsx('mx-auto mt-[152px] w-full max-w-[832px]')}>
           <h3 className="heading-sm text-center md:heading-md">
             <Trans>Validating on Myria</Trans>
           </h3>
           <div className="mt-[48px]">
             {questions.map((item, idx) => (
               <React.Fragment key={idx}>
-                <div className="mt-6">
+                <div className="mt-5">
                   <Collapse asChild>
                     {({ open }) => (
                       <div>
@@ -271,14 +263,14 @@ const Nodes: React.FC = () => {
                         </Collapse.Trigger>
                         <Collapse.Content>
                           <div className="pb-2">
-                            <p className="body mt-6 text-light">{item.content}</p>
+                            <p className="body-16-regular mt-2 text-base/10">{item.content}</p>
                           </div>
                         </Collapse.Content>
                       </div>
                     )}
                   </Collapse>
                 </div>
-                <div className="mt-6 h-[1px] w-full bg-white opacity-20" />
+                <div className="mt-5 h-[1px] w-full bg-white opacity-20" />
               </React.Fragment>
             ))}
           </div>
@@ -286,7 +278,7 @@ const Nodes: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            "mt-[112px] mb-[124px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe_op.png')] bg-center bg-no-repeat md:bg-right"
+            "mt-[112px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe_op.png')] bg-center bg-no-repeat md:bg-right"
           )}>
           <div className="mx-auto max-w-content ">
             <div className="md:w-1/2">
@@ -304,11 +296,6 @@ const Nodes: React.FC = () => {
                 <Trans>BUY A NODE</Trans>
               </a>
             </div>
-          </div>
-        </section>
-        <section className={clsx(paddingX, 'pb-[124px]')} id="subcribe">
-          <div className="mx-auto max-w-content">
-            <Subscribe />
           </div>
         </section>
       </div>
