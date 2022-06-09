@@ -74,13 +74,15 @@ const questions = [
           variety of network-supporting activities including initial test networks, block production
           and validation.
         </p>
-        <p>
-          In addition to their role as potential validators, node owners will also be asked to - and
-          rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more
-          advanced. These include the need for decentralized storage of certain critical information
-          in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific
-          concepts.
-        </p>
+      </Trans>
+    )
+  },
+  {
+    title: <Trans>How can I become a Myria node operator?</Trans>,
+    content: (
+      <Trans>
+        Buying a node license will give the owner the right to run the node (either locally or in
+        the cloud) and receive rewards as determined by governance.
       </Trans>
     )
   },
@@ -103,16 +105,6 @@ const questions = [
       </Trans>
     )
   },
-  {
-    title: <Trans>How can I become a Myria node operator?</Trans>,
-    content: (
-      <Trans>
-        Buying a node license will give the owner the right to run the node (either locally or in
-        the cloud) and receive rewards as determined by governance.
-      </Trans>
-    )
-  },
-
   {
     title: <Trans>What are the software and hardware requirements to run a node?</Trans>,
     content: (
@@ -247,14 +239,14 @@ const Nodes: React.FC = () => {
             </section>
           </div>
         </div>
-        <section className={clsx(paddingX, 'mx-auto mt-[152px] w-full max-w-[832px]')}>
+        <section className={clsx('mx-auto mt-[152px] w-full max-w-[832px]')}>
           <h3 className="heading-sm text-center md:heading-md">
             <Trans>Validating on Myria</Trans>
           </h3>
           <div className="mt-[48px]">
             {questions.map((item, idx) => (
               <React.Fragment key={idx}>
-                <div className="mt-6">
+                <div className="mt-5">
                   <Collapse asChild>
                     {({ open }) => (
                       <div>
@@ -271,14 +263,14 @@ const Nodes: React.FC = () => {
                         </Collapse.Trigger>
                         <Collapse.Content>
                           <div className="pb-2">
-                            <p className="body mt-6 text-light">{item.content}</p>
+                            <p className="body-16-regular mt-2 text-base/10">{item.content}</p>
                           </div>
                         </Collapse.Content>
                       </div>
                     )}
                   </Collapse>
                 </div>
-                <div className="mt-6 h-[1px] w-full bg-white opacity-20" />
+                <div className="mt-5 h-[1px] w-full bg-white opacity-20" />
               </React.Fragment>
             ))}
           </div>
