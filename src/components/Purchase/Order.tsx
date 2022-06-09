@@ -64,7 +64,7 @@ const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
     setValue('remainNumberOfNodes', data?.remainNumberOfNodes, {shouldValidate: true});
   }, [data?.remainNumberOfNodes, setValue]);
 
-  const price = data?.price || 1.5;
+  const price = data?.price || 0.01;
   const quantity = useWatch({control, name: 'quantity'}) || 0;
 
   useEffect(() => {
@@ -83,7 +83,10 @@ const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
       onPlaceOrder({
         quantity,
         totalPriceEth: price * quantity,
-        totalPriceUsd: price * quantity * etheCost
+        totalPriceUsd: price * quantity * etheCost,
+        toAddress: "0x67698ba649B0D4D04667d9a917A759e9406f6C77", // MOCK
+        nonce: "MOCK_NONCE", // MOCK
+        transactionId: "MOCK_transactionId", // MOCK
       });
     },
     [onPlaceOrder, price, etheCost]
