@@ -13,8 +13,11 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {Controller, useForm, useWatch} from 'react-hook-form';
 import usePurchaseInfo from '../../hooks/usePurchaseInfo';
 import axios from 'axios';
-import { PurchaseInformationProps } from './Modals';
-import { formatCurrency } from 'src/lib/formatter';
+import {PurchaseInformationProps} from './Modals';
+import {formatCurrency} from 'src/lib/formatter';
+import {useMutation} from 'react-query';
+import Button from 'src/components/core/Button';
+import { toast } from 'react-toastify';
 
 const licenses = [
   {
@@ -34,12 +37,7 @@ interface IOrderProps {
 }
 
 const schema = yup.object({
-  quantity: yup.number().when(['remainNumberOfNodes'], (remainNumberOfNodes) => {
-    if (remainNumberOfNodes) {
-      return yup.number().positive().min(1).max(remainNumberOfNodes).required();
-    }
-    return yup.number().positive().min(1).required();
-  }),
+  quantity: yup.number().positive().min(1).required(),
   term: yup.boolean().required().oneOf([true]),
   privacy: yup.boolean().required().oneOf([true])
 });
@@ -58,7 +56,7 @@ const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
     setValue,
     watch,
     formState: {errors, isValid}
-  } = useForm({resolver: yupResolver(schema), mode: 'onChange' });
+  } = useForm({resolver: yupResolver(schema), mode: 'onChange'});
 
   useEffect(() => {
     setValue('remainNumberOfNodes', data?.remainNumberOfNodes, {shouldValidate: true});
@@ -76,18 +74,42 @@ const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
     });
   }, [])
 
+  const {
+    mutateAsync: submitPurchase,
+    isLoading: isSubmiting
+  } = useMutation(async ({numberOfNode}: { numberOfNode: number }) => {
+    await (new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (numberOfNode < 10) {
+          console.log('Submited', {numberOfNode});
+          resolve(numberOfNode);
+        } else {
+          reject('maximum quantity is 10')
+        }
+      }, 2000);
+    }));
+    return {
+      transactionId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      totalPrice: price * quantity,
+      toAddress: "0x67698ba649B0D4D04667d9a917A759e9406f6C77"
+    }
+  });
 
   const doPurchase = useCallback(
     (data: any) => {
       const {quantity} = data;
-      onPlaceOrder({
-        quantity,
-        totalPriceEth: price * quantity,
-        totalPriceUsd: price * quantity * etheCost,
-        toAddress: "0x67698ba649B0D4D04667d9a917A759e9406f6C77", // MOCK
-        nonce: "MOCK_NONCE", // MOCK
-        transactionId: "MOCK_transactionId", // MOCK
-      });
+      submitPurchase(quantity).then(response => {
+        onPlaceOrder({
+          quantity,
+          totalPriceEth: response.totalPrice,
+          totalPriceUsd: price * quantity * etheCost,
+          toAddress: response.toAddress,
+          nonce: response.transactionId,
+          transactionId: response.transactionId,
+        });
+      }).catch((e) => {
+        toast.error(e)
+      })
     },
     [onPlaceOrder, price, etheCost]
   );
@@ -119,7 +141,8 @@ const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
               <div className="flex items-center">
                 <ETH/> <p className="heading-md ml-[9px] ">{price * quantity}</p>
               </div>
-              <p className="caption ml-2 font-normal text-light md:body-sm md:ml-0">~${formatCurrency(price * quantity * etheCost, 2)}</p>
+              <p
+                className="caption ml-2 font-normal text-light md:body-sm md:ml-0">~${formatCurrency(price * quantity * etheCost, 2)}</p>
             </div>
 
             <div className="ml-[100px] md:ml-0 md:mt-6">
@@ -180,15 +203,16 @@ const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
           </div>
 
           <div className="mt-2 md:mt-12">
-            <button
+            <Button
               className={clsx(
                 'btn-lg w-full px-4 uppercase text-black',
                 isValid ? 'bg-brand-gold' : 'bg-gray/4'
               )}
               onClick={handleSubmit(doPurchase)}
+              loading={isSubmiting}
               disabled={!isValid}>
               <Trans>PLACE ORDER</Trans>
-            </button>
+            </Button>
             <p className="mt-2 text-center">Please tick all boxes to continue</p>
           </div>
         </div>
