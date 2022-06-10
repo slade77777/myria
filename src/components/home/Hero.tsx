@@ -16,6 +16,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
+import LogoSm from '../icons/LogoSm';
+import JoinIcon from '../icons/JoinIcon';
+import ADBE from '../icons/ABDE';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,7 +91,34 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-
+        <div>
+          <div className="flex h-[615px] flex-col justify-end rounded-xl bg-[url('/images/home/banner-3-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:justify-start md:bg-[url('/images/home/banner-3_op.png')] md:pt-[137px] md:pl-[107px]">
+            <div className="text-center md:max-w-[539px] md:text-left">
+              <div className="flex items-center space-x-4 md:space-x-[57px]">
+                <i className="w-[108px]">
+                  <LogoSm />
+                </i>
+                <i className="w-[52px] text-light">
+                  <JoinIcon />
+                </i>
+                <i className="w-[174px]">
+                  <ADBE />
+                </i>
+              </div>
+              <p className="mt-10 text-[18px] leading-[1.5] md:text-[22px] ">
+                <Trans>
+                  Cricket legend AB de Villiers has joined forces with Myria to deliver the next
+                  generation of blockchain gaming to cricket fans around the world
+                </Trans>
+              </p>
+              <Link href="/cricket">
+                <a className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[45px]">
+                  <Trans>LEARN MORE</Trans>
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
         <div>
           <div className="flex h-[615px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:justify-start md:rounded-xl md:bg-[url('/images/home/banner-1_op.jpeg')] md:pt-[137px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
