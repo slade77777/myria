@@ -4,7 +4,7 @@ import Textarea from './Textarea';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import apiClient from 'src/client';
+import { additionalApiClient } from 'src/client';
 import CircleCheck from './icons/CircleCheck';
 import { t, Trans } from '@lingui/macro';
 
@@ -53,7 +53,7 @@ const GetInTouch: React.FC = () => {
       setError('');
       setIsSubmitSuccess(false);
 
-      await apiClient
+      await additionalApiClient
         .post('/contact-us', data)
         .then(() => setIsSubmitSuccess(true))
         .catch((error) => {
