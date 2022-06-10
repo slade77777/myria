@@ -26,7 +26,12 @@ const licenses = [
     key: 'privacy',
     content: <span>I have read, understood and agree to the </span>,
     action: 'privacy policy'
-  }
+  },
+  {
+    key: 'disclamer',
+    content: <span>I have read, understand and agree that Myria Founder’s nodes are </span>,
+    action: 'not investments'
+  },
 ];
 
 interface IOrderProps {
@@ -41,7 +46,8 @@ const schema = yup.object({
     return yup.number().positive().min(1).required();
   }),
   term: yup.boolean().required().oneOf([true]),
-  privacy: yup.boolean().required().oneOf([true])
+  privacy: yup.boolean().required().oneOf([true]),
+  disclamer: yup.boolean().required().oneOf([true]),
 });
 
 const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
@@ -183,7 +189,7 @@ const Order: React.FC<IOrderProps> = ({onPlaceOrder}) => {
             <button
               className={clsx(
                 'btn-lg w-full px-4 uppercase text-black',
-                isValid ? 'bg-brand-gold' : 'bg-gray/4'
+                isValid ? 'bg-brand-gold' : 'bg-gray-400'
               )}
               onClick={handleSubmit(doPurchase)}
               disabled={!isValid}>
