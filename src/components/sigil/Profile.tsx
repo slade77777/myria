@@ -13,13 +13,12 @@ const Profile: React.FC = () => {
   const allianceInfo = data?.alliance && getAllianceInfo(data.alliance);
 
   React.useEffect(() => {
-    if (data?.alliance) {
-      // TODO mock event
+    if (data?.alliance && data.wallet_id) {
       event('Sigil Login Completed', {
         campaign: 'Sigil',
-        myria_id: undefined,
-        myria_username: '_mock',
-        wallet_address: '_mock',
+        myria_id: data.user_id,
+        myria_username: data.user_name || '',
+        wallet_address: data.wallet_id,
         alliance_name: data.alliance,
         sigil_alias: data.user_name || '',
         credits: data.credits?.toString() || '',

@@ -42,21 +42,19 @@ const MissionV2: React.FC = () => {
   const { event } = useGA4();
 
   const TrackingMap: { [key in Mission['mission_id']]?: () => void } = {
-    // TODO mock event
     MYRIA_ACCOUNT: () =>
       event('Sigil Discord Button Clicked', {
         campaign: 'Sigil',
-        wallet_address: '_mock',
-        myria_username: '_mock',
-        user_email: '_mock'
+        wallet_address: user?.wallet_id || '',
+        myria_username: user?.user_name || '',
+        user_email: user?.email || ''
       }),
-    // TODO mock event
     JOIN_DISCORD: () =>
       event('Sigil Discord Button Clicked', {
         campaign: 'Sigil',
-        wallet_address: '_mock',
-        myria_username: '_mock',
-        user_email: '_mock'
+        wallet_address: user?.wallet_id || '',
+        myria_username: user?.user_name || '',
+        user_email: user?.email || ''
       })
   };
 
