@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/home/Hero.tsx:99
+#: src/components/home/Hero.tsx:129
 msgid "$MYRIA Token"
 msgstr "$MYRIA Token"
 
@@ -137,7 +137,7 @@ msgstr "A battle-royale shooter game"
 msgid "A competitive play-and-earn tycoon farming simulator."
 msgstr "A competitive play-and-earn tycoon farming simulator."
 
-#: src/components/home/Hero.tsx:221
+#: src/components/home/Hero.tsx:251
 msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 msgstr "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 
@@ -231,7 +231,7 @@ msgstr "All"
 #~ msgid "All positions"
 #~ msgstr "All positions"
 
-#: src/components/home/Hero.tsx:76
+#: src/components/home/Hero.tsx:79
 msgid "Alliance Sigil NFT Launch"
 msgstr "Alliance Sigil NFT Launch"
 
@@ -328,7 +328,7 @@ msgstr "Become a Myria node owner & receive rewards"
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 
-#: src/components/home/Hero.tsx:79
+#: src/components/home/Hero.tsx:82
 msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
 msgstr "Begin your adventure, choose your alliance and claim your free NFT rewards"
 
@@ -348,7 +348,7 @@ msgstr "Blockchain platform for game studios"
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 
-#: src/components/home/Hero.tsx:211
+#: src/components/home/Hero.tsx:241
 msgid "Bringing <0>blockchain gaming </0>to the world"
 msgstr "Bringing <0>blockchain gaming </0>to the world"
 
@@ -356,7 +356,7 @@ msgstr "Bringing <0>blockchain gaming </0>to the world"
 msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 msgstr "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:80
+#: src/components/for-developers/BuildYourBlockchain.tsx:82
 msgid "Build your blockchain game with Myria"
 msgstr "Build your blockchain game with Myria"
 
@@ -376,8 +376,7 @@ msgstr "Building towards a decentralized and permissionless network"
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 
-#: src/components/home/Hero.tsx:85
-#: src/components/inventory/InventoryItem.tsx:35
+#: src/components/home/Hero.tsx:88
 #: src/components/sigil/RewardItem.tsx:72
 msgid "CLAIM NOW"
 msgstr "CLAIM NOW"
@@ -399,8 +398,8 @@ msgid "COLLECT NOW"
 msgstr "COLLECT NOW"
 
 #: src/components/games/GameList.tsx:157
-#: src/components/home/Hero.tsx:96
-#: src/components/home/Hero.tsx:102
+#: src/components/home/Hero.tsx:126
+#: src/components/home/Hero.tsx:132
 #: src/components/home/OurGames.tsx:26
 msgid "COMING SOON"
 msgstr "COMING SOON"
@@ -532,7 +531,7 @@ msgstr "Community"
 msgid "Compete, survive, win and earn!"
 msgstr "Compete, survive, win and earn!"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:184
+#: src/components/sigil/Dashboard/MissionV2.tsx:192
 msgid "Complete"
 msgstr "Complete"
 
@@ -627,6 +626,11 @@ msgstr "Creating the new standard for blockchain games and experiences"
 #: src/components/nodes/sigil/RewardItem.tsx:112
 #~ msgid "Credits"
 #~ msgstr "Credits"
+
+#: src/components/home/Hero.tsx:109
+#: src/pages/cricket.tsx:86
+msgid "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
+msgstr "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
 
 #: src/components/nodes/dashboard/TimeOnline.tsx:9
 msgid "Current Node Cycle"
@@ -756,6 +760,10 @@ msgstr "Earn {point} points by completing account creation"
 msgid "Earn {point} points by following @myriagames on Twitter"
 msgstr "Earn {point} points by following @myriagames on Twitter"
 
+#: src/components/sigil/Dashboard/MissionV2.tsx:153
+msgid "Earn {point} points by following myriagames on Instagram"
+msgstr "Earn {point} points by following myriagames on Instagram"
+
 #: src/components/sigil/Dashboard/MissionV2.tsx:86
 msgid "Earn {point} points by joining the Myria Discord server"
 msgstr "Earn {point} points by joining the Myria Discord server"
@@ -806,12 +814,17 @@ msgstr "Eliminate your opponents in this fast-paced-action-packed-survival game,
 msgid "Email"
 msgstr "Email"
 
+#: src/pages/cricket.tsx:97
+msgid "Email address"
+msgstr "Email address"
+
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
 #: src/components/GetInTouch.tsx:27
 #: src/components/Register/Register.tsx:54
 #: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:21
-#: src/components/for-developers/BuildYourBlockchain.tsx:35
+#: src/components/for-developers/BuildYourBlockchain.tsx:37
+#: src/pages/cricket.tsx:27
 msgid "Email is required!"
 msgstr "Email is required!"
 
@@ -928,6 +941,10 @@ msgstr "First name"
 #: src/components/Register/Register.tsx:48
 msgid "First name is required!"
 msgstr "First name is required!"
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:148
+msgid "Follow on Instagram"
+msgstr "Follow on Instagram"
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:140
 msgid "Follow on Twitter"
@@ -1210,7 +1227,8 @@ msgstr "Interoperability FTW! Yes, we’ve got you covered - you can bring those
 #: src/components/Register/Register.tsx:53
 #: src/components/SignIn/SignIn.tsx:21
 #: src/components/Subscribe.tsx:20
-#: src/components/for-developers/BuildYourBlockchain.tsx:34
+#: src/components/for-developers/BuildYourBlockchain.tsx:36
+#: src/pages/cricket.tsx:26
 msgid "Invalid email!"
 msgstr "Invalid email!"
 
@@ -1250,7 +1268,7 @@ msgstr "Ivan has 10+ years of experience in the game industry. He has been a lea
 #: src/components/Header/MobileHeader.tsx:55
 #: src/components/Header/MobileHeader.tsx:98
 #: src/components/NotiBanner.tsx:49
-#: src/components/home/Hero.tsx:242
+#: src/components/home/Hero.tsx:272
 #: src/pages/game-detail/[id].tsx:138
 msgid "JOIN DISCORD"
 msgstr "JOIN DISCORD"
@@ -1320,10 +1338,15 @@ msgstr "Just make sure you’re still alive till the end of the round or you’l
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 msgstr "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 
+#: src/components/home/Hero.tsx:116
 #: src/pages/nodes/purchase-complete.tsx:110
 #: src/pages/studios.tsx:228
 msgid "LEARN MORE"
 msgstr "LEARN MORE"
+
+#: src/pages/cricket.tsx:115
+msgid "LET’S GO"
+msgstr "LET’S GO"
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:33
 msgid "LINK WALLET"
@@ -1375,7 +1398,7 @@ msgstr "Launch with full support from our tokenomics experts"
 msgid "Layer 2 scalability solution"
 msgstr "Layer 2 scalability solution"
 
-#: src/components/home/Hero.tsx:230
+#: src/components/home/Hero.tsx:260
 msgid "Learn more"
 msgstr "Learn more"
 
@@ -1395,7 +1418,7 @@ msgstr "Leverage prebuilt Myria platform and tools - we take care of the support
 msgid "Limited supply available"
 msgstr "Limited supply available"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:182
+#: src/components/sigil/Dashboard/MissionV2.tsx:190
 msgid "Locked"
 msgstr "Locked"
 
@@ -1478,7 +1501,7 @@ msgid "Message"
 msgstr "Message"
 
 #: src/components/GetInTouch.tsx:35
-#: src/components/for-developers/BuildYourBlockchain.tsx:39
+#: src/components/for-developers/BuildYourBlockchain.tsx:41
 msgid "Message is required!"
 msgstr "Message is required!"
 
@@ -1641,11 +1664,11 @@ msgstr "Myria helps blockchain projects scale. Whether you’re an established c
 #~ msgstr "Myria helps studios join the blockchain revolution"
 
 #: src/pages/_app.tsx:34
+#: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
 msgstr "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
 
 #: src/components/ComingSoon.tsx:48
-#: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 
@@ -1807,6 +1830,10 @@ msgstr "Nodes are an integral part of the Myria universe, with dedicated lore, g
 msgid "Not the face!"
 msgstr "Not the face!"
 
+#: src/components/inventory/InventoryItem.tsx:35
+msgid "OPEN"
+msgstr "OPEN"
+
 #: src/components/inventory/InventoryItem.tsx:84
 #~ msgid "OPEN NOW"
 #~ msgstr "OPEN NOW"
@@ -1967,7 +1994,7 @@ msgstr "Platform"
 #~ msgid "Play & earn"
 #~ msgstr "Play & earn"
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:29
+#: src/components/for-developers/BuildYourBlockchain.tsx:31
 msgid "Please enter correct url!"
 msgstr "Please enter correct url!"
 
@@ -2084,6 +2111,10 @@ msgstr "Refer your friends"
 #: src/components/Register/Register.tsx:250
 msgid "Register"
 msgstr "Register"
+
+#: src/pages/cricket.tsx:82
+msgid "Register to win exclusive AB de Villiers NFTs"
+msgstr "Register to win exclusive AB de Villiers NFTs"
 
 #: src/pages/nodes/index.tsx:231
 msgid "Releasing soon"
@@ -2261,12 +2292,12 @@ msgid "Subject is required!"
 msgstr "Subject is required!"
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:144
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
 msgid "Submit"
 msgstr "Submit"
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:144
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
 msgid "Submitting..."
 msgstr "Submitting..."
 
@@ -2295,11 +2326,12 @@ msgid "Terms | Privacy"
 msgstr "Terms | Privacy"
 
 #: src/components/GetInTouch.tsx:107
-#: src/components/for-developers/BuildYourBlockchain.tsx:136
+#: src/components/for-developers/BuildYourBlockchain.tsx:138
 msgid "Thank you for message. We will be in touch within 24-48 hours!"
 msgstr "Thank you for message. We will be in touch within 24-48 hours!"
 
 #: src/components/Subscribe.tsx:85
+#: src/pages/cricket.tsx:108
 msgid "Thank you for subscribing!"
 msgstr "Thank you for subscribing!"
 
@@ -2540,7 +2572,7 @@ msgstr "We provide easy-to-use solutions to help projects kickstart their blockc
 msgid "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
 msgstr "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:83
+#: src/components/for-developers/BuildYourBlockchain.tsx:85
 msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 msgstr "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 
