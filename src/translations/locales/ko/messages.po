@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-06-14 13:31+0700\n"
+"POT-Creation-Date: 2022-06-14 19:43+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ko\n"
 
-#: src/components/home/Hero.tsx:129
+#: src/components/home/Hero.tsx:136
 msgid "$MYRIA Token"
 msgstr ""
 "$미리아 토큰\n"
@@ -65,7 +65,7 @@ msgstr "<0>상호 정보 교환 가능</0> & 상호 연결된 NFTs"
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>노드 운영자는 매일 노드 작업에 대한 보상으로 $MYRIA 토큰을 받게 될 것이다. </0><1>노드 소유자들은 또한 노드 운영자 및 일반 커뮤니티 회원으로 자신의 명성 점수에 기반한 NFT 드롭 및 토큰으로 보상받게 될 것이다. </1><2>명성 점수는 노드 소유자의 플레이 활동, 그들이 소유하고 걸게 되는 토큰 수, 이전 가동시간 측정 수 및 네트워크 지원 이력(예를 들면 인증 혹은 신탁 제공자)에 의해 결정될 것이다.</2>"
 
-#: src/pages/inventory.tsx:104
+#: src/pages/inventory.tsx:100
 msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
 msgstr ""
 
@@ -93,11 +93,11 @@ msgstr ""
 "<0> 시길스는 미그마 미션이 모션에 설정될 때까지 비활성입니다.</0>\n"
 ""
 
-#: src/pages/inventory.tsx:93
+#: src/pages/inventory.tsx:89
 msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
 msgstr ""
 
-#: src/pages/inventory.tsx:98
+#: src/pages/inventory.tsx:94
 msgid "<0>T-minus 47 gigaquarks</0>"
 msgstr ""
 "<0>T-마이너스 47 기가퀄크 </0>\n"
@@ -127,7 +127,7 @@ msgstr ""
 "경쟁력이 있는 플레이-및-벌기 타이쿤 농장 시뮬레이터.\n"
 ""
 
-#: src/components/home/Hero.tsx:251
+#: src/components/home/Hero.tsx:258
 msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 msgstr ""
 "분권화된 이더리움 스케일링 플랫폼, 디지털 자산 및 게이밍으로 세워진 목적.\n"
@@ -212,7 +212,7 @@ msgstr ""
 "전체\n"
 ""
 
-#: src/components/home/Hero.tsx:79
+#: src/components/home/Hero.tsx:82
 msgid "Alliance Sigil NFT Launch"
 msgstr ""
 
@@ -285,7 +285,7 @@ msgstr ""
 "미리아 홈으로 돌아가기\n"
 ""
 
-#: src/pages/inventory.tsx:120
+#: src/pages/inventory.tsx:116
 msgid "BACK TO SIGIL DASHBOARD"
 msgstr ""
 "시길 대시보드로 돌아가기\n"
@@ -319,7 +319,7 @@ msgstr ""
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Myria 생태계의 일체가 되고 당신의 기여 이익을 수확함. 초기 창설자 노드 운영자들은 우선 가격 책정을 받는데, 이는 노드가 판매됨으로 인해 증가됨."
 
-#: src/components/home/Hero.tsx:82
+#: src/components/home/Hero.tsx:85
 msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
 msgstr ""
 
@@ -341,7 +341,7 @@ msgstr "게임 스튜디오의 블록 체인 플랫폼"
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "브랜든(Brendan)은 블록 체인에서 10년간의 경험을 가지고 있다. 그는 비트코인 블록 체인, 이더리움 암호화폐 ETF 에스크로 솔루션을 창설하였고 세계 최대 거래 금융 블록 체인 네트워크의 블록 체인 리드였다."
 
-#: src/components/home/Hero.tsx:241
+#: src/components/home/Hero.tsx:248
 msgid "Bringing <0>blockchain gaming </0>to the world"
 msgstr ""
 "가져오기 <0>블록 체인 게임하기 </0>세상에\n"
@@ -373,8 +373,8 @@ msgstr ""
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "노드 라이선스 구매는 소유자에게 노드를 가동할 권리(장소상으로나 클라우드에서)를 주고 관리 방식으로 결정됨에 따라 보상을 받게 될 것이다."
 
-#: src/components/home/Hero.tsx:88
-#: src/components/sigil/RewardItem.tsx:72
+#: src/components/home/Hero.tsx:93
+#: src/components/sigil/RewardItem.tsx:73
 msgid "CLAIM NOW"
 msgstr ""
 "지금 요청하기\n"
@@ -403,8 +403,8 @@ msgstr ""
 ""
 
 #: src/components/games/GameList.tsx:157
-#: src/components/home/Hero.tsx:126
-#: src/components/home/Hero.tsx:132
+#: src/components/home/Hero.tsx:133
+#: src/components/home/Hero.tsx:139
 #: src/components/home/OurGames.tsx:26
 msgid "COMING SOON"
 msgstr ""
@@ -418,13 +418,13 @@ msgstr ""
 "지갑 연결하기\n"
 ""
 
-#: src/components/sigil/ReferFriendModal.tsx:67
+#: src/components/sigil/ReferFriendModal.tsx:68
 msgid "COPIED"
 msgstr ""
 "복사됨\n"
 ""
 
-#: src/components/sigil/ReferFriendModal.tsx:67
+#: src/components/sigil/ReferFriendModal.tsx:68
 msgid "COPY LINK"
 msgstr ""
 "링크 복사\n"
@@ -507,7 +507,7 @@ msgstr ""
 "당신의 NFT 보상 청구하기\n"
 ""
 
-#: src/components/sigil/RewardItem.tsx:80
+#: src/components/sigil/RewardItem.tsx:81
 msgid "Claimed"
 msgstr ""
 "청구됨\n"
@@ -571,7 +571,7 @@ msgstr ""
 "경쟁하고, 살아남고, 이기고 벌어라!\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:192
+#: src/components/sigil/Dashboard/MissionV2.tsx:190
 msgid "Complete"
 msgstr ""
 "완수하라\n"
@@ -653,7 +653,7 @@ msgstr ""
 "분권화된 인터넷 장래에 대한 기여\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:90
+#: src/components/sigil/Dashboard/MissionV2.tsx:88
 msgid "Copy invite link"
 msgstr ""
 
@@ -674,8 +674,8 @@ msgstr ""
 "블록 체인 게임 및 경험을 위한 새로운 기준 만들기\n"
 ""
 
-#: src/components/home/Hero.tsx:109
-#: src/pages/cricket.tsx:86
+#: src/components/home/Hero.tsx:114
+#: src/pages/cricket.tsx:96
 msgid "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
 msgstr ""
 
@@ -707,7 +707,7 @@ msgstr ""
 "대시보드\n"
 ""
 
-#: src/components/sigil/Profile.tsx:72
+#: src/components/sigil/Profile.tsx:71
 msgid "Date Registered"
 msgstr ""
 "등록 날짜\n"
@@ -773,47 +773,47 @@ msgstr ""
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "각 노드는 Myria 체인에 제시된 변화에 대해 투표하는 것이 허용되고 노드는 또한 Myriaverse를 통하여 더 큰 투표 권한을 유지할 것이다."
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:115
+#: src/components/sigil/Dashboard/MissionV2.tsx:113
 msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:79
+#: src/components/sigil/Dashboard/MissionV2.tsx:77
 msgid "Earn {point} points by completing account creation"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:145
+#: src/components/sigil/Dashboard/MissionV2.tsx:143
 msgid "Earn {point} points by following @myriagames on Twitter"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:153
+#: src/components/sigil/Dashboard/MissionV2.tsx:151
 msgid "Earn {point} points by following myriagames on Instagram"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:86
+#: src/components/sigil/Dashboard/MissionV2.tsx:84
 msgid "Earn {point} points by joining the Myria Discord server"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:127
+#: src/components/sigil/Dashboard/MissionV2.tsx:125
 msgid "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:137
+#: src/components/sigil/Dashboard/MissionV2.tsx:135
 msgid "Earn {point} points by sharing a tweet about Myria"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:103
+#: src/components/sigil/Dashboard/MissionV2.tsx:101
 msgid "Earn {point} points for each day you send a message to any Myria Discord channel"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:96
+#: src/components/sigil/Dashboard/MissionV2.tsx:94
 msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:121
+#: src/components/sigil/Dashboard/MissionV2.tsx:119
 msgid "Earn {point} points when you add a thumbs up reaction to a message on the #myria-lore channel"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:109
+#: src/components/sigil/Dashboard/MissionV2.tsx:107
 msgid "Earn {point} points when you send your first message on any Myria Discord channel"
 msgstr ""
 
@@ -845,7 +845,7 @@ msgstr ""
 "이메일\n"
 ""
 
-#: src/pages/cricket.tsx:97
+#: src/pages/cricket.tsx:107
 msgid "Email address"
 msgstr ""
 
@@ -855,7 +855,7 @@ msgstr ""
 #: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:21
 #: src/components/for-developers/BuildYourBlockchain.tsx:37
-#: src/pages/cricket.tsx:27
+#: src/pages/cricket.tsx:28
 msgid "Email is required!"
 msgstr "이-메일이 요구됨!"
 
@@ -1001,11 +1001,11 @@ msgstr ""
 "이름 필수!\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:148
+#: src/components/sigil/Dashboard/MissionV2.tsx:146
 msgid "Follow on Instagram"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:140
+#: src/components/sigil/Dashboard/MissionV2.tsx:138
 msgid "Follow on Twitter"
 msgstr ""
 
@@ -1284,19 +1284,19 @@ msgstr ""
 #: src/components/SignIn/SignIn.tsx:21
 #: src/components/Subscribe.tsx:20
 #: src/components/for-developers/BuildYourBlockchain.tsx:36
-#: src/pages/cricket.tsx:26
+#: src/pages/cricket.tsx:27
 msgid "Invalid email!"
 msgstr "무효인 이 메일!"
 
 #: src/components/Header/ProfileComponent.tsx:12
 #: src/components/nodes/Sidebar.tsx:26
-#: src/pages/inventory.tsx:127
+#: src/pages/inventory.tsx:123
 msgid "Inventory"
 msgstr ""
 "재고 목록\n"
 ""
 
-#: src/components/sigil/ReferFriendModal.tsx:47
+#: src/components/sigil/ReferFriendModal.tsx:49
 msgid "Invite your friends to Myria by sharing the following link with them."
 msgstr ""
 
@@ -1324,7 +1324,7 @@ msgstr ""
 #: src/components/Header/MobileHeader.tsx:55
 #: src/components/Header/MobileHeader.tsx:98
 #: src/components/NotiBanner.tsx:49
-#: src/components/home/Hero.tsx:272
+#: src/components/home/Hero.tsx:279
 #: src/pages/game-detail/[id].tsx:138
 msgid "JOIN DISCORD"
 msgstr "DISCORD에 합류하기"
@@ -1381,15 +1381,11 @@ msgstr ""
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 msgstr "키도노(Kidono)는 외부 개발 약속을 관리하는 광범위한 경험을 가진 노련한 파트너 리드이다. 그는 Marvel, Tencent, Winkings 등등을 포함하는 몇몇 최대 게임 생산 기업들과 작업해 왔다."
 
-#: src/components/home/Hero.tsx:116
+#: src/components/home/Hero.tsx:123
 #: src/pages/nodes/purchase-complete.tsx:110
 #: src/pages/studios.tsx:228
 msgid "LEARN MORE"
 msgstr "더 많이 배우기"
-
-#: src/pages/cricket.tsx:115
-msgid "LET’S GO"
-msgstr ""
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:33
 msgid "LINK WALLET"
@@ -1421,12 +1417,12 @@ msgstr ""
 "최신 업데이트 & 뉴스\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:83
-#: src/components/sigil/Dashboard/MissionV2.tsx:100
-#: src/components/sigil/Dashboard/MissionV2.tsx:106
-#: src/components/sigil/Dashboard/MissionV2.tsx:112
-#: src/components/sigil/Dashboard/MissionV2.tsx:118
-#: src/components/sigil/Dashboard/MissionV2.tsx:124
+#: src/components/sigil/Dashboard/MissionV2.tsx:81
+#: src/components/sigil/Dashboard/MissionV2.tsx:98
+#: src/components/sigil/Dashboard/MissionV2.tsx:104
+#: src/components/sigil/Dashboard/MissionV2.tsx:110
+#: src/components/sigil/Dashboard/MissionV2.tsx:116
+#: src/components/sigil/Dashboard/MissionV2.tsx:122
 msgid "Launch Discord"
 msgstr ""
 
@@ -1442,7 +1438,7 @@ msgstr ""
 "2층 확장성 솔루션\n"
 ""
 
-#: src/components/home/Hero.tsx:260
+#: src/components/home/Hero.tsx:267
 msgid "Learn more"
 msgstr "더 많이 배우기"
 
@@ -1468,7 +1464,7 @@ msgstr ""
 "이용 가능한 제한된 공급\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:190
+#: src/components/sigil/Dashboard/MissionV2.tsx:188
 msgid "Locked"
 msgstr ""
 
@@ -2064,7 +2060,7 @@ msgstr ""
 "크롬, 브레이브, 파어어폭스 혹은 에지와 같은 지원되는 브라우저에서 이 체험을 보기 바랍니다.\n"
 ""
 
-#: src/components/sigil/RewardItem.tsx:122
+#: src/components/sigil/RewardItem.tsx:123
 msgid "Points"
 msgstr ""
 "포인트\n"
@@ -2144,6 +2140,10 @@ msgstr ""
 msgid "Quantity: {quantity}"
 msgstr ""
 
+#: src/pages/cricket.tsx:125
+msgid "REGISTER"
+msgstr ""
+
 #: src/components/home/News.tsx:20
 #: src/components/home/News.tsx:36
 msgid "Read more"
@@ -2158,7 +2158,7 @@ msgstr ""
 "$미리아와 한정판 NFT 보상을 미리아 네트워크를 지원하는 동안 수령할 것.\n"
 ""
 
-#: src/components/sigil/ReferFriendModal.tsx:44
+#: src/components/sigil/ReferFriendModal.tsx:46
 msgid "Refer your friends"
 msgstr ""
 "당신의 친구들을 언급할 것.\n"
@@ -2170,8 +2170,8 @@ msgstr ""
 "등록하기\n"
 ""
 
-#: src/pages/cricket.tsx:82
-msgid "Register to win exclusive AB de Villiers NFTs"
+#: src/pages/cricket.tsx:88
+msgid "Register to win exclusive<0/>AB de Villiers Cricket Game NFTs"
 msgstr ""
 
 #: src/pages/nodes/index.tsx:231
@@ -2273,7 +2273,7 @@ msgstr ""
 "지금 공유하기\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:130
+#: src/components/sigil/Dashboard/MissionV2.tsx:128
 msgid "Share on Twitter"
 msgstr ""
 
@@ -2291,7 +2291,7 @@ msgstr ""
 ""
 
 #: src/components/Header/MobileHeader.tsx:71
-#: src/components/sigil/Dashboard/MissionV2.tsx:73
+#: src/components/sigil/Dashboard/MissionV2.tsx:71
 msgid "Sign up"
 msgstr ""
 "등록하기\n"
@@ -2423,7 +2423,7 @@ msgid "Thank you for message. We will be in touch within 24-48 hours!"
 msgstr "메시지 감사드립니다. 우리는 24-48시간 내 연락 드리겠습니다."
 
 #: src/components/Subscribe.tsx:85
-#: src/pages/cricket.tsx:108
+#: src/pages/cricket.tsx:118
 msgid "Thank you for subscribing!"
 msgstr "구독해 주셔서 감사드립니다!"
 
@@ -2613,7 +2613,7 @@ msgstr ""
 "아이템 보기\n"
 ""
 
-#: src/components/inventory/OpenChest.tsx:130
+#: src/components/inventory/OpenChest.tsx:133
 msgid "VIEW ITEMS"
 msgstr ""
 "아이템 보기\n"
@@ -2760,7 +2760,7 @@ msgstr ""
 "당신은 방금 청구하였습니다\n"
 ""
 
-#: src/components/inventory/OpenChest.tsx:107
+#: src/components/inventory/OpenChest.tsx:110
 msgid "You have opened"
 msgstr ""
 "당신은 열었습니다.\n"

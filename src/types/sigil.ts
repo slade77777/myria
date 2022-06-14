@@ -28,8 +28,8 @@ export type Mission = {
     | 'FIRST_DISCORD_MESSAGE'
     | 'SHARE_IDEA_DISCORD'
     | 'VOTE_ON_LORE_DISCORD'
-    | 'SPACE_LORD_ROLE_DISCORD'
     | 'FOLLOW_INSTAGRAM'
+    | 'SPACE_LORD_ROLE_DISCORD';
   status: 'locked' | 'completed' | 'available';
   title: string;
   description: string;
