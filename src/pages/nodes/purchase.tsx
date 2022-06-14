@@ -11,7 +11,7 @@ import { useWalletContext } from 'src/context/wallet';
 
 import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
-import { useMutation } from 'react-query';
+import { useAuthenticationContext } from 'src/context/authentication';
 import WhiteListSale from 'src/components/Purchase/Modals/WhiteListSale';
 
 const Purchase: React.FC = () => {
@@ -25,7 +25,7 @@ const Purchase: React.FC = () => {
     transactionId: ""
   });
   const { onConnect, address } = useWalletContext();
-
+  const { user, userProfileQuery } = useAuthenticationContext();
   const router = useRouter();
 
   useEffect(() => {
@@ -33,7 +33,13 @@ const Purchase: React.FC = () => {
     if (!address) {
       router.push('/nodes');
     }
-  }, [address, router]);
+    if (userProfileQuery.isFetching) {
+      return;
+    }
+    if (!user) {
+      router.push('/nodes');
+    }
+  }, [address, router, user, userProfileQuery.isFetching]);
 
   const onPlaceOrder = async (data: PurchaseInformationProps) => {
     await onConnect();
