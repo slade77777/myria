@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-06-09 11:55+0700\n"
+"POT-Creation-Date: 2022-06-14 13:31+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -859,10 +859,8 @@ msgid "Empowering players"
 msgstr "Trao quyền cho người chơi"
 
 #: src/pages/for-developers/index.tsx:40
-msgid "Enabling digital asset scalabiltiy on Ethereum"
+msgid "Enabling digital asset scalability on Ethereum"
 msgstr ""
-"Kích hoạt tính năng mở rộng tài sản kỹ thuật số trên Ethereum\n"
-""
 
 #: src/components/for-developers/Myria.tsx:22
 msgid "Enabling true scalability while leveraging the Ethereum network"
@@ -2371,10 +2369,8 @@ msgstr ""
 ""
 
 #: src/components/for-developers/Ethereum.tsx:96
-msgid "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
+msgid "Support unlimited scalability, delivering up to 9,000+ TPS"
 msgstr ""
-"Hỗ trợ khả năng mở rộng không giới hạn, cung cấp lên đến 9.000 TPS trở lên\n"
-""
 
 #: src/pages/studios.tsx:284
 msgid "TOKEN LAUNCH COMING SOON"
