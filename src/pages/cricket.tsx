@@ -78,11 +78,15 @@ const Cricket = () => {
                 <ADBE />
               </i>
             </div>
-            <h1 className="mt-8 max-w-[724px] text-[44px] font-bold leading-[1.25] text-[#FFFDFD] md:mt-0 md:text-[60px]">
-              <Trans>Register to win exclusive AB de Villiers NFTs</Trans>
+            <h1 className="mt-8 max-w-[757px] text-[40px] font-bold leading-[1.25] text-[#FFFDFD] md:mt-4 md:text-[48px]">
+              <Trans>
+                Register to win exclusive
+                <br />
+                AB de Villiers Cricket Game NFTs
+              </Trans>
             </h1>
-            <div className="contents max-w-[631px] md:block">
-              <p className="mt-10 text-[16px] leading-[1.5] md:mt-6 md:text-[22px]">
+            <div className="contents max-w-[750px] md:block">
+              <p className="mt-10 text-[16px] leading-[1.5] md:mt-6 md:text-[22px] px-[30px] md:px-0">
                 <Trans>
                   Cricket legend AB de Villiers has joined forces with Myria to deliver the next
                   generation of blockchain gaming to cricket fans around the world
@@ -91,7 +95,7 @@ const Cricket = () => {
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 noValidate
-                className="mt-10 w-full md:mt-8 md:w-auto">
+                className="mt-10 w-full max-w-[610px] md:mt-16 md:w-auto">
                 <div className="grid grid-cols-1 items-start gap-8 gap-y-5 sm:grid-cols-[1fr_auto]">
                   <Input
                     placeholder={t`Email address`}
@@ -112,7 +116,7 @@ const Cricket = () => {
                     }
                   />
                   <button className="btn-lg btn-primary md:min-h-[48px]" disabled={isSubmitting}>
-                    <Trans>LET’S GO</Trans>
+                    <Trans>REGISTER</Trans>
                   </button>
                 </div>
               </form>
