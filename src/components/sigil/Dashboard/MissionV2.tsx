@@ -141,6 +141,14 @@ const MissionV2: React.FC = () => {
       },
       link: socialLinks.twitter,
       description: (point: number) => t`Earn ${point} points by following @myriagames on Twitter`
+    },
+    FOLLOW_INSTAGRAM: {
+      label: t`Follow on Instagram`,
+      onClick: (e, missionId) => {
+        completeMission(missionId);
+      },
+      link: socialLinks.instagram,
+      description: (point: number) => t`Earn ${point} points by following myriagames on Instagram`
     }
   };
 
