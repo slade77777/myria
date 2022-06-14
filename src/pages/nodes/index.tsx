@@ -43,7 +43,7 @@ const rewards = [
     description: (
       <Trans>
         Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold
-        greater voting power throughout the Myriaverse
+        greater voting power throughout the Myriaverse.
       </Trans>
     )
   },
