@@ -30,7 +30,7 @@ export type BasedParams = {
   page_name: PageName;
 };
 
-type Campaign = 'Sigil'
+type Campaign = 'Sigil' | 'AB de Villers'
 
 export type EventDefined = {
   'Discord Button Clicked': {
