@@ -837,8 +837,12 @@ msgid "Empowering players"
 msgstr "Empowering players"
 
 #: src/pages/for-developers/index.tsx:40
-msgid "Enabling digital asset scalabiltiy on Ethereum"
-msgstr "Enabling digital asset scalabiltiy on Ethereum"
+msgid "Enabling digital asset scalability on Ethereum"
+msgstr "Enabling digital asset scalability on Ethereum"
+
+#: src/pages/for-developers/index.tsx:40
+#~ msgid "Enabling digital asset scalabiltiy on Ethereum"
+#~ msgstr "Enabling digital asset scalabiltiy on Ethereum"
 
 #: src/components/for-developers/Myria.tsx:22
 msgid "Enabling true scalability while leveraging the Ethereum network"
@@ -2306,12 +2310,16 @@ msgid "Supercharge your project"
 msgstr "Supercharge your project"
 
 #: src/components/for-developers/Ethereum.tsx:96
+msgid "Support unlimited scalability, delivering up to 9,000+ TPS"
+msgstr "Support unlimited scalability, delivering up to 9,000+ TPS"
+
+#: src/components/for-developers/Ethereum.tsx:96
 #~ msgid "Support unlimited scalabiltiy, delivering up to 5,000+ TPS"
 #~ msgstr "Support unlimited scalabiltiy, delivering up to 5,000+ TPS"
 
 #: src/components/for-developers/Ethereum.tsx:96
-msgid "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
-msgstr "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
+#~ msgid "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
+#~ msgstr "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
 
 #: src/pages/studios.tsx:284
 msgid "TOKEN LAUNCH COMING SOON"
