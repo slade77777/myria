@@ -30,7 +30,7 @@ export type BasedParams = {
   page_name: PageName;
 };
 
-type Campaign = 'Sigil'
+type Campaign = 'Sigil' | 'AB de Villers'
 
 export type EventDefined = {
   'Discord Button Clicked': {
@@ -166,4 +166,11 @@ export type EventDefined = {
     item_list: string;
     credit_amount: number;
   };
+  'Hero Banner Clicked': {
+    campaign: Campaign;
+  };
+  'Email Subscribed': {
+    campaign: Campaign;
+    user_email: string;
+  }
 };

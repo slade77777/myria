@@ -10,6 +10,7 @@ import SkyImg from 'public/images/home/sky.png';
 import LandImg from 'public/images/home/land.png';
 import HeaderBgMobile from 'public/images/home/header-bg-mobile.jpeg';
 import Slider, { Settings } from 'react-slick';
+import { useGA4 } from 'src/lib/ga';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -54,6 +55,8 @@ const Hero: React.FC = () => {
   //   };
   // }, [currentSlide]);
 
+  const { event } = useGA4();
+
   const settings: Settings = useMemo(
     () => ({
       arrows: false,
@@ -84,7 +87,9 @@ const Hero: React.FC = () => {
                 </Trans>
               </p>
               <Link href="/sigil">
-                <a className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[50px]">
+                <a className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[50px]" onClick={() => {
+                  event('Hero Banner Clicked', { campaign: 'Sigil' });
+                }}>
                   <Trans>CLAIM NOW</Trans>
                 </a>
               </Link>
@@ -112,7 +117,9 @@ const Hero: React.FC = () => {
                 </Trans>
               </p>
               <Link href="/cricket">
-                <a className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[45px]">
+                <a className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[45px]" onClick={() => {
+                  event('Hero Banner Clicked', { campaign: 'AB de Villers' });
+                }}>
                   <Trans>LEARN MORE</Trans>
                 </a>
               </Link>

@@ -14,6 +14,7 @@ import { additionalApiClient } from 'src/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import CircleCheck from 'src/components/icons/CircleCheck';
 import Input from 'src/components/Input';
+import { useGA4 } from 'src/lib/ga';
 
 interface FormData {
   email: string;
@@ -29,6 +30,7 @@ const schema = yup
   .required();
 
 const Cricket = () => {
+  const { event } = useGA4();
   const [error, setError] = useState('');
   const [success, setIsSubmitSuccess] = useState<boolean>(false);
   const {
@@ -42,6 +44,10 @@ const Cricket = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
+      if (data.email) {
+        event('Email Subscribed', { campaign: 'AB de Villers', user_email: data.email });
+      }
+      
       setError('');
       setIsSubmitSuccess(false);
 
