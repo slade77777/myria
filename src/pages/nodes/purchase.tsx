@@ -11,8 +11,8 @@ import { useWalletContext } from 'src/context/wallet';
 
 import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
-import { useMutation } from 'react-query';
 import { useAuthenticationContext } from 'src/context/authentication';
+import WhiteListSale from 'src/components/Purchase/Modals/WhiteListSale';
 
 const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -39,7 +39,7 @@ const Purchase: React.FC = () => {
     if (!user) {
       router.push('/nodes');
     }
-  }, [address, router, user]);
+  }, [address, router, user, userProfileQuery.isFetching]);
 
   const onPlaceOrder = async (data: PurchaseInformationProps) => {
     await onConnect();
@@ -85,6 +85,7 @@ const Purchase: React.FC = () => {
       />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
+      {/* <WhiteListSale open onSubscribed={() => null} /> */}
     </Page>
   );
 };
