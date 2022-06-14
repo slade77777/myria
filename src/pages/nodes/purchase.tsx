@@ -12,6 +12,7 @@ import { useWalletContext } from 'src/context/wallet';
 import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
+import WhiteListSale from 'src/components/Purchase/Modals/WhiteListSale';
 
 const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -78,6 +79,7 @@ const Purchase: React.FC = () => {
       />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
+      {/* <WhiteListSale open onSubscribed={() => null} /> */}
     </Page>
   );
 };

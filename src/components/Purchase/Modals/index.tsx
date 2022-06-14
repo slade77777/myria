@@ -130,7 +130,7 @@ const ModalPurchase = ({
   }, [isInsufficientBalance, isPurchasing, isSubmiting, onPurchase]);
 
   return (
-    <Modal open={open} onOpenChange={onClose}>
+    <Modal open={open} onOpenChange={(isPurchasing || isSubmiting) ? () => null : onClose}>
       <Modal.Content
         title="Complete your purchase"
         className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
