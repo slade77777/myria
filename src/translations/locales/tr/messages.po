@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Language: tr\n"
 
-#: src/components/home/Hero.tsx:129
+#: src/components/home/Hero.tsx:99
 msgid "$MYRIA Token"
 msgstr ""
 "$MYRIA Token\n"
@@ -129,7 +129,7 @@ msgstr ""
 "Rekabetçi bir oyna-kazan tarzı çiftlik simülatörü.\n"
 ""
 
-#: src/components/home/Hero.tsx:251
+#: src/components/home/Hero.tsx:221
 msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 msgstr ""
 "Merkezsizleşmiş Ethereum yükseltme platformu, dijital varlıklar ve gaming için inşa edilmiştir.  \n"
@@ -214,7 +214,7 @@ msgstr ""
 "Tümü\n"
 ""
 
-#: src/components/home/Hero.tsx:79
+#: src/components/home/Hero.tsx:76
 msgid "Alliance Sigil NFT Launch"
 msgstr ""
 
@@ -321,7 +321,7 @@ msgstr ""
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Myria ekosisteminin ayrılmaz bir parçası olun ve katkınızın avantajlarından yararlanın. Erken kurucu düğüm operatörleri, düğümler satıldıkça artan tercihli fiyatlandırma alırlar."
 
-#: src/components/home/Hero.tsx:82
+#: src/components/home/Hero.tsx:79
 msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
 msgstr ""
 
@@ -343,7 +343,7 @@ msgstr "Oyun stüdyoları için Blockchain platformu"
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "Brendan, blok zincirinde on yıllık deneyim getiriyor. Ethereum üzerinde bir kripto ETF olan Bitcoin blok zincirinde escrow çözümü kurdu ve dünyanın en büyük ticaret finansmanı blok zinciri ağı için blok zincir lideriydi."
 
-#: src/components/home/Hero.tsx:241
+#: src/components/home/Hero.tsx:211
 msgid "Bringing <0>blockchain gaming </0>to the world"
 msgstr ""
 "Blokchain gaming'i <0>dünyaya </0>getirmek\n"
@@ -353,7 +353,7 @@ msgstr ""
 msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 msgstr "Brock, teknoloji girişimlerinde çalışan 10 yılı aşkın deneyime sahip girişimci bir ürün lideridir ve kendi MarTech şirketini kurmuştur. Son zamanlarda, ürün belirteçleri ve büyümeye odaklanan en büyük blok zinciri şirketlerinden birinin ölçeklenmesine yardımcı oldu."
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:82
+#: src/components/for-developers/BuildYourBlockchain.tsx:80
 msgid "Build your blockchain game with Myria"
 msgstr ""
 "Myria ile blokzincir oyununu inşa et\n"
@@ -375,7 +375,8 @@ msgstr ""
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "Düğüm lisansı satın almak, sahibine düğümü (yerel veya bulutta) çalıştırma ve yönetim tarafından belirlenen ödülleri alma hakkı verir."
 
-#: src/components/home/Hero.tsx:88
+#: src/components/home/Hero.tsx:85
+#: src/components/inventory/InventoryItem.tsx:35
 #: src/components/sigil/RewardItem.tsx:72
 msgid "CLAIM NOW"
 msgstr ""
@@ -405,8 +406,8 @@ msgstr ""
 ""
 
 #: src/components/games/GameList.tsx:157
-#: src/components/home/Hero.tsx:126
-#: src/components/home/Hero.tsx:132
+#: src/components/home/Hero.tsx:96
+#: src/components/home/Hero.tsx:102
 #: src/components/home/OurGames.tsx:26
 msgid "COMING SOON"
 msgstr ""
@@ -573,7 +574,7 @@ msgstr ""
 "Mücadele et, hayatta kal ve kazan!\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:192
+#: src/components/sigil/Dashboard/MissionV2.tsx:184
 msgid "Complete"
 msgstr ""
 "Tamamla\n"
@@ -675,11 +676,6 @@ msgid "Creating the new standard for blockchain games and experiences"
 msgstr ""
 "Blokzincir oyun ve deneyimleri için yeni bir standart yaratmak\n"
 ""
-
-#: src/components/home/Hero.tsx:109
-#: src/pages/cricket.tsx:86
-msgid "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
-msgstr ""
 
 #: src/components/nodes/dashboard/TimeOnline.tsx:9
 msgid "Current Node Cycle"
@@ -787,10 +783,6 @@ msgstr ""
 msgid "Earn {point} points by following @myriagames on Twitter"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:153
-msgid "Earn {point} points by following myriagames on Instagram"
-msgstr ""
-
 #: src/components/sigil/Dashboard/MissionV2.tsx:86
 msgid "Earn {point} points by joining the Myria Discord server"
 msgstr ""
@@ -847,17 +839,12 @@ msgstr ""
 "Email\n"
 ""
 
-#: src/pages/cricket.tsx:97
-msgid "Email address"
-msgstr ""
-
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
 #: src/components/GetInTouch.tsx:27
 #: src/components/Register/Register.tsx:54
 #: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:21
-#: src/components/for-developers/BuildYourBlockchain.tsx:37
-#: src/pages/cricket.tsx:27
+#: src/components/for-developers/BuildYourBlockchain.tsx:35
 msgid "Email is required!"
 msgstr "Email gereklidir!"
 
@@ -1002,10 +989,6 @@ msgid "First name is required!"
 msgstr ""
 "Adınızı yazmak zorunludur!\n"
 ""
-
-#: src/components/sigil/Dashboard/MissionV2.tsx:148
-msgid "Follow on Instagram"
-msgstr ""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:140
 msgid "Follow on Twitter"
@@ -1285,8 +1268,7 @@ msgstr ""
 #: src/components/Register/Register.tsx:53
 #: src/components/SignIn/SignIn.tsx:21
 #: src/components/Subscribe.tsx:20
-#: src/components/for-developers/BuildYourBlockchain.tsx:36
-#: src/pages/cricket.tsx:26
+#: src/components/for-developers/BuildYourBlockchain.tsx:34
 msgid "Invalid email!"
 msgstr "Geçersiz e-posta!"
 
@@ -1326,7 +1308,7 @@ msgstr ""
 #: src/components/Header/MobileHeader.tsx:55
 #: src/components/Header/MobileHeader.tsx:98
 #: src/components/NotiBanner.tsx:49
-#: src/components/home/Hero.tsx:272
+#: src/components/home/Hero.tsx:242
 #: src/pages/game-detail/[id].tsx:138
 msgid "JOIN DISCORD"
 msgstr "DISCORD'A KATIL"
@@ -1383,15 +1365,10 @@ msgstr ""
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 msgstr "Kidono, harici geliştirme sözleşmelerini yönetme konusunda kapsamlı deneyime sahip deneyimli bir iş ortağı lideridir. Marvel, Tencent, Winkings ve gibi en büyük oyun yapım şirketlerinden bazılarıyla çalıştı."
 
-#: src/components/home/Hero.tsx:116
 #: src/pages/nodes/purchase-complete.tsx:110
 #: src/pages/studios.tsx:228
 msgid "LEARN MORE"
 msgstr "DAHA FAZLA BİLGİ EDİN"
-
-#: src/pages/cricket.tsx:115
-msgid "LET’S GO"
-msgstr ""
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:33
 msgid "LINK WALLET"
@@ -1444,7 +1421,7 @@ msgstr ""
 "Katman 2 ölçeklenebilirlik çözümü\n"
 ""
 
-#: src/components/home/Hero.tsx:260
+#: src/components/home/Hero.tsx:230
 msgid "Learn more"
 msgstr "Daha fazla bilgi edin"
 
@@ -1470,7 +1447,7 @@ msgstr ""
 "Sınırlı arz mevcut\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:190
+#: src/components/sigil/Dashboard/MissionV2.tsx:182
 msgid "Locked"
 msgstr ""
 
@@ -1553,7 +1530,7 @@ msgstr ""
 ""
 
 #: src/components/GetInTouch.tsx:35
-#: src/components/for-developers/BuildYourBlockchain.tsx:41
+#: src/components/for-developers/BuildYourBlockchain.tsx:39
 msgid "Message is required!"
 msgstr "Mesaj gerekli!"
 
@@ -1711,11 +1688,11 @@ msgstr ""
 ""
 
 #: src/pages/_app.tsx:34
-#: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
 msgstr ""
 
 #: src/components/ComingSoon.tsx:48
+#: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria, Myria blok zinciri tarafından desteklenen blok zincir oyun ekosistemidir."
 
@@ -1884,10 +1861,6 @@ msgstr ""
 "Yüz değil!\n"
 ""
 
-#: src/components/inventory/InventoryItem.tsx:35
-msgid "OPEN"
-msgstr ""
-
 #: src/components/Header/linkSources.tsx:51
 msgid "OUR SOLUTION"
 msgstr ""
@@ -2048,7 +2021,7 @@ msgstr ""
 "Platform\n"
 ""
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:31
+#: src/components/for-developers/BuildYourBlockchain.tsx:29
 msgid "Please enter correct url!"
 msgstr ""
 "Lütfen doğru URL'yi gir!\n"
@@ -2171,10 +2144,6 @@ msgid "Register"
 msgstr ""
 "Kayıt ol\n"
 ""
-
-#: src/pages/cricket.tsx:82
-msgid "Register to win exclusive AB de Villiers NFTs"
-msgstr ""
 
 #: src/pages/nodes/index.tsx:231
 msgid "Releasing soon"
@@ -2384,14 +2353,14 @@ msgid "Subject is required!"
 msgstr "Konu gerekli!"
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:146
+#: src/components/for-developers/BuildYourBlockchain.tsx:144
 msgid "Submit"
 msgstr ""
 "Gönder\n"
 ""
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:146
+#: src/components/for-developers/BuildYourBlockchain.tsx:144
 msgid "Submitting..."
 msgstr ""
 "Gönderiliyor…\n"
@@ -2422,12 +2391,11 @@ msgid "Terms | Privacy"
 msgstr "Koşullar | Gizlilik"
 
 #: src/components/GetInTouch.tsx:107
-#: src/components/for-developers/BuildYourBlockchain.tsx:138
+#: src/components/for-developers/BuildYourBlockchain.tsx:136
 msgid "Thank you for message. We will be in touch within 24-48 hours!"
 msgstr "Mesaj için teşekkürler. 24-48 saat içinde sizinle iletişime geçeceğiz!"
 
 #: src/components/Subscribe.tsx:85
-#: src/pages/cricket.tsx:108
 msgid "Thank you for subscribing!"
 msgstr "Abone olduğunuz için teşekkür ederiz!"
 
@@ -2695,7 +2663,7 @@ msgstr ""
 "İlk katılımdan dağıtıma kadar, teknik destekten en iyi uygulama önerilerine kadar çeşitli öneriler sunarak yeni gelir akışlarının ve fırsatların kilidini açmak için sizinle yakın bir şekilde çalışıyoruz.\n"
 ""
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:85
+#: src/components/for-developers/BuildYourBlockchain.tsx:83
 msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 msgstr ""
 "Sizden haber almak isteriz. Bizimle iletişime geçin ve bugün blockchain oyun yolculuğunuza başlayın.\n"

@@ -7,7 +7,7 @@ msgstr ""
 "X-Generator: @lingui/cli\n"
 "Language: ko\n"
 
-#: src/components/home/Hero.tsx:129
+#: src/components/home/Hero.tsx:99
 msgid "$MYRIA Token"
 msgstr ""
 "$미리아 토큰\n"
@@ -127,7 +127,7 @@ msgstr ""
 "경쟁력이 있는 플레이-및-벌기 타이쿤 농장 시뮬레이터.\n"
 ""
 
-#: src/components/home/Hero.tsx:251
+#: src/components/home/Hero.tsx:221
 msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 msgstr ""
 "분권화된 이더리움 스케일링 플랫폼, 디지털 자산 및 게이밍으로 세워진 목적.\n"
@@ -212,7 +212,7 @@ msgstr ""
 "전체\n"
 ""
 
-#: src/components/home/Hero.tsx:79
+#: src/components/home/Hero.tsx:76
 msgid "Alliance Sigil NFT Launch"
 msgstr ""
 
@@ -319,7 +319,7 @@ msgstr ""
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Myria 생태계의 일체가 되고 당신의 기여 이익을 수확함. 초기 창설자 노드 운영자들은 우선 가격 책정을 받는데, 이는 노드가 판매됨으로 인해 증가됨."
 
-#: src/components/home/Hero.tsx:82
+#: src/components/home/Hero.tsx:79
 msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
 msgstr ""
 
@@ -341,7 +341,7 @@ msgstr "게임 스튜디오의 블록 체인 플랫폼"
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "브랜든(Brendan)은 블록 체인에서 10년간의 경험을 가지고 있다. 그는 비트코인 블록 체인, 이더리움 암호화폐 ETF 에스크로 솔루션을 창설하였고 세계 최대 거래 금융 블록 체인 네트워크의 블록 체인 리드였다."
 
-#: src/components/home/Hero.tsx:241
+#: src/components/home/Hero.tsx:211
 msgid "Bringing <0>blockchain gaming </0>to the world"
 msgstr ""
 "가져오기 <0>블록 체인 게임하기 </0>세상에\n"
@@ -351,7 +351,7 @@ msgstr ""
 msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 msgstr "브록(Brock)은 기술 스타트업에서 일하며 10년 이상의 경륜을 갖춘 기업가 제품 리드이고 자신의 마르텍 기업을 설립하였다. 더 최근에는, 그는 제품 토큰노믹스 및 성장에 집중하는 최대 블록 체인 기업들 중의 하나를 키우는데 일조하였다."
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:82
+#: src/components/for-developers/BuildYourBlockchain.tsx:80
 msgid "Build your blockchain game with Myria"
 msgstr ""
 "미리아와 함께 당신의 블록 체임 게임을 만드세요.\n"
@@ -373,7 +373,8 @@ msgstr ""
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "노드 라이선스 구매는 소유자에게 노드를 가동할 권리(장소상으로나 클라우드에서)를 주고 관리 방식으로 결정됨에 따라 보상을 받게 될 것이다."
 
-#: src/components/home/Hero.tsx:88
+#: src/components/home/Hero.tsx:85
+#: src/components/inventory/InventoryItem.tsx:35
 #: src/components/sigil/RewardItem.tsx:72
 msgid "CLAIM NOW"
 msgstr ""
@@ -403,8 +404,8 @@ msgstr ""
 ""
 
 #: src/components/games/GameList.tsx:157
-#: src/components/home/Hero.tsx:126
-#: src/components/home/Hero.tsx:132
+#: src/components/home/Hero.tsx:96
+#: src/components/home/Hero.tsx:102
 #: src/components/home/OurGames.tsx:26
 msgid "COMING SOON"
 msgstr ""
@@ -571,7 +572,7 @@ msgstr ""
 "경쟁하고, 살아남고, 이기고 벌어라!\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:192
+#: src/components/sigil/Dashboard/MissionV2.tsx:184
 msgid "Complete"
 msgstr ""
 "완수하라\n"
@@ -673,11 +674,6 @@ msgid "Creating the new standard for blockchain games and experiences"
 msgstr ""
 "블록 체인 게임 및 경험을 위한 새로운 기준 만들기\n"
 ""
-
-#: src/components/home/Hero.tsx:109
-#: src/pages/cricket.tsx:86
-msgid "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
-msgstr ""
 
 #: src/components/nodes/dashboard/TimeOnline.tsx:9
 msgid "Current Node Cycle"
@@ -785,10 +781,6 @@ msgstr ""
 msgid "Earn {point} points by following @myriagames on Twitter"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:153
-msgid "Earn {point} points by following myriagames on Instagram"
-msgstr ""
-
 #: src/components/sigil/Dashboard/MissionV2.tsx:86
 msgid "Earn {point} points by joining the Myria Discord server"
 msgstr ""
@@ -845,17 +837,12 @@ msgstr ""
 "이메일\n"
 ""
 
-#: src/pages/cricket.tsx:97
-msgid "Email address"
-msgstr ""
-
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
 #: src/components/GetInTouch.tsx:27
 #: src/components/Register/Register.tsx:54
 #: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:21
-#: src/components/for-developers/BuildYourBlockchain.tsx:37
-#: src/pages/cricket.tsx:27
+#: src/components/for-developers/BuildYourBlockchain.tsx:35
 msgid "Email is required!"
 msgstr "이-메일이 요구됨!"
 
@@ -1000,10 +987,6 @@ msgid "First name is required!"
 msgstr ""
 "이름 필수!\n"
 ""
-
-#: src/components/sigil/Dashboard/MissionV2.tsx:148
-msgid "Follow on Instagram"
-msgstr ""
 
 #: src/components/sigil/Dashboard/MissionV2.tsx:140
 msgid "Follow on Twitter"
@@ -1283,8 +1266,7 @@ msgstr ""
 #: src/components/Register/Register.tsx:53
 #: src/components/SignIn/SignIn.tsx:21
 #: src/components/Subscribe.tsx:20
-#: src/components/for-developers/BuildYourBlockchain.tsx:36
-#: src/pages/cricket.tsx:26
+#: src/components/for-developers/BuildYourBlockchain.tsx:34
 msgid "Invalid email!"
 msgstr "무효인 이 메일!"
 
@@ -1324,7 +1306,7 @@ msgstr ""
 #: src/components/Header/MobileHeader.tsx:55
 #: src/components/Header/MobileHeader.tsx:98
 #: src/components/NotiBanner.tsx:49
-#: src/components/home/Hero.tsx:272
+#: src/components/home/Hero.tsx:242
 #: src/pages/game-detail/[id].tsx:138
 msgid "JOIN DISCORD"
 msgstr "DISCORD에 합류하기"
@@ -1381,15 +1363,10 @@ msgstr ""
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 msgstr "키도노(Kidono)는 외부 개발 약속을 관리하는 광범위한 경험을 가진 노련한 파트너 리드이다. 그는 Marvel, Tencent, Winkings 등등을 포함하는 몇몇 최대 게임 생산 기업들과 작업해 왔다."
 
-#: src/components/home/Hero.tsx:116
 #: src/pages/nodes/purchase-complete.tsx:110
 #: src/pages/studios.tsx:228
 msgid "LEARN MORE"
 msgstr "더 많이 배우기"
-
-#: src/pages/cricket.tsx:115
-msgid "LET’S GO"
-msgstr ""
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:33
 msgid "LINK WALLET"
@@ -1442,7 +1419,7 @@ msgstr ""
 "2층 확장성 솔루션\n"
 ""
 
-#: src/components/home/Hero.tsx:260
+#: src/components/home/Hero.tsx:230
 msgid "Learn more"
 msgstr "더 많이 배우기"
 
@@ -1468,7 +1445,7 @@ msgstr ""
 "이용 가능한 제한된 공급\n"
 ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:190
+#: src/components/sigil/Dashboard/MissionV2.tsx:182
 msgid "Locked"
 msgstr ""
 
@@ -1551,7 +1528,7 @@ msgstr ""
 ""
 
 #: src/components/GetInTouch.tsx:35
-#: src/components/for-developers/BuildYourBlockchain.tsx:41
+#: src/components/for-developers/BuildYourBlockchain.tsx:39
 msgid "Message is required!"
 msgstr "메시지가 요구됨!"
 
@@ -1709,11 +1686,11 @@ msgstr ""
 ""
 
 #: src/pages/_app.tsx:34
-#: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
 msgstr ""
 
 #: src/components/ComingSoon.tsx:48
+#: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria는 Myria 블록체인에 의해 가동되는 블록 체인 게이밍 생태계이다."
 
@@ -1882,10 +1859,6 @@ msgstr ""
 "얼굴에 하지 말 것!\n"
 ""
 
-#: src/components/inventory/InventoryItem.tsx:35
-msgid "OPEN"
-msgstr ""
-
 #: src/components/Header/linkSources.tsx:51
 msgid "OUR SOLUTION"
 msgstr ""
@@ -2046,7 +2019,7 @@ msgstr ""
 "플랫폼\n"
 ""
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:31
+#: src/components/for-developers/BuildYourBlockchain.tsx:29
 msgid "Please enter correct url!"
 msgstr ""
 "정확한 url을 입력하기 바랍니다!\n"
@@ -2169,10 +2142,6 @@ msgid "Register"
 msgstr ""
 "등록하기\n"
 ""
-
-#: src/pages/cricket.tsx:82
-msgid "Register to win exclusive AB de Villiers NFTs"
-msgstr ""
 
 #: src/pages/nodes/index.tsx:231
 msgid "Releasing soon"
@@ -2380,14 +2349,14 @@ msgid "Subject is required!"
 msgstr "대상 필수!"
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:146
+#: src/components/for-developers/BuildYourBlockchain.tsx:144
 msgid "Submit"
 msgstr ""
 "제출하기\n"
 ""
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:146
+#: src/components/for-developers/BuildYourBlockchain.tsx:144
 msgid "Submitting..."
 msgstr ""
 "제출하기...\n"
@@ -2418,12 +2387,11 @@ msgid "Terms | Privacy"
 msgstr "팀/프라이버시"
 
 #: src/components/GetInTouch.tsx:107
-#: src/components/for-developers/BuildYourBlockchain.tsx:138
+#: src/components/for-developers/BuildYourBlockchain.tsx:136
 msgid "Thank you for message. We will be in touch within 24-48 hours!"
 msgstr "메시지 감사드립니다. 우리는 24-48시간 내 연락 드리겠습니다."
 
 #: src/components/Subscribe.tsx:85
-#: src/pages/cricket.tsx:108
 msgid "Thank you for subscribing!"
 msgstr "구독해 주셔서 감사드립니다!"
 
@@ -2691,7 +2659,7 @@ msgstr ""
 "우리는 신규 직원 교육부터 개발까지 당신과 긴밀하게 작업하며, 기술 지원으로부터 조언을 제공하여 최상의 실무 추천으로 새로운 수익 기류와 기회를 열게 됩니다.\n"
 ""
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:85
+#: src/components/for-developers/BuildYourBlockchain.tsx:83
 msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 msgstr ""
 "우리는 당신으로부터 직접 소식을 듣기 원합니다. 우리들에게 연락을 주시고 오늘 당신의 블록체인 게이밍 여정으로 시작하기로 합시다.\n"

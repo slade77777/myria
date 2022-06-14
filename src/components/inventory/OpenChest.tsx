@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
+import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
 import { RarityType } from 'src/types/sigil';
 import { getRarityColor } from 'src/utils';
@@ -62,6 +63,7 @@ const ChestItem = ({ type, rarity, image, name, credit }: ChestItemProps) => {
 
 const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, chestName }) => {
   const { event } = useGA4();
+  const { user } = useAuthenticationContext();
   const credit = React.useMemo<AssetCreditType | undefined>(() => {
     return openedChest?.find((item) => item.type === 'credits') as AssetCreditType | undefined;
   }, [openedChest]);
@@ -75,14 +77,15 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
   }, [openedChest]);
 
   useEffect(() => {
-    // TODO mock event
-    event('Chest Claimed', {
-      campaign: 'Sigil',
-      wallet_address: '_mock',
-      item_list: '_mock',
-      credit_amount: -111
-    });
-  }, [event]);
+    if (user?.wallet_id) {
+      event('Chest Claimed', {
+        campaign: 'Sigil',
+        wallet_address: user.wallet_id,
+        item_list: [sigil?.name, title?.name].filter(Boolean).join('; '),
+        credit_amount: Number(credit?.amount),
+      });
+    }
+  }, [event, user?.wallet_id, credit?.amount, sigil?.name, title?.name]);
 
   if (!openedChest) {
     return null;
