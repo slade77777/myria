@@ -12,6 +12,8 @@ import Collapse from '../Collapse';
 import DropdownMenu from '../DropdownMenu';
 import LogoutIcon from '../icons/LogoutIcon';
 import { Trans } from '@lingui/macro';
+import { useAuthenticationContext } from 'src/context/authentication';
+import { useGA4 } from 'src/lib/ga';
 
 const links = [
   {
@@ -60,7 +62,8 @@ const links = [
 const navHeightMobile = 104;
 const Header: React.FC = () => {
   const { address, onConnect, disconnect } = useWalletContext();
-
+  const { user, register } = useAuthenticationContext();
+  const { event } = useGA4();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -147,14 +150,19 @@ const Header: React.FC = () => {
             </DropdownMenu>
           ) : (
             <button
-              onClick={onConnect}
+              onClick={() => {
+                onConnect();
+                // event('Connect Wallet Selected', { campaign: 'Sigil' });
+              }}
               className="body-14-bold rounded-lg border border-white py-[9px] px-4 uppercase hover:border-primary/7">
               <Trans>Connect wallet</Trans>
             </button>
           )}
-          <button className="body-14-bold hidden rounded-lg bg-primary/6 py-[9px] px-4 uppercase text-base/1 hover:bg-primary/5 md:block">
-            <Trans>Sign in</Trans>
-          </button>
+          {
+            user && !user.user_name && <button onClick={register} className="body-14-bold hidden rounded-lg bg-primary/6 py-[9px] px-4 uppercase text-base/1 hover:bg-primary/5 md:block">
+              <Trans>Sign up</Trans>
+            </button>
+          }
           <button className="md:hidden" onClick={() => setIsMobileMenuOpen((o) => !o)}>
             <Hamburger size={24} />
           </button>

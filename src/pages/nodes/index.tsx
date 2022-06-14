@@ -17,6 +17,7 @@ import { useGA4 } from 'src/lib/ga';
 
 import { useRouter } from 'next/router';
 import Header from 'src/components/nodes/Header';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 const rewards = [
   {
@@ -166,6 +167,26 @@ const Nodes: React.FC = () => {
   const { address, onConnect } = useWalletContext();
   const { event } = useGA4();
   const router = useRouter();
+  const { user, loginByWalletMutation, userProfileQuery } =
+    useAuthenticationContext();
+
+  // try to login via wallet
+  React.useEffect(() => {
+    if (userProfileQuery.isFetching) {
+      return;
+    }
+    if (
+      address &&
+      !user?.user_id &&
+      !loginByWalletMutation.isLoading &&
+      !loginByWalletMutation.isError &&
+      userProfileQuery.isFetched &&
+      !userProfileQuery.data
+    ) {
+      loginByWalletMutation.mutate();
+    }
+  }, [address, user, loginByWalletMutation, userProfileQuery]);
+
   return (
     <Page headerClassName="hidden">
       <Header />
@@ -194,7 +215,7 @@ const Nodes: React.FC = () => {
                     router.push('/nodes/purchase');
                   } else {
                     await onConnect();
-                    event('Connect Wallet Selected', { campaign: 'Sigil' });
+                    // event('Connect Wallet Selected', { campaign: 'Nodes' });
                   }
                 }}>
                 {address != undefined ? <Trans>Buy a node</Trans> : <Trans>Connect wallet</Trans>}
