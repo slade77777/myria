@@ -29,6 +29,7 @@ const InventoryItem = ({ item, onClaimed }: Props) => {
         onClose={() => setOpen(false)}
         openedChest={openedChest}
         chestName={item.name}
+        chestRarity={item.rarity}
       />
       <NftBox
         imageUrl={item.image_url}
