@@ -1,49 +1,48 @@
 variables:
-  S3_BUCKET_NAME: "website-dapp-staging"
+  TF_ROOT: infra
+  TF_BUCKET: myria-terraform-tfstates
+  TF_DYNAMODB_TABLE: myria-terraform-tfstates
 
-build-staging:
-  environment: staging
+stages:
+  - dev
+  # - staging
+  # - preprod
+  # - prod
+
+dev-build:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
   image: node:14
+  stage: dev
   script:
-  - yarn
-  - yarn build:staging
+    - |
+    yarn
+    yarn build:staging
   artifacts:
     paths:
-      - out  
-  only:
-    - staging
-deploy to s3 staging:
-  stage: deploy
-  image: 
-    name: amazon/aws-cli
-    entrypoint: [""]
-  script:
-    - aws --version
-    - aws s3 rm s3://website-dapp-staging --recursive
-    - aws s3 sync out s3://website-dapp-staging
-  only:
-    - staging
+      - out # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
 
-build-production:
-  environment: production
-  image: node:14
-  script:
-  - yarn
-  - yarn build:prod
-  artifacts:
-    paths:
-      - out  
-  only:
-    - main
-sync to s3 production:
-  stage: deploy
-  image: 
+dev-deploy:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+    image:
     name: amazon/aws-cli
     entrypoint: [""]
+  services:
+    - docker:dind
+  stage: dev
   script:
-    - aws --version
-    - aws s3 rm s3://website-dapp --recursive
-    - aws s3 sync out s3://website-dapp
-  only:
-    - main
-  when: manual
+    - |
+
+      ./scripts/assume_deployer_role.sh $account
+
+      # TODO:
+      # ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder
+      # ./scripts/invalidate_cdn.sh $cloudfront_id
+
+  variables:
+    account: myria-net-nonprod
+    region: us-east-1
+    bucket_name: dev
+    artifacts_folder: out # Maybe out-dev? See notes on line 23
+    cloudfront_id: xyzxyz # The cloudfront id of this env
