@@ -10,8 +10,6 @@ dev-build:
   image: node:14
   stage: dev
   script:
-    - |
-    yarn
     yarn build:staging
   artifacts:
     paths:
