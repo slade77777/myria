@@ -1,8 +1,3 @@
-variables:
-  TF_ROOT: infra
-  TF_BUCKET: myria-terraform-tfstates
-  TF_DYNAMODB_TABLE: myria-terraform-tfstates
-
 stages:
   - dev
   # - staging
@@ -39,7 +34,6 @@ dev-deploy:
       # TODO:
       # ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder
       # ./scripts/invalidate_cdn.sh $cloudfront_id
-
   variables:
     account: myria-net-nonprod
     region: us-east-1
