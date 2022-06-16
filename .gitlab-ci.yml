@@ -10,10 +10,10 @@ dev-build:
   image: node:14
   stage: dev
   script:
-    yarn build:staging
+    - yarn build:dev
   artifacts:
     paths:
-      - out # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
+      - out-dev # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
 
 dev-deploy:
   rules:
@@ -36,5 +36,7 @@ dev-deploy:
     account: myria-net-nonprod
     region: us-east-1
     bucket_name: dev
-    artifacts_folder: out # Maybe out-dev? See notes on line 23
+    artifacts_folder: out-dev
     cloudfront_id: xyzxyz # The cloudfront id of this env
+  dependencies:
+    - dev-build
