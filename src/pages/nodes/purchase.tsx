@@ -79,7 +79,7 @@ const Purchase: React.FC = () => {
       />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
-      {/* <WhiteListSale open onSubscribed={() => null} /> */}
+      {/* <WhiteListSale open onClose={() => null} /> */}
     </Page>
   );
 };
