@@ -20,9 +20,9 @@ dev-build:
 dev-deploy:
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
-    image:
-      name: amazon/aws-cli
-      entrypoint: [""]
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
   services:
     - docker:dind
   stage: dev
