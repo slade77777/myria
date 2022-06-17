@@ -94,7 +94,7 @@ private key: `7e1e49781b9fb7e52c861adbd156323b948ebfc71c705222fc06ed4b6f2bc73d`
 
 # setup wallet and import test accounts:
 - import test accounts into your wallet
-- change wallet network to goerli
+- change wallet network to ropsten
 
 # test steps:
 - select user wallet in metamask

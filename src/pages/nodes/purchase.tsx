@@ -20,9 +20,9 @@ const Purchase: React.FC = () => {
     quantity: 0,
     totalPriceEth: 0,
     totalPriceUsd: 0,
-    toAddress: "",
-    nonce: "",
-    transactionId: ""
+    toAddress: '',
+    nonce: '',
+    transactionId: ''
   });
   const { onConnect, address } = useWalletContext();
   const { user, userProfileQuery } = useAuthenticationContext();
@@ -31,12 +31,6 @@ const Purchase: React.FC = () => {
   useEffect(() => {
     // validate either wallet is connected
     if (!address) {
-      router.push('/nodes');
-    }
-    if (userProfileQuery.isFetching) {
-      return;
-    }
-    if (!user) {
       router.push('/nodes');
     }
   }, [address, router, user, userProfileQuery.isFetching]);
@@ -49,10 +43,13 @@ const Purchase: React.FC = () => {
     }
   };
 
-  const handlePurchaseComplete = useCallback(async (txId: string) => {
-    setOpenModal(false);
-    router.push('/nodes/purchase-complete');
-  }, [router]);
+  const handlePurchaseComplete = useCallback(
+    async (txId: string) => {
+      setOpenModal(false);
+      router.push('/nodes/purchase-complete');
+    },
+    [router]
+  );
 
   return (
     <Page headerClassName="hidden" footerClassName="hidden md:block">
