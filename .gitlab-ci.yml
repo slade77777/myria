@@ -10,6 +10,7 @@ dev-build:
   image: node:14
   stage: dev
   script:
+    - yarn add next react react-dom
     - yarn build:dev
   artifacts:
     paths:
