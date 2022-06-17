@@ -14,7 +14,7 @@ dev-build:
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
   image: node:14
-  stage: dev
+  stage: dev-build
   script:
     - yarn add next react react-dom
     - yarn build:dev
@@ -30,7 +30,7 @@ dev-deploy:
     entrypoint: [""]
   services:
     - docker:dind
-  stage: dev
+  stage: dev-deploy
   extends:
     - .aws_cli_init
   script:
