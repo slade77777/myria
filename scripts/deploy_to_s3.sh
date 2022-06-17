@@ -16,6 +16,6 @@ cloudfront_id=$(aws cloudfront list-distributions --query "DistributionList.Item
 #aws s3 sync --delete $artifacts_folder s3://$bucket_name
 
 
-#aws cloudfront create-invalidation --distribution-id "$cloudfront_id" --paths '/*'
+aws cloudfront create-invalidation --distribution-id $cloudfront_id --paths '/*'
 
 echo "Deploy to S3 && cloudfront invalidate done.$cloudfront_id"
