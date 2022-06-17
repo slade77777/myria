@@ -63,5 +63,3 @@ export const WhitelistAddress = [
     address: '0xED71e91646D409354A2e4B157a9D7EfE1707211A'//account 23
   }
 ];
-
-export const ToAddress = '0x67698ba649B0D4D04667d9a917A759e9406f6C77';

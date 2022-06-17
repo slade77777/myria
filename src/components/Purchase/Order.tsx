@@ -20,7 +20,7 @@ import Button from 'src/components/core/Button';
 import { toast } from 'react-toastify';
 import { useGA4 } from '../../lib/ga';
 import WhiteListSale from './Modals/WhiteListSale';
-import { ToAddress, WhitelistAddress } from '../../constant/whitelist-address';
+import { WhitelistAddress } from '../../constant/whitelist-address';
 import PrivacyPolicyModal from './Modals/PrivacyPolicyModal';
 
 const licenses = [
@@ -46,6 +46,8 @@ const schema = yup.object({
   privacy: yup.boolean().required().oneOf([true])
 });
 
+const ToAddress = process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS;
+
 const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
   const { onConnect, address } = useWalletContext();
   const { login } = useAuthenticationContext();
@@ -55,6 +57,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
   const [etheCost, setEtheCost] = useState(0);
   const { event } = useGA4();
   const { data } = usePurchaseInfo();
+
   const {
     register,
     handleSubmit,
