@@ -27,7 +27,6 @@ dev-deploy:
   stage: dev
   script:
     - |
-    - apt-get install jq
       ./scripts/assume_deployer_role.sh $account
 
       # TODO:
