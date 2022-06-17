@@ -38,11 +38,12 @@ dev-deploy:
       ./scripts/assume_deployer_role.sh $account
 
       # TODO:
-      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
     account: myria-net-nonprod
     region: us-east-1
     bucket_name: myria-dev.nonprod-myria.com
     artifacts_folder: out-dev
+    cloudfront_id: E2KK5GZ4YUTN6P
   dependencies:
     - dev-build
