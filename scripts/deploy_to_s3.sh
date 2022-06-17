@@ -16,7 +16,7 @@ artifacts_folder=$2
 
 # 2. upload folder to s3
 # e.g. aws s3 sync $artifacts_folder "s3://$bucket_name"
-aws ls
+aws s3 ls
 
 aws s3 sync --acl public-read  --delete $artifacts_folder s3://$bucket_name
 
