@@ -167,25 +167,23 @@ const Nodes: React.FC = () => {
   const { address, onConnect } = useWalletContext();
   const { event } = useGA4();
   const router = useRouter();
-  const { user, loginByWalletMutation, userProfileQuery } =
-    useAuthenticationContext();
-
+  // const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   // try to login via wallet
-  React.useEffect(() => {
-    if (userProfileQuery.isFetching) {
-      return;
-    }
-    if (
-      address &&
-      !user?.user_id &&
-      !loginByWalletMutation.isLoading &&
-      !loginByWalletMutation.isError &&
-      userProfileQuery.isFetched &&
-      !userProfileQuery.data
-    ) {
-      loginByWalletMutation.mutate();
-    }
-  }, [address, user, loginByWalletMutation, userProfileQuery]);
+  // React.useEffect(() => {
+  //   if (userProfileQuery.isFetching) {
+  //     return;
+  //   }
+  //   if (
+  //     address &&
+  //     !user?.user_id &&
+  //     !loginByWalletMutation.isLoading &&
+  //     !loginByWalletMutation.isError &&
+  //     userProfileQuery.isFetched &&
+  //     !userProfileQuery.data
+  //   ) {
+  //     loginByWalletMutation.mutate();
+  //   }
+  // }, [address, user, loginByWalletMutation, userProfileQuery]);
 
   return (
     <Page headerClassName="hidden">
@@ -205,20 +203,20 @@ const Nodes: React.FC = () => {
                   <span className="text-brand-light-blue">$MYRIA and NFT rewards</span>
                 </Trans>
               </h1>
-              <p className=" body-18-medium mx-auto mt-4 max-w-[677px] md:body-24-regular md:mt-6 text-base/10">
+              <p className=" body-18-medium mx-auto mt-4 max-w-[677px] text-base/10 md:body-24-regular md:mt-6">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
               <button
                 className="btn-lg btn-primary mt-4 md:mt-[38px]"
                 onClick={async () => {
-                  if (address != undefined) {
+                  if (address) {
                     router.push('/nodes/purchase');
                   } else {
                     await onConnect();
                     // event('Connect Wallet Selected', { campaign: 'Nodes' });
                   }
                 }}>
-                {address != undefined ? <Trans>Buy a node</Trans> : <Trans>Connect wallet</Trans>}
+                {address ? <Trans>Buy a node</Trans> : <Trans>Connect wallet</Trans>}
               </button>
             </section>
             <section className="mt-[96px] md:mt-[134px]">
@@ -244,10 +242,14 @@ const Nodes: React.FC = () => {
               </h2>
               <div className="mt-[92px] grid gap-[32px] gap-y-[76px] md:grid-cols-2 lg:grid-cols-3">
                 {rewards.map((item, idx) => (
-                  <CardWithIcon icon={item.icon} key={idx} className="bg-base/4" iconClassName='bg-base/4'>
+                  <CardWithIcon
+                    icon={item.icon}
+                    key={idx}
+                    className="bg-base/4"
+                    iconClassName="bg-base/4">
                     <div className="pb-[48px]">
-                      <h3 className="heading-sm font-bold mt-4">{item.title}</h3>
-                      <p className="body-xs mt-8 text-base/9 px-2">{item.description}</p>
+                      <h3 className="heading-sm mt-4 font-bold">{item.title}</h3>
+                      <p className="body-xs mt-8 px-2 text-base/9">{item.description}</p>
                       {item.learnMore && (
                         <button className="btn-lg btn-primary mt-[36px] inline-block">
                           <Trans>Releasing soon</Trans>
