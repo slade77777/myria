@@ -12,7 +12,6 @@ const NumberInput: React.FC<INumberInputProps> = ({setQuantityNumber}) => {
     let quantity_temp=quantity;
     quantity_temp=quantity_temp+1;
     setQuantity(quantity_temp);
-    console.log(quantity_temp);
     setQuantityNumber(quantity_temp);
   }
   function decreaseQuantity(){
@@ -20,7 +19,6 @@ const NumberInput: React.FC<INumberInputProps> = ({setQuantityNumber}) => {
     if(quantity_temp>0){
       quantity_temp=quantity_temp-1;
       setQuantity(quantity_temp);
-      console.log(quantity_temp);
       setQuantityNumber(quantity_temp);
     }
   }
@@ -39,6 +37,10 @@ const NumberInput: React.FC<INumberInputProps> = ({setQuantityNumber}) => {
       <input
         type="number"
         value={quantity}
+        onChange={e => {
+          setQuantity(parseInt(e.target.value));
+          setQuantityNumber(parseInt(e.target.value));
+        }}
         className="flex w-full items-center bg-transparent text-center text-base font-semibold text-white outline-none md:body-lg"></input>
       <button
         data-action="increment"

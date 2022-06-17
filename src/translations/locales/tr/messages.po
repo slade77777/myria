@@ -23,11 +23,11 @@ msgstr ""
 "%100 Ethereum düzeyinde güvenlik garantisi; ayrıca işlem hızı ve hammadde miktarında artış. \n"
 ""
 
-#: src/pages/nodes/index.tsx:133
+#: src/pages/nodes/index.tsx:134
 msgid "2 CPU Cores"
 msgstr "2 CPU Çekirdeği"
 
-#: src/pages/nodes/index.tsx:136
+#: src/pages/nodes/index.tsx:137
 msgid "60 GB Disk Space"
 msgstr "60 GB Disk Alanı"
 
@@ -53,7 +53,7 @@ msgstr ""
 "<0>Seninse senin kalır!</0> - Bu mezarlık çiftliğini inşa etmek için tam iki gün boyunca çok çalıştın ve artık o sende… sonsuza kadar kalabilir! \n"
 ""
 
-#: src/pages/nodes/index.tsx:69
+#: src/pages/nodes/index.tsx:70
 msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
 msgstr "<0>Myria zinciri de dahil olmak üzere herhangi bir blok zincirini çalıştırmak için ağ işlemlerinin doğrulanması için düğümler gerekir. Myria ekosistemindeki devreler, ilk test ağları, blok üretimi ve doğrulama dahil olmak üzere çeşitli ağ destekleyici etkinlikler için kullanılacaktır.</0><1>Potansiyel doğrulayıcı rollerine ek olarak, düğüm sahiplerinden şunları yapmaları istenecektir: ayrıca Myria ekosistemi daha gelişmiş hale geldikçe yardımcı blok zinciri ağ işlevleri için ödüllendirilirler. Bunlar arasında Myria ekosistemindeki belirli kritik bilgilerin merkezi olmayan bir şekilde depolanması, oracle'lar, yönetim oylaması ve ayrıca oyuna özel konseptler için oylama yer alıyor.</1>"
 
@@ -61,7 +61,7 @@ msgstr "<0>Myria zinciri de dahil olmak üzere herhangi bir blok zincirini çal�
 msgid "<0>Interoperable</0> & Interconnected NFTs"
 msgstr "<0>Birlikte Çalışabilir</0> ve Birbirine Bağlı NFT'ler"
 
-#: src/pages/nodes/index.tsx:89
+#: src/pages/nodes/index.tsx:90
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>Myria düğüm operatörleri, düğümlerin çalışması için günlük $MYRIA jeton ödülleri alacaklar.</0><1>Düğüm sahipleri ayrıca, düğüm operatörleri ve genel topluluk üyeleri olarak itibar puanlarına dayalı olarak NFT hediyeleri ve jetonlarla ödüllendirilecekler.</1><2>İtibar puanı, düğüm sahiplerinin oynama etkinliğine, sahip oldukları ve bahis oynadıkları jeton sayısına, önceki çalışma süresi metriklerine ve ağ desteği geçmişine (ör. doğrulama veya oracle sağlayıcısı) göre belirlenir.</2>"
 
@@ -105,7 +105,7 @@ msgstr ""
 "<0>T-eksi 47 gigakuark</0>\n"
 ""
 
-#: src/pages/nodes/index.tsx:119
+#: src/pages/nodes/index.tsx:120
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows, Mac and Linux. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
 msgstr ""
 "<0>Düğümünü cihazında ya da bulutta çalıştırabilirsin.</0><1>Myria düğüm yazılımı Windows, Mac ve Linux kullanıcılarının indirmesi mümkün olacak. Geleneksel bitcoin madenciliğinin aksine bizim düğüm işlemlerimiz çok fazla kaynak tüketmiyor. Düğüm yazılımımızı ev bilgisayarınızdan aşağıdaki kriterlere sahipseniz çalıştırabilirsiniz: </1>\n"
@@ -115,7 +115,7 @@ msgstr ""
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "Blok zinciri oyunları ve dünyalarından oluşan <0>merkezi olmayan bir ekosistem</0>"
 
-#: src/pages/nodes/index.tsx:142
+#: src/pages/nodes/index.tsx:143
 msgid "A Stable Internet Connection"
 msgstr "Kararlı İnternet Bağlantısı"
 
@@ -198,6 +198,10 @@ msgstr ""
 "Oyun hakkında\n"
 ""
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:65
+msgid "Accept"
+msgstr ""
+
 #: src/pages/nodes/purchase-complete.tsx:45
 msgid "Access node dashboard"
 msgstr ""
@@ -232,7 +236,7 @@ msgstr "Jeton tabanlı oyun ekonomileri ve NFT'ler için topluluğa fayda sağla
 msgid "An objective-based shooter game"
 msgstr "Hedefe dayalı nişancı oyunu"
 
-#: src/pages/nodes/index.tsx:139
+#: src/pages/nodes/index.tsx:140
 msgid "An x86/X64 Processor"
 msgstr "x86/X64 İşlemci"
 
@@ -294,7 +298,7 @@ msgstr ""
 ""
 
 #: src/components/BuyANode.tsx:6
-#: src/pages/nodes/index.tsx:295
+#: src/pages/nodes/index.tsx:304
 msgid "BUY A NODE"
 msgstr "DÜĞÜM SATIN AL"
 
@@ -317,7 +321,7 @@ msgstr ""
 "Myria düğümü sahibi ol ve ödülleri topla\n"
 ""
 
-#: src/pages/nodes/index.tsx:288
+#: src/pages/nodes/index.tsx:297
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Myria ekosisteminin ayrılmaz bir parçası olun ve katkınızın avantajlarından yararlanın. Erken kurucu düğüm operatörleri, düğümler satıldıkça artan tercihli fiyatlandırma alırlar."
 
@@ -371,7 +375,11 @@ msgstr ""
 "Merkezsiz ve izin gerektirmeyen bir ağ için inşa etmek\n"
 ""
 
-#: src/pages/nodes/index.tsx:108
+#: src/pages/nodes/index.tsx:208
+msgid "Buy a node"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:109
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "Düğüm lisansı satın almak, sahibine düğümü (yerel veya bulutta) çalıştırma ve yönetim tarafından belirlenen ödülleri alma hakkı verir."
 
@@ -629,6 +637,11 @@ msgstr ""
 "Myria Evrenine girmek için cüzdana bağlan\n"
 ""
 
+#: src/components/nodes/Header.tsx:152
+#: src/pages/nodes/index.tsx:208
+msgid "Connect wallet"
+msgstr ""
+
 #: src/pages/contact.tsx:52
 msgid "Connect with us"
 msgstr "Bizimle iletişime geçin"
@@ -699,7 +712,7 @@ msgstr ""
 "Ay Köyünü kişiselleştirmek istersen, çeşitli binalar ve ekip üyeleri için kozmetik derilerden seç. Bu deriler NFTdir, yani sonsuza kadar senindir ve başka oyunlarda kullanılabilir. \n"
 ""
 
-#: src/pages/nodes/index.tsx:27
+#: src/pages/nodes/index.tsx:28
 msgid "Daily $MYRIA token rewards"
 msgstr "Günlük $MYRIA jeton ödülleri"
 
@@ -725,9 +738,13 @@ msgstr ""
 msgid "Decentralize the network by providing computing resources"
 msgstr "Bilgi işlem kaynakları sunarak ağı merkezi olmayan hale getirin"
 
-#: src/pages/nodes/index.tsx:159
+#: src/pages/nodes/index.tsx:160
 msgid "Details will be announced soon."
 msgstr "Detaylar yakında açıklanacak."
+
+#: src/components/nodes/Header.tsx:142
+msgid "Disconnect"
+msgstr ""
 
 #: src/components/home/OurGames.tsx:46
 msgid "Discover more"
@@ -771,7 +788,7 @@ msgstr ""
 "Ekinokslar öğrenme ve ulaşabildikleri her bilgiyi toplama arzusuyla yaşarlar. Bütün bu verilerin içinde bir yerde barışa götüren bir çözüm olmalı. Bu bulmacayı çözecek kişi sen olabilirsin. \n"
 ""
 
-#: src/pages/nodes/index.tsx:42
+#: src/pages/nodes/index.tsx:43
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Her düğümün Myria zincirinde önerilen değişiklikler üzerinde oy kullanmasına izin verilir ve düğümler ayrıca Myriaverse boyunca daha fazla oylama gücüne sahip olacaktır."
 
@@ -947,7 +964,7 @@ msgstr ""
 "Her kahraman kendine özgü üç yeteneğe sahiptir, bunların hepsi şarj gerektirir, aynı zamanda bir üst yetenek ya da öldürmeler, ölümler, koleksiyonlar ya da objektifler yoluyla şarj gerektirir. Oynaması anlattığımdan daha kolay, hem de daha eğlenceli…\n"
 ""
 
-#: src/pages/nodes/index.tsx:54
+#: src/pages/nodes/index.tsx:55
 msgid "Exclusive NFTs"
 msgstr "Özel NFT'ler"
 
@@ -1126,7 +1143,7 @@ msgstr ""
 "Başla\n"
 ""
 
-#: src/pages/nodes/index.tsx:285
+#: src/pages/nodes/index.tsx:294
 msgid "Get a founders node today"
 msgstr "Bugün bir kurucu düğüm edinin"
 
@@ -1171,7 +1188,7 @@ msgstr ""
 msgid "Home"
 msgstr "Ana Sayfa"
 
-#: src/pages/nodes/index.tsx:106
+#: src/pages/nodes/index.tsx:107
 msgid "How can I become a Myria node operator?"
 msgstr "Nasıl Myria düğüm operatörü olabilirim?"
 
@@ -1184,11 +1201,11 @@ msgstr "Nasıl Myria düğüm operatörü olabilirim?"
 msgid "How it works"
 msgstr "Nasıl çalışır"
 
-#: src/pages/nodes/index.tsx:168
+#: src/pages/nodes/index.tsx:169
 msgid "How many Myria node licenses will be released?"
 msgstr "Kaç Myria düğüm lisansı yayınlanacak?"
 
-#: src/pages/nodes/index.tsx:157
+#: src/pages/nodes/index.tsx:158
 msgid "How much will a Myria node license cost?"
 msgstr "Bir Myria düğüm lisansının maliyeti nedir?"
 
@@ -1198,8 +1215,8 @@ msgstr ""
 "Ben artık bir $MYRIA düğümü sahibiyim!Ödüller kazanmak ve sanal dünyaların geleceğini inşa etmek ve yönetmek için bize katılın! @MyriaGames\n"
 ""
 
-#: src/components/sigil/ShareTwitterModal.tsx:32
-msgid "I just claimed a Rare Alliance Sigil on Myria"
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:57
+msgid "I have read, understood and agree to the terms of service"
 msgstr ""
 "Az önce Myria'da bir Nadir İttifak Mühürü istedim.\n"
 ""
@@ -1454,6 +1471,10 @@ msgstr ""
 msgid "Led by industry experts"
 msgstr "Sektör uzmanları tarafından yönetiliyor"
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:44
+msgid "Leggings swag synth 8-bit master cleanse. Pitchfork affogato semiotics raclette, adaptogen post-ironic cliche meggings tousled paleo 90's next level."
+msgstr ""
+
 #: src/components/for-developers/Myria.tsx:30
 msgid "Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business."
 msgstr ""
@@ -1542,6 +1563,10 @@ msgstr ""
 "Ağını maksimize et\n"
 ""
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:36
+msgid "Meditation ramps offal direct trade raclette disrupt vice. Neutra kogi mixtape 3 wolf moon. Organic mustache chia vape, la croix austin man bun small batch meh bushwick locavore. Biodiesel shabby chic butcher franzen pork belly microdosing, tattooed chambray twee meditation offal YOLO pour-over."
+msgstr ""
+
 #: src/components/GetInTouch.tsx:96
 msgid "Message"
 msgstr ""
@@ -1604,11 +1629,7 @@ msgstr ""
 "Düğüm Lisanslarım\n"
 ""
 
-#: src/pages/nodes/index.tsx:243
-msgid "Myria FAQ"
-msgstr "Myria SSS"
-
-#: src/components/Purchase/Modals/index.tsx:30
+#: src/components/Purchase/Modals/index.tsx:71
 msgid "Myria Founder’s Node"
 msgstr ""
 "Myria Kurucusunun Düğümü\n"
@@ -1743,13 +1764,13 @@ msgstr ""
 "Myria, blockchain oyunlarının bel kemiğidir\n"
 ""
 
-#: src/pages/nodes/index.tsx:151
+#: src/pages/nodes/index.tsx:152
 msgid "Myria node license sales are anticipated to commence in Q2 2022 (subject to change)."
 msgstr ""
 "Myria düğümü lisans satışlarının 2022'nin ikinci çeyreğinde başlaması bekleniyor (değişebilir).\n"
 ""
 
-#: src/pages/nodes/index.tsx:29
+#: src/pages/nodes/index.tsx:30
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Myria düğüm operatörleri, düğüm çalışmaları için günlük $MYRIA jeton ödülleri alacaklar."
 
@@ -1836,11 +1857,11 @@ msgstr ""
 "Hiç kimse sonsuza kadar yaşamaz ve bu kahramanlar kesinlikle yaşamayı umursamıyorlar - kelimenin tam anlamıyla eğlence uğruna ölüyorlar. 5'e 5'lik bir maç kazanmak için bir dizi kısa muharebe turuna dal. Saldıran takım haritada belirli bir yerde bir bombayı harekete geçirmeli. Savunma tarafındaysan... ne yapman gerektiğini biliyorsun, değil mi?\n"
 ""
 
-#: src/pages/nodes/index.tsx:221
+#: src/pages/nodes/index.tsx:230
 msgid "Node owner rewards"
 msgstr "Düğüm sahibi ödülleri"
 
-#: src/pages/nodes/index.tsx:56
+#: src/pages/nodes/index.tsx:57
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "Düğüm sahipleri ayrıca, düğüm operatörleri ve genel topluluk üyeleri olarak itibar puanlarına dayalı olarak NFT hediyeleri ve belirteçleri ile ödüllendirilecekler."
 
@@ -1914,7 +1935,7 @@ msgstr ""
 "Yalnızca 50.000 Düğüm Lisansı piyasaya sürülecek. Erken destekçilerimizin ödüllendirilmesini sağlamak için düğümler satıldıkça fiyatlar artacaktır.\n"
 ""
 
-#: src/pages/nodes/index.tsx:169
+#: src/pages/nodes/index.tsx:170
 msgid "Only 55,000 Myria node licenses will ever be released."
 msgstr "Yalnızca 55.000 Myria düğüm lisansı piyasaya sürülecek."
 
@@ -1972,7 +1993,7 @@ msgstr "Meta veri deposu kimliğine sahip olun"
 msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "Meta veri deposu kimliğine sahip olun. Herhangi bir yerde. Herhangi Oyun."
 
-#: src/components/Purchase/Order.tsx:112
+#: src/components/Purchase/Order.tsx:132
 msgid "PURCHASE NOW"
 msgstr ""
 "ŞİMDİ AL\n"
@@ -2076,19 +2097,15 @@ msgstr "<0>$MYRIA</0> tarafından desteklenir ve yönetilir"
 msgid "Powered by the community"
 msgstr "Topluluk tarafından desteklenmektedir"
 
-#: src/pages/nodes/index.tsx:208
+#: src/pages/nodes/index.tsx:217
 msgid "Powered by the community of player-run nodes"
 msgstr "Oyuncu tarafından işletilen düğümler topluluğu tarafından desteklenmektedir"
-
-#: src/pages/nodes/index.tsx:199
-msgid "Pre register now"
-msgstr "Şimdi ön kayıt ol"
 
 #: src/components/Subscribe.tsx:63
 msgid "Pre register to stay up to date"
 msgstr "Güncel kalmak için ön kayıt"
 
-#: src/components/Purchase/Order.tsx:76
+#: src/components/Purchase/Order.tsx:93
 msgid "Price"
 msgstr ""
 "Ücret\n"
@@ -2120,13 +2137,13 @@ msgstr ""
 "Ödüllerinizi ve pasif gelirinizi artırmak için daha fazla düğüm satın alın\n"
 ""
 
-#: src/components/Purchase/Modals/index.tsx:78
+#: src/components/Purchase/Modals/index.tsx:119
 msgid "Purchase now"
 msgstr ""
 "Şimdi Satın Al\n"
 ""
 
-#: src/components/Purchase/Order.tsx:87
+#: src/components/Purchase/Order.tsx:104
 msgid "Quantity"
 msgstr ""
 "Nicelik\n"
@@ -2138,7 +2155,7 @@ msgstr ""
 "Nicelik: {qty}\n"
 ""
 
-#: src/components/Purchase/Modals/index.tsx:33
+#: src/components/Purchase/Modals/index.tsx:74
 msgid "Quantity: {quantity}"
 msgstr ""
 
@@ -2222,8 +2239,8 @@ msgstr ""
 ""
 
 #: src/pages/nodes/index.tsx:190
-msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
-msgstr "Bir düğüm çalıştırın ve <0>$MYRIA</0> ve NFT ödülleri kazanın"
+msgid "Run a node and earn <0>$MYRIA and NFT rewards</0>"
+msgstr ""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:283
 msgid "SELECT"
@@ -2289,6 +2306,8 @@ msgstr ""
 ""
 
 #: src/components/SignIn/SignIn.tsx:81
+#: src/components/nodes/Header.tsx:156
+#: src/components/nodes/Header.tsx:235
 msgid "Sign in"
 msgstr ""
 "Giriş yap\n"
@@ -2431,7 +2450,7 @@ msgstr "Mesaj için teşekkürler. 24-48 saat içinde sizinle iletişime geçece
 msgid "Thank you for subscribing!"
 msgstr "Abone olduğunuz için teşekkür ederiz!"
 
-#: src/pages/nodes/index.tsx:211
+#: src/pages/nodes/index.tsx:220
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "Myria zinciri, oyuncu tarafından işletilen bir düğüm ağı ile desteklenir. Düğüm operatörü olmak için ev bilgisayarınızı kullanın ve ekosisteme katkınız için ödüller ve avantajlar elde edin."
 
@@ -2519,7 +2538,7 @@ msgstr ""
 "Token ekonomisi danışmanlığı\n"
 ""
 
-#: src/components/Purchase/Modals/index.tsx:63
+#: src/components/Purchase/Modals/index.tsx:104
 #: src/components/nodes/rewards/ClaimModal.tsx:42
 msgid "Total"
 msgstr ""
@@ -2555,7 +2574,7 @@ msgstr ""
 "İşlem Listesi\n"
 ""
 
-#: src/components/Purchase/Modals/index.tsx:48
+#: src/components/Purchase/Modals/index.tsx:89
 msgid "Transaction fee"
 msgstr ""
 "İşlem Ücreti \n"
@@ -2623,6 +2642,10 @@ msgstr ""
 "ÜRÜNLERİ İNCELE\n"
 ""
 
+#: src/pages/nodes/index.tsx:252
+msgid "Validating on Myria"
+msgstr ""
+
 #: src/hooks/useGamesData.tsx:163
 msgid "Vanity factor number 1"
 msgstr ""
@@ -2635,13 +2658,17 @@ msgstr ""
 "Vector Prime, Çatlak'ın evrimin bir sonraki adımı olduğuna ve genişlemesini hızlandırmak için ellerinden gelen her şeyi yapacağına inanıyor.\n"
 ""
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:26
+msgid "Vegan PBR&B listicle sriracha. Migas lomo helvetica, listicle paleo salvia sartorial crucifix dreamcatcher try-hard ugh lyft. Intelligentsia whatever mlkshk salvia, authentic jianbing wolf coloring book echo park fam. Iceland cray occupy ennui, franzen tilde poke. Poutine echo park meditation cliche franzen, shaman messenger bag. Hot chicken umami adaptogen DIY yuccie whatever subway tile, narwhal helvetica meggings scenester twee iPhone tumblr lumbersexual."
+msgstr ""
+
 #: src/components/Careers/Careers.tsx:91
 msgid "View job"
 msgstr ""
 "İşi görüntüle\n"
 ""
 
-#: src/pages/nodes/index.tsx:40
+#: src/pages/nodes/index.tsx:41
 msgid "Voting rights"
 msgstr "Oy hakları"
 
@@ -2712,19 +2739,19 @@ msgstr ""
 msgid "We’re hiring, join the future of gaming"
 msgstr "İşe alıyoruz, oyunun geleceğine katılın"
 
-#: src/pages/nodes/index.tsx:116
+#: src/pages/nodes/index.tsx:117
 msgid "What are the software and hardware requirements to run a node?"
 msgstr "Bir düğümü çalıştırmak için gereken yazılım ve donanım gereksinimleri nelerdir?"
 
-#: src/pages/nodes/index.tsx:67
+#: src/pages/nodes/index.tsx:68
 msgid "What is a Myria node?"
 msgstr "Myria düğümü nedir?"
 
-#: src/pages/nodes/index.tsx:87
+#: src/pages/nodes/index.tsx:88
 msgid "What rewards do Myria node operators receive?"
 msgstr "Myria düğüm operatörleri hangi ödülleri alıyor?"
 
-#: src/pages/nodes/index.tsx:149
+#: src/pages/nodes/index.tsx:150
 msgid "When will Myria node licenses be sold?"
 msgstr "Myria düğüm lisansları ne zaman satılacak?"
 
@@ -2787,7 +2814,7 @@ msgstr ""
 "Satın alma işlemin tamamlandı.\n"
 ""
 
-#: src/pages/nodes/index.tsx:205
+#: src/pages/nodes/index.tsx:214
 msgid "a decentralized ecosystem"
 msgstr "merkezi olmayan bir ekosistem"
 
@@ -2799,7 +2826,7 @@ msgstr "devrime katılın"
 msgid "view now"
 msgstr "şimdi görüntüle"
 
-#: src/components/Purchase/Modals/index.tsx:75
+#: src/components/Purchase/Modals/index.tsx:116
 msgid "{balance} ETH"
 msgstr ""
 
