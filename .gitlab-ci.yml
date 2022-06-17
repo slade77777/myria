@@ -38,7 +38,7 @@ dev-deploy:
       ./scripts/assume_deployer_role.sh $account
 
       # TODO:
-      # ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder
       # ./scripts/invalidate_cdn.sh $cloudfront_id
   variables:
     account: myria-net-nonprod
