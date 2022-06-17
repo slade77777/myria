@@ -46,7 +46,7 @@ const schema = yup.object({
   privacy: yup.boolean().required().oneOf([true])
 });
 
-const ToAddress = process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS;
+const ToAddress = process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string;
 
 const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
   const { onConnect, address } = useWalletContext();
