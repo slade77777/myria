@@ -1,5 +1,5 @@
 stages:
-  # - dev-build
+  - dev-build
   - dev-deploy
   # - staging
   # - preprod
@@ -10,17 +10,17 @@ stages:
     - |
       yum install -y jq
 
-# dev-build:
-#   # rules:
-#   #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
-#   image: node:14
-#   stage: dev-build
-#   script:
-#     - yarn add next react react-dom
-#     - yarn build:dev
-#   artifacts:
-#     paths:
-#       - out-dev # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
+dev-build:
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  image: node:14
+  stage: dev-build
+  script:
+    - yarn add next react react-dom
+    - yarn build:dev
+  artifacts:
+    paths:
+      - out-dev # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
 
 dev-deploy:
   # rules:
@@ -46,5 +46,5 @@ dev-deploy:
     bucket_name: dev
     artifacts_folder: out-dev
     cloudfront_id: from-s3-bucket # The cloudfront id of this env
-  # dependencies:
-  #   - dev-build
+  dependencies:
+    - dev-build
