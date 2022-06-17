@@ -1,5 +1,6 @@
 stages:
-  - dev
+  - dev-build
+  - dev-deploy
   # - staging
   # - preprod
   # - prod
@@ -10,8 +11,8 @@ stages:
       yum install -y jq
 
 dev-build:
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
   image: node:14
   stage: dev
   script:
@@ -22,8 +23,8 @@ dev-build:
       - out-dev # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
 
 dev-deploy:
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
