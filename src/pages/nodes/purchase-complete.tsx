@@ -30,11 +30,11 @@ const PurchaseComplete: React.FC = () => {
           <div className="heading-sm mt-8 mb-12 text-center">
             <Trans>Get started with your Myria node.</Trans>
           </div>
-          <Link href="/nodes/dashboard/nodes">
+          {/* <Link href="/nodes/dashboard/nodes">
             <a className="btn-lg btn-primary">
               <Trans>GO TO DASHBOARD</Trans>
             </a>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </Page>
