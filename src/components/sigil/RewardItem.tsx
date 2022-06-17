@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import LockIcon from 'src/components/icons/LockIcon';
 import PointIcon from 'src/components/icons/PointIcon';
+import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
 import { Reward } from 'src/types/sigil';
 
@@ -30,6 +31,7 @@ type Props = {
 const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
   const { event } = useGA4();
   const { title, credits_required, status, image_url, progress_percentage } = item;
+  const { user } = useAuthenticationContext();
 
   const content = useMemo(() => {
     const percentage = progress_percentage ?? 0;
@@ -60,12 +62,11 @@ const RewardItem: React.FC<Props> = ({ item, onClaim }) => {
           <button
             onClick={() => {
               onClaim(item);
-              // TODO mock event
               event('Reward Claimed', {
                 campaign: 'Sigil',
-                wallet_address: '_mock',
+                wallet_address: user?.wallet_id || '',
                 reward_name: title,
-                credit_amount: -111
+                credit_amount: credits_required
               });
             }}
             className="rounded-[4px] bg-[#1F2334] px-4 py-1 text-[12px] font-bold leading-[1.25] text-brand-gold">

@@ -4,6 +4,7 @@ import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
 import { useGA4 } from 'src/lib/ga';
 import copy from 'clipboard-copy';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 type Props = {
   open: boolean;
@@ -14,6 +15,7 @@ type Props = {
 const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
   const { event } = useGA4();
   const [copied, setCopied] = React.useState(false);
+  const { user } = useAuthenticationContext();
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -54,12 +56,11 @@ const ReferFriendModal: React.FC<Props> = ({ open, onClose, link }) => {
             <button
               className="mt-7 text-[12px] font-bold leading-[1.25] text-brand-gold"
               onClick={async () => {
-                // TODO mock event
                 event('Invite Link Copied', {
                   campaign: 'Sigil',
-                  myria_username: '_mock',
-                  user_email: '_mock',
-                  wallet_address: '_mock'
+                  myria_username: user?.user_name || '',
+                  user_email: user?.email || '',
+                  wallet_address: user?.wallet_id || ''
                 });
                 await copy(link);
                 setCopied(true);
