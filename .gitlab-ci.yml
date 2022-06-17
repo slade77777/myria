@@ -1,6 +1,8 @@
 stages:
   - dev-build
   - dev-deploy
+  - staging-build
+  - staging-deploy
   # - staging
   # - preprod
   # - prod
@@ -47,3 +49,40 @@ dev-deploy:
     cloudfront_id: E2KK5GZ4YUTN6P
   dependencies:
     - dev-build
+staging-build:
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  image: node:14
+  stage: staging-build
+  script:
+    - yarn add next react react-dom
+    - yarn build:staging
+  artifacts:
+    paths:
+      - out-staging # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
+
+staging-deploy:
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  stage: staging-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # TODO:
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-nonprod
+    region: us-east-1
+    bucket_name: myria-staging.nonprod-myria.com
+    artifacts_folder: out-staging
+    cloudfront_id: E1X54QQITEHV0X
+  dependencies:
+    - staging-build
