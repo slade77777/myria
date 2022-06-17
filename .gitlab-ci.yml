@@ -38,6 +38,6 @@ dev-deploy:
     region: us-east-1
     bucket_name: dev
     artifacts_folder: out-dev
-    cloudfront_id: xyzxyz # The cloudfront id of this env
+    cloudfront_id: from-s3-bucket # The cloudfront id of this env
   dependencies:
     - dev-build
