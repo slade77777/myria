@@ -15,8 +15,8 @@ artifacts_folder=$2
 
 aws s3 sync --acl public-read  --delete $artifacts_folder s3://$bucket_name
 
-cloudfront_id=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,origin:Origins.Items[0].Id}[?origin==$bucket_name].id" --output text)
+cloudfront_id=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,origin:Origins.Items[0].Id}[?origin=='"$bucket_name"'].id" --output text)
 
-aws cloudfront create-invalidation --distribution-id $cloudfront_id --paths '/*'
+aws cloudfront create-invalidation --distribution-id "$cloudfront_id" --paths '/*'
 
 echo "Deploy to S3 && cloudfront invalidate done."
