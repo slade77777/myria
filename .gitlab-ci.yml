@@ -4,6 +4,11 @@ stages:
   # - preprod
   # - prod
 
+.aws_cli_init:
+  before_script:
+    - |
+      yum install -y jq
+
 dev-build:
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
@@ -25,9 +30,11 @@ dev-deploy:
   services:
     - docker:dind
   stage: dev
+  extends:
+    - .aws_cli_init
   script:
     - |
-    - apt-get install jq
+      
       ./scripts/assume_deployer_role.sh $account
 
       # TODO:
