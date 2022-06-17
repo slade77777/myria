@@ -106,7 +106,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
   const doPurchase = useCallback(
     (data: any) => {
       const { quantity } = data;
-      if (!WhitelistAddress.find((item) => item.address === address)) {
+      if (!WhitelistAddress.find((item) => item.address.toLowerCase() === address?.toLowerCase())) {
         return setWhitelistError(true);
       }
       submitPurchase({ numberOfNode: quantity })
