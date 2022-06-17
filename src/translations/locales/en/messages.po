@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/home/Hero.tsx:99
+#: src/components/home/Hero.tsx:136
 msgid "$MYRIA Token"
 msgstr "$MYRIA Token"
 
@@ -81,7 +81,7 @@ msgstr "<0>Myria node operators will receive daily $MYRIA token rewards for the 
 #~ msgid "<0>Once the Sigils are active, they will be minted directly on Myria</0>"
 #~ msgstr "<0>Once the Sigils are active, they will be minted directly on Myria</0>"
 
-#: src/pages/inventory.tsx:104
+#: src/pages/inventory.tsx:100
 msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
 msgstr "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
 
@@ -105,11 +105,11 @@ msgstr "<0>Resourcefulness rules!</0> - Overcome your competition with the best 
 msgid "<0>Sigils are going to be activated later in time when the mysterious Sigma mission is set into motion.</0>"
 msgstr "<0>Sigils are going to be activated later in time when the mysterious Sigma mission is set into motion.</0>"
 
-#: src/pages/inventory.tsx:93
+#: src/pages/inventory.tsx:89
 msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
 msgstr "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
 
-#: src/pages/inventory.tsx:98
+#: src/pages/inventory.tsx:94
 msgid "<0>T-minus 47 gigaquarks</0>"
 msgstr "<0>T-minus 47 gigaquarks</0>"
 
@@ -137,7 +137,7 @@ msgstr "A battle-royale shooter game"
 msgid "A competitive play-and-earn tycoon farming simulator."
 msgstr "A competitive play-and-earn tycoon farming simulator."
 
-#: src/components/home/Hero.tsx:221
+#: src/components/home/Hero.tsx:258
 msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 msgstr "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 
@@ -235,7 +235,7 @@ msgstr "All"
 #~ msgid "All positions"
 #~ msgstr "All positions"
 
-#: src/components/home/Hero.tsx:76
+#: src/components/home/Hero.tsx:82
 msgid "Alliance Sigil NFT Launch"
 msgstr "Alliance Sigil NFT Launch"
 
@@ -306,7 +306,7 @@ msgstr "Available to mint"
 msgid "BACK TO MYRIA HOME"
 msgstr "BACK TO MYRIA HOME"
 
-#: src/pages/inventory.tsx:120
+#: src/pages/inventory.tsx:116
 msgid "BACK TO SIGIL DASHBOARD"
 msgstr "BACK TO SIGIL DASHBOARD"
 
@@ -332,7 +332,7 @@ msgstr "Become a Myria node owner & receive rewards"
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 
-#: src/components/home/Hero.tsx:79
+#: src/components/home/Hero.tsx:85
 msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
 msgstr "Begin your adventure, choose your alliance and claim your free NFT rewards"
 
@@ -352,7 +352,7 @@ msgstr "Blockchain platform for game studios"
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 
-#: src/components/home/Hero.tsx:211
+#: src/components/home/Hero.tsx:248
 msgid "Bringing <0>blockchain gaming </0>to the world"
 msgstr "Bringing <0>blockchain gaming </0>to the world"
 
@@ -360,7 +360,7 @@ msgstr "Bringing <0>blockchain gaming </0>to the world"
 msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 msgstr "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:80
+#: src/components/for-developers/BuildYourBlockchain.tsx:82
 msgid "Build your blockchain game with Myria"
 msgstr "Build your blockchain game with Myria"
 
@@ -384,9 +384,8 @@ msgstr "Buy a node"
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 
-#: src/components/home/Hero.tsx:85
-#: src/components/inventory/InventoryItem.tsx:35
-#: src/components/sigil/RewardItem.tsx:72
+#: src/components/home/Hero.tsx:93
+#: src/components/sigil/RewardItem.tsx:73
 msgid "CLAIM NOW"
 msgstr "CLAIM NOW"
 
@@ -407,8 +406,8 @@ msgid "COLLECT NOW"
 msgstr "COLLECT NOW"
 
 #: src/components/games/GameList.tsx:157
-#: src/components/home/Hero.tsx:96
-#: src/components/home/Hero.tsx:102
+#: src/components/home/Hero.tsx:133
+#: src/components/home/Hero.tsx:139
 #: src/components/home/OurGames.tsx:26
 msgid "COMING SOON"
 msgstr "COMING SOON"
@@ -418,11 +417,11 @@ msgstr "COMING SOON"
 msgid "CONNECT WALLET"
 msgstr "CONNECT WALLET"
 
-#: src/components/sigil/ReferFriendModal.tsx:67
+#: src/components/sigil/ReferFriendModal.tsx:68
 msgid "COPIED"
 msgstr "COPIED"
 
-#: src/components/sigil/ReferFriendModal.tsx:67
+#: src/components/sigil/ReferFriendModal.tsx:68
 msgid "COPY LINK"
 msgstr "COPY LINK"
 
@@ -479,7 +478,7 @@ msgstr "Claim rewards"
 msgid "Claim your NFT reward"
 msgstr "Claim your NFT reward"
 
-#: src/components/sigil/RewardItem.tsx:80
+#: src/components/sigil/RewardItem.tsx:81
 msgid "Claimed"
 msgstr "Claimed"
 
@@ -540,7 +539,7 @@ msgstr "Community"
 msgid "Compete, survive, win and earn!"
 msgstr "Compete, survive, win and earn!"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:184
+#: src/components/sigil/Dashboard/MissionV2.tsx:190
 msgid "Complete"
 msgstr "Complete"
 
@@ -611,7 +610,7 @@ msgstr "Contact us"
 msgid "Contributing to the future of a decentralized internet"
 msgstr "Contributing to the future of a decentralized internet"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:90
+#: src/components/sigil/Dashboard/MissionV2.tsx:88
 msgid "Copy invite link"
 msgstr "Copy invite link"
 
@@ -637,6 +636,11 @@ msgstr "Creating the new standard for blockchain games and experiences"
 #~ msgid "Credits"
 #~ msgstr "Credits"
 
+#: src/components/home/Hero.tsx:114
+#: src/pages/cricket.tsx:96
+msgid "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
+msgstr "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
+
 #: src/components/nodes/dashboard/TimeOnline.tsx:9
 msgid "Current Node Cycle"
 msgstr "Current Node Cycle"
@@ -661,7 +665,7 @@ msgstr "Daily $MYRIA token rewards"
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: src/components/sigil/Profile.tsx:72
+#: src/components/sigil/Profile.tsx:71
 msgid "Date Registered"
 msgstr "Date Registered"
 
@@ -749,11 +753,11 @@ msgstr "Each node is allowed to vote on proposed changes to the Myria chain and 
 #~ msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
 #~ msgstr "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:115
+#: src/components/sigil/Dashboard/MissionV2.tsx:113
 msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)"
 msgstr "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:79
+#: src/components/sigil/Dashboard/MissionV2.tsx:77
 msgid "Earn {point} points by completing account creation"
 msgstr "Earn {point} points by completing account creation"
 
@@ -761,35 +765,39 @@ msgstr "Earn {point} points by completing account creation"
 #~ msgid "Earn {point} points by completing account creation and becoming a true Myrian"
 #~ msgstr "Earn {point} points by completing account creation and becoming a true Myrian"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:145
+#: src/components/sigil/Dashboard/MissionV2.tsx:143
 msgid "Earn {point} points by following @myriagames on Twitter"
 msgstr "Earn {point} points by following @myriagames on Twitter"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:86
+#: src/components/sigil/Dashboard/MissionV2.tsx:151
+msgid "Earn {point} points by following myriagames on Instagram"
+msgstr "Earn {point} points by following myriagames on Instagram"
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:84
 msgid "Earn {point} points by joining the Myria Discord server"
 msgstr "Earn {point} points by joining the Myria Discord server"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:127
+#: src/components/sigil/Dashboard/MissionV2.tsx:125
 msgid "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
 msgstr "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:137
+#: src/components/sigil/Dashboard/MissionV2.tsx:135
 msgid "Earn {point} points by sharing a tweet about Myria"
 msgstr "Earn {point} points by sharing a tweet about Myria"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:103
+#: src/components/sigil/Dashboard/MissionV2.tsx:101
 msgid "Earn {point} points for each day you send a message to any Myria Discord channel"
 msgstr "Earn {point} points for each day you send a message to any Myria Discord channel"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:96
+#: src/components/sigil/Dashboard/MissionV2.tsx:94
 msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
 msgstr "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:121
+#: src/components/sigil/Dashboard/MissionV2.tsx:119
 msgid "Earn {point} points when you add a thumbs up reaction to a message on the #myria-lore channel"
 msgstr "Earn {point} points when you add a thumbs up reaction to a message on the #myria-lore channel"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:109
+#: src/components/sigil/Dashboard/MissionV2.tsx:107
 msgid "Earn {point} points when you send your first message on any Myria Discord channel"
 msgstr "Earn {point} points when you send your first message on any Myria Discord channel"
 
@@ -815,12 +823,17 @@ msgstr "Eliminate your opponents in this fast-paced-action-packed-survival game,
 msgid "Email"
 msgstr "Email"
 
+#: src/pages/cricket.tsx:107
+msgid "Email address"
+msgstr "Email address"
+
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
 #: src/components/GetInTouch.tsx:27
 #: src/components/Register/Register.tsx:54
 #: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:21
-#: src/components/for-developers/BuildYourBlockchain.tsx:35
+#: src/components/for-developers/BuildYourBlockchain.tsx:37
+#: src/pages/cricket.tsx:28
 msgid "Email is required!"
 msgstr "Email is required!"
 
@@ -833,8 +846,12 @@ msgid "Empowering players"
 msgstr "Empowering players"
 
 #: src/pages/for-developers/index.tsx:40
-msgid "Enabling digital asset scalabiltiy on Ethereum"
-msgstr "Enabling digital asset scalabiltiy on Ethereum"
+msgid "Enabling digital asset scalability on Ethereum"
+msgstr "Enabling digital asset scalability on Ethereum"
+
+#: src/pages/for-developers/index.tsx:40
+#~ msgid "Enabling digital asset scalabiltiy on Ethereum"
+#~ msgstr "Enabling digital asset scalabiltiy on Ethereum"
 
 #: src/components/for-developers/Myria.tsx:22
 msgid "Enabling true scalability while leveraging the Ethereum network"
@@ -938,7 +955,11 @@ msgstr "First name"
 msgid "First name is required!"
 msgstr "First name is required!"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:140
+#: src/components/sigil/Dashboard/MissionV2.tsx:146
+msgid "Follow on Instagram"
+msgstr "Follow on Instagram"
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:138
 msgid "Follow on Twitter"
 msgstr "Follow on Twitter"
 
@@ -1223,13 +1244,14 @@ msgstr "Interoperability FTW! Yes, we’ve got you covered - you can bring those
 #: src/components/Register/Register.tsx:53
 #: src/components/SignIn/SignIn.tsx:21
 #: src/components/Subscribe.tsx:20
-#: src/components/for-developers/BuildYourBlockchain.tsx:34
+#: src/components/for-developers/BuildYourBlockchain.tsx:36
+#: src/pages/cricket.tsx:27
 msgid "Invalid email!"
 msgstr "Invalid email!"
 
 #: src/components/Header/ProfileComponent.tsx:12
 #: src/components/nodes/Sidebar.tsx:26
-#: src/pages/inventory.tsx:127
+#: src/pages/inventory.tsx:123
 msgid "Inventory"
 msgstr "Inventory"
 
@@ -1237,7 +1259,7 @@ msgstr "Inventory"
 #~ msgid "Invite"
 #~ msgstr "Invite"
 
-#: src/components/sigil/ReferFriendModal.tsx:47
+#: src/components/sigil/ReferFriendModal.tsx:49
 msgid "Invite your friends to Myria by sharing the following link with them."
 msgstr "Invite your friends to Myria by sharing the following link with them."
 
@@ -1263,7 +1285,7 @@ msgstr "Ivan has 10+ years of experience in the game industry. He has been a lea
 #: src/components/Header/MobileHeader.tsx:55
 #: src/components/Header/MobileHeader.tsx:98
 #: src/components/NotiBanner.tsx:49
-#: src/components/home/Hero.tsx:242
+#: src/components/home/Hero.tsx:279
 #: src/pages/game-detail/[id].tsx:138
 msgid "JOIN DISCORD"
 msgstr "JOIN DISCORD"
@@ -1333,6 +1355,7 @@ msgstr "Just make sure you’re still alive till the end of the round or you’l
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 msgstr "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 
+#: src/components/home/Hero.tsx:123
 #: src/pages/nodes/purchase-complete.tsx:110
 #: src/pages/studios.tsx:228
 msgid "LEARN MORE"
@@ -1371,12 +1394,12 @@ msgstr "Latest Updates & News"
 #~ msgid "Lauch discord"
 #~ msgstr "Lauch discord"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:83
-#: src/components/sigil/Dashboard/MissionV2.tsx:100
-#: src/components/sigil/Dashboard/MissionV2.tsx:106
-#: src/components/sigil/Dashboard/MissionV2.tsx:112
-#: src/components/sigil/Dashboard/MissionV2.tsx:118
-#: src/components/sigil/Dashboard/MissionV2.tsx:124
+#: src/components/sigil/Dashboard/MissionV2.tsx:81
+#: src/components/sigil/Dashboard/MissionV2.tsx:98
+#: src/components/sigil/Dashboard/MissionV2.tsx:104
+#: src/components/sigil/Dashboard/MissionV2.tsx:110
+#: src/components/sigil/Dashboard/MissionV2.tsx:116
+#: src/components/sigil/Dashboard/MissionV2.tsx:122
 msgid "Launch Discord"
 msgstr "Launch Discord"
 
@@ -1388,7 +1411,7 @@ msgstr "Launch with full support from our tokenomics experts"
 msgid "Layer 2 scalability solution"
 msgstr "Layer 2 scalability solution"
 
-#: src/components/home/Hero.tsx:230
+#: src/components/home/Hero.tsx:267
 msgid "Learn more"
 msgstr "Learn more"
 
@@ -1412,7 +1435,7 @@ msgstr "Leverage prebuilt Myria platform and tools - we take care of the support
 msgid "Limited supply available"
 msgstr "Limited supply available"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:182
+#: src/components/sigil/Dashboard/MissionV2.tsx:188
 msgid "Locked"
 msgstr "Locked"
 
@@ -1499,7 +1522,7 @@ msgid "Message"
 msgstr "Message"
 
 #: src/components/GetInTouch.tsx:35
-#: src/components/for-developers/BuildYourBlockchain.tsx:39
+#: src/components/for-developers/BuildYourBlockchain.tsx:41
 msgid "Message is required!"
 msgstr "Message is required!"
 
@@ -1662,11 +1685,11 @@ msgstr "Myria helps blockchain projects scale. Whether you’re an established c
 #~ msgstr "Myria helps studios join the blockchain revolution"
 
 #: src/pages/_app.tsx:34
+#: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
 msgstr "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
 
 #: src/components/ComingSoon.tsx:48
-#: src/pages/_app.tsx:47
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 
@@ -1828,6 +1851,10 @@ msgstr "Nodes are an integral part of the Myria universe, with dedicated lore, g
 msgid "Not the face!"
 msgstr "Not the face!"
 
+#: src/components/inventory/InventoryItem.tsx:35
+msgid "OPEN"
+msgstr "OPEN"
+
 #: src/components/inventory/InventoryItem.tsx:84
 #~ msgid "OPEN NOW"
 #~ msgstr "OPEN NOW"
@@ -1988,7 +2015,7 @@ msgstr "Platform"
 #~ msgid "Play & earn"
 #~ msgstr "Play & earn"
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:29
+#: src/components/for-developers/BuildYourBlockchain.tsx:31
 msgid "Please enter correct url!"
 msgstr "Please enter correct url!"
 
@@ -2000,7 +2027,7 @@ msgstr "Please view this experience on a desktop browser"
 msgid "Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge"
 msgstr "Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge"
 
-#: src/components/sigil/RewardItem.tsx:122
+#: src/components/sigil/RewardItem.tsx:123
 msgid "Points"
 msgstr "Points"
 
@@ -2076,6 +2103,10 @@ msgstr "Quantity: {quantity}"
 #~ msgid "READ ABOUT OUR ECOSYSTEM"
 #~ msgstr "READ ABOUT OUR ECOSYSTEM"
 
+#: src/pages/cricket.tsx:125
+msgid "REGISTER"
+msgstr "REGISTER"
+
 #: src/components/nodes/sigil/Header.tsx:27
 #~ msgid "RETURN"
 #~ msgstr "RETURN"
@@ -2098,7 +2129,7 @@ msgstr "Read more"
 msgid "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
 msgstr "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
 
-#: src/components/sigil/ReferFriendModal.tsx:44
+#: src/components/sigil/ReferFriendModal.tsx:46
 msgid "Refer your friends"
 msgstr "Refer your friends"
 
@@ -2106,7 +2137,11 @@ msgstr "Refer your friends"
 msgid "Register"
 msgstr "Register"
 
-#: src/pages/nodes/index.tsx:240
+#: src/pages/cricket.tsx:88
+msgid "Register to win exclusive<0/>AB de Villiers Cricket Game NFTs"
+msgstr "Register to win exclusive<0/>AB de Villiers Cricket Game NFTs"
+
+#: src/pages/nodes/index.tsx:231
 msgid "Releasing soon"
 msgstr "Releasing soon"
 
@@ -2201,7 +2236,7 @@ msgstr "Settings"
 msgid "Share now"
 msgstr "Share now"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:130
+#: src/components/sigil/Dashboard/MissionV2.tsx:128
 msgid "Share on Twitter"
 msgstr "Share on Twitter"
 
@@ -2217,7 +2252,7 @@ msgid "Sign in"
 msgstr "Sign in"
 
 #: src/components/Header/MobileHeader.tsx:71
-#: src/components/sigil/Dashboard/MissionV2.tsx:73
+#: src/components/sigil/Dashboard/MissionV2.tsx:71
 msgid "Sign up"
 msgstr "Sign up"
 
@@ -2288,12 +2323,12 @@ msgid "Subject is required!"
 msgstr "Subject is required!"
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:144
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
 msgid "Submit"
 msgstr "Submit"
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:144
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
 msgid "Submitting..."
 msgstr "Submitting..."
 
@@ -2302,12 +2337,16 @@ msgid "Supercharge your project"
 msgstr "Supercharge your project"
 
 #: src/components/for-developers/Ethereum.tsx:96
+msgid "Support unlimited scalability, delivering up to 9,000+ TPS"
+msgstr "Support unlimited scalability, delivering up to 9,000+ TPS"
+
+#: src/components/for-developers/Ethereum.tsx:96
 #~ msgid "Support unlimited scalabiltiy, delivering up to 5,000+ TPS"
 #~ msgstr "Support unlimited scalabiltiy, delivering up to 5,000+ TPS"
 
 #: src/components/for-developers/Ethereum.tsx:96
-msgid "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
-msgstr "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
+#~ msgid "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
+#~ msgstr "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
 
 #: src/pages/studios.tsx:284
 msgid "TOKEN LAUNCH COMING SOON"
@@ -2322,11 +2361,12 @@ msgid "Terms | Privacy"
 msgstr "Terms | Privacy"
 
 #: src/components/GetInTouch.tsx:107
-#: src/components/for-developers/BuildYourBlockchain.tsx:136
+#: src/components/for-developers/BuildYourBlockchain.tsx:138
 msgid "Thank you for message. We will be in touch within 24-48 hours!"
 msgstr "Thank you for message. We will be in touch within 24-48 hours!"
 
 #: src/components/Subscribe.tsx:85
+#: src/pages/cricket.tsx:118
 msgid "Thank you for subscribing!"
 msgstr "Thank you for subscribing!"
 
@@ -2490,7 +2530,7 @@ msgstr "Utilize your gunplay skills in a combination with your unique hero abili
 msgid "VIEW ITEM"
 msgstr "VIEW ITEM"
 
-#: src/components/inventory/OpenChest.tsx:130
+#: src/components/inventory/OpenChest.tsx:133
 msgid "VIEW ITEMS"
 msgstr "VIEW ITEMS"
 
@@ -2571,7 +2611,7 @@ msgstr "We provide easy-to-use solutions to help projects kickstart their blockc
 msgid "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
 msgstr "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:83
+#: src/components/for-developers/BuildYourBlockchain.tsx:85
 msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 msgstr "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 
@@ -2633,7 +2673,7 @@ msgstr "You are joining..."
 msgid "You have just claimed"
 msgstr "You have just claimed"
 
-#: src/components/inventory/OpenChest.tsx:107
+#: src/components/inventory/OpenChest.tsx:110
 msgid "You have opened"
 msgstr "You have opened"
 

@@ -37,7 +37,7 @@ const ForDevelopers: React.FC = () => {
           </div>
           <div className="mx-auto max-w-[668px] text-center">
             <h1 className="text-[40px] font-extrabold leading-[1.15]">
-              <Trans>Enabling digital asset scalabiltiy on Ethereum</Trans>
+              <Trans>Enabling digital asset scalability on Ethereum</Trans>
             </h1>
             <p className="mt-6 text-[18px] leading-[1.5] md:text-[20px]">
               <Trans>

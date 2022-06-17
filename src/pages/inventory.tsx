@@ -75,10 +75,6 @@ const InventoryPage: React.FC = () => {
     };
   }, [filter]);
 
-  useEffect(() => {
-    // TODO mock event
-    event('Sigil Inventory Viewed', { campaign: 'Sigil', wallet_address: '_mock' });
-  }, [event]);
   return (
     <ProtectedComponent>
       <Page>

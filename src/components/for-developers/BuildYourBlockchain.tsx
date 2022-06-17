@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Input from '../Input';
 import Textarea from '../Textarea';
 import { useForm } from 'react-hook-form';
-import apiClient from 'src/client';
+import apiClient, { additionalApiClient } from 'src/client';
 import CircleCheck from '../icons/CircleCheck';
 
 interface IFormInputs {
@@ -24,11 +24,13 @@ const schema = yup
       .string()
       .trim()
       .required(t`Name is required!`),
-    website: yup.string().matches(
-      /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-      t`Please enter correct url!`
-  )
-  .required('Please enter website'),
+    website: yup
+      .string()
+      .matches(
+        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        t`Please enter correct url!`
+      )
+      .required('Please enter website'),
     fromEmail: yup
       .string()
       .email(t`Invalid email!`)
@@ -59,7 +61,7 @@ const BuildYourBlockchain: React.FC = () => {
       setIsSubmitSuccess(false);
 
       data.subject = `Build with Myria`;
-      await apiClient
+      await additionalApiClient
         .post('/contact-us', data)
         .then(() => setIsSubmitSuccess(true))
         .catch((error) => {
