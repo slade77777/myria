@@ -1,5 +1,4 @@
 import { Trans } from '@lingui/macro';
-import Image from 'next/image';
 import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
@@ -19,8 +18,8 @@ type Props = {
   open: boolean;
   onClose: () => void;
   openedChest?: OpenChestContent[];
-  chestName: string;
-  chestRarity: RarityType;
+  chestName?: string;
+  chestRarity?: RarityType;
 };
 
 interface ChestItemProps {
