@@ -74,11 +74,11 @@ export const linkSources: { [key: string]: NavItem } = {
         text: <Trans>Our team</Trans>,
         url: '/team'
       },
-      {
-        id: 'studios',
-        text: <Trans>MYRIA STUDIOS</Trans>,
-        url: '/studios'
-      },
+      // {
+      //   id: 'studios',
+      //   text: <Trans>MYRIA STUDIOS</Trans>,
+      //   url: '/studios'
+      // },
       {
         id: 'careers',
         text: <Trans>Careers</Trans>,
