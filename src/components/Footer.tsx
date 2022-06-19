@@ -54,10 +54,10 @@ const links = [
           link: '/store',
           inactive: true
         },
-        {
-          label: <Trans>Myria Studios</Trans>,
-          link: '/studios'
-        },
+        // {
+        //   label: <Trans>Myria Studios</Trans>,
+        //   link: '/studios'
+        // },
         {
           label: <Trans>For Developers</Trans>,
           link: '/for-developers'
