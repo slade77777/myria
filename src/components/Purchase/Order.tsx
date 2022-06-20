@@ -107,6 +107,13 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
     (data: any) => {
       const { quantity } = data;
       if (!WhitelistAddress.find((item) => item.address.toLowerCase() === address?.toLowerCase())) {
+        event('Node Order Placed', {
+          campaign: 'Nodes',
+          wallet_address: address,
+          node_quantity: quantity,
+          order_status: 'Error',
+          error_details: 'Not in whitelist address'
+        })
         return setWhitelistError(true);
       }
       submitPurchase({ numberOfNode: quantity })
@@ -119,6 +126,12 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
             nonce: response.transactionId,
             transactionId: response.transactionId
           });
+          event('Node Order Placed', {
+            campaign: 'Nodes',
+            wallet_address: address,
+            node_quantity: quantity,
+            order_status: 'Completed'
+          })
         })
         .catch((e) => {
           toast.error(e);
@@ -176,6 +189,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
                   <NumberInput
                     setQuantityNumber={(val: number) => {
                       field.onChange(val);
+                      event("Node Order Updated", {campaign: 'Nodes', wallet_address: address, node_quantity: val})
                     }}
                   />
                 )}
