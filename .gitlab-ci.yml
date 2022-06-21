@@ -3,9 +3,6 @@ stages:
   - dev-deploy
   - staging-build
   - staging-deploy
-  # - staging
-  # - preprod
-  # - prod
 
 .aws_cli_init:
   before_script:
@@ -14,7 +11,7 @@ stages:
 
 dev-build:
   # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  #   - if: '$CI_COMMIT_BRANCH == "dev"'
   image: node:14
   stage: dev-build
   script:
@@ -22,11 +19,11 @@ dev-build:
     - yarn build:dev
   artifacts:
     paths:
-      - out-dev # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
+      - out-dev
 
 dev-deploy:
   # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  #   - if: '$CI_COMMIT_BRANCH == "dev"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -46,7 +43,7 @@ dev-deploy:
     region: us-east-1
     bucket_name: myria-dev.nonprod-myria.com
     artifacts_folder: out-dev
-    cloudfront_id: E2KK5GZ4YUTN6P
+    cloudfront_id: E16CH11X42OZD4
   dependencies:
     - dev-build
 staging-build:
@@ -59,7 +56,7 @@ staging-build:
     - yarn build:staging
   artifacts:
     paths:
-      - out-staging # Note: Might need to change to out-dev, otherwise might conflicts with staging steps?
+      - out-staging
 
 staging-deploy:
   # rules:
@@ -83,6 +80,6 @@ staging-deploy:
     region: us-east-1
     bucket_name: myria-staging.nonprod-myria.com
     artifacts_folder: out-staging
-    cloudfront_id: E1X54QQITEHV0X
+    cloudfront_id: E13LZBS3DMRA8F
   dependencies:
     - staging-build
