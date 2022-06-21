@@ -174,11 +174,11 @@ prod-deploy:
       # TODO:
       ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
-    account: myria-net-nonprod
+    account: myria-net-prod
     region: us-east-1
-    bucket_name: myria-staging.nonprod-myria.com
+    bucket_name: TBC
     artifacts_folder: out-prod
-    cloudfront_id: E13LZBS3DMRA8F
+    cloudfront_id: TBC
   dependencies:
     - prod-build
   when: manual
