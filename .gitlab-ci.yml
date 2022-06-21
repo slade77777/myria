@@ -3,6 +3,8 @@ stages:
   - dev-deploy
   - staging-build
   - staging-deploy
+  - prod-build
+  - prod-deploy
 
 .aws_cli_init:
   before_script:
@@ -48,8 +50,8 @@ dev-deploy:
     - dev-build
 
 staging-build:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "staging"'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
   image: node:14
   stage: staging-build
   script:
@@ -59,9 +61,10 @@ staging-build:
     paths:
       - out-staging
 
+# Staging CD target 1
 staging-deploy:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "staging"'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -86,9 +89,10 @@ staging-deploy:
     - staging-build
 
 # The below is legacy using the previous manually created bucket
+# Staging CD target 2
 staging-legacy-deploy:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "staging"'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -111,3 +115,98 @@ staging-legacy-deploy:
     cloudfront_id: E36R51175D7RC5
   dependencies:
     - staging-build
+
+prod-build:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "merge-cicd"'
+  image: node:14
+  stage: prod-build
+  script:
+    - yarn add next react react-dom
+    - yarn build:prod
+  artifacts:
+    paths:
+      - out-prod
+
+# Prod CD target 1
+preprod-deploy:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "merge-cicd"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  stage: prod-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # TODO:
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-prod
+    region: us-east-1
+    bucket_name: myria-preprod.myria.com
+    artifacts_folder: out-prod
+    cloudfront_id: E1SN30T2UKSLIF
+  dependencies:
+    - prod-build
+
+# Prod CD target 2
+prod-deploy:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "merge-cicd"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  stage: prod-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # TODO:
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-nonprod
+    region: us-east-1
+    bucket_name: myria-staging.nonprod-myria.com
+    artifacts_folder: out-prod
+    cloudfront_id: E13LZBS3DMRA8F
+  dependencies:
+    - prod-build
+  when: manual
+
+# The below is legacy using the previous manually created bucket
+prod-legacy-deploy:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "merge-cicd"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  stage: prod-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # TODO:
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-prod
+    region: us-east-1
+    bucket_name: website-dapp
+    artifacts_folder: out-prod
+    cloudfront_id: EOL371HWV4XB1
+  dependencies:
+    - prod-build
+  when: manual

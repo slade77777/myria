@@ -5,7 +5,7 @@
     "dev": "env-cmd -f env.local next dev",
     "build:dev": "env-cmd -f env.staging next build && next export -o out-dev",
     "build:staging": "env-cmd -f env.staging next build && next export -o out-staging",
-    "build:prod": "env-cmd -f env.production next build && next export",
+    "build:prod": "env-cmd -f env.production next build && next export -o out-prod",
     "start": "next start",
     "lint": "next lint",
     "extract": "NODE_ENV=development lingui extract",
