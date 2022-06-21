@@ -124,4 +124,4 @@ staging-legacy-deploy:
     artifacts_folder: out-staging
     cloudfront_id: E36R51175D7RC5
   dependencies:
-    - staging-build-legacy
+    - staging-legacy-build
