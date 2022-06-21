@@ -17,7 +17,7 @@ dev-build:
   image: node:14
   stage: dev-build
   script:
-    - yarn add next react react-dom
+    - yarn
     - yarn build:dev
   artifacts:
     paths:
@@ -38,7 +38,7 @@ dev-deploy:
     - |
       ./scripts/assume_deployer_role.sh $account
 
-      # TODO:
+      # Deploy to S3 and invalidate Cloudfront Distributions
       ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
     account: myria-net-nonprod
@@ -55,7 +55,7 @@ staging-build:
   image: node:14
   stage: staging-build
   script:
-    - yarn add next react react-dom
+    - yarn
     - yarn build:staging
   artifacts:
     paths:
@@ -77,7 +77,7 @@ staging-deploy:
     - |
       ./scripts/assume_deployer_role.sh $account
 
-      # TODO:
+      # Deploy to S3 and invalidate Cloudfront Distributions
       ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
     account: myria-net-nonprod
@@ -105,7 +105,7 @@ staging-legacy-deploy:
     - |
       ./scripts/assume_deployer_role.sh $account
 
-      # TODO:
+      # Deploy to S3 and invalidate Cloudfront Distributions
       ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
     account: myria-net-prod
@@ -122,7 +122,7 @@ prod-build:
   image: node:14
   stage: prod-build
   script:
-    - yarn add next react react-dom
+    - yarn
     - yarn build:prod
   artifacts:
     paths:
@@ -144,7 +144,7 @@ preprod-deploy:
     - |
       ./scripts/assume_deployer_role.sh $account
 
-      # TODO:
+      # Deploy to S3 and invalidate Cloudfront Distributions
       ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
     account: myria-net-prod
@@ -171,14 +171,14 @@ prod-deploy:
     - |
       ./scripts/assume_deployer_role.sh $account
 
-      # TODO:
+      # Deploy to S3 and invalidate Cloudfront Distributions
       ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
     account: myria-net-prod
     region: us-east-1
-    bucket_name: TBC
+    bucket_name: myria.com
     artifacts_folder: out-prod
-    cloudfront_id: TBC
+    cloudfront_id: E2K9Z1GWCIDOGE
   dependencies:
     - prod-build
   when: manual
@@ -199,7 +199,7 @@ prod-legacy-deploy:
     - |
       ./scripts/assume_deployer_role.sh $account
 
-      # TODO:
+      # Deploy to S3 and invalidate Cloudfront Distributions
       ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
     account: myria-net-prod
