@@ -3,6 +3,8 @@ stages:
   - dev-deploy
   - staging-build
   - staging-deploy
+  - staging-legacy-build
+  - staging-legacy-deploy
 
 .aws_cli_init:
   before_script:
@@ -10,8 +12,8 @@ stages:
       yum install -y jq
 
 dev-build:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "dev"'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
   image: node:14
   stage: dev-build
   script:
@@ -22,8 +24,8 @@ dev-build:
       - out-dev
 
 dev-deploy:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "dev"'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -49,7 +51,7 @@ dev-deploy:
 
 staging-build:
   # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  #   - if: '$CI_COMMIT_BRANCH == "staging"'
   image: node:14
   stage: staging-build
   script:
@@ -85,20 +87,20 @@ staging-deploy:
   dependencies:
     - staging-build
 
-# The above is legacy using the previous manually created bucket
-staging-build-legacy:
+# The below is legacy using the previous manually created bucket
+staging-legacy-build:
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "staging"'
   image: node:14
-  stage: staging-build
+  stage: staging-legacy-build
   script:
     - yarn add next react react-dom
     - yarn build:staging
   artifacts:
     paths:
-      - out-staging-legacy
+      - out-staging
 
-staging-deploy-legacy:
+staging-legacy-deploy:
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
@@ -106,7 +108,7 @@ staging-deploy-legacy:
     entrypoint: [""]
   services:
     - docker:dind
-  stage: staging-deploy
+  stage: staging-legacy-deploy
   extends:
     - .aws_cli_init
   script:
@@ -119,7 +121,7 @@ staging-deploy-legacy:
     account: myria-net-prod
     region: us-east-1
     bucket_name: website-dapp-staging
-    artifacts_folder: out-staging-legacy
+    artifacts_folder: out-staging
     cloudfront_id: E36R51175D7RC5
   dependencies:
     - staging-build-legacy
