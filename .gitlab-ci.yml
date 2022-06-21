@@ -118,7 +118,7 @@ staging-legacy-deploy:
 
 prod-build:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "merge-cicd"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
   image: node:14
   stage: prod-build
   script:
@@ -131,7 +131,7 @@ prod-build:
 # Prod CD target 1
 preprod-deploy:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "merge-cicd"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -158,7 +158,7 @@ preprod-deploy:
 # Prod CD target 2
 prod-deploy:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "merge-cicd"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -186,7 +186,7 @@ prod-deploy:
 # The below is legacy using the previous manually created bucket
 prod-legacy-deploy:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "merge-cicd"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
