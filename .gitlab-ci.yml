@@ -46,6 +46,7 @@ dev-deploy:
     cloudfront_id: E16CH11X42OZD4
   dependencies:
     - dev-build
+
 staging-build:
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
@@ -60,7 +61,7 @@ staging-build:
 
 staging-deploy:
   # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "staging"'
+  #   - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -83,3 +84,42 @@ staging-deploy:
     cloudfront_id: E13LZBS3DMRA8F
   dependencies:
     - staging-build
+
+# The above is legacy using the previous manually created bucket
+staging-build-legacy:
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "staging"'
+  image: node:14
+  stage: staging-build
+  script:
+    - yarn add next react react-dom
+    - yarn build:staging
+  artifacts:
+    paths:
+      - out-staging-legacy
+
+staging-deploy-legacy:
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "staging"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  stage: staging-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # TODO:
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-prod
+    region: us-east-1
+    bucket_name: website-dapp-staging
+    artifacts_folder: out-staging-legacy
+    cloudfront_id: E36R51175D7RC5
+  dependencies:
+    - staging-build-legacy
