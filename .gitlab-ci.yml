@@ -3,8 +3,6 @@ stages:
   - dev-deploy
   - staging-build
   - staging-deploy
-  - staging-legacy-build
-  - staging-legacy-deploy
 
 .aws_cli_init:
   before_script:
@@ -88,18 +86,6 @@ staging-deploy:
     - staging-build
 
 # The below is legacy using the previous manually created bucket
-staging-legacy-build:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "staging"'
-  image: node:14
-  stage: staging-legacy-build
-  script:
-    - yarn add next react react-dom
-    - yarn build:staging
-  artifacts:
-    paths:
-      - out-staging
-
 staging-legacy-deploy:
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "staging"'
@@ -108,7 +94,7 @@ staging-legacy-deploy:
     entrypoint: [""]
   services:
     - docker:dind
-  stage: staging-legacy-deploy
+  stage: staging-deploy
   extends:
     - .aws_cli_init
   script:
@@ -124,4 +110,4 @@ staging-legacy-deploy:
     artifacts_folder: out-staging
     cloudfront_id: E36R51175D7RC5
   dependencies:
-    - staging-legacy-build
+    - staging-build
