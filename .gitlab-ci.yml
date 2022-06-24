@@ -227,7 +227,10 @@ staging-deploy:
     - |
       ./scripts/assume_deployer_role.sh $account
       
+      unset AWS_ACCESS_KEY_ID
+      unset AWS_SECRET_ACCESS_KEY
       aws s3 ls
+      
       # Deploy to S3 and invalidate Cloudfront Distributions
       # ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
   variables:
