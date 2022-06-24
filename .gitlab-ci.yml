@@ -50,8 +50,8 @@ dev-deploy:
     - dev-build
 
 staging-build:
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
   image: node:14
   stage: staging-build
   script:
@@ -64,8 +64,8 @@ staging-build:
 
 # Staging test to delete
 staging-deploy:
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
