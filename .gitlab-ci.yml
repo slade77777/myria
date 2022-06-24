@@ -51,7 +51,7 @@ dev-deploy:
 
 staging-build:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+    - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
   image: node:14
   stage: staging-build
   script:
