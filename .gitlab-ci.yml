@@ -23,7 +23,7 @@ dev-build:
     paths:
       - out-dev
 
-dev-deploy:
+dev-deploy-1:
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev"'
   image:
@@ -62,7 +62,7 @@ staging-build:
       - out-staging
 
 # Staging CD target 1
-staging-deploy:
+staging-deploy-1:
   rules:
     - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
@@ -90,7 +90,7 @@ staging-deploy:
 
 # The below is legacy using the previous manually created bucket
 # Staging CD target 2
-staging-legacy-deploy:
+staging-deploy-2-legacy:
   rules:
     - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
@@ -129,7 +129,7 @@ prod-build:
       - out-prod
 
 # Prod CD target 1
-preprod-deploy:
+preprod-deploy-1:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   image:
@@ -156,7 +156,7 @@ preprod-deploy:
     - prod-build
 
 # Prod CD target 2
-prod-deploy:
+prod-deploy-2:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   image:
@@ -184,7 +184,7 @@ prod-deploy:
   when: manual
 
 # The below is legacy using the previous manually created bucket
-prod-legacy-deploy:
+prod-deploy-3-legacy:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   image:
