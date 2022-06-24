@@ -236,3 +236,4 @@ staging-deploy:
     bucket_name: myria-staging.nonprod-myria.com
     artifacts_folder: out-staging
     cloudfront_id: E13LZBS3DMRA8F
+    
