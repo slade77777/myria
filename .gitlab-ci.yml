@@ -214,7 +214,7 @@ prod-legacy-deploy:
 # Staging test to delete
 staging-deploy:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+    - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -236,4 +236,3 @@ staging-deploy:
     bucket_name: myria-staging.nonprod-myria.com
     artifacts_folder: out-staging
     cloudfront_id: E13LZBS3DMRA8F
-    
