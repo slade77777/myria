@@ -210,3 +210,29 @@ prod-legacy-deploy:
   dependencies:
     - prod-build
   when: manual
+
+# Staging test to delete
+staging-deploy:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  stage: staging-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+      
+      aws s3 ls
+      # Deploy to S3 and invalidate Cloudfront Distributions
+      # ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-nonprod
+    region: us-east-1
+    bucket_name: myria-staging.nonprod-myria.com
+    artifacts_folder: out-staging
+    cloudfront_id: E13LZBS3DMRA8F
