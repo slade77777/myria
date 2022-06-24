@@ -23,7 +23,7 @@ dev-build:
     paths:
       - out-dev
 
-dev-deploy:
+dev-deploy-1:
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev"'
   image:
@@ -50,8 +50,8 @@ dev-deploy:
     - dev-build
 
 staging-build:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
   image: node:14
   stage: staging-build
   script:
@@ -61,41 +61,10 @@ staging-build:
     paths:
       - out-staging
 
-# Staging test to delete
-staging-deploy-test:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
-  image:
-    name: amazon/aws-cli
-    entrypoint: [""]
-  services:
-    - docker:dind
-  stage: staging-deploy
-  extends:
-    - .aws_cli_init
-  script:
-    - |
-      ./scripts/assume_deployer_role.sh $account
-      
-      unset AWS_ACCESS_KEY_ID
-      unset AWS_SECRET_ACCESS_KEY
-      aws s3 ls
-      
-      # Deploy to S3 and invalidate Cloudfront Distributions
-      # ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
-  variables:
-    account: myria-net-nonprod
-    region: us-east-1
-    bucket_name: myria-staging.nonprod-myria.com
-    artifacts_folder: out-staging
-    cloudfront_id: E13LZBS3DMRA8F
-  dependencies:
-    - staging-build
-
 # Staging CD target 1
 staging-deploy-1:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "staging"'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -122,8 +91,8 @@ staging-deploy-1:
 # The below is legacy using the previous manually created bucket
 # Staging CD target 2
 staging-deploy-2-legacy:
-  # rules:
-  #   - if: '$CI_COMMIT_BRANCH == "staging"'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -160,7 +129,7 @@ prod-build:
       - out-prod
 
 # Prod CD target 1
-preprod-deploy:
+preprod-deploy-1:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   image:
@@ -187,7 +156,7 @@ preprod-deploy:
     - prod-build
 
 # Prod CD target 2
-prod-deploy:
+prod-deploy-2:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   image:
@@ -215,7 +184,7 @@ prod-deploy:
   when: manual
 
 # The below is legacy using the previous manually created bucket
-prod-legacy-deploy:
+prod-deploy-3-legacy:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   image:
