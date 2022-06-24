@@ -93,9 +93,9 @@ staging-deploy-test:
     - staging-build
 
 # Staging CD target 1
-staging-deploy:
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+staging-deploy-1:
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -121,9 +121,9 @@ staging-deploy:
 
 # The below is legacy using the previous manually created bucket
 # Staging CD target 2
-staging-legacy-deploy:
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+staging-deploy-2-legacy:
+  # rules:
+  #   - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
