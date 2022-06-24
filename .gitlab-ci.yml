@@ -61,9 +61,8 @@ staging-build:
     paths:
       - out-staging
 
-
 # Staging test to delete
-staging-deploy:
+staging-deploy-test:
   # rules:
   #   - if: '$CI_COMMIT_BRANCH == "fix-staging-assumerole"'
   image:
