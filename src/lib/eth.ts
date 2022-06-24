@@ -1,8 +1,9 @@
 import { TransactionRequest, TransactionResponse } from '@ethersproject/abstract-provider';
 import { BigNumberish, ethers, Signer } from 'ethers';
+import { ReaderProvider } from 'src/context/wallet';
 
 export async function formatTransferTxRequest(
-  provider: ethers.providers.Web3Provider,
+  provider: ReaderProvider,
   amountInEther: number,
   sender: string,
   to: string,

@@ -31,7 +31,7 @@ function App({ Component, pageProps }: AppProps) {
       <LanguageProvider>
         <DefaultSeo
           title={t`Connecting the world through play`}
-          description={t`Myria is a blockchain gaming ecosystem powered by the Myria blockchain.`}
+          description={t`Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution`}
           titleTemplate={t`Myria | Connecting the world through play`}
           openGraph={{
             type: 'website',
@@ -44,7 +44,7 @@ function App({ Component, pageProps }: AppProps) {
               }
             ],
             title: t`Myria | Connecting the world through play`,
-            description: t`Myria is a blockchain gaming ecosystem powered by the Myria blockchain.`,
+            description: t`Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution`,
             url: 'https://myria.com',
             site_name: 'Myria'
           }}

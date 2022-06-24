@@ -1,18 +1,24 @@
 import React from 'react';
-import clsx from 'clsx';
 import { LoadingStandBy } from '../Loading';
-import { useInventoryQuery } from '../inventory/useInventoryQuery';
+import { AssetType, OpenChestContent, useInventoryQuery } from '../inventory/useInventoryQuery';
 import InventoryItem from '../inventory/InventoryItem';
-import NftBox from './NftReward/NftBox';
 import { Trans } from '@lingui/macro';
+import OpenInventoryChestModal from '../inventory/OpenChest';
 
 const Inventory: React.FC = () => {
   const { inventoryQuery } = useInventoryQuery();
   const inventories = inventoryQuery.data || [];
+  const [modalData, setModalData] = React.useState<
+    { openedChest: OpenChestContent[] | undefined; item: AssetType } | undefined
+  >();
 
-  const handleChestClaimed = () => {
-    inventoryQuery.refetch();
-  }
+  const handleChestClaimed = React.useCallback(
+    (item: AssetType, openedChest?: OpenChestContent[]) => {
+      setModalData({ openedChest, item });
+      inventoryQuery.refetch();
+    },
+    [inventoryQuery]
+  );
 
   if (inventoryQuery.isLoading) {
     return (
@@ -24,28 +30,33 @@ const Inventory: React.FC = () => {
 
   return (
     <div className="w-full">
-      <section
-        className="mt-12 mr-10 flex h-[102px] flex-col items-center justify-center overflow-hidden rounded-xl bg-[#081824] bg-[url('/images/inventory/header-bg.png')] bg-cover text-center">
+      <OpenInventoryChestModal
+        open={!!modalData?.openedChest}
+        onClose={() => setModalData(undefined)}
+        openedChest={modalData?.openedChest}
+        chestName={modalData?.item.name}
+        chestRarity={modalData?.item.rarity}
+      />
+
+      <section className="mt-12 mr-10 flex h-[102px] flex-col items-center justify-center overflow-hidden rounded-xl bg-[#081824] bg-[url('/images/inventory/header-bg.png')] bg-cover text-center">
         <p className="mx-auto font-extrabold md:mx-0">
           <Trans>
             <span className="text-[20px] text-brand-white">
-              <Trans>Sigils are inactive until the Sigma mission is set into motion.</Trans>
-            </span>
-          </Trans>
-          <Trans>
-            <span className="ml-1 text-[20px] text-brand-light-blue">
-              <Trans>T-minus 47 gigaquarks</Trans>
+              <Trans>
+                Sigils are going to be activated later in time when the mysterious Sigma mission is
+                set into motion.
+              </Trans>
             </span>
           </Trans>
         </p>
         <Trans>
           <span className="text-[16px] font-normal text-brand-light-blue">
-            <Trans>Once the Sigils are active, they will be minted directly on Myria</Trans>
+            <Trans>Be prepared as this might be the key to survival in the Myriaverse.</Trans>
           </span>
         </Trans>
       </section>
       <section className="mt-12 mr-10">
-        <div className="grid grid-cols-4 xl:grid-cols-6 gap-8">
+        <div className="flex w-full flex-row flex-wrap gap-8">
           {inventories.map((item, index) => (
             <InventoryItem key={index} item={item} onClaimed={handleChestClaimed} />
           ))}

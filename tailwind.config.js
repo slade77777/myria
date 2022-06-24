@@ -1,5 +1,6 @@
 const plugin = require('tailwindcss/plugin');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   safelist: [
@@ -539,11 +540,11 @@ module.exports = {
           transform: 'translate(-50%, -50%)',
           zIndex: '2',
           display: 'grid !important',
-          gap: 25,
+          gap: 16,
           gridAutoFlow: 'column',
           '& button': {
             background: 'rgba(154, 201, 227, 0.5)',
-            width: 94,
+            width: 45,
             height: 7,
             fontSize: 0
           },

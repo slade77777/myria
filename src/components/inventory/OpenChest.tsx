@@ -1,8 +1,8 @@
 import { Trans } from '@lingui/macro';
-import Image from 'next/image';
 import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
+import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
 import { RarityType } from 'src/types/sigil';
 import { getRarityColor } from 'src/utils';
@@ -18,7 +18,8 @@ type Props = {
   open: boolean;
   onClose: () => void;
   openedChest?: OpenChestContent[];
-  chestName: string;
+  chestName?: string;
+  chestRarity?: RarityType;
 };
 
 interface ChestItemProps {
@@ -60,8 +61,9 @@ const ChestItem = ({ type, rarity, image, name, credit }: ChestItemProps) => {
   );
 };
 
-const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, chestName }) => {
+const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, chestName, chestRarity }) => {
   const { event } = useGA4();
+  const { user } = useAuthenticationContext();
   const credit = React.useMemo<AssetCreditType | undefined>(() => {
     return openedChest?.find((item) => item.type === 'credits') as AssetCreditType | undefined;
   }, [openedChest]);
@@ -74,15 +76,23 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
     return openedChest?.find((item) => item.type === 'title') as AssetTitleType | undefined;
   }, [openedChest]);
 
+  const animationVideo = React.useMemo(() => {
+    if (chestRarity === 'rare') {
+      return "/videos/inventory/open_chest_rare.m4v";
+    }
+    return "/videos/inventory/open_chest_common.m4v";
+  }, [chestRarity]);
+
   useEffect(() => {
-    // TODO mock event
-    event('Chest Claimed', {
-      campaign: 'Sigil',
-      wallet_address: '_mock',
-      item_list: '_mock',
-      credit_amount: -111
-    });
-  }, [event]);
+    if (user?.wallet_id) {
+      event('Chest Claimed', {
+        campaign: 'Sigil',
+        wallet_address: user.wallet_id,
+        item_list: [sigil?.name, title?.name].filter(Boolean).join('; '),
+        credit_amount: Number(credit?.amount),
+      });
+    }
+  }, [event, user?.wallet_id, credit?.amount, sigil?.name, title?.name]);
 
   if (!openedChest) {
     return null;
@@ -101,7 +111,11 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
             </button>
           </Modal.Close>
           <div
-            className={`flex h-full flex-row justify-end bg-brand-deep-blue bg-[url('/images/inventory/open_chest_modal_bg.png')] bg-cover`}>
+            className={`flex h-full flex-row justify-end bg-brand-deep-blue`}>
+            <div className='w-1/2 overflow-hidden relative'>
+              <video className='absolute max-w-none -left-1/2 h-full w-[200%] object-cover' src={animationVideo} autoPlay loop />
+            </div>
+            
             <div className="flex w-1/2 flex-col items-center justify-between py-12 px-12">
               <span className="mb-2 text-[14px] font-medium">
                 <Trans>You have opened</Trans>
@@ -127,7 +141,7 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
               {credit && <ChestItem type={credit.type} credit={credit.amount} />}
 
               <button className="btn-md btn-primary mt-[48px] uppercase" onClick={onClose}>
-                <Trans>VIEWS ITEMS</Trans>
+                <Trans>VIEW ITEMS</Trans>
               </button>
             </div>
           </div>

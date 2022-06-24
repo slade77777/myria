@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { soundService, SUPPORT_SOUND } from 'src/sound';
 import Button from '../../core/Button';
 import style from './style.module.scss';
 
@@ -56,6 +57,9 @@ function NftBox({
   const handleClaim = async () => {
     try {
       if (typeof onClaim === 'function') {
+        // play sound
+        soundService.playSound(SUPPORT_SOUND.SIGIL_CLAIM_REWARD);
+
         if (animationRef.current && disableClaimingAnimation !== true) {
           animationRef.current.style.display = 'flex';
         }

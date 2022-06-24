@@ -1,66 +1,136 @@
-import { useCallback, useEffect, useState } from 'react';
-import { TransactionRequest, TransactionResponse } from '@ethersproject/abstract-provider';
+import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Trans } from '@lingui/macro';
-import ETH from 'src/components/icons/ETHIcon';
-import Modal from 'src/components/Modal';
-import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
-import { useWalletContext } from 'src/context/wallet';
-import { BigNumber, ethers } from 'ethers';
+import { BigNumber, ethers, utils } from 'ethers';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
+import { toast } from 'react-toastify';
+
 import Button from 'src/components/core/Button';
-// import { useWalletContext } from 'src/context/wallet';
+import ETH from 'src/components/icons/ETHIcon';
+import InfoIcon from 'src/components/icons/InfoIcon';
+import Modal from 'src/components/Modal';
+import { useWalletContext } from 'src/context/wallet';
+import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
+import { formatCurrency } from 'src/lib/formatter';
+
+export type PurchaseInformationProps = {
+  quantity: number,
+  totalPriceEth: number,
+  totalPriceUsd: number,
+  toAddress: string,
+  transactionId: string, // TODO
+  nonce: string, // TODO
+}
 
 const ModalPurchase = ({
-  balance,
-  quantity,
+  data,
   open,
-  onClose
+  onClose,
+  onPurchaseComplete
 }: {
-  balance: string | undefined;
-  quantity: number | 0;
+  data: PurchaseInformationProps;
   open: boolean;
   onClose: () => void;
+  onPurchaseComplete?: (tx: string) => void;
 }) => {
-  const [txRequest, setTxRequest] = useState<TransactionRequest>();
-  const { providerApi, address } = useWalletContext();
+  const { readerProviderApi, signerProviderApi,address, balance } = useWalletContext();
+  const {quantity, totalPriceEth, totalPriceUsd, transactionId, nonce, toAddress} = data;
 
-  const { mutate,  isLoading } = useMutation(async () => {
-    if (txRequest && providerApi) {
-      const res = await transferEth(providerApi?.getSigner(), txRequest);
+  const isInsufficientBalance = utils
+    .parseEther(totalPriceEth.toString())
+    .gt(balance ?? BigNumber.from(0));
+
+  const { data: txRequest } = useQuery<TransactionRequest | undefined>(
+    ['tx-transfer-request', totalPriceEth, address, open, isInsufficientBalance, toAddress],
+    async () => {
+      // this never happens due to line 53 but just by pass ts check
+      // TODO: check if useQuery has some ts supports
+      if (!address || !readerProviderApi  || isInsufficientBalance) {
+        return;
+      }
+      return await formatTransferTxRequest(
+        readerProviderApi,
+        totalPriceEth,
+        address,
+        toAddress,
+        Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
+      );
+    },
+    {
+      enabled: !!address && !!readerProviderApi && !isInsufficientBalance
+    }
+  );
+
+  const { mutateAsync: handleTransferETH, isLoading: isPurchasing } = useMutation(async () => {
+    if (txRequest && signerProviderApi) {
+      const res = await transferEth(signerProviderApi?.getSigner(), txRequest);
       const tx = await res.wait();
-      console.log(tx);
-      
-      return tx;
+
+      return tx.transactionHash;
+    }
+    throw new Error('Missing params');
+  });
+
+  // submit purchase
+  const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(async ({ txHash, nonce, transactionId}: { txHash: string; nonce: string; transactionId: string }) => {
+    if (txHash && nonce && transactionId) {
+      await (new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('Submited', { txHash, nonce, transactionId });
+          resolve(txHash);
+        }, 2000);
+      }));
+
+      onPurchaseComplete?.(txHash);
+    } else {
+      throw new Error('Missing params');
     }
   });
 
-  // const qty = 3;
-  const priceEth = 1839.04;
-  const unitNodeEth = 1.5;
+  const onPurchase = useCallback(async () => {
+    try {
+      const txHash = await handleTransferETH();
 
-  const buildTransferRequest = useCallback(async () => {
-    if (providerApi && address) {
-      setTxRequest(
-        await formatTransferTxRequest(
-          providerApi,
-          quantity / 10,
-          address,
-          process.env.NEXT_NODE_RECIEVER_ADDRESS as string,
-          process.env.NEXT_NODE_GAS_LIMIT as string
-        )
-      );
+      if (!txHash) {
+        throw new Error("Empty transaction hash");
+      }
+
+      await submitPurchase({ txHash, nonce, transactionId });
+
+      toast.success('Purchase completed');
+    } catch (e) {
+      toast.error('Purchase uncompleted');
     }
-  }, [quantity, balance, open, providerApi]);
+  }, [handleTransferETH, submitPurchase, nonce, transactionId]);
 
-  useEffect(() => {
-    buildTransferRequest();
-  }, [buildTransferRequest]);
 
-  const onPurchase = async () => {
-    mutate();
-  };
+  const button = useMemo(() => {
+    let className = 'btn-primary';
+    let label = 'Purchase now';
+
+    if (isInsufficientBalance) {
+      className = 'bg-[#4B5563] text-[#9CA3AF]';
+      label = 'INSUFFICIENT FUND';
+    }
+
+    if (isPurchasing) {
+      className = 'bg-[#4B5563] text-[#9CA3AF]';
+      label = 'PROCESSING';
+    }
+
+    return (
+      <Button
+        className={`btn-lg justify-end ${className}`}
+        onClick={onPurchase}
+        loading={isPurchasing || isSubmiting}
+        disabled={isPurchasing || isSubmiting || isInsufficientBalance}>
+        {label}
+      </Button>
+    );
+  }, [isInsufficientBalance, isPurchasing, isSubmiting, onPurchase]);
+
   return (
-    <Modal open={open} onOpenChange={onClose}>
+    <Modal open={open} onOpenChange={(isPurchasing || isSubmiting) ? () => null : onClose}>
       <Modal.Content
         title="Complete your purchase"
         className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
@@ -71,15 +141,15 @@ const ModalPurchase = ({
                 <Trans>Myria Founder’s Node</Trans>
               </p>
               <p className="body-sm text-light">
-                <Trans>Quantity: {quantity}</Trans>
+                Quantity: {quantity}
               </p>
             </div>
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">{quantity * unitNodeEth}</p>
+                <p className="heading-md ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
+              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
             </div>
           </div>
 
@@ -91,33 +161,65 @@ const ModalPurchase = ({
             </div>
             <div>
               <div className="flex items-center justify-end">
-                <ETH /> <p className="heading-list ml-2">{quantity * unitNodeEth}</p>
+                <ETH /> <p className="heading-list ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
+              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
             </div>
           </div>
         </div>
 
         <section className="bg-[#050E15] p-8">
-          <div className="flex justify-between">
+          <div className="mb-3 flex justify-between">
             <p className="heading-list">
               <Trans>Total</Trans>
             </p>
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">{quantity * unitNodeEth}</p>
+                <p className="heading-md ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${quantity * priceEth}</p>
+              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
             </div>
           </div>
-          <div className="mt-1 flex">
-            <p className="body-sm flex-1 text-light">
-              <Trans>{balance} ETH</Trans>
-            </p>
-            <Button className="btn-lg btn-primary mt-2 justify-end" onClick={onPurchase} loading={isLoading}>
-              <Trans>Purchase now</Trans>
-            </Button>
+          <div className="mb-4 flex items-center justify-between">
+            <div className="flex flex-col items-center justify-center">
+              <span className="mb-1 text-[16px] font-normal text-[#A1AFBA]">
+                <Trans>Wallet balance</Trans>
+              </span>
+              <div className="flex">
+                <ETH />
+                {balance && (
+                  <p className="body-sm ml-2 flex-1 text-light">
+                    {Number(ethers.utils.formatEther(balance)).toFixed(4)} ETH
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {button}
+          </div>
+          <div
+            className="flex items-center rounded-lg py-4 px-3"
+            style={{
+              border: isPurchasing ? 'solid 1px rgba(154, 201, 227, 0.2)' : 'none',
+              background: 'rgba(154, 201, 227, 0.1)',
+              transition: 'all 0.1s',
+              ...(!isPurchasing
+                ? {
+                    overflow: 'hidden',
+                    padding: '0px',
+                    height: '0px'
+                  }
+                : {})
+            }}>
+            <div className="mr-2 h-4 w-4 text-[#9AC9E3]">
+              <InfoIcon />
+            </div>
+            <span className="text-[12px] font-normal text-[#9AC9E3]">
+              <Trans>
+                Your purchase is being processed, please do not refresh or close your browser{' '}
+              </Trans>
+            </span>
           </div>
         </section>
       </Modal.Content>

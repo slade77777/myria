@@ -42,25 +42,23 @@ const MissionV2: React.FC = () => {
   const { event } = useGA4();
 
   const TrackingMap: { [key in Mission['mission_id']]?: () => void } = {
-    // TODO mock event
     MYRIA_ACCOUNT: () =>
       event('Sigil Discord Button Clicked', {
         campaign: 'Sigil',
-        wallet_address: '_mock',
-        myria_username: '_mock',
-        user_email: '_mock'
+        wallet_address: user?.wallet_id || '',
+        myria_username: user?.user_name || '',
+        user_email: user?.email || ''
       }),
-    // TODO mock event
     JOIN_DISCORD: () =>
       event('Sigil Discord Button Clicked', {
         campaign: 'Sigil',
-        wallet_address: '_mock',
-        myria_username: '_mock',
-        user_email: '_mock'
+        wallet_address: user?.wallet_id || '',
+        myria_username: user?.user_name || '',
+        user_email: user?.email || ''
       })
   };
 
-  const discordLink = 'https://discord.com/login';
+  const discordLink = 'https://discord.gg/myria';
   const ActionMap: {
     [key in Mission['mission_id']]?: {
       label: string;
@@ -112,13 +110,13 @@ const MissionV2: React.FC = () => {
       label: t`Launch Discord`,
       link: discordLink,
       description: (point: number) =>
-        t`Earn ${point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions`
+        t`Earn ${point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)`
     },
     VOTE_ON_LORE_DISCORD: {
       label: t`Launch Discord`,
       link: discordLink,
       description: (point: number) =>
-        t`Earn ${point} points  when you add your reaction to a message on the #myria-lore channel`
+        t`Earn ${point} points when you add a thumbs up reaction to a message on the #myria-lore channel`
     },
     SPACE_LORD_ROLE_DISCORD: {
       label: t`Launch Discord`,
@@ -143,6 +141,14 @@ const MissionV2: React.FC = () => {
       },
       link: socialLinks.twitter,
       description: (point: number) => t`Earn ${point} points by following @myriagames on Twitter`
+    },
+    FOLLOW_INSTAGRAM: {
+      label: t`Follow on Instagram`,
+      onClick: (e, missionId) => {
+        completeMission(missionId);
+      },
+      link: socialLinks.instagram,
+      description: (point: number) => t`Earn ${point} points by following myriagames on Instagram`
     }
   };
 
@@ -169,7 +175,7 @@ const MissionV2: React.FC = () => {
           <Loading />
         </div>
       ) : (
-        <div className={`max-h-[65vh] overflow-auto pr-[43px] pl-[3px] pt-[3px]`}>
+        <div className={`max-h-[65vh] overflow-hide pr-[43px] pl-[3px] pt-[3px]`}>
           {(missions || []).map((mission) => {
             const isRepeatable =
               mission.repetition_type == 'Daily' || mission.repetition_type == 'Unlimited';

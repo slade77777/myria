@@ -5,22 +5,10 @@
   }
   20%  {
     border: 0.5px solid #F5B941;
-    box-shadow: 0px 0px 10px rgba(245, 185, 65, 0.3);
-  }
-  40%  {
-    border: 0.5px solid #F5B941;
     box-shadow: 0px 0px 20px rgba(245, 185, 65, 0.8);
   }
-  60%  {
-    border: 0.5px solid #F5B941;
-    box-shadow: 0px 0px 10px rgba(245, 185, 65, 0.3);
-  }
-  80% {
-    border: 0.5px solid #F5B941;
-    box-shadow: 0px 0px 5px rgba(245, 185, 65, 0.8);
-  }
   100% {
-    border: none;
+    border: 0px solid #F5B941;
     box-shadow: 0px 0px 2px rgba(245, 185, 65, 0.5);
   }
 }
@@ -77,7 +65,7 @@
     height: 100%;
     border-radius: 12px;
     opacity: 0;
-    animation: appear 8s alternate, glow 5s alternate, fadeOut 3s 5s;
+    animation: appear 3s alternate, glow 3s alternate, fadeOut 2s 1s;
 
     &::before {
       content: '';
@@ -101,7 +89,7 @@
       width: 100%;
       height: 100%;
       > div:nth-child(1) {
-        animation: fadeIn 5s alternate;
+        animation: fadeIn 2s alternate;
         &::before {
           content: '';
           position: absolute;
@@ -124,7 +112,7 @@
         }
       }
       > div:nth-child(2) {
-        animation: fadeIn 3s 1s alternate;
+        animation: fadeIn 1s alternate;
         &::before {
           content: '';
           position: absolute;
@@ -149,7 +137,7 @@
         }
       }
       > div:nth-child(3) {
-        animation: fadeIn 5s alternate;
+        animation: fadeIn 2s alternate;
         &::before {
           content: '';
           position: absolute;
@@ -175,7 +163,7 @@
       }
       > div:nth-child(4) {
         > svg {
-          animation: rotate 3s 2s alternate;
+          animation: rotate 1s alternate;
           position: absolute;
           top: -30px;
           left: -30px;

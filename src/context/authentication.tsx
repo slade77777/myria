@@ -220,11 +220,11 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     },
     {
       onSuccess: (res) => {
+        const user = res?.data?.data || {};
         setRegisterError(undefined);
         setOpenRegisterSuccess(true);
         setOpenRegister(false);
-        // TODO mock event
-        event('Account Sign-up Completed', { campaign: 'Sigil', myria_id: undefined, myria_username: '_mock', user_email: '_mock', wallet_address: '_mock' })
+        event('Account Sign-up Completed', { campaign: 'Sigil', myria_id: user.user_id, myria_username: user.username, user_email: user.email, wallet_address: user.wallet_id })
       },
       onError: (err: AxiosError) => {
         setRegisterError(mapError(err));
@@ -275,7 +275,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 
   const loginByWalletMutation = useMutation(
     async () => {
-      const message = JSON.stringify({ created_on: new Date(Date.now() + 60000) }); // add 1 minute to current time
+      const timestamp =  await apiClient.get(`/time`)
+        .then(res => res.data?.data?.time);
+
+      const message = JSON.stringify({ created_on: timestamp });
       const signature = await signMessage(message);
 
       if (signature && address) {

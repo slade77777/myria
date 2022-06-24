@@ -1,15 +1,17 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-06-01 20:14+0700\n"
+"POT-Creation-Date: 2022-06-14 19:43+0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: zh-Hans\n"
 
-#: src/components/home/Hero.tsx:79
+#: src/components/home/Hero.tsx:136
 msgid "$MYRIA Token"
 msgstr ""
+"$MYRIA代币\n"
+""
 
 #: src/pages/studios.tsx:277
 msgid "$MYRIA is the native governance and utility token that encapsulates the Myria ecosystem. Players will be able to use $MYRIA to buy, trade, upgrade, vote and more!"
@@ -18,28 +20,40 @@ msgstr "MYRIA币是指封装于Myria生态系统的原生治理和实用型代�
 #: src/components/for-developers/Ethereum.tsx:318
 msgid "100% Ethereum-level security guarantees; whilst increase transaction speed and throughput"
 msgstr ""
+"100%以太坊级安全保证；同时提高交易速度和吞吐量\n"
+""
 
-#: src/pages/nodes/index.tsx:133
+#: src/pages/nodes/index.tsx:134
 msgid "2 CPU Cores"
 msgstr "2核CPU"
 
-#: src/pages/nodes/index.tsx:136
+#: src/pages/nodes/index.tsx:137
 msgid "60 GB Disk Space"
 msgstr "60 GB磁盘空间"
 
 #: src/components/ecosystem/Backbone.tsx:45
 msgid "<0/> creates a range of free-to-play AAA games spans across an entire interconnected ecosystem, built with the new standard of interoperable NFTs."
 msgstr ""
+"<0/>用互通非同质化代币（NFT）的新标准打造了一系列免费游玩的3A级游戏，游戏横跨整个互联生态系统。\n"
+""
 
 #: src/components/NotiBanner.tsx:33
 msgid "<0>$MYRIA</0> Node & Token coming soon!"
+msgstr ""
+"<0>$MYRIA</0>节点和代币即将推出！\n"
+""
+
+#: src/components/sigil/Inventory.tsx:36
+msgid "<0>Be prepared as this might be the key to survival in the Myriaverse.</0>"
 msgstr ""
 
 #: src/hooks/useGamesData.tsx:386
 msgid "<0>If it’s yours, it stays yours</0> - You’ve worked hard to build that neat graveyard farm for two whole days and now it’s yours to stay… forever!"
 msgstr ""
+"<0>只要是你的，就永远是你的</0> - 为了建设这个整洁的墓地农场，你已经努力了整整两天，现在它是你的了，永远都是你的了！\n"
+""
 
-#: src/pages/nodes/index.tsx:69
+#: src/pages/nodes/index.tsx:70
 msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
 msgstr "<0>在运行任何区块链（包括Myria链）前，需使用节点验证网络交易。Myria生态系统中的节点将用于各种网络支持活动，包括初始测试网络、区块生产和验证。</0><1>除作为潜在验证者外，随着Myria生态系统的发展，节点所有者将可被要求开展辅助区块链网络功能，并给予奖励。包括需在Myria生态系统中去中心化存储特定关键信息、预言机、治理投票以及特定游戏概念投票。</1>"
 
@@ -47,49 +61,61 @@ msgstr "<0>在运行任何区块链（包括Myria链）前，需使用节点验�
 msgid "<0>Interoperable</0> & Interconnected NFTs"
 msgstr "<0>互操作性</0>及互联非同质化代币（NFT）"
 
-#: src/pages/nodes/index.tsx:89
+#: src/pages/nodes/index.tsx:90
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>针对所开展的节点工作，Myria节点操作者将于每日收到代币奖励（MYRIA币）。</0><1>根据作为节点操作者及一般社区成员所得的信誉分数，节点所有者还将获得NFT Drop及代币奖励。</1><2>信誉分数将根据节点所有者的游戏活动、其拥有及持有的代币数量、往常正常运行时间指标及其过往的网络支持情况（例如：验证或预言机提供者）决定。</2>"
 
-#: src/components/sigil/Inventory.tsx:41
-msgid "<0>Once the Sigils are active, they will be minted directly on Myria</0>"
-msgstr ""
-
-#: src/pages/inventory.tsx:104
+#: src/pages/inventory.tsx:100
 msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
 msgstr ""
+"<0>一旦Sigil被激活，就直接在Myria铸造</0>\n"
+""
 
 #: src/hooks/useGamesData.tsx:379
 msgid "<0>Play and earn</0> - Convert your score and time spent into tangible rewards (when Beta kicks in). Addictive fun aside, not a single day of gameplay will be time wasted."
 msgstr ""
+"<0>边玩边赚</0> - 把你的分数和花费的时间转换成有形奖励（Beta版启动时）。抛开令人上瘾的乐趣不谈，也没有哪一天的游戏时间会被浪费掉。\n"
+""
 
 #: src/pages/games.tsx:26
 msgid "<0>Play</0> and earn <1/> rewards and NFTs"
 msgstr ""
+"<0>边玩</0>边赚取<1/>奖励和非同质化代币\n"
+""
 
 #: src/hooks/useGamesData.tsx:392
 msgid "<0>Resourcefulness rules!</0> - Overcome your competition with the best strategy and become the master of Moonville."
 msgstr ""
+"<0>资源丰富的规则！</0> - 用最好的策略赢得你的竞争，成为月亮村的主人。\n"
+""
 
 #: src/components/sigil/Inventory.tsx:30
-#: src/pages/inventory.tsx:93
+msgid "<0>Sigils are going to be activated later in time when the mysterious Sigma mission is set into motion.</0>"
+msgstr ""
+
+#: src/pages/inventory.tsx:89
 msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
 msgstr ""
+"<0>Sigma任务启动之前，Sigil未激活。</0>\n"
+""
 
-#: src/components/sigil/Inventory.tsx:35
-#: src/pages/inventory.tsx:98
+#: src/pages/inventory.tsx:94
 msgid "<0>T-minus 47 gigaquarks</0>"
 msgstr ""
+"<0>T减去47吉夸克</0>\n"
+""
 
-#: src/pages/nodes/index.tsx:119
+#: src/pages/nodes/index.tsx:120
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows, Mac and Linux. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
 msgstr ""
+"<0>你可以选择在云端还是在本地运行你的节点。</0><1>可以在Windows、Mac和Linux系统中下载Myria节点软件。我们的节点操作不像传统加密货币挖矿那样需要大量的资源。你的家用电脑就能运行我们的节点软件，最低要求如下：</1>\n"
+""
 
 #: src/pages/studios.tsx:187
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "有关区块链游戏和世界的<0>去中心化生态体系</0>"
 
-#: src/pages/nodes/index.tsx:142
+#: src/pages/nodes/index.tsx:143
 msgid "A Stable Internet Connection"
 msgstr "稳定的互联网连接"
 
@@ -100,26 +126,38 @@ msgstr "一款大逃杀射击游戏"
 #: src/hooks/useGamesData.tsx:329
 msgid "A competitive play-and-earn tycoon farming simulator."
 msgstr ""
+"竞争激烈、可以边玩边赚的大亨农业模拟器。\n"
+""
 
-#: src/components/home/Hero.tsx:201
+#: src/components/home/Hero.tsx:258
 msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
 msgstr ""
+"去中心化的以太坊扩展平台，专门为数字资产和游戏而建。\n"
+""
 
 #: src/pages/team.tsx:102
 msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
 msgstr ""
+"创业型高管充满活力，拥有超过8年的管理咨询经验，专注于为Verizon、Vanguard、Kayo Streaming等全球公司实现组织转型。最近又创办了aliens.com。\n"
+""
 
 #: src/hooks/useGamesData.tsx:37
 msgid "A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory."
 msgstr ""
+"一款滑稽热闹的多人游戏，当你在朋友和敌人的身上跳动、翻落、打滚时，你的身体会四分五裂。在越来越古怪的景观里战斗，在荣耀殿堂里占有一席之地。\n"
+""
 
 #: src/components/Register/Register.tsx:32
 msgid "A mixture of both uppercase and lowercase letters"
 msgstr ""
+"大小写字母的混合形式\n"
+""
 
 #: src/components/Register/Register.tsx:36
 msgid "A mixture of letters and numbers"
 msgstr ""
+"字母和数字的混合形式\n"
+""
 
 #: src/components/OurGames.tsx:59
 msgid "A multiplayer go-kart racing game"
@@ -132,10 +170,14 @@ msgstr "一款多人障碍赛游戏"
 #: src/hooks/useGamesData.tsx:355
 msgid "A rewarding experience"
 msgstr ""
+"奖励经验\n"
+""
 
 #: src/pages/team.tsx:42
 msgid "A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain SAAS platform."
 msgstr ""
+"支持Web3的连续创业家，拥有超过15年的公司创办经验，包括四家在传统技术领域接受跨国风投支持的公司。最近又创办了aliens.com和一个区块链SAAS平台。\n"
+""
 
 #: src/pages/team.tsx:162
 msgid "AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others."
@@ -153,10 +195,18 @@ msgstr "关于"
 #: src/hooks/useGamesData.tsx:348
 msgid "About the game"
 msgstr ""
+"关于游戏\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:65
+msgid "Accept"
+msgstr ""
 
 #: src/pages/nodes/purchase-complete.tsx:45
 msgid "Access node dashboard"
 msgstr ""
+"访问节点仪表板\n"
+""
 
 #: src/pages/for-studios.tsx:50
 msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
@@ -165,10 +215,18 @@ msgstr "获取持续教育和技术支持，以成功进军区块链领域"
 #: src/components/Careers/Careers.tsx:59
 msgid "All"
 msgstr ""
+"所有\n"
+""
+
+#: src/components/home/Hero.tsx:82
+msgid "Alliance Sigil NFT Launch"
+msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:59
 msgid "Already have an account?"
 msgstr ""
+"已有账户？\n"
+""
 
 #: src/pages/for-studios.tsx:82
 msgid "An end-to-end solution for token-based game economies and NFTs that benefits the community"
@@ -178,7 +236,7 @@ msgstr "造福社区的基于代币游戏经济和非同质化代币的端到端
 msgid "An objective-based shooter game"
 msgstr "一款第一人称射击游戏"
 
-#: src/pages/nodes/index.tsx:139
+#: src/pages/nodes/index.tsx:140
 msgid "An x86/X64 Processor"
 msgstr "x86/x64处理器"
 
@@ -193,10 +251,14 @@ msgstr "适用所有视频"
 #: src/pages/for-developers/solution.tsx:121
 msgid "Architecture"
 msgstr ""
+"架构\n"
+""
 
 #: src/hooks/useGamesData.tsx:145
 msgid "Are you ready for a crazy ride that is nothing short of hilarious? Hop into your shiny kart and race till your wheels burn. Can you handle the heat and destroy your opponents before they throw you off the track?"
 msgstr ""
+"准备好迎接一场不折不扣的疯狂之旅了吗？跳上你闪亮的卡丁车，不跑到车轮烧起来不罢休。你能承受高温并在对手把你挤出赛道之前彻底打败他们吗？\n"
+""
 
 #: src/pages/team.tsx:160
 msgid "Art Creative Lead"
@@ -210,6 +272,8 @@ msgstr "在Myria，我们坚信非同质化代币不仅能够赋予玩家可验�
 #: src/components/Register/Register.tsx:28
 msgid "At least 8 characters—the more characters, the better"
 msgstr ""
+"至少有8个角色——角色越多越好\n"
+""
 
 #: src/components/Video/Setting.tsx:19
 msgid "Autoplay"
@@ -218,40 +282,58 @@ msgstr "自动播放"
 #: src/components/nodes/mint-assets/index.tsx:82
 msgid "Available to mint"
 msgstr ""
+"可用于铸造\n"
+""
 
 #: src/components/sigil/Header.tsx:27
 msgid "BACK TO MYRIA HOME"
 msgstr ""
+"回到MYRIA主页\n"
+""
 
-#: src/pages/inventory.tsx:120
+#: src/pages/inventory.tsx:116
 msgid "BACK TO SIGIL DASHBOARD"
 msgstr ""
+"回到SIGIL仪表板\n"
+""
 
 #: src/components/BuyANode.tsx:6
-#: src/pages/nodes/index.tsx:295
+#: src/pages/nodes/index.tsx:304
 msgid "BUY A NODE"
 msgstr "购买节点"
 
 #: src/hooks/useGamesData.tsx:240
 msgid "Battle with style!"
 msgstr ""
+"战出你风格！\n"
+""
 
 #: src/components/Purchase/License.tsx:70
 msgid "Be rewarded for your contribution"
 msgstr ""
+"你的贡献会得到奖励\n"
+""
 
 #: src/components/BuyerNodeCard.tsx:7
 #: src/components/Program.tsx:11
 msgid "Become a Myria node owner & receive rewards"
 msgstr ""
+"成为Myria节点所有者并获得奖励\n"
+""
 
-#: src/pages/nodes/index.tsx:288
+#: src/pages/nodes/index.tsx:297
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "成为Myria生态系统中不可或缺的一部分，并基于自身贡献获益。作为早期创始人的节点操作者可获得优惠价格。随着节点售出，节点价格将不断提高。"
+
+#: src/components/home/Hero.tsx:85
+msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
+msgstr ""
 
 #: src/components/for-developers/Myria.tsx:33
 msgid "Blockchain consultancy"
 msgstr ""
+"区块链咨询\n"
+""
 
 #: src/pages/for-studios.tsx:79
 msgid "Blockchain infrastructure for Game Studios"
@@ -265,38 +347,54 @@ msgstr "针对游戏工作室的区块链平台"
 msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
 msgstr "Brendan在区块链领域具有十多年经验。他曾创立比特币区块链托管解决方案（一种以太坊加密ETF），并担任世界最大贸易融资区块链网络的区块链主管。"
 
-#: src/components/home/Hero.tsx:191
+#: src/components/home/Hero.tsx:248
 msgid "Bringing <0>blockchain gaming </0>to the world"
 msgstr ""
+"把<0>区块链游戏</0>推向世界\n"
+""
 
 #: src/pages/team.tsx:132
 msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
 msgstr "Brock是一位创业型产品主管，曾在科技初创公司具有10多年的工作经验，并创立自己的公司MarTech。近期，他曾帮助一家最大的区块链公司扩张规模，专攻产品代币经济学和增长。"
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:80
+#: src/components/for-developers/BuildYourBlockchain.tsx:82
 msgid "Build your blockchain game with Myria"
 msgstr ""
+"用Myria建立你的区块链游戏\n"
+""
 
 #: src/hooks/useGamesData.tsx:361
 msgid "Build, upgrade, and earn!"
 msgstr ""
+"构建、升级、赚钱！\n"
+""
 
 #: src/pages/for-developers/solution.tsx:34
 msgid "Building towards a decentralized and permissionless network"
 msgstr ""
+"建立去中心化、无需许可的网络\n"
+""
 
-#: src/pages/nodes/index.tsx:108
+#: src/pages/nodes/index.tsx:208
+msgid "Buy a node"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:109
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "购买节点许可证后，所有者将有权（在本地或云中）运行节点，并基于治理获取奖励。"
 
-#: src/components/inventory/InventoryItem.tsx:35
-#: src/components/sigil/RewardItem.tsx:72
+#: src/components/home/Hero.tsx:93
+#: src/components/sigil/RewardItem.tsx:73
 msgid "CLAIM NOW"
 msgstr ""
+"立即领取\n"
+""
 
 #: src/components/nodes/dashboard/LatestReward.tsx:118
 msgid "CLAIM REWARDS"
 msgstr ""
+"领取奖励\n"
+""
 
 #: src/components/inventory/InventoryItem.tsx:35
 msgid "CLAIMED"
@@ -305,38 +403,54 @@ msgstr ""
 #: src/pages/team.tsx:70
 msgid "CMO"
 msgstr ""
+"CMO\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:63
 msgid "COLLECT NOW"
 msgstr ""
+"现在收集\n"
+""
 
 #: src/components/games/GameList.tsx:157
-#: src/components/home/Hero.tsx:76
-#: src/components/home/Hero.tsx:82
+#: src/components/home/Hero.tsx:133
+#: src/components/home/Hero.tsx:139
 #: src/components/home/OurGames.tsx:26
 msgid "COMING SOON"
 msgstr ""
+"即将推出\n"
+""
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:37
 #: src/components/sigil/Welcome.tsx:140
 msgid "CONNECT WALLET"
 msgstr ""
+"连接钱包\n"
+""
 
-#: src/components/sigil/ReferFriendModal.tsx:67
+#: src/components/sigil/ReferFriendModal.tsx:68
 msgid "COPIED"
 msgstr ""
+"复制成功\n"
+""
 
-#: src/components/sigil/ReferFriendModal.tsx:67
+#: src/components/sigil/ReferFriendModal.tsx:68
 msgid "COPY LINK"
 msgstr ""
+"复制链接\n"
+""
 
 #: src/pages/team.tsx:85
 msgid "CPO (People)"
 msgstr ""
+"CPO（人）\n"
+""
 
 #: src/pages/for-developers/solution.tsx:25
 msgid "Cairo, allows for development of provable on-chain complexity"
 msgstr ""
+"开罗，允许开发可证明的链上复杂度\n"
+""
 
 #: src/components/Footer.tsx:108
 #: src/components/Header/linkSources.tsx:84
@@ -346,50 +460,74 @@ msgstr "招贤纳士"
 #: src/hooks/useGamesData.tsx:290
 msgid "Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?"
 msgstr ""
+"在回合开始时，仔细选择合适的装备。你可能想从远处射击你的敌人，或者把整个关卡烧成灰烬——都是你的选择。你有能力成为毁灭之主吗？\n"
+""
 
-#: src/pages/sigil/index.tsx:133
+#: src/pages/sigil/index.tsx:135
 msgid "Choose Alliance"
 msgstr ""
+"选择联盟\n"
+""
 
 #: src/components/sigil/ChooseAlliance/AllianceModal.tsx:78
 msgid "Choose Wisely!"
 msgstr ""
+"选得好！\n"
+""
 
 #: src/hooks/useGamesData.tsx:242
 msgid "Choose the best outfit that expresses your inner self. Unlock and collect multiple cosmetic skins and items that will carry across other games as interoperable NFTs."
 msgstr ""
+"选择能表达你内心的最佳装备。解锁并收集多种游戏皮肤和物品，这些皮肤和物品可作为互通非同质化代币，在其他游戏中通用。\n"
+""
 
 #: src/hooks/useGamesData.tsx:87
 msgid "Choose the best outfit that expresses your personality. Unlock and collect multiple cosmetic skins and items that will carry over to other games as interoperable NFTs."
 msgstr ""
+"选择能表达你个性的最佳装备。解锁并收集多种游戏皮肤和物品，这些皮肤和物品可作为互通非同质化代币，在其他游戏中通用。\n"
+""
 
 #: src/hooks/useGamesData.tsx:81
 msgid "Choose the game mode that best suits your playstyle and fight for your right to party! Play alone or with friends and collect endless rewards."
 msgstr ""
+"选择最适合你游戏风格的游戏模式，为你的派对权利而战！ 独自或与朋友一起游玩，收集无尽的奖励。\n"
+""
 
 #: src/hooks/useGamesData.tsx:234
 msgid "Choose your champion"
 msgstr ""
+"选择你的斗士\n"
+""
 
 #: src/components/nodes/rewards/TotalRewards.tsx:15
 msgid "Claim All"
 msgstr ""
+"全部领取\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:49
 msgid "Claim rewards"
 msgstr ""
+"领取奖励\n"
+""
 
-#: src/pages/sigil/index.tsx:136
+#: src/pages/sigil/index.tsx:138
 msgid "Claim your NFT reward"
 msgstr ""
+"领取你的非同质化代币奖励\n"
+""
 
-#: src/components/sigil/RewardItem.tsx:80
+#: src/components/sigil/RewardItem.tsx:81
 msgid "Claimed"
 msgstr ""
+"已领取\n"
+""
 
 #: src/pages/team.tsx:40
 msgid "Co-Founder - CEO"
 msgstr ""
+"联合创始人兼CEO\n"
+""
 
 #: src/pages/team.tsx:25
 msgid "Co-Founder - CTO"
@@ -398,6 +536,8 @@ msgstr "联合创始人 - 首席技术官"
 #: src/pages/team.tsx:55
 msgid "Co-Founder - Head of Blockchain"
 msgstr ""
+"联合创始人兼区块链负责人\n"
+""
 
 #: src/pages/team.tsx:100
 msgid "Co-Founder - Operations"
@@ -406,18 +546,26 @@ msgstr "联合创始人 - 运营主管"
 #: src/pages/team.tsx:115
 msgid "Co-Founder, VP Games"
 msgstr ""
+"联合创始人兼游戏副总裁\n"
+""
 
 #: src/components/nodes/rewards/RewardList.tsx:149
 msgid "Collect ALL"
 msgstr ""
+"收集所有\n"
+""
 
 #: src/components/nodes/rewards/RewardList.tsx:155
 msgid "Collect REWARDS"
 msgstr ""
+"收集奖励\n"
+""
 
 #: src/hooks/useGamesData.tsx:159
 msgid "Combine the right amount of acceleration, handling, and looks to nail the right recipe for the current track. You can also sprinkle in a bit of armour – just to play it safe – because, as my grandma always says, “if you ain’t ready for some rockets down the road, boy, you better come home!”"
 msgstr ""
+"结合适量的加速度、操控性和外观，为当前赛道锁定正确的诀窍。你也可以点缀上一点装甲——只是为了安全起见——因为，正如我奶奶常说的，“如果你没有准备好遭遇路上的一些火箭，孩子，你最好回家来！”\n"
+""
 
 #: src/components/ComingSoon.tsx:46
 msgid "Coming Soon"
@@ -430,43 +578,68 @@ msgstr "社区"
 #: src/hooks/useGamesData.tsx:79
 msgid "Compete, survive, win and earn!"
 msgstr ""
+"竞争、生存、胜利和赚钱！\n"
+""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:182
+#: src/components/sigil/Dashboard/MissionV2.tsx:190
 msgid "Complete"
 msgstr ""
+"完全\n"
+""
 
 #: src/pages/for-developers/solution.tsx:28
 msgid "Complete privacy, not only from other users, but also from the Operator."
 msgstr ""
+"完全的隐私，不仅远离其他用户，更远离运营商。\n"
+""
 
 #: src/components/for-developers/Myria.tsx:45
 msgid "Compliance support"
 msgstr ""
+"合规性支持\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:92
 msgid "Configure your node and view your rewards in the dashboard"
 msgstr ""
+"配置你的节点，在仪表板上查看你的奖励\n"
+""
 
 #: src/components/Register/Register.tsx:222
 #: src/components/ResetPassword/ResetPassword.tsx:86
 msgid "Confirm password"
 msgstr ""
+"确认密码\n"
+""
 
 #: src/components/Register/Register.tsx:62
 #: src/components/ResetPassword/ResetPassword.tsx:25
 msgid "Confirm password is required!"
 msgstr ""
+"需要确认密码！\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:70
 msgid "Congratulations!"
 msgstr ""
+"恭喜！\n"
+""
 
-#: src/pages/sigil/index.tsx:130
+#: src/pages/sigil/index.tsx:132
 msgid "Connect Wallet"
 msgstr ""
+"连接钱包\n"
+""
 
 #: src/components/sigil/Welcome.tsx:98
 msgid "Connect to your wallet to enter the Myriaverse"
+msgstr ""
+"连接到你的钱包，进入Myriaverse\n"
+""
+
+#: src/components/nodes/Header.tsx:152
+#: src/pages/nodes/index.tsx:208
+msgid "Connect wallet"
 msgstr ""
 
 #: src/pages/contact.tsx:52
@@ -492,8 +665,10 @@ msgstr "联系我们"
 #: src/pages/team.tsx:212
 msgid "Contributing to the future of a decentralized internet"
 msgstr ""
+"为去中心化互联网的未来做出贡献\n"
+""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:92
+#: src/components/sigil/Dashboard/MissionV2.tsx:88
 msgid "Copy invite link"
 msgstr ""
 
@@ -505,122 +680,167 @@ msgstr "在领导网页和应用程序的用户界面/用户体验设计及品�
 #: src/pages/nodes/purchase-complete.tsx:81
 msgid "Create an account"
 msgstr ""
+"创建账户\n"
+""
 
 #: src/pages/studios.tsx:163
 msgid "Creating the new standard for blockchain games and experiences"
+msgstr ""
+"打造区块链游戏和体验的新标准\n"
+""
+
+#: src/components/home/Hero.tsx:114
+#: src/pages/cricket.tsx:96
+msgid "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
 msgstr ""
 
 #: src/components/nodes/dashboard/TimeOnline.tsx:9
 msgid "Current Node Cycle"
 msgstr ""
+"当前节点周期\n"
+""
 
 #: src/pages/careers/index.tsx:22
 msgid "Current Openings"
 msgstr ""
+"目前的空缺职位\n"
+""
 
 #: src/hooks/useGamesData.tsx:369
 msgid "Customize your Moon Village with a range of cosmetic skins for various buildings and crew. These skins are NFTs, therefore remain yours forever, and are reusable across games."
 msgstr ""
+"用一系列建筑和船员主题的游戏皮肤来定制你的月亮村。这些皮肤相当于非同质化代币，因此永远属于你，并可在各种游戏中重复使用。\n"
+""
 
-#: src/pages/nodes/index.tsx:27
+#: src/pages/nodes/index.tsx:28
 msgid "Daily $MYRIA token rewards"
 msgstr "每日代币奖励 （MYRIA币）"
 
 #: src/components/nodes/Sidebar2.tsx:11
 msgid "Dashboard"
 msgstr ""
+"仪表板\n"
+""
 
-#: src/components/sigil/Profile.tsx:72
+#: src/components/sigil/Profile.tsx:71
 msgid "Date Registered"
 msgstr ""
+"注册日期\n"
+""
 
 #: src/pages/team.tsx:72
 msgid "Dave has over 25 years of marketing and management experience. He previously led marketing at Banxa and Rockstar Games. Dave also founded Marley Spoon; taking the company from inception to IPO."
 msgstr ""
+"Dave有超过25年的营销和管理经验。他曾在Banxa和Rockstar Games牵头市场营销。Dave还创立了Marley Spoon，负责公司从成立到首次公开募股（IPO）的全过程。\n"
+""
 
 #: src/pages/nodes/index.tsx:196
 msgid "Decentralize the network by providing computing resources"
 msgstr "通过提供计算资源去中心化网络"
 
-#: src/pages/nodes/index.tsx:159
+#: src/pages/nodes/index.tsx:160
 msgid "Details will be announced soon."
 msgstr "详情将很快公布。"
+
+#: src/components/nodes/Header.tsx:142
+msgid "Disconnect"
+msgstr ""
 
 #: src/components/home/OurGames.tsx:46
 msgid "Discover more"
 msgstr ""
+"发现更多\n"
+""
 
 #: src/hooks/useGamesData.tsx:224
 msgid "Dive in, we dare you. You’ll find yourself gracefully descending from the sky while you survey the lands to select your ideal landing spot. Enjoy that moment of peace, because once your feet touch the ground you’ll be plunged into an intense battle for loot and powerful equipment.As expected, life in this world ain’t easy, and at given intervals of time the playable area of the map will shrink, pushing you closer to your enemies. Needless to say, they ain’t waiting for you in a bed of roses, so be prepared!"
 msgstr ""
+"有胆你就来！从天空中优雅地降落的同时，全面检查这片大地，选择你理想的着陆点。享受这片刻的宁静吧，因为，一旦你的双脚接触到地面，你就会陷入一场激烈战斗中，争夺战利品和强大的装备。正如所料，这个世界的生存并不容易，经过特定的时间间隔，地图的可玩区域就会缩小，迫使你更接近你的敌人。不用说，敌人不会在玫瑰花床上等着你，所以要做好准备！\n"
+""
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:21
 msgid "Do you want to link your wallet {0} to your Myria account?"
 msgstr ""
+"你想把你的钱包{0}关联到你的Myria账户吗？\n"
+""
 
 #: src/components/sigil/Welcome.tsx:113
 msgid "Don't have a wallet yet? <0/>Install Metamask below."
 msgstr ""
+"还没有钱包吗？<0/>在下面安装Metamask。\n"
+""
 
 #: src/hooks/useGamesData.tsx:114
 msgid "Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse."
 msgstr ""
+"在惊心动魄的赛道上漂移，竞相冲过终点线。享受无尽的乐趣，向你的对手射击，破坏你周围的一切，获得额外的分数，攀登排行榜。深入我们众多的游戏模式和赛道，在Myriaverse的赛车传奇中取得你应有的地位。\n"
+""
 
 #: src/hooks/useGamesData.tsx:151
 msgid "Drift it up!"
 msgstr ""
+"漂移吧！\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:102
 msgid "Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle."
 msgstr ""
+"在寻求知识的驱使下，Equinox收集了他们能找到的每一份信息。在所有这些数据的某处，一定是和平的答案。你可能是最终解开这个谜题的人。\n"
+""
 
-#: src/pages/nodes/index.tsx:42
+#: src/pages/nodes/index.tsx:43
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "每个节点均可对Myria链的拟议修改进行投票。在整个Myriaverse元宇宙中，节点还将拥有更多的投票权。"
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:123
-msgid "Earn {point} points  when you add your reaction to a message on the #myria-lore channel"
+#: src/components/sigil/Dashboard/MissionV2.tsx:113
+msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:117
-msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions"
+#: src/components/sigil/Dashboard/MissionV2.tsx:77
+msgid "Earn {point} points by completing account creation"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:81
-msgid "Earn {point} points by completing account creation and becoming a true Myrian"
-msgstr ""
-
-#: src/components/sigil/Dashboard/MissionV2.tsx:147
+#: src/components/sigil/Dashboard/MissionV2.tsx:143
 msgid "Earn {point} points by following @myriagames on Twitter"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:88
+#: src/components/sigil/Dashboard/MissionV2.tsx:151
+msgid "Earn {point} points by following myriagames on Instagram"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:84
 msgid "Earn {point} points by joining the Myria Discord server"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:129
+#: src/components/sigil/Dashboard/MissionV2.tsx:125
 msgid "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:139
+#: src/components/sigil/Dashboard/MissionV2.tsx:135
 msgid "Earn {point} points by sharing a tweet about Myria"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:105
+#: src/components/sigil/Dashboard/MissionV2.tsx:101
 msgid "Earn {point} points for each day you send a message to any Myria Discord channel"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:98
+#: src/components/sigil/Dashboard/MissionV2.tsx:94
 msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
 msgstr ""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:111
+#: src/components/sigil/Dashboard/MissionV2.tsx:119
+msgid "Earn {point} points when you add a thumbs up reaction to a message on the #myria-lore channel"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:107
 msgid "Earn {point} points when you send your first message on any Myria Discord channel"
 msgstr ""
 
 #: src/hooks/useGamesData.tsx:350
 msgid "Easy to play, difficult to master. Select the right terrain to base your industrial revolution. Choose wisely, as this will determine the types of resources and production opportunities available to you. Make sure to look after your base in order to increase your score and climb the ranks. At the end of each tournament, the competition is reset, so don’t worry if you get it wrong the first time!"
 msgstr ""
+"容易玩，难掌握。选择合适的地形作为你的工业革命基地。选得好！因为这会决定你可用的资源类型和生产机会。确保照顾好你的基地，增加你的分数，勇攀高峰。在每场锦标赛结束时，比赛都会被重置，所以如果你第一次选错了，也不用担心！\n"
+""
 
 #: src/components/Footer.tsx:41
 #: src/components/Header/linkSources.tsx:15
@@ -634,10 +854,18 @@ msgstr "教育和支持"
 #: src/hooks/useGamesData.tsx:193
 msgid "Eliminate your opponents in this fast-paced-action-packed-survival game, to achieve victory and claim the spoils of war. There can be only one hero or team standing when the crimson curtain hits the ground."
 msgstr ""
+"在这个快节奏的、充满动作的生存游戏中，消灭你的对手，取得胜利，领取战利品。当猩红色的幕布落地时，只能有一个英雄或一支团队还站着。\n"
+""
 
 #: src/components/GetInTouch.tsx:82
 #: src/components/Register/Register.tsx:195
 msgid "Email"
+msgstr ""
+"电子邮箱\n"
+""
+
+#: src/pages/cricket.tsx:107
+msgid "Email address"
 msgstr ""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:18
@@ -645,46 +873,61 @@ msgstr ""
 #: src/components/Register/Register.tsx:54
 #: src/components/SignIn/SignIn.tsx:22
 #: src/components/Subscribe.tsx:21
-#: src/components/for-developers/BuildYourBlockchain.tsx:35
+#: src/components/for-developers/BuildYourBlockchain.tsx:37
+#: src/pages/cricket.tsx:28
 msgid "Email is required!"
 msgstr "电子邮件必填！"
 
 #: src/components/for-developers/Ethereum.tsx:148
 msgid "Empower mainstream adoption to Ethereum using Myria’s scaling solution"
 msgstr ""
+"使用Myria的扩展解决方案，让以太坊为主流所用。\n"
+""
 
 #: src/pages/for-gamers.tsx:33
 msgid "Empowering players"
 msgstr "为玩家赋能"
 
 #: src/pages/for-developers/index.tsx:40
-msgid "Enabling digital asset scalabiltiy on Ethereum"
+msgid "Enabling digital asset scalability on Ethereum"
 msgstr ""
 
 #: src/components/for-developers/Myria.tsx:22
 msgid "Enabling true scalability while leveraging the Ethereum network"
 msgstr ""
+"在利用以太坊网络的同时实现真正的可扩展性\n"
+""
 
 #: src/hooks/useGamesData.tsx:73
 msgid "Endless online fun"
 msgstr ""
+"无尽的在线乐趣\n"
+""
 
 #: src/pages/ecosystem.tsx:25
 msgid "Enhancing the power of play through blockchain"
 msgstr ""
+"通过区块链增强游玩的动力\n"
+""
 
 #: src/components/ResetPassword/ResetPassword.tsx:70
 msgid "Enter a password"
 msgstr ""
+"输入密码\n"
+""
 
 #: src/components/for-developers/Myria.tsx:34
 msgid "Enter the new era of web3.0 with confidence"
 msgstr ""
+"满怀信心地进入web3.0的新时代\n"
+""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:47
 #: src/components/SignIn/SignIn.tsx:56
 msgid "Enter your email"
 msgstr ""
+"输入你的电子邮件\n"
+""
 
 #: src/components/Subscribe.tsx:75
 msgid "Enter your email address"
@@ -693,31 +936,43 @@ msgstr "输入您的电子邮件地址"
 #: src/components/ForgotPassword/ForgotPassword.tsx:42
 msgid "Enter your email address to reset your password"
 msgstr ""
+"输入你的电子邮件地址以重设密码\n"
+""
 
 #: src/components/Register/Register.tsx:206
 #: src/components/SignIn/SignIn.tsx:64
 msgid "Enter your password"
 msgstr ""
+"输入你的密码\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:96
 msgid "Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers."
 msgstr ""
+"Equinox追求Myriaverse的平衡，相信人类和裂谷人（Rift）也许可以共存。他们积极探索裂谷人，寻找答案。\n"
+""
 
 #: src/pages/for-developers/solution.tsx:14
 msgid "Ethereum-level security provided by zk-STARKs"
 msgstr ""
+"由zk-STARKs保障的以太坊级安全性\n"
+""
 
 #: src/hooks/useGamesData.tsx:296
 msgid "Every hero has three unique abilities, each requiring charges, as well as one ultimate ability that requires charging through kills, deaths, collectibles, or objectives. It’s easier than it sounds, and even funnier…"
 msgstr ""
+"每个英雄都有三个独特的能力，每个都需要蓄力；还有一个终极能力，需要通过杀戮、死亡、收集品或目标来蓄力。其实，玩起来比听起来更容易，甚至更有趣……\n"
+""
 
-#: src/pages/nodes/index.tsx:54
+#: src/pages/nodes/index.tsx:55
 msgid "Exclusive NFTs"
 msgstr "专属非同质化代币 "
 
 #: src/components/for-developers/Myria.tsx:24
 msgid "Experience low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution."
 msgstr ""
+"借助于我们的Myria扩展解决方案，体验低交易费用和每秒高达9000笔交易的高吞吐率。\n"
+""
 
 #: src/components/FirstTimeVisitModal.tsx:63
 msgid "FOLLOW US ON TWITTER"
@@ -726,32 +981,50 @@ msgstr "在推特上关注我们"
 #: src/context/tabContext.tsx:33
 msgid "FOR DEVELOPERS"
 msgstr ""
+"为开发者服务\n"
+""
 
 #: src/context/tabContext.tsx:27
 msgid "FOR GAMERS"
 msgstr ""
+"为游戏玩家服务\n"
+""
 
 #: src/pages/for-developers/solution.tsx:127
 msgid "Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1 data availability provide Ethereum-level security."
 msgstr ""
+"二层链加快了交易确认时间，而zk证明和一层数据的可用性提供了以太坊级别的安全性。\n"
+""
 
 #: src/hooks/useGamesData.tsx:373
 msgid "Features"
 msgstr ""
+"特征\n"
+""
 
 #: src/components/Careers/Careers.tsx:42
 msgid "Filter by Department"
 msgstr ""
+"按部门过滤\n"
+""
 
 #: src/components/Register/Register.tsx:161
 msgid "First name"
 msgstr ""
+"名\n"
+""
 
 #: src/components/Register/Register.tsx:48
 msgid "First name is required!"
 msgstr ""
+"需要输入名！\n"
+""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:142
+#: src/components/sigil/Dashboard/MissionV2.tsx:146
+msgid "Follow on Instagram"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:138
 msgid "Follow on Twitter"
 msgstr ""
 
@@ -759,10 +1032,14 @@ msgstr ""
 #: src/components/Footer.tsx:69
 msgid "For Developers"
 msgstr ""
+"为开发者服务\n"
+""
 
 #: src/components/SignIn/SignIn.tsx:79
 msgid "Forgot your password?"
 msgstr ""
+"忘记密码？\n"
+""
 
 #: src/pages/index.tsx:70
 msgid "Founded by leading gaming and blockchain industry veterans"
@@ -772,18 +1049,26 @@ msgstr "由游戏和区块链行业的顶尖人士创立"
 #: src/components/Header/MobileHeader.tsx:86
 msgid "Free Sigil NFT"
 msgstr ""
+"免费的Sigil非同质化代币\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:55
 msgid "From wallet"
 msgstr ""
+"来自钱包\n"
+""
 
 #: src/pages/for-developers/solution.tsx:35
 msgid "Full ownership of assets, non-custodial architecture"
 msgstr ""
+"资产的完全所有权，非托管架构\n"
+""
 
 #: src/pages/for-developers/solution.tsx:37
 msgid "Fully open-source and community-driven development"
 msgstr ""
+"完全开放源代码，社区驱动型开发\n"
+""
 
 #: src/pages/for-gamers.tsx:178
 msgid "GET A NODE"
@@ -792,6 +1077,8 @@ msgstr "获取节点"
 #: src/components/nodes/dashboard/Licenses.tsx:11
 msgid "GET MORE LICENSES"
 msgstr ""
+"获得更多许可证\n"
+""
 
 #: src/pages/_app.tsx:42
 msgid "Game NFT"
@@ -811,51 +1098,73 @@ msgstr "游戏"
 #: src/components/ecosystem/Platform.tsx:12
 msgid "Games & Applications"
 msgstr ""
+"游戏与应用\n"
+""
 
 #: src/components/Program.tsx:31
 msgid "Gaming is evolving. Build with Myria!"
 msgstr ""
+"游戏玩法在不断发展。与Myria一起建设！\n"
+""
 
 #: src/components/for-developers/Myria.tsx:62
 msgid "Gaming is evolving. Build with Myria."
 msgstr ""
+"游戏玩法在不断发展。与Myria一起建设。\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:28
 msgid "Gas Fee"
 msgstr ""
+"汽油费\n"
+""
 
 #: src/hooks/useGamesData.tsx:230
 msgid "Gather and upgrade the best equipment on the battlefield. Collect power-ups and build combat facilities to overcome your foes. You can deal with this harsh reality alone or with your friends in a team of three."
 msgstr ""
+"收集并升级战场上的最佳装备。收集强化物品并建造战斗设施，战胜你的敌人。你可以独自面对这个残酷的现实，也可以与你的朋友组成三人小队。\n"
+""
 
 #: src/components/Footer.tsx:88
 msgid "General"
 msgstr ""
+"概述\n"
+""
 
 #: src/pages/for-developers/solution.tsx:68
 msgid "General purpose zk-rollup"
 msgstr ""
+"一般用途的zk-rollup\n"
+""
 
 #: src/components/Footer.tsx:73
 msgid "Get Started"
 msgstr ""
+"入门教程\n"
+""
 
-#: src/pages/nodes/index.tsx:285
+#: src/pages/nodes/index.tsx:294
 msgid "Get a founders node today"
 msgstr "现在就获取创始人节点"
 
 #: src/pages/nodes/purchase-complete.tsx:78
 msgid "Get started with your Myria node."
 msgstr ""
+"开始使用你的Myria节点。\n"
+""
 
 #: src/components/sigil/Welcome.tsx:173
 #: src/components/sigil/WelcomeMobile.tsx:21
 msgid "Go back"
 msgstr ""
+"返回\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:95
 msgid "Go to my dashboard"
 msgstr ""
+"前往我的仪表板\n"
+""
 
 #: src/pages/for-studios.tsx:37
 msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
@@ -864,10 +1173,14 @@ msgstr "有了创新游戏想法？申请授权，在Myria链上展示您的愿�
 #: src/components/Purchase/License.tsx:92
 msgid "Grow with us and be rewarded. A Myria Node License allows you to operate a node from your home computer to support the growth of Myria’s decentralized network. As a node owner, you’ll earn daily rewards and exclusive benefits for your contribution."
 msgstr ""
+"与我们一起成长并获得奖励。Myria节点许可证允许你用家用电脑操作节点，支持Myria去中心化网络的成长。作为节点所有者，你将获得每日奖励和专属福利，以资鼓励。\n"
+""
 
 #: src/hooks/useGamesData.tsx:294
 msgid "Heroes don’t all wear capes"
 msgstr ""
+"英雄不一定都穿斗篷\n"
+""
 
 #: src/components/Header/linkSources.tsx:8
 #: src/components/Header/linkSources.tsx:44
@@ -875,7 +1188,7 @@ msgstr ""
 msgid "Home"
 msgstr "主页"
 
-#: src/pages/nodes/index.tsx:106
+#: src/pages/nodes/index.tsx:107
 msgid "How can I become a Myria node operator?"
 msgstr "如何成为Myria节点操作者？"
 
@@ -888,29 +1201,31 @@ msgstr "如何成为Myria节点操作者？"
 msgid "How it works"
 msgstr "如何运作？"
 
-#: src/pages/nodes/index.tsx:168
+#: src/pages/nodes/index.tsx:169
 msgid "How many Myria node licenses will be released?"
 msgstr "将发布多少份Myria节点许可证？"
 
-#: src/pages/nodes/index.tsx:157
+#: src/pages/nodes/index.tsx:158
 msgid "How much will a Myria node license cost?"
 msgstr "一份Myria节点许可证的成本是多少？"
 
 #: src/components/sigil/ShareTwitterModal.tsx:35
 msgid "I am now a $MYRIA node owner! Join us to earn rewards, govern and build the future of virtual worlds! @MyriaGames"
 msgstr ""
+"我现在是$MYRIA节点所有者！加入我们，赚取奖励，治理并构建虚拟世界的未来！ @MyriaGames\n"
+""
 
-#: src/components/sigil/ShareTwitterModal.tsx:32
-msgid "I just claimed a Rare Alliance Sigil on Myria"
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:57
+msgid "I have read, understood and agree to the terms of service"
 msgstr ""
-
-#: src/components/sigil/ReferFriendModal.tsx:47
-msgid "I'm baby whatever small batch chicharrones kale chips unicorn everyday carry."
-msgstr ""
+"我刚刚在Myria领取了一个稀有联盟Sigil\n"
+""
 
 #: src/pages/game-detail/[id].tsx:121
 msgid "IN DEVELOPMENT"
 msgstr ""
+"开发中\n"
+""
 
 #: src/components/JoinTheRevolution.tsx:28
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
@@ -919,73 +1234,112 @@ msgstr "想在游戏和区块链领域有所作为，请加入Myria。Myria正�
 #: src/pages/team.tsx:87
 msgid "In his role leading the People team, Damian helps Myria connect, develop and care for its global team. Damian brings decades of experience to Myria and was previously Global Head of People for Bitmex and prior to that a Managing Director in HR at Goldman Sachs."
 msgstr ""
+"Damian牵头人事团队的工作，帮助Myria联系、开发、关怀其全球团队。Damian曾先后担任高盛集团的人力资源常务董事和Bitmex的全球人事主管，给Myria带去了几十年的丰富经验。\n"
+""
 
 #: src/hooks/useGamesData.tsx:147
 msgid "In this lawless racing game, you’ll need to do whatever it takes to thwart your rivals’ attempts at reaching the finish line before you. Choosing the optimal combination of driver and kart parts could be the difference between triumph and defeat. But don’t worry if your ride isn’t souped-up, you still have your shot at 1st place. Just make good use of the vicious power-ups scattered around the track to literally blast your competition into oblivion!"
 msgstr ""
+"在这个无法无天的赛车游戏中，你需要不惜一切代价挫败对手的企图，在所有人之前到达终点线。请选择驾驶员和卡丁车部件的最优组合，否则可能就是胜利和失败的区别。但是，如果你的车没有改装过，也不用担心，你仍然有机会获得第一名。只要好好利用散落在赛道上的恶意强化物品，就能把你的竞争对手炸得灰飞烟灭！\n"
+""
 
 #: src/hooks/useGamesData.tsx:69
 msgid "In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later."
 msgstr ""
+"在Myriaverse的这一部分，游客会被转化为Bobble-Head形式。根据这个世界的使用条款，这是只有神秘的管理员才可以打破的元宇宙法则……但后面会有更多的内容。\n"
+""
 
 #: src/components/Register/Register.tsx:40
 msgid "Inclusion of at least one special character"
 msgstr ""
+"至少包含一个特殊人物\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:29
 msgid "Infrastructure & Tools"
 msgstr ""
+"基础设施和工具\n"
+""
 
 #: src/components/sigil/Welcome.tsx:156
 msgid "Install Metamask"
 msgstr ""
+"安装Metamask\n"
+""
 
 #: src/components/for-developers/Myria.tsx:51
 msgid "Instant project visibility"
 msgstr ""
+"即时项目可见性\n"
+""
 
 #: src/pages/for-developers/solution.tsx:16
 msgid "Instantly able to withdraw assets from the rollup back into ethereum when needed"
 msgstr ""
+"在需要的时候，能够即时从卷轴中提取资产，卷回到以太坊中\n"
+""
 
 #: src/components/for-developers/Myria.tsx:54
 msgid "Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners."
 msgstr ""
+"通过Myria平台和网络合作伙伴，围绕你的项目即时接触并建立一个布道者参与的玩家社区。\n"
+""
 
 #: src/hooks/useGamesData.tsx:228
 msgid "Intense battle to the very end"
 msgstr ""
+"激烈的战斗到最后一刻\n"
+""
 
 #: src/hooks/useGamesData.tsx:302
 msgid "Interoperability FTW! Yes, we’ve got you covered - you can bring those crazy skins, sprays, hats, and every other exclusive NFT you’ve gathered along your journey through the Myriaverse. The last thing I want to see on the battlefield is tie-dye tights, but hey – it’s your party after all!"
 msgstr ""
+"互通性为了胜利！是的，我们已经为你准备好了——你可以把那些疯狂的皮肤、喷雾剂、帽子以及你在Myriaverse的旅程中收集到的所有专属非同质化代币都带来。我最不希望在战场上看到的就是扎染的紧身衣，但是，嘿嘿——毕竟这是你的派对啊！\n"
+""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:17
 #: src/components/GetInTouch.tsx:26
 #: src/components/Register/Register.tsx:53
 #: src/components/SignIn/SignIn.tsx:21
 #: src/components/Subscribe.tsx:20
-#: src/components/for-developers/BuildYourBlockchain.tsx:34
+#: src/components/for-developers/BuildYourBlockchain.tsx:36
+#: src/pages/cricket.tsx:27
 msgid "Invalid email!"
 msgstr "无效电子邮件地址！"
 
 #: src/components/Header/ProfileComponent.tsx:12
 #: src/components/nodes/Sidebar.tsx:26
-#: src/pages/inventory.tsx:127
+#: src/pages/inventory.tsx:123
 msgid "Inventory"
+msgstr ""
+"库存\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:49
+msgid "Invite your friends to Myria by sharing the following link with them."
+msgstr ""
+
+#: src/components/sigil/ReferFriendModal.tsx:47
+msgid "Invite your friends to Myria by sharing the following link with them."
 msgstr ""
 
 #: src/hooks/useGamesData.tsx:75
 msgid "It was a calm day in the land of candy hammers and fiery strawberry lakes when a mysterious portal suddenly spawned a roaring crowd of brave players. Ready to rock, they started to roll down the hill of chocolate donuts in a chaotic race for the win."
 msgstr ""
+"这是糖果锤子和火红草莓湖大地上又一个平静的日子，一群咆哮的勇敢玩家突然从某个神秘的传送门中涌出。一切准备就绪，他们开始从巧克力甜甜圈山丘上翻滚下来，在混乱的比赛中争夺胜利。\n"
+""
 
 #: src/hooks/useGamesData.tsx:157
 msgid "It’s all in your hands"
 msgstr ""
+"一切尽在你的手中\n"
+""
 
 #: src/pages/team.tsx:117
 msgid "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads."
 msgstr ""
+"Ivan在游戏行业有10多年的经验。他曾在Gameloft、CrazyLabs、GPG（育碧）、Sperasoft等业界领先的公司担任首席游戏设计师，他设计的游戏积累了数十亿的下载量。\n"
+""
 
 #: src/components/ComingSoon.tsx:59
 #: src/components/FirstTimeVisitModal.tsx:49
@@ -993,7 +1347,7 @@ msgstr ""
 #: src/components/Header/MobileHeader.tsx:55
 #: src/components/Header/MobileHeader.tsx:98
 #: src/components/NotiBanner.tsx:49
-#: src/components/home/Hero.tsx:222
+#: src/components/home/Hero.tsx:279
 #: src/pages/game-detail/[id].tsx:138
 msgid "JOIN DISCORD"
 msgstr "加入Discord"
@@ -1001,6 +1355,8 @@ msgstr "加入Discord"
 #: src/components/sigil/Welcome.tsx:128
 msgid "JOIN NOW"
 msgstr ""
+"立即加入\n"
+""
 
 #: src/components/JoinTheRevolution.tsx:35
 msgid "JOIN THE TEAM"
@@ -1013,31 +1369,42 @@ msgstr ""
 #: src/components/JoinMyriaCard.tsx:14
 msgid "Join MYRIA"
 msgstr ""
+"加入MYRIA\n"
+""
 
 #: src/components/JoinMyriaCard.tsx:7
 msgid "Join Myria in building the next blockchain revolution"
 msgstr ""
-
-#: src/components/sigil/ChooseAlliance/index.tsx:56
-msgid "Join The Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
-msgstr ""
+"加入Myria，打造下一场区块链革命\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:79
 msgid "Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all."
 msgstr ""
+"加入Vector Prime，你会帮助裂谷人把世界和所有生活在其中的人都数字化。许多因素会与你对抗，但你知道，科学和逻辑是统治我们所有人的最好法则。\n"
+""
 
 #: src/components/FirstTimeVisitModal.tsx:31
 msgid "Join our community!"
+msgstr ""
+"加入我们的社区吧！\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:56
+msgid "Join the Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
 msgstr ""
 
 #: src/hooks/useGamesData.tsx:283
 msgid "Just make sure you’re still alive till the end of the round or you’ll be spectating from the sidelines. And that means nobody will be able to appreciate your cute hot-dog suit that you’ve just brought over from a zany skirmish in the Metarush world."
 msgstr ""
+"要确保你能活到这轮比赛结束，否则你就只能在一旁观战了。这意味着，你刚刚从Metarush世界一场滑稽的小规模战斗中带过来的可爱热狗服，其实并没有人能欣赏到。\n"
+""
 
 #: src/pages/team.tsx:178
 msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
 msgstr "Kidono是一名经验丰富的合作伙伴主管，在管理外部开发活动方面经验丰富。他曾与漫威、腾讯、winking等大型游戏制作公司合作。"
 
+#: src/components/home/Hero.tsx:123
 #: src/pages/nodes/purchase-complete.tsx:110
 #: src/pages/studios.tsx:228
 msgid "LEARN MORE"
@@ -1046,61 +1413,85 @@ msgstr "了解更多"
 #: src/components/sigil/LinkWalletConfirmModal.tsx:33
 msgid "LINK WALLET"
 msgstr ""
+"链接钱包\n"
+""
 
 #: src/components/sigil/Welcome.tsx:128
 msgid "LOGGING IN"
 msgstr ""
+"登录\n"
+""
 
 #: src/components/Register/Register.tsx:172
 msgid "Last name"
 msgstr ""
+"姓\n"
+""
 
 #: src/components/Register/Register.tsx:49
 msgid "Last name is required!"
 msgstr ""
+"需要输入姓！\n"
+""
 
 #: src/components/home/News.tsx:33
 msgid "Latest Updates & News"
 msgstr ""
+"最新更新和新闻\n"
+""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:85
-#: src/components/sigil/Dashboard/MissionV2.tsx:102
-#: src/components/sigil/Dashboard/MissionV2.tsx:108
-#: src/components/sigil/Dashboard/MissionV2.tsx:114
-#: src/components/sigil/Dashboard/MissionV2.tsx:120
-#: src/components/sigil/Dashboard/MissionV2.tsx:126
+#: src/components/sigil/Dashboard/MissionV2.tsx:81
+#: src/components/sigil/Dashboard/MissionV2.tsx:98
+#: src/components/sigil/Dashboard/MissionV2.tsx:104
+#: src/components/sigil/Dashboard/MissionV2.tsx:110
+#: src/components/sigil/Dashboard/MissionV2.tsx:116
+#: src/components/sigil/Dashboard/MissionV2.tsx:122
 msgid "Launch Discord"
 msgstr ""
 
 #: src/components/for-developers/Myria.tsx:40
 msgid "Launch with full support from our tokenomics experts"
 msgstr ""
+"在我们代币经济专家的全面支持下启动\n"
+""
 
 #: src/pages/for-developers/solution.tsx:124
 msgid "Layer 2 scalability solution"
 msgstr ""
+"二层可扩展性解决方案\n"
+""
 
-#: src/components/home/Hero.tsx:210
+#: src/components/home/Hero.tsx:267
 msgid "Learn more"
 msgstr "了解更多"
 
 #: src/components/JoinMyriaCard.tsx:10
 msgid "Learn more about our job current openings and see how you can get involved!"
 msgstr ""
+"进一步了解我们目前的职位空缺情况，看看你如何参与其中！\n"
+""
 
 #: src/pages/team.tsx:218
 msgid "Led by industry experts"
 msgstr "由行业专家领导"
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:44
+msgid "Leggings swag synth 8-bit master cleanse. Pitchfork affogato semiotics raclette, adaptogen post-ironic cliche meggings tousled paleo 90's next level."
+msgstr ""
+
 #: src/components/for-developers/Myria.tsx:30
 msgid "Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business."
 msgstr ""
+"充分利用预先建立的Myria平台和工具——我们负责配套工具，你可以专注于建立你的业务。\n"
+""
 
 #: src/components/Purchase/License.tsx:75
 msgid "Limited supply available"
 msgstr ""
+"供应有限\n"
+""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:180
+#: src/components/sigil/Dashboard/MissionV2.tsx:188
 msgid "Locked"
 msgstr ""
 
@@ -1109,10 +1500,14 @@ msgstr ""
 #: src/context/authentication.tsx:103
 msgid "Log in"
 msgstr ""
+"登录\n"
+""
 
 #: src/components/Header/ProfileComponent.tsx:58
 msgid "Log out"
 msgstr ""
+"退出\n"
+""
 
 #: src/components/Header/ProfileComponent.tsx:64
 msgid "Logout of your Myria account. Your progress will be accessible in future by logging into your Myria account via your wallet."
@@ -1121,55 +1516,83 @@ msgstr ""
 #: src/pages/for-developers/solution.tsx:19
 msgid "Low transaction fees"
 msgstr ""
+"低交易费用\n"
+""
 
 #: src/components/nodes/mint-assets/index.tsx:69
 msgid "MINT ALL"
 msgstr ""
+"全部铸造\n"
+""
 
 #: src/components/nodes/mint-assets/index.tsx:75
 msgid "MINT SELECTED"
 msgstr ""
+"选择铸造\n"
+""
 
 #: src/components/Header/linkSources.tsx:79
 msgid "MYRIA STUDIOS"
 msgstr ""
+"MYRIA STUDIOS\n"
+""
 
 #: src/hooks/useGamesData.tsx:367
 msgid "Make it out of this world!"
 msgstr ""
+"脱离这个世界！\n"
+""
 
 #: src/components/for-developers/Myria.tsx:15
 msgid "Manage your NFT & digital assets"
 msgstr ""
+"管理你的非同质化代币和数字资产\n"
+""
 
 #: src/components/for-developers/Myria.tsx:16
 msgid "Manage your digital storefront and marketplace"
 msgstr ""
+"管理你的数字店面和市场\n"
+""
 
 #: src/components/for-developers/Myria.tsx:52
 msgid "Market your project across our platforms"
 msgstr ""
+"在我们的平台上推广你的项目\n"
+""
 
 #: src/components/nodes/dashboard/Licenses.tsx:8
 msgid "Maximise your network"
+msgstr ""
+"最大限度地提高你的网络\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:36
+msgid "Meditation ramps offal direct trade raclette disrupt vice. Neutra kogi mixtape 3 wolf moon. Organic mustache chia vape, la croix austin man bun small batch meh bushwick locavore. Biodiesel shabby chic butcher franzen pork belly microdosing, tattooed chambray twee meditation offal YOLO pour-over."
 msgstr ""
 
 #: src/components/GetInTouch.tsx:96
 msgid "Message"
 msgstr ""
+"消息\n"
+""
 
 #: src/components/GetInTouch.tsx:35
-#: src/components/for-developers/BuildYourBlockchain.tsx:39
+#: src/components/for-developers/BuildYourBlockchain.tsx:41
 msgid "Message is required!"
 msgstr "信息必填！"
 
 #: src/components/nodes/Sidebar2.tsx:19
 msgid "Mint Assets"
 msgstr ""
+"铸造资产\n"
+""
 
 #: src/components/nodes/Sidebar2.tsx:27
 msgid "More coming soon!"
 msgstr ""
+"更多即将推出！\n"
+""
 
 #: src/pages/studios.tsx:360
 msgid "More details coming soon"
@@ -1178,6 +1601,8 @@ msgstr "更多细节即将推出"
 #: src/components/Purchase/License.tsx:80
 msgid "More power than just network support"
 msgstr ""
+"不仅仅是网络支持，还有更多的力量\n"
+""
 
 #: src/components/interop/DesktopInterop.tsx:322
 #: src/components/interop/MobileInterop.tsx:196
@@ -1192,65 +1617,89 @@ msgstr "适应您的虚拟形象的Morphing NFT™"
 #: src/pages/studios.tsx:220
 msgid "Morphing interoperable NFTs is the new standard created by Myria. Players will be able to utilize their NFTs across different avatars, games and metaverses. Truly own your digital assets and collectibles."
 msgstr ""
+"可变形的互通非同质化代币是Myria创建的新标准。玩家能够在不同的虚拟角色、游戏和元宇宙中使用他们的非同质化代币。真正拥有你的数字资产和收集品。\n"
+""
 
 #: src/components/sigil/Footer.tsx:18
 #: src/components/sigil/Sound.tsx:29
 msgid "Mute sound"
 msgstr ""
+"静音\n"
+""
 
 #: src/components/nodes/dashboard/GeneralInfo.tsx:50
 msgid "My Node Licenses"
 msgstr ""
+"我的节点许可证\n"
+""
 
-#: src/pages/nodes/index.tsx:243
-msgid "Myria FAQ"
-msgstr "Myria 常见问题"
-
-#: src/components/Purchase/Modals/index.tsx:30
+#: src/components/Purchase/Modals/index.tsx:71
 msgid "Myria Founder’s Node"
 msgstr ""
+"Myria创始人的节点\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:113
 msgid "Myria Game Platform"
 msgstr ""
+"Myria游戏平台\n"
+""
 
 #: src/components/ecosystem/Backbone.tsx:20
 msgid "Myria Infrastructure"
 msgstr ""
+"Myria基础设施\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:97
 msgid "Myria NFT Marketplace"
 msgstr ""
+"Myria非同质化代币市场\n"
+""
 
 #: src/components/Purchase/License.tsx:89
 msgid "Myria Node License"
 msgstr ""
+"Myria节点许可证\n"
+""
 
 #: src/components/ecosystem/Backbone.tsx:54
 msgid "Myria Nodes"
 msgstr ""
+"Myria节点\n"
+""
 
 #: src/components/ecosystem/Backbone.tsx:31
 msgid "Myria Partners"
 msgstr ""
+"Myria合作伙伴\n"
+""
 
 #: src/components/Footer.tsx:58
 #: src/components/ecosystem/Backbone.tsx:43
 #: src/components/ecosystem/Platform.tsx:70
 msgid "Myria Studios"
 msgstr ""
+"MYRIA STUDIOS\n"
+""
 
 #: src/pages/studios.tsx:196
 msgid "Myria Studios is building a range of free-to-play AAA games spans across an entire interconnected ecosystem. Players experience intertwining lore, characters, and rich storylines that carry across each game world, and Myria tokens and NFTs can be used across the Myriaverse."
 msgstr ""
+"Myria Studios正在打造一系列免费游玩的3A级游戏，游戏横跨整个互联生态系统。玩家在每个游戏世界中都能体验到相互交织的传说、人物和丰富的故事情节，而Myria代币和非同质化代币可以在整个Myriaverse中使用。\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:105
 msgid "Myria Wallet"
 msgstr ""
+"Myria钱包\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:56
 msgid "Myria combines a gaming platform with applications, tools and scaling infrastructure needed to bring blockchain gaming to life."
 msgstr ""
+"Myria将游戏平台与区块链游戏走入现实所需的应用程序、工具和扩展基础设施结合在一起。\n"
+""
 
 #: src/pages/for-gamers.tsx:22
 msgid "Myria develops fun AAA games that are enhanced by the blockchain, not vice versa."
@@ -1263,36 +1712,51 @@ msgstr "Myria生态系统基金"
 #: src/components/for-developers/Myria.tsx:42
 msgid "Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives."
 msgstr ""
+"Myria通过代币经济咨询、“边玩边赚”游戏设计等最佳实践帮助你实现商业目标。\n"
+""
 
 #: src/pages/index.tsx:75
-msgid "Myria has been built by an all-star team of over 100 people, united with a common vision of revolutionizing gaming with blockchain technology."
+msgid "Myria has been built by an all-star team of over 150 people, united with a common vision of revolutionizing gaming with blockchain technology."
 msgstr ""
 
 #: src/components/ecosystem/Backbone.tsx:33
 msgid "Myria help project partners set up for success. <0/> about our easy-to-use, full stack solution and build with Myria today."
 msgstr ""
+"Myria帮助项目合作伙伴为成功做好准备。<0/>更多了解我们易于使用的全栈解决方案，今天就与Myria一起建设。\n"
+""
 
 #: src/components/Program.tsx:34
 msgid "Myria helps blockchain projects scale. Whether you’re an established crypto business or simply exploring new possibilities, Myria has a solution for you!"
 msgstr ""
+"Myria帮助区块链项目扩展。无论是成熟的加密货币企业，还是仅仅在探索新的可能性，Myria都有适合的解决方案！\n"
+""
 
-#: src/components/ComingSoon.tsx:48
 #: src/pages/_app.tsx:34
 #: src/pages/_app.tsx:47
+msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
+msgstr ""
+
+#: src/components/ComingSoon.tsx:48
 msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
 msgstr "Myria是由Myria区块链驱动的游戏生态系统。"
 
 #: src/pages/ecosystem.tsx:28
 msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT and blockchain gaming."
 msgstr ""
+"Myria相当于中心化以太坊二层，为数字资产、非同质化代币和区块链游戏提供支持。\n"
+""
 
 #: src/pages/for-developers/solution.tsx:71
 msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT, blockchain gaming and more."
 msgstr ""
+"Myria相当于中心化以太坊二层，为数字资产、非同质化代币和区块链游戏等提供支持。\n"
+""
 
 #: src/pages/for-developers/index.tsx:43
 msgid "Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and blockchain gaming."
 msgstr ""
+"Myria相当于中心化以太坊二层，为数字资产、非同质化代币和区块链游戏扩大规模。\n"
+""
 
 #: src/pages/for-gamers.tsx:48
 msgid "Myria is supported by a network of community-powered nodes, who receive rewards for their contributions."
@@ -1301,22 +1765,30 @@ msgstr "Myria由社区赋能的节点网络支持，各节点根据其贡献而�
 #: src/components/ecosystem/Backbone.tsx:68
 msgid "Myria is the backbone of blockchain gaming"
 msgstr ""
+"Myria是区块链游戏的中坚力量\n"
+""
 
-#: src/pages/nodes/index.tsx:151
+#: src/pages/nodes/index.tsx:152
 msgid "Myria node license sales are anticipated to commence in Q2 2022 (subject to change)."
 msgstr ""
+"按照预计，Myria节点许可证销售将于2022年第二季度开始（可能会有变化）。\n"
+""
 
-#: src/pages/nodes/index.tsx:29
+#: src/pages/nodes/index.tsx:30
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "每天，Myria节点操作者将从节点作业中获取代币奖励（MYRIA币 ）。"
 
 #: src/components/for-developers/Myria.tsx:65
 msgid "Myria provides an end-to-end solution for developers and publishers, and help you unlock the blockchain potential of your business"
 msgstr ""
+"Myria为开发者和发行商提供端到端的解决方案，推动企业释放区块链潜力\n"
+""
 
 #: src/components/for-developers/Myria.tsx:36
 msgid "Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support."
 msgstr ""
+"Myria提供关于非同质化代币销售、区块链集成和平台支持的区块链咨询服务。\n"
+""
 
 #: src/pages/_app.tsx:35
 #: src/pages/_app.tsx:46
@@ -1330,22 +1802,32 @@ msgstr "Myriaverse是连接玩家、社区和公会的广泛社交元宇宙。�
 #: src/components/ecosystem/Backbone.tsx:22
 msgid "Myria’s <0/> uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
 msgstr ""
+"Myria的<0/>使用ZK-Rollup，在不牺牲安全性的前提下，使dApps实现无限规模的低交易费用。\n"
+""
 
 #: src/pages/for-developers/solution.tsx:86
 msgid "Myria’s <0>Ethereum L2 scaling solution</0> uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2 transactions into one single transaction. This then sends a validity proof back to the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based zkrollup solution enable NFTs and dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
 msgstr ""
+"Myria的<0>以太坊二层扩展解决方案</0>使用零知识技术（zk-STARKs）来“卷起”交易，或将成千上万的二层交易捆绑成一个单一交易。然后将有效性证明送回主区块链，保留一层以太坊的安全性。Myria的zkrollup解决方案基于STARK，使非同质化代币和DApps能够在不牺牲安全性的前提下实现无限规模的低交易费用。\n"
+""
 
 #: src/components/for-developers/Myria.tsx:18
 msgid "Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey."
 msgstr ""
+"Myria的非同质化代币商店和市场基础设施不仅为区块链游戏而建，还专为支持玩家的游戏之旅进行了优化。\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:19
 msgid "NFT Rewards"
 msgstr ""
+"非同质化代币奖励\n"
+""
 
 #: src/components/GetInTouch.tsx:76
 msgid "Name"
 msgstr ""
+"名称\n"
+""
 
 #: src/components/GetInTouch.tsx:23
 #: src/components/for-developers/BuildYourBlockchain.tsx:26
@@ -1355,6 +1837,8 @@ msgstr "姓名必填！"
 #: src/pages/for-developers/solution.tsx:26
 msgid "Native support for core token types ERC20 and ERC721"
 msgstr ""
+"对核心代币类型ERC20和ERC721的本地支持\n"
+""
 
 #: src/components/Footer.tsx:113
 msgid "News"
@@ -1368,30 +1852,40 @@ msgstr "无论您的虚拟形象的形状和大小如何，均采用相同的非
 #: src/components/sigil/LinkWalletConfirmModal.tsx:25
 msgid "No web wallet is detected, please ensure that you have one setup to claim your rewards."
 msgstr ""
+"没有检测到网络钱包，请确保已经设置了钱包，以便领取你的奖励。\n"
+""
 
 #: src/hooks/useGamesData.tsx:282
 msgid "Nobody lives forever, and these heroes sure as hell don’t care – they literally die for the sake of fun. Dive into a series of short combat rounds to win a match of 5 vs 5. The attacking team must activate a bomb on a specified location on the map. If you’re on the defending side…you know what you need to do, right?"
 msgstr ""
+"没有人可以永远活着，而这些英雄肯定不会在乎——他们真的是为了乐趣而死。深入一系列简短的战斗回合，赢得5对5的比赛。攻击方必须在地图上的指定位置激活炸弹。如果你是防守方……你知道你需要做什么，对吗？\n"
+""
 
-#: src/pages/nodes/index.tsx:221
+#: src/pages/nodes/index.tsx:230
 msgid "Node owner rewards"
 msgstr "节点所有者奖励"
 
-#: src/pages/nodes/index.tsx:56
+#: src/pages/nodes/index.tsx:57
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "根据作为节点操作者及一般社区成员所得的信誉分数，节点所有者还将获得NFT Drop及代币奖励。"
 
 #: src/components/Purchase/License.tsx:71
 msgid "Node owners will be rewarded with exclusive NFT drops and daily MYRIA token rewards for their contribution to the network."
 msgstr ""
+"节点所有者将获得专属非同质化代币掉落和每日MYRIA代币的奖励，以鼓励他们对网络的贡献。\n"
+""
 
 #: src/components/nodes/dashboard/NodeProgress.tsx:19
 msgid "Node progress this cycle"
 msgstr ""
+"本周期的节点进展\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:37
 msgid "Node purchase"
 msgstr ""
+"节点购买\n"
+""
 
 #: src/components/Footer.tsx:49
 #: src/components/Header/linkSources.tsx:29
@@ -1402,42 +1896,64 @@ msgstr "节点"
 #: src/components/Purchase/License.tsx:81
 msgid "Nodes are an integral part of the Myria universe, with dedicated lore, gaming access, and exclusive voting power granted to node owners."
 msgstr ""
+"节点是Myria宇宙的组成部分之一，有专门的传说、游戏权限以及授予节点所有者的专属投票权。\n"
+""
 
 #: src/hooks/useGamesData.tsx:300
 msgid "Not the face!"
+msgstr ""
+"不是这面！\n"
+""
+
+#: src/components/inventory/InventoryItem.tsx:35
+msgid "OPEN"
 msgstr ""
 
 #: src/components/Header/linkSources.tsx:51
 msgid "OUR SOLUTION"
 msgstr ""
+"我方解决方案\n"
+""
 
 #: src/components/nodes/mint-assets/index.tsx:100
 msgid "Off Chain Assets"
 msgstr ""
+"链外资产\n"
+""
 
 #: src/hooks/useGamesData.tsx:223
 msgid "Once in a while, a portal opens to a special game world – the BR Arena."
 msgstr ""
+"通往特殊游戏世界（BR竞技场）的传送门偶尔会打开。\n"
+""
 
 #: src/hooks/useGamesData.tsx:357
 msgid "Once you figure out the optimal production pipeline, the game will start yielding rewards for all your hard work. Are you curious how difficult is to produce a batch of Starberry Jam? What about Moonsteel? It surely can’t be that hard, right?"
 msgstr ""
+"一旦你摸清了最优的生产管道，游戏就将开始为你的努力工作提供奖励。你是否好奇，生产一批星果酱（Starberry Jam）有多难？月钢（Moonsteel）呢？它肯定不会那么难，对吗？\n"
+""
 
 #: src/components/Purchase/License.tsx:76
 msgid "Only 50,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded."
 msgstr ""
+"只会发放5万个节点许可证。为确保我们早期的支持者得到奖励，价格将随着节点的销售而上浮。\n"
+""
 
-#: src/pages/nodes/index.tsx:169
+#: src/pages/nodes/index.tsx:170
 msgid "Only 55,000 Myria node licenses will ever be released."
 msgstr "仅会发布 55,000 个 Myria 节点许可证。"
 
 #: src/pages/for-developers/solution.tsx:32
 msgid "Open and permissionless"
 msgstr ""
+"开放和无许可\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:31
 msgid "Our Ethereum L2 scaling solution provides reliability, scalability and security. Making it easy for developers to build and manage their projects."
 msgstr ""
+"我们的以太坊二层扩展解决方案实现了可靠性、可扩展性和安全性。开发者可以轻松地建立并管理他们的项目。\n"
+""
 
 #: src/pages/team.tsx:255
 msgid "Our Experience"
@@ -1450,6 +1966,8 @@ msgstr "我们的原则"
 #: src/components/Footer.tsx:77
 msgid "Our Solutions"
 msgstr ""
+"我方解决方案\n"
+""
 
 #: src/pages/for-gamers.tsx:152
 msgid "Our games"
@@ -1458,6 +1976,8 @@ msgstr "我们的游戏"
 #: src/pages/for-developers/solution.tsx:80
 msgid "Our solution"
 msgstr ""
+"我方解决方案\n"
+""
 
 #: src/components/Header/linkSources.tsx:74
 msgid "Our team"
@@ -1477,21 +1997,29 @@ msgstr "拥有您的元宇宙身份"
 msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "拥有您的元宇宙身份在任何地方任何游戏中"
 
-#: src/components/Purchase/Order.tsx:112
+#: src/components/Purchase/Order.tsx:132
 msgid "PURCHASE NOW"
 msgstr ""
+"现在购买\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:80
 msgid "Partner Dapps"
 msgstr ""
+"合作伙伴Dapps\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:85
 msgid "Partner Experiences"
 msgstr ""
+"合作伙伴体验\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:75
 msgid "Partner Games"
 msgstr ""
+"合作伙伴游戏\n"
+""
 
 #: src/pages/team.tsx:176
 msgid "Partner Lead"
@@ -1502,46 +2030,68 @@ msgstr "合作伙伴主管"
 #: src/components/SignIn/SignIn.tsx:26
 msgid "Password is required!"
 msgstr ""
+"需要输入密码！\n"
+""
 
 #: src/utils.ts:23
 msgid "Password must be mixture of letters and numbers"
 msgstr ""
+"密码必须是字母和数字的混合形式\n"
+""
 
 #: src/utils.ts:27
 msgid "Password must contain at least one special character"
 msgstr ""
+"密码必须包含至少一个特殊字符\n"
+""
 
 #: src/utils.ts:15
 msgid "Password must have at least 8 characters—the more characters, the better"
 msgstr ""
+"密码必须至少包含8个字符，字符越多越好\n"
+""
 
 #: src/utils.ts:19
 msgid "Password must have both uppercase and lowercase letters"
 msgstr ""
+"密码必须同时包含大写字母和小写字母\n"
+""
 
 #: src/hooks/useGamesData.tsx:236
 msgid "Pick one of the available warrior classes that best suits your playstyle. Are you a one-man army or a silent assassin who strikes from the shadows? Or maybe you’re a mysterious alien psychic who can suck the life out of his enemies..."
 msgstr ""
+"从现有的战士类别中挑选一个最适合你的游戏风格的类别。你是万夫莫开的勇士？还是从阴影中出击的沉默刺客？或者，你是神秘的外星通灵者，可以吸走敌人的生命……\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:21
 msgid "Platform"
 msgstr ""
+"平台\n"
+""
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:29
+#: src/components/for-developers/BuildYourBlockchain.tsx:31
 msgid "Please enter correct url!"
 msgstr ""
+"请输入正确的网址！\n"
+""
 
 #: src/components/sigil/WelcomeMobile.tsx:16
 msgid "Please view this experience on a desktop browser"
 msgstr ""
+"请用桌面浏览器查看此体验\n"
+""
 
 #: src/components/sigil/Welcome.tsx:80
 msgid "Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge"
 msgstr ""
+"请用支持的浏览器查看此体验，如Chrome、Brave、Firefox或Edge\n"
+""
 
-#: src/components/sigil/RewardItem.tsx:122
+#: src/components/sigil/RewardItem.tsx:123
 msgid "Points"
 msgstr ""
+"分数\n"
+""
 
 #: src/pages/studios.tsx:271
 msgid "Powered and governed by <0>$MYRIA</0>"
@@ -1551,21 +2101,19 @@ msgstr "由<0>$MYRIA</0>支持和管理"
 msgid "Powered by the community"
 msgstr "由社区支持"
 
-#: src/pages/nodes/index.tsx:208
+#: src/pages/nodes/index.tsx:217
 msgid "Powered by the community of player-run nodes"
 msgstr "由玩家运营的节点社区支持"
-
-#: src/pages/nodes/index.tsx:199
-msgid "Pre register now"
-msgstr "立即预注册"
 
 #: src/components/Subscribe.tsx:63
 msgid "Pre register to stay up to date"
 msgstr "预注册，获取最新资讯"
 
-#: src/components/Purchase/Order.tsx:76
+#: src/components/Purchase/Order.tsx:93
 msgid "Price"
 msgstr ""
+"价格\n"
+""
 
 #: src/pages/team.tsx:130
 msgid "Product Lead - Blockchain"
@@ -1574,6 +2122,8 @@ msgstr "产品主管 - 区块链"
 #: src/components/for-developers/Myria.tsx:48
 msgid "Provide your players with a protected experience and ensure your business understands critical regulatory compliance components."
 msgstr ""
+"为你的玩家提供受保护的体验，确保你的企业了解关键的监管合规部分。\n"
+""
 
 #: src/pages/for-gamers.tsx:167
 msgid "Pupose-built infrastructure"
@@ -1582,43 +2132,69 @@ msgstr "专门构建的基础设施"
 #: src/pages/nodes/purchase-complete.tsx:104
 msgid "Purchase more nodes"
 msgstr ""
+"购买更多节点\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:107
 msgid "Purchase more nodes to increase your rewards and passive invome"
 msgstr ""
+"购买更多的节点来增加你的奖励和被动收益\n"
+""
 
-#: src/components/Purchase/Modals/index.tsx:78
+#: src/components/Purchase/Modals/index.tsx:119
 msgid "Purchase now"
 msgstr ""
+"现在购买\n"
+""
 
-#: src/components/Purchase/Order.tsx:87
+#: src/components/Purchase/Order.tsx:104
 msgid "Quantity"
 msgstr ""
+"数量\n"
+""
 
 #: src/components/nodes/rewards/ClaimModal.tsx:22
 msgid "Quantity: {qty}"
 msgstr ""
+"数量：{qty}\n"
+""
 
-#: src/components/Purchase/Modals/index.tsx:33
+#: src/components/Purchase/Modals/index.tsx:74
 msgid "Quantity: {quantity}"
+msgstr ""
+
+#: src/pages/cricket.tsx:125
+msgid "REGISTER"
 msgstr ""
 
 #: src/components/home/News.tsx:20
 #: src/components/home/News.tsx:36
 msgid "Read more"
 msgstr ""
+"阅读全文\n"
+""
 
 #: src/components/BuyerNodeCard.tsx:10
 #: src/components/Program.tsx:14
 msgid "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
 msgstr ""
+"在支持Myria网络的同时获得$MYRIA和限量版的非同质化代币奖励\n"
+""
 
-#: src/components/sigil/ReferFriendModal.tsx:44
+#: src/components/sigil/ReferFriendModal.tsx:46
 msgid "Refer your friends"
 msgstr ""
+"推荐你的朋友\n"
+""
 
 #: src/components/Register/Register.tsx:250
 msgid "Register"
+msgstr ""
+"注册\n"
+""
+
+#: src/pages/cricket.tsx:88
+msgid "Register to win exclusive<0/>AB de Villiers Cricket Game NFTs"
 msgstr ""
 
 #: src/pages/nodes/index.tsx:231
@@ -1628,19 +2204,27 @@ msgstr "立即发布"
 #: src/pages/for-developers/solution.tsx:23
 msgid "Reliably programmable"
 msgstr ""
+"可靠的可编程性\n"
+""
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:55
 #: src/components/ResetPassword/ResetPassword.tsx:101
 msgid "Reset Password"
 msgstr ""
+"重置密码\n"
+""
 
 #: src/pages/for-developers/solution.tsx:36
 msgid "Resistent against censorship"
 msgstr ""
+"坚决反对审查制度\n"
+""
 
 #: src/components/nodes/Sidebar2.tsx:15
 msgid "Reward Vault"
 msgstr ""
+"奖励金库\n"
+""
 
 #: src/components/nodes/Sidebar.tsx:37
 msgid "Rewards"
@@ -1649,18 +2233,24 @@ msgstr ""
 #: src/components/nodes/Banner.tsx:12
 msgid "Rewards are coming soon! Information on how to install your node client will be released shortly."
 msgstr ""
+"奖励即将到来！关于如何安装节点客户端的信息将很快发布。\n"
+""
 
 #: src/hooks/useGamesData.tsx:85
 msgid "Roll with style!"
 msgstr ""
+"随风格摇摆！\n"
+""
 
 #: src/pages/nodes/index.tsx:190
-msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
-msgstr "运行节点，赚取<0>$MYRIA</0>和非同质化代币奖励"
+msgid "Run a node and earn <0>$MYRIA and NFT rewards</0>"
+msgstr ""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:283
 msgid "SELECT"
 msgstr ""
+"选中\n"
+""
 
 #: src/pages/for-gamers.tsx:119
 msgid "SHIFTING POWER BACK TO THE PEOPLE"
@@ -1670,6 +2260,8 @@ msgstr "将权力交还给人"
 #: src/pages/for-developers/index.tsx:50
 msgid "START BUILDING"
 msgstr ""
+"开始建造\n"
+""
 
 #: src/components/Subscribe.tsx:92
 msgid "SUBMIT"
@@ -1678,14 +2270,20 @@ msgstr "提交"
 #: src/components/for-developers/Myria.tsx:27
 msgid "Save time. Ship faster."
 msgstr ""
+"节省时间发货更快\n"
+""
 
 #: src/pages/for-developers/solution.tsx:12
 msgid "Scale with security"
 msgstr ""
+"以安全的方式扩展\n"
+""
 
 #: src/components/for-developers/Ethereum.tsx:325
 msgid "Scaling blockchain gaming on Ethereum"
 msgstr ""
+"在以太坊上扩展区块链游戏\n"
+""
 
 #: src/components/nodes/Sidebar.tsx:43
 msgid "Settings"
@@ -1695,10 +2293,14 @@ msgstr ""
 #: src/components/sigil/ShareTwitterModal.tsx:49
 msgid "Share now"
 msgstr ""
+"立即分享\n"
+""
 
-#: src/components/sigil/Dashboard/MissionV2.tsx:132
+#: src/components/sigil/Dashboard/MissionV2.tsx:128
 msgid "Share on Twitter"
 msgstr ""
+"在Twitter上分享\n"
+""
 
 #: src/components/nodes/dashboard/ShareTwitter.tsx:59
 #: src/components/sigil/ShareTwitterModal.tsx:20
@@ -1706,58 +2308,86 @@ msgid "Share this on Twitter"
 msgstr ""
 
 #: src/components/SignIn/SignIn.tsx:81
+#: src/components/nodes/Header.tsx:156
+#: src/components/nodes/Header.tsx:235
 msgid "Sign in"
 msgstr ""
+"登录\n"
+""
 
 #: src/components/Header/MobileHeader.tsx:71
-#: src/components/sigil/Dashboard/MissionV2.tsx:75
+#: src/components/sigil/Dashboard/MissionV2.tsx:71
 msgid "Sign up"
 msgstr ""
+"注册\n"
+""
 
 #: src/components/Subscribe.tsx:67
 msgid "Sign up to our newsletter to receive development updates, token and NFT drops, and exclusive promotions."
 msgstr ""
+"注册我们的新闻通讯网站，接收开发更新、代币和非同质化代币拍卖（drop）以及专属促销活动。\n"
+""
 
 #: src/pages/for-developers/solution.tsx:27
 msgid "Simpler formal verification of contracts due to safe VM architecture"
 msgstr ""
+"得益于安全的虚拟机架构，合约的形式验证更加简单\n"
+""
 
 #: src/components/Header/DesktopHeader.tsx:46
 #: src/components/Header/MobileHeader.tsx:166
 msgid "Soon!"
 msgstr ""
+"即将推出！\n"
+""
 
 #: src/components/SortBy/index.tsx:13
 msgid "Sort By"
 msgstr ""
+"排序方式\n"
+""
 
 #: src/components/Loading/LoadingStandBy.tsx:6
 msgid "Stand by"
 msgstr ""
+"备用方式\n"
+""
 
 #: src/components/Program.tsx:41
 msgid "Start now"
 msgstr ""
+"现在开始\n"
+""
 
 #: src/components/FirstTimeVisitModal.tsx:34
 msgid "Stay update to date with our project announcements and updates!"
 msgstr ""
+"请随时关注我们的项目公告和更新信息！\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:36
 msgid "Step 1"
 msgstr ""
+"第1步\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:40
 msgid "Step 2"
 msgstr ""
+"第2步\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:44
 msgid "Step 3"
 msgstr ""
+"第3步\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:48
 msgid "Step 4"
 msgstr ""
+"第4步\n"
+""
 
 #: src/components/Footer.tsx:53
 #: src/components/Header/linkSources.tsx:36
@@ -1767,32 +2397,42 @@ msgstr "商店"
 #: src/components/GetInTouch.tsx:89
 msgid "Subject"
 msgstr ""
+"主题\n"
+""
 
 #: src/components/GetInTouch.tsx:31
 msgid "Subject is required!"
 msgstr "主题必填！"
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:144
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
 msgid "Submit"
 msgstr ""
+"提交\n"
+""
 
 #: src/components/GetInTouch.tsx:115
-#: src/components/for-developers/BuildYourBlockchain.tsx:144
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
 msgid "Submitting..."
 msgstr ""
+"提交……\n"
+""
 
 #: src/components/for-developers/Myria.tsx:9
 msgid "Supercharge your project"
 msgstr ""
+"给你的项目快速充电\n"
+""
 
 #: src/components/for-developers/Ethereum.tsx:96
-msgid "Support unlimited scalabiltiy, delivering up to 9,000+ TPS"
+msgid "Support unlimited scalability, delivering up to 9,000+ TPS"
 msgstr ""
 
 #: src/pages/studios.tsx:284
 msgid "TOKEN LAUNCH COMING SOON"
 msgstr ""
+"代币发行即将开始>>>>>>> 原点/分阶段\n"
+""
 
 #: src/components/Footer.tsx:102
 msgid "Team"
@@ -1803,15 +2443,16 @@ msgid "Terms | Privacy"
 msgstr "条款 | 隐私条款"
 
 #: src/components/GetInTouch.tsx:107
-#: src/components/for-developers/BuildYourBlockchain.tsx:136
+#: src/components/for-developers/BuildYourBlockchain.tsx:138
 msgid "Thank you for message. We will be in touch within 24-48 hours!"
 msgstr "感谢您的留言。我们将在24-48小时内联系您！"
 
 #: src/components/Subscribe.tsx:85
+#: src/pages/cricket.tsx:118
 msgid "Thank you for subscribing!"
 msgstr "感谢订阅！"
 
-#: src/pages/nodes/index.tsx:211
+#: src/pages/nodes/index.tsx:220
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "Myria链由玩家运行的节点网络支持。仅需使用家用电脑，便可成为节点操作者，并根据您对生态系统的贡献获取奖励和收益。 "
 
@@ -1822,14 +2463,20 @@ msgstr "Myria生态系统构建在Myria区块链及我们专为游戏构建的L2
 #: src/components/ecosystem/Backbone.tsx:56
 msgid "The Myria platform is supported by Myria Nodes. Being a <0/> operator means that you will receive limited edition NFTs, token rewards and more."
 msgstr ""
+"Myria平台由Myria节点支持。成为<0/>运营商意味着你将获得限量版的非同质化代币、代币奖励等。\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:53
 msgid "The comprehensive blockchain gaming platform"
 msgstr ""
+"全面的区块链游戏平台\n"
+""
 
 #: src/components/for-developers/Myria.tsx:10
 msgid "The easiest way to launch your blockchain game"
 msgstr ""
+"以最简单的方式推出你的区块链游戏\n"
+""
 
 #: src/components/Register/Register.tsx:139
 msgid "The name must be between 3 and 16 characters long."
@@ -1843,10 +2490,14 @@ msgstr "为可互操作的非同质化代币设定全新标准"
 #: src/hooks/useGamesData.tsx:68
 msgid "The objective is simple – get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing."
 msgstr ""
+"目标很简单：首先到达终点，并且整个过程中不要“死掉”。每场比赛开始时，都有大量的玩家因为一系列的障碍被淘汰，只有少量玩家可以进入决赛圈。幸存的玩家继续一轮又一轮的战斗，难度不断增加，直到决出最终的胜利者。\n"
+""
 
 #: src/components/nodes/rewards/WalletModal.tsx:14
 msgid "The wallet currently connected does not match your designated reward wallet. Please connect the correct wallet or click below to change it."
 msgstr ""
+"当前连接的钱包与你指定的奖励钱包不一致。请连接正确的钱包，或点击下面的链接进行变更。\n"
+""
 
 #: src/components/interop/DesktopInterop.tsx:165
 #: src/components/interop/MobileInterop.tsx:64
@@ -1856,43 +2507,63 @@ msgstr "全球首个Morphing NFT™"
 #: src/hooks/useGamesData.tsx:288
 msgid "Think before you shoot!"
 msgstr ""
+"开枪前请考虑清楚！\n"
+""
 
 #: src/components/sigil/ChooseAlliance/AllianceModal.tsx:82
 msgid "This decision is permanent. Once you choose your alliance you cannot change it!"
 msgstr ""
+"这个决定是永久性的。一旦你选择了联盟，就不能变了！\n"
+""
 
 #: src/hooks/useGamesData.tsx:153
 msgid "Throw your prized vehicle around the deadly turns of the track as you throw a dice to decide your destiny. Drifting and performing crazy stunts is your way of expressing your inner speed demons, so don’t be shy– let them come out and play!"
 msgstr ""
+"当你掷骰子来决定自己的命运时，请把你的珍贵车辆停在赛道的致命转弯处。漂移和表演疯狂的特技是你表达内心速度恶魔的方式，所以不要害羞——放恶魔出来狂欢吧！\n"
+""
 
 #: src/components/nodes/dashboard/TimeOnline.tsx:15
 msgid "Time Online"
 msgstr ""
+"在线时间\n"
+""
 
 #: src/components/nodes/rewards/TotalRewards.tsx:11
 msgid "Token Rewards"
 msgstr ""
+"代币奖励\n"
+""
 
 #: src/components/for-developers/Myria.tsx:39
 msgid "Tokenomics consultancy"
 msgstr ""
+"代币经济咨询\n"
+""
 
-#: src/components/Purchase/Modals/index.tsx:63
+#: src/components/Purchase/Modals/index.tsx:104
 #: src/components/nodes/rewards/ClaimModal.tsx:42
 msgid "Total"
 msgstr ""
+"合计\n"
+""
 
 #: src/components/nodes/dashboard/GeneralInfo.tsx:18
 msgid "Total $MYRIA Mined"
 msgstr ""
+"$MYRIA合计开采数\n"
+""
 
 #: src/components/nodes/dashboard/GeneralInfo.tsx:34
 msgid "Total NFT Rewards"
 msgstr ""
+"非同质化代币奖励总额\n"
+""
 
 #: src/components/nodes/dashboard/TotalNodes.tsx:9
 msgid "Total nodes in Myria network"
 msgstr ""
+"Myria网络中的节点总数\n"
+""
 
 #: src/components/interop/DesktopInterop.tsx:205
 #: src/components/interop/MobileInterop.tsx:105
@@ -1902,14 +2573,20 @@ msgstr "预告片即将推出"
 #: src/components/nodes/Sidebar2.tsx:23
 msgid "Transaction List"
 msgstr ""
+"交易清单\n"
+""
 
-#: src/components/Purchase/Modals/index.tsx:48
+#: src/components/Purchase/Modals/index.tsx:89
 msgid "Transaction fee"
 msgstr ""
+"交易费用\n"
+""
 
 #: src/pages/for-developers/solution.tsx:15
 msgid "Transparent and post-quantum secure -  no trusted setup"
 msgstr ""
+"透明及后量子安全 - 无信任设置\n"
+""
 
 #: src/pages/team.tsx:145
 msgid "UI/UX Lead"
@@ -1922,58 +2599,90 @@ msgstr "通过Myriaverse元宇宙结合在一起"
 #: src/components/for-developers/Myria.tsx:21
 msgid "Unlock immense scale"
 msgstr ""
+"解锁沉浸式规模\n"
+""
 
 #: src/components/sigil/Sound.tsx:29
 msgid "Unmute sound"
 msgstr ""
+"取消静音\n"
+""
 
 #: src/components/sigil/Welcome.tsx:79
 msgid "Unsupported Browser"
 msgstr ""
+"不支持的浏览器\n"
+""
 
 #: src/components/Register/Register.tsx:184
 msgid "Username"
 msgstr ""
+"用户名\n"
+""
 
 #: src/components/Register/Register.tsx:50
 msgid "Username is required!"
 msgstr ""
+"需要输入用户名！\n"
+""
 
 #: src/hooks/useGamesData.tsx:269
 msgid "Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning."
 msgstr ""
+"将你的枪法技巧与独特的英雄能力相结合，赢得一系列的团队战斗或其他游戏模式。管理你的能力升级和选择的武器，优化你的获胜机会。\n"
+""
 
 #: src/components/sigil/ClaimModal.tsx:40
 msgid "VIEW ITEM"
 msgstr ""
+"查看物品\n"
+""
 
-#: src/components/inventory/OpenChest.tsx:130
-msgid "VIEWS ITEMS"
+#: src/components/inventory/OpenChest.tsx:133
+msgid "VIEW ITEMS"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:252
+msgid "Validating on Myria"
 msgstr ""
 
 #: src/hooks/useGamesData.tsx:163
 msgid "Vanity factor number 1"
 msgstr ""
+"虚荣心因素1号\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:73
 msgid "Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion."
+msgstr ""
+"Vector Prime相信裂谷人是进化的下一步，因此尽其所能加速其扩张。\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:26
+msgid "Vegan PBR&B listicle sriracha. Migas lomo helvetica, listicle paleo salvia sartorial crucifix dreamcatcher try-hard ugh lyft. Intelligentsia whatever mlkshk salvia, authentic jianbing wolf coloring book echo park fam. Iceland cray occupy ennui, franzen tilde poke. Poutine echo park meditation cliche franzen, shaman messenger bag. Hot chicken umami adaptogen DIY yuccie whatever subway tile, narwhal helvetica meggings scenester twee iPhone tumblr lumbersexual."
 msgstr ""
 
 #: src/components/Careers/Careers.tsx:91
 msgid "View job"
 msgstr ""
+"查看工作\n"
+""
 
-#: src/pages/nodes/index.tsx:40
+#: src/pages/nodes/index.tsx:41
 msgid "Voting rights"
 msgstr "投票权"
 
 #: src/hooks/useGamesData.tsx:363
 msgid "Watch your village grow and flourish as you move up the ranks. Are you able to devise the best strategy and outperform your rivals?"
 msgstr ""
+"看着你的村庄随着你的升级而成长、壮大。你是否能够制定出最佳策略并超越你的对手？\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:14
 msgid "We believe in open and equitable access, enabling more people to build, experience and enjoy the benefits of blockchain and the metaverse."
 msgstr ""
+"我们相信开放存取和公平可及，使更多的人能够建立、体验和享受区块链和元宇宙的益处。\n"
+""
 
 #: src/pages/for-gamers.tsx:35
 msgid "We believe players should have true verifiable ownership and control over in-game assets."
@@ -1982,14 +2691,20 @@ msgstr "我们认为，玩家应真正掌握对游戏内资产的可验证的所
 #: src/components/ecosystem/Backbone.tsx:71
 msgid "We bring together everything that is required to build a decentralized, scalable and secure digital asset and blockchain gaming platform"
 msgstr ""
+"我们汇集了建立一个去中心化、可扩展、安全的数字资产和区块链游戏平台所需的一切条件。\n"
+""
 
 #: src/components/ecosystem/Platform.tsx:23
 msgid "We make digital asset trading and blockchain gaming easy with our all-in-one platform."
 msgstr ""
+"借助我们的一体化平台，数字资产交易和区块链游戏会变得非常简单。\n"
+""
 
 #: src/components/for-developers/Myria.tsx:28
 msgid "We make everything else easy so you can focus on your product"
 msgstr ""
+"我们使其他一切都变得简单，这样你就可以专注于产品。\n"
+""
 
 #: src/pages/for-studios.tsx:23
 msgid "We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming."
@@ -1998,71 +2713,95 @@ msgstr "我们在Myria链上提供完整的区块链基础设施——专为游�
 #: src/components/for-developers/Ethereum.tsx:221
 msgid "We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey"
 msgstr ""
+"我们提供易于使用的解决方案，帮助项目启动其区块链游戏之旅。\n"
+""
 
 #: src/components/for-developers/Myria.tsx:12
 msgid "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
 msgstr ""
+"从新用户引导到部署，我们与你紧密合作，提供从技术支持到最佳实践推荐的全方位建议，释放新的收入来源和机会。\n"
+""
 
-#: src/components/for-developers/BuildYourBlockchain.tsx:83
+#: src/components/for-developers/BuildYourBlockchain.tsx:85
 msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
 msgstr ""
+"我们很乐意听取你的意见。联系我们，今天就开始你的区块链游戏之旅。\n"
+""
 
 #: src/components/sigil/Welcome.tsx:86
 #: src/components/sigil/WelcomeMobile.tsx:13
 msgid "Welcome to the Myriaverse"
 msgstr ""
+"欢迎来到Myriaverse\n"
+""
 
 #: src/components/JoinTheRevolution.tsx:25
 msgid "We’re hiring, join the future of gaming"
 msgstr "我们正在招聘英才。加入我们，共筑游戏未来。"
 
-#: src/pages/nodes/index.tsx:116
+#: src/pages/nodes/index.tsx:117
 msgid "What are the software and hardware requirements to run a node?"
 msgstr "运行节点的软硬件要求是什么？"
 
-#: src/pages/nodes/index.tsx:67
+#: src/pages/nodes/index.tsx:68
 msgid "What is a Myria node?"
 msgstr "什么是Myria节点？"
 
-#: src/pages/nodes/index.tsx:87
+#: src/pages/nodes/index.tsx:88
 msgid "What rewards do Myria node operators receive?"
 msgstr "Myria节点操作者将获得什么样的奖励？"
 
-#: src/pages/nodes/index.tsx:149
+#: src/pages/nodes/index.tsx:150
 msgid "When will Myria node licenses be sold?"
 msgstr "Myria节点许可证何时发售？"
 
 #: src/components/sigil/Welcome.tsx:89
 msgid "Which side of the battlelines will you stand on? <0/> Choose your Alliance and claim your free Sigil NFT."
 msgstr ""
+"你会站在战线的哪一边？<0/> 选择你的联盟并领取你的免费Sigil非同质化代币。\n"
+""
 
 #: src/components/Footer.tsx:96
 msgid "Whitepaper"
 msgstr ""
+"白皮书\n"
+""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:50
 msgid "With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts."
 msgstr ""
+"联邦联盟的战舰配备了既古老又尖端的技术，可以在太空中巡逻，在各条战线上打击裂谷人的扩张。\n"
+""
 
 #: src/components/for-developers/Myria.tsx:46
 msgid "Work with our experienced legal team"
 msgstr ""
+"与我们经验丰富的法律团队合作\n"
+""
 
 #: src/components/sigil/ChooseAlliance/AllianceModal.tsx:56
 msgid "You are joining..."
 msgstr ""
+"你正在加入……\n"
+""
 
 #: src/components/sigil/ClaimModal.tsx:33
 msgid "You have just claimed"
 msgstr ""
+"你已完成领取\n"
+""
 
-#: src/components/inventory/OpenChest.tsx:107
+#: src/components/inventory/OpenChest.tsx:110
 msgid "You have opened"
 msgstr ""
+"你已打开\n"
+""
 
 #: src/pages/nodes/purchase-complete.tsx:89
 msgid "Your Myria Dashboard"
 msgstr ""
+"你的Myria仪表板\n"
+""
 
 #: src/components/interop/DesktopInterop.tsx:245
 #: src/components/interop/MobileInterop.tsx:154
@@ -2072,8 +2811,10 @@ msgstr "您的非同质化代币是您的数字身份。利用非同质化代币
 #: src/pages/nodes/purchase-complete.tsx:73
 msgid "Your purchase is complete."
 msgstr ""
+"你的购买已经完成。\n"
+""
 
-#: src/pages/nodes/index.tsx:205
+#: src/pages/nodes/index.tsx:214
 msgid "a decentralized ecosystem"
 msgstr "去中心化生态系统"
 
@@ -2085,7 +2826,7 @@ msgstr "加入变革"
 msgid "view now"
 msgstr "立即查看"
 
-#: src/components/Purchase/Modals/index.tsx:75
+#: src/components/Purchase/Modals/index.tsx:116
 msgid "{balance} ETH"
 msgstr ""
 
@@ -2094,3 +2835,5 @@ msgid ""
 "“Mirror, mirror on the wall, who's the fairest of them all?”\n"
 "If you’re still wondering whether those shiny pink rims or the NFT unicorn sticker on the hood are going to make you stand out on the track, then wonder no more. You're gonna shine like a star as your opponents remain a distant glimpse in the rear-view mirror."
 msgstr ""
+"“魔镜魔镜，墙上的魔镜，谁是他们之中最美丽的？”如果你还在想，那些闪亮的粉色轮辋或引擎盖上的非同质化代币独角兽贴纸是否能让你在赛道上脱颖而出，那么就不要再浪费时间了。当你一直在后视镜里远远地瞥见对手时，你会像明星一样闪耀。\n"
+""
