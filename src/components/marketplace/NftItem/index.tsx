@@ -1,22 +1,19 @@
 import React from 'react';
-import RarityBadge from '../../RarityBadge';
 import { getRarityColor } from 'src/utils';
-import { RarityType } from 'src/types/sigil';
+import { NFTItemType } from './type';
 
 interface Props {
-  item: {
-    rarity: RarityType;
-    image_url: string;
-    name: string;
-    collection: string;
-    creator: string;
-    creatorImg: string;
-    priceETH: number;
-  };
+  item: NFTItemType;
 }
 
 const DAOIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+  <svg
+    width="16"
+    height="17"
+    viewBox="0 0 16 17"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
     <g clipPath="url(#clip0_2574_9572)">
       <path
         d="M7.99895 0.5L7.8916 0.864618V11.4441L7.99895 11.5512L12.9097 8.64836L7.99895 0.5Z"
@@ -47,7 +44,7 @@ const DAOIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const InventoryItem = ({ item }: Props) => {
+const NftItem = ({ item }: Props) => {
   const rarityColor = getRarityColor(item.rarity);
 
   return (
@@ -84,10 +81,16 @@ const InventoryItem = ({ item }: Props) => {
               <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
                 Current price
               </span>
-              <div className="flex items-center">
-                <DAOIcon className='mr-1' />
-                <span className="text-[14px] font-medium text-white">{item.priceETH.toFixed(2)}</span>
-              </div>
+              {item.priceETH ? (
+                <div className="flex items-center">
+                  <DAOIcon className="mr-1" />
+                  <span className="text-[16px] font-medium text-white">
+                    {item.priceETH.toFixed(2)}
+                  </span>
+                </div>
+              ) : (
+                <span className="text-[16px] font-medium text-white">Not for Sale</span>
+              )}
             </div>
           </div>
         </div>
@@ -96,4 +99,4 @@ const InventoryItem = ({ item }: Props) => {
   );
 };
 
-export default InventoryItem;
+export default NftItem;
