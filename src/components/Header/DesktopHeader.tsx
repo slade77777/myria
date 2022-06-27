@@ -67,16 +67,10 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                         <a
                           onClick={() => {
                             if (item.id === 'community') {
-                              if (link.id === 'discord') {
-                                event('Discord Button Clicked', {
-                                  button_location: 'Community Links'
-                                });
-                              }
-                              if (link.id === 'twitter') {
-                                event('Twitter Button Clicked', {
-                                  button_location: 'Community Links'
-                                });
-                              }
+                              // @ts-ignore
+                              event(item.event, {
+                                button_location: 'Community Links'
+                              });
                             }
                           }}
                           target={link.target}

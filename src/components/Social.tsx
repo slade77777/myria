@@ -10,25 +10,29 @@ const Socials = [
     id: 'discord',
     icon: <DiscordIcon />,
     link: socialLinks.discord,
-    name: 'Discord'
+    name: 'Discord',
+    event: 'Discord Button Clicked'
   },
   {
     id: 'twitter',
     icon: <TwitterIcon />,
     link: socialLinks.twitter,
-    name: 'Twitter'
+    name: 'Twitter',
+    event: 'Twitter Button Clicked'
   },
   {
     id: 'medium',
     icon: <MediumIcon />,
     link: socialLinks.medium,
-    name: 'Medium'
+    name: 'Medium',
+    event: 'Medium Button Clicked'
   },
   {
     id: 'instagram',
     icon: <InstagramIcon />,
     link: socialLinks.instagram,
-    name: 'Instagram'
+    name: 'Instagram',
+    event: 'Instagram Button Clicked'
   }
 ];
 

@@ -30,23 +30,35 @@ export type BasedParams = {
   page_name: PageName;
 };
 
-type Campaign = 'Sigil' | 'AB de Villers'
+type Campaign = 'Sigil' | 'Nodes' | 'AB de Villers';
 
 export type EventDefined = {
   'Discord Button Clicked': {
     game_name?: string;
     button_location: ButtonLocation;
-  },
+    page_name?: string;
+  };
   'Twitter Button Clicked': {
     game_name?: string;
     button_location: ButtonLocation;
-  },
+    page_name?: string;
+  };
+  'Instagram Button Clicked': {
+    game_name?: string;
+    button_location: ButtonLocation;
+    page_name?: string;
+  };
+  'Medium Button Clicked': {
+    game_name?: string;
+    button_location: ButtonLocation;
+    page_name?: string;
+  };
   'Join Now Selected': {
     campaign: Campaign;
-  },
+  };
   'Sign In Selected': {
     campaign: Campaign;
-  },
+  };
   'Connect Wallet Selected': {
     campaign: Campaign;
   };
@@ -173,4 +185,35 @@ export type EventDefined = {
     campaign: Campaign;
     user_email: string;
   }
+  'Buy A Node Button Clicked': {
+    campaign: Campaign;
+  };
+  'Node Order Updated': {
+    campaign: Campaign;
+    wallet_address?: string;
+    node_quantity: number;
+  },
+  'Node Order Placed': {
+    campaign: Campaign;
+    wallet_address?: string;
+    node_quantity: number;
+    order_status: 'Completed' | 'Error',
+    error_details?: string
+  },
+  'Node Order Purchased': {
+    campaign: Campaign;
+    wallet_address?: string;
+    node_quantity: number;
+    order_status: 'Completed' | 'Error',
+    eth_total_amount: number,
+    usd_total_amount: number,
+    error_details?: string
+  },
+  'Node Order Completed': {
+    campaign: Campaign;
+    wallet_address?: string;
+    node_quantity: number;
+    eth_total_amount: number,
+    usd_total_amount: number,
+  },
 };

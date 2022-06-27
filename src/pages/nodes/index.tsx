@@ -211,6 +211,7 @@ const Nodes: React.FC = () => {
                 onClick={async () => {
                   if (address) {
                     router.push('/nodes/purchase');
+                    event('Buy A Node Button Clicked', { campaign: 'Nodes' });
                   } else {
                     await onConnect();
                     // event('Connect Wallet Selected', { campaign: 'Nodes' });
