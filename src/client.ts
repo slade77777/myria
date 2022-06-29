@@ -22,6 +22,16 @@ const apiClient = axios.create({
   withCredentials: true
 });
 
+export const marketplaceApiClient = axios.create({
+  baseURL: "https://dev.myriacore-marketp-api.nonprod-myria.com:443",
+  timeout: 10000,
+  headers: {
+    accept: 'application/json',
+    'Content-type': 'application/json',
+    'x-api-key': '0f6ef89980d8abda64605dd2d4d5fd8c16919cbade0a6d79c224adb393d3ef2a'
+  },
+});
+
 export const additionalApiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_ADDITIONAL_API_URL,
   headers: {
