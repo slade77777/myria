@@ -117,7 +117,9 @@ const Careers: React.FC = () => {
             paddingX,
             'flex min-h-[var(--min-h-screen)] items-center justify-center bg-brand-light-blue py-[100px]'
           )}>
-          <p className="max-w-[1060px] text-center text-[32px] font-bold leading-[1.25] text-dark md:text-[40px]">
+          <p
+            data-aos="fade-up"
+            className="max-w-[1060px] text-center text-[32px] font-bold leading-[1.25] text-dark md:text-[40px]">
             Become part of a collaborative environment that values diversity, innovation, and growth
             while providing you with the resources you need to succeed. Join a team, inspire their
             work and make an impact.
