@@ -223,7 +223,7 @@ const Careers: React.FC = () => {
               },
               {
                 title: 'Connect on LinkedIn',
-                link: ''
+                link: socialLinks.linkedin
               }
             ].map((item, idx) => (
               <a
