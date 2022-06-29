@@ -12,6 +12,7 @@ import Aos from 'aos';
 import ReactPlayer from 'react-player';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import { socialLinks } from 'src/configs';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -126,7 +127,7 @@ const Careers: React.FC = () => {
           </p>
         </section>
         <section className={clsx(paddingX)}>
-          <div className="mx-auto flex min-h-[var(--min-h-screen)] max-w-[919px] flex-col items-center justify-center py-[140px] text-center">
+          <div className="mx-auto flex max-w-[919px] flex-col items-center justify-center py-[140px] text-center">
             <p
               data-aos="fade-up"
               className="text-center text-[20px] font-bold leading-[1.25] text-white md:text-[32px]">
@@ -155,7 +156,7 @@ const Careers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            'relative z-[1] bg-[url("/images/careers/video-bg.jpg")] bg-cover md:bg-none'
+            'relative z-[1] bg-[url("/images/careers/video-bg.jpg")] bg-cover md:mt-[-100px] md:bg-none'
           )}>
           <div className="absolute inset-0 z-[-1] bg-black bg-opacity-60 md:hidden" />
           <div className="mx-auto grid min-h-[var(--min-h-screen)] max-w-content content-center items-center py-10 md:min-h-0 md:grid-cols-2 md:content-between md:py-4">
@@ -172,7 +173,7 @@ const Careers: React.FC = () => {
               </div>
             </div>
             <button
-              className="mt-10 flex items-center space-x-1 md:hidden"
+              className="mt-10 flex items-center space-x-1 hover:underline md:hidden"
               onClick={handleOpenVideo}>
               <i className="w-4">
                 <PlayIcon />
@@ -181,7 +182,7 @@ const Careers: React.FC = () => {
             </button>
             <button
               onClick={handleOpenVideo}
-              className="video-play fixed top-1/2 left-3/4 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center space-x-1 opacity-0 transition-all duration-150 [&:not(.\!opacity-100)]:invisible">
+              className="video-play fixed top-1/2 left-3/4 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center space-x-1 opacity-0 transition-all duration-150 hover:underline [&:not(.\!opacity-100)]:invisible">
               <i className="w-4">
                 <PlayIcon />
               </i>
@@ -200,9 +201,11 @@ const Careers: React.FC = () => {
                 <p className="text-[32px] font-bold leading-[1.25] md:text-[40px]">
                   Join the team in building the next gaming evolution
                 </p>
-                <p className="mt-6 text-[16px] leading-[1.25] md:text-[20px]">
-                  Join the team in building the next gaming evolution
-                </p>
+                <Link href="/">
+                  <a className="mt-6 block text-[16px] leading-[1.25] hover:underline md:text-[20px]">
+                    See all opening positions
+                  </a>
+                </Link>
               </div>
               <div className="order-[-1] md:order-1">
                 <img
