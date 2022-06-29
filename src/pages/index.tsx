@@ -6,7 +6,6 @@ import Page from '../components/Page';
 import AOS from 'aos';
 import { useEffect } from 'react';
 import Subscribe from 'src/components/Subscribe';
-import 'aos/dist/aos.css';
 import { Trans } from '@lingui/macro';
 import Hero from 'src/components/home/Hero';
 import OurGames from 'src/components/home/OurGames';
@@ -79,7 +78,7 @@ const Index = () => {
           </p>
         </section>
         <section className={clsx(paddingX, 'mt-[50px] md:mt-[88px]')}>
-          <div data-aos="fade-up" className="md:mt-[59px] mx-auto max-w-content">
+          <div data-aos="fade-up" className="mx-auto max-w-content md:mt-[59px]">
             <ExperenceLogos />
           </div>
         </section>
