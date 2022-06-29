@@ -29,7 +29,7 @@ function InventoryPage() {
         name: item.name || 'Untitled',
         image_url: item.imageUrl,
         collection: item.collection?.name,
-        creator: item.project?.name,
+        creator: item.collection?.project?.name,
         creatorImg: testavatarImg.src, // MOCK
         priceETH: Math.round(Math.random() * 5) // MOCK
       }));
