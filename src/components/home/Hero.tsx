@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
         <div>
           <div
             className={clsx(
-              'relative isolate flex min-h-[805px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:justify-end md:px-[100px] md:pb-[162px]'
+              'relative isolate flex min-h-[615px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:min-h-[805px] md:justify-end md:px-[100px] md:pb-[162px]'
             )}>
             <video
               className="absolute inset-0 z-[-1] hidden h-full w-full object-cover opacity-70 md:block"
@@ -150,7 +150,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div>
-          <div className="flex min-h-[805px] flex-col justify-end bg-[url('/images/home/banner-3-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:justify-start md:bg-[url('/images/home/banner-3_op.png')] md:pt-[137px] md:pl-[107px]">
+          <div className="flex min-h-[615px] flex-col justify-end bg-[url('/images/home/banner-3-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:min-h-[805px] md:justify-start md:bg-[url('/images/home/banner-3_op.png')] md:pt-[137px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
               <div className="flex items-center justify-center space-x-4 md:justify-start md:space-x-[57px]">
                 <i className="w-[108px]">
@@ -182,7 +182,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div>
-          <div className="flex min-h-[805px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:rounded-xl md:bg-[url('/images/home/banner-1_op.png')] md:pb-[91px] md:pl-[107px]">
+          <div className="flex min-h-[615px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:min-h-[805px] md:rounded-xl md:bg-[url('/images/home/banner-1_op.png')] md:pb-[91px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
               <p className="text-[28px] font-black leading-[1.15] text-[#93F6FF]">
                 <Trans>COMING SOON</Trans>
