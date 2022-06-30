@@ -128,7 +128,7 @@ const Careers: React.FC = () => {
             At Myria, we make magic happen.
           </h1>
           <Link href="/jobs">
-            <a className="btn-lg btn-primary mt-10">SEE ALL OPENING POSITIONS</a>
+            <a className="btn-lg btn-primary mt-10">SEE ALL OPEN POSITIONS</a>
           </Link>
         </section>
         <section
