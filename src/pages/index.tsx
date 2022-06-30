@@ -35,10 +35,10 @@ const Index = () => {
         </div>
         <div className={clsx(paddingX)}>
           <div className="mx-auto max-w-content">
-            <div className="mt-12 md:mt-10">
+            <div className="mt-12 md:mt-20">
               <OurGames />
             </div>
-            <div className="mt-10 md:mt-11">
+            <div className="mt-10 md:mt-[95px]">
               <Program />
             </div>
             <div className="mt-10 md:mt-11">
