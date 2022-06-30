@@ -12,7 +12,7 @@ const games = [
   },
   {
     link: '/game-detail/moonville-farms/',
-    name: 'AB Cricket Game',
+    name: 'Moonville Farms',
     publisher: 'LEAPBLOCK STUDIOS',
     image: '/images/home/game-2.png'
   },
