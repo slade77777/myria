@@ -133,14 +133,16 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-10 grid grid-flow-col justify-start gap-4 sm:gap-6 md:mt-[48px]">
           {Socials.map((item, idx) => (
-            <a href={item.id === 'discord' ? socialLinks.discord : item.link} target="_blank" key={idx} className="w-[32px]" rel="noreferrer" onClick={() => {
-              if (item.id === 'discord') {
-                event('Discord Button Clicked', { button_location: 'Footer' });
-              }
-              if (item.id === 'twitter') {
-                event('Twitter Button Clicked', { button_location: 'Footer' });
-              }
-            }}>
+            <a
+              href={item.id === 'discord' ? socialLinks.discord : item.link}
+              target="_blank"
+              key={idx}
+              className="w-[32px]"
+              rel="noreferrer"
+              onClick={() => {
+                // @ts-ignore
+                event(item.event, { button_location: 'Footer' });
+              }}>
               {item.icon}
             </a>
           ))}

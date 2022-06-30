@@ -125,7 +125,7 @@ const Sigil: React.FC = () => {
               })}>
               {!isLoading && <div>{content}</div>}
               {currentStep !== 2 && (
-                <div className="ml-auto mr-auto mt-auto w-full max-w-[577px]">
+                <div className="ml-auto mr-auto mt-auto w-full max-w-[577px] absolute bottom-1 left-1/2 -translate-x-1/2">
                   <SigilStepper
                     steps={[
                       {

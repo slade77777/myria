@@ -95,25 +95,29 @@ export const linkSources: { [key: string]: NavItem } = {
         id: 'discord',
         text: 'Discord',
         url: socialLinks.discord,
-        target: '_blank'
+        target: '_blank',
+        event: 'Discord Button Clicked'
       },
       {
         id: 'twitter',
         text: 'Twitter',
         url: socialLinks.twitter,
-        target: '_blank'
+        target: '_blank',
+        event: 'Twitter Button Clicked'
       },
       {
         id: 'instagram',
         text: 'Instagram',
         url: socialLinks.instagram,
-        target: '_blank'
+        target: '_blank',
+        event: 'Instagram Button Clicked'
       },
       {
         id: 'medium',
         text: 'Medium',
         url: socialLinks.medium,
-        target: '_blank'
+        target: '_blank',
+        event: 'Medium Button Clicked'
       }
     ]
   }

@@ -1,5 +1,4 @@
 import { Trans } from '@lingui/macro';
-import Image from 'next/image';
 import React, { useEffect } from 'react';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
@@ -19,7 +18,8 @@ type Props = {
   open: boolean;
   onClose: () => void;
   openedChest?: OpenChestContent[];
-  chestName: string;
+  chestName?: string;
+  chestRarity?: RarityType;
 };
 
 interface ChestItemProps {
@@ -61,7 +61,7 @@ const ChestItem = ({ type, rarity, image, name, credit }: ChestItemProps) => {
   );
 };
 
-const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, chestName }) => {
+const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, chestName, chestRarity }) => {
   const { event } = useGA4();
   const { user } = useAuthenticationContext();
   const credit = React.useMemo<AssetCreditType | undefined>(() => {
@@ -75,6 +75,13 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
   const title = React.useMemo<AssetTitleType | undefined>(() => {
     return openedChest?.find((item) => item.type === 'title') as AssetTitleType | undefined;
   }, [openedChest]);
+
+  const animationVideo = React.useMemo(() => {
+    if (chestRarity === 'rare') {
+      return "/videos/inventory/open_chest_rare.m4v";
+    }
+    return "/videos/inventory/open_chest_common.m4v";
+  }, [chestRarity]);
 
   useEffect(() => {
     if (user?.wallet_id) {
@@ -104,7 +111,11 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
             </button>
           </Modal.Close>
           <div
-            className={`flex h-full flex-row justify-end bg-brand-deep-blue bg-[url('/images/inventory/open_chest_modal_bg.png')] bg-cover`}>
+            className={`flex h-full flex-row justify-end bg-brand-deep-blue`}>
+            <div className='w-1/2 overflow-hidden relative'>
+              <video className='absolute max-w-none -left-1/2 h-full w-[200%] object-cover' src={animationVideo} autoPlay loop />
+            </div>
+            
             <div className="flex w-1/2 flex-col items-center justify-between py-12 px-12">
               <span className="mb-2 text-[14px] font-medium">
                 <Trans>You have opened</Trans>

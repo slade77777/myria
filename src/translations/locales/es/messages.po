@@ -23,11 +23,11 @@ msgstr ""
 "Garantías de seguridad de nivel 100% Ethereum; al mismo tiempo que aumenta la velocidad y el rendimiento de las transacciones\n"
 ""
 
-#: src/pages/nodes/index.tsx:133
+#: src/pages/nodes/index.tsx:134
 msgid "2 CPU Cores"
 msgstr "2 núcleos de CPU"
 
-#: src/pages/nodes/index.tsx:136
+#: src/pages/nodes/index.tsx:137
 msgid "60 GB Disk Space"
 msgstr "60 GB de espacio en disco"
 
@@ -53,7 +53,7 @@ msgstr ""
 "<0>Si es tuyo, sigue siendo tuyo</0> - Trabajaste duro para construir ese cementerio de granja durante dos días enteros y ahora es tuyo para quedártelo... ¡para siempre!\n"
 ""
 
-#: src/pages/nodes/index.tsx:69
+#: src/pages/nodes/index.tsx:70
 msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
 msgstr "<0>Para que funcione la cadena de bloques, incluida la cadena Myria, se necesitan nodos para verificar las transacciones de la red. Los nodos del ecosistema Myria se utilizarán para una variedad de actividades de apoyo a la red, incluyendo las redes de prueba iniciales, la producción de bloques y la validación.</0><1>Además de su papel como validadores potenciales, también se pedirá a los propietarios de los nodos -y se les recompensará- que realicen funciones auxiliares de la red blockchain a medida que el ecosistema Myria vaya avanzando. Entre ellas se encuentran la necesidad de almacenamiento descentralizado de cierta información crítica en el ecosistema Myria, los oráculos, la votación de gobernanza, así como la votación de conceptos específicos del juego.</1>"
 
@@ -61,7 +61,7 @@ msgstr "<0>Para que funcione la cadena de bloques, incluida la cadena Myria, se 
 msgid "<0>Interoperable</0> & Interconnected NFTs"
 msgstr "NFTs <0>Interoperables</0> e Interconectados"
 
-#: src/pages/nodes/index.tsx:89
+#: src/pages/nodes/index.tsx:90
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>Los operadores de nodos Myria recibirán recompensas diarias de tokens $MYRIA por el funcionamiento de los nodos.</0><1>Los propietarios de nodos también serán recompensados con drops de NFTs y tokens en base a su puntuación por reputación como operadores de nodos y miembros de la comunidad en general.</1><2>Las puntuaciones de reputación se determinarán por la actividad de juego de los propietarios de nodos, el número de tokens que posean y apuesten, las métricas de tiempo de actividad anteriores y su historial de apoyo a la red (por ejemplo, proveedor de validaciones u oráculos).</2>"
 
@@ -105,7 +105,7 @@ msgstr ""
 "<0>T-menos 47 gigaquarks</0>\n"
 ""
 
-#: src/pages/nodes/index.tsx:119
+#: src/pages/nodes/index.tsx:120
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows, Mac and Linux. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
 msgstr ""
 "<0>Tiene la opción de ejecutar su nodo localmente o en la nube.</0><1>El software del nodo Myria estará disponible para descargar para usuarios de Windows, Mac y Linux. A diferencia de la minería de bitcoin tradicional, nuestra operación de nodo no requiere muchos recursos. Podrá ejecutar nuestro software de nodo en la computadora de su hogar con los siguientes requisitos mínimos:</1>\n"
@@ -115,7 +115,7 @@ msgstr ""
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "Un <0>ecosistema descentralizado</0> de juegos y mundos de blockchain"
 
-#: src/pages/nodes/index.tsx:142
+#: src/pages/nodes/index.tsx:143
 msgid "A Stable Internet Connection"
 msgstr "Una conexión a Internet estable"
 
@@ -198,6 +198,10 @@ msgstr ""
 "Sobre el juego\n"
 ""
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:65
+msgid "Accept"
+msgstr ""
+
 #: src/pages/nodes/purchase-complete.tsx:45
 msgid "Access node dashboard"
 msgstr ""
@@ -232,7 +236,7 @@ msgstr "Una solución integral para las economías de juego basadas en tokens y 
 msgid "An objective-based shooter game"
 msgstr "Un juego de disparos basado en objetivos"
 
-#: src/pages/nodes/index.tsx:139
+#: src/pages/nodes/index.tsx:140
 msgid "An x86/X64 Processor"
 msgstr "Un procesador x86/X64"
 
@@ -294,7 +298,7 @@ msgstr ""
 ""
 
 #: src/components/BuyANode.tsx:6
-#: src/pages/nodes/index.tsx:295
+#: src/pages/nodes/index.tsx:304
 msgid "BUY A NODE"
 msgstr "COMPRAR UN NODO"
 
@@ -317,7 +321,7 @@ msgstr ""
 "Conviértase en propietario de un nodo Myria y reciba recompensas\n"
 ""
 
-#: src/pages/nodes/index.tsx:288
+#: src/pages/nodes/index.tsx:297
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Conviértase en una parte integral del ecosistema de Myria y coseche los beneficios de su contribución. Los primeros operadores de nodos fundadores reciben un precio preferencial, que aumenta a medida que se venden los nodos."
 
@@ -371,7 +375,11 @@ msgstr ""
 "Creación de una red descentralizada y sin permisos\n"
 ""
 
-#: src/pages/nodes/index.tsx:108
+#: src/pages/nodes/index.tsx:208
+msgid "Buy a node"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:109
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "La compra de una licencia de nodo dará al propietario el derecho a ejecutar el nodo (ya sea localmente o en la nube) y a recibir las recompensas que determine la gobernanza."
 
@@ -629,6 +637,11 @@ msgstr ""
 "Conéctese a su cartera para unirse a Myriaverse\n"
 ""
 
+#: src/components/nodes/Header.tsx:152
+#: src/pages/nodes/index.tsx:208
+msgid "Connect wallet"
+msgstr ""
+
 #: src/pages/contact.tsx:52
 msgid "Connect with us"
 msgstr "Conéctate con nosotros"
@@ -699,7 +712,7 @@ msgstr ""
 "Elija entre una variedad de máscaras cosméticas para varios edificios y miembros de la tripulación para personalizar su Moon Village. Estas máscaras son NFT, lo que significa que son tuyas para siempre y se pueden usar en varios juegos.\n"
 ""
 
-#: src/pages/nodes/index.tsx:27
+#: src/pages/nodes/index.tsx:28
 msgid "Daily $MYRIA token rewards"
 msgstr "Recompensas diarias del token $MYRIA"
 
@@ -725,9 +738,13 @@ msgstr ""
 msgid "Decentralize the network by providing computing resources"
 msgstr "Descentralizar la red proporcionando recursos informáticos"
 
-#: src/pages/nodes/index.tsx:159
+#: src/pages/nodes/index.tsx:160
 msgid "Details will be announced soon."
 msgstr "Los detalles se anunciarán pronto."
+
+#: src/components/nodes/Header.tsx:142
+msgid "Disconnect"
+msgstr ""
 
 #: src/components/home/OurGames.tsx:46
 msgid "Discover more"
@@ -771,7 +788,7 @@ msgstr ""
 "Equinox está impulsado por el deseo de aprender y recopilar toda la información que pueda tener en sus manos. Debe haber una solución para la paz en algún lugar de todos estos datos. Tú puedes ser el que resuelva el rompecabezas.\n"
 ""
 
-#: src/pages/nodes/index.tsx:42
+#: src/pages/nodes/index.tsx:43
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Cada nodo puede votar sobre los cambios propuestos en la cadena Myria y los nodos también tendrán mayor poder de voto en todo el Myriaverse"
 
@@ -947,7 +964,7 @@ msgstr ""
 "Cada héroe tiene tres habilidades únicas, cada una de las cuales requiere cargas, así como una habilidad máxima que requiere cargar a través de asesinatos, asesinatos, coleccionables u objetivos. Es más fácil de lo que parece e incluso más divertido...\n"
 ""
 
-#: src/pages/nodes/index.tsx:54
+#: src/pages/nodes/index.tsx:55
 msgid "Exclusive NFTs"
 msgstr "NFTs exclusivos"
 
@@ -1126,7 +1143,7 @@ msgstr ""
 "Empezar\n"
 ""
 
-#: src/pages/nodes/index.tsx:285
+#: src/pages/nodes/index.tsx:294
 msgid "Get a founders node today"
 msgstr "Consigue un nodo de fundadores hoy mismo"
 
@@ -1171,7 +1188,7 @@ msgstr ""
 msgid "Home"
 msgstr "Inicio"
 
-#: src/pages/nodes/index.tsx:106
+#: src/pages/nodes/index.tsx:107
 msgid "How can I become a Myria node operator?"
 msgstr "¿Cómo puedo convertirme en operador de nodos Myria?"
 
@@ -1184,11 +1201,11 @@ msgstr "¿Cómo puedo convertirme en operador de nodos Myria?"
 msgid "How it works"
 msgstr "Cómo funciona"
 
-#: src/pages/nodes/index.tsx:168
+#: src/pages/nodes/index.tsx:169
 msgid "How many Myria node licenses will be released?"
 msgstr "¿Cuántas licencias de nodos Myria se pondrán a la venta?"
 
-#: src/pages/nodes/index.tsx:157
+#: src/pages/nodes/index.tsx:158
 msgid "How much will a Myria node license cost?"
 msgstr "¿Cuánto costará una licencia de nodo Myria?"
 
@@ -1198,8 +1215,8 @@ msgstr ""
 "¡Ahora soy propietario de un nodo $MYRIA! ¡Únase a nosotros para ganar recompensas, gobernar y construir el futuro de los mundos virtuales! @MyriaGames\n"
 ""
 
-#: src/components/sigil/ShareTwitterModal.tsx:32
-msgid "I just claimed a Rare Alliance Sigil on Myria"
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:57
+msgid "I have read, understood and agree to the terms of service"
 msgstr ""
 "Acabo de reclamar un Rare Alliance Sigil en Myria\n"
 ""
@@ -1299,6 +1316,10 @@ msgstr ""
 ""
 
 #: src/components/sigil/ReferFriendModal.tsx:49
+msgid "Invite your friends to Myria by sharing the following link with them."
+msgstr ""
+
+#: src/components/sigil/ReferFriendModal.tsx:47
 msgid "Invite your friends to Myria by sharing the following link with them."
 msgstr ""
 
@@ -1454,6 +1475,10 @@ msgstr ""
 msgid "Led by industry experts"
 msgstr "Dirigido por expertos de la industria"
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:44
+msgid "Leggings swag synth 8-bit master cleanse. Pitchfork affogato semiotics raclette, adaptogen post-ironic cliche meggings tousled paleo 90's next level."
+msgstr ""
+
 #: src/components/for-developers/Myria.tsx:30
 msgid "Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business."
 msgstr ""
@@ -1540,6 +1565,10 @@ msgstr ""
 "Maximice su red\n"
 ""
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:36
+msgid "Meditation ramps offal direct trade raclette disrupt vice. Neutra kogi mixtape 3 wolf moon. Organic mustache chia vape, la croix austin man bun small batch meh bushwick locavore. Biodiesel shabby chic butcher franzen pork belly microdosing, tattooed chambray twee meditation offal YOLO pour-over."
+msgstr ""
+
 #: src/components/GetInTouch.tsx:96
 msgid "Message"
 msgstr ""
@@ -1602,11 +1631,7 @@ msgstr ""
 "Mis licencias de nodo\n"
 ""
 
-#: src/pages/nodes/index.tsx:243
-msgid "Myria FAQ"
-msgstr "Preguntas frecuentes sobre Myria"
-
-#: src/components/Purchase/Modals/index.tsx:30
+#: src/components/Purchase/Modals/index.tsx:71
 msgid "Myria Founder’s Node"
 msgstr ""
 "Nodos de la fundadora Myria\n"
@@ -1741,13 +1766,13 @@ msgstr ""
 "Myria es la columna vertebral de los juegos blockchain\n"
 ""
 
-#: src/pages/nodes/index.tsx:151
+#: src/pages/nodes/index.tsx:152
 msgid "Myria node license sales are anticipated to commence in Q2 2022 (subject to change)."
 msgstr ""
 "Se espera que las ventas de licencias de nodos de Myria comiencen en el segundo trimestre de 2022 (sujeto a cambios).\n"
 ""
 
-#: src/pages/nodes/index.tsx:29
+#: src/pages/nodes/index.tsx:30
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Los operadores de nodos Myria recibirán recompensas diarias de tokens $MYRIA por el trabajo de los nodos."
 
@@ -1834,11 +1859,11 @@ msgstr ""
 "Nadie vive para siempre, y a estos héroes seguro que no les importa – literalmente mueren por diversión. Sumérgete en una serie de breves rondas de combate para ganar una partida de 5 contra 5. El equipo atacante debe activar una bomba en una ubicación específica del mapa. Si estás del lado de la defensa...sabes lo que tienes que hacer, ¿verdad?\n"
 ""
 
-#: src/pages/nodes/index.tsx:221
+#: src/pages/nodes/index.tsx:230
 msgid "Node owner rewards"
 msgstr "Recompensas para los propietarios de nodos"
 
-#: src/pages/nodes/index.tsx:56
+#: src/pages/nodes/index.tsx:57
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "Los propietarios de nodos también serán recompensados con gotas de NFT y tokens en función de su reputación como operadores de nodos y miembros de la comunidad en general."
 
@@ -1912,7 +1937,7 @@ msgstr ""
 "Solo se liberarán 50.000 licencias de nodo. Los precios aumentarán a medida que se vendan los nodos para garantizar que nuestros primeros seguidores sean recompensados.\n"
 ""
 
-#: src/pages/nodes/index.tsx:169
+#: src/pages/nodes/index.tsx:170
 msgid "Only 55,000 Myria node licenses will ever be released."
 msgstr "Solo se lanzarán 55.000 licencias de nodos Myria."
 
@@ -1970,7 +1995,7 @@ msgstr "Sé dueño de tu identidad metaversa"
 msgid "Own your metaverse identity. Anywhere. Any game."
 msgstr "Sé dueño de tu identidad metaversa. En cualquier lugar. En cualquier juego."
 
-#: src/components/Purchase/Order.tsx:112
+#: src/components/Purchase/Order.tsx:132
 msgid "PURCHASE NOW"
 msgstr ""
 "COMPRAR AHORA\n"
@@ -2074,19 +2099,15 @@ msgstr "Impulsado y gobernado por <0>$MYRIA</0>"
 msgid "Powered by the community"
 msgstr "Impulsado por la comunidad"
 
-#: src/pages/nodes/index.tsx:208
+#: src/pages/nodes/index.tsx:217
 msgid "Powered by the community of player-run nodes"
 msgstr "Impulsado por la comunidad de nodos gestionados por los jugadores"
-
-#: src/pages/nodes/index.tsx:199
-msgid "Pre register now"
-msgstr "Preinscríbase ahora"
 
 #: src/components/Subscribe.tsx:63
 msgid "Pre register to stay up to date"
 msgstr "Preinscríbase para estar al día"
 
-#: src/components/Purchase/Order.tsx:76
+#: src/components/Purchase/Order.tsx:93
 msgid "Price"
 msgstr ""
 "Precio\n"
@@ -2118,13 +2139,13 @@ msgstr ""
 "Compre más nodos para aumentar sus recompensas y facturación pasiva\n"
 ""
 
-#: src/components/Purchase/Modals/index.tsx:78
+#: src/components/Purchase/Modals/index.tsx:119
 msgid "Purchase now"
 msgstr ""
 "Compre ahora\n"
 ""
 
-#: src/components/Purchase/Order.tsx:87
+#: src/components/Purchase/Order.tsx:104
 msgid "Quantity"
 msgstr ""
 "Cantidad\n"
@@ -2136,7 +2157,7 @@ msgstr ""
 "Cantidad: {qty}\n"
 ""
 
-#: src/components/Purchase/Modals/index.tsx:33
+#: src/components/Purchase/Modals/index.tsx:74
 msgid "Quantity: {quantity}"
 msgstr ""
 
@@ -2220,8 +2241,8 @@ msgstr ""
 ""
 
 #: src/pages/nodes/index.tsx:190
-msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
-msgstr "Dirige un nodo y gana <0>$MYRIA</0> y recompensas NFT"
+msgid "Run a node and earn <0>$MYRIA and NFT rewards</0>"
+msgstr ""
 
 #: src/components/sigil/ChooseAlliance/index.tsx:283
 msgid "SELECT"
@@ -2285,6 +2306,8 @@ msgid "Share this on Twitter"
 msgstr ""
 
 #: src/components/SignIn/SignIn.tsx:81
+#: src/components/nodes/Header.tsx:156
+#: src/components/nodes/Header.tsx:235
 msgid "Sign in"
 msgstr ""
 "Iniciar sesión\n"
@@ -2427,7 +2450,7 @@ msgstr "Gracias por el mensaje. Nos pondremos en contacto en un plazo de 24-48 h
 msgid "Thank you for subscribing!"
 msgstr "¡Gracias por suscribirse!"
 
-#: src/pages/nodes/index.tsx:211
+#: src/pages/nodes/index.tsx:220
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "La cadena Myria se sustenta en una red de nodos gestionados por jugadores. Utiliza tu ordenador personal para convertirte en un operador de nodos y recibir recompensas y beneficios por tu contribución al ecosistema."
 
@@ -2515,7 +2538,7 @@ msgstr ""
 "Consultoría de tokenómica\n"
 ""
 
-#: src/components/Purchase/Modals/index.tsx:63
+#: src/components/Purchase/Modals/index.tsx:104
 #: src/components/nodes/rewards/ClaimModal.tsx:42
 msgid "Total"
 msgstr ""
@@ -2551,7 +2574,7 @@ msgstr ""
 "Lista de transacciones\n"
 ""
 
-#: src/components/Purchase/Modals/index.tsx:48
+#: src/components/Purchase/Modals/index.tsx:89
 msgid "Transaction fee"
 msgstr ""
 "Tarifa de transacción\n"
@@ -2617,6 +2640,10 @@ msgstr ""
 msgid "VIEW ITEMS"
 msgstr ""
 
+#: src/pages/nodes/index.tsx:252
+msgid "Validating on Myria"
+msgstr ""
+
 #: src/hooks/useGamesData.tsx:163
 msgid "Vanity factor number 1"
 msgstr ""
@@ -2629,13 +2656,17 @@ msgstr ""
 "Vector Prime cree que Rift es el siguiente paso en la evolución y hará todo lo posible para acelerar su expansión.\n"
 ""
 
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:26
+msgid "Vegan PBR&B listicle sriracha. Migas lomo helvetica, listicle paleo salvia sartorial crucifix dreamcatcher try-hard ugh lyft. Intelligentsia whatever mlkshk salvia, authentic jianbing wolf coloring book echo park fam. Iceland cray occupy ennui, franzen tilde poke. Poutine echo park meditation cliche franzen, shaman messenger bag. Hot chicken umami adaptogen DIY yuccie whatever subway tile, narwhal helvetica meggings scenester twee iPhone tumblr lumbersexual."
+msgstr ""
+
 #: src/components/Careers/Careers.tsx:91
 msgid "View job"
 msgstr ""
 "Ver trabajo\n"
 ""
 
-#: src/pages/nodes/index.tsx:40
+#: src/pages/nodes/index.tsx:41
 msgid "Voting rights"
 msgstr "Derechos al voto"
 
@@ -2706,19 +2737,19 @@ msgstr ""
 msgid "We’re hiring, join the future of gaming"
 msgstr "Estamos contratando, únete al futuro del juego"
 
-#: src/pages/nodes/index.tsx:116
+#: src/pages/nodes/index.tsx:117
 msgid "What are the software and hardware requirements to run a node?"
 msgstr "¿Cuáles son los requisitos de software y hardware para ejecutar un nodo?"
 
-#: src/pages/nodes/index.tsx:67
+#: src/pages/nodes/index.tsx:68
 msgid "What is a Myria node?"
 msgstr "¿Qué es un nodo Myria?"
 
-#: src/pages/nodes/index.tsx:87
+#: src/pages/nodes/index.tsx:88
 msgid "What rewards do Myria node operators receive?"
 msgstr "¿Qué recompensas reciben los operadores de nodos Myria?"
 
-#: src/pages/nodes/index.tsx:149
+#: src/pages/nodes/index.tsx:150
 msgid "When will Myria node licenses be sold?"
 msgstr "¿Cuándo se venderán las licencias de los nodos Myria?"
 
@@ -2781,7 +2812,7 @@ msgstr ""
 "Su compra está completa.\n"
 ""
 
-#: src/pages/nodes/index.tsx:205
+#: src/pages/nodes/index.tsx:214
 msgid "a decentralized ecosystem"
 msgstr "un ecosistema descentralizado"
 
@@ -2793,7 +2824,7 @@ msgstr "únete a la revolución"
 msgid "view now"
 msgstr "ver ahora"
 
-#: src/components/Purchase/Modals/index.tsx:75
+#: src/components/Purchase/Modals/index.tsx:116
 msgid "{balance} ETH"
 msgstr ""
 
