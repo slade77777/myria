@@ -72,24 +72,26 @@ const Careers: React.FC = () => {
 
   return (
     <Page>
-      <div
-        className={clsx(
-          'fixed bottom-0 top-0 z-[20] w-full bg-black bg-opacity-70 py-10 backdrop-blur-lg',
-          openVideo ? 'block' : 'hidden'
-        )}>
-        <ReactPlayer
-          width="100%"
-          height="100%"
-          url={'/videos/careers/header.mp4'}
-          playing={openVideo}
-          controls
-        />
-        <button className="absolute top-4 right-4 z-[1] flex h-[50px] w-[50px] items-center justify-center bg-brand-gold">
-          <span className="w-[32px] text-white" onClick={() => setOpenVideo(false)}>
-            <CloseIcon />
-          </span>
-        </button>
-      </div>
+      {openVideo && (
+        <div
+          className={clsx(
+            'fixed bottom-0 top-0 z-[20] w-full bg-black bg-opacity-70 py-10 backdrop-blur-lg'
+          )}>
+          <ReactPlayer
+            width="100%"
+            height="100%"
+            url={'/videos/careers/section.mp4'}
+            playing={openVideo}
+            controls
+            volume={1}
+          />
+          <button className="absolute top-4 right-4 z-[1] flex h-[50px] w-[50px] items-center justify-center bg-brand-gold">
+            <span className="w-[32px] text-white" onClick={() => setOpenVideo(false)}>
+              <CloseIcon />
+            </span>
+          </button>
+        </div>
+      )}
       <div
         style={
           {
@@ -105,13 +107,15 @@ const Careers: React.FC = () => {
             'flex min-h-[var(--min-h-screen)] flex-col items-center justify-center pt-4 pb-[120px] text-center'
           )}>
           <video width="300" height="300" loop muted autoPlay>
-            <source src="/videos/careers/header.mp4" type="video/mp4" />
+            <source src="/videos/careers/header.webm" type="video/webm" />
             Your browser does not support the video tag.
           </video>
           <h1 className="mt-8 text-[36px] font-bold leading-[1.25] md:text-[48px]">
             At Myria, we make magic happen.
           </h1>
-          <button className="btn-lg btn-primary mt-10">SEE ALL OPENING POSITIONS</button>
+          <Link href="/jobs">
+            <a className="btn-lg btn-primary mt-10">SEE ALL OPENING POSITIONS</a>
+          </Link>
         </section>
         <section
           className={clsx(
@@ -201,7 +205,7 @@ const Careers: React.FC = () => {
                 <p className="text-[32px] font-bold leading-[1.25] md:text-[40px]">
                   Join the team in building the next gaming evolution
                 </p>
-                <Link href="/">
+                <Link href="/jobs">
                   <a className="mt-6 block text-[16px] leading-[1.25] hover:underline md:text-[20px]">
                     See all opening positions
                   </a>
