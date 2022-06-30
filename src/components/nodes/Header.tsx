@@ -14,6 +14,7 @@ import LogoutIcon from '../icons/LogoutIcon';
 import { Trans } from '@lingui/macro';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
+import { EventDefined } from '../../lib/ga/use-ga/event';
 
 const links = [
   {
@@ -35,25 +36,29 @@ const links = [
         id: 'discord',
         label: 'Discord',
         href: socialLinks.discord,
-        target: '_blank'
+        target: '_blank',
+        event: 'Discord Button Clicked'
       },
       {
         id: 'twitter',
         label: 'Twitter',
         href: socialLinks.twitter,
-        target: '_blank'
+        target: '_blank',
+        event: 'Twitter Button Clicked'
       },
       {
         id: 'instagram',
         label: 'Instagram',
         href: socialLinks.instagram,
-        target: '_blank'
+        target: '_blank',
+        event: 'Instagram Button Clicked'
       },
       {
         id: 'medium',
         label: 'Medium',
         href: socialLinks.medium,
-        target: '_blank'
+        target: '_blank',
+        event: 'Medium Button Clicked'
       }
     ]
   }
@@ -94,6 +99,14 @@ const Header: React.FC = () => {
                         <li key={idx}>
                           <Link href={link.href as string}>
                             <a
+                              onClick={() =>
+                                link.event &&
+                                // @ts-ignore
+                                event(link.event, {
+                                  button_location: 'Top Bar',
+                                  page_name: 'Nodes'
+                                })
+                              }
                               target={link.target}
                               className={clsx('body-14-medium uppercase hover:text-brand-gold')}>
                               {link.label}
@@ -158,11 +171,13 @@ const Header: React.FC = () => {
               <Trans>Connect wallet</Trans>
             </button>
           )}
-          {
-            user && !user.user_name && <button onClick={register} className="body-14-bold hidden rounded-lg bg-primary/6 py-[9px] px-4 uppercase text-base/1 hover:bg-primary/5 md:block">
+          {user && !user.user_name && (
+            <button
+              onClick={register}
+              className="body-14-bold hidden rounded-lg bg-primary/6 py-[9px] px-4 uppercase text-base/1 hover:bg-primary/5 md:block">
               <Trans>Sign up</Trans>
             </button>
-          }
+          )}
           <button className="md:hidden" onClick={() => setIsMobileMenuOpen((o) => !o)}>
             <Hamburger size={24} />
           </button>

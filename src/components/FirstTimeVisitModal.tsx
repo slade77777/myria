@@ -53,6 +53,9 @@ const FirstTimeVisitModal: React.FC<Props> = ({ open, onClose }) => {
           <div className="mt-4">
             <a
               href={socialLinks.twitter}
+              onClick={() => {
+                event('Twitter Button Clicked', { button_location: 'Pop-up' });
+              }}
               target="_blank"
               className="btn-icon inline-flex w-full items-center justify-center bg-brand-light-blue px-3 text-dark md:w-[251px]"
               rel="noreferrer">

@@ -12,6 +12,7 @@ import Modal from 'src/components/Modal';
 import { useWalletContext } from 'src/context/wallet';
 import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
 import { formatCurrency } from 'src/lib/formatter';
+import { useGA4 } from 'src/lib/ga';
 
 export type PurchaseInformationProps = {
   quantity: number,
@@ -35,6 +36,7 @@ const ModalPurchase = ({
 }) => {
   const { readerProviderApi, signerProviderApi,address, balance } = useWalletContext();
   const {quantity, totalPriceEth, totalPriceUsd, transactionId, nonce, toAddress} = data;
+  const { event } = useGA4();
 
   const isInsufficientBalance = utils
     .parseEther(totalPriceEth.toString())
@@ -87,16 +89,36 @@ const ModalPurchase = ({
     }
   });
 
+  const trackPurchase = useCallback((error?: string) => {
+    event('Node Order Purchased', {
+      campaign: 'Nodes',
+      wallet_address: address,
+      node_quantity: quantity,
+      order_status: error ? 'Error' : 'Completed',
+      eth_total_amount: totalPriceEth,
+      usd_total_amount: totalPriceUsd,
+      error_details: error
+    })
+  }, [])
+
   const onPurchase = useCallback(async () => {
     try {
+
       const txHash = await handleTransferETH();
 
       if (!txHash) {
+        trackPurchase('Empty transaction hash')
         throw new Error("Empty transaction hash");
       }
-
+      trackPurchase();
       await submitPurchase({ txHash, nonce, transactionId });
-
+      event('Node Order Completed', {
+        campaign: 'Nodes',
+        wallet_address: address,
+        node_quantity: quantity,
+        eth_total_amount: totalPriceEth,
+        usd_total_amount: totalPriceUsd,
+      })
       toast.success('Purchase completed');
     } catch (e) {
       toast.error('Purchase uncompleted');

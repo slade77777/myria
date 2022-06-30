@@ -107,6 +107,13 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
     (data: any) => {
       const { quantity } = data;
       if (!WhitelistAddress.find((item) => item.address.toLowerCase() === address?.toLowerCase())) {
+        event('Node Order Placed', {
+          campaign: 'Nodes',
+          wallet_address: address,
+          node_quantity: quantity,
+          order_status: 'Error',
+          error_details: 'Not in whitelist address'
+        })
         return setWhitelistError(true);
       }
       submitPurchase({ numberOfNode: quantity })
@@ -119,9 +126,18 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
             nonce: response.transactionId,
             transactionId: response.transactionId
           });
+          event('Node Order Placed', {
+            campaign: 'Nodes',
+            wallet_address: address,
+            node_quantity: quantity,
+            order_status: 'Completed'
+          })
         })
         .catch((e) => {
-          toast.error(e);
+          toast.clearWaitingQueue({containerId: "node purchase limit"});
+          toast.error(e, {
+            toastId: "node purchase limit"
+          });
         });
     },
     [submitPurchase, address, onPlaceOrder, price, etheCost]
@@ -143,7 +159,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
       <TermsOfServiceModal
         open={firstLicense}
         onClose={() => setFirstLicense(false)}
-        onAgree={() => alert('Agree')}
+        onAgree={() => setFirstLicense(false)}
       />
       <PrivacyPolicyModal
         open={showPrivacy}
@@ -153,7 +169,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
       <div>
         <div className="rounded-t-lg bg-brand-deep-blue p-6 md:rounded-lg md:p-8">
           <div className="flex items-center justify-between md:block">
-            <p className="caption hidden font-bold text-light md:body-sm md:block">
+            <p className="hidden font-bold text-light md:body-sm md:block">
               <Trans>Price</Trans>
             </p>
             <div className="flex items-baseline justify-between md:mt-[7px] md:items-center">
@@ -176,6 +192,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
                   <NumberInput
                     setQuantityNumber={(val: number) => {
                       field.onChange(val);
+                      event("Node Order Updated", {campaign: 'Nodes', wallet_address: address, node_quantity: val})
                     }}
                   />
                 )}

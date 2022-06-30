@@ -11,4 +11,5 @@ export type NavItem = {
   inactive?: boolean;
   position: 'left' | 'right';
   action?: Action[];
+  event?: string;
 };
