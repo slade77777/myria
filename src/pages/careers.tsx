@@ -73,7 +73,7 @@ const Careers: React.FC = () => {
   }, []);
 
   return (
-    <Page>
+    <Page action='join-discord'>
       {openVideo && (
         <div
           className={clsx(
