@@ -94,13 +94,18 @@ const Hero: React.FC = () => {
               'relative isolate flex min-h-[805px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:justify-end md:px-[100px] md:pb-[162px]'
             )}>
             <video
-              className="absolute inset-0 z-[-1] h-full w-full object-cover opacity-70"
+              className="absolute inset-0 z-[-1] hidden h-full w-full object-cover opacity-70 md:block"
               loop
               muted
               autoPlay>
               <source src="/videos/home/moonville.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            <img
+              src="/images/home/moonville-banner-mobile.jpeg"
+              className="absolute inset-0 z-[-1] h-full w-full object-cover opacity-70 md:!hidden "
+              alt=""
+            />
             <div className="text-center md:max-w-[608px] md:text-left">
               <div className="mx-auto max-w-[388px] md:mx-0">
                 <Image src="/images/home/moonville-logo.png" width={582} height={326} alt="" />
