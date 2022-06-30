@@ -7,7 +7,7 @@ interface Props {
   userAvatar: string;
   userName: string;
   userAddress: string;
-  userJoinDate: Date;
+  userJoinDate?: Date;
   items: NFTItemType[];
 }
 
@@ -18,7 +18,7 @@ function Inventory({ items, userAddress, userAvatar, userJoinDate, userName }: P
   );
 
   return (
-    <div className="w-full bg-[#050E15] py-[58px] px-[24px]">
+    <div className="w-full min-h-screen bg-[#050E15] py-[58px] px-[24px]">
       <div className="mb-[58px] flex items-end justify-between">
         <div className="flex">
           <div className="mr-[40px] w-[120px] overflow-hidden rounded-full">
@@ -29,9 +29,11 @@ function Inventory({ items, userAddress, userAvatar, userJoinDate, userName }: P
             <span className="text-[16px] font-medium text-[#9AC9E3]">
               {userAddress.substring(0, 7)}...{userAddress.substring(userAddress.length - 4)}
             </span>
-            <span className="text-[16px] font-normal text-[#97AAB5]">
-              Joined {format(userJoinDate, 'MMMM yyyy')}
-            </span>
+            {userJoinDate && (
+              <span className="text-[16px] font-normal text-[#97AAB5]">
+                Joined {format(userJoinDate, 'MMMM yyyy')}
+              </span>
+            )}
           </div>
         </div>
         <div className="flex">
