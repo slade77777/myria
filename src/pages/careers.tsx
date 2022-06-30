@@ -106,24 +106,23 @@ const Careers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            'flex flex-col items-center justify-center pt-4 pb-[120px] text-center md:min-h-[var(--min-h-screen)]'
+            'flex flex-col items-center justify-center pt-4 pb-[120px] text-center min-h-[var(--min-h-screen)]'
           )}>
           {/* eslint-disable-next-line */}
-          {isDesktop && (
-            <video
-              width="300"
-              height="300"
-              loop
-              muted
-              autoPlay
-              webkit-playsinline
-              playsInline
-              src="/videos/careers/header.webm"
-              id="video1"
-              className="hidden md:block">
-              Your browser does not support the video tag.
-            </video>
-          )}
+
+          <video
+            width="300"
+            height="300"
+            loop
+            muted
+            autoPlay
+            webkit-playsinline
+            playsInline
+            src="/videos/careers/neon_good.mp4"
+            id="video1"
+            >
+            Your browser does not support the video tag.
+          </video>
           <h1 className="mt-8 text-[36px] font-bold leading-[1.25] md:text-[48px]">
             At Myria, we make magic happen.
           </h1>
@@ -165,7 +164,13 @@ const Careers: React.FC = () => {
         <section className="video-section relative isolate hidden min-h-[var(--min-h-screen)] p-4 py-[140px] text-center md:block">
           <div className="absolute inset-0 z-[-1] overflow-hidden">
             {isDesktop && (
-              <video className="absolute inset-0 h-full w-full object-cover" loop muted autoPlay>
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                loop
+                muted
+                autoPlay
+                webkit-playsinline
+                playsInline>
                 <source src="/videos/careers/section.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
