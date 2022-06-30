@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import JoinTheRevolution from '../components/JoinTheRevolution';
 import ExperenceLogos from '../components/ExperienceLogos';
-import { negativeMarginXSm, paddingX } from '../utils';
+import { negativeMarginXMd, negativeMarginXSm, negativeMarginXXl, paddingX } from '../utils';
 import Page from '../components/Page';
 import AOS from 'aos';
 import { useEffect } from 'react';
@@ -30,15 +30,15 @@ const Index = () => {
   return (
     <Page action="mint">
       <div className={headerNavSpacingClassName}>
-        <div className={clsx(paddingX, 'md:mt-7')}>
+        <div className="md:mt-7">
+          <Hero />
+        </div>
+        <div className={clsx(paddingX)}>
           <div className="mx-auto max-w-content">
-            <div className={clsx(negativeMarginXSm, 'md:mx-0')}>
-              <Hero />
-            </div>
-            <div className="mt-12 md:mt-10">
+            <div className="mx-auto mt-12 max-w-[1155px] md:mt-20">
               <OurGames />
             </div>
-            <div className="mt-10 md:mt-11">
+            <div className="mt-10 md:mt-[95px]">
               <Program />
             </div>
             <div className="mt-10 md:mt-11">
@@ -79,7 +79,7 @@ const Index = () => {
           </p>
         </section>
         <section className={clsx(paddingX, 'mt-[50px] md:mt-[88px]')}>
-          <div data-aos="fade-up" className="md:mt-[59px] mx-auto max-w-content">
+          <div data-aos="fade-up" className="mx-auto max-w-content md:mt-[59px]">
             <ExperenceLogos />
           </div>
         </section>
