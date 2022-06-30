@@ -31,7 +31,7 @@ const Item: React.FC<{ item: typeof games[number] }> = ({ item }) => {
           backgroundImage: `url(${item.image})`
         }}
         className={clsx(
-          'relative flex h-[450px] flex-col justify-end overflow-hidden rounded-[10px] bg-cover pb-5 pl-9'
+          'relative flex h-[450px] flex-col justify-end overflow-hidden rounded-[10px] bg-cover pb-5 pl-9 transition duration-300 hover:md:scale-105'
         )}>
         <div className="mt-4 flex text-[14px] font-bold leading-[1.5] text-white">
           <span>{item.publisher}</span>
@@ -63,7 +63,9 @@ const OurGames: React.FC = () => {
       </div>
       <div className="mt-[73px] flex justify-center">
         <Link href="/games">
-          <a className="btn-lg rounded-lg border border-white">SEE MORE GAMES</a>
+          <a className="btn-lg rounded-lg border border-white transition duration-300 hover:-translate-y-1">
+            SEE MORE GAMES
+          </a>
         </Link>
       </div>
     </div>

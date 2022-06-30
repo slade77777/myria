@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
               Your browser does not support the video tag.
             </video>
             <div className="text-center md:max-w-[608px] md:text-left">
-              <div className="w-[388px]">
+              <div className="mx-auto max-w-[388px] md:mx-0">
                 <Image src="/images/home/moonville-logo.png" width={582} height={326} alt="" />
               </div>
               <p className="mt-10 text-[18px] leading-[1.5] md:text-[22px]">
@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 noValidate
-                className=" mt-10 hidden w-full items-start space-x-2 [.slick-active_&]:flex">
+                className="mt-10 flex w-full items-start space-x-2">
                 <Input
                   type="email"
                   placeholder="Enter your email address"
@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
         <div>
           <div className="flex min-h-[805px] flex-col justify-end bg-[url('/images/home/banner-3-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:justify-start md:bg-[url('/images/home/banner-3_op.png')] md:pt-[137px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
-              <div className="flex items-center space-x-4 md:space-x-[57px]">
+              <div className="flex items-center justify-center space-x-4 md:justify-start md:space-x-[57px]">
                 <i className="w-[108px]">
                   <LogoSm />
                 </i>
@@ -166,7 +166,7 @@ const Hero: React.FC = () => {
               </p>
               <Link href="/cricket">
                 <a
-                  className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[45px]"
+                  className="btn-lg btn-primary mt-6 md:mt-[45px]"
                   onClick={() => {
                     event('Hero Banner Clicked', { campaign: 'AB de Villers' });
                   }}>
