@@ -14,6 +14,8 @@ import CloseIcon from 'src/components/icons/CloseIcon';
 import { socialLinks } from 'src/configs';
 import Link from 'next/link';
 
+const {default: enableInlineVideo} = require('iphone-inline-video');
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Careers: React.FC = () => {
@@ -24,7 +26,12 @@ const Careers: React.FC = () => {
   const handleOpenVideo = () => {
     setOpenVideo(true);
   };
+  
   useIsomorphicLayoutEffect(() => {
+    const video1= document.getElementById('video1');
+    console.log(enableInlineVideo);
+    
+    enableInlineVideo(video1)
     ScrollTrigger.matchMedia({
       '(min-width: 768px)': () => {
         gsap.timeline({
@@ -107,7 +114,7 @@ const Careers: React.FC = () => {
             'flex min-h-[var(--min-h-screen)] flex-col items-center justify-center pt-4 pb-[120px] text-center'
           )}>
             {/* eslint-disable-next-line */}
-          <video width="300" height="300" loop muted autoPlay webkit-playsinline playsInline src="/videos/careers/header.webm">
+          <video width="300" height="300" loop muted autoPlay webkit-playsinline playsInline src="/videos/careers/header.webm" id="video1">
             Your browser does not support the video tag.
           </video>
           <h1 className="mt-8 text-[36px] font-bold leading-[1.25] md:text-[48px]">
