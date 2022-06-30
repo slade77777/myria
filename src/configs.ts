@@ -1,6 +1,6 @@
 export const socialLinks = {
   discord: 'http://discord.gg/myria',
-  twitter: 'https://twitter.com/myriagames',
+  twitter: 'https://twitter.com/myria',
   instagram: 'https://www.instagram.com/myriagames/',
   medium: 'https://medium.com/@myriagames'
 };
