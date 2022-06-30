@@ -70,20 +70,20 @@ export const linkSources: { [key: string]: NavItem } = {
         url: '/our-vision'
       },
       {
-        id: 'team',
-        text: <Trans>Our team</Trans>,
-        url: '/team'
+        id: 'careers',
+        text: <Trans>Careers</Trans>,
+        url: '/careers'
       },
+      {
+        id: 'jobs',
+        text: <Trans>Jobs</Trans>,
+        url: '/jobs'
+      }
       // {
       //   id: 'studios',
       //   text: <Trans>MYRIA STUDIOS</Trans>,
       //   url: '/studios'
       // },
-      {
-        id: 'careers',
-        text: <Trans>Careers</Trans>,
-        url: '/careers'
-      }
     ]
   },
   community: {
