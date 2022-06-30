@@ -106,8 +106,8 @@ const Careers: React.FC = () => {
             paddingX,
             'flex min-h-[var(--min-h-screen)] flex-col items-center justify-center pt-4 pb-[120px] text-center'
           )}>
-          <video width="300" height="300" loop muted autoPlay webkit-playsinline playsInline>
-            <source src="/videos/careers/header.webm" type="video/webm" />
+            {/* eslint-disable-next-line */}
+          <video width="300" height="300" loop muted autoPlay webkit-playsinline playsInline src="/videos/careers/header.webm">
             Your browser does not support the video tag.
           </video>
           <h1 className="mt-8 text-[36px] font-bold leading-[1.25] md:text-[48px]">
