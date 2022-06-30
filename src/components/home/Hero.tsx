@@ -1,14 +1,8 @@
-import { Trans } from '@lingui/macro';
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
-import React, { CSSProperties, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import DiscordIcon from '../icons/DiscordIcon';
-import CowboyImg from 'public/images/home/cowboy-1.png';
-import MonkeyImg from 'public/images/home/monkey-1.png';
-import UnicornImg from 'public/images/home/unicorn-guy-1.png';
-import SkyImg from 'public/images/home/sky.png';
-import LandImg from 'public/images/home/land.png';
-import HeaderBgMobile from 'public/images/home/header-bg-mobile.jpeg';
 import Slider, { Settings } from 'react-slick';
 import { useGA4 } from 'src/lib/ga';
 import 'slick-carousel/slick/slick.css';
@@ -20,55 +14,72 @@ import Link from 'next/link';
 import LogoSm from '../icons/LogoSm';
 import JoinIcon from '../icons/JoinIcon';
 import ADBE from '../icons/ABDE';
-import { paddingX } from 'src/utils';
 import Input from '../Input';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { additionalApiClient } from 'src/client';
+import CircleCheck from '../icons/CircleCheck';
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface IFormInputs {
+  email: string;
+}
+
+const schema = yup
+  .object({
+    email: yup
+      .string()
+      .email(t`Invalid email!`)
+      .required(t`Email is required!`)
+  })
+  .required();
+
 const Hero: React.FC = () => {
-  // useIsomorphicLayoutEffect(() => {
-  //   let animations: gsap.core.Timeline[] = [];
-  //   ScrollTrigger.matchMedia({
-  //     '(min-width: 1000px)': function () {
-  //       const targets = [
-  //         '.land-img',
-  //         '.hero-text',
-  //         '.cowboy-img',
-  //         '.unicorn-guy-img',
-  //         '.monkey-img'
-  //       ];
-
-  //       targets.forEach((target, idx) => {
-  //         const tl_section = gsap.timeline({
-  //           scrollTrigger: {
-  //             trigger: '#hero',
-  //             start: `top top`,
-  //             end: 'bottom top',
-  //             scrub: 0.6
-  //           }
-  //         });
-  //         tl_section.to(target, { y: `-${50 * (idx + 2)}px` });
-  //         animations.push(tl_section);
-  //       });
-  //     }
-  //   });
-  //   return () => {
-  //     animations.forEach((tl) => tl.kill());
-  //   };
-  // }, [currentSlide]);
-
   const { event } = useGA4();
+
+  const [error, setError] = useState('');
+  const [success, setIsSubmitSuccess] = useState<boolean>(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(schema)
+  });
+
+  const onSubmit = async (data: IFormInputs) => {
+    console.log(data);
+    try {
+      setError('');
+      setIsSubmitSuccess(false);
+
+      await additionalApiClient
+        .post(`/subscribe`, data)
+        .then(() => setIsSubmitSuccess(true))
+        .catch((error) => {
+          setError(error.message);
+          setIsSubmitSuccess(false);
+        });
+      reset();
+    } catch (error: any) {
+      setError(error?.message);
+      setIsSubmitSuccess(false);
+    }
+  };
 
   const settings: Settings = useMemo(
     () => ({
       arrows: false,
       dots: true,
-      infinite: true,
+      infinite: false,
       slidesToShow: 1,
       slidesToScroll: 1,
       dotsClass: 'carousel-dots bottom-4 md:bottom-6',
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 30000,
       pauseOnHover: true
     }),
     []
@@ -100,14 +111,33 @@ const Hero: React.FC = () => {
               <p className="mt-5 text-[32px] font-extrabold leading-[1.15] md:text-[40px]">
                 <Trans>Register for Moonville Farms early access</Trans>
               </p>
-              <form className="mt-10 flex w-full space-x-2">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+                className=" mt-10 hidden w-full items-start space-x-2 [.slick-active_&]:flex">
                 <Input
                   type="email"
                   placeholder="Enter your email address"
                   className="border-none bg-[#172630] px-6 py-3.5 text-light"
-                  containerClassName="flex-grow"
+                  containerClassName="flex-grow relative"
+                  {...register('email')}
+                  error={!!errors.email || !!error}
+                  errorText={errors.email?.message || error}
+                  message={
+                    success && !errors.email ? (
+                      <p className="absolute bottom-[-20px] flex items-center text-xs leading-[15px] text-white">
+                        <CircleCheck />
+                        <span className="ml-1">
+                          <Trans>Thank you for subscribing!</Trans>
+                        </span>
+                      </p>
+                    ) : null
+                  }
                 />
-                <button className="btn-lg btn-primary">
+                <button
+                  type="submit"
+                  className="btn-lg btn-primary h-[52px]"
+                  disabled={isSubmitting}>
                   <Trans>SUBMIT</Trans>
                 </button>
               </form>
