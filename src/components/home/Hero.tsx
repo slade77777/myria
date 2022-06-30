@@ -20,6 +20,8 @@ import Link from 'next/link';
 import LogoSm from '../icons/LogoSm';
 import JoinIcon from '../icons/JoinIcon';
 import ADBE from '../icons/ABDE';
+import { paddingX } from 'src/utils';
+import Input from '../Input';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,28 +78,44 @@ const Hero: React.FC = () => {
     <div className="relative">
       <Slider {...settings}>
         <div>
-          <div className="flex h-[615px] flex-col justify-end bg-[url('/images/home/banner-2-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:justify-start md:rounded-xl md:bg-[url('/images/home/banner-2_op.png')] md:pt-[137px] md:pl-[107px]">
-            <div className="text-center md:text-left">
-              <p className="text-[40px] font-bold leading-[1.25] text-[#FFFDFD] md:text-[60px]">
-                <Trans>Alliance Sigil NFT Launch</Trans>
+          <div
+            className={clsx(
+              'relative isolate flex min-h-[805px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:justify-end md:px-[100px] md:pb-[162px]'
+            )}>
+            <video
+              className="absolute inset-0 z-[-1] h-full w-full object-cover opacity-70"
+              loop
+              muted
+              autoPlay>
+              <source src="/videos/home/moonville.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="text-center md:max-w-[608px] md:text-left">
+              <div className="w-[388px]">
+                <Image src="/images/home/moonville-logo.png" width={582} height={326} alt="" />
+              </div>
+              <p className="mt-10 text-[18px] leading-[1.5] md:text-[22px]">
+                <Trans>COMING SOON</Trans>
               </p>
-              <p className="mt-8 text-[18px] leading-[1.5] md:text-[22px]">
-                <Trans>
-                  Begin your adventure, choose your alliance and claim your free NFT rewards
-                </Trans>
+              <p className="mt-5 text-[32px] font-extrabold leading-[1.15] md:text-[40px]">
+                <Trans>Register for Moonville Farms early access</Trans>
               </p>
-              <Link href="/sigil">
-                <a className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[50px]" onClick={() => {
-                  event('Hero Banner Clicked', { campaign: 'Sigil' });
-                }}>
-                  <Trans>CLAIM NOW</Trans>
-                </a>
-              </Link>
+              <form className="mt-10 flex w-full space-x-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email address"
+                  className="border-none bg-[#172630] px-6 py-3.5 text-light"
+                  containerClassName="flex-grow"
+                />
+                <button className="btn-lg btn-primary">
+                  <Trans>SUBMIT</Trans>
+                </button>
+              </form>
             </div>
           </div>
         </div>
         <div>
-          <div className="flex h-[615px] flex-col justify-end rounded-xl bg-[url('/images/home/banner-3-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:justify-start md:bg-[url('/images/home/banner-3_op.png')] md:pt-[137px] md:pl-[107px]">
+          <div className="flex min-h-[805px] flex-col justify-end bg-[url('/images/home/banner-3-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:justify-start md:bg-[url('/images/home/banner-3_op.png')] md:pt-[137px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
               <div className="flex items-center space-x-4 md:space-x-[57px]">
                 <i className="w-[108px]">
@@ -117,9 +135,11 @@ const Hero: React.FC = () => {
                 </Trans>
               </p>
               <Link href="/cricket">
-                <a className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[45px]" onClick={() => {
-                  event('Hero Banner Clicked', { campaign: 'AB de Villers' });
-                }}>
+                <a
+                  className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[45px]"
+                  onClick={() => {
+                    event('Hero Banner Clicked', { campaign: 'AB de Villers' });
+                  }}>
                   <Trans>LEARN MORE</Trans>
                 </a>
               </Link>
@@ -127,160 +147,20 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div>
-          <div className="flex h-[615px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:justify-start md:rounded-xl md:bg-[url('/images/home/banner-1_op.jpeg')] md:pt-[137px] md:pl-[107px]">
+          <div className="flex min-h-[805px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:rounded-xl md:bg-[url('/images/home/banner-1_op.png')] md:pb-[91px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
               <p className="text-[28px] font-black leading-[1.15] text-[#93F6FF]">
                 <Trans>COMING SOON</Trans>
               </p>
-              <p className="mt-2 text-[40px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
+              <p className="mt-5 text-[40px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
                 <Trans>$MYRIA Token</Trans>
               </p>
-              <button disabled className="btn-sm btn-primary mt-6 md:btn-lg md:mt-[53px]">
-                <Trans>COMING SOON</Trans>
+              <button className="btn-sm btn-primary mt-6 md:mt-6 md:py-[9px]">
+                <i className="mr-2.5 w-[30px]">
+                  <DiscordIcon />
+                </i>
+                <Trans>STAY TUNED ON DISCORD</Trans>
               </button>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            id="hero"
-            className={clsx(
-              'relative isolate flex h-[615px] flex-col justify-end overflow-hidden border-transparent md:justify-center md:rounded-xl'
-            )}>
-            <div className="absolute inset-0 z-[-1] hidden md:block">
-              <div className="sky-img absolute inset-0">
-                <div className="relative h-full w-full">
-                  <Image src={SkyImg} alt="" placeholder="blur" layout="fill" objectFit="cover" />
-                </div>
-              </div>
-              <div className="land-img absolute left-0 bottom-[-100px] h-full w-full">
-                <div className="relative h-full w-full">
-                  <Image src={LandImg} alt="" placeholder="blur" layout="fill" objectFit="cover" />
-                </div>
-              </div>
-              <div className="absolute top-1/2 left-1/2 h-full w-full max-w-[1440px] -translate-x-1/2 -translate-y-1/2">
-                <div className="unicorn-guy-img absolute inset-0">
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={UnicornImg}
-                      alt=""
-                      placeholder="blur"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
-                </div>
-                <div className="monkey-img absolute inset-0">
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={MonkeyImg}
-                      alt=""
-                      placeholder="blur"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
-                </div>
-                <div className="cowboy-img absolute inset-0">
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={CowboyImg}
-                      alt=""
-                      placeholder="blur"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                style={
-                  {
-                    background:
-                      'linear-gradient(89.66deg, rgba(5, 14, 21, 0.54) 1.52%, rgba(0, 0, 0, 0) 60.23%)'
-                  } as CSSProperties
-                }
-                className="absolute inset-0"></div>
-              <div className="absolute inset-0">
-                {new Array(2).fill(null).map((_, idx) => (
-                  <img
-                    key={idx}
-                    src={`/images/home/cloud${idx + 1}.png`}
-                    alt=""
-                    style={{ '--index': idx + 2 } as CSSProperties}
-                    className=" absolute -bottom-[120px] left-0 w-full animate-cloud"
-                  />
-                ))}
-                {new Array(2).fill(null).map((_, idx) => (
-                  <img
-                    key={idx + 5}
-                    src={`/images/home/cloud${idx + 1}.png`}
-                    alt=""
-                    style={{ '--index': 10 - (idx + 1) } as CSSProperties}
-                    className=" absolute -bottom-[120px] left-0 w-full animate-cloud"
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="absolute inset-0 z-[-1] md:hidden">
-              <div className="absolute left-0 bottom-0 h-full w-full">
-                <div className="relative h-full w-full">
-                  <Image
-                    src={HeaderBgMobile}
-                    alt=""
-                    placeholder="blur"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              style={
-                {
-                  '--bg':
-                    'linear-gradient(360deg, rgba(5, 14, 21, 0.5) 52.64%, rgba(5, 14, 21, 0) 100%)'
-                } as any
-              }
-              className="mx-auto w-full max-w-content px-6  [background:var(--bg)] md:bg-none md:px-[64px]">
-              <div className="hero-text my-[50px] mb-[65px] max-w-[607px] text-center md:mt-0 md:text-left">
-                <h1 className="heading-lg text-brand-white">
-                  <Trans>
-                    Bringing{' '}
-                    <span className=" aos-text-slide-right text-brand-gold [--animated-color:#F5B941]">
-                      blockchain gaming{' '}
-                    </span>
-                    to the world
-                  </Trans>
-                </h1>
-                <h3 className="mt-6 text-[18px] leading-[1.3] md:text-[22px]">
-                  <span className="aos-text-slide-right text-white ![animation-delay:0.5s] [--current-color:#97AAB5] [--animated-color:white]">
-                    <Trans>
-                      A decentralised Ethereum scaling platform, purpose built for digital assets
-                      and gaming.
-                    </Trans>
-                  </span>
-                </h3>
-                <div className="mt-8 flex justify-center space-x-5 md:justify-start">
-                  <Link href={'/ecosystem'}>
-                    <a className="btn-lg btn-white min-w-[178px]">
-                      <Trans>Learn more</Trans>
-                    </a>
-                  </Link>
-                  <a
-                    href="https://discord.gg/VQaPXRGR6S"
-                    target="_blank"
-                    className="btn-icon btn-primary inline-flex min-w-[178px] items-center text-[14px]  md:text-[16px]"
-                    rel="noreferrer">
-                    <span className="w-[30px]">
-                      <DiscordIcon />
-                    </span>
-                    <span>
-                      <Trans>JOIN DISCORD</Trans>
-                    </span>
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
