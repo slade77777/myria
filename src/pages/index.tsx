@@ -6,7 +6,6 @@ import Page from '../components/Page';
 import AOS from 'aos';
 import { useEffect } from 'react';
 import Subscribe from 'src/components/Subscribe';
-import 'aos/dist/aos.css';
 import { Trans } from '@lingui/macro';
 import Hero from 'src/components/home/Hero';
 import OurGames from 'src/components/home/OurGames';
