@@ -1,5 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
+import {isDesktop} from 'react-device-detect';
 import Image from 'next/image';
 import React, { useMemo, useState } from 'react';
 import DiscordIcon from '../icons/DiscordIcon';
@@ -93,14 +94,14 @@ const Hero: React.FC = () => {
             className={clsx(
               'relative isolate flex min-h-[805px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:justify-end md:px-[100px] md:pb-[162px]'
             )}>
-            <video
+            {isDesktop && <video
               className="absolute inset-0 z-[-1] hidden h-full w-full object-cover opacity-70 md:block"
               loop
               muted
               autoPlay>
               <source src="/videos/home/moonville.mp4" type="video/mp4" />
               Your browser does not support the video tag.
-            </video>
+            </video>}
             <img
               src="/images/home/moonville-banner-mobile.jpeg"
               className="absolute inset-0 z-[-1] h-full w-full object-cover opacity-70 md:!hidden "

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { isDesktop } from 'react-device-detect';
 import * as React from 'react';
 import { headerHeight } from 'src/components/Header';
 import ArrowRightAltIcon from 'src/components/icons/ArrowRightAltIcon';
@@ -14,8 +15,6 @@ import CloseIcon from 'src/components/icons/CloseIcon';
 import { socialLinks } from 'src/configs';
 import Link from 'next/link';
 
-const { default: enableInlineVideo } = require('iphone-inline-video');
-
 gsap.registerPlugin(ScrollTrigger);
 
 const Careers: React.FC = () => {
@@ -28,9 +27,6 @@ const Careers: React.FC = () => {
   };
 
   useIsomorphicLayoutEffect(() => {
-    const video1 = document.getElementById('video1');
-
-    enableInlineVideo(video1);
     ScrollTrigger.matchMedia({
       '(min-width: 768px)': () => {
         gsap.timeline({
@@ -113,19 +109,21 @@ const Careers: React.FC = () => {
             'flex flex-col items-center justify-center pt-4 pb-[120px] text-center md:min-h-[var(--min-h-screen)]'
           )}>
           {/* eslint-disable-next-line */}
-          <video
-            width="300"
-            height="300"
-            loop
-            muted
-            autoPlay
-            webkit-playsinline
-            playsInline
-            src="/videos/careers/header.webm"
-            id="video1"
-            className="hidden md:block">
-            Your browser does not support the video tag.
-          </video>
+          {isDesktop && (
+            <video
+              width="300"
+              height="300"
+              loop
+              muted
+              autoPlay
+              webkit-playsinline
+              playsInline
+              src="/videos/careers/header.webm"
+              id="video1"
+              className="hidden md:block">
+              Your browser does not support the video tag.
+            </video>
+          )}
           <h1 className="mt-8 text-[36px] font-bold leading-[1.25] md:text-[48px]">
             At Myria, we make magic happen.
           </h1>
@@ -166,10 +164,12 @@ const Careers: React.FC = () => {
         </section>
         <section className="video-section relative isolate hidden min-h-[var(--min-h-screen)] p-4 py-[140px] text-center md:block">
           <div className="absolute inset-0 z-[-1] overflow-hidden">
-            <video className="absolute inset-0 h-full w-full object-cover" loop muted autoPlay>
-              <source src="/videos/careers/section.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            {isDesktop && (
+              <video className="absolute inset-0 h-full w-full object-cover" loop muted autoPlay>
+                <source src="/videos/careers/section.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
             <div className="absolute inset-0 z-10 bg-black opacity-60" />
           </div>
         </section>
