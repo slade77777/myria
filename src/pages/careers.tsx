@@ -107,7 +107,7 @@ const Careers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            'flex flex-col items-center justify-center pt-4 pb-[120px] text-center'
+            'flex md:min-h-[var(--min-h-screen)] flex-col items-center justify-center pt-4 pb-[120px] text-center'
           )}>
             {/* eslint-disable-next-line */}
           <video width="300" height="300" loop muted autoPlay webkit-playsinline playsInline src="/videos/careers/header.webm" id="video1" className="hidden md:block">
