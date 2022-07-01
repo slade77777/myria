@@ -1,0 +1,22 @@
+{
+  "pipeline": {
+    "build:dev": {
+      "dependsOn": ["build", "^build:dev"]
+    },
+    "build:staging": {
+      "dependsOn": ["build", "^build:staging"]
+    },
+    "build:prod": {
+      "dependsOn": ["build", "^build:prod"]
+    },
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    }
+  }
+}
