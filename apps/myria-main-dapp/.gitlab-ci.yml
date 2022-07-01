@@ -21,7 +21,7 @@ dev-build:
     - yarn build:dev
   artifacts:
     paths:
-      - apps/myria-main-dapp/out-dev
+      - out-dev
 
 dev-deploy-1:
   rules:
@@ -44,7 +44,7 @@ dev-deploy-1:
     account: myria-net-nonprod
     region: us-east-1
     bucket_name: myria-dev.nonprod-myria.com
-    artifacts_folder: apps/myria-main-dapp/out-dev
+    artifacts_folder: out-dev
     cloudfront_id: E16CH11X42OZD4
   dependencies:
     - dev-build
@@ -59,7 +59,7 @@ staging-build:
     - yarn build:staging
   artifacts:
     paths:
-      - apps/myria-main-dapp/out-staging
+      - out-staging
 
 # Staging CD target 1
 staging-deploy-1:
@@ -83,7 +83,7 @@ staging-deploy-1:
     account: myria-net-nonprod
     region: us-east-1
     bucket_name: myria-staging.nonprod-myria.com
-    artifacts_folder: apps/myria-main-dapp/out-staging
+    artifacts_folder: out-staging
     cloudfront_id: E13LZBS3DMRA8F
   dependencies:
     - staging-build
@@ -111,7 +111,7 @@ staging-deploy-2-legacy:
     account: myria-net-prod
     region: us-east-1
     bucket_name: website-dapp-staging
-    artifacts_folder: apps/myria-main-dapp/out-staging
+    artifacts_folder: out-staging
     cloudfront_id: E36R51175D7RC5
   dependencies:
     - staging-build
@@ -126,7 +126,7 @@ prod-build:
     - yarn build:prod
   artifacts:
     paths:
-      - apps/myria-main-dapp/out-prod
+      - out-prod
 
 # Prod CD target 1
 preprod-deploy-1:
@@ -150,7 +150,7 @@ preprod-deploy-1:
     account: myria-net-prod
     region: us-east-1
     bucket_name: myria-preprod.myria.com
-    artifacts_folder: apps/myria-main-dapp/out-prod
+    artifacts_folder: out-prod
     cloudfront_id: E1SN30T2UKSLIF
   dependencies:
     - prod-build
@@ -177,7 +177,7 @@ prod-deploy-2:
     account: myria-net-prod
     region: us-east-1
     bucket_name: myria.com
-    artifacts_folder: apps/myria-main-dapp/out-prod
+    artifacts_folder: out-prod
     cloudfront_id: E2K9Z1GWCIDOGE
   dependencies:
     - prod-build
@@ -205,7 +205,7 @@ prod-deploy-3-legacy:
     account: myria-net-prod
     region: us-east-1
     bucket_name: website-dapp
-    artifacts_folder: apps/myria-main-dapp/out-prod
+    artifacts_folder: out-prod
     cloudfront_id: EOL371HWV4XB1
   dependencies:
     - prod-build

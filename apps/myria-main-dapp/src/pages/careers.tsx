@@ -73,7 +73,7 @@ const Careers: React.FC = () => {
   }, []);
 
   return (
-    <Page action='join-discord'>
+    <Page action="join-discord">
       {openVideo && (
         <div
           className={clsx(
@@ -106,7 +106,7 @@ const Careers: React.FC = () => {
         <section
           className={clsx(
             paddingX,
-            'flex flex-col items-center justify-center pt-4 pb-[120px] text-center min-h-[var(--min-h-screen)]'
+            'flex min-h-[var(--min-h-screen)] flex-col items-center justify-center pt-4 pb-[120px] text-center'
           )}>
           {/* eslint-disable-next-line */}
 
@@ -116,11 +116,10 @@ const Careers: React.FC = () => {
             loop
             muted
             autoPlay
-            webkit-playsinline
+            webkit-playsinline="true"
             playsInline
             src="/videos/careers/neon_good.mp4"
-            id="video1"
-            >
+            id="video1">
             Your browser does not support the video tag.
           </video>
           <h1 className="mt-8 text-[36px] font-bold leading-[1.25] md:text-[48px]">
@@ -169,7 +168,7 @@ const Careers: React.FC = () => {
                 loop
                 muted
                 autoPlay
-                webkit-playsinline
+                webkit-="true"
                 playsInline>
                 <source src="/videos/careers/section.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -207,7 +206,7 @@ const Careers: React.FC = () => {
             </button>
             <button
               onClick={handleOpenVideo}
-              className="video-play [&:not(.\!opacity-100)]:invisible fixed top-1/2 left-3/4 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center space-x-1 opacity-0 transition-all duration-150 hover:underline">
+              className="video-play fixed top-1/2 left-3/4 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center space-x-1 opacity-0 transition-all duration-150 hover:underline [&:not(.\!opacity-100)]:invisible">
               <i className="w-4">
                 <PlayIcon />
               </i>
@@ -228,7 +227,7 @@ const Careers: React.FC = () => {
                 </p>
                 <Link href="/jobs">
                   <a className="mt-6 block text-[16px] leading-[1.25] hover:underline md:text-[20px]">
-                    See all opening positions
+                    See all open positions
                   </a>
                 </Link>
               </div>

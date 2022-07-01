@@ -331,6 +331,11 @@ export default function useGamesData() {
         logoMobile: '/images/game-detail/moonville-farms/1.jpeg',
         assets: [
           {
+            type: 'video',
+            src: '/videos/home/moonville.mp4',
+            image: '/images/game-detail/moonville-farms/3.png'
+          },
+          {
             type: 'image',
             src: '/images/game-detail/moonville-farms/2.png'
           },
