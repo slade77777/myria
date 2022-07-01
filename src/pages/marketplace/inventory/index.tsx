@@ -1,11 +1,10 @@
-import { Item } from '@radix-ui/react-dropdown-menu';
 import React from 'react';
 import { useQuery } from 'react-query';
-import { marketplaceApiClient } from 'src/client';
 import Inventory from 'src/components/marketplace/Inventory';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { useWalletContext } from 'src/context/wallet';
+import { assetModule } from 'src/services/myriaCore';
 import testavatarImg from './testavatar.png';
 
 function InventoryPage() {
@@ -14,30 +13,32 @@ function InventoryPage() {
   const starkKey = '0xf8c6635f9cfe85f46759dc2eebe71a45b765687e35dbe5e74e8bde347813ef'; // MOCK
   const { data } = useQuery(['marketplaceInventory', starkKey], () => {
     if (starkKey) {
-      return marketplaceApiClient
-        .get(`/v1/assets/stark-key/${starkKey}`)
-        .then((res) => res.data && res.data.data);
+      return assetModule?.getAssetStarkKeyMarketp(starkKey);
     }
     return null;
   });
 
+  const rawData = data?.data;
+
+  console.log(rawData)
+
   const items: NFTItemType[] = React.useMemo(() => {
-    if (data instanceof Array) {
-      return data.map((item) => ({
+    if (rawData instanceof Array) {
+      return rawData.map((item) => ({
         id: item.id,
         rarity: item.metadata?.rarity,
         name: item.name || 'Untitled',
         image_url: item.imageUrl,
         collection: item.collection?.name,
-        creator: item.project?.name,
+        creator: item.collection?.project?.name,
         creatorImg: testavatarImg.src, // MOCK
         priceETH: Math.round(Math.random() * 5) // MOCK
       }));
     }
     return [];
-  }, [data]);
+  }, [rawData]);
 
-  if (!address) return null;
+  if (!address) return 'Need to connect wallet';
 
   return (
     <Inventory
