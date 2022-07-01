@@ -544,7 +544,7 @@ module.exports = {
           gridAutoFlow: 'column',
           '& button': {
             background: 'rgba(154, 201, 227, 0.5)',
-            width: 45,
+            width: 94,
             height: 7,
             fontSize: 0
           },

@@ -1,5 +1,6 @@
 import 'video.js/dist/video-js.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'aos/dist/aos.css';
 import '../styles/globals.css';
 import toastStyle from '../styles/toast.module.scss';
 
@@ -12,8 +13,8 @@ import { AuthenticationProvider } from 'src/context/authentication';
 import Tooltip from 'src/components/Tooltip';
 import LanguageProvider, { useLanguage } from 'src/context/language';
 import { useGATrackPageview } from 'src/lib/ga';
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { t } from '@lingui/macro';
 import TabProvider from 'src/context/tabContext';
 
@@ -22,7 +23,7 @@ const WithLanguageStyle: React.FC<any> = ({ children }) => {
   return <div className={language}>{children}</div>;
 };
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 function App({ Component, pageProps }: AppProps) {
   useGATrackPageview();
