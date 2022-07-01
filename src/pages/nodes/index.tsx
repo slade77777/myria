@@ -9,7 +9,7 @@ import ChartIcon from '../../components/icons/ChartIcon';
 import ChevronDownIcon from '../../components/icons/ChevronDownIcon';
 import StarIcon from '../../components/icons/StarIcon';
 import UserIcon from '../../components/icons/UserIcon';
-import Page from '../../components/Page';
+import Page from 'src/components/Page';
 import { paddingX } from '../../utils';
 
 import { useWalletContext } from 'src/context/wallet';
@@ -186,8 +186,9 @@ const Nodes: React.FC = () => {
   // }, [address, user, loginByWalletMutation, userProfileQuery]);
 
   return (
-    <Page headerClassName="hidden">
-      <Header />
+    <Page action="start-building">
+      {/* <Page headerClassName="hidden">
+      <Header /> */}
       <div className="pt-[120px]">
         <div className={clsx(paddingX, 'relative isolate mt-10 pt-12 md:pt-[150px]')}>
           <img

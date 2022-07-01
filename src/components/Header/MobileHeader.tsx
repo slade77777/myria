@@ -27,15 +27,10 @@ type OverlayProps = {
 };
 
 export const links: NavItem[] = [
-  linkSources.home,
   linkSources.games,
-  linkSources.store,
+  linkSources.marketplace,
   linkSources.nodes,
-  linkSources.ecosystem,
-  linkSources.forDevelopers,
-  linkSources.ourSolution,
-  linkSources.about,
-  linkSources.community
+  linkSources.buildWithMyria
 ];
 
 const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
@@ -128,7 +123,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
           paddingTop: navHeightMobile
         }}
         className="flex h-full w-full flex-col bg-dark/70 backdrop-blur-lg transition duration-500">
-        <div className="flex">
+        {/* <div className="flex">
           {tabRoutes.map((item) => (
             <Link key={item.href} href={item.href}>
               <a
@@ -142,7 +137,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
               </a>
             </Link>
           ))}
-        </div>
+        </div> */}
         <ul
           style={{
             overscrollBehavior: 'contain'

@@ -32,10 +32,13 @@ const LanguageSwitcher: React.FC<Props> = ({ isMobile }) => {
           </button>
         ) : (
           <button className="caption flex items-center whitespace-nowrap font-medium focus:outline-none open:text-brand-gold">
-            {languages[language]}
-            <span className="w-6">
+            <button className="w-[30px] text-white focus:outline-none">
+              <LanguageIcon />
+            </button>
+            {/* {languages[language]} */}
+            {/* <span className="w-6">
               <ChevronDownIcon />
-            </span>
+            </span> */}
           </button>
         )}
       </DropdownMenu.Trigger>
