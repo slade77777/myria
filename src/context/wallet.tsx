@@ -128,7 +128,7 @@ export const WalletProvider: React.FC = ({ children }) => {
       value={{
         address,
         signerProviderApi: signerProviderApi,
-        readerProviderApi,
+        readerProviderApi: readerProviderApi as any,
         chainId,
         onConnect,
         ready,
