@@ -23,13 +23,18 @@ interface IWalletContext {
 const WalletContext = React.createContext<IWalletContext>({} as IWalletContext);
 const defaultEnvChainId =  parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '0x1');
 
-function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvider {
-  return new ethers.providers.InfuraProvider(
-    chainid,
-      {
-        projectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_SECRET,
-      }
-  )
+function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvider | null{
+  try {
+    return new ethers.providers.InfuraProvider(
+      chainid,
+        {
+          projectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_SECRET,
+        }
+    )  
+  } catch (error) {
+    return null;
+  }
+  
 }
 
 export const WalletProvider: React.FC = ({ children }) => {
@@ -39,7 +44,7 @@ export const WalletProvider: React.FC = ({ children }) => {
   const [chainId, setChainId] = React.useState<number | undefined>(undefined);
   const [w3Provider, setW3Provider] = useState<any>();
   const [signerProviderApi, setSignerProviderApi] = useState<ethers.providers.Web3Provider>();
-  const [readerProviderApi, setReaderProvider] = useState<ReaderProvider | undefined>(
+  const [readerProviderApi, setReaderProvider] = useState<ReaderProvider | null>(
     createReaderProvider()
   );
   const { event } = useGA4();
