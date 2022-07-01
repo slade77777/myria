@@ -1,103 +1,77 @@
-## Getting Started
+# Turborepo starter
 
-First, run the development server:
+This is an official Yarn v1 starter turborepo.
 
-```bash
-yarn
-yarn dev
+## What's inside?
+
+This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes the following packages/apps:
+
+### Apps and Packages
+
+- `docs`: a [Next.js](https://nextjs.org) app
+- `web`: another [Next.js](https://nextjs.org) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Utilities
+
+This turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+## Setup
+
+This repository is used in the `npx create-turbo` command, and selected when choosing which package manager you wish to use with your monorepo (Yarn).
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+yarn run build
 ```
 
-# Workflow for i18n
+### Develop
 
-## For developers
+To develop all apps and packages, run the following command:
 
-### Implement a new feature
+```
+cd my-turborepo
+yarn run dev
+```
 
-- Implement the feature
-- Add `<Trans></Trans>` or `t` for new texts
-- Finish the feature, create PR to `staging` branch
+### Remote Caching
 
-For usages, find out more here: https://lingui.js.org/tutorials/react-patterns.html
+Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-- That's all
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-**Note**: Use `Trans, t` from `@lingui/macro`, not `@lingui/react`
+```
+cd my-turborepo
+npx turbo login
+```
 
-### Update content for an existing feature
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-- Only change the text
-- Create PR to `staging` branch
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
 
-## For staging maintainers
+```
+npx turbo link
+```
 
-- Merge `staging` to `i18n` branch
-- Run `yarn sync` to sync all new translation keys
-- Request translators to translate new messages
-- Once translation are done, run `yarn sync` again to sync new translation messages
-- Create PR to `staging`
+## Useful Links
 
---
+Learn more about the power of Turborepo:
 
-- After a period, run `yarn sync-and-purge` to remove unused keys on staging (translation.io)
-
-## For translator
-
-- Access translation.io after receiving request from devs
-- Filter all untranslated messages
-- Translate all those messages
-- Inform devs after done
-
-## To add new locales
-
-- Add a new locale on translation.io
-- Copy settings to the file config (lingui) in code
-- Run `yarn sync`
-
-# Convention
-
-## Structure
-
-- Put all components in `src/components` with PascalCase name, e.g. `src/components/Button.tsx`
-- If a component belongs to a specific page, put it in the respective page folder `src/components/[page]/[ComponentName]`, e.g. `src/components/home/Hero.tsx`
-- If a component has many small separate components/utils, put them in a folder `src/components/[ComponentName]/[ComponentName]`, e.g. `src/components/Header/Header.tsx` and export it in `src/components/Header/index.tsx`
-
-## Images
-
-- Put images in its respective page folder with kebab-case name `public/images/[page]/[image-name]`, e.g. `src/images/home/header-bg.png`
-- If an image need an optimized format, optimize it and name it into `[image-name]_op.[ext]`, e.g. `src/images/home/header-bg_op.png`
-
-## Styling
-
-- Use tailwindcss for all cases, except some edge case
-- Refer to tailwindcss documentation for more information, checkout tailwind.config.js for some advanced usage
-
-## Common components
-
-- If we need a special common component, like Modal, rewrite it using `radix-ui`, refer to `src/components/Collapse.tsx` component as an example
-
-- Define the className of those components in `tailwind.config.js`, if that component using animation, remember whitelist all those animation classes
-
-## Icons
-
-- Export svg from the design, and create a React component for it, put it in `src/components/icons/[Name]Icon.tsx`
-
-- Remember remove `width`, `height` and fill color with `currentColor`, refer to `src/components/icons/ArrowDownIcon.tsx` and its usage as an example, then the parent container must define `width`, `height` and `color` to use it
-
-## Node test accounts
-- User wallet:
-public key: `0x4adBbf279113e52A0368eeF6B3B00432125Cf8b0`
-private key: `af6a44d6e29c3aaedae688d4a4f8c8ae7564b5750203684c42199098a2a2ad9c`
-
-myria wallet:
-public key: `0xC0C0403307D2a89ed4aae3Fa4bD32F518398C6C5`
-private key: `7e1e49781b9fb7e52c861adbd156323b948ebfc71c705222fc06ed4b6f2bc73d`
-
-# setup wallet and import test accounts:
-- import test accounts into your wallet
-- change wallet network to ropsten
-
-# test steps:
-- select user wallet in metamask
-- in node page, connect to user wallet
-- purchase node
-- check myria wallet balance
+- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
+- [Caching](https://turborepo.org/docs/core-concepts/caching)
+- [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching)
+- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
+- [Configuration Options](https://turborepo.org/docs/reference/configuration)
+- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
