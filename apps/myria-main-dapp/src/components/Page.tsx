@@ -45,7 +45,6 @@ const Page: React.FC<Props> = ({
   const handleCloseFirstTimeVisitModal = () => {
     setShowFirstTimeVisitModal(false);
   };
-  
 
   return (
     <>
