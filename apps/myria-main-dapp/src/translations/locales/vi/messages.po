@@ -1,0 +1,2835 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2022-06-14 19:43+0700\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: vi\n"
+
+#: src/components/home/Hero.tsx:136
+msgid "$MYRIA Token"
+msgstr ""
+"Token $MYRIA\n"
+""
+
+#: src/pages/studios.tsx:277
+msgid "$MYRIA is the native governance and utility token that encapsulates the Myria ecosystem. Players will be able to use $MYRIA to buy, trade, upgrade, vote and more!"
+msgstr "$MYRIA là mã token tiện ích và quản trị bản địa đóng gói vào hệ sinh thái Myria. Người chơi sẽ có thể sử dụng $MYRIA để mua, giao dịch, nâng cấp, bỏ phiếu và nhiều hoạt động khác nữa!"
+
+#: src/components/for-developers/Ethereum.tsx:318
+msgid "100% Ethereum-level security guarantees; whilst increase transaction speed and throughput"
+msgstr ""
+"100% đảm bảo bảo mật cấp Ethereum; đồng thời tăng tốc độ và thông lượng giao dịch\n"
+""
+
+#: src/pages/nodes/index.tsx:134
+msgid "2 CPU Cores"
+msgstr "2 nhân CPU"
+
+#: src/pages/nodes/index.tsx:137
+msgid "60 GB Disk Space"
+msgstr "Dung Lượng Ổ Đĩa 60 GB"
+
+#: src/components/ecosystem/Backbone.tsx:45
+msgid "<0/> creates a range of free-to-play AAA games spans across an entire interconnected ecosystem, built with the new standard of interoperable NFTs."
+msgstr ""
+"<0/> tạo ra một loạt các trò chơi AAA miễn phí trải dài trên toàn hệ sinh thái được kết nối với nhau, được xây dựng bằng tiêu chuẩn mới của NFT có thể tương tác.\n"
+""
+
+#: src/components/NotiBanner.tsx:33
+msgid "<0>$MYRIA</0> Node & Token coming soon!"
+msgstr ""
+"<0>$MYRIA</0> Node & Token sắp ra mắt!\n"
+""
+
+#: src/components/sigil/Inventory.tsx:36
+msgid "<0>Be prepared as this might be the key to survival in the Myriaverse.</0>"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:386
+msgid "<0>If it’s yours, it stays yours</0> - You’ve worked hard to build that neat graveyard farm for two whole days and now it’s yours to stay… forever!"
+msgstr ""
+"<0>Nếu nó là của bạn, nó vẫn là của bạn</0> - Bạn đã làm việc chăm chỉ để xây dựng nghĩa trang gọn gàng đó trong suốt hai ngày và giờ đây là nơi bạn nghỉ ngơi… mãi mãi!\n"
+""
+
+#: src/pages/nodes/index.tsx:70
+msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
+msgstr "<0> Để vận hành bất kỳ chuỗi blockchain nào, bao gồm chuỗi Myria, các node cần thiết để xác minh các giao dịch mạng. Các node trong hệ sinh thái Myria sẽ được sử dụng cho nhiều hoạt động hỗ trợ mạng bao gồm mạng thử nghiệm ban đầu, sản xuất khối block và xác thực.</0><1>Ngoài vai trò là trình xác thực tiềm năng, người sở hữu node cũng sẽ được yêu cầu để - và được thưởng cho các chức năng mạng chuỗi blockchain phụ trợ khi hệ sinh thái Myria trở nên ưu việt hơn. Chúng bao gồm nhu cầu lưu trữ phi tập trung đối với một số thông tin quan trọng nhất định trong hệ sinh thái Myria, oracle, bỏ phiếu quản trị, cũng như biểu quyết về các khái niệm dành riêng cho trò chơi.</1>"
+
+#: src/pages/studios.tsx:214
+msgid "<0>Interoperable</0> & Interconnected NFTs"
+msgstr "<0>Các NFT có thể tương tác</0> & được kết nối với nhau"
+
+#: src/pages/nodes/index.tsx:90
+msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
+msgstr "<0>Các nhà khai thác node Myria sẽ nhận được phần thưởng mã token $MYRIA hàng ngày cho các node hoạt động.</0><1>Người sở hữu node cũng sẽ được thưởng NFT và mã token trên cơ sở số điểm danh tiếng của họ với tư cách là nhà khai thác node và thành viên cộng đồng nói chung.</1><2>Số điểm danh tiếng sẽ được xác định bởi hoạt động chơi của các người sở hữu node, số mã token họ sở hữu và đặt cược, các chỉ số thời gian hoạt động trước đó, và lịch sử hỗ trợ mạng của họ (ví dụ: xác thực hoặc nhà cung cấp oracle) </2>"
+
+#: src/pages/inventory.tsx:100
+msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
+msgstr ""
+"<0>Ngay khi các Dấu hiệu hoạt động, chúng sẽ được đúc trực tiếp trên Myria</0>\n"
+""
+
+#: src/hooks/useGamesData.tsx:379
+msgid "<0>Play and earn</0> - Convert your score and time spent into tangible rewards (when Beta kicks in). Addictive fun aside, not a single day of gameplay will be time wasted."
+msgstr ""
+"<0>Chơi và kiếm tiền</0> - Chuyển đổi điểm số và thời gian của bạn thành phần thưởng hữu hình (khi bản Beta bắt đầu). Hãy đặt những niềm vui gây nghiện sang một bên,  một ngày không chơi game cũng sẽ không bị lãng phí thời gian.\n"
+""
+
+#: src/pages/games.tsx:26
+msgid "<0>Play</0> and earn <1/> rewards and NFTs"
+msgstr ""
+"<0>Chơi</0> và kiếm <1/> tiền thướng và NFT\n"
+""
+
+#: src/hooks/useGamesData.tsx:392
+msgid "<0>Resourcefulness rules!</0> - Overcome your competition with the best strategy and become the master of Moonville."
+msgstr ""
+"<0>Quy tắc về sự tháo vát!</0> - Vượt qua sự cạnh tranh của bạn với chiến lược tốt nhất và trở thành bậc thầy Moonville.\n"
+""
+
+#: src/components/sigil/Inventory.tsx:30
+msgid "<0>Sigils are going to be activated later in time when the mysterious Sigma mission is set into motion.</0>"
+msgstr ""
+"\n"
+""
+
+#: src/pages/inventory.tsx:89
+msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
+msgstr ""
+"<0>Các tín hiệu không hoạt động cho đến khi sứ mệnh Sigma bắt đầu hoạt động.</0>\n"
+""
+
+#: src/pages/inventory.tsx:94
+msgid "<0>T-minus 47 gigaquarks</0>"
+msgstr ""
+"<0>T-trừ 47 gigaquark</0>\n"
+""
+
+#: src/pages/nodes/index.tsx:120
+msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows, Mac and Linux. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
+msgstr ""
+"<0>Bạn có thể chọn xem bạn có muốn vận hành node của mình trên đám mây hay cục bộ không.</0><1>Phần mềm node Myria sẽ có sẵn để tải xuống trên Windows Mac và Linux. Việc vận hành node của chúng tôi không tiêu tốn nhiều tài nguyên như khai thác tiền điện tử truyền thống. Bạn sẽ có thể vận hành phần mềm node của chúng tôi từ máy tính tại nhà của mình với các yêu cầu tối thiểu sau:</1>\n"
+""
+
+#: src/pages/studios.tsx:187
+msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
+msgstr "Một <0>hệ sinh thái phi tập trung</0> của các trò chơi và thế giới blockchain"
+
+#: src/pages/nodes/index.tsx:143
+msgid "A Stable Internet Connection"
+msgstr "Kết Nối Internet Ổn Định"
+
+#: src/components/OurGames.tsx:42
+msgid "A battle-royale shooter game"
+msgstr "Trò chơi bắn súng battle royale"
+
+#: src/hooks/useGamesData.tsx:329
+msgid "A competitive play-and-earn tycoon farming simulator."
+msgstr ""
+"Một trình mô phỏng nuôi dưỡng kinh doanh chơi và kiếm tiền cạnh tranh.\n"
+""
+
+#: src/components/home/Hero.tsx:258
+msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
+msgstr ""
+"Một nền tảng mở rộng quy mô Ethereum phi tập trung, mục đích được xây dựng cho tài sản kỹ thuật số và chơi game.\n"
+""
+
+#: src/pages/team.tsx:102
+msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
+msgstr "Một giám đốc điều hành năng động, có kinh nghiệm với hơn 8 năm trong lĩnh vực tư vấn quản lý, tập trung vào việc chuyển đổi tổ chức cho các công ty toàn cầu như Verizon, Vanguard, Kayo Streaming và hơn thế nữa. Gần đây hơn thành lập aliens.com."
+
+#: src/hooks/useGamesData.tsx:37
+msgid "A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory."
+msgstr ""
+"Một trò chơi nhiều người chơi vui nhộn sẽ chia phe của bạn khi bạn tung tăng, nhào lộn, đánh bại bạn bè và kẻ thù của mình. Chiến đấu với nó thông qua những cảnh quan ngày càng kỳ quặc và giành lấy vị trí của bạn trong đại sảnh vinh quang.\n"
+""
+
+#: src/components/Register/Register.tsx:32
+msgid "A mixture of both uppercase and lowercase letters"
+msgstr ""
+"Sự kết hợp của cả chữ hoa và chữ thường\n"
+""
+
+#: src/components/Register/Register.tsx:36
+msgid "A mixture of letters and numbers"
+msgstr ""
+"Sự kết hợp của các chữ cái và số\n"
+""
+
+#: src/components/OurGames.tsx:59
+msgid "A multiplayer go-kart racing game"
+msgstr "Trò chơi đua xe go-kart nhiều người chơi"
+
+#: src/components/OurGames.tsx:25
+msgid "A multiplayer obstacle course game"
+msgstr "Trò chơi vượt chướng ngại vật nhiều người chơi"
+
+#: src/hooks/useGamesData.tsx:355
+msgid "A rewarding experience"
+msgstr ""
+"Một kinh nghiệm bổ ích\n"
+""
+
+#: src/pages/team.tsx:42
+msgid "A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain SAAS platform."
+msgstr ""
+"Một người quản lý nội bộ tuần tự và người đề xuất Web3 với hơn 15 năm kinh nghiệm sáng lập bao gồm bốn công ty đa quốc gia được VC hậu thuẫn trong lĩnh vực công nghệ truyền thống. Gần đây, đã sáng lập aliens.com và một nền tảng blockchain SAAS.\n"
+""
+
+#: src/pages/team.tsx:162
+msgid "AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others."
+msgstr "AJ có hơn 20 năm kinh nghiệm thiết kế đa ngành— từ thiết kế web và quần áo, đến tạo hình nhận diện thương hiệu. Ông đã làm việc với các thương hiệu toàn cầu bao gồm Nike, Adidas và Microsoft, nhiều hãng khác."
+
+#: src/components/Footer.tsx:92
+#: src/components/Header/linkSources.tsx:64
+msgid "About"
+msgstr "Giới thiệu"
+
+#: src/hooks/useGamesData.tsx:66
+#: src/hooks/useGamesData.tsx:142
+#: src/hooks/useGamesData.tsx:221
+#: src/hooks/useGamesData.tsx:280
+#: src/hooks/useGamesData.tsx:348
+msgid "About the game"
+msgstr ""
+"Giới thiệu về trò chơi\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:65
+msgid "Accept"
+msgstr ""
+
+#: src/pages/nodes/purchase-complete.tsx:45
+msgid "Access node dashboard"
+msgstr ""
+"Truy cập bảng điều khiển nút\n"
+""
+
+#: src/pages/for-studios.tsx:50
+msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
+msgstr "Tiếp cận hỗ trợ giáo dục và kỹ thuật liên tục để đảm bảo tham gia thành công vào blockchain."
+
+#: src/components/Careers/Careers.tsx:59
+msgid "All"
+msgstr ""
+"Tất cả\n"
+""
+
+#: src/components/home/Hero.tsx:82
+msgid "Alliance Sigil NFT Launch"
+msgstr ""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:59
+msgid "Already have an account?"
+msgstr ""
+"Bạn đã có một tài khoản?\n"
+""
+
+#: src/pages/for-studios.tsx:82
+msgid "An end-to-end solution for token-based game economies and NFTs that benefits the community"
+msgstr "Một giải pháp đầu cuối cho nền kinh tế trò chơi dựa trên mã token và NFT mang lại lợi ích cho cộng đồng"
+
+#: src/components/OurGames.tsx:76
+msgid "An objective-based shooter game"
+msgstr "Một trò chơi bắn súng mục tiêu"
+
+#: src/pages/nodes/index.tsx:140
+msgid "An x86/X64 Processor"
+msgstr "Bộ xử lý x86/X64"
+
+#: src/pages/team.tsx:27
+msgid "Andrew has been a tech executive in the gaming industry with a career spanning over 27 years. He has worked with some of the most recognizable names in the industry, including Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway."
+msgstr "Andrew đã từng là giám đốc điều hành công nghệ trong ngành công nghiệp trò chơi với sự nghiệp kéo dài hơn 27 năm. Ngài ấy đã làm việc với một số công ty nổi tiếng nhất trong ngành, bao gồm Activision, Electronic Arts, 2K, Ubisoft, Sony và Midway."
+
+#: src/components/Video/Setting.tsx:22
+msgid "Applies to all videos"
+msgstr "Áp dụng cho tất cả các video"
+
+#: src/pages/for-developers/solution.tsx:121
+msgid "Architecture"
+msgstr ""
+"Kiến trúc\n"
+""
+
+#: src/hooks/useGamesData.tsx:145
+msgid "Are you ready for a crazy ride that is nothing short of hilarious? Hop into your shiny kart and race till your wheels burn. Can you handle the heat and destroy your opponents before they throw you off the track?"
+msgstr ""
+"Bạn đã sẵn sàng cho một chuyến đi điên cuồng mà không có gì là vui nhộn chưa? Nhảy vào chiếc xe kart sáng bóng và đua cho đến khi bánh xe bùng cháy. Bạn có thể xử lý sức nóng và tiêu diệt đối thủ của bạn trước khi họ ném bạn ra khỏi đường đua?\n"
+""
+
+#: src/pages/team.tsx:160
+msgid "Art Creative Lead"
+msgstr "Trưởng Nhóm Sáng Tạo Nghệ Thuật"
+
+#: src/components/interop/DesktopInterop.tsx:227
+#: src/components/interop/MobileInterop.tsx:131
+msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
+msgstr "Tại Myria, chúng tôi tin rằng NFT không chỉ mang lại cho người chơi quyền sở hữu có thể xác minh được mà còn cho phép người chơi chuyển NFT của họ từ trò chơi này sang trò chơi khác."
+
+#: src/components/Register/Register.tsx:28
+msgid "At least 8 characters—the more characters, the better"
+msgstr ""
+"Ít nhất 8 ký tự — càng nhiều ký tự, càng tốt\n"
+""
+
+#: src/components/Video/Setting.tsx:19
+msgid "Autoplay"
+msgstr "Tự động chơi"
+
+#: src/components/nodes/mint-assets/index.tsx:82
+msgid "Available to mint"
+msgstr ""
+"Có sẵn cho bạc hà\n"
+""
+
+#: src/components/sigil/Header.tsx:27
+msgid "BACK TO MYRIA HOME"
+msgstr ""
+"QUAY VỀ TRANG CHỦ MYRIA\n"
+""
+
+#: src/pages/inventory.tsx:116
+msgid "BACK TO SIGIL DASHBOARD"
+msgstr ""
+"QUAY LẠI SIGIL DASHBOARD\n"
+""
+
+#: src/components/BuyANode.tsx:6
+#: src/pages/nodes/index.tsx:304
+msgid "BUY A NODE"
+msgstr "MUA MỘT NODE"
+
+#: src/hooks/useGamesData.tsx:240
+msgid "Battle with style!"
+msgstr ""
+"Chiến đấu phong cách!\n"
+""
+
+#: src/components/Purchase/License.tsx:70
+msgid "Be rewarded for your contribution"
+msgstr ""
+"Được thưởng vì đóng góp của bạn\n"
+""
+
+#: src/components/BuyerNodeCard.tsx:7
+#: src/components/Program.tsx:11
+msgid "Become a Myria node owner & receive rewards"
+msgstr ""
+"Trở thành chủ sở hữu node Myria và nhận phần thưởng\n"
+""
+
+#: src/pages/nodes/index.tsx:297
+msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
+msgstr "Trở thành một phần không thể thiếu của hệ sinh thái Myria và thu được những lợi ích từ sự đóng góp của bạn. Các nhà khai thác node của người sáng lập sớm nhận được giá ưu đãi, giá này sẽ tăng lên khi các node được bán."
+
+#: src/components/home/Hero.tsx:85
+msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:33
+msgid "Blockchain consultancy"
+msgstr ""
+"Tư vấn Blockchain\n"
+""
+
+#: src/pages/for-studios.tsx:79
+msgid "Blockchain infrastructure for Game Studios"
+msgstr "Cơ sở hạ tầng blockchain cho các Game Studio"
+
+#: src/pages/for-studios.tsx:21
+msgid "Blockchain platform for game studios"
+msgstr "Nền tảng blockchain cho các Game Studio"
+
+#: src/pages/team.tsx:57
+msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
+msgstr "Brendan có mười năm kinh nghiệm trong lĩnh vực blockchain. Ngài ấy đã sáng lập một giải pháp ký quỹ trên blockchain của Bitcoin, một quỹ ETF tiền điện tử trên ethereum và là trưởng nhóm blockchain cho mạng lưới blockchain tài trợ thương mại lớn nhất thế giới."
+
+#: src/components/home/Hero.tsx:248
+msgid "Bringing <0>blockchain gaming </0>to the world"
+msgstr ""
+"Đưa <0>trò chơi blockchain </0>ra thế giới\n"
+""
+
+#: src/pages/team.tsx:132
+msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
+msgstr "Brock là một nhà lãnh đạo sản phẩm công ty với hơn 10 năm kinh nghiệm làm việc trong các công ty khởi nghiệp công nghệ và sáng lập công ty MarTech của riêng mình. Gần đây hơn, ngài ấy đã hỗ trợ mở rộng quy mô một trong những công ty blockchain lớn nhất tập trung vào tokenomics và tăng trưởng sản phẩm."
+
+#: src/components/for-developers/BuildYourBlockchain.tsx:82
+msgid "Build your blockchain game with Myria"
+msgstr ""
+"Xây dựng trò chơi blockchain của bạn với Myria\n"
+""
+
+#: src/hooks/useGamesData.tsx:361
+msgid "Build, upgrade, and earn!"
+msgstr ""
+"Xây dựng, nâng cấp và kiếm tiền!\n"
+""
+
+#: src/pages/for-developers/solution.tsx:34
+msgid "Building towards a decentralized and permissionless network"
+msgstr ""
+"Xây dựng hướng tới mạng phi tập trung và không cần sự cho phép\n"
+""
+
+#: src/pages/nodes/index.tsx:208
+msgid "Buy a node"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:109
+msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
+msgstr "Mua giấy phép node sẽ mang đến cho người sở hữu quyền cvận hành node (cục bộ hoặc trên đám mây) và nhận phần thưởng theo quyết định của ban quản trị."
+
+#: src/components/home/Hero.tsx:93
+#: src/components/sigil/RewardItem.tsx:73
+msgid "CLAIM NOW"
+msgstr ""
+"YÊU CẦU NGAY\n"
+""
+
+#: src/components/nodes/dashboard/LatestReward.tsx:118
+msgid "CLAIM REWARDS"
+msgstr ""
+"YÊU CẦU PHẦN THƯỞNG\n"
+""
+
+#: src/components/inventory/InventoryItem.tsx:35
+msgid "CLAIMED"
+msgstr ""
+
+#: src/pages/team.tsx:70
+msgid "CMO"
+msgstr ""
+"CMO\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:63
+msgid "COLLECT NOW"
+msgstr ""
+"THU THẬP NGAY\n"
+""
+
+#: src/components/games/GameList.tsx:157
+#: src/components/home/Hero.tsx:133
+#: src/components/home/Hero.tsx:139
+#: src/components/home/OurGames.tsx:26
+msgid "COMING SOON"
+msgstr ""
+"SẮP RA MẮT\n"
+""
+
+#: src/components/sigil/LinkWalletConfirmModal.tsx:37
+#: src/components/sigil/Welcome.tsx:140
+msgid "CONNECT WALLET"
+msgstr ""
+"KẾT NỐI VÍ\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:68
+msgid "COPIED"
+msgstr ""
+"ĐÃ SAO CHÉP\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:68
+msgid "COPY LINK"
+msgstr ""
+"SAO CHÉP LIÊN KẾT\n"
+""
+
+#: src/pages/team.tsx:85
+msgid "CPO (People)"
+msgstr ""
+"CPO (Mọi người)\n"
+""
+
+#: src/pages/for-developers/solution.tsx:25
+msgid "Cairo, allows for development of provable on-chain complexity"
+msgstr ""
+"Cairo, cho phép phát triển sự phức tạp trên chuỗi có thể chứng minh được\n"
+""
+
+#: src/components/Footer.tsx:108
+#: src/components/Header/linkSources.tsx:84
+msgid "Careers"
+msgstr "Sự nghiệp"
+
+#: src/hooks/useGamesData.tsx:290
+msgid "Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?"
+msgstr ""
+"Hãy lựa chọn cẩn thận thiết bị phù hợp khi bắt đầu vòng đấu. Bạn có thể muốn bắn kẻ thù của mình từ xa hoặc thiêu rụi toàn bộ cấp độ xuống đất - đó là lựa chọn của bạn. Bạn có những gì nó cần thiết để trở thành bậc thầy hủy diệt?\n"
+""
+
+#: src/pages/sigil/index.tsx:135
+msgid "Choose Alliance"
+msgstr ""
+"Chọn Liên minh\n"
+""
+
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:78
+msgid "Choose Wisely!"
+msgstr ""
+"Chọn Sáng suốt\n"
+""
+
+#: src/hooks/useGamesData.tsx:242
+msgid "Choose the best outfit that expresses your inner self. Unlock and collect multiple cosmetic skins and items that will carry across other games as interoperable NFTs."
+msgstr ""
+"Chọn trang phục tốt nhất thể hiện nội tâm của bạn. Mở khóa và thu thập nhiều skin mỹ phẩm và các vật phẩm sẽ mang qua các trò chơi khác dưới dạng NFT tương thích.\n"
+""
+
+#: src/hooks/useGamesData.tsx:87
+msgid "Choose the best outfit that expresses your personality. Unlock and collect multiple cosmetic skins and items that will carry over to other games as interoperable NFTs."
+msgstr ""
+"Chọn trang phục tốt nhất thể hiện cá tính của bạn. Mở khóa và thu thập nhiều skin mỹ phẩm và các vật phẩm sẽ chuyển sang các trò chơi khác dưới dạng NFT tương thích.\n"
+""
+
+#: src/hooks/useGamesData.tsx:81
+msgid "Choose the game mode that best suits your playstyle and fight for your right to party! Play alone or with friends and collect endless rewards."
+msgstr ""
+"Chọn chế độ chơi phù hợp nhất với phong cách chơi của bạn và chiến đấu vì quyền dự tiệc của bạn! Chơi một mình hoặc với bạn bè và thu thập phần thưởng vô tận.\n"
+""
+
+#: src/hooks/useGamesData.tsx:234
+msgid "Choose your champion"
+msgstr ""
+"Chọn nhà vô địch của bạn\n"
+""
+
+#: src/components/nodes/rewards/TotalRewards.tsx:15
+msgid "Claim All"
+msgstr ""
+"Yêu cầu Tất cả\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:49
+msgid "Claim rewards"
+msgstr ""
+"Yêu cầu Phần thưởng\n"
+""
+
+#: src/pages/sigil/index.tsx:138
+msgid "Claim your NFT reward"
+msgstr ""
+"Yêu cầu phần thưởng NFT của bạn\n"
+""
+
+#: src/components/sigil/RewardItem.tsx:81
+msgid "Claimed"
+msgstr ""
+"Đã yêu cầu\n"
+""
+
+#: src/pages/team.tsx:40
+msgid "Co-Founder - CEO"
+msgstr ""
+"Đồng sáng lập -  Giám đốc điều hành\n"
+""
+
+#: src/pages/team.tsx:25
+msgid "Co-Founder - CTO"
+msgstr "Đồng Sáng Lập - Giám Đốc Công Nghệ"
+
+#: src/pages/team.tsx:55
+msgid "Co-Founder - Head of Blockchain"
+msgstr ""
+"Đồng sáng lập - Trưởng Bộ phận Blockchain\n"
+""
+
+#: src/pages/team.tsx:100
+msgid "Co-Founder - Operations"
+msgstr "Đồng Sáng Lập - Vận Hành"
+
+#: src/pages/team.tsx:115
+msgid "Co-Founder, VP Games"
+msgstr ""
+"Đồng sáng lập, Trò chơi VP\n"
+""
+
+#: src/components/nodes/rewards/RewardList.tsx:149
+msgid "Collect ALL"
+msgstr ""
+"Thu thập TẤT CẢ\n"
+""
+
+#: src/components/nodes/rewards/RewardList.tsx:155
+msgid "Collect REWARDS"
+msgstr ""
+"Thu thập PHẦN THƯỞNG\n"
+""
+
+#: src/hooks/useGamesData.tsx:159
+msgid "Combine the right amount of acceleration, handling, and looks to nail the right recipe for the current track. You can also sprinkle in a bit of armour – just to play it safe – because, as my grandma always says, “if you ain’t ready for some rockets down the road, boy, you better come home!”"
+msgstr ""
+"Kết hợp mức độ tăng tốc, xử lý và ngoại hình phù hợp để tạo ra công thức phù hợp cho đường đua hiện tại. Bạn cũng có thể rắc vào áo giáp một chút - chỉ để chơi cho an toàn - bởi vì, như bà tôi luôn nói, \"nếu bạn chưa sẵn sàng cho tên lửa trên đường, chàng trai, tốt hơn là bạn nên về nhà!\"\n"
+""
+
+#: src/components/ComingSoon.tsx:46
+msgid "Coming Soon"
+msgstr "Sắp Ra Mắt"
+
+#: src/components/Header/linkSources.tsx:91
+msgid "Community"
+msgstr "Cộng Đồng"
+
+#: src/hooks/useGamesData.tsx:79
+msgid "Compete, survive, win and earn!"
+msgstr ""
+"Cạnh tranh, tồn tại, chiến thắng và kiếm tiền!\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:190
+msgid "Complete"
+msgstr ""
+"Hoàn thành\n"
+""
+
+#: src/pages/for-developers/solution.tsx:28
+msgid "Complete privacy, not only from other users, but also from the Operator."
+msgstr ""
+"Hoàn toàn bảo mật, không chỉ từ những người dùng khác, mà còn từ Nhà điều hành.\n"
+""
+
+#: src/components/for-developers/Myria.tsx:45
+msgid "Compliance support"
+msgstr ""
+"Hỗ trợ tuân thủ\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:92
+msgid "Configure your node and view your rewards in the dashboard"
+msgstr ""
+"Định cấu hình node và xem phần thưởng của bạn trong trang tổng quan\n"
+""
+
+#: src/components/Register/Register.tsx:222
+#: src/components/ResetPassword/ResetPassword.tsx:86
+msgid "Confirm password"
+msgstr ""
+"Xác nhận mật khẩu\n"
+""
+
+#: src/components/Register/Register.tsx:62
+#: src/components/ResetPassword/ResetPassword.tsx:25
+msgid "Confirm password is required!"
+msgstr ""
+"Xác nhận mật khẩu là bắt buộc!\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:70
+msgid "Congratulations!"
+msgstr ""
+"Xin chúc mừng!\n"
+""
+
+#: src/pages/sigil/index.tsx:132
+msgid "Connect Wallet"
+msgstr ""
+"Kết nối Ví\n"
+""
+
+#: src/components/sigil/Welcome.tsx:98
+msgid "Connect to your wallet to enter the Myriaverse"
+msgstr ""
+"Kết nối với ví của bạn để vào Myriaverse\n"
+""
+
+#: src/components/nodes/Header.tsx:152
+#: src/pages/nodes/index.tsx:208
+msgid "Connect wallet"
+msgstr ""
+
+#: src/pages/contact.tsx:52
+msgid "Connect with us"
+msgstr "Kết nối với chúng tôi"
+
+#: src/pages/for-gamers.tsx:113
+msgid "Connecting the world through <0>play</0>"
+msgstr "Kết nối thế giới thông qua <0>trò chơi</0>"
+
+#: src/pages/_app.tsx:33
+msgid "Connecting the world through play"
+msgstr "Kết nối thế giới thông qua trò chơi"
+
+#: src/components/Footer.tsx:118
+msgid "Contact Us"
+msgstr "Liên hệ Chúng tôi"
+
+#: src/pages/contact.tsx:37
+msgid "Contact us"
+msgstr "Liên hệ chúng tôi"
+
+#: src/pages/team.tsx:212
+msgid "Contributing to the future of a decentralized internet"
+msgstr ""
+"Đóng góp vào tương lai của mạng Internet phi tập trung\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:88
+msgid "Copy invite link"
+msgstr ""
+"\n"
+""
+
+#: src/pages/team.tsx:147
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr "Craig có hơn 10 năm kinh nghiệm trong lĩnh vực thiết kế giao diện người dùng/trải nghiệm người dùng web và ứng dụng và tạo ra các bản sắc thương hiệu hàng đầu. Ngài ấy đã làm việc cho các công ty toàn cầu trong các ngành như thông tin truyền thông, tổ chức tài chính, truyền thông và các ngành khác."
+
+#: src/pages/nodes/purchase-complete.tsx:41
+#: src/pages/nodes/purchase-complete.tsx:81
+msgid "Create an account"
+msgstr "Tạo tài khoản mới"
+
+#: src/pages/studios.tsx:163
+msgid "Creating the new standard for blockchain games and experiences"
+msgstr ""
+"Tạo ra tiêu chuẩn mới cho các trò chơi và trải nghiệm blockchain\n"
+""
+
+#: src/components/home/Hero.tsx:114
+#: src/pages/cricket.tsx:96
+msgid "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
+msgstr ""
+
+#: src/components/nodes/dashboard/TimeOnline.tsx:9
+msgid "Current Node Cycle"
+msgstr ""
+"Chu kỳ Node Hiện tại\n"
+""
+
+#: src/pages/careers/index.tsx:22
+msgid "Current Openings"
+msgstr ""
+"Cơ hội Mở Hiện tại\n"
+""
+
+#: src/hooks/useGamesData.tsx:369
+msgid "Customize your Moon Village with a range of cosmetic skins for various buildings and crew. These skins are NFTs, therefore remain yours forever, and are reusable across games."
+msgstr ""
+"Tùy chỉnh Moon Village của bạn với nhiều loại giao diện mỹ phẩm cho các tòa nhà và phi hành đoàn khác nhau. Những giao diện này là NFT, do đó sẽ mãi mãi là của bạn và có thể tái sử dụng trong các trò chơi.\n"
+""
+
+#: src/pages/nodes/index.tsx:28
+msgid "Daily $MYRIA token rewards"
+msgstr "Phần thưởng mã token $MYRIA hàng ngày"
+
+#: src/components/nodes/Sidebar2.tsx:11
+msgid "Dashboard"
+msgstr ""
+"Bảng điều khiển\n"
+""
+
+#: src/components/sigil/Profile.tsx:71
+msgid "Date Registered"
+msgstr ""
+"Ngày đăng ký\n"
+""
+
+#: src/pages/team.tsx:72
+msgid "Dave has over 25 years of marketing and management experience. He previously led marketing at Banxa and Rockstar Games. Dave also founded Marley Spoon; taking the company from inception to IPO."
+msgstr ""
+"Dave đã có hơn 25 năm kinh nghiệm quản lý và tiếp thị. Trước đây anh ấy đã từng là trưởng bộ phận tiếp thị tại Banxa và Rockstar Games. Dave cũng sáng lập Marley Spoon; đưa công ty từ khi thành lập đến khi IPO.\n"
+""
+
+#: src/pages/nodes/index.tsx:196
+msgid "Decentralize the network by providing computing resources"
+msgstr "Phân quyền mạng bằng cách cung cấp tài nguyên máy tính"
+
+#: src/pages/nodes/index.tsx:160
+msgid "Details will be announced soon."
+msgstr "Thông tin chi tiết sẽ sớm được công bố."
+
+#: src/components/nodes/Header.tsx:142
+msgid "Disconnect"
+msgstr ""
+
+#: src/components/home/OurGames.tsx:46
+msgid "Discover more"
+msgstr ""
+"Khám phá thêm\n"
+""
+
+#: src/hooks/useGamesData.tsx:224
+msgid "Dive in, we dare you. You’ll find yourself gracefully descending from the sky while you survey the lands to select your ideal landing spot. Enjoy that moment of peace, because once your feet touch the ground you’ll be plunged into an intense battle for loot and powerful equipment.As expected, life in this world ain’t easy, and at given intervals of time the playable area of the map will shrink, pushing you closer to your enemies. Needless to say, they ain’t waiting for you in a bed of roses, so be prepared!"
+msgstr ""
+"Hãy lao xuống, chúng tôi thách bạn. Bạn sẽ thấy mình từ trên trời rơi xuống một cách duyên dáng trong khi khảo sát các vùng đất để chọn điểm hạ cánh lý tưởng cho mình. Hãy tận hưởng khoảnh khắc yên bình đó, bởi vì một khi chân chạm đất, bạn sẽ chìm vào một cuộc chiến căng thẳng để giành lấy chiến lợi phẩm và thiết bị mạnh mẽ. Như đã dự đoán, cuộc sống trong thế giới này không hề dễ dàng và trong những thời khắc nhất định, khu vực có thể chơi được trên bản đồ sẽ thu hẹp lại, đẩy bạn đến gần kẻ thù hơn. Không cần phải nói, họ không chờ bạn trên một thảm hoa hồng, vì vậy hãy chuẩn bị tinh thần!\n"
+""
+
+#: src/components/sigil/LinkWalletConfirmModal.tsx:21
+msgid "Do you want to link your wallet {0} to your Myria account?"
+msgstr ""
+"Bạn có muốn liên kết ví {0} với tài khoản Myria của bạn không?\n"
+""
+
+#: src/components/sigil/Welcome.tsx:113
+msgid "Don't have a wallet yet? <0/>Install Metamask below."
+msgstr ""
+"Bạn chưa có ví? <0/>Cài đặt Metamask bên dưới.\n"
+""
+
+#: src/hooks/useGamesData.tsx:114
+msgid "Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse."
+msgstr ""
+"Lướt qua các đường đua ly kỳ trong cuộc đua về đích. Hãy tận hưởng niềm vui bất tận khi bắn vào đối thủ và tàn phá tất cả xung quanh bạn để kiếm thêm điểm và leo lên bảng xếp hạng. Đi sâu vào nhiều chế độ chơi và đường đua của chúng tôi để giành lấy vị trí xứng đáng trong số các huyền thoại đường đua của Myriaverse.\n"
+""
+
+#: src/hooks/useGamesData.tsx:151
+msgid "Drift it up!"
+msgstr ""
+"Hãy thả trôi nó!\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:102
+msgid "Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle."
+msgstr ""
+"Được thúc đẩy bằng việc tìm kiếm kiến thức, Equinox thu thập mọi thông tin mà họ có thể tìm thấy. Đâu đó trong tất cả dữ liệu này phải là câu trả lời cho hòa bình. Bạn có thể là người cuối cùng mở khóa câu đố đó.\n"
+""
+
+#: src/pages/nodes/index.tsx:43
+msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
+msgstr "Mỗi node được phép bỏ phiếu về các thay đổi được đề xuất đối với chuỗi Myria và các node cũng sẽ có quyền bỏ phiếu lớn hơn trong toàn bộ Myriaverse"
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:113
+msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:77
+msgid "Earn {point} points by completing account creation"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:143
+msgid "Earn {point} points by following @myriagames on Twitter"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:151
+msgid "Earn {point} points by following myriagames on Instagram"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:84
+msgid "Earn {point} points by joining the Myria Discord server"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:125
+msgid "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:135
+msgid "Earn {point} points by sharing a tweet about Myria"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:101
+msgid "Earn {point} points for each day you send a message to any Myria Discord channel"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:94
+msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:119
+msgid "Earn {point} points when you add a thumbs up reaction to a message on the #myria-lore channel"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:107
+msgid "Earn {point} points when you send your first message on any Myria Discord channel"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:350
+msgid "Easy to play, difficult to master. Select the right terrain to base your industrial revolution. Choose wisely, as this will determine the types of resources and production opportunities available to you. Make sure to look after your base in order to increase your score and climb the ranks. At the end of each tournament, the competition is reset, so don’t worry if you get it wrong the first time!"
+msgstr ""
+"Dễ chơi, khó trở thành bậc thầy. Chọn địa hình phù hợp để làm căn cứ cho cuộc cách mạng công nghiệp của bạn. Hãy lựa chọn sáng suốt, vì điều này sẽ xác định các loại tài nguyên và cơ hội sản xuất sẵn có cho bạn. Đảm bảo trông coi căn cứ của bạn để tăng điểm và leo lên thứ hạng. Vào cuối mỗi giải đấu, cuộc thi sẽ được đặt lại, vì vậy đừng lo lắng nếu bạn sai lần đầu tiên!\n"
+""
+
+#: src/components/Footer.tsx:41
+#: src/components/Header/linkSources.tsx:15
+msgid "Ecosystem"
+msgstr "Hệ sinh thái"
+
+#: src/pages/for-studios.tsx:48
+msgid "Education and support"
+msgstr "Giáo dục và hỗ trợ"
+
+#: src/hooks/useGamesData.tsx:193
+msgid "Eliminate your opponents in this fast-paced-action-packed-survival game, to achieve victory and claim the spoils of war. There can be only one hero or team standing when the crimson curtain hits the ground."
+msgstr ""
+"Loại bỏ đối thủ của bạn trong trò chơi sinh tồn hành động nhịp độ nhanh này, để đạt được chiến thắng và giành lấy chiến lợi phẩm. Chỉ có thể có một anh hùng hoặc một đội có chỗ đứng khi bức màn đỏ thẫm chạm đất.\n"
+""
+
+#: src/components/GetInTouch.tsx:82
+#: src/components/Register/Register.tsx:195
+msgid "Email"
+msgstr ""
+"Email\n"
+""
+
+#: src/pages/cricket.tsx:107
+msgid "Email address"
+msgstr ""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:18
+#: src/components/GetInTouch.tsx:27
+#: src/components/Register/Register.tsx:54
+#: src/components/SignIn/SignIn.tsx:22
+#: src/components/Subscribe.tsx:21
+#: src/components/for-developers/BuildYourBlockchain.tsx:37
+#: src/pages/cricket.tsx:28
+msgid "Email is required!"
+msgstr "Email là cần thiết!"
+
+#: src/components/for-developers/Ethereum.tsx:148
+msgid "Empower mainstream adoption to Ethereum using Myria’s scaling solution"
+msgstr ""
+"Trao quyền cho việc áp dụng chính thống đối với Ethereum bằng giải pháp mở rộng quy mô của Myria\n"
+""
+
+#: src/pages/for-gamers.tsx:33
+msgid "Empowering players"
+msgstr "Trao quyền cho người chơi"
+
+#: src/pages/for-developers/index.tsx:40
+msgid "Enabling digital asset scalability on Ethereum"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:22
+msgid "Enabling true scalability while leveraging the Ethereum network"
+msgstr ""
+"Kích hoạt tính năng mở rộng thực sự trong khi tận dụng mạng Ethereum\n"
+""
+
+#: src/hooks/useGamesData.tsx:73
+msgid "Endless online fun"
+msgstr ""
+"Niềm vui trực tuyến bất tận\n"
+""
+
+#: src/pages/ecosystem.tsx:25
+msgid "Enhancing the power of play through blockchain"
+msgstr ""
+"Tăng cường sức mạnh của trò chơi thông qua blockchain\n"
+""
+
+#: src/components/ResetPassword/ResetPassword.tsx:70
+msgid "Enter a password"
+msgstr ""
+"Nhập mật khẩu\n"
+""
+
+#: src/components/for-developers/Myria.tsx:34
+msgid "Enter the new era of web3.0 with confidence"
+msgstr ""
+"Tự tin bước vào kỷ nguyên mới của web3.0\n"
+""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:47
+#: src/components/SignIn/SignIn.tsx:56
+msgid "Enter your email"
+msgstr ""
+"Nhập email của bạn\n"
+""
+
+#: src/components/Subscribe.tsx:75
+msgid "Enter your email address"
+msgstr "Nhập địa chỉ email của bạn"
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:42
+msgid "Enter your email address to reset your password"
+msgstr ""
+"Nhập địa chỉ email của bạn để đặt lại mật khẩu của bạn\n"
+""
+
+#: src/components/Register/Register.tsx:206
+#: src/components/SignIn/SignIn.tsx:64
+msgid "Enter your password"
+msgstr ""
+"Nhập mật khẩu của bạn\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:96
+msgid "Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers."
+msgstr ""
+"Equinox theo đuổi sự cân bằng trong Myriaverse và tin rằng có lẽ nhân loại và Rift có thể cùng tồn tại. Họ tích cực khám phá Rift, tìm kiếm câu trả lời.\n"
+""
+
+#: src/pages/for-developers/solution.tsx:14
+msgid "Ethereum-level security provided by zk-STARKs"
+msgstr ""
+"Bảo mật cấp Ethereum được cung cấp bởi zk-STARKs\n"
+""
+
+#: src/hooks/useGamesData.tsx:296
+msgid "Every hero has three unique abilities, each requiring charges, as well as one ultimate ability that requires charging through kills, deaths, collectibles, or objectives. It’s easier than it sounds, and even funnier…"
+msgstr ""
+"Mỗi anh hùng đều có ba khả năng riêng biệt, mỗi khả năng yêu cầu tính phí, cũng như một khả năng cuối cùng yêu cầu tính phí thông qua tiêu diệt, chết, thu thập hoặc mục tiêu. Nó dễ hơn so với âm thanh và thậm chí còn hài hước hơn…\n"
+""
+
+#: src/pages/nodes/index.tsx:55
+msgid "Exclusive NFTs"
+msgstr "NFT độc quyền"
+
+#: src/components/for-developers/Myria.tsx:24
+msgid "Experience low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution."
+msgstr ""
+"Vì phí giao dịch thấp và tốc độ thông lượng cao lên đến 9000 giao dịch mỗi giây với giải pháp mở rộng Myria của chúng tôi.\n"
+""
+
+#: src/components/FirstTimeVisitModal.tsx:63
+msgid "FOLLOW US ON TWITTER"
+msgstr "HÃY THEO DÕI CHÚNG TỐI TRÊN TWITTER"
+
+#: src/context/tabContext.tsx:33
+msgid "FOR DEVELOPERS"
+msgstr ""
+"DANH CHO CÁC NHÀ PHÁT TRIỂN\n"
+""
+
+#: src/context/tabContext.tsx:27
+msgid "FOR GAMERS"
+msgstr ""
+"DÀNH CHO NGƯỜI CHƠI TRÒ CHƠI\n"
+""
+
+#: src/pages/for-developers/solution.tsx:127
+msgid "Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1 data availability provide Ethereum-level security."
+msgstr ""
+"Thời gian xác nhận giao dịch nhanh chóng được cung cấp bởi chuỗi L2, trong khi  các bằng chứng zk và sự khả dụngcủa dữ liệu L1 cung cấp bảo mật cấp độ Ethereum.\n"
+""
+
+#: src/hooks/useGamesData.tsx:373
+msgid "Features"
+msgstr ""
+"Đặc điểm\n"
+""
+
+#: src/components/Careers/Careers.tsx:42
+msgid "Filter by Department"
+msgstr ""
+"Bộ lọc theo Bộ phận\n"
+""
+
+#: src/components/Register/Register.tsx:161
+msgid "First name"
+msgstr ""
+"Tên\n"
+""
+
+#: src/components/Register/Register.tsx:48
+msgid "First name is required!"
+msgstr ""
+"Tên là bắt buộc!\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:146
+msgid "Follow on Instagram"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:138
+msgid "Follow on Twitter"
+msgstr ""
+
+#: src/components/Footer.tsx:62
+#: src/components/Footer.tsx:69
+msgid "For Developers"
+msgstr ""
+"Danh cho các nhà phát triển\n"
+""
+
+#: src/components/SignIn/SignIn.tsx:79
+msgid "Forgot your password?"
+msgstr ""
+"Quên mật khẩu?\n"
+""
+
+#: src/pages/index.tsx:70
+msgid "Founded by leading gaming and blockchain industry veterans"
+msgstr "Được thành lập bởi những người kỳ cựu hàng đầu trong ngành công nghiệp blockchain và trò chơi"
+
+#: src/components/Header/DesktopHeader.tsx:143
+#: src/components/Header/MobileHeader.tsx:86
+msgid "Free Sigil NFT"
+msgstr ""
+"NFT Sigil miễn phí\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:55
+msgid "From wallet"
+msgstr ""
+"Từ ví\n"
+""
+
+#: src/pages/for-developers/solution.tsx:35
+msgid "Full ownership of assets, non-custodial architecture"
+msgstr ""
+"Toàn quyền sở hữu tài sản, kiến trúc không giám sát\n"
+""
+
+#: src/pages/for-developers/solution.tsx:37
+msgid "Fully open-source and community-driven development"
+msgstr ""
+"Nguồn mở hoàn toàn và phát triển dựa vào cộng đồng\n"
+""
+
+#: src/pages/for-gamers.tsx:178
+msgid "GET A NODE"
+msgstr "NHẬN NODE"
+
+#: src/components/nodes/dashboard/Licenses.tsx:11
+msgid "GET MORE LICENSES"
+msgstr ""
+"NHẬN NHIỀU GIẤY PHÉP\n"
+""
+
+#: src/pages/_app.tsx:42
+msgid "Game NFT"
+msgstr "NFT Trò Chơi "
+
+#: src/pages/for-gamers.tsx:20
+msgid "Gameplay first"
+msgstr "Chơi trò chơi trước"
+
+#: src/components/Footer.tsx:14
+#: src/components/Footer.tsx:45
+#: src/components/Header/linkSources.tsx:22
+#: src/components/nodes/NodesLayout.tsx:30
+msgid "Games"
+msgstr "Trò chơi"
+
+#: src/components/ecosystem/Platform.tsx:12
+msgid "Games & Applications"
+msgstr ""
+"Trò chơi & Ứng dụng\n"
+""
+
+#: src/components/Program.tsx:31
+msgid "Gaming is evolving. Build with Myria!"
+msgstr ""
+"Trò chơi đang phát triển. Xây dựng với Myria!\n"
+""
+
+#: src/components/for-developers/Myria.tsx:62
+msgid "Gaming is evolving. Build with Myria."
+msgstr ""
+"Trò chơi đang phát triển. Xây dựng với Myria.\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:28
+msgid "Gas Fee"
+msgstr ""
+"Phí Gas\n"
+""
+
+#: src/hooks/useGamesData.tsx:230
+msgid "Gather and upgrade the best equipment on the battlefield. Collect power-ups and build combat facilities to overcome your foes. You can deal with this harsh reality alone or with your friends in a team of three."
+msgstr ""
+"Thu thập và nâng cấp các thiết bị tốt nhất trên chiến trường. Thu thập sức mạnh và xây dựng các phương tiện chiến đấu để vượt qua kẻ thù của bạn. Bạn có thể đối phó với thực tế khắc nghiệt này một mình hoặc với bạn bè  trong một nhóm ba người.\n"
+""
+
+#: src/components/Footer.tsx:88
+msgid "General"
+msgstr ""
+"Chung\n"
+""
+
+#: src/pages/for-developers/solution.tsx:68
+msgid "General purpose zk-rollup"
+msgstr ""
+"Mục đích chung zk-rollup\n"
+""
+
+#: src/components/Footer.tsx:73
+msgid "Get Started"
+msgstr ""
+"Bắt đầu\n"
+""
+
+#: src/pages/nodes/index.tsx:294
+msgid "Get a founders node today"
+msgstr "Nhận node người sáng lập ngay hôm nay"
+
+#: src/pages/nodes/purchase-complete.tsx:78
+msgid "Get started with your Myria node."
+msgstr ""
+"Bắt đầu với node Myria của bạn.\n"
+""
+
+#: src/components/sigil/Welcome.tsx:173
+#: src/components/sigil/WelcomeMobile.tsx:21
+msgid "Go back"
+msgstr ""
+"Trở lại\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:95
+msgid "Go to my dashboard"
+msgstr ""
+"Đi tới bảng điều khiển của tôi\n"
+""
+
+#: src/pages/for-studios.tsx:37
+msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
+msgstr "Có một ý tưởng chơi game sáng tạo? Xin tài trợ để thể hiện tầm nhìn của bạn trên chuỗi Myria."
+
+#: src/components/Purchase/License.tsx:92
+msgid "Grow with us and be rewarded. A Myria Node License allows you to operate a node from your home computer to support the growth of Myria’s decentralized network. As a node owner, you’ll earn daily rewards and exclusive benefits for your contribution."
+msgstr ""
+"Phát triển cùng chúng tôi và được thưởng. Giấy phép Node Myria cho phép bạn thao tác node từ máy tính tại nhà của bạn để hỗ trợ sự phát triển của mạng phi tập trung của Myria. Là chủ sở hữu node, bạn sẽ kiếm được phần thưởng hàng ngày và các lợi ích dành riêng cho sự đóng góp của bạn.\n"
+""
+
+#: src/hooks/useGamesData.tsx:294
+msgid "Heroes don’t all wear capes"
+msgstr ""
+"Không phải tất cả các anh hùng đều mặc áo choàng\n"
+""
+
+#: src/components/Header/linkSources.tsx:8
+#: src/components/Header/linkSources.tsx:44
+#: src/components/nodes/Sidebar.tsx:19
+msgid "Home"
+msgstr "Trang chủ"
+
+#: src/pages/nodes/index.tsx:107
+msgid "How can I become a Myria node operator?"
+msgstr "Làm cách nào để tôi có thể trở thành người vận hành node Myria?"
+
+#: src/components/interop/DesktopInterop.tsx:221
+#: src/components/interop/DesktopInterop.tsx:239
+#: src/components/interop/DesktopInterop.tsx:257
+#: src/components/interop/MobileInterop.tsx:127
+#: src/components/interop/MobileInterop.tsx:150
+#: src/components/interop/MobileInterop.tsx:174
+msgid "How it works"
+msgstr "Nó hoạt động thế nào"
+
+#: src/pages/nodes/index.tsx:169
+msgid "How many Myria node licenses will be released?"
+msgstr "Có bao nhiêu giấy phép node Myria sẽ được phát hành?"
+
+#: src/pages/nodes/index.tsx:158
+msgid "How much will a Myria node license cost?"
+msgstr "Giấy phép node Myria sẽ có giá bao nhiêu?"
+
+#: src/components/sigil/ShareTwitterModal.tsx:35
+msgid "I am now a $MYRIA node owner! Join us to earn rewards, govern and build the future of virtual worlds! @MyriaGames"
+msgstr ""
+"Tôi hiện là chủ sở hữu node $MYRIA! Tham gia cùng chúng tôi để nhận phần thưởng, quản lý và xây dựng tương lai của thế giới ảo! @MyriaGames\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:57
+msgid "I have read, understood and agree to the terms of service"
+msgstr ""
+"Tôi vừa yêu cầu một Dấu hiệu Liên minh Hiếm trên Myria\n"
+""
+
+#: src/pages/game-detail/[id].tsx:121
+msgid "IN DEVELOPMENT"
+msgstr ""
+"TRONG GIAI ĐOẠN PHÁT TRIỂN\n"
+""
+
+#: src/components/JoinTheRevolution.tsx:28
+msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
+msgstr "Nếu bạn muốn tạo ra tác động thực sự trong trò chơi và blockchain, hãy tham gia với chúng tôi tại Myria. Chúng tôi đang tìm kiếm khắp thế giới để tìm ra những người giỏi nhất và sáng giá nhất để gia nhập công ty đang phát triển nhanh chóng của chúng tôi."
+
+#: src/pages/team.tsx:87
+msgid "In his role leading the People team, Damian helps Myria connect, develop and care for its global team. Damian brings decades of experience to Myria and was previously Global Head of People for Bitmex and prior to that a Managing Director in HR at Goldman Sachs."
+msgstr ""
+"Trong vai trò lãnh đạo đội People, Damian giúp Myria kết nối, phát triển và chăm sóc cho đội ngũ toàn cầu của mình. Damian mang nhiều thập kỷ kinh nghiệm của bản thân đến Myria và trước đây là Giám đốc Nhân sự Toàn cầu của Bitmex và Goldman Sachs.\n"
+""
+
+#: src/hooks/useGamesData.tsx:147
+msgid "In this lawless racing game, you’ll need to do whatever it takes to thwart your rivals’ attempts at reaching the finish line before you. Choosing the optimal combination of driver and kart parts could be the difference between triumph and defeat. But don’t worry if your ride isn’t souped-up, you still have your shot at 1st place. Just make good use of the vicious power-ups scattered around the track to literally blast your competition into oblivion!"
+msgstr ""
+"Trong trò chơi đua xe vô luật này, bạn sẽ cần làm bất cứ điều gì cần thiết để cản trở đối thủ về đích trước bạn. Việc chọn sự kết hợp tối ưu giữa lái xe và bộ phận kart có thể là sự khác biệt giữa chiến thắng và thất bại. Nhưng đừng lo lắng nếu cuộc đua của bạn không thành công, bạn vẫn có cơ hội ở vị trí số 1. Chỉ cần tận dụng tốt những thứ tăng sức mạnh nằm rải rác xung quanh đường đua để đưa đối thủ của bạn vào quên lãng theo đúng nghĩa đen!\n"
+""
+
+#: src/hooks/useGamesData.tsx:69
+msgid "In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later."
+msgstr ""
+"Trong vùng này của Myriaverse, du khách được chuyển thành dạng Bobble-Head. Điều này là theo điều khoản sử dụng của thế giới này và các luật của metaverse chỉ có thể bị phá vỡ bởi các Quản trị viên bí ẩn... nhưng sau này sẽ còn nhiều điều hơn thế.\n"
+""
+
+#: src/components/Register/Register.tsx:40
+msgid "Inclusion of at least one special character"
+msgstr ""
+"Bao gồm ít nhất một ký tự đặc biệt.\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:29
+msgid "Infrastructure & Tools"
+msgstr ""
+"Cơ sở hạ tầng & Công cụ\n"
+""
+
+#: src/components/sigil/Welcome.tsx:156
+msgid "Install Metamask"
+msgstr ""
+"Cài đặt Metamask\n"
+""
+
+#: src/components/for-developers/Myria.tsx:51
+msgid "Instant project visibility"
+msgstr ""
+"Khả năng hiển thị dự án tức thì\n"
+""
+
+#: src/pages/for-developers/solution.tsx:16
+msgid "Instantly able to withdraw assets from the rollup back into ethereum when needed"
+msgstr ""
+"Có thể ngay lập tức rút tài sản từ bản tổng hợp trở lại vào ethereum khi cần thiết\n"
+""
+
+#: src/components/for-developers/Myria.tsx:54
+msgid "Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners."
+msgstr ""
+"Tiếp cận và xây dựng ngay lập tức cộng đồng người chơi gắn bó với những người truyền bá xung quanh dự án của bạn thông qua nền tảng Myria và các đối tác mạng.\n"
+""
+
+#: src/hooks/useGamesData.tsx:228
+msgid "Intense battle to the very end"
+msgstr ""
+"Trận chiến gay cấn đến phút cuối cùng\n"
+""
+
+#: src/hooks/useGamesData.tsx:302
+msgid "Interoperability FTW! Yes, we’ve got you covered - you can bring those crazy skins, sprays, hats, and every other exclusive NFT you’ve gathered along your journey through the Myriaverse. The last thing I want to see on the battlefield is tie-dye tights, but hey – it’s your party after all!"
+msgstr ""
+"Khả năng tương tác FTW! Có, chúng tôi đã giúp bạn được bảo hiểm - bạn có thể mang theo những lớp phủ, bình xịt, mũ và mọi NFT độc quyền khác mà bạn đã thu thập được trong chuyến hành trình của mình qua Myriaverse. Điều cuối cùng tôi muốn thấy trên chiến trường là những y mục bó nhuộm màu, nhưng này - rốt cuộc thì đó cũng là bữa tiệc của bạn!\n"
+""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:17
+#: src/components/GetInTouch.tsx:26
+#: src/components/Register/Register.tsx:53
+#: src/components/SignIn/SignIn.tsx:21
+#: src/components/Subscribe.tsx:20
+#: src/components/for-developers/BuildYourBlockchain.tsx:36
+#: src/pages/cricket.tsx:27
+msgid "Invalid email!"
+msgstr "Email không hợp lệ!"
+
+#: src/components/Header/ProfileComponent.tsx:12
+#: src/components/nodes/Sidebar.tsx:26
+#: src/pages/inventory.tsx:123
+msgid "Inventory"
+msgstr ""
+"Bản kiểm kê\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:49
+msgid "Invite your friends to Myria by sharing the following link with them."
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:75
+msgid "It was a calm day in the land of candy hammers and fiery strawberry lakes when a mysterious portal suddenly spawned a roaring crowd of brave players. Ready to rock, they started to roll down the hill of chocolate donuts in a chaotic race for the win."
+msgstr ""
+"Đó là một ngày êm đềm ở xứ sở của những chiếc búa kẹo và những hồ dâu tây rực lửa khi một cánh cổng bí ẩn đột nhiên xuất hiện một nhóm người chơi dũng cảm đang la hét. Sẵn sàng bùng nổ, họ bắt đầu lăn xuống đồi bánh rán sô cô la trong một cuộc đua hỗn loạn để giành chiến thắng.\n"
+""
+
+#: src/hooks/useGamesData.tsx:157
+msgid "It’s all in your hands"
+msgstr ""
+"Tất cả đều nằm trong tay bạn\n"
+""
+
+#: src/pages/team.tsx:117
+msgid "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads."
+msgstr ""
+"Ivan có hơn 10 năm kinh nghiệm trong ngành công nghiệp trò chơi. Ngài ấy đã từng là nhà thiết kế trò chơi hàng đầu tại Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, v.v., với các trò chơi của ngài ấy đã đạt được hàng tỷ lượt tải xuống.\n"
+""
+
+#: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:49
+#: src/components/Header/DesktopHeader.tsx:157
+#: src/components/Header/MobileHeader.tsx:55
+#: src/components/Header/MobileHeader.tsx:98
+#: src/components/NotiBanner.tsx:49
+#: src/components/home/Hero.tsx:279
+#: src/pages/game-detail/[id].tsx:138
+msgid "JOIN DISCORD"
+msgstr "THAM GIA DISCORD"
+
+#: src/components/sigil/Welcome.tsx:128
+msgid "JOIN NOW"
+msgstr ""
+"THAM GIA NGAY\n"
+""
+
+#: src/components/JoinTheRevolution.tsx:35
+msgid "JOIN THE TEAM"
+msgstr "THAM GIA NHÓM"
+
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:68
+msgid "JOIN {sigilName}"
+msgstr ""
+
+#: src/components/JoinMyriaCard.tsx:14
+msgid "Join MYRIA"
+msgstr ""
+"Tham gia cùng MYRIA\n"
+""
+
+#: src/components/JoinMyriaCard.tsx:7
+msgid "Join Myria in building the next blockchain revolution"
+msgstr ""
+"Tham gia cùng Myria trong việc xây dựng cuộc cách mạng blockchain tiếp theo\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:79
+msgid "Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all."
+msgstr ""
+"Tham gia cũng Vector Prime và bạn sẽ giúp Rift số hóa thế giới và tất cả những người sống trên đó. Sẽ có rất nhiều yếu tố chống lại bạn, nhưng bạn biết rằng khoa học và logic là những quy luật tốt nhất để cai trị tất cả chúng ta.\n"
+""
+
+#: src/components/FirstTimeVisitModal.tsx:31
+msgid "Join our community!"
+msgstr ""
+"Tham gia cộng đồng của chúng tôi!\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:56
+msgid "Join the Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:283
+msgid "Just make sure you’re still alive till the end of the round or you’ll be spectating from the sidelines. And that means nobody will be able to appreciate your cute hot-dog suit that you’ve just brought over from a zany skirmish in the Metarush world."
+msgstr ""
+"Chỉ cần đảm bảo rằng bạn vẫn còn sống cho đến cuối vòng đấu, nếu không bạn sẽ đứng bên lề để quan sát. Và điều đó có nghĩa là sẽ không ai có thể đánh giá cao bộ đồ xúc xích dễ thương của bạn mà bạn vừa mang về từ một cuộc giao tranh thú vị trong thế giới Metarush.\n"
+""
+
+#: src/pages/team.tsx:178
+msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
+msgstr "Kidono là đối tác có kinh nghiệm dẫn đầu với nhiều kinh nghiệm quản lý các cam kết phát triển bên ngoài. Ngài ấy đã làm việc với một số công ty sản xuất trò chơi lớn nhất, bao gồm Marvel, Tencent, Winkings và nhiều công ty khác."
+
+#: src/components/home/Hero.tsx:123
+#: src/pages/nodes/purchase-complete.tsx:110
+#: src/pages/studios.tsx:228
+msgid "LEARN MORE"
+msgstr "TÌM HIỂU THÊM"
+
+#: src/components/sigil/LinkWalletConfirmModal.tsx:33
+msgid "LINK WALLET"
+msgstr ""
+"LIÊT KẾT VÍ\n"
+""
+
+#: src/components/sigil/Welcome.tsx:128
+msgid "LOGGING IN"
+msgstr ""
+"ĐĂNG NHẬP\n"
+""
+
+#: src/components/Register/Register.tsx:172
+msgid "Last name"
+msgstr ""
+"Họ\n"
+""
+
+#: src/components/Register/Register.tsx:49
+msgid "Last name is required!"
+msgstr ""
+"Họ là bắt buộc!\n"
+""
+
+#: src/components/home/News.tsx:33
+msgid "Latest Updates & News"
+msgstr ""
+"Cập nhật & Tin tức Mới nhất\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:81
+#: src/components/sigil/Dashboard/MissionV2.tsx:98
+#: src/components/sigil/Dashboard/MissionV2.tsx:104
+#: src/components/sigil/Dashboard/MissionV2.tsx:110
+#: src/components/sigil/Dashboard/MissionV2.tsx:116
+#: src/components/sigil/Dashboard/MissionV2.tsx:122
+msgid "Launch Discord"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:40
+msgid "Launch with full support from our tokenomics experts"
+msgstr ""
+"Ra mắt với sự hỗ trợ đầy đủ từ các chuyên gia tokenomics của chúng tôi\n"
+""
+
+#: src/pages/for-developers/solution.tsx:124
+msgid "Layer 2 scalability solution"
+msgstr ""
+"Giải pháp khả năng mở rộng lớp 2\n"
+""
+
+#: src/components/home/Hero.tsx:267
+msgid "Learn more"
+msgstr "Tìm hiểu thêm"
+
+#: src/components/JoinMyriaCard.tsx:10
+msgid "Learn more about our job current openings and see how you can get involved!"
+msgstr ""
+"Hãy tìm hiểu thêm về cơ hội việc làm hiện tại của chúng tôi và xem bạn có thể tham gia như thế nào!\n"
+""
+
+#: src/pages/team.tsx:218
+msgid "Led by industry experts"
+msgstr "Được dẫn dắt bởi các chuyên gia trong ngành"
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:44
+msgid "Leggings swag synth 8-bit master cleanse. Pitchfork affogato semiotics raclette, adaptogen post-ironic cliche meggings tousled paleo 90's next level."
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:30
+msgid "Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business."
+msgstr "Tận dụng các công cụ và nền tảng Myria được dựng sẵn - chúng tôi săn sóc các công cụ hỗ trợ để bạn có thể tập trung vào việc xây dựng doanh nghiệp của mình."
+
+#: src/components/Purchase/License.tsx:75
+msgid "Limited supply available"
+msgstr ""
+"Có sẵn nguồn cung hạn chế\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:188
+msgid "Locked"
+msgstr ""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:63
+#: src/components/Header/MobileHeader.tsx:74
+#: src/context/authentication.tsx:103
+msgid "Log in"
+msgstr ""
+"Đăng nhập\n"
+""
+
+#: src/components/Header/ProfileComponent.tsx:58
+msgid "Log out"
+msgstr ""
+"Đăng xuất\n"
+""
+
+#: src/components/Header/ProfileComponent.tsx:64
+msgid "Logout of your Myria account. Your progress will be accessible in future by logging into your Myria account via your wallet."
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:19
+msgid "Low transaction fees"
+msgstr ""
+"Phí giao dịch thấp\n"
+""
+
+#: src/components/nodes/mint-assets/index.tsx:69
+msgid "MINT ALL"
+msgstr ""
+"TẤT CẢ MINT\n"
+""
+
+#: src/components/nodes/mint-assets/index.tsx:75
+msgid "MINT SELECTED"
+msgstr ""
+"MINT ĐƯỢC CHỌN\n"
+""
+
+#: src/components/Header/linkSources.tsx:79
+msgid "MYRIA STUDIOS"
+msgstr ""
+"MYRIA STUDIOS\n"
+""
+
+#: src/hooks/useGamesData.tsx:367
+msgid "Make it out of this world!"
+msgstr ""
+"Làm cho nó biến khỏi thế giới này!\n"
+""
+
+#: src/components/for-developers/Myria.tsx:15
+msgid "Manage your NFT & digital assets"
+msgstr ""
+"Quản lý NFT và tài sản kỹ thuật số của bạn\n"
+""
+
+#: src/components/for-developers/Myria.tsx:16
+msgid "Manage your digital storefront and marketplace"
+msgstr ""
+"Quản lý mặt tiền cửa hàng kỹ thuật số và thị trường của bạn\n"
+""
+
+#: src/components/for-developers/Myria.tsx:52
+msgid "Market your project across our platforms"
+msgstr ""
+"Tiếp thị dự án của bạn trên các nền tảng của chúng tôi\n"
+""
+
+#: src/components/nodes/dashboard/Licenses.tsx:8
+msgid "Maximise your network"
+msgstr ""
+"Tối đa hóa mạng của bạn\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:36
+msgid "Meditation ramps offal direct trade raclette disrupt vice. Neutra kogi mixtape 3 wolf moon. Organic mustache chia vape, la croix austin man bun small batch meh bushwick locavore. Biodiesel shabby chic butcher franzen pork belly microdosing, tattooed chambray twee meditation offal YOLO pour-over."
+msgstr ""
+
+#: src/components/GetInTouch.tsx:96
+msgid "Message"
+msgstr ""
+"Thông báo\n"
+""
+
+#: src/components/GetInTouch.tsx:35
+#: src/components/for-developers/BuildYourBlockchain.tsx:41
+msgid "Message is required!"
+msgstr "Tin nhắn là bắt buộc!"
+
+#: src/components/nodes/Sidebar2.tsx:19
+msgid "Mint Assets"
+msgstr ""
+"Mint Assets\n"
+""
+
+#: src/components/nodes/Sidebar2.tsx:27
+msgid "More coming soon!"
+msgstr ""
+"Sắp ra mắt thêm!\n"
+""
+
+#: src/pages/studios.tsx:360
+msgid "More details coming soon"
+msgstr "Sắp có thêm các thông tin chi tiết"
+
+#: src/components/Purchase/License.tsx:80
+msgid "More power than just network support"
+msgstr ""
+"Nhiều sức mạnh hơn là chỉ hỗ trợ mạng\n"
+""
+
+#: src/components/interop/DesktopInterop.tsx:322
+#: src/components/interop/MobileInterop.tsx:196
+msgid "Morphing NFTs™"
+msgstr "Morphing NFTs™"
+
+#: src/components/interop/DesktopInterop.tsx:260
+#: src/components/interop/MobileInterop.tsx:176
+msgid "Morphing NFTs™ that adapt to your avatars"
+msgstr "Morphing NFTs™ thích ứng với hình đại diện của bạn"
+
+#: src/pages/studios.tsx:220
+msgid "Morphing interoperable NFTs is the new standard created by Myria. Players will be able to utilize their NFTs across different avatars, games and metaverses. Truly own your digital assets and collectibles."
+msgstr ""
+"NFT tương thích Morphing là tiêu chuẩn mới được tạo ra bởi Myria. Người chơi sẽ có thể sử dụng NFT của họ trên các avatar, trò chơi và metaverses khác nhau. Thực sự sở hữu tài sản kỹ thuật số và đồ sưu tầm của bạn.\n"
+""
+
+#: src/components/sigil/Footer.tsx:18
+#: src/components/sigil/Sound.tsx:29
+msgid "Mute sound"
+msgstr ""
+"Tắt âm thanh\n"
+""
+
+#: src/components/nodes/dashboard/GeneralInfo.tsx:50
+msgid "My Node Licenses"
+msgstr ""
+"Giấy phép Node của tôi\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:71
+msgid "Myria Founder’s Node"
+msgstr ""
+"Node của Người sáng lập Myria\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:113
+msgid "Myria Game Platform"
+msgstr ""
+"Nền tảng Trò chơi Myria\n"
+""
+
+#: src/components/ecosystem/Backbone.tsx:20
+msgid "Myria Infrastructure"
+msgstr ""
+"Cơ sở Hạ tầng Myria\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:97
+msgid "Myria NFT Marketplace"
+msgstr ""
+"Thị trường NFT Myria\n"
+""
+
+#: src/components/Purchase/License.tsx:89
+msgid "Myria Node License"
+msgstr ""
+"Giấy phép Node Myria\n"
+""
+
+#: src/components/ecosystem/Backbone.tsx:54
+msgid "Myria Nodes"
+msgstr ""
+"Myria Nodes\n"
+""
+
+#: src/components/ecosystem/Backbone.tsx:31
+msgid "Myria Partners"
+msgstr ""
+"Myria Partners\n"
+""
+
+#: src/components/Footer.tsx:58
+#: src/components/ecosystem/Backbone.tsx:43
+#: src/components/ecosystem/Platform.tsx:70
+msgid "Myria Studios"
+msgstr ""
+"Myria Studios\n"
+""
+
+#: src/pages/studios.tsx:196
+msgid "Myria Studios is building a range of free-to-play AAA games spans across an entire interconnected ecosystem. Players experience intertwining lore, characters, and rich storylines that carry across each game world, and Myria tokens and NFTs can be used across the Myriaverse."
+msgstr ""
+"Myria Studios đang xây dựng hàng loạt trò chơi AAA miễn phí trải dài trên toàn bộ hệ sinh thái được kết nối với nhau. Người chơi trải nghiệm truyền thuyết, nhân vật và cốt truyện phong phú đan xen trong mỗi thế giới trò chơi, đồng thời thẻ Myria và NFT có thể được sử dụng trên Myriaverse.\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:105
+msgid "Myria Wallet"
+msgstr ""
+"Ví Myria\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:56
+msgid "Myria combines a gaming platform with applications, tools and scaling infrastructure needed to bring blockchain gaming to life."
+msgstr ""
+"Myria kết hợp nền tảng trò chơi với các ứng dụng, công cụ và cơ sở hạ tầng mở rộng quy mô cần thiết để mang trò chơi blockchain vào cuộc sống.\n"
+""
+
+#: src/pages/for-gamers.tsx:22
+msgid "Myria develops fun AAA games that are enhanced by the blockchain, not vice versa."
+msgstr "Myria phát triển các trò chơi AAA vui nhộn được cải tiến bởi blockchain, không phải ngược lại."
+
+#: src/pages/for-studios.tsx:35
+msgid "Myria ecosystem fund"
+msgstr "Quỹ hệ sinh thái Myria"
+
+#: src/components/for-developers/Myria.tsx:42
+msgid "Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives."
+msgstr ""
+"Myria hỗ trợ tư vấn tokenomics, các phương pháp tốt nhất về thiết kế trò chơi Chơi-Kiếm-Tiền để đạt được các mục tiêu kinh doanh của bạn.\n"
+""
+
+#: src/pages/index.tsx:75
+msgid "Myria has been built by an all-star team of over 150 people, united with a common vision of revolutionizing gaming with blockchain technology."
+msgstr ""
+
+#: src/components/ecosystem/Backbone.tsx:33
+msgid "Myria help project partners set up for success. <0/> about our easy-to-use, full stack solution and build with Myria today."
+msgstr ""
+"Myria giúp các đối tác dự án thiết lập để thành công. <0/> về giải pháp ngăn xếp toàn phần, dễ sử dụng của chúng tôi và xây dựng với Myria ngay hôm nay.\n"
+""
+
+#: src/components/Program.tsx:34
+msgid "Myria helps blockchain projects scale. Whether you’re an established crypto business or simply exploring new possibilities, Myria has a solution for you!"
+msgstr ""
+"Myria giúp các dự án blockchain mở rộng quy mô. Cho dù bạn là một doanh nghiệp tiền điện tử đã thành lập hay chỉ đơn giản là đang khám phá những khả năng mới, Myria đều có giải pháp cho bạn!\n"
+""
+
+#: src/pages/_app.tsx:34
+#: src/pages/_app.tsx:47
+msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
+msgstr ""
+
+#: src/components/ComingSoon.tsx:48
+msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
+msgstr "Myria là một hệ sinh thái trò chơi blockchain được cung cấp bởi blockchain Myria."
+
+#: src/pages/ecosystem.tsx:28
+msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT and blockchain gaming."
+msgstr ""
+"Myria là một Ethereum Lớp 2 phi tập trung, được xây dựng để trao quyền  tài sản kỹ thuật số, NFT và chơi trò chơi blockchain.\n"
+""
+
+#: src/pages/for-developers/solution.tsx:71
+msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT, blockchain gaming and more."
+msgstr ""
+"Myria là một Ethereum Lớp 2 phi tập trung, được xây dựng để trao quyền  tài sản kỹ thuật số, NFT, chơi trò chơi blockchain, .v.v.\n"
+""
+
+#: src/pages/for-developers/index.tsx:43
+msgid "Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and blockchain gaming."
+msgstr ""
+"Myria là một Ethereum Lớp 2 phi tập trung, được xây dựng để mở rộng quy mô tài sản kỹ thuật số, NFT và chơi trò chơi blockchain.\n"
+""
+
+#: src/pages/for-gamers.tsx:48
+msgid "Myria is supported by a network of community-powered nodes, who receive rewards for their contributions."
+msgstr "Myria được hỗ trợ bởi một mạng lưới các node do cộng đồng hỗ trợ, những người này sẽ nhận được phần thưởng cho những đóng góp của họ."
+
+#: src/components/ecosystem/Backbone.tsx:68
+msgid "Myria is the backbone of blockchain gaming"
+msgstr ""
+"Myria là xương sống của trò chơi blockchain\n"
+""
+
+#: src/pages/nodes/index.tsx:152
+msgid "Myria node license sales are anticipated to commence in Q2 2022 (subject to change)."
+msgstr ""
+"Việc bán giấy phép node Myria dự kiến sẽ bắt đầu vào Q2 năm 2022 (có thể thay đổi).\n"
+""
+
+#: src/pages/nodes/index.tsx:30
+msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
+msgstr "Những người vận hành node Myria sẽ nhận được phần thưởng mã token $MYRIA hàng ngày cho các node hoạt động."
+
+#: src/components/for-developers/Myria.tsx:65
+msgid "Myria provides an end-to-end solution for developers and publishers, and help you unlock the blockchain potential of your business"
+msgstr ""
+"Myria cung cấp giải pháp end-to-end cho các nhà phát triển và nhà xuất bản, và cũng giúp bạn mở khóa tiềm năng blockchain trong kinh doanh của bạn\n"
+""
+
+#: src/components/for-developers/Myria.tsx:36
+msgid "Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support."
+msgstr ""
+"Myria cung cấp dịch vụ tư vấn blockchain về bán NFT, tích hợp blockchain và hỗ trợ nền tảng.\n"
+""
+
+#: src/pages/_app.tsx:35
+#: src/pages/_app.tsx:46
+msgid "Myria | Connecting the world through play"
+msgstr "Myria | Kết nối thế giới thông qua trò chơi"
+
+#: src/pages/studios.tsx:352
+msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
+msgstr "Myriaverse là vũ trụ ảo xã hội rộng lớn hơn kết nối người chơi, cộng đồng và hội đoàn. Người chơi sẽ có thể tìm kiếm, khám phá, chế tạo, đầu tư và nhiều hoạt động khác nữa. Myriaverse ngày càng mở rộng là một nền kinh tế và xã hội ảo mang đến cơ hội kiếm tiền dồi dào cho những nhà thám hiểm dũng cảm."
+
+#: src/components/ecosystem/Backbone.tsx:22
+msgid "Myria’s <0/> uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
+msgstr ""
+"<0/> của Myria sử dụng ZK-Rollup để cho phép các dApp đạt quy mô không giới hạn, phí giao dịch thấp mà không phải đánh đổi về bảo mật.\n"
+""
+
+#: src/pages/for-developers/solution.tsx:86
+msgid "Myria’s <0>Ethereum L2 scaling solution</0> uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2 transactions into one single transaction. This then sends a validity proof back to the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based zkrollup solution enable NFTs and dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
+msgstr ""
+"<0> Giải pháp mở rộng quy mô Ethereum L2<0/> của Myria sử dụng công nghệ zero-knowledge (zk-STARKs) để \"cuộn lên\" hoặc nén hàng nghìn giao dịch L2 thành một giao dịch duy nhất. Sau đó, giải pháp này sẽ gửi lại bằng chứng hợp lệ cho blockchain chính, bảo toàn tính bảo mật của Ethereum L1. Giải pháp zkrollup dựa trên STARK của Myria cho phép NFT và dApps đạt quy mô không giới hạn, phí giao dịch thấp mà không phải đánh đổi về bảo mật.\n"
+""
+
+#: src/components/for-developers/Myria.tsx:18
+msgid "Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey."
+msgstr ""
+"Cơ sở hạ tầng thị trường và cửa hàng NFT của Myria nhằm mục đích xây dựng cho các trò chơi blockchain và được tối ưu hóa để hỗ trợ hành trình của người chơi.\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:19
+msgid "NFT Rewards"
+msgstr ""
+"Phần thưởng NFT\n"
+""
+
+#: src/components/GetInTouch.tsx:76
+msgid "Name"
+msgstr ""
+"Tên\n"
+""
+
+#: src/components/GetInTouch.tsx:23
+#: src/components/for-developers/BuildYourBlockchain.tsx:26
+msgid "Name is required!"
+msgstr "Tên là bắt buộc!"
+
+#: src/pages/for-developers/solution.tsx:26
+msgid "Native support for core token types ERC20 and ERC721"
+msgstr ""
+"Hỗ trợ riêng cho các loại token lõi ERC20 và ERC721\n"
+""
+
+#: src/components/Footer.tsx:113
+msgid "News"
+msgstr "Tin tức"
+
+#: src/components/interop/DesktopInterop.tsx:263
+#: src/components/interop/MobileInterop.tsx:178
+msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
+msgstr "Bất kể hình dạng và kích thước của hình đại diện của bạn thế nào, hãy sử dụng cùng một NFT cho tất cả chúng. Mua một lần và sử dụng trên bất kỳ nhân vật nào. Được thiết kế để có thể tương tác."
+
+#: src/components/sigil/LinkWalletConfirmModal.tsx:25
+msgid "No web wallet is detected, please ensure that you have one setup to claim your rewards."
+msgstr ""
+"Không phát hiện thấy ví web nào, vui lòng đảm bảo rằng bạn đã thiết lập để nhận phần thưởng của mình.\n"
+""
+
+#: src/hooks/useGamesData.tsx:282
+msgid "Nobody lives forever, and these heroes sure as hell don’t care – they literally die for the sake of fun. Dive into a series of short combat rounds to win a match of 5 vs 5. The attacking team must activate a bomb on a specified location on the map. If you’re on the defending side…you know what you need to do, right?"
+msgstr ""
+"Không ai sống mãi mãi, và những anh hùng này chắc chắn là không quan tâm - họ chết vì niềm vui theo đúng nghĩa đen. Đi sâu vào một loạt các vòng chiến đấu ngắn để giành chiến thắng trong trận đấu 5 đấu 5. Đội tấn công phải kích hoạt một quả bom trên một vị trí xác định trên bản đồ. Nếu ở phe thủ… bạn biết mình cần phải làm gì, phải không?\n"
+""
+
+#: src/pages/nodes/index.tsx:230
+msgid "Node owner rewards"
+msgstr "Phần thưởng của người sở hữu node"
+
+#: src/pages/nodes/index.tsx:57
+msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
+msgstr "Những người sở hữu node cũng sẽ được thưởng NFT và mã token dựa trên số điểm danh tiếng của họ với tư cách là người vận hành node và thành viên cộng đồng nói chung."
+
+#: src/components/Purchase/License.tsx:71
+msgid "Node owners will be rewarded with exclusive NFT drops and daily MYRIA token rewards for their contribution to the network."
+msgstr ""
+"Chủ sở hữu node sẽ được thưởng các phần thưởng NFT độc quyền và phần thưởng token MYRIA hàng ngày cho những đóng góp cho mạng của họ.\n"
+""
+
+#: src/components/nodes/dashboard/NodeProgress.tsx:19
+msgid "Node progress this cycle"
+msgstr ""
+"Node tiến triển chu kỳ này\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:37
+msgid "Node purchase"
+msgstr ""
+"Mua node\n"
+""
+
+#: src/components/Footer.tsx:49
+#: src/components/Header/linkSources.tsx:29
+#: src/components/nodes/Sidebar.tsx:32
+msgid "Nodes"
+msgstr "Nodes"
+
+#: src/components/Purchase/License.tsx:81
+msgid "Nodes are an integral part of the Myria universe, with dedicated lore, gaming access, and exclusive voting power granted to node owners."
+msgstr ""
+"Các node là một phần không thể thiếu của vũ trụ Myria, với truyền thuyết riêng về quyền truy cập trò chơi và quyền biểu quyết độc quyền được cấp cho chủ sở hữu node.\n"
+""
+
+#: src/hooks/useGamesData.tsx:300
+msgid "Not the face!"
+msgstr ""
+"Không phải là khuôn mặt!\n"
+""
+
+#: src/components/inventory/InventoryItem.tsx:35
+msgid "OPEN"
+msgstr ""
+
+#: src/components/Header/linkSources.tsx:51
+msgid "OUR SOLUTION"
+msgstr ""
+"GIẢI PHÁP CỦA CHÚNG TÔI\n"
+""
+
+#: src/components/nodes/mint-assets/index.tsx:100
+msgid "Off Chain Assets"
+msgstr ""
+"Tài sản Ngoài Chuỗi\n"
+""
+
+#: src/hooks/useGamesData.tsx:223
+msgid "Once in a while, a portal opens to a special game world – the BR Arena."
+msgstr ""
+"Thỉnh thoảng, một cánh cổng mở ra một thế giới trò chơi đặc biệt - BR Arena.\n"
+""
+
+#: src/hooks/useGamesData.tsx:357
+msgid "Once you figure out the optimal production pipeline, the game will start yielding rewards for all your hard work. Are you curious how difficult is to produce a batch of Starberry Jam? What about Moonsteel? It surely can’t be that hard, right?"
+msgstr ""
+"Ngay khi bạn tìm ra quy trình sản xuất tối ưu, trò chơi sẽ bắt đầu mang lại phần thưởng cho tất cả những gì bạn chăm chỉ làm việc. Bạn có tò mò về việc sản xuất một mẻ Starberry Jam khó như thế nào không? Còn Moonsteel thì sao? Chắc chắn không thể khó khăn như vậy, phải không?\n"
+""
+
+#: src/components/Purchase/License.tsx:76
+msgid "Only 50,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded."
+msgstr ""
+"Chỉ 50.000 giấy phép Node được phát hành. Giá sẽ tăng khi các node được bán, để đảm bảo những người ủng hộ sớm của chúng tôi sẽ được thưởng.\n"
+""
+
+#: src/pages/nodes/index.tsx:170
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr "Chỉ có 55.000 giấy phép node Myria sẽ được phát hành."
+
+#: src/pages/for-developers/solution.tsx:32
+msgid "Open and permissionless"
+msgstr ""
+"Mở và không cần quyền cho phép\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:31
+msgid "Our Ethereum L2 scaling solution provides reliability, scalability and security. Making it easy for developers to build and manage their projects."
+msgstr ""
+"Giải pháp mở rộng quy mô Ethereum L2 của chúng tôi mang đến độ tin cậy, khả năng mở rộng và bảo mật. Giúp các nhà phát triển dễ dàng phát triển và quản lý các dự án.\n"
+""
+
+#: src/pages/team.tsx:255
+msgid "Our Experience"
+msgstr "Kinh nghiệm của chúng tôi"
+
+#: src/pages/for-gamers.tsx:122
+msgid "Our Principles"
+msgstr "Nguyên tắc của chúng tôi"
+
+#: src/components/Footer.tsx:77
+msgid "Our Solutions"
+msgstr ""
+"Các giải pháp của chúng tôi\n"
+""
+
+#: src/pages/for-gamers.tsx:152
+msgid "Our games"
+msgstr "Trò chơi của chúng tôi"
+
+#: src/pages/for-developers/solution.tsx:80
+msgid "Our solution"
+msgstr ""
+"Giải pháp của chúng tôi\n"
+""
+
+#: src/components/Header/linkSources.tsx:74
+msgid "Our team"
+msgstr "Đội ngũ của chúng tôi"
+
+#: src/components/Header/linkSources.tsx:69
+msgid "Our vision"
+msgstr "Tầm nhìn của chúng tôi"
+
+#: src/components/interop/DesktopInterop.tsx:325
+#: src/components/interop/MobileInterop.tsx:197
+msgid "Own your metaverse identity"
+msgstr "Sở hữu danh tính trong vũ trụ ảo của bạn"
+
+#: src/components/interop/DesktopInterop.tsx:242
+#: src/components/interop/MobileInterop.tsx:152
+msgid "Own your metaverse identity. Anywhere. Any game."
+msgstr "Sở hữu danh tính trong vũ trụ ảo của bạn. Bất cứ nơi nào. Bất kì trò chơi nào."
+
+#: src/components/Purchase/Order.tsx:132
+msgid "PURCHASE NOW"
+msgstr ""
+"MUA NGAY\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:80
+msgid "Partner Dapps"
+msgstr ""
+"Các Dapp đối tác\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:85
+msgid "Partner Experiences"
+msgstr ""
+"Trải nghiệm Đối tác\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:75
+msgid "Partner Games"
+msgstr ""
+"Trò chơi Đối tác\n"
+""
+
+#: src/pages/team.tsx:176
+msgid "Partner Lead"
+msgstr "Trưởng Nhóm Đối Tác"
+
+#: src/components/Register/Register.tsx:58
+#: src/components/ResetPassword/ResetPassword.tsx:21
+#: src/components/SignIn/SignIn.tsx:26
+msgid "Password is required!"
+msgstr ""
+"Mật khẩu là bắt buộc!\n"
+""
+
+#: src/utils.ts:23
+msgid "Password must be mixture of letters and numbers"
+msgstr ""
+"Mật khẩu phải là sự kết hợp của các chữ cái và số\n"
+""
+
+#: src/utils.ts:27
+msgid "Password must contain at least one special character"
+msgstr ""
+"Mật khẩu phải chứa ít nhất một ký tự đặc biệt.\n"
+""
+
+#: src/utils.ts:15
+msgid "Password must have at least 8 characters—the more characters, the better"
+msgstr ""
+"Mật khẩu phải có ít nhất 8 ký tự — càng nhiều ký tự, càng tốt\n"
+""
+
+#: src/utils.ts:19
+msgid "Password must have both uppercase and lowercase letters"
+msgstr ""
+"Mật khẩu phải có cả chữ hoa và chữ thường\n"
+""
+
+#: src/hooks/useGamesData.tsx:236
+msgid "Pick one of the available warrior classes that best suits your playstyle. Are you a one-man army or a silent assassin who strikes from the shadows? Or maybe you’re a mysterious alien psychic who can suck the life out of his enemies..."
+msgstr ""
+"Chọn một trong những lớp chiến binh sẵn có phù hợp nhất với phong cách chơi của bạn. Bạn là quân đội một người hay một sát thủ thầm lặng tấn công từ trong bóng tối? Hay có thể bạn là một nhà ngoại cảm bí ẩn ngoài hành tinh, người có thể hút sự sống từ kẻ thù...\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:21
+msgid "Platform"
+msgstr ""
+"Nên tảng\n"
+""
+
+#: src/components/for-developers/BuildYourBlockchain.tsx:31
+msgid "Please enter correct url!"
+msgstr ""
+"Vui lòng nhập url chính xác!\n"
+""
+
+#: src/components/sigil/WelcomeMobile.tsx:16
+msgid "Please view this experience on a desktop browser"
+msgstr ""
+"Vui lòng xem trải nghiệm này trên trình duyệt dành cho máy tính để bàn\n"
+""
+
+#: src/components/sigil/Welcome.tsx:80
+msgid "Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge"
+msgstr ""
+"Vui lòng xem trải nghiệm này trên trình duyệt được hỗ trợ như Chrome, Brave, Firefox hoặc Edge\n"
+""
+
+#: src/components/sigil/RewardItem.tsx:123
+msgid "Points"
+msgstr ""
+"Điểm\n"
+""
+
+#: src/pages/studios.tsx:271
+msgid "Powered and governed by <0>$MYRIA</0>"
+msgstr "Được hỗ trợ và quản lý bởi <0>$MYRIA</0>"
+
+#: src/pages/for-gamers.tsx:46
+msgid "Powered by the community"
+msgstr "Được hỗ trợ bởi cộng đồng"
+
+#: src/pages/nodes/index.tsx:217
+msgid "Powered by the community of player-run nodes"
+msgstr "Được hỗ trợ bởi cộng đồng các node do người chơi vận hành"
+
+#: src/components/Subscribe.tsx:63
+msgid "Pre register to stay up to date"
+msgstr "Đăng ký trước để luôn được cập nhật"
+
+#: src/components/Purchase/Order.tsx:93
+msgid "Price"
+msgstr ""
+"Giá\n"
+""
+
+#: src/pages/team.tsx:130
+msgid "Product Lead - Blockchain"
+msgstr "Trưởng Nhóm Sản Phẩm - Blockchain"
+
+#: src/components/for-developers/Myria.tsx:48
+msgid "Provide your players with a protected experience and ensure your business understands critical regulatory compliance components."
+msgstr ""
+"Mang đến cho người chơi trải nghiệm được bảo vệ và đảm bảo doanh nghiệp của bạn hiểu được các thành phần tuân thủ quy định quan trọng.\n"
+""
+
+#: src/pages/for-gamers.tsx:167
+msgid "Pupose-built infrastructure"
+msgstr "Cơ sở hạ tầng được xây dựng có mục đích"
+
+#: src/pages/nodes/purchase-complete.tsx:104
+msgid "Purchase more nodes"
+msgstr ""
+"Mua thêm các node\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:107
+msgid "Purchase more nodes to increase your rewards and passive invome"
+msgstr ""
+"Mua nhiều node hơn để tăng phần thưởng và thu nhập thụ động của bạn\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:119
+msgid "Purchase now"
+msgstr ""
+"Mua ngay\n"
+""
+
+#: src/components/Purchase/Order.tsx:104
+msgid "Quantity"
+msgstr ""
+"Số lượng\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:22
+msgid "Quantity: {qty}"
+msgstr ""
+"Số lượng: {qty}\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:74
+msgid "Quantity: {quantity}"
+msgstr ""
+
+#: src/pages/cricket.tsx:125
+msgid "REGISTER"
+msgstr ""
+
+#: src/components/home/News.tsx:20
+#: src/components/home/News.tsx:36
+msgid "Read more"
+msgstr ""
+"Đọc thêm\n"
+""
+
+#: src/components/BuyerNodeCard.tsx:10
+#: src/components/Program.tsx:14
+msgid "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
+msgstr ""
+"Nhận $MYRIA và phần thưởng NFT phiên bản giới hạn trong khi hỗ trợ mạng Myria\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:46
+msgid "Refer your friends"
+msgstr ""
+"Giới thiệu bạn bè của bạn\n"
+""
+
+#: src/components/Register/Register.tsx:250
+msgid "Register"
+msgstr ""
+"Đăng ký\n"
+""
+
+#: src/pages/cricket.tsx:88
+msgid "Register to win exclusive<0/>AB de Villiers Cricket Game NFTs"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:231
+msgid "Releasing soon"
+msgstr "Sắp phát hành"
+
+#: src/pages/for-developers/solution.tsx:23
+msgid "Reliably programmable"
+msgstr ""
+"Có thể lập trình đáng tin cậy\n"
+""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:55
+#: src/components/ResetPassword/ResetPassword.tsx:101
+msgid "Reset Password"
+msgstr ""
+"Đặt Lại Mật Khẩu\n"
+""
+
+#: src/pages/for-developers/solution.tsx:36
+msgid "Resistent against censorship"
+msgstr ""
+"Chống lại sự kiểm duyệt\n"
+""
+
+#: src/components/nodes/Sidebar2.tsx:15
+msgid "Reward Vault"
+msgstr ""
+"Kho tiền thưởng\n"
+""
+
+#: src/components/nodes/Sidebar.tsx:37
+msgid "Rewards"
+msgstr ""
+
+#: src/components/nodes/Banner.tsx:12
+msgid "Rewards are coming soon! Information on how to install your node client will be released shortly."
+msgstr ""
+"Phần thưởng sẽ sớm ra mắt! Thông tin về cách cài đặt ứng dụng node của bạn sẽ sớm được phát hành.\n"
+""
+
+#: src/hooks/useGamesData.tsx:85
+msgid "Roll with style!"
+msgstr ""
+"Cuộn theo phong cách!\n"
+""
+
+#: src/pages/nodes/index.tsx:190
+msgid "Run a node and earn <0>$MYRIA and NFT rewards</0>"
+msgstr ""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:283
+msgid "SELECT"
+msgstr ""
+"LỰA CHỌN\n"
+""
+
+#: src/pages/for-gamers.tsx:119
+msgid "SHIFTING POWER BACK TO THE PEOPLE"
+msgstr "CHUYỂN QUYỀN LỰC CHO MỌI NGƯỜI"
+
+#: src/components/Header/DesktopHeader.tsx:127
+#: src/pages/for-developers/index.tsx:50
+msgid "START BUILDING"
+msgstr ""
+"BẮT ĐẦU XÂY DỰNG\n"
+""
+
+#: src/components/Subscribe.tsx:92
+msgid "SUBMIT"
+msgstr "NỘP"
+
+#: src/components/for-developers/Myria.tsx:27
+msgid "Save time. Ship faster."
+msgstr ""
+"Tiết kiệm thời gian. Giao hàng nhanh hơn.\n"
+""
+
+#: src/pages/for-developers/solution.tsx:12
+msgid "Scale with security"
+msgstr ""
+"Quy mô với bảo mật\n"
+""
+
+#: src/components/for-developers/Ethereum.tsx:325
+msgid "Scaling blockchain gaming on Ethereum"
+msgstr ""
+"Mở rộng quy mô trò chơi blockchain trên Ethereum\n"
+""
+
+#: src/components/nodes/Sidebar.tsx:43
+msgid "Settings"
+msgstr ""
+
+#: src/components/nodes/dashboard/ShareTwitter.tsx:45
+#: src/components/sigil/ShareTwitterModal.tsx:49
+msgid "Share now"
+msgstr ""
+"Chia sẻ ngay\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:128
+msgid "Share on Twitter"
+msgstr ""
+
+#: src/components/nodes/dashboard/ShareTwitter.tsx:59
+#: src/components/sigil/ShareTwitterModal.tsx:20
+msgid "Share this on Twitter"
+msgstr ""
+"Chia sẻ điều này trên Twitter\n"
+""
+
+#: src/components/SignIn/SignIn.tsx:81
+#: src/components/nodes/Header.tsx:156
+#: src/components/nodes/Header.tsx:235
+msgid "Sign in"
+msgstr ""
+"Đăng nhập \n"
+""
+
+#: src/components/Header/MobileHeader.tsx:71
+#: src/components/sigil/Dashboard/MissionV2.tsx:71
+msgid "Sign up"
+msgstr ""
+"Đăng ký\n"
+""
+
+#: src/components/Subscribe.tsx:67
+msgid "Sign up to our newsletter to receive development updates, token and NFT drops, and exclusive promotions."
+msgstr ""
+"Đăng ký bản tin của chúng tôi để nhận các bản cập nhật phát triển, mã token và NFT, cũng như các chương trình khuyến mãi độc quyền.\n"
+""
+
+#: src/pages/for-developers/solution.tsx:27
+msgid "Simpler formal verification of contracts due to safe VM architecture"
+msgstr ""
+"Xác minh hợp đồng chính thức đơn giản hơn nhờ kiến trúc VM an toàn\n"
+""
+
+#: src/components/Header/DesktopHeader.tsx:46
+#: src/components/Header/MobileHeader.tsx:166
+msgid "Soon!"
+msgstr ""
+"Sớm!\n"
+""
+
+#: src/components/SortBy/index.tsx:13
+msgid "Sort By"
+msgstr ""
+"Sắp xếp theo\n"
+""
+
+#: src/components/Loading/LoadingStandBy.tsx:6
+msgid "Stand by"
+msgstr ""
+"Thay thế cho\n"
+""
+
+#: src/components/Program.tsx:41
+msgid "Start now"
+msgstr ""
+"Bắt đầu bây giờ\n"
+""
+
+#: src/components/FirstTimeVisitModal.tsx:34
+msgid "Stay update to date with our project announcements and updates!"
+msgstr ""
+"Luôn cập nhật theo ngày các thông báo và cập nhật về dự án của chúng tôi!\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:36
+msgid "Step 1"
+msgstr ""
+"Bước 1\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:40
+msgid "Step 2"
+msgstr ""
+"Bước 2\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:44
+msgid "Step 3"
+msgstr ""
+"Bước 3\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:48
+msgid "Step 4"
+msgstr ""
+"Bước 4\n"
+""
+
+#: src/components/Footer.tsx:53
+#: src/components/Header/linkSources.tsx:36
+msgid "Store"
+msgstr "Cửa hàng"
+
+#: src/components/GetInTouch.tsx:89
+msgid "Subject"
+msgstr ""
+"Chủ đề\n"
+""
+
+#: src/components/GetInTouch.tsx:31
+msgid "Subject is required!"
+msgstr "Chủ đề là bắt buộc!"
+
+#: src/components/GetInTouch.tsx:115
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
+msgid "Submit"
+msgstr ""
+"Gửi đi\n"
+""
+
+#: src/components/GetInTouch.tsx:115
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
+msgid "Submitting..."
+msgstr ""
+"Đang gửi đi ...\n"
+""
+
+#: src/components/for-developers/Myria.tsx:9
+msgid "Supercharge your project"
+msgstr ""
+"Thúc đẩy dự án của bạn\n"
+""
+
+#: src/components/for-developers/Ethereum.tsx:96
+msgid "Support unlimited scalability, delivering up to 9,000+ TPS"
+msgstr ""
+
+#: src/pages/studios.tsx:284
+msgid "TOKEN LAUNCH COMING SOON"
+msgstr ""
+"TOKEN SẮP RA MẮT >>>>>>> nguồn gốc/giai đoạn\n"
+""
+
+#: src/components/Footer.tsx:102
+msgid "Team"
+msgstr "Đội nhóm"
+
+#: src/components/Footer.tsx:200
+msgid "Terms | Privacy"
+msgstr "Điều Khoản | Quyền Riêng Tư"
+
+#: src/components/GetInTouch.tsx:107
+#: src/components/for-developers/BuildYourBlockchain.tsx:138
+msgid "Thank you for message. We will be in touch within 24-48 hours!"
+msgstr "Cảm ơn bạn đã nhắn tin. Chúng tôi sẽ liên lạc lại trong vòng 24-48 giờ!"
+
+#: src/components/Subscribe.tsx:85
+#: src/pages/cricket.tsx:118
+msgid "Thank you for subscribing!"
+msgstr "Cảm ơn bạn đã đăng ký!"
+
+#: src/pages/nodes/index.tsx:220
+msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
+msgstr "Chuỗi Myria được hỗ trợ bởi một mạng lưới các node do người chơi vận hành. Sử dụng máy tính tại nhà của bạn để trở thành người vận hành node và nhận phần thưởng cũng như lợi ích cho sự đóng góp của bạn vào hệ sinh thái."
+
+#: src/pages/for-gamers.tsx:170
+msgid "The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for gaming. Our team have developed proprietary technology to make the gaming and trading experience seamless, including a decentralized exchange, marketplace, and cryptocurrency wallet."
+msgstr "Hệ sinh thái Myria được xây dựng trên blockchain Myria, Ethereum L2 của chúng tôi được xây dựng để chơi trò chơi. Nhóm của chúng tôi đã phát triển công nghệ độc quyền để giúp trải nghiệm chơi trò chơi và giao dịch liền mạch, bao gồm sàn giao dịch phi tập trung, thị trường và ví tiền điện tử."
+
+#: src/components/ecosystem/Backbone.tsx:56
+msgid "The Myria platform is supported by Myria Nodes. Being a <0/> operator means that you will receive limited edition NFTs, token rewards and more."
+msgstr ""
+"Nền tảng Myria được hỗ trợ bởi các Node Myria. Trở thành nhà điều hành <0/> có nghĩa là bạn sẽ nhận được NFT phiên bản giới hạn, phần thưởng token, v.v.\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:53
+msgid "The comprehensive blockchain gaming platform"
+msgstr ""
+"Nền tảng trò chơi blockchain toàn diện\n"
+""
+
+#: src/components/for-developers/Myria.tsx:10
+msgid "The easiest way to launch your blockchain game"
+msgstr ""
+"Cách dễ nhất để khởi chạy trò chơi blockchain của bạn\n"
+""
+
+#: src/components/Register/Register.tsx:139
+msgid "The name must be between 3 and 16 characters long."
+msgstr ""
+
+#: src/components/interop/DesktopInterop.tsx:224
+#: src/components/interop/MobileInterop.tsx:129
+msgid "The new standard for interoperable NFTs"
+msgstr "Tiêu chuẩn mới cho các NFT có thể tương tác"
+
+#: src/hooks/useGamesData.tsx:68
+msgid "The objective is simple – get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing."
+msgstr ""
+"Mục tiêu rất đơn giản - hãy về đích trước và đừng bị chết khi đang cố gắng. Mỗi trận đấu bắt đầu với một nhóm người chơi bị loại qua một loạt các chướng ngại vật trên đường đến trận chung kết. Những người chơi sống sót tiếp tục trận chiến theo từng vòng với độ khó tăng dần cho đến khi chỉ còn một người đang lao vào.\n"
+""
+
+#: src/components/nodes/rewards/WalletModal.tsx:14
+msgid "The wallet currently connected does not match your designated reward wallet. Please connect the correct wallet or click below to change it."
+msgstr ""
+"Ví hiện được kết nối không khớp với ví thưởng đã chỉ định của bạn. Vui lòng kết nối đúng ví hoặc nhấp vào bên dưới để thay đổi.\n"
+""
+
+#: src/components/interop/DesktopInterop.tsx:165
+#: src/components/interop/MobileInterop.tsx:64
+msgid "The world’s first Morphing NFTs™"
+msgstr "Morphing NFTs™ đầu tiên trên thế giới"
+
+#: src/hooks/useGamesData.tsx:288
+msgid "Think before you shoot!"
+msgstr ""
+"Hãy suy nghĩ trước khi bắn!\n"
+""
+
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:82
+msgid "This decision is permanent. Once you choose your alliance you cannot change it!"
+msgstr ""
+"Quyết định này là vĩnh viễn. Một khi bạn chọn liên minh, bạn sẽ không thể thay đổi!\n"
+""
+
+#: src/hooks/useGamesData.tsx:153
+msgid "Throw your prized vehicle around the deadly turns of the track as you throw a dice to decide your destiny. Drifting and performing crazy stunts is your way of expressing your inner speed demons, so don’t be shy– let them come out and play!"
+msgstr ""
+"Lướt chiếc xe được đánh giá cao của bạn quanh những khúc quanh nguy hiểm của đường đua như bạn ném một viên xúc xắc để quyết định số phận của mình. Thả trôi và thực hiện các pha nguy hiểm điên cuồng là cách bạn thể hiện bản chất hung thần tốc độ bên trong của mình, vì vậy đừng ngại ngùng - hãy thể hiện ra ngoài và chơi!\n"
+""
+
+#: src/components/nodes/dashboard/TimeOnline.tsx:15
+msgid "Time Online"
+msgstr ""
+"Thời gian Trực tuyến\n"
+""
+
+#: src/components/nodes/rewards/TotalRewards.tsx:11
+msgid "Token Rewards"
+msgstr ""
+"Phần thưởng Token\n"
+""
+
+#: src/components/for-developers/Myria.tsx:39
+msgid "Tokenomics consultancy"
+msgstr ""
+"Tư vấn Tokenomics\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:104
+#: src/components/nodes/rewards/ClaimModal.tsx:42
+msgid "Total"
+msgstr ""
+"Tổng\n"
+""
+
+#: src/components/nodes/dashboard/GeneralInfo.tsx:18
+msgid "Total $MYRIA Mined"
+msgstr ""
+"Tổng số $MYRIA Khai thác\n"
+""
+
+#: src/components/nodes/dashboard/GeneralInfo.tsx:34
+msgid "Total NFT Rewards"
+msgstr ""
+"Tổng Thưởng NFT\n"
+""
+
+#: src/components/nodes/dashboard/TotalNodes.tsx:9
+msgid "Total nodes in Myria network"
+msgstr ""
+"Tổng số node trong mạng Myria\n"
+""
+
+#: src/components/interop/DesktopInterop.tsx:205
+#: src/components/interop/MobileInterop.tsx:105
+msgid "Trailer Coming Soon"
+msgstr "Sắp Ra Mắt Đoạn Trailer Giới Thiệu"
+
+#: src/components/nodes/Sidebar2.tsx:23
+msgid "Transaction List"
+msgstr ""
+"Danh sách Giao dịch\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:89
+msgid "Transaction fee"
+msgstr ""
+"Phí giao dịch\n"
+""
+
+#: src/pages/for-developers/solution.tsx:15
+msgid "Transparent and post-quantum secure -  no trusted setup"
+msgstr ""
+"Minh bạch và bảo mật hậu lượng tử - không có thiết lập đáng tin cậy\n"
+""
+
+#: src/pages/team.tsx:145
+msgid "UI/UX Lead"
+msgstr "Dẫn Đầu Giao Diện Người Dùng/Trải Nghiệm Người "
+
+#: src/pages/studios.tsx:349
+msgid "Unified through the Myriaverse"
+msgstr "Hợp nhất thông qua Myriaverse"
+
+#: src/components/for-developers/Myria.tsx:21
+msgid "Unlock immense scale"
+msgstr ""
+"Mở khóa quy mô lớn\n"
+""
+
+#: src/components/sigil/Sound.tsx:29
+msgid "Unmute sound"
+msgstr ""
+"Bật âm thanh\n"
+""
+
+#: src/components/sigil/Welcome.tsx:79
+msgid "Unsupported Browser"
+msgstr ""
+"Trình duyệt không được hỗ trợ\n"
+""
+
+#: src/components/Register/Register.tsx:184
+msgid "Username"
+msgstr ""
+"Tên đăng nhập\n"
+""
+
+#: src/components/Register/Register.tsx:50
+msgid "Username is required!"
+msgstr ""
+"Tên người dùng là bắt buộc!\n"
+""
+
+#: src/hooks/useGamesData.tsx:269
+msgid "Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning."
+msgstr ""
+"Sử dụng các kỹ năng dùng súng kết hợp với khả năng anh hùng độc đáo của bạn để giành chiến thắng trong một loạt các trận chiến nhóm hoặc trong các chế độ chơi khác. Quản lý nâng cấp khả năng và vũ khí bạn chọn để tối ưu hóa cơ hội chiến thắng của bạn.\n"
+""
+
+#: src/components/sigil/ClaimModal.tsx:40
+msgid "VIEW ITEM"
+msgstr ""
+"XEM MỤC\n"
+""
+
+#: src/components/inventory/OpenChest.tsx:133
+msgid "VIEW ITEMS"
+msgstr ""
+"XEM CÁC MỤC\n"
+""
+
+#: src/pages/nodes/index.tsx:252
+msgid "Validating on Myria"
+msgstr "Xác thực trên Myria"
+
+#: src/hooks/useGamesData.tsx:163
+msgid "Vanity factor number 1"
+msgstr ""
+"Yếu tố hư ảo số 1\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:73
+msgid "Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion."
+msgstr ""
+"Vector Prime tin rằng Rift là bước tiếp theo của quá trình tiến hóa và sẽ làm bất cứ điều gì trong khả năng để đẩy nhanh sự mở rộng của nó.\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:26
+msgid "Vegan PBR&B listicle sriracha. Migas lomo helvetica, listicle paleo salvia sartorial crucifix dreamcatcher try-hard ugh lyft. Intelligentsia whatever mlkshk salvia, authentic jianbing wolf coloring book echo park fam. Iceland cray occupy ennui, franzen tilde poke. Poutine echo park meditation cliche franzen, shaman messenger bag. Hot chicken umami adaptogen DIY yuccie whatever subway tile, narwhal helvetica meggings scenester twee iPhone tumblr lumbersexual."
+msgstr ""
+
+#: src/components/Careers/Careers.tsx:91
+msgid "View job"
+msgstr ""
+"Xem công việc\n"
+""
+
+#: src/pages/nodes/index.tsx:41
+msgid "Voting rights"
+msgstr "Quyền biểu quyết"
+
+#: src/hooks/useGamesData.tsx:363
+msgid "Watch your village grow and flourish as you move up the ranks. Are you able to devise the best strategy and outperform your rivals?"
+msgstr ""
+"Xem ngôi làng của bạn phát triển và hưng thịnh khi bạn lên cấp. Bạn có khả năng đưa ra chiến lược tốt nhất và vượt trội hơn đối thủ của mình không?\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:14
+msgid "We believe in open and equitable access, enabling more people to build, experience and enjoy the benefits of blockchain and the metaverse."
+msgstr ""
+"Chúng tôi tin tưởng vào quyền truy cập mở và công bằng, cho phép nhiều người hơn để xây dựng trải nghiệm và tận hưởng những lợi ích của blockchain và vũ trụ ảo.\n"
+""
+
+#: src/pages/for-gamers.tsx:35
+msgid "We believe players should have true verifiable ownership and control over in-game assets."
+msgstr "Chúng tôi tin rằng người chơi phải có quyền sở hữu và quyền kiểm soát thực sự có thể xác minh được đối với các tài sản trong trò chơi."
+
+#: src/components/ecosystem/Backbone.tsx:71
+msgid "We bring together everything that is required to build a decentralized, scalable and secure digital asset and blockchain gaming platform"
+msgstr ""
+"Chúng tôi tập hợp mọi thứ cần thiết để xây dựng một nền tảng trò chơi blockchain và tài sản kỹ thuật số phi tập trung, có thể mở rộng và an toàn\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:23
+msgid "We make digital asset trading and blockchain gaming easy with our all-in-one platform."
+msgstr ""
+"Chúng tôi giúp cho việc giao dịch tài sản kỹ thuật số và chơi trò chơi blockchain trở nên dễ dàng với nền tảng tất cả trong một của chúng tôi.\n"
+""
+
+#: src/components/for-developers/Myria.tsx:28
+msgid "We make everything else easy so you can focus on your product"
+msgstr ""
+"Chúng tôi làm cho mọi thứ khác trở nên dễ dàng cho bạn có thể tập trung vào sản phẩm của mình\n"
+""
+
+#: src/pages/for-studios.tsx:23
+msgid "We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming."
+msgstr "Chúng tôi cung cấp một bộ cơ sở hạ tầng blockchain đầy đủ trên chuỗi Myria, Ethereum L2 được xây dựng để chơi trò chơi."
+
+#: src/components/for-developers/Ethereum.tsx:221
+msgid "We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey"
+msgstr ""
+"Chúng tôi mang đến các giải pháp dễ dàng sử dụng để giúp các dự án khởi đầu hành trình chơi trò chơi blockchain của họ\n"
+""
+
+#: src/components/for-developers/Myria.tsx:12
+msgid "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
+msgstr ""
+"Chúng tôi hợp tác chặt chẽ với bạn từ giới thiệu đến triển khai, cung cấp tư vấn từ bộ phận hỗ trợ kỹ thuật đến các đề xuất phương pháp hay nhất để mở khóa các cơ hội và nguồn doanh thu mới.\n"
+""
+
+#: src/components/for-developers/BuildYourBlockchain.tsx:85
+msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
+msgstr ""
+"Chúng tôi rất mong nhận được hồi âm từ bạn. Hãy liên lạc với chúng tôi và khởi đầu hành trình chơi trò chơi blockchain của bạn ngay hôm nay.\n"
+""
+
+#: src/components/sigil/Welcome.tsx:86
+#: src/components/sigil/WelcomeMobile.tsx:13
+msgid "Welcome to the Myriaverse"
+msgstr ""
+"Chào mừng đến với Myriaverse\n"
+""
+
+#: src/components/JoinTheRevolution.tsx:25
+msgid "We’re hiring, join the future of gaming"
+msgstr "Chúng tôi đang tuyển dụng, hãy tham gia vào tương lai của trò chơi"
+
+#: src/pages/nodes/index.tsx:117
+msgid "What are the software and hardware requirements to run a node?"
+msgstr "Những yêu cầu về phần mềm và phần cứng để vận hành một node là gì?"
+
+#: src/pages/nodes/index.tsx:68
+msgid "What is a Myria node?"
+msgstr "Node Myria là gì?"
+
+#: src/pages/nodes/index.tsx:88
+msgid "What rewards do Myria node operators receive?"
+msgstr "Những người vận hành node Myria nhận được phần thưởng là gì?"
+
+#: src/pages/nodes/index.tsx:150
+msgid "When will Myria node licenses be sold?"
+msgstr "Khi nào giấy phép node Myria sẽ được bán?"
+
+#: src/components/sigil/Welcome.tsx:89
+msgid "Which side of the battlelines will you stand on? <0/> Choose your Alliance and claim your free Sigil NFT."
+msgstr ""
+"Bạn sẽ đứng về phía chiến tuyến nào? <0/> Chọn Liên minh của bạn và yêu cầu NFT Sigil miễn phí của bạn.\n"
+""
+
+#: src/components/Footer.tsx:96
+msgid "Whitepaper"
+msgstr ""
+"Giấy trắng\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:50
+msgid "With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts."
+msgstr ""
+"Với những con tàu được trang bị công nghệ vừa cổ điển vừa tân tiến, Liên minh Liên bang tuần tra không gian, chống lại sự mở rộng của Lhe nứt trên mọi mặt trận.\n"
+""
+
+#: src/components/for-developers/Myria.tsx:46
+msgid "Work with our experienced legal team"
+msgstr ""
+"Làm việc với đội ngũ pháp lý giàu kinh nghiệm của chúng tôi\n"
+""
+
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:56
+msgid "You are joining..."
+msgstr ""
+"Bạn đang tham gia...\n"
+""
+
+#: src/components/sigil/ClaimModal.tsx:33
+msgid "You have just claimed"
+msgstr ""
+"Bạn vừa mới yêu cầu\n"
+""
+
+#: src/components/inventory/OpenChest.tsx:110
+msgid "You have opened"
+msgstr ""
+"Bạn đã mở\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:89
+msgid "Your Myria Dashboard"
+msgstr ""
+"Bảng điều khiển Myria của bạn\n"
+""
+
+#: src/components/interop/DesktopInterop.tsx:245
+#: src/components/interop/MobileInterop.tsx:154
+msgid "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
+msgstr "NFT của bạn là danh tính kỹ thuật số của bạn. Mang theo NFT của bạn trong các chuyến khám phá vũ trụ ảo của bạn. Hãy trang bị và lên cấp trong các trò chơi và thế giới khác nhau. Thực sự sở hữu danh tính vũ trụ ảo của bạn với Myria."
+
+#: src/pages/nodes/purchase-complete.tsx:73
+msgid "Your purchase is complete."
+msgstr ""
+"Mua hàng của bạn đã hoàn tất.\n"
+""
+
+#: src/pages/nodes/index.tsx:214
+msgid "a decentralized ecosystem"
+msgstr "một hệ sinh thái phi tập trung"
+
+#: src/components/JoinTheRevolution.tsx:22
+msgid "join the revolution"
+msgstr "tham gia cuộc cách mạng"
+
+#: src/components/ecosystem/Diagram.tsx:13
+msgid "view now"
+msgstr "xem ngay bây giờ"
+
+#: src/components/Purchase/Modals/index.tsx:116
+msgid "{balance} ETH"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:165
+msgid ""
+"“Mirror, mirror on the wall, who's the fairest of them all?”\n"
+"If you’re still wondering whether those shiny pink rims or the NFT unicorn sticker on the hood are going to make you stand out on the track, then wonder no more. You're gonna shine like a star as your opponents remain a distant glimpse in the rear-view mirror."
+msgstr ""
+"\"Gương kia, ngươi gương trên tường, ai là người đẹp nhất?\" Nếu bạn vẫn đang tự hỏi liệu những chiếc vành hồng sáng bóng hay hình dán kỳ lân NFT trên mui xe có khiến bạn nổi bật trên đường đua hay không, thì đừng băn khoăn nữa. Bạn sẽ tỏa sáng như một ngôi sao khi đối thủ của bạn vẫn đang nhìn xa xăm trong gương chiếu hậu.\n"
+""

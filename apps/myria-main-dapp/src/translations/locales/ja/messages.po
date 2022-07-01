@@ -1,0 +1,2836 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2022-06-14 19:43+0700\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ja\n"
+
+#: src/components/home/Hero.tsx:136
+msgid "$MYRIA Token"
+msgstr ""
+"$MYRIA トークン\n"
+""
+
+#: src/pages/studios.tsx:277
+msgid "$MYRIA is the native governance and utility token that encapsulates the Myria ecosystem. Players will be able to use $MYRIA to buy, trade, upgrade, vote and more!"
+msgstr "$MYRIA は、エコシステムをカプセル化するネイティブガバナンスおよびユーティリティトークンです。 プレイヤーさんが、$ MYRIAを使用して、購入・トレード・投票などを行うことができます。"
+
+#: src/components/for-developers/Ethereum.tsx:318
+msgid "100% Ethereum-level security guarantees; whilst increase transaction speed and throughput"
+msgstr ""
+"100％Ethereumレベルのセキュリティ保証。 トランザクションの速度とスループットを向上させます\n"
+""
+
+#: src/pages/nodes/index.tsx:134
+msgid "2 CPU Cores"
+msgstr "2 CPUコア"
+
+#: src/pages/nodes/index.tsx:137
+msgid "60 GB Disk Space"
+msgstr "60GBディスクスペース"
+
+#: src/components/ecosystem/Backbone.tsx:45
+msgid "<0/> creates a range of free-to-play AAA games spans across an entire interconnected ecosystem, built with the new standard of interoperable NFTs."
+msgstr ""
+"<0/>は、相互運用可能なNFTの新しい標準で構築された、相互接続されたエコシステム全体にまたがる、様々な無料のAAAゲームを作成します。\n"
+""
+
+#: src/components/NotiBanner.tsx:33
+msgid "<0>$MYRIA</0> Node & Token coming soon!"
+msgstr ""
+"<0>$MYRIA</0> ノード & トークンが間もなく来ます！\n"
+""
+
+#: src/components/sigil/Inventory.tsx:36
+msgid "<0>Be prepared as this might be the key to survival in the Myriaverse.</0>"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:386
+msgid "<0>If it’s yours, it stays yours</0> - You’ve worked hard to build that neat graveyard farm for two whole days and now it’s yours to stay… forever!"
+msgstr ""
+"<0>それがお客様の物なら、その左様だ</0>お客様は丸2日間、そのきちんとした墓地の農場を建てるために一生懸命働いてきました、そして今、それはお客様のもので・・・遠に！\n"
+""
+
+#: src/pages/nodes/index.tsx:70
+msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
+msgstr "<0>Myriaチェーンを含めて、ブロックチェーンを実行するには、ネットワークトランザクションの検証にノードが必要になります。 Myriaエコシステムのノードは、初期ネットワークのテスト、ブロックの生成、検証など、さまざまなネットワークのサポート活動に使用されています。</0><1>潜在的なバリデータとしての役割に加え、ノードの所有者が、Myriaエコシステムが、より高度になるにつれ、補助的なブロックチェーンネットワーク機能に対して、報酬を受け取るように求められてます。 これらには、Myriaエコシステム、オラクル、ガバナンス投票、及びゲーム固有の概念への投票における特定の重要な情報の分散ストレージの必要性が含まれています。</1>"
+
+#: src/pages/studios.tsx:214
+msgid "<0>Interoperable</0> & Interconnected NFTs"
+msgstr "<0>相互運用可能</0>&相互接続されたNFTs"
+
+#: src/pages/nodes/index.tsx:90
+msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
+msgstr "<0>Myriaノードのオペレーターは、ノードの動作のおかげで、毎日$ MYRIAトークンの報酬を受け取ります。</0><1>ノードの所有者が、ノードのオペレーターと一般的なコミュニティメンバーとしての評判スコアに基づいて、NFTドロップとトークンも提供されます。</1><2>レピュテーション・スコアは、ノードの所有者のプレイアクティビティ、所有し賭けているトークンの数、以前の稼働時間メトリック、とネットワークサポーの履歴（検証またはOracleプロバイダーなど）によって決定されます。</2>"
+
+#: src/pages/inventory.tsx:100
+msgid "<0>Once the Sigils are active, they will be minted directly on the Myria</0>"
+msgstr ""
+"<0>Sigilsがアクティブになると、Myriaで直接ミントされます。</0>\n"
+""
+
+#: src/hooks/useGamesData.tsx:379
+msgid "<0>Play and earn</0> - Convert your score and time spent into tangible rewards (when Beta kicks in). Addictive fun aside, not a single day of gameplay will be time wasted."
+msgstr ""
+"<0>プレイして稼ぐ</0>-スコアと費やした時間を具体的な報酬に変換します（ベータ版が開始されたとき）。 中毒性のある楽しみを除けば、ゲームプレイの1日が無駄になることはありません。\n"
+""
+
+#: src/pages/games.tsx:26
+msgid "<0>Play</0> and earn <1/> rewards and NFTs"
+msgstr ""
+"<0>プレイ</0>して<1/>報酬とNFTを獲得します。\n"
+""
+
+#: src/hooks/useGamesData.tsx:392
+msgid "<0>Resourcefulness rules!</0> - Overcome your competition with the best strategy and become the master of Moonville."
+msgstr ""
+"<0>機知に富んだルール！</0>。最高の戦略で競争を克服し、ムーンビルのマスターになりましょう。\n"
+""
+
+#: src/components/sigil/Inventory.tsx:30
+msgid "<0>Sigils are going to be activated later in time when the mysterious Sigma mission is set into motion.</0>"
+msgstr ""
+
+#: src/pages/inventory.tsx:89
+msgid "<0>Sigils are inactive until the Sigma mission is set into motion.</0>"
+msgstr ""
+"<0>シグマミッションが開始されるまで、シギルは非アクティブです。</0>\n"
+""
+
+#: src/pages/inventory.tsx:94
+msgid "<0>T-minus 47 gigaquarks</0>"
+msgstr ""
+"<0>Tマイナス47ギガクォーク</0>\n"
+""
+
+#: src/pages/nodes/index.tsx:120
+msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows, Mac and Linux. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
+msgstr ""
+"<0>ノードをローカルまたはクラウドで実行するオプションがあります。</0><1>Myriaノードソフトウェアは、Windows、Mac、及びLinuxユーザがダウンロード出来るようになります。 従来のビットコインマイニングとは異なり、ノード操作は多くのリソースを消費しません。 次の最小要件を使用して、自宅のコンピュータからノードソフトウェアを実行出来ます。</1>\n"
+""
+
+#: src/pages/studios.tsx:187
+msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
+msgstr "ブロックチェンと世界の<0>分散型エコシステム</0>"
+
+#: src/pages/nodes/index.tsx:143
+msgid "A Stable Internet Connection"
+msgstr "安定なインターネットの接続"
+
+#: src/components/OurGames.tsx:42
+msgid "A battle-royale shooter game"
+msgstr "バトル・ロイヤル・シューティング・ゲーム"
+
+#: src/hooks/useGamesData.tsx:329
+msgid "A competitive play-and-earn tycoon farming simulator."
+msgstr ""
+"競争力のある遊びと稼ぎのタイクーン農業シミュレーター\n"
+""
+
+#: src/components/home/Hero.tsx:258
+msgid "A decentralised Ethereum scaling platform, purpose built for digital assets and gaming."
+msgstr ""
+"分散型Ethereumスケーリングプラットフォームで、デジタル資産とゲーム用に構築されています。\n"
+""
+
+#: src/pages/team.tsx:102
+msgid "A dynamic, entreprenurial executive with over 8+ years in management consulting, focusing on organisational transformations for global companies such as Verizon, Vanguard, Kayo Streaming and more. More recently founding aliens.com."
+msgstr ""
+"Verizon、Vanguard、Kayo Streamingなどの多国籍企業の組織変革を専門とする、8人以上の経営コンサルティング経験を持つダイナミックで起業家精神にあふれたエグゼクティブです。最近では、彼はウェブサイトaliens.comを設立しました。\n"
+""
+
+#: src/hooks/useGamesData.tsx:37
+msgid "A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory."
+msgstr ""
+"この陽気なマルチプレイヤーゲームで友達や敵をバウンドさせたり、転がしたり、ボールを投げたりすると、お客様の味方は分裂します。 ますます奇妙な風景を戦い抜いて、殿堂入りを果たしましょう。\n"
+""
+
+#: src/components/Register/Register.tsx:32
+msgid "A mixture of both uppercase and lowercase letters"
+msgstr ""
+"大文字と小文字の両方の混合\n"
+""
+
+#: src/components/Register/Register.tsx:36
+msgid "A mixture of letters and numbers"
+msgstr ""
+"文字と数字の混合\n"
+""
+
+#: src/components/OurGames.tsx:59
+msgid "A multiplayer go-kart racing game"
+msgstr "マルチプレイヤー・ゴーカート・レースゲーム"
+
+#: src/components/OurGames.tsx:25
+msgid "A multiplayer obstacle course game"
+msgstr "マルチプレイヤー・障害物コース・ゲーム"
+
+#: src/hooks/useGamesData.tsx:355
+msgid "A rewarding experience"
+msgstr ""
+"やりがいのある経験\n"
+""
+
+#: src/pages/team.tsx:42
+msgid "A serial entrepreneur and Web3 proponent with over 15 years of founding experience including four multinational VC-backed companies in traditional tech. More recently founding aliens.com and a blockchain SAAS platform."
+msgstr ""
+"伝統的な技術の4つの多国籍VC支援企業を含む15年以上のスタートアップ経験を持つシリアル起業家及びWeb3支持者。 最近では、aliens.comとブロックチェーンSAASプラットフォームを設立しました。\n"
+""
+
+#: src/pages/team.tsx:162
+msgid "AJ has over 20 years of multidisciplinary design experience— from web and apparel design, to crafting brand identities. He has worked with global brands including Nike, Adidas and Microsoft, among others."
+msgstr "AJは、ウェブやアパレルのデザインから、ブランドアイデンティティの作成にかけて、20年以上の学際的なデザインの経験があります。 彼は、ナイキ、アディダス、マイク・ロソフト等のグローバル企業に活躍してきました。"
+
+#: src/components/Footer.tsx:92
+#: src/components/Header/linkSources.tsx:64
+msgid "About"
+msgstr "私たちについて"
+
+#: src/hooks/useGamesData.tsx:66
+#: src/hooks/useGamesData.tsx:142
+#: src/hooks/useGamesData.tsx:221
+#: src/hooks/useGamesData.tsx:280
+#: src/hooks/useGamesData.tsx:348
+msgid "About the game"
+msgstr ""
+"ゲームについて\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:65
+msgid "Accept"
+msgstr ""
+
+#: src/pages/nodes/purchase-complete.tsx:45
+msgid "Access node dashboard"
+msgstr ""
+"ノードのダッシュボードにアクセス\n"
+""
+
+#: src/pages/for-studios.tsx:50
+msgid "Access ongoing education and technical support to ensure a successful onboarding onto the blockchain."
+msgstr "継続的な教育と技術サポートにアクセスし、ブロックチェーンへのオンボーディングを成功させます。"
+
+#: src/components/Careers/Careers.tsx:59
+msgid "All"
+msgstr ""
+"全て\n"
+""
+
+#: src/components/home/Hero.tsx:82
+msgid "Alliance Sigil NFT Launch"
+msgstr ""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:59
+msgid "Already have an account?"
+msgstr ""
+"既にアカウントをお持ちですか？\n"
+""
+
+#: src/pages/for-studios.tsx:82
+msgid "An end-to-end solution for token-based game economies and NFTs that benefits the community"
+msgstr "コミュニティに利益をもたらすトークンベースのゲームエコノミーとNFTのエンドツーエンドソリューション"
+
+#: src/components/OurGames.tsx:76
+msgid "An objective-based shooter game"
+msgstr "目的ベースシューターゲーム"
+
+#: src/pages/nodes/index.tsx:140
+msgid "An x86/X64 Processor"
+msgstr "x86/X64のプロセッサ"
+
+#: src/pages/team.tsx:27
+msgid "Andrew has been a tech executive in the gaming industry with a career spanning over 27 years. He has worked with some of the most recognizable names in the industry, including Activision, Electronic Arts, 2K, Ubisoft, Sony, and Midway."
+msgstr "アンドリューは、ゲーム業界におけるテックの技術エグゼクティブとして、27年以上の経験を持っています。 彼は、Activision、Electronic Arts、2K、Ubisoft、Sony、Midway等業界で最も有名な名前のいくつかと協力してきました。"
+
+#: src/components/Video/Setting.tsx:22
+msgid "Applies to all videos"
+msgstr "全てのビデオに応募する"
+
+#: src/pages/for-developers/solution.tsx:121
+msgid "Architecture"
+msgstr ""
+"建築\n"
+""
+
+#: src/hooks/useGamesData.tsx:145
+msgid "Are you ready for a crazy ride that is nothing short of hilarious? Hop into your shiny kart and race till your wheels burn. Can you handle the heat and destroy your opponents before they throw you off the track?"
+msgstr ""
+"お客様は、自身のをステッチに残す野生の冒険の準備ができていますか？ 光沢のあるカートに乗り、タイヤが焼けるまでレースをします。 敵がお客様をトラックから追い出す前に、お客様は暑さに立ち向かい、敵を粉砕することができますか？\n"
+""
+
+#: src/pages/team.tsx:160
+msgid "Art Creative Lead"
+msgstr "アート・クリエイティブ・リード"
+
+#: src/components/interop/DesktopInterop.tsx:227
+#: src/components/interop/MobileInterop.tsx:131
+msgid "At Myria, we believe NFTs should not only endow players with verifiable ownership, but also allow players to take their NFTs from one game to another."
+msgstr "Myriaでは、NFTはプレーヤーに検証可能な所有権を与えるだけでなく、プレーヤーがNFTをあるゲームから別のゲームに移動できるようにすると信じています。"
+
+#: src/components/Register/Register.tsx:28
+msgid "At least 8 characters—the more characters, the better"
+msgstr ""
+"少なくとも8文字-文字が多いほど良い\n"
+""
+
+#: src/components/Video/Setting.tsx:19
+msgid "Autoplay"
+msgstr "オートープレー"
+
+#: src/components/nodes/mint-assets/index.tsx:82
+msgid "Available to mint"
+msgstr ""
+"ミント可能\n"
+""
+
+#: src/components/sigil/Header.tsx:27
+msgid "BACK TO MYRIA HOME"
+msgstr ""
+"MYRIAホームに戻る\n"
+""
+
+#: src/pages/inventory.tsx:116
+msgid "BACK TO SIGIL DASHBOARD"
+msgstr ""
+"SIGILダッシュボードに戻る\n"
+""
+
+#: src/components/BuyANode.tsx:6
+#: src/pages/nodes/index.tsx:304
+msgid "BUY A NODE"
+msgstr "ノードを買う"
+
+#: src/hooks/useGamesData.tsx:240
+msgid "Battle with style!"
+msgstr ""
+"スタイルとの戦い！\n"
+""
+
+#: src/components/Purchase/License.tsx:70
+msgid "Be rewarded for your contribution"
+msgstr ""
+"貢献されたのに対して報われる\n"
+""
+
+#: src/components/BuyerNodeCard.tsx:7
+#: src/components/Program.tsx:11
+msgid "Become a Myria node owner & receive rewards"
+msgstr ""
+"Myriaノードの所有者になり、報酬を受け取ります\n"
+""
+
+#: src/pages/nodes/index.tsx:297
+msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
+msgstr "Myriaのエコシステムの不可欠な部分になり、各自の貢献の恩恵を享受しましょう。 初期の創設者ノードオペレーターは、ノードが販売されるにつれて値上がりする優遇価格を受け取ります。"
+
+#: src/components/home/Hero.tsx:85
+msgid "Begin your adventure, choose your alliance and claim your free NFT rewards"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:33
+msgid "Blockchain consultancy"
+msgstr ""
+"ブロックチェーンコンサルタント\n"
+""
+
+#: src/pages/for-studios.tsx:79
+msgid "Blockchain infrastructure for Game Studios"
+msgstr "ゲーム・スタジオ向けのブロックチェーンの設備"
+
+#: src/pages/for-studios.tsx:21
+msgid "Blockchain platform for game studios"
+msgstr "ゲーム・スタジオ向けのブロックチェーンのプラットホーム"
+
+#: src/pages/team.tsx:57
+msgid "Brendan brings a decade of experience in blockchain. He has founded an escrow solution on the Bitcoin blockchain, a crypto ETF on ethereum, and was blockchain lead for the world’s largest trade finance blockchain network."
+msgstr "ゲーム・スタジオ向けのブロックチェーンのプラットホーム"
+
+#: src/components/home/Hero.tsx:248
+msgid "Bringing <0>blockchain gaming </0>to the world"
+msgstr ""
+"<0>ブロックチェーンゲーム</0>を世界にもたらす\n"
+""
+
+#: src/pages/team.tsx:132
+msgid "Brock is an entreprenurial product lead with over 10+ years experience working in the tech startups and founded his own MarTech company. More recently, he helped scale one of the largest blockchain companies focusing on product tokenomics and growth."
+msgstr "ブロックは、起業家向けプロダクトリードであり、技術系スタートアップにおいて、10年以上の経験があり、独自のMarTech社を設立しました。 最近では、トケノミクス製品と成長に焦点を当てた最大のブロックチェーン企業の一つを拡大するのを手伝いました。"
+
+#: src/components/for-developers/BuildYourBlockchain.tsx:82
+msgid "Build your blockchain game with Myria"
+msgstr ""
+"Myriaでブロックチェーンゲームを構築する\n"
+""
+
+#: src/hooks/useGamesData.tsx:361
+msgid "Build, upgrade, and earn!"
+msgstr ""
+"構築、アップグレード、そして獲得！\n"
+""
+
+#: src/pages/for-developers/solution.tsx:34
+msgid "Building towards a decentralized and permissionless network"
+msgstr ""
+"分散型で許可のないネットワークに向けた構築\n"
+""
+
+#: src/pages/nodes/index.tsx:208
+msgid "Buy a node"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:109
+msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
+msgstr "ノードライセンスを購入すると、所有者はノードを（ローカルまたはクラウドで）実行し、ガバナンスによって決定された報酬を受け取る権利が与えられます。"
+
+#: src/components/home/Hero.tsx:93
+#: src/components/sigil/RewardItem.tsx:73
+msgid "CLAIM NOW"
+msgstr ""
+"今すぐ請求\n"
+""
+
+#: src/components/nodes/dashboard/LatestReward.tsx:118
+msgid "CLAIM REWARDS"
+msgstr ""
+"クレームリワード\n"
+""
+
+#: src/components/inventory/InventoryItem.tsx:35
+msgid "CLAIMED"
+msgstr ""
+
+#: src/pages/team.tsx:70
+msgid "CMO"
+msgstr ""
+"CMO\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:63
+msgid "COLLECT NOW"
+msgstr ""
+"今すぐ収集\n"
+""
+
+#: src/components/games/GameList.tsx:157
+#: src/components/home/Hero.tsx:133
+#: src/components/home/Hero.tsx:139
+#: src/components/home/OurGames.tsx:26
+msgid "COMING SOON"
+msgstr ""
+"近日公開\n"
+""
+
+#: src/components/sigil/LinkWalletConfirmModal.tsx:37
+#: src/components/sigil/Welcome.tsx:140
+msgid "CONNECT WALLET"
+msgstr ""
+"ウォレットにつなげる\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:68
+msgid "COPIED"
+msgstr ""
+"コピー済\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:68
+msgid "COPY LINK"
+msgstr ""
+"リンクをコピーする\n"
+""
+
+#: src/pages/team.tsx:85
+msgid "CPO (People)"
+msgstr ""
+"CPO（人）\n"
+""
+
+#: src/pages/for-developers/solution.tsx:25
+msgid "Cairo, allows for development of provable on-chain complexity"
+msgstr ""
+"Cairoは、証明可能なオンチェーンの複雑さの開発を可能にします\n"
+""
+
+#: src/components/Footer.tsx:108
+#: src/components/Header/linkSources.tsx:84
+msgid "Careers"
+msgstr "キャリア"
+
+#: src/hooks/useGamesData.tsx:290
+msgid "Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?"
+msgstr ""
+"ラウンドの開始時に、適切な機器を慎重に選択します。 敵を遠くから撃ち落とすか、レベル全体を地面に焼き付けるかはお客様次第です。破壊の達人になるために必要なものはありますか。\n"
+""
+
+#: src/pages/sigil/index.tsx:135
+msgid "Choose Alliance"
+msgstr ""
+"アライアンスを選択\n"
+""
+
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:78
+msgid "Choose Wisely!"
+msgstr ""
+"賢く選択して下さい！\n"
+""
+
+#: src/hooks/useGamesData.tsx:242
+msgid "Choose the best outfit that expresses your inner self. Unlock and collect multiple cosmetic skins and items that will carry across other games as interoperable NFTs."
+msgstr ""
+"お客様の内なる自己を最もよく表す服を選んで下さい。 他のゲームでNFTとして使用される可能性のある様々なコスメティックスキンやアイテムのロックを解除して収集します。\n"
+""
+
+#: src/hooks/useGamesData.tsx:87
+msgid "Choose the best outfit that expresses your personality. Unlock and collect multiple cosmetic skins and items that will carry over to other games as interoperable NFTs."
+msgstr ""
+"お客様の個性を最もよく表す服を選んで下さい。 他のゲームでNFTとして使用される可能性のある様々なコスメティックスキンやアイテムのロックを解除して収集します。\n"
+""
+
+#: src/hooks/useGamesData.tsx:81
+msgid "Choose the game mode that best suits your playstyle and fight for your right to party! Play alone or with friends and collect endless rewards."
+msgstr ""
+"お客様のプレイスタイルに最適なゲームモードを選択し、パーティーの権利のために戦って下さい！ 一人で、または友達と遊んで、無尽蔵の報酬を獲得しましょう。\n"
+""
+
+#: src/hooks/useGamesData.tsx:234
+msgid "Choose your champion"
+msgstr ""
+"チャンピオンを選択\n"
+""
+
+#: src/components/nodes/rewards/TotalRewards.tsx:15
+msgid "Claim All"
+msgstr ""
+"全てをクレーム\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:49
+msgid "Claim rewards"
+msgstr ""
+"リワードをクレーム\n"
+""
+
+#: src/pages/sigil/index.tsx:138
+msgid "Claim your NFT reward"
+msgstr ""
+"NFTリワードをクレーム\n"
+""
+
+#: src/components/sigil/RewardItem.tsx:81
+msgid "Claimed"
+msgstr ""
+"クレーム済\n"
+""
+
+#: src/pages/team.tsx:40
+msgid "Co-Founder - CEO"
+msgstr ""
+"共同創設者のCEO\n"
+""
+
+#: src/pages/team.tsx:25
+msgid "Co-Founder - CTO"
+msgstr "共同創設者　－　CTO"
+
+#: src/pages/team.tsx:55
+msgid "Co-Founder - Head of Blockchain"
+msgstr ""
+"共同創設者のブロックチェーンの責任者\n"
+""
+
+#: src/pages/team.tsx:100
+msgid "Co-Founder - Operations"
+msgstr "共同創設者　－　オーぺレーション"
+
+#: src/pages/team.tsx:115
+msgid "Co-Founder, VP Games"
+msgstr ""
+"共同創設者のVPGames\n"
+""
+
+#: src/components/nodes/rewards/RewardList.tsx:149
+msgid "Collect ALL"
+msgstr ""
+"全てを選択\n"
+"\n"
+""
+
+#: src/components/nodes/rewards/RewardList.tsx:155
+msgid "Collect REWARDS"
+msgstr "リワードを収集"
+
+#: src/hooks/useGamesData.tsx:159
+msgid "Combine the right amount of acceleration, handling, and looks to nail the right recipe for the current track. You can also sprinkle in a bit of armour – just to play it safe – because, as my grandma always says, “if you ain’t ready for some rockets down the road, boy, you better come home!”"
+msgstr ""
+"加速、ハンドリング、ルックスの適切な組み合わせを組み合わせて、現在のトラックの理想的なレシピを決定します。 安全にプレイするために、少し鎧をまぶすことも出来ます。私のおばあちゃんがいつも言っているように、「ロケットの準備が出来ていないのなら、家に帰ったほうがいいよ！」\n"
+""
+
+#: src/components/ComingSoon.tsx:46
+msgid "Coming Soon"
+msgstr "近日公開"
+
+#: src/components/Header/linkSources.tsx:91
+msgid "Community"
+msgstr "コミュニティ"
+
+#: src/hooks/useGamesData.tsx:79
+msgid "Compete, survive, win and earn!"
+msgstr ""
+"競争し、生き残り、勝ち、そして稼ごう！\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:190
+msgid "Complete"
+msgstr ""
+"完了\n"
+""
+
+#: src/pages/for-developers/solution.tsx:28
+msgid "Complete privacy, not only from other users, but also from the Operator."
+msgstr ""
+"他のユーザからだけでなく、オペレーターからも完全なプライバシーを確保します。\n"
+""
+
+#: src/components/for-developers/Myria.tsx:45
+msgid "Compliance support"
+msgstr ""
+"コンプライアンスサポート\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:92
+msgid "Configure your node and view your rewards in the dashboard"
+msgstr ""
+"ノードを構成し、ダッシュボードに報酬を表示します\n"
+""
+
+#: src/components/Register/Register.tsx:222
+#: src/components/ResetPassword/ResetPassword.tsx:86
+msgid "Confirm password"
+msgstr ""
+"パスワードを確認\n"
+""
+
+#: src/components/Register/Register.tsx:62
+#: src/components/ResetPassword/ResetPassword.tsx:25
+msgid "Confirm password is required!"
+msgstr ""
+"パスワードの確認が必須！\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:70
+msgid "Congratulations!"
+msgstr ""
+"おめでとうございます！\n"
+""
+
+#: src/pages/sigil/index.tsx:132
+msgid "Connect Wallet"
+msgstr ""
+"ウオレットにつなげる\n"
+""
+
+#: src/components/sigil/Welcome.tsx:98
+msgid "Connect to your wallet to enter the Myriaverse"
+msgstr ""
+"ウオレットにつなげてから、Myriaverseにアクセスします\n"
+""
+
+#: src/components/nodes/Header.tsx:152
+#: src/pages/nodes/index.tsx:208
+msgid "Connect wallet"
+msgstr ""
+
+#: src/pages/contact.tsx:52
+msgid "Connect with us"
+msgstr "私たちに接続"
+
+#: src/pages/for-gamers.tsx:113
+msgid "Connecting the world through <0>play</0>"
+msgstr "世界に<0>play</0>を通じて、接続"
+
+#: src/pages/_app.tsx:33
+msgid "Connecting the world through play"
+msgstr "プレーによって、世界を接続します"
+
+#: src/components/Footer.tsx:118
+msgid "Contact Us"
+msgstr "私たちに連絡"
+
+#: src/pages/contact.tsx:37
+msgid "Contact us"
+msgstr "私たちに連絡"
+
+#: src/pages/team.tsx:212
+msgid "Contributing to the future of a decentralized internet"
+msgstr ""
+"分散型インターネットの未来への貢献\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:88
+msgid "Copy invite link"
+msgstr ""
+"\n"
+""
+
+#: src/pages/team.tsx:147
+msgid "Craig brings over 10+ years of experience in leading web & app UI/UX design and crafting brand identities. He has worked with global companies across industries such as communications, financial institutions, media and more."
+msgstr "Craigさんは、主要なウェッブ及びアプリのUI・UXデザイン並びに、コーポレート・アイデンティティの作成において、10年以上の経験を持っています。 彼が、通信、金融機関、メディアなど、様々なグローバル業界と協力してきました。"
+
+#: src/pages/nodes/purchase-complete.tsx:41
+#: src/pages/nodes/purchase-complete.tsx:81
+msgid "Create an account"
+msgstr "アカウントの作成"
+
+#: src/pages/studios.tsx:163
+msgid "Creating the new standard for blockchain games and experiences"
+msgstr ""
+"ブロックチェーンゲームとエクスペリエンスの新しい標準を作成する\n"
+""
+
+#: src/components/home/Hero.tsx:114
+#: src/pages/cricket.tsx:96
+msgid "Cricket legend AB de Villiers has joined forces with Myria to deliver the next generation of blockchain gaming to cricket fans around the world"
+msgstr ""
+
+#: src/components/nodes/dashboard/TimeOnline.tsx:9
+msgid "Current Node Cycle"
+msgstr ""
+"現行ノードのサイクル\n"
+""
+
+#: src/pages/careers/index.tsx:22
+msgid "Current Openings"
+msgstr ""
+"開催中\n"
+""
+
+#: src/hooks/useGamesData.tsx:369
+msgid "Customize your Moon Village with a range of cosmetic skins for various buildings and crew. These skins are NFTs, therefore remain yours forever, and are reusable across games."
+msgstr ""
+"ムーンビレッジをパーソナライズするために、様々な建物や乗組員の様々な化粧品スキンから選択して下さい。 これらのスキンはNFTです。つまり、これらのスキンは永遠にお客様のものであり、複数のゲームで使用出来ます。\n"
+""
+
+#: src/pages/nodes/index.tsx:28
+msgid "Daily $MYRIA token rewards"
+msgstr "日刊$MYRIAトークンリワード"
+
+#: src/components/nodes/Sidebar2.tsx:11
+msgid "Dashboard"
+msgstr ""
+"ダッシュボード\n"
+""
+
+#: src/components/sigil/Profile.tsx:71
+msgid "Date Registered"
+msgstr ""
+"日付が登録した\n"
+""
+
+#: src/pages/team.tsx:72
+msgid "Dave has over 25 years of marketing and management experience. He previously led marketing at Banxa and Rockstar Games. Dave also founded Marley Spoon; taking the company from inception to IPO."
+msgstr ""
+"デイブは、マーケティングと管理において25年以上の専門知識を持っています。 彼は以前、BanxaとRockstar Gamesに勤務し、マーケティングを担当していました。 デイブはマーリースプーンの創設者でもあり、彼は創業からIPOに導きました。\n"
+""
+
+#: src/pages/nodes/index.tsx:196
+msgid "Decentralize the network by providing computing resources"
+msgstr "コンピューティングのリソースの提供によってネットワークを分解化します"
+
+#: src/pages/nodes/index.tsx:160
+msgid "Details will be announced soon."
+msgstr "詳細は近日公開します。"
+
+#: src/components/nodes/Header.tsx:142
+msgid "Disconnect"
+msgstr ""
+
+#: src/components/home/OurGames.tsx:46
+msgid "Discover more"
+msgstr ""
+"もっと発見する\n"
+""
+
+#: src/hooks/useGamesData.tsx:224
+msgid "Dive in, we dare you. You’ll find yourself gracefully descending from the sky while you survey the lands to select your ideal landing spot. Enjoy that moment of peace, because once your feet touch the ground you’ll be plunged into an intense battle for loot and powerful equipment.As expected, life in this world ain’t easy, and at given intervals of time the playable area of the map will shrink, pushing you closer to your enemies. Needless to say, they ain’t waiting for you in a bed of roses, so be prepared!"
+msgstr ""
+"当社はお客様が飛び込むことをあえてします。お客様が完璧な着陸地点を求めて風景を調査するとき、お客様は優雅に空から降りてきます。 足が地面に着くとすぐに、戦利品と強力な武器をめぐる激しい戦いに突入するので、その短い休息を楽しんで下さい。 ご想像のとおり、この世界での生活は簡単ではありません。マップの再生可能領域は時間の経過とともに縮小し、敵に近づきます。 彼らはバラのベッドでお客様を待っていることはないので、準備をして下さい！\n"
+""
+
+#: src/components/sigil/LinkWalletConfirmModal.tsx:21
+msgid "Do you want to link your wallet {0} to your Myria account?"
+msgstr ""
+"ウォレット{0}をMyriaアカウントにつなげますか？\n"
+""
+
+#: src/components/sigil/Welcome.tsx:113
+msgid "Don't have a wallet yet? <0/>Install Metamask below."
+msgstr ""
+"まだ財布はお持ちでないのですか？<0/>以下にメタマスクをインストールして下さい。\n"
+""
+
+#: src/hooks/useGamesData.tsx:114
+msgid "Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse."
+msgstr ""
+"フィニッシュラインへのレースでは、スリル満点のトラックを漂流します。 対戦相手を爆破し、あちこちで大混乱を引き起こして、余分なポイントを獲得し、リーダーボードを登りましょう。 Myriaverseのレーシングレジェンドの中でお客様の正当な位置を獲得するために、当社の多くのゲームモードとトラックに飛び込んで下さい。\n"
+""
+
+#: src/hooks/useGamesData.tsx:151
+msgid "Drift it up!"
+msgstr ""
+"Drift it up!\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:102
+msgid "Driven by the search for knowledge, the Equinox collect every piece of information they can find. Somewhere in all this data must be the answer to peace. You might be the one to finally unlock that puzzle."
+msgstr ""
+"Equinoxは、手に入れることが出来るあらゆる情報を学び、収集したいという願望に駆り立てられています。 この全てのデータのどこかに平和への解決策がなければなりません。 お客様はパズルを解く人かもしれません。\n"
+""
+
+#: src/pages/nodes/index.tsx:43
+msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
+msgstr "各ノードは、Myriaチェーンに対する変更に投票することができ、ノードはMyriaverse全体でより大きな投票権を保持します。"
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:113
+msgid "Earn {point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:77
+msgid "Earn {point} points by completing account creation"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:143
+msgid "Earn {point} points by following @myriagames on Twitter"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:151
+msgid "Earn {point} points by following myriagames on Instagram"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:84
+msgid "Earn {point} points by joining the Myria Discord server"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:125
+msgid "Earn {point} points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:135
+msgid "Earn {point} points by sharing a tweet about Myria"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:101
+msgid "Earn {point} points for each day you send a message to any Myria Discord channel"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:94
+msgid "Earn {point} points for each successful friend invite. You will earn {point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:119
+msgid "Earn {point} points when you add a thumbs up reaction to a message on the #myria-lore channel"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:107
+msgid "Earn {point} points when you send your first message on any Myria Discord channel"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:350
+msgid "Easy to play, difficult to master. Select the right terrain to base your industrial revolution. Choose wisely, as this will determine the types of resources and production opportunities available to you. Make sure to look after your base in order to increase your score and climb the ranks. At the end of each tournament, the competition is reset, so don’t worry if you get it wrong the first time!"
+msgstr ""
+"産業革命に最適な地形を選択して下さい。 お客様が利用出来るリソースと生産の機会はお客様の選択によって決定されるので、賢明に選択して下さい。 お客様のスコアを改善し、ランクを上げるために、お客様のベースの世話をすることを忘れないで下さい。 大会は各トーナメントの終了時にリセットされますので、最初に間違えても心配しないで下さい！\n"
+""
+
+#: src/components/Footer.tsx:41
+#: src/components/Header/linkSources.tsx:15
+msgid "Ecosystem"
+msgstr "エコシステム"
+
+#: src/pages/for-studios.tsx:48
+msgid "Education and support"
+msgstr "勉強とサポート"
+
+#: src/hooks/useGamesData.tsx:193
+msgid "Eliminate your opponents in this fast-paced-action-packed-survival game, to achieve victory and claim the spoils of war. There can be only one hero or team standing when the crimson curtain hits the ground."
+msgstr ""
+"このペースの速いアクション満載のサバイバルゲームで対戦相手を排除し、戦利品を勝ち取って主張します。 真っ赤なカーテンが落ちると、立ったままのヒーローまたはチームは1人だけになります。\n"
+""
+
+#: src/components/GetInTouch.tsx:82
+#: src/components/Register/Register.tsx:195
+msgid "Email"
+msgstr ""
+"E-メール\n"
+""
+
+#: src/pages/cricket.tsx:107
+msgid "Email address"
+msgstr ""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:18
+#: src/components/GetInTouch.tsx:27
+#: src/components/Register/Register.tsx:54
+#: src/components/SignIn/SignIn.tsx:22
+#: src/components/Subscribe.tsx:21
+#: src/components/for-developers/BuildYourBlockchain.tsx:37
+#: src/pages/cricket.tsx:28
+msgid "Email is required!"
+msgstr "Eメールが必須。"
+
+#: src/components/for-developers/Ethereum.tsx:148
+msgid "Empower mainstream adoption to Ethereum using Myria’s scaling solution"
+msgstr ""
+"Myriaのスケーリングソリューションを使用して、Ethereumへの主流の採用を強化します\n"
+""
+
+#: src/pages/for-gamers.tsx:33
+msgid "Empowering players"
+msgstr "プレーヤーさんに力を付けます"
+
+#: src/pages/for-developers/index.tsx:40
+msgid "Enabling digital asset scalability on Ethereum"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:22
+msgid "Enabling true scalability while leveraging the Ethereum network"
+msgstr ""
+"Ethereumネットワークを活用しながら真のスケーラビリティを実現\n"
+""
+
+#: src/hooks/useGamesData.tsx:73
+msgid "Endless online fun"
+msgstr ""
+"無限のオンラインの楽しみ\n"
+""
+
+#: src/pages/ecosystem.tsx:25
+msgid "Enhancing the power of play through blockchain"
+msgstr ""
+"ブロックチェーンを通じて遊びの力を高める\n"
+""
+
+#: src/components/ResetPassword/ResetPassword.tsx:70
+msgid "Enter a password"
+msgstr ""
+"パスワードを入力します\n"
+""
+
+#: src/components/for-developers/Myria.tsx:34
+msgid "Enter the new era of web3.0 with confidence"
+msgstr ""
+"自信を持ってweb3.0の新時代に突入\n"
+""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:47
+#: src/components/SignIn/SignIn.tsx:56
+msgid "Enter your email"
+msgstr ""
+"メールアドレスを入力\n"
+""
+
+#: src/components/Subscribe.tsx:75
+msgid "Enter your email address"
+msgstr "Eメールアドレスを入力します"
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:42
+msgid "Enter your email address to reset your password"
+msgstr ""
+"メールアドレスを入力して、パスワードをリセットします\n"
+""
+
+#: src/components/Register/Register.tsx:206
+#: src/components/SignIn/SignIn.tsx:64
+msgid "Enter your password"
+msgstr ""
+"パスワードを入力して下さい\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:96
+msgid "Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can coexist. They actively explore the Rift, searching for answers."
+msgstr ""
+"Equinoxは、人類とRiftが共存出来る可能性があると信じて、Myriaverseのバランスを追求しています。 彼らはRiftで積極的に答えを探しています。\n"
+""
+
+#: src/pages/for-developers/solution.tsx:14
+msgid "Ethereum-level security provided by zk-STARKs"
+msgstr ""
+"zk-STARKによって提供されるEthereumレベルのセキュリティ\n"
+""
+
+#: src/hooks/useGamesData.tsx:296
+msgid "Every hero has three unique abilities, each requiring charges, as well as one ultimate ability that requires charging through kills, deaths, collectibles, or objectives. It’s easier than it sounds, and even funnier…"
+msgstr ""
+"全てのヒーローには3つの固有の能力があり、それぞれにチャージが必要です。また、キル、デス、コレクティブル、または目的を通じてチャージする必要がある1つの究極の能力もあります。 思ったより簡単で、さらに面白い…\n"
+""
+
+#: src/pages/nodes/index.tsx:55
+msgid "Exclusive NFTs"
+msgstr "エセックシーブNFTs"
+
+#: src/components/for-developers/Myria.tsx:24
+msgid "Experience low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution."
+msgstr ""
+"Myriaスケーリングソリューションを使用すると、低いトランザクション料金と最大9000トランザクション/秒の高いスループットレートをお楽しみいただけます。\n"
+""
+
+#: src/components/FirstTimeVisitModal.tsx:63
+msgid "FOLLOW US ON TWITTER"
+msgstr "TWITTERにフローする"
+
+#: src/context/tabContext.tsx:33
+msgid "FOR DEVELOPERS"
+msgstr ""
+"開発者向け\n"
+""
+
+#: src/context/tabContext.tsx:27
+msgid "FOR GAMERS"
+msgstr ""
+"ゲーマー向け\n"
+""
+
+#: src/pages/for-developers/solution.tsx:127
+msgid "Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1 data availability provide Ethereum-level security."
+msgstr ""
+"L2チェーンは迅速なトランザクション確認時間を提供し、zkプルーフとL1データの可用性はEthereumレベルのセキュリティを提供します。\n"
+""
+
+#: src/hooks/useGamesData.tsx:373
+msgid "Features"
+msgstr ""
+"特徴\n"
+""
+
+#: src/components/Careers/Careers.tsx:42
+msgid "Filter by Department"
+msgstr ""
+"部門でフィルタリング\n"
+""
+
+#: src/components/Register/Register.tsx:161
+msgid "First name"
+msgstr ""
+"お名前\n"
+""
+
+#: src/components/Register/Register.tsx:48
+msgid "First name is required!"
+msgstr ""
+"お名前が必要！\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:146
+msgid "Follow on Instagram"
+msgstr ""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:138
+msgid "Follow on Twitter"
+msgstr ""
+
+#: src/components/Footer.tsx:62
+#: src/components/Footer.tsx:69
+msgid "For Developers"
+msgstr ""
+"開発者向け\n"
+""
+
+#: src/components/SignIn/SignIn.tsx:79
+msgid "Forgot your password?"
+msgstr ""
+"パスワードが忘れた？\n"
+""
+
+#: src/pages/index.tsx:70
+msgid "Founded by leading gaming and blockchain industry veterans"
+msgstr "主要なゲームとブロックチェーン業界のベテランさんによって設立されました"
+
+#: src/components/Header/DesktopHeader.tsx:143
+#: src/components/Header/MobileHeader.tsx:86
+msgid "Free Sigil NFT"
+msgstr ""
+"無料なSigil NFT\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:55
+msgid "From wallet"
+msgstr ""
+"ウオレットから\n"
+""
+
+#: src/pages/for-developers/solution.tsx:35
+msgid "Full ownership of assets, non-custodial architecture"
+msgstr ""
+"資産の完全な所有権、非管理アーキテクチャ\n"
+""
+
+#: src/pages/for-developers/solution.tsx:37
+msgid "Fully open-source and community-driven development"
+msgstr ""
+"完全にオープンソースでコミュニティ主導の開発\n"
+""
+
+#: src/pages/for-gamers.tsx:178
+msgid "GET A NODE"
+msgstr "ノードをもらう"
+
+#: src/components/nodes/dashboard/Licenses.tsx:11
+msgid "GET MORE LICENSES"
+msgstr ""
+"もっとライセンスを取得\n"
+""
+
+#: src/pages/_app.tsx:42
+msgid "Game NFT"
+msgstr "NFTゲーム"
+
+#: src/pages/for-gamers.tsx:20
+msgid "Gameplay first"
+msgstr "ゲームの作成者"
+
+#: src/components/Footer.tsx:14
+#: src/components/Footer.tsx:45
+#: src/components/Header/linkSources.tsx:22
+#: src/components/nodes/NodesLayout.tsx:30
+msgid "Games"
+msgstr "ゲーム"
+
+#: src/components/ecosystem/Platform.tsx:12
+msgid "Games & Applications"
+msgstr ""
+"ゲーム＆アプリ\n"
+""
+
+#: src/components/Program.tsx:31
+msgid "Gaming is evolving. Build with Myria!"
+msgstr ""
+"ゲームは進化しています。 Myriaでビルド！\n"
+""
+
+#: src/components/for-developers/Myria.tsx:62
+msgid "Gaming is evolving. Build with Myria."
+msgstr ""
+"ゲームは進化しています。 Myriaでビルド！\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:28
+msgid "Gas Fee"
+msgstr ""
+"ガス料金\n"
+""
+
+#: src/hooks/useGamesData.tsx:230
+msgid "Gather and upgrade the best equipment on the battlefield. Collect power-ups and build combat facilities to overcome your foes. You can deal with this harsh reality alone or with your friends in a team of three."
+msgstr ""
+"戦場で最高の装備を集めてアップグレードします。 パワーアップを収集し、敵を克服するための戦闘施設を構築します。 この厳しい現実に単独で、または3人のチームで友達と対処することが出来ます。\n"
+""
+
+#: src/components/Footer.tsx:88
+msgid "General"
+msgstr ""
+"一般\n"
+""
+
+#: src/pages/for-developers/solution.tsx:68
+msgid "General purpose zk-rollup"
+msgstr ""
+"汎用zk-rollup\n"
+""
+
+#: src/components/Footer.tsx:73
+msgid "Get Started"
+msgstr ""
+"開始する\n"
+""
+
+#: src/pages/nodes/index.tsx:294
+msgid "Get a founders node today"
+msgstr "創立者のノードを今日にもらう"
+
+#: src/pages/nodes/purchase-complete.tsx:78
+msgid "Get started with your Myria node."
+msgstr ""
+"Myriaノードで開始する\n"
+""
+
+#: src/components/sigil/Welcome.tsx:173
+#: src/components/sigil/WelcomeMobile.tsx:21
+msgid "Go back"
+msgstr ""
+"戻る\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:95
+msgid "Go to my dashboard"
+msgstr ""
+"ダッシュボードに戻る\n"
+""
+
+#: src/pages/for-studios.tsx:37
+msgid "Got an innovative gaming idea? Apply for a grant to manifest your vision on the Myria chain."
+msgstr "革新的なゲームのアイデアを手に入れましたか？ Myriaのチェーンに、あなたのビジョンを明らかにする助成金を申請してください。"
+
+#: src/components/Purchase/License.tsx:92
+msgid "Grow with us and be rewarded. A Myria Node License allows you to operate a node from your home computer to support the growth of Myria’s decentralized network. As a node owner, you’ll earn daily rewards and exclusive benefits for your contribution."
+msgstr ""
+"当社と一緒に成長し、報酬をお楽しみ下さい。 Myriaノードライセンスを使用すると、ご自宅のコンピュータからノードを実行して、分散型ネットワークの成長に貢献出来ます。お客様の貢献に対して、お客様はノード所有者として、毎日の報酬と独占的な利益を受け取ります。\n"
+""
+
+#: src/hooks/useGamesData.tsx:294
+msgid "Heroes don’t all wear capes"
+msgstr ""
+"ヒーロー全員がケープを着用するわけではありません\n"
+""
+
+#: src/components/Header/linkSources.tsx:8
+#: src/components/Header/linkSources.tsx:44
+#: src/components/nodes/Sidebar.tsx:19
+msgid "Home"
+msgstr "ホーム"
+
+#: src/pages/nodes/index.tsx:107
+msgid "How can I become a Myria node operator?"
+msgstr "どのようにMyriaノードのプレイヤーになれますか？"
+
+#: src/components/interop/DesktopInterop.tsx:221
+#: src/components/interop/DesktopInterop.tsx:239
+#: src/components/interop/DesktopInterop.tsx:257
+#: src/components/interop/MobileInterop.tsx:127
+#: src/components/interop/MobileInterop.tsx:150
+#: src/components/interop/MobileInterop.tsx:174
+msgid "How it works"
+msgstr "どのように動きますか"
+
+#: src/pages/nodes/index.tsx:169
+msgid "How many Myria node licenses will be released?"
+msgstr "どれくらいのMyriaノードがリリースされますか？"
+
+#: src/pages/nodes/index.tsx:158
+msgid "How much will a Myria node license cost?"
+msgstr "Myriaノードはいくらくらいですか？"
+
+#: src/components/sigil/ShareTwitterModal.tsx:35
+msgid "I am now a $MYRIA node owner! Join us to earn rewards, govern and build the future of virtual worlds! @MyriaGames"
+msgstr ""
+"私は$MYRIAノードの所有者になりました！ 報酬を獲得し、仮想世界の未来を統治し、構築するために当社に参加して下さい！ @MyriaGames\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:57
+msgid "I have read, understood and agree to the terms of service"
+msgstr ""
+"MyriaでRareAllianceSigilを巣クレームしたばかりです\n"
+""
+
+#: src/pages/game-detail/[id].tsx:121
+msgid "IN DEVELOPMENT"
+msgstr ""
+"開発中\n"
+""
+
+#: src/components/JoinTheRevolution.tsx:28
+msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
+msgstr "ゲーミングやブロックチェーンに本当の影響を与えたいならば、Myriaに参加してください。 急速に成長している会社に加わるために、世界で最も優秀で活発な者を探しています。"
+
+#: src/pages/team.tsx:87
+msgid "In his role leading the People team, Damian helps Myria connect, develop and care for its global team. Damian brings decades of experience to Myria and was previously Global Head of People for Bitmex and prior to that a Managing Director in HR at Goldman Sachs."
+msgstr ""
+"ピープルチームを率いる彼の役割において、ダミアンはMyriaがそのグローバルチームを結びつけ、発展させ、世話をするのを助けます。 ダミアンはMyriaに数十年の経験をもたらし、以前はビットメックスのグローバルヘッドであり、それ以前はゴールドマンサックスの人事担当マネージングディレクターでした。\n"
+""
+
+#: src/hooks/useGamesData.tsx:147
+msgid "In this lawless racing game, you’ll need to do whatever it takes to thwart your rivals’ attempts at reaching the finish line before you. Choosing the optimal combination of driver and kart parts could be the difference between triumph and defeat. But don’t worry if your ride isn’t souped-up, you still have your shot at 1st place. Just make good use of the vicious power-ups scattered around the track to literally blast your competition into oblivion!"
+msgstr ""
+"この無法なレーシングゲームでは、ライバルがお客様の前でフィニッシュラインに到達しましょうとする試みを阻止するために必要なことは何でもする必要があります。ドライバーとカートのパーツの最適な組み合わせを選択することは、勝利と敗北の違いになる可能性があります。しかし、お客様の乗り物が盛り上がっていなくても心配しないで下さい、お客様はまだ1位でお客様のショットを持っています。トラックの周りに散らばっている悪質なパワーアップをうまく利用して、文字通りお客様の競争を忘却に吹き飛ばして下さい！\n"
+""
+
+#: src/hooks/useGamesData.tsx:69
+msgid "In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later."
+msgstr ""
+"Myriaverseのこの部分への訪問者は、Bobble-Headsに変身します。これは、この世界の利用規約と、謎の管理者だけが破ることが出来るメタバースの法則によるものです...しかし、それについては後で詳しく説明します。\n"
+""
+
+#: src/components/Register/Register.tsx:40
+msgid "Inclusion of at least one special character"
+msgstr ""
+"少なくとも1つの特別なキャラクターの包含\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:29
+msgid "Infrastructure & Tools"
+msgstr ""
+"インフラとツール\n"
+""
+
+#: src/components/sigil/Welcome.tsx:156
+msgid "Install Metamask"
+msgstr ""
+"メタマスクをインストールする\n"
+""
+
+#: src/components/for-developers/Myria.tsx:51
+msgid "Instant project visibility"
+msgstr ""
+"プロジェクトの即時可視性\n"
+""
+
+#: src/pages/for-developers/solution.tsx:16
+msgid "Instantly able to withdraw assets from the rollup back into ethereum when needed"
+msgstr ""
+"必要に応じて、ロールアップからアセットを即座にEthereumに戻すことが出来ます\n"
+""
+
+#: src/components/for-developers/Myria.tsx:54
+msgid "Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners."
+msgstr ""
+"Myriaプラットフォームとネットワークパートナーを通じて、プロジェクトの周りにエバンジェリストの熱心なプレーヤーコミュニティに即座に到達し、構築します。\n"
+""
+
+#: src/hooks/useGamesData.tsx:228
+msgid "Intense battle to the very end"
+msgstr ""
+"最後まで激しい戦い\n"
+""
+
+#: src/hooks/useGamesData.tsx:302
+msgid "Interoperability FTW! Yes, we’ve got you covered - you can bring those crazy skins, sprays, hats, and every other exclusive NFT you’ve gathered along your journey through the Myriaverse. The last thing I want to see on the battlefield is tie-dye tights, but hey – it’s your party after all!"
+msgstr ""
+"相互運用性のためのFTW！どうだ、お客様はそれらのクレイジーなスキン、スプレー、帽子、そしてお客様がMyriaverseを旅する際に集めた他の全ての排他的なNFTをお客様と一緒に持ってくることが出来ます。戦場で最後に見たいのは絞り染めのタイツですが、やっぱりパーティーです！\n"
+""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:17
+#: src/components/GetInTouch.tsx:26
+#: src/components/Register/Register.tsx:53
+#: src/components/SignIn/SignIn.tsx:21
+#: src/components/Subscribe.tsx:20
+#: src/components/for-developers/BuildYourBlockchain.tsx:36
+#: src/pages/cricket.tsx:27
+msgid "Invalid email!"
+msgstr "無効なEメール！"
+
+#: src/components/Header/ProfileComponent.tsx:12
+#: src/components/nodes/Sidebar.tsx:26
+#: src/pages/inventory.tsx:123
+msgid "Inventory"
+msgstr ""
+"在庫\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:49
+msgid "Invite your friends to Myria by sharing the following link with them."
+msgstr ""
+
+#: src/components/sigil/ReferFriendModal.tsx:47
+msgid "Invite your friends to Myria by sharing the following link with them."
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:75
+msgid "It was a calm day in the land of candy hammers and fiery strawberry lakes when a mysterious portal suddenly spawned a roaring crowd of brave players. Ready to rock, they started to roll down the hill of chocolate donuts in a chaotic race for the win."
+msgstr ""
+"不思議なポータルは、キャンディーハンマーと燃えるようなイチゴの湖の土地で穏やかな日に勇敢なプレーヤーの轟音の群衆を生み出しました。 揺れる準備が出来て、彼らは勝利のための混沌としたレースでチョコレートドーナツの丘を転がり始めました。\n"
+""
+
+#: src/hooks/useGamesData.tsx:157
+msgid "It’s all in your hands"
+msgstr ""
+"それはすべてお客様の手にあります\n"
+""
+
+#: src/pages/team.tsx:117
+msgid "Ivan has 10+ years of experience in the game industry. He has been a lead game designer at Gameloft, CrazyLabs, GPG (Ubisoft), Sperasoft, and more, with his games amassing billions of downloads."
+msgstr ""
+"Ivanはゲーム業界で10年以上の経験があります。 彼はGameloft、CrazyLabs、GPG（Ubisoft）、Sperasoftなどのリードゲームデザイナーであり、彼のゲームは何十億ものダウンロードを蓄積しています。\n"
+""
+
+#: src/components/ComingSoon.tsx:59
+#: src/components/FirstTimeVisitModal.tsx:49
+#: src/components/Header/DesktopHeader.tsx:157
+#: src/components/Header/MobileHeader.tsx:55
+#: src/components/Header/MobileHeader.tsx:98
+#: src/components/NotiBanner.tsx:49
+#: src/components/home/Hero.tsx:279
+#: src/pages/game-detail/[id].tsx:138
+msgid "JOIN DISCORD"
+msgstr "ディスコードに参加"
+
+#: src/components/sigil/Welcome.tsx:128
+msgid "JOIN NOW"
+msgstr ""
+"今すぐ参加\n"
+""
+
+#: src/components/JoinTheRevolution.tsx:35
+msgid "JOIN THE TEAM"
+msgstr "チームに参加"
+
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:68
+msgid "JOIN {sigilName}"
+msgstr ""
+
+#: src/components/JoinMyriaCard.tsx:14
+msgid "Join MYRIA"
+msgstr ""
+"MYRIAに参加する\n"
+""
+
+#: src/components/JoinMyriaCard.tsx:7
+msgid "Join Myria in building the next blockchain revolution"
+msgstr ""
+"次のブロックチェーン革命を構築するためにMyriaに参加する\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:79
+msgid "Join Vector Prime and you will be helping the Rift digitize worlds and all who live on them. Many factors will fight against you, but you know that science and logic are the best laws to rule us all."
+msgstr ""
+"Vector Primeに参加すると、Riftが世界とそこに住む全ての人をデジタル化するのに役立ちます。 多くの要因がお客様と戦うでしょう、しかしお客様は科学と論理が当社全員を支配するための最良の法則であることを知っています。\n"
+""
+
+#: src/components/FirstTimeVisitModal.tsx:31
+msgid "Join our community!"
+msgstr ""
+"当社のコミュニティに参加する！\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:56
+msgid "Join the Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:283
+msgid "Just make sure you’re still alive till the end of the round or you’ll be spectating from the sidelines. And that means nobody will be able to appreciate your cute hot-dog suit that you’ve just brought over from a zany skirmish in the Metarush world."
+msgstr ""
+"ラウンドの終わりに到達することを確認して下さい。そうしないと、傍観者から見守っています。 つまり、奇抜なMetarushの小競り合いから持ってきたばかりの愛らしいホットドッグスーツを誰も評価出来ないということです。\n"
+""
+
+#: src/pages/team.tsx:178
+msgid "Kidono is an experienced partner lead with extensive experience managing external development engagements. He has worked with some of the largest game production companies, including Marvel, Tencent, Winkings and more."
+msgstr "キドノ社は、外部開発業務の管理に豊富な経験を持つ経験豊富なパートナーリーダーです。当社は、マーベル、テンセント、ウィンキングス等、いくつかの最大のゲーム制作会社と協力してきました。"
+
+#: src/components/home/Hero.tsx:123
+#: src/pages/nodes/purchase-complete.tsx:110
+#: src/pages/studios.tsx:228
+msgid "LEARN MORE"
+msgstr "もっと詳しく見る"
+
+#: src/components/sigil/LinkWalletConfirmModal.tsx:33
+msgid "LINK WALLET"
+msgstr ""
+"ウオレットをリンクする\n"
+""
+
+#: src/components/sigil/Welcome.tsx:128
+msgid "LOGGING IN"
+msgstr ""
+"ロッグイン\n"
+""
+
+#: src/components/Register/Register.tsx:172
+msgid "Last name"
+msgstr ""
+"ご苗字\n"
+""
+
+#: src/components/Register/Register.tsx:49
+msgid "Last name is required!"
+msgstr "ご苗字が必要！"
+
+#: src/components/home/News.tsx:33
+msgid "Latest Updates & News"
+msgstr ""
+"最新のアップデートとニュース\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:81
+#: src/components/sigil/Dashboard/MissionV2.tsx:98
+#: src/components/sigil/Dashboard/MissionV2.tsx:104
+#: src/components/sigil/Dashboard/MissionV2.tsx:110
+#: src/components/sigil/Dashboard/MissionV2.tsx:116
+#: src/components/sigil/Dashboard/MissionV2.tsx:122
+msgid "Launch Discord"
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:40
+msgid "Launch with full support from our tokenomics experts"
+msgstr ""
+"トケノミクスの専門家からの完全なサポートを受けて起動します\n"
+""
+
+#: src/pages/for-developers/solution.tsx:124
+msgid "Layer 2 scalability solution"
+msgstr ""
+"レイヤー2スケーラビリティソリューション\n"
+""
+
+#: src/components/home/Hero.tsx:267
+msgid "Learn more"
+msgstr "もっと詳しく見る"
+
+#: src/components/JoinMyriaCard.tsx:10
+msgid "Learn more about our job current openings and see how you can get involved!"
+msgstr ""
+"当社の現在の求人についてもっと学び、お客様がどのように参加出来るかを見て下さい！\n"
+""
+
+#: src/pages/team.tsx:218
+msgid "Led by industry experts"
+msgstr "業界の専門家が主導されました"
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:44
+msgid "Leggings swag synth 8-bit master cleanse. Pitchfork affogato semiotics raclette, adaptogen post-ironic cliche meggings tousled paleo 90's next level."
+msgstr ""
+
+#: src/components/for-developers/Myria.tsx:30
+msgid "Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business."
+msgstr ""
+"構築済みのMyriaプラットフォームとツールを活用します。サポートツールをサポートするため、ビジネスの構築に集中出来ます。\n"
+""
+
+#: src/components/Purchase/License.tsx:75
+msgid "Limited supply available"
+msgstr ""
+"限られた供給が利用可能\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:188
+msgid "Locked"
+msgstr ""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:63
+#: src/components/Header/MobileHeader.tsx:74
+#: src/context/authentication.tsx:103
+msgid "Log in"
+msgstr ""
+"ロッグイン\n"
+""
+
+#: src/components/Header/ProfileComponent.tsx:58
+msgid "Log out"
+msgstr ""
+"ロッグアウント\n"
+""
+
+#: src/components/Header/ProfileComponent.tsx:64
+msgid "Logout of your Myria account. Your progress will be accessible in future by logging into your Myria account via your wallet."
+msgstr ""
+
+#: src/pages/for-developers/solution.tsx:19
+msgid "Low transaction fees"
+msgstr ""
+"低い取引手数料\n"
+""
+
+#: src/components/nodes/mint-assets/index.tsx:69
+msgid "MINT ALL"
+msgstr ""
+"全てをミント\n"
+""
+
+#: src/components/nodes/mint-assets/index.tsx:75
+msgid "MINT SELECTED"
+msgstr ""
+"選択済ミント\n"
+""
+
+#: src/components/Header/linkSources.tsx:79
+msgid "MYRIA STUDIOS"
+msgstr ""
+"Myriaのスタジオ\n"
+""
+
+#: src/hooks/useGamesData.tsx:367
+msgid "Make it out of this world!"
+msgstr ""
+"この世界からそれを作ろう！\n"
+""
+
+#: src/components/for-developers/Myria.tsx:15
+msgid "Manage your NFT & digital assets"
+msgstr ""
+"NFTとデジタル資産を管理する\n"
+""
+
+#: src/components/for-developers/Myria.tsx:16
+msgid "Manage your digital storefront and marketplace"
+msgstr ""
+"デジタルストアフロントとマーケットプレイスを管理する\n"
+""
+
+#: src/components/for-developers/Myria.tsx:52
+msgid "Market your project across our platforms"
+msgstr ""
+"プラットフォーム全体でプロジェクトを売り込む\n"
+""
+
+#: src/components/nodes/dashboard/Licenses.tsx:8
+msgid "Maximise your network"
+msgstr ""
+"ネットワークを最大化する\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:36
+msgid "Meditation ramps offal direct trade raclette disrupt vice. Neutra kogi mixtape 3 wolf moon. Organic mustache chia vape, la croix austin man bun small batch meh bushwick locavore. Biodiesel shabby chic butcher franzen pork belly microdosing, tattooed chambray twee meditation offal YOLO pour-over."
+msgstr ""
+
+#: src/components/GetInTouch.tsx:96
+msgid "Message"
+msgstr ""
+"メッセージ\n"
+""
+
+#: src/components/GetInTouch.tsx:35
+#: src/components/for-developers/BuildYourBlockchain.tsx:41
+msgid "Message is required!"
+msgstr "メッセージが必須。"
+
+#: src/components/nodes/Sidebar2.tsx:19
+msgid "Mint Assets"
+msgstr ""
+"ミントアセット\n"
+""
+
+#: src/components/nodes/Sidebar2.tsx:27
+msgid "More coming soon!"
+msgstr ""
+"もっとすぐに来ます！\n"
+""
+
+#: src/pages/studios.tsx:360
+msgid "More details coming soon"
+msgstr "もっと情報が近日公開"
+
+#: src/components/Purchase/License.tsx:80
+msgid "More power than just network support"
+msgstr ""
+"単なるネットワークサポート以上のパワー\n"
+""
+
+#: src/components/interop/DesktopInterop.tsx:322
+#: src/components/interop/MobileInterop.tsx:196
+msgid "Morphing NFTs™"
+msgstr "Morphing NFTs™"
+
+#: src/components/interop/DesktopInterop.tsx:260
+#: src/components/interop/MobileInterop.tsx:176
+msgid "Morphing NFTs™ that adapt to your avatars"
+msgstr "お客様のアバターに合っているMorphing NFTs™"
+
+#: src/pages/studios.tsx:220
+msgid "Morphing interoperable NFTs is the new standard created by Myria. Players will be able to utilize their NFTs across different avatars, games and metaverses. Truly own your digital assets and collectibles."
+msgstr ""
+"Myriaは、相互運用可能なNFTをモーフィングするための新しい標準を作成しました。 プレイヤーは、複数のアバター、ゲーム、メタバースで同時にNFTを使用出来るようになります。 お客様のデジタル資産と収集品を本当に所有して下さい。\n"
+""
+
+#: src/components/sigil/Footer.tsx:18
+#: src/components/sigil/Sound.tsx:29
+msgid "Mute sound"
+msgstr ""
+"音声ミュート\n"
+""
+
+#: src/components/nodes/dashboard/GeneralInfo.tsx:50
+msgid "My Node Licenses"
+msgstr ""
+"マイノードライセンス\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:71
+msgid "Myria Founder’s Node"
+msgstr ""
+"Myria創設者のノード\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:113
+msgid "Myria Game Platform"
+msgstr ""
+"Myriaゲームプラットフォーム\n"
+""
+
+#: src/components/ecosystem/Backbone.tsx:20
+msgid "Myria Infrastructure"
+msgstr ""
+"Myriaインフラストラクチャ\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:97
+msgid "Myria NFT Marketplace"
+msgstr ""
+"MyriaのNFTマーケットプレイス\n"
+""
+
+#: src/components/Purchase/License.tsx:89
+msgid "Myria Node License"
+msgstr ""
+"Myriaノードライセンス\n"
+""
+
+#: src/components/ecosystem/Backbone.tsx:54
+msgid "Myria Nodes"
+msgstr ""
+"Myriaノード\n"
+""
+
+#: src/components/ecosystem/Backbone.tsx:31
+msgid "Myria Partners"
+msgstr ""
+"Myriaパートナー\n"
+""
+
+#: src/components/Footer.tsx:58
+#: src/components/ecosystem/Backbone.tsx:43
+#: src/components/ecosystem/Platform.tsx:70
+msgid "Myria Studios"
+msgstr ""
+"Myriaスタジオ\n"
+""
+
+#: src/pages/studios.tsx:196
+msgid "Myria Studios is building a range of free-to-play AAA games spans across an entire interconnected ecosystem. Players experience intertwining lore, characters, and rich storylines that carry across each game world, and Myria tokens and NFTs can be used across the Myriaverse."
+msgstr ""
+"Myriaのスタジオは、相互接続されたエコシステム全体にまたがる、様々な無料のAAAゲームを構築しています。 プレイヤーは、各ゲームの世界に伝わる、絡み合う伝承、キャラクター、豊かなストーリーを体験します。MyriaトークンとNFTは、Myriaverse全体で使用出来ます。\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:105
+msgid "Myria Wallet"
+msgstr ""
+"Myriaウオレット\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:56
+msgid "Myria combines a gaming platform with applications, tools and scaling infrastructure needed to bring blockchain gaming to life."
+msgstr ""
+"Myriaは、ゲームプラットフォームと、ブロックチェーンゲームを実現するために必要なアプリケーション、ツール、スケーリングインフラストラクチャを組み合わせています。\n"
+""
+
+#: src/pages/for-gamers.tsx:22
+msgid "Myria develops fun AAA games that are enhanced by the blockchain, not vice versa."
+msgstr "Myriaが、ブロックチェーンによって強化された楽しいAAAゲームを開発していますが、その逆はないです。"
+
+#: src/pages/for-studios.tsx:35
+msgid "Myria ecosystem fund"
+msgstr "Myriaエコシステム資金"
+
+#: src/components/for-developers/Myria.tsx:42
+msgid "Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives."
+msgstr ""
+"Myriaは、トケノミクスコンサルティング、Play-to-Earnゲームデザインのベストプラクティスを活用して、ビジネス目標を達成します。\n"
+""
+
+#: src/pages/index.tsx:75
+msgid "Myria has been built by an all-star team of over 150 people, united with a common vision of revolutionizing gaming with blockchain technology."
+msgstr ""
+
+#: src/components/ecosystem/Backbone.tsx:33
+msgid "Myria help project partners set up for success. <0/> about our easy-to-use, full stack solution and build with Myria today."
+msgstr ""
+"Myriaは、プロジェクトパートナーが成功するための準備を支援します。 <0/>使いやすいフルスタックソリューションと今日のMyriaでのビルドについて。\n"
+""
+
+#: src/components/Program.tsx:34
+msgid "Myria helps blockchain projects scale. Whether you’re an established crypto business or simply exploring new possibilities, Myria has a solution for you!"
+msgstr ""
+"Myriaは、ブロックチェーンプロジェクトの拡張を支援します。 お客様が確立された暗号ビジネスであろうと、単に新しい可能性を探求していようと、Myriaはお客様のための解決策を持っています！\n"
+""
+
+#: src/pages/_app.tsx:34
+#: src/pages/_app.tsx:47
+msgid "Myria is a blockchain gaming ecosystem powered by Myria’s Ethereum L2 scaling solution"
+msgstr ""
+
+#: src/components/ComingSoon.tsx:48
+msgid "Myria is a blockchain gaming ecosystem powered by the Myria blockchain."
+msgstr "Myriaは、Myriaブロックチェーンによって、ブロックチェーンゲームエコシステムです。"
+
+#: src/pages/ecosystem.tsx:28
+msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT and blockchain gaming."
+msgstr ""
+"Myriaは分散型EthereumLayer2であり、デジタルアセット、NFT、ブロックチェーンゲームを強化するために構築されています。\n"
+""
+
+#: src/pages/for-developers/solution.tsx:71
+msgid "Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT, blockchain gaming and more."
+msgstr ""
+"Myriaは分散型EthereumLayer2であり、デジタルアセット、NFT、ブロックチェーンゲームなどを強化するために構築されています。\n"
+""
+
+#: src/pages/for-developers/index.tsx:43
+msgid "Myria is a decentralised Ethereum Layer 2, built to scale digital assets, NFTs and blockchain gaming."
+msgstr ""
+"Myriaは分散型EthereumLayer2であり、デジタルアセット、NFT、ブロックチェーンゲームを拡張するために構築されています。\n"
+""
+
+#: src/pages/for-gamers.tsx:48
+msgid "Myria is supported by a network of community-powered nodes, who receive rewards for their contributions."
+msgstr "Myriaは、コミュニティー・パワーリングされたノードのネットワークによって、サポートされており、貢献したのに対して報酬を受け取るものです。"
+
+#: src/components/ecosystem/Backbone.tsx:68
+msgid "Myria is the backbone of blockchain gaming"
+msgstr ""
+"Myriaはブロックチェーンゲームのバックボーンです\n"
+""
+
+#: src/pages/nodes/index.tsx:152
+msgid "Myria node license sales are anticipated to commence in Q2 2022 (subject to change)."
+msgstr ""
+"Myriaノードライセンスの販売は2022年第2四半期に開始される予定です（変更される可能性があります）。\n"
+""
+
+#: src/pages/nodes/index.tsx:30
+msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
+msgstr "Myriaのノードのオペレーターは、ノードの動作のため、毎日$MYRIAトークンの報酬を受け取ります。"
+
+#: src/components/for-developers/Myria.tsx:65
+msgid "Myria provides an end-to-end solution for developers and publishers, and help you unlock the blockchain potential of your business"
+msgstr ""
+"Myriaは、開発者と発行者にエンドツーエンドのソリューションを提供し、ビジネスのブロックチェーンの可能性を解き放つのに役立ちます\n"
+""
+
+#: src/components/for-developers/Myria.tsx:36
+msgid "Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support."
+msgstr ""
+"Myriaは、NFTの販売、ブロックチェーンの統合、及びプラットフォームのサポートに関するブロックチェーンコンサルティングサービスを提供しています。\n"
+""
+
+#: src/pages/_app.tsx:35
+#: src/pages/_app.tsx:46
+msgid "Myria | Connecting the world through play"
+msgstr "Myria｜プレーによって世界を接続"
+
+#: src/pages/studios.tsx:352
+msgid "Myriaverse is the wider social metaverse connecting players, communities and guilds. Players will be able to quest, explore, craft, invest and so much more. The ever expanding Myriaverse is a virtual society and economy that offers bountiful earning opportunities for the brave adventurer."
+msgstr "Myriaverseは、プレイヤー、コミュニティー、ギルドを繋げて、より広い社会的なメタバースです。 プレイヤーは、探求、探索、作成、投資などを行うことができます。 拡大し続けるMyriaverseは、勇敢な冒険家に豊富な収入の機会を提供する仮想社会と経済です。"
+
+#: src/components/ecosystem/Backbone.tsx:22
+msgid "Myria’s <0/> uses ZK-Rollup to enable dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
+msgstr ""
+"Myriaの<0/>は、ZK-Rollupを使用して、dAppがセキュリティを犠牲にすることなく、無制限の規模で低いトランザクション料金を実現出来るようにします。\n"
+""
+
+#: src/pages/for-developers/solution.tsx:86
+msgid "Myria’s <0>Ethereum L2 scaling solution</0> uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2 transactions into one single transaction. This then sends a validity proof back to the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based zkrollup solution enable NFTs and dApps to achieve unlimited scale, low transaction fees without sacrificing on security."
+msgstr ""
+"Myriaの<0>EthereumL2スケーリングソリューション</0>は、ゼロナレッジテクノロジー（zk-STARK）を使用して、数千のL2トランザクションを1つのトランザクションに「ロールアップ」またはバンドルします。 これにより、有効性の証明がメインブロックチェーンに返送され、L1Ethereumのセキュリティが確保されます。 MyriaのSTARKベースのzkrollupソリューションにより、NFTとdAppは、セキュリティを犠牲にすることなく、無制限の規模で低いトランザクション料金を実現出来ます。\n"
+""
+
+#: src/components/for-developers/Myria.tsx:18
+msgid "Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey."
+msgstr ""
+"MyriaのNFTストア及びマーケットプレイスインフラストラクチャは、ブロックチェーンゲーム専用に構築されており、プレーヤーの旅をサポートするように最適化されています。\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:19
+msgid "NFT Rewards"
+msgstr ""
+"NFTリワード\n"
+""
+
+#: src/components/GetInTouch.tsx:76
+msgid "Name"
+msgstr ""
+"名前\n"
+""
+
+#: src/components/GetInTouch.tsx:23
+#: src/components/for-developers/BuildYourBlockchain.tsx:26
+msgid "Name is required!"
+msgstr "お名前が必須"
+
+#: src/pages/for-developers/solution.tsx:26
+msgid "Native support for core token types ERC20 and ERC721"
+msgstr ""
+"コアトークンタイプERC20及びERC721のネイティブサポート\n"
+""
+
+#: src/components/Footer.tsx:113
+msgid "News"
+msgstr "ニュース"
+
+#: src/components/interop/DesktopInterop.tsx:263
+#: src/components/interop/MobileInterop.tsx:178
+msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
+msgstr "お客様のアバターの形やサイズを問わず、すべて同じNFTsを使用してください。 一度購入すれば、どのキャラクターにも使用されます。 相互運用できるように設計されています。"
+
+#: src/components/sigil/LinkWalletConfirmModal.tsx:25
+msgid "No web wallet is detected, please ensure that you have one setup to claim your rewards."
+msgstr ""
+"Webウォレットが検出されません。報酬を請求するためのセットアップが1つあることを確認して下さい。\n"
+""
+
+#: src/hooks/useGamesData.tsx:282
+msgid "Nobody lives forever, and these heroes sure as hell don’t care – they literally die for the sake of fun. Dive into a series of short combat rounds to win a match of 5 vs 5. The attacking team must activate a bomb on a specified location on the map. If you’re on the defending side…you know what you need to do, right?"
+msgstr ""
+"誰も永遠に生きることはなく、これらのヒーローは地獄が気にしないことを確信しています–彼らは文字通り楽しみのために死にます。 一連の短い戦闘ラウンドに飛び込んで、5対5の試合に勝ちます。攻撃側のチームは、マップ上の指定された場所で爆弾をアクティブにする必要があります。 お客様が防御側にいるなら…お客様はお客様が何をする必要があるか知っていますよね？\n"
+""
+
+#: src/pages/nodes/index.tsx:230
+msgid "Node owner rewards"
+msgstr "ノードオーナーのリワード"
+
+#: src/pages/nodes/index.tsx:57
+msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
+msgstr "ノードの所有者が、ノードオペレーターと一般的なコミュニティーのメンバーとしての評判スコアに基づいて、NFTsドロップとトークンも提供されます。"
+
+#: src/components/Purchase/License.tsx:71
+msgid "Node owners will be rewarded with exclusive NFT drops and daily MYRIA token rewards for their contribution to the network."
+msgstr ""
+"ノードの所有者には、ネットワークへの貢献に対して、排他的なNFTドロップと毎日のMYRIAトークン報酬が与えられます。\n"
+""
+
+#: src/components/nodes/dashboard/NodeProgress.tsx:19
+msgid "Node progress this cycle"
+msgstr ""
+"このサイクルのノードの進行\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:37
+msgid "Node purchase"
+msgstr ""
+"ノード購入\n"
+""
+
+#: src/components/Footer.tsx:49
+#: src/components/Header/linkSources.tsx:29
+#: src/components/nodes/Sidebar.tsx:32
+msgid "Nodes"
+msgstr "ノード"
+
+#: src/components/Purchase/License.tsx:81
+msgid "Nodes are an integral part of the Myria universe, with dedicated lore, gaming access, and exclusive voting power granted to node owners."
+msgstr ""
+"ノードはMyriaユニバースの不可欠な部分であり、専用の伝承、ゲームアクセス、及びノード所有者に付与された排他的な投票権を備えています。\n"
+""
+
+#: src/hooks/useGamesData.tsx:300
+msgid "Not the face!"
+msgstr ""
+"顔じゃない！\n"
+""
+
+#: src/components/inventory/InventoryItem.tsx:35
+msgid "OPEN"
+msgstr ""
+
+#: src/components/Header/linkSources.tsx:51
+msgid "OUR SOLUTION"
+msgstr ""
+"当社のソリューション\n"
+""
+
+#: src/components/nodes/mint-assets/index.tsx:100
+msgid "Off Chain Assets"
+msgstr ""
+"オフチェーン資産\n"
+""
+
+#: src/hooks/useGamesData.tsx:223
+msgid "Once in a while, a portal opens to a special game world – the BR Arena."
+msgstr ""
+"たまに、特別なゲームの世界であるBRアリーナへのポータルが開かれます。\n"
+""
+
+#: src/hooks/useGamesData.tsx:357
+msgid "Once you figure out the optimal production pipeline, the game will start yielding rewards for all your hard work. Are you curious how difficult is to produce a batch of Starberry Jam? What about Moonsteel? It surely can’t be that hard, right?"
+msgstr ""
+"最適な制作パイプラインを見つけたら、ゲームは全てのハードワークに対して報酬を生み出し始めます。 スターベリージャムのバッチを作成するのがどれほど難しいか興味がありますか。Moonsteelはどうですか？確かにそんなに難しいことはありませんよね？\n"
+""
+
+#: src/components/Purchase/License.tsx:76
+msgid "Only 50,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded."
+msgstr ""
+"50,000ノードライセンスのみがリリースされます。 当社の初期のサポーターが報われることを確実にするために、ノードが売られるにつれて価格は上がります。\n"
+""
+
+#: src/pages/nodes/index.tsx:170
+msgid "Only 55,000 Myria node licenses will ever be released."
+msgstr "55,000個のMyriaノードライセンスのみがリリースされます。"
+
+#: src/pages/for-developers/solution.tsx:32
+msgid "Open and permissionless"
+msgstr ""
+"公開と許可なし\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:31
+msgid "Our Ethereum L2 scaling solution provides reliability, scalability and security. Making it easy for developers to build and manage their projects."
+msgstr ""
+"当社のEthereumのL2スケーリングソリューションは、信頼性、スケーラビリティ、及びセキュリティを提供します。 開発者がプロジェクトを簡単に構築及び管理出来るようにします。\n"
+""
+
+#: src/pages/team.tsx:255
+msgid "Our Experience"
+msgstr "当社の経験"
+
+#: src/pages/for-gamers.tsx:122
+msgid "Our Principles"
+msgstr "当社の理念"
+
+#: src/components/Footer.tsx:77
+msgid "Our Solutions"
+msgstr ""
+"当社のソリューション\n"
+""
+
+#: src/pages/for-gamers.tsx:152
+msgid "Our games"
+msgstr "ゲーム"
+
+#: src/pages/for-developers/solution.tsx:80
+msgid "Our solution"
+msgstr ""
+"当社のソリューション\n"
+""
+
+#: src/components/Header/linkSources.tsx:74
+msgid "Our team"
+msgstr "チーム"
+
+#: src/components/Header/linkSources.tsx:69
+msgid "Our vision"
+msgstr "ビション"
+
+#: src/components/interop/DesktopInterop.tsx:325
+#: src/components/interop/MobileInterop.tsx:197
+msgid "Own your metaverse identity"
+msgstr "自分なりのメタバースのアイデンティティを所有します"
+
+#: src/components/interop/DesktopInterop.tsx:242
+#: src/components/interop/MobileInterop.tsx:152
+msgid "Own your metaverse identity. Anywhere. Any game."
+msgstr "どこでも、どのゲームでもお客様のメタバースのアイデンティティを所有する"
+
+#: src/components/Purchase/Order.tsx:132
+msgid "PURCHASE NOW"
+msgstr ""
+"今すぐ購入\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:80
+msgid "Partner Dapps"
+msgstr ""
+"パートナーDapps\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:85
+msgid "Partner Experiences"
+msgstr ""
+"パートナーエクスペリエンス\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:75
+msgid "Partner Games"
+msgstr ""
+"パートナーゲーム\n"
+""
+
+#: src/pages/team.tsx:176
+msgid "Partner Lead"
+msgstr "パートナーリード"
+
+#: src/components/Register/Register.tsx:58
+#: src/components/ResetPassword/ResetPassword.tsx:21
+#: src/components/SignIn/SignIn.tsx:26
+msgid "Password is required!"
+msgstr ""
+"パスワードが必要です！\n"
+""
+
+#: src/utils.ts:23
+msgid "Password must be mixture of letters and numbers"
+msgstr ""
+"パスワードは文字と数字の組み合わせである必要があります\n"
+""
+
+#: src/utils.ts:27
+msgid "Password must contain at least one special character"
+msgstr ""
+"パスワードには少なくとも1つの特殊文字が含まれている必要があります\n"
+""
+
+#: src/utils.ts:15
+msgid "Password must have at least 8 characters—the more characters, the better"
+msgstr ""
+"パスワードは8文字以上である必要があります。文字数が多いほど、優れています。\n"
+""
+
+#: src/utils.ts:19
+msgid "Password must have both uppercase and lowercase letters"
+msgstr ""
+"パスワードには大文字と小文字の両方が必要です\n"
+""
+
+#: src/hooks/useGamesData.tsx:236
+msgid "Pick one of the available warrior classes that best suits your playstyle. Are you a one-man army or a silent assassin who strikes from the shadows? Or maybe you’re a mysterious alien psychic who can suck the life out of his enemies..."
+msgstr ""
+"利用可能なオプションから、プレイスタイルに最適な戦士クラスを選択して下さい。 お客様は孤独なオオカミですか、それとも影の中で活動している静かな暗殺者ですか？ あるいは、お客様は敵から命を奪うことが出来る神秘的なエイリアンの精神病者かもしれません...\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:21
+msgid "Platform"
+msgstr ""
+"プラットホーム\n"
+""
+
+#: src/components/for-developers/BuildYourBlockchain.tsx:31
+msgid "Please enter correct url!"
+msgstr ""
+"正しいURLを入力して下さい！\n"
+""
+
+#: src/components/sigil/WelcomeMobile.tsx:16
+msgid "Please view this experience on a desktop browser"
+msgstr ""
+"この体験をデスクトップブラウザでご覧下さい\n"
+""
+
+#: src/components/sigil/Welcome.tsx:80
+msgid "Please view this experience on a supported browser like Chrome, Brave, Firefox or Edge"
+msgstr ""
+"Chrome、Brave、Firefox、Edgeなどのサポートされているブラウザでこのエクスペリエンスを表示して下さい\n"
+""
+
+#: src/components/sigil/RewardItem.tsx:123
+msgid "Points"
+msgstr ""
+"ポイント\n"
+""
+
+#: src/pages/studios.tsx:271
+msgid "Powered and governed by <0>$MYRIA</0>"
+msgstr "<0>$MYRIA</0>によって供給で、支配されています"
+
+#: src/pages/for-gamers.tsx:46
+msgid "Powered by the community"
+msgstr "コミュニティーによって供給されています"
+
+#: src/pages/nodes/index.tsx:217
+msgid "Powered by the community of player-run nodes"
+msgstr "プレーヤー・ラン・ノードのコミュニティーによって供給されています"
+
+#: src/components/Subscribe.tsx:63
+msgid "Pre register to stay up to date"
+msgstr "最新の状態に保てるように、事前に登録"
+
+#: src/components/Purchase/Order.tsx:93
+msgid "Price"
+msgstr ""
+"価格\n"
+""
+
+#: src/pages/team.tsx:130
+msgid "Product Lead - Blockchain"
+msgstr "プロダクトリード：ブロックチェーン"
+
+#: src/components/for-developers/Myria.tsx:48
+msgid "Provide your players with a protected experience and ensure your business understands critical regulatory compliance components."
+msgstr ""
+"プレーヤーに保護されたエクスペリエンスを提供し、ビジネスが重要な規制コンプライアンスコンポーネントを確実に理解出来るようにします。\n"
+""
+
+#: src/pages/for-gamers.tsx:167
+msgid "Pupose-built infrastructure"
+msgstr "専用インフラ"
+
+#: src/pages/nodes/purchase-complete.tsx:104
+msgid "Purchase more nodes"
+msgstr ""
+"より多くのノードを購入する\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:107
+msgid "Purchase more nodes to increase your rewards and passive invome"
+msgstr ""
+"より多くのノードを購入して、報酬と受動的な請求を増やします\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:119
+msgid "Purchase now"
+msgstr ""
+"今すぐ購入\n"
+""
+
+#: src/components/Purchase/Order.tsx:104
+msgid "Quantity"
+msgstr ""
+"容量\n"
+""
+
+#: src/components/nodes/rewards/ClaimModal.tsx:22
+msgid "Quantity: {qty}"
+msgstr ""
+"数量：{qty}\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:74
+msgid "Quantity: {quantity}"
+msgstr ""
+
+#: src/pages/cricket.tsx:125
+msgid "REGISTER"
+msgstr ""
+
+#: src/components/home/News.tsx:20
+#: src/components/home/News.tsx:36
+msgid "Read more"
+msgstr ""
+"続きを読む\n"
+""
+
+#: src/components/BuyerNodeCard.tsx:10
+#: src/components/Program.tsx:14
+msgid "Receive $MYRIA and limited edition NFT rewards whilst supporting the Myria network"
+msgstr ""
+"Myriaネットワークをサポートしながら、$MYRIAと限定版のNFT特典を受け取ります\n"
+""
+
+#: src/components/sigil/ReferFriendModal.tsx:46
+msgid "Refer your friends"
+msgstr ""
+"お友達に紹介する\n"
+""
+
+#: src/components/Register/Register.tsx:250
+msgid "Register"
+msgstr ""
+"登録\n"
+""
+
+#: src/pages/cricket.tsx:88
+msgid "Register to win exclusive<0/>AB de Villiers Cricket Game NFTs"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:231
+msgid "Releasing soon"
+msgstr "近いうちにリリースになります"
+
+#: src/pages/for-developers/solution.tsx:23
+msgid "Reliably programmable"
+msgstr ""
+"確実にプログラム可能\n"
+""
+
+#: src/components/ForgotPassword/ForgotPassword.tsx:55
+#: src/components/ResetPassword/ResetPassword.tsx:101
+msgid "Reset Password"
+msgstr ""
+"パスワードを再設定する\n"
+""
+
+#: src/pages/for-developers/solution.tsx:36
+msgid "Resistent against censorship"
+msgstr ""
+"検閲に強い\n"
+""
+
+#: src/components/nodes/Sidebar2.tsx:15
+msgid "Reward Vault"
+msgstr ""
+"リワードボールト\n"
+""
+
+#: src/components/nodes/Sidebar.tsx:37
+msgid "Rewards"
+msgstr ""
+
+#: src/components/nodes/Banner.tsx:12
+msgid "Rewards are coming soon! Information on how to install your node client will be released shortly."
+msgstr ""
+"報酬はもうすぐです！ ノードクライアントのインストール方法に関する情報はまもなくリリースされます。\n"
+""
+
+#: src/hooks/useGamesData.tsx:85
+msgid "Roll with style!"
+msgstr ""
+"スタイリッシュに転がりましょう！\n"
+""
+
+#: src/pages/nodes/index.tsx:190
+msgid "Run a node and earn <0>$MYRIA and NFT rewards</0>"
+msgstr ""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:283
+msgid "SELECT"
+msgstr ""
+"選択する\n"
+""
+
+#: src/pages/for-gamers.tsx:119
+msgid "SHIFTING POWER BACK TO THE PEOPLE"
+msgstr "力を人々に戻しています"
+
+#: src/components/Header/DesktopHeader.tsx:127
+#: src/pages/for-developers/index.tsx:50
+msgid "START BUILDING"
+msgstr ""
+"構築を開始\n"
+""
+
+#: src/components/Subscribe.tsx:92
+msgid "SUBMIT"
+msgstr "提出"
+
+#: src/components/for-developers/Myria.tsx:27
+msgid "Save time. Ship faster."
+msgstr ""
+"時間節約する。 より速く出荷する。\n"
+""
+
+#: src/pages/for-developers/solution.tsx:12
+msgid "Scale with security"
+msgstr ""
+"セキュリティで拡張\n"
+""
+
+#: src/components/for-developers/Ethereum.tsx:325
+msgid "Scaling blockchain gaming on Ethereum"
+msgstr ""
+"Ethereumでのブロックチェーンゲームのスケーリング\n"
+""
+
+#: src/components/nodes/Sidebar.tsx:43
+msgid "Settings"
+msgstr ""
+
+#: src/components/nodes/dashboard/ShareTwitter.tsx:45
+#: src/components/sigil/ShareTwitterModal.tsx:49
+msgid "Share now"
+msgstr ""
+"今すぐ共有\n"
+""
+
+#: src/components/sigil/Dashboard/MissionV2.tsx:128
+msgid "Share on Twitter"
+msgstr ""
+
+#: src/components/nodes/dashboard/ShareTwitter.tsx:59
+#: src/components/sigil/ShareTwitterModal.tsx:20
+msgid "Share this on Twitter"
+msgstr ""
+"Twitterでこれを共有する\n"
+""
+
+#: src/components/SignIn/SignIn.tsx:81
+#: src/components/nodes/Header.tsx:156
+#: src/components/nodes/Header.tsx:235
+msgid "Sign in"
+msgstr ""
+"ログイン\n"
+""
+
+#: src/components/Header/MobileHeader.tsx:71
+#: src/components/sigil/Dashboard/MissionV2.tsx:71
+msgid "Sign up"
+msgstr ""
+"サインアップ\n"
+""
+
+#: src/components/Subscribe.tsx:67
+msgid "Sign up to our newsletter to receive development updates, token and NFT drops, and exclusive promotions."
+msgstr ""
+"ニュースレターにサインアップして、開発の最新情報、トークンとNFTのドロップ、及び限定プロモーションを受け取ります。\n"
+""
+
+#: src/pages/for-developers/solution.tsx:27
+msgid "Simpler formal verification of contracts due to safe VM architecture"
+msgstr ""
+"安全なVMアーキテクチャによる契約のより簡単な正式な検証\n"
+""
+
+#: src/components/Header/DesktopHeader.tsx:46
+#: src/components/Header/MobileHeader.tsx:166
+msgid "Soon!"
+msgstr ""
+"後で！\n"
+""
+
+#: src/components/SortBy/index.tsx:13
+msgid "Sort By"
+msgstr ""
+"並び替え\n"
+""
+
+#: src/components/Loading/LoadingStandBy.tsx:6
+msgid "Stand by"
+msgstr ""
+"待機する\n"
+""
+
+#: src/components/Program.tsx:41
+msgid "Start now"
+msgstr ""
+"今すぐ開始\n"
+""
+
+#: src/components/FirstTimeVisitModal.tsx:34
+msgid "Stay update to date with our project announcements and updates!"
+msgstr ""
+"プロジェクトの発表とアップデートで最新情報を入手して下さい。\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:36
+msgid "Step 1"
+msgstr ""
+"ステップ1\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:40
+msgid "Step 2"
+msgstr ""
+"ステップ2\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:44
+msgid "Step 3"
+msgstr ""
+"ステップ3\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:48
+msgid "Step 4"
+msgstr ""
+"ステップ4\n"
+""
+
+#: src/components/Footer.tsx:53
+#: src/components/Header/linkSources.tsx:36
+msgid "Store"
+msgstr "お店"
+
+#: src/components/GetInTouch.tsx:89
+msgid "Subject"
+msgstr ""
+"話題\n"
+""
+
+#: src/components/GetInTouch.tsx:31
+msgid "Subject is required!"
+msgstr "話題が必須！"
+
+#: src/components/GetInTouch.tsx:115
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
+msgid "Submit"
+msgstr ""
+"送信\n"
+""
+
+#: src/components/GetInTouch.tsx:115
+#: src/components/for-developers/BuildYourBlockchain.tsx:146
+msgid "Submitting..."
+msgstr ""
+"送信中...\n"
+""
+
+#: src/components/for-developers/Myria.tsx:9
+msgid "Supercharge your project"
+msgstr ""
+"プロジェクトをスーパーチャージする\n"
+""
+
+#: src/components/for-developers/Ethereum.tsx:96
+msgid "Support unlimited scalability, delivering up to 9,000+ TPS"
+msgstr ""
+
+#: src/pages/studios.tsx:284
+msgid "TOKEN LAUNCH COMING SOON"
+msgstr ""
+"トークンローンチ近日>>>>>>>オリジン/ステージング\n"
+""
+
+#: src/components/Footer.tsx:102
+msgid "Team"
+msgstr "規約・プライバシー"
+
+#: src/components/Footer.tsx:200
+msgid "Terms | Privacy"
+msgstr "チーム"
+
+#: src/components/GetInTouch.tsx:107
+#: src/components/for-developers/BuildYourBlockchain.tsx:138
+msgid "Thank you for message. We will be in touch within 24-48 hours!"
+msgstr "メッセージありがとうございます。24～48時間以内にお返事します！"
+
+#: src/components/Subscribe.tsx:85
+#: src/pages/cricket.tsx:118
+msgid "Thank you for subscribing!"
+msgstr "ご登録ありがとうございます。"
+
+#: src/pages/nodes/index.tsx:220
+msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
+msgstr "Myriaチェーンは、プレーヤーが実行するノードのネットワークによってサポートされています。 自宅のコンピューターを使用してノードオペレーターになり、エコシステムへの貢献に対して報酬と利益を受け取ります。"
+
+#: src/pages/for-gamers.tsx:170
+msgid "The Myria ecosystem is built on Myria blockchain, our Ethereum L2 built for gaming. Our team have developed proprietary technology to make the gaming and trading experience seamless, including a decentralized exchange, marketplace, and cryptocurrency wallet."
+msgstr "Myriaのエコシステムは、ゲーム用に構築されたEthereum L2であるMyriaブロックチェーン上に、構築されています。チームは、分散型取引所、マーケットプレイス、暗号通貨ウォレットなど、ゲームと取引のエクスペリエンスをシームレスにする独自のテクノロジーを開発しました。"
+
+#: src/components/ecosystem/Backbone.tsx:56
+msgid "The Myria platform is supported by Myria Nodes. Being a <0/> operator means that you will receive limited edition NFTs, token rewards and more."
+msgstr ""
+"Myriaプラットフォームは、Myriaノードによってサポートされています。 <0/>オペレーターであるということは、限定版のNFT、トークン報酬などを受け取ることを意味します。\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:53
+msgid "The comprehensive blockchain gaming platform"
+msgstr ""
+"包括的なブロックチェーンゲームプラットフォーム\n"
+""
+
+#: src/components/for-developers/Myria.tsx:10
+msgid "The easiest way to launch your blockchain game"
+msgstr ""
+"ブロックチェーンゲームを起動する最も簡単な方法\n"
+""
+
+#: src/components/Register/Register.tsx:139
+msgid "The name must be between 3 and 16 characters long."
+msgstr ""
+
+#: src/components/interop/DesktopInterop.tsx:224
+#: src/components/interop/MobileInterop.tsx:129
+msgid "The new standard for interoperable NFTs"
+msgstr "相互運用可能なNFTsの新しい標準"
+
+#: src/hooks/useGamesData.tsx:68
+msgid "The objective is simple – get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing."
+msgstr ""
+"目的は単純です。最初にフィニッシュラインに到達し、試してみても運命に陥らないで下さい。 各試合は、決勝までのコースに沿った一連の障害を乗り越えて排除されるプレイヤーの大群から始まります。 生き残ったプレイヤーは、急いで立っているのが1つになるまで、難易度を上げながらラウンドで戦いを続けます。\n"
+""
+
+#: src/components/nodes/rewards/WalletModal.tsx:14
+msgid "The wallet currently connected does not match your designated reward wallet. Please connect the correct wallet or click below to change it."
+msgstr ""
+"現在接続されているウォレットは、指定された報酬ウォレットと一致しません。 正しいウォレットを接続するか、以下をクリックして変更して下さい。\n"
+""
+
+#: src/components/interop/DesktopInterop.tsx:165
+#: src/components/interop/MobileInterop.tsx:64
+msgid "The world’s first Morphing NFTs™"
+msgstr "世界初Morphing NFTs™"
+
+#: src/hooks/useGamesData.tsx:288
+msgid "Think before you shoot!"
+msgstr ""
+"撮影する前に考えて下さい！\n"
+""
+
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:82
+msgid "This decision is permanent. Once you choose your alliance you cannot change it!"
+msgstr ""
+"この決定は永続的です。 同盟を選択すると、それを変更することは出来ません！\n"
+""
+
+#: src/hooks/useGamesData.tsx:153
+msgid "Throw your prized vehicle around the deadly turns of the track as you throw a dice to decide your destiny. Drifting and performing crazy stunts is your way of expressing your inner speed demons, so don’t be shy– let them come out and play!"
+msgstr ""
+"お客様が運命を決めるためにダイスを投げるとき、お客様の大切な車をトラックの致命的なターンの周りに投げて下さい。 ドリフトしてクレイジーなスタントを実行することは、内なるスピードの悪魔を表現する方法です。恥ずかしがらずに、出てきて遊んで下さい！\n"
+""
+
+#: src/components/nodes/dashboard/TimeOnline.tsx:15
+msgid "Time Online"
+msgstr ""
+"オンライン時間\n"
+""
+
+#: src/components/nodes/rewards/TotalRewards.tsx:11
+msgid "Token Rewards"
+msgstr ""
+"トークンリワード\n"
+""
+
+#: src/components/for-developers/Myria.tsx:39
+msgid "Tokenomics consultancy"
+msgstr ""
+
+#: src/components/Purchase/Modals/index.tsx:104
+#: src/components/nodes/rewards/ClaimModal.tsx:42
+msgid "Total"
+msgstr ""
+"合計\n"
+""
+
+#: src/components/nodes/dashboard/GeneralInfo.tsx:18
+msgid "Total $MYRIA Mined"
+msgstr ""
+"合計$MYRIAマイニング\n"
+""
+
+#: src/components/nodes/dashboard/GeneralInfo.tsx:34
+msgid "Total NFT Rewards"
+msgstr ""
+"トータルNFTリワード\n"
+""
+
+#: src/components/nodes/dashboard/TotalNodes.tsx:9
+msgid "Total nodes in Myria network"
+msgstr ""
+"Myriaネットワークの合計ノード\n"
+""
+
+#: src/components/interop/DesktopInterop.tsx:205
+#: src/components/interop/MobileInterop.tsx:105
+msgid "Trailer Coming Soon"
+msgstr "トレーラーが近日公開"
+
+#: src/components/nodes/Sidebar2.tsx:23
+msgid "Transaction List"
+msgstr ""
+"トランザクションリスト\n"
+""
+
+#: src/components/Purchase/Modals/index.tsx:89
+msgid "Transaction fee"
+msgstr ""
+"取引手数料\n"
+""
+
+#: src/pages/for-developers/solution.tsx:15
+msgid "Transparent and post-quantum secure -  no trusted setup"
+msgstr ""
+"透過的で量子後の安全性-信頼出来るセットアップはありません\n"
+""
+
+#: src/pages/team.tsx:145
+msgid "UI/UX Lead"
+msgstr "UI/UX リード"
+
+#: src/pages/studios.tsx:349
+msgid "Unified through the Myriaverse"
+msgstr "Myriaverseを通じて統一します"
+
+#: src/components/for-developers/Myria.tsx:21
+msgid "Unlock immense scale"
+msgstr ""
+"巨大なスケールのロックを解除\n"
+""
+
+#: src/components/sigil/Sound.tsx:29
+msgid "Unmute sound"
+msgstr ""
+"ミュートを解除する\n"
+""
+
+#: src/components/sigil/Welcome.tsx:79
+msgid "Unsupported Browser"
+msgstr ""
+"無対応なブラウザー\n"
+""
+
+#: src/components/Register/Register.tsx:184
+msgid "Username"
+msgstr ""
+"ユーザネーム\n"
+""
+
+#: src/components/Register/Register.tsx:50
+msgid "Username is required!"
+msgstr ""
+"ユーザネームが必要！\n"
+""
+
+#: src/hooks/useGamesData.tsx:269
+msgid "Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning."
+msgstr ""
+"ガンプレイスキルを独自のヒーロー能力と組み合わせて利用して、一連のチームバトルや他のゲームモードで勝利して下さい。 能力のアップグレードと選択した武器を管理して、勝利のチャンスを最適化します。\n"
+""
+
+#: src/components/sigil/ClaimModal.tsx:40
+msgid "VIEW ITEM"
+msgstr ""
+"アイテムを見る\n"
+""
+
+#: src/components/inventory/OpenChest.tsx:133
+msgid "VIEW ITEMS"
+msgstr ""
+"アイテムを見る\n"
+""
+
+#: src/pages/nodes/index.tsx:252
+msgid "Validating on Myria"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:163
+msgid "Vanity factor number 1"
+msgstr ""
+"バニティファクターナンバー1\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:73
+msgid "Vector Prime believe the Rift is the next step of evolution and will do anything in their power to accelerate its expansion."
+msgstr ""
+"ベクタープライムは、リフトが進化の次のステップで、その拡大を加速するために彼らの力で何でもするだろうと信じています。\n"
+""
+
+#: src/components/Purchase/Modals/TermsOfServiceModal.tsx:26
+msgid "Vegan PBR&B listicle sriracha. Migas lomo helvetica, listicle paleo salvia sartorial crucifix dreamcatcher try-hard ugh lyft. Intelligentsia whatever mlkshk salvia, authentic jianbing wolf coloring book echo park fam. Iceland cray occupy ennui, franzen tilde poke. Poutine echo park meditation cliche franzen, shaman messenger bag. Hot chicken umami adaptogen DIY yuccie whatever subway tile, narwhal helvetica meggings scenester twee iPhone tumblr lumbersexual."
+msgstr ""
+
+#: src/components/Careers/Careers.tsx:91
+msgid "View job"
+msgstr ""
+"ジョッブを見る\n"
+""
+
+#: src/pages/nodes/index.tsx:41
+msgid "Voting rights"
+msgstr "投票権限"
+
+#: src/hooks/useGamesData.tsx:363
+msgid "Watch your village grow and flourish as you move up the ranks. Are you able to devise the best strategy and outperform your rivals?"
+msgstr ""
+"お客様のランクが上がるにつれて、お客様の村が成長し繁栄するのを見て下さい。 最高の戦略を考案し、ライバルをしのぐことが出来ますか？\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:14
+msgid "We believe in open and equitable access, enabling more people to build, experience and enjoy the benefits of blockchain and the metaverse."
+msgstr ""
+"私たちはオープンで公平なアクセスを信じており、より多くの人々がブロックチェーンとメタバースのメリットを構築、体験、享受出来るようにしていきます。\n"
+""
+
+#: src/pages/for-gamers.tsx:35
+msgid "We believe players should have true verifiable ownership and control over in-game assets."
+msgstr "当社は、プレーヤーは、ゲーム内のアセットに対して、真の検証可能な所有権と制御権を持っている必要があると、考えています。"
+
+#: src/components/ecosystem/Backbone.tsx:71
+msgid "We bring together everything that is required to build a decentralized, scalable and secure digital asset and blockchain gaming platform"
+msgstr ""
+"分散型でスケーラブルで安全なデジタルアセットとブロックチェーンゲームプラットフォームを1か所にまとめるのに必要な全てのものをまとめています。\n"
+""
+
+#: src/components/ecosystem/Platform.tsx:23
+msgid "We make digital asset trading and blockchain gaming easy with our all-in-one platform."
+msgstr ""
+"オールインワンプラットフォームにより、デジタル資産取引とブロックチェーンゲームを簡単に行うことが出来ます。\n"
+""
+
+#: src/components/for-developers/Myria.tsx:28
+msgid "We make everything else easy so you can focus on your product"
+msgstr ""
+"当社はお客様がお客様の製品に集中出来るように他のすべてを簡単にします\n"
+""
+
+#: src/pages/for-studios.tsx:23
+msgid "We provide a full suite of blockchain infrastructure on the Myria chain, our Ethereum L2 built for gaming."
+msgstr "当社が、ゲーム用に構築されたEthereum L2であるMyriaチェーン上にブロックチェーンインフラの完全なスイートを提供しています。"
+
+#: src/components/for-developers/Ethereum.tsx:221
+msgid "We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey"
+msgstr ""
+"プロジェクトがブロックチェーンゲームの旅を開始するのに役立つ使いやすいソリューションを提供します\n"
+""
+
+#: src/components/for-developers/Myria.tsx:12
+msgid "We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities."
+msgstr ""
+"オンボーディングから導入まで、当社はお客様と緊密に連携して、技術サポートからベストプラクティスの推奨事項に至るまでのアドバイスを提供することにより、新しい収益源と機会を開拓します。\n"
+""
+
+#: src/components/for-developers/BuildYourBlockchain.tsx:85
+msgid "We would love to hear from you. Contact us and get started with your blockchain gaming journey today."
+msgstr ""
+"ご連絡をお待ちしております。 当社に連絡して、今日からブロックチェーンゲームの旅を始めましょう。\n"
+""
+
+#: src/components/sigil/Welcome.tsx:86
+#: src/components/sigil/WelcomeMobile.tsx:13
+msgid "Welcome to the Myriaverse"
+msgstr ""
+"Myriaverseへようこそ\n"
+""
+
+#: src/components/JoinTheRevolution.tsx:25
+msgid "We’re hiring, join the future of gaming"
+msgstr "募集中。ゲームの未来に加盟してください"
+
+#: src/pages/nodes/index.tsx:117
+msgid "What are the software and hardware requirements to run a node?"
+msgstr "ノードを実行するには、どのソフトウェアとハードウェアが要りますか？"
+
+#: src/pages/nodes/index.tsx:68
+msgid "What is a Myria node?"
+msgstr "Myriaノードとは？"
+
+#: src/pages/nodes/index.tsx:88
+msgid "What rewards do Myria node operators receive?"
+msgstr "Myriaノードオペレーターはどのような報酬を受け取りますか？"
+
+#: src/pages/nodes/index.tsx:150
+msgid "When will Myria node licenses be sold?"
+msgstr "Myriaノードライセンスはいつ販売されますか？"
+
+#: src/components/sigil/Welcome.tsx:89
+msgid "Which side of the battlelines will you stand on? <0/> Choose your Alliance and claim your free Sigil NFT."
+msgstr ""
+"戦線のどちら側に立ちますか？ <0/>アライアンスを選択し、無料のSigilNFTを請求します。\n"
+""
+
+#: src/components/Footer.tsx:96
+msgid "Whitepaper"
+msgstr ""
+"ホワイトペーパー\n"
+""
+
+#: src/components/sigil/ChooseAlliance/index.tsx:50
+msgid "With ships equipped with technology both ancient and cutting edge, the Federation Alliance patrols space, combating the expansion of the Rift on all fronts."
+msgstr ""
+"フェデレーションアライアンスは、古代と最先端の両方のテクノロジーを搭載した船でスペースをパトロールし、あらゆる面でリフトの拡大に対抗します。\n"
+""
+
+#: src/components/for-developers/Myria.tsx:46
+msgid "Work with our experienced legal team"
+msgstr ""
+"経験豊富な法務チームと務める\n"
+""
+
+#: src/components/sigil/ChooseAlliance/AllianceModal.tsx:56
+msgid "You are joining..."
+msgstr ""
+"参加しています...\n"
+""
+
+#: src/components/sigil/ClaimModal.tsx:33
+msgid "You have just claimed"
+msgstr ""
+"お客様はちょうど主張しました\n"
+""
+
+#: src/components/inventory/OpenChest.tsx:110
+msgid "You have opened"
+msgstr ""
+"お客様は開いた\n"
+""
+
+#: src/pages/nodes/purchase-complete.tsx:89
+msgid "Your Myria Dashboard"
+msgstr ""
+"Myriaダッシュボード\n"
+""
+
+#: src/components/interop/DesktopInterop.tsx:245
+#: src/components/interop/MobileInterop.tsx:154
+msgid "Your NFT is your digital identity. Take your NFT with you on your metaverse explorations. Equip and level up in different games and worlds. Truly own your metaverse identity with Myria."
+msgstr "お客様のNFTsは、お客様のデジタル式アイデンティティです。 メタバースの探索にNFTsを持っていきましょう。 いくつかのゲームや世界で装備してレベルアップします。 Myriaでメタバースアイデンティティを本当に所有してください。"
+
+#: src/pages/nodes/purchase-complete.tsx:73
+msgid "Your purchase is complete."
+msgstr ""
+"購入が完了しました。\n"
+""
+
+#: src/pages/nodes/index.tsx:214
+msgid "a decentralized ecosystem"
+msgstr "分解型のエコシステム"
+
+#: src/components/JoinTheRevolution.tsx:22
+msgid "join the revolution"
+msgstr "革命に参加します"
+
+#: src/components/ecosystem/Diagram.tsx:13
+msgid "view now"
+msgstr "今すぐ見る"
+
+#: src/components/Purchase/Modals/index.tsx:116
+msgid "{balance} ETH"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:165
+msgid ""
+"“Mirror, mirror on the wall, who's the fairest of them all?”\n"
+"If you’re still wondering whether those shiny pink rims or the NFT unicorn sticker on the hood are going to make you stand out on the track, then wonder no more. You're gonna shine like a star as your opponents remain a distant glimpse in the rear-view mirror."
+msgstr ""
+"「鏡、壁の鏡、それら全ての中で最も美しいのは誰ですか？」 光沢のあるピンクのリムやフードのNFTユニコーンステッカーがトラックで目立つようになるかどうかまだ疑問に思っているなら、もう疑問に思うことはありません。 対戦相手がバックミラーで遠くを垣間見ることが出来るので、お客様は星のように輝くでしょう。\n"
+""
