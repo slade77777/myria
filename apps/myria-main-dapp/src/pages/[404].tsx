@@ -1,7 +1,7 @@
 import NotFoundPage from './404';
 
-const Team = () => {
+const NotFound = () => {
   return <NotFoundPage />;
 };
 
-export default Team;
+export default NotFound;
