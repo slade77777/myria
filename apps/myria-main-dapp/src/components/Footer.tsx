@@ -97,10 +97,6 @@ const links = [
           link: '/',
           disabled: true,
           inactive: true
-        },
-        {
-          label: <Trans>Team</Trans>,
-          link: '/team'
         }
       ],
       [

@@ -22,8 +22,6 @@ const getPageName = (route: string): PageName => {
       return 'Store';
     case '/our-vision':
       return 'Our Vision';
-    case '/team':
-      return 'Our Team';
     case '/studios':
       return 'Myria Studio';
     case '/careers':
