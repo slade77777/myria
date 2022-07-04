@@ -168,7 +168,6 @@ const Careers: React.FC = () => {
                 loop
                 muted
                 autoPlay
-                webkit-="true"
                 playsInline>
                 <source src="/videos/careers/section.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
