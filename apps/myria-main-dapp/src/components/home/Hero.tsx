@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
       setIsSubmitSuccess(false);
 
       await additionalApiClient
-        .post(`/subscribe`, data)
+        .post(`/subscribe-moonville`, data)
         .then(() => setIsSubmitSuccess(true))
         .catch((error) => {
           setError(error.message);
