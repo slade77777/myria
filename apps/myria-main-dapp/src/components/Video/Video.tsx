@@ -83,7 +83,7 @@ const Video: React.FC<VideoProps> = ({
   return (
     <div className={styles.container}>
       <div data-vjs-player="true">
-        <video ref={videoRef} className="video-js" />
+        <video ref={videoRef} playsInline className="video-js" />
       </div>
     </div>
   );
