@@ -1,30 +1,23 @@
 import Collection from '../../../components/marketplace/Collection';
-import { NFTItemType } from '../../../components/marketplace/NftItem/type';
-import testImg from '../inventory/test.png';
-import testavatarImg from '../inventory/testavatar.png';
+import useMarketplaceCollection from '../../../hooks/useMarketplaceCollection';
+import { useRouter } from 'next/router';
+import useCollectionAsset from 'src/hooks/useCollectionAsset';
 
 const CollectionDetailPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const { collection } = useMarketplaceCollection(parseInt(id as string));
+  const {
+    assets: { items }
+  } = useCollectionAsset(id as string);
+
   return (
     <Collection
-      collectionImageUrl={''}
-      name="Myria Sigil Collections"
-      createdBy="Myria Sigil Event"
-      description="Flannel mlkshk four loko squid shoreditch. Ennui adaptogen kombucha chia, gastropub disrupt YOLO tumblr hexagon copper mug hashtag neutra four dollar toast. Myria helps blockchain projects scale. Whether you’re an established crypto business or simply exploring  the new..."
-      assetItems={Array(11)
-        .fill(0)
-        .map((_, index) => {
-          const item: NFTItemType = {
-            id: index.toString(),
-            rarity: 'rare',
-            name: 'Common Alliance Chest',
-            image_url: testImg.src,
-            collection: 'Sigil Myriaverse',
-            creator: 'Myria',
-            creatorImg: testavatarImg.src,
-            priceETH: Math.round(Math.random() * 5)
-          };
-          return item;
-        })}
+      collectionImageUrl={collection?.collectionImageUrl}
+      name={collection.name}
+      createdBy=""
+      description={collection.description}
+      assetItems={items || []}
     />
   );
 };

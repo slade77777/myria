@@ -1,6 +1,4 @@
 import React, { FC, memo } from 'react';
-import Image from 'next/image';
-import backgroundImage from '../../../pages/marketplace/collection/collection_background.png';
 import { MyriaIcon } from '../../icons/MyriaIcon';
 import NftItem from '../NftItem';
 import { NFTItemType } from '../NftItem/type';
@@ -26,11 +24,7 @@ const Collection: FC<Props> = ({
   return (
     <div className="w-full bg-[#050E15] pb-[58px]">
       <div className="relative">
-        <Image
-          src={collectionImageUrl || backgroundImage}
-          layout="responsive"
-          objectFit="initial"
-        />
+        <img src={collectionImageUrl} className="h-[327px] w-full " alt={name} />
         <div className="absolute left-[88px] -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full bg-[#0F2F45]">
           <MyriaIcon />
         </div>
@@ -42,7 +36,7 @@ const Collection: FC<Props> = ({
             <p className="mt-2 text-[#97AAB5]">
               Created By <span className="text-white">{createdBy}</span>
             </p>
-            <ReadMoreText text={description} />
+            <ReadMoreText text={description || ''} />
           </div>
           <div className="flex flex-row gap-8">
             <div>

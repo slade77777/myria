@@ -13,14 +13,14 @@ function InventoryPage() {
   const starkKey = '0xf8c6635f9cfe85f46759dc2eebe71a45b765687e35dbe5e74e8bde347813ef'; // MOCK
   const { data } = useQuery(['marketplaceInventory', starkKey], () => {
     if (starkKey) {
-      return assetModule?.getAssetStarkKeyMarketp(starkKey);
+      return assetModule?.getAssetByStarkKey(starkKey);
     }
     return null;
   });
 
   const rawData = data?.data;
 
-  console.log(rawData)
+  console.log(rawData);
 
   const items: NFTItemType[] = React.useMemo(() => {
     if (rawData instanceof Array) {
