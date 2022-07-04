@@ -321,7 +321,7 @@ const data = [
 const Ethereum: React.FC = () => {
   return (
     <div className="text-center">
-      <h2 className="text-[32px] font-extrabold leading-[1.15] md:text-[40px]">
+      <h2 className="text-[32px] font-extrabold leading-[1.15] md:text-[40px] mt-[60px]">
         <Trans> Scaling blockchain gaming on Ethereum</Trans>
       </h2>
       <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-4">

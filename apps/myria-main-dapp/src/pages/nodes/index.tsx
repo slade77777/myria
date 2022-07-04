@@ -10,7 +10,14 @@ import ChevronDownIcon from 'src/components/icons/ChevronDownIcon';
 import StarIcon from 'src/components/icons/StarIcon';
 import UserIcon from 'src/components/icons/UserIcon';
 import Page from 'src/components/Page';
-import { paddingX } from 'src/utils';
+import { paddingX } from '../../utils';
+
+import { useWalletContext } from 'src/context/wallet';
+import { useGA4 } from 'src/lib/ga';
+
+import { useRouter } from 'next/router';
+import Header from 'src/components/nodes/Header';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 const rewards = [
   {
@@ -166,16 +173,14 @@ const questions = [
 ];
 const Nodes: React.FC = () => {
   return (
-    <Page>
-      <div
-        style={{
-          paddingTop: headerHeight
-        }}>
-        <div
-          className={clsx(
-            paddingX,
-            "bg-[url('/images/nodes/page-bg_op.png')] bg-right-bottom bg-no-repeat "
-          )}>
+    <Page action="start-building">
+      <div className="pt-[120px]">
+        <div className={clsx(paddingX, 'relative isolate mt-10 pt-12 md:pt-[150px]')}>
+          <img
+            src="/images/nodes/globe_op.png"
+            alt=""
+            className="absolute top-0 left-1/2 z-[-1] w-full max-w-[900px] -translate-x-1/2"
+          />
           <div className="mx-auto w-full max-w-content">
             <section className={'text-center '}>
               <h1 className="heading-lg mx-auto mt-[50px] max-w-[756px] text-center text-brand-white md:heading-massive md:mt-[120px]">

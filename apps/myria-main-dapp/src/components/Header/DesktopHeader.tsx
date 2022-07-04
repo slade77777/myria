@@ -14,6 +14,9 @@ import { Action, NavItem } from './type';
 import { useRouter } from 'next/router';
 import ProfileComponent from './ProfileComponent';
 import LanguageSwitcher from '../LanguageSwitcher';
+import DropdownMenu from '../DropdownMenu';
+import truncateString from 'src/helper';
+import LogoutIcon from '../icons/LogoutIcon';
 
 type Props = {
   action: Action;
@@ -29,7 +32,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
   return (
     <ul
       className={clsx(
-        'flex items-center space-x-9 text-[14px] font-medium uppercase leading-[1.25] text-brand-white',
+        'flex items-center space-x-8 tracking-wider text-[14px] font-semibold uppercase leading-[1.25] text-brand-white',
         className
       )}>
       {links.map((item, idx) => {
@@ -88,11 +91,13 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
           );
         } else {
           return (
-            <li key={idx}>
+            <li key={idx} className={clsx('py-[9px] px-[13px] rounded-[8px] hover:bg-base/4', {
+              'bg-base/4': item.url === router.pathname
+            })}>
               <Link href={item.url as string}>
                 <a
-                  className={clsx('hover:text-brand-gold', {
-                    'text-brand-gold': item.url === router.pathname
+                  className={clsx('hover:text-blue/6', {
+                    'text-blue/6': item.url === router.pathname
                   })}>
                   {item.text}
                 </a>
@@ -109,7 +114,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const { event } = useGA4();
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
-  const { onConnect } = useWalletContext();
+  const { address, onConnect, disconnect } = useWalletContext();
   const { login, user } = useAuthenticationContext();
 
   const actionElements = useMemo(() => {
@@ -156,30 +161,72 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
 
   const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
   return (
-    <header ref={headerRef} className="w-full">
-      <div className="hidden text-black lg:block">
+    <header ref={headerRef} className="w-full bg-base/3">
+      {/* <div className="hidden text-black lg:block">
         <NotiBanner />
-      </div>
+      </div> */}
       <nav
         style={{
           height: navHeight
         }}
-        className="grid w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
-        <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
-
-        <div className="flex items-center">
+        className="flex w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
+        <div className="flex items-left mr-12">
           <Link href="/">
             <a className="w-[164px]">
               <Logo />
             </a>
           </Link>
         </div>
-        <div className="flex flex-shrink-0 items-center justify-end space-x-9">
+        <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
+
+
+        <div className="absolute right-8 flex flex-shrink-0 items-center justify-end space-x-9">
           <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
-          {/* <div>
+          <div>
             <LanguageSwitcher />
-          </div> */}
-          {actionElements}
+          </div>
+          <div>
+            {address ? (
+              <DropdownMenu>
+                <DropdownMenu.Trigger asChild>
+                  <button className=" body-14-bold flex items-center space-x-2 rounded-lg border border-base/5 bg-base/3 px-4 py-[9px]">
+                    <span>{truncateString(address)}</span>
+                    <i className="w-4">
+                      <ChevronDownIcon />
+                    </i>
+                  </button>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content
+                  sideOffset={8}
+                  align="end"
+                  className="rounded-md bg-current p-3 text-base/3">
+                  <DropdownMenu.Arrow className="translate-x-3 fill-current" />
+                  <div className="text-white">
+                    <button
+                      className="body-14-medium flex items-center space-x-2.5 text-white"
+                      onClick={disconnect}>
+                      <i className="w-4">
+                        <LogoutIcon />
+                      </i>
+                      <span>
+                        <Trans>Disconnect</Trans>
+                      </span>
+                    </button>
+                  </div>
+                </DropdownMenu.Content>
+              </DropdownMenu>
+            ) : (
+              <button
+                onClick={() => {
+                  onConnect();
+                  // event('Connect Wallet Selected', { campaign: 'Sigil' });
+                }}
+                className="body-14-bold rounded-lg border border-white py-[9px] px-4 uppercase hover:border-primary/7">
+                <Trans>Connect wallet</Trans>
+              </button>
+            )}
+          </div>
+          {/* {actionElements} */}
         </div>
       </nav>
     </header>
