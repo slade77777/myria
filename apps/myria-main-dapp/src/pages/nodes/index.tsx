@@ -2,13 +2,13 @@ import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
 import Subscribe from 'src/components/Subscribe';
-import CardWithIcon from '../../components/CardWithIcon';
-import Collapse from '../../components/Collapse';
-import { headerHeight } from '../../components/Header';
-import ChartIcon from '../../components/icons/ChartIcon';
-import ChevronDownIcon from '../../components/icons/ChevronDownIcon';
-import StarIcon from '../../components/icons/StarIcon';
-import UserIcon from '../../components/icons/UserIcon';
+import CardWithIcon from 'src/components/CardWithIcon';
+import Collapse from 'src/components/Collapse';
+import { headerHeight } from 'src/components/Header';
+import ChartIcon from 'src/components/icons/ChartIcon';
+import ChevronDownIcon from 'src/components/icons/ChevronDownIcon';
+import StarIcon from 'src/components/icons/StarIcon';
+import UserIcon from 'src/components/icons/UserIcon';
 import Page from 'src/components/Page';
 import { paddingX } from '../../utils';
 
@@ -174,8 +174,6 @@ const questions = [
 const Nodes: React.FC = () => {
   return (
     <Page action="start-building">
-      {/* <Page headerClassName="hidden">
-      <Header /> */}
       <div className="pt-[120px]">
         <div className={clsx(paddingX, 'relative isolate mt-10 pt-12 md:pt-[150px]')}>
           <img
