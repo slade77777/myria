@@ -95,17 +95,3 @@ input::-ms-clear {
     pointer-events: none;
     width: 5px;
 }
-
-.table-assets-list tbody tr td {
-  padding: 10px 0;
-  border: 1px solid #fff;
-  width: 25%;
-}
-
-.table-assets-list tbody tr td:nth-child(3) {
-  width: 30%;
-}
-
-.table-assets-list tbody tr td:last-child {
-  width: 20%;
-}

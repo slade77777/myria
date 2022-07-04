@@ -1,14 +1,24 @@
 import { Trans } from '@lingui/macro';
 import React from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import MintedIcon from 'src/components/icons/MintedIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
 import truncateString from 'src/helper';
 import AssetDetailTab from './AssetDetailTab';
-import MintedIcon from './MintedIcon';
 import testavatarImg from './testavatar.png';
 const walletAddress = '0x7Ec5A82Ca092f3397877134a711dDc698Bb2b089'
 interface Props {
 }
+
+const detailData = {
+  collectionName: 'Myriaverse Sigil Event',
+  assetName: 'Ultra Rare Vector Prime Sigil',
+  mintedQuantity: 10000,
+  tokenId: 1907,
+  amountBuy: 2,
+  usdPrice: 2274.23
+};
+
 const ItemAttribution = () => {
   return (
     <div className='bg-base/3 rounded-[8px] text-center p-[16px] border border-base/6'>
@@ -18,7 +28,10 @@ const ItemAttribution = () => {
   )
 }
 function AssetDetails({ }: Props) {
-
+  const {collectionName, assetName, mintedQuantity, tokenId, amountBuy, usdPrice} = detailData;
+  const mintedQuantityConverted = Number(mintedQuantity).toLocaleString('en');
+  const currentPrice = Number(amountBuy).toLocaleString('en',{minimumFractionDigits: 2})
+  const currentUSDPrice = Number((usdPrice)).toLocaleString('en',{minimumFractionDigits: 2})
   return (
     <div className="w-full bg-[#050E15] py-[58px] px-[24px] text-white">
       <div className='flex flex-row  space-x-28'>
@@ -49,7 +62,7 @@ function AssetDetails({ }: Props) {
               {/* first row */}
               <div className='flex flex-row'>
                 <img src={testavatarImg.src} className='h-[24px] w-[24px]' />
-                <span className='ml-[8px] text-[16px]'>Myriaverse Sigil Event</span>
+                <span className='ml-[8px] text-[16px]'>{collectionName}</span>
               </div>
               <div className='w-[40px] p-[10px]'>
                 <ShareIcon/>
@@ -57,28 +70,24 @@ function AssetDetails({ }: Props) {
             </div>
             <div className='flex flex-col items-start'>
               {/* detail asset */}
-              <span className='mt-[24px] text-[28px] font-bold'>Ultra Rare Vector Prime Sigil</span>
+              <span className='mt-[24px] text-[28px] font-bold'>{assetName}</span>
               <div className='mt-[24px] flex flex-row justify-between w-[300px]'>
-                <span>Token ID: {1907}</span>
+                <span>Token ID: {tokenId}</span>
                 <span>|</span>
                 <span>{truncateString(walletAddress)}</span>
               </div>
 
               <div className='mt-[24px] flex flex-row items-center px-[12px] py-[8px] rounded-[5px] bg-base/3 border-base/6 border'>
                 <MintedIcon />
-                <span className='ml-[5px]'>{Number(10000).toLocaleString('en')} Minted</span>
+                <span className='ml-[5px]'>{mintedQuantityConverted} Minted</span>
               </div>
 
               <span className='text-light text-[18px] mt-[36px] mb-[16px]'>Current price</span>
               <div className='flex flex-row items-center'>
                 <DAOIcon className="mr-[8px]" />
-                <span className='text-[28px] font-bold'>{Number(2).toLocaleString('en',{
-                  minimumFractionDigits: 2
-                })}
+                <span className='text-[28px] font-bold'>{currentPrice}
                 </span>
-                <span className='text-[14px] text-light self-end mb-[5px]'>{'(~$'}{Number((2274.25)).toLocaleString('en',{
-                  minimumFractionDigits: 2
-                })}{')'}
+                <span className='text-[14px] text-light self-end mb-[5px]'>{'(~$'}{currentUSDPrice}{')'}
                 </span>
               </div>
             </div>
