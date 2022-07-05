@@ -1,9 +1,11 @@
 import { Trans } from '@lingui/macro';
-import React from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
 import truncateString from 'src/helper';
+import { formatNumber, formatNumber2digits } from 'src/utils';
+import AssetList from '../AssetList';
+import { NFTItemType } from '../NftItem/type';
 import AssetDetailTab from './AssetDetailTab';
 import testavatarImg from './testavatar.png';
 const walletAddress = '0x7Ec5A82Ca092f3397877134a711dDc698Bb2b089'
@@ -28,13 +30,15 @@ const ItemAttribution = () => {
   )
 }
 function AssetDetails({ }: Props) {
-  const {collectionName, assetName, mintedQuantity, tokenId, amountBuy, usdPrice} = detailData;
-  const mintedQuantityConverted = Number(mintedQuantity).toLocaleString('en');
-  const currentPrice = Number(amountBuy).toLocaleString('en',{minimumFractionDigits: 2})
-  const currentUSDPrice = Number((usdPrice)).toLocaleString('en',{minimumFractionDigits: 2})
+  const { collectionName, assetName, mintedQuantity, tokenId, amountBuy, usdPrice } = detailData;
+  const mintedQuantityConverted =formatNumber(mintedQuantity);
+  const currentPrice = formatNumber2digits(amountBuy)
+  const currentUSDPrice = formatNumber2digits(usdPrice);
+
+
   return (
     <div className="w-full bg-[#050E15] py-[58px] px-[24px] text-white">
-      <div className='flex flex-row  space-x-28'>
+      <div className='flex flex-row  space-x-28 mx-auto max-w-content'>
         {/* container */}
         <div className='w-[620px]'>
           {/* left */}
@@ -45,12 +49,12 @@ function AssetDetails({ }: Props) {
           <div className='text-white'>
             {/* list stat */}
             <div className='mt-[40px] mb-[16px] text-[18px] font-bold'>
-            <Trans>Attributes</Trans>
+              <Trans>Attributes</Trans>
             </div>
             <div className='grid grid-cols-4 gap-4'>
-            {[1,2,3,4,5,6,7,8].map((val)=>{
-              return <ItemAttribution key={val} />
-            })}
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((val) => {
+                return <ItemAttribution key={val} />
+              })}
             </div>
           </div>
         </div>
@@ -65,7 +69,7 @@ function AssetDetails({ }: Props) {
                 <span className='ml-[8px] text-[16px]'>{collectionName}</span>
               </div>
               <div className='w-[40px] p-[10px]'>
-                <ShareIcon/>
+                <ShareIcon />
               </div>
             </div>
             <div className='flex flex-col items-start'>
@@ -87,7 +91,7 @@ function AssetDetails({ }: Props) {
                 <DAOIcon className="mr-[8px]" />
                 <span className='text-[28px] font-bold'>{currentPrice}
                 </span>
-                <span className='text-[14px] text-light self-end mb-[5px]'>{'(~$'}{currentUSDPrice}{')'}
+                <span className='text-[14px] ml-1 text-light self-end mb-[5px]'>{'(~$'}{currentUSDPrice}{')'}
                 </span>
               </div>
             </div>
@@ -100,6 +104,23 @@ function AssetDetails({ }: Props) {
             <AssetDetailTab />
           </div>
         </div>
+      </div>
+      <div className='mt-[24px]'>
+        <AssetList title={'More from this collection'}  items={Array(4)
+        .fill(0)
+        .map((_, index) => {
+          const item: NFTItemType = {
+            id: `${index}`,
+            rarity: 'rare',
+            name: 'Common Alliance Chest',
+            image_url: 'https://myria.com/seo/defaultImage.png',
+            collection: 'Sigil Myriaverse',
+            creator: 'Myria',
+            creatorImg: testavatarImg.src,
+            priceETH: Math.round(Math.random() * 5)
+          };
+          return item;
+        })} />
       </div>
     </div>
   );
