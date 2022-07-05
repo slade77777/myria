@@ -7,13 +7,10 @@ type DataTypes = {
 };
 
 export default function useCollectionAsset(id: string) {
-  const queryKey = `collection/${id}/assets`;
+  const queryKey = ['collection', id , 'assets'];
   const { data, isLoading, error } = useQuery(
     queryKey,
-    () => assetModule?.getAssetByCollectionId(id),
-    {
-      refetchOnWindowFocus: false
-    }
+    () => assetModule?.getAssetByCollectionId(id)
   );
 
   return {
