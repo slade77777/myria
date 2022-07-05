@@ -3,6 +3,7 @@ import {Content, List, Root, Tabs, Trigger} from '@radix-ui/react-tabs';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
+import { formatNumber2digits } from 'src/utils';
 const walletAddress = '0x7Ec5A82Ca092f3397877134a711dDc698Bb2b089'
 const listAssetOrders = [
   {
@@ -64,8 +65,8 @@ export default () => (
           </thead>
           <tbody className='max-h-[100px] overflow-scroll border-b border-blue/3'>
             {listAssetOrders.map((elm,_idx) => {
-              const priceConverted = Number(elm.amountBuy).toLocaleString('en',{minimumFractionDigits: 2})
-              const usdPriceConverted = Number(elm.usdPrice).toLocaleString('en',{minimumFractionDigits: 2})
+              const priceConverted = formatNumber2digits(elm.amountBuy)
+              const usdPriceConverted = formatNumber2digits(elm.usdPrice)
               const ownerName = truncateString(elm.owner)
               return <tr className="font-normal text-white text-[16px] border-t border-blue/3">
               <td className="pr-6 py-4 whitespace-nowrap">

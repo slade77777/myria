@@ -4,6 +4,9 @@ import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 export const formatNumber = (num: number) => {
   return new Intl.NumberFormat('en').format(num);
 };
+export const formatNumber2digits = (num: number) => {
+  return Number((num)).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits:2 });
+};
 export const paddingX = 'px-6 md:px-12 xl:px-16';
 export const negativeMarginXSm = '-mx-6';
 export const negativeMarginXMd = 'md:-mx-12';
