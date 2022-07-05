@@ -16,3 +16,4 @@ const getModuleFactory = () => {
 };
 
 export const assetModule = getModuleFactory()?.getAssetModule();
+export const collectionModule = getModuleFactory()?.getCollectionModule();

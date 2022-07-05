@@ -8,7 +8,7 @@ const ReadMoreText: FC<{ text: string; textClass?: string }> = ({ text, textClas
   return (
     <div>
       <p className={clsx('text-[#97AAB5]', textClass)}>
-        {showFull ? text : `${text?.substring(0, limitNumber)}...`}
+        {showFull ? text : `${text?.substring(0, limitNumber)}${text?.length > limitNumber ? '...' : ''}`}
       </p>
       {text?.length > limitNumber && !showFull && (
         <p className="cursor-pointer text-[#A4CEE6]" onClick={() => setShow(true)}>

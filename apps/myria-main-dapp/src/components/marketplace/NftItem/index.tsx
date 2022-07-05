@@ -67,7 +67,7 @@ const NftItem = ({ item }: Props) => {
           <img className="z-3 absolute" src={item.image_url} alt="" width="90%" height="auto" />
         </div>
         <div className="h-[122px] p-4">
-          <span className="block text-[12px] font-normal text-[#9CA3AF]">{item.collection}</span>
+          <span className="block text-[12px] font-normal text-[#9CA3AF]">{item?.collection?.name || ''}</span>
           <span className="mb-4 block truncate text-[14px] font-medium text-white">
             {item.name}
           </span>

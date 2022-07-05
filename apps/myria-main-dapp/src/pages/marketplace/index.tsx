@@ -1,5 +1,6 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
+import Link from 'next/link';
 import React from 'react';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import NftItem from 'src/components/marketplace/NftItem';
@@ -11,6 +12,7 @@ import testavatarImg from './inventory/testavatar.png';
 
 const collections = [
   {
+    id: 1,
     background: '/images/marketplace/collection-1-bg.png',
     logo: '/images/marketplace/collection-1-logo.png',
     title: 'Myriaverse',
@@ -19,6 +21,7 @@ const collections = [
       'The first NFT Collection from Myria Game Studio that allows fan to participate in the metaverse of Myria gaming'
   },
   {
+    id: 2,
     background: '/images/marketplace/collection-2-bg.png',
     logo: '/images/marketplace/collection-2-logo.png',
     title: 'Myria Sigil Collections',
@@ -49,24 +52,28 @@ const Games: React.FC = () => {
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
               {collections.map((collection) => (
-                <div key={collection.title} className="rounded-lg bg-base/3">
-                  <img
-                    className="h-[248px] w-full object-cover"
-                    src={collection.background}
-                    alt=""
-                  />
-                  <div className="body-16-regular relative p-8 pt-[52px] text-center text-light">
+                <Link href={`/marketplace/collection/${collection.id}`} key={collection.title}>
+                  <a
+                    href={`/marketplace/collection/${collection.id}`}
+                    className="rounded-lg bg-base/3 cursor-pointer">
                     <img
-                      src={collection.logo}
-                      className="absolute left-1/2 -top-1/2 h-[80px] w-[80px] translate-y-1/2 -translate-x-1/2 object-cover"
+                      className="h-[248px] w-full object-cover"
+                      src={collection.background}
+                      alt=""
                     />
-                    <h3 className="body-20-semibold font-bold text-white">{collection.title}</h3>
-                    <p className="mt-2">
-                      by <span className="body-16-medium text-blue/6">{collection.by}</span>
-                    </p>
-                    <p className="mt-4">{collection.description}</p>
-                  </div>
-                </div>
+                    <div className="body-16-regular relative p-8 pt-[52px] text-center text-light">
+                      <img
+                        src={collection.logo}
+                        className="absolute left-1/2 -top-1/2 h-[80px] w-[80px] translate-y-1/2 -translate-x-1/2 object-cover"
+                      />
+                      <h3 className="body-20-semibold font-bold text-white">{collection.title}</h3>
+                      <p className="mt-2">
+                        by <span className="body-16-medium text-blue/6">{collection.by}</span>
+                      </p>
+                      <p className="mt-4">{collection.description}</p>
+                    </div>
+                  </a>
+                </Link>
               ))}
             </div>
           </section>
@@ -84,7 +91,6 @@ const Games: React.FC = () => {
                       rarity: 'rare',
                       name: 'Common Alliance Chest',
                       image_url: testImg.src,
-                      collection: 'Sigil Myriaverse',
                       creator: 'Myria',
                       creatorImg: testavatarImg.src,
                       priceETH: Math.round(Math.random() * 5)
