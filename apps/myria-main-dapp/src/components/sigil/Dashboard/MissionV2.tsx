@@ -91,7 +91,7 @@ const MissionV2: React.FC = () => {
         setOpenInviteModal(true);
       },
       description: (point: number) => {
-        return t`Earn ${point} points for each successful friend invite. You will earn ${point} points each time a friend completes  both Alliance selection and Myria account creation via your invite link`;
+        return t`Earn ${point} points for each successful friend invite. You will earn ${point} points each time a friend completes Myria account creation and joins Myria Discord server via your invite link`;
       }
     },
     DAILY_DISCORD_MESSAGE: {
@@ -110,13 +110,13 @@ const MissionV2: React.FC = () => {
       label: t`Launch Discord`,
       link: discordLink,
       description: (point: number) =>
-        t`Earn ${point} points  when you send a message on the Myria Discord #suggestions channel that receives at least 20 reactions that are of the same type (e.g. 20 thumbs up reactions)`
+        t`Earn ${point} points when you add a reaction to a message on the #myria-lore channel`
     },
     VOTE_ON_LORE_DISCORD: {
       label: t`Launch Discord`,
       link: discordLink,
       description: (point: number) =>
-        t`Earn ${point} points when you add a thumbs up reaction to a message on the #myria-lore channel`
+        t`Earn ${point} points when you add a reaction to a message on the #myria-lore channel`
     },
     SPACE_LORD_ROLE_DISCORD: {
       label: t`Launch Discord`,
