@@ -2,10 +2,12 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
+import { useQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
-import NftItem from 'src/components/marketplace/NftItem';
+import AssetList from 'src/components/marketplace/AssetList';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
+import { assetModule } from 'src/services/myriaCore';
 import { negativeMarginXSm, paddingX } from 'src/utils';
 import testImg from './inventory/test.png';
 import testavatarImg from './inventory/testavatar.png';
@@ -31,6 +33,14 @@ const collections = [
   }
 ];
 const Games: React.FC = () => {
+
+  const { data, isLoading, error } = useQuery(
+    'orderExplore',
+    () => assetModule?.getAssets()
+  );
+
+  const dataOrderExplore: any = data?.data;
+  
   return (
     <Page>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
@@ -78,32 +88,22 @@ const Games: React.FC = () => {
             </div>
           </section>
           <section className="mb-20 mt-[64px]">
-            <h2 className="h6">
-              <Trans>Explore</Trans>
-            </h2>
-            <div className="mt-8">
-              <div className="grid grid-cols-1 justify-start justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {Array(11)
-                  .fill(0)
-                  .map((_, index) => {
-                    const item: NFTItemType = {
-                      id: index.toString(),
-                      rarity: 'rare',
-                      name: 'Common Alliance Chest',
-                      image_url: testImg.src,
-                      creator: 'Myria',
-                      creatorImg: testavatarImg.src,
-                      priceETH: Math.round(Math.random() * 5)
-                    };
-                    return item;
-                  })
-                  .map((item) => (
-                    <div key={item.id} className="w-full max-w-[298px]">
-                      <NftItem item={item} />
-                    </div>
-                  ))}
-              </div>
-            </div>
+            <AssetList title='Explore' items={
+              Array(11)
+              .fill(0)
+              .map((_, index) => {
+                const item: NFTItemType = {
+                  id: index.toString(),
+                  rarity: 'rare',
+                  name: 'Common Alliance Chest',
+                  image_url: testImg.src,
+                  creator: 'Myria',
+                  creatorImg: testavatarImg.src,
+                  priceETH: Math.round(Math.random() * 5)
+                };
+                return item;
+              })
+            }/>
           </section>
         </div>
       </div>
