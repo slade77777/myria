@@ -10,6 +10,7 @@ import AssetDetailTab from './AssetDetailTab';
 import testavatarImg from './testavatar.png';
 const walletAddress = '0x7Ec5A82Ca092f3397877134a711dDc698Bb2b089'
 interface Props {
+  id: string
 }
 
 const detailData = {
@@ -29,7 +30,7 @@ const ItemAttribution = () => {
     </div>
   )
 }
-function AssetDetails({ }: Props) {
+function AssetDetails({ id }: Props) {
   const { collectionName, assetName, mintedQuantity, tokenId, amountBuy, usdPrice } = detailData;
   const mintedQuantityConverted =formatNumber(mintedQuantity);
   const currentPrice = formatNumber2digits(amountBuy)
@@ -37,7 +38,7 @@ function AssetDetails({ }: Props) {
 
 
   return (
-    <div className="w-full bg-[#050E15] py-[58px] px-[24px] text-white">
+    <div className="w-full bg-[#050E15] py-[58px] text-white px-6 md:px-12 xl:px-16 pt-[104px] md:pt-[133px]">
       <div className='flex flex-row  space-x-28 mx-auto max-w-content'>
         {/* container */}
         <div className='w-[620px]'>
@@ -95,7 +96,7 @@ function AssetDetails({ }: Props) {
                 </span>
               </div>
             </div>
-            <div className='flex bg-primary/6 mb-[48px] mt-[40px] text-black h-[56px] justify-center items-center rounded-[8px] text-base/1 font-bold text-[16px]'>
+            <div className='flex bg-primary/6 mb-[48px] mt-[40px] h-[56px] justify-center items-center rounded-[8px] text-base/1 font-bold text-[16px]'>
               <Trans>BUY NOW</Trans>
             </div>
           </div>
@@ -114,7 +115,6 @@ function AssetDetails({ }: Props) {
             rarity: 'rare',
             name: 'Common Alliance Chest',
             image_url: 'https://myria.com/seo/defaultImage.png',
-            collection: 'Sigil Myriaverse',
             creator: 'Myria',
             creatorImg: testavatarImg.src,
             priceETH: Math.round(Math.random() * 5)
