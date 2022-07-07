@@ -43,7 +43,7 @@ const Games: React.FC = () => {
               .fill(0)
               .map((_, index) => {
                 const item: NFTItemType = {
-                  id: index.toString(),
+                  id: (index+1).toString(),
                   rarity: 'rare',
                   name: 'Common Alliance Chest',
                   image_url: testImg.src,

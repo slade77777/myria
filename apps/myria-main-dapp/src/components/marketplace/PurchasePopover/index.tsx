@@ -5,14 +5,14 @@ import CartIcon from 'src/components/icons/CartIcon';
 import CompleteIcon from 'src/components/icons/CompleteIcon';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import ProgressIcon from 'src/components/icons/ProgressIcon';
-import { formatNumber } from 'src/utils';
 interface IProp {
-
+    currentPrice: string;
+    onCloseMessage: () => void;
 }
 
 const TIMEOUT: number = 5000;
 
-const PurchasePopover: React.FC<IProp> = ({}) => {
+const PurchasePopover: React.FC<IProp> = ({currentPrice, onCloseMessage}) => {
     const [isProgressPurchase, setIsProgressPurchase] = useState<boolean>(false);
     const [isCompleted, setIsCompleted] = useState<boolean>(false);
   
@@ -39,7 +39,7 @@ const PurchasePopover: React.FC<IProp> = ({}) => {
                     <span className='text-base/9'><Trans>Amount</Trans></span>
                     <div className='flex items-center'>
                         <DAOIcon /> 
-                        <span>{formatNumber(2)}</span>
+                        <span>{currentPrice}</span>
                     </div>
                 </div>
                 </div>
@@ -77,7 +77,7 @@ const PurchasePopover: React.FC<IProp> = ({}) => {
                     <span className='text-base/9'><Trans>Amount</Trans></span>
                     <div className='flex items-center'>
                         <DAOIcon /> 
-                        <span>{formatNumber(2)}</span>
+                        <span>{currentPrice}</span>
                     </div>
                 </div>
                 <div className='flex justify-between mt-2'>
@@ -88,7 +88,7 @@ const PurchasePopover: React.FC<IProp> = ({}) => {
                 <div className='w-full mt-[162px]'>
                 <Button
                     loading={false}
-                    className="btn-lg btn-primary my-8 border w-full" onClick={() => setIsCompleted(false)}>
+                    className="btn-lg btn-primary my-8 border w-full" onClick={onCloseMessage}>
                     <Trans>OK</Trans>
                 </Button>
                 </div>

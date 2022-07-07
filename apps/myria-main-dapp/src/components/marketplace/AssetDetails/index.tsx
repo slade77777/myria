@@ -7,11 +7,15 @@ import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
 import { Loading } from 'src/components/Loading';
+import Modal from 'src/components/Modal';
 import truncateString from 'src/helper';
 import { assetModule } from 'src/services/myriaCore';
 import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
+import MessageModal from '../MessageModal/MessageModal';
+import MessagePurchaseModal from '../MessageModal/MessagePurchaseModal';
 import { NFTItemType } from '../NftItem/type';
+import PurchasePopover from '../PurchasePopover';
 import AssetDetailTab from './AssetDetailTab';
 import testavatarImg from './testavatar.png';
 interface Props {
@@ -45,6 +49,7 @@ const ItemAttribution = () => {
     </div>
   )
 }
+const SHOW_MESSAGE_TIME = 5000;
 function AssetDetails({}: Props) {
   const router = useRouter()
   const id = router.query?.id 
@@ -60,7 +65,20 @@ function AssetDetails({}: Props) {
   })
   const assetDetail: AssetListResponse| undefined = data?.data
 
-  const [status, setStatus] = useState<number>(AssetStatus.MODIFY);
+  // the status will be get from based on the order Object in API get assetDetails 
+  
+  const [status, setStatus] = useState<number>(AssetStatus.BUY_NOW);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setStatus(AssetStatus.SALE);
+    setShowMessage(true);
+    setTimeout(() => {
+      // setShowMessage(false);
+    }, SHOW_MESSAGE_TIME);
+  }
   if (isLoading) {
     return (
       <div className="flex justify-center">
@@ -126,10 +144,10 @@ function AssetDetails({}: Props) {
               </div>
             </div>
             {
-              status === AssetStatus.BUY_NOW && <BuyNow currentPrice={currentPrice} currentUSDPrice={currentUSDPrice} setStatus={() => setStatus(AssetStatus.SALE)}/>
+              status === AssetStatus.BUY_NOW && <BuyNow currentPrice={currentPrice} currentUSDPrice={currentUSDPrice} setStatus={() => setShowPopup(true)}/>
             }
             {
-              status === AssetStatus.SALE && <ItemForSale setStatus={() => setStatus(AssetStatus.MODIFY)}/>
+              status === AssetStatus.SALE && <ItemForSale setStatus={() => setStatus(AssetStatus.BUY_NOW)}/>
             }
             {
               status === AssetStatus.MODIFY && <ModifyListing currentPrice={currentPrice} currentUSDPrice={currentUSDPrice} setStatus={() => setStatus(AssetStatus.BUY_NOW)}/>
@@ -157,6 +175,14 @@ function AssetDetails({}: Props) {
           return item;
         })} />
       </div>
+      {
+        showPopup && <PurchaseModal open={showPopup} onClose={() => setShowPopup(false)} onCloseMessage={handleClosePopup} currentPrice={currentPrice}/>
+      }
+      {
+        showMessage && <MessageModal isShowMessage={showMessage} setIsShowMessage={() => setShowMessage(false)}>
+          <MessagePurchaseModal/>
+        </MessageModal>
+      }
     </div>
   );
 }
@@ -222,6 +248,16 @@ const BuyNow: React.FC<IProp> = ({currentPrice, currentUSDPrice, setStatus}) => 
         <Trans>BUY NOW</Trans>
       </button>
     </div>
+  )
+}
+
+const PurchaseModal: React.FC<any> = ({open, onClose, currentPrice, onCloseMessage}) => {
+  return (
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title={"Purchase"} className="shadow-[0_0_40px_10px_#0000004D] w-[468px]">
+        <PurchasePopover currentPrice={currentPrice} onCloseMessage={onCloseMessage}/>
+      </Modal.Content>
+    </Modal>
   )
 }
 
