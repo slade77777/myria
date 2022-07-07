@@ -1,11 +1,11 @@
-import { t } from "@lingui/macro";
+import { t } from '@lingui/macro';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
 export const formatNumber = (num: number) => {
   return new Intl.NumberFormat('en').format(num);
 };
 export const formatNumber2digits = (num: number) => {
-  return Number((num)).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits:2 });
+  return Number(num).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 };
 export const paddingX = 'px-6 md:px-12 xl:px-16';
 export const negativeMarginXSm = '-mx-6';
@@ -33,6 +33,14 @@ export const validatePassword = (password: string) => {
   return undefined;
 };
 
+export const validatedImage = (url: string | null | undefined) => {
+  const imagesDefault = '/images/marketplace/collection-2-bg.png';
+  if (!url) {
+    return imagesDefault;
+  }
+  return url;
+};
+
 export const getRarityColor = (rarity: RarityType) => {
   switch (rarity) {
     case 'common':
@@ -50,26 +58,25 @@ export const getRarityColor = (rarity: RarityType) => {
   }
 };
 
-
 export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
   switch (allianceId) {
-    case "equinox":
+    case 'equinox':
       return {
         id: allianceId,
-        name: "EQUINOX",
-        img: "/images/nodes/insignia/alliance_sigilC.png"
+        name: 'EQUINOX',
+        img: '/images/nodes/insignia/alliance_sigilC.png'
       };
-    case "federation":
+    case 'federation':
       return {
         id: allianceId,
-        name: "FEDERATION",
-        img: "/images/nodes/insignia/alliance_sigilA.png"
+        name: 'FEDERATION',
+        img: '/images/nodes/insignia/alliance_sigilA.png'
       };
-    case "vector_prime":
+    case 'vector_prime':
       return {
         id: allianceId,
-        name: "VECTOR PRIME",
-        img: "/images/nodes/insignia/alliance_sigilB.png"
+        name: 'VECTOR PRIME',
+        img: '/images/nodes/insignia/alliance_sigilB.png'
       };
   }
-}
+};

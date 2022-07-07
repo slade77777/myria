@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { collectionModule } from 'src/services/myriaCore';
+import { validatedImage } from 'src/utils';
 
 const HotCollection: React.FC = () => {
   const payload = {
@@ -12,10 +13,12 @@ const HotCollection: React.FC = () => {
     page: 1,
     isHot: true,
   }
+
   const { data, isLoading, error } = useQuery(
     ['marketplace', 'hotCollection'],
     () => collectionModule?.getCollectionList(payload)
   );
+
   const hotCollection: CommonPaginateDataTypes<CollectionItems[]> | undefined = data?.data
 
   if (isLoading) return <></>
@@ -34,11 +37,11 @@ const HotCollection: React.FC = () => {
                 <div key={idx} className={`overflow-hidden rounded-[20px] bg-base/3`}>
                   <div
                     className="h-[248px] bg-cover bg-center "
-                    style={{ backgroundImage: `url(${itm.collectionImageUrl})` }}></div>
+                    style={{ backgroundImage: `url(${validatedImage(itm.collectionImageUrl)})` }}></div>
                   <div className="relative flex flex-col  items-center  bg-base/3 pb-[32px]">
                     <div
                       className="absolute left-1/2 h-[80px] w-[80px] -translate-x-1/2 -translate-y-1/2 transform rounded-[40px] border-[4px] border-base/3 bg-center "
-                      style={{ backgroundImage: `url(${itm.iconUrl})` }}>
+                      style={{ backgroundImage: `url(${validatedImage(itm.iconUrl)})` }}>
                     </div>
                     <div className="mt-[40px] text-center">
                       <p className="mt-[16px] text-[20px]">
