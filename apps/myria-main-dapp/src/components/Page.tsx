@@ -53,6 +53,7 @@ const Page: React.FC<Props> = ({
         onClose={handleCloseFirstTimeVisitModal}
       />
       <div className="relative min-h-screen text-white">
+        <div id='modal-root'></div>
         <Header
           className={headerClassName}
           action={action}
