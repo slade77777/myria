@@ -9,7 +9,7 @@ import ShareIcon from 'src/components/icons/ShareIcon';
 import { Loading } from 'src/components/Loading';
 import truncateString from 'src/helper';
 import { assetModule } from 'src/services/myriaCore';
-import { formatNumber2digits } from 'src/utils';
+import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import { NFTItemType } from '../NftItem/type';
 import AssetDetailTab from './AssetDetailTab';
@@ -47,7 +47,7 @@ const ItemAttribution = () => {
 }
 function AssetDetails({}: Props) {
   const router = useRouter()
-  const id = router.query?.id || '10'
+  const id = router.query?.id 
   const { amountBuy, usdPrice } = detailData;
   const currentPrice = formatNumber2digits(amountBuy)
   const currentUSDPrice = formatNumber2digits(usdPrice);
@@ -60,7 +60,6 @@ function AssetDetails({}: Props) {
   })
   const assetDetail: AssetListResponse| undefined = data?.data
 
-  // the status will be get from based on the order Object in API get assetDetails 
   const [status, setStatus] = useState<number>(AssetStatus.MODIFY);
   if (isLoading) {
     return (
@@ -77,7 +76,7 @@ function AssetDetails({}: Props) {
           {/* left */}
           <div className=" bg-no-repeat w-full  h-[620px] 
           bg-center rounded-[3px] border-[3px] border-base/5 "
-            style={{ backgroundImage: `url(${assetDetail?.imageUrl})` }}
+            style={{ backgroundImage: `url(${validatedImage(assetDetail?.imageUrl)})` }}
           >
             {/* img */}
           </div>
