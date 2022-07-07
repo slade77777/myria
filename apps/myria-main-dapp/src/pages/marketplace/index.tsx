@@ -1,10 +1,11 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import Link from 'next/link';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import AssetList from 'src/components/marketplace/AssetList';
+import HotCollection from 'src/components/marketplace/HotCollection';
+import NftItem from 'src/components/marketplace/NftItem';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
 import { assetModule } from 'src/services/myriaCore';
@@ -12,26 +13,6 @@ import { negativeMarginXSm, paddingX } from 'src/utils';
 import testImg from './inventory/test.png';
 import testavatarImg from './inventory/testavatar.png';
 
-const collections = [
-  {
-    id: 1,
-    background: '/images/marketplace/collection-1-bg.png',
-    logo: '/images/marketplace/collection-1-logo.png',
-    title: 'Myriaverse',
-    by: 'Myria Game Studio',
-    description:
-      'The first NFT Collection from Myria Game Studio that allows fan to participate in the metaverse of Myria gaming'
-  },
-  {
-    id: 2,
-    background: '/images/marketplace/collection-2-bg.png',
-    logo: '/images/marketplace/collection-2-logo.png',
-    title: 'Myria Sigil Collections',
-    by: 'Myria Sigil Event',
-    description:
-      'The first NFT Collection from Myria Game Studio that allows fan to participate in the metaverse of Myria gaming'
-  }
-];
 const Games: React.FC = () => {
 
   const { data, isLoading, error } = useQuery(
@@ -57,35 +38,7 @@ const Games: React.FC = () => {
             </div>
           </section>
           <section className="mt-[64px]">
-            <h2 className="h6">
-              <Trans>Hot Collections 🔥</Trans>
-            </h2>
-            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-              {collections.map((collection) => (
-                <Link href={`/marketplace/collection/${collection.id}`} key={collection.title}>
-                  <a
-                    href={`/marketplace/collection/${collection.id}`}
-                    className="rounded-lg bg-base/3 cursor-pointer">
-                    <img
-                      className="h-[248px] w-full object-cover"
-                      src={collection.background}
-                      alt=""
-                    />
-                    <div className="body-16-regular relative p-8 pt-[52px] text-center text-light">
-                      <img
-                        src={collection.logo}
-                        className="absolute left-1/2 -top-1/2 h-[80px] w-[80px] translate-y-1/2 -translate-x-1/2 object-cover"
-                      />
-                      <h3 className="body-20-semibold font-bold text-white">{collection.title}</h3>
-                      <p className="mt-2">
-                        by <span className="body-16-medium text-blue/6">{collection.by}</span>
-                      </p>
-                      <p className="mt-4">{collection.description}</p>
-                    </div>
-                  </a>
-                </Link>
-              ))}
-            </div>
+            <HotCollection/>
           </section>
           <section className="mb-20 mt-[64px]">
             <AssetList title='Explore' items={
