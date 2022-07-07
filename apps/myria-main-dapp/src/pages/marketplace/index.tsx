@@ -5,7 +5,6 @@ import { useQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import AssetList from 'src/components/marketplace/AssetList';
 import HotCollection from 'src/components/marketplace/HotCollection';
-import NftItem from 'src/components/marketplace/NftItem';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
 import { assetModule } from 'src/services/myriaCore';
@@ -20,8 +19,6 @@ const Games: React.FC = () => {
     () => assetModule?.getAssets()
   );
 
-  const dataOrderExplore: any = data?.data;
-  
   return (
     <Page>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>

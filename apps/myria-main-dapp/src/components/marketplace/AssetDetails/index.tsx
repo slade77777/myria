@@ -1,15 +1,19 @@
 import { Trans } from '@lingui/macro';
+import { AssetListResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { useQuery } from 'react-query';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
+import { Loading } from 'src/components/Loading';
 import truncateString from 'src/helper';
-import { formatNumber, formatNumber2digits } from 'src/utils';
+import { assetModule } from 'src/services/myriaCore';
+import { formatNumber2digits } from 'src/utils';
 import AssetList from '../AssetList';
 import { NFTItemType } from '../NftItem/type';
 import AssetDetailTab from './AssetDetailTab';
 import testavatarImg from './testavatar.png';
-const walletAddress = '0x7Ec5A82Ca092f3397877134a711dDc698Bb2b089'
 interface Props {
   id: string
 }
@@ -41,23 +45,40 @@ const ItemAttribution = () => {
     </div>
   )
 }
-function AssetDetails({ id }: Props) {
-  const { collectionName, assetName, mintedQuantity, tokenId, amountBuy, usdPrice } = detailData;
-  const mintedQuantityConverted =formatNumber(mintedQuantity);
+function AssetDetails({}: Props) {
+  const router = useRouter()
+  const id = router.query?.id || '10'
+  const { amountBuy, usdPrice } = detailData;
   const currentPrice = formatNumber2digits(amountBuy)
   const currentUSDPrice = formatNumber2digits(usdPrice);
 
+  const { data, isLoading, error } = useQuery(['assetDetail', id], () => {
+    if (id) {
+      return assetModule?.getAssetById(`${id}`);
+    }
+    return null;
+  })
+  const assetDetail: AssetListResponse| undefined = data?.data
 
   // the status will be get from based on the order Object in API get assetDetails 
   const [status, setStatus] = useState<number>(AssetStatus.MODIFY);
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <div className="w-full bg-[#050E15] py-[58px] text-white px-6 md:px-12 xl:px-16 pt-[104px] md:pt-[133px]">
       <div className='flex flex-row  space-x-28 mx-auto max-w-content'>
         {/* container */}
         <div className='w-[620px]'>
           {/* left */}
-          <div className="bg-[url('/images/inventory/sigil.png')] bg-no-repeat w-full  h-[620px] 
-          bg-center rounded-[3px] border-[3px] border-base/5 ">
+          <div className=" bg-no-repeat w-full  h-[620px] 
+          bg-center rounded-[3px] border-[3px] border-base/5 "
+            style={{ backgroundImage: `url(${assetDetail?.imageUrl})` }}
+          >
             {/* img */}
           </div>
           <div className='text-white'>
@@ -65,11 +86,16 @@ function AssetDetails({ id }: Props) {
             <div className='mt-[40px] mb-[16px] text-[18px] font-bold'>
               <Trans>Attributes</Trans>
             </div>
-            <div className='grid grid-cols-4 gap-4'>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((val) => {
-                return <ItemAttribution key={val} />
-              })}
-            </div>
+            {
+              !assetDetail?.metadata ? <div className='grid grid-cols-4 gap-4'>
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((val) => {
+                  return <ItemAttribution key={val} />
+                })}
+              </div> : <div className='text-[28px] text-center italic'>
+                <Trans>No attributes</Trans>
+              </div>
+            }
+
           </div>
         </div>
         <div className='w-[620px]'>
@@ -80,7 +106,7 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className='flex flex-row'>
                 <img src={testavatarImg.src} className='h-[24px] w-[24px]' />
-                <span className='ml-[8px] text-[16px]'>{collectionName}</span>
+                <span className='ml-[8px] text-[16px]'>{assetDetail?.collection?.name}</span>
               </div>
               <div className='w-[40px] p-[10px]'>
                 <ShareIcon />
@@ -88,16 +114,16 @@ function AssetDetails({ id }: Props) {
             </div>
             <div className='flex flex-col items-start mb-[36px]'>
               {/* detail asset */}
-              <span className='mt-[24px] text-[28px] font-bold'>{assetName}</span>
-              <div className='mt-[24px] flex flex-row justify-between w-[250px]'>
-                <span>Token ID: {tokenId}</span>
+              <span className='mt-[24px] text-[28px] font-bold'>{assetDetail?.name}</span>
+              <div className='mt-[24px] flex flex-row justify-between w-[300px]'>
+                <span>Token ID: {assetDetail?.tokenId}</span>
                 <span>|</span>
-                <span>{truncateString(walletAddress)}</span>
+                <span>{truncateString(`${assetDetail?.starkKey}`)}</span>
               </div>
 
               <div className='mt-[24px] flex flex-row items-center px-[12px] py-[8px] rounded-[5px] bg-base/3 border-base/6 border'>
                 <MintedIcon />
-                <span className='ml-[5px]'>{mintedQuantityConverted} Minted</span>
+                <span className='ml-[5px]'>{'NaN'} Minted</span>
               </div>
             </div>
             {
