@@ -112,14 +112,19 @@ const GameDetail: React.FC = () => {
                     ))}
                   </div>
                   <div className="order-[-1] mb-6 md:order-1 md:mb-0 md:mt-[48px] ">
-                    {/* <button
-                      className="justify-center w-full btn-lg bg-[rgba(255,255,255,0.2)] text-[rgba(255,255,255,0.4)]"
-                      disabled>
-                      IN DEVELOPMENT
-                    </button> */}
-                    <button className="btn-lg btn-primary w-full justify-center">
-                      <Trans>IN DEVELOPMENT</Trans>
-                    </button>
+                    {game.action ? (
+                      <a
+                        href={game.action.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-lg btn-primary w-full justify-center">
+                        <Trans>{game.action.label}</Trans>
+                      </a>
+                    ) : (
+                      <button className="btn-lg btn-primary w-full justify-center">
+                        <Trans>IN DEVELOPMENT</Trans>
+                      </button>
+                    )}
                     <a
                       href={game.discord}
                       target="_blank"
