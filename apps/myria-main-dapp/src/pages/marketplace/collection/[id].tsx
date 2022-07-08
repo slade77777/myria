@@ -1,23 +1,24 @@
-import Collection from '../../../components/marketplace/Collection';
-import useMarketplaceCollection from '../../../hooks/useMarketplaceCollection';
+import Collection from 'src/components/marketplace/Collection';
+import useMarketplaceCollection from 'src/hooks/useMarketplaceCollection';
 import { useRouter } from 'next/router';
 import useCollectionAsset from 'src/hooks/useCollectionAsset';
 
 const CollectionDetailPage = () => {
   const router = useRouter();
-  const id = router.query.id as string;
-  const { collection } = useMarketplaceCollection(parseInt(id));
+  const publicId = router.query.id as string;
+  const { collection } = useMarketplaceCollection(publicId);
   const {
     assets: { items }
-  } = useCollectionAsset(id);
+  } = useCollectionAsset(collection?.id);
+
+  if (!collection) {
+    return null;
+  }
 
   return (
     <Collection
-      collectionImageUrl={collection?.collectionImageUrl}
-      name={collection.name}
-      createdBy=""
-      description={collection.description}
-      assetItems={items || []}
+      collection={collection}
+      assetItems={items}
     />
   );
 };

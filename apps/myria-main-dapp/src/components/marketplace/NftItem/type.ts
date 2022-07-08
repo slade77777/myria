@@ -1,4 +1,4 @@
-import { Collection } from 'src/types/marketplace';
+import { CollectionType } from 'src/types/marketplace';
 import { RarityType } from 'src/types/sigil';
 
 export type NFTItemType = {
@@ -6,7 +6,7 @@ export type NFTItemType = {
   rarity: RarityType;
   image_url: string;
   name: string;
-  collection?: Collection;
+  collection?: CollectionType;
   creator: string;
   creatorImg: string;
   priceETH: number;
