@@ -13,12 +13,12 @@ const filters: FilterList = [
     id: 'Features',
     options: [
       {
-          "id": "Single Player",
-          "name": "Single Player"
+        id: 'Single Player',
+        name: 'Single Player'
       },
       {
-          "id": "Multi Player",
-          "name": "Multi Player"
+        id: 'Multi Player',
+        name: 'Multi Player'
       }
     ]
   },
@@ -27,28 +27,28 @@ const filters: FilterList = [
     id: 'Genre',
     options: [
       {
-          "id": "Simulation",
-          "name": "Simulation"
+        id: 'Simulation',
+        name: 'Simulation'
       },
       {
-          "id": "Casual",
-          "name": "Casual"
+        id: 'Casual',
+        name: 'Casual'
       },
       {
-          "id": "Survival",
-          "name": "Survival"
+        id: 'Survival',
+        name: 'Survival'
       },
       {
-          "id": "Action",
-          "name": "Action"
+        id: 'Action',
+        name: 'Action'
       },
       {
-          "id": "Racing",
-          "name": "Racing"
+        id: 'Racing',
+        name: 'Racing'
       },
       {
-          "id": "Shooter",
-          "name": "Shooter"
+        id: 'Shooter',
+        name: 'Shooter'
       }
     ]
   },
@@ -57,16 +57,16 @@ const filters: FilterList = [
     id: 'Publisher',
     options: [
       {
-          "id": "Myria Studios",
-          "name": "Myria Studios"
+        id: 'Myria Studios',
+        name: 'Myria Studios'
       },
       {
-          "id": "Leapblock Studios",
-          "name": "Leapblock Studios"
+        id: 'Leapblock Studios',
+        name: 'Leapblock Studios'
       },
       {
-          "id": "Playware Games",
-          "name": "Playware Games"
+        id: 'Playware Games',
+        name: 'Playware Games'
       }
     ]
   }
@@ -87,6 +87,8 @@ export const games: {
   publisher: string;
   id: string;
   disabled?: true;
+  comingsoon?: boolean;
+  link?: string;
 }[] = [
   {
     image: '/images/our-games/metarush_op.png',
@@ -135,13 +137,24 @@ export const games: {
     genre: ['Casual', 'Simulation'],
     publisher: 'Playware Games',
     id: 'hotslice',
-    disabled: true
+    disabled: true,
+    comingsoon: true
+  },
+  {
+    image: '/images/home/game-1.png',
+    title: 'AB Cricket Game',
+    feature: 'Multi Player',
+    genre: ['Casual'],
+    publisher: 'AB DE VILLIERS',
+    id: 'cricket',
+    comingsoon: true,
+    link: '/cricket'
   }
 ];
 
 const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
   return (
-    <Link href={'/game-detail/' + item.id}>
+    <Link href={item.link ?? '/game-detail/' + item.id}>
       <a
         className={clsx('block', {
           'pointer-events-none': item.disabled
@@ -151,7 +164,7 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
         </Overlay>
         <p className="mt-4 flex text-[14px] font-bold uppercase leading-[1.5] text-brand-light-blue">
           <span>{item.publisher}</span>
-          {item.disabled && (
+          {item.comingsoon && (
             <div className="ml-auto">
               <Badge>
                 <Trans>COMING SOON</Trans>
@@ -171,19 +184,19 @@ const GameList: React.FC = () => {
   const [filter, setFilter] = useState<ActiveFilter>({
     Features: [],
     Genre: [],
-    Publisher: [],
+    Publisher: []
   });
 
   const filteredGames = games.filter((game) => {
     return (
-      (filter['Features']?.length == 0 || filter['Features']?.find(f => f.id === game.feature)) &&
+      (filter['Features']?.length == 0 || filter['Features']?.find((f) => f.id === game.feature)) &&
       (filter['Genre']?.length == 0 ||
-        filter['Genre']?.find(f => f.id === game.genre[0]) ||
-        filter['Genre']?.find(f => f.id === game.genre[1])) &&
-      (filter['Publisher']?.length == 0 || filter['Publisher']?.find(f => f.id === game.publisher))
+        filter['Genre']?.find((f) => f.id === game.genre[0]) ||
+        filter['Genre']?.find((f) => f.id === game.genre[1])) &&
+      (filter['Publisher']?.length == 0 ||
+        filter['Publisher']?.find((f) => f.id === game.publisher))
     );
   });
-
 
   return (
     <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8">
