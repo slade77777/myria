@@ -3,7 +3,7 @@ import { IMyriaClient, Modules } from 'myria-core-sdk';
 const getModuleFactory = () => {
   if (typeof window === 'object') {
     const initializeClient: IMyriaClient = {
-      provider: window.web3.currentProvider,
+      provider: window.web3?.currentProvider,
       networkId: 5,
       web3: window.web3
     };
