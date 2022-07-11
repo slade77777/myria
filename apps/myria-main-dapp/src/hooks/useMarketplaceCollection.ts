@@ -1,17 +1,16 @@
 import { useQuery } from 'react-query';
-import { Collection } from '../types/marketplace';
+import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
 import { collectionModule } from '../services/myriaCore';
 
-export default function useMarketplaceCollection(id: number) {
-  const queryKey = ['marketplace','collection', id];
-  const { data, isLoading, error } = useQuery(
-    queryKey,
-    () => collectionModule?.getCollectionById(id)
+export default function useMarketplaceCollection(publicId: string) {
+  const queryKey = ['marketplace', 'collection', publicId];
+  const { data, isLoading, error } = useQuery(queryKey, () =>
+    collectionModule?.getCollectionPublicId(publicId)
   );
 
   return {
     // @ts-ignore
-    collection: (data?.data as Collection) || {},
+    collection: (data?.data as CollectionItems) || {},
     isLoading,
     error
   };

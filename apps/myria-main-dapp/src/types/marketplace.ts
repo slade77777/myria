@@ -1,7 +1,8 @@
-export type Collection = {
+export type CollectionType = {
   id: number;
   createdAt: string;
   updatedAt: string;
+  createdBy: string;
   name: string;
   collectionImageUrl: string;
   description: string;
@@ -14,4 +15,6 @@ export type Collection = {
   metadataSchema: Array<any>;
   project: any;
   __entity: string;
+  totalAssets: number;
+  totalAssetsForSale: number;
 };
