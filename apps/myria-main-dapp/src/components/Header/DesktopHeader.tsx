@@ -150,7 +150,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
               event('Discord Button Clicked', { button_location: 'Top Button' });
             }}
             className="btn-sm btn-secondary"
-            href="https://discord.gg/7K49nXJ49R"
+            href="http://discord.gg/myria"
             target="_blank"
             rel="noreferrer">
             <Trans>JOIN DISCORD</Trans>
