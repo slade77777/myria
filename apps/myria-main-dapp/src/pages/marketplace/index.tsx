@@ -13,11 +13,7 @@ import testImg from './inventory/test.png';
 import testavatarImg from './inventory/testavatar.png';
 
 const Games: React.FC = () => {
-
-  const { data, isLoading, error } = useQuery(
-    'orderExplore',
-    () => assetModule?.getAssets()
-  );
+  const { data, isLoading, error } = useQuery('orderExplore', () => assetModule?.getAssets());
 
   return (
     <Page>
@@ -35,25 +31,26 @@ const Games: React.FC = () => {
             </div>
           </section>
           <section className="mt-[64px]">
-            <HotCollection/>
+            <HotCollection />
           </section>
           <section className="mb-20 mt-[64px]">
-            <AssetList title='Explore' items={
-              Array(11)
-              .fill(0)
-              .map((_, index) => {
-                const item: NFTItemType = {
-                  id: (index+1).toString(),
-                  rarity: 'rare',
-                  name: 'Common Alliance Chest',
-                  image_url: testImg.src,
-                  creator: 'Myria',
-                  creatorImg: testavatarImg.src,
-                  priceETH: Math.round(Math.random() * 5)
-                };
-                return item;
-              })
-            }/>
+            <AssetList
+              title="Explore"
+              items={Array(11)
+                .fill(0)
+                .map((_, index) => {
+                  const item: NFTItemType = {
+                    id: (index + 1).toString(),
+                    rarity: 'rare',
+                    name: 'Common Alliance Chest',
+                    image_url: testImg.src,
+                    creator: 'Myria',
+                    creatorImg: testavatarImg.src,
+                    priceETH: Math.round(Math.random() * 5)
+                  };
+                  return item;
+                })}
+            />
           </section>
         </div>
       </div>

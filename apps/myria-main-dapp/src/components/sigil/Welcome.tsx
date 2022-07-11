@@ -15,8 +15,7 @@ type Props = {
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnect } = useWalletContext();
-  const { user, loginByWalletMutation, userProfileQuery } =
-    useAuthenticationContext();
+  const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
   const [installedWallet, setInstalledWallet] = useState<'PENDING' | boolean>('PENDING');
@@ -144,10 +143,10 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
               <a
                 className="btn-lg btn-secondary mx-auto mt-10 flex h-[40px]  w-[194px] items-center justify-center space-x-2 p-0 text-[16px] normal-case"
                 onClick={() => {
-                    if (onboarding.current) {
-                      onboarding.current.startOnboarding();
-                    }
-                    event('Install Metamask Clicked', {});
+                  if (onboarding.current) {
+                    onboarding.current.startOnboarding();
+                  }
+                  event('Install Metamask Clicked', {});
                 }}>
                 <i className="w-6">
                   <MetaMaskIcon />

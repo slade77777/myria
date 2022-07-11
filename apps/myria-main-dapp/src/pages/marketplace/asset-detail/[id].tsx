@@ -8,9 +8,8 @@ const AssetDetailPage = () => {
 
   return (
     <Page>
-        <AssetDetails id={id}/>
+      <AssetDetails id={id} />
     </Page>
-    
   );
 };
 

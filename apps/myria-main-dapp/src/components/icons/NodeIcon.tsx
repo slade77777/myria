@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NodeIcon: React.FC<{className?: string, fill?: string}> = ({className, fill}) => {
+const NodeIcon: React.FC<{ className?: string; fill?: string }> = ({ className, fill }) => {
   return (
     <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
       <path

@@ -14,9 +14,9 @@ import { toast } from 'react-toastify';
 
 const WhiteListSale = ({
   open,
-  onClose,
-  // onSubscribed
-}: {
+  onClose
+}: // onSubscribed
+{
   open: boolean;
   onClose?: () => void;
   // onSubscribed?: () => void;

@@ -20,9 +20,9 @@ function Inventory({ items, userAddress, userAvatar, userJoinDate, userName }: P
   );
   return (
     <div className="w-full min-h-screen bg-[#050E15] flex flex-row">
-      <LeftMenu active={'inventory'}/>
+      <LeftMenu active={'inventory'} />
       <div className="w-full overflow-y h-screen overflow-y-auto">
-        <InventoryHeader active={'marketplace'}/>
+        <InventoryHeader active={'marketplace'} />
         <div className="py-[58px] px-[24px] py-24">
           <div className="mb-[58px] flex items-end justify-between">
             <div className="flex">

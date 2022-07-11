@@ -22,10 +22,9 @@ export async function formatTransferTxRequest(
   };
 }
 
-
 export async function transferEth(
-    signer: Signer,
-    txRequest: TransactionRequest
-  ): Promise<TransactionResponse> {
-    return signer.sendTransaction(txRequest);
-  }
+  signer: Signer,
+  txRequest: TransactionRequest
+): Promise<TransactionResponse> {
+  return signer.sendTransaction(txRequest);
+}

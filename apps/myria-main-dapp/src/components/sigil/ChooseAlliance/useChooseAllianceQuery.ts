@@ -15,10 +15,10 @@ const pickAlliance = (allianceId: string) => {
 export const usePickSigilQuery = (params?: UsePickSigilQueryParams) => {
   const pickSigilMutation = useMutation(pickAlliance, {
     onSuccess: params?.onPickSigilSuccess,
-    onError: params?.onPickSigilError,
+    onError: params?.onPickSigilError
   });
 
   return {
-    pickSigilMutation,
+    pickSigilMutation
   };
 };

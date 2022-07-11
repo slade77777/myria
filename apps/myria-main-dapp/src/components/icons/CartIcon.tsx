@@ -2,7 +2,7 @@ import React from 'react';
 interface IProp {
   size?: number;
 }
-const CartIcon: React.FC<IProp> = ({size}) => {
+const CartIcon: React.FC<IProp> = ({ size }) => {
   return (
     <svg width={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

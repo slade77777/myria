@@ -113,7 +113,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
           node_quantity: quantity,
           order_status: 'Error',
           error_details: 'Not in whitelist address'
-        })
+        });
         return setWhitelistError(true);
       }
       submitPurchase({ numberOfNode: quantity })
@@ -131,12 +131,12 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
             wallet_address: address,
             node_quantity: quantity,
             order_status: 'Completed'
-          })
+          });
         })
         .catch((e) => {
-          toast.clearWaitingQueue({containerId: "node purchase limit"});
+          toast.clearWaitingQueue({ containerId: 'node purchase limit' });
           toast.error(e, {
-            toastId: "node purchase limit"
+            toastId: 'node purchase limit'
           });
         });
     },
@@ -192,7 +192,11 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
                   <NumberInput
                     setQuantityNumber={(val: number) => {
                       field.onChange(val);
-                      event("Node Order Updated", {campaign: 'Nodes', wallet_address: address, node_quantity: val})
+                      event('Node Order Updated', {
+                        campaign: 'Nodes',
+                        wallet_address: address,
+                        node_quantity: val
+                      });
                     }}
                   />
                 )}

@@ -123,10 +123,10 @@ const questions = [
             You can choose whether you prefer to run your node in the cloud or locally.
           </p>
           <p className="mb-2">
-            Myria node software will be available to download on Windows, Mac and Linux. Our node operation
-            is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able
-            to run our node software from your home computer with the following minimum
-            requirements:
+            Myria node software will be available to download on Windows, Mac and Linux. Our node
+            operation is not heavily resource-intensive like traditional cryptocurrency mining.
+            You’ll be able to run our node software from your home computer with the following
+            minimum requirements:
           </p>
         </Trans>
         <ul className="list-disc">
@@ -224,8 +224,7 @@ const Nodes: React.FC = () => {
                       <h3 className="heading-sm md:heading-md">{item.title}</h3>
                       <p className="body-sm mt-6">{item.description}</p>
                       {item.learnMore && (
-                        <button
-                          className="btn-lg btn-primary mt-[22px] inline-block">
+                        <button className="btn-lg btn-primary mt-[22px] inline-block">
                           <Trans>Releasing soon</Trans>
                         </button>
                       )}

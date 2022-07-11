@@ -18,7 +18,7 @@ const ExperenceLogos: React.FC = () => {
             <Image src="/images/marvel.png" alt="" width={61} height={22} />
           </div>
           <div>
-          <Image src="/images/gameloft.png" alt="" width={66} height={46} />
+            <Image src="/images/gameloft.png" alt="" width={66} height={46} />
           </div>
           <div>
             <Image src="/images/epic.png" alt="" width={61} height={70} />

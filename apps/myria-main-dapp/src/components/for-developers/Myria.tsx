@@ -8,50 +8,82 @@ const data = [
   {
     subTitle: <Trans>Supercharge your project</Trans>,
     title: <Trans>The easiest way to launch your blockchain game</Trans>,
-    description:
-      <Trans>We work closely with you from onboarding to deployment, provide advice from technical support to best practice recommendations to unlock new revenue streams and opportunities. </Trans>
+    description: (
+      <Trans>
+        We work closely with you from onboarding to deployment, provide advice from technical
+        support to best practice recommendations to unlock new revenue streams and opportunities.{' '}
+      </Trans>
+    )
   },
   {
     subTitle: <Trans>Manage your NFT & digital assets</Trans>,
     title: <Trans>Manage your digital storefront and marketplace</Trans>,
-    description:
-      <Trans>Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and optimized to support the players journey.  </Trans>
+    description: (
+      <Trans>
+        Myria’s NFT store and marketplace infrastructure is purpose built for blockchain games and
+        optimized to support the players journey.{' '}
+      </Trans>
+    )
   },
   {
     subTitle: <Trans>Unlock immense scale</Trans>,
     title: <Trans>Enabling true scalability while leveraging the Ethereum network</Trans>,
-    description:
-      <Trans>Experience low transaction fee and high throughput rate of up to 9000 transactions per second with our Myria scaling solution.  </Trans>
+    description: (
+      <Trans>
+        Experience low transaction fee and high throughput rate of up to 9000 transactions per
+        second with our Myria scaling solution.{' '}
+      </Trans>
+    )
   },
   {
     subTitle: <Trans>Save time. Ship faster. </Trans>,
     title: <Trans>We make everything else easy so you can focus on your product</Trans>,
-    description:
-      <Trans>Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can focus on building your business.</Trans>
+    description: (
+      <Trans>
+        Leverage prebuilt Myria platform and tools - we take care of the supporting tools so you can
+        focus on building your business.
+      </Trans>
+    )
   },
   {
     subTitle: <Trans>Blockchain consultancy </Trans>,
     title: <Trans>Enter the new era of web3.0 with confidence </Trans>,
-    description:
-      <Trans>Myria provides blockchain consultancy services on NFT sale, blockchain integrations and platform support. </Trans>
+    description: (
+      <Trans>
+        Myria provides blockchain consultancy services on NFT sale, blockchain integrations and
+        platform support.{' '}
+      </Trans>
+    )
   },
   {
     subTitle: <Trans>Tokenomics consultancy </Trans>,
     title: <Trans>Launch with full support from our tokenomics experts</Trans>,
-    description:
-      <Trans>Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to achieve your business objectives.</Trans>
+    description: (
+      <Trans>
+        Myria facilitates with tokenomics consultancy, Play-to-Earn game design best practices to
+        achieve your business objectives.
+      </Trans>
+    )
   },
   {
     subTitle: <Trans>Compliance support</Trans>,
     title: <Trans>Work with our experienced legal team</Trans>,
-    description:
-      <Trans>Provide your players with a protected experience and ensure your business understands critical regulatory compliance components.  </Trans>
+    description: (
+      <Trans>
+        Provide your players with a protected experience and ensure your business understands
+        critical regulatory compliance components.{' '}
+      </Trans>
+    )
   },
   {
     subTitle: <Trans>Instant project visibility </Trans>,
     title: <Trans>Market your project across our platforms</Trans>,
-    description:
-      <Trans>Instantly reach and build an engaged player community of evangelists around your project through the Myria platform and network partners. </Trans>
+    description: (
+      <Trans>
+        Instantly reach and build an engaged player community of evangelists around your project
+        through the Myria platform and network partners.{' '}
+      </Trans>
+    )
   }
 ];
 const Myria: React.FC = () => {
@@ -62,8 +94,10 @@ const Myria: React.FC = () => {
           <Trans>Gaming is evolving. Build with Myria.</Trans>
         </h2>
         <p className="mt-6 text-[18px] leading-[1.5] text-light md:mt-10 md:text-[20px]">
-          <Trans>Myria provides an end-to-end solution for developers and publishers, and help you unlock
-          the blockchain potential of your business</Trans>
+          <Trans>
+            Myria provides an end-to-end solution for developers and publishers, and help you unlock
+            the blockchain potential of your business
+          </Trans>
         </p>
       </div>
       <div className="mt-[26px] grid gap-4 pt-[22px] pb-[19px] md:mt-[110px] md:grid-cols-2 md:gap-x-[105px] md:gap-y-[100px] md:p-0">
@@ -71,7 +105,9 @@ const Myria: React.FC = () => {
           <div key={idx}>
             <div className="hidden md:block">
               <div>
-                <p className="text-[20px] leading-[1.25] text-brand-gold font-medium">{item.subTitle}</p>
+                <p className="text-[20px] leading-[1.25] text-brand-gold font-medium">
+                  {item.subTitle}
+                </p>
                 <label className="mt-2 flex items-start justify-between text-[18px] font-bold leading-[1.25] md:mt-4 md:text-[28px] ">
                   {item.title}
                 </label>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const FolderIcon: React.FC = () => {
   return (
@@ -17,15 +17,9 @@ const FolderIcon: React.FC = () => {
           width="54"
           height="42"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -39,11 +33,7 @@ const FolderIcon: React.FC = () => {
             type="matrix"
             values="0 0 0 0 1 0 0 0 0 0.980833 0 0 0 0 0.808333 0 0 0 0.4 0"
           />
-          <feBlend
-            mode="normal"
-            in2="shape"
-            result="effect1_innerShadow_654_7523"
-          />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_654_7523" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -123,8 +113,7 @@ const FolderIcon: React.FC = () => {
           y1="14"
           x2="28.5"
           y2="50"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFE926" />
           <stop offset="1" stopColor="#FDAB0C" />
         </linearGradient>

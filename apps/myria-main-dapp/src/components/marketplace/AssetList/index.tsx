@@ -10,14 +10,11 @@ interface Props {
 }
 
 const AssetList: React.FC<Props> = ({ title, items, showIcon = false }) => {
-
   return (
-    <div className='mx-auto max-w-content'>
+    <div className="mx-auto max-w-content">
       <div className="flex justify-between">
         <span className="text-[24px] font-bold text-white">{title}</span>
-        {
-          showIcon && <ClockIcon size={48}/>
-        }
+        {showIcon && <ClockIcon size={48} />}
       </div>
       <div className="grid grid-cols-1 justify-start justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-8">
         {items.map((item) => (
@@ -28,6 +25,6 @@ const AssetList: React.FC<Props> = ({ title, items, showIcon = false }) => {
       </div>
     </div>
   );
-}
+};
 
 export default AssetList;

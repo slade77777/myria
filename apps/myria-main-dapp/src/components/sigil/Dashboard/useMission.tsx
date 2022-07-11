@@ -33,10 +33,9 @@ export const useMission = () => {
     onError: (err) => {}
   });
 
-
   return {
     completeMission,
     missions,
-    fetchMissions,
+    fetchMissions
   };
 };

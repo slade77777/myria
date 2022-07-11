@@ -1,11 +1,12 @@
-import { Trans } from "@lingui/macro";
-import Link from "next/link";
+import { Trans } from '@lingui/macro';
+import Link from 'next/link';
 
 const BuyANodeLink: React.FC<any> = (props) => (
-    <Link href={'/nodes'}><a {...props} >
-        <Trans>BUY A NODE</Trans>
+  <Link href={'/nodes'}>
+    <a {...props}>
+      <Trans>BUY A NODE</Trans>
     </a>
-    </Link>
-)
+  </Link>
+);
 
 export default BuyANodeLink;

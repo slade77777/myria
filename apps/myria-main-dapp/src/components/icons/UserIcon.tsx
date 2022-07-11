@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const UserIcon: React.FC = () => {
   return (
@@ -21,15 +21,9 @@ const UserIcon: React.FC = () => {
           width="47.4966"
           height="54"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -43,11 +37,7 @@ const UserIcon: React.FC = () => {
             type="matrix"
             values="0 0 0 0 0.495833 0 0 0 0 0.879 0 0 0 0 1 0 0 0 0.4 0"
           />
-          <feBlend
-            mode="normal"
-            in2="shape"
-            result="effect1_innerShadow_654_7393"
-          />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_654_7393" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -127,8 +117,7 @@ const UserIcon: React.FC = () => {
           y1="8"
           x2="32.0002"
           y2="56"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#F1A96A" />
           <stop offset="1" stopColor="#ED8A33" />
         </linearGradient>
@@ -138,8 +127,7 @@ const UserIcon: React.FC = () => {
           y1="8"
           x2="32.0002"
           y2="56"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#F1A96A" />
           <stop offset="1" stopColor="#ED8A33" />
         </linearGradient>
