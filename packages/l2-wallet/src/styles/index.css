@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body
+  > iframe[style*='2147483647']:not([id='webpack-dev-server-client-overlay']) {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.background-white {
+  background: white !important;
+}
+
+input:checked + div {
+  @apply bg-primary6 border-none;
+}
+input:checked + div svg {
+  @apply block;
+}
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: white;
+}
+
+#arrow,
+#arrow::before {
+  position: absolute;
+  width: 44px;
+  height: 20px;
+  background: inherit;
+}
+
+#arrow {
+  visibility: hidden;
+}
+
+#arrow::before {
+  visibility: visible;
+  content: '';
+  transform: rotate(45deg);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.message-deposit-open {
+  animation: depositopen 0.5s;
+}
+.message-deposit-close {
+  animation: depositclose 0.5s;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .icon-deposit-progress {
+    animation: icon-progress infinite 10s linear;
+  }
+}
+
+@keyframes icon-progress {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

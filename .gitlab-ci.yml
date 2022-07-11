@@ -12,7 +12,7 @@ stages:
       yum install -y jq
 
 dev-build:
-  image: node:14
+  image: node:16
   stage: dev-build
   script:
     - yarn
