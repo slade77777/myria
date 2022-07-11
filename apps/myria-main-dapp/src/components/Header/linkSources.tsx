@@ -38,7 +38,7 @@ export const linkSources: { [key: string]: NavItem } = {
     url: '/for-developers',
     position: 'left',
     action: ['join-discord', 'login', 'mint', 'start-building']
-  },
+  }
   // ourSolution: {
   //   id: 'ourSolution',
   //   text: <Trans>OUR SOLUTION</Trans>,

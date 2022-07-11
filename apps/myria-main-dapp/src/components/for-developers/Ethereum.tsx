@@ -145,7 +145,9 @@ const data = [
       </svg>
     ),
     title: 'ETH Compatability',
-    description: <Trans>Empower mainstream adoption to Ethereum using Myria’s scaling solution</Trans>
+    description: (
+      <Trans>Empower mainstream adoption to Ethereum using Myria’s scaling solution</Trans>
+    )
   },
   {
     icon: (
@@ -217,8 +219,11 @@ const data = [
       </svg>
     ),
     title: 'Built for Developers',
-    description:
-      <Trans>We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey</Trans>
+    description: (
+      <Trans>
+        We provide easy-to-use solutions to help projects kickstart their blockchain gaming journey
+      </Trans>
+    )
   },
   {
     icon: (
@@ -314,8 +319,11 @@ const data = [
       </svg>
     ),
     title: 'Network Security',
-    description:
-      <Trans>100% Ethereum-level security guarantees; whilst increase transaction speed and throughput</Trans>
+    description: (
+      <Trans>
+        100% Ethereum-level security guarantees; whilst increase transaction speed and throughput
+      </Trans>
+    )
   }
 ];
 const Ethereum: React.FC = () => {

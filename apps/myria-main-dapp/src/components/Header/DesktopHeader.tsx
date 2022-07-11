@@ -1,16 +1,16 @@
-import {Trans} from '@lingui/macro';
+import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
-import {useWalletContext} from 'src/context/wallet';
-import React, {useMemo, useRef} from 'react';
-import {useGA4} from 'src/lib/ga';
-import {useStickyHeader} from 'src/hooks/useStickyHeader';
+import { useWalletContext } from 'src/context/wallet';
+import React, { useMemo, useRef } from 'react';
+import { useGA4 } from 'src/lib/ga';
+import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
-import {useAuthenticationContext} from 'src/context/authentication';
-import {links, navHeight} from './Header';
-import {Action, NavItem} from './type';
-import {useRouter} from 'next/router';
+import { useAuthenticationContext } from 'src/context/authentication';
+import { links, navHeight } from './Header';
+import { Action, NavItem } from './type';
+import { useRouter } from 'next/router';
 import ProfileComponent from './ProfileComponent';
 import LanguageSwitcher from '../LanguageSwitcher';
 import DropdownMenu from '../DropdownMenu';
@@ -25,9 +25,9 @@ type Props = {
   links?: NavItem[];
 };
 
-const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({links, className}) => {
+const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links, className }) => {
   const router = useRouter();
-  const {event} = useGA4();
+  const { event } = useGA4();
 
   return (
     <ul
@@ -59,7 +59,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({links,
               <div className={clsx('flex items-center hover:cursor-pointer hover:text-brand-gold')}>
                 {item.text}
                 <i className="w-[24px]">
-                  <ChevronDownIcon/>
+                  <ChevronDownIcon />
                 </i>
               </div>
               <div className="absolute left-0 top-full hidden -translate-x-6 pt-4 group-hover:block">
@@ -91,9 +91,11 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({links,
           );
         } else {
           return (
-            <li key={idx} className={clsx('py-[9px] px-[13px] rounded-[8px] hover:bg-base/4', {
-              'bg-base/4': item.url === router.pathname
-            })}>
+            <li
+              key={idx}
+              className={clsx('py-[9px] px-[13px] rounded-[8px] hover:bg-base/4', {
+                'bg-base/4': item.url === router.pathname
+              })}>
               <Link href={item.url as string}>
                 <a
                   className={clsx('hover:text-blue/6', {
@@ -110,12 +112,12 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({links,
   );
 };
 
-const DesktopHeader: React.FC<Props> = ({stickyHeader = true, action}) => {
-  const {event} = useGA4();
+const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
+  const { event } = useGA4();
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef, stickyHeader);
-  const {address, onConnect, disconnect} = useWalletContext();
-  const {login, user} = useAuthenticationContext();
+  const { address, onConnect, disconnect } = useWalletContext();
+  const { login, user } = useAuthenticationContext();
 
   const actionElements = useMemo(() => {
     switch (action) {
@@ -129,7 +131,7 @@ const DesktopHeader: React.FC<Props> = ({stickyHeader = true, action}) => {
         );
 
       case 'login':
-        return user?.wallet_id ? <ProfileComponent/> : <></>;
+        return user?.wallet_id ? <ProfileComponent /> : <></>;
 
       case 'mint':
         return (
@@ -147,7 +149,7 @@ const DesktopHeader: React.FC<Props> = ({stickyHeader = true, action}) => {
         return (
           <a
             onClick={() => {
-              event('Discord Button Clicked', {button_location: 'Top Button'});
+              event('Discord Button Clicked', { button_location: 'Top Button' });
             }}
             className="btn-sm btn-secondary"
             href="http://discord.gg/myria"
@@ -173,27 +175,25 @@ const DesktopHeader: React.FC<Props> = ({stickyHeader = true, action}) => {
         <div className="flex items-left mr-12">
           <Link href="/">
             <a className="w-[164px]">
-              <Logo/>
+              <Logo />
             </a>
           </Link>
         </div>
-        <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')}/>
-
+        <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
 
         <div className="absolute right-8 flex flex-shrink-0 items-center justify-end space-x-9">
-          <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')}/>
+          <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
           <div>
-            <LanguageSwitcher/>
+            <LanguageSwitcher />
           </div>
           <div>
             {address ? (
               <DropdownMenu>
                 <DropdownMenu.Trigger asChild>
-                  <button
-                    className=" body-14-bold flex items-center space-x-2 rounded-lg border border-base/5 bg-base/3 px-4 py-[9px]">
+                  <button className=" body-14-bold flex items-center space-x-2 rounded-lg border border-base/5 bg-base/3 px-4 py-[9px]">
                     <span>{truncateString(address)}</span>
                     <i className="w-4">
-                      <ChevronDownIcon/>
+                      <ChevronDownIcon />
                     </i>
                   </button>
                 </DropdownMenu.Trigger>
@@ -201,18 +201,18 @@ const DesktopHeader: React.FC<Props> = ({stickyHeader = true, action}) => {
                   sideOffset={8}
                   align="end"
                   className="rounded-md bg-current p-3 text-base/3">
-                  <DropdownMenu.Arrow className="translate-x-3 fill-current"/>
+                  <DropdownMenu.Arrow className="translate-x-3 fill-current" />
                   <div>
                     <div className="text-white">
                       <button
                         className="body-14-medium flex items-center space-x-2.5 text-white"
                         onClick={disconnect}>
                         <i className="w-4">
-                          <LogoutIcon/>
+                          <LogoutIcon />
                         </i>
                         <span>
-                        <Trans>Disconnect</Trans>
-                      </span>
+                          <Trans>Disconnect</Trans>
+                        </span>
                       </button>
                     </div>
                     <div className="text-white mt-2">
@@ -221,11 +221,11 @@ const DesktopHeader: React.FC<Props> = ({stickyHeader = true, action}) => {
                           href={'/marketplace/inventory'}
                           className="body-14-medium flex items-center space-x-2.5 text-white cursor-pointer">
                           <i className="w-4">
-                            <InventoryIcon/>
+                            <InventoryIcon />
                           </i>
                           <span>
-                          <Trans>Inventory</Trans>
-                        </span>
+                            <Trans>Inventory</Trans>
+                          </span>
                         </a>
                       </Link>
                     </div>

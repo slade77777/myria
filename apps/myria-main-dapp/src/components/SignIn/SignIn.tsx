@@ -32,7 +32,9 @@ const SignIn: React.FC = () => {
   const [error, setError] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(false);
 
-  useEffect(() => { setError(loginError) }, [loginError])
+  useEffect(() => {
+    setError(loginError);
+  }, [loginError]);
 
   const {
     register: registerForm,
@@ -76,7 +78,9 @@ const SignIn: React.FC = () => {
             </span>
           </div>
         </div>
-        <a className="text-brand-gold hover:cursor-pointer" onClick={forgotPassword}><Trans>Forgot your password?</Trans></a>
+        <a className="text-brand-gold hover:cursor-pointer" onClick={forgotPassword}>
+          <Trans>Forgot your password?</Trans>
+        </a>
         <Button loading={isPostingRegister} className="btn-lg btn-primary my-8 w-full">
           <Trans>Sign in</Trans>
         </Button>

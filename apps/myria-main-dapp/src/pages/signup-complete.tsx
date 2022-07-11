@@ -25,11 +25,18 @@ const SignupComplete: React.FC = () => {
         <p className="text-[32px] font-normal mb-10">
           <Trans>Registration Successful</Trans>
         </p>
-        <Image src="/images/signup-complete/success.png" layout='fixed' width={256} height={256} alt='' className='mb-10' />
-        <p className='mb-10 mt-10'>
+        <Image
+          src="/images/signup-complete/success.png"
+          layout="fixed"
+          width={256}
+          height={256}
+          alt=""
+          className="mb-10"
+        />
+        <p className="mb-10 mt-10">
           <Trans>
-            Congratulations, you have become a myrian.<br /> Click the button below to login and compelete
-            account set up
+            Congratulations, you have become a myrian.
+            <br /> Click the button below to login and compelete account set up
           </Trans>
         </p>
         <Link href="/nodes/dashboard/nodes">

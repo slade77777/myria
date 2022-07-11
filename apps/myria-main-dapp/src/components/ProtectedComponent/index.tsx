@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { useAuthenticationContext } from 'src/context/authentication'
+import { useAuthenticationContext } from 'src/context/authentication';
 
 interface Props {
-  children: React.ReactNode
-  redirectToPath?: string
+  children: React.ReactNode;
+  redirectToPath?: string;
 }
 
 function ProtectedComponent({ children, redirectToPath = '/' }: Props) {
@@ -18,4 +18,4 @@ function ProtectedComponent({ children, redirectToPath = '/' }: Props) {
   return <>{children}</>;
 }
 
-export default ProtectedComponent
+export default ProtectedComponent;

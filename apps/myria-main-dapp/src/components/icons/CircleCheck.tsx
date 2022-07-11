@@ -4,9 +4,15 @@ interface IProp {
   className?: string;
 }
 
-const CircleCheck: React.FC<IProp> = ({size, className}) => {
+const CircleCheck: React.FC<IProp> = ({ size, className }) => {
   return (
-    <svg className={className} width={size} height={size} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <path
         d="M7.5 13.875C11.0208 13.875 13.875 11.0208 13.875 7.5C13.875 3.97918 11.0208 1.125 7.5 1.125C3.97918 1.125 1.125 3.97918 1.125 7.5C1.125 11.0208 3.97918 13.875 7.5 13.875Z"
         stroke="white"

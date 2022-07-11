@@ -32,7 +32,7 @@ const AllianceModal: React.FC<Props> = ({
   const { pickSigilMutation } = usePickSigilQuery({
     onPickSigilSuccess: onJoinSuccess,
     onPickSigilError: () => {
-      toast("Sorry, can not join the alliance.", { type: "error" })
+      toast('Sorry, can not join the alliance.', { type: 'error' });
     }
   });
   const { mutate: handleJoin, isLoading } = pickSigilMutation;
@@ -49,7 +49,9 @@ const AllianceModal: React.FC<Props> = ({
               <CloseIcon />
             </button>
           </Modal.Close>
-          <div className={`flex h-full flex-row bg-brand-deep-blue bg-cover`} style={{ backgroundImage: `url('${selectModalBgImg}')` }}>
+          <div
+            className={`flex h-full flex-row bg-brand-deep-blue bg-cover`}
+            style={{ backgroundImage: `url('${selectModalBgImg}')` }}>
             <div className="flex flex-col items-start justify-between py-12 px-12">
               <div className="flex flex-1 flex-col items-start justify-center">
                 <p className="mb-1 text-[14px] font-medium leading-[1.5] text-brand-light-blue">

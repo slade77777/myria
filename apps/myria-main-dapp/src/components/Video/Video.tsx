@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import videojs from "video.js";
-import { useAutoPlayInGameDetail } from "../../valtio/autoPlayInGameDetail";
-import "./Setting";
-import styles from "./styles.module.css";
+import { useEffect, useRef, useState } from 'react';
+import videojs from 'video.js';
+import { useAutoPlayInGameDetail } from '../../valtio/autoPlayInGameDetail';
+import './Setting';
+import styles from './styles.module.css';
 
 export type VideoOptions = videojs.PlayerOptions;
 
@@ -23,15 +23,15 @@ const defaultOptions: VideoOptions = {
     currentTimeDisplay: true,
     remainingTimeDisplay: false,
     liveDisplay: false,
-    seekToLive: false,
+    seekToLive: false
   },
-  poster: "https://picsum.photos/600/300",
+  poster: 'https://picsum.photos/600/300'
 };
 
 const Video: React.FC<VideoProps> = ({
   options,
   // autoPlay,
-  isVisible,
+  isVisible
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const playerRef = useRef<videojs.Player | null>(null);
@@ -48,17 +48,16 @@ const Video: React.FC<VideoProps> = ({
 
     videojs(videoRef.current, {
       ...defaultOptions,
-      ...options,
+      ...options
     }).ready(function () {
       playerRef.current = this;
       if (autoPlay && isVisible) {
         playerRef.current?.play();
       }
 
-      const component =
-        this.getChild("controlBar")?.addChild("ControlBarSettings");
-      component?.addClass("vjs-control");
-      component?.addClass("vjs-settings");
+      const component = this.getChild('controlBar')?.addChild('ControlBarSettings');
+      component?.addClass('vjs-control');
+      component?.addClass('vjs-settings');
     });
   }, [options, autoPlay, isVisible]);
 

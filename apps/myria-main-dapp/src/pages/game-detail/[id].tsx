@@ -32,10 +32,10 @@ const GameDetail: React.FC = () => {
     (_data: any) => devApiClient.post(`accounts/login`, _data),
     {
       onSuccess: (res) => {
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
       },
       onError: (error: any) => {
-        alert(error.message)
+        alert(error.message);
       }
     }
   );
@@ -58,7 +58,7 @@ const GameDetail: React.FC = () => {
   const game = games[id];
   const { title, assets, logo, logoMobile, content, info, image, description, headerBg } = game;
   const onChange = (e: any) => {
-    console.log(e.target.name,{ ...data, [e.target.name]: e.target.value })
+    console.log(e.target.name, { ...data, [e.target.name]: e.target.value });
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
@@ -109,7 +109,7 @@ const GameDetail: React.FC = () => {
             </div>
           )}
 
-          <div className="mx-auto mt-10 w-full max-w-content">
+          <div className="max-w-content mx-auto mt-10 w-full">
             <h3 className="heading-lg text-center font-extrabold md:text-left">{title}</h3>
             <div className="mt-[32px] flex flex-col lg:flex-row lg:items-start">
               <div className="lg:w-[calc((100%-32px)*0.675)]">
@@ -140,7 +140,7 @@ const GameDetail: React.FC = () => {
                       {item.paragraph?.map((p, idx) => {
                         if (typeof p === 'string') {
                           return (
-                            <p className="body mt-6 text-light" key={idx}>
+                            <p className="body text-light mt-6" key={idx}>
                               {p}
                             </p>
                           );
@@ -159,12 +159,12 @@ const GameDetail: React.FC = () => {
                 <div className="hidden justify-center px-[30px] lg:flex">
                   <img src={logo} alt="" />
                 </div>
-                <div className="mt-[32px] flex flex-col rounded-[20px] bg-brand-deep-blue p-[32px]">
+                <div className="bg-brand-deep-blue mt-[32px] flex flex-col rounded-[20px] p-[32px]">
                   <div className="grid gap-6">
                     {info.map((item, idx) => (
                       <div className="flex items-center justify-between" key={idx}>
                         <p className="body-sm">{item.label}</p>
-                        <div className="caption rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold text-brand-light-blue">
+                        <div className="caption text-brand-light-blue rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold">
                           {item.value}
                         </div>
                       </div>
@@ -235,8 +235,11 @@ export async function getStaticProps() {
   };
 }
 
-export default () => (
-  <AuthenticationProvider>
-    <GameDetail />
-  </AuthenticationProvider>
-);
+// eslint-disable-next-line react/display-name
+export default () => {
+  return (
+    <AuthenticationProvider>
+      <GameDetail />
+    </AuthenticationProvider>
+  );
+};

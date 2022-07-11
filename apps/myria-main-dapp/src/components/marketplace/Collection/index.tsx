@@ -10,12 +10,13 @@ import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionT
 
 interface Props {
   collection: CollectionItems;
-  assetItems:NFTItemType[];
+  assetItems: NFTItemType[];
 }
 
-const Collection: FC<Props> = ({collection, assetItems}) => {
+const Collection: FC<Props> = ({ collection, assetItems }) => {
   // @ts-ignore
-  const {collectionImageUrl, name, createdBy, description, totalAssets, totalAssetsForSale} = collection;
+  const { collectionImageUrl, name, createdBy, description, totalAssets, totalAssetsForSale } =
+    collection;
   return (
     <Page>
       <div className="mb-12 pt-24">
@@ -36,11 +37,15 @@ const Collection: FC<Props> = ({collection, assetItems}) => {
             </div>
             <div className="flex flex-row gap-8">
               <div>
-                <p className="text-3xl text-white">{totalAssets ? `${totalAssets/1000}K` : '0'}</p>
+                <p className="text-3xl text-white">
+                  {totalAssets ? `${totalAssets / 1000}K` : '0'}
+                </p>
                 <p className="mt-2 text-[#97AAB5]">Items</p>
               </div>
               <div>
-                <p className="text-3xl text-white">{totalAssetsForSale ? `${totalAssetsForSale/1000}K` : '0'}</p>
+                <p className="text-3xl text-white">
+                  {totalAssetsForSale ? `${totalAssetsForSale / 1000}K` : '0'}
+                </p>
                 <p className="mt-2 text-[#97AAB5]">For Sale</p>
               </div>
             </div>

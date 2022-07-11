@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
         <div className="pl-2">
           <Profile />
         </div>
-        <div className='overflow-auto'>
+        <div className="overflow-auto">
           <div className="flex w-full items-center">
             {(
               [

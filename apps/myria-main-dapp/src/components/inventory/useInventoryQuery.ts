@@ -4,7 +4,7 @@ import { RarityType } from 'src/types/sigil';
 
 export type AssetStatus = 'off-chain' | 'on-chain';
 
-export type Rarity = RarityType
+export type Rarity = RarityType;
 
 export type AssetTypeType = 'sigil' | 'title' | 'chest' | 'credits';
 
@@ -51,10 +51,17 @@ export type AssetType = AssetSigilType | AssetTitleType | AssetChestType;
 
 export type OpenChestContent = AssetSigilType | AssetTitleType | AssetCreditType;
 
-export type GetInventoryParams = { collection?: string[], type?: string[], rarity?: string[], status?: string[] };
+export type GetInventoryParams = {
+  collection?: string[];
+  type?: string[];
+  rarity?: string[];
+  status?: string[];
+};
 
 const getInventory = async (params?: GetInventoryParams) => {
-  const data = await http.get(`sigil/users/assets?pageSize=100`, { params }).then((res) => res.data?.data);
+  const data = await http
+    .get(`sigil/users/assets?pageSize=100`, { params })
+    .then((res) => res.data?.data);
 
   if (data instanceof Array) {
     return (data as AssetType[]).filter((asset) =>
@@ -69,9 +76,9 @@ const openChest = async (lootboxId: string) => {
       lootbox_id: lootboxId
     })
     .then((res) => res.data?.data);
-  
+
   if (data?.content) {
-    return data.content as OpenChestContent[]
+    return data.content as OpenChestContent[];
   }
 };
 
@@ -79,8 +86,13 @@ export const inventoryQueryKeys = {
   inventory_getInventory: 'inventory_getInventory'
 };
 
-export const useInventoryQuery = ({ getInventoryParams }: { getInventoryParams?: GetInventoryParams } = {}) => {
-  const inventoryQuery = useQuery([inventoryQueryKeys.inventory_getInventory, getInventoryParams], () => getInventory(getInventoryParams));
+export const useInventoryQuery = ({
+  getInventoryParams
+}: { getInventoryParams?: GetInventoryParams } = {}) => {
+  const inventoryQuery = useQuery(
+    [inventoryQueryKeys.inventory_getInventory, getInventoryParams],
+    () => getInventory(getInventoryParams)
+  );
   const inventoryOpenChestMutation = useMutation(openChest);
 
   return {

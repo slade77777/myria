@@ -1,4 +1,4 @@
-import { IAbstractConnectorOptions } from "../../helpers";
+import { IAbstractConnectorOptions } from '../../helpers';
 
 export interface IAuthereumConnectorOptions extends IAbstractConnectorOptions {
   networkName: string;
@@ -12,10 +12,7 @@ export interface IAuthereumConnectorOptions extends IAbstractConnectorOptions {
   disableGoogleAnalytics: boolean;
 }
 
-const ConnectToAuthereum = (
-  Authereum: any,
-  opts: Partial<IAuthereumConnectorOptions> = {}
-) => {
+const ConnectToAuthereum = (Authereum: any, opts: Partial<IAuthereumConnectorOptions> = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       const authereum = new Authereum({

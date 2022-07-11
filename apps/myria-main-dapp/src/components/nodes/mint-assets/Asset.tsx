@@ -20,11 +20,18 @@ function Asset({ id, title, description, image, time, onCheck, checked, type = '
       ? 'text-[#A9CB68]'
       : 'text-[#A9A6B1]';
 
-  console.log('titleColor', titleColor)
+  console.log('titleColor', titleColor);
   return (
     <div className="flex items-start space-x-4 rounded-xl bg-dark p-4 md:space-x-8 md:p-8">
       <div className=" relative h-[56px] w-[56px] flex-shrink-0 overflow-hidden rounded-full md:h-[76px] md:w-[76px]">
-        <Image src={image} layout="responsive" alt="" objectFit='contain' width={128} height={102} />
+        <Image
+          src={image}
+          layout="responsive"
+          alt=""
+          objectFit="contain"
+          width={128}
+          height={102}
+        />
       </div>
       <div className="flex-grow space-y-1">
         <p className={`text-[16px] font-medium leading-[1.27] md:text-[18px] ${titleColor}`}>

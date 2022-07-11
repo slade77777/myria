@@ -15,12 +15,7 @@ const CollectionDetailPage = () => {
     return null;
   }
 
-  return (
-    <Collection
-      collection={collection}
-      assetItems={items}
-    />
-  );
+  return <Collection collection={collection} assetItems={items} />;
 };
 
 export default CollectionDetailPage;
