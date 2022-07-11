@@ -19,7 +19,7 @@ import SignInModal from 'src/components/SignIn/Modal';
 import { AuthenticationProvider, useAuthenticationContext } from 'src/context/authentication';
 import Input from 'src/components/Input';
 import { useMutation } from 'react-query';
-import apiClient from 'src/client';
+import { devApiClient } from 'src/client';
 
 export type Asset = {
   type: 'video' | 'image';
@@ -29,7 +29,7 @@ export type Asset = {
 
 const GameDetail: React.FC = () => {
   const { mutate: login } = useMutation(
-    (_data: any) => apiClient.post(`accounts/login`, _data),
+    (_data: any) => devApiClient.post(`accounts/login`, _data),
     {
       onSuccess: (res) => {
         setIsLoggedIn(true)
