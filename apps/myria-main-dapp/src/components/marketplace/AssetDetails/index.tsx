@@ -173,10 +173,17 @@ function AssetDetails({}: Props) {
                 <span>{truncateString(`${assetDetails?.starkKey}`)}</span>
               </div>
 
-              <div className="border-base/6 bg-base/3 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
-                <MintedIcon />
-                <span className="ml-[5px]">{'NaN'} Minted</span>
+              <div className='flex gap-6'>
+                <div className='mt-[24px] flex flex-row items-center px-[12px] py-[8px] rounded-[5px] bg-base/3 border-base/6 border'>
+                  <MintedIcon />
+                  <span className='ml-[5px]'>Minted {'10,000'}</span>
+                </div>
+                <div className='mt-[24px] flex flex-row items-center px-[12px] py-[8px] rounded-[5px] bg-base/3 border-base/6 border'>
+                  <MintedIcon />
+                  <span className='ml-[5px]'>Owner: {'1,000'}</span>
+                </div>
               </div>
+              
             </div>
             {status === AssetStatus.BUY_NOW && (
               <BuyNow
