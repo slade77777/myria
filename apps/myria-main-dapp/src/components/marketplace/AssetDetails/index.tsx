@@ -1,7 +1,8 @@
 import { Trans } from '@lingui/macro';
+import axios from 'axios';
 import { AssetListResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
@@ -14,6 +15,7 @@ import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageModal from '../MessageModal/MessageModal';
 import MessagePurchaseModal from '../MessageModal/MessagePurchaseModal';
+import { MessageEditListingModal, ModalEditListing } from '../Modals';
 import { NFTItemType } from '../NftItem/type';
 import PurchasePopover from '../PurchasePopover';
 import AssetDetailTab from './AssetDetailTab';
@@ -45,8 +47,8 @@ enum AssetStatus {
 
 const ItemAttribution = () => {
   return (
-    <div className="bg-base/3 rounded-[8px] text-center p-[16px] border border-base/6">
-      <p className="uppercase text-blue/6">RARITY</p>
+    <div className="border-base/6 bg-base/3 rounded-[8px] border p-[16px] text-center">
+      <p className="text-blue/6 uppercase">RARITY</p>
       <p className="font-medium">Ultra Rare</p>
     </div>
   );
@@ -56,8 +58,6 @@ function AssetDetails({}: Props) {
   const router = useRouter();
   const id = router.query?.id;
   const { amountBuy, usdPrice } = detailData;
-  const currentPrice = formatNumber2digits(amountBuy);
-  const currentUSDPrice = formatNumber2digits(usdPrice);
 
   const { data, isLoading, error } = useQuery(['assetDetail', id], () => {
     if (id) {
@@ -65,22 +65,54 @@ function AssetDetails({}: Props) {
     }
     return null;
   });
-  const assetDetail: AssetListResponse | undefined = data?.data;
+  const assetDetails: any = data?.data;
+  const currentPrice = formatNumber2digits(+assetDetails?.order[0]?.amountSell);
 
   // the status will be get from based on the order Object in API get assetDetails
 
   const [status, setStatus] = useState<number>(AssetStatus.BUY_NOW);
   const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [showMessageEdit, setShowMessageEdit] = useState<boolean>(false);
+  const [etheCost, setEtheCost] = useState(0);
+  const currentUSDPrice = useMemo(
+    () => formatNumber2digits(+currentPrice * etheCost),
+    [currentPrice, etheCost]
+  );
+
+  useEffect(() => {
+    // get etherium cost
+    axios
+      .get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
+      .then((data) => {
+        if (data?.data?.ethereum?.usd) {
+          setEtheCost(data?.data?.ethereum?.usd);
+        }
+      });
+  }, []);
+
+  const handelEditListingSubmit = useCallback(
+    (data) => {
+      setTimeout(() => {
+        handleCloseModal();
+        setShowMessageEdit(true);
+      }, 2000);
+    },
+    [showModal, showMessage]
+  );
 
   const handleClosePopup = () => {
     setShowPopup(false);
     setStatus(AssetStatus.SALE);
     setShowMessage(true);
-    setTimeout(() => {
-      // setShowMessage(false);
-    }, SHOW_MESSAGE_TIME);
+    setTimeout(() => {}, SHOW_MESSAGE_TIME);
   };
+
+  const handleCloseModal = () => {
+    setShowModal(!showModal);
+  };
+
   if (isLoading) {
     return (
       <div className="flex justify-center">
@@ -89,15 +121,15 @@ function AssetDetails({}: Props) {
     );
   }
   return (
-    <div className="w-full bg-[#050E15] py-[58px] text-white px-6 md:px-12 xl:px-16 pt-[104px] md:pt-[133px]">
-      <div className="flex flex-row  space-x-28 mx-auto max-w-content">
+    <div className="w-full bg-[#050E15] py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
+      <div className="max-w-content mx-auto  flex flex-row space-x-28">
         {/* container */}
         <div className="w-[620px]">
           {/* left */}
           <div
-            className=" bg-no-repeat w-full  h-[620px] 
-          bg-center rounded-[3px] border-[3px] border-base/5 "
-            style={{ backgroundImage: `url(${validatedImage(assetDetail?.imageUrl)})` }}>
+            className=" border-base/5 h-[620px]  w-full 
+          rounded-[3px] border-[3px] bg-center bg-no-repeat "
+            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
             {/* img */}
           </div>
           <div className="text-white">
@@ -105,14 +137,14 @@ function AssetDetails({}: Props) {
             <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
               <Trans>Attributes</Trans>
             </div>
-            {!assetDetail?.metadata ? (
+            {!assetDetails?.metadata ? (
               <div className="grid grid-cols-4 gap-4">
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((val) => {
                   return <ItemAttribution key={val} />;
                 })}
               </div>
             ) : (
-              <div className="text-[28px] text-center italic">
+              <div className="text-center text-[28px] italic">
                 <Trans>No attributes</Trans>
               </div>
             )}
@@ -122,26 +154,26 @@ function AssetDetails({}: Props) {
           {/* right */}
           <div>
             {/* very top */}
-            <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row items-center justify-between">
               {/* first row */}
               <div className="flex flex-row">
                 <img src={testavatarImg.src} className="h-[24px] w-[24px]" />
-                <span className="ml-[8px] text-[16px]">{assetDetail?.collection?.name}</span>
+                <span className="ml-[8px] text-[16px]">{assetDetails?.collection?.name}</span>
               </div>
               <div className="w-[40px] p-[10px]">
                 <ShareIcon />
               </div>
             </div>
-            <div className="flex flex-col items-start mb-[36px]">
+            <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
-              <span className="mt-[24px] text-[28px] font-bold">{assetDetail?.name}</span>
-              <div className="mt-[24px] flex flex-row justify-between w-[300px]">
-                <span>Token ID: {assetDetail?.tokenId}</span>
+              <span className="mt-[24px] text-[28px] font-bold">{assetDetails?.name}</span>
+              <div className="mt-[24px] flex w-[300px] flex-row justify-between">
+                <span>Token ID: {assetDetails?.tokenId}</span>
                 <span>|</span>
-                <span>{truncateString(`${assetDetail?.starkKey}`)}</span>
+                <span>{truncateString(`${assetDetails?.starkKey}`)}</span>
               </div>
 
-              <div className="mt-[24px] flex flex-row items-center px-[12px] py-[8px] rounded-[5px] bg-base/3 border-base/6 border">
+              <div className="border-base/6 bg-base/3 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
                 <MintedIcon />
                 <span className="ml-[5px]">{'NaN'} Minted</span>
               </div>
@@ -154,17 +186,24 @@ function AssetDetails({}: Props) {
               />
             )}
             {status === AssetStatus.SALE && (
-              <ItemForSale setStatus={() => setStatus(AssetStatus.BUY_NOW)} />
+              <ItemForSale
+                setStatus={() => {
+                  setStatus(AssetStatus.BUY_NOW);
+                  setShowModal(true);
+                }}
+              />
             )}
             {status === AssetStatus.MODIFY && (
               <ModifyListing
                 currentPrice={currentPrice}
                 currentUSDPrice={currentUSDPrice}
-                setStatus={() => setStatus(AssetStatus.BUY_NOW)}
+                setStatus={() => {
+                  setShowModal(true);
+                }}
               />
             )}
           </div>
-          <div className="border-t border-blue/3">
+          <div className="border-blue/3 border-t">
             {/* TAB */}
             <AssetDetailTab />
           </div>
@@ -202,6 +241,24 @@ function AssetDetails({}: Props) {
           <MessagePurchaseModal />
         </MessageModal>
       )}
+      {showMessageEdit && (
+        <MessageModal
+          isShowMessage={showMessageEdit}
+          setIsShowMessage={() => setShowMessageEdit(false)}>
+          <MessageEditListingModal />
+        </MessageModal>
+      )}
+      {showModal && (
+        <ModalEditListing
+          title="List your item for sale"
+          titleConfirm="CONFIRMING YOUR LISTING"
+          labelInput="Listing Price"
+          onSubmit={handelEditListingSubmit}
+          items={assetDetails}
+          open={showModal}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 }
@@ -210,24 +267,24 @@ const ItemForSale: React.FC<IProp> = ({ setStatus }) => {
   return (
     <div className="mb-[48px]">
       <div>
-        <span className="text-light text-[18px] mt-[36px] mb-[16px]">
+        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
           <Trans>Market Status</Trans>
         </span>
-        <div className="flex flex-row items-center mt-[20px]">
+        <div className="mt-[20px] flex flex-row items-center">
           <span className="text-[28px] font-bold">
             <Trans>Not for Sale</Trans>
           </span>
         </div>
       </div>
       <button
-        className="flex bg-primary/6 mb-[10px] mt-[40px] h-[56px] justify-center items-center rounded-[8px] text-base/1 font-bold text-[16px] w-full cursor-pointer"
+        className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
         onClick={setStatus}>
         <Trans>LIST ITEM FOR SALE</Trans>
       </button>
-      <button className="flex border my-[10px] h-[56px] justify-center items-center rounded-[8px] text-white font-bold text-[16px] w-full cursor-pointer">
+      <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
         <Trans>WITHDRAW</Trans>
       </button>
-      <span className="mt-[10px] text-light text-[14px]">
+      <span className="text-light mt-[10px] text-[14px]">
         <Trans>Assets remain in your wallet when you list on Myria Marketplace</Trans>
       </span>
     </div>
@@ -238,13 +295,13 @@ const ModifyListing: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStat
   return (
     <div className="mb-[48px]">
       <div>
-        <span className="text-light text-[18px] mt-[36px] mb-[16px]">
+        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
           <Trans>Current price</Trans>
         </span>
         <div className="flex flex-row items-center">
           <DAOIcon className="mr-[8px]" />
           <span className="text-[28px] font-bold">{currentPrice}</span>
-          <span className="text-[14px] text-light self-end mb-[5px] ml-1">
+          <span className="text-light mb-[5px] ml-1 self-end text-[14px]">
             {'(~$'}
             {currentUSDPrice}
             {')'}
@@ -252,11 +309,11 @@ const ModifyListing: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStat
         </div>
       </div>
       <button
-        className="flex bg-primary/6 mb-[10px] mt-[40px] h-[56px] justify-center items-center rounded-[8px] text-base/1 font-bold text-[16px] w-full cursor-pointer"
+        className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
         onClick={setStatus}>
         <Trans>MODIFY LISTING</Trans>
       </button>
-      <button className="flex border my-[10px] h-[56px] justify-center items-center rounded-[8px] text-white font-bold text-[16px] w-full cursor-pointer">
+      <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
     </div>
@@ -267,13 +324,13 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
   return (
     <div className="mb-[48px]">
       <div>
-        <span className="text-light text-[18px] mt-[36px] mb-[16px]">
+        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
           <Trans>Current price</Trans>
         </span>
         <div className="flex flex-row items-center">
           <DAOIcon className="mr-[8px]" />
           <span className="text-[28px] font-bold">{currentPrice}</span>
-          <span className="text-[14px] text-light self-end mb-[5px] ml-1">
+          <span className="text-light mb-[5px] ml-1 self-end text-[14px]">
             {'(~$'}
             {currentUSDPrice}
             {')'}
@@ -281,7 +338,7 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
         </div>
       </div>
       <button
-        className="flex bg-primary/6 mb-[10px] mt-[40px] h-[56px] justify-center items-center rounded-[8px] text-base/1 font-bold text-[16px] w-full cursor-pointer"
+        className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
         onClick={setStatus}>
         <Trans>BUY NOW</Trans>
       </button>
@@ -292,7 +349,7 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
 const PurchaseModal: React.FC<any> = ({ open, onClose, currentPrice, onCloseMessage }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title={'Purchase'} className="shadow-[0_0_40px_10px_#0000004D] w-[468px]">
+      <Modal.Content title={'Purchase'} className="w-[468px] shadow-[0_0_40px_10px_#0000004D]">
         <PurchasePopover currentPrice={currentPrice} onCloseMessage={onCloseMessage} />
       </Modal.Content>
     </Modal>
