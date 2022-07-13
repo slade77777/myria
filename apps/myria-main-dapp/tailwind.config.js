@@ -443,7 +443,7 @@ module.exports = {
         },
         '.btn-disabled': {
           backgroundColor: theme('colors.gray/4'),
-          color: theme('colors.gray/6'),
+          color: theme('colors.gray/6')
         },
         '.btn-secondary': {
           color: theme('colors.brand-gold'),

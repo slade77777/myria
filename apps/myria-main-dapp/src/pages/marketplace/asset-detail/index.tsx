@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import AssetDetails from 'src/components/marketplace/AssetDetails';
 import Page from 'src/components/Page';
-import NotFoundPage from "src/pages/404";
+import NotFoundPage from 'src/pages/404';
 
 const AssetDetailPage = () => {
   const router = useRouter();

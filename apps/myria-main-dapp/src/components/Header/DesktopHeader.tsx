@@ -17,6 +17,14 @@ import DropdownMenu from '../DropdownMenu';
 import truncateString from 'src/helper';
 import LogoutIcon from '../icons/LogoutIcon';
 import InventoryIcon from 'src/components/icons/InventoryIcon';
+// import { useL2WalletContext } from 'src/context/l2-wallet';
+// import Header from 'src/packages/l2-wallet/src/components/Header';
+import Popover from 'src/packages/l2-wallet/src/components/Popover';
+import ClaimWithdrawPopover from 'src/packages/l2-wallet/src/components/Popover/ClaimWithdrawPopover';
+import L2WalletPopover from 'src/packages/l2-wallet/src/components/Popover/L2WalletPopover';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
+// import CreateMyriaWalletModal from 'l2-wallet/src/components/Modal/CreateMyriaWalletModal';
 
 type Props = {
   action: Action;
@@ -32,7 +40,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
   return (
     <ul
       className={clsx(
-        'flex items-center space-x-8 tracking-wider text-[14px] font-semibold uppercase leading-[1.25] text-brand-white',
+        'text-brand-white flex items-center space-x-8 text-[14px] font-semibold uppercase leading-[1.25] tracking-wider',
         className
       )}>
       {links.map((item, idx) => {
@@ -45,7 +53,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                   style={{
                     boxShadow: '0 0 0 0.5px #9AC9E3'
                   }}
-                  className="bg-opacity-4 absolute -top-[9px] -right-7 rounded-sm bg-brand-light-blue/40 p-[3px] pb-[1px] text-[6px] font-extrabold">
+                  className="bg-opacity-4 bg-brand-light-blue/40 absolute -top-[9px] -right-7 rounded-sm p-[3px] pb-[1px] text-[6px] font-extrabold">
                   <Trans>Soon!</Trans>
                 </div>
               </div>
@@ -56,14 +64,14 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
         if (item.children) {
           return (
             <li key={idx} className="group relative">
-              <div className={clsx('flex items-center hover:cursor-pointer hover:text-brand-gold')}>
+              <div className={clsx('hover:text-brand-gold flex items-center hover:cursor-pointer')}>
                 {item.text}
                 <i className="w-[24px]">
                   <ChevronDownIcon />
                 </i>
               </div>
               <div className="absolute left-0 top-full hidden -translate-x-6 pt-4 group-hover:block">
-                <ul className="grid gap-6 whitespace-nowrap rounded-lg bg-dark px-6 py-4 pr-[63px]">
+                <ul className="bg-dark grid gap-6 whitespace-nowrap rounded-lg px-6 py-4 pr-[63px]">
                   {item.children.map((link, idx) => (
                     <li key={idx}>
                       <Link href={link.url as string}>
@@ -93,7 +101,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
           return (
             <li
               key={idx}
-              className={clsx('py-[9px] px-[13px] rounded-[8px] hover:bg-base/4', {
+              className={clsx('hover:bg-base/4 rounded-[8px] py-[9px] px-[13px]', {
                 'bg-base/4': item.url === router.pathname
               })}>
               <Link href={item.url as string}>
@@ -118,6 +126,34 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   useStickyHeader(headerRef, stickyHeader);
   const { address, onConnect, disconnect } = useWalletContext();
   const { login, user } = useAuthenticationContext();
+  const walletModalRef = useRef<any>();
+
+  const onShowModal = async () => {
+    walletModalRef.current.onOpenModal();
+  };
+
+  const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
+  const popoverRef = useRef<any>();
+
+  // const selectTabHandle = (param: number) => {
+  //   setActiveTab(param);
+  // };
+
+  let abbreviationAddress = '';
+  if (address) {
+    abbreviationAddress = `${address.substring(0, 4)}...${address.substring(
+      address.length - 4,
+      address.length
+    )}`;
+  }
+  // const abbreviationAddress = `${address.substring(0, 4)}...${address.substring(
+  //   account.length - 4,
+  //   account.length,
+  // )}`;
+
+  const closePopover = () => {
+    popoverRef?.current?.closePopover();
+  };
 
   const actionElements = useMemo(() => {
     switch (action) {
@@ -159,11 +195,12 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           </a>
         );
     }
-  }, [action, user?.wallet_id, onConnect]);
+  }, [action, user?.wallet_id, event]);
 
   const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
+
   return (
-    <header ref={headerRef} className="w-full bg-base/3">
+    <header ref={headerRef} className="bg-base/3 w-full">
       {/* <div className="hidden text-black lg:block">
         <NotiBanner />
       </div> */}
@@ -172,7 +209,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           height: navHeight
         }}
         className="flex w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
-        <div className="flex items-left mr-12">
+        <div className="items-left mr-12 flex">
           <Link href="/">
             <a className="w-[164px]">
               <Logo />
@@ -188,62 +225,83 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           </div>
           <div>
             {address ? (
-              <DropdownMenu>
-                <DropdownMenu.Trigger asChild>
-                  <button className=" body-14-bold flex items-center space-x-2 rounded-lg border border-base/5 bg-base/3 px-4 py-[9px]">
-                    <span>{truncateString(address)}</span>
-                    <i className="w-4">
-                      <ChevronDownIcon />
-                    </i>
-                  </button>
-                </DropdownMenu.Trigger>
-                <DropdownMenu.Content
-                  sideOffset={8}
-                  align="end"
-                  className="rounded-md bg-current p-3 text-base/3">
-                  <DropdownMenu.Arrow className="translate-x-3 fill-current" />
-                  <div>
-                    <div className="text-white">
-                      <button
-                        className="body-14-medium flex items-center space-x-2.5 text-white"
-                        onClick={disconnect}>
-                        <i className="w-4">
-                          <LogoutIcon />
-                        </i>
-                        <span>
-                          <Trans>Disconnect</Trans>
-                        </span>
-                      </button>
-                    </div>
-                    <div className="text-white mt-2">
-                      <Link href={'/marketplace/inventory'}>
-                        <a
-                          href={'/marketplace/inventory'}
-                          className="body-14-medium flex items-center space-x-2.5 text-white cursor-pointer">
+              <div>
+                <DropdownMenu>
+                  <DropdownMenu.Trigger asChild>
+                    <Popover
+                      ref={popoverRef}
+                      width="min-w-[406px]"
+                      offsetX={-170}
+                      defaultShow={showClaimPopover}
+                      renderElement={
+                        showClaimPopover ? (
+                          <ClaimWithdrawPopover
+                            abbreviationAddress={abbreviationAddress}
+                            onClosePopover={closePopover}
+                          />
+                        ) : (
+                          <L2WalletPopover
+                            onClosePopover={closePopover}
+                            abbreviationAddress={abbreviationAddress}
+                          />
+                        )
+                      }>
+                      <span className="uppercase">
+                        <button className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]">
+                          <span>{truncateString(address)}</span>
                           <i className="w-4">
-                            <InventoryIcon />
+                            <ChevronDownIcon />
+                          </i>
+                        </button>
+                      </span>
+                    </Popover>
+                  </DropdownMenu.Trigger>
+                  <DropdownMenu.Content
+                    sideOffset={8}
+                    align="end"
+                    className="rounded-md bg-current p-3 text-base/3">
+                    <DropdownMenu.Arrow className="translate-x-3 fill-current" />
+                    <div>
+                      <div className="text-white">
+                        <button
+                          className="body-14-medium flex items-center space-x-2.5 text-white"
+                          onClick={disconnect}>
+                          <i className="w-4">
+                            <LogoutIcon />
                           </i>
                           <span>
-                            <Trans>Inventory</Trans>
+                            <Trans>Disconnect</Trans>
                           </span>
-                        </a>
-                      </Link>
+                        </button>
+                      </div>
+                      <div className="text-white mt-2">
+                        <Link href={'/marketplace/inventory'}>
+                          <a
+                            href={'/marketplace/inventory'}
+                            className="body-14-medium flex items-center space-x-2.5 text-white cursor-pointer">
+                            <i className="w-4">
+                              <InventoryIcon />
+                            </i>
+                            <span>
+                              <Trans>Inventory</Trans>
+                            </span>
+                          </a>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </DropdownMenu.Content>
-              </DropdownMenu>
+                  </DropdownMenu.Content>
+                </DropdownMenu>
+              </div>
             ) : (
               <button
                 onClick={() => {
                   onConnect();
-                  // event('Connect Wallet Selected', { campaign: 'Sigil' });
                 }}
-                className="body-14-bold rounded-lg border border-white py-[9px] px-4 uppercase hover:border-primary/7">
+                className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
                 <Trans>Connect wallet</Trans>
               </button>
             )}
           </div>
-          {/* {actionElements} */}
         </div>
       </nav>
     </header>

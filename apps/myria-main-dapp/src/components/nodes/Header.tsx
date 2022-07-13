@@ -168,7 +168,7 @@ const Header: React.FC = () => {
                 // event('Connect Wallet Selected', { campaign: 'Sigil' });
               }}
               className="body-14-bold rounded-lg border border-white py-[9px] px-4 uppercase hover:border-primary/7">
-              <Trans>Connect wallet</Trans>
+              <Trans>Connect wallet 456</Trans>
             </button>
           )}
           {user && !user.user_name && (

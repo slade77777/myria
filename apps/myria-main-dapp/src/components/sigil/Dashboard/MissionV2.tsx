@@ -150,7 +150,7 @@ const MissionV2: React.FC = () => {
 
   React.useEffect(() => {
     fetchMissions();
-  }, []);
+  }, [fetchMissions]);
 
   return (
     <div>

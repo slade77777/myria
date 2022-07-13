@@ -49,7 +49,7 @@ export const ModalEditListing: React.FC<Props> = ({
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty, isValid, isSubmitSuccessful },
+    formState: { errors, isDirty, isValid, isSubmitSuccessful }
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   });
@@ -90,15 +90,15 @@ export const ModalEditListing: React.FC<Props> = ({
             <span className="text-light">
               <Trans> {labelInput} </Trans>
             </span>
-            <div className='absolute top-10 left-2'>
+            <div className="absolute top-10 left-2">
               <DAOIcon />
             </div>
             <Input
-              type='text'
+              type="text"
               {...register('price')}
               error={!!errors.price}
               errorText={errors.price?.message}
-              className='mt-1 pr-[100px] rounded-[5px] border-none bg-base/4 pl-10 '
+              className="mt-1 pr-[100px] rounded-[5px] border-none bg-base/4 pl-10 "
             />
             <div className="absolute top-10 right-3">
               <span>{ethereum}</span>
@@ -106,7 +106,7 @@ export const ModalEditListing: React.FC<Props> = ({
           </div>
           {description && <p className="mt-5 text-light">{description}</p>}
           <div className="mt-8">
-            <Button disabled={!isDirty} className={clsx("btn-lg  w-full px-10", BUTTON_BG)}>
+            <Button disabled={!isDirty} className={clsx('btn-lg  w-full px-10', BUTTON_BG)}>
               {isSubmitSuccessful && <ProgressIcon size={23} />}
               <span className="ml-1">
                 <Trans>{titleConfirm}</Trans>
