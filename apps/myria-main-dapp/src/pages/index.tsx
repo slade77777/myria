@@ -28,7 +28,7 @@ const Index = () => {
 
   return (
     <Page action="mint">
-      {/* <div className={headerNavSpacingClassName}>
+      <div className={headerNavSpacingClassName}>
         <div className="md:mt-7">
           <Hero />
         </div>
@@ -92,7 +92,7 @@ const Index = () => {
             <Subscribe />
           </div>
         </section>
-      </div> */}
+      </div>
     </Page>
   );
 };
