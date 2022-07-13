@@ -140,6 +140,8 @@ export default function L2WalletPopover({
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
   const { balanceL1: balanceEth } = useBalanceL1(options[0], connectedAccount);
 
+  const [balanceL2Eth, setBalanceL2Eth] = useState<any>('');
+
   const { address, onConnect, disconnect } = useWalletContext();
 
   const initForm = () => {
@@ -156,6 +158,29 @@ export default function L2WalletPopover({
       dispatch(setSelectedTokenFunc(options[0]));
     }
   }, [withdrawScreenMounted, depositScreenMounted, dispatch]);
+
+  useEffect(() => {
+    const assetType = asset.getAssetType({
+      type: 'ETH',
+      data: {
+        quantum: QUANTUM_CONSTANT.toString(),
+      },
+    });
+    let exactBalance: any;
+    if (Array.isArray(balanceList)) {
+      exactBalance = balanceList?.filter(
+        (item: any) => item.assetId === assetType,
+      );
+    }
+
+    if (exactBalance && exactBalance.length > 0) {
+      setBalanceL2Eth(
+        Web3.utils.fromWei(
+          (exactBalance[0].quantizedAmount * QUANTUM_CONSTANT ?? 0).toString(),
+        ),
+      );
+    }
+  }, [balanceList]);
 
   useEffect(() => {
     const setBalanceFunc = async () => {
@@ -507,7 +532,7 @@ export default function L2WalletPopover({
               setScreen(SCREENS.WITHDRAW_SCREEN);
             }}
             balanceList={balanceList}
-            balanceEth={balanceEth}
+            balanceEth={balanceL2Eth}
           />
         )}
 

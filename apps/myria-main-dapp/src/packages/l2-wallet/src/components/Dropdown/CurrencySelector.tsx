@@ -93,7 +93,7 @@ export default function CurrencySelector({ selectHandle, options }: TProp) {
                     <div className="flex items-center">
                       <img
                         className="mr-[11px] w-[24px]"
-                        src={item.ico.src}
+                        src={item.ico}
                         alt="currency_avatar_2"
                       />
                       <span className="mr-2 text-[16px] text-white">
