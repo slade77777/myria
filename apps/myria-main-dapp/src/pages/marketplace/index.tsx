@@ -1,24 +1,20 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import React from 'react';
-import { useQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import AssetList from 'src/components/marketplace/AssetList';
 import HotCollection from 'src/components/marketplace/HotCollection';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
-import { assetModule } from 'src/services/myriaCore';
 import { negativeMarginXSm, paddingX } from 'src/utils';
 import testImg from './inventory/test.png';
 import testavatarImg from './inventory/testavatar.png';
 
-const Games: React.FC = () => {
-  const { data, isLoading, error } = useQuery('orderExplore', () => assetModule?.getAssets());
-
+const Marketplace: React.FC = () => {
   return (
     <Page>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
-        <div className="mx-auto mt-10 max-w-content">
+        <div className="max-w-content mx-auto mt-10">
           <section className={clsx(negativeMarginXSm, 'md:mx-0')}>
             <h2 className="h4 px-6 md:px-0">
               <Trans>Marketplace</Trans>
@@ -58,4 +54,4 @@ const Games: React.FC = () => {
   );
 };
 
-export default Games;
+export default Marketplace;
