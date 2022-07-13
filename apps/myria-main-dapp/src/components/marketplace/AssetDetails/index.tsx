@@ -10,6 +10,7 @@ import ShareIcon from 'src/components/icons/ShareIcon';
 import { Loading } from 'src/components/Loading';
 import Modal from 'src/components/Modal';
 import truncateString from 'src/helper';
+import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { assetModule } from 'src/services/myriaCore';
 import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
@@ -54,43 +55,38 @@ const ItemAttribution = () => {
   );
 };
 const SHOW_MESSAGE_TIME = 5000;
-function AssetDetails({}: Props) {
-  const router = useRouter();
-  const id = router.query?.id;
-  const { amountBuy, usdPrice } = detailData;
-
-  const { data, isLoading, error } = useQuery(['assetDetail', id], () => {
-    if (id) {
-      return assetModule?.getAssetById(`${id}`);
+function AssetDetails({ id }: Props) {
+  const { data: assetDetails, isLoading } = useQuery(
+    ['assetDetail', id],
+    async () => {
+      const res = await assetModule?.getAssetById(id);
+      return res?.data;
+    },
+    {
+      enabled: !!id
     }
-    return null;
-  });
-  const assetDetails: any = data?.data;
-  const currentPrice = formatNumber2digits(+assetDetails?.order[0]?.amountSell);
+  );
+  const currentPrice = formatNumber2digits(
+    Number((assetDetails?.order as unknown as AssetListResponse['order'][])?.[0].amountSell ?? 0)
+  );
 
   // the status will be get from based on the order Object in API get assetDetails
 
-  const [status, setStatus] = useState<number>(AssetStatus.BUY_NOW);
-  const [showPopup, setShowPopup] = useState<boolean>(false);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [showMessage, setShowMessage] = useState<boolean>(false);
-  const [showMessageEdit, setShowMessageEdit] = useState<boolean>(false);
-  const [etheCost, setEtheCost] = useState(0);
+  const [status, setStatus] = useState(AssetStatus.BUY_NOW);
+  const [showPopup, setShowPopup] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [showMessageEdit, setShowMessageEdit] = useState(false);
+  const { data: etheCost = 0 } = useEtheriumPrice();
+
   const currentUSDPrice = useMemo(
     () => formatNumber2digits(+currentPrice * etheCost),
     [currentPrice, etheCost]
   );
 
-  useEffect(() => {
-    // get etherium cost
-    axios
-      .get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
-      .then((data) => {
-        if (data?.data?.ethereum?.usd) {
-          setEtheCost(data?.data?.ethereum?.usd);
-        }
-      });
-  }, []);
+  const handleCloseModal = useCallback(() => {
+    setShowModal((showModal) => !showModal);
+  }, [setShowModal]);
 
   const handelEditListingSubmit = useCallback(
     (data) => {
@@ -99,7 +95,7 @@ function AssetDetails({}: Props) {
         setShowMessageEdit(true);
       }, 2000);
     },
-    [showModal, showMessage]
+    [handleCloseModal]
   );
 
   const handleClosePopup = () => {
@@ -107,10 +103,6 @@ function AssetDetails({}: Props) {
     setStatus(AssetStatus.SALE);
     setShowMessage(true);
     setTimeout(() => {}, SHOW_MESSAGE_TIME);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(!showModal);
   };
 
   if (isLoading) {
@@ -127,7 +119,7 @@ function AssetDetails({}: Props) {
         <div className="w-[620px]">
           {/* left */}
           <div
-            className=" border-base/5 h-[620px]  w-full 
+            className=" border-base/5 h-[620px]  w-full
           rounded-[3px] border-[3px] bg-center bg-no-repeat "
             style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
             {/* img */}
@@ -173,17 +165,16 @@ function AssetDetails({}: Props) {
                 <span>{truncateString(`${assetDetails?.starkKey}`)}</span>
               </div>
 
-              <div className='flex gap-6'>
-                <div className='mt-[24px] flex flex-row items-center px-[12px] py-[8px] rounded-[5px] bg-base/3 border-base/6 border'>
+              <div className="flex gap-6">
+                <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
                   <MintedIcon />
-                  <span className='ml-[5px]'>Minted {'10,000'}</span>
+                  <span className="ml-[5px]">Minted {'10,000'}</span>
                 </div>
-                <div className='mt-[24px] flex flex-row items-center px-[12px] py-[8px] rounded-[5px] bg-base/3 border-base/6 border'>
+                <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
                   <MintedIcon />
-                  <span className='ml-[5px]'>Owner: {'1,000'}</span>
+                  <span className="ml-[5px]">Owner: {'1,000'}</span>
                 </div>
               </div>
-              
             </div>
             {status === AssetStatus.BUY_NOW && (
               <BuyNow
@@ -353,7 +344,18 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
   );
 };
 
-const PurchaseModal: React.FC<any> = ({ open, onClose, currentPrice, onCloseMessage }) => {
+type PurchaseModalProps = {
+  open: boolean;
+  onClose: () => void;
+  currentPrice: string;
+  onCloseMessage: () => void;
+};
+const PurchaseModal: React.FC<PurchaseModalProps> = ({
+  open,
+  onClose,
+  currentPrice,
+  onCloseMessage
+}) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={'Purchase'} className="w-[468px] shadow-[0_0_40px_10px_#0000004D]">
