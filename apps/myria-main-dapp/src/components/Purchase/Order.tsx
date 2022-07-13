@@ -130,7 +130,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
           });
         });
     },
-    [submitPurchase, address, onPlaceOrder, price, etheCost]
+    [submitPurchase, address, onPlaceOrder, price, etheCost, event]
   );
 
   const handleClickLicense = (licenseId: string) => {

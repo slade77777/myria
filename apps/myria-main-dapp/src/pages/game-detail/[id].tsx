@@ -236,10 +236,12 @@ export async function getStaticProps() {
 }
 
 // eslint-disable-next-line react/display-name
-export default () => {
+const DefaultComponent = () => {
   return (
     <AuthenticationProvider>
       <GameDetail />
     </AuthenticationProvider>
   );
 };
+
+export default DefaultComponent;

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
-import {getRarityColor} from 'src/utils';
-import {NFTItemType} from './type';
+import { getRarityColor } from 'src/utils';
+import { NFTItemType } from './type';
 
 interface Props {
   item: NFTItemType;
@@ -34,18 +34,18 @@ const DAOIcon = (props: React.SVGProps<SVGSVGElement>) => (
         fill="white"
         fillOpacity="0.5"
       />
-      <path d="M7.99854 11.5512L12.9093 8.64843L7.99854 6.41626V11.5512Z" fill="#A1AFBA"/>
-      <path d="M3.08789 8.64843L7.99878 11.5512V6.41626L3.08789 8.64843Z" fill="#E7EBEE"/>
+      <path d="M7.99854 11.5512L12.9093 8.64843L7.99854 6.41626V11.5512Z" fill="#A1AFBA" />
+      <path d="M3.08789 8.64843L7.99878 11.5512V6.41626L3.08789 8.64843Z" fill="#E7EBEE" />
     </g>
     <defs>
       <clipPath id="clip0_2574_9572">
-        <rect width="16" height="16" fill="white" transform="translate(0 0.5)"/>
+        <rect width="16" height="16" fill="white" transform="translate(0 0.5)" />
       </clipPath>
     </defs>
   </svg>
 );
 
-const NftItem = ({item}: Props) => {
+const NftItem = ({ item }: Props) => {
   const rarityColor = getRarityColor(item.rarity);
 
   return (
@@ -54,10 +54,10 @@ const NftItem = ({item}: Props) => {
         <div className="snap-start cursor-pointer">
           <div className="block w-full max-w-[298px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
             <div className="relative flex h-[298px] w-full items-center justify-center lg:h-[248px]">
-              <div className="absolute h-full w-full bg-[#081824]"/>
+              <div className="absolute h-full w-full bg-[#081824]" />
               <div
                 className="z-1 absolute h-full w-full opacity-[0.3]"
-                style={{backgroundColor: rarityColor}}
+                style={{ backgroundColor: rarityColor }}
               />
               <div
                 className="z-2 absolute h-full w-full"
@@ -67,33 +67,33 @@ const NftItem = ({item}: Props) => {
                   mixBlendMode: 'soft-light'
                 }}
               />
-              <img className="z-3 absolute" src={item.image_url} alt="" width="90%" height="auto"/>
+              <img className="z-3 absolute" src={item.image_url} alt="" width="90%" height="auto" />
             </div>
             <div className="h-[122px] p-4">
-            <span className="block text-[12px] font-normal text-[#9CA3AF]">
-              {item?.collection?.name || ''}
-            </span>
+              <span className="block text-[12px] font-normal text-[#9CA3AF]">
+                {item?.collection?.name || ''}
+              </span>
               <span className="mb-4 block truncate text-[14px] font-medium text-white">
-              {item.name}
-            </span>
+                {item.name}
+              </span>
               <div className="mb-6 flex items-center justify-between">
                 <div>
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Creator</span>
                   <div className="flex items-center">
-                    <img src={item.creatorImg} alt="creator" className="mr-1"/>
+                    <img src={item.creatorImg} alt="creator" className="mr-1" />
                     <span className="text-[14px] font-medium text-white">{item.creator}</span>
                   </div>
                 </div>
                 <div>
-                <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
-                  Current price
-                </span>
+                  <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
+                    Current price
+                  </span>
                   {item.priceETH ? (
                     <div className="flex items-center">
-                      <DAOIcon className="mr-1"/>
+                      <DAOIcon className="mr-1" />
                       <span className="text-[16px] font-medium text-white">
-                      {item.priceETH.toFixed(2)}
-                    </span>
+                        {item.priceETH.toFixed(2)}
+                      </span>
                     </div>
                   ) : (
                     <span className="text-[16px] font-medium text-white">Not for Sale</span>

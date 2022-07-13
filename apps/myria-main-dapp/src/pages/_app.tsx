@@ -9,6 +9,7 @@ import type { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';
 
 import { WalletProvider } from 'src/context/wallet';
+import { L2WalletProvider } from 'src/context/l2-wallet';
 import { AuthenticationProvider } from 'src/context/authentication';
 import Tooltip from 'src/components/Tooltip';
 import LanguageProvider, { useLanguage } from 'src/context/language';
@@ -17,6 +18,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { t } from '@lingui/macro';
 import TabProvider from 'src/context/tabContext';
+import MainL2Wallet from 'src/components/Main-L2-Wallet/Main-L2-Wallet';
+import { Provider } from 'react-redux';
+import { store } from 'src/packages/l2-wallet/src/app/store';
 
 const WithLanguageStyle: React.FC<any> = ({ children }) => {
   const { language } = useLanguage();
@@ -57,15 +61,22 @@ function App({ Component, pageProps }: AppProps) {
         />
         <ToastContainer hideProgressBar className={toastStyle.toast} />
         <WalletProvider>
-          <AuthenticationProvider>
-            <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
-              <WithLanguageStyle>
-                <TabProvider>
-                  <Component {...pageProps} />
-                </TabProvider>
-              </WithLanguageStyle>
-            </Tooltip.Provider>
-          </AuthenticationProvider>
+          <L2WalletProvider>
+            <AuthenticationProvider>
+              <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
+                <WithLanguageStyle>
+                  <TabProvider>
+                    <>
+                      <Provider store={store}>
+                        <Component {...pageProps} />
+                        <MainL2Wallet />
+                      </Provider>
+                    </>
+                  </TabProvider>
+                </WithLanguageStyle>
+              </Tooltip.Provider>
+            </AuthenticationProvider>
+          </L2WalletProvider>
         </WalletProvider>
       </LanguageProvider>
       <ReactQueryDevtools initialIsOpen={false} />

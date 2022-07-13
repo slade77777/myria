@@ -2,7 +2,7 @@ import Collection from 'src/components/marketplace/Collection';
 import useMarketplaceCollection from 'src/hooks/useMarketplaceCollection';
 import { useRouter } from 'next/router';
 import useCollectionAsset from 'src/hooks/useCollectionAsset';
-import NotFoundPage from "src/pages/404";
+import NotFoundPage from 'src/pages/404';
 
 const CollectionDetailPage = () => {
   const router = useRouter();

@@ -9,6 +9,7 @@ import MintedIcon from 'src/components/icons/MintedIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
 import { Loading } from 'src/components/Loading';
 import Modal from 'src/components/Modal';
+import { useWalletContext } from 'src/context/wallet';
 import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { assetModule } from 'src/services/myriaCore';
@@ -43,7 +44,8 @@ const detailData = {
 enum AssetStatus {
   BUY_NOW,
   SALE,
-  MODIFY
+  MODIFY,
+  UNCONNECTED
 }
 
 const ItemAttribution = () => {
@@ -78,6 +80,7 @@ function AssetDetails({ id }: Props) {
   const [showMessage, setShowMessage] = useState(false);
   const [showMessageEdit, setShowMessageEdit] = useState(false);
   const { data: etheCost = 0 } = useEtheriumPrice();
+  const { address, onConnect } = useWalletContext();
 
   const currentUSDPrice = useMemo(
     () => formatNumber2digits(+currentPrice * etheCost),
@@ -97,6 +100,12 @@ function AssetDetails({ id }: Props) {
     },
     [handleCloseModal]
   );
+
+  useEffect(() => {
+    const currentStatus =
+      address && address?.length > 0 ? AssetStatus.BUY_NOW : AssetStatus.UNCONNECTED;
+    setStatus(currentStatus);
+  }, [address]);
 
   const handleClosePopup = () => {
     setShowPopup(false);
@@ -181,6 +190,13 @@ function AssetDetails({ id }: Props) {
                 currentPrice={currentPrice}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => setShowPopup(true)}
+              />
+            )}
+            {status === AssetStatus.UNCONNECTED && (
+              <ConnectWalletToBuy
+                currentPrice={currentPrice}
+                currentUSDPrice={currentUSDPrice}
+                setStatus={onConnect}
               />
             )}
             {status === AssetStatus.SALE && (
@@ -344,18 +360,33 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
   );
 };
 
-type PurchaseModalProps = {
-  open: boolean;
-  onClose: () => void;
-  currentPrice: string;
-  onCloseMessage: () => void;
+const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) => {
+  return (
+    <div className="mb-[48px]">
+      <div>
+        <span className="text-light text-[18px] mt-[36px] mb-[16px]">
+          <Trans>Current price</Trans>
+        </span>
+        <div className="flex flex-row items-center">
+          <DAOIcon className="mr-[8px]" />
+          <span className="text-[28px] font-bold">{currentPrice}</span>
+          <span className="text-[14px] text-light self-end mb-[5px] ml-1">
+            {'(~$'}
+            {currentUSDPrice}
+            {')'}
+          </span>
+        </div>
+      </div>
+      <button
+        className="flex bg-primary/6 mb-[10px] mt-[40px] h-[56px] justify-center items-center rounded-[8px] text-base/1 font-bold text-[16px] w-full cursor-pointer"
+        onClick={setStatus}>
+        <Trans>Connect Wallet To Buy</Trans>
+      </button>
+    </div>
+  );
 };
-const PurchaseModal: React.FC<PurchaseModalProps> = ({
-  open,
-  onClose,
-  currentPrice,
-  onCloseMessage
-}) => {
+
+const PurchaseModal: React.FC<any> = ({ open, onClose, currentPrice, onCloseMessage }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={'Purchase'} className="w-[468px] shadow-[0_0_40px_10px_#0000004D]">

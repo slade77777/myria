@@ -99,17 +99,20 @@ const ModalPurchase = ({
     }
   );
 
-  const trackPurchase = useCallback((error?: string) => {
-    event('Node Order Purchased', {
-      campaign: 'Nodes',
-      wallet_address: address,
-      node_quantity: quantity,
-      order_status: error ? 'Error' : 'Completed',
-      eth_total_amount: totalPriceEth,
-      usd_total_amount: totalPriceUsd,
-      error_details: error
-    });
-  }, []);
+  const trackPurchase = useCallback(
+    (error?: string) => {
+      event('Node Order Purchased', {
+        campaign: 'Nodes',
+        wallet_address: address,
+        node_quantity: quantity,
+        order_status: error ? 'Error' : 'Completed',
+        eth_total_amount: totalPriceEth,
+        usd_total_amount: totalPriceUsd,
+        error_details: error
+      });
+    },
+    [address, event, quantity, totalPriceEth, totalPriceUsd]
+  );
 
   const onPurchase = useCallback(async () => {
     try {
@@ -132,7 +135,18 @@ const ModalPurchase = ({
     } catch (e) {
       toast.error('Purchase uncompleted');
     }
-  }, [handleTransferETH, submitPurchase, nonce, transactionId]);
+  }, [
+    handleTransferETH,
+    submitPurchase,
+    nonce,
+    transactionId,
+    address,
+    event,
+    quantity,
+    totalPriceEth,
+    totalPriceUsd,
+    trackPurchase
+  ]);
 
   const button = useMemo(() => {
     let className = 'btn-primary';
