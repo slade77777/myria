@@ -29,9 +29,9 @@ const HotCollection: React.FC = () => {
       <div className="mt-[24px] grid gap-8 overflow-x-scroll md:grid-cols-2 ">
         {hotCollection?.items.map((itm: CollectionItems, idx: number) => {
           return (
-            <Link href={`/marketplace/collection/${itm.publicId}`} key={idx}>
+            <Link href={`/marketplace/collection?id=${itm.publicId}`} key={idx}>
               <a
-                href={`/marketplace/collection/${itm.publicId}`}
+                href={`/marketplace/collection?id=${itm.publicId}`}
                 className="rounded-lg bg-base/3 cursor-pointer">
                 <div key={idx} className={`overflow-hidden rounded-[20px] bg-base/3`}>
                   <div

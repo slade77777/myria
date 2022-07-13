@@ -14285,10 +14285,10 @@ myria-core-sdk@0.0.36:
     ts-node "^10.7.0"
     web3 "1.3.0"
 
-myria-core-sdk@^0.0.43:
-  version "0.0.43"
-  resolved "https://registry.yarnpkg.com/myria-core-sdk/-/myria-core-sdk-0.0.43.tgz#8de5b73e31c942c3c64c7cd54b74fac54a0eef31"
-  integrity sha512-ebVZBBXP/z+ymmfDadwrVJu5a1eFPNDs/bgLBx3fvY8iv177xvsTNaj3ZLT3LCocM4XvpDQo6ozROGs/aTQrug==
+myria-core-sdk@^0.0.48:
+  version "0.0.48"
+  resolved "https://registry.yarnpkg.com/myria-core-sdk/-/myria-core-sdk-0.0.48.tgz#b80e222721fa3c52ecb9fcdc67c2df8954bbca24"
+  integrity sha512-Sit2dKgRIu9lEM0iDoMH1/la4tWXjUkY4a/jFerwQOdNUFvInkW2HgQ7Jfu+ABZ9l+UU+YSAG0X+gO3iMjm0Ng==
   dependencies:
     "@babel/eslint-parser" "^7.17.0"
     "@starkware-industries/starkware-crypto-utils" "^0.0.2"

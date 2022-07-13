@@ -4,8 +4,6 @@ import NftItem from 'src/components/marketplace/NftItem';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import ReadMoreText from 'src/components/ReadMoreText';
 import Page from 'src/components/Page';
-import clsx from 'clsx';
-import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
 
 interface Props {
