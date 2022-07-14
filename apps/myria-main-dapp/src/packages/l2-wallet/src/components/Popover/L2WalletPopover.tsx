@@ -31,8 +31,6 @@ import { disconnectAccount } from '../../app/slices/accountSlice';
 // import Metarush from '../../assets/images/metarush.png';
 // import Eth from '../../assets/images/eth.png';
 // import USDC from '../../assets/images/usdc.png';
-import Ethereum from '../../assets/images/ethereum.png';
-import TestToken from '../../assets/images/TT.png';
 
 // Import Types
 import { TOption } from '../Dropdown/CurrencySelector';
