@@ -18,7 +18,7 @@ function useBalanceL1(token: any, account: string) {
   }
 
   useEffect(() => {
-    if (!window.web3.eth) return;
+    if (!window.web3 || !window.web3.eth) return;
     const setBalanceFunc = async () => {
       if (token.name === 'Ethereum') {
         const tb = await window.web3.eth.getBalance(account);
