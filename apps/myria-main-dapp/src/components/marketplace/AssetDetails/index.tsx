@@ -1,9 +1,8 @@
 import { Trans } from '@lingui/macro';
-import axios from 'axios';
 import { AssetListResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
+import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
@@ -12,6 +11,7 @@ import Modal from 'src/components/Modal';
 import { useWalletContext } from 'src/context/wallet';
 import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { assetModule } from 'src/services/myriaCore';
 import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
@@ -30,6 +30,8 @@ interface IProp {
   currentPrice?: string;
   currentUSDPrice?: string;
   setStatus?: () => void;
+  startKey?: string;
+  assetDetails?: any;
 }
 
 const detailData = {
@@ -68,6 +70,10 @@ function AssetDetails({ id }: Props) {
       enabled: !!id
     }
   );
+  const startKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const startKey = '0x' + startKeyUser;
   const currentPrice = formatNumber2digits(
     Number((assetDetails?.order as unknown as AssetListResponse['order'][])?.[0]?.amountSell ?? 0)
   );
@@ -89,6 +95,7 @@ function AssetDetails({ id }: Props) {
 
   const handleCloseModal = useCallback(() => {
     setShowModal((showModal) => !showModal);
+    setStatus(AssetStatus.MODIFY);
   }, [setShowModal]);
 
   const handelEditListingSubmit = useCallback(
@@ -102,16 +109,31 @@ function AssetDetails({ id }: Props) {
   );
 
   useEffect(() => {
-    const currentStatus =
-      address && address?.length > 0 ? AssetStatus.BUY_NOW : AssetStatus.UNCONNECTED;
+    let currentStatus: number = AssetStatus.UNCONNECTED;
+    if (assetDetails?.order && (assetDetails?.order as any).length >= 0) {
+      if (startKey === assetDetails?.starkKey) {
+        currentStatus = AssetStatus.MODIFY;
+      } else {
+        currentStatus = AssetStatus.BUY_NOW;
+      }
+    }
+    if (assetDetails?.order && (assetDetails?.order as any).length === 0) {
+      currentStatus = AssetStatus.SALE;
+    }
+    if (!(address && address?.length > 0)) {
+      currentStatus = AssetStatus.UNCONNECTED;
+    }
     setStatus(currentStatus);
-  }, [address]);
+  }, [address, assetDetails?.order, assetDetails?.starkKey, startKey]);
 
   const handleClosePopup = () => {
+    console.log(startKey, assetDetails);
     setShowPopup(false);
     setStatus(AssetStatus.SALE);
     setShowMessage(true);
-    setTimeout(() => {}, SHOW_MESSAGE_TIME);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, SHOW_MESSAGE_TIME);
   };
 
   if (isLoading) {
@@ -177,11 +199,11 @@ function AssetDetails({ id }: Props) {
               <div className="flex gap-6">
                 <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
                   <MintedIcon />
-                  <span className="ml-[5px]">Minted {'10,000'}</span>
+                  <span className="ml-[5px]">Minted: {'N/A'}</span>
                 </div>
                 <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
                   <MintedIcon />
-                  <span className="ml-[5px]">Owner: {'1,000'}</span>
+                  <span className="ml-[5px]">Owner: {'N/A'}</span>
                 </div>
               </div>
             </div>
@@ -201,8 +223,9 @@ function AssetDetails({ id }: Props) {
             )}
             {status === AssetStatus.SALE && (
               <ItemForSale
+                startKey={startKey}
+                assetDetails={assetDetails}
                 setStatus={() => {
-                  setStatus(AssetStatus.BUY_NOW);
                   setShowModal(true);
                 }}
               />
@@ -277,7 +300,14 @@ function AssetDetails({ id }: Props) {
   );
 }
 
-const ItemForSale: React.FC<IProp> = ({ setStatus }) => {
+const ItemForSale: React.FC<IProp> = ({ setStatus, startKey, assetDetails }) => {
+  const triggerPopover = () => {
+    const btn = document.getElementById('trigger-popover');
+    const btnWithdraw = document.getElementById('trigger-withdraw');
+    btn?.click();
+    btnWithdraw?.click();
+  };
+
   return (
     <div className="mb-[48px]">
       <div>
@@ -290,14 +320,20 @@ const ItemForSale: React.FC<IProp> = ({ setStatus }) => {
           </span>
         </div>
       </div>
-      <button
-        className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
-        <Trans>LIST ITEM FOR SALE</Trans>
-      </button>
-      <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
-        <Trans>WITHDRAW</Trans>
-      </button>
+      {startKey === assetDetails?.starkKey && (
+        <>
+          <button
+            className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
+            onClick={setStatus}>
+            <Trans>LIST ITEM FOR SALE</Trans>
+          </button>
+          <button
+            className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
+            onClick={triggerPopover}>
+            <Trans>WITHDRAW</Trans>
+          </button>
+        </>
+      )}
       <span className="text-light mt-[10px] text-[14px]">
         <Trans>Assets remain in your wallet when you list on Myria Marketplace</Trans>
       </span>

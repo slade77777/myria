@@ -247,7 +247,9 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
                         )
                       }>
                       <span className="uppercase">
-                        <button className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]">
+                        <button
+                          className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]"
+                          id="trigger-popover">
                           <span>{truncateString(address)}</span>
                           <i className="w-4">
                             <ChevronDownIcon />
