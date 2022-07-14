@@ -69,7 +69,7 @@ function AssetDetails({ id }: Props) {
     }
   );
   const currentPrice = formatNumber2digits(
-    Number((assetDetails?.order as unknown as AssetListResponse['order'][])?.[0].amountSell ?? 0)
+    Number((assetDetails?.order as unknown as AssetListResponse['order'][])?.[0]?.amountSell ?? 0)
   );
 
   // the status will be get from based on the order Object in API get assetDetails
@@ -364,13 +364,13 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
   return (
     <div className="mb-[48px]">
       <div>
-        <span className="text-light text-[18px] mt-[36px] mb-[16px]">
+        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
           <Trans>Current price</Trans>
         </span>
         <div className="flex flex-row items-center">
           <DAOIcon className="mr-[8px]" />
           <span className="text-[28px] font-bold">{currentPrice}</span>
-          <span className="text-[14px] text-light self-end mb-[5px] ml-1">
+          <span className="text-light mb-[5px] ml-1 self-end text-[14px]">
             {'(~$'}
             {currentUSDPrice}
             {')'}
@@ -378,7 +378,7 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
         </div>
       </div>
       <button
-        className="flex bg-primary/6 mb-[10px] mt-[40px] h-[56px] justify-center items-center rounded-[8px] text-base/1 font-bold text-[16px] w-full cursor-pointer"
+        className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
         onClick={setStatus}>
         <Trans>Connect Wallet To Buy</Trans>
       </button>
