@@ -6,11 +6,44 @@ import AssetList from 'src/components/marketplace/AssetList';
 import HotCollection from 'src/components/marketplace/HotCollection';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
+import { useQuery } from 'react-query';
+import { collectionModule } from 'src/services/myriaCore';
 import { negativeMarginXSm, paddingX } from 'src/utils';
-import testImg from './inventory/test.png';
 import testavatarImg from './inventory/testavatar.png';
-
+import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
+import truncateString from 'src/helper';
+const payload = {
+  limit: 10,
+  page: 1,
+  isHot: true
+};
 const Marketplace: React.FC = () => {
+  const { data: fetchHotCollection } = useQuery(['marketplace', 'hotCollection'], () =>
+    collectionModule?.getCollectionList(payload)
+  );
+  const hotCollection: CollectionItems[] | undefined = fetchHotCollection?.data.items;
+  
+  const { data: dataOrder } = useQuery(
+    ['homepage', 'listorder'],
+    async () => {
+      console.log('!hotCollection || !collectionModule', hotCollection, collectionModule);
+      
+      if (!hotCollection || !collectionModule) return;
+      const firstList = await collectionModule.getAssetByCollectionId({
+        collectionId: hotCollection[0].id,
+        assetType: 'FOR_SALE'
+      });
+      const secondList = await collectionModule.getAssetByCollectionId({
+        collectionId: hotCollection[1].id,
+        assetType: 'FOR_SALE'
+      });
+      const listOrder = [];
+      firstList?.data.items && listOrder.push(...firstList?.data.items);
+      secondList?.data.items && listOrder.push(...secondList?.data.items);
+      return listOrder;
+    },
+    { enabled: hotCollection && hotCollection.length > 0 }
+  );
   return (
     <Page>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
@@ -30,23 +63,23 @@ const Marketplace: React.FC = () => {
             <HotCollection />
           </section>
           <section className="mb-20 mt-[64px]">
-            <AssetList
-              title="Explore"
-              items={Array(11)
-                .fill(0)
-                .map((_, index) => {
+          {dataOrder && (
+              <AssetList
+                title="Explore"
+                items={dataOrder.map((elm, index) => {
                   const item: NFTItemType = {
                     id: (index + 1).toString(),
                     rarity: 'rare',
-                    name: 'Common Alliance Chest',
-                    image_url: testImg.src,
-                    creator: 'Myria',
+                    name: elm.name || '',
+                    image_url: elm.imageUrl || '',
+                    creator: truncateString(elm.owner),
                     creatorImg: testavatarImg.src,
-                    priceETH: Math.round(Math.random() * 5)
+                    priceETH: +elm.order.amountBuy // +elm... to convert string to number
                   };
                   return item;
                 })}
-            />
+              />
+            )}
           </section>
         </div>
       </div>
