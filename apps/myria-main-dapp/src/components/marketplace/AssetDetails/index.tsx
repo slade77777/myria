@@ -18,6 +18,7 @@ import AssetList from '../AssetList';
 import MessageModal from '../MessageModal/MessageModal';
 import MessagePurchaseModal from '../MessageModal/MessagePurchaseModal';
 import { MessageEditListingModal, ModalEditListing } from '../Modals';
+import UnlistModalContent from '../Modals/UnlistModal';
 import { NFTItemType } from '../NftItem/type';
 import PurchasePopover from '../PurchasePopover';
 import AssetDetailTab from './AssetDetailTab';
@@ -32,6 +33,7 @@ interface IProp {
   setStatus?: () => void;
   startKey?: string;
   assetDetails?: any;
+  setShowUnlist?: any;
 }
 
 const detailData = {
@@ -74,7 +76,7 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const startKey = '0x' + startKeyUser;
-  const currentPrice = formatNumber2digits(Number((assetDetails?.order)?.[0]?.amountSell ?? 0));
+  const currentPrice = formatNumber2digits(Number(assetDetails?.order?.[0]?.amountSell ?? 0));
 
   // the status will be get from based on the order Object in API get assetDetails
 
@@ -83,6 +85,7 @@ function AssetDetails({ id }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [showMessageEdit, setShowMessageEdit] = useState(false);
+  const [showModalUnlist, setShowModalUnlist] = useState(false);
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
 
@@ -125,13 +128,17 @@ function AssetDetails({ id }: Props) {
   }, [address, assetDetails?.order, assetDetails?.starkKey, startKey]);
 
   const handleClosePopup = () => {
-    console.log(startKey, assetDetails);
     setShowPopup(false);
     setStatus(AssetStatus.SALE);
     setShowMessage(true);
     setTimeout(() => {
       setShowMessage(false);
     }, SHOW_MESSAGE_TIME);
+  };
+
+  const handleCloseUnlist = () => {
+    setStatus(AssetStatus.SALE);
+    setShowModalUnlist(false);
   };
 
   if (isLoading) {
@@ -235,6 +242,7 @@ function AssetDetails({ id }: Props) {
                 setStatus={() => {
                   setShowModal(true);
                 }}
+                setShowUnlist={() => setShowModalUnlist(true)}
               />
             )}
           </div>
@@ -269,6 +277,14 @@ function AssetDetails({ id }: Props) {
           onClose={() => setShowPopup(false)}
           onCloseMessage={handleClosePopup}
           currentPrice={currentPrice}
+        />
+      )}
+      {showModalUnlist && (
+        <UnlistModal
+          open={showModalUnlist}
+          onClose={() => setShowModalUnlist(false)}
+          onHandleUnlist={handleCloseUnlist}
+          onHandleCancel={() => setShowModalUnlist(false)}
         />
       )}
       {showMessage && (
@@ -339,7 +355,12 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, startKey, assetDetails }) => 
   );
 };
 
-const ModifyListing: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) => {
+const ModifyListing: React.FC<IProp> = ({
+  currentPrice,
+  currentUSDPrice,
+  setStatus,
+  setShowUnlist
+}) => {
   return (
     <div className="mb-[48px]">
       <div>
@@ -361,7 +382,9 @@ const ModifyListing: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStat
         onClick={setStatus}>
         <Trans>MODIFY LISTING</Trans>
       </button>
-      <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+      <button
+        className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
+        onClick={setShowUnlist}>
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
     </div>
@@ -425,6 +448,16 @@ const PurchaseModal: React.FC<any> = ({ open, onClose, currentPrice, onCloseMess
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={'Purchase'} className="w-[468px] shadow-[0_0_40px_10px_#0000004D]">
         <PurchasePopover currentPrice={currentPrice} onCloseMessage={onCloseMessage} />
+      </Modal.Content>
+    </Modal>
+  );
+};
+
+const UnlistModal: React.FC<any> = ({ open, onClose, onHandleCancel, onHandleUnlist }) => {
+  return (
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title={'Unlist Your NFT?'} className="shadow-[0_0_40px_10px_#0000004D] mt-0">
+        <UnlistModalContent onHandleCancel={onHandleCancel} onHandleUnlist={onHandleUnlist} />
       </Modal.Content>
     </Modal>
   );
