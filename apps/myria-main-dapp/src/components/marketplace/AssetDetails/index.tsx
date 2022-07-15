@@ -74,9 +74,7 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const startKey = '0x' + startKeyUser;
-  const currentPrice = formatNumber2digits(
-    Number((assetDetails?.order as unknown as AssetListResponse['order'][])?.[0]?.amountSell ?? 0)
-  );
+  const currentPrice = formatNumber2digits(Number((assetDetails?.order)?.[0]?.amountSell ?? 0));
 
   // the status will be get from based on the order Object in API get assetDetails
 
