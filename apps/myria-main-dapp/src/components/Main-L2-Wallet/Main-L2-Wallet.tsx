@@ -190,7 +190,7 @@ export default function MainLayout() {
   };
 
   return (
-    <div className="flex bg-[#050E15] min-h-[100vh]">
+    <div className="flex bg-[#050E15]">
       <TermsOfServiceModal
         onAccept={onAcceptTermOfService}
         modalShow={showPrivacyModal}
