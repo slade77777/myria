@@ -32,9 +32,7 @@ const Popover = forwardRef(
     };
     useImperativeHandle(
       ref,
-      () => ({
-        closePopover,
-      }),
+      () => setPopoverShow(false),
       [],
     );
     const btnRef: any = React.createRef();

@@ -52,6 +52,7 @@ import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 import DropdownMenu from '../../../../../components/DropdownMenu';
 import LogoutIcon from '../../../../../components/icons/LogoutIcon';
 import { useWalletContext } from '../../../../../context/wallet';
+import {useEtheriumPrice} from "../../../../../hooks/useEtheriumPrice";
 import ChevronIcon from '../Icons/ChevronIcon';
 type Props = {
   abbreviationAddress: string;
@@ -116,6 +117,8 @@ export default function L2WalletPopover({
   const { balanceList } = useBalanceList(pKey, screen);
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
   const { balanceL1: balanceEth } = useBalanceL1(options[0], connectedAccount);
+  const { data: etheCost = 0 } = useEtheriumPrice();
+
   const [balanceL2Eth, setBalanceL2Eth] = useState<any>('');
   const [transactionDetail, setTransactionDetail] = useState<any>(null);
   const { address, onConnect, disconnect } = useWalletContext();
@@ -286,22 +289,22 @@ export default function L2WalletPopover({
   }, [pKey, dispatch]);
 
   const isValidForm = useMemo(() => {
-    let invalid = false;
     if (!selectedToken) {
-      setErrorMessageAsset('Select Asset required.');
-      invalid = true;
-    } else {
-      setErrorMessageAsset('');
+      setErrorAmount('Select Asset required.');
+      return false;
     }
     if (amount === 0) {
       setErrorAmount("Amount can't be 0.");
-      invalid = true;
+      return false;
+    }
+    if (amount * etheCost < 10) {
+      setErrorAmount("Trade's value must be at least 10$.");
+      return false;
     }
     if (amount > parseFloat(balance)) {
       setErrorAmount('Insufficient Balance.');
-      invalid = true;
+      return false;
     }
-    if (invalid) return false;
     setErrorAmount('');
     return true;
   }, [selectedToken, amount, balance]);
