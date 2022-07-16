@@ -268,7 +268,7 @@ export default function L2WalletPopover({
                 item.transactionStatus === 'Success'
                   ? 'success'
                   : 'in_progress',
-              ico: item.ico,
+              ico: '/assets/images/eth.svg',
               tokenType: item.tokenType,
             };
           });
