@@ -19,6 +19,10 @@ type Props = {
   options: any;
   balanceList: any;
   balanceEth: any;
+  transactionList: any;
+  gotoDetailTransaction: any;
+  activeToken: any;
+  setActiveToken: any;
 };
 
 const tabs = [
@@ -61,16 +65,20 @@ const historyData: any[] = [];
 // },
 // ];
 
+const QUANTUM_CONSTANT = 10000000000;
+
 export default function MainScreen({
   gotoDepositScreen,
   gotoWithdrawScreen,
   options,
   balanceList,
   balanceEth,
+  transactionList,
+  gotoDetailTransaction,
+  activeToken,
+  setActiveToken,
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
-  const [activeToken, setActiveToken] = useState<string>('tokens');
-  const [transactionList, setTransactionList] = useState<Array<any>>([]);
   useEffect(() => {
     const temp: any = [];
     options.map((option: any, index: number) => {
@@ -80,7 +88,7 @@ export default function MainScreen({
         assetType = asset.getAssetType({
           type: 'ETH',
           data: {
-            quantum: '1',
+            quantum: QUANTUM_CONSTANT.toString(),
           },
         });
       } else {
@@ -95,10 +103,15 @@ export default function MainScreen({
       const matchedBalance = balanceList.filter(
         (item: any) => item.assetType === assetType,
       );
+
       if (matchedBalance && matchedBalance.length > 0) {
         const balance =
           option.name === 'Ethereum'
-            ? Web3.utils.fromWei(matchedBalance[0].quantizedAmount)
+            ? Web3.utils.fromWei(
+                (
+                  matchedBalance[0].quantizedAmount * QUANTUM_CONSTANT ?? 0
+                ).toString(),
+              )
             : matchedBalance[0].quantizedAmount;
         tempOption = { ...tempOption, balance };
       } else tempOption = { ...tempOption, balance: 0 };
@@ -190,10 +203,13 @@ export default function MainScreen({
             </div>
           </TabContent>
           <TabContent id="history" activeTab={activeToken}>
-            <div className="mt-3">
-              {historyData.length === 0 && <div>No data available yet</div>}
-              {historyData.map((item: any, index: number) => (
+            <div className="mt-3 max-h-[320px] overflow-y-auto">
+              {transactionList.length === 0 && <div>No data available yet</div>}
+              {transactionList.map((item: any, index: number) => (
                 <div
+                  onClick={() => {
+                    gotoDetailTransaction(item);
+                  }}
                   className={cn(
                     'flex justify-between py-4',
                     index !== historyData.length - 1 &&

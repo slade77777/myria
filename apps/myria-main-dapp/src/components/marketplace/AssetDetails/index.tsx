@@ -76,7 +76,8 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const startKey = '0x' + startKeyUser;
-  const currentPrice = formatNumber2digits(Number(assetDetails?.order?.[0]?.amountSell ?? 0));
+  // const currentPrice = formatNumber2digits(Number(assetDetails?.order?.[0]?.amountSell ?? 0));
+  const currentPrice = 0;
 
   // the status will be get from based on the order Object in API get assetDetails
 
@@ -214,14 +215,14 @@ function AssetDetails({ id }: Props) {
             </div>
             {status === AssetStatus.BUY_NOW && (
               <BuyNow
-                currentPrice={currentPrice}
+                currentPrice={currentPrice.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => setShowPopup(true)}
               />
             )}
             {status === AssetStatus.UNCONNECTED && (
               <ConnectWalletToBuy
-                currentPrice={currentPrice}
+                currentPrice={currentPrice.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={onConnect}
               />
@@ -237,7 +238,7 @@ function AssetDetails({ id }: Props) {
             )}
             {status === AssetStatus.MODIFY && (
               <ModifyListing
-                currentPrice={currentPrice}
+                currentPrice={currentPrice.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
                   setShowModal(true);
