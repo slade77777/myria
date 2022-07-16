@@ -42,7 +42,8 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
       className={clsx(
         'text-brand-white flex items-center space-x-8 text-[14px] font-semibold uppercase leading-[1.25] tracking-wider',
         className
-      )}>
+      )}
+    >
       {links.map((item, idx) => {
         if (item.inactive) {
           return (
@@ -53,7 +54,8 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                   style={{
                     boxShadow: '0 0 0 0.5px #9AC9E3'
                   }}
-                  className="bg-opacity-4 bg-brand-light-blue/40 absolute -top-[9px] -right-7 rounded-sm p-[3px] pb-[1px] text-[6px] font-extrabold">
+                  className="bg-opacity-4 bg-brand-light-blue/40 absolute -top-[9px] -right-7 rounded-sm p-[3px] pb-[1px] text-[6px] font-extrabold"
+                >
                   <Trans>Soon!</Trans>
                 </div>
               </div>
@@ -87,7 +89,8 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                           target={link.target}
                           className={clsx('hover:text-brand-gold', {
                             'text-brand-gold': link.url === router.pathname
-                          })}>
+                          })}
+                        >
                           {link.text}
                         </a>
                       </Link>
@@ -103,12 +106,14 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
               key={idx}
               className={clsx('hover:bg-base/4 rounded-[8px] py-[9px] px-[13px]', {
                 'bg-base/4': item.url === router.pathname
-              })}>
+              })}
+            >
               <Link href={item.url as string}>
                 <a
                   className={clsx('hover:text-blue/6', {
                     'text-blue/6': item.url === router.pathname
-                  })}>
+                  })}
+                >
                   {item.text}
                 </a>
               </Link>
@@ -176,7 +181,8 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
               style={{
                 filter: 'drop-shadow(0px 0px 10px #F5B941)'
               }}
-              className="btn-sm btn-secondary">
+              className="btn-sm btn-secondary"
+            >
               <Trans>Free Sigil NFT</Trans>
             </a>
           </Link>
@@ -190,7 +196,8 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
             className="btn-sm btn-secondary"
             href="http://discord.gg/myria"
             target="_blank"
-            rel="noreferrer">
+            rel="noreferrer"
+          >
             <Trans>JOIN DISCORD</Trans>
           </a>
         );
@@ -208,7 +215,8 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         style={{
           height: navHeight
         }}
-        className="flex w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
+        className="flex w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]"
+      >
         <div className="items-left mr-12 flex">
           <Link href="/">
             <a className="w-[164px]">
@@ -226,80 +234,42 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           <div>
             {address ? (
               <div>
-                <DropdownMenu>
-                  <DropdownMenu.Trigger asChild>
-                    <Popover
-                      ref={popoverRef}
-                      width="min-w-[406px]"
-                      offsetX={-170}
-                      defaultShow={showClaimPopover}
-                      renderElement={
-                        showClaimPopover ? (
-                          <ClaimWithdrawPopover
-                            abbreviationAddress={abbreviationAddress}
-                            onClosePopover={closePopover}
-                          />
-                        ) : (
-                          <L2WalletPopover
-                            onClosePopover={closePopover}
-                            abbreviationAddress={abbreviationAddress}
-                          />
-                        )
-                      }>
-                      <span className="uppercase">
-                        <button
-                          className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]"
-                          id="trigger-popover">
-                          <span>{truncateString(address)}</span>
-                          <i className="w-4">
-                            <ChevronDownIcon />
-                          </i>
-                        </button>
-                      </span>
-                    </Popover>
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Content
-                    sideOffset={8}
-                    align="end"
-                    className="rounded-md bg-current p-3 text-base/3">
-                    <DropdownMenu.Arrow className="translate-x-3 fill-current" />
-                    <div>
-                      <div className="text-white">
-                        <button
-                          className="body-14-medium flex items-center space-x-2.5 text-white"
-                          onClick={disconnect}>
-                          <i className="w-4">
-                            <LogoutIcon />
-                          </i>
-                          <span>
-                            <Trans>Disconnect</Trans>
-                          </span>
-                        </button>
-                      </div>
-                      <div className="text-white mt-2">
-                        <Link href={'/marketplace/inventory'}>
-                          <a
-                            href={'/marketplace/inventory'}
-                            className="body-14-medium flex items-center space-x-2.5 text-white cursor-pointer">
-                            <i className="w-4">
-                              <InventoryIcon />
-                            </i>
-                            <span>
-                              <Trans>Inventory</Trans>
-                            </span>
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
-                  </DropdownMenu.Content>
-                </DropdownMenu>
+                <Popover
+                  ref={popoverRef}
+                  width="min-w-[406px]"
+                  offsetX={-170}
+                  defaultShow={showClaimPopover}
+                  renderElement={
+                    showClaimPopover ? (
+                      <ClaimWithdrawPopover
+                        abbreviationAddress={abbreviationAddress}
+                        onClosePopover={closePopover}
+                      />
+                    ) : (
+                      <L2WalletPopover
+                        onClosePopover={closePopover}
+                        abbreviationAddress={abbreviationAddress}
+                      />
+                    )
+                  }
+                >
+                  <span className="uppercase">
+                    <button className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]">
+                      <span>{truncateString(address)}</span>
+                      <i className="w-4">
+                        <ChevronDownIcon />
+                      </i>
+                    </button>
+                  </span>
+                </Popover>
               </div>
             ) : (
               <button
                 onClick={() => {
                   onConnect();
                 }}
-                className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
+                className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase"
+              >
                 <Trans>Connect wallet</Trans>
               </button>
             )}

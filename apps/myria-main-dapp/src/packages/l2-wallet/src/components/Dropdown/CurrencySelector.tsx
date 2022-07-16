@@ -7,6 +7,7 @@ export interface TOption {
   short: string;
   ico: string;
   tokenAddress: string;
+  assetType?: string;
 }
 
 interface TProp {

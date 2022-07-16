@@ -7,6 +7,8 @@ import Web3 from 'web3';
 import { asset } from '@starkware-industries/starkware-crypto-utils';
 import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
 import Link from 'next/link';
+import cn from 'classnames';
+import moment from 'moment';
 
 // Import components
 import DepositScreen from './L2Wallet/DepositScreen';
@@ -21,16 +23,11 @@ import MainScreen from './L2Wallet/MainScreen';
 import DepositFailedScreen from './L2Wallet/DepositFailedScreen';
 // import InventoryIcon from './src/components/icons/InventoryIcon';
 import InventoryIcon from '../../../../../components/icons/InventoryIcon';
+import TransactionHistoryDetailScreen from './L2Wallet/TransactionHistoryDetailScreen';
 
 // Import Redux
 import { RootState } from '../../app/store';
 import { disconnectAccount } from '../../app/slices/accountSlice';
-
-// Import Assets
-// import Myria from '../../assets/images/myria.png';
-// import Metarush from '../../assets/images/metarush.png';
-// import Eth from '../../assets/images/eth.png';
-// import USDC from '../../assets/images/usdc.png';
 
 // Import Types
 import { TOption } from '../Dropdown/CurrencySelector';
@@ -45,13 +42,17 @@ import useBalanceL1 from '../../common/hooks/useBalanceL1';
 
 // Import Redux
 import { setWithdrawClaimModal } from '../../app/slices/uiSlice';
-import { setSelectedTokenFunc } from '../../app/slices/tokenSlice';
+import {
+  setSelectedTokenFunc,
+  setTransactions,
+} from '../../app/slices/tokenSlice';
 import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 
 //compoment POC
 import DropdownMenu from '../../../../../components/DropdownMenu';
 import LogoutIcon from '../../../../../components/icons/LogoutIcon';
 import { useWalletContext } from '../../../../../context/wallet';
+import ChevronIcon from '../Icons/ChevronIcon';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -64,33 +65,10 @@ const options: Array<TOption> = [
     short: 'ETH',
     ico: '/assets/images/eth.svg',
     tokenAddress: '',
+    assetType:
+      '0xb333e3142fe16b78628f19bb15afddaef437e72d6d7f5c6c20c6801a27fba6',
   },
 ];
-
-// const coinPrices = [
-//   {
-//     id: 1,
-//     name: '$MYRIA',
-//     price: '459,901.614',
-//     balance: '$89,619.41',
-//     icon: Myria,
-//   },
-//   {
-//     id: 2,
-//     name: 'Metarush',
-//     price: '147.201',
-//     balance: '$22.10',
-//     icon: Metarush,
-//   },
-//   { id: 3, name: 'ETH', price: '5.619', balance: '$25,412.88', icon: Eth },
-//   {
-//     id: 4,
-//     name: 'USDC',
-//     price: '189,098.91',
-//     balance: '189,098.91',
-//     icon: USDC,
-//   },
-// ];
 
 enum SCREENS {
   MAIN_SCREEN,
@@ -103,6 +81,7 @@ enum SCREENS {
   WITHDRAW_COMPLETE,
   DEPOSIT_FAILED,
   WITHDRAW_FAILED,
+  TRANSACTION_HISTORY_DETAILED,
 }
 
 const QUANTUM_CONSTANT = 10000000000;
@@ -137,10 +116,11 @@ export default function L2WalletPopover({
   const { balanceList } = useBalanceList(pKey, screen);
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
   const { balanceL1: balanceEth } = useBalanceL1(options[0], connectedAccount);
-
   const [balanceL2Eth, setBalanceL2Eth] = useState<any>('');
-
+  const [transactionDetail, setTransactionDetail] = useState<any>(null);
   const { address, onConnect, disconnect } = useWalletContext();
+
+  const [activeToken, setActiveToken] = useState<string>('tokens');
 
   const initForm = () => {
     setErrorAmount('');
@@ -252,8 +232,49 @@ export default function L2WalletPopover({
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const transactionModule = moduleFactory.getTransactionModule();
       try {
-        const result = await transactionModule.getTransactionList('0x' + pKey);
-        console.log('transaction result', result);
+        const { data } = await transactionModule.getTransactionList(
+          '0x' + pKey,
+        );
+        const result = data
+          .filter((item: any, index: number) => item.assetType)
+          .map((transaction: any, index: number) => {
+            const matched = options.filter(
+              (option: TOption, index: number) =>
+                option.assetType === transaction.assetType,
+            );
+            if (matched && matched.length > 0) {
+              return {
+                ...transaction,
+                ...matched[0],
+              };
+            } else return transaction;
+          });
+        const processedData = result
+          .sort((a: any, b: any) => b.createdAt - a.createdAt)
+          .map((item: any, index: number) => {
+            return {
+              id: index,
+              type: item.transactionType,
+              amount:
+                item.name === 'Ethereum'
+                  ? Web3.utils.fromWei(
+                      (item.quantizedAmount * QUANTUM_CONSTANT ?? 0).toString(),
+                    )
+                  : item.quantizedAmount,
+              // amount: item.quantizedAmount / item.quantum,
+              time: moment(item.createdAt).fromNow(),
+              updatedAt: moment(item.updatedAt).fromNow(),
+              status:
+                item.transactionStatus === 'Success'
+                  ? 'success'
+                  : 'in_progress',
+              ico: item.ico,
+              tokenType: item.tokenType,
+            };
+          });
+        console.log('processedData', processedData);
+        dispatch(setTransactions(processedData));
+        setTransactionList(processedData);
       } catch (ex) {
         console.log('Transaction list error ', ex);
       }
@@ -262,7 +283,7 @@ export default function L2WalletPopover({
     if (pKey) {
       fetchTransactionHistory();
     }
-  }, [pKey]);
+  }, [pKey, dispatch]);
 
   const isValidForm = useMemo(() => {
     let invalid = false;
@@ -475,7 +496,27 @@ export default function L2WalletPopover({
   return (
     <div className="min-h-[565px] py-[24px]">
       {/* Header Part */}
-      <div className="flex items-center justify-end px-[24px] text-[14px] text-[#666666]">
+      <div
+        className={cn(
+          'flex items-center px-[24px] text-[14px] text-[#666666]',
+          screen === SCREENS.TRANSACTION_HISTORY_DETAILED
+            ? 'justify-between'
+            : 'justify-end',
+        )}
+      >
+        {screen === SCREENS.TRANSACTION_HISTORY_DETAILED && (
+          <div
+            className="flex cursor-pointer items-center text-white"
+            onClick={() => {
+              setScreen(SCREENS.MAIN_SCREEN);
+              setActiveToken('history');
+            }}
+          >
+            <ChevronIcon direction="left" />
+            <span className="text-[20px] font-bold">History</span>
+          </div>
+        )}
+
         <DropdownMenu>
           <DropdownMenu.Trigger asChild>
             <div className="text-[#F5B941]">
@@ -522,6 +563,7 @@ export default function L2WalletPopover({
       <div className="min-h-[460px] px-[24px]">
         {screen === SCREENS.MAIN_SCREEN && (
           <MainScreen
+            transactionList={transactionList}
             gotoDepositScreen={() => {
               setScreen(SCREENS.DEPOSIT_SCREEN);
             }}
@@ -531,6 +573,12 @@ export default function L2WalletPopover({
             }}
             balanceList={balanceList}
             balanceEth={balanceL2Eth}
+            gotoDetailTransaction={(detail: any) => {
+              setTransactionDetail(detail);
+              setScreen(SCREENS.TRANSACTION_HISTORY_DETAILED);
+            }}
+            activeToken={activeToken}
+            setActiveToken={setActiveToken}
           />
         )}
 
@@ -638,6 +686,13 @@ export default function L2WalletPopover({
           <WithdrawFailedScreen
             amount={amount}
             withdrawRetryHandler={withdrawRetryHandler}
+          />
+        )}
+
+        {screen === SCREENS.TRANSACTION_HISTORY_DETAILED && (
+          <TransactionHistoryDetailScreen
+            goBack={() => setScreen(SCREENS.MAIN_SCREEN)}
+            transactionDetail={transactionDetail}
           />
         )}
       </div>

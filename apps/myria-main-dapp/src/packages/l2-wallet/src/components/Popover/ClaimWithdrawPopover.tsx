@@ -1,6 +1,6 @@
 // Import packages
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Web3 from 'web3';
 import cn from 'classnames';
 // @ts-ignore
@@ -17,6 +17,12 @@ import {
 
 // Import Redux
 import { RootState } from '../../app/store';
+import { disconnectAccount } from '../../app/slices/accountSlice';
+import { setWithdrawClaimPopover } from '../../app/slices/uiSlice';
+
+// import { useWalletContext } from '../../../src/context/wallet';
+import { useWalletContext } from '../../../../../../src/context/wallet';
+import { useAuthenticationContext } from '../../../../../../src/context/authentication';
 
 // Import type
 // import { TokenType } from '../../common/type';
@@ -54,6 +60,11 @@ export default function ClaimWithdrawPopover({
     (state: RootState) => state.account.connectedAccount,
   );
 
+  const { disconnect } = useWalletContext();
+  const { user, logout } = useAuthenticationContext();
+
+  const dispatch = useDispatch();
+
   const claimWithdraw = async () => {
     try {
       setWithdrawProgress(true);
@@ -76,7 +87,7 @@ export default function ClaimWithdrawPopover({
         });
         await withdrawModule.withdrawalOnchain(
           {
-            starkKey: '0x' + pKey,
+            starkKey: connectedAccount,
             assetType,
           },
           {
@@ -95,7 +106,7 @@ export default function ClaimWithdrawPopover({
         });
         await withdrawModule.withdrawalOnchain(
           {
-            starkKey: '0x' + pKey,
+            starkKey: connectedAccount,
             assetType,
           },
           {
@@ -113,6 +124,13 @@ export default function ClaimWithdrawPopover({
     }
   };
 
+  const disconnectWallet = () => {
+    localStorage.clear();
+    dispatch(disconnectAccount());
+    disconnect();
+    logout();
+  };
+
   return (
     <div className="py-[24px]">
       {/* Header Part */}
@@ -123,7 +141,9 @@ export default function ClaimWithdrawPopover({
             {abbreviationAddress}
           </span>
         </div>
-        <div className="text-[#F5B941]">Disconnect</div>
+        <div className="text-[#F5B941]" onClick={disconnectWallet}>
+          Disconnect
+        </div>
       </div>
 
       {/* Body Part */}
@@ -166,7 +186,10 @@ export default function ClaimWithdrawPopover({
         <div className="mt-[78px]">
           {withdrawalCompleted ? (
             <button
-              onClick={onClosePopover}
+              onClick={() => {
+                dispatch(setWithdrawClaimPopover(false));
+                onClosePopover();
+              }}
               className={cn(
                 'flex w-full items-center justify-center rounded-[8px] py-[13px] pt-[15px] text-[16px] font-bold text-black',
                 'bg-[#F5B941]',

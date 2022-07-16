@@ -22,12 +22,12 @@ const Marketplace: React.FC = () => {
     collectionModule?.getCollectionList(payload)
   );
   const hotCollection: CollectionItems[] | undefined = fetchHotCollection?.data.items;
-  
+
   const { data: dataOrder } = useQuery(
     ['homepage', 'listorder'],
     async () => {
       console.log('!hotCollection || !collectionModule', hotCollection, collectionModule);
-      
+
       if (!hotCollection || !collectionModule) return;
       const firstList = await collectionModule.getAssetByCollectionId({
         collectionId: hotCollection[0].id,
@@ -63,7 +63,7 @@ const Marketplace: React.FC = () => {
             <HotCollection />
           </section>
           <section className="mb-20 mt-[64px]">
-          {dataOrder && (
+            {dataOrder && (
               <AssetList
                 title="Explore"
                 items={dataOrder.map((elm, index) => {
@@ -74,7 +74,8 @@ const Marketplace: React.FC = () => {
                     image_url: elm.imageUrl || '',
                     creator: truncateString(elm.owner),
                     creatorImg: testavatarImg.src,
-                    priceETH: +elm.order.amountBuy // +elm... to convert string to number
+                    priceETH: 0
+                    // priceETH: +elm.order.amountBuy // +elm... to convert string to number
                   };
                   return item;
                 })}

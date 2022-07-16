@@ -36,3 +36,4 @@ export { default as MarketPlaceIcon } from './MarketPlaceIcon';
 export { default as DAppIcon } from './DAppIcon';
 export { default as GamesIcon } from './GamesIcon';
 export { default as BridgeIcon } from './BridgeIcon';
+export { default as Arrow3Icon } from './Arrow3Icon';

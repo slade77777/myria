@@ -10,7 +10,6 @@ import CurrencySelector, { TOption } from '../Dropdown/CurrencySelector';
 import MaxInput from '../Input/MaxInput';
 import { ThreeDotsVerticalIcon } from '../Icons';
 
-import Ethereum from '../../assets/images/ethereum.png';
 // import TestToken from '../../assets/images/TT.png';
 import useBalanceL1 from '../../common/hooks/useBalanceL1';
 
