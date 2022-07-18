@@ -13,7 +13,7 @@ interface Props {
 
 const Collection: FC<Props> = ({ collection, assetItems }) => {
   // @ts-ignore
-  const { collectionImageUrl, name, createdBy, description, totalAssets, totalAssetsForSale } =
+  const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale } =
     collection;
   return (
     <Page>
@@ -29,7 +29,7 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
             <div className="w-2/3">
               <p className="text-4xl text-white">{name}</p>
               <p className="mt-2 text-[#97AAB5]">
-                Created By <span className="text-white">{createdBy}</span>
+                Created By <span className="text-white">{project?.name || ''}</span>
               </p>
               <ReadMoreText text={description || ''} />
             </div>
