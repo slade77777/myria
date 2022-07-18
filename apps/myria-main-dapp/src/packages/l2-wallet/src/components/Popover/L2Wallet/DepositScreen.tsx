@@ -69,7 +69,7 @@ export default function DepositScreen({
             max={parseFloat(balance)}
             onChangeHandle={setAmountHandle}
           />
-          <div className="text-[#F83D5C]">{errorAmount}</div>
+          <div className="text-[#F83D5C] mt-2">{errorAmount}</div>
         </div>
         <div className=" mt-2 flex justify-between text-[14px] text-[rgba(255,255,255,0.6)]">
           <p>Estimated gas fee</p>

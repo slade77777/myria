@@ -24,7 +24,7 @@ export default function MaxInput({ max = 100, onChangeHandle }: TProps) {
         }}
       />
       <div
-        className="absolute top-[10px] right-4 cursor-pointer text-[#777777]"
+        className="absolute top-[14px] right-4 cursor-pointer text-[#777777]"
         onClick={() => {
           setMax();
         }}
