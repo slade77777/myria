@@ -51,7 +51,7 @@ dev-deploy-1:
 # Dev CD target 2
 dev-deploy-2:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_COMMIT_BRANCH == "dev-b"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -74,11 +74,10 @@ dev-deploy-2:
     cloudfront_id: E3JI3MT5BO66BZ
   dependencies:
     - dev-build
-  when: manual
 
 staging-build:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+    - if: '$CI_COMMIT_BRANCH == "staging" || $CI_COMMIT_BRANCH == "staging-b"'
   image: node:14
   stage: staging-build
   script:
@@ -118,7 +117,7 @@ staging-deploy-1:
 # Staging CD target 2
 staging-deploy-2:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+    - if: '$CI_COMMIT_BRANCH == "staging-b"'
   image:
     name: amazon/aws-cli
     entrypoint: [""]
@@ -141,7 +140,6 @@ staging-deploy-2:
     cloudfront_id: E1IF0F18DWLOTP
   dependencies:
     - staging-build
-  when: manual
 
 # The below is legacy using the previous manually created bucket
 # Staging CD target 3
