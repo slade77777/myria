@@ -52,7 +52,7 @@ import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 import DropdownMenu from '../../../../../components/DropdownMenu';
 import LogoutIcon from '../../../../../components/icons/LogoutIcon';
 import { useWalletContext } from '../../../../../context/wallet';
-import {useEtheriumPrice} from "../../../../../hooks/useEtheriumPrice";
+import { useEtheriumPrice } from '../../../../../hooks/useEtheriumPrice';
 import ChevronIcon from '../Icons/ChevronIcon';
 type Props = {
   abbreviationAddress: string;
@@ -275,7 +275,6 @@ export default function L2WalletPopover({
               tokenType: item.tokenType,
             };
           });
-        console.log('processedData', processedData);
         dispatch(setTransactions(processedData));
         setTransactionList(processedData);
       } catch (ex) {
@@ -286,7 +285,7 @@ export default function L2WalletPopover({
     if (pKey) {
       fetchTransactionHistory();
     }
-  }, [pKey, dispatch]);
+  }, [pKey, dispatch, screen]);
 
   const isValidForm = useMemo(() => {
     if (!selectedToken) {
@@ -497,7 +496,7 @@ export default function L2WalletPopover({
   };
 
   return (
-    <div className="min-h-[565px] py-[24px]">
+    <div className="min-h-[565px] max-w-[406px] py-[24px]">
       {/* Header Part */}
       <div
         className={cn(

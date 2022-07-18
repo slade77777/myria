@@ -132,7 +132,7 @@ export default function ClaimWithdrawPopover({
   };
 
   return (
-    <div className="py-[24px]">
+    <div className="mx-auto w-[358px] py-[24px]">
       {/* Header Part */}
       <div className="flex items-center justify-between border-b border-[#202230] px-[24px] pb-[21px] text-[14px] text-[#666666]">
         <div className="flex items-center">
@@ -147,7 +147,7 @@ export default function ClaimWithdrawPopover({
       </div>
 
       {/* Body Part */}
-      <div className="px-[24px]">
+      <div className="">
         <div className="mt-[29px] flex justify-center">
           <TickCircleIcon className="text-[#9ECEAB]" />
         </div>

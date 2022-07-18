@@ -16,7 +16,7 @@ export default function DepositInProgressScreen({
   successHandler,
 }: Props) {
   return (
-    <div className="mt-[29px]">
+    <div className="mt-[29px] max-h-[565px]">
       <div className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center">
         <ProgressIcon size={64} className="w-full text-[#777777]" />
       </div>
