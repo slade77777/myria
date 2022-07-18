@@ -8,15 +8,13 @@ const CollectionDetailPage = () => {
   const router = useRouter();
   const publicId = router.query.id as string;
   const { collection } = useMarketplaceCollection(publicId);
-  const {
-    assets: { items }
-  } = useCollectionAsset(collection?.id);
+  const { assets } = useCollectionAsset(collection?.id);
 
   if (!collection) {
     return <NotFoundPage />;
   }
 
-  return <Collection collection={collection} assetItems={items} />;
+  return <Collection collection={collection} assetItems={assets?.data} />;
 };
 
 export default CollectionDetailPage;
