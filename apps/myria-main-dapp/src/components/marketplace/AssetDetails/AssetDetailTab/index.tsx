@@ -6,6 +6,7 @@ import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
 import { formatNumber2digits } from 'src/utils';
+import { AssetStatus } from '..';
 
 type Prop = {
   description?: string;
@@ -13,6 +14,8 @@ type Prop = {
   tokenId?: string | number;
   assetType?: string;
   data: EqualMetadataByAssetIdResponse | any;
+  status: AssetStatus;
+  onBuyNow: () => void;
 };
 
 const AssetDetailTab: FC<Prop> = ({
@@ -20,7 +23,8 @@ const AssetDetailTab: FC<Prop> = ({
   contractAddress = '',
   tokenId = '',
   assetType = '',
-  data = []
+  data = [],
+  onBuyNow
 }) => {
   return (
     <Root defaultValue="Listing">
@@ -82,7 +86,9 @@ const AssetDetailTab: FC<Prop> = ({
                     <td className="py-4 pr-6">${usdPriceConverted}</td>
                     <td className="py-4 pr-6">{ownerName}</td>
                     <td className="py-4 pr-6 text-right">
-                      <button className="rounded-[8px] border border-white/[0.4] px-[16px] py-[5px] font-bold">
+                      <button
+                        onClick={onBuyNow}
+                        className="rounded-[8px] border border-white/[0.4] px-[16px] py-[5px] font-bold">
                         <Trans>Buy now</Trans>
                       </button>
                     </td>

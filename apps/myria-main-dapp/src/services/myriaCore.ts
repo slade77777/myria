@@ -19,3 +19,4 @@ export const assetModule = getModuleFactory()?.getAssetModule();
 export const collectionModule = getModuleFactory()?.getCollectionModule();
 export const commonModule = getModuleFactory()?.getCommonModule();
 export const orderModule = getModuleFactory()?.getOrderModule();
+export const tradeModule = getModuleFactory()?.getTradeModule();
