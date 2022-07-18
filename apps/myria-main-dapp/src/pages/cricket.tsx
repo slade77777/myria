@@ -47,7 +47,7 @@ const Cricket = () => {
       if (data.email) {
         event('Email Subscribed', { campaign: 'AB de Villers', user_email: data.email });
       }
-      
+
       setError('');
       setIsSubmitSuccess(false);
 

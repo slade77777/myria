@@ -1,14 +1,14 @@
-import { IAbstractConnectorOptions } from "../../helpers";
+import { IAbstractConnectorOptions } from '../../helpers';
 
 type ETHEREUM_NETWORK_TYPE =
-  | "ropsten"
-  | "rinkeby"
-  | "kovan"
-  | "mainnet"
-  | "goerli"
-  | "localhost"
-  | "matic"
-  | "mumbai";
+  | 'ropsten'
+  | 'rinkeby'
+  | 'kovan'
+  | 'mainnet'
+  | 'goerli'
+  | 'localhost'
+  | 'matic'
+  | 'mumbai';
 
 interface NetworkParams {
   host: ETHEREUM_NETWORK_TYPE | string;
@@ -25,28 +25,28 @@ interface VerifierStatus {
 }
 
 interface LoginParams {
-  verifier?: "google" | "facebook" | "twitch" | "reddit" | "discord" | string;
+  verifier?: 'google' | 'facebook' | 'twitch' | 'reddit' | 'discord' | string;
 }
 
 type LOGIN_TYPE =
-  | "google"
-  | "facebook"
-  | "reddit"
-  | "discord"
-  | "twitch"
-  | "apple"
-  | "github"
-  | "linkedin"
-  | "twitter"
-  | "weibo"
-  | "line"
-  | "jwt"
-  | "email-password"
-  | "passwordless";
+  | 'google'
+  | 'facebook'
+  | 'reddit'
+  | 'discord'
+  | 'twitch'
+  | 'apple'
+  | 'github'
+  | 'linkedin'
+  | 'twitter'
+  | 'weibo'
+  | 'line'
+  | 'jwt'
+  | 'email-password'
+  | 'passwordless';
 
 interface BaseLoginOptions {
-  display?: "page" | "popup" | "touch" | "wap";
-  prompt?: "none" | "login" | "consent" | "select_account";
+  display?: 'page' | 'popup' | 'touch' | 'wap';
+  prompt?: 'none' | 'login' | 'consent' | 'select_account';
   max_age?: string | number;
   ui_locales?: string;
   id_token_hint?: string;
@@ -117,10 +117,10 @@ interface LoginConfig {
 }
 
 export interface IOptions {
-  buttonPosition?: "top-left" | "top-right" | "bottom-right" | "bottom-left";
+  buttonPosition?: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
   modalZIndex?: number;
   apiKey?: string;
-  buildEnv?: "production" | "development" | "staging" | "testing" | "lrc";
+  buildEnv?: 'production' | 'development' | 'staging' | 'testing' | 'lrc';
   enableLogging?: boolean;
   enabledVerifiers?: VerifierStatus;
   loginConfig?: LoginConfig;
@@ -140,10 +140,10 @@ const ConnectToTorus = async (Torus: any, opts: ITorusConnectorOptions) => {
   return new Promise(async (resolve, reject) => {
     try {
       // defaults
-      let buttonPosition = "bottom-left";
-      let apiKey = "torus-default";
+      let buttonPosition = 'bottom-left';
+      let apiKey = 'torus-default';
       let modalZIndex = 99999;
-      let network: NetworkParams = { host: "mainnet" };
+      let network: NetworkParams = { host: 'mainnet' };
       let defaultVerifier = undefined;
 
       // parsing to Torus interfaces

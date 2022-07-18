@@ -1,4 +1,4 @@
-import { IAbstractConnectorOptions } from "../../helpers";
+import { IAbstractConnectorOptions } from '../../helpers';
 
 export interface IWalletLinkConnectorOptions extends IAbstractConnectorOptions {
   infuraId?: string;
@@ -9,15 +9,12 @@ export interface IWalletLinkConnectorOptions extends IAbstractConnectorOptions {
   darkMode?: boolean;
 }
 
-const ConnectToWalletLink = (
-  WalletLink: any,
-  opts: IWalletLinkConnectorOptions
-) => {
+const ConnectToWalletLink = (WalletLink: any, opts: IWalletLinkConnectorOptions) => {
   return new Promise(async (resolve, reject) => {
     const options = opts || {};
-    const infuraId = options.infuraId || "";
+    const infuraId = options.infuraId || '';
     const chainId = options.chainId || 1;
-    const appName = options.appName || "";
+    const appName = options.appName || '';
     const appLogoUrl = options.appLogoUrl;
     const darkMode = options.darkMode || false;
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const BookmarkIcon: React.FC = () => {
   return (
@@ -17,15 +17,9 @@ const BookmarkIcon: React.FC = () => {
           width="46"
           height="54"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -39,11 +33,7 @@ const BookmarkIcon: React.FC = () => {
             type="matrix"
             values="0 0 0 0 1 0 0 0 0 0.980833 0 0 0 0 0.808333 0 0 0 0.4 0"
           />
-          <feBlend
-            mode="normal"
-            in2="shape"
-            result="effect1_innerShadow_654_7521"
-          />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_654_7521" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -123,8 +113,7 @@ const BookmarkIcon: React.FC = () => {
           y1="8"
           x2="32"
           y2="56"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#DC18FC" />
           <stop offset="1" stopColor="#8E1EFF" />
         </linearGradient>

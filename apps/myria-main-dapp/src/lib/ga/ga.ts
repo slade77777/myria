@@ -6,7 +6,10 @@ type EventParams = {
   value: string;
 };
 
-const gtag = typeof window === 'object' && typeof (window as any).gtag === 'function' ? (window as any).gtag : () => null
+const gtag =
+  typeof window === 'object' && typeof (window as any).gtag === 'function'
+    ? (window as any).gtag
+    : () => null;
 
 const pageview = (url: string) => {
   gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`, {

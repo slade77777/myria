@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const MetarushLogo: React.FC = () => {
   return (
@@ -7,8 +7,7 @@ const MetarushLogo: React.FC = () => {
       height="88"
       viewBox="0 0 329 88"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+      xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d_978_1020)">
         <path
           d="M73.8201 25.8194L71.2422 52.7264L96.3716 53.0795L97.7139 43.6253L82.4978 44.4375L83.1663 40.6304L93.9981 39.4567V34.4543L83.6485 34.8711V31.1193L96.0175 31.4858L96.3732 24.2188L73.8201 25.8194Z"
@@ -51,8 +50,7 @@ const MetarushLogo: React.FC = () => {
           width="328.176"
           height="88"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
@@ -63,15 +61,8 @@ const MetarushLogo: React.FC = () => {
           <feOffset />
           <feGaussianBlur stdDeviation="10" />
           <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0"
-          />
-          <feBlend
-            mode="darken"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_978_1020"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0" />
+          <feBlend mode="darken" in2="BackgroundImageFix" result="effect1_dropShadow_978_1020" />
           <feBlend
             mode="normal"
             in="SourceGraphic"

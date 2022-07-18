@@ -1,4 +1,4 @@
-import { IEventCallback } from "../helpers";
+import { IEventCallback } from '../helpers';
 
 // -- EventController --------------------------------------------------------- //
 
@@ -19,14 +19,12 @@ export class EventController {
       if (eventObj.callback) {
         this._eventCallbacks = this._eventCallbacks.filter(
           (eventCallback: IEventCallback) =>
-            eventCallback.event !== eventObj.event ||
-            eventCallback.callback !== eventObj.callback
+            eventCallback.event !== eventObj.event || eventCallback.callback !== eventObj.callback
         );
       } // No callback to remove, remove entire event
       else {
         this._eventCallbacks = this._eventCallbacks.filter(
-          (eventCallback: IEventCallback) =>
-            eventCallback.event !== eventObj.event
+          (eventCallback: IEventCallback) => eventCallback.event !== eventObj.event
         );
       }
     } else {

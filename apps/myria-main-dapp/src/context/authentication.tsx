@@ -31,9 +31,17 @@ type User = {
   alliance?: AllianceName;
   credits?: number;
   date_registered?: Date;
-}
+};
 
-const VerifyModal = ({ open, onClose, onSuccess }: { open: boolean; onClose?: () => void, onSuccess?: () => void }) => {
+const VerifyModal = ({
+  open,
+  onClose,
+  onSuccess
+}: {
+  open: boolean;
+  onClose?: () => void;
+  onSuccess?: () => void;
+}) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content
@@ -87,14 +95,22 @@ const ForgotPasswordModal = ({ open, onClose }: { open: boolean; onClose?: () =>
 const ResetPasswordModal = ({ open, onClose }: { open: boolean; onClose?: () => void }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title={"Create a new password"} className="shadow-[0_0_40px_10px_#0000004D]">
+      <Modal.Content title={'Create a new password'} className="shadow-[0_0_40px_10px_#0000004D]">
         <ResetPassword />
       </Modal.Content>
     </Modal>
   );
 };
 
-const ResetSuccessdModal = ({ open, onClose, onLogin }: { open: boolean; onClose?: () => void, onLogin?: () => void }) => {
+const ResetSuccessdModal = ({
+  open,
+  onClose,
+  onLogin
+}: {
+  open: boolean;
+  onClose?: () => void;
+  onLogin?: () => void;
+}) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title="our password was reset" className="shadow-[0_0_40px_10px_#0000004D]">
@@ -113,7 +129,9 @@ const RegisterSuccessdModal = ({ open, onClose }: { open: boolean; onClose?: () 
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title="Email confirmation sent" className="shadow-[0_0_40px_10px_#0000004D]">
         <div className="px-8">
-          <p className="body my-8 text-light">Please check your inbox and follow the link to to confirm your email.</p>
+          <p className="body my-8 text-light">
+            Please check your inbox and follow the link to to confirm your email.
+          </p>
         </div>
       </Modal.Content>
     </Modal>
@@ -139,9 +157,9 @@ interface IAuthenticationContext {
   registerError: IResponseError | undefined;
   forgotPasswordError: string;
   resetPasswordError: string;
-  registerByWalletMutation: UseMutationResult<User, unknown, void, unknown>
-  loginByWalletMutation: UseMutationResult<User, unknown, void, unknown>
-  userProfileQuery: UseQueryResult<User | null, unknown>
+  registerByWalletMutation: UseMutationResult<User, unknown, void, unknown>;
+  loginByWalletMutation: UseMutationResult<User, unknown, void, unknown>;
+  userProfileQuery: UseQueryResult<User | null, unknown>;
 }
 
 const AuthenticationContext = React.createContext<IAuthenticationContext>(
@@ -179,8 +197,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     async () => {
       const body = {
         login: loginData?.email,
-        password: loginData?.password,
-      }
+        password: loginData?.password
+      };
       return await apiClient.post(`/accounts/login`, body);
     },
     {
@@ -191,19 +209,17 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       },
       onError: (err) => {
         console.log(err);
-        setLoginError("Username or password is incorrect");
-      },
+        setLoginError('Username or password is incorrect');
+      }
     }
   );
 
-  const logoutMutation = useMutation(
-    async () => {
-      try {
-        await apiClient.post(`/accounts/logout`);
-      } catch (err) { }
-      window.location.reload()
-    },
-  );
+  const logoutMutation = useMutation(async () => {
+    try {
+      await apiClient.post(`/accounts/logout`);
+    } catch (err) {}
+    window.location.reload();
+  });
 
   const { isLoading: isPostingRegister, mutate: postRegister } = useMutation(
     async () => {
@@ -215,7 +231,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         username: registerData?.username,
         password: registerData?.password,
         email: registerData?.email
-      }
+      };
       return await apiClient.post(`/accounts/link`, body);
     },
     {
@@ -224,99 +240,107 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         setRegisterError(undefined);
         setOpenRegisterSuccess(true);
         setOpenRegister(false);
-        event('Account Sign-up Completed', { campaign: 'Sigil', myria_id: user.user_id, myria_username: user.username, user_email: user.email, wallet_address: user.wallet_id })
+        event('Account Sign-up Completed', {
+          campaign: 'Sigil',
+          myria_id: user.user_id,
+          myria_username: user.username,
+          user_email: user.email,
+          wallet_address: user.wallet_id
+        });
       },
       onError: (err: AxiosError) => {
         setRegisterError(mapError(err));
-      },
+      }
     }
   );
 
   const { isLoading: isPostingForgotPassword, mutate: postForgotPassword } = useMutation(
-    async () => { return await apiClient.post(`/accounts/forgotPassword`, forgotPasswordData); },
+    async () => {
+      return await apiClient.post(`/accounts/forgotPassword`, forgotPasswordData);
+    },
     {
       onSuccess: (res) => {
         setOpenForgotPassword(false);
       },
       onError: (err) => {
-        setForgotPasswordError("Email does not exist");
-      },
-    }
-  );
-
-  const registerByWalletMutation = useMutation(
-    async () => {
-      const message = JSON.stringify({ created_on: new Date(Date.now() + 60000) }); // add 1 minute to current time
-      const signature = await signMessage(message);
-
-      if (signature && address) {
-        const registerData = {
-          wallet_id: address,
-          signature,
-          message,
-        };
-        const userRes = await apiClient.post(`/accounts/register/wallet`, registerData).then(res => res.data);
-
-        if (userRes?.status === 'success' && userRes?.data) {
-          const user: User = {
-            user_id: userRes.data?.user_id,
-            wallet_id: userRes.data?.wallet_id,
-          }
-          toast('Register success', { type: 'success' });
-          return user;
-        } else {
-          toast('Register failed, please try again.', { type: 'error' });
-          throw new Error('Failed to register user by wallet');
-        }
+        setForgotPasswordError('Email does not exist');
       }
-      throw new Error('Signature and wallet address are required to register');
     }
   );
 
-  const loginByWalletMutation = useMutation(
-    async () => {
-      const timestamp =  await apiClient.get(`/time`)
-        .then(res => res.data?.data?.time);
+  const registerByWalletMutation = useMutation(async () => {
+    const message = JSON.stringify({ created_on: new Date(Date.now() + 60000) }); // add 1 minute to current time
+    const signature = await signMessage(message);
 
-      const message = JSON.stringify({ created_on: timestamp });
-      const signature = await signMessage(message);
+    if (signature && address) {
+      const registerData = {
+        wallet_id: address,
+        signature,
+        message
+      };
+      const userRes = await apiClient
+        .post(`/accounts/register/wallet`, registerData)
+        .then((res) => res.data);
 
-      if (signature && address) {
-        const registerData = {
-          wallet_id: address,
-          signature,
-          message,
+      if (userRes?.status === 'success' && userRes?.data) {
+        const user: User = {
+          user_id: userRes.data?.user_id,
+          wallet_id: userRes.data?.wallet_id
         };
-        const userRes = await apiClient.post(`/accounts/login/wallet`, registerData).then(res => res.data);
-
-        if (userRes?.status === 'success' && userRes?.data) {
-          const user: User = {
-            user_id: userRes.data?.user_id,
-            wallet_id: userRes.data?.wallet_id,
-          }
-
-
-          userProfileQuery.refetch();
-          toast('Login success', { type: 'success' });
-          return user;
-        } else {
-          toast('Login failed, please try again.', { type: 'error' });
-          throw new Error('Failed to login user by wallet');
-        }
+        toast('Register success', { type: 'success' });
+        return user;
+      } else {
+        toast('Register failed, please try again.', { type: 'error' });
+        throw new Error('Failed to register user by wallet');
       }
-      throw new Error('Signature and wallet address are required to login');
     }
-  );
+    throw new Error('Signature and wallet address are required to register');
+  });
+
+  const loginByWalletMutation = useMutation(async () => {
+    const timestamp = await apiClient.get(`/time`).then((res) => res.data?.data?.time);
+
+    const message = JSON.stringify({ created_on: timestamp });
+    const signature = await signMessage(message);
+
+    if (signature && address) {
+      const registerData = {
+        wallet_id: address,
+        signature,
+        message
+      };
+      const userRes = await apiClient
+        .post(`/accounts/login/wallet`, registerData)
+        .then((res) => res.data);
+
+      if (userRes?.status === 'success' && userRes?.data) {
+        const user: User = {
+          user_id: userRes.data?.user_id,
+          wallet_id: userRes.data?.wallet_id
+        };
+
+        userProfileQuery.refetch();
+        toast('Login success', { type: 'success' });
+        return user;
+      } else {
+        toast('Login failed, please try again.', { type: 'error' });
+        throw new Error('Failed to login user by wallet');
+      }
+    }
+    throw new Error('Signature and wallet address are required to login');
+  });
 
   const { isLoading: isPostingResetPassword, mutate: postResetPassword } = useMutation(
-    async () => { return await apiClient.post(`/accounts/resetPassword`, resetPasswordData); },
+    async () => {
+      return await apiClient.post(`/accounts/resetPassword`, resetPasswordData);
+    },
     {
       onSuccess: (res) => {
         setOpenResetSuccess(true);
       },
       onError: (err) => {
         setResetPasswordError("Can't reset your password");
-      },
+      }
     }
   );
 
@@ -348,10 +372,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const resetPassword = () => {
     setOpenResetSuccess(false);
     setOpenResetPassword(true);
-  }
+  };
 
   const openVerify = (data: IFormSignInInput) => {
-    setLoginData(data)
+    setLoginData(data);
     setOpenVerifyModal(true);
     setOpenSignIn(false);
   };
@@ -364,7 +388,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     setOpenVerifyModal(false);
     setOpenSignIn(true);
     postLogin();
-  }
+  };
 
   const doRegister = (data: IFormRegisterInput) => {
     setOpenRegisterSuccess(false);
@@ -373,8 +397,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   };
 
   const doForgotPassword = (data: IFormForgotPasswordInput) => {
-    setForgotPasswordData(data)
-    postForgotPassword()
+    setForgotPasswordData(data);
+    postForgotPassword();
   };
 
   const doResetPassword = (data: IFormResetPasswordInput) => {
@@ -382,59 +406,67 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     postResetPassword();
   };
 
-  const userProfileQuery = useQuery('getUserProfile', () => noCacheApiClient.get('sigil/users/profile').then(res => {
-    const data = res.data?.data;
-    if (data) {
-      const user: User = {
-        user_id: data.user_id,
-        credits: data.credits,
-        alliance: data.alliance as AllianceName,
-        date_registered: new Date(data.date_registered),
-        wallet_id: data.wallet_id,
-        user_name: data.user_name,
-      };
-      setUser(user);
-      return user;
-    }
+  const userProfileQuery = useQuery(
+    'getUserProfile',
+    () =>
+      noCacheApiClient.get('sigil/users/profile').then((res) => {
+        const data = res.data?.data;
+        if (data) {
+          const user: User = {
+            user_id: data.user_id,
+            credits: data.credits,
+            alliance: data.alliance as AllianceName,
+            date_registered: new Date(data.date_registered),
+            wallet_id: data.wallet_id,
+            user_name: data.user_name
+          };
+          setUser(user);
+          return user;
+        }
 
-    return null;
-  }),
+        return null;
+      }),
     { retry: false }
   );
 
   return (
     <AuthenticationContext.Provider
-      value={
-        {
-          user,
-          login,
-          register,
-          forgotPassword,
-          resetPassword,
-          logout,
-          openVerify,
-          doRegister,
-          doForgotPassword,
-          doResetPassword,
-          isPostingLogin,
-          isPostingRegister,
-          isPostingForgotPassword,
-          isPostingResetPassword,
-          loginError,
-          registerError,
-          forgotPasswordError,
-          resetPasswordError,
-          registerByWalletMutation,
-          loginByWalletMutation,
-          userProfileQuery,
-        }
-      }>
+      value={{
+        user,
+        login,
+        register,
+        forgotPassword,
+        resetPassword,
+        logout,
+        openVerify,
+        doRegister,
+        doForgotPassword,
+        doResetPassword,
+        isPostingLogin,
+        isPostingRegister,
+        isPostingForgotPassword,
+        isPostingResetPassword,
+        loginError,
+        registerError,
+        forgotPasswordError,
+        resetPasswordError,
+        registerByWalletMutation,
+        loginByWalletMutation,
+        userProfileQuery
+      }}>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />
       <RegisterModal open={openRegister} onClose={() => setOpenRegister(false)} />
-      <RegisterSuccessdModal open={openRegisterSuccess} onClose={() => setOpenRegisterSuccess(false)} />
+      <RegisterSuccessdModal
+        open={openRegisterSuccess}
+        onClose={() => setOpenRegisterSuccess(false)}
+      />
       <ForgotPasswordModal open={openForgotPassword} onClose={() => setOpenForgotPassword(false)} />
       <ResetPasswordModal open={openResetPassword} onClose={() => setOpenResetPassword(false)} />
-      <ResetSuccessdModal open={openResetSuccess} onClose={() => setOpenResetSuccess(false)} onLogin={login} />
+      <ResetSuccessdModal
+        open={openResetSuccess}
+        onClose={() => setOpenResetSuccess(false)}
+        onLogin={login}
+      />
       <VerifyModal open={openVerifyModal} onClose={closeVerify} onSuccess={onVerifySuccess} />
       {children}
     </AuthenticationContext.Provider>

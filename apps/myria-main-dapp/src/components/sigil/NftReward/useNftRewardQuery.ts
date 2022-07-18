@@ -1,5 +1,5 @@
-import { useMutation, useQuery } from "react-query";
-import apiClient from "src/client";
+import { useMutation, useQuery } from 'react-query';
+import apiClient from 'src/client';
 
 type NftReward = {
   title?: string;
@@ -8,11 +8,10 @@ type NftReward = {
   rewardId?: number;
   creditsRequired?: number;
   progressPercentage?: number;
-}
+};
 // let t = false;
 export const useNftRewardQuery = () => {
   const getRewardQuery = useQuery('getNftRewardQuery', () => {
-    
     // return new Promise<NftReward[]>((r) => {
     //   setTimeout(() => {
     //       const rewards: NftReward[] = [
@@ -37,30 +36,29 @@ export const useNftRewardQuery = () => {
     //       return r(rewards);
     //   }, 1000);
     // })
-    return apiClient.get('sigil/users/rewards')
-      .then(res => {
-        if (res.data && res.data.data && res.data.data instanceof Array) {
-          const rewards: NftReward[] = res.data.data.filter(Boolean).map((raw: any) => ({
-            rewardId: raw.reward_id,
-            title: raw.title,
-            imageUrl: raw.image_url,
-            creditsRequired: raw.credits_required,
-            progressPercentage: raw.progress_percentage,
-            status: raw.status,
-          }))
+    return apiClient.get('sigil/users/rewards').then((res) => {
+      if (res.data && res.data.data && res.data.data instanceof Array) {
+        const rewards: NftReward[] = res.data.data.filter(Boolean).map((raw: any) => ({
+          rewardId: raw.reward_id,
+          title: raw.title,
+          imageUrl: raw.image_url,
+          creditsRequired: raw.credits_required,
+          progressPercentage: raw.progress_percentage,
+          status: raw.status
+        }));
 
-          return rewards.map(r => r.status === 'in_progress' ? { ...r, status: 'locked' } : r)
-        }
-        return null;
-      })
+        return rewards.map((r) => (r.status === 'in_progress' ? { ...r, status: 'locked' } : r));
+      }
+      return null;
+    });
   });
 
-  const claimRewardMutation = useMutation((rewardId: number ) => {
-    return apiClient.post('sigil/users/rewards', { reward_id: rewardId }).then(() => {})
+  const claimRewardMutation = useMutation((rewardId: number) => {
+    return apiClient.post('sigil/users/rewards', { reward_id: rewardId }).then(() => {});
     // return new Promise((r) => {
     //   setTimeout(() => r(true), 1000)
     // }).then(() => {});
-  })
+  });
 
   return { getRewardQuery, claimRewardMutation };
 };
