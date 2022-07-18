@@ -1,7 +1,10 @@
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
 import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
-import { CreateOrderEntity, SignableOrderInput } from 'myria-core-sdk/dist/types/src/types/OrderTypes';
+import {
+  CreateOrderEntity,
+  SignableOrderInput
+} from 'myria-core-sdk/dist/types/src/types/OrderTypes';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
@@ -16,7 +19,7 @@ import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
-import { assetModule } from 'src/services/myriaCore';
+import { assetModule, collectionModule } from 'src/services/myriaCore';
 import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageModal from '../MessageModal/MessageModal';
@@ -45,10 +48,10 @@ enum AssetStatus {
   SALE,
   MODIFY,
   UNCONNECTED,
-  UNCONNECTED_NOT_SALE,
+  UNCONNECTED_NOT_SALE
 }
 
-const ItemAttribution = ({keyword= 'RARITY', val= 'Ultra Rare'}) => {
+const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
     <div className="border-base/6 bg-base/3 rounded-[8px] border p-[16px] text-center">
       <p className="text-blue/6 uppercase">{keyword}</p>
@@ -57,36 +60,56 @@ const ItemAttribution = ({keyword= 'RARITY', val= 'Ultra Rare'}) => {
   );
 };
 const SHOW_MESSAGE_TIME = 5000;
+
 function AssetDetails({ id }: Props) {
-  
-  
-  const { data: assetDetails, isLoading, refetch } = useQuery(
+  const { data, isLoading, refetch } = useQuery(
     ['assetDetail', id],
     async () => {
-      const res = await assetModule?.getAssetById(id);
-      return res?.data;
+      const [assetDetails, listOrder] = await Promise.all([
+        assetModule?.getAssetById(id), //getAssetDetail by assetId
+        assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
+      ]);
+      return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
       enabled: !!id
     }
   );
-  
+
+  const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
+  const listOrder = useMemo(() => data?.listOrder, [data?.listOrder]);
+
+  const { data: moreCollectionList } = useQuery(
+    ['moreCollection', assetDetails?.collectionId],
+    async () => {
+      // more from this Collection (status:'FOR_SALE')
+      const res = await collectionModule?.getAssetByCollectionId({
+        assetType: 'FOR_SALE',
+        collectionId: Number(assetDetails?.collectionId)
+      });
+      return res?.data;
+    },
+    {
+      enabled: !!assetDetails?.collectionId //dependence by assetDetails?.collectionId
+    }
+  );
+
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
-  const starkKey = '0x' + starkKeyUser;
-  const currentPrice = useMemo(()=>{
+  const starkKey = `0x${starkKeyUser}`;
+  const currentPrice = useMemo(() => {
     return formatNumber2digits(Number(assetDetails?.order?.amountSell));
-  },[assetDetails?.order])
-  const attributes = useMemo(()=>{
+  }, [assetDetails?.order]);
+  const attributes = useMemo(() => {
     const resultArray: any[] = [];
-    lodash.map(assetDetails?.metadataOptional,(val, key) => {
-      if(!key.toLowerCase().includes('url')){
-        resultArray.push({key, val}); // remove all key what has 'url'.
+    lodash.map(assetDetails?.metadataOptional, (val, key) => {
+      if (!key.toLowerCase().includes('url')) {
+        resultArray.push({ key, val }); // remove all key what has 'url'.
       }
-    })
+    });
     return resultArray;
-  },[assetDetails?.metadataOptional])
+  }, [assetDetails?.metadataOptional]);
   // the status will be get from based on the order Object in API get assetDetails
 
   const [status, setStatus] = useState(AssetStatus.BUY_NOW);
@@ -102,39 +125,40 @@ function AssetDetails({ id }: Props) {
     () => formatNumber2digits(+currentPrice * etheCost),
     [currentPrice, etheCost]
   );
-    
+
   const handleCloseModal = useCallback(() => {
     setShowModal((showModal) => !showModal);
   }, [setShowModal]);
-  const onSubmitModifyOrder = async ({price}: {price: string})=>{
+  const onSubmitModifyOrder = async ({ price }: { price: string }) => {
     const client: IMyriaClient = {
       provider: window.web3.currentProvider,
       networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3,
+      web3: window.web3
     };
-    
-    const myriaClient = new MyriaClient(client);  
+
+    const myriaClient = new MyriaClient(client);
     const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
-    if(!address) return;
-    const result = await orderModule.updateOrderPrice(assetDetails?.order.orderId+'',{
+    if (!address) return;
+    const result = await orderModule.updateOrderPrice(assetDetails?.order.orderId + '', {
       newAmountSell: price,
       sellerStarkKey: starkKey,
-      sellerWalletAddress: address,
-    })
-  }
+      sellerWalletAddress: address
+    });
+  };
+
   const onSubmitCreateOrder = useCallback(
-    async ({price}) => {
+    async ({ price }) => {
       const client: IMyriaClient = {
         provider: window.web3.currentProvider,
         networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
+        web3: window.web3
       };
-      
+
       const myriaClient = new MyriaClient(client);
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const orderModule = moduleFactory.getOrderModule();
-      if(!address) return;
+      if (!address) return;
       const payload: SignableOrderInput = {
         orderType: 'SELL',
         ethAddress: address,
@@ -155,7 +179,7 @@ function AssetDetails({ id }: Props) {
         },
         amountBuy: '1',
         includeFees: false
-      }
+      };
       const signature = await orderModule.signableOrder(payload);
       const paramCreateOrder: CreateOrderEntity = {
         assetRefId: parseInt(id, 10),
@@ -169,32 +193,35 @@ function AssetDetails({ id }: Props) {
         vaultIdBuy: signature.vaultIdBuy,
         sellerAddress: address,
         assetIdBuy: signature.assetIdBuy,
-        assetIdSell: signature.assetIdSell,
-      }
+        assetIdSell: signature.assetIdSell
+      };
       const res = await orderModule.createOrder(paramCreateOrder);
-      if(res){
+      if (res) {
         setShowModal(false);
         setStatus(AssetStatus.MODIFY);
         setShowMessageEdit(true);
         refetch();
       }
     },
-    [address, id, refetch, starkKey]
+    [address, assetDetails?.tokenAddress, id, refetch, starkKey]
   );
 
   useEffect(() => {
     let currentStatus: number = AssetStatus.UNCONNECTED;
-    if (assetDetails?.order) { // item for sale
+    if (assetDetails?.order) {
+      // item for sale
       if (starkKey === assetDetails?.owner.starkKey) {
         currentStatus = AssetStatus.MODIFY; // connected and own NFT
       } else {
         currentStatus = AssetStatus.BUY_NOW; // connected and not own NFT
       }
-      if(!(address && address?.length > 0)){
-        currentStatus = AssetStatus.UNCONNECTED // not connected
+      if (!(address && address?.length > 0)) {
+        currentStatus = AssetStatus.UNCONNECTED; // not connected
       }
-    } else { // item not for sale
-      if (starkKey === assetDetails?.owner.starkKey){ // connected and own NFT
+    } else {
+      // item not for sale
+      if (starkKey === assetDetails?.owner.starkKey) {
+        // connected and own NFT
         currentStatus = AssetStatus.SALE;
       } else {
         currentStatus = AssetStatus.UNCONNECTED_NOT_SALE; // not connected
@@ -216,19 +243,19 @@ function AssetDetails({ id }: Props) {
     const client: IMyriaClient = {
       provider: window.web3.currentProvider,
       networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3,
+      web3: window.web3
     };
-    
+
     const myriaClient = new MyriaClient(client);
     const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
-    if(!address || !assetDetails?.order.orderId) return;
+    if (!address || !assetDetails?.order.orderId) return;
     const result = await orderModule.deleteOrderById({
       orderId: assetDetails?.order.orderId,
       sellerWalletAddress: address
-    })
-    if(result){
-      toast('Unlist successfully!')
+    });
+    if (result) {
+      toast('Unlist successfully!');
       setStatus(AssetStatus.SALE);
       setShowModalUnlist(false);
       refetch();
@@ -242,15 +269,19 @@ function AssetDetails({ id }: Props) {
       </div>
     );
   }
-  const propsConfirmPriceModal = status === AssetStatus.MODIFY ? {
-    title:"Modify Listing",
-    titleConfirm:"CONFIRMING CHANGE",
-    labelInput:"Listing Price"
-  } : {
-    title:"List your item for sale",
-    titleConfirm:"CONFIRMING YOUR LISTING",
-    labelInput:"Listing Price"
-  }
+  const propsConfirmPriceModal =
+    status === AssetStatus.MODIFY
+      ? {
+          title: 'Modify Listing',
+          titleConfirm: 'CONFIRMING CHANGE',
+          labelInput: 'Listing Price'
+        }
+      : {
+          title: 'List your item for sale',
+          titleConfirm: 'CONFIRMING YOUR LISTING',
+          labelInput: 'Listing Price'
+        };
+
   return (
     <div className="w-full bg-[#050E15] py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <div className="max-w-content mx-auto  flex flex-row space-x-28">
@@ -268,9 +299,9 @@ function AssetDetails({ id }: Props) {
             <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
               <Trans>Attributes</Trans>
             </div>
-            {assetDetails?.metadataOptional ? (
+            {attributes.length > 0 ? (
               <div className="grid grid-cols-4 gap-4">
-                {attributes.map(({key, val}) => {
+                {attributes.map(({ key, val }) => {
                   return <ItemAttribution key={key} keyword={key} val={val} />;
                 })}
               </div>
@@ -291,11 +322,11 @@ function AssetDetails({ id }: Props) {
                 <img src={testavatarImg.src} className="h-[24px] w-[24px]" />
                 <span className="ml-[8px] text-[16px]">{assetDetails?.collectionName}</span>
               </div>
-              <div className="w-[40px] p-[10px]"
-              onClick={()=>{
-                toast('The function is not ready yet!');
-              }}
-              >
+              <div
+                className="w-[40px] p-[10px]"
+                onClick={() => {
+                  toast('The function is not ready yet!');
+                }}>
                 <ShareIcon />
               </div>
             </div>
@@ -315,7 +346,9 @@ function AssetDetails({ id }: Props) {
                 </div>
                 <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
                   <MintedIcon />
-                  <span className="ml-[5px]">Owner: {truncateString(`${assetDetails?.owner?.ethAddress}`)}</span>
+                  <span className="ml-[5px]">
+                    Owner: {truncateString(`${assetDetails?.owner?.ethAddress}`)}
+                  </span>
                 </div>
               </div>
             </div>
@@ -342,9 +375,7 @@ function AssetDetails({ id }: Props) {
                 }}
               />
             )}
-            {status === AssetStatus.UNCONNECTED_NOT_SALE && (
-              <ItemNotForSale/>
-            )}
+            {status === AssetStatus.UNCONNECTED_NOT_SALE && <ItemNotForSale />}
             {status === AssetStatus.MODIFY && (
               <ModifyListing
                 currentPrice={currentPrice.toString()}
@@ -358,9 +389,11 @@ function AssetDetails({ id }: Props) {
           </div>
           <div className="border-blue/3 border-t">
             {/* TAB */}
-            <AssetDetailTab description={assetDetails?.description}
-            tokenId={assetDetails?.tokenId}
-            assetType={assetDetails?.assetType}
+            <AssetDetailTab
+              data={listOrder?.items}
+              description={assetDetails?.description}
+              tokenId={assetDetails?.tokenId}
+              assetType={assetDetails?.assetType}
             />
           </div>
         </div>
@@ -368,20 +401,18 @@ function AssetDetails({ id }: Props) {
       <div className="mt-[24px]">
         <AssetList
           title={'More from this collection'}
-          items={Array(4)
-            .fill(0)
-            .map((_, index) => {
-              const item: NFTItemType = {
-                id: `${index}`,
-                rarity: 'rare',
-                name: 'Common Alliance Chest',
-                image_url: 'https://myria.com/seo/defaultImage.png',
-                creator: 'Myria',
-                creatorImg: testavatarImg.src,
-                priceETH: Math.round(Math.random() * 5)
-              };
-              return item;
-            })}
+          items={moreCollectionList?.items?.map((elm, index: number) => {
+            const item: NFTItemType = {
+              id: (index + 1).toString(),
+              rarity: 'rare',
+              name: elm.name || '',
+              image_url: elm.imageUrl || '',
+              creator: truncateString(elm.owner),
+              creatorImg: testavatarImg.src,
+              priceETH: +elm.order.amountBuy // +elm... to convert string to number
+            };
+            return item;
+          })}
         />
       </div>
       {showPopup && (
@@ -413,7 +444,8 @@ function AssetDetails({ id }: Props) {
         </MessageModal>
       )}
       {showModal && (
-        <ModalEditListing {...propsConfirmPriceModal}
+        <ModalEditListing
+          {...propsConfirmPriceModal}
           onSubmit={status === AssetStatus.MODIFY ? onSubmitModifyOrder : onSubmitCreateOrder}
           items={assetDetails}
           ethereum={etheCost}
@@ -467,7 +499,7 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
   );
 };
 
-const ItemNotForSale: React.FC<IProp> = ({  }) => {
+const ItemNotForSale: React.FC<IProp> = ({}) => {
   return (
     <div className="mb-[48px]">
       <div>
@@ -585,7 +617,7 @@ const PurchaseModal: React.FC<any> = ({ open, onClose, currentPrice, onCloseMess
 const UnlistModal: React.FC<any> = ({ open, onClose, onHandleCancel, onHandleUnlist }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title={'Unlist Your NFT?'} className="shadow-[0_0_40px_10px_#0000004D] mt-0">
+      <Modal.Content title={'Unlist Your NFT?'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
         <UnlistModalContent onHandleCancel={onHandleCancel} onHandleUnlist={onHandleUnlist} />
       </Modal.Content>
     </Modal>
