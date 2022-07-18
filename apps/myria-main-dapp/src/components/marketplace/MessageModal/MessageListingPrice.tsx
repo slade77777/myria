@@ -1,8 +1,7 @@
 import { Trans } from '@lingui/macro';
-import { toast } from 'react-toastify';
 import CircleCheck from 'src/components/icons/CircleCheck';
-
-export default function MessagePurchaseModal({}) {
+import { toast } from 'react-toastify';
+export default function MessageListingPriceModal({ price = 2.99 }) {
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
@@ -11,26 +10,21 @@ export default function MessagePurchaseModal({}) {
             <CircleCheck size={24} className="mt-[1px]" />
           </span>
           <span>
-            <Trans>Purchase Successful</Trans>
+            <Trans>Listing price has been updated</Trans>
           </span>
         </div>
-        <div className="text-sm font-normal mt-[10px] mb-[20px]">
+        <div className="text-sm font-normal mt-[10px]">
           <span className="text-base/9">
             <Trans>
-              Your purchase of
+              Your
               <span
                 className="text-[16px] text-white mx-1 cursor-pointer"
                 onClick={() => toast('This function is not ready yet!')}>
                 {' '}
                 Ultra Rare Vector Prime Sigil{' '}
               </span>
-              successful.
+              listing price has been updated to {price} ETH.
             </Trans>
-          </span>
-        </div>
-        <div className="cursor-pointer" onClick={() => toast('This function is not ready yet!')}>
-          <span className="text-primary/6">
-            <Trans>View Transaction History</Trans>
           </span>
         </div>
       </div>

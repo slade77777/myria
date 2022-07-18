@@ -1,6 +1,5 @@
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
-import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import {
   CreateOrderEntity,
   SignableOrderInput
@@ -19,11 +18,13 @@ import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
-import { assetModule, collectionModule } from 'src/services/myriaCore';
+import { assetModule, collectionModule, orderModule } from 'src/services/myriaCore';
 import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
+import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
 import MessagePurchaseModal from '../MessageModal/MessagePurchaseModal';
+import MessageUnlist from '../MessageModal/MessageUnlist';
 import { MessageEditListingModal, ModalEditListing } from '../Modals';
 import UnlistModalContent from '../Modals/UnlistModal';
 import { NFTItemType } from '../NftItem/type';
@@ -118,6 +119,8 @@ function AssetDetails({ id }: Props) {
   const [showMessage, setShowMessage] = useState(false);
   const [showMessageEdit, setShowMessageEdit] = useState(false);
   const [showModalUnlist, setShowModalUnlist] = useState(false);
+  const [showMessageModify, setShowMessageModify] = useState(false);
+  const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
 
@@ -130,34 +133,18 @@ function AssetDetails({ id }: Props) {
     setShowModal((showModal) => !showModal);
   }, [setShowModal]);
   const onSubmitModifyOrder = async ({ price }: { price: string }) => {
-    const client: IMyriaClient = {
-      provider: window.web3.currentProvider,
-      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3
-    };
-
-    const myriaClient = new MyriaClient(client);
-    const moduleFactory = new Modules.ModuleFactory(myriaClient);
-    const orderModule = moduleFactory.getOrderModule();
     if (!address) return;
-    const result = await orderModule.updateOrderPrice(assetDetails?.order.orderId + '', {
+    const result = await orderModule?.updateOrderPrice(assetDetails?.order.orderId + '', {
       newAmountSell: price,
       sellerStarkKey: starkKey,
       sellerWalletAddress: address
     });
+    if (result) {
+      setShowMessageModify(true);
+    }
   };
-
   const onSubmitCreateOrder = useCallback(
     async ({ price }) => {
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3
-      };
-
-      const myriaClient = new MyriaClient(client);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
-      const orderModule = moduleFactory.getOrderModule();
       if (!address) return;
       const payload: SignableOrderInput = {
         orderType: 'SELL',
@@ -180,27 +167,29 @@ function AssetDetails({ id }: Props) {
         amountBuy: '1',
         includeFees: false
       };
-      const signature = await orderModule.signableOrder(payload);
-      const paramCreateOrder: CreateOrderEntity = {
-        assetRefId: parseInt(id, 10),
-        orderType: 'SELL',
-        fees: [{}],
-        includeFees: false,
-        amountSell: signature.amountSell,
-        amountBuy: signature.amountBuy,
-        sellerStarkKey: starkKey,
-        vaultIdSell: signature.vaultIdSell,
-        vaultIdBuy: signature.vaultIdBuy,
-        sellerAddress: address,
-        assetIdBuy: signature.assetIdBuy,
-        assetIdSell: signature.assetIdSell
-      };
-      const res = await orderModule.createOrder(paramCreateOrder);
-      if (res) {
-        setShowModal(false);
-        setStatus(AssetStatus.MODIFY);
-        setShowMessageEdit(true);
-        refetch();
+      const signature = await orderModule?.signableOrder(payload);
+      if (signature) {
+        const paramCreateOrder: CreateOrderEntity = {
+          assetRefId: parseInt(id, 10),
+          orderType: 'SELL',
+          fees: [{}],
+          includeFees: false,
+          amountSell: signature.amountSell,
+          amountBuy: signature.amountBuy,
+          sellerStarkKey: starkKey,
+          vaultIdSell: signature.vaultIdSell,
+          vaultIdBuy: signature.vaultIdBuy,
+          sellerAddress: address,
+          assetIdBuy: signature.assetIdBuy,
+          assetIdSell: signature.assetIdSell
+        };
+        const res = await orderModule?.createOrder(paramCreateOrder);
+        if (res) {
+          setShowModal(false);
+          setStatus(AssetStatus.MODIFY);
+          setShowMessageEdit(true);
+          refetch();
+        }
       }
     },
     [address, assetDetails?.tokenAddress, id, refetch, starkKey]
@@ -239,25 +228,15 @@ function AssetDetails({ id }: Props) {
     }, SHOW_MESSAGE_TIME);
   };
   const handleCloseUnlist = async () => {
-    //call api
-    const client: IMyriaClient = {
-      provider: window.web3.currentProvider,
-      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3
-    };
-
-    const myriaClient = new MyriaClient(client);
-    const moduleFactory = new Modules.ModuleFactory(myriaClient);
-    const orderModule = moduleFactory.getOrderModule();
     if (!address || !assetDetails?.order.orderId) return;
-    const result = await orderModule.deleteOrderById({
+    const result = await orderModule?.deleteOrderById({
       orderId: assetDetails?.order.orderId,
       sellerWalletAddress: address
     });
     if (result) {
-      toast('Unlist successfully!');
       setStatus(AssetStatus.SALE);
       setShowModalUnlist(false);
+      setShowMessageUnlist(true);
       refetch();
     }
   };
@@ -281,7 +260,6 @@ function AssetDetails({ id }: Props) {
           titleConfirm: 'CONFIRMING YOUR LISTING',
           labelInput: 'Listing Price'
         };
-
   return (
     <div className="w-full bg-[#050E15] py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <div className="max-w-content mx-auto  flex flex-row space-x-28">
@@ -291,7 +269,8 @@ function AssetDetails({ id }: Props) {
           <div
             className=" border-base/5 h-[620px]  w-full
           rounded-[3px] border-[3px] bg-center bg-no-repeat "
-            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
+            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}
+          >
             {/* img */}
           </div>
           <div className="text-white">
@@ -326,17 +305,18 @@ function AssetDetails({ id }: Props) {
                 className="w-[40px] p-[10px]"
                 onClick={() => {
                   toast('The function is not ready yet!');
-                }}>
+                }}
+              >
                 <ShareIcon />
               </div>
             </div>
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-[24px] text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="mt-[24px] flex w-[300px] flex-row justify-between">
+              <div className="mt-[24px] flex w-[325px] flex-row justify-between">
                 <span>Token ID: {assetDetails?.tokenId}</span>
                 <span>|</span>
-                <span>{truncateString(`${assetDetails?.owner.starkKey}`)}</span>
+                <span>Owned by {truncateString(`${assetDetails?.owner.starkKey}`)}</span>
               </div>
 
               <div className="flex gap-6">
@@ -403,7 +383,7 @@ function AssetDetails({ id }: Props) {
           title={'More from this collection'}
           items={moreCollectionList?.items?.map((elm, index: number) => {
             const item: NFTItemType = {
-              id: (index + 1).toString(),
+              id: `${elm.id}`,
               rarity: 'rare',
               name: elm.name || '',
               image_url: elm.imageUrl || '',
@@ -439,7 +419,8 @@ function AssetDetails({ id }: Props) {
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
-          setIsShowMessage={() => setShowMessageEdit(false)}>
+          setIsShowMessage={() => setShowMessageEdit(false)}
+        >
           <MessageEditListingModal />
         </MessageModal>
       )}
@@ -453,6 +434,22 @@ function AssetDetails({ id }: Props) {
           open={showModal}
           onClose={handleCloseModal}
         />
+      )}
+      {showMessageModify && (
+        <MessageModal
+          isShowMessage={showMessageModify}
+          setIsShowMessage={() => setShowMessageModify(false)}
+        >
+          <MessageListingPriceModal />
+        </MessageModal>
+      )}
+      {showMessageUnlist && (
+        <MessageModal
+          isShowMessage={showMessageUnlist}
+          setIsShowMessage={() => setShowMessageUnlist(false)}
+        >
+          <MessageUnlist />
+        </MessageModal>
       )}
     </div>
   );
@@ -482,12 +479,14 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
         <>
           <button
             className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-            onClick={setStatus}>
+            onClick={setStatus}
+          >
             <Trans>LIST ITEM FOR SALE</Trans>
           </button>
           <button
             className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-            onClick={triggerPopover}>
+            onClick={triggerPopover}
+          >
             <Trans>WITHDRAW</Trans>
           </button>
         </>
@@ -540,12 +539,14 @@ const ModifyListing: React.FC<IProp> = ({
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>MODIFY LISTING</Trans>
       </button>
       <button
         className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-        onClick={setShowUnlist}>
+        onClick={setShowUnlist}
+      >
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
     </div>
@@ -571,7 +572,8 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>BUY NOW</Trans>
       </button>
     </div>
@@ -597,7 +599,8 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>Connect Wallet To Buy</Trans>
       </button>
     </div>

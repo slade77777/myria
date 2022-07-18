@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { getRarityColor } from 'src/utils';
+import { getRarityColor, validatedImage } from 'src/utils';
 import { NFTItemType } from './type';
 
 interface Props {
@@ -60,14 +60,11 @@ const NftItem = ({ item }: Props) => {
                 style={{ backgroundColor: rarityColor }}
               />
               <div
-                className="z-2 absolute h-full w-full"
+                className="z-2 absolute h-full w-full bg-cover bg-no-repeat bg-center"
                 style={{
-                  background:
-                    'linear-gradient(139.51deg, #FFFFFF 17.35%, rgba(255, 255, 255, 0) 55.49%)',
-                  mixBlendMode: 'soft-light'
+                  backgroundImage: `url(${validatedImage(item.image_url)})`
                 }}
               />
-              <img className="z-3 absolute" src={item.image_url} alt="" width="90%" height="auto" />
             </div>
             <div className="h-[122px] p-4">
               <span className="block text-[12px] font-normal text-[#9CA3AF]">
@@ -78,7 +75,7 @@ const NftItem = ({ item }: Props) => {
               </span>
               <div className="mb-6 flex items-center justify-between">
                 <div>
-                  <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Creator</span>
+                  <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Owner</span>
                   <div className="flex items-center">
                     <img src={item.creatorImg} alt="creator" className="mr-1" />
                     <span className="text-[14px] font-medium text-white">{item.creator}</span>
