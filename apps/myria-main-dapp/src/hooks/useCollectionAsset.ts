@@ -17,7 +17,7 @@ export default function useCollectionAsset(id: number) {
   );
 
   return {
-    assets: (data?.data as DataTypes) || {},
+    assets: data,
     isLoading,
     error
   };

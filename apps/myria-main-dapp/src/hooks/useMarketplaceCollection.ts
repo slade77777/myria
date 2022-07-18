@@ -10,7 +10,7 @@ export default function useMarketplaceCollection(publicId: string) {
 
   return {
     // @ts-ignore
-    collection: (data?.data as CollectionItems) || {},
+    collection: (data?.data as AssetByCollectionIdResponse) || {},
     isLoading,
     error
   };
