@@ -21,6 +21,7 @@ dev-build:
     paths:
       - apps/myria-main-dapp/out-dev
 
+# Dev CD target 1
 dev-deploy-1:
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev"'
@@ -46,6 +47,34 @@ dev-deploy-1:
     cloudfront_id: E16CH11X42OZD4
   dependencies:
     - dev-build
+
+# Dev CD target 2
+dev-deploy-2:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  stage: dev-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # Deploy to S3 and invalidate Cloudfront Distributions
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-nonprod
+    region: us-east-1
+    bucket_name: myria-dev-b.nonprod-myria.com
+    artifacts_folder: apps/myria-main-dapp/out-dev
+    cloudfront_id: E3JI3MT5BO66BZ
+  dependencies:
+    - dev-build
+  when: manual
 
 staging-build:
   rules:
@@ -86,9 +115,37 @@ staging-deploy-1:
   dependencies:
     - staging-build
 
-# The below is legacy using the previous manually created bucket
 # Staging CD target 2
-staging-deploy-2-legacy:
+staging-deploy-2:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+    - docker:dind
+  stage: staging-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # Deploy to S3 and invalidate Cloudfront Distributions
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-nonprod
+    region: us-east-1
+    bucket_name: myria-staging-b.nonprod-myria.com
+    artifacts_folder: apps/myria-main-dapp/out-staging
+    cloudfront_id: E1IF0F18DWLOTP
+  dependencies:
+    - staging-build
+  when: manual
+
+# The below is legacy using the previous manually created bucket
+# Staging CD target 3
+staging-deploy-3-legacy:
   rules:
     - if: '$CI_COMMIT_BRANCH == "staging"'
   image:
