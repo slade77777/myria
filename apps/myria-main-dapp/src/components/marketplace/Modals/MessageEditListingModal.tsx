@@ -1,4 +1,5 @@
 import { Trans } from '@lingui/macro';
+import { toast } from 'react-toastify';
 import CircleCheck from 'src/components/icons/CircleCheck';
 
 export function MessageEditListingModal({}) {
@@ -22,7 +23,9 @@ export function MessageEditListingModal({}) {
             </Trans>
           </span>
         </div>
-        <div className="cursor-pointer">
+        <div onClick={()=>{
+          toast('This function is not ready yet!')
+        }} className="cursor-pointer">
           <span className="text-primary/6">
             <Trans>View Transaction</Trans>
           </span>

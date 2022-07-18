@@ -1,12 +1,19 @@
 import { Trans } from '@lingui/macro';
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
 import { formatNumber2digits } from 'src/utils';
-const walletAddress = '0x7Ec5A82Ca092f3397877134a711dDc698Bb2b089';
+
+type Prop = {
+  description?: string;
+  contractAddress?: string;
+  tokenId?: string | number;
+  assetType?: string;
+};
+
 const listAssetOrders = [
   {
     amountSell: 1,
@@ -39,22 +46,27 @@ const listAssetOrders = [
     owner: '0x8926Db5c7CA7A849aFCfc0b7462c44977Df18cCE'
   }
 ];
-const AssetDetailTab = () => {
+const AssetDetailTab: FC<Prop> = ({
+  description = '',
+  contractAddress = '',
+  tokenId = '',
+  assetType = ''
+}) => {
   return (
     <Root defaultValue="Listing">
       <List className="my-[24px]">
         <Trigger
-          className="text-base/9 border-primary/6 focus:text-primary/6 px-[16px] py-[12.5px] text-[16px] focus:border-b-[2px]"
+          className="text-base/9 border-primary/6 px-[16px] py-[12.5px] text-[16px]"
           value="Listing">
           Listing
         </Trigger>
         <Trigger
-          className="text-base/9 border-primary/6 focus:text-primary/6 mx-[8px] px-[16px] py-[12.5px] text-[16px] focus:border-b-[2px]"
+          className="text-base/9 border-primary/6 mx-[8px] px-[16px] py-[12.5px] text-[16px]"
           value="Description">
           Description
         </Trigger>
         <Trigger
-          className="text-base/9 border-primary/6 focus:text-primary/6 px-[16px] py-[12.5px] text-[16px] focus:border-b-[2px]"
+          className="text-base/9 border-primary/6 px-[16px] py-[12.5px] text-[16px]"
           value="Details">
           Details
         </Trigger>
@@ -107,32 +119,24 @@ const AssetDetailTab = () => {
         </div>
       </Content>
       <Content value="Description">
-        <p className="max-w-full">
-          Flannel mlkshk four loko squid shoreditch. Ennui adaptogen kombucha chia, gastropub
-          disrupt YOLO tumblr hexagon copper mug hashtag neutra four dollar toast. Myria helps
-          blockchain projects scale. I&apos;m baby marfa locavore craft beer, vinyl brooklyn
-          skateboard banh mi master cleanse raclette aesthetic air plant VHS cornhole biodiesel.
-          Swag adaptogen viral palo santo quinoa. Butcher whatever cray live-edge heirloom. Artisan
-          jean shorts pinterest blue bottle chambray. VHS four loko flannel gentrify, ennui drinking
-          vinegar blue bottle hammock mlkshk beard authentic.
-        </p>
+        <p className="max-w-full">{description}</p>
       </Content>
       <Content value="Details">
         <div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Contract Address</Trans>
             <div className="text-blue/6 flex flex-row items-center gap-[3px] font-medium">
-              <span>{truncateString(walletAddress)}</span>
+              <span>{truncateString(contractAddress)}</span>
               <EnternalLinkIcon />
             </div>
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Token ID</Trans>
-            <span className="font-medium text-white">{'1907'}</span>
+            <span className="font-medium text-white">{tokenId}</span>
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Token Standard</Trans>
-            <span className="font-medium text-white">{'ERC-20'}</span>
+            <span className="font-medium text-white">{assetType}</span>
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Creator Fees</Trans>
