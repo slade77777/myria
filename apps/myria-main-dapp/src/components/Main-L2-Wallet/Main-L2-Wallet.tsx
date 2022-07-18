@@ -127,6 +127,8 @@ export default function MainLayout() {
         const moduleFactory = new Modules.ModuleFactory(myriaClient);
         const commonModule = moduleFactory.getCommonModule();
         const starkKey = commonModule.getStarkPublicKey(wSignature);
+        console.log('starkKey', starkKey);
+        
         dispatch(setStarkPublicKey(starkKey));
       }
     },
