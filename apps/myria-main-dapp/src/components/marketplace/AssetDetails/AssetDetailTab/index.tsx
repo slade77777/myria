@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro';
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs';
-import axios from 'axios';
-import { FC, useEffect, useState } from 'react';
+import { EqualMetadataByAssetIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { FC } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
@@ -12,45 +12,15 @@ type Prop = {
   contractAddress?: string;
   tokenId?: string | number;
   assetType?: string;
+  data: EqualMetadataByAssetIdResponse | any;
 };
 
-const listAssetOrders = [
-  {
-    amountSell: 1,
-    amountBuy: 2,
-    usdPrice: 2402,
-    owner: '0x8926Db5c7CA7A849aFCfc0b7462c44977Df18cCE'
-  },
-  {
-    amountSell: 1,
-    amountBuy: 2,
-    usdPrice: 2402,
-    owner: '0x8926Db5c7CA7A849aFCfc0b7462c44977Df18cCE'
-  },
-  {
-    amountSell: 1,
-    amountBuy: 2,
-    usdPrice: 2402,
-    owner: '0x8926Db5c7CA7A849aFCfc0b7462c44977Df18cCE'
-  },
-  {
-    amountSell: 1,
-    amountBuy: 2,
-    usdPrice: 2402,
-    owner: '0x8926Db5c7CA7A849aFCfc0b7462c44977Df18cCE'
-  },
-  {
-    amountSell: 1,
-    amountBuy: 2,
-    usdPrice: 2402,
-    owner: '0x8926Db5c7CA7A849aFCfc0b7462c44977Df18cCE'
-  }
-];
 const AssetDetailTab: FC<Prop> = ({
   description = '',
   contractAddress = '',
   tokenId = '',
-  assetType = ''
+  assetType = '',
+  data = []
 }) => {
   return (
     <Root defaultValue="Listing">
@@ -91,10 +61,15 @@ const AssetDetailTab: FC<Prop> = ({
               </tr>
             </thead>
             <tbody className="border-blue/3 max-h-[100px] overflow-scroll border-b">
-              {listAssetOrders.map((elm, _idx) => {
-                const priceConverted = formatNumber2digits(elm.amountBuy);
-                const usdPriceConverted = formatNumber2digits(elm.usdPrice);
-                const ownerName = truncateString(elm.owner);
+              {data?.map((elm: any, _idx: number) => {
+                const isOrder = Array.isArray(elm?.order);
+                const priceConverted = formatNumber2digits(
+                  isOrder ? elm?.order[0]?.amountBuy : elm?.order?.amountBuy
+                );
+                const usdPriceConverted = formatNumber2digits(
+                  isOrder ? elm?.order[0]?.amountBuyUsd : elm?.order?.amountBuyUsd
+                );
+                const ownerName = truncateString(elm?.creatorStarkKey);
                 return (
                   <tr
                     key={_idx}

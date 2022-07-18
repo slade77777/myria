@@ -51,9 +51,8 @@ export const ModalEditListing: React.FC<Props> = ({
   const {
     register,
     handleSubmit,
-    getValues,
     watch,
-    formState: { errors, isDirty, isValid, isSubmitSuccessful,  },
+    formState: { errors, isDirty, isValid, isSubmitSuccessful }
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   });
@@ -63,17 +62,12 @@ export const ModalEditListing: React.FC<Props> = ({
   }, [isDirty, isValid, isSubmitSuccessful]);
 
   return (
-    <Modal open={open}>
+    <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={title} className="shadow-[0_0_40px_10px_#0000004D] ">
         <form className="p-[24px] pt-[32px]">
           <div className="flex items-center gap-6  rounded-[8px] bg-base/4 p-[16px] ">
             <div>
-              <img
-                className=" rounded-[6px]"
-                src={imgSrc}
-                width={120}
-                height={120}
-              />
+              <img className=" rounded-[6px]" src={imgSrc} width={120} height={120} />
             </div>
             <div>
               <p className="text-[14px] text-light ">
@@ -100,17 +94,22 @@ export const ModalEditListing: React.FC<Props> = ({
             <Input
               type="text"
               {...register('price')}
+              placeholder={ethPrice ? ethPrice : '0.00'}
+              autoComplete="off"
               error={!!errors.price}
               errorText={errors.price?.message}
               className="mt-1 pr-[100px] rounded-[5px] border-none bg-base/4 pl-10 "
             />
             <div className="absolute top-10 right-3">
-              <span>${formatNumber2digits(parseFloat(ethPrice) * ethereum)}</span>
+              <span>${formatNumber2digits(ethPrice ? parseFloat(ethPrice) * ethereum : 0)}</span>
             </div>
           </div>
           {description && <p className="mt-5 text-light">{description}</p>}
           <div className="mt-8">
-            <Button onClick={handleSubmit(onSubmit)} disabled={!isDirty} className={clsx('btn-lg  w-full px-10', BUTTON_BG)}>
+            <Button
+              onClick={handleSubmit(onSubmit)}
+              disabled={!isDirty}
+              className={clsx('btn-lg  w-full px-10', BUTTON_BG)}>
               {isSubmitSuccessful && <ProgressIcon size={23} />}
               <span className="ml-1">
                 <Trans>{titleConfirm}</Trans>
