@@ -1,5 +1,6 @@
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
+import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import {
   CreateOrderEntity,
   SignableOrderInput
@@ -19,7 +20,6 @@ import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
-import { assetModule, collectionModule, orderModule, tradeModule } from 'src/services/myriaCore';
 import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
@@ -69,6 +69,14 @@ function AssetDetails({ id }: Props) {
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', id],
     async () => {
+      const client: IMyriaClient = {
+        provider: window.web3.currentProvider,
+        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
+        web3: window.web3,
+      };
+      const myriaClient = new MyriaClient(client);  
+      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const assetModule = moduleFactory.getAssetModule();
       const [assetDetails, listOrder] = await Promise.all([
         assetModule?.getAssetById(id), //getAssetDetail by assetId
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
@@ -86,6 +94,15 @@ function AssetDetails({ id }: Props) {
   const { data: moreCollectionList } = useQuery(
     ['moreCollection', assetDetails?.collectionId],
     async () => {
+      const client: IMyriaClient = {
+        provider: window.web3.currentProvider,
+        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
+        web3: window.web3,
+      };
+      
+      const myriaClient = new MyriaClient(client);  
+      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const collectionModule = moduleFactory.getCollectionModule();
       // more from this Collection (status:'FOR_SALE')
       const res = await collectionModule?.getAssetByCollectionId({
         assetType: 'FOR_SALE',
@@ -136,6 +153,15 @@ function AssetDetails({ id }: Props) {
     setShowModal((showModal) => !showModal);
   }, [setShowModal]);
   const onSubmitModifyOrder = async ({ price }: { price: string }) => {
+    const client: IMyriaClient = {
+      provider: window.web3.currentProvider,
+      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
+      web3: window.web3,
+    };
+    
+    const myriaClient = new MyriaClient(client);  
+    const moduleFactory = new Modules.ModuleFactory(myriaClient);
+    const orderModule = moduleFactory.getOrderModule();
     if (!address) return;
     const result = await orderModule?.updateOrderPrice(assetDetails?.order.orderId + '', {
       newAmountSell: price,
@@ -148,6 +174,15 @@ function AssetDetails({ id }: Props) {
   };
   const onSubmitCreateOrder = useCallback(
     async ({ price }) => {
+      const client: IMyriaClient = {
+        provider: window.web3.currentProvider,
+        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
+        web3: window.web3,
+      };
+      
+      const myriaClient = new MyriaClient(client);  
+      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const orderModule = moduleFactory.getOrderModule();
       if (!address) return;
       const payload: SignableOrderInput = {
         orderType: 'SELL',
@@ -231,6 +266,15 @@ function AssetDetails({ id }: Props) {
     }, SHOW_MESSAGE_TIME);
   };
   const handleCloseUnlist = async () => {
+    const client: IMyriaClient = {
+      provider: window.web3.currentProvider,
+      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
+      web3: window.web3,
+    };
+    
+    const myriaClient = new MyriaClient(client);  
+    const moduleFactory = new Modules.ModuleFactory(myriaClient);
+    const orderModule = moduleFactory.getOrderModule();
     if (!address || !assetDetails?.order.orderId) return;
     const result = await orderModule?.deleteOrderById({
       orderId: assetDetails?.order.orderId,
@@ -245,6 +289,16 @@ function AssetDetails({ id }: Props) {
   };
 
   const handleCreateTrade = async () => {
+    const client: IMyriaClient = {
+      provider: window.web3.currentProvider,
+      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
+      web3: window.web3,
+    };
+    
+    const myriaClient = new MyriaClient(client);  
+    const moduleFactory = new Modules.ModuleFactory(myriaClient);
+    const orderModule = moduleFactory.getOrderModule();
+    const tradeModule = moduleFactory.getTradeModule();
     if (!address || !assetDetails?.order.orderId) return;
     const signableOrderInput: SignableOrderInput = {
       orderType: 'BUY',
@@ -422,6 +476,7 @@ function AssetDetails({ id }: Props) {
               tokenId={assetDetails?.tokenId}
               assetType={assetDetails?.assetType}
               status={status}
+              contractAddress={assetDetails?.tokenAddress}
               onBuyNow={handleBuyNowItem}
             />
           </div>

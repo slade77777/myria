@@ -51,7 +51,7 @@ const PurchasePopover: React.FC<IProp> = ({ currentPrice, onCloseMessage, onConf
             </div>
           </div>
           <div className="flex justify-between mt-[162px]">
-            <Button loading={false} className="btn-lg my-8 border w-[120px] h-[50px]">
+            <Button onClick={onCloseMessage} loading={false} className="btn-lg my-8 border w-[120px] h-[50px]">
               <Trans>CANCEL</Trans>
             </Button>
             {isProgressPurchase ? (
