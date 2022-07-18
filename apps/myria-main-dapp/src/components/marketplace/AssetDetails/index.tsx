@@ -4,6 +4,7 @@ import {
   CreateOrderEntity,
   SignableOrderInput
 } from 'myria-core-sdk/dist/types/src/types/OrderTypes';
+import { TradesRequestTypes } from 'myria-core-sdk/dist/types/src/types/TradesTypes';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
@@ -18,7 +19,7 @@ import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
-import { assetModule, collectionModule, orderModule } from 'src/services/myriaCore';
+import { assetModule, collectionModule, orderModule, tradeModule } from 'src/services/myriaCore';
 import { formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
@@ -44,13 +45,15 @@ interface IProp {
   setShowUnlist?: any;
 }
 
-enum AssetStatus {
+export enum AssetStatus {
   BUY_NOW,
   SALE,
   MODIFY,
   UNCONNECTED,
   UNCONNECTED_NOT_SALE
 }
+
+const QUANTUM = '10000000000';
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
@@ -113,7 +116,7 @@ function AssetDetails({ id }: Props) {
   }, [assetDetails?.metadataOptional]);
   // the status will be get from based on the order Object in API get assetDetails
 
-  const [status, setStatus] = useState(AssetStatus.BUY_NOW);
+  const [status, setStatus] = useState<AssetStatus>(AssetStatus.BUY_NOW);
   const [showPopup, setShowPopup] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
@@ -241,6 +244,52 @@ function AssetDetails({ id }: Props) {
     }
   };
 
+  const handleCreateTrade = async () => {
+    if (!address || !assetDetails?.order.orderId) return;
+    const signableOrderInput: SignableOrderInput = {
+      orderType: 'BUY',
+      ethAddress: address,
+      starkKey,
+      tokenBuy: {
+        type: TokenType.MINTABLE_ERC721,
+        data: {
+          tokenId: assetDetails?.tokenId, // bind token ID
+          tokenAddress: assetDetails?.tokenAddress // Bind token address
+        }
+      },
+      amountBuy: `${assetDetails?.order.amountBuy}`, // bind data amount buy
+      amountSell: `${assetDetails?.order.amountSell}`, // bind data amount sell
+      tokenSell: {
+        type: TokenType.ETH,
+        data: {
+          quantum: QUANTUM // CONSTANTS
+        }
+      },
+      includeFees: false
+    };
+    const signableOrder = await orderModule?.signableOrder(signableOrderInput);
+    if (!signableOrder) return;
+    const payloadTrade: TradesRequestTypes = {
+      orderId: assetDetails?.order.orderId, // order id
+      nonce: Math.random() * 100000, // optional
+      amountBuy: signableOrder.amountBuy,
+      amountSell: signableOrder.amountSell,
+      vaultIdSell: signableOrder.vaultIdSell,
+      vaultIdBuy: signableOrder.vaultIdBuy,
+      starkKey,
+      buyerAddress: address,
+      assetIdSell: signableOrder.assetIdSell,
+      assetIdBuy: signableOrder.assetIdBuy,
+      includeFees: false
+    };
+
+    const result = await tradeModule?.createTrades(payloadTrade);
+  };
+
+  const handleBuyNowItem = () => {
+    setShowPopup(true);
+  };
+
   if (isLoading) {
     return (
       <div className="flex justify-center">
@@ -269,8 +318,7 @@ function AssetDetails({ id }: Props) {
           <div
             className=" border-base/5 h-[620px]  w-full
           rounded-[3px] border-[3px] bg-center bg-no-repeat "
-            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}
-          >
+            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
             {/* img */}
           </div>
           <div className="text-white">
@@ -305,8 +353,7 @@ function AssetDetails({ id }: Props) {
                 className="w-[40px] p-[10px]"
                 onClick={() => {
                   toast('The function is not ready yet!');
-                }}
-              >
+                }}>
                 <ShareIcon />
               </div>
             </div>
@@ -374,6 +421,8 @@ function AssetDetails({ id }: Props) {
               description={assetDetails?.description}
               tokenId={assetDetails?.tokenId}
               assetType={assetDetails?.assetType}
+              status={status}
+              onBuyNow={handleBuyNowItem}
             />
           </div>
         </div>
@@ -398,6 +447,7 @@ function AssetDetails({ id }: Props) {
       {showPopup && (
         <PurchaseModal
           open={showPopup}
+          onCreate={handleCreateTrade}
           onClose={() => setShowPopup(false)}
           onCloseMessage={handleClosePopup}
           currentPrice={currentPrice}
@@ -419,8 +469,7 @@ function AssetDetails({ id }: Props) {
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
-          setIsShowMessage={() => setShowMessageEdit(false)}
-        >
+          setIsShowMessage={() => setShowMessageEdit(false)}>
           <MessageEditListingModal />
         </MessageModal>
       )}
@@ -438,16 +487,14 @@ function AssetDetails({ id }: Props) {
       {showMessageModify && (
         <MessageModal
           isShowMessage={showMessageModify}
-          setIsShowMessage={() => setShowMessageModify(false)}
-        >
+          setIsShowMessage={() => setShowMessageModify(false)}>
           <MessageListingPriceModal />
         </MessageModal>
       )}
       {showMessageUnlist && (
         <MessageModal
           isShowMessage={showMessageUnlist}
-          setIsShowMessage={() => setShowMessageUnlist(false)}
-        >
+          setIsShowMessage={() => setShowMessageUnlist(false)}>
           <MessageUnlist />
         </MessageModal>
       )}
@@ -479,14 +526,12 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
         <>
           <button
             className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-            onClick={setStatus}
-          >
+            onClick={setStatus}>
             <Trans>LIST ITEM FOR SALE</Trans>
           </button>
           <button
             className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-            onClick={triggerPopover}
-          >
+            onClick={triggerPopover}>
             <Trans>WITHDRAW</Trans>
           </button>
         </>
@@ -539,14 +584,12 @@ const ModifyListing: React.FC<IProp> = ({
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>MODIFY LISTING</Trans>
       </button>
       <button
         className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-        onClick={setShowUnlist}
-      >
+        onClick={setShowUnlist}>
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
     </div>
@@ -572,8 +615,7 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>BUY NOW</Trans>
       </button>
     </div>
@@ -599,19 +641,28 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>Connect Wallet To Buy</Trans>
       </button>
     </div>
   );
 };
 
-const PurchaseModal: React.FC<any> = ({ open, onClose, currentPrice, onCloseMessage }) => {
+const PurchaseModal: React.FC<any> = ({
+  open,
+  onClose,
+  currentPrice,
+  onCloseMessage,
+  onCreate
+}) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={'Purchase'} className="w-[468px] shadow-[0_0_40px_10px_#0000004D]">
-        <PurchasePopover currentPrice={currentPrice} onCloseMessage={onCloseMessage} />
+        <PurchasePopover
+          onConfirm={onCreate}
+          currentPrice={currentPrice}
+          onCloseMessage={onCloseMessage}
+        />
       </Modal.Content>
     </Modal>
   );

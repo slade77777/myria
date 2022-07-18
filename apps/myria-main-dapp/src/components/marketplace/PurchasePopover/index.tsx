@@ -8,11 +8,12 @@ import ProgressIcon from 'src/components/icons/ProgressIcon';
 interface IProp {
   currentPrice: string;
   onCloseMessage: () => void;
+  onConfirm: () => void;
 }
 
 const TIMEOUT: number = 5000;
 
-const PurchasePopover: React.FC<IProp> = ({ currentPrice, onCloseMessage }) => {
+const PurchasePopover: React.FC<IProp> = ({ currentPrice, onCloseMessage, onConfirm }) => {
   const [isProgressPurchase, setIsProgressPurchase] = useState<boolean>(false);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
@@ -20,6 +21,7 @@ const PurchasePopover: React.FC<IProp> = ({ currentPrice, onCloseMessage }) => {
     setIsProgressPurchase(true);
     setTimeout(() => {
       setIsCompleted(true);
+      onConfirm();
       setIsProgressPurchase(false);
     }, TIMEOUT);
   };
