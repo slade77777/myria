@@ -253,16 +253,16 @@ function AssetDetails({ id }: Props) {
       tokenBuy: {
         type: TokenType.MINTABLE_ERC721,
         data: {
-          tokenId: assetDetails?.tokenId, // bind token ID
-          tokenAddress: assetDetails?.tokenAddress // Bind token address
+          tokenId: assetDetails?.tokenId,
+          tokenAddress: assetDetails?.tokenAddress
         }
       },
-      amountBuy: `${assetDetails?.order.amountBuy}`, // bind data amount buy
-      amountSell: `${assetDetails?.order.amountSell}`, // bind data amount sell
+      amountBuy: `${assetDetails?.order.amountBuy}`,
+      amountSell: `${assetDetails?.order.amountSell}`,
       tokenSell: {
         type: TokenType.ETH,
         data: {
-          quantum: QUANTUM // CONSTANTS
+          quantum: QUANTUM
         }
       },
       includeFees: false
@@ -270,8 +270,8 @@ function AssetDetails({ id }: Props) {
     const signableOrder = await orderModule?.signableOrder(signableOrderInput);
     if (!signableOrder) return;
     const payloadTrade: TradesRequestTypes = {
-      orderId: assetDetails?.order.orderId, // order id
-      nonce: Math.random() * 100000, // optional
+      orderId: assetDetails?.order.orderId,
+      nonce: Math.random() * 100000,
       amountBuy: signableOrder.amountBuy,
       amountSell: signableOrder.amountSell,
       vaultIdSell: signableOrder.vaultIdSell,
