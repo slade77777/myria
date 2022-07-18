@@ -66,22 +66,22 @@ const NftItem = ({ item }: Props) => {
                 }}
               />
             </div>
-            <div className="h-[122px] p-4">
+            <div className="h-48 p-4">
               <span className="block text-[12px] font-normal text-[#9CA3AF]">
                 {item?.collection?.name || ''}
               </span>
               <span className="mb-4 block truncate text-[14px] font-medium text-white">
                 {item.name}
               </span>
-              <div className="mb-6 flex items-center justify-between">
-                <div>
+              <div className="mb-6 flex gap-2">
+                <div className="w-3/5">
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Owner</span>
-                  <div className="flex items-center">
+                  <div className="flex">
                     <img src={item.creatorImg} alt="creator" className="mr-1" />
-                    <span className="text-[14px] font-medium text-white">{item.creator}</span>
+                    <p className="text-[14px] font-medium text-white w-3/5 break-words">{item.creator}</p>
                   </div>
                 </div>
-                <div>
+                <div className="flex-1">
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
                     Current price
                   </span>
