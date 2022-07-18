@@ -6,6 +6,8 @@ import { useWalletContext } from 'src/context/wallet';
 import testavatarImg from './testavatar.png';
 import { useRouter } from 'next/router';
 import useMarketplaceInventory from 'src/hooks/useMarketplaceInventory';
+import {useSelector} from "react-redux";
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
 
 function InventoryPage() {
   const { user } = useAuthenticationContext();
@@ -18,8 +20,10 @@ function InventoryPage() {
     }
   }, [address, router]);
 
-  const starkKey = '0xf8c6635f9cfe85f46759dc2eebe71a45b765687e35dbe5e74e8bde347813ef'; // MOCK
-
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const starkKey = '0x' + starkKeyUser;
   const { rawData } = useMarketplaceInventory(starkKey);
 
   const items: NFTItemType[] = React.useMemo(() => {
