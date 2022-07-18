@@ -42,7 +42,11 @@ const HotCollection: React.FC = () => {
                   <div className="relative flex flex-col  items-center  bg-base/3 pb-[32px]">
                     <div
                       className="absolute left-1/2 h-[80px] w-[80px] -translate-x-1/2 -translate-y-1/2 transform rounded-[40px] border-[4px] border-base/3 bg-center "
-                      style={{ backgroundImage: `url(${validatedImage(itm.iconUrl)})` }}></div>
+                      style={{
+                        backgroundImage: `url(${
+                          itm.iconUrl ? itm.iconUrl : '/images/marketplace/collection-2-logo.png'
+                        })`
+                      }}></div>
                     <div className="mt-[40px] text-center">
                       <p className="mt-[16px] text-[20px]">
                         <Trans>{itm.name}</Trans>

@@ -42,7 +42,7 @@ const Marketplace: React.FC = () => {
       secondList?.data.items && listOrder.push(...secondList?.data.items);
       return listOrder;
     },
-    { enabled: hotCollection && hotCollection.length > 0 }
+    { enabled: !!hotCollection }
   );
   return (
     <Page>
@@ -68,14 +68,13 @@ const Marketplace: React.FC = () => {
                 title="Explore"
                 items={dataOrder.map((elm, index) => {
                   const item: NFTItemType = {
-                    id: (index + 1).toString(),
+                    id: `${elm.id}`,
                     rarity: 'rare',
                     name: elm.name || '',
                     image_url: elm.imageUrl || '',
                     creator: truncateString(elm.owner),
                     creatorImg: testavatarImg.src,
-                    priceETH: 0
-                    // priceETH: +elm.order.amountBuy // +elm... to convert string to number
+                    priceETH: +elm.order.amountBuy // +elm... to convert string to number
                   };
                   return item;
                 })}
