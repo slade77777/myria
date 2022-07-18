@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import React from 'react';
-import { getRarityColor } from 'src/utils';
+import { getRarityColor, validatedImage } from 'src/utils';
 import { NFTItemType } from './type';
 
 interface Props {
@@ -48,54 +49,59 @@ const NftItem = ({ item }: Props) => {
   const rarityColor = getRarityColor(item.rarity);
 
   return (
-    <div className="snap-start">
-      <div className="block w-full max-w-[298px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
-        <div className="relative flex h-[298px] w-full items-center justify-center lg:h-[248px]">
-          <div className="absolute h-full w-full bg-[#081824]" />
-          <div
-            className="z-1 absolute h-full w-full opacity-[0.3]"
-            style={{ backgroundColor: rarityColor }}
-          />
-          <div
-            className="z-2 absolute h-full w-full"
-            style={{
-              background:
-                'linear-gradient(139.51deg, #FFFFFF 17.35%, rgba(255, 255, 255, 0) 55.49%)',
-              mixBlendMode: 'soft-light'
-            }}
-          />
-          <img className="z-3 absolute" src={item.image_url} alt="" width="90%" height="auto" />
-        </div>
-        <div className="h-[122px] p-4">
-          <span className="block text-[12px] font-normal text-[#9CA3AF]">{item.collection}</span>
-          <span className="mb-4 block text-[14px] font-medium text-white truncate">{item.name}</span>
-          <div className="mb-6 flex items-center justify-between">
-            <div>
-              <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Creator</span>
-              <div className="flex items-center">
-                <img src={item.creatorImg} alt="creator" className="mr-1" />
-                <span className="text-[14px] font-medium text-white">{item.creator}</span>
-              </div>
+    <Link href={`/marketplace/asset-detail?id=${item.id}`} key={item.id}>
+      <a href={`/marketplace/asset-detail?id=${item.id}`}>
+        <div className="snap-start cursor-pointer">
+          <div className="block w-full max-w-[298px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
+            <div className="relative flex h-[298px] w-full items-center justify-center lg:h-[248px]">
+              <div className="absolute h-full w-full bg-[#081824]" />
+              <div
+                className="z-1 absolute h-full w-full opacity-[0.3]"
+                style={{ backgroundColor: rarityColor }}
+              />
+              <div
+                className="z-2 absolute h-full w-full bg-cover bg-no-repeat bg-center"
+                style={{
+                  backgroundImage: `url(${validatedImage(item.image_url)})`
+                }}
+              />
             </div>
-            <div>
-              <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
-                Current price
+            <div className="h-48 p-4">
+              <span className="block text-[12px] font-normal text-[#9CA3AF]">
+                {item?.collection?.name || ''}
               </span>
-              {item.priceETH ? (
-                <div className="flex items-center">
-                  <DAOIcon className="mr-1" />
-                  <span className="text-[16px] font-medium text-white">
-                    {item.priceETH.toFixed(2)}
-                  </span>
+              <span className="mb-4 block truncate text-[14px] font-medium text-white">
+                {item.name}
+              </span>
+              <div className="mb-6 flex gap-2">
+                <div className="w-3/5">
+                  <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Owner</span>
+                  <div className="flex">
+                    <img src={item.creatorImg} alt="creator" className="mr-1" />
+                    <p className="text-[14px] font-medium text-white w-3/5 break-words">{item.creator}</p>
+                  </div>
                 </div>
-              ) : (
-                <span className="text-[16px] font-medium text-white">Not for Sale</span>
-              )}
+                <div className="flex-1">
+                  <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
+                    Current price
+                  </span>
+                  {item.priceETH ? (
+                    <div className="flex items-center">
+                      <DAOIcon className="mr-1" />
+                      <span className="text-[16px] font-medium text-white">
+                        {item.priceETH.toFixed(2)}
+                      </span>
+                    </div>
+                  ) : (
+                    <span className="text-[16px] font-medium text-white">Not for Sale</span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </a>
+    </Link>
   );
 };
 

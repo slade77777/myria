@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const LoveIcon: React.FC = () => {
   return (
@@ -17,15 +17,9 @@ const LoveIcon: React.FC = () => {
           width="54"
           height="48"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -39,11 +33,7 @@ const LoveIcon: React.FC = () => {
             type="matrix"
             values="0 0 0 0 1 0 0 0 0 0.808333 0 0 0 0 0.877333 0 0 0 0.4 0"
           />
-          <feBlend
-            mode="normal"
-            in2="shape"
-            result="effect1_innerShadow_654_7517"
-          />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_654_7517" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -89,10 +79,7 @@ const LoveIcon: React.FC = () => {
           <feOffset dx="-2" dy="-2" />
           <feGaussianBlur stdDeviation="2" />
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.304167 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.304167 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
           <feBlend
             mode="normal"
             in2="effect3_innerShadow_654_7517"
@@ -123,8 +110,7 @@ const LoveIcon: React.FC = () => {
           y1="11"
           x2="32"
           y2="53"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FC1878" />
           <stop offset="1" stopColor="#FF1E1E" />
         </linearGradient>

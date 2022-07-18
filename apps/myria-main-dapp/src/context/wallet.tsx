@@ -21,20 +21,16 @@ interface IWalletContext {
 }
 
 const WalletContext = React.createContext<IWalletContext>({} as IWalletContext);
-const defaultEnvChainId =  parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '0x1');
+const defaultEnvChainId = parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '0x1');
 
-function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvider | null{
+function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvider | null {
   try {
-    return new ethers.providers.InfuraProvider(
-      chainid,
-        {
-          projectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_SECRET,
-        }
-    )  
+    return new ethers.providers.InfuraProvider(chainid, {
+      projectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_SECRET
+    });
   } catch (error) {
     return null;
   }
-  
 }
 
 export const WalletProvider: React.FC = ({ children }) => {
@@ -87,13 +83,10 @@ export const WalletProvider: React.FC = ({ children }) => {
     address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
   }, [w3Provider, event, address]);
 
-  const getBalanceETH = React.useCallback(
-    () => {
-      if (!address) return;
-      return readerProviderApi?.getBalance(address);
-    },
-    [readerProviderApi, address]
-  );
+  const getBalanceETH = React.useCallback(() => {
+    if (!address) return;
+    return readerProviderApi?.getBalance(address);
+  }, [readerProviderApi, address]);
 
   const onConnect = async () => {
     web3Modal = new Web3Modal({
@@ -120,7 +113,9 @@ export const WalletProvider: React.FC = ({ children }) => {
   };
 
   React.useEffect(() => {
-    getBalanceETH()?.then(setBalance).catch(() => null);
+    getBalanceETH()
+      ?.then(setBalance)
+      .catch(() => null);
   }, [getBalanceETH]);
 
   return (

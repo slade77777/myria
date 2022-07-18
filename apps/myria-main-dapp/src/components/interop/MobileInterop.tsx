@@ -126,10 +126,14 @@ const MobileInterop: React.FC = () => {
               <p className="text-[14px] font-extrabold uppercase leading-[1.25] text-brand-light-blue">
                 <Trans>How it works</Trans>
               </p>
-              <h2 className="heading-md mt-2"><Trans>The new standard for interoperable NFTs</Trans></h2>
+              <h2 className="heading-md mt-2">
+                <Trans>The new standard for interoperable NFTs</Trans>
+              </h2>
               <p className="body-sm mt-6 text-light">
-                <Trans>At Myria, we believe NFTs should not only endow players with verifiable ownership,
-                but also allow players to take their NFTs from one game to another.</Trans>
+                <Trans>
+                  At Myria, we believe NFTs should not only endow players with verifiable ownership,
+                  but also allow players to take their NFTs from one game to another.
+                </Trans>
               </p>
             </div>
           </div>
@@ -149,11 +153,15 @@ const MobileInterop: React.FC = () => {
               <p className="text-[14px] font-extrabold uppercase leading-[1.25] text-brand-light-blue">
                 <Trans>How it works</Trans>
               </p>
-              <h2 className="heading-md mt-2"><Trans>Own your metaverse identity. Anywhere. Any game.</Trans></h2>
+              <h2 className="heading-md mt-2">
+                <Trans>Own your metaverse identity. Anywhere. Any game.</Trans>
+              </h2>
               <p className="body-sm mt-6 text-light">
-                <Trans>Your NFT is your digital identity. Take your NFT with you on your metaverse
-                explorations. Equip and level up in different games and worlds. Truly own your
-                metaverse identity with Myria.</Trans>
+                <Trans>
+                  Your NFT is your digital identity. Take your NFT with you on your metaverse
+                  explorations. Equip and level up in different games and worlds. Truly own your
+                  metaverse identity with Myria.
+                </Trans>
               </p>
             </div>
           </div>
@@ -173,10 +181,14 @@ const MobileInterop: React.FC = () => {
               <p className="text-[14px] font-extrabold uppercase leading-[1.25] text-brand-light-blue">
                 <Trans>How it works</Trans>
               </p>
-              <h2 className="heading-md mt-2"><Trans>Morphing NFTs™ that adapt to your avatars</Trans></h2>
+              <h2 className="heading-md mt-2">
+                <Trans>Morphing NFTs™ that adapt to your avatars</Trans>
+              </h2>
               <p className="body-sm mt-6 text-light">
-                <Trans>No matter the shape and size of your avatar, use the same NFT on them all. Buy once,
-                use on any character. Designed to be interoperable.</Trans>
+                <Trans>
+                  No matter the shape and size of your avatar, use the same NFT on them all. Buy
+                  once, use on any character. Designed to be interoperable.
+                </Trans>
               </p>
             </div>
           </div>
@@ -193,8 +205,12 @@ const MobileInterop: React.FC = () => {
               />
             </div>
             <div className="mt-[57px] max-w-[607px] text-center">
-              <h1 className="heading-lg text-brand-light-blue"><Trans>Morphing NFTs™</Trans></h1>
-              <p className="heading-lg mt-[31px] font-bold"><Trans>Own your metaverse identity</Trans></p>
+              <h1 className="heading-lg text-brand-light-blue">
+                <Trans>Morphing NFTs™</Trans>
+              </h1>
+              <p className="heading-lg mt-[31px] font-bold">
+                <Trans>Own your metaverse identity</Trans>
+              </p>
             </div>
           </div>
         </section>

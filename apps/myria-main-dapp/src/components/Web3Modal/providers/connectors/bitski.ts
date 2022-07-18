@@ -1,4 +1,4 @@
-import { IAbstractConnectorOptions } from "../../helpers";
+import { IAbstractConnectorOptions } from '../../helpers';
 
 interface IBitskiOptions extends IAbstractConnectorOptions {
   clientId: string;
@@ -7,15 +7,12 @@ interface IBitskiOptions extends IAbstractConnectorOptions {
   extraProviderOptions?: any;
 }
 
-const ConnectToBitski = async (
-  Bitski: any,
-  opts: IBitskiOptions
-) => {
+const ConnectToBitski = async (Bitski: any, opts: IBitskiOptions) => {
   const bitski = new Bitski(opts.clientId, opts.callbackUrl, opts.extraBitskiOptions);
 
   await bitski.signIn();
 
-  const provider = bitski.getProvider(opts.extraProviderOptions)
+  const provider = bitski.getProvider(opts.extraProviderOptions);
 
   return provider;
 };

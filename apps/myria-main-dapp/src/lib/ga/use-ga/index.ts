@@ -65,7 +65,9 @@ export const useGA4 = () => {
 
       // add underscore to address to prevent `0x` to be converted to double when exporting data
       if ((gaAttributes as any)?.wallet_address) {
-        (gaAttributes as any).wallet_address = `_${String((gaAttributes as any).wallet_address).toLowerCase()}`;
+        (gaAttributes as any).wallet_address = `_${String(
+          (gaAttributes as any).wallet_address
+        ).toLowerCase()}`;
       }
 
       console.log(eventName, gaAttributes);

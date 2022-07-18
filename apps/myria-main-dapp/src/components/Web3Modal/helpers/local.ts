@@ -1,4 +1,4 @@
-import { isLocalStorageAvailable } from "./utils";
+import { isLocalStorageAvailable } from './utils';
 
 export let local: Storage;
 
@@ -19,7 +19,7 @@ export const getLocal = (key: string) => {
   if (local) {
     raw = local.getItem(key);
   }
-  if (raw && typeof raw === "string") {
+  if (raw && typeof raw === 'string') {
     try {
       data = JSON.parse(raw);
     } catch (error) {

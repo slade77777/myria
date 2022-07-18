@@ -1,26 +1,30 @@
-import React from 'react';
-import { useQuery } from 'react-query';
+import React, { useEffect } from 'react';
 import Inventory from 'src/components/marketplace/Inventory';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { useWalletContext } from 'src/context/wallet';
-import { assetModule } from 'src/services/myriaCore';
 import testavatarImg from './testavatar.png';
+import { useRouter } from 'next/router';
+import useMarketplaceInventory from 'src/hooks/useMarketplaceInventory';
+import {useSelector} from "react-redux";
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
 
 function InventoryPage() {
   const { user } = useAuthenticationContext();
   const { address } = useWalletContext();
-  const starkKey = '0xf8c6635f9cfe85f46759dc2eebe71a45b765687e35dbe5e74e8bde347813ef'; // MOCK
-  const { data } = useQuery(['marketplaceInventory', starkKey], () => {
-    if (starkKey) {
-      return assetModule?.getAssetStarkKeyMarketp(starkKey);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!address) {
+      router.push('/marketplace');
     }
-    return null;
-  });
+  }, [address, router]);
 
-  const rawData = data?.data;
-
-  console.log(rawData)
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const starkKey = '0x' + starkKeyUser;
+  const { rawData } = useMarketplaceInventory(starkKey);
 
   const items: NFTItemType[] = React.useMemo(() => {
     if (rawData instanceof Array) {
@@ -38,7 +42,7 @@ function InventoryPage() {
     return [];
   }, [rawData]);
 
-  if (!address) return 'Need to connect wallet';
+  if (!address) return null;
 
   return (
     <Inventory

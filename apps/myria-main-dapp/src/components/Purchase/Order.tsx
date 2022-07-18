@@ -22,6 +22,7 @@ import { useGA4 } from '../../lib/ga';
 import WhiteListSale from './Modals/WhiteListSale';
 import { WhitelistAddress } from '../../constant/whitelist-address';
 import PrivacyPolicyModal from './Modals/PrivacyPolicyModal';
+import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 
 const licenses = [
   {
@@ -54,9 +55,9 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
   const [firstLicense, setFirstLicense] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [whitelistError, setWhitelistError] = useState(false);
-  const [etheCost, setEtheCost] = useState(0);
   const { event } = useGA4();
   const { data } = usePurchaseInfo();
+  const { data: etheCost = 0 } = useEtheriumPrice();
 
   const {
     register,
@@ -73,17 +74,6 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
 
   const price = data?.price || 0.01;
   const quantity = useWatch({ control, name: 'quantity' }) || 0;
-
-  useEffect(() => {
-    // get etherium cost
-    axios
-      .get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
-      .then((data) => {
-        if (data?.data?.ethereum?.usd) {
-          setEtheCost(data?.data?.ethereum?.usd);
-        }
-      });
-  }, []);
 
   const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(
     async ({ numberOfNode }: { numberOfNode: number }) => {
@@ -113,7 +103,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
           node_quantity: quantity,
           order_status: 'Error',
           error_details: 'Not in whitelist address'
-        })
+        });
         return setWhitelistError(true);
       }
       submitPurchase({ numberOfNode: quantity })
@@ -131,16 +121,16 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
             wallet_address: address,
             node_quantity: quantity,
             order_status: 'Completed'
-          })
+          });
         })
         .catch((e) => {
-          toast.clearWaitingQueue({containerId: "node purchase limit"});
+          toast.clearWaitingQueue({ containerId: 'node purchase limit' });
           toast.error(e, {
-            toastId: "node purchase limit"
+            toastId: 'node purchase limit'
           });
         });
     },
-    [submitPurchase, address, onPlaceOrder, price, etheCost]
+    [submitPurchase, address, onPlaceOrder, price, etheCost, event]
   );
 
   const handleClickLicense = (licenseId: string) => {
@@ -167,22 +157,22 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
         onAgree={() => setShowPrivacy(false)}
       />
       <div>
-        <div className="rounded-t-lg bg-brand-deep-blue p-6 md:rounded-lg md:p-8">
+        <div className="bg-brand-deep-blue rounded-t-lg p-6 md:rounded-lg md:p-8">
           <div className="flex items-center justify-between md:block">
-            <p className="hidden font-bold text-light md:body-sm md:block">
+            <p className="text-light md:body-sm hidden font-bold md:block">
               <Trans>Price</Trans>
             </p>
             <div className="flex items-baseline justify-between md:mt-[7px] md:items-center">
               <div className="flex items-center">
                 <ETH /> <p className="heading-md ml-[9px] ">{price * quantity}</p>
               </div>
-              <p className="caption ml-2 font-normal text-light md:body-sm md:ml-0">
+              <p className="caption text-light md:body-sm ml-2 font-normal md:ml-0">
                 ~${formatCurrency(price * quantity * etheCost, 2)}
               </p>
             </div>
 
             <div className="ml-[100px] md:ml-0 md:mt-6">
-              <p className="body-sm hidden text-light md:block">
+              <p className="body-sm text-light hidden md:block">
                 <Trans>Quantity</Trans>
               </p>
               <Controller
@@ -192,7 +182,11 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
                   <NumberInput
                     setQuantityNumber={(val: number) => {
                       field.onChange(val);
-                      event("Node Order Updated", {campaign: 'Nodes', wallet_address: address, node_quantity: val})
+                      event('Node Order Updated', {
+                        campaign: 'Nodes',
+                        wallet_address: address,
+                        node_quantity: val
+                      });
                     }}
                   />
                 )}
@@ -213,7 +207,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
             {/*/>*/}
           </div>
 
-          <div className="caption mt-6 font-normal normal-case text-light md:body-sm">
+          <div className="caption text-light md:body-sm mt-6 font-normal normal-case">
             {licenses.map((license) => (
               <div className="mb-4 flex" key={license.key}>
                 <Controller
@@ -230,7 +224,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
                 <p className="ml-4">
                   {license.content}{' '}
                   <span
-                    className="cursor-pointer text-brand-gold"
+                    className="text-brand-gold cursor-pointer"
                     onClick={() => handleClickLicense(license.key)}>
                     {license.action}
                   </span>

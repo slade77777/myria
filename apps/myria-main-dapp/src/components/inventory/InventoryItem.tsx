@@ -10,7 +10,7 @@ interface Props {
 
 const InventoryItem = ({ item, onClaimed }: Props) => {
   const { inventoryOpenChestMutation } = useInventoryQuery();
-  const claimable = useMemo(() => item.type === 'chest' && !item.opened, [item])
+  const claimable = useMemo(() => item.type === 'chest' && !item.opened, [item]);
   const handleClaim = React.useCallback(async () => {
     const openedChest = await inventoryOpenChestMutation.mutateAsync(item.id);
     onClaimed(item, openedChest);

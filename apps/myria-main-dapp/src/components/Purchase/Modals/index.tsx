@@ -15,13 +15,13 @@ import { formatCurrency } from 'src/lib/formatter';
 import { useGA4 } from 'src/lib/ga';
 
 export type PurchaseInformationProps = {
-  quantity: number,
-  totalPriceEth: number,
-  totalPriceUsd: number,
-  toAddress: string,
-  transactionId: string, // TODO
-  nonce: string, // TODO
-}
+  quantity: number;
+  totalPriceEth: number;
+  totalPriceUsd: number;
+  toAddress: string;
+  transactionId: string; // TODO
+  nonce: string; // TODO
+};
 
 const ModalPurchase = ({
   data,
@@ -34,8 +34,8 @@ const ModalPurchase = ({
   onClose: () => void;
   onPurchaseComplete?: (tx: string) => void;
 }) => {
-  const { readerProviderApi, signerProviderApi,address, balance } = useWalletContext();
-  const {quantity, totalPriceEth, totalPriceUsd, transactionId, nonce, toAddress} = data;
+  const { readerProviderApi, signerProviderApi, address, balance } = useWalletContext();
+  const { quantity, totalPriceEth, totalPriceUsd, transactionId, nonce, toAddress } = data;
   const { event } = useGA4();
 
   const isInsufficientBalance = utils
@@ -47,7 +47,7 @@ const ModalPurchase = ({
     async () => {
       // this never happens due to line 53 but just by pass ts check
       // TODO: check if useQuery has some ts supports
-      if (!address || !readerProviderApi  || isInsufficientBalance) {
+      if (!address || !readerProviderApi || isInsufficientBalance) {
         return;
       }
       return await formatTransferTxRequest(
@@ -74,41 +74,53 @@ const ModalPurchase = ({
   });
 
   // submit purchase
-  const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(async ({ txHash, nonce, transactionId}: { txHash: string; nonce: string; transactionId: string }) => {
-    if (txHash && nonce && transactionId) {
-      await (new Promise((resolve) => {
-        setTimeout(() => {
-          console.log('Submited', { txHash, nonce, transactionId });
-          resolve(txHash);
-        }, 2000);
-      }));
+  const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(
+    async ({
+      txHash,
+      nonce,
+      transactionId
+    }: {
+      txHash: string;
+      nonce: string;
+      transactionId: string;
+    }) => {
+      if (txHash && nonce && transactionId) {
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            console.log('Submited', { txHash, nonce, transactionId });
+            resolve(txHash);
+          }, 2000);
+        });
 
-      onPurchaseComplete?.(txHash);
-    } else {
-      throw new Error('Missing params');
+        onPurchaseComplete?.(txHash);
+      } else {
+        throw new Error('Missing params');
+      }
     }
-  });
+  );
 
-  const trackPurchase = useCallback((error?: string) => {
-    event('Node Order Purchased', {
-      campaign: 'Nodes',
-      wallet_address: address,
-      node_quantity: quantity,
-      order_status: error ? 'Error' : 'Completed',
-      eth_total_amount: totalPriceEth,
-      usd_total_amount: totalPriceUsd,
-      error_details: error
-    })
-  }, [])
+  const trackPurchase = useCallback(
+    (error?: string) => {
+      event('Node Order Purchased', {
+        campaign: 'Nodes',
+        wallet_address: address,
+        node_quantity: quantity,
+        order_status: error ? 'Error' : 'Completed',
+        eth_total_amount: totalPriceEth,
+        usd_total_amount: totalPriceUsd,
+        error_details: error
+      });
+    },
+    [address, event, quantity, totalPriceEth, totalPriceUsd]
+  );
 
   const onPurchase = useCallback(async () => {
     try {
-
       const txHash = await handleTransferETH();
 
       if (!txHash) {
-        trackPurchase('Empty transaction hash')
-        throw new Error("Empty transaction hash");
+        trackPurchase('Empty transaction hash');
+        throw new Error('Empty transaction hash');
       }
       trackPurchase();
       await submitPurchase({ txHash, nonce, transactionId });
@@ -117,14 +129,24 @@ const ModalPurchase = ({
         wallet_address: address,
         node_quantity: quantity,
         eth_total_amount: totalPriceEth,
-        usd_total_amount: totalPriceUsd,
-      })
+        usd_total_amount: totalPriceUsd
+      });
       toast.success('Purchase completed');
     } catch (e) {
       toast.error('Purchase uncompleted');
     }
-  }, [handleTransferETH, submitPurchase, nonce, transactionId]);
-
+  }, [
+    handleTransferETH,
+    submitPurchase,
+    nonce,
+    transactionId,
+    address,
+    event,
+    quantity,
+    totalPriceEth,
+    totalPriceUsd,
+    trackPurchase
+  ]);
 
   const button = useMemo(() => {
     let className = 'btn-primary';
@@ -152,7 +174,7 @@ const ModalPurchase = ({
   }, [isInsufficientBalance, isPurchasing, isSubmiting, onPurchase]);
 
   return (
-    <Modal open={open} onOpenChange={(isPurchasing || isSubmiting) ? () => null : onClose}>
+    <Modal open={open} onOpenChange={isPurchasing || isSubmiting ? () => null : onClose}>
       <Modal.Content
         title="Complete your purchase"
         className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
@@ -162,9 +184,7 @@ const ModalPurchase = ({
               <p className="heading-list">
                 <Trans>Myria Founder’s Node</Trans>
               </p>
-              <p className="body-sm text-light">
-                Quantity: {quantity}
-              </p>
+              <p className="body-sm text-light">Quantity: {quantity}</p>
             </div>
             <div>
               <div className="flex items-center justify-end">

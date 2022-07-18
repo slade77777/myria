@@ -5,7 +5,7 @@
   border-color: inherit;
 }
 .loadingRing:after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 0.8em;
   height: 0.8em;
