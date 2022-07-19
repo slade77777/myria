@@ -72,9 +72,9 @@ function AssetDetails({ id }: Props) {
       const client: IMyriaClient = {
         provider: window.web3.currentProvider,
         networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
+        web3: window.web3
       };
-      const myriaClient = new MyriaClient(client);  
+      const myriaClient = new MyriaClient(client);
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const assetModule = moduleFactory.getAssetModule();
       const [assetDetails, listOrder] = await Promise.all([
@@ -97,10 +97,10 @@ function AssetDetails({ id }: Props) {
       const client: IMyriaClient = {
         provider: window.web3.currentProvider,
         networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
+        web3: window.web3
       };
-      
-      const myriaClient = new MyriaClient(client);  
+
+      const myriaClient = new MyriaClient(client);
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const collectionModule = moduleFactory.getCollectionModule();
       // more from this Collection (status:'FOR_SALE')
@@ -156,10 +156,10 @@ function AssetDetails({ id }: Props) {
     const client: IMyriaClient = {
       provider: window.web3.currentProvider,
       networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3,
+      web3: window.web3
     };
-    
-    const myriaClient = new MyriaClient(client);  
+
+    const myriaClient = new MyriaClient(client);
     const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
     if (!address) return;
@@ -177,10 +177,10 @@ function AssetDetails({ id }: Props) {
       const client: IMyriaClient = {
         provider: window.web3.currentProvider,
         networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
+        web3: window.web3
       };
-      
-      const myriaClient = new MyriaClient(client);  
+
+      const myriaClient = new MyriaClient(client);
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const orderModule = moduleFactory.getOrderModule();
       if (!address) return;
@@ -269,10 +269,10 @@ function AssetDetails({ id }: Props) {
     const client: IMyriaClient = {
       provider: window.web3.currentProvider,
       networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3,
+      web3: window.web3
     };
-    
-    const myriaClient = new MyriaClient(client);  
+
+    const myriaClient = new MyriaClient(client);
     const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
     if (!address || !assetDetails?.order.orderId) return;
@@ -292,10 +292,10 @@ function AssetDetails({ id }: Props) {
     const client: IMyriaClient = {
       provider: window.web3.currentProvider,
       networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3,
+      web3: window.web3
     };
-    
-    const myriaClient = new MyriaClient(client);  
+
+    const myriaClient = new MyriaClient(client);
     const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
     const tradeModule = moduleFactory.getTradeModule();
@@ -375,23 +375,19 @@ function AssetDetails({ id }: Props) {
             style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
             {/* img */}
           </div>
-          <div className="text-white">
-            {/* list stat */}
-            <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
-              <Trans>Attributes</Trans>
-            </div>
-            {attributes.length > 0 ? (
+          {attributes.length > 0 && (
+            <div className="text-white">
+              {/* list stat */}
+              <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
+                <Trans>Attributes</Trans>
+              </div>
               <div className="grid grid-cols-4 gap-4">
                 {attributes.map(({ key, val }) => {
                   return <ItemAttribution key={key} keyword={key} val={val} />;
                 })}
               </div>
-            ) : (
-              <div className="text-center text-[28px] italic">
-                <Trans>No attributes</Trans>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className="w-[620px]">
           {/* right */}
