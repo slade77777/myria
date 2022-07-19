@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "env-cmd -f env.local next dev",
-    "build:dev": "env-cmd -f env.staging next build && next export -o out-dev",
+    "build:dev": "env-cmd -f env.dev next build && next export -o out-dev",
     "build:staging": "env-cmd -f env.staging next build && next export -o out-staging",
     "build:prod": "env-cmd -f env.production next build && next export -o out-prod",
     "start": "next start",
