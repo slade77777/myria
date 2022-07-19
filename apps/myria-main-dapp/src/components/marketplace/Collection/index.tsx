@@ -26,7 +26,7 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
     totalAssetsForSale,
     contractAddress
   } = collection;
-  console.log('collection', collection);
+  console.log('[FE] collection', collection);
   return (
     <Page>
       <img
@@ -78,7 +78,6 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
               title={'Items'}
               items={assetItems?.items?.map((elm: any, index: number) => {
                 const isOrder = Array.isArray(elm?.order);
-                console.log(isOrder, elm?.order[0]?.amountBuy);
                 const item: NFTItemType = {
                   id: `${elm.id}`,
                   rarity: 'rare',

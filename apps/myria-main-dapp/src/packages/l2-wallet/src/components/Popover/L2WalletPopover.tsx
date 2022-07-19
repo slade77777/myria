@@ -300,13 +300,13 @@ export default function L2WalletPopover({
       setErrorAmount("Trade's value must be at least 10$.");
       return false;
     }
-    if (amount > parseFloat(balance)) {
+    if (amount > parseFloat(balanceL1)) {
       setErrorAmount('Insufficient Balance.');
       return false;
     }
     setErrorAmount('');
     return true;
-  }, [selectedToken, amount, balance]);
+  }, [selectedToken, amount, balanceL1]);
 
   const deposit = async () => {
     try {
@@ -592,7 +592,7 @@ export default function L2WalletPopover({
             options={options}
             selectCurrency={selectCurrency}
             errorMessageAsset={errorMessageAsset}
-            balance={balance}
+            balance={balanceL1}
             setAmountHandle={setAmountHandle}
             selectedToken={selectedToken}
             isValidForm={isValidForm}
