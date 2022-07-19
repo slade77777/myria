@@ -14,7 +14,7 @@ interface IWalletContext {
   signerProviderApi?: ethers.providers.Web3Provider;
   readerProviderApi?: ReaderProvider;
   chainId?: number | string;
-  onConnect: () => void;
+  onConnect: () => Promise<void>;
   ready: boolean;
   disconnect: () => void;
   signMessage: (message: string) => Promise<string> | undefined;

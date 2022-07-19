@@ -36,7 +36,7 @@ const Header: React.FC<Props> = ({ step }) => {
             <Logo />
           </a>
         </Link>
-        <div className="flex items-center justify-end">{step > 1 && <ProfileComponent />}</div>
+        <div className="flex items-center justify-end">{step !== 0 && <ProfileComponent />}</div>
       </div>
     </header>
   );
