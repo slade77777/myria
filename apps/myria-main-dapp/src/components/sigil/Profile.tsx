@@ -42,7 +42,7 @@ const Profile: React.FC = () => {
         </div>
 
         <div className="opacity-20">
-          <div className="absolute top-0 right-0 -translate-y-2 translate-x-[7px] text-blue [transform:var(--tw-transform)_rotateY(180deg)]">
+          <div className="absolute top-0 right-0 -translate-y-2 translate-x-[7px] text-blue [transform:translate(var(--tw-translate-x),var(--tw-translate-y))_rotateY(180deg)]">
             <Subtract />
           </div>
           <div className="absolute top-0 right-0 bottom-5 w-[1px] translate-y-4 bg-blue" />
