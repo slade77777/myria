@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { getRarityColor, validatedImage } from 'src/utils';
+import { formatNumber2digits, getRarityColor, validatedImage } from 'src/utils';
 import { NFTItemType } from './type';
 
 interface Props {
@@ -66,30 +66,30 @@ const NftItem = ({ item }: Props) => {
                 }}
               />
             </div>
-            <div className="h-48 p-4">
+            <div className="p-4">
               <span className="block text-[12px] font-normal text-[#9CA3AF]">
-                {item?.collection?.name || ''}
+                {item?.collection?.name || 'Sigil Myriaverse'}
               </span>
               <span className="mb-4 block truncate text-[14px] font-medium text-white">
                 {item.name}
               </span>
-              <div className="mb-6 flex gap-2">
-                <div className="w-3/5">
+              <div>
+                <div className="flex justify-between items-center">
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Owner</span>
-                  <div className="flex">
-                    <img src={item.creatorImg} alt="creator" className="mr-1" />
-                    <p className="text-[14px] font-medium text-white w-3/5 break-words">{item.creator}</p>
-                  </div>
-                </div>
-                <div className="flex-1">
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
                     Current price
                   </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <div className="flex">
+                    <img src={item.creatorImg} alt="creator" className="mr-1" />
+                    <p className="text-[14px] font-medium text-white break-words">{item.creator}</p>
+                  </div>
                   {item.priceETH ? (
                     <div className="flex items-center">
                       <DAOIcon className="mr-1" />
                       <span className="text-[16px] font-medium text-white">
-                        {item.priceETH.toFixed(2)}
+                        {formatNumber2digits(item.priceETH)}
                       </span>
                     </div>
                   ) : (
