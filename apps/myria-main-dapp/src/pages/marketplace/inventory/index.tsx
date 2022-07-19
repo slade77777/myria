@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import useMarketplaceInventory from 'src/hooks/useMarketplaceInventory';
 import {useSelector} from "react-redux";
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import truncateString from 'src/helper';
 
 function InventoryPage() {
   const { user } = useAuthenticationContext();
@@ -27,6 +28,8 @@ function InventoryPage() {
   const { rawData } = useMarketplaceInventory(starkKey);
 
   const items: NFTItemType[] = React.useMemo(() => {
+    console.log('item', rawData);
+    
     if (rawData instanceof Array) {
       return rawData.map((item) => ({
         id: item.id,
@@ -34,7 +37,7 @@ function InventoryPage() {
         name: item.name || 'Untitled',
         image_url: item.imageUrl,
         collection: item.collection?.name,
-        creator: item.collection?.project?.name,
+        creator: truncateString(item.collection.ownerPublicKey),
         creatorImg: testavatarImg.src, // MOCK
         priceETH: Math.round(Math.random() * 5) // MOCK
       }));

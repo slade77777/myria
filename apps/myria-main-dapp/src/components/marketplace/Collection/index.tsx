@@ -24,7 +24,6 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
     description,
     totalAssets,
     totalAssetsForSale,
-    contractAddress
   } = collection;
   return (
     <Page>
@@ -82,7 +81,7 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
                   rarity: 'rare',
                   name: elm.name || '',
                   image_url: elm.imageUrl || '',
-                  creator: truncateString(contractAddress),
+                  creator: truncateString(elm.collection.ownerPublicKey),
                   creatorImg: testavatarImg.src,
                   priceETH: isOrder ? Number(elm?.order[0]?.amountBuy) : elm?.order?.amountBuy
                 };

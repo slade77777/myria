@@ -2,11 +2,15 @@ import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
 import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import {
+  AssetDetailsResponse,
+  EqualMetadataByAssetIdResponse
+} from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import {
   CreateOrderEntity,
   SignableOrderInput
 } from 'myria-core-sdk/dist/types/src/types/OrderTypes';
 import { TradesRequestTypes } from 'myria-core-sdk/dist/types/src/types/TradesTypes';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -72,15 +76,16 @@ function AssetDetails({ id }: Props) {
       const client: IMyriaClient = {
         provider: window.web3.currentProvider,
         networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
+        web3: window.web3
       };
-      const myriaClient = new MyriaClient(client);  
+      const myriaClient = new MyriaClient(client);
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const assetModule = moduleFactory.getAssetModule();
       const [assetDetails, listOrder] = await Promise.all([
         assetModule?.getAssetById(id), //getAssetDetail by assetId
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
+
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
@@ -97,10 +102,10 @@ function AssetDetails({ id }: Props) {
       const client: IMyriaClient = {
         provider: window.web3.currentProvider,
         networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
+        web3: window.web3
       };
-      
-      const myriaClient = new MyriaClient(client);  
+
+      const myriaClient = new MyriaClient(client);
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const collectionModule = moduleFactory.getCollectionModule();
       // more from this Collection (status:'FOR_SALE')
@@ -119,9 +124,6 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = `0x${starkKeyUser}`;
-  const currentPrice = useMemo(() => {
-    return formatNumber2digits(Number(assetDetails?.order?.amountSell));
-  }, [assetDetails?.order]);
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
     lodash.map(assetDetails?.metadataOptional, (val, key) => {
@@ -133,7 +135,11 @@ function AssetDetails({ id }: Props) {
   }, [assetDetails?.metadataOptional]);
   // the status will be get from based on the order Object in API get assetDetails
 
-  const [status, setStatus] = useState<AssetStatus>(AssetStatus.BUY_NOW);
+  const currentPrice = useMemo(() => {
+    return formatNumber2digits(Number(assetDetails?.order?.amountBuy));
+  }, [assetDetails?.order]);
+
+  const [status, setStatus] = useState<AssetStatus>(AssetStatus.UNCONNECTED);
   const [showPopup, setShowPopup] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
@@ -143,10 +149,11 @@ function AssetDetails({ id }: Props) {
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
+  const [priceTrade, setPriceTrade] = useState<string>(currentPrice);
 
   const currentUSDPrice = useMemo(
-    () => formatNumber2digits(+currentPrice * etheCost),
-    [currentPrice, etheCost]
+    () => formatNumber2digits(Number(assetDetails?.order?.amountBuy) * etheCost),
+    [assetDetails?.order?.amountBuy, etheCost]
   );
 
   const handleCloseModal = useCallback(() => {
@@ -156,10 +163,10 @@ function AssetDetails({ id }: Props) {
     const client: IMyriaClient = {
       provider: window.web3.currentProvider,
       networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3,
+      web3: window.web3
     };
-    
-    const myriaClient = new MyriaClient(client);  
+
+    const myriaClient = new MyriaClient(client);
     const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
     if (!address) return;
@@ -172,15 +179,16 @@ function AssetDetails({ id }: Props) {
       setShowMessageModify(true);
     }
   };
+
   const onSubmitCreateOrder = useCallback(
     async ({ price }) => {
       const client: IMyriaClient = {
         provider: window.web3.currentProvider,
         networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
+        web3: window.web3
       };
-      
-      const myriaClient = new MyriaClient(client);  
+
+      const myriaClient = new MyriaClient(client);
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const orderModule = moduleFactory.getOrderModule();
       if (!address) return;
@@ -191,7 +199,7 @@ function AssetDetails({ id }: Props) {
         tokenSell: {
           type: TokenType.MINTABLE_ERC721,
           data: {
-            tokenId: '5',
+            tokenId: assetDetails?.tokenId,
             tokenAddress: assetDetails?.tokenAddress
           }
         },
@@ -199,7 +207,7 @@ function AssetDetails({ id }: Props) {
         tokenBuy: {
           type: TokenType.ETH,
           data: {
-            quantum: '10000000000' // CONSTANTS
+            quantum: QUANTUM
           }
         },
         amountBuy: '1',
@@ -230,7 +238,7 @@ function AssetDetails({ id }: Props) {
         }
       }
     },
-    [address, assetDetails?.tokenAddress, id, refetch, starkKey]
+    [address, assetDetails?.tokenAddress, assetDetails?.tokenId, id, refetch, starkKey]
   );
 
   useEffect(() => {
@@ -257,22 +265,14 @@ function AssetDetails({ id }: Props) {
     setStatus(currentStatus);
   }, [address, assetDetails?.order, assetDetails?.owner.starkKey, starkKey]);
 
-  const handleClosePopup = () => {
-    setShowPopup(false);
-    setStatus(AssetStatus.SALE);
-    setShowMessage(true);
-    setTimeout(() => {
-      setShowMessage(false);
-    }, SHOW_MESSAGE_TIME);
-  };
-  const handleCloseUnlist = async () => {
+  const onHandleUnlist = async () => {
     const client: IMyriaClient = {
       provider: window.web3.currentProvider,
       networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3,
+      web3: window.web3
     };
-    
-    const myriaClient = new MyriaClient(client);  
+
+    const myriaClient = new MyriaClient(client);
     const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
     if (!address || !assetDetails?.order.orderId) return;
@@ -288,18 +288,19 @@ function AssetDetails({ id }: Props) {
     }
   };
 
-  const handleCreateTrade = async () => {
+  const handleCreateTrade = async (tradeData: any) => {
     const client: IMyriaClient = {
       provider: window.web3.currentProvider,
       networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3,
+      web3: window.web3
     };
-    
-    const myriaClient = new MyriaClient(client);  
+
+    const myriaClient = new MyriaClient(client);
     const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
     const tradeModule = moduleFactory.getTradeModule();
-    if (!address || !assetDetails?.order.orderId) return;
+    if (!address || !tradeData?.order.orderId) return;
+
     const signableOrderInput: SignableOrderInput = {
       orderType: 'BUY',
       ethAddress: address,
@@ -307,12 +308,12 @@ function AssetDetails({ id }: Props) {
       tokenBuy: {
         type: TokenType.MINTABLE_ERC721,
         data: {
-          tokenId: assetDetails?.tokenId,
-          tokenAddress: assetDetails?.tokenAddress
+          tokenId: tradeData?.tokenId,
+          tokenAddress: tradeData?.tokenAddress
         }
       },
-      amountBuy: `${assetDetails?.order.amountBuy}`,
-      amountSell: `${assetDetails?.order.amountSell}`,
+      amountBuy: `${tradeData?.order.amountBuy}`,
+      amountSell: `${tradeData?.order.amountSell}`,
       tokenSell: {
         type: TokenType.ETH,
         data: {
@@ -324,8 +325,7 @@ function AssetDetails({ id }: Props) {
     const signableOrder = await orderModule?.signableOrder(signableOrderInput);
     if (!signableOrder) return;
     const payloadTrade: TradesRequestTypes = {
-      orderId: assetDetails?.order.orderId,
-      nonce: Math.random() * 100000,
+      orderId: tradeData?.order.orderId,
       amountBuy: signableOrder.amountBuy,
       amountSell: signableOrder.amountSell,
       vaultIdSell: signableOrder.vaultIdSell,
@@ -336,11 +336,14 @@ function AssetDetails({ id }: Props) {
       assetIdBuy: signableOrder.assetIdBuy,
       includeFees: false
     };
-
-    const result = await tradeModule?.createTrades(payloadTrade);
+    toast('This function is not available yet!');
+    // code below will use in the future
+    const resultCreateTrade = await tradeModule?.createTrades(payloadTrade);
   };
 
-  const handleBuyNowItem = () => {
+  const handleBuyNowItem = (data: any) => {
+    setPriceTrade(formatNumber2digits(Number(data?.order[0]?.amountBuy)));
+    handleCreateTrade(data);
     setShowPopup(true);
   };
 
@@ -372,7 +375,8 @@ function AssetDetails({ id }: Props) {
           <div
             className=" border-base/5 h-[620px]  w-full
           rounded-[3px] border-[3px] bg-center bg-no-repeat "
-            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
+            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}
+          >
             {/* img */}
           </div>
           <div className="text-white">
@@ -407,7 +411,8 @@ function AssetDetails({ id }: Props) {
                 className="w-[40px] p-[10px]"
                 onClick={() => {
                   toast('The function is not ready yet!');
-                }}>
+                }}
+              >
                 <ShareIcon />
               </div>
             </div>
@@ -437,7 +442,10 @@ function AssetDetails({ id }: Props) {
               <BuyNow
                 currentPrice={currentPrice.toString()}
                 currentUSDPrice={currentUSDPrice}
-                setStatus={() => setShowPopup(true)}
+                setStatus={() => {
+                  setPriceTrade(currentPrice);
+                  setShowPopup(true);
+                }}
               />
             )}
             {status === AssetStatus.UNCONNECTED && (
@@ -476,6 +484,7 @@ function AssetDetails({ id }: Props) {
               tokenId={assetDetails?.tokenId}
               assetType={assetDetails?.assetType}
               status={status}
+              fee={assetDetails?.fee}
               contractAddress={assetDetails?.tokenAddress}
               onBuyNow={handleBuyNowItem}
             />
@@ -502,17 +511,21 @@ function AssetDetails({ id }: Props) {
       {showPopup && (
         <PurchaseModal
           open={showPopup}
-          onCreate={handleCreateTrade}
+          onCreate={() => {
+            handleCreateTrade(assetDetails);
+          }}
           onClose={() => setShowPopup(false)}
-          onCloseMessage={handleClosePopup}
-          currentPrice={currentPrice}
+          onCloseMessage={() => {
+            setShowPopup(false);
+          }}
+          currentPrice={priceTrade}
         />
       )}
       {showModalUnlist && (
         <UnlistModal
           open={showModalUnlist}
           onClose={() => setShowModalUnlist(false)}
-          onHandleUnlist={handleCloseUnlist}
+          onHandleUnlist={onHandleUnlist}
           onHandleCancel={() => setShowModalUnlist(false)}
         />
       )}
@@ -524,7 +537,8 @@ function AssetDetails({ id }: Props) {
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
-          setIsShowMessage={() => setShowMessageEdit(false)}>
+          setIsShowMessage={() => setShowMessageEdit(false)}
+        >
           <MessageEditListingModal />
         </MessageModal>
       )}
@@ -542,14 +556,16 @@ function AssetDetails({ id }: Props) {
       {showMessageModify && (
         <MessageModal
           isShowMessage={showMessageModify}
-          setIsShowMessage={() => setShowMessageModify(false)}>
+          setIsShowMessage={() => setShowMessageModify(false)}
+        >
           <MessageListingPriceModal />
         </MessageModal>
       )}
       {showMessageUnlist && (
         <MessageModal
           isShowMessage={showMessageUnlist}
-          setIsShowMessage={() => setShowMessageUnlist(false)}>
+          setIsShowMessage={() => setShowMessageUnlist(false)}
+        >
           <MessageUnlist />
         </MessageModal>
       )}
@@ -581,12 +597,14 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
         <>
           <button
             className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-            onClick={setStatus}>
+            onClick={setStatus}
+          >
             <Trans>LIST ITEM FOR SALE</Trans>
           </button>
           <button
             className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-            onClick={triggerPopover}>
+            onClick={triggerPopover}
+          >
             <Trans>WITHDRAW</Trans>
           </button>
         </>
@@ -639,12 +657,14 @@ const ModifyListing: React.FC<IProp> = ({
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>MODIFY LISTING</Trans>
       </button>
       <button
         className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-        onClick={setShowUnlist}>
+        onClick={setShowUnlist}
+      >
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
     </div>
@@ -670,7 +690,8 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>BUY NOW</Trans>
       </button>
     </div>
@@ -696,7 +717,8 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>Connect Wallet To Buy</Trans>
       </button>
     </div>

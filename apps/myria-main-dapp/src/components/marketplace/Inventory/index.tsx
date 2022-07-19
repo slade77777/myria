@@ -18,6 +18,8 @@ function Inventory({ items, userAddress, userAvatar, userJoinDate, userName }: P
     () => items.filter((item) => !!item.priceETH).length,
     [items]
   );
+  console.log(items);
+  
   return (
     <div className="w-full min-h-screen bg-[#050E15] flex flex-row">
       <LeftMenu active={'inventory'} />
