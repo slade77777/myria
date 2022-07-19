@@ -1,6 +1,9 @@
 import { Trans } from '@lingui/macro';
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs';
-import { EqualMetadataByAssetIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import {
+  EqualMetadataByAssetIdResponse,
+  FeeTypes
+} from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { FC } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
@@ -15,15 +18,18 @@ type Prop = {
   assetType?: string;
   data: EqualMetadataByAssetIdResponse | any;
   status: AssetStatus;
-  onBuyNow: () => void;
+  fee?: FeeTypes[];
+  onBuyNow: (data: EqualMetadataByAssetIdResponse) => void;
 };
 
 const AssetDetailTab: FC<Prop> = ({
   description = '',
   contractAddress = '',
   tokenId = '',
+  status,
   assetType = '',
   data = [],
+  fee = [],
   onBuyNow
 }) => {
   return (
@@ -31,17 +37,20 @@ const AssetDetailTab: FC<Prop> = ({
       <List className="my-[24px]">
         <Trigger
           className="text-base/9 border-primary/6 px-[16px] py-[12.5px] text-[16px]"
-          value="Listing">
+          value="Listing"
+        >
           Listing
         </Trigger>
         <Trigger
           className="text-base/9 border-primary/6 mx-[8px] px-[16px] py-[12.5px] text-[16px]"
-          value="Description">
+          value="Description"
+        >
           Description
         </Trigger>
         <Trigger
           className="text-base/9 border-primary/6 px-[16px] py-[12.5px] text-[16px]"
-          value="Details">
+          value="Details"
+        >
           Details
         </Trigger>
       </List>
@@ -65,7 +74,7 @@ const AssetDetailTab: FC<Prop> = ({
               </tr>
             </thead>
             <tbody className="border-blue/3 max-h-[100px] overflow-scroll border-b">
-              {data?.map((elm: any, _idx: number) => {
+              {data?.map((elm: EqualMetadataByAssetIdResponse | any, _idx: number) => {
                 const isOrder = Array.isArray(elm?.order);
                 const priceConverted = formatNumber2digits(
                   isOrder ? elm?.order[0]?.amountBuy : elm?.order?.amountBuy
@@ -77,7 +86,8 @@ const AssetDetailTab: FC<Prop> = ({
                 return (
                   <tr
                     key={_idx}
-                    className="border-blue/3 border-t text-[16px] font-normal text-white">
+                    className="border-blue/3 border-t text-[16px] font-normal text-white"
+                  >
                     <td className="whitespace-nowrap py-4 pr-6">
                       <div className="flex flex-row items-center gap-[7px]">
                         <DAOIcon /> {priceConverted}
@@ -86,11 +96,14 @@ const AssetDetailTab: FC<Prop> = ({
                     <td className="py-4 pr-6">${usdPriceConverted}</td>
                     <td className="py-4 pr-6">{ownerName}</td>
                     <td className="py-4 pr-6 text-right">
-                      <button
-                        onClick={onBuyNow}
-                        className="rounded-[8px] border border-white/[0.4] px-[16px] py-[5px] font-bold">
-                        <Trans>Buy now</Trans>
-                      </button>
+                      {status === AssetStatus.BUY_NOW && (
+                        <button
+                          onClick={() => onBuyNow(elm)}
+                          className="rounded-[8px] border border-white/[0.4] px-[16px] py-[5px] font-bold"
+                        >
+                          <Trans>Buy now</Trans>
+                        </button>
+                      )}
                     </td>
                   </tr>
                 );
@@ -121,7 +134,9 @@ const AssetDetailTab: FC<Prop> = ({
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Creator Fees</Trans>
-            <span className="font-medium text-white">{'Free'}</span>
+            <span className="font-medium text-white">
+              {fee.length > 0 ? fee[0].percentage + '%' : 'Free'}
+            </span>
           </div>
         </div>
       </Content>
