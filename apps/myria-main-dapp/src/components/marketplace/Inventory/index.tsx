@@ -18,18 +18,17 @@ function Inventory({ items, userAddress, userAvatar, userJoinDate, userName }: P
     () => items.filter((item) => !!item.priceETH).length,
     [items]
   );
-  console.log(items);
-  
+
   return (
     <div className="w-full min-h-screen bg-[#050E15] flex flex-row">
       <LeftMenu active={'inventory'} />
       <div className="w-full overflow-y h-screen overflow-y-auto">
         <InventoryHeader active={'marketplace'} />
-        <div className="py-[58px] px-[24px] py-24">
+        <div className="px-[24px] py-24">
           <div className="mb-[58px] flex items-end justify-between">
             <div className="flex">
               <div className="mr-[40px] w-[120px] overflow-hidden rounded-full">
-                <img width="100%" src={userAvatar} alt="" />
+                <img width="100%" src={'/images/marketplace/collection-1-logo.png'} alt="" />
               </div>
               <div className="flex flex-col">
                 <span className="text-[40px] font-bold text-white">{userName}</span>
