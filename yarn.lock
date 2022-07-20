@@ -12540,10 +12540,10 @@ mux.js@6.0.1:
     "@babel/runtime" "^7.11.2"
     global "^4.4.0"
 
-myria-core-sdk@^0.0.88:
-  version "0.0.88"
-  resolved "https://registry.yarnpkg.com/myria-core-sdk/-/myria-core-sdk-0.0.88.tgz#0c75d7d416d9cbd530d22ecede790309553c35a1"
-  integrity sha512-qg3rBWv7S+80geJUnxvJ7LwF140cpGisem59uay5ynWfajDmvjiE7s0voec8XnhlzL2YUmNTB8B3Qx0eEY7iqA==
+myria-core-sdk@^0.0.92:
+  version "0.0.92"
+  resolved "https://registry.yarnpkg.com/myria-core-sdk/-/myria-core-sdk-0.0.92.tgz#6bc443f3235156db2f4d4d8bdd508a3557511dd7"
+  integrity sha512-ySEfgQygC6JmJoV39mDTxioLvaWHG2GN0hd396fZ0jiJsGIgToUJLn1ITCowZ5z7iSvIzpENOvZZqq1msypOVg==
   dependencies:
     "@babel/eslint-parser" "^7.17.0"
     "@starkware-industries/starkware-crypto-utils" "^0.0.2"
@@ -12556,6 +12556,7 @@ myria-core-sdk@^0.0.88:
     babel-eslint "^10.1.0"
     big.js "^6.0.0"
     bignumber.js "^9.0.1"
+    bn.js "^5.2.1"
     crypto-browserify "^3.12.0"
     eslint-plugin-no-only-tests "^2.6.0"
     ethers "^5.6.4"
@@ -17248,8 +17249,10 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
+    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"

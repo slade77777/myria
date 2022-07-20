@@ -2,10 +2,6 @@ import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
 import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import {
-  AssetDetailsResponse,
-  EqualMetadataByAssetIdResponse
-} from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import {
   CreateOrderEntity,
   SignableOrderInput
 } from 'myria-core-sdk/dist/types/src/types/OrderTypes';
@@ -34,10 +30,9 @@ import MessageUnlist from '../MessageModal/MessageUnlist';
 import { MessageEditListingModal, ModalEditListing } from '../Modals';
 import UnlistModalContent from '../Modals/UnlistModal';
 import { NFTItemType } from '../NftItem/type';
-import PurchasePopover from '../PurchasePopover';
 import AssetDetailTab from './AssetDetailTab';
+import PurchaseModal from './PurchaseModal';
 import testavatarImg from './testavatar.png';
-import {router} from "next/client";
 interface Props {
   id: string;
 }
@@ -58,7 +53,6 @@ export enum AssetStatus {
   UNCONNECTED,
   UNCONNECTED_NOT_SALE
 }
-
 const QUANTUM = '10000000000';
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
@@ -69,7 +63,6 @@ const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
     </div>
   );
 };
-const SHOW_MESSAGE_TIME = 5000;
 
 function AssetDetails({ id }: Props) {
   const { data, isLoading, refetch } = useQuery(
@@ -150,7 +143,13 @@ function AssetDetails({ id }: Props) {
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
-  const [priceTrade, setPriceTrade] = useState<string>(currentPrice);
+  const [assetBuy, setAssetBuy] = useState<{
+    name: string;
+    price: string;
+  }>({
+    name: '',
+    price: ''
+  });
 
   const currentUSDPrice = useMemo(
     () => formatNumber2digits(Number(assetDetails?.order?.amountBuy) * etheCost),
@@ -172,7 +171,7 @@ function AssetDetails({ id }: Props) {
     const orderModule = moduleFactory.getOrderModule();
     if (!address) return;
     const result = await orderModule?.updateOrderPrice(assetDetails?.order.orderId + '', {
-      newAmountSell: price,
+      newAmountBuy: price,
       sellerStarkKey: starkKey,
       sellerWalletAddress: address
     });
@@ -301,49 +300,56 @@ function AssetDetails({ id }: Props) {
     const tradeModule = moduleFactory.getTradeModule();
     if (!address || !tradeData?.order.orderId) return;
 
-    const signableOrderInput: SignableOrderInput = {
-      orderType: 'BUY',
-      ethAddress: address,
-      starkKey,
-      tokenBuy: {
-        type: TokenType.MINTABLE_ERC721,
-        data: {
-          tokenId: tradeData?.tokenId,
-          tokenAddress: tradeData?.tokenAddress
-        }
-      },
-      amountBuy: `${tradeData?.order.amountBuy}`,
-      amountSell: `${tradeData?.order.amountSell}`,
-      tokenSell: {
-        type: TokenType.ETH,
-        data: {
-          quantum: QUANTUM
-        }
-      },
-      includeFees: false
-    };
-    const signableOrder = await orderModule?.signableOrder(signableOrderInput);
-    if (!signableOrder) return;
-    const payloadTrade: TradesRequestTypes = {
-      orderId: tradeData?.order.orderId,
-      amountBuy: signableOrder.amountBuy,
-      amountSell: signableOrder.amountSell,
-      vaultIdSell: signableOrder.vaultIdSell,
-      vaultIdBuy: signableOrder.vaultIdBuy,
-      starkKey,
-      buyerAddress: address,
-      assetIdSell: signableOrder.assetIdSell,
-      assetIdBuy: signableOrder.assetIdBuy,
-      includeFees: false
-    };
-    toast('This function is not available yet!');
-    // code below will use in the future
-    const resultCreateTrade = await tradeModule?.createTrades(payloadTrade);
+    try{
+      const signableOrderInput: SignableOrderInput = {
+        orderType: 'BUY',
+        ethAddress: address,
+        starkKey,
+        tokenBuy: {
+          type: TokenType.MINTABLE_ERC721,
+          data: {
+            tokenId: tradeData?.tokenId,
+            tokenAddress: tradeData?.tokenAddress
+          }
+        },
+        amountBuy: `${tradeData?.order.amountSell}`,
+        amountSell: `${tradeData?.order.amountBuy}`,
+        tokenSell: {
+          type: TokenType.ETH,
+          data: {
+            quantum: QUANTUM
+          }
+        },
+        includeFees: false
+      };
+      const signableOrder = await orderModule?.signableOrder(signableOrderInput);
+      if (!signableOrder) return;
+      const payloadTrade: TradesRequestTypes = {
+        orderId: tradeData?.order.orderId,
+        amountBuy: signableOrder.amountBuy,
+        amountSell: signableOrder.amountSell,
+        vaultIdSell: signableOrder.vaultIdSell,
+        vaultIdBuy: signableOrder.vaultIdBuy,
+        starkKey,
+        buyerAddress: address,
+        assetIdSell: signableOrder.assetIdSell,
+        assetIdBuy: signableOrder.assetIdBuy,
+        includeFees: false
+      };
+      
+      // code below will use in the future
+      const resultCreateTrade = tradeModule?.createTrades(payloadTrade);
+      return resultCreateTrade
+    }catch(e){
+      throw new Error("Signable order failure with error");
+    }
   };
 
   const handleBuyNowItem = (data: any) => {
-    setPriceTrade(formatNumber2digits(Number(data?.order[0]?.amountBuy)));
-    handleCreateTrade(data);
+    setAssetBuy({
+      name: data.name,
+      price: formatNumber2digits(Number(data?.order[0]?.amountBuy))
+    });
     setShowPopup(true);
   };
 
@@ -439,7 +445,10 @@ function AssetDetails({ id }: Props) {
                 currentPrice={currentPrice.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
-                  setPriceTrade(currentPrice);
+                  setAssetBuy({
+                    name: assetDetails?.name || '',
+                    price: currentPrice
+                  });
                   setShowPopup(true);
                 }}
               />
@@ -508,15 +517,14 @@ function AssetDetails({ id }: Props) {
         <PurchaseModal
           open={showPopup}
           onCreate={() => {
-            handleCreateTrade(assetDetails);
+            return handleCreateTrade(assetDetails);
           }}
           onClose={() => setShowPopup(false)}
           onCloseMessage={() => {
             setShowPopup(false);
-            router.push('/marketplace/inventory');
           }}
-          currentPrice={priceTrade}
-          assetItem={assetDetails}
+          assetBuy={assetBuy}
+
         />
       )}
       {showModalUnlist && (
@@ -711,28 +719,6 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
         <Trans>Connect Wallet To Buy</Trans>
       </button>
     </div>
-  );
-};
-
-const PurchaseModal: React.FC<any> = ({
-  open,
-  onClose,
-  currentPrice,
-  onCloseMessage,
-  onCreate,
-  assetItem
-}) => {
-  return (
-    <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title={'Purchase'} className="w-[468px] shadow-[0_0_40px_10px_#0000004D]">
-        <PurchasePopover
-          onConfirm={onCreate}
-          currentPrice={currentPrice}
-          onCloseMessage={onCloseMessage}
-          assetItem={assetItem}
-        />
-      </Modal.Content>
-    </Modal>
   );
 };
 

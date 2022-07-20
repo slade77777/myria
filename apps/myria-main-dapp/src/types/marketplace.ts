@@ -18,3 +18,8 @@ export type CollectionType = {
   totalAssets: number;
   totalAssetsForSale: number;
 };
+export enum PurchaseStatus {
+  CHECK,
+  SUCCESS,
+  FAIL
+}
