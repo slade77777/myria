@@ -52,18 +52,20 @@ const Page: React.FC<Props> = ({
         open={showFirstTimeVisitModal}
         onClose={handleCloseFirstTimeVisitModal}
       />
-      <div className="relative min-h-screen text-white">
+      <div className="relative h-screen text-white bg-dark">
         <div id="modal-root"></div>
         <Header
           className={headerClassName}
           action={action}
           stickyHeader={!!stickyHeader || stickyHeader === undefined}
         />
-        <div className="bg-dark">
-          {children}
-          <div className={clsx(paddingX, 'pb-[149px] md:pb-[112px]', footerClassName)}>
-            <div className="mx-auto max-w-content">
-              <Footer />
+        <div className="h-screen">
+          <div className="bg-dark">
+            {children}
+            <div className={clsx(paddingX, 'pb-[149px] md:pb-[112px] bg-dark', footerClassName)}>
+              <div className="mx-auto max-w-content">
+                <Footer />
+              </div>
             </div>
           </div>
         </div>

@@ -79,16 +79,6 @@ const NftItem = ({ item }: Props) => {
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
                     Current price
                   </span>
-                  {item.priceETH ? (
-                    <div className="flex items-center">
-                      <DAOIcon className="mr-1" />
-                      <span className="text-[16px] font-medium text-white">
-                        {item.priceETH.toFixed(2)}
-                      </span>
-                    </div>
-                  ) : (
-                    <span className="text-[16px] font-medium text-white">Not for Sale</span>
-                  )}
                 </div>
                 <div className="flex justify-between items-center">
                   <div className="flex">
