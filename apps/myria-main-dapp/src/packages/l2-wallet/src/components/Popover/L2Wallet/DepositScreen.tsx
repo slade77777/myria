@@ -3,8 +3,8 @@ import cn from 'classnames';
 import CurrencySelector, { TOption } from '../../Dropdown/CurrencySelector';
 
 import MaxInput from '../../Input/MaxInput';
-import { ArrowIcon } from '../../Icons';
-
+import { ArrowIcon, InfoCircleIcon } from '../../Icons';
+import DAOIcon from '../../../../../../components/icons/DAOIcon';
 type Props = {
   goBack: any;
   selectCurrency: any;
@@ -56,20 +56,24 @@ export default function DepositScreen({
           <div className="text-[#F83D5C]">{errorMessageAsset}</div>
         </div>
         <div className="mt-6">
-          <div className="flex justify-between">
-            <div className="mb-2 text-[16px] text-white">Amount</div>
-            <div className="text-[16px] text-[rgba(255,255,255,0.6)]">
-              Available:{' '}
-              <span className="text-white">
-                {balance} {selectedToken?.short}
-              </span>
+          <div className="mb-2 flex justify-between">
+            <div className="text-[16px] text-white">Amount</div>
+            <div className="flex items-center text-[16px] text-[rgba(255,255,255,0.6)]">
+              <div className="mr-[5px] flex items-center">
+                <span className="mr-1 text-[#4C4C4C]">Available: </span>
+                <span className="mr-1">
+                  <DAOIcon size={16} />
+                </span>
+                <span className="mr-1">{balance}</span>
+                <InfoCircleIcon className="text-[#9AC9E3]" />
+              </div>
             </div>
           </div>
           <MaxInput
             max={parseFloat(balance)}
             onChangeHandle={setAmountHandle}
           />
-          <div className="text-[#F83D5C] mt-2">{errorAmount}</div>
+          <div className="mt-2 text-[#F83D5C]">{errorAmount}</div>
         </div>
         <div className=" mt-2 flex justify-between text-[14px] text-[rgba(255,255,255,0.6)]">
           <p>Estimated gas fee</p>

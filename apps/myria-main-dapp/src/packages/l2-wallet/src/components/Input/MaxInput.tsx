@@ -6,13 +6,14 @@ interface TProps {
 }
 
 export default function MaxInput({ max = 100, onChangeHandle }: TProps) {
-  const [inputValue, setInputValue] = useState<number>(0);
+  const [inputValue, setInputValue] = useState<number>();
   const setMax = () => {
     setInputValue(max);
   };
   return (
     <div className="relative">
       <input
+        placeholder="Enter an amount"
         type="number"
         min="0"
         className="h-[48px] w-full rounded-[8px] bg-[#132533] pl-4 pr-[45px] text-white"

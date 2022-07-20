@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
+import OwnerAssetIcon from 'src/components/icons/OwnerAssetIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
 import { Loading } from 'src/components/Loading';
 import Modal from 'src/components/Modal';
@@ -62,9 +63,9 @@ const QUANTUM = '10000000000';
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="border-base/6 bg-base/3 rounded-[8px] border p-[16px] text-center">
-      <p className="text-blue/6 uppercase text-xs">{keyword}</p>
-      <p className="font-medium text-sm">{val}</p>
+    <div className="border-base/6 bg-base/3 rounded-[8px] border py-4 text-center">
+      <p className="text-blue/6 uppercase">{keyword}</p>
+      <p className="font-medium">{val}</p>
     </div>
   );
 };
@@ -244,7 +245,7 @@ function AssetDetails({ id }: Props) {
     let currentStatus: number = AssetStatus.UNCONNECTED;
     if (assetDetails?.order) {
       // item for sale
-      if (starkKey === assetDetails?.owner.starkKey) {
+      if (starkKey === assetDetails?.owner?.starkKey) {
         currentStatus = AssetStatus.MODIFY; // connected and own NFT
       } else {
         currentStatus = AssetStatus.BUY_NOW; // connected and not own NFT
@@ -254,7 +255,7 @@ function AssetDetails({ id }: Props) {
       }
     } else {
       // item not for sale
-      if (starkKey === assetDetails?.owner.starkKey) {
+      if (starkKey === assetDetails?.owner?.starkKey) {
         // connected and own NFT
         currentStatus = AssetStatus.SALE;
       } else {
@@ -262,7 +263,7 @@ function AssetDetails({ id }: Props) {
       }
     }
     setStatus(currentStatus);
-  }, [address, assetDetails?.order, assetDetails?.owner.starkKey, starkKey]);
+  }, [address, assetDetails?.order, assetDetails?.owner?.starkKey, starkKey]);
 
   const onHandleUnlist = async () => {
     const client: IMyriaClient = {
@@ -397,12 +398,14 @@ function AssetDetails({ id }: Props) {
             {/* very top */}
             <div className="flex flex-row items-center justify-between">
               {/* first row */}
-              <div className="flex flex-row">
+              <div className="flex flex-row items-center">
                 <img src={testavatarImg.src} className="h-[24px] w-[24px]" />
-                <span className="ml-[8px] text-[16px]">{assetDetails?.collectionName}</span>
+                <span className="ml-[8px] text-[16px] text-light">
+                  {assetDetails?.collectionName}
+                </span>
               </div>
               <div
-                className="w-[40px] p-[10px]"
+                className="w-[40px] p-[10px] bg-base/3 rounded cursor-pointer"
                 onClick={() => {
                   toast('The function is not ready yet!');
                 }}>
@@ -412,19 +415,19 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-[24px] text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="mt-[24px] flex w-[325px] flex-row justify-between">
+              <div className="mt-[24px] flex w-[325px] flex-row justify-between text-light">
                 <span>Token ID: {assetDetails?.tokenId}</span>
                 <span>|</span>
-                <span>Owned by {truncateString(`${assetDetails?.owner.starkKey}`)}</span>
+                <span>Owned by {truncateString(`${assetDetails?.owner?.starkKey}`)}</span>
               </div>
 
-              <div className="flex gap-6">
+              <div className="flex gap-6 text-light">
                 <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
                   <MintedIcon />
                   <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
                 </div>
                 <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
-                  <MintedIcon />
+                  <OwnerAssetIcon />
                   <span className="ml-[5px]">
                     Owner: {truncateString(`${assetDetails?.owner?.ethAddress}`)}
                   </span>
@@ -484,7 +487,7 @@ function AssetDetails({ id }: Props) {
           </div>
         </div>
       </div>
-      <div className="mt-[24px]">
+      <div className="mt-[64px]">
         <AssetList
           title={'More from this collection'}
           items={moreCollectionList?.items?.map((elm, index: number) => {
@@ -585,7 +588,7 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
           </span>
         </div>
       </div>
-      {starkKey === assetDetails?.owner.starkKey && (
+      {starkKey === assetDetails?.owner?.starkKey && (
         <>
           <button
             className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
