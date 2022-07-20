@@ -22,6 +22,7 @@ import {
   setStarkPublicKey,
 } from '../../app/slices/accountSlice';
 import { setWithdrawClaimModal } from '../../app/slices/uiSlice';
+import StarkKeyNotFoundModal from '../Modal/StarkKeyNotFoundModal';
 
 // @ts-ignore
 
@@ -43,6 +44,8 @@ export default function MainLayout({ children }: TProps) {
   const [isShowMessage, setIsShowMessage] = useState<Boolean>(false);
   const [previousBalance, setPreviousBalance] = useState<any>(0);
   const [welcomeModal, setWelcomeModal] = useState<boolean>(false);
+  const [starkKeyNotFoundModal, setStarkKeyNotFoundModal] =
+    useState<boolean>(false);
   const [showFirstDepositModal, setShowFirstDepositModal] =
     useState<Boolean>(false);
   // const [] = useWalletContext();
@@ -149,7 +152,7 @@ export default function MainLayout({ children }: TProps) {
         onRequestSignature(web3Account);
       }
     } catch (e) {
-      walletModalRef.current.onOpenModal();
+      setStarkKeyNotFoundModal(true);
     }
   };
 
@@ -235,6 +238,13 @@ export default function MainLayout({ children }: TProps) {
         }
       />
       <WelcomeMyriaModal modalShow={welcomeModal} closeModal={onGetStarted} />
+      <StarkKeyNotFoundModal
+        modalShow={starkKeyNotFoundModal}
+        createHandler={() => {
+          setStarkKeyNotFoundModal(false);
+          walletModalRef.current.onOpenModal();
+        }}
+      />
     </div>
   );
 }
