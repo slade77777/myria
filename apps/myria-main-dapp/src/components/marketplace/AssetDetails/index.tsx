@@ -36,6 +36,7 @@ import { NFTItemType } from '../NftItem/type';
 import PurchasePopover from '../PurchasePopover';
 import AssetDetailTab from './AssetDetailTab';
 import testavatarImg from './testavatar.png';
+import {router} from "next/client";
 interface Props {
   id: string;
 }
@@ -62,8 +63,8 @@ const QUANTUM = '10000000000';
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
     <div className="border-base/6 bg-base/3 rounded-[8px] border p-[16px] text-center">
-      <p className="text-blue/6 uppercase">{keyword}</p>
-      <p className="font-medium">{val}</p>
+      <p className="text-blue/6 uppercase text-xs">{keyword}</p>
+      <p className="font-medium text-sm">{val}</p>
     </div>
   );
 };
@@ -509,8 +510,10 @@ function AssetDetails({ id }: Props) {
           onClose={() => setShowPopup(false)}
           onCloseMessage={() => {
             setShowPopup(false);
+            router.push('/marketplace/inventory');
           }}
           currentPrice={priceTrade}
+          assetItem={assetDetails}
         />
       )}
       {showModalUnlist && (
@@ -713,7 +716,8 @@ const PurchaseModal: React.FC<any> = ({
   onClose,
   currentPrice,
   onCloseMessage,
-  onCreate
+  onCreate,
+  assetItem
 }) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
@@ -722,6 +726,7 @@ const PurchaseModal: React.FC<any> = ({
           onConfirm={onCreate}
           currentPrice={currentPrice}
           onCloseMessage={onCloseMessage}
+          assetItem={assetItem}
         />
       </Modal.Content>
     </Modal>

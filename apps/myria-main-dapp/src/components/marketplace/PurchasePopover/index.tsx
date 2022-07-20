@@ -5,15 +5,17 @@ import CartIcon from 'src/components/icons/CartIcon';
 import CompleteIcon from 'src/components/icons/CompleteIcon';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import ProgressIcon from 'src/components/icons/ProgressIcon';
+import {NFTItemType} from "../NftItem/type";
 interface IProp {
   currentPrice: string;
   onCloseMessage: () => void;
   onConfirm: () => void;
+  assetItem: NFTItemType
 }
 
 const TIMEOUT: number = 5000;
 
-const PurchasePopover: React.FC<IProp> = ({ currentPrice, onCloseMessage, onConfirm }) => {
+const PurchasePopover: React.FC<IProp> = ({ currentPrice, onCloseMessage, onConfirm, assetItem }) => {
   const [isProgressPurchase, setIsProgressPurchase] = useState<boolean>(false);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
@@ -36,7 +38,7 @@ const PurchasePopover: React.FC<IProp> = ({ currentPrice, onCloseMessage, onConf
               <Trans>Complete checkout</Trans>
             </h3>
             <p className="font-normal mt-[16px] text-base/9">
-              <Trans>Ultra rare Vector Prime Sigil</Trans>
+              <Trans>{assetItem.name}</Trans>
             </p>
           </div>
           <div className="bg-base/2 p-4 rounded-[8px] text-[16px] mt-[32px]">
