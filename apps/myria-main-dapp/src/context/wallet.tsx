@@ -45,6 +45,10 @@ export const WalletProvider: React.FC = ({ children }) => {
   );
   const { event } = useGA4();
 
+  useEffect(() => {
+    onConnect();
+  }, []);
+
   const subscribeProvider = useCallback(async (provider) => {
     if (!provider.on) {
       return;
@@ -91,7 +95,7 @@ export const WalletProvider: React.FC = ({ children }) => {
   const onConnect = async () => {
     web3Modal = new Web3Modal({
       network: process.env.NEXT_PUBLIC_ETH_ENV,
-      cacheProvider: false
+      cacheProvider: true
     });
 
     const w3provider = await web3Modal.connect();

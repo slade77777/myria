@@ -17,10 +17,8 @@ const Header: React.FC<Props> = ({ step }) => {
   return (
     <header ref={headerRef} className="fixed top-0 left-0 z-50 w-full">
       <div className="body-14-bold w-full bg-brand-gold p-4 text-center text-black">
-        <Trans>
-          On July 31st you&apos;ll no longer be able to earn points and unlock new reward tiers from
-          Sigil missions
-        </Trans>
+        On August 1 you will no longer be able to earn points and unlock new reward tiers from Sigil
+        missions
       </div>
       <div className="grid h-[80px] w-full grid-cols-[1fr_auto_1fr] items-center bg-[rgba(0,0,0,0.1)] p-4 px-6">
         <Link href="/">

@@ -85,7 +85,6 @@ function AssetDetails({ id }: Props) {
         assetModule?.getAssetById(id), //getAssetDetail by assetId
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
-
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
@@ -179,7 +178,6 @@ function AssetDetails({ id }: Props) {
       setShowMessageModify(true);
     }
   };
-
   const onSubmitCreateOrder = useCallback(
     async ({ price }) => {
       const client: IMyriaClient = {
@@ -375,27 +373,22 @@ function AssetDetails({ id }: Props) {
           <div
             className=" border-base/5 h-[620px]  w-full
           rounded-[3px] border-[3px] bg-center bg-no-repeat "
-            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}
-          >
+            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
             {/* img */}
           </div>
-          <div className="text-white">
-            {/* list stat */}
-            <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
-              <Trans>Attributes</Trans>
-            </div>
-            {attributes.length > 0 ? (
+          {attributes.length > 0 && (
+            <div className="text-white">
+              {/* list stat */}
+              <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
+                <Trans>Attributes</Trans>
+              </div>
               <div className="grid grid-cols-4 gap-4">
                 {attributes.map(({ key, val }) => {
                   return <ItemAttribution key={key} keyword={key} val={val} />;
                 })}
               </div>
-            ) : (
-              <div className="text-center text-[28px] italic">
-                <Trans>No attributes</Trans>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className="w-[620px]">
           {/* right */}
@@ -411,8 +404,7 @@ function AssetDetails({ id }: Props) {
                 className="w-[40px] p-[10px]"
                 onClick={() => {
                   toast('The function is not ready yet!');
-                }}
-              >
+                }}>
                 <ShareIcon />
               </div>
             </div>
@@ -537,8 +529,7 @@ function AssetDetails({ id }: Props) {
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
-          setIsShowMessage={() => setShowMessageEdit(false)}
-        >
+          setIsShowMessage={() => setShowMessageEdit(false)}>
           <MessageEditListingModal />
         </MessageModal>
       )}
@@ -556,16 +547,14 @@ function AssetDetails({ id }: Props) {
       {showMessageModify && (
         <MessageModal
           isShowMessage={showMessageModify}
-          setIsShowMessage={() => setShowMessageModify(false)}
-        >
+          setIsShowMessage={() => setShowMessageModify(false)}>
           <MessageListingPriceModal />
         </MessageModal>
       )}
       {showMessageUnlist && (
         <MessageModal
           isShowMessage={showMessageUnlist}
-          setIsShowMessage={() => setShowMessageUnlist(false)}
-        >
+          setIsShowMessage={() => setShowMessageUnlist(false)}>
           <MessageUnlist />
         </MessageModal>
       )}
@@ -597,14 +586,12 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
         <>
           <button
             className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-            onClick={setStatus}
-          >
+            onClick={setStatus}>
             <Trans>LIST ITEM FOR SALE</Trans>
           </button>
           <button
             className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-            onClick={triggerPopover}
-          >
+            onClick={triggerPopover}>
             <Trans>WITHDRAW</Trans>
           </button>
         </>
@@ -657,14 +644,12 @@ const ModifyListing: React.FC<IProp> = ({
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>MODIFY LISTING</Trans>
       </button>
       <button
         className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-        onClick={setShowUnlist}
-      >
+        onClick={setShowUnlist}>
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
     </div>
@@ -690,8 +675,7 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>BUY NOW</Trans>
       </button>
     </div>
@@ -717,8 +701,7 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>Connect Wallet To Buy</Trans>
       </button>
     </div>

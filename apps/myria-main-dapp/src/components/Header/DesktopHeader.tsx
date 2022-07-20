@@ -189,9 +189,6 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         <div className="absolute right-8 flex flex-shrink-0 items-center justify-end space-x-9">
           <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
           <div>
-            <LanguageSwitcher />
-          </div>
-          <div>
             <ConnectL2WalletButton />
           </div>
         </div>
