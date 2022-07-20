@@ -8,6 +8,7 @@ import ClaimWithdrawPopover from 'src/packages/l2-wallet/src/components/Popover/
 import L2WalletPopover from 'src/packages/l2-wallet/src/components/Popover/L2WalletPopover';
 import ChevronDownIcon from './icons/ChevronDownIcon';
 import Popover from './Popover';
+import MetamaskOnboarding from './InstallMetamaskButton';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { address, onConnect, disconnect } = useWalletContext();
@@ -64,13 +65,15 @@ const ConnectL2WalletButton: React.FC = () => {
       </Popover>
     </div>
   ) : (
-    <button
-      onClick={() => {
-        onConnect();
-      }}
-      className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
-      <Trans>Connect wallet</Trans>
-    </button>
+    <MetamaskOnboarding>
+      <button
+        onClick={() => {
+          onConnect();
+        }}
+        className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
+        <Trans>Connect wallet</Trans>
+      </button>
+    </MetamaskOnboarding>
   );
 };
 
