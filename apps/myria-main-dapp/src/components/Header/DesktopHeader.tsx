@@ -168,7 +168,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
 
   return (
-    <header ref={headerRef} className="bg-base/3 w-full">
+    <header ref={headerRef} className="bg-base/3 w-full bg-opacity-60">
       {/* <div className="hidden text-black lg:block">
         <NotiBanner />
       </div> */}
