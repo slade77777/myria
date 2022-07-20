@@ -7,6 +7,7 @@ import { asset } from '@starkware-industries/starkware-crypto-utils';
 import {
   Arrow2Icon,
   CompletedIcon,
+  EthereumIcon,
   MyriaCoinIcon,
   ProgressIcon,
 } from '../../Icons';
@@ -15,6 +16,7 @@ import TabContent from '../../Tabs/TabContent';
 import DAOIcon from '../../../../../../components/icons/DAOIcon';
 import { useEtheriumPrice } from '../../../../../../hooks/useEtheriumPrice';
 import { formatNumber2digits } from '../../../../../../utils';
+import ETHIcon from '../../Icons/ETHIcon';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -128,7 +130,7 @@ export default function MainScreen({
     <div>
       <div>
         <div className="mt-2 flex items-center justify-center">
-          <MyriaCoinIcon />
+          <ETHIcon />
           <div className="ml-2 text-[32px] text-[#E7EBEE]">{balanceEth}</div>
         </div>
         <p className="text-center text-[#A1AFBA]">
