@@ -9,6 +9,7 @@ export default function MaxInput({ max = 100, onChangeHandle }: TProps) {
   const [inputValue, setInputValue] = useState<number>(0);
   const setMax = () => {
     setInputValue(max);
+    onChangeHandle(max);
   };
   return (
     <div className="relative">

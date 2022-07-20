@@ -98,3 +98,15 @@ input::-ms-clear {
 button[data-state='active'] {
   @apply text-primary/6 border-b-[2px];
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

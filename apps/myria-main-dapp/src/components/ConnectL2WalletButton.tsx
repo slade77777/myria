@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useWalletContext } from 'src/context/wallet';
 import truncateString from 'src/helper';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { ConnectIcon } from 'src/packages/l2-wallet/src/components/Icons';
 import ClaimWithdrawPopover from 'src/packages/l2-wallet/src/components/Popover/ClaimWithdrawPopover';
 import L2WalletPopover from 'src/packages/l2-wallet/src/components/Popover/L2WalletPopover';
 import ChevronDownIcon from './icons/ChevronDownIcon';
@@ -34,8 +35,9 @@ const ConnectL2WalletButton: React.FC = () => {
         <Popover.Trigger asChild>
           <span className="uppercase">
             <button
-              className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]"
+              className="body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border pl-[10px] pr-4 py-[9px]"
               id="trigger-popover">
+              <ConnectIcon className="text-white" />
               <span>{truncateString(address)}</span>
               <i className="w-4">
                 <ChevronDownIcon />
