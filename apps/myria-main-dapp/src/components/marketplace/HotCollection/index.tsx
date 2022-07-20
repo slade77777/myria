@@ -33,7 +33,7 @@ const HotCollection: React.FC = () => {
               <a
                 href={`/marketplace/collection?id=${itm.publicId}`}
                 className="rounded-lg bg-base/3 cursor-pointer">
-                <div key={idx} className={`overflow-hidden rounded-[20px] bg-base/3`}>
+                <div key={idx} className={`overflow-hidden rounded-lg bg-base/3`}>
                   <div
                     className="h-[248px] bg-cover bg-center "
                     style={{
