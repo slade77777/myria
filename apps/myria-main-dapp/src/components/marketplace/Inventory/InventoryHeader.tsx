@@ -62,7 +62,7 @@ const InventoryHeader: FC<{ active: string }> = ({ active }) => {
         </div>
         <LanguageSwitcher />
         <div className="w-8 h-8 overflow-hidden rounded-full">
-          <img width="100%" src={testavatarImg.src} alt="" />
+          <img width="100%" src={'/images/marketplace/collection-1-logo.png'} alt="" />
         </div>
       </div>
     </header>
