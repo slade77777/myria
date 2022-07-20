@@ -12,7 +12,9 @@ import {
 } from '../../Icons';
 import TabNavItem from '../../Tabs/TabNavItem';
 import TabContent from '../../Tabs/TabContent';
-
+import DAOIcon from '../../../../../../components/icons/DAOIcon';
+import { useEtheriumPrice } from '../../../../../../hooks/useEtheriumPrice';
+import { formatNumber2digits } from '../../../../../../utils';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -79,6 +81,7 @@ export default function MainScreen({
   setActiveToken,
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
+  const { data: etheCost = 0 } = useEtheriumPrice();
   useEffect(() => {
     const temp: any = [];
     options.map((option: any, index: number) => {
@@ -128,7 +131,9 @@ export default function MainScreen({
           <MyriaCoinIcon />
           <div className="ml-2 text-[32px] text-[#E7EBEE]">{balanceEth}</div>
         </div>
-        {/* <p className="tex-[#A1AFBA] text-center">$27,078.27</p> */}
+        <p className="text-center text-[#A1AFBA]">
+          ${formatNumber2digits(etheCost * balanceEth)}
+        </p>
       </div>
       <div className="mt-4 flex items-center justify-center">
         <button
@@ -211,49 +216,50 @@ export default function MainScreen({
                     gotoDetailTransaction(item);
                   }}
                   className={cn(
-                    'flex justify-between py-4',
+                    'flex cursor-pointer items-center py-4',
                     index !== historyData.length - 1 &&
                       'border-b border-[rgba(255,255,255,0.1)]',
                   )}
                   key={index}
                 >
-                  <div className="flex items-center">
+                  <div className="mr-2">
                     <img
                       className="w-[32px] flex-none"
                       src={item.ico}
                       alt="token_icon"
                     />
-                    <div className="ml-4">
-                      <div className="text-[14px] text-[#E7EBEE]">
-                        {item.type}
-                      </div>
-                      <div className="text-[12px] text-[#A1AFBA]">
-                        {item.time}
-                      </div>
-                    </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-[14px] text-[#E7EBEE]">
-                      {item.amount}
+                  <div className="grow">
+                    <div className="flex items-center justify-between text-[14px] text-[#E7EBEE]">
+                      <span>{item.type}</span>
+                      <span className="flex items-center">
+                        <span className="mb-[2px] mr-1">
+                          <DAOIcon size={16} />{' '}
+                        </span>
+                        <span>{item.amount}</span>
+                      </span>
                     </div>
-                    {item.status === 'in_progress' ? (
-                      <div className="mt-1 flex items-center text-[#A1AFBA]">
-                        In progress{' '}
-                        <ProgressIcon
-                          isNotAnimate
-                          size={14}
-                          className="ml-1 text-[#A1AFBA]"
-                        />
-                      </div>
-                    ) : (
-                      <div className="mt-1 flex items-center text-[#A1AFBA]">
-                        Complete{' '}
-                        <CompletedIcon
-                          className="ml-1 text-[#A1AFBA]"
-                          size={14}
-                        />
-                      </div>
-                    )}
+                    <div className="flex items-center justify-between text-[12px] text-[#A1AFBA]">
+                      <span>{item.time}</span>
+                      {item.status === 'in_progress' ? (
+                        <div className="mt-1 flex items-center text-[#A1AFBA]">
+                          In progress{' '}
+                          <ProgressIcon
+                            isNotAnimate
+                            size={14}
+                            className="ml-1 text-[#A1AFBA]"
+                          />
+                        </div>
+                      ) : (
+                        <div className="mt-1 flex items-center text-[#A1AFBA]">
+                          Complete{' '}
+                          <CompletedIcon
+                            className="ml-1 text-[#A1AFBA]"
+                            size={14}
+                          />
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}

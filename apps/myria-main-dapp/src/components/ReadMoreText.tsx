@@ -1,7 +1,7 @@
 import { FC, memo, useState } from 'react';
 import clsx from 'clsx';
 
-const limitNumber = 300;
+const limitNumber = 500;
 
 const ReadMoreText: FC<{ text: string; textClass?: string }> = ({ text, textClass }) => {
   const [showFull, setShow] = useState(false);

@@ -1,14 +1,16 @@
 import React from 'react';
-
-const DAOIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props: React.SVGProps<SVGSVGElement>) => {
+interface IProp {
+  size?: number;
+  className?: string;
+}
+const DAOIcon: React.FC<IProp> = ({ size = 24, className }) => {
   return (
     <svg
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 16 17"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}>
+      xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_2574_9572)">
         <path
           d="M7.99895 0.5L7.8916 0.864618V11.4441L7.99895 11.5512L12.9097 8.64836L7.99895 0.5Z"

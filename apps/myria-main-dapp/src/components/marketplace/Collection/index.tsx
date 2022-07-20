@@ -17,14 +17,8 @@ interface Props {
 
 const Collection: FC<Props> = ({ collection, assetItems }) => {
   // @ts-ignore
-  const {
-    collectionImageUrl,
-    name,
-    project,
-    description,
-    totalAssets,
-    totalAssetsForSale,
-  } = collection;
+  const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale } =
+    collection;
   return (
     <Page>
       <img
@@ -35,18 +29,20 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
       <div className="max-w-content mx-auto mb-10">
         <div className="relative">
           {/* <img src={collectionImageUrl ? collectionImageUrl : "/images/marketplace/header.png"} className="h-[327px] w-full " alt={name} /> */}
-          <div className="absolute left-[88px] -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full bg-[#0F2F45]">
+          <div className="absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full bg-[#0F2F45]">
             <MyriaIcon />
           </div>
         </div>
-        <div className="px-[88px] pt-24">
+        <div className="pt-24">
           <div className="flex justify-between">
             <div className="w-2/3">
               <p className="text-4xl text-white font-bold">{name}</p>
               <p className="mt-2 text-[#97AAB5]">
                 Created By <span className="text-white font-bold">{project?.name}</span>
               </p>
-              <ReadMoreText text={description || ''} />
+              <div className="mt-6">
+                <ReadMoreText text={description || ''} />
+              </div>
             </div>
             <div className="flex flex-row gap-8">
               <div>
@@ -71,7 +67,7 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
               </div>
             </div>
           </div>
-          <div className="mt-8">
+          <div className="mt-12">
             <AssetList
               title={'Items'}
               items={assetItems?.items?.map((elm: any, index: number) => {

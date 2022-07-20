@@ -21,6 +21,9 @@ export default function DepositCompleteScreen({
       <div className="mt-[24px] text-center text-[24px] text-white">
         Deposit complete
       </div>
+      <div className="text-base/9 mt-4 text-center text-[14px]">
+        Your funds are now available in your Myria wallet.
+      </div>
       <div className="mt-[32px] rounded-[8px] bg-[rgba(154,201,227,0.1)] py-2 px-4 text-[16px] text-white">
         <div className="flex justify-between">
           <span className="text-[rbga(255,255,255,0.6)]">Amount</span>
