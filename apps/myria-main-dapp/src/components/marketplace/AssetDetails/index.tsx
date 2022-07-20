@@ -376,23 +376,19 @@ function AssetDetails({ id }: Props) {
             style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
             {/* img */}
           </div>
-          <div className="text-white">
-            {/* list stat */}
-            <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
-              <Trans>Attributes</Trans>
-            </div>
-            {attributes.length > 0 ? (
+          {attributes.length > 0 && (
+            <div className="text-white">
+              {/* list stat */}
+              <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
+                <Trans>Attributes</Trans>
+              </div>
               <div className="grid grid-cols-4 gap-4">
                 {attributes.map(({ key, val }) => {
                   return <ItemAttribution key={key} keyword={key} val={val} />;
                 })}
               </div>
-            ) : (
-              <div className="text-center text-[28px] italic">
-                <Trans>No attributes</Trans>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className="w-[620px]">
           {/* right */}
