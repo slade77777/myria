@@ -82,7 +82,7 @@ export default function DepositScreen({
       </div>
       <div className="mt-[145px] flex justify-between">
         <button
-          className="flex w-full max-w-[126px] items-center justify-center rounded-[8px] border border-[#777777] py-[13px] pt-[15px] text-[16px] font-bold text-[#777777]"
+          className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-[8px] border py-[13px] pt-[15px] text-[16px] font-bold text-white"
           onClick={() => {
             goBack();
           }}
