@@ -80,10 +80,18 @@ export default function DepositScreen({
           <p>0.0431917 ETH</p>
         </div>
       </div>
-      <div className="mt-[145px]">
+      <div className="mt-[145px] flex justify-between">
+        <button
+          className="flex w-full max-w-[126px] items-center justify-center rounded-[8px] border-[#777777] py-[13px] pt-[15px] text-[16px] font-bold text-[#777777]"
+          onClick={() => {
+            goBack();
+          }}
+        >
+          CANCEL
+        </button>
         <button
           className={cn(
-            'flex w-full items-center justify-center rounded-[8px] py-[13px] pt-[15px] text-[16px] font-bold text-white',
+            'flex w-full max-w-[126px] items-center justify-center rounded-[8px] py-[13px] pt-[15px] text-[16px] font-bold text-white',
             isValidForm ? 'bg-[#F5B941] text-[#040B10]' : 'bg-[#737373]',
           )}
           onClick={() => {
@@ -92,15 +100,7 @@ export default function DepositScreen({
             }
           }}
         >
-          CONFIRM DEPOSIT
-        </button>
-        <button
-          className="flex w-full items-center justify-center rounded-[8px] border-[#777777] py-[13px] pt-[15px] text-[16px] font-bold text-[#777777]"
-          onClick={() => {
-            goBack();
-          }}
-        >
-          Cancel
+          NEXT
         </button>
       </div>
     </div>
