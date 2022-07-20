@@ -13,6 +13,7 @@ type Props = {
   headerClassName?: string;
   footerClassName?: string;
   stickyHeader?: boolean;
+  includeFooter?: boolean;
 };
 
 const TIME_SHOW_FIRST_TIME_VISIT_MODAL = 10_000;
@@ -22,7 +23,8 @@ const Page: React.FC<Props> = ({
   action,
   headerClassName,
   stickyHeader = true,
-  footerClassName
+  footerClassName,
+  includeFooter = true
 }) => {
   const [firstTimeVisit, setFirtTimeVisit] = useLocalStorage(localStorageKeys.firstTime, true);
   const [showFirstTimeVisitModal, setShowFirstTimeVisitModal] = useState(false);
@@ -52,7 +54,7 @@ const Page: React.FC<Props> = ({
         open={showFirstTimeVisitModal}
         onClose={handleCloseFirstTimeVisitModal}
       />
-      <div className="relative h-screen text-white bg-dark">
+      <div className="bg-dark relative h-screen text-white">
         <div id="modal-root"></div>
         <Header
           className={headerClassName}
@@ -60,13 +62,15 @@ const Page: React.FC<Props> = ({
           stickyHeader={!!stickyHeader || stickyHeader === undefined}
         />
         <div className="h-screen">
-          <div className="bg-dark">
+          <div className={clsx('bg-dark', { 'pb-[149px] md:pb-[112px]': !includeFooter })}>
             {children}
-            <div className={clsx(paddingX, 'pb-[149px] md:pb-[112px] bg-dark', footerClassName)}>
-              <div className="mx-auto max-w-content">
-                <Footer />
+            {includeFooter && (
+              <div className={clsx(paddingX, 'bg-dark pb-[149px] md:pb-[112px]', footerClassName)}>
+                <div className="max-w-content mx-auto">
+                  <Footer />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

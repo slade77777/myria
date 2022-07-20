@@ -20,7 +20,7 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
   const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale } =
     collection;
   return (
-    <Page>
+    <Page includeFooter={false}>
       <img
         src={collectionImageUrl ? collectionImageUrl : '/images/marketplace/header.png'}
         className="h-[327px] w-full "
@@ -36,9 +36,9 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
         <div className="pt-24">
           <div className="flex justify-between">
             <div className="w-2/3">
-              <p className="text-4xl text-white font-bold">{name}</p>
+              <p className="text-4xl font-bold text-white">{name}</p>
               <p className="mt-2 text-[#97AAB5]">
-                Created By <span className="text-white font-bold">{project?.name}</span>
+                Created By <span className="font-bold text-white">{project?.name}</span>
               </p>
               <div className="mt-6">
                 <ReadMoreText text={description || ''} />
