@@ -26,8 +26,6 @@ const Marketplace: React.FC = () => {
   const { data: dataOrder } = useQuery(
     ['homepage', 'listorder'],
     async () => {
-      console.log('!hotCollection || !collectionModule', hotCollection, collectionModule);
-
       if (!hotCollection || !collectionModule) return;
       const firstList = await collectionModule.getAssetByCollectionId({
         collectionId: hotCollection[0].id,
@@ -45,8 +43,8 @@ const Marketplace: React.FC = () => {
     { enabled: !!hotCollection }
   );
   return (
-    <Page>
-      <div className={clsx(paddingX, headerNavSpacingClassName)}>
+    <Page includeFooter={false}>
+      <div className={clsx('pb-[149px]', paddingX, headerNavSpacingClassName)}>
         <div className="max-w-content mx-auto mt-10">
           <section className={clsx(negativeMarginXSm, 'md:mx-0')}>
             <h2 className="h4 px-6 md:px-0">
