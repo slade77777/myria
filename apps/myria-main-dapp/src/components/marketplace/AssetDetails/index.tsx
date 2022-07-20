@@ -33,6 +33,8 @@ import { NFTItemType } from '../NftItem/type';
 import AssetDetailTab from './AssetDetailTab';
 import PurchaseModal from './PurchaseModal';
 import testavatarImg from './testavatar.png';
+import BackIcon from 'src/components/icons/BackIcon';
+import Link from 'next/link';
 interface Props {
   id: string;
 }
@@ -300,7 +302,7 @@ function AssetDetails({ id }: Props) {
     const tradeModule = moduleFactory.getTradeModule();
     if (!address || !tradeData?.order.orderId) return;
 
-    try{
+    try {
       const signableOrderInput: SignableOrderInput = {
         orderType: 'BUY',
         ethAddress: address,
@@ -336,12 +338,12 @@ function AssetDetails({ id }: Props) {
         assetIdBuy: signableOrder.assetIdBuy,
         includeFees: false
       };
-      
+
       // code below will use in the future
       const resultCreateTrade = tradeModule?.createTrades(payloadTrade);
-      return resultCreateTrade
-    }catch(e){
-      throw new Error("Signable order failure with error");
+      return resultCreateTrade;
+    } catch (e) {
+      throw new Error('Signable order failure with error');
     }
   };
 
@@ -374,6 +376,16 @@ function AssetDetails({ id }: Props) {
         };
   return (
     <div className="w-full bg-[#050E15] py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
+      <div className="w-full flex flex-row max-w-content mx-auto mb-14">
+        <BackIcon />
+        <Link href={`/marketplace`}>
+          <a href={`/marketplace`}>
+            <span className="ml-[6px] font-normal text-[14px]">
+              <Trans>BACK TO MYRIAVERSE COLLECTION</Trans>
+            </span>
+          </a>
+        </Link>
+      </div>
       <div className="max-w-content mx-auto  flex flex-row space-x-28">
         {/* container */}
         <div className="w-[620px]">
@@ -381,7 +393,8 @@ function AssetDetails({ id }: Props) {
           <div
             className=" border-base/5 h-[620px]  w-full
           rounded-[3px] border-[3px] bg-center bg-no-repeat "
-            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
+            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}
+          >
             {/* img */}
           </div>
           {attributes.length > 0 && (
@@ -414,7 +427,8 @@ function AssetDetails({ id }: Props) {
                 className="w-[40px] p-[10px] bg-base/3 rounded cursor-pointer"
                 onClick={() => {
                   toast('The function is not ready yet!');
-                }}>
+                }}
+              >
                 <ShareIcon />
               </div>
             </div>
@@ -524,7 +538,6 @@ function AssetDetails({ id }: Props) {
             setShowPopup(false);
           }}
           assetBuy={assetBuy}
-
         />
       )}
       {showModalUnlist && (
@@ -543,7 +556,8 @@ function AssetDetails({ id }: Props) {
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
-          setIsShowMessage={() => setShowMessageEdit(false)}>
+          setIsShowMessage={() => setShowMessageEdit(false)}
+        >
           <MessageEditListingModal />
         </MessageModal>
       )}
@@ -561,14 +575,16 @@ function AssetDetails({ id }: Props) {
       {showMessageModify && (
         <MessageModal
           isShowMessage={showMessageModify}
-          setIsShowMessage={() => setShowMessageModify(false)}>
+          setIsShowMessage={() => setShowMessageModify(false)}
+        >
           <MessageListingPriceModal />
         </MessageModal>
       )}
       {showMessageUnlist && (
         <MessageModal
           isShowMessage={showMessageUnlist}
-          setIsShowMessage={() => setShowMessageUnlist(false)}>
+          setIsShowMessage={() => setShowMessageUnlist(false)}
+        >
           <MessageUnlist />
         </MessageModal>
       )}
@@ -600,12 +616,14 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
         <>
           <button
             className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-            onClick={setStatus}>
+            onClick={setStatus}
+          >
             <Trans>LIST ITEM FOR SALE</Trans>
           </button>
           <button
             className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-            onClick={triggerPopover}>
+            onClick={triggerPopover}
+          >
             <Trans>WITHDRAW</Trans>
           </button>
         </>
@@ -658,12 +676,14 @@ const ModifyListing: React.FC<IProp> = ({
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>MODIFY LISTING</Trans>
       </button>
       <button
         className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-        onClick={setShowUnlist}>
+        onClick={setShowUnlist}
+      >
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
     </div>
@@ -689,7 +709,8 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>BUY NOW</Trans>
       </button>
     </div>
@@ -715,7 +736,8 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}>
+        onClick={setStatus}
+      >
         <Trans>Connect Wallet To Buy</Trans>
       </button>
     </div>
