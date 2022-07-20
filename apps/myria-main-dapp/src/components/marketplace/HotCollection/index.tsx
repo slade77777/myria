@@ -48,7 +48,7 @@ const HotCollection: React.FC = () => {
                         })`
                       }}></div>
                     <div className="mt-[40px] text-center">
-                      <p className="mt-[16px] text-[20px]">
+                      <p className="mt-[16px] text-xl font-bold">
                         <Trans>{itm.name}</Trans>
                       </p>
                       <p className="mt-[9px] text-[16px] text-light">
