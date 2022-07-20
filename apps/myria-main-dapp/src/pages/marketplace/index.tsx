@@ -44,7 +44,7 @@ const Marketplace: React.FC = () => {
   );
   return (
     <Page includeFooter={false}>
-      <div className={clsx('pb-[149px]', paddingX, headerNavSpacingClassName)}>
+      <div className={clsx(paddingX, headerNavSpacingClassName)}>
         <div className="max-w-content mx-auto mt-10">
           <section className={clsx(negativeMarginXSm, 'md:mx-0')}>
             <h2 className="h4 px-6 md:px-0">
