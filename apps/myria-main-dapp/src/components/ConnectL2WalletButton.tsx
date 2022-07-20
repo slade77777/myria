@@ -9,10 +9,29 @@ import L2WalletPopover from 'src/packages/l2-wallet/src/components/Popover/L2Wal
 import ChevronDownIcon from './icons/ChevronDownIcon';
 import Popover from './Popover';
 import MetamaskOnboarding from './InstallMetamaskButton';
+import {useAuthenticationContext} from "../context/authentication";
+import {useEffect} from "react";
 
 const ConnectL2WalletButton: React.FC = () => {
-  const { address, onConnect, disconnect } = useWalletContext();
+  const { address, onConnect } = useWalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
+  const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
+
+  useEffect(() => {
+    if (userProfileQuery.isFetching) {
+      return;
+    }
+    if (
+      address &&
+      !user?.user_id &&
+      !loginByWalletMutation.isLoading &&
+      !loginByWalletMutation.isError &&
+      userProfileQuery.isFetched &&
+      !userProfileQuery.data
+    ) {
+      loginByWalletMutation.mutate();
+    }
+  }, [address, user, loginByWalletMutation, userProfileQuery]);
 
   let abbreviationAddress = '';
   if (address) {
