@@ -190,19 +190,28 @@ export default function MainScreen({
                   )}
                   key={index}
                 >
-                  <div className="flex items-center">
-                    <img
-                      className="w-[24px] flex-none"
-                      src={item.ico}
-                      alt="token_icon"
-                    />
-                    <span className="ml-2 text-[14px] text-[rgba(255,255,255,0.6)]">
-                      {item.name}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="mt-1 text-right text-[12px] text-[rgba(255,255,255,0.6)]">
-                      {item.balance}
+                  <div className="flex w-full justify-between">
+                    <div className="flex items-center">
+                      <img
+                        className="h-8 w-8 flex-none"
+                        src={item.ico}
+                        alt="token_icon"
+                      />
+                      <div className="ml-4">
+                        <p className="text-[14px] text-[rgba(255,255,255,0.6)]">
+                          {item.name}
+                        </p>
+                        <div>
+                          <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px]">
+                            {item.short}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-base/10 mt-1 text-right text-base">
+                        {item.balance}
+                      </div>
                     </div>
                   </div>
                 </div>
