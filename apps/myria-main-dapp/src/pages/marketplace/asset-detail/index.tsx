@@ -17,7 +17,7 @@ const AssetDetailPage = () => {
 
   if (!isReady) {
     return (
-      <Page>
+      <Page includeFooter={false}>
         <div className="min-h-screen" />
       </Page>
     );
@@ -28,7 +28,7 @@ const AssetDetailPage = () => {
   }
 
   return (
-    <Page>
+    <Page includeFooter={false}>
       <AssetDetails id={id} />
     </Page>
   );

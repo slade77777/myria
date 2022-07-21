@@ -30,7 +30,7 @@ const HotCollection: React.FC = () => {
               <a
                 href={`/marketplace/collection?id=${itm.publicId}`}
                 className="bg-base/3 cursor-pointer rounded-lg">
-                <div key={idx} className={`bg-base/3 overflow-hidden rounded-[20px]`}>
+                <div key={idx} className={`bg-base/3 overflow-hidden rounded-lg`}>
                   <div
                     className="h-[248px] bg-cover bg-center "
                     style={{
@@ -45,7 +45,7 @@ const HotCollection: React.FC = () => {
                         })`
                       }}></div>
                     <div className="mt-[40px] text-center">
-                      <p className="mt-[16px] text-[20px]">
+                      <p className="mt-[16px] text-xl font-bold">
                         <Trans>{itm.name}</Trans>
                       </p>
                       <p className="text-light mt-[9px] text-[16px]">
