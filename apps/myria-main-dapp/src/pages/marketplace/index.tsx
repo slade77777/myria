@@ -62,7 +62,8 @@ const Marketplace: React.FC = () => {
                     rarity: 'rare',
                     name: elm.name || '',
                     image_url: elm.imageUrl || '',
-                    creator: truncateString(elm.owner),
+                    // @ts-ignore need update sdk AssetByCollectionType
+                    creator: elm.creator?.name || '',
                     creatorImg: testavatarImg.src,
                     priceETH: +elm.order.amountBuy // +elm... to convert string to number
                   };

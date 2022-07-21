@@ -1,14 +1,10 @@
 import React, { FC, memo } from 'react';
 import { MyriaIcon } from 'src/components/icons/MyriaIcon';
-import NftItem from 'src/components/marketplace/NftItem';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import ReadMoreText from 'src/components/ReadMoreText';
 import Page from 'src/components/Page';
-import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
 import AssetList from '../AssetList';
-import truncateString from 'src/helper';
 import testavatarImg from '../AssetDetails/testavatar.png';
-import { formatNumber2digits } from 'src/utils';
 import { AssetByCollectionIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 interface Props {
   collection: AssetByCollectionIdResponse;
@@ -77,7 +73,7 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
                   rarity: 'rare',
                   name: elm.name || '',
                   image_url: elm.imageUrl || '',
-                  creator: truncateString(elm.collection.ownerPublicKey),
+                  creator: elm.creator?.name || '',
                   creatorImg: testavatarImg.src,
                   priceETH: isOrder ? Number(elm?.order[0]?.amountBuy) : elm?.order?.amountBuy
                 };
