@@ -75,7 +75,7 @@ const NftItem = ({ item }: Props) => {
               </span>
               <div>
                 <div className="flex justify-between items-center">
-                  <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Owner</span>
+                  <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Creator</span>
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
                     Current price
                   </span>
