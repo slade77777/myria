@@ -21,7 +21,7 @@ import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
-import { formatNumber2digits, validatedImage } from 'src/utils';
+import { convertWeiToEth, formatNumber2digits, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
@@ -132,7 +132,13 @@ function AssetDetails({ id }: Props) {
   // the status will be get from based on the order Object in API get assetDetails
 
   const currentPrice = useMemo(() => {
-    return formatNumber2digits(Number(assetDetails?.order?.amountBuy));
+    if (!assetDetails?.order?.amountBuy) return '0';
+
+    const amountPrice = convertWeiToEth(assetDetails?.order?.amountBuy);
+
+    return Number(amountPrice) >= 1
+      ? formatNumber2digits(Number(amountPrice))
+      : Number(amountPrice);
   }, [assetDetails?.order]);
 
   const [status, setStatus] = useState<AssetStatus>(AssetStatus.UNCONNECTED);
@@ -153,10 +159,11 @@ function AssetDetails({ id }: Props) {
     price: ''
   });
 
-  const currentUSDPrice = useMemo(
-    () => formatNumber2digits(Number(assetDetails?.order?.amountBuy) * etheCost),
-    [assetDetails?.order?.amountBuy, etheCost]
-  );
+  const currentUSDPrice = useMemo(() => {
+    if (!assetDetails?.order?.amountBuy) return;
+    const amountPrice = convertWeiToEth(assetDetails?.order?.amountBuy);
+    return formatNumber2digits(Number(amountPrice) * etheCost);
+  }, [assetDetails?.order?.amountBuy, etheCost]);
 
   const handleCloseModal = useCallback(() => {
     setShowModal((showModal) => !showModal);
@@ -204,14 +211,14 @@ function AssetDetails({ id }: Props) {
             tokenAddress: assetDetails?.tokenAddress
           }
         },
-        amountSell: price + '',
+        amountSell: '1',
         tokenBuy: {
           type: TokenType.ETH,
           data: {
             quantum: QUANTUM
           }
         },
-        amountBuy: '1',
+        amountBuy: price + '',
         includeFees: false
       };
       const signature = await orderModule?.signableOrder(payload);
@@ -393,8 +400,7 @@ function AssetDetails({ id }: Props) {
           <div
             className=" border-base/5 h-[620px]  w-full
           rounded-[3px] border-[3px] bg-center bg-no-repeat "
-            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}
-          >
+            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
             {/* img */}
           </div>
           {attributes.length > 0 && (
@@ -427,8 +433,7 @@ function AssetDetails({ id }: Props) {
                 className="w-[40px] p-[10px] bg-base/3 rounded cursor-pointer"
                 onClick={() => {
                   toast('The function is not ready yet!');
-                }}
-              >
+                }}>
                 <ShareIcon />
               </div>
             </div>
@@ -456,12 +461,12 @@ function AssetDetails({ id }: Props) {
             </div>
             {status === AssetStatus.BUY_NOW && (
               <BuyNow
-                currentPrice={currentPrice.toString()}
+                currentPrice={currentPrice?.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
                   setAssetBuy({
                     name: assetDetails?.name || '',
-                    price: currentPrice
+                    price: String(currentPrice)
                   });
                   setShowPopup(true);
                 }}
@@ -469,7 +474,7 @@ function AssetDetails({ id }: Props) {
             )}
             {status === AssetStatus.UNCONNECTED && (
               <ConnectWalletToBuy
-                currentPrice={currentPrice.toString()}
+                currentPrice={currentPrice?.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={onConnect}
               />
@@ -486,7 +491,7 @@ function AssetDetails({ id }: Props) {
             {status === AssetStatus.UNCONNECTED_NOT_SALE && <ItemNotForSale />}
             {status === AssetStatus.MODIFY && (
               <ModifyListing
-                currentPrice={currentPrice.toString()}
+                currentPrice={currentPrice?.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
                   setShowModal(true);
@@ -556,8 +561,7 @@ function AssetDetails({ id }: Props) {
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
-          setIsShowMessage={() => setShowMessageEdit(false)}
-        >
+          setIsShowMessage={() => setShowMessageEdit(false)}>
           <MessageEditListingModal />
         </MessageModal>
       )}
@@ -575,16 +579,14 @@ function AssetDetails({ id }: Props) {
       {showMessageModify && (
         <MessageModal
           isShowMessage={showMessageModify}
-          setIsShowMessage={() => setShowMessageModify(false)}
-        >
+          setIsShowMessage={() => setShowMessageModify(false)}>
           <MessageListingPriceModal />
         </MessageModal>
       )}
       {showMessageUnlist && (
         <MessageModal
           isShowMessage={showMessageUnlist}
-          setIsShowMessage={() => setShowMessageUnlist(false)}
-        >
+          setIsShowMessage={() => setShowMessageUnlist(false)}>
           <MessageUnlist />
         </MessageModal>
       )}
@@ -616,14 +618,12 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
         <>
           <button
             className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-            onClick={setStatus}
-          >
+            onClick={setStatus}>
             <Trans>LIST ITEM FOR SALE</Trans>
           </button>
           <button
             className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-            onClick={triggerPopover}
-          >
+            onClick={triggerPopover}>
             <Trans>WITHDRAW</Trans>
           </button>
         </>
@@ -676,14 +676,12 @@ const ModifyListing: React.FC<IProp> = ({
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>MODIFY LISTING</Trans>
       </button>
       <button
         className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-        onClick={setShowUnlist}
-      >
+        onClick={setShowUnlist}>
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
     </div>
@@ -709,8 +707,7 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>BUY NOW</Trans>
       </button>
     </div>
@@ -736,8 +733,7 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
       </div>
       <button
         className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-        onClick={setStatus}
-      >
+        onClick={setStatus}>
         <Trans>Connect Wallet To Buy</Trans>
       </button>
     </div>

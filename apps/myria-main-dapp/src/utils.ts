@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro';
+import { BigNumber, ethers } from 'ethers';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
 export const formatNumber = (num: number) => {
@@ -32,6 +33,11 @@ export const validatePassword = (password: string) => {
 
   return undefined;
 };
+
+export function convertWeiToEth(amount: string): string {
+  const balance = BigNumber.from(amount);
+  return ethers.utils.formatEther(balance);
+}
 
 export const validatedImage = (url: string | null | undefined) => {
   const imagesDefault = '/images/marketplace/collection-2-bg.png';

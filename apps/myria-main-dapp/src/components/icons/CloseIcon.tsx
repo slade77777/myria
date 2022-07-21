@@ -5,7 +5,7 @@ interface IProp {
   color?: string;
 }
 
-const CloseIcon: React.FC<IProp> = ({ size, className, color= 'currentColor' }) => {
+const CloseIcon: React.FC<IProp> = ({ size, className, color = 'currentColor' }) => {
   return (
     <svg
       width={size}
