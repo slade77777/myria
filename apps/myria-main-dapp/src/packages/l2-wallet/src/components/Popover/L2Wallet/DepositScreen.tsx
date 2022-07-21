@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import CurrencySelector, { TOption } from '../../Dropdown/CurrencySelector';
 
@@ -32,6 +32,7 @@ export default function DepositScreen({
   options,
   setDepositScreenMounted,
 }: Props) {
+  const [inputChanged, setInputChanged] = useState(false);
   useEffect(() => {
     setDepositScreenMounted(true);
     return () => {
@@ -71,9 +72,14 @@ export default function DepositScreen({
           </div>
           <MaxInput
             max={parseFloat(balance)}
-            onChangeHandle={setAmountHandle}
+            onChangeHandle={(value: any) => {
+              setInputChanged(true);
+              setAmountHandle(value);
+            }}
           />
-          <div className="mt-2 text-[#F83D5C]">{errorAmount}</div>
+          {inputChanged && errorAmount && (
+            <div className="mt-2 text-[#F83D5C]">{errorAmount}</div>
+          )}
         </div>
         <div className=" mt-2 flex justify-between text-[14px] text-[rgba(255,255,255,0.6)]">
           <p>Estimated gas fee</p>

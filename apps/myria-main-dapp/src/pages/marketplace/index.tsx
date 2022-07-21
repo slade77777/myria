@@ -47,17 +47,9 @@ const Marketplace: React.FC = () => {
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
         <div className="max-w-content mx-auto mt-10">
           <section className={clsx(negativeMarginXSm, 'md:mx-0')}>
-            <h2 className="h4 px-6 md:px-0">
+            <h2 className="h4 mb-10 px-6 md:px-0">
               <Trans>Marketplace</Trans>
             </h2>
-            <div className="relative isolate mt-10 flex min-h-[287px] overflow-hidden bg-[url('/images/marketplace/header.png')] bg-cover bg-center p-10 md:items-end md:rounded-lg md:bg-left">
-              <div className="absolute inset-0 z-[-1] bg-black opacity-40 md:hidden" />
-              <p className="text-center text-[40px] font-medium leading-[1.15] md:max-w-[390px] md:text-left">
-                <Trans>Play and earn rewards and NFTs</Trans>
-              </p>
-            </div>
-          </section>
-          <section className="mt-[64px]">
             <HotCollection />
           </section>
           <section className="mb-20 mt-[64px]">

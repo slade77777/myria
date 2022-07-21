@@ -306,7 +306,7 @@ export default function L2WalletPopover({
     }
     setErrorAmount('');
     return true;
-  }, [selectedToken, amount, balanceL1]);
+  }, [selectedToken, amount, balanceL1, etheCost]);
 
   const deposit = async () => {
     try {
