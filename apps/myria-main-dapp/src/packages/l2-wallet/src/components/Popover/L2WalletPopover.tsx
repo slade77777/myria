@@ -288,6 +288,10 @@ export default function L2WalletPopover({
   }, [pKey, dispatch, screen]);
 
   const isValidForm = useMemo(() => {
+    if (!amount) {
+      setErrorAmount('');
+      return false;
+    }
     if (!selectedToken) {
       setErrorAmount('Select Asset required.');
       return false;

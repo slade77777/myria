@@ -1,6 +1,6 @@
-import React from 'react';
 import cn from 'classnames';
-import { InfoCircleIcon, ProgressIcon } from '../../Icons';
+import { ProgressIcon } from '../../Icons';
+import InfoCircle2Icon from '../../Icons/InfoCircle2Icon';
 
 type Props = {
   amount: number;
@@ -37,12 +37,13 @@ export default function WithdrawRequestScreen({
           <span>10-20 hours</span>
         </div>
       </div>
-      <div className="mt-4 flex rounded-[8px] border border-[#D9D9D9] py-4 px-[14px]">
+      <div className="mt-4 flex rounded-[8px] border border-[#9AC9E3] py-4 px-[14px]">
         <div className="mr-[9px] flex-none">
-          <InfoCircleIcon />
+          <InfoCircle2Icon />
         </div>
-        <div className="text-[12px] text-[#777777]">
-          Withdrawal batch cycle is every 20 hours. Click here to learn more.
+        <div className="text-[14px] text-[#9AC9E3]">
+          Withdrawal batch cycle is every 20 hours. Click
+          <button className="text-[#F5B941]"> here </button> to learn more.
         </div>
       </div>
       <div className="mt-[55px] flex justify-between">
