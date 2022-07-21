@@ -191,7 +191,8 @@ function AssetDetails({ id }: Props) {
     const result = await orderModule?.updateOrderPrice(assetDetails?.order.orderId + '', {
       newAmountBuy: price,
       sellerStarkKey: starkKey,
-      sellerWalletAddress: address
+      sellerWalletAddress: address,
+      nonQuantizedAmountBuy: ''
     });
     if (result) {
       setShowMessageModify(true);
