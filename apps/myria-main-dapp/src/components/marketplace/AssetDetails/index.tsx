@@ -6,10 +6,13 @@ import {
   SignableOrderInput
 } from 'myria-core-sdk/dist/types/src/types/OrderTypes';
 import { TradesRequestTypes } from 'myria-core-sdk/dist/types/src/types/TradesTypes';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import BackIcon from 'src/components/icons/BackIcon';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
 import OwnerAssetIcon from 'src/components/icons/OwnerAssetIcon';
@@ -33,8 +36,6 @@ import { NFTItemType } from '../NftItem/type';
 import AssetDetailTab from './AssetDetailTab';
 import PurchaseModal from './PurchaseModal';
 import testavatarImg from './testavatar.png';
-import BackIcon from 'src/components/icons/BackIcon';
-import Link from 'next/link';
 interface Props {
   id: string;
 }
@@ -67,6 +68,7 @@ const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
 };
 
 function AssetDetails({ id }: Props) {
+  const router = useRouter();
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', id],
     async () => {
@@ -91,6 +93,13 @@ function AssetDetails({ id }: Props) {
 
   const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
   const listOrder = useMemo(() => data?.listOrder, [data?.listOrder]);
+  const titleBack = useMemo(
+    () =>
+      assetDetails?.collectionName
+        ? `BACK TO ${assetDetails.collectionName.toUpperCase()}`
+        : 'BACK',
+    [assetDetails]
+  );
 
   const { data: moreCollectionList } = useQuery(
     ['moreCollection', assetDetails?.collectionId],
@@ -383,16 +392,14 @@ function AssetDetails({ id }: Props) {
         };
   return (
     <div className="w-full bg-[#050E15] py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
-      <div className="w-full flex flex-row max-w-content mx-auto mb-14">
+      <button
+        onClick={router.back}
+        className="w-full flex flex-row items-center max-w-content mx-auto mb-14">
         <BackIcon />
-        <Link href={`/marketplace`}>
-          <a href={`/marketplace`}>
-            <span className="ml-[6px] font-normal text-[14px]">
-              <Trans>BACK TO MYRIAVERSE COLLECTION</Trans>
-            </span>
-          </a>
-        </Link>
-      </div>
+        <span className="ml-[6px] font-normal text-[14px]">
+          <Trans>{titleBack}</Trans>
+        </span>
+      </button>
       <div className="max-w-content mx-auto  flex flex-row space-x-28">
         {/* container */}
         <div className="w-[620px]">
