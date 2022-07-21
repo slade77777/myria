@@ -99,11 +99,9 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
         userModule
           .registerUser('0x' + starkKey, account)
           .then(data => {
-            alert('User Register Success!');
             setWelcomeModal(true);
           })
           .catch(err => {
-            alert('User Register Error!');
             setWelcomeModal(true);
           })
           .finally(() => {
