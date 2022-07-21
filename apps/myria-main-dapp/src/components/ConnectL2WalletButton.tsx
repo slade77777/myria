@@ -10,8 +10,8 @@ import L2WalletPopover from 'src/packages/l2-wallet/src/components/Popover/L2Wal
 import ChevronDownIcon from './icons/ChevronDownIcon';
 import Popover from './Popover';
 import MetamaskOnboarding from './InstallMetamaskButton';
-import {useAuthenticationContext} from "../context/authentication";
-import {useEffect} from "react";
+import { useAuthenticationContext } from '../context/authentication';
+import { useEffect } from 'react';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { address, onConnect } = useWalletContext();
@@ -54,7 +54,7 @@ const ConnectL2WalletButton: React.FC = () => {
         <Popover.Trigger asChild>
           <span className="uppercase">
             <button
-              className="body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border pl-[10px] pr-4 py-[9px]"
+              className="body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border py-[9px] pl-[10px] pr-4"
               id="trigger-popover">
               <ConnectIcon className="text-white" />
               <span>{truncateString(address)}</span>
@@ -65,11 +65,21 @@ const ConnectL2WalletButton: React.FC = () => {
           </span>
         </Popover.Trigger>
         <Popover.Content
-          sideOffset={24}
+          sideOffset={8}
           align="end"
-          className="text-base/3 rounded-md bg-current p-3">
-          <Popover.Arrow className="translate-x-3 fill-current" />
-          <div className="min-w-[406px]">
+          style={{
+            boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
+          }}
+          className="text-base/3 min-w-[406px] rounded-xl bg-current p-3">
+          <Popover.Arrow
+            width={24}
+            height={13}
+            style={{
+              filter: `drop-shadow(0px 1px 0px #202230)`
+            }}
+            className="translate-x-8 fill-current"
+          />
+          <div>
             {showClaimPopover ? (
               <ClaimWithdrawPopover
                 abbreviationAddress={abbreviationAddress}
