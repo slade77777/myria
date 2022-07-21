@@ -15,11 +15,6 @@ import Subscribe from 'src/components/Subscribe';
 import { Trans } from '@lingui/macro';
 import { socialLinks } from 'src/configs';
 import useGamesData from '../../hooks/useGamesData';
-import SignInModal from 'src/components/SignIn/Modal';
-import { AuthenticationProvider, useAuthenticationContext } from 'src/context/authentication';
-import Input from 'src/components/Input';
-import { useMutation } from 'react-query';
-import { devApiClient } from 'src/client';
 
 export type Asset = {
   type: 'video' | 'image';
@@ -28,71 +23,18 @@ export type Asset = {
 };
 
 const GameDetail: React.FC = () => {
-  const { mutate: login } = useMutation(
-    (_data: any) => devApiClient.post(`accounts/login`, _data),
-    {
-      onSuccess: (res) => {
-        setIsLoggedIn(true);
-      },
-      onError: (error: any) => {
-        alert(error.message);
-      }
-    }
-  );
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [data, setData] = useState({
-    login: '',
-    password: ''
-  });
-
   const [currentSlide, setCurrentSlide] = useState(0);
   const router = useRouter();
   const { event } = useGA4();
   const { id } = router.query;
   const games = useGamesData();
-  const { user } = useAuthenticationContext();
+
   if (typeof id !== 'string') {
     return null;
   }
 
   const game = games[id];
   const { title, assets, logo, logoMobile, content, info, image, description, headerBg } = game;
-  const onChange = (e: any) => {
-    console.log(e.target.name, { ...data, [e.target.name]: e.target.value });
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  if (!isLoggedIn) {
-    return (
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          try {
-            await login(data);
-          } catch (err: any) {
-            alert(err.message);
-          }
-        }}>
-        <input
-          autoComplete="new-password"
-          placeholder="login"
-          style={{ color: 'black' }}
-          name="login"
-          onChange={onChange}
-          value={data.login}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          name="password"
-          style={{ color: 'black' }}
-          onChange={onChange}
-          value={data.password}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    );
-  }
   return (
     <Page stickyHeader={false}>
       <div>
@@ -108,8 +50,7 @@ const GameDetail: React.FC = () => {
               </div>
             </div>
           )}
-
-          <div className="max-w-content mx-auto mt-10 w-full">
+          <div className="mx-auto mt-10 w-full max-w-content">
             <h3 className="heading-lg text-center font-extrabold md:text-left">{title}</h3>
             <div className="mt-[32px] flex flex-col lg:flex-row lg:items-start">
               <div className="lg:w-[calc((100%-32px)*0.675)]">
@@ -140,7 +81,7 @@ const GameDetail: React.FC = () => {
                       {item.paragraph?.map((p, idx) => {
                         if (typeof p === 'string') {
                           return (
-                            <p className="body text-light mt-6" key={idx}>
+                            <p className="body mt-6 text-light" key={idx}>
                               {p}
                             </p>
                           );
@@ -159,31 +100,26 @@ const GameDetail: React.FC = () => {
                 <div className="hidden justify-center px-[30px] lg:flex">
                   <img src={logo} alt="" />
                 </div>
-                <div className="bg-brand-deep-blue mt-[32px] flex flex-col rounded-[20px] p-[32px]">
+                <div className="mt-[32px] flex flex-col rounded-[20px] bg-brand-deep-blue p-[32px]">
                   <div className="grid gap-6">
                     {info.map((item, idx) => (
                       <div className="flex items-center justify-between" key={idx}>
                         <p className="body-sm">{item.label}</p>
-                        <div className="caption text-brand-light-blue rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold">
+                        <div className="caption rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold text-brand-light-blue">
                           {item.value}
                         </div>
                       </div>
                     ))}
                   </div>
                   <div className="order-[-1] mb-6 md:order-1 md:mb-0 md:mt-[48px] ">
-                    {game.action ? (
-                      <a
-                        href={game.action.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-lg btn-primary w-full justify-center">
-                        <Trans>{game.action.label}</Trans>
-                      </a>
-                    ) : (
-                      <button className="btn-lg btn-primary w-full justify-center">
-                        <Trans>IN DEVELOPMENT</Trans>
-                      </button>
-                    )}
+                    {/* <button
+                      className="justify-center w-full btn-lg bg-[rgba(255,255,255,0.2)] text-[rgba(255,255,255,0.4)]"
+                      disabled>
+                      IN DEVELOPMENT
+                    </button> */}
+                    <button className="btn-lg btn-primary w-full justify-center">
+                      <Trans>IN DEVELOPMENT</Trans>
+                    </button>
                     <a
                       href={game.discord}
                       target="_blank"
@@ -235,13 +171,4 @@ export async function getStaticProps() {
   };
 }
 
-// eslint-disable-next-line react/display-name
-const DefaultComponent = () => {
-  return (
-    <AuthenticationProvider>
-      <GameDetail />
-    </AuthenticationProvider>
-  );
-};
-
-export default DefaultComponent;
+export default GameDetail;
