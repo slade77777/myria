@@ -17,6 +17,8 @@ import DAOIcon from '../../../../../../components/icons/DAOIcon';
 import { useEtheriumPrice } from '../../../../../../hooks/useEtheriumPrice';
 import { formatNumber2digits } from '../../../../../../utils';
 import ETHIcon from '../../Icons/ETHIcon';
+import ArrowDownLeft from '../../Icons/ArrowDownLeft';
+import ArrowUpRight from '../../Icons/ArrowUpRight';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -142,28 +144,28 @@ export default function MainScreen({
           onClick={async () => {
             gotoDepositScreen();
           }}
-          className="mr-4 flex w-[114px] items-center justify-center rounded-[8px] bg-[#0B2231] py-2 px-[18px] text-[14px] text-white"
+          className="mr-4 flex w-[118px] items-center justify-center rounded-[8px] bg-[#0B2231] p-3 text-[14px] text-white"
         >
-          <Arrow2Icon
-            direction="45"
-            className="mr-1 text-[#9AC9E3]"
-            size={16}
-          />
-          <span className="ml-1 text-[#9AC9E3]">DEPOSIT</span>
+          <div>
+            <ArrowDownLeft />
+          </div>
+          <span className="text-brand-light-blue ml-1 font-medium">
+            DEPOSIT
+          </span>
         </button>
         <button
           onClick={() => {
             gotoWithdrawScreen();
           }}
-          className="flex w-[114px] items-center justify-center rounded-[8px] bg-[#0B2231] py-2 px-[18px] text-[14px] text-white"
+          className="flex w-[118px] items-center justify-center rounded-[8px] bg-[#0B2231] p-3 text-[14px] text-white"
           id="trigger-withdraw"
         >
-          <Arrow2Icon
-            direction="225"
-            className="mr-1 text-[#9AC9E3]"
-            size={16}
-          />
-          <span className="ml-1 text-[#9AC9E3]">WITHDRAW</span>
+          <div>
+            <ArrowUpRight />
+          </div>
+          <span className="text-brand-light-blue ml-1 flex gap-1 font-medium">
+            WITHDRAW
+          </span>
         </button>
       </div>
       <div className="Tabs mt-[40px]">
@@ -190,19 +192,28 @@ export default function MainScreen({
                   )}
                   key={index}
                 >
-                  <div className="flex items-center">
-                    <img
-                      className="w-[24px] flex-none"
-                      src={item.ico}
-                      alt="token_icon"
-                    />
-                    <span className="ml-2 text-[14px] text-[rgba(255,255,255,0.6)]">
-                      {item.name}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="mt-1 text-right text-[12px] text-[rgba(255,255,255,0.6)]">
-                      {item.balance}
+                  <div className="flex w-full justify-between">
+                    <div className="flex items-center">
+                      <img
+                        className="h-8 w-8 flex-none"
+                        src={item.ico}
+                        alt="token_icon"
+                      />
+                      <div className="ml-4">
+                        <p className="text-[14px] text-[rgba(255,255,255,0.6)]">
+                          {item.name}
+                        </p>
+                        <div>
+                          <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px] font-bold">
+                            {item.short}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-base/10 mt-1 text-right text-base">
+                        {item.balance}
+                      </div>
                     </div>
                   </div>
                 </div>
