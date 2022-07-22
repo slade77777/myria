@@ -143,7 +143,7 @@ function AssetDetails({ id }: Props) {
   const currentPrice = useMemo(() => {
     if (!assetDetails?.order?.nonQuantizedAmountBuy) return '0';
 
-    const amountPrice = lodash.isNumber(assetDetails?.order?.nonQuantizedAmountBuy) || 0;
+    const amountPrice = assetDetails?.order?.nonQuantizedAmountBuy;
 
     return Number(amountPrice) >= 1
       ? formatNumber2digits(Number(amountPrice))
@@ -170,9 +170,7 @@ function AssetDetails({ id }: Props) {
 
   const currentUSDPrice = useMemo(() => {
     if (!assetDetails?.order?.nonQuantizedAmountBuy) return;
-    const amountPrice = lodash.isNumber(assetDetails?.order?.nonQuantizedAmountBuy)
-      ? assetDetails?.order?.nonQuantizedAmountBuy
-      : 0;
+    const amountPrice = assetDetails?.order?.nonQuantizedAmountBuy;
     return formatNumber2digits(Number(amountPrice) * etheCost);
   }, [assetDetails?.order?.nonQuantizedAmountBuy, etheCost]);
 
