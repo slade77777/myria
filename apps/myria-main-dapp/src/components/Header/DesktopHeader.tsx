@@ -37,6 +37,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
       )}
     >
       {links.map((item, idx) => {
+        const isActive = item.url && router.pathname?.includes(item.url);
         if (item.inactive) {
           return (
             <li key={idx}>
@@ -97,13 +98,13 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
             <li
               key={idx}
               className={clsx('hover:bg-base/4 rounded-[8px] py-[9px] px-[13px]', {
-                'bg-base/4': item.url === router.pathname
+                'bg-base/4': isActive
               })}
             >
               <Link href={item.url as string}>
                 <a
                   className={clsx('hover:text-blue/6', {
-                    'text-blue/6': item.url === router.pathname
+                    'text-blue/6': isActive
                   })}
                 >
                   {item.text}
