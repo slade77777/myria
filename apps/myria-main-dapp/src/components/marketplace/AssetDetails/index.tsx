@@ -141,9 +141,9 @@ function AssetDetails({ id }: Props) {
   // the status will be get from based on the order Object in API get assetDetails
 
   const currentPrice = useMemo(() => {
-    if (!assetDetails?.order?.amountBuy) return '0';
+    if (!assetDetails?.order?.nonQuantizedAmountBuy) return '0';
 
-    const amountPrice = convertWeiToEth(assetDetails?.order?.amountBuy);
+    const amountPrice = lodash.isNumber(assetDetails?.order?.nonQuantizedAmountBuy) || 0;
 
     return Number(amountPrice) >= 1
       ? formatNumber2digits(Number(amountPrice))
@@ -169,10 +169,12 @@ function AssetDetails({ id }: Props) {
   });
 
   const currentUSDPrice = useMemo(() => {
-    if (!assetDetails?.order?.amountBuy) return;
-    const amountPrice = convertWeiToEth(assetDetails?.order?.amountBuy);
+    if (!assetDetails?.order?.nonQuantizedAmountBuy) return;
+    const amountPrice = lodash.isNumber(assetDetails?.order?.nonQuantizedAmountBuy)
+      ? assetDetails?.order?.nonQuantizedAmountBuy
+      : 0;
     return formatNumber2digits(Number(amountPrice) * etheCost);
-  }, [assetDetails?.order?.amountBuy, etheCost]);
+  }, [assetDetails?.order?.nonQuantizedAmountBuy, etheCost]);
 
   const handleCloseModal = useCallback(() => {
     setShowModal((showModal) => !showModal);
@@ -367,7 +369,7 @@ function AssetDetails({ id }: Props) {
   const handleBuyNowItem = (data: any) => {
     setAssetBuy({
       name: data.name,
-      price: formatNumber2digits(Number(data?.order[0]?.amountBuy))
+      price: formatNumber2digits(Number(data?.order[0]?.nonQuantizedAmountBuy))
     });
     setShowPopup(true);
   };
@@ -535,7 +537,7 @@ function AssetDetails({ id }: Props) {
               // @ts-ignore need update sdk AssetByCollectionType
               creator: elm.creator?.name || '',
               creatorImg: testavatarImg.src,
-              priceETH: +elm.order.amountBuy // +elm... to convert string to number
+              priceETH: +elm.order.nonQuantizedAmountBuy // +elm... to convert string to number
             };
             return item;
           })}
