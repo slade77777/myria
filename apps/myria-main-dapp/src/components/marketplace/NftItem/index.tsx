@@ -81,14 +81,16 @@ const NftItem = ({ item }: Props) => {
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <div className="flex">
+                  <div className="flex w-3/5">
                     <img src={item.creatorImg} alt="creator" className="mr-1" />
-                    <p className="text-[14px] font-medium text-white break-words">{item.creator}</p>
+                    <p className="text-[14px] font-medium text-white break-words truncate">
+                      {item.creator} {item.creator}
+                    </p>
                   </div>
                   {item.priceETH ? (
-                    <div className="flex items-center">
+                    <div className="flex items-center justify-end w-2/5">
                       <DAOIcon className="mr-1" />
-                      <span className="text-[16px] font-medium text-white">
+                      <span className="text-[16px] font-medium text-white truncate">
                         {formatNumber2digits(item.priceETH)}
                       </span>
                     </div>
