@@ -32,7 +32,12 @@ function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvid
     return null;
   }
 }
-
+if (typeof window !== 'undefined') {
+  web3Modal = new Web3Modal({
+    network: process.env.NEXT_PUBLIC_ETH_ENV,
+    cacheProvider: true
+  });
+}
 export const WalletProvider: React.FC = ({ children }) => {
   const [address, setAddress] = React.useState<string | undefined>(undefined);
   const [balance, setBalance] = React.useState<BigNumber>();
@@ -46,7 +51,9 @@ export const WalletProvider: React.FC = ({ children }) => {
   const { event } = useGA4();
 
   useEffect(() => {
-    onConnect();
+    if (web3Modal.cachedProvider) {
+      onConnect();
+    }
   }, []);
 
   const subscribeProvider = useCallback(async (provider) => {
@@ -93,11 +100,6 @@ export const WalletProvider: React.FC = ({ children }) => {
   }, [readerProviderApi, address]);
 
   const onConnect = async () => {
-    web3Modal = new Web3Modal({
-      network: process.env.NEXT_PUBLIC_ETH_ENV,
-      cacheProvider: true
-    });
-
     const w3provider = await web3Modal.connect();
     await subscribeProvider(w3provider);
 
