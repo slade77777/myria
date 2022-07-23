@@ -6,7 +6,6 @@ import {
   SignableOrderInput
 } from 'myria-core-sdk/dist/types/src/types/OrderTypes';
 import { TradesRequestTypes } from 'myria-core-sdk/dist/types/src/types/TradesTypes';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
@@ -24,7 +23,7 @@ import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
-import { convertWeiToEth, formatNumber2digits, validatedImage } from 'src/utils';
+import { formatNumber2digits, formatPrice, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
@@ -96,7 +95,7 @@ function AssetDetails({ id }: Props) {
   const titleBack = useMemo(
     () =>
       assetDetails?.collectionName
-        ? `BACK TO ${assetDetails.collectionName.toUpperCase()}`
+        ? 'BACK TO '+ assetDetails.collectionName.toUpperCase()
         : 'BACK',
     [assetDetails]
   );
@@ -140,15 +139,7 @@ function AssetDetails({ id }: Props) {
   }, [assetDetails?.metadataOptional]);
   // the status will be get from based on the order Object in API get assetDetails
 
-  const currentPrice = useMemo(() => {
-    if (!assetDetails?.order?.nonQuantizedAmountBuy) return '0';
 
-    const amountPrice = assetDetails?.order?.nonQuantizedAmountBuy;
-
-    return Number(amountPrice) >= 1
-      ? formatNumber2digits(Number(amountPrice))
-      : Number(amountPrice);
-  }, [assetDetails?.order]);
 
   const [status, setStatus] = useState<AssetStatus>(AssetStatus.UNCONNECTED);
   const [showPopup, setShowPopup] = useState(false);
@@ -168,10 +159,18 @@ function AssetDetails({ id }: Props) {
     price: ''
   });
 
+  const currentPrice = useMemo(() => {
+    if (!assetDetails?.order?.nonQuantizedAmountBuy) return '0';
+    const price = parseFloat(assetDetails?.order?.nonQuantizedAmountBuy);
+    const amountPrice = price > 0 ? price : 0;
+
+    return formatPrice(amountPrice);
+  }, [assetDetails?.order]);
+ 
   const currentUSDPrice = useMemo(() => {
     if (!assetDetails?.order?.nonQuantizedAmountBuy) return;
-    const amountPrice = assetDetails?.order?.nonQuantizedAmountBuy;
-    return formatNumber2digits(Number(amountPrice) * etheCost);
+    const price = parseFloat(assetDetails?.order?.nonQuantizedAmountBuy);
+    return formatNumber2digits(price * etheCost);
   }, [assetDetails?.order?.nonQuantizedAmountBuy, etheCost]);
 
   const handleCloseModal = useCallback(() => {
