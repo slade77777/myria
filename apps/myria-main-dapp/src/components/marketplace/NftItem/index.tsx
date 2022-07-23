@@ -47,12 +47,11 @@ const DAOIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const NftItem = ({ item }: Props) => {
   const rarityColor = getRarityColor(item.rarity);
-
   return (
     <Link href={`/marketplace/asset-detail?id=${item.id}`} key={item.id}>
       <a href={`/marketplace/asset-detail?id=${item.id}`}>
-        <div className="snap-start cursor-pointer">
-          <div className="block w-full max-w-[298px] overflow-hidden rounded-[5px] bg-brand-deep-blue">
+        <div className="cursor-pointer snap-start">
+          <div className="bg-brand-deep-blue block w-full max-w-[298px] overflow-hidden rounded-[5px]">
             <div className="relative flex h-[298px] w-full items-center justify-center lg:h-[248px]">
               <div className="absolute h-full w-full bg-[#081824]" />
               <div
@@ -60,7 +59,7 @@ const NftItem = ({ item }: Props) => {
                 style={{ backgroundColor: rarityColor }}
               />
               <div
-                className="z-2 absolute h-full w-full bg-cover bg-no-repeat bg-center"
+                className="z-2 absolute h-full w-full bg-cover bg-center bg-no-repeat"
                 style={{
                   backgroundImage: `url(${validatedImage(item.image_url)})`
                 }}
@@ -74,24 +73,24 @@ const NftItem = ({ item }: Props) => {
                 {item.name}
               </span>
               <div>
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">Creator</span>
                   <span className="mb-1 block text-[12px] font-normal text-[#9CA3AF]">
                     Current price
                   </span>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <div className="flex w-3/5">
                     <img src={item.creatorImg} alt="creator" className="mr-1" />
-                    <p className="text-[14px] font-medium text-white break-words truncate">
+                    <p className="truncate break-words text-[14px] font-medium text-white">
                       {item.creator}
                     </p>
                   </div>
                   {item.priceETH ? (
-                    <div className="flex items-center justify-end w-2/5">
+                    <div className="flex w-2/5 items-center justify-end">
                       <DAOIcon className="mr-1" />
-                      <span className="text-[16px] font-medium text-white truncate">
-                        {formatPrice(parseFloat(item.priceETH+''))}
+                      <span className="truncate text-[16px] font-medium text-white">
+                        {formatPrice(parseFloat(item.priceETH + ''))}
                       </span>
                     </div>
                   ) : (

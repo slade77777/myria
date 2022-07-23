@@ -394,9 +394,9 @@ function AssetDetails({ id }: Props) {
     <div className="w-full bg-[#050E15] py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <button
         onClick={router.back}
-        className="w-full flex flex-row items-center max-w-content mx-auto mb-14">
+        className="max-w-content mx-auto mb-14 flex w-full flex-row items-center">
         <BackIcon />
-        <span className="ml-[6px] font-normal text-[14px]">
+        <span className="ml-[6px] text-[14px] font-normal">
           <Trans>{titleBack}</Trans>
         </span>
       </button>
@@ -432,12 +432,12 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className="flex flex-row items-center">
                 <img src={testavatarImg.src} className="h-[24px] w-[24px]" />
-                <span className="ml-[8px] text-[16px] text-light">
+                <span className="text-light ml-[8px] text-[16px]">
                   {assetDetails?.collectionName}
                 </span>
               </div>
               <div
-                className="w-[40px] p-[10px] bg-base/3 rounded cursor-pointer"
+                className="bg-base/3 w-[40px] cursor-pointer rounded p-[10px]"
                 onClick={() => {
                   toast('The function is not ready yet!');
                 }}>
@@ -447,13 +447,13 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-[24px] text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="mt-[24px] flex w-[325px] flex-row justify-between text-light">
+              <div className="text-light mt-[24px] flex w-[325px] flex-row justify-between">
                 <span>Token ID: {assetDetails?.tokenId}</span>
                 <span>|</span>
                 <span>Owned by {truncateString(`${assetDetails?.owner?.starkKey}`)}</span>
               </div>
 
-              <div className="flex gap-6 text-light">
+              <div className="text-light flex gap-6">
                 <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
                   <MintedIcon />
                   <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
@@ -543,9 +543,7 @@ function AssetDetails({ id }: Props) {
       {showPopup && (
         <PurchaseModal
           open={showPopup}
-          onCreate={() => {
-            return handleCreateTrade(assetDetails);
-          }}
+          onCreate={() => handleCreateTrade(assetDetails)}
           onClose={() => setShowPopup(false)}
           onCloseMessage={() => {
             setShowPopup(false);
