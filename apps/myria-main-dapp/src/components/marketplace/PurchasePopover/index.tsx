@@ -62,13 +62,13 @@ const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => 
         action: (
           <Button
             loading={false}
-            className="btn-lg btn-primary my-8 border w-full"
+            className="btn-lg btn-primary my-8 w-full border"
             onClick={onCloseMessage}>
             <Trans>OK</Trans>
           </Button>
         ),
         history: (
-          <div className="flex justify-between mt-2">
+          <div className="mt-2 flex justify-between">
             <span>
               <Trans>Transaction History</Trans>
             </span>
@@ -99,13 +99,13 @@ const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => 
         action: (
           <Button
             loading={false}
-            className="btn-lg btn-primary my-8 border w-full"
+            className="btn-lg btn-primary my-8 w-full border"
             onClick={onCloseMessage}>
             <Trans>Retry</Trans>
           </Button>
         ),
         history: (
-          <div className="flex justify-between mt-2">
+          <div className="mt-2 flex justify-between">
             <span>
               <Trans>Transaction History</Trans>
             </span>
@@ -141,13 +141,13 @@ const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => 
 
   return (
     <div className="p-8">
-      <div className="text-white mt-[20px]">
-        <div className="flex flex-col justify-center items-center">
+      <div className="mt-[20px] text-white">
+        <div className="flex flex-col items-center justify-center">
           {elementContent.icon}
-          <h3 className="font-medium text-[24px] mt-[24px]">{elementContent.title}</h3>
-          <p className="font-normal mt-[16px] text-base/9">{elementContent.assetName}</p>
+          <h3 className="mt-[24px] text-[24px] font-medium">{elementContent.title}</h3>
+          <p className="text-base/9 mt-[16px] font-normal">{elementContent.assetName}</p>
         </div>
-        <div className="bg-base/2/[.5] p-4 rounded-[8px] text-base/9/[.6] text-[16px] mt-[32px]">
+        <div className="bg-base/2/[.5] text-base/9/[.6] mt-[32px] rounded-[8px] p-4 text-[16px]">
           <div className="flex justify-between">
             <span>
               <Trans>Amount</Trans>
@@ -159,7 +159,7 @@ const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => 
           </div>
           {elementContent.history}
         </div>
-        <div className="flex justify-between mt-[162px]">{elementContent.action}</div>
+        <div className="mt-[162px] flex justify-between">{elementContent.action}</div>
       </div>
     </div>
   );
@@ -176,15 +176,15 @@ const ActionButtonCheckout: FC<ButtonProps> = ({
       <Button
         onClick={onCloseMessage}
         loading={false}
-        className="btn-lg my-8 border w-[120px] h-[50px]">
+        className="btn-lg my-8 h-[50px] w-[120px] border">
         <Trans>CANCEL</Trans>
       </Button>
       {isProgressPurchase ? (
-        <Button disabled className="btn-lg bg-base/8 my-8 w-[120px] h-[50px]">
+        <Button disabled className="btn-lg bg-base/8 my-8 h-[50px] w-[120px]">
           <ProgressIcon size={23} />
         </Button>
       ) : (
-        <Button className="btn-lg btn-primary my-8 w-[120px] h-[50px]" onClick={onConfirm}>
+        <Button className="btn-lg btn-primary my-8 h-[50px] w-[120px]" onClick={onConfirm}>
           <Trans>CONFIRM</Trans>
         </Button>
       )}

@@ -37,20 +37,17 @@ const AssetDetailTab: FC<Prop> = ({
       <List className="my-[24px]">
         <Trigger
           className="text-base/9 border-primary/6 px-[16px] py-[12.5px] text-[16px]"
-          value="Listing"
-        >
+          value="Listing">
           Listing
         </Trigger>
         <Trigger
           className="text-base/9 border-primary/6 mx-[8px] px-[16px] py-[12.5px] text-[16px]"
-          value="Description"
-        >
+          value="Description">
           Description
         </Trigger>
         <Trigger
           className="text-base/9 border-primary/6 px-[16px] py-[12.5px] text-[16px]"
-          value="Details"
-        >
+          value="Details">
           Details
         </Trigger>
       </List>
@@ -77,7 +74,7 @@ const AssetDetailTab: FC<Prop> = ({
               {data?.map((elm: EqualMetadataByAssetIdResponse | any, _idx: number) => {
                 const isOrder = Array.isArray(elm?.order);
                 const priceConverted = formatNumber2digits(
-                  isOrder ? elm?.order[0]?.amountBuy : elm?.order?.amountBuy
+                  isOrder ? elm?.order[0]?.nonQuantizedAmountBuy : elm?.order?.nonQuantizedAmountBuy
                 );
                 const usdPriceConverted = formatNumber2digits(
                   isOrder ? elm?.order[0]?.amountBuyUsd : elm?.order?.amountBuyUsd
@@ -86,8 +83,7 @@ const AssetDetailTab: FC<Prop> = ({
                 return (
                   <tr
                     key={_idx}
-                    className="border-blue/3 border-t text-[16px] font-normal text-white"
-                  >
+                    className="border-blue/3 border-t text-[16px] font-normal text-white">
                     <td className="whitespace-nowrap py-4 pr-6">
                       <div className="flex flex-row items-center gap-[7px]">
                         <DAOIcon /> {priceConverted}
@@ -99,8 +95,7 @@ const AssetDetailTab: FC<Prop> = ({
                       {status === AssetStatus.BUY_NOW && (
                         <button
                           onClick={() => onBuyNow(elm)}
-                          className="rounded-[8px] border border-white/[0.4] px-[16px] py-[5px] font-bold"
-                        >
+                          className="rounded-[8px] border border-white/[0.4] px-[16px] py-[5px] font-bold">
                           <Trans>Buy now</Trans>
                         </button>
                       )}
