@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { formatNumber2digits, getRarityColor, validatedImage } from 'src/utils';
+import { formatNumber2digits, formatPrice, getRarityColor, validatedImage } from 'src/utils';
 import { NFTItemType } from './type';
 
 interface Props {
@@ -84,14 +84,14 @@ const NftItem = ({ item }: Props) => {
                   <div className="flex w-3/5">
                     <img src={item.creatorImg} alt="creator" className="mr-1" />
                     <p className="text-[14px] font-medium text-white break-words truncate">
-                      {item.creator} {item.creator}
+                      {item.creator}
                     </p>
                   </div>
                   {item.priceETH ? (
                     <div className="flex items-center justify-end w-2/5">
                       <DAOIcon className="mr-1" />
                       <span className="text-[16px] font-medium text-white truncate">
-                        {formatNumber2digits(item.priceETH)}
+                        {formatPrice(parseFloat(item.priceETH+''))}
                       </span>
                     </div>
                   ) : (

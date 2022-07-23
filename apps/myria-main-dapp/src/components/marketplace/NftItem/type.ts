@@ -9,5 +9,5 @@ export type NFTItemType = {
   collection?: CollectionType;
   creator: string;
   creatorImg: string;
-  priceETH: number;
+  priceETH: string | number;
 };

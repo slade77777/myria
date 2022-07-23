@@ -75,7 +75,9 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
                   image_url: elm.imageUrl || '',
                   creator: elm.creator?.name || '',
                   creatorImg: testavatarImg.src,
-                  priceETH: isOrder ? Number(elm?.order[0]?.amountBuy) : elm?.order?.amountBuy
+                  priceETH: isOrder
+                    ? Number(elm?.order[0]?.nonQuantizedAmountBuy)
+                    : elm?.order?.nonQuantizedAmountBuy
                 };
                 return item;
               })}
