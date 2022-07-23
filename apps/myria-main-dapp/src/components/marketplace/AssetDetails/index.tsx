@@ -95,7 +95,7 @@ function AssetDetails({ id }: Props) {
   const titleBack = useMemo(
     () =>
       assetDetails?.collectionName
-        ? 'BACK TO '+ assetDetails.collectionName.toUpperCase()
+        ? 'BACK TO ' + assetDetails.collectionName.toUpperCase()
         : 'BACK',
     [assetDetails]
   );
@@ -139,8 +139,6 @@ function AssetDetails({ id }: Props) {
   }, [assetDetails?.metadataOptional]);
   // the status will be get from based on the order Object in API get assetDetails
 
-
-
   const [status, setStatus] = useState<AssetStatus>(AssetStatus.UNCONNECTED);
   const [showPopup, setShowPopup] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -166,7 +164,7 @@ function AssetDetails({ id }: Props) {
 
     return formatPrice(amountPrice);
   }, [assetDetails?.order]);
- 
+
   const currentUSDPrice = useMemo(() => {
     if (!assetDetails?.order?.nonQuantizedAmountBuy) return;
     const price = parseFloat(assetDetails?.order?.nonQuantizedAmountBuy);
@@ -378,18 +376,6 @@ function AssetDetails({ id }: Props) {
       </div>
     );
   }
-  const propsConfirmPriceModal =
-    status === AssetStatus.MODIFY
-      ? {
-          title: 'Modify Listing',
-          titleConfirm: 'CONFIRMING CHANGE',
-          labelInput: 'Listing Price'
-        }
-      : {
-          title: 'List your item for sale',
-          titleConfirm: 'CONFIRMING YOUR LISTING',
-          labelInput: 'Listing Price'
-        };
   return (
     <div className="w-full bg-[#050E15] py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <button
@@ -573,7 +559,7 @@ function AssetDetails({ id }: Props) {
       )}
       {showModal && (
         <ModalEditListing
-          {...propsConfirmPriceModal}
+          status={status}
           onSubmit={status === AssetStatus.MODIFY ? onSubmitModifyOrder : onSubmitCreateOrder}
           items={assetDetails}
           ethereum={etheCost}
