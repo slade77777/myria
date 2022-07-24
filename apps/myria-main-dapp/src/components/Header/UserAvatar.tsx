@@ -19,7 +19,7 @@ const UserAvatar: React.FC = () => {
       <DropdownMenu.Content
         sideOffset={8}
         align="end"
-        className="text-base/3 rounded-md bg-current p-8 w-[196px]"
+        className="text-base/3 rounded-md bg-current p-8 w-[196px] shadow-[0_0_40px_40px_rgba(0,0,0,0.3)] border border-opacity-10 border-white"
       >
         <DropdownMenu.Arrow className="translate-x-3 fill-current" />
         <div className="text-white">

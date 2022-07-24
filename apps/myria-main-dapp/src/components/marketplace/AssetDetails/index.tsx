@@ -12,6 +12,8 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import BackIcon from 'src/components/icons/BackIcon';
+import CircleCheck from 'src/components/icons/CircleCheck';
+import CircleCheckSuccess from 'src/components/icons/CircleCheckSuccess';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
 import OwnerAssetIcon from 'src/components/icons/OwnerAssetIcon';
@@ -19,16 +21,19 @@ import ShareIcon from 'src/components/icons/ShareIcon';
 import { Loading } from 'src/components/Loading';
 import Modal from 'src/components/Modal';
 import { useWalletContext } from 'src/context/wallet';
+import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
+import { StatusWithdrawNFT } from 'src/types/marketplace';
 import { formatNumber2digits, formatPrice, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
 import MessagePurchaseModal from '../MessageModal/MessagePurchaseModal';
 import MessageUnlist from '../MessageModal/MessageUnlist';
+import MessageWithdrawalNftModal from '../MessageModal/MessageWithdrawalNftModal';
 import { MessageEditListingModal, ModalEditListing } from '../Modals';
 import UnlistModalContent from '../Modals/UnlistModal';
 import { NFTItemType } from '../NftItem/type';
@@ -56,6 +61,7 @@ export enum AssetStatus {
   UNCONNECTED_NOT_SALE
 }
 const QUANTUM = '10000000000';
+const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
@@ -83,6 +89,8 @@ function AssetDetails({ id }: Props) {
         assetModule?.getAssetById(id), //getAssetDetail by assetId
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
+      handleSetValueNFT(assetDetails?.data);
+
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
@@ -94,9 +102,15 @@ function AssetDetails({ id }: Props) {
   const listOrder = useMemo(() => data?.listOrder, [data?.listOrder]);
   const titleBack = useMemo(
     () =>
-      assetDetails?.collectionName
-        ? 'BACK TO ' + assetDetails.collectionName.toUpperCase()
-        : 'BACK',
+      assetDetails?.collectionName ? (
+        <span>
+          <Trans>BACK TO</Trans> {assetDetails.collectionName.toUpperCase()}
+        </span>
+      ) : (
+        <span>
+          <Trans>BACK</Trans>
+        </span>
+      ),
     [assetDetails]
   );
 
@@ -143,12 +157,18 @@ function AssetDetails({ id }: Props) {
   const [showPopup, setShowPopup] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [showWithdrawalMessage, setShowWithdrawalMessage] = useState(false);
   const [showMessageEdit, setShowMessageEdit] = useState(false);
   const [showModalUnlist, setShowModalUnlist] = useState(false);
   const [showMessageModify, setShowMessageModify] = useState(false);
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
+  const {
+    isWithdrawing,
+    setStatus: setWithdrawalStatus,
+    handleSetValueNFT
+  } = useWithDrawNFTContext();
   const [assetBuy, setAssetBuy] = useState<{
     name: string;
     price: string;
@@ -257,9 +277,83 @@ function AssetDetails({ id }: Props) {
     },
     [address, assetDetails?.tokenAddress, assetDetails?.tokenId, id, refetch, starkKey]
   );
+  useEffect(() => {
+    // cronjob run every 2 minutes
+    const getBalance = async () => {
+      if (!starkKeyUser || !address || !assetDetails?.assetMintId) return;
+      const client: IMyriaClient = {
+        provider: window.web3.currentProvider,
+        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
+        web3: window.web3
+      };
+
+      const myriaClient = new MyriaClient(client);
+      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const withdrawalModule = moduleFactory.getWithdrawModule();
+      const balance = await withdrawalModule.getWithdrawalBalance(
+        address,
+        assetDetails?.assetMintId + ''
+      );
+      if (balance > 0) {
+        setShowWithdrawalMessage(true);
+        return true;
+      }
+      return false;
+    };
+    getBalance(); // call the first time
+    const withdrawalInterval = setInterval(() => {
+      getBalance().then((res) => {
+        if (res) {
+          clearInterval(withdrawalInterval);
+        }
+      });
+    }, INTERVAL_DURATION);
+    return () => clearInterval(withdrawalInterval);
+  }, [
+    address,
+    assetDetails,
+    assetDetails?.assetMintId,
+    assetDetails?.id,
+    handleSetValueNFT,
+    setWithdrawalStatus,
+    starkKey,
+    starkKeyUser
+  ]);
+
+  useEffect(() => {
+    // Create the cron-job in 2 minutes
+    const withdrawalInterval = setInterval(() => {
+      const client: IMyriaClient = {
+        provider: window.web3.currentProvider,
+        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
+        web3: window.web3
+      };
+
+      const myriaClient = new MyriaClient(client);
+      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const withdrawalModule = moduleFactory.getWithdrawModule();
+
+      if (!address) return;
+      withdrawalModule.getWithdrawalBalance(address, assetDetails?.id + '').then((balance) => {
+        if (balance > 0) {
+          clearInterval(withdrawalInterval);
+          setWithdrawalStatus(StatusWithdrawNFT.COMPLETED);
+        }
+      });
+    }, INTERVAL_DURATION);
+    return () => clearInterval(withdrawalInterval);
+  }, [
+    assetDetails,
+    assetDetails?.assetMintId,
+    assetDetails?.id,
+    handleSetValueNFT,
+    setWithdrawalStatus,
+    starkKey
+  ]);
 
   useEffect(() => {
     let currentStatus: number = AssetStatus.UNCONNECTED;
+
     if (assetDetails?.order) {
       // item for sale
       if (starkKey === assetDetails?.owner?.starkKey) {
@@ -298,10 +392,10 @@ function AssetDetails({ id }: Props) {
       sellerWalletAddress: address
     });
     if (result) {
-      setStatus(AssetStatus.SALE);
       setShowModalUnlist(false);
       setShowMessageUnlist(true);
       refetch();
+      setStatus(AssetStatus.SALE);
     }
   };
 
@@ -384,9 +478,7 @@ function AssetDetails({ id }: Props) {
         onClick={router.back}
         className="max-w-content mx-auto mb-14 flex w-full flex-row items-center">
         <BackIcon />
-        <span className="ml-[6px] text-[14px] font-normal">
-          <Trans>{titleBack}</Trans>
-        </span>
+        <span className="ml-[6px] font-normal text-[14px]">{titleBack}</span>
       </button>
       <div className="max-w-content mx-auto  flex flex-row space-x-28">
         {/* container */}
@@ -547,6 +639,11 @@ function AssetDetails({ id }: Props) {
           onHandleCancel={() => setShowModalUnlist(false)}
         />
       )}
+      <MessageModal
+        isShowMessage={showWithdrawalMessage}
+        setIsShowMessage={() => setShowWithdrawalMessage(false)}>
+        <MessageWithdrawalNftModal onClose={() => setShowWithdrawalMessage(false)} />
+      </MessageModal>
       {showMessage && (
         <MessageModal isShowMessage={showMessage} setIsShowMessage={() => setShowMessage(false)}>
           <MessagePurchaseModal />
@@ -589,11 +686,12 @@ function AssetDetails({ id }: Props) {
 }
 
 const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => {
-  const triggerPopover = () => {
-    const btn = document.getElementById('trigger-popover');
-    const btnWithdraw = document.getElementById('trigger-withdraw');
-    btn?.click();
-    btnWithdraw?.click();
+  const { isWithdrawing, handleSetValueNFT } = useWithDrawNFTContext();
+
+  const handleWithdraw = async () => {
+    handleSetValueNFT(assetDetails);
+    const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
+    triggerWithdraw?.click();
   };
 
   return (
@@ -610,16 +708,31 @@ const ItemForSale: React.FC<IProp> = ({ setStatus, starkKey, assetDetails }) => 
       </div>
       {starkKey === assetDetails?.owner?.starkKey && (
         <>
-          <button
-            className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-            onClick={setStatus}>
-            <Trans>LIST ITEM FOR SALE</Trans>
-          </button>
-          <button
-            className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-            onClick={triggerPopover}>
-            <Trans>WITHDRAW</Trans>
-          </button>
+          {assetDetails?.status !== 'WITHDRAWING' && !isWithdrawing ? (
+            <>
+              <button
+                className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
+                onClick={setStatus}>
+                <Trans>LIST ITEM FOR SALE</Trans>
+              </button>
+              <button
+                className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
+                onClick={handleWithdraw}>
+                <Trans>WITHDRAW</Trans>
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                disabled
+                className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold">
+                <Trans>LIST ITEM FOR SALE</Trans>
+              </button>
+              <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+                <Trans>WITHDRAWAL IN PROGRESS</Trans>
+              </button>
+            </>
+          )}
         </>
       )}
       <span className="text-light mt-[10px] text-[14px]">

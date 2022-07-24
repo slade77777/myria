@@ -1,21 +1,19 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useMemo, useRef } from 'react';
-import { useGA4 } from 'src/lib/ga';
+import { useAuthenticationContext } from 'src/context/authentication';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
+import { useGA4 } from 'src/lib/ga';
+import ConnectL2WalletButton from '../ConnectL2WalletButton';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
-import { useAuthenticationContext } from 'src/context/authentication';
+import WithdrawNFTScreen from '../marketplace/Withdraw-NFT/WithdrawNFTScreen';
+import WthdrawNFTPopover from '../marketplace/Withdraw-NFT/WthdrawNFTPopover';
 import { links, navHeight } from './Header';
-import { Action, NavItem } from './type';
-import { useRouter } from 'next/router';
 import ProfileComponent from './ProfileComponent';
-import LanguageSwitcher from '../LanguageSwitcher';
-import ConnectL2WalletButton from '../ConnectL2WalletButton';
-import DropdownMenu from '../DropdownMenu';
-import LogoutIcon from '../icons/LogoutIcon';
-import InventoryIcon from '../icons/InventoryIcon';
+import { Action, NavItem } from './type';
 import UserAvatar from './UserAvatar';
 
 type Props = {
@@ -34,8 +32,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
       className={clsx(
         'text-brand-white flex items-center space-x-8 text-[14px] font-semibold uppercase leading-[1.25] tracking-wider',
         className
-      )}
-    >
+      )}>
       {links.map((item, idx) => {
         const isActive = item.url && router.pathname?.includes(item.url);
         if (item.inactive) {
@@ -47,8 +44,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                   style={{
                     boxShadow: '0 0 0 0.5px #9AC9E3'
                   }}
-                  className="bg-opacity-4 bg-brand-light-blue/40 absolute -top-[9px] -right-7 rounded-sm p-[3px] pb-[1px] text-[6px] font-extrabold"
-                >
+                  className="bg-opacity-4 bg-brand-light-blue/40 absolute -top-[9px] -right-7 rounded-sm p-[3px] pb-[1px] text-[6px] font-extrabold">
                   <Trans>Soon!</Trans>
                 </div>
               </div>
@@ -82,8 +78,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                           target={link.target}
                           className={clsx('hover:text-brand-gold', {
                             'text-brand-gold': link.url === router.pathname
-                          })}
-                        >
+                          })}>
                           {link.text}
                         </a>
                       </Link>
@@ -154,8 +149,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
               style={{
                 filter: 'drop-shadow(0px 0px 10px #F5B941)'
               }}
-              className="btn-sm btn-secondary"
-            >
+              className="btn-sm btn-secondary">
               <Trans>Free Sigil NFT</Trans>
             </a>
           </Link>
@@ -169,8 +163,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
             className="btn-sm btn-secondary"
             href="http://discord.gg/myria"
             target="_blank"
-            rel="noreferrer"
-          >
+            rel="noreferrer">
             <Trans>JOIN DISCORD</Trans>
           </a>
         );
@@ -188,8 +181,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         style={{
           height: navHeight
         }}
-        className="flex w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]"
-      >
+        className="flex w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
         <div className="items-left mr-12 flex">
           <Link href="/">
             <a className="w-[164px]">
@@ -203,6 +195,9 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
           <div>
             <ConnectL2WalletButton />
+            <WthdrawNFTPopover>
+              <WithdrawNFTScreen />
+            </WthdrawNFTPopover>
           </div>
           <UserAvatar />
         </div>

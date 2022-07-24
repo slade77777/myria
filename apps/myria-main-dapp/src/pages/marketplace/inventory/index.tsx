@@ -28,7 +28,6 @@ function InventoryPage() {
   const { rawData } = useMarketplaceInventory(starkKey);
 
   const items: NFTItemType[] = React.useMemo(() => {
-    console.log('item', rawData);
     
     if (rawData instanceof Array) {
       return rawData.map((item) => ({
@@ -39,7 +38,7 @@ function InventoryPage() {
         collection: item.collection?.name,
         creator: truncateString(item.collection.ownerPublicKey),
         creatorImg: testavatarImg.src, // MOCK
-        priceETH: Math.round(Math.random() * 5) // MOCK
+        priceETH: +item?.order?.nonQuantizedAmountBuy
       }));
     }
     return [];

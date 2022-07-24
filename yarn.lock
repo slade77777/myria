@@ -12540,10 +12540,10 @@ mux.js@6.0.1:
     "@babel/runtime" "^7.11.2"
     global "^4.4.0"
 
-myria-core-sdk@^0.0.106:
-  version "0.0.106"
-  resolved "https://registry.yarnpkg.com/myria-core-sdk/-/myria-core-sdk-0.0.106.tgz#cb00906128a121cb54a9af8d7ba6a2659e6be477"
-  integrity sha512-k/YF2vV4J/ZJMSD40qlIOYjsdDEhEjIeeGGlz4o7frPc0r0s0GJur4QccKb5JlcYNbwebTX7319QiH5NjNiM6Q==
+myria-core-sdk@^0.0.111:
+  version "0.0.111"
+  resolved "https://registry.yarnpkg.com/myria-core-sdk/-/myria-core-sdk-0.0.111.tgz#cd93b8221d8b020d4686968ecf313378490f47d7"
+  integrity sha512-xDrgPKIGTrU4EHiyxSokvyE0VfC9s9M2aksetTBTih85CAx4O3eYJorFA7HJhVdTzE1BX1F8aYdAU7ob3Jn1uQ==
   dependencies:
     "@babel/eslint-parser" "^7.17.0"
     "@starkware-industries/starkware-crypto-utils" "^0.0.2"

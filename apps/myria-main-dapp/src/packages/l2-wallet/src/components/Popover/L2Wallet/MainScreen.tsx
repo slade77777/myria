@@ -157,8 +157,7 @@ export default function MainScreen({
           onClick={() => {
             gotoWithdrawScreen();
           }}
-          className="flex w-[118px] items-center justify-center rounded-[8px] bg-[#0B2231] p-3 text-[14px] text-white"
-          id="trigger-withdraw"
+          className="flex w-[114px] items-center justify-center rounded-[8px] bg-[#0B2231] py-2 px-[18px] text-[14px] text-white"
         >
           <div>
             <ArrowUpRight />
