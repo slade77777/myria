@@ -191,8 +191,10 @@ function AssetDetails({ id }: Props) {
       sellerWalletAddress: address,
       nonQuantizedAmountBuy: ''
     });
+
     if (result) {
       setShowMessageModify(true);
+      setShowModal(false);
     }
   };
   const onSubmitCreateOrder = useCallback(
