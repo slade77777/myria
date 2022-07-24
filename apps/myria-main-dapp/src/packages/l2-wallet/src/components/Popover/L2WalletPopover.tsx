@@ -301,11 +301,11 @@ export default function L2WalletPopover({
       return false;
     }
     if (amount * etheCost < 10) {
-      setErrorAmount(`${screen === SCREENS.DEPOSIT_SCREEN ? 'Deposit' : 'Withdraw'} amount cannot be less than ${(10/etheCost).toFixed(6)} ETH.`);
-      return false;
-    }
-    if (amount > parseFloat(balanceL1)) {
-      setErrorAmount('Insufficient Balance.');
+      setErrorAmount(
+        `${
+          screen === SCREENS.DEPOSIT_SCREEN ? 'Deposit' : 'Withdraw'
+        } amount cannot be less than ${(10 / etheCost).toFixed(6)} ETH.`,
+      );
       return false;
     }
     setErrorAmount('');

@@ -1,8 +1,11 @@
 // import packages
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
+import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
 import Web3 from 'web3';
+// @ts-ignore
+import { asset } from '@starkware-industries/starkware-crypto-utils';
 
 // Import components
 import CloseCircleIcon from '../Icons/CloseCircleIcon';
@@ -10,6 +13,10 @@ import CheckIcon from '../Icons/CheckIcon';
 
 // Import Redux
 import { RootState } from '../../app/store';
+
+const QUANTUM_CONSTANT = 10000000000;
+import CrossIcon from '../Icons/CrossIcon';
+
 import {
   setWithdrawClaimModal,
   setWithdrawClaimPopover,
@@ -26,27 +33,85 @@ export default function MessageWithdrawModal({
 }: Props) {
   const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
   const isUpdated = useSelector((state: RootState) => state.ui.isUpdated);
+  const [withdrawProgress, setWithdrawProgress] = useState(false);
   const selectedToken = useSelector(
     (state: RootState) => state.token.selectedToken,
+  );
+  const connectedAccount = useSelector(
+    (state: RootState) => state.account.connectedAccount,
   );
   const dispatch = useDispatch();
   const closeMessage = () => {
     setIsShowMessage(!isShowMessage);
   };
 
-  const claim = () => {
-    dispatch(setWithdrawClaimPopover(true));
-    dispatch(
-      setWithdrawClaimModal({ show: false, claimAmount, isUpdated: false }),
-    );
+  const claim = async () => {
+    try {
+      setWithdrawProgress(true);
+      const initializeClient: IMyriaClient = {
+        provider: window.web3.currentProvider,
+        networkId: 5,
+        web3: window.web3,
+      };
+
+      const myriaClient = new MyriaClient(initializeClient);
+
+      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const withdrawModule = moduleFactory.getWithdrawModule();
+      if (selectedToken.name === 'Ethereum') {
+        const assetType = asset.getAssetType({
+          type: 'ETH',
+          data: {
+            quantum: QUANTUM_CONSTANT.toString(),
+          },
+        });
+        await withdrawModule.withdrawalOnchain(
+          {
+            starkKey: connectedAccount,
+            assetType,
+          },
+          {
+            from: connectedAccount,
+            nonce: '1',
+            confirmationType: Types.ConfirmationType.Confirmed,
+          },
+        );
+      } else {
+        const assetType = asset.getAssetType({
+          type: 'ERC20',
+          data: {
+            quantum: '1',
+            tokenAddress: selectedToken.tokenAddress,
+          },
+        });
+        await withdrawModule.withdrawalOnchain(
+          {
+            starkKey: connectedAccount,
+            assetType,
+          },
+          {
+            from: connectedAccount,
+            nonce: '1',
+            confirmationType: Types.ConfirmationType.Confirmed,
+          },
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setWithdrawProgress(false);
+      dispatch(
+        setWithdrawClaimModal({ show: false, claimAmount, isUpdated: false }),
+      );
+    }
   };
 
   const renderClaimMessage = () => {
     if (parseFloat(claimAmount.toString()) > 0) {
       return (
         <div>
-          You can claim the current available balance is{' '}
-          {claimAmount.toString()} tokens.
+          Your withdrawal of {claimAmount.toString()} tokens is now complete and
+          ready to claim
         </div>
       );
     }
@@ -81,31 +146,32 @@ export default function MessageWithdrawModal({
                   : claimAmount}{' '}
               </div>
             ) : (
-              <div className="mt-[10px] mb-[20px] text-sm font-normal">
-                The withdraw transaction is on progress in system. Please wait
+              <div className="mt-[10px] mb-[20px] text-sm font-normal text-[#A1AFBA]">
+                The withdrawal transaction is on progress in system. Please wait
                 and patient.
                 <div>{renderClaimMessage()}</div>
               </div>
             )}
+            <div className="flex justify-start">
+              <button
+                disabled={
+                  parseFloat(claimAmount.toString()) === 0 || withdrawProgress
+                }
+                className={cn(
+                  'rounded font-semibold',
+                  parseFloat(claimAmount.toString()) === 0 || withdrawProgress
+                    ? 'cursor-not-allowed text-[#9CA3AF]'
+                    : 'text-[#F5B941] text-black',
+                )}
+                onClick={claim}
+              >
+                Claim now
+              </button>
+            </div>
           </div>
           <div onClick={closeMessage}>
-            <CloseCircleIcon size={16} className="text-[#E7EBEE]" />
+            <CrossIcon size={20} className="text-white" />
           </div>
-        </div>
-        <div className="flex justify-end">
-          <button onClick={closeMessage}>Dismiss</button>
-          <button
-            disabled={parseFloat(claimAmount.toString()) === 0}
-            className={cn(
-              'ml-[10px] rounded p-[7px] font-semibold',
-              parseFloat(claimAmount.toString()) === 0
-                ? 'cursor-not-allowed bg-[#4B5563] text-[#9CA3AF]'
-                : 'bg-[#F5B941] text-black',
-            )}
-            onClick={claim}
-          >
-            Claim now
-          </button>
         </div>
       </div>
     </div>
