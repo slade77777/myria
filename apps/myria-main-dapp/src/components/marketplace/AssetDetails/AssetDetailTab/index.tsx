@@ -56,16 +56,16 @@ const AssetDetailTab: FC<Prop> = ({
           <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
             <thead className="text-base/9 bg-base/2 sticky text-[14px] font-medium">
               <tr>
-                <th scope="col" className="py-3 pr-6">
+                <th scope="col" className="py-3 pr-6 w-1/4">
                   Price
                 </th>
-                <th scope="col" className="py-3 pr-6">
+                <th scope="col" className="py-3 pr-6 w-1/4">
                   USD Price
                 </th>
-                <th scope="col" className="py-3 pr-6">
+                <th scope="col" className="py-3 pr-6 w-1/4">
                   Owner
                 </th>
-                <th scope="col" className="py-3 pr-6">
+                <th scope="col" className="py-3 pr-6 w-1/4">
                   <span className="sr-only">Edit</span>
                 </th>
               </tr>
@@ -83,15 +83,16 @@ const AssetDetailTab: FC<Prop> = ({
                 return (
                   <tr
                     key={_idx}
-                    className="border-blue/3 border-t text-[16px] font-normal text-white">
-                    <td className="whitespace-nowrap py-4 pr-6">
-                      <div className="flex flex-row items-center gap-[7px]">
+                    className="border-blue/3 border-t text-[16px] font-normal text-white"
+                  >
+                    <td className="whitespace-nowrap py-4 pr-6 overflow-hidden w-1/4">
+                      <p className="flex flex-row items-center gap-[7px] truncate">
                         <DAOIcon /> {priceConverted}
-                      </div>
+                      </p>
                     </td>
-                    <td className="py-4 pr-6">${usdPriceConverted}</td>
-                    <td className="py-4 pr-6">{ownerName}</td>
-                    <td className="py-4 pr-6 text-right">
+                    <td className="py-4 pr-6 truncate w-1/4">${usdPriceConverted}</td>
+                    <td className="py-4 pr-6 truncate w-1/4">{ownerName}</td>
+                    <td className="py-4 pr-6 truncate w-1/4 text-right">
                       {status === AssetStatus.BUY_NOW && (
                         <button
                           onClick={() => onBuyNow(elm)}

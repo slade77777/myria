@@ -23,3 +23,10 @@ export enum PurchaseStatus {
   SUCCESS,
   FAIL
 }
+export enum StatusWithdrawNFT {
+  MAIN_SCREEN,
+  INPROGRESS,
+  SUCCESS,
+  FAILED,
+  COMPLETED
+}

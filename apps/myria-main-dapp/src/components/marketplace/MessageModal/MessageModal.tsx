@@ -16,7 +16,7 @@ export default function MessageModal({ isShowMessage, setIsShowMessage, children
         `absolute top-[80px] right-[21px] max-w-[450px] z-50`,
         isShowMessage ? 'block' : 'hidden'
       )}>
-      <div className="flex w-full max-w-lg text-gray-500 bg-base/5 rounded-[16px] shadow dark:bg-gray-800 dark:text-gray-400 py-[32px] pl-[72px] pr-[48px]">
+      <div className="flex w-full max-w-lg rounded-[16px] shadow text-gray-400 py-[32px] pl-[72px] pr-[48px]  bg-base/5 ">
         {children}
         <div
           onClick={setIsShowMessage}

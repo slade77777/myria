@@ -53,10 +53,7 @@ const ConnectL2WalletButton: React.FC = () => {
       <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
         <Popover.Trigger asChild>
           <span className="uppercase">
-            <button
-              className="body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border py-[9px] pl-[10px] pr-4"
-              id="trigger-popover">
-              <ConnectIcon className="text-white" />
+            <button className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]">
               <span>{truncateString(address)}</span>
               <i className="w-4">
                 <ChevronDownIcon />
