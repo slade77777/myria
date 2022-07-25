@@ -48,7 +48,9 @@ export default function TransactionHistoryDetailScreen({
         </div>
         <div className="mt-2 flex justify-between">
           <span className="text-[14px] text-[#A1AFBA]">Transaction ID</span>
-          <div className="flex items-center text-[#F5B941]">View</div>
+          <div className="flex cursor-pointer items-center text-[#F5B941]">
+            View
+          </div>
         </div>
       </div>
     </div>

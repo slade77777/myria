@@ -180,7 +180,7 @@ export default function MainScreen({
               {coinPrices.map((item: any, index: number) => (
                 <div
                   className={cn(
-                    'flex justify-between py-4',
+                    'flex cursor-pointer justify-between py-4',
                     index !== coinPrices.length - 1 &&
                       'border-b border-[#E5E5E5]',
                   )}
