@@ -45,7 +45,7 @@ export default function WithdrawScreen({
   return (
     <div className="mt-[29px] text-white">
       <div
-        className="flex items-center"
+        className="flex cursor-pointer items-center"
         onClick={() => {
           goBack();
         }}

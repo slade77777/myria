@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import CurrencySelector, { TOption } from '../../Dropdown/CurrencySelector';
+import { Trans } from '@lingui/macro';
 
 import MaxInput from '../../Input/MaxInput';
 import { ArrowIcon, InfoCircleIcon } from '../../Icons';
 import DAOIcon from '../../../../../../components/icons/DAOIcon';
 import Tooltip from '../../../../../../components/Tooltip';
-import { Trans } from '@lingui/macro';
 
 type Props = {
   goBack: any;
@@ -43,9 +43,9 @@ export default function DepositScreen({
     };
   }, [setDepositScreenMounted]);
   return (
-    <div className="mt-[29px]">
+    <div className="mt-[-32px]">
       <div
-        className="flex items-center"
+        className="flex cursor-pointer items-center"
         onClick={() => {
           goBack();
         }}

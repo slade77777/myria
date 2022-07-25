@@ -89,10 +89,7 @@ const QUANTUM_CONSTANT = 10000000000;
 
 declare let window: any;
 
-export default function L2WalletPopover({
-  abbreviationAddress,
-  onClosePopover = () => {},
-}: Props) {
+export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const [screen, setScreen] = useState<number>(SCREENS.MAIN_SCREEN);
   const pKey = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
@@ -116,7 +113,6 @@ export default function L2WalletPopover({
   const dispatch = useDispatch();
   const { balanceList } = useBalanceList(pKey, screen);
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
-  const { balanceL1: balanceEth } = useBalanceL1(options[0], connectedAccount);
   const { data: etheCost = 0 } = useEtheriumPrice();
 
   const [balanceL2Eth, setBalanceL2Eth] = useState<any>('');
@@ -611,6 +607,9 @@ export default function L2WalletPopover({
 
         {screen === SCREENS.DEPOSIT_IN_PROGRESS_SCREEN && (
           <DepositInProgressScreen
+            goBack={() => {
+              setScreen(SCREENS.MAIN_SCREEN);
+            }}
             amount={amount}
             selectedToken={selectedToken}
             depositInProgress={depositInProgress}
@@ -626,6 +625,9 @@ export default function L2WalletPopover({
             selectedToken={selectedToken}
             successHandler={() => {
               initForm();
+              setScreen(SCREENS.MAIN_SCREEN);
+            }}
+            goBack={() => {
               setScreen(SCREENS.MAIN_SCREEN);
             }}
           />
@@ -685,6 +687,9 @@ export default function L2WalletPopover({
           <DepositFailedScreen
             amount={amount}
             depositRetryHandler={depositRetryHandler}
+            goBack={() => {
+              setScreen(SCREENS.MAIN_SCREEN);
+            }}
           />
         )}
 

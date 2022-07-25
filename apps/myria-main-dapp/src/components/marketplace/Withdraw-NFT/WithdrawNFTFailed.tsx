@@ -33,7 +33,7 @@ export default function WithdrawNFTFailed({}: Props) {
           <span className="flex items-center text-base/9">
             <Trans>Transaction ID</Trans>
           </span>
-          <span className="flex items-center text-[#F5B941] font-medium cursor-pointer">
+          <span className="flex items-center text-[#F5B941] font-medium cursor-pointer cursor-pointer">
             <Trans>View</Trans>
           </span>
         </div>

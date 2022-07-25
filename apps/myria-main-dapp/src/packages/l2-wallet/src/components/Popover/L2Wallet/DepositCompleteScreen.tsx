@@ -1,42 +1,53 @@
 import React from 'react';
-import { InfoCircleIcon, TickCircleIcon } from '../../Icons';
+import { InfoCircleIcon, TickCircleIcon, ArrowIcon } from '../../Icons';
 
 type Props = {
   amount: Number;
   successHandler: any;
   selectedToken: any;
+  goBack: any;
 };
 
 export default function DepositCompleteScreen({
   amount,
   successHandler,
   selectedToken,
+  goBack,
 }: Props) {
   return (
-    <div className="mt-[29px]">
-      <div className="mt-[57px] flex justify-center">
+    <div>
+      <div
+        className="mt-[-32px] flex cursor-pointer items-center"
+        onClick={() => {
+          goBack();
+        }}
+      >
+        <ArrowIcon direction="left" />
+        <div className="ml-2 text-[20px] text-white">Deposit</div>
+      </div>
+      <div className="mt-8 flex justify-center">
         <TickCircleIcon className="text-[#9ECEAB]" />
       </div>
 
-      <div className="mt-[24px] text-center text-[24px] text-white">
+      <div className="mt-8 text-center text-[24px] text-white">
         Deposit complete
       </div>
-      <div className="text-base/9 mt-4 text-center text-[14px]">
+      <div className="text-base/9 mt-4 px-[29px] text-center text-[14px]">
         Your funds are now available in your Myria wallet.
       </div>
-      <div className="mt-[32px] rounded-[8px] bg-[rgba(154,201,227,0.1)] py-2 px-4 text-[16px] text-white">
-        <div className="flex justify-between">
-          <span className="text-[rbga(255,255,255,0.6)]">Amount</span>
-          <span>
+      <div className="mt-[32px] rounded-[8px] bg-[rgba(5,14,21,0.5)] py-2 px-4 text-[16px] text-white">
+        <div className="flex justify-between text-[14px]">
+          <span className="text-[#A1AFBA]">Amount</span>
+          <span className="text-white">
             {amount} {selectedToken.short}
           </span>
         </div>
-        <div className="mt-2 flex justify-between">
-          <span className="text-[rbga(255,255,255,0.6)]">Transaction ID</span>
+        <div className="mt-2 flex justify-between text-[14px]">
+          <span className="text-[#A1AFBA]">Transaction ID</span>
           <span className="text-[#F5B941]">View</span>
         </div>
       </div>
-      <div className="mt-4 flex rounded-[8px] border border-[rgba(154,201,227,0.2)] py-4 px-[14px]">
+      {/* <div className="mt-4 flex rounded-[8px] border border-[rgba(154,201,227,0.2)] py-4 px-[14px]">
         <div className="mr-[9px] flex-none">
           <InfoCircleIcon className="text-[#9AC9E3]" />
         </div>
@@ -44,8 +55,8 @@ export default function DepositCompleteScreen({
           Your deposit is now complete and your funds have been added to your
           Myria wallet
         </div>
-      </div>
-      <div className="mt-[78px]">
+      </div> */}
+      <div className="mt-[136px]">
         <button
           onClick={() => {
             successHandler();
