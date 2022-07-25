@@ -14,8 +14,7 @@ const DAOIcon = (props: React.SVGProps<SVGSVGElement>) => (
     viewBox="0 0 16 17"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+    {...props}>
     <g clipPath="url(#clip0_2574_9572)">
       <path
         d="M7.99895 0.5L7.8916 0.864618V11.4441L7.99895 11.5512L12.9097 8.64836L7.99895 0.5Z"
@@ -48,7 +47,7 @@ const DAOIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const NftItem = ({ item }: Props) => {
   const rarityColor = getRarityColor(item.rarity);
-  const price = parseFloat(item.priceETH+'');
+  const price = parseFloat(item.priceETH + '');
   return (
     <Link href={`/marketplace/asset-detail?id=${item.id}`} key={item.id}>
       <a href={`/marketplace/asset-detail?id=${item.id}`}>
@@ -83,7 +82,7 @@ const NftItem = ({ item }: Props) => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex w-3/5">
-                    <img src={item.creatorImg} alt="creator" className="mr-1" />
+                    <img src={item.creatorImg} alt="creator" className="mr-1 w-5 h-5" />
                     <p className="truncate break-words text-[14px] font-medium text-white">
                       {item.creator}
                     </p>

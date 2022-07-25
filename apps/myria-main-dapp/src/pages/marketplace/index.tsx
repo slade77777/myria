@@ -9,7 +9,7 @@ import Page from 'src/components/Page';
 import { useQuery } from 'react-query';
 import { collectionModule } from 'src/services/myriaCore';
 import { formatPrice, negativeMarginXSm, paddingX } from 'src/utils';
-import testavatarImg from './inventory/testavatar.png';
+import avatar from '../../../public/images/marketplace/avatar.png';
 import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
 import truncateString from 'src/helper';
 const payload = {
@@ -64,7 +64,7 @@ const Marketplace: React.FC = () => {
                     image_url: elm.imageUrl || '',
                     // @ts-ignore need update sdk AssetByCollectionType
                     creator: elm.creator?.name || '',
-                    creatorImg: testavatarImg.src,
+                    creatorImg: avatar.src,
                     priceETH: formatPrice(parseFloat(elm.order.nonQuantizedAmountBuy)) // +elm... to convert string to number
                   };
                   return item;

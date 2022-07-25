@@ -40,6 +40,7 @@ import { NFTItemType } from '../NftItem/type';
 import AssetDetailTab from './AssetDetailTab';
 import PurchaseModal from './PurchaseModal';
 import testavatarImg from './testavatar.png';
+import avatar from '../../../../public/images/marketplace/avatar.png';
 interface Props {
   id: string;
 }
@@ -614,7 +615,7 @@ function AssetDetails({ id }: Props) {
               image_url: elm.imageUrl || '',
               // @ts-ignore need update sdk AssetByCollectionType
               creator: elm.creator?.name || '',
-              creatorImg: testavatarImg.src,
+              creatorImg: avatar.src,
               priceETH: +elm.order.nonQuantizedAmountBuy // +elm... to convert string to number
             };
             return item;
