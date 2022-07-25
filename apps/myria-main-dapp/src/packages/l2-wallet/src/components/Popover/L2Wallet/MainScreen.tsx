@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { useEffect, useState } from 'react';
 
 import Web3 from 'web3';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
-import {
-  Arrow2Icon,
-  CompletedIcon,
-  EthereumIcon,
-  MyriaCoinIcon,
-  ProgressIcon,
-} from '../../Icons';
-import TabNavItem from '../../Tabs/TabNavItem';
-import TabContent from '../../Tabs/TabContent';
 import DAOIcon from '../../../../../../components/icons/DAOIcon';
 import { useEtheriumPrice } from '../../../../../../hooks/useEtheriumPrice';
 import { formatNumber2digits } from '../../../../../../utils';
-import ETHIcon from '../../Icons/ETHIcon';
+import { CompletedIcon } from '../../Icons';
 import ArrowDownLeft from '../../Icons/ArrowDownLeft';
 import ArrowUpRight from '../../Icons/ArrowUpRight';
+import ETHIcon from '../../Icons/ETHIcon';
+import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
+import TabContent from '../../Tabs/TabContent';
+import TabNavItem from '../../Tabs/TabNavItem';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -256,11 +251,7 @@ export default function MainScreen({
                       {item.status === 'in_progress' ? (
                         <div className="mt-1 flex items-center text-[#A1AFBA]">
                           In progress{' '}
-                          <ProgressIcon
-                            isNotAnimate
-                            size={14}
-                            className="ml-1 text-[#A1AFBA]"
-                          />
+                          <ProgressHistoryIcon size={14} className="ml-1" />
                         </div>
                       ) : (
                         <div className="mt-1 flex items-center text-[#A1AFBA]">
