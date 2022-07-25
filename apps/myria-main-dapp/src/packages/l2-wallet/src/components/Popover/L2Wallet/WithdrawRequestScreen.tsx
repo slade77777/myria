@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { toast } from 'react-toastify';
 import { ProgressIcon } from '../../Icons';
 import InfoCircle2Icon from '../../Icons/InfoCircle2Icon';
 
@@ -43,7 +44,16 @@ export default function WithdrawRequestScreen({
         </div>
         <div className="text-[14px] text-[#9AC9E3]">
           Withdrawal batch cycle is every 20 hours. Click
-          <button className="text-[#F5B941]"> here </button> to learn more.
+          <button
+            onClick={() => {
+              toast('This function is not ready yet!');
+            }}
+            className="text-[#F5B941]"
+          >
+            {' '}
+            here{' '}
+          </button>{' '}
+          to learn more.
         </div>
       </div>
       <div className="mt-[55px] flex justify-between">
