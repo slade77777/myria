@@ -18,7 +18,9 @@ const ConnectL2WalletButton: React.FC = () => {
   const { address, onConnect } = useWalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
-
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
   useEffect(() => {
     if (userProfileQuery.isFetching) {
       return;
@@ -51,7 +53,7 @@ const ConnectL2WalletButton: React.FC = () => {
 
   return (
     <>
-      {address ? (
+      {address && starkKeyUser ? (
         <div>
           <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
             <Popover.Trigger asChild>
