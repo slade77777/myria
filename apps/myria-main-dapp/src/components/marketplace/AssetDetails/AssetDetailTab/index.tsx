@@ -5,10 +5,12 @@ import {
   FeeTypes
 } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { FC } from 'react';
+import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
-import { formatNumber2digits } from 'src/utils';
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { formatNumber2digits, formatPrice, formatUSDPrice } from 'src/utils';
 import { AssetStatus } from '..';
 
 type Prop = {
@@ -20,6 +22,7 @@ type Prop = {
   status: AssetStatus;
   fee?: FeeTypes[];
   onBuyNow: (data: EqualMetadataByAssetIdResponse) => void;
+  etheCost: number;
 };
 
 const AssetDetailTab: FC<Prop> = ({
@@ -30,8 +33,13 @@ const AssetDetailTab: FC<Prop> = ({
   assetType = '',
   data = [],
   fee = [],
-  onBuyNow
+  onBuyNow,
+  etheCost
 }) => {
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const starkKey = `0x${starkKeyUser}`;
   return (
     <Root defaultValue="Listing">
       <List className="my-[24px]">
@@ -73,18 +81,19 @@ const AssetDetailTab: FC<Prop> = ({
             <tbody className="border-blue/3 max-h-[100px] overflow-scroll border-b">
               {data?.map((elm: EqualMetadataByAssetIdResponse | any, _idx: number) => {
                 const isOrder = Array.isArray(elm?.order);
-                const priceConverted = formatNumber2digits(
-                  isOrder ? elm?.order[0]?.nonQuantizedAmountBuy : elm?.order?.nonQuantizedAmountBuy
+                const priceConverted = formatPrice(
+                  parseFloat(
+                    isOrder
+                      ? elm?.order[0]?.nonQuantizedAmountBuy
+                      : elm?.order?.nonQuantizedAmountBuy
+                  )
                 );
-                const usdPriceConverted = formatNumber2digits(
-                  isOrder ? elm?.order[0]?.amountBuyUsd : elm?.order?.amountBuyUsd
-                );
+                const usdPriceConverted = formatUSDPrice(parseFloat(priceConverted) * etheCost);
                 const ownerName = truncateString(elm?.creatorStarkKey);
                 return (
                   <tr
                     key={_idx}
-                    className="border-blue/3 border-t text-[16px] font-normal text-white"
-                  >
+                    className="border-blue/3 border-t text-[16px] font-normal text-white">
                     <td className="whitespace-nowrap py-4 pr-6 overflow-hidden w-1/4">
                       <p className="flex flex-row items-center gap-[7px] truncate">
                         <DAOIcon /> {priceConverted}
@@ -93,7 +102,7 @@ const AssetDetailTab: FC<Prop> = ({
                     <td className="py-4 pr-6 truncate w-1/4">${usdPriceConverted}</td>
                     <td className="py-4 pr-6 truncate w-1/4">{ownerName}</td>
                     <td className="py-4 pr-6 truncate w-1/4 text-right">
-                      {status === AssetStatus.BUY_NOW && (
+                      {elm?.creatorStarkKey !== starkKey && (
                         <button
                           onClick={() => onBuyNow(elm)}
                           className="rounded-[8px] border border-white/[0.4] px-[16px] py-[5px] font-bold">

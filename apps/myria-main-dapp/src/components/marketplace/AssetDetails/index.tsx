@@ -460,7 +460,7 @@ function AssetDetails({ id }: Props) {
   const handleBuyNowItem = (data: any) => {
     setAssetBuy({
       name: data.name,
-      price: formatNumber2digits(Number(data?.order[0]?.nonQuantizedAmountBuy))
+      price: formatPrice(Number(data?.order[0]?.nonQuantizedAmountBuy))
     });
     setShowPopup(true);
   };
@@ -598,6 +598,7 @@ function AssetDetails({ id }: Props) {
               fee={assetDetails?.fee}
               contractAddress={assetDetails?.tokenAddress}
               onBuyNow={handleBuyNowItem}
+              etheCost={etheCost}
             />
           </div>
         </div>
