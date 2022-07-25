@@ -71,7 +71,6 @@ function App({ Component, pageProps }: AppProps) {
                       <>
                         <Provider store={store}>
                           <Component {...pageProps} />
-                          <MainL2Wallet />
                         </Provider>
                       </>
                     </TabProvider>

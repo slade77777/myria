@@ -12,6 +12,7 @@ import Popover from './Popover';
 import MetamaskOnboarding from './InstallMetamaskButton';
 import { useAuthenticationContext } from '../context/authentication';
 import { useEffect } from 'react';
+import MainL2Wallet from './Main-L2-Wallet/Main-L2-Wallet';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { address, onConnect } = useWalletContext();
@@ -48,60 +49,65 @@ const ConnectL2WalletButton: React.FC = () => {
     setOpenDropdown(false);
   };
 
-  return address ? (
-    <div>
-      <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
-        <Popover.Trigger asChild>
-          <span className="uppercase">
-            <button className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]">
-              <span>{truncateString(address)}</span>
-              <i className="w-4">
-                <ChevronDownIcon />
-              </i>
-            </button>
-          </span>
-        </Popover.Trigger>
-        <Popover.Content
-          sideOffset={8}
-          align="end"
-          style={{
-            boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
-          }}
-          className="text-base/3 min-w-[406px] rounded-xl bg-current p-3">
-          <Popover.Arrow
-            width={24}
-            height={13}
-            style={{
-              filter: `drop-shadow(0px 1px 0px #202230)`
+  return (
+    <>
+      {address ? (
+        <div>
+          <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
+            <Popover.Trigger asChild>
+              <span className="uppercase">
+                <button className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-2 rounded-lg border px-4 py-[9px]">
+                  <span>{truncateString(address)}</span>
+                  <i className="w-4">
+                    <ChevronDownIcon />
+                  </i>
+                </button>
+              </span>
+            </Popover.Trigger>
+            <Popover.Content
+              sideOffset={8}
+              align="end"
+              style={{
+                boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
+              }}
+              className="text-base/3 min-w-[406px] rounded-xl bg-current p-3">
+              <Popover.Arrow
+                width={24}
+                height={13}
+                style={{
+                  filter: `drop-shadow(0px 1px 0px #202230)`
+                }}
+                className="translate-x-8 fill-current"
+              />
+              <div>
+                {showClaimPopover ? (
+                  <ClaimWithdrawPopover
+                    abbreviationAddress={abbreviationAddress}
+                    onClosePopover={handleCloseDropdown}
+                  />
+                ) : (
+                  <L2WalletPopover
+                    onClosePopover={handleCloseDropdown}
+                    abbreviationAddress={abbreviationAddress}
+                  />
+                )}
+              </div>
+            </Popover.Content>
+          </Popover>
+        </div>
+      ) : (
+        <MetamaskOnboarding>
+          <button
+            onClick={() => {
+              onConnect();
             }}
-            className="translate-x-8 fill-current"
-          />
-          <div>
-            {showClaimPopover ? (
-              <ClaimWithdrawPopover
-                abbreviationAddress={abbreviationAddress}
-                onClosePopover={handleCloseDropdown}
-              />
-            ) : (
-              <L2WalletPopover
-                onClosePopover={handleCloseDropdown}
-                abbreviationAddress={abbreviationAddress}
-              />
-            )}
-          </div>
-        </Popover.Content>
-      </Popover>
-    </div>
-  ) : (
-    <MetamaskOnboarding>
-      <button
-        onClick={() => {
-          onConnect();
-        }}
-        className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
-        <Trans>Connect wallet</Trans>
-      </button>
-    </MetamaskOnboarding>
+            className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
+            <Trans>Connect wallet</Trans>
+          </button>
+        </MetamaskOnboarding>
+      )}
+      <MainL2Wallet />
+    </>
   );
 };
 
