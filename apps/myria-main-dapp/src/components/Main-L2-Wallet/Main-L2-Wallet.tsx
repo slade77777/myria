@@ -40,7 +40,7 @@ declare const window: any;
 
 const QUANTUM_CONSTANT = 10000000000;
 
-export default function MainLayout() {
+export default function MainL2Wallet() {
   const walletModalRef = useRef<any>();
   const [showPrivacyModal, setPrivacyModal] = useState<Boolean>(false);
   const [openMyriaWalletModal, setOpenMyriaWallet] = useState<Boolean>(false);
@@ -128,7 +128,7 @@ export default function MainLayout() {
         const commonModule = moduleFactory.getCommonModule();
         const starkKey = commonModule.getStarkPublicKey(wSignature);
         console.log('starkKey', starkKey);
-        
+
         dispatch(setStarkPublicKey(starkKey));
       }
     },
@@ -204,7 +204,7 @@ export default function MainLayout() {
         setWelcomeModal={setWelcomeModal}
       />
       <CreateMyriaAccountModal
-        className="pt-[37px] pb-[32px] px-[40px]"
+        className="px-[40px] pt-[37px] pb-[32px]"
         modalShow={openMyriaWalletModal}
         closeModal={() => setOpenMyriaWallet(false)}
       />
