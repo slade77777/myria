@@ -51,9 +51,10 @@ export const WalletProvider: React.FC = ({ children }) => {
   const { event } = useGA4();
 
   useEffect(() => {
-    if (web3Modal.cachedProvider) {
-      onConnect();
-    }
+    // due to AP-419
+    // if (web3Modal.cachedProvider) {
+    //   // onConnect();
+    // }
   }, []);
 
   const subscribeProvider = useCallback(async (provider) => {
@@ -90,7 +91,6 @@ export const WalletProvider: React.FC = ({ children }) => {
     }
     await web3Modal.clearCachedProvider();
     reset();
-
     address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
   }, [w3Provider, event, address]);
 
@@ -100,9 +100,9 @@ export const WalletProvider: React.FC = ({ children }) => {
   }, [readerProviderApi, address]);
 
   const onConnect = async () => {
+    reset();
     const w3provider = await web3Modal.connect();
     await subscribeProvider(w3provider);
-
     const providerApi = new ethers.providers.Web3Provider(w3provider);
     const accounts = await providerApi.listAccounts();
     const address = accounts[0];
