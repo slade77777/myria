@@ -16,11 +16,6 @@ const UserAvatar: React.FC = () => {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
 
-  const signOut = () => {
-    disconnect();
-    dispatch(setStarkPublicKey(''));
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger disabled={!starkKeyUser}>
@@ -50,16 +45,6 @@ const UserAvatar: React.FC = () => {
                     </span>
                   </a>
                 </Link>
-              </div>
-              <div className="mt-6">
-                <button
-                  className="body-14-medium flex items-center space-x-2.5 text-white"
-                  onClick={signOut}>
-                  <i className="w-4">
-                    <LogoutIcon />
-                  </i>
-                  <span>Sign Out</span>
-                </button>
               </div>
             </div>
           </div>

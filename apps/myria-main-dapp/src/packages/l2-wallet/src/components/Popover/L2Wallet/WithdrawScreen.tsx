@@ -79,8 +79,8 @@ export default function WithdrawScreen({
                       <Tooltip.Arrow />
                       <p className="text-base/9">
                         <Trans>
-                          This is the amount you have available to deposit from
-                          your L1 wallet
+                          This is the amount available to withdraw from your L2
+                          Myria wallet
                         </Trans>
                       </p>
                     </div>
