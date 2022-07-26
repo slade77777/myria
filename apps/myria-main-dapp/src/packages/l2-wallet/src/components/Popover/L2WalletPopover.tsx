@@ -234,7 +234,6 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         const { data } = await transactionModule.getTransactionList(
           '0x' + pKey,
         );
-        console.log('transaction data', data);
         const result = data
           .filter((item: any, index: number) => {
             if (item.assetType || item.settlementInfo) return true;
@@ -314,7 +313,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     }
     setErrorAmount('');
     return true;
-  }, [selectedToken, amount, balanceL1, etheCost]);
+  }, [amount, selectedToken, etheCost, screen]);
 
   const deposit = async () => {
     try {
@@ -504,7 +503,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   };
 
   return (
-    <div className="min-h-[565px] max-w-[406px] py-[24px]">
+    <div className="h-[565px] w-[406px] py-[24px]">
       {/* Header Part */}
       <div
         className={cn(
@@ -570,7 +569,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       </div>
 
       {/* Body Part */}
-      <div className="min-h-[460px] px-[24px]">
+      <div className="h-full px-[24px] flex flex-col">
         {screen === SCREENS.MAIN_SCREEN && (
           <MainScreen
             transactionList={transactionList}

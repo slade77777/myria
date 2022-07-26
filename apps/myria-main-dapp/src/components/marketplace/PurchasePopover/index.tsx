@@ -63,7 +63,9 @@ const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => 
           <Button
             loading={false}
             className="btn-lg btn-primary my-8 w-full border"
-            onClick={onCloseMessage}>
+            onClick={()=>{
+              onCloseMessage();
+            }}>
             <Trans>OK</Trans>
           </Button>
         ),

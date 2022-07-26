@@ -43,7 +43,8 @@ export default function DepositScreen({
     };
   }, [setDepositScreenMounted]);
   return (
-    <div className="mt-[-32px]">
+   <>
+    <div className="mt-[-32px] grow">
       <div
         className="flex cursor-pointer items-center"
         onClick={() => {
@@ -105,29 +106,30 @@ export default function DepositScreen({
           <p>0.0431917 ETH</p>
         </div>
       </div>
-      <div className="mt-[145px] flex justify-between">
-        <button
-          className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-[8px] border py-[9px] px-9 text-[16px] font-bold text-white"
-          onClick={() => {
-            goBack();
-          }}
-        >
-          CANCEL
-        </button>
-        <button
-          className={cn(
-            'flex w-full max-w-[126px] items-center justify-center rounded-[8px] py-[9px] px-9 text-[16px] font-bold text-white',
-            isValidForm ? 'bg-[#F5B941] text-[#040B10]' : 'bg-[#737373]',
-          )}
-          onClick={() => {
-            if (isValidForm) {
-              gotoProgressScreen();
-            }
-          }}
-        >
-          NEXT
-        </button>
-      </div>
+      
     </div>
+    <div className="flex justify-self-end justify-between mb-[10px]">
+    <button
+      className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-[8px] border py-[9px] px-9 text-[16px] font-bold text-white"
+      onClick={() => {
+        goBack();
+      }}
+    >
+      CANCEL
+    </button>
+    <button
+      className={cn(
+        'flex w-full max-w-[126px] items-center justify-center rounded-[8px] py-[9px] px-9 text-[16px] font-bold text-white',
+        isValidForm ? 'bg-[#F5B941] text-[#040B10]' : 'bg-[#737373]',
+      )}
+      onClick={() => {
+        if (isValidForm) {
+          gotoProgressScreen();
+        }
+      }}
+    >
+      NEXT
+    </button>
+  </div></>
   );
 }
