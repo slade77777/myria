@@ -98,8 +98,17 @@ function AssetDetails({ id }: Props) {
       enabled: !!id
     }
   );
-
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const starkKey = useMemo(()=>`0x${starkKeyUser}`,[starkKeyUser])
   const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
+  const ownedBy = useMemo(()=>{
+    if(assetDetails?.owner?.starkKey == starkKey){
+      return <Trans>You</Trans>
+    }
+    return truncateString(`${assetDetails?.owner?.starkKey}`)
+  },[assetDetails?.owner?.starkKey, starkKey])
   const listOrder = useMemo(() => data?.listOrder, [data?.listOrder]);
   const titleBack = useMemo(
     () =>
@@ -139,10 +148,7 @@ function AssetDetails({ id }: Props) {
     }
   );
 
-  const starkKeyUser = useSelector(
-    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
-  );
-  const starkKey = `0x${starkKeyUser}`;
+  
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
     lodash.map(assetDetails?.metadataOptional, (val, key) => {
@@ -323,52 +329,20 @@ function AssetDetails({ id }: Props) {
   ]);
 
   useEffect(() => {
-    // Create the cron-job in 2 minutes
-    const withdrawalInterval = setInterval(() => {
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3
-      };
-
-      const myriaClient = new MyriaClient(client);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
-      const withdrawalModule = moduleFactory.getWithdrawModule();
-
-      if (!address) return;
-      withdrawalModule.getWithdrawalBalance(address, assetDetails?.id + '').then((balance) => {
-        if (balance > 0) {
-          clearInterval(withdrawalInterval);
-          setWithdrawalStatus(StatusWithdrawNFT.COMPLETED);
-        }
-      });
-    }, INTERVAL_DURATION);
-    return () => clearInterval(withdrawalInterval);
-  }, [
-    assetDetails,
-    assetDetails?.assetMintId,
-    assetDetails?.id,
-    handleSetValueNFT,
-    setWithdrawalStatus,
-    starkKey
-  ]);
-
-  useEffect(() => {
     let currentStatus: number = AssetStatus.UNCONNECTED;
 
     if (assetDetails?.order) {
       // item for sale
       if (starkKey === assetDetails?.owner?.starkKey) {
         currentStatus = AssetStatus.MODIFY; // connected and own NFT
-      } else {
+      } else if (starkKey.length > 2){
         currentStatus = AssetStatus.BUY_NOW; // connected and not own NFT
-      }
-      if (!(address && address?.length > 0)) {
+      } else {
         currentStatus = AssetStatus.UNCONNECTED; // not connected
       }
     } else {
       // item not for sale
-      if (starkKey === assetDetails?.owner?.starkKey) {
+        if (starkKey === assetDetails?.owner?.starkKey) {
         // connected and own NFT
         currentStatus = AssetStatus.SALE;
       } else {
@@ -530,9 +504,9 @@ function AssetDetails({ id }: Props) {
               {/* detail asset */}
               <span className="mt-[24px] text-[28px] font-bold">{assetDetails?.name}</span>
               <div className="text-light mt-[24px] flex w-[325px] flex-row justify-between">
-                <span>Token ID: {assetDetails?.tokenId}</span>
+                <span><Trans>Token ID</Trans>: {assetDetails?.tokenId}</span>
                 <span>|</span>
-                <span>Owned by {truncateString(`${assetDetails?.owner?.starkKey}`)}</span>
+                <span><Trans>Owned by</Trans> {ownedBy}</span>
               </div>
 
               <div className="text-light flex gap-6">
@@ -627,9 +601,13 @@ function AssetDetails({ id }: Props) {
         <PurchaseModal
           open={showPopup}
           onCreate={() => handleCreateTrade(assetDetails)}
-          onClose={() => setShowPopup(false)}
+          onClose={() => {
+            setShowPopup(false)
+            window.location.reload()
+          }}
           onCloseMessage={() => {
             setShowPopup(false);
+            window.location.reload()
           }}
           assetBuy={assetBuy}
         />
