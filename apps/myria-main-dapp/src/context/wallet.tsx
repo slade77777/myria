@@ -50,12 +50,12 @@ export const WalletProvider: React.FC = ({ children }) => {
   );
   const { event } = useGA4();
 
-  useEffect(() => {
-    // due to AP-419
-    // if (web3Modal.cachedProvider) {
-    //   // onConnect();
-    // }
-  }, []);
+  //   due to AP-419
+  // useEffect(() => {
+  //   if (web3Modal.cachedProvider) {
+  //     // onConnect();
+  //   }
+  // }, []);
 
   const subscribeProvider = useCallback(async (provider) => {
     if (!provider.on) {

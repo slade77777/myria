@@ -174,7 +174,9 @@ export default function MainL2Wallet() {
 
   useEffect(() => {
     if (!walletAddress) return;
-    loadWeb3();
+    if (pKey.length == 0) {
+      loadWeb3();
+    }
   }, [walletAddress, loadWeb3]);
 
   const metaMaskConnect = async () => {
