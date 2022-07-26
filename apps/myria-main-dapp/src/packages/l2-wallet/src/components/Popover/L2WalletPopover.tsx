@@ -234,8 +234,12 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         const { data } = await transactionModule.getTransactionList(
           '0x' + pKey,
         );
+        console.log('transaction data', data);
         const result = data
-          .filter((item: any, index: number) => item.assetType)
+          .filter((item: any, index: number) => {
+            if (item.assetType || item.settlementInfo) return true;
+            else return false;
+          })
           .map((transaction: any, index: number) => {
             const matched = options.filter(
               (option: TOption, index: number) =>
@@ -254,13 +258,17 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             return {
               id: index,
               type: item.transactionType,
-              amount:
-                item.name === 'Ethereum'
-                  ? Web3.utils.fromWei(
-                      (item.quantizedAmount * QUANTUM_CONSTANT ?? 0).toString(),
-                    )
-                  : item.quantizedAmount,
-              // amount: item.quantizedAmount / item.quantum,
+              amount: item.partyAOrder
+                ? Web3.utils.fromWei(
+                    (
+                      item.partyAOrder.amountSell * QUANTUM_CONSTANT ?? 0
+                    ).toString(),
+                  )
+                : item.name === 'Ethereum'
+                ? Web3.utils.fromWei(
+                    (item.quantizedAmount * QUANTUM_CONSTANT ?? 0).toString(),
+                  )
+                : item.quantizedAmount,
               time: moment(item.createdAt).fromNow(),
               updatedAt: moment(item.updatedAt).fromNow(),
               status:
@@ -388,7 +396,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           },
           {
             from: connectedAccount,
-            nonce: '1',
+            nonce: new Date().getTime(),
             confirmationType: Types.ConfirmationType.Confirmed,
           },
         );
@@ -411,7 +419,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           },
           {
             from: connectedAccount,
-            nonce: '1',
+            nonce: new Date().getTime(),
             confirmationType: Types.ConfirmationType.Confirmed,
           },
         );

@@ -81,6 +81,20 @@ export default function MainScreen({
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
   const { data: etheCost = 0 } = useEtheriumPrice();
+
+  const renderType = (type: string) => {
+    switch (type) {
+      case 'DepositRequest':
+        return 'Deposit';
+      case 'WithdrawalRequest':
+        return 'Withdrawal';
+      case 'SettlementRequest':
+        return 'Purchase';
+      default:
+        return '';
+    }
+  };
+
   useEffect(() => {
     const temp: any = [];
     options.map((option: any, index: number) => {
@@ -238,7 +252,7 @@ export default function MainScreen({
                   </div>
                   <div className="grow">
                     <div className="flex items-center justify-between text-[14px] text-[#E7EBEE]">
-                      <span>{item.type}</span>
+                      <span>{renderType(item.type)}</span>
                       <span className="flex items-center">
                         <span className="mb-[2px] mr-1">
                           <DAOIcon size={16} />{' '}

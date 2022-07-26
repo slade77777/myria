@@ -92,7 +92,7 @@ export default function ClaimWithdrawPopover({
           },
           {
             from: connectedAccount,
-            nonce: '1',
+            nonce: new Date().getTime(),
             confirmationType: Types.ConfirmationType.Confirmed,
           },
         );
@@ -111,7 +111,7 @@ export default function ClaimWithdrawPopover({
           },
           {
             from: connectedAccount,
-            nonce: '1',
+            nonce: new Date().getTime(),
             confirmationType: Types.ConfirmationType.Confirmed,
           },
         );
