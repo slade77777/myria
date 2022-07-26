@@ -216,6 +216,7 @@ function AssetDetails({ id }: Props) {
     if (result) {
       setShowMessageModify(true);
       setShowModal(false);
+      refetch();
     }
   };
   const onSubmitCreateOrder = useCallback(
