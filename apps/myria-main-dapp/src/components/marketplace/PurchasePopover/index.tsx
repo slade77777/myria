@@ -15,6 +15,7 @@ interface IProp {
   };
   onCloseMessage: () => void;
   onConfirm: () => Promise<any>;
+  setChangeStatusSuccess: () => void;
 }
 interface ButtonProps {
   onCloseMessage: () => void;
@@ -22,7 +23,12 @@ interface ButtonProps {
   onConfirm: () => void;
 }
 
-const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => {
+const PurchasePopover: FC<IProp> = ({
+  assetBuy,
+  onCloseMessage,
+  onConfirm,
+  setChangeStatusSuccess
+}) => {
   const [isProgressPurchase, setIsProgressPurchase] = useState<boolean>(false);
   const [statusPurchase, setStatusPurchase] = useState<PurchaseStatus>(PurchaseStatus.CHECK);
 
@@ -33,6 +39,7 @@ const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => 
       onConfirm()
         .then((val) => {
           // success
+          setChangeStatusSuccess();
           setStatusPurchase(PurchaseStatus.SUCCESS);
         })
         .catch((e) => {
@@ -63,7 +70,7 @@ const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => 
           <Button
             loading={false}
             className="btn-lg btn-primary my-8 w-full border"
-            onClick={()=>{
+            onClick={() => {
               onCloseMessage();
             }}>
             <Trans>OK</Trans>
