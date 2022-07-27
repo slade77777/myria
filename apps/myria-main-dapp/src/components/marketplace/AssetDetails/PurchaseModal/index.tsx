@@ -9,12 +9,25 @@ type Props = {
   };
   onCloseMessage: () => void;
   onCreate: () => Promise<any>;
+  setChangeStatusSuccess: () => void;
 };
-const PurchaseModal: React.FC<Props> = ({ open, onClose, assetBuy, onCloseMessage, onCreate }) => {
+const PurchaseModal: React.FC<Props> = ({
+  open,
+  onClose,
+  assetBuy,
+  onCloseMessage,
+  onCreate,
+  setChangeStatusSuccess
+}) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={'Purchase'} className="w-[468px] shadow-[0_0_40px_10px_#0000004D]">
-        <PurchasePopover onConfirm={onCreate} assetBuy={assetBuy} onCloseMessage={onCloseMessage} />
+        <PurchasePopover
+          onConfirm={onCreate}
+          assetBuy={assetBuy}
+          onCloseMessage={onCloseMessage}
+          setChangeStatusSuccess={setChangeStatusSuccess}
+        />
       </Modal.Content>
     </Modal>
   );

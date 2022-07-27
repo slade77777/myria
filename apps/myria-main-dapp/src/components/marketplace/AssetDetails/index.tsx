@@ -41,10 +41,10 @@ import AssetDetailTab from './AssetDetailTab';
 import PurchaseModal from './PurchaseModal';
 import testavatarImg from './testavatar.png';
 import avatar from '../../../../public/images/marketplace/avatar.png';
-import { useGA4 } from "../../../lib/ga";
-import { useAuthenticationContext } from "../../../context/authentication";
+import { useGA4 } from '../../../lib/ga';
+import { useAuthenticationContext } from '../../../context/authentication';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import {NFTItemAction, NFTItemNoPriceAction} from "../../../lib/ga/use-ga/event";
+import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 
 interface Props {
   id: string;
@@ -106,14 +106,14 @@ function AssetDetails({ id }: Props) {
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
-  const starkKey = useMemo(()=>`0x${starkKeyUser}`,[starkKeyUser])
+  const starkKey = useMemo(() => `0x${starkKeyUser}`, [starkKeyUser]);
   const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
-  const ownedBy = useMemo(()=>{
-    if(assetDetails?.owner?.starkKey == starkKey){
-      return <Trans>You</Trans>
+  const ownedBy = useMemo(() => {
+    if (assetDetails?.owner?.starkKey == starkKey) {
+      return <Trans>You</Trans>;
     }
-    return truncateString(`${assetDetails?.owner?.starkKey}`)
-  },[assetDetails?.owner?.starkKey, starkKey])
+    return truncateString(`${assetDetails?.owner?.starkKey}`);
+  }, [assetDetails?.owner?.starkKey, starkKey]);
   const listOrder = useMemo(() => data?.listOrder, [data?.listOrder]);
   const titleBack = useMemo(
     () =>
@@ -153,7 +153,6 @@ function AssetDetails({ id }: Props) {
     }
   );
 
-
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
     lodash.map(assetDetails?.metadataOptional, (val, key) => {
@@ -174,6 +173,7 @@ function AssetDetails({ id }: Props) {
   const [showModalUnlist, setShowModalUnlist] = useState(false);
   const [showMessageModify, setShowMessageModify] = useState(false);
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
+  const [payloadDataTrade, setPayloadDataTrade] = useState({});
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
   const {
@@ -228,12 +228,16 @@ function AssetDetails({ id }: Props) {
       setShowMessageModify(true);
       setShowModal(false);
       refetch();
-      onTrackingItem({ eventName: 'MKP Item Listing Modify Completed', newEthPrice: parseFloat(price), newUsdPrice: +price * etheCost });
+      onTrackingItem({
+        eventName: 'MKP Item Listing Modify Completed',
+        newEthPrice: parseFloat(price),
+        newUsdPrice: +price * etheCost
+      });
     }
   };
   const onSubmitCreateOrder = useCallback(
     async ({ price }) => {
-      onTrackingItem({eventName: 'MKP Item Listing Confirmed'});
+      onTrackingItem({ eventName: 'MKP Item Listing Confirmed' });
       const client: IMyriaClient = {
         provider: window.web3.currentProvider,
         networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
@@ -286,7 +290,7 @@ function AssetDetails({ id }: Props) {
           setShowModal(false);
           setStatus(AssetStatus.MODIFY);
           setShowMessageEdit(true);
-          onTrackingItem({eventName: 'MKP Item Listing Completed'});
+          onTrackingItem({ eventName: 'MKP Item Listing Completed' });
           refetch();
         }
       }
@@ -343,14 +347,14 @@ function AssetDetails({ id }: Props) {
       // item for sale
       if (starkKey === assetDetails?.owner?.starkKey) {
         currentStatus = AssetStatus.MODIFY; // connected and own NFT
-      } else if (starkKey.length > 2){
+      } else if (starkKey.length > 2) {
         currentStatus = AssetStatus.BUY_NOW; // connected and not own NFT
       } else {
         currentStatus = AssetStatus.UNCONNECTED; // not connected
       }
     } else {
       // item not for sale
-        if (starkKey === assetDetails?.owner?.starkKey) {
+      if (starkKey === assetDetails?.owner?.starkKey) {
         // connected and own NFT
         currentStatus = AssetStatus.SALE;
       } else {
@@ -407,8 +411,8 @@ function AssetDetails({ id }: Props) {
         collection_name: assetDetails?.collectionName,
         collection_author: assetDetails?.creator?.name,
         item_owner: assetDetails?.owner?.ethAddress || '',
-        item_price_eth: ifModify ? (newEthPrice && +newEthPrice) : ethPrice ? +ethPrice : 0,
-        item_price_usd: ifModify ? (newUsdPrice && +newUsdPrice) : usdPrice ? +usdPrice : 0,
+        item_price_eth: ifModify ? newEthPrice && +newEthPrice : ethPrice ? +ethPrice : 0,
+        item_price_usd: ifModify ? newUsdPrice && +newUsdPrice : usdPrice ? +usdPrice : 0,
         ...(ifModify
           ? {
               old_price_eth: ethPrice && +ethPrice,
@@ -420,23 +424,26 @@ function AssetDetails({ id }: Props) {
     [user, address, currentUSDPrice, assetDetails?.order?.nonQuantizedAmountBuy, assetDetails]
   );
 
-  const onTrackingNoPriceItem = useCallback((eventName: NFTItemNoPriceAction) => {
-    event(eventName, {
-      myria_id: user?.user_id,
-      wallet_address: `_${address}`,
-      item_name: assetDetails?.name || '',
-      item_id: `${assetDetails?.id}`,
-      collection_name: assetDetails?.collectionName,
-      collection_author: assetDetails?.creator?.name,
-    });
-  }, [user, address, assetDetails]);
+  const onTrackingNoPriceItem = useCallback(
+    (eventName: NFTItemNoPriceAction) => {
+      event(eventName, {
+        myria_id: user?.user_id,
+        wallet_address: `_${address}`,
+        item_name: assetDetails?.name || '',
+        item_id: `${assetDetails?.id}`,
+        collection_name: assetDetails?.collectionName,
+        collection_author: assetDetails?.creator?.name
+      });
+    },
+    [user, address, assetDetails]
+  );
 
   const onTrackingConnectWallet = useCallback(() => {
     event('MKP Connect to Buy Selected', {
       item_name: assetDetails?.name || '',
       item_id: `${assetDetails?.id}`,
       collection_name: assetDetails?.collectionName,
-      collection_author: assetDetails?.creator?.name,
+      collection_author: assetDetails?.creator?.name
     });
   }, [assetDetails]);
 
@@ -503,7 +510,23 @@ function AssetDetails({ id }: Props) {
       name: data.name,
       price: formatPrice(Number(data?.order[0]?.nonQuantizedAmountBuy))
     });
+    setPayloadDataTrade(formatDataTrade(data));
     setShowPopup(true);
+  };
+
+  const formatDataTrade = (listOrder: any) => {
+    const isOrder = Array.isArray(listOrder.order);
+    const payloadDataTrade = {
+      order: {
+        orderId: isOrder ? listOrder?.order[0].id : listOrder?.order.orderId,
+        amountSell: isOrder ? listOrder?.order[0].amountSell : listOrder?.order.amountSell,
+        amountBuy: isOrder ? listOrder?.order[0].amountBuy : listOrder?.order.amountBuy
+      },
+      tokenId: listOrder.tokenId,
+      tokenAddress: listOrder.tokenAddress
+    };
+
+    return payloadDataTrade;
   };
 
   if (isLoading) {
@@ -568,10 +591,14 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-[24px] text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="text-light mt-[24px] flex w-[325px] flex-row justify-between">
-                <span><Trans>Token ID</Trans>: {assetDetails?.tokenId}</span>
-                <span>|</span>
-                <span><Trans>Owned by</Trans> {ownedBy}</span>
+              <div className="text-light mt-[24px] flex w-[325px] flex-row">
+                <span>
+                  <Trans>Token ID</Trans>: {assetDetails?.tokenId}
+                </span>
+                <span className="mx-6">|</span>
+                <span>
+                  <Trans>Owned by</Trans> {ownedBy}
+                </span>
               </div>
 
               <div className="text-light flex gap-6">
@@ -592,11 +619,12 @@ function AssetDetails({ id }: Props) {
                 currentPrice={currentPrice?.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
-                  onTrackingItem({eventName: 'MKP Item Buy Now Selected'})
+                  onTrackingItem({ eventName: 'MKP Item Buy Now Selected' });
                   setAssetBuy({
                     name: assetDetails?.name || '',
                     price: String(currentPrice)
                   });
+                  setPayloadDataTrade(formatDataTrade({ ...assetDetails }));
                   setShowPopup(true);
                 }}
               />
@@ -628,12 +656,12 @@ function AssetDetails({ id }: Props) {
                 currentPrice={currentPrice?.toString()}
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
-                  onTrackingItem({eventName: 'MKP Item Listing Modify Selected'})
+                  onTrackingItem({ eventName: 'MKP Item Listing Modify Selected' });
                   setShowModal(true);
                 }}
                 setShowUnlist={() => {
-                  onTrackingItem({eventName: 'MKP Item Unlisting Selected'})
-                  setShowModalUnlist(true)
+                  onTrackingItem({ eventName: 'MKP Item Unlisting Selected' });
+                  setShowModalUnlist(true);
                 }}
               />
             )}
@@ -676,19 +704,20 @@ function AssetDetails({ id }: Props) {
         <PurchaseModal
           open={showPopup}
           onCreate={async () => {
-            onTrackingItem({eventName: 'MKP Check Out Confirmed'});
-            await handleCreateTrade(assetDetails)
+            onTrackingItem({ eventName: 'MKP Check Out Confirmed' });
+            await handleCreateTrade(payloadDataTrade);
           }}
           onClose={() => {
-            setShowPopup(false)
-            window.location.reload()
+            setShowPopup(false);
           }}
           onCloseMessage={() => {
-            onTrackingItem({eventName: 'MKP Check Out Canceled'});
+            onTrackingItem({ eventName: 'MKP Check Out Canceled' });
             setShowPopup(false);
-            window.location.reload()
           }}
           assetBuy={assetBuy}
+          setChangeStatusSuccess={() => {
+            refetch();
+          }}
         />
       )}
       {showModalUnlist && (

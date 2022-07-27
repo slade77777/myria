@@ -100,9 +100,11 @@ const AssetDetailTab: FC<Prop> = ({
                       </p>
                     </td>
                     <td className="py-4 pr-6 truncate w-1/4">${usdPriceConverted}</td>
-                    <td className="py-4 pr-6 truncate w-1/4">{ownerName}</td>
+                    <td className="py-4 pr-6 truncate w-1/4">
+                      {elm?.starkKey !== starkKey ? ownerName : <Trans>You</Trans>}
+                    </td>
                     <td className="py-4 pr-6 truncate w-1/4 text-right">
-                      {elm?.creatorStarkKey !== starkKey && (
+                      {starkKeyUser && elm?.starkKey !== starkKey && (
                         <button
                           onClick={() => onBuyNow(elm)}
                           className="rounded-[8px] border border-white/[0.4] px-[16px] py-[5px] font-bold">
