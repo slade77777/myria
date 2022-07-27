@@ -661,8 +661,8 @@ function AssetDetails({ id }: Props) {
           setChangeStatusSuccess={() => {}}
           open={showPopup}
           onCreate={async () => {
-            onTrackingItem({ eventName: 'MKP Check Out Confirmed' });
-            await handleCreateTrade(assetDetails);
+            onTrackingItem({eventName: 'MKP Check Out Confirmed'});
+            await handleCreateTrade(payloadDataTrade)
           }}
           onClose={() => {
             setShowPopup(false);
