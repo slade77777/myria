@@ -10,7 +10,7 @@ export default function useCollectionAsset(id: number) {
   const queryKey = ['collection', id, 'assets'];
   const { data, isLoading, error } = useQuery(
     queryKey,
-    () => assetModule?.getAssetByCollectionId(`${id}`),
+    () => assetModule?.getAssetByCollectionId({ collectionId: id, limit: 100 }),
     {
       enabled: !!id
     }
