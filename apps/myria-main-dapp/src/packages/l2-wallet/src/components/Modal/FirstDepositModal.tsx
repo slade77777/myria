@@ -249,9 +249,7 @@ export default function FirstDepositModal({
                     </div>
                     <div className="mt-[13px] flex justify-between">
                       <span className="text-[#9BA1A5]">Transaction ID</span>
-                      <Link to="/">
-                        <span className="text-[#F5B941]">View</span>
-                      </Link>
+                      <span className="text-[#F5B941]">View</span>
                     </div>
                   </div>
                   <div className="mt-4 flex rounded-[8px] border border-[rgba(154,201,227,0.2)] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">

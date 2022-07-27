@@ -13,7 +13,7 @@ export default function WithdrawCompleteScreen({
   selectedToken,
 }: TProps) {
   return (
-    <div className="mt-[29px] text-white">
+    <div className="text-white">
       <div className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center">
         <TickCircleIcon size={64} className="w-full text-[#9ECEAB]" />
       </div>

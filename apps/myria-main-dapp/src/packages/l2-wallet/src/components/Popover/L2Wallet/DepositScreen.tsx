@@ -107,7 +107,7 @@ export default function DepositScreen({
           </div>
         </div>
       </div>
-      <div className="mb-[10px] flex justify-between justify-self-end">
+      <div className="mt-[200px] flex justify-between justify-self-end">
         <button
           className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-[8px] border py-[9px] px-9 text-[16px] font-bold text-white"
           onClick={() => {

@@ -14,6 +14,7 @@ import ETHIcon from '../../Icons/ETHIcon';
 import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
+import ChevronIcon from '../../Icons/ChevronIcon';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -32,39 +33,6 @@ const tabs = [
 ];
 
 const historyData: any[] = [];
-// {
-//   id: 1,
-//   type: 'Withdrawal',
-//   amount: 1.217,
-//   time: '10 minutes ago',
-//   status: 'in_progress',
-//   ico: '/images/marketplace/eth.svg',
-// },
-// {
-//   id: 2,
-//   type: 'Withdrawal',
-//   amount: 1.217,
-//   time: '10 minutes ago',
-//   status: 'success',
-//   ico: '/images/marketplace/eth.svg',
-// },
-// {
-//   id: 3,
-//   type: 'Purchase - Ultra Rare Vect...',
-//   amount: 2.019,
-//   time: '2 hours ago',
-//   status: 'complete',
-//   ico: '/images/marketplace/eth.svg',
-// },
-// {
-//   id: 4,
-//   type: 'Deposit',
-//   amount: 10.681,
-//   time: 'Yesterday',
-//   status: 'complete',
-//   ico: '/images/marketplace/eth.svg',
-// },
-// ];
 
 const QUANTUM_CONSTANT = 10000000000;
 
@@ -129,13 +97,48 @@ export default function MainScreen({
                 ).toString(),
               )
             : matchedBalance[0].quantizedAmount;
-        tempOption = { ...tempOption, balance };
+        const price =
+          option.name === 'Ethereum'
+            ? formatNumber2digits(etheCost * balance)
+            : 0;
+        tempOption = { ...tempOption, balance, price };
       } else tempOption = { ...tempOption, balance: 0 };
       temp.push(tempOption);
       return tempOption;
     });
     setCoinPrices(temp);
   }, [balanceList, options]);
+
+  const renderStatus = (item: any) => {
+    console.log('item', item);
+    if (item.status === 'in_progress') {
+      return (
+        <div className="mt-1 flex items-center text-[#A1AFBA]">
+          In progress <ProgressHistoryIcon size={14} className="ml-1" />
+        </div>
+      );
+    } else {
+      if (item.type === 'WithdrawalRequest') {
+        return (
+          <div className="mt-1 flex items-center text-[#F5B941]">
+            Complete withdrawal{' '}
+            {/* <ArrowDownLeft className="ml-1 text-[#F5B941]" size={14} /> */}
+            <ChevronIcon
+              className="ml-1 text-[#F5B941]"
+              size={14}
+              direction="right"
+            />
+          </div>
+        );
+      } else {
+        return (
+          <div className="mt-1 flex items-center text-[#A1AFBA]">
+            Complete <CompletedIcon className="ml-1 text-[#A1AFBA]" size={14} />
+          </div>
+        );
+      }
+    }
+  };
 
   return (
     <div>
@@ -219,8 +222,11 @@ export default function MainScreen({
                       </div>
                     </div>
                     <div>
-                      <div className="text-base/10 mt-1 text-right text-base">
+                      <div className="text-base/10 mt-1 text-right text-[14px]">
                         {item.balance}
+                      </div>
+                      <div className="text-base/8 mt-1 text-right text-[14px]">
+                        ${item.price}
                       </div>
                     </div>
                   </div>
@@ -229,7 +235,7 @@ export default function MainScreen({
             </div>
           </TabContent>
           <TabContent id="history" activeTab={activeToken}>
-            <div className="mt-3 max-h-[320px] overflow-y-auto">
+            <div className="mt-3 max-h-[270px] overflow-y-auto">
               {transactionList.length === 0 && <div>No data available yet</div>}
               {transactionList.map((item: any, index: number) => (
                 <div
@@ -262,20 +268,7 @@ export default function MainScreen({
                     </div>
                     <div className="flex items-center justify-between text-[12px] text-[#A1AFBA]">
                       <span>{item.time}</span>
-                      {item.status === 'in_progress' ? (
-                        <div className="mt-1 flex items-center text-[#A1AFBA]">
-                          In progress{' '}
-                          <ProgressHistoryIcon size={14} className="ml-1" />
-                        </div>
-                      ) : (
-                        <div className="mt-1 flex items-center text-[#A1AFBA]">
-                          Complete{' '}
-                          <CompletedIcon
-                            className="ml-1 text-[#A1AFBA]"
-                            size={14}
-                          />
-                        </div>
-                      )}
+                      {renderStatus(item)}
                     </div>
                   </div>
                 </div>

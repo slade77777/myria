@@ -18,7 +18,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { t } from '@lingui/macro';
 import TabProvider from 'src/context/tabContext';
-import MainL2Wallet from 'src/components/Main-L2-Wallet/Main-L2-Wallet';
 import { Provider } from 'react-redux';
 import { store } from 'src/packages/l2-wallet/src/app/store';
 import { WithfrawNFT } from 'src/context/withdraw-nft';
