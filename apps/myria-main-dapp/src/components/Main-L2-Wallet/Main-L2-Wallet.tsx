@@ -179,6 +179,15 @@ export default function MainL2Wallet() {
     }
   }, [walletAddress, loadWeb3]);
 
+  useEffect(() => {
+    if (!walletAddress) {
+      const isOpen = walletModalRef.current.getModalState();
+      if (isOpen) {
+        walletModalRef.current.onCloseModal();
+      }
+    }
+  }, [walletAddress]);
+
   const metaMaskConnect = async () => {
     await loadWeb3();
   };

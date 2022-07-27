@@ -13,14 +13,18 @@ import MetamaskOnboarding from './InstallMetamaskButton';
 import { useAuthenticationContext } from '../context/authentication';
 import { useEffect } from 'react';
 import MainL2Wallet from './Main-L2-Wallet/Main-L2-Wallet';
+import Modal from './Modal';
+import ErrorIcon from './icons/ErrorIcon';
 
 const ConnectL2WalletButton: React.FC = () => {
-  const { address, onConnect } = useWalletContext();
+  const { address, onConnect, disconnect } = useWalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
+  const [showMismatchedWalletModal, setShowMismatchedWalletModal] = React.useState(false);
+
   useEffect(() => {
     if (userProfileQuery.isFetching) {
       return;
@@ -36,6 +40,12 @@ const ConnectL2WalletButton: React.FC = () => {
       loginByWalletMutation.mutate();
     }
   }, [address, user, loginByWalletMutation, userProfileQuery]);
+
+  useEffect(() => {
+    if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
+      setShowMismatchedWalletModal(true);
+    }
+  }, [address, user]);
 
   let abbreviationAddress = '';
   if (address) {
@@ -53,6 +63,30 @@ const ConnectL2WalletButton: React.FC = () => {
 
   return (
     <>
+      <Modal
+        open={showMismatchedWalletModal}
+        onOpenChange={() => {
+          setShowMismatchedWalletModal(false);
+          disconnect();
+        }}>
+        <Modal.Content
+          title={
+            <div className="flex items-center space-x-4">
+              <ErrorIcon size={24} />
+              <span>
+                <Trans>Mismatch Account</Trans>
+              </span>
+            </div>
+          }
+          className="shadow-[0_0_40px_10px_#0000004D]">
+          <p className="body-16-regular p-6 px-8">
+            <Trans>
+              The MetaMask account that is selected does not match the one used to create your Myria
+              account. Please select the correct MetaMask account and try again.
+            </Trans>
+          </p>
+        </Modal.Content>
+      </Modal>
       {address && starkKeyUser ? (
         <div>
           <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>

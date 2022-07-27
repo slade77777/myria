@@ -120,6 +120,9 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
   useImperativeHandle(ref, () => ({
     onOpenModal,
     onCloseModal,
+    getModalState: () => {
+      return display;
+    },
   }));
 
   return (
