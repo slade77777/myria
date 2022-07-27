@@ -17,7 +17,7 @@ export default function WithdrawRequestScreen({
   withdrawInProgress,
 }: Props) {
   return (
-    <div className="mt-[29px] text-white">
+    <div className="text-white">
       <div className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center">
         <ProgressIcon
           size={64}

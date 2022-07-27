@@ -503,7 +503,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   };
 
   return (
-    <div className="h-[565px] w-[406px] py-[24px]">
+    <div className="min-h-[565px] w-[406px] py-[24px]">
       {/* Header Part */}
       <div
         className={cn(
@@ -569,7 +569,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       </div>
 
       {/* Body Part */}
-      <div className="h-full px-[24px] flex flex-col">
+      <div className="flex h-full flex-col px-[24px]">
         {screen === SCREENS.MAIN_SCREEN && (
           <MainScreen
             transactionList={transactionList}

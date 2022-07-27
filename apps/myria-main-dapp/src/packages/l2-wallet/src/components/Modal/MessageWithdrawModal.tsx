@@ -106,12 +106,15 @@ export default function MessageWithdrawModal({
     }
   };
 
-  const renderClaimMessage = () => {
+  const renderClaimMessage = (name: string) => {
     if (parseFloat(claimAmount.toString()) > 0) {
       return (
         <div>
-          Your withdrawal of {claimAmount.toString()} tokens is now complete and
-          ready to claim
+          Your withdrawal of{' '}
+          {name === 'Ethereum'
+            ? `${Web3.utils.fromWei(claimAmount.toString())} eth`
+            : `${claimAmount} tokens`}{' '}
+          is now complete and ready to claim
         </div>
       );
     }
@@ -149,7 +152,7 @@ export default function MessageWithdrawModal({
               <div className="mt-[10px] mb-[20px] text-sm font-normal text-[#A1AFBA]">
                 The withdrawal transaction is on progress in system. Please wait
                 and patient.
-                <div>{renderClaimMessage()}</div>
+                <div>{renderClaimMessage(selectedToken?.name)}</div>
               </div>
             )}
             <div className="flex justify-start">
