@@ -75,9 +75,8 @@ export default function DepositScreen({
                       <InfoCircleIcon className="text-[#9AC9E3]" />
                     </Tooltip.Trigger>
                     <Tooltip.Content className="mf-10 max-w-[256px]">
-                      <div className="bg-base/5 mf-10 absolute right-0 top-2 min-w-[256px] rounded-[8px]  p-4 ">
-                        <div className="bg-base/5 absolute right-10 -mt-6  h-4 w-4 rotate-45"></div>
-                        <Tooltip.Arrow />
+                      <div className="bg-base/5 mf-10 absolute right-0 top-4 min-w-[256px] rounded-[8px]  p-4 ">
+                        <div className="bg-base/5 absolute right-8 -mt-6  h-4 w-4 rotate-45"></div>
                         <p className="text-base/9">
                           <Trans>
                             This is the amount you have available to deposit
