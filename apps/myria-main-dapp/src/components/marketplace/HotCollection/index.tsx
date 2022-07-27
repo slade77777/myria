@@ -2,12 +2,19 @@ import { Trans } from '@lingui/macro';
 import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
 import { CommonPaginateDataTypes } from 'myria-core-sdk/dist/types/src/types/CommonTypes';
 import Link from 'next/link';
-import React from 'react';
+import React, {useCallback} from 'react';
 import { useQuery } from 'react-query';
 import { collectionModule } from 'src/services/myriaCore';
 import { validatedImage } from 'src/utils';
+import {useGA4} from "../../../lib/ga";
+import {useAuthenticationContext} from "../../../context/authentication";
+import {useWalletContext} from "../../../context/wallet";
 
 const HotCollection: React.FC = () => {
+  const { event } = useGA4();
+  const { user } = useAuthenticationContext();
+  const { address } = useWalletContext();
+
   const payload = {
     limit: 10,
     page: 1,
@@ -17,6 +24,15 @@ const HotCollection: React.FC = () => {
   const { data, isLoading, error } = useQuery(['marketplace', 'hotCollection'], () =>
     collectionModule?.getCollectionList(payload)
   );
+
+  const onClickCollectionTracking = useCallback((itm: CollectionItems) => {
+    return event('MKP Collection Selected', {
+      myria_id: user?.user_id,
+      wallet_address: `_${address}`,
+      collection_name: itm?.name,
+      collection_author: itm?.project?.name
+    });
+  }, [user, address])
 
   const hotCollection: CommonPaginateDataTypes<CollectionItems[]> | undefined = data?.data;
 
@@ -28,6 +44,7 @@ const HotCollection: React.FC = () => {
           return (
             <Link href={`/marketplace/collection?id=${itm.publicId}`} key={idx}>
               <a
+                onClick={() => onClickCollectionTracking(itm)}
                 href={`/marketplace/collection?id=${itm.publicId}`}
                 className="bg-base/3 cursor-pointer rounded-lg">
                 <div key={idx} className={`bg-base/3 overflow-hidden rounded-lg`}>

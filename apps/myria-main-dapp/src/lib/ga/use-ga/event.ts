@@ -32,6 +32,40 @@ export type BasedParams = {
 
 type Campaign = 'Sigil' | 'Nodes' | 'AB de Villers';
 
+export type NFTItemAction =
+  | 'MKP Item Buy Now Selected'
+  | 'MKP Check Out Confirmed'
+  | 'MKP Check Out Canceled'
+  | 'MKP Item Listing Confirmed'
+  | 'MKP Item Listing Completed'
+  | 'MKP Item Unlisting Selected'
+  | 'MKP Item Listing Modify Selected'
+  | 'MKP Item Unlisting Completed'
+  | 'MKP Item Listing Modify Completed';
+
+export type NFTItemNoPriceAction = 'MKP Item Listing Selected' | 'MKP Item Withdrawal Selected';
+
+type NFTItemTrack = {
+  myria_id?: string;
+  wallet_address?: string;
+  collection_name?: string;
+  collection_author?: string;
+  item_name: string;
+  item_id: string;
+}
+
+type NFTItemTrackWithPrice = {
+  myria_id?: string;
+  wallet_address?: string;
+  collection_name?: string;
+  collection_author?: string;
+  item_name: string;
+  item_id: string;
+  item_owner: string;
+  item_price_eth?: number;
+  item_price_usd?: number;
+};
+
 export type EventDefined = {
   'Discord Button Clicked': {
     game_name?: string;
@@ -216,4 +250,32 @@ export type EventDefined = {
     eth_total_amount: number;
     usd_total_amount: number;
   };
+  'MKP Collection Selected': {
+    myria_id?: string;
+    wallet_address?: string;
+    collection_name: string;
+    collection_author: string;
+  };
+  'MKP Item Selected': NFTItemTrack;
+  'MKP Item Buy Now Selected': NFTItemTrackWithPrice;
+  'MKP Check Out Confirmed': NFTItemTrackWithPrice;
+  'MKP Check Out Canceled': NFTItemTrackWithPrice;
+  'MKP Purchase Completed': NFTItemTrackWithPrice & { trx_url: string };
+  'MKP Item Listing Selected': NFTItemTrack;
+  'MKP Item Listing Confirmed': NFTItemTrackWithPrice;
+  'MKP Item Listing Completed': NFTItemTrackWithPrice;
+  'MKP Item Unlisting Selected': NFTItemTrackWithPrice;
+  'MKP Item Listing Modify Selected': NFTItemTrackWithPrice;
+  'MKP Item Listing Modify Completed': NFTItemTrackWithPrice & {
+    old_price_eth: number,
+    old_price_usd: number
+  };
+  'MKP Item Unlisting Completed': NFTItemTrackWithPrice;
+  'MKP Item Withdrawal Selected': NFTItemTrack;
+  'MKP Connect to Buy Selected': {
+    collection_name?: string;
+    collection_author?: string;
+    item_name: string;
+    item_id: string;
+  }
 };
