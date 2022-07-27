@@ -124,7 +124,7 @@ export default function MessageWithdrawModal({
   return (
     <div
       className={cn(
-        `absolute top-[80px] right-[21px]`,
+        `absolute top-[80px] right-[21px] w-[406px]`,
         isShowMessage ? 'block' : 'hidden',
       )}
     >

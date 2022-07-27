@@ -19,7 +19,7 @@ import ErrorIcon from './icons/ErrorIcon';
 const ConnectL2WalletButton: React.FC = () => {
   const { address, onConnect, disconnect } = useWalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
-  const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
+  const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
@@ -84,6 +84,17 @@ const ConnectL2WalletButton: React.FC = () => {
               The MetaMask account that is selected does not match the one used to create your Myria
               account. Please select the correct MetaMask account and try again.
             </Trans>
+          </p>
+          <p className="body-16-regular p-6 px-8">
+            <button
+              onClick={() => {
+                disconnect();
+                logout();
+                setShowMismatchedWalletModal(false);
+              }}
+              className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
+              <Trans>Disconnect and Sign Out</Trans>
+            </button>
           </p>
         </Modal.Content>
       </Modal>
