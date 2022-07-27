@@ -76,6 +76,7 @@ const PurchasePopover: FC<IProp> = ({ assetBuy, onCloseMessage, onConfirm }) => 
             </span>
             <div
               onClick={() => {
+                // wait for tracking
                 toast('This function is not ready yet!');
               }}
               className="text-primary/6 cursor-pointer">

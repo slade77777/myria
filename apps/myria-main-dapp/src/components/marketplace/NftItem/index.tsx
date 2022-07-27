@@ -1,7 +1,11 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { formatNumber2digits, formatPrice, getRarityColor, validatedImage } from 'src/utils';
 import { NFTItemType } from './type';
+import { useGA4 } from '../../../lib/ga';
+import { useAuthenticationContext } from '../../../context/authentication';
+import { useWalletContext } from '../../../context/wallet';
+import { assetModule } from 'src/services/myriaCore';
 
 interface Props {
   item: NFTItemType;
@@ -46,11 +50,29 @@ const DAOIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const NftItem = ({ item }: Props) => {
+  const { event } = useGA4();
+  const { user } = useAuthenticationContext();
+  const { address } = useWalletContext();
+
   const rarityColor = getRarityColor(item.rarity);
   const price = parseFloat(item.priceETH + '');
+
+  const onClickItemTracking = useCallback(() => {
+    assetModule?.getAssetById(item.id).then(asset => {
+      event('MKP Item Selected', {
+        myria_id: user?.user_id,
+        wallet_address: `_${address}`,
+        item_name: item.name,
+        item_id: item.id,
+        collection_name: asset?.data?.collectionName,
+        collection_author: asset?.data?.creator?.name
+      });
+    })
+  }, [item, user, address]);
+
   return (
     <Link href={`/marketplace/asset-detail?id=${item.id}`} key={item.id}>
-      <a href={`/marketplace/asset-detail?id=${item.id}`}>
+      <a href={`/marketplace/asset-detail?id=${item.id}`} onClick={onClickItemTracking}>
         <div className="cursor-pointer snap-start">
           <div className="bg-brand-deep-blue block w-full max-w-[298px] overflow-hidden rounded-[5px]">
             <div className="relative flex h-[298px] w-full items-center justify-center lg:h-[248px]">
