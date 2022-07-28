@@ -58,7 +58,7 @@ const NftItem = ({ item }: Props) => {
   const price = parseFloat(item.priceETH + '');
 
   const onClickItemTracking = useCallback(() => {
-    assetModule?.getAssetById(item.id).then(asset => {
+    assetModule?.getAssetById(item.id).then((asset) => {
       event('MKP Item Selected', {
         myria_id: user?.user_id,
         wallet_address: `_${address}`,
@@ -67,7 +67,7 @@ const NftItem = ({ item }: Props) => {
         collection_name: asset?.data?.collectionName,
         collection_author: asset?.data?.creator?.name
       });
-    })
+    });
   }, [item, user, address]);
 
   return (
@@ -82,7 +82,7 @@ const NftItem = ({ item }: Props) => {
                 style={{ backgroundColor: rarityColor }}
               />
               <div
-                className="z-2 absolute h-full w-full bg-cover bg-center bg-no-repeat"
+                className="z-2 absolute h-full w-full bg-contain bg-center bg-no-repeat"
                 style={{
                   backgroundImage: `url(${validatedImage(item.image_url)})`
                 }}
@@ -104,15 +104,15 @@ const NftItem = ({ item }: Props) => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex w-3/5">
-                    <img src={item.creatorImg} alt="creator" className="mr-1 w-5 h-5" />
+                    <img src={item.creatorImg} alt="creator" className="mr-1 h-5 w-5" />
                     <p className="truncate break-words text-[14px] font-medium text-white">
                       {item.creator}
                     </p>
                   </div>
                   {price > 0 ? (
-                    <div className="flex items-center justify-end w-2/5">
+                    <div className="flex w-2/5 items-center justify-end">
                       <DAOIcon className="mr-1" />
-                      <span className="text-[16px] font-medium text-white truncate">
+                      <span className="truncate text-[16px] font-medium text-white">
                         {formatPrice(price)}
                       </span>
                     </div>
