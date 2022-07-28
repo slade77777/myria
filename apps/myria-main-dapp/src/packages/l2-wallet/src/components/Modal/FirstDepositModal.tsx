@@ -21,6 +21,9 @@ import {
 
 import { TokenType } from '../../common/type';
 import { setDepositAmount } from '../../app/slices/uiSlice';
+import Tooltip from '../../../../../components/Tooltip';
+import { Trans } from '@lingui/macro';
+import DAOIcon from '../../../../../components/icons/DAOIcon';
 
 type Props = {
   modalShow: Boolean;
@@ -171,12 +174,28 @@ export default function FirstDepositModal({
                     />
                   </div>
                   <div className="mt-6">
-                    <div className="flex justify-between">
-                      <div className="mb-2 text-[14px] text-white">Amount</div>
+                    <div className="mb-2  flex justify-between">
+                      <div className=" text-[14px] text-white">Amount</div>
                       <div className="flex items-center text-[14px] text-[#777777]">
-                        <span className="text-[#9DA3A7]">Available</span>{' '}
-                        <span className="ml-2 text-white">{balanceL1}</span>
-                        <InfoCircleIcon className="ml-1 text-[#A1AFBA]" />
+                        <span className="text-[#9DA3A7]">Available</span>
+                        <DAOIcon className="ml-2 mr-1" size={14} />
+                        <span className=" text-white">{balanceL1}</span>
+                        <Tooltip>
+                          <Tooltip.Trigger className="focus:outline-none">
+                            <InfoCircleIcon className="ml-2 text-[#A1AFBA]" />
+                          </Tooltip.Trigger>
+                          <Tooltip.Content className="mf-10 max-w-[256px]">
+                            <div className="bg-base/5 mf-10 absolute right-0 top-4 min-w-[256px] rounded-[8px]  p-4 ">
+                              <div className="bg-base/5 absolute right-8 -mt-6  h-4 w-4 rotate-45"></div>
+                              <p className="text-base/9">
+                                <Trans>
+                                  This is the amount you have available to
+                                  deposit from your L1 wallet.
+                                </Trans>
+                              </p>
+                            </div>
+                          </Tooltip.Content>
+                        </Tooltip>
                       </div>
                     </div>
                     <MaxInput
