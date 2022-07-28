@@ -21,9 +21,10 @@ import {
 
 import { TokenType } from '../../common/type';
 import { setDepositAmount } from '../../app/slices/uiSlice';
-import Tooltip from '../../../../../components/Tooltip';
+import Tooltip from 'src/components/Tooltip';
 import { Trans } from '@lingui/macro';
-import DAOIcon from '../../../../../components/icons/DAOIcon';
+import DAOIcon from 'src/components/icons/DAOIcon';
+import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 
 type Props = {
   modalShow: Boolean;
@@ -74,6 +75,8 @@ export default function FirstDepositModal({
   const [depositProgress, setDepositProgress] = useState<number>(
     PROGRESS.START,
   );
+  const [errorAmount, setErrorAmount] = useState('');
+  const { data: etheCost = 0 } = useEtheriumPrice();
 
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
 
@@ -91,10 +94,30 @@ export default function FirstDepositModal({
     if (
       selectedToken &&
       !(amount > parseFloat(balanceL1)) &&
-      amount !== parseFloat('0')
+      amount !== parseFloat('0') &&
+      amount * etheCost > 10
     ) {
+      setErrorAmount('');
       setIsValidDeposit(true);
-    } else setIsValidDeposit(false);
+    } else {
+      setIsValidDeposit(false);
+      if (!selectedToken) {
+        return setErrorAmount('Select Asset required.');
+      }
+      if (amount === 0) {
+        return setErrorAmount("Amount can't be 0.");
+      }
+      if (amount > parseFloat(balanceL1)) {
+        return setErrorAmount('Your balance is not enough.');
+      }
+      if (amount * etheCost < 10) {
+        return setErrorAmount(
+          `Deposit amount cannot be less than ${(10 / etheCost).toFixed(
+            6,
+          )} ETH.`,
+        );
+      }
+    }
   }, [selectedToken, amount, balanceL1]);
 
   const deposit = async () => {
@@ -202,6 +225,9 @@ export default function FirstDepositModal({
                       max={parseFloat(balanceL1)}
                       onChangeHandle={setAmountHandle}
                     />
+                    {errorAmount && (
+                      <div className="mt-2 text-[#F83D5C]">{errorAmount}</div>
+                    )}
                     {/* <div className="flex justify-between mt-2">
                       <div className="text-[rgba(255,255,255,0.6)] text-[14px]">
                         Estimated gas fee
