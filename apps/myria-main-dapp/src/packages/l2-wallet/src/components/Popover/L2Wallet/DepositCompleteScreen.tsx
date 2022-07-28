@@ -36,16 +36,16 @@ export default function DepositCompleteScreen({
       <div className="text-base/9 mt-4 px-[29px] text-center text-[14px]">
         Your funds are now available in your Myria wallet.
       </div>
-      <div className="mt-[32px] rounded-[8px] bg-[rgba(5,14,21,0.5)] py-2 px-4 text-[16px] text-white">
+      <div className="mt-[32px] rounded-[8px] bg-[rgba(5,14,21,0.5)] py-2 px-4 text-[14px] text-[#A1AFBA]">
         <div className="flex justify-between text-[14px]">
-          <span className="text-[#A1AFBA]">Amount</span>
-          <span className="flex items-center">
+          <span>Amount</span>
+          <span className="flex items-center text-white">
             <DAOIcon size={14} className="mb-[2px]" />
             <span className="ml-1">{amount}</span>
           </span>
         </div>
         <div className="mt-2 flex justify-between text-[14px]">
-          <span className="text-[#A1AFBA]">Transaction ID</span>
+          <span>Transaction ID</span>
           <span className="text-[#F5B941]">View</span>
         </div>
       </div>

@@ -46,17 +46,17 @@ export default function WithdrawRequestScreen({
           <span className="text-primary/6 cursor-pointer">here</span> to learn
           more.
         </div>
-        <div className="mt-4 rounded-[8px] bg-[#050E15] p-4 text-[14px]">
+        <div className="mt-4 rounded-[8px] bg-[#050E15] p-4 text-[14px] text-[#A1AFBA]">
           <div className="flex justify-between">
             <span>Amount</span>
-            <span className="flex items-center">
+            <span className="flex items-center text-white">
               <DAOIcon size={14} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>
           </div>
           <div className="mt-[13px] flex justify-between">
             <span>Estimated completion</span>
-            <span>10-20 hours</span>
+            <span className="text-white">10-20 hours</span>
           </div>
         </div>
       </div>

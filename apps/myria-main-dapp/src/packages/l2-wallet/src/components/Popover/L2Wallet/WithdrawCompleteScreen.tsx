@@ -31,7 +31,7 @@ export default function WithdrawCompleteScreen({
         <div className="mt-[32px] rounded-[8px] bg-[#050E15] p-4 text-[14px] text-[#A1AFBA]">
           <div className="flex justify-between">
             <span>Amount</span>
-            <span className="flex items-center">
+            <span className="flex items-center text-white">
               <DAOIcon size={14} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>

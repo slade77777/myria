@@ -28,7 +28,7 @@ export default function WithdrawFailedScreen({
         <div className="mt-6 rounded-[8px] bg-[rgba(5,14,21,0.5)] p-4">
           <div className="flex items-center justify-between text-[#A1AFBA]">
             <div className="text-[14px]">Amount</div>
-            <span className="flex items-center">
+            <span className="flex items-center text-white">
               <DAOIcon size={14} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>

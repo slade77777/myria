@@ -37,22 +37,20 @@ export default function DepositInProgressScreen({
       <div className="mt-4 px-[29px] text-center text-[14px] text-[#A1AFBA]">
         You will receive a notification once the deposit is complete
       </div>
-      <div className="mt-4 rounded-[8px] bg-[rgba(5,14,21,0.5)] py-2 px-4 text-[16px] text-white">
+      <div className="mt-4 rounded-[8px] bg-[rgba(5,14,21,0.5)] py-2 px-4 text-[14px] text-[#A1AFBA]">
         <div className="flex justify-between">
-          <span className="text-[rgba(255,255,255,0.6)]">Amount</span>
-          <span className="flex items-center">
+          <span>Amount</span>
+          <span className="flex items-center text-white">
             <DAOIcon size={14} className="mb-[2px]" />
             <span className="ml-1">{amount}</span>
           </span>
         </div>
         <div className="mt-[13px] flex justify-between">
-          <span className="text-[rgba(255,255,255,0.6)]">
-            Estimated completion
-          </span>
-          <span>1-2 minutes</span>
+          <span>Estimated completion</span>
+          <span className="text-white">1-2 minutes</span>
         </div>
         <div className="mt-[13px] flex justify-between">
-          <span className="text-[rgba(255,255,255,0.6)]">Transaction ID</span>
+          <span>Transaction ID</span>
           <span className="text-[#F5B941]">View</span>
         </div>
       </div>
