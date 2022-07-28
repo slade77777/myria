@@ -5,6 +5,7 @@ import Web3Modal from '../components/Web3Modal';
 import { BigNumber, ethers } from 'ethers';
 import { useGA4 } from 'src/lib/ga';
 import { bal } from 'make-plural';
+import { Campaign } from '../lib/ga/use-ga/event';
 
 let web3Modal: Web3Modal;
 export type ReaderProvider = ethers.providers.InfuraProvider;
@@ -14,7 +15,7 @@ interface IWalletContext {
   signerProviderApi?: ethers.providers.Web3Provider;
   readerProviderApi?: ReaderProvider;
   chainId?: number | string;
-  onConnect: () => void;
+  onConnect: (campaign: Campaign) => void;
   ready: boolean;
   disconnect: () => void;
   signMessage: (message: string) => Promise<string> | undefined;
@@ -99,7 +100,7 @@ export const WalletProvider: React.FC = ({ children }) => {
     return readerProviderApi?.getBalance(address);
   }, [readerProviderApi, address]);
 
-  const onConnect = async () => {
+  const onConnect = async (campaign: Campaign) => {
     reset();
     const w3provider = await web3Modal.connect();
     await subscribeProvider(w3provider);
@@ -111,7 +112,7 @@ export const WalletProvider: React.FC = ({ children }) => {
     setSignerProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
-    event('Wallet Connected', { wallet_address: address, campaign: 'Sigil' });
+    event('Wallet Connected', { wallet_address: address, campaign });
   };
 
   const signMessage = (message: string) => {

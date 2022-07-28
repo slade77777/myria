@@ -110,7 +110,6 @@ export default function MainScreen({
   }, [balanceList, options]);
 
   const renderStatus = (item: any) => {
-    console.log('item', item);
     if (item.status === 'in_progress') {
       return (
         <div className="mt-1 flex items-center text-[#A1AFBA]">

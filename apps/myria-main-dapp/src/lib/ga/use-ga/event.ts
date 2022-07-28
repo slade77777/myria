@@ -30,7 +30,7 @@ export type BasedParams = {
   page_name: PageName;
 };
 
-type Campaign = 'Sigil' | 'Nodes' | 'AB de Villers';
+export type Campaign = 'Sigil' | 'Nodes' | 'AB de Villers' | 'B2C Marketplace';
 
 export type NFTItemAction =
   | 'MKP Item Buy Now Selected'
@@ -45,6 +45,20 @@ export type NFTItemAction =
 
 export type NFTItemNoPriceAction = 'MKP Item Listing Selected' | 'MKP Item Withdrawal Selected';
 
+export type WalletMarketPlaceAction =
+  | 'Wallet Deposit Selected'
+  | 'Wallet Deposit Completed'
+  | 'Wallet Deposit Failed'
+  | 'Wallet Withdraw Selected'
+  | 'Wallet Withdraw Completed'
+  | 'Wallet Withdraw Failed'
+  | 'Wallet Transaction History Selected';
+
+export type NFTItemWithdrawAction =
+  | 'NFT Withdraw Selected'
+  | 'NFT Withdraw Completed'
+  | 'NFT Withdraw Failed';
+
 type NFTItemTrack = {
   myria_id?: string;
   wallet_address?: string;
@@ -52,7 +66,25 @@ type NFTItemTrack = {
   collection_author?: string;
   item_name: string;
   item_id: string;
-}
+};
+
+type WalletActionTrack = {
+  myria_id?: string;
+  wallet_address: string;
+  L2_wallet_address: string;
+  amount_eth: number;
+  amount_usd: number;
+  balance_usd?: number;
+  balance_eth?: number;
+};
+
+type NFTItemWithdrawTrack = {
+  myria_id?: string;
+  wallet_address?: string;
+  L2_wallet_address: string;
+  item_name: string;
+  item_id: string;
+};
 
 type NFTItemTrackWithPrice = {
   myria_id?: string;
@@ -267,8 +299,8 @@ export type EventDefined = {
   'MKP Item Unlisting Selected': NFTItemTrackWithPrice;
   'MKP Item Listing Modify Selected': NFTItemTrackWithPrice;
   'MKP Item Listing Modify Completed': NFTItemTrackWithPrice & {
-    old_price_eth: number,
-    old_price_usd: number
+    old_price_eth: number;
+    old_price_usd: number;
   };
   'MKP Item Unlisting Completed': NFTItemTrackWithPrice;
   'MKP Item Withdrawal Selected': NFTItemTrack;
@@ -277,5 +309,24 @@ export type EventDefined = {
     collection_author?: string;
     item_name: string;
     item_id: string;
-  }
+  };
+  'Wallet Deposit Selected': WalletActionTrack;
+  'Wallet Deposit Completed': WalletActionTrack & {
+    trx_url?: string;
+  };
+  'Wallet Deposit Failed': WalletActionTrack & {
+    error_code?: string;
+  };
+  'Wallet Withdraw Selected': WalletActionTrack;
+  'Wallet Withdraw Completed': WalletActionTrack & {
+    trx_url?: string;
+  };
+  'Wallet Withdraw Failed': WalletActionTrack & {
+    error_code?: string;
+  };
+  'NFT Withdraw Selected': NFTItemWithdrawTrack;
+  'NFT Withdraw Completed': NFTItemWithdrawTrack & { trx_url?: string };
+  'Wallet Transaction History Selected': WalletActionTrack & {
+    trx_url?: string;
+  };
 };

@@ -8,6 +8,9 @@ import { assetModule } from 'src/services/myriaCore';
 import { useQuery } from 'react-query';
 import { validatedImage } from 'src/utils';
 import { toast } from 'react-toastify';
+import { useGA4 } from '../../../lib/ga';
+import { useAuthenticationContext } from '../../../context/authentication';
+import { useWalletContext } from '../../../context/wallet';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -40,10 +43,20 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = `0x${starkKeyUser}`;
+  const { event } = useGA4();
+  const { user } = useAuthenticationContext();
+  const { address } = useWalletContext();
 
   const handleConfirmWithdrawNftOffchain = async () => {
     /// call api confirm withdraw
     if (starkKey) {
+      event('NFT Withdraw Selected', {
+        myria_id: user?.user_id,
+        wallet_address: `_${address}`,
+        L2_wallet_address: `_${starkKey}`,
+        item_name: valueNFT.name,
+        item_id: valueNFT.id
+      });
       const getVaultDetail = await assetModule?.getAssetVaultDetails(
         starkKey,
         valueNFT.assetMintId
@@ -70,6 +83,14 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
         await refetch();
         handleWithdrawing(true);
         onChangeStatus();
+        event('NFT Withdraw Completed', {
+          myria_id: user?.user_id,
+          wallet_address: `_${address}`,
+          L2_wallet_address: `_${starkKeyUser}`,
+          item_name: valueNFT.name,
+          item_id: valueNFT.id,
+          trx_url: ''
+        });
       }
     }
   };

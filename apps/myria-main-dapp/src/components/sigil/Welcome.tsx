@@ -132,7 +132,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
             {installedWallet === true && isSupportedBrowser && (
               <button
                 onClick={() => {
-                  onConnect();
+                  onConnect('Sigil');
                   event('Connect Wallet Selected', { campaign: 'Sigil' });
                 }}
                 className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">

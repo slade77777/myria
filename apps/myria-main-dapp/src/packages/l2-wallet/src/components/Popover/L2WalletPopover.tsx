@@ -1,5 +1,5 @@
 // Import packages
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Trans } from '@lingui/macro';
 import { useSelector, useDispatch } from 'react-redux';
 import Web3 from 'web3';
@@ -54,6 +54,9 @@ import LogoutIcon from '../../../../../components/icons/LogoutIcon';
 import { useWalletContext } from '../../../../../context/wallet';
 import { useEtheriumPrice } from '../../../../../hooks/useEtheriumPrice';
 import ChevronIcon from '../Icons/ChevronIcon';
+import { useGA4 } from '../../../../../lib/ga';
+import { useAuthenticationContext } from '../../../../../context/authentication';
+import { WalletMarketPlaceAction } from '../../../../../lib/ga/use-ga/event';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -316,6 +319,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   }, [amount, selectedToken, etheCost, screen]);
 
   const deposit = async () => {
+    trackWalletAction({
+      eventName: 'Wallet Deposit Selected',
+      hide_balance: true,
+    });
     try {
       setDepositInProgress(true);
       const initializeClient: IMyriaClient = {
@@ -358,7 +365,9 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       }
       setDepositInProgress(false);
       setScreen(SCREENS.DEPOSIT_COMPLETE_SCREEN);
+      trackWalletAction({ eventName: 'Wallet Deposit Completed', trx_url: '' });
     } catch (err) {
+      trackWalletAction({ eventName: 'Wallet Deposit Failed', error_code: '' });
       setDepositInProgress(false);
       setScreen(SCREENS.DEPOSIT_FAILED);
     }
@@ -425,9 +434,17 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       }
       setScreen(SCREENS.WITHDRAW_COMPLETE);
       setWithdrawInProgress(false);
+      trackWalletAction({
+        eventName: 'Wallet Withdraw Completed',
+        trx_url: '',
+      });
     } catch (err) {
       setWithdrawInProgress(false);
       setScreen(SCREENS.WITHDRAW_FAILED);
+      trackWalletAction({
+        eventName: 'Wallet Withdraw Failed',
+        error_code: '',
+      });
     }
   };
 
@@ -501,6 +518,42 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const withdrawRetryHandler = async () => {
     setScreen(SCREENS.MAIN_SCREEN);
   };
+
+  const { event } = useGA4();
+  const { user } = useAuthenticationContext();
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
+  );
+  const trackWalletAction = useCallback(
+    ({
+      eventName,
+      trx_url,
+      error_code,
+      hide_balance,
+    }: {
+      eventName: WalletMarketPlaceAction;
+      trx_url?: string;
+      error_code?: string;
+      hide_balance?: boolean;
+    }) => {
+      event(eventName, {
+        myria_id: user?.user_id,
+        wallet_address: `_${address}`,
+        L2_wallet_address: `_0x${starkKeyUser}`,
+        amount_eth: +amount,
+        amount_usd: amount * etheCost,
+        ...(hide_balance
+          ? {}
+          : {
+              balance_eth: +balance,
+              balance_usd: +balance * etheCost,
+            }),
+        ...(trx_url ? { trx_url } : {}),
+        ...(error_code ? { error_code } : {}),
+      });
+    },
+    [amount, address, user?.user_id, etheCost],
+  );
 
   return (
     <div className="min-h-[565px] w-[406px] py-[24px]">
@@ -651,6 +704,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             setAmountHandle={setAmountHandle}
             withdrawHandle={() => {
               // if (isValidForm()) {
+              trackWalletAction({
+                eventName: 'Wallet Withdraw Selected',
+                hide_balance: true,
+              });
               setScreen(SCREENS.WITHDRAW_REQUEST);
               // }
             }}
