@@ -9,7 +9,6 @@ import type { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';
 
 import { WalletProvider } from 'src/context/wallet';
-import { L2WalletProvider } from 'src/context/l2-wallet';
 import { AuthenticationProvider } from 'src/context/authentication';
 import Tooltip from 'src/components/Tooltip';
 import LanguageProvider, { useLanguage } from 'src/context/language';
@@ -61,23 +60,21 @@ function App({ Component, pageProps }: AppProps) {
         />
         <ToastContainer hideProgressBar className={toastStyle.toast} />
         <WalletProvider>
-          <L2WalletProvider>
-            <WithfrawNFT>
-              <AuthenticationProvider>
-                <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
-                  <WithLanguageStyle>
-                    <TabProvider>
-                      <>
-                        <Provider store={store}>
-                          <Component {...pageProps} />
-                        </Provider>
-                      </>
-                    </TabProvider>
-                  </WithLanguageStyle>
-                </Tooltip.Provider>
-              </AuthenticationProvider>
-            </WithfrawNFT>
-          </L2WalletProvider>
+          <WithfrawNFT>
+            <AuthenticationProvider>
+              <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
+                <WithLanguageStyle>
+                  <TabProvider>
+                    <>
+                      <Provider store={store}>
+                        <Component {...pageProps} />
+                      </Provider>
+                    </>
+                  </TabProvider>
+                </WithLanguageStyle>
+              </Tooltip.Provider>
+            </AuthenticationProvider>
+          </WithfrawNFT>
         </WalletProvider>
       </LanguageProvider>
       <ReactQueryDevtools initialIsOpen={false} />

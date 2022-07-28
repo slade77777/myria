@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Web3 from 'web3';
 import { useSelector, useDispatch } from 'react-redux';
-import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 
 // Import components
 import Header from '../Header';
@@ -23,6 +22,7 @@ import {
 } from '../../app/slices/accountSlice';
 import { setWithdrawClaimModal } from '../../app/slices/uiSlice';
 import StarkKeyNotFoundModal from '../Modal/StarkKeyNotFoundModal';
+import { getModuleFactory } from '../../services/myriaCoreSdk';
 
 // @ts-ignore
 
@@ -85,13 +85,8 @@ export default function MainLayout({ children }: TProps) {
           },
         });
       }
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
-
-      const moduleFactory = new Modules.ModuleFactory(initializeClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
       const withdrawModule = moduleFactory.getWithdrawModule();
 
       const assetList = await withdrawModule.getWithdrawalBalance(
@@ -138,14 +133,10 @@ export default function MainLayout({ children }: TProps) {
 
   const connectWallet = async () => {
     try {
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
-      };
-      const myriaClient = new MyriaClient(client);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
       const web3Account = await loadWeb3();
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+
       const userModule = moduleFactory.getUserModule();
       const user = await userModule.getUserByWalletAddress(web3Account);
       if (user.status === 'success' && user.data) {
@@ -172,13 +163,8 @@ export default function MainLayout({ children }: TProps) {
         message,
         fromWalletAddress,
       );
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
-      };
-      const myriaClient = new MyriaClient(client);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
       const commonModule = moduleFactory.getCommonModule();
       const starkKey = commonModule.getStarkPublicKey(wSignature);
       dispatch(setStarkPublicKey(starkKey));

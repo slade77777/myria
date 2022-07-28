@@ -15,7 +15,8 @@ interface IWalletContext {
   signerProviderApi?: ethers.providers.Web3Provider;
   readerProviderApi?: ReaderProvider;
   chainId?: number | string;
-  onConnect: (campaign: Campaign) => void;
+  onConnect: () => void;
+  onConnectCompaign: (campaign: Campaign) => void;
   ready: boolean;
   disconnect: () => void;
   signMessage: (message: string) => Promise<string> | undefined;
@@ -100,7 +101,21 @@ export const WalletProvider: React.FC = ({ children }) => {
     return readerProviderApi?.getBalance(address);
   }, [readerProviderApi, address]);
 
-  const onConnect = async (campaign: Campaign) => {
+  const onConnect = async () => {
+    reset();
+    const w3provider = await web3Modal.connect();
+    await subscribeProvider(w3provider);
+    const providerApi = new ethers.providers.Web3Provider(w3provider);
+    const accounts = await providerApi.listAccounts();
+    const address = accounts[0];
+    const network = await providerApi.getNetwork();
+    setW3Provider(w3provider);
+    setSignerProviderApi(providerApi);
+    setChainId(network.chainId);
+    setAddress(address);
+  };
+
+  const onConnectCompaign = async (campaign: Campaign) => {
     reset();
     const w3provider = await web3Modal.connect();
     await subscribeProvider(w3provider);
@@ -133,6 +148,7 @@ export const WalletProvider: React.FC = ({ children }) => {
         readerProviderApi: readerProviderApi as any,
         chainId,
         onConnect,
+        onConnectCompaign,
         ready,
         disconnect,
         signMessage,

@@ -1,5 +1,3 @@
-import { BigNumber } from 'ethers';
-import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import React, { useContext, useState } from 'react';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
 
@@ -27,7 +25,8 @@ export const WithfrawNFT: React.FC = ({ children }) => {
   };
 
   return (
-    <WithDrawNFT.Provider value={{ valueNFT, handleSetValueNFT, isWithdrawing, handleWithdrawing, status, setStatus }}>
+    <WithDrawNFT.Provider
+      value={{ valueNFT, handleSetValueNFT, isWithdrawing, handleWithdrawing, status, setStatus }}>
       {children}
     </WithDrawNFT.Provider>
   );

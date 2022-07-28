@@ -5,7 +5,7 @@ import Web3 from 'web3';
 import cn from 'classnames';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
-import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
+import { Types } from 'myria-core-sdk';
 
 // Import components
 import {
@@ -23,6 +23,7 @@ import { setWithdrawClaimPopover } from '../../app/slices/uiSlice';
 // import { useWalletContext } from '../../../src/context/wallet';
 import { useWalletContext } from '../../../../../../src/context/wallet';
 import { useAuthenticationContext } from '../../../../../../src/context/authentication';
+import { getModuleFactory } from '../../services/myriaCoreSdk';
 
 // Import type
 // import { TokenType } from '../../common/type';
@@ -68,15 +69,9 @@ export default function ClaimWithdrawPopover({
   const claimWithdraw = async () => {
     try {
       setWithdrawProgress(true);
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-      const myriaClient = new MyriaClient(initializeClient);
-
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const withdrawModule = moduleFactory.getWithdrawModule();
       if (selectedToken.name === 'Ethereum') {
         const assetType = asset.getAssetType({

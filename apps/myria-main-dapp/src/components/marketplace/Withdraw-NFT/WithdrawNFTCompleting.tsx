@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
+import { Types } from 'myria-core-sdk';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
@@ -9,6 +9,8 @@ import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
+
 interface IProp {}
 
 const WithdrawNFTCompleting: FC<IProp> = ({}) => {
@@ -20,14 +22,10 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
   );
   const withdrawNftOnchain = async () => {
     const starkKey = '0x' + starkKeyUser;
-    const client: IMyriaClient = {
-      provider: window.web3.currentProvider,
-      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3
-    };
 
-    const myriaClient = new MyriaClient(client);
-    const moduleFactory = new Modules.ModuleFactory(myriaClient);
+    const moduleFactory = await getModuleFactory();
+    if (!moduleFactory) return;
+
     const withdrawalModule = moduleFactory.getWithdrawModule();
     const assetModule = moduleFactory.getAssetModule();
     setPending(true);

@@ -1,6 +1,5 @@
 // Import packages
 import { forwardRef, useImperativeHandle, useState } from 'react';
-import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
@@ -10,6 +9,7 @@ import { setStarkPublicKey } from '../../app/slices/accountSlice';
 
 // Import Redux
 import { RootState } from '../../app/store';
+import { getModuleFactory } from '../../services/myriaCoreSdk';
 
 type RefType = {
   onOpenModal: () => void;
@@ -70,15 +70,8 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
         message,
         fromWalletAddress,
       );
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3,
-      };
-
-      const myriaClient = new MyriaClient(client);
-
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
       const commonModule = moduleFactory.getCommonModule();
       const userModule = moduleFactory.getUserModule();
       const starkKey = commonModule.getStarkPublicKey(wSignature);
@@ -107,7 +100,7 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
           .finally(() => {
             onCloseModal();
           });
-      }, 2000);
+      }, 200);
     }
   };
   const onSendRequest = () => {

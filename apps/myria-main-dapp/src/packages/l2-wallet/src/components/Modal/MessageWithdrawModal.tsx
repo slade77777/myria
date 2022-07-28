@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
-import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
+import { Types } from 'myria-core-sdk';
 import Web3 from 'web3';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
@@ -21,6 +21,7 @@ import {
   setWithdrawClaimModal,
   setWithdrawClaimPopover,
 } from '../../app/slices/uiSlice';
+import { getModuleFactory } from '../../services/myriaCoreSdk';
 
 type Props = {
   isShowMessage: Boolean;
@@ -48,15 +49,9 @@ export default function MessageWithdrawModal({
   const claim = async () => {
     try {
       setWithdrawProgress(true);
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-      const myriaClient = new MyriaClient(initializeClient);
-
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const withdrawModule = moduleFactory.getWithdrawModule();
       if (selectedToken.name === 'Ethereum') {
         const assetType = asset.getAssetType({

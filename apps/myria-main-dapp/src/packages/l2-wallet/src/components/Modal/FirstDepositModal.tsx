@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Web3 from 'web3';
-import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
+import { Types } from 'myria-core-sdk';
 import cn from 'classnames';
 
 import { RootState } from '../../app/store';
@@ -21,10 +21,11 @@ import {
 
 import { TokenType } from '../../common/type';
 import { setDepositAmount } from '../../app/slices/uiSlice';
-import Tooltip from 'src/components/Tooltip';
+import Tooltip from '../../../../../components/Tooltip';
 import { Trans } from '@lingui/macro';
-import DAOIcon from 'src/components/icons/DAOIcon';
-import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
+import DAOIcon from '../../../../../components/icons/DAOIcon';
+import { useEthereumPrice } from '../../hooks/useEthereumPrice';
+import { getModuleFactory } from '../../services/myriaCoreSdk';
 
 type Props = {
   modalShow: Boolean;
@@ -76,7 +77,7 @@ export default function FirstDepositModal({
     PROGRESS.START,
   );
   const [errorAmount, setErrorAmount] = useState('');
-  const { data: etheCost = 0 } = useEtheriumPrice();
+  const { data: etheCost = 0 } = useEthereumPrice();
 
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
 
@@ -123,13 +124,9 @@ export default function FirstDepositModal({
   const deposit = async () => {
     try {
       setDepositProgress(PROGRESS.PROCESSING);
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
-      const myriaClient = new MyriaClient(initializeClient);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+
       const depositModule = moduleFactory.getDepositModule();
       if (selectedToken.name === 'Ethereum') {
         await depositModule.depositEth(
