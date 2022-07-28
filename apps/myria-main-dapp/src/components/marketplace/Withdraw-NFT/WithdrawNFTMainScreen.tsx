@@ -1,4 +1,3 @@
-import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
@@ -11,6 +10,7 @@ import { toast } from 'react-toastify';
 import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -21,13 +21,9 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', assetDetail.id],
     async () => {
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3
-      };
-      const myriaClient = new MyriaClient(client);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+
       const assetModule = moduleFactory.getAssetModule();
       const [assetDetails, listOrder] = await Promise.all([
         assetModule?.getAssetById(assetDetail.id), //getAssetDetail by assetId
@@ -64,14 +60,9 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
 
       if (getVaultDetail?.status === 'success') {
         const dataVaultDetail = getVaultDetail.data;
-        const client: IMyriaClient = {
-          provider: window.web3.currentProvider,
-          networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-          web3: window.web3
-        };
+        const moduleFactory = await getModuleFactory();
+        if (!moduleFactory) return;
 
-        const myriaClient = new MyriaClient(client);
-        const moduleFactory = new Modules.ModuleFactory(myriaClient);
         const withdrawModule = moduleFactory.getWithdrawModule();
         const withdraw = await withdrawModule?.withdrawNftOffChain({
           id: valueNFT.id,

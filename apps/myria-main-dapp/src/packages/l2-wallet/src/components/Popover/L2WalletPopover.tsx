@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Web3 from 'web3';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
-import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
+import { Types } from 'myria-core-sdk';
 import Link from 'next/link';
 import cn from 'classnames';
 import moment from 'moment';
@@ -57,6 +57,7 @@ import ChevronIcon from '../Icons/ChevronIcon';
 import { useGA4 } from '../../../../../lib/ga';
 import { useAuthenticationContext } from '../../../../../context/authentication';
 import { WalletMarketPlaceAction } from '../../../../../lib/ga/use-ga/event';
+import { getModuleFactory } from '../../services/myriaCoreSdk';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -223,15 +224,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
   useEffect(() => {
     const fetchTransactionHistory = async () => {
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
-
-      const myriaClient = new MyriaClient(initializeClient);
-
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
       const transactionModule = moduleFactory.getTransactionModule();
       try {
         const { data } = await transactionModule.getTransactionList(
@@ -325,15 +319,9 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     });
     try {
       setDepositInProgress(true);
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-      const myriaClient = new MyriaClient(initializeClient);
-
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const depositModule = moduleFactory.getDepositModule();
 
       if (selectedToken.name === 'Ethereum') {
@@ -376,15 +364,9 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const withdraw = async () => {
     try {
       setWithdrawInProgress(true);
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-      const myriaClient = new MyriaClient(initializeClient);
-
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const withdrawModule = moduleFactory.getWithdrawModule();
 
       if (selectedToken.name === 'Ethereum') {
@@ -477,13 +459,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         },
       });
     }
-    const initializeClient: IMyriaClient = {
-      provider: window.web3.currentProvider,
-      networkId: 5,
-      web3: window.web3,
-    };
-
-    const moduleFactory = new Modules.ModuleFactory(initializeClient);
+    const moduleFactory = await getModuleFactory();
+    if (!moduleFactory) return;
     const withdrawModule = moduleFactory.getWithdrawModule();
 
     const assetList = await withdrawModule.getWithdrawalBalance(

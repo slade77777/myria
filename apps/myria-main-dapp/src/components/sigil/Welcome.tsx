@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
-  const { address, onConnect } = useWalletContext();
+  const { address, onConnectCompaign } = useWalletContext();
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -132,7 +132,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
             {installedWallet === true && isSupportedBrowser && (
               <button
                 onClick={() => {
-                  onConnect('Sigil');
+                  onConnectCompaign('Sigil');
                   event('Connect Wallet Selected', { campaign: 'Sigil' });
                 }}
                 className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">

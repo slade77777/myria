@@ -1,19 +1,14 @@
 import { useState, useEffect } from 'react';
-import { IMyriaClient, Modules } from 'myria-core-sdk';
-
-declare let window: any;
+import { getModuleFactory } from '../../services/myriaCoreSdk';
 
 function useBalanceList(pKey: string, screen: number) {
   const [balanceList, setBalanceList] = useState<Array<any>>([]);
 
   useEffect(() => {
     async function fetchBalanceList() {
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
-      const moduleFactory = new Modules.ModuleFactory(initializeClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+
       const assetModule = moduleFactory.getAssetModule();
 
       const assetList = await assetModule.getListAssetsByStarkKey('0x' + pKey);

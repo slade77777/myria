@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IMyriaClient, Modules } from 'myria-core-sdk';
 
 import { RootState } from '../app/store';
 import { setNFTs } from '../app/slices/nftSlice';
 import { isValidHttpUrl } from '../common/util';
+import { getModuleFactory } from '../services/myriaCoreSdk';
 
 declare let window: any;
 
@@ -22,12 +22,8 @@ export default function Assets() {
 
   useEffect(() => {
     const fetchNFTList = async () => {
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3,
-      };
-      const moduleFactory = new Modules.ModuleFactory(initializeClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
       const assetModule = moduleFactory.getAssetModule();
       const tAssetList: any = await assetModule.getNftAssets(
         '0x' + starkPublicKeyFromPrivateKey,

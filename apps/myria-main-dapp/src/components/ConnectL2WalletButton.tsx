@@ -20,7 +20,7 @@ import WalletIcon from './icons/WalletIcon';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { event } = useGA4();
-  const { address, onConnect, disconnect } = useWalletContext();
+  const { address, onConnectCompaign, disconnect } = useWalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
   const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
   const starkKeyUser = useSelector(
@@ -151,7 +151,7 @@ const ConnectL2WalletButton: React.FC = () => {
           <button
             onClick={() => {
               event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
-              onConnect('B2C Marketplace');
+              onConnectCompaign('B2C Marketplace');
             }}
             className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
             <Trans>Connect wallet</Trans>

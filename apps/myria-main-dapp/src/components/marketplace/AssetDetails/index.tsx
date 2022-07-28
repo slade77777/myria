@@ -1,6 +1,5 @@
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
-import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import {
   CreateOrderEntity,
   SignableOrderInput
@@ -12,8 +11,6 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import BackIcon from 'src/components/icons/BackIcon';
-import CircleCheck from 'src/components/icons/CircleCheck';
-import CircleCheckSuccess from 'src/components/icons/CircleCheckSuccess';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
 import OwnerAssetIcon from 'src/components/icons/OwnerAssetIcon';
@@ -27,7 +24,7 @@ import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
-import { formatNumber2digits, formatPrice, getRarityColor, validatedImage } from 'src/utils';
+import { formatNumber2digits, formatPrice, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
@@ -43,8 +40,8 @@ import testavatarImg from './testavatar.png';
 import avatar from '../../../../public/images/marketplace/avatar.png';
 import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
-import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
 
 interface Props {
   id: string;
@@ -80,16 +77,13 @@ const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
 
 function AssetDetails({ id }: Props) {
   const router = useRouter();
+
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', id],
     async () => {
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3
-      };
-      const myriaClient = new MyriaClient(client);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+
       const assetModule = moduleFactory.getAssetModule();
       const [assetDetails, listOrder] = await Promise.all([
         assetModule?.getAssetById(id), //getAssetDetail by assetId
@@ -132,14 +126,9 @@ function AssetDetails({ id }: Props) {
   const { data: moreCollectionList } = useQuery(
     ['moreCollection', assetDetails?.collectionId],
     async () => {
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3
-      };
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-      const myriaClient = new MyriaClient(client);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const collectionModule = moduleFactory.getCollectionModule();
       // more from this Collection (status:'FOR_SALE')
       const res = await collectionModule?.getAssetByCollectionId({
@@ -173,11 +162,8 @@ function AssetDetails({ id }: Props) {
   const [showModalUnlist, setShowModalUnlist] = useState(false);
   const [showMessageModify, setShowMessageModify] = useState(false);
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
-  const [payloadDataTrade, setPayloadDataTrade] = useState({});
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
-
-  const rarityColor = getRarityColor('rare');
   const {
     isWithdrawing,
     setStatus: setWithdrawalStatus,
@@ -209,14 +195,8 @@ function AssetDetails({ id }: Props) {
     setShowModal((showModal) => !showModal);
   }, [setShowModal]);
   const onSubmitModifyOrder = async ({ price }: { price: string }) => {
-    const client: IMyriaClient = {
-      provider: window.web3.currentProvider,
-      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3
-    };
-
-    const myriaClient = new MyriaClient(client);
-    const moduleFactory = new Modules.ModuleFactory(myriaClient);
+    const moduleFactory = await getModuleFactory();
+    if (!moduleFactory) return;
     const orderModule = moduleFactory.getOrderModule();
     if (!address) return;
     const result = await orderModule?.updateOrderPrice(assetDetails?.order.orderId + '', {
@@ -240,14 +220,9 @@ function AssetDetails({ id }: Props) {
   const onSubmitCreateOrder = useCallback(
     async ({ price }) => {
       onTrackingItem({ eventName: 'MKP Item Listing Confirmed' });
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3
-      };
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-      const myriaClient = new MyriaClient(client);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const orderModule = moduleFactory.getOrderModule();
       if (!address) return;
       const payload: SignableOrderInput = {
@@ -303,14 +278,9 @@ function AssetDetails({ id }: Props) {
     // cronjob run every 2 minutes
     const getBalance = async () => {
       if (!starkKeyUser || !address || !assetDetails?.assetMintId) return;
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3
-      };
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-      const myriaClient = new MyriaClient(client);
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const withdrawalModule = moduleFactory.getWithdrawModule();
       const balance = await withdrawalModule.getWithdrawalBalance(
         address,
@@ -367,14 +337,9 @@ function AssetDetails({ id }: Props) {
   }, [address, assetDetails?.order, assetDetails?.owner?.starkKey, starkKey]);
 
   const onHandleUnlist = async () => {
-    const client: IMyriaClient = {
-      provider: window.web3.currentProvider,
-      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3
-    };
+    const moduleFactory = await getModuleFactory();
+    if (!moduleFactory) return;
 
-    const myriaClient = new MyriaClient(client);
-    const moduleFactory = new Modules.ModuleFactory(myriaClient);
     const orderModule = moduleFactory.getOrderModule();
     if (!address || !assetDetails?.order.orderId) return;
     const result = await orderModule?.deleteOrderById({
@@ -450,14 +415,8 @@ function AssetDetails({ id }: Props) {
   }, [assetDetails]);
 
   const handleCreateTrade = async (tradeData: any) => {
-    const client: IMyriaClient = {
-      provider: window.web3.currentProvider,
-      networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-      web3: window.web3
-    };
-
-    const myriaClient = new MyriaClient(client);
-    const moduleFactory = new Modules.ModuleFactory(myriaClient);
+    const moduleFactory = await getModuleFactory();
+    if (!moduleFactory) return;
     const orderModule = moduleFactory.getOrderModule();
     const tradeModule = moduleFactory.getTradeModule();
     if (!address || !tradeData?.order.orderId) return;
@@ -512,23 +471,7 @@ function AssetDetails({ id }: Props) {
       name: data.name,
       price: formatPrice(Number(data?.order[0]?.nonQuantizedAmountBuy))
     });
-    setPayloadDataTrade(formatDataTrade(data));
     setShowPopup(true);
-  };
-
-  const formatDataTrade = (listOrder: any) => {
-    const isOrder = Array.isArray(listOrder.order);
-    const payloadDataTrade = {
-      order: {
-        orderId: isOrder ? listOrder?.order[0].id : listOrder?.order.orderId,
-        amountSell: isOrder ? listOrder?.order[0].amountSell : listOrder?.order.amountSell,
-        amountBuy: isOrder ? listOrder?.order[0].amountBuy : listOrder?.order.amountBuy
-      },
-      tokenId: listOrder.tokenId,
-      tokenAddress: listOrder.tokenAddress
-    };
-
-    return payloadDataTrade;
   };
 
   if (isLoading) {
@@ -547,20 +490,14 @@ function AssetDetails({ id }: Props) {
         <span className="ml-[6px] font-normal text-[14px]">{titleBack}</span>
       </button>
       <div className="max-w-content mx-auto  flex flex-row space-x-28">
+        {/* container */}
         <div className="w-[620px]">
           {/* left */}
-          <div className="relative flex h-[620px] w-full items-center justify-center lg:h-[620px]  rounded-[12px] ">
-            <div className="absolute h-full w-full bg-[#081824] rounded-[12px]" />
-            <div
-              className="z-1 absolute h-full w-full opacity-[0.3] rounded-[12px]"
-              style={{ backgroundColor: rarityColor }}
-            />
-            <div
-              className="z-2 absolute h-4/5 w-4/5 bg-cover bg-center bg-no-repeat  rounded-[12px]"
-              style={{
-                backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})`
-              }}
-            />
+          <div
+            className=" border-base/5 h-[620px]  w-full
+          rounded-[3px] border-[3px] bg-center bg-no-repeat "
+            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
+            {/* img */}
           </div>
           {attributes.length > 0 && (
             <div className="text-white">
@@ -599,11 +536,11 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-[24px] text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="text-light mt-[24px] flex w-[325px] flex-row">
+              <div className="text-light mt-[24px] flex w-[325px] flex-row justify-between">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
-                <span className="mx-6">|</span>
+                <span>|</span>
                 <span>
                   <Trans>Owned by</Trans> {ownedBy}
                 </span>
@@ -632,7 +569,6 @@ function AssetDetails({ id }: Props) {
                     name: assetDetails?.name || '',
                     price: String(currentPrice)
                   });
-                  setPayloadDataTrade(formatDataTrade({ ...assetDetails }));
                   setShowPopup(true);
                 }}
               />
@@ -643,7 +579,7 @@ function AssetDetails({ id }: Props) {
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
                   onTrackingConnectWallet();
-                  onConnect('B2C Marketplace');
+                  onConnect();
                 }}
               />
             )}
@@ -710,22 +646,22 @@ function AssetDetails({ id }: Props) {
       </div>
       {showPopup && (
         <PurchaseModal
+          setChangeStatusSuccess={() => {}}
           open={showPopup}
           onCreate={async () => {
             onTrackingItem({ eventName: 'MKP Check Out Confirmed' });
-            await handleCreateTrade(payloadDataTrade);
+            await handleCreateTrade(assetDetails);
           }}
           onClose={() => {
             setShowPopup(false);
+            window.location.reload();
           }}
           onCloseMessage={() => {
             onTrackingItem({ eventName: 'MKP Check Out Canceled' });
             setShowPopup(false);
+            window.location.reload();
           }}
           assetBuy={assetBuy}
-          setChangeStatusSuccess={() => {
-            refetch();
-          }}
         />
       )}
       {showModalUnlist && (

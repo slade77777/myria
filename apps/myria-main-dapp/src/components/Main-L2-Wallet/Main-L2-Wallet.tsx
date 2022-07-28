@@ -1,19 +1,7 @@
 // Import packages
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import Web3 from 'web3';
 import { useSelector, useDispatch } from 'react-redux';
-import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
-
-// Import components
-// import Header from '../Header';
-// import TermsOfServiceModal from '../Modal/TermsOfServiceModal';
-// import FirstDepositModal from '../Modal/FirstDepositModal';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
-// import CreateMyriaAccountModal from '../Modal/CreateMyriaAccountModal';
-// import CreateMyriaWalletModal from '../Modal/CreateMyriaWalletModal';
-// import MessageDepositModal from '../Modal/MessageDepositModal';
-// import MessageWithdrawModal from '../Modal/MessageWithdrawModal';
-// import WelcomeMyriaModal from '../Modal/WelcomeMyriaModal';
 
 // Import Redux
 import {
@@ -30,6 +18,8 @@ import MessageDepositModal from 'src/packages/l2-wallet/src/components/Modal/Mes
 import MessageWithdrawModal from 'src/packages/l2-wallet/src/components/Modal/MessageWithdrawModal';
 import WelcomeMyriaModal from 'src/packages/l2-wallet/src/components/Modal/WelcomeMyriaModal';
 import { useWalletContext } from 'src/context/wallet';
+
+import { getAccounts, getModuleFactory, initialWeb3 } from 'src/services/myriaCoreSdk';
 
 // @ts-ignore
 
@@ -64,7 +54,6 @@ export default function MainL2Wallet() {
           type: 'ETH',
           data: {
             quantum: QUANTUM_CONSTANT.toString()
-            // tokenAddress: '0xD5f1cC0264d0E22BE4488109dbf5d097eb37a576',
           }
         });
       } else {
@@ -76,13 +65,9 @@ export default function MainL2Wallet() {
           }
         });
       }
-      const initializeClient: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: 5,
-        web3: window.web3
-      };
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-      const moduleFactory = new Modules.ModuleFactory(initializeClient);
       const withdrawModule = moduleFactory.getWithdrawModule();
 
       const assetList = await withdrawModule.getWithdrawalBalance('0x' + pKey, assetType);
@@ -114,60 +99,45 @@ export default function MainL2Wallet() {
         console.error('Please connect wallet first.');
         return;
       }
-      const message = 'Message request signature: ';
-      const fromWalletAddress = web3Account;
-      if (window.web3 && window.web3.eth && window.web3.eth.personal) {
-        const wSignature = await window.web3.eth.personal.sign(message, fromWalletAddress[0]);
-        const client: IMyriaClient = {
-          provider: window.web3.currentProvider,
-          networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-          web3: window.web3
-        };
-        const myriaClient = new MyriaClient(client);
-        const moduleFactory = new Modules.ModuleFactory(myriaClient);
-        const commonModule = moduleFactory.getCommonModule();
-        const starkKey = commonModule.getStarkPublicKey(wSignature);
-        console.log('starkKey', starkKey);
+      const signMessage = 'Message request signature: ';
+      const web3 = await initialWeb3();
+      const wSignature = await web3.eth.personal.sign(signMessage, web3Account, '');
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
-        dispatch(setStarkPublicKey(starkKey));
-      }
+      const commonModule = moduleFactory.getCommonModule();
+      const starkKey = commonModule.getStarkPublicKey(wSignature);
+      console.log('[onRequestSignature] starkKey', starkKey);
+
+      dispatch(setStarkPublicKey(starkKey));
     },
     [dispatch]
   );
 
   const loadWeb3 = useCallback(async () => {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
-      await window.ethereum.enable();
-    } else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
-    }
-    if (window.web3) {
-      const accounts = await window.web3.eth.getAccounts();
-      dispatch(markWalletConnected());
-      dispatch(setAccount(accounts[0]));
-      const client: IMyriaClient = {
-        provider: window.web3.currentProvider,
-        networkId: parseInt(window.web3.currentProvider.networkVersion, 10),
-        web3: window.web3
-      };
-      const myriaClient = new MyriaClient(client);
+    const accounts = await getAccounts();
+    const currentAccount = accounts[0];
+    if (!accounts || accounts.length === 0) return null;
 
-      const moduleFactory = new Modules.ModuleFactory(myriaClient);
-      const userModule = moduleFactory.getUserModule();
+    dispatch(markWalletConnected());
+    dispatch(setAccount(accounts[0]));
 
-      if (!account) return null;
+    const moduleFactory = await getModuleFactory();
+    if (!moduleFactory) return;
 
-      try {
-        const user = await userModule.getUserByWalletAddress(accounts);
-        console.log('User -> ', user);
-        if (user.status === 'success' && user.data) {
-          console.log('request signature');
-          onRequestSignature(accounts);
-        }
-      } catch {
-        walletModalRef.current.onOpenModal();
+    const userModule = moduleFactory.getUserModule();
+
+    if (!account) return null;
+
+    try {
+      const user = await userModule.getUserByWalletAddress(currentAccount);
+      console.log('[Load web3] L2 wallet user -> ', user);
+      if (user.status === 'success' && user.data) {
+        console.log('[Load web3] request signature');
+        onRequestSignature(currentAccount);
       }
+    } catch {
+      walletModalRef.current.onOpenModal();
     }
     return null;
   }, [account, dispatch, onRequestSignature]);
