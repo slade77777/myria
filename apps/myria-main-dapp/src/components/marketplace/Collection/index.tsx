@@ -40,12 +40,12 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
                 <ReadMoreText text={description || ''} />
               </div>
             </div>
-            <div className="flex flex-row gap-8">
+            <div className="flex flex-row gap-12">
               <div>
                 {totalAssets < 1000 ? (
-                  <p className="text-3xl text-white">{totalAssets}</p>
+                  <p className="text-3xl text-white text-right">{totalAssets}</p>
                 ) : (
-                  <p className="text-3xl text-white">
+                  <p className="text-3xl text-white text-right">
                     {totalAssets ? `${totalAssets / 1000}K` : '0'}
                   </p>
                 )}
@@ -53,9 +53,9 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
               </div>
               <div>
                 {totalAssetsForSale < 1000 ? (
-                  <p className="text-3xl text-white">{totalAssetsForSale}</p>
+                  <p className="text-3xl text-white text-right">{totalAssetsForSale}</p>
                 ) : (
-                  <p className="text-3xl text-white">
+                  <p className="text-3xl text-white text-right">
                     {totalAssetsForSale ? `${totalAssetsForSale / 1000}K` : '0'}
                   </p>
                 )}
