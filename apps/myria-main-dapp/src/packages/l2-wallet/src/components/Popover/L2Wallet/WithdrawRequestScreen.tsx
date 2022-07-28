@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import { toast } from 'react-toastify';
-import { ProgressIcon } from '../../Icons';
-import InfoCircle2Icon from '../../Icons/InfoCircle2Icon';
+import DAOIcon from '../../../../../../components/icons/DAOIcon';
+import { ArrowIcon, ProgressIcon } from '../../Icons';
 
 type Props = {
+  goBack: any;
   amount: number;
   cancelHandler: any;
   withdrawHandler: any;
@@ -11,54 +11,58 @@ type Props = {
 };
 
 export default function WithdrawRequestScreen({
+  goBack,
   amount,
   cancelHandler,
   withdrawHandler,
   withdrawInProgress,
 }: Props) {
   return (
-    <div className="text-white">
-      <div className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center">
-        <ProgressIcon
-          size={64}
-          className="w-full text-[#9ECEAB]"
-          isNotAnimate={!withdrawInProgress}
-        />
-      </div>
-      <div className="mt-[24px] text-center text-[24px]">
-        Withdrawal to L1 wallet
-      </div>
-      <div className="mt-[32px] rounded-[8px] bg-[#050E15] p-4 text-[16px]">
-        <div className="flex justify-between">
-          <span>Amount</span>
-          <span>{amount} ETH</span>
-        </div>
-        <div className="mt-[13px] flex justify-between">
-          <span>Estimated completion</span>
-          <span>10-20 hours</span>
+    <>
+      <div className="text-white">
+        <div
+          className="mt-[-32px] flex cursor-pointer items-center"
+          onClick={() => {
+            goBack();
+          }}
+        >
+          <ArrowIcon direction="left" />
+          <div className="ml-2 text-[20px] text-white">Withdraw</div>
         </div>
       </div>
-      <div className="mt-4 flex rounded-[8px] border border-[#9AC9E3] py-4 px-[14px]">
-        <div className="mr-[9px] flex-none">
-          <InfoCircle2Icon />
+      <div className="grow text-white">
+        <div className="mx-auto mt-[32px] flex h-[64px] w-[64px] justify-center">
+          <ProgressIcon
+            size={64}
+            className="w-full text-[#9ECEAB]"
+            isNotAnimate={!withdrawInProgress}
+          />
         </div>
-        <div className="text-[14px] text-[#9AC9E3]">
-          Withdrawal batch cycle is every 20 hours. Click
-          <button
-            onClick={() => {
-              toast('This function is not ready yet!');
-            }}
-            className="text-[#F5B941]"
-          >
-            {' '}
-            here{' '}
-          </button>{' '}
-          to learn more.
+        <div className="mt-[24px] text-center text-[24px]">
+          Withdrawal to L1 wallet
+        </div>
+        <div className="mt-4 px-[29px] text-center text-[14px] text-[#A1AFBA]">
+          Withdrawals are processed in batches every 20 hours. Click{' '}
+          <span className="text-primary/6 cursor-pointer">here</span> to learn
+          more.
+        </div>
+        <div className="mt-4 rounded-[8px] bg-[#050E15] p-4 text-[14px]">
+          <div className="flex justify-between">
+            <span>Amount</span>
+            <span className="flex items-center">
+              <DAOIcon size={14} className="mb-[2px]" />
+              <span className="ml-1">{amount}</span>
+            </span>
+          </div>
+          <div className="mt-[13px] flex justify-between">
+            <span>Estimated completion</span>
+            <span>10-20 hours</span>
+          </div>
         </div>
       </div>
-      <div className="mt-[55px] flex justify-between">
+      <div className="flex justify-between">
         <button
-          className="flex items-center justify-center rounded-[8px] bg-transparent text-[16px] font-bold text-[#F5B941]"
+          className="border-base/9 flex h-[40px] w-full max-w-[126px] items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
           onClick={() => {
             cancelHandler();
           }}
@@ -67,7 +71,7 @@ export default function WithdrawRequestScreen({
         </button>
         <button
           className={cn(
-            'flex  w-[126px] items-center justify-center rounded-[8px] px-[20px] py-[12px] text-[16px] font-bold',
+            'flex  h-[40px] w-[126px] items-center justify-center rounded-[8px] text-[16px] font-bold',
             withdrawInProgress
               ? '#9CA3AF bg-[#4B5563]'
               : 'bg-[#F5B941] text-[#040B10]',
@@ -80,6 +84,6 @@ export default function WithdrawRequestScreen({
           CONFIRM
         </button>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,6 +1,5 @@
-import React from 'react';
-
-import { CircleCloseIcon, ArrowIcon } from '../../Icons';
+import DAOIcon from '../../../../../../components/icons/DAOIcon';
+import { ArrowIcon, CircleCloseIcon } from '../../Icons';
 
 type Props = {
   depositRetryHandler: any;
@@ -39,15 +38,10 @@ export default function DepositFailedScreen({
         <div className="mt-4 rounded-[8px] bg-[rgba(5,14,21,0.5)] p-4">
           <div className="flex items-center justify-between">
             <div className="text-[14px] text-[#A1AFBA]">Amount</div>
-            <div className="flex items-center">
-              <img
-                width={16}
-                height={16}
-                src="/images/marketplace/eth.svg"
-                alt="eth_token"
-              />
-              <span className="ml-1 text-[14px] text-white">{amount}</span>
-            </div>
+            <span className="flex items-center">
+              <DAOIcon size={14} className="mb-[2px]" />
+              <span className="ml-1">{amount}</span>
+            </span>
           </div>
           <div className="mt-4 flex items-center justify-between">
             <div className="text-[14px] text-[#A1AFBA]">Transaction ID</div>
@@ -60,7 +54,7 @@ export default function DepositFailedScreen({
       <div className="absolute bottom-[24px] w-[calc(100%-48px)]">
         <button
           onClick={depositRetryHandler}
-          className="w-full rounded-[8px] bg-[#F5B941] py-[9px] text-center text-[14px] font-bold uppercase text-[#040B10]"
+          className="h-[40px] w-full rounded-[8px] bg-[#F5B941] text-center text-[14px] font-bold uppercase text-[#040B10]"
         >
           OK
         </button>

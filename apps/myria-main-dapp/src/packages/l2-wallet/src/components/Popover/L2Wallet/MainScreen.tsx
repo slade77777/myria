@@ -168,7 +168,7 @@ export default function MainScreen({
           onClick={() => {
             gotoWithdrawScreen();
           }}
-          className="flex w-[114px] items-center justify-center rounded-[8px] bg-[#0B2231] py-2 px-[18px] text-[14px] text-white"
+          className="flex w-[114px] items-center justify-center rounded-[8px] bg-[#0B2231] p-3 px-[18px] text-[14px] text-white"
         >
           <div>
             <ArrowUpRight />
@@ -178,7 +178,7 @@ export default function MainScreen({
           </span>
         </button>
       </div>
-      <div className="Tabs mt-[40px]">
+      <div className="Tabs mt-[35px]">
         <ul className="flex justify-center">
           {tabs.map((item: any, index) => (
             <TabNavItem
@@ -234,7 +234,7 @@ export default function MainScreen({
             </div>
           </TabContent>
           <TabContent id="history" activeTab={activeToken}>
-            <div className="mt-3 max-h-[270px] overflow-y-auto">
+            <div className="mt-3 max-h-[244px] overflow-y-auto">
               {transactionList.length === 0 && <div>No data available yet</div>}
               {transactionList.map((item: any, index: number) => (
                 <div

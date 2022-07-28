@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { useEffect, useState } from 'react';
 
 import CurrencySelector, { TOption } from '../../Dropdown/CurrencySelector';
 import MaxInput from '../../Input/MaxInput';
 
-import { ArrowIcon, InfoCircleIcon } from '../../Icons';
+import { Trans } from '@lingui/macro';
 import DAOIcon from '../../../../../../components/icons/DAOIcon';
 import Tooltip from '../../../../../../components/Tooltip';
-import { Trans } from '@lingui/macro';
+import { ArrowIcon, InfoCircleIcon } from '../../Icons';
 
 type Props = {
   goBack: any;
@@ -43,23 +43,25 @@ export default function WithdrawScreen({
     };
   }, [setWithdrawScreenMounted]);
   return (
-    <div className="mt-[29px] text-white">
-      <div
-        className="flex cursor-pointer items-center"
-        onClick={() => {
-          goBack();
-        }}
-      >
-        <ArrowIcon direction="left" />
-        <div className="ml-2 text-[20px] text-white">Withdraw</div>
+    <>
+      <div className="mt-[-32px] text-white">
+        <div
+          className="flex cursor-pointer items-center"
+          onClick={() => {
+            goBack();
+          }}
+        >
+          <ArrowIcon direction="left" />
+          <div className="ml-2 text-[20px] text-white">Withdraw</div>
+        </div>
       </div>
-      <div className="mt-6">
+      <div className="mt-6 grow">
         <div className="mb-2 text-[16px] text-white">Asset</div>
         <div>
           <CurrencySelector selectHandle={selectCurrency} options={options} />
           <div className="text-[#F83D5C]">{errorMessageAsset}</div>
         </div>
-        <div className="mt-6">
+        <div className="mt-6 text-white">
           <div className="flex justify-between">
             <div className="mb-2 text-[16px]">Amount</div>
             <div className="flex items-center text-[16px]">
@@ -96,7 +98,7 @@ export default function WithdrawScreen({
             }}
           />
           {errorAmount && inputChanged && (
-            <div className="mt-2 text-[#F83D5C]">{errorAmount}</div>
+            <div className="mt-2 text-[14px] text-[#F83D5C]">{errorAmount}</div>
           )}
         </div>
         <div className=" mt-2 flex justify-between text-[14px] text-[rgba(255,255,255,0.6)]">
@@ -104,9 +106,9 @@ export default function WithdrawScreen({
           <p>0.0431917 ETH</p>
         </div>
       </div>
-      <div className="mt-[145px] flex justify-between">
+      <div className="flex justify-between justify-self-end">
         <button
-          className="flex items-center justify-center rounded-[8px] text-[16px] font-bold text-[#F5B941]"
+          className="border-base/9 flex h-[40px] w-full max-w-[126px] items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
           onClick={() => {
             goBack();
           }}
@@ -115,10 +117,8 @@ export default function WithdrawScreen({
         </button>
         <button
           className={cn(
-            'flex w-[126px] items-center justify-center rounded-[8px] px-[20px] py-[12px] text-[16px] font-bold text-black',
-            isValidForm
-              ? 'bg-[#F5B941] text-[#040B10]'
-              : 'bg-[#4B5563] text-white',
+            'flex h-[40px] w-full max-w-[126px] items-center justify-center rounded-[8px] text-[16px] font-bold text-white',
+            isValidForm ? 'bg-[#F5B941] text-[#040B10]' : 'bg-[#737373]',
           )}
           onClick={() => {
             if (isValidForm) {
@@ -126,9 +126,9 @@ export default function WithdrawScreen({
             }
           }}
         >
-          CONFIRM
+          NEXT
         </button>
       </div>
-    </div>
+    </>
   );
 }

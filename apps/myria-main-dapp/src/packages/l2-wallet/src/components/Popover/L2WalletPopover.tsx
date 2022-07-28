@@ -1,51 +1,50 @@
 // Import packages
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Trans } from '@lingui/macro';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Web3 from 'web3';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
-import { Types } from 'myria-core-sdk';
-import Link from 'next/link';
 import cn from 'classnames';
 import moment from 'moment';
+import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
+import Link from 'next/link';
 
 // Import components
-import DepositScreen from './L2Wallet/DepositScreen';
 import { ThreeDotsVerticalIcon } from '../Icons';
-import DepositInProgressScreen from './L2Wallet/DepositInProgressScreen';
 import DepositCompleteScreen from './L2Wallet/DepositCompleteScreen';
-import WithdrawScreen from './L2Wallet/WithdrawScreen';
-import WithdrawRequestScreen from './L2Wallet/WithdrawRequestScreen';
-import WithdrawInProgressScreen from './L2Wallet/WithdrawInProgressScreen';
-import WithdrawCompleteScreen from './L2Wallet/WithdrawCompleteScreen';
-import MainScreen from './L2Wallet/MainScreen';
 import DepositFailedScreen from './L2Wallet/DepositFailedScreen';
+import DepositInProgressScreen from './L2Wallet/DepositInProgressScreen';
+import DepositScreen from './L2Wallet/DepositScreen';
+import MainScreen from './L2Wallet/MainScreen';
+import WithdrawCompleteScreen from './L2Wallet/WithdrawCompleteScreen';
+import WithdrawInProgressScreen from './L2Wallet/WithdrawInProgressScreen';
+import WithdrawRequestScreen from './L2Wallet/WithdrawRequestScreen';
+import WithdrawScreen from './L2Wallet/WithdrawScreen';
 // import InventoryIcon from './src/components/icons/InventoryIcon';
 import InventoryIcon from '../../../../../components/icons/InventoryIcon';
 import TransactionHistoryDetailScreen from './L2Wallet/TransactionHistoryDetailScreen';
 
 // Import Redux
 import { RootState } from '../../app/store';
-import { disconnectAccount } from '../../app/slices/accountSlice';
 
 // Import Types
-import { TOption } from '../Dropdown/CurrencySelector';
 import { TokenType } from '../../common/type';
+import { TOption } from '../Dropdown/CurrencySelector';
 
 // Import Constant Variables
 // import { minABI } from '../../common/abis/minABI';
 
 // Import Hooks
-import useBalanceList from '../../common/hooks/useBalanceList';
 import useBalanceL1 from '../../common/hooks/useBalanceL1';
+import useBalanceList from '../../common/hooks/useBalanceList';
 
 // Import Redux
-import { setWithdrawClaimModal } from '../../app/slices/uiSlice';
 import {
   setSelectedTokenFunc,
   setTransactions,
 } from '../../app/slices/tokenSlice';
+import { setWithdrawClaimModal } from '../../app/slices/uiSlice';
 import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 
 //compoment POC
@@ -533,11 +532,11 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   );
 
   return (
-    <div className="min-h-[565px] w-[406px] py-[24px]">
+    <>
       {/* Header Part */}
       <div
         className={cn(
-          'flex items-center px-[24px] text-[14px] text-[#666666]',
+          'flex h-8 items-center text-[14px] text-[#666666]',
           screen === SCREENS.TRANSACTION_HISTORY_DETAILED
             ? 'justify-between'
             : 'justify-end',
@@ -599,7 +598,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       </div>
 
       {/* Body Part */}
-      <div className="flex h-full flex-col px-[24px]">
+      <div className="flex h-[calc(100%-32px)] flex-col">
         {screen === SCREENS.MAIN_SCREEN && (
           <MainScreen
             transactionList={transactionList}
@@ -697,6 +696,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
         {screen === SCREENS.WITHDRAW_REQUEST && (
           <WithdrawRequestScreen
+            goBack={() => setScreen(SCREENS.WITHDRAW_COMPLETE)}
             amount={amount}
             cancelHandler={() => {
               setScreen(SCREENS.MAIN_SCREEN);
@@ -708,9 +708,11 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
         {screen === SCREENS.WITHDRAW_IN_PROGRESS && (
           <WithdrawInProgressScreen
+            goBack={() => setScreen(SCREENS.WITHDRAW_REQUEST)}
             okHandler={() => {
               setScreen(SCREENS.WITHDRAW_COMPLETE);
             }}
+            amount={amount}
           />
         )}
 
@@ -748,7 +750,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           />
         )}
       </div>
-    </div>
+    </>
   );
 }
 
