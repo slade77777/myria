@@ -1,4 +1,4 @@
-import DAOIcon from '../../../../../../components/icons/DAOIcon';
+import DAOIcon from 'src/components/icons/DAOIcon';
 import { ArrowIcon, CircleCloseIcon } from '../../Icons';
 
 type Props = {

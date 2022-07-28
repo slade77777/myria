@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import DAOIcon from '../../../../../../components/icons/DAOIcon';
+import DAOIcon from 'src/components/icons/DAOIcon';
 import { ArrowIcon, ProgressIcon } from '../../Icons';
 
 type Props = {

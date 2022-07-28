@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Web3 from 'web3';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
-import DAOIcon from '../../../../../../components/icons/DAOIcon';
+import DAOIcon from 'src/components/icons/DAOIcon';
 import { useEtheriumPrice } from '../../../../../../hooks/useEtheriumPrice';
 import { formatNumber2digits } from '../../../../../../utils';
 import { CompletedIcon } from '../../Icons';

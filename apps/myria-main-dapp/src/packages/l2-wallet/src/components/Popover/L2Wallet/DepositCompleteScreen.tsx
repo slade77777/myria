@@ -1,6 +1,5 @@
-import React from 'react';
-import DAOIcon from '../../../../../../components/icons/DAOIcon';
-import { InfoCircleIcon, TickCircleIcon, ArrowIcon } from '../../Icons';
+import DAOIcon from 'src/components/icons/DAOIcon';
+import { ArrowIcon, TickCircleIcon } from '../../Icons';
 
 type Props = {
   amount: Number;

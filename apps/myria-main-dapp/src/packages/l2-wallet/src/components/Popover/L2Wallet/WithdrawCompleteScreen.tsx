@@ -1,5 +1,5 @@
 import React from 'react';
-import DAOIcon from '../../../../../../components/icons/DAOIcon';
+import DAOIcon from 'src/components/icons/DAOIcon';
 import { TickCircleIcon } from '../../Icons';
 
 interface TProps {

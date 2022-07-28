@@ -5,7 +5,7 @@ import CurrencySelector, { TOption } from '../../Dropdown/CurrencySelector';
 import MaxInput from '../../Input/MaxInput';
 
 import { Trans } from '@lingui/macro';
-import DAOIcon from '../../../../../../components/icons/DAOIcon';
+import DAOIcon from 'src/components/icons/DAOIcon';
 import Tooltip from '../../../../../../components/Tooltip';
 import { ArrowIcon, InfoCircleIcon } from '../../Icons';
 
