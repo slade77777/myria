@@ -1,6 +1,6 @@
 // Import packages
 import { Trans } from '@lingui/macro';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Web3 from 'web3';
 // @ts-ignore
