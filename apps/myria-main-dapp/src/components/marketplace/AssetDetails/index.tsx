@@ -643,7 +643,7 @@ function AssetDetails({ id }: Props) {
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
                   onTrackingConnectWallet();
-                  onConnect();
+                  onConnect('B2C Marketplace');
                 }}
               />
             )}

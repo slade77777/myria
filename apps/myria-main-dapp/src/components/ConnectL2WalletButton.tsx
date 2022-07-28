@@ -13,10 +13,12 @@ import MetamaskOnboarding from './InstallMetamaskButton';
 import { useAuthenticationContext } from '../context/authentication';
 import { useEffect } from 'react';
 import MainL2Wallet from './Main-L2-Wallet/Main-L2-Wallet';
+import { useGA4 } from '../lib/ga';
 import Modal from './Modal';
 import ErrorIcon from './icons/ErrorIcon';
 
 const ConnectL2WalletButton: React.FC = () => {
+  const { event } = useGA4();
   const { address, onConnect, disconnect } = useWalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
   const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
@@ -146,7 +148,8 @@ const ConnectL2WalletButton: React.FC = () => {
         <MetamaskOnboarding>
           <button
             onClick={() => {
-              onConnect();
+              event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
+              onConnect('B2C Marketplace');
             }}
             className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
             <Trans>Connect wallet</Trans>

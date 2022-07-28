@@ -164,7 +164,7 @@ const Header: React.FC = () => {
           ) : (
             <button
               onClick={() => {
-                onConnect();
+                onConnect('Nodes');
                 // event('Connect Wallet Selected', { campaign: 'Sigil' });
               }}
               className="body-14-bold rounded-lg border border-white py-[9px] px-4 uppercase hover:border-primary/7">

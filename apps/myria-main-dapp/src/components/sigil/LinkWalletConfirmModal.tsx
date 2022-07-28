@@ -33,7 +33,7 @@ const LinkWalletConfirmModal: React.FC<Props> = ({ open, onClose, onLink }) => {
               <Trans>LINK WALLET</Trans>
             </button>
           ) : (
-            <button onClick={onConnect} className="btn-lg btn-primary w-full">
+            <button onClick={() => onConnect('Sigil')} className="btn-lg btn-primary w-full">
               <Trans>CONNECT WALLET</Trans>
             </button>
           )}

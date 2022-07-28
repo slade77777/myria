@@ -36,7 +36,7 @@ const Purchase: React.FC = () => {
   }, [address, router, user, userProfileQuery.isFetching]);
 
   const onPlaceOrder = async (data: PurchaseInformationProps) => {
-    await onConnect();
+    await onConnect('Nodes');
     if (data.quantity > 0) {
       setModalData(data);
       setOpenModal(true);
