@@ -157,7 +157,7 @@ const PurchasePopover: FC<IProp> = ({
           <h3 className="mt-[24px] text-[24px] font-medium">{elementContent.title}</h3>
           <p className="text-base/9 mt-[16px] font-normal">{elementContent.assetName}</p>
         </div>
-        <div className="bg-base/2/[.5] text-base/9/[.6] mt-[32px] rounded-[8px] p-4 text-[16px]">
+        <div className="bg-base/2/50 text-base/9/[.6] mt-[32px] rounded-[8px] p-4 text-[16px]">
           <div className="flex justify-between">
             <span>
               <Trans>Amount</Trans>

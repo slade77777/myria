@@ -42,6 +42,7 @@ import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
+import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 
 interface Props {
   id: string;
@@ -52,7 +53,7 @@ interface IProp {
   currentUSDPrice?: string;
   setStatus?: () => void;
   starkKey?: string;
-  assetDetails?: any;
+  assetDetails?: AssetDetailsResponse;
   setShowUnlist?: any;
 }
 
@@ -504,7 +505,7 @@ function AssetDetails({ id }: Props) {
     );
   }
   return (
-    <div className="w-full bg-[#050E15] py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
+    <div className="w-full bg-base/2 py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <button
         onClick={router.back}
         className="max-w-content mx-auto mb-14 flex w-full flex-row items-center">
@@ -530,7 +531,7 @@ function AssetDetails({ id }: Props) {
           {attributes.length > 0 && (
             <div className="text-white">
               {/* list stat */}
-              <div className="mt-[40px] mb-[16px] text-[18px] font-bold">
+              <div className="mt-10 mb-4 text-[18px] font-bold">
                 <Trans>Attributes</Trans>
               </div>
               <div className="grid grid-cols-4 gap-4">
@@ -549,12 +550,12 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className="flex flex-row items-center">
                 <img src={testavatarImg.src} className="h-[24px] w-[24px]" />
-                <span className="text-light ml-[8px] text-[16px]">
+                <span className="text-light ml-[8px] text-base">
                   {assetDetails?.collectionName}
                 </span>
               </div>
               <div
-                className="bg-base/3 w-[40px] cursor-pointer rounded p-[10px]"
+                className="bg-base/3 w-10 cursor-pointer rounded p-[10px]"
                 onClick={() => {
                   toast('The function is not ready yet!');
                 }}>
@@ -563,12 +564,12 @@ function AssetDetails({ id }: Props) {
             </div>
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
-              <span className="mt-[24px] text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="text-light mt-[24px] flex w-[325px] flex-row justify-between">
+              <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
+              <div className="text-light mt-6 flex">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
-                <span>|</span>
+                <span className="mx-6">|</span>
                 <span>
                   <Trans>Owned by</Trans> {ownedBy}
                 </span>
@@ -643,14 +644,10 @@ function AssetDetails({ id }: Props) {
             {/* TAB */}
             <AssetDetailTab
               data={listOrder?.items}
-              description={assetDetails?.description}
-              tokenId={assetDetails?.tokenId}
-              assetType={assetDetails?.assetType}
-              status={status}
-              fee={assetDetails?.fee}
-              contractAddress={assetDetails?.tokenAddress}
+              assetDetails={assetDetails}
               onBuyNow={handleBuyNowItem}
               etheCost={etheCost}
+              isModifing={status === AssetStatus.MODIFY}
             />
           </div>
         </div>

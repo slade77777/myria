@@ -25,7 +25,7 @@ const WithdrawNFTSuccess: FC<IProp> = ({}) => {
           </span>
         </div>
       </div>
-      <div className="mt-[32px] text-[14px] font-normal rounded-[8px] bg-base/2/[.5] p-4 text-white">
+      <div className="mt-[32px] text-[14px] font-normal rounded-[8px] bg-base/2/50 p-4 text-white">
         <div className="flex justify-between">
           <span className="text-base/9">
             <Trans>Item</Trans>
