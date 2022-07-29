@@ -22,7 +22,7 @@ export default function WithdrawNFTFailed({}: Props) {
           </span>
         </div>
       </div>
-      <div className="mt-[32px] text-[14px] font-normal rounded-[8px] bg-base/2/[.5] p-4 text-white">
+      <div className="mt-[32px] text-[14px] font-normal rounded-[8px] bg-base/2/50 p-4 text-white">
         <div className="flex justify-between">
           <span className="text-base/9">
             <Trans>Item</Trans>
@@ -33,7 +33,7 @@ export default function WithdrawNFTFailed({}: Props) {
           <span className="flex items-center text-base/9">
             <Trans>Transaction ID</Trans>
           </span>
-          <span className="flex items-center text-[#F5B941] font-medium cursor-pointer cursor-pointer">
+          <span className="flex items-center text-[#F5B941] font-medium cursor-pointer">
             <Trans>View</Trans>
           </span>
         </div>

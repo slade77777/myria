@@ -29,7 +29,7 @@ export default function TransactionHistoryDetailScreen({
         </div>
       )}
 
-      <div className="bg-base/2 mt-8 rounded-lg p-4 text-sm">
+      <div className="bg-base/2/50 mt-8 rounded-lg p-4 text-sm">
         <div className="flex justify-between">
           <span className="text-base/9">Amount</span>
           <span className="text-base/10 flex items-center">

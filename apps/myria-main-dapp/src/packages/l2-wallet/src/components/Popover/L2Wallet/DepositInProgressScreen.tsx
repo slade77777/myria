@@ -37,7 +37,7 @@ export default function DepositInProgressScreen({
       <div className="text-base/9 mt-4 px-7 text-center text-sm">
         You will receive a notification once the deposit is complete
       </div>
-      <div className="text-base/9 bg-base/2/5 mt-4 rounded-lg py-2 px-4 text-sm">
+      <div className="text-base/9 bg-base/2/50 mt-4 rounded-lg py-2 px-4 text-sm">
         <div className="flex justify-between">
           <span>Amount</span>
           <span className="flex items-center text-white">

@@ -33,7 +33,7 @@ export default function DepositFailedScreen({
           due to an error.
         </div>
 
-        <div className="bg-base/2/5 mt-4 rounded-lg p-4">
+        <div className="bg-base/2/50 mt-4 rounded-lg p-4">
           <div className="text-base/9 flex items-center justify-between">
             <div className="text-sm">Amount</div>
             <span className="flex items-center text-white">

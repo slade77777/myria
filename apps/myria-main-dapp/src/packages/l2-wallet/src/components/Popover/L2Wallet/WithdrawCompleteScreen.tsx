@@ -47,7 +47,7 @@ export default function WithdrawCompleteScreen({
       <div className="mt-[78px]">
         <button
           onClick={successHandler}
-          className="bg-primary text-base/1 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold"
+          className="bg-primary/6 text-base/1 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold"
         >
           CLAIM WITHDRAWAL
         </button>

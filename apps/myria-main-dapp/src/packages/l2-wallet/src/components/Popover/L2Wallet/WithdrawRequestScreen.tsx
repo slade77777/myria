@@ -69,7 +69,7 @@ export default function WithdrawRequestScreen({
         </button>
         <button
           className={cn(
-            'flex h-1 w-[126px] items-center justify-center rounded-lg text-base font-bold',
+            'flex h-10 w-[126px] items-center justify-center rounded-lg text-base font-bold',
             withdrawInProgress
               ? 'text-gray/6 bg-gray/4'
               : 'bg-primary/6 text-base/1',

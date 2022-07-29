@@ -4,42 +4,40 @@ import {
   EqualMetadataByAssetIdResponse,
   FeeTypes
 } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
-import { formatNumber2digits, formatPrice, formatUSDPrice } from 'src/utils';
+import { formatPrice, formatUSDPrice } from 'src/utils';
 import { AssetStatus } from '..';
+import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 
 type Prop = {
-  description?: string;
-  contractAddress?: string;
-  tokenId?: string | number;
-  assetType?: string;
   data: EqualMetadataByAssetIdResponse | any;
-  status: AssetStatus;
-  fee?: FeeTypes[];
   onBuyNow: (data: EqualMetadataByAssetIdResponse) => void;
   etheCost: number;
+  isModifing: boolean;
+  assetDetails: AssetDetailsResponse | undefined;
 };
 
-const AssetDetailTab: FC<Prop> = ({
-  description = '',
-  contractAddress = '',
-  tokenId = '',
-  status,
-  assetType = '',
-  data = [],
-  fee = [],
-  onBuyNow,
-  etheCost
-}) => {
+const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, assetDetails }) => {
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = `0x${starkKeyUser}`;
+
+  const convertPrice = (isPriceUSD: boolean) => {
+    let convertPrice;
+    if (assetDetails) {
+      const priceConverted = formatPrice(parseFloat(assetDetails?.order.nonQuantizedAmountBuy));
+      const usdPriceConverted = formatUSDPrice(parseFloat(priceConverted) * etheCost);
+      convertPrice = isPriceUSD ? usdPriceConverted : priceConverted;
+    }
+    return convertPrice;
+  };
+
   return (
     <Root defaultValue="Listing">
       <List className="my-[24px]">
@@ -79,6 +77,20 @@ const AssetDetailTab: FC<Prop> = ({
               </tr>
             </thead>
             <tbody className="border-blue/3 max-h-[100px] overflow-scroll border-b">
+              {assetDetails && isModifing && (
+                <tr className="border-blue/3 border-t text-[16px] font-normal text-white">
+                  <td className="whitespace-nowrap py-4 pr-6 overflow-hidden w-1/4">
+                    <p className="flex flex-row items-center gap-[7px] truncate">
+                      <DAOIcon /> {convertPrice(false)}
+                    </p>
+                  </td>
+                  <td className="py-4 pr-6 truncate w-1/4">${convertPrice(true)}</td>
+                  <td className="py-4 pr-6 truncate w-1/4">
+                    <Trans>You</Trans>
+                  </td>
+                  <td className="py-4 pr-6 truncate w-1/4 text-right"></td>
+                </tr>
+              )}
               {data?.map((elm: EqualMetadataByAssetIdResponse | any, _idx: number) => {
                 const isOrder = Array.isArray(elm?.order);
                 const priceConverted = formatPrice(
@@ -120,29 +132,31 @@ const AssetDetailTab: FC<Prop> = ({
         </div>
       </Content>
       <Content value="Description">
-        <p className="max-w-full">{description}</p>
+        <p className="max-w-full">{assetDetails?.description}</p>
       </Content>
       <Content value="Details">
         <div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Contract Address</Trans>
             <div className="text-blue/6 flex flex-row items-center gap-[3px] font-medium">
-              <span>{truncateString(contractAddress)}</span>
+              <span>{assetDetails ? truncateString(assetDetails?.tokenAddress) : ''}</span>
               <EnternalLinkIcon />
             </div>
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Token ID</Trans>
-            <span className="font-medium text-white">{tokenId}</span>
+            <span className="font-medium text-white">{assetDetails?.tokenId}</span>
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Token Standard</Trans>
-            <span className="font-medium text-white">{assetType}</span>
+            <span className="font-medium text-white">{assetDetails?.assetType}</span>
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Creator Fees</Trans>
             <span className="font-medium text-white">
-              {fee.length > 0 ? fee[0].percentage + '%' : 'Free'}
+              {assetDetails && assetDetails?.fee.length > 0
+                ? assetDetails?.fee[0].percentage + '%'
+                : 'Free'}
             </span>
           </div>
         </div>

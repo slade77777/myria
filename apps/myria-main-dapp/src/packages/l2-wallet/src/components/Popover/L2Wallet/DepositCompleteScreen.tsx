@@ -35,7 +35,7 @@ export default function DepositCompleteScreen({
       <div className="text-base/9 mt-4 px-7 text-center text-sm">
         Your funds are now available in your Myria wallet.
       </div>
-      <div className="text-base/9 bg-base/2/5 mt-8 rounded-lg py-2 px-4 text-sm">
+      <div className="text-base/9 bg-base/2/50 mt-8 rounded-lg py-2 px-4 text-sm">
         <div className="flex justify-between text-sm">
           <span>Amount</span>
           <span className="flex items-center text-white">
