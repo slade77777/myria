@@ -44,8 +44,7 @@ const data = [
     description: (
       <Trans>
         <CustomLink title="Myria Studios" href="/studios" /> creates a range of free-to-play AAA
-        games spans across an entire interconnected ecosystem, built with the new standard of
-        interoperable NFTs.
+        games spans across an entire interconnected ecosystem.
       </Trans>
     )
   },
