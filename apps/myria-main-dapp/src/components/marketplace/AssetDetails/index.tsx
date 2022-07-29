@@ -24,7 +24,7 @@ import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
-import { formatNumber2digits, formatPrice, validatedImage } from 'src/utils';
+import { formatNumber2digits, formatPrice, getRarityColor, validatedImage } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
@@ -164,6 +164,11 @@ function AssetDetails({ id }: Props) {
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
+  // wait update sdk
+  const bgImage = assetDetails?.metadataOptional
+    ? (assetDetails?.metadataOptional as any)?.rarity
+    : 'common';
+  const rarityColor = getRarityColor(bgImage);
   const {
     isWithdrawing,
     setStatus: setWithdrawalStatus,
@@ -492,12 +497,18 @@ function AssetDetails({ id }: Props) {
       <div className="max-w-content mx-auto  flex flex-row space-x-28">
         {/* container */}
         <div className="w-[620px]">
-          {/* left */}
-          <div
-            className=" border-base/5 h-[620px]  w-full
-          rounded-[3px] border-[3px] bg-center bg-no-repeat "
-            style={{ backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})` }}>
-            {/* img */}
+          <div className="relative flex h-[620px] w-full items-center justify-center lg:h-[620px]  rounded-[12px] ">
+            <div className="absolute h-full w-full bg-[#081824] rounded-[12px]" />
+            <div
+              className="z-1 absolute h-full w-full opacity-[0.3] rounded-[12px]"
+              style={{ backgroundColor: rarityColor }}
+            />
+            <div
+              className="z-2 absolute h-4/5 w-4/5 bg-cover bg-center bg-no-repeat  rounded-[12px]"
+              style={{
+                backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})`
+              }}
+            />
           </div>
           {attributes.length > 0 && (
             <div className="text-white">
@@ -630,9 +641,10 @@ function AssetDetails({ id }: Props) {
         <AssetList
           title={'More from this collection'}
           items={moreCollectionList?.items?.map((elm, index: number) => {
+            console.log({ elm });
             const item: NFTItemType = {
               id: `${elm.id}`,
-              rarity: 'rare',
+              rarity: (elm.metadata as any).rarity,
               name: elm.name || '',
               image_url: elm.imageUrl || '',
               // @ts-ignore need update sdk AssetByCollectionType

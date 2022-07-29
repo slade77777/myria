@@ -92,6 +92,9 @@ export default function FirstDepositModal({
   };
 
   useEffect(() => {
+    if (!amount) {
+      return setErrorAmount('');
+    }
     if (
       selectedToken &&
       !(amount > parseFloat(balanceL1)) &&
