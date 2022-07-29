@@ -24,6 +24,10 @@ import { setWithdrawClaimPopover } from '../../app/slices/uiSlice';
 import { useWalletContext } from '../../../../../../src/context/wallet';
 import { useAuthenticationContext } from '../../../../../../src/context/authentication';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
+import {
+  convertQuantizedAmountToEth,
+  convertWeiToEth,
+} from '../../utils/Converter';
 
 // Import type
 // import { TokenType } from '../../common/type';
@@ -160,7 +164,7 @@ export default function ClaimWithdrawPopover({
             <span>
               {/* {amount} {selectedToken.short} */}
               {selectedToken.name === 'Ethereum'
-                ? Web3.utils.fromWei(claimAmount.toString())
+                ? convertWeiToEth(claimAmount.toString())
                 : claimAmount}{' '}
               {selectedToken.short}
             </span>

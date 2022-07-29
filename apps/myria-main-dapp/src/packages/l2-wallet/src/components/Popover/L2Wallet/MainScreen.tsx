@@ -15,6 +15,7 @@ import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
 import ChevronIcon from '../../Icons/ChevronIcon';
+import { convertQuantizedAmountToEth } from '../../../utils/Converter';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -91,11 +92,7 @@ export default function MainScreen({
       if (matchedBalance && matchedBalance.length > 0) {
         const balance =
           option.name === 'Ethereum'
-            ? Web3.utils.fromWei(
-                (
-                  matchedBalance[0].quantizedAmount * QUANTUM_CONSTANT ?? 0
-                ).toString(),
-              )
+            ? convertQuantizedAmountToEth(matchedBalance[0].quantizedAmount)
             : matchedBalance[0].quantizedAmount;
         const price =
           option.name === 'Ethereum'

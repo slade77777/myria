@@ -159,6 +159,7 @@ export default function MainL2Wallet() {
   }, [walletAddress]);
 
   const metaMaskConnect = async () => {
+    await getModuleFactory();
     await loadWeb3();
   };
 

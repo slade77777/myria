@@ -26,6 +26,10 @@ import { Trans } from '@lingui/macro';
 import DAOIcon from '../../../../../components/icons/DAOIcon';
 import { useEthereumPrice } from '../../hooks/useEthereumPrice';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
+import {
+  convertAmountToQuantizedAmount,
+  convertEthToWei,
+} from '../../utils/Converter';
 
 type Props = {
   modalShow: Boolean;
@@ -81,6 +85,9 @@ export default function FirstDepositModal({
 
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
 
+  console.log('Connection account', connectedAccount);
+  console.log('selectedToken', selectedToken);
+
   const selectCurrency = (param: any) => {
     setSelectedToken(param);
   };
@@ -92,6 +99,7 @@ export default function FirstDepositModal({
   };
 
   useEffect(() => {
+    console.log('Balance L1 -> ', balanceL1);
     if (!amount) {
       return setErrorAmount('');
     }
@@ -136,12 +144,12 @@ export default function FirstDepositModal({
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
-            amount: Web3.utils.toWei(amount.toString()),
+            amount: String(convertAmountToQuantizedAmount(amount.toString())),
           },
           {
             confirmationType: Types.ConfirmationType.Confirmed,
             from: connectedAccount,
-            value: Web3.utils.toWei(amount.toString()),
+            value: String(convertEthToWei(amount.toString())),
           },
         );
       } else {

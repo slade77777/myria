@@ -57,6 +57,11 @@ import { useGA4 } from '../../../../../lib/ga';
 import { useAuthenticationContext } from '../../../../../context/authentication';
 import { WalletMarketPlaceAction } from '../../../../../lib/ga/use-ga/event';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
+import {
+  convertAmountToQuantizedAmount,
+  convertEthToWei,
+  convertQuantizedAmountToEth,
+} from '../../utils/Converter';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -114,6 +119,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const [transactionList, setTransactionList] = useState<Array<any>>([]);
 
   const dispatch = useDispatch();
+
   const { balanceList } = useBalanceList(pKey, screen);
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
   const { data: etheCost = 0 } = useEtheriumPrice();
@@ -155,9 +161,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
     if (exactBalance && exactBalance.length > 0) {
       setBalanceL2Eth(
-        Web3.utils.fromWei(
-          (exactBalance[0].quantizedAmount * QUANTUM_CONSTANT ?? 0).toString(),
-        ),
+        convertQuantizedAmountToEth(exactBalance[0].quantizedAmount).toString(),
       );
     }
   }, [balanceList]);
@@ -195,11 +199,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         if (exactBalance && exactBalance.length > 0) {
           setBalance(
             selectedToken.name === 'Ethereum'
-              ? Web3.utils.fromWei(
-                  (
-                    exactBalance[0].quantizedAmount * QUANTUM_CONSTANT ?? 0
-                  ).toString(),
-                )
+              ? convertQuantizedAmountToEth(exactBalance[0].quantizedAmount)
               : exactBalance[0].quantizedAmount,
           );
         } else {
@@ -254,15 +254,9 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
               id: index,
               type: item.transactionType,
               amount: item.partyAOrder
-                ? Web3.utils.fromWei(
-                    (
-                      item.partyAOrder.amountSell * QUANTUM_CONSTANT ?? 0
-                    ).toString(),
-                  )
+                ? convertQuantizedAmountToEth(item.partyAOrder.amountSell)
                 : item.name === 'Ethereum'
-                ? Web3.utils.fromWei(
-                    (item.quantizedAmount * QUANTUM_CONSTANT ?? 0).toString(),
-                  )
+                ? convertQuantizedAmountToEth(item.quantizedAmount)
                 : item.quantizedAmount,
               time: moment(item.createdAt).fromNow(),
               updatedAt: moment(item.updatedAt).fromNow(),
@@ -328,12 +322,12 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
-            amount: Web3.utils.toWei(amount.toString()),
+            amount: String(convertAmountToQuantizedAmount(amount.toString())),
           },
           {
             confirmationType: Types.ConfirmationType.Confirmed,
             from: connectedAccount,
-            value: Web3.utils.toWei(amount.toString()),
+            value: String(convertEthToWei(amount.toString())),
           },
         );
       } else {
@@ -379,7 +373,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
-            amount: Web3.utils.toWei(amount.toString()).toString(),
+            amount: String(convertAmountToQuantizedAmount(amount.toString())),
             vaultId: undefined,
             assetId: assetType,
           },
@@ -446,7 +440,6 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         type: 'ETH',
         data: {
           quantum: QUANTUM_CONSTANT.toString(),
-          // tokenAddress: '0xD5f1cC0264d0E22BE4488109dbf5d097eb37a576',
         },
       });
     } else {
