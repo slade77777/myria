@@ -1,6 +1,6 @@
-import React from 'react';
 import cn from 'classnames';
-import { InfoCircleIcon, ProgressIcon, ArrowIcon } from '../../Icons';
+import DAOIcon from 'src/components/icons/DAOIcon';
+import { ArrowIcon, ProgressIcon } from '../../Icons';
 
 type Props = {
   amount: number;
@@ -20,7 +20,7 @@ export default function DepositInProgressScreen({
   return (
     <div>
       <div
-        className="mt-[-32px] flex cursor-pointer items-center"
+        className="-mt-8 flex cursor-pointer items-center"
         onClick={() => {
           goBack();
         }}
@@ -28,50 +28,40 @@ export default function DepositInProgressScreen({
         <ArrowIcon direction="left" />
         <div className="ml-2 text-[20px] text-white">Deposit</div>
       </div>
-      <div className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center">
-        <ProgressIcon size={64} className="w-full text-[#9AC9E3]" />
+      <div className="mx-auto mt-8 flex h-16 w-16 justify-center">
+        <ProgressIcon size={64} className="text-blue/6 w-full" />
       </div>
-      <div className="mt-[24px] text-center text-[24px] text-white">
+      <div className="mt-6 text-center text-2xl text-white">
         Deposit in progress
       </div>
-      <div className="mt-4 px-[29px] text-center text-[14px] text-[#A1AFBA]">
+      <div className="text-base/9 mt-4 px-7 text-center text-sm">
         You will receive a notification once the deposit is complete
       </div>
-      <div className="mt-4 rounded-[8px] bg-[rgba(5,14,21,0.5)] py-2 px-4 text-[16px] text-white">
+      <div className="text-base/9 bg-base/2/5 mt-4 rounded-lg py-2 px-4 text-sm">
         <div className="flex justify-between">
-          <span className="text-[rgba(255,255,255,0.6)]">Amount</span>
-          <span>
-            {amount} {selectedToken.short}
+          <span>Amount</span>
+          <span className="flex items-center text-white">
+            <DAOIcon size={14} className="mb-[2px]" />
+            <span className="ml-1">{amount}</span>
           </span>
         </div>
-        <div className="mt-[13px] flex justify-between">
-          <span className="text-[rgba(255,255,255,0.6)]">
-            Estimated completion
-          </span>
-          <span>1-2 minutes</span>
+        <div className="mt-4 flex justify-between">
+          <span>Estimated completion</span>
+          <span className="text-white">1-2 minutes</span>
         </div>
-        <div className="mt-[13px] flex justify-between">
-          <span className="text-[rgba(255,255,255,0.6)]">Transaction ID</span>
-          <span className="text-[#F5B941]">View</span>
+        <div className="mt-4 flex justify-between">
+          <span>Transaction ID</span>
+          <span className="text-primary/6">View</span>
         </div>
       </div>
-      {/* <div className="mt-4 flex rounded-[8px] border border-[#D9D9D9] py-4 px-[14px]">
-        <div className="mr-[9px] flex-none">
-          <InfoCircleIcon />
-        </div>
-        <div className="text-[12px] text-[#777777]">
-          Your deposit has been confirmed and is now in progress. You will
-          receive a notification once the deposit is complete.
-        </div>
-      </div> */}
       <div className="mt-[103px]">
         <button
           disabled={depositInProgress}
           className={cn(
-            'flex w-full items-center justify-center rounded-[8px] py-[13px] pt-[15px] text-[16px] font-bold',
+            'flex h-10 w-full items-center justify-center rounded-lg text-base font-bold',
             depositInProgress
               ? 'bg-[#737373] text-white'
-              : 'bg-[#F5B941] text-[#040B10]',
+              : 'bg-primary/6 text-base/1',
           )}
           onClick={() => {
             successHandler();

@@ -162,6 +162,7 @@ function AssetDetails({ id }: Props) {
   const [showModalUnlist, setShowModalUnlist] = useState(false);
   const [showMessageModify, setShowMessageModify] = useState(false);
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
+  const [payloadDataTrade, setPayloadDataTrade] = useState({});
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect } = useWalletContext();
   // wait update sdk
@@ -476,7 +477,23 @@ function AssetDetails({ id }: Props) {
       name: data.name,
       price: formatPrice(Number(data?.order[0]?.nonQuantizedAmountBuy))
     });
+    setPayloadDataTrade(formatDataTrade(data));
     setShowPopup(true);
+  };
+
+  const formatDataTrade = (listOrder: any) => {
+    const isOrder = Array.isArray(listOrder.order);
+    const payloadDataTrade = {
+      order: {
+        orderId: isOrder ? listOrder?.order[0].id : listOrder?.order.orderId,
+        amountSell: isOrder ? listOrder?.order[0].amountSell : listOrder?.order.amountSell,
+        amountBuy: isOrder ? listOrder?.order[0].amountBuy : listOrder?.order.amountBuy
+      },
+      tokenId: listOrder.tokenId,
+      tokenAddress: listOrder.tokenAddress
+    };
+
+    return payloadDataTrade;
   };
 
   if (isLoading) {
@@ -558,11 +575,11 @@ function AssetDetails({ id }: Props) {
               </div>
 
               <div className="text-light flex gap-6">
-                <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
+                <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
                   <MintedIcon />
                   <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
                 </div>
-                <div className="bg-base/3 border-base/6 mt-[24px] flex flex-row items-center rounded-[5px] border px-[12px] py-[8px]">
+                <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
                   <OwnerAssetIcon />
                   <span className="ml-[5px]">
                     Owner: {truncateString(`${assetDetails?.owner?.ethAddress}`)}
@@ -580,6 +597,7 @@ function AssetDetails({ id }: Props) {
                     name: assetDetails?.name || '',
                     price: String(currentPrice)
                   });
+                  setPayloadDataTrade(formatDataTrade({ ...assetDetails }));
                   setShowPopup(true);
                 }}
               />
@@ -658,22 +676,22 @@ function AssetDetails({ id }: Props) {
       </div>
       {showPopup && (
         <PurchaseModal
-          setChangeStatusSuccess={() => {}}
           open={showPopup}
           onCreate={async () => {
             onTrackingItem({ eventName: 'MKP Check Out Confirmed' });
-            await handleCreateTrade(assetDetails);
+            await handleCreateTrade(payloadDataTrade);
           }}
           onClose={() => {
             setShowPopup(false);
-            window.location.reload();
           }}
           onCloseMessage={() => {
             onTrackingItem({ eventName: 'MKP Check Out Canceled' });
             setShowPopup(false);
-            window.location.reload();
           }}
           assetBuy={assetBuy}
+          setChangeStatusSuccess={() => {
+            refetch();
+          }}
         />
       )}
       {showModalUnlist && (

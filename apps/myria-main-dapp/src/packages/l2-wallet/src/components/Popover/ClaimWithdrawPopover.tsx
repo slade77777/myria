@@ -127,16 +127,14 @@ export default function ClaimWithdrawPopover({
   };
 
   return (
-    <div className="mx-auto w-[358px] py-[24px]">
+    <div className="mx-auto w-[358px] py-6">
       {/* Header Part */}
-      <div className="flex items-center justify-between border-b border-[#202230] px-[24px] pb-[21px] text-[14px] text-[#666666]">
+      <div className="flex items-center justify-between border-b border-[#202230] px-6 pb-[21px] text-sm text-[#666666]">
         <div className="flex items-center">
           <ConnectIcon />
-          <span className="ml-[10px] text-[rgba(255,255,255,0.6)]">
-            {abbreviationAddress}
-          </span>
+          <span className="ml-3 text-white/60">{abbreviationAddress}</span>
         </div>
-        <div className="text-[#F5B941]" onClick={disconnectWallet}>
+        <div className="text-primary/6" onClick={disconnectWallet}>
           Disconnect
         </div>
       </div>
@@ -144,19 +142,19 @@ export default function ClaimWithdrawPopover({
       {/* Body Part */}
       <div className="">
         <div className="mt-[29px] flex justify-center">
-          <TickCircleIcon className="text-[#9ECEAB]" />
+          <TickCircleIcon className="text-light-green" />
         </div>
         {withdrawalCompleted ? (
-          <div className="mt-[24px] text-center text-[24px] text-white">
+          <div className="mt-6 text-center text-2xl text-white">
             Withdrawal complete
           </div>
         ) : (
-          <div className="mt-[24px] text-center text-[24px] text-white">
+          <div className="mt-6 text-center text-2xl text-white">
             Withdrawal ready to claim
           </div>
         )}
 
-        <div className="mt-[32px] rounded-[8px] bg-[#050E15] p-4 text-[16px]">
+        <div className="bg-base/2 mt-8 rounded-lg p-4 text-base">
           <div className="flex justify-between text-white">
             <span>Amount</span>
             <span>
@@ -168,11 +166,11 @@ export default function ClaimWithdrawPopover({
             </span>
           </div>
         </div>
-        <div className="mt-4 flex rounded-[8px] border border-[#D9D9D9] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">
-          <div className="mr-[9px] flex-none">
+        <div className="mt-4 flex rounded-lg border border-[#D9D9D9] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">
+          <div className="mr-2 flex-none">
             <InfoCircleIcon />
           </div>
-          <div className="text-[##9AC9E3] text-[12px]">
+          <div className="text-blue/6 text-xs">
             Your withdrawal is now complete. Click below to claim this
             withdrawal to your L1 wallet. Gas fees will apply to this
             transaction.
@@ -186,8 +184,8 @@ export default function ClaimWithdrawPopover({
                 onClosePopover();
               }}
               className={cn(
-                'flex w-full items-center justify-center rounded-[8px] py-[13px] pt-[15px] text-[16px] font-bold text-black',
-                'bg-[#F5B941]',
+                'flex w-full items-center justify-center rounded-lg py-2 pt-4 text-base font-bold text-black',
+                'bg-primary/6',
               )}
             >
               OK
@@ -197,19 +195,14 @@ export default function ClaimWithdrawPopover({
               disabled={withdrawProgress}
               onClick={claimWithdraw}
               className={cn(
-                'flex w-full items-center justify-center rounded-[8px] py-[13px] pt-[15px] text-[16px] font-bold text-black',
-                withdrawProgress
-                  ? 'cursor-progress bg-[#4B5563]'
-                  : 'bg-[#F5B941]',
+                'flex w-full items-center justify-center rounded-lg py-2 pt-4 text-base font-bold text-black',
+                withdrawProgress ? 'bg-gray/4 cursor-progress' : 'bg-primary/6',
               )}
             >
               {withdrawProgress ? (
-                <span className="flex items-center text-[#9CA3AF]">
+                <span className="text-gray/6 flex items-center">
                   PROCESSING{' '}
-                  <ProgressIcon
-                    size={16}
-                    className="ml-2 w-full text-[#9CA3AF]"
-                  />
+                  <ProgressIcon size={16} className="text-gray/6 ml-2 w-full" />
                 </span>
               ) : (
                 <span>CLAIM WITHDRAWAL</span>

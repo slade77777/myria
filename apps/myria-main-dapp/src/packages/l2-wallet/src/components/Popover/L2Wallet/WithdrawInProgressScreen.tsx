@@ -1,54 +1,62 @@
-import React from 'react';
-import { InfoCircleIcon, ProgressIcon } from '../../Icons';
+import DAOIcon from 'src/components/icons/DAOIcon';
+import { ArrowIcon, ProgressIcon } from '../../Icons';
 
 type Props = {
+  goBack: any;
   okHandler: any;
+  amount: number;
 };
 
-export default function WithdrawInProgressScreen({ okHandler }: Props) {
+export default function WithdrawInProgressScreen({
+  goBack,
+  okHandler,
+  amount,
+}: Props) {
   return (
-    <div className="mt-[29px]">
-      <div className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center">
-        <ProgressIcon size={64} className="w-full text-[#9ECEAB]" />
-      </div>
-
-      <div className="mt-[24px] text-center text-[24px] text-white">
-        Withdrawal in progress
-      </div>
-      <div className="mt-[32px] rounded-[8px] bg-[#050E15] p-4 text-[16px] text-white">
-        <div className="flex justify-between">
-          <span>Amount</span>
-          <span>2 ETH</span>
-        </div>
-        <div className="mt-[13px] flex justify-between">
-          <span>Estimated completion</span>
-          <span>10-20 hours</span>
-        </div>
-        <span className="text-[13px] text-[#777777]">Next batch in 15:20</span>
-        <div className="mt-[13px] flex justify-between">
-          <span>Transaction ID</span>
-          <span className="text-[#F5B941]">View</span>
-        </div>
-      </div>
-      <div className="mt-4 flex rounded-[8px] border border-[#D9D9D9] py-4 px-[14px]">
-        <div className="mr-[9px] flex-none">
-          <InfoCircleIcon />
-        </div>
-        <div className="text-[12px] text-[#777777]">
-          Your withdrawal is now in progress. You will receive a notification
-          once your funds are ready to be claimed.
-        </div>
-      </div>
-      <div className="mt-[78px] flex justify-end">
-        <button
-          className="flex w-[126px] items-center justify-center rounded-[8px] bg-[#F5B941] px-[20px] py-[12px] text-[16px] font-bold text-[#040B10]"
+    <>
+      <div className="text-white">
+        <div
+          className="-mt-8 flex cursor-pointer items-center"
           onClick={() => {
-            okHandler();
+            goBack();
           }}
         >
+          <ArrowIcon direction="left" />
+          <div className="ml-2 text-[20px] text-white">Withdraw</div>
+        </div>
+      </div>
+      <div className="grow text-white">
+        <div className="mx-auto mt-8 flex h-16 w-16 justify-center">
+          <ProgressIcon
+            size={64}
+            className="text-light-green w-full"
+            isNotAnimate={true}
+          />
+        </div>
+        <div className="mt-6 text-center text-2xl">Withdrawal in progress</div>
+        <div className="text-base/9 mt-4 px-7 text-center text-sm">
+          You will receive a notification once your funds are ready to be
+          claimed.
+        </div>
+        <div className="bg-base/2/50 text-base/9 mt-4 rounded-lg p-4 text-sm">
+          <div className="flex justify-between">
+            <span>Amount</span>
+            <span className="text-base/10 flex items-center">
+              <DAOIcon size={14} className="mb-[2px]" />
+              <span className="ml-1">{amount}</span>
+            </span>
+          </div>
+          <div className="mt-4 flex justify-between">
+            <span>Estimated completion</span>
+            <span className="text-base/10">10-20 hours</span>
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-between">
+        <button className="bg-primary/6 text-base/1 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold">
           OK
         </button>
       </div>
-    </div>
+    </>
   );
 }

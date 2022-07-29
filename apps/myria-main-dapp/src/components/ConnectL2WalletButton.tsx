@@ -121,7 +121,7 @@ const ConnectL2WalletButton: React.FC = () => {
               style={{
                 boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
               }}
-              className="text-base/3 min-w-[406px] rounded-xl bg-current p-3">
+              className="text-base/3 w-[406px] h-[565px] rounded-xl bg-current p-6">
               <Popover.Arrow
                 width={24}
                 height={13}
@@ -130,7 +130,7 @@ const ConnectL2WalletButton: React.FC = () => {
                 }}
                 className="translate-x-8 fill-current"
               />
-              <div>
+              <div className="h-full">
                 {showClaimPopover ? (
                   <ClaimWithdrawPopover
                     abbreviationAddress={abbreviationAddress}
