@@ -44,7 +44,7 @@ export default function DepositScreen({
   }, [setDepositScreenMounted]);
   return (
     <>
-      <div className="mt-[-32px]">
+      <div className="-mt-8">
         <div
           className="flex cursor-pointer items-center"
           onClick={() => {
@@ -52,32 +52,32 @@ export default function DepositScreen({
           }}
         >
           <ArrowIcon direction="left" />
-          <div className="ml-2 text-[20px] text-white">Deposit</div>
+          <div className="text-base/10 ml-2 text-[20px]">Deposit</div>
         </div>
       </div>
-      <div className="mt-6 grow">
-        <div className="mb-2 text-[16px] text-white">Asset</div>
+      <div className="text-base/10 mt-6 grow">
+        <div className="mb-2 text-base">Asset</div>
         <div>
           <CurrencySelector selectHandle={selectCurrency} options={options} />
-          <div className="text-[#F83D5C]">{errorMessageAsset}</div>
+          <div className="text-error/6">{errorMessageAsset}</div>
         </div>
         <div className="mt-6">
           <div className="mb-2 flex justify-between">
-            <div className="text-[16px] text-white">Amount</div>
-            <div className="flex items-center text-[16px] text-[rgba(255,255,255,0.6)]">
-              <div className="mr-[5px] flex items-center">
-                <span className="mr-1 text-[#4C4C4C]">Available: </span>
+            <div className="text-base">Amount</div>
+            <div className="flex items-center text-base">
+              <div className="flex items-center">
+                <span className="mr-1">Available: </span>
                 <span className="mr-1">
                   <DAOIcon size={16} />
                 </span>
                 <span className="mr-1">{balance}</span>
                 <Tooltip>
                   <Tooltip.Trigger className="focus:outline-none">
-                    <InfoCircleIcon className="text-[#9AC9E3]" />
+                    <InfoCircleIcon className="text-blue/6" size={18} />
                   </Tooltip.Trigger>
                   <Tooltip.Content className="mf-10 max-w-[256px]">
-                    <div className="bg-base/5 mf-10 absolute right-0 top-2 min-w-[256px] rounded-[8px]  p-4 ">
-                      <div className="bg-base/5 absolute right-10 -mt-6  h-4 w-4 rotate-45"></div>
+                    <div className="bg-base/5 mf-10 absolute right-0 top-2 min-w-[256px] rounded-lg p-4">
+                      <div className="bg-base/5 absolute right-10 -mt-6 h-4 w-4 rotate-45"></div>
                       <Tooltip.Arrow />
                       <p className="text-base/9">
                         <Trans>
@@ -99,17 +99,17 @@ export default function DepositScreen({
             }}
           />
           {inputChanged && errorAmount && (
-            <div className="mt-2 text-[14px] text-[#F83D5C]">{errorAmount}</div>
+            <div className="text-error/6 mt-2 text-sm">{errorAmount}</div>
           )}
         </div>
-        <div className=" mt-2 flex justify-between text-[14px] text-[rgba(255,255,255,0.6)]">
+        <div className="mt-2 flex justify-between text-sm">
           <p>Estimated gas fee</p>
           <p>0.0431917 ETH</p>
         </div>
       </div>
       <div className="flex justify-between justify-self-end">
         <button
-          className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-[8px] border py-[9px] px-9 text-[16px] font-bold text-white"
+          className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-lg border py-2 px-9 text-base font-bold text-white"
           onClick={() => {
             goBack();
           }}
@@ -118,8 +118,8 @@ export default function DepositScreen({
         </button>
         <button
           className={cn(
-            'flex w-full max-w-[126px] items-center justify-center rounded-[8px] py-[9px] px-9 text-[16px] font-bold text-white',
-            isValidForm ? 'bg-[#F5B941] text-[#040B10]' : 'bg-[#737373]',
+            'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
+            isValidForm ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
           )}
           onClick={() => {
             if (isValidForm) {

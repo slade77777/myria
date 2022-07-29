@@ -557,8 +557,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
         <DropdownMenu>
           <DropdownMenu.Trigger asChild>
-            <div className="text-[#F5B941]">
-              <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
+            <div className="text-primary/6">
+              <ThreeDotsVerticalIcon className="text-base/9" size={32} />
             </div>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content

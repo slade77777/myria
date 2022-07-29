@@ -30,11 +30,7 @@ const Popover = forwardRef(
     const closePopover = () => {
       setPopoverShow(false);
     };
-    useImperativeHandle(
-      ref,
-      () => setPopoverShow(false),
-      [],
-    );
+    useImperativeHandle(ref, () => setPopoverShow(false), []);
     const btnRef: any = React.createRef();
     const popoverRef: any = React.createRef();
     const [arrowRef, setArrow] = React.useState<HTMLDivElement | null>(null);
@@ -73,7 +69,7 @@ const Popover = forwardRef(
           <div
             className={
               (popoverShow ? '' : 'hidden ') +
-              'relative z-50 mr-3 block max-w-xs break-words rounded-lg border-0 bg-[#081824] text-left text-sm font-normal leading-normal no-underline shadow-popover ' +
+              'bg-base/3 relative z-50 mr-3 block max-w-xs break-words rounded-lg border-0 text-left text-sm font-normal leading-normal no-underline shadow-popover ' +
               width
             }
             id="popper"

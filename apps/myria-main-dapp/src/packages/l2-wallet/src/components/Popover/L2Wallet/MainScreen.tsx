@@ -112,18 +112,18 @@ export default function MainScreen({
   const renderStatus = (item: any) => {
     if (item.status === 'in_progress') {
       return (
-        <div className="mt-1 flex items-center text-[#A1AFBA]">
+        <div className="text-base/9 mt-1 flex items-center">
           In progress <ProgressHistoryIcon size={14} className="ml-1" />
         </div>
       );
     } else {
       if (item.type === 'WithdrawalRequest') {
         return (
-          <div className="mt-1 flex items-center text-[#F5B941]">
+          <div className="text-primary/6 mt-1 flex items-center">
             Complete withdrawal{' '}
-            {/* <ArrowDownLeft className="ml-1 text-[#F5B941]" size={14} /> */}
+            {/* <ArrowDownLeft className="ml-1 text-primary/6" size={14} /> */}
             <ChevronIcon
-              className="ml-1 text-[#F5B941]"
+              className="text-primary/6 ml-1"
               size={14}
               direction="right"
             />
@@ -131,8 +131,8 @@ export default function MainScreen({
         );
       } else {
         return (
-          <div className="mt-1 flex items-center text-[#A1AFBA]">
-            Complete <CompletedIcon className="ml-1 text-[#A1AFBA]" size={14} />
+          <div className="text-base/9 mt-1 flex items-center">
+            Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
           </div>
         );
       }
@@ -144,9 +144,9 @@ export default function MainScreen({
       <div>
         <div className="mt-2 flex items-center justify-center">
           <ETHIcon />
-          <div className="ml-2 text-[32px] text-[#E7EBEE]">{balanceEth}</div>
+          <div className="text-base/10 ml-2 text-[32px]">{balanceEth}</div>
         </div>
-        <p className="text-center text-[#A1AFBA]">
+        <p className="text-base/9 text-center">
           ${formatNumber2digits(etheCost * balanceEth)}
         </p>
       </div>
@@ -155,7 +155,7 @@ export default function MainScreen({
           onClick={async () => {
             gotoDepositScreen();
           }}
-          className="mr-4 flex w-[118px] items-center justify-center rounded-[8px] bg-[#0B2231] p-3 text-[14px] text-white"
+          className="text-base/10 mr-4 flex w-[118px] items-center justify-center rounded-lg bg-[#0B2231] p-3 text-sm"
         >
           <div>
             <ArrowDownLeft />
@@ -168,7 +168,7 @@ export default function MainScreen({
           onClick={() => {
             gotoWithdrawScreen();
           }}
-          className="flex w-[114px] items-center justify-center rounded-[8px] bg-[#0B2231] p-3 px-[18px] text-[14px] text-white"
+          className="text-base/10 flex w-[114px] items-center justify-center rounded-lg bg-[#0B2231] p-3 px-[18px] text-sm"
         >
           <div>
             <ArrowUpRight />
@@ -198,7 +198,7 @@ export default function MainScreen({
                   className={cn(
                     'flex cursor-pointer justify-between py-4',
                     index !== coinPrices.length - 1 &&
-                      'border-b border-[#E5E5E5]',
+                      'border-base/10 border-b',
                   )}
                   key={index}
                 >
@@ -210,9 +210,7 @@ export default function MainScreen({
                         alt="token_icon"
                       />
                       <div className="ml-4">
-                        <p className="text-[14px] text-[rgba(255,255,255,0.6)]">
-                          {item.name}
-                        </p>
+                        <p className="text-base/9 text-sm">{item.name}</p>
                         <div>
                           <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px] font-bold">
                             {item.short}
@@ -221,10 +219,10 @@ export default function MainScreen({
                       </div>
                     </div>
                     <div>
-                      <div className="text-base/10 mt-1 text-right text-[14px]">
+                      <div className="text-base/10 mt-1 text-right text-sm">
                         {item.balance}
                       </div>
-                      <div className="text-base/8 mt-1 text-right text-[14px]">
+                      <div className="text-base/8 mt-1 text-right text-sm">
                         ${item.price}
                       </div>
                     </div>
@@ -244,19 +242,19 @@ export default function MainScreen({
                   className={cn(
                     'flex cursor-pointer items-center py-4',
                     index !== historyData.length - 1 &&
-                      'border-b border-[rgba(255,255,255,0.1)]',
+                      'border-b border-white/10',
                   )}
                   key={index}
                 >
                   <div className="mr-2">
                     <img
-                      className="w-[32px] flex-none"
+                      className="w-8 flex-none"
                       src={item.ico}
                       alt="token_icon"
                     />
                   </div>
                   <div className="grow">
-                    <div className="flex items-center justify-between text-[14px] text-[#E7EBEE]">
+                    <div className="text-base/10 flex items-center justify-between text-sm">
                       <span>{renderType(item.type)}</span>
                       <span className="flex items-center">
                         <span className="mb-[2px] mr-1">
@@ -265,7 +263,7 @@ export default function MainScreen({
                         <span>{item.amount}</span>
                       </span>
                     </div>
-                    <div className="flex items-center justify-between text-[12px] text-[#A1AFBA]">
+                    <div className="text-base/9 flex items-center justify-between text-xs">
                       <span>{item.time}</span>
                       {renderStatus(item)}
                     </div>
