@@ -496,7 +496,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   };
 
   const { event } = useGA4();
-  const { user } = useAuthenticationContext();
+  const { user, logout } = useAuthenticationContext();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
@@ -570,7 +570,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             <div className="text-white">
               <button
                 className="body-14-medium flex items-center space-x-2.5 text-white"
-                onClick={disconnect}
+                onClick={() => {
+                  disconnect();
+                  logout();
+                }}
               >
                 <i className="w-4">
                   <LogoutIcon />
