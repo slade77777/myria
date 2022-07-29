@@ -608,7 +608,7 @@ function AssetDetails({ id }: Props) {
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
                   onTrackingConnectWallet();
-                  onConnect('B2C Marketplace');
+                  onConnect();
                 }}
               />
             )}
