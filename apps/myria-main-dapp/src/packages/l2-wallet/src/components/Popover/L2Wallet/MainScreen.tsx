@@ -5,8 +5,8 @@ import Web3 from 'web3';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
 import DAOIcon from 'src/components/icons/DAOIcon';
-import { useEtheriumPrice } from '../../../../../../hooks/useEtheriumPrice';
-import { formatNumber2digits } from '../../../../../../utils';
+import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
+import { formatNumber2digits } from 'src/utils';
 import { CompletedIcon } from '../../Icons';
 import ArrowDownLeft from '../../Icons/ArrowDownLeft';
 import ArrowUpRight from '../../Icons/ArrowUpRight';

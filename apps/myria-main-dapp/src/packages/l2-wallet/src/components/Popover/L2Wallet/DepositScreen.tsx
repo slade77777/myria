@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import CurrencySelector, { TOption } from '../../Dropdown/CurrencySelector';
 
 import DAOIcon from 'src/components/icons/DAOIcon';
-import Tooltip from '../../../../../../components/Tooltip';
+import Tooltip from 'src/components/Tooltip';
 import { ArrowIcon, InfoCircleIcon } from '../../Icons';
 import MaxInput from '../../Input/MaxInput';
 

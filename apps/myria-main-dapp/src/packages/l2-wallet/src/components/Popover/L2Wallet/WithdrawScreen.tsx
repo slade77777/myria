@@ -6,7 +6,7 @@ import MaxInput from '../../Input/MaxInput';
 
 import { Trans } from '@lingui/macro';
 import DAOIcon from 'src/components/icons/DAOIcon';
-import Tooltip from '../../../../../../components/Tooltip';
+import Tooltip from 'src/components/Tooltip';
 import { ArrowIcon, InfoCircleIcon } from '../../Icons';
 
 type Props = {
