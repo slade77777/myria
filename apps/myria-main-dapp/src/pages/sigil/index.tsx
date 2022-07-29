@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Page from 'src/components/Page';
 import Dashboard from 'src/components/sigil/Dashboard';
 import SigilStepper from 'src/components/sigil/SigilStepper';
-import ChooseAlliance from 'src/components/sigil/ChooseAlliance';
 import Welcome from 'src/components/sigil/Welcome';
 import WelcomeMobile from 'src/components/sigil/WelcomeMobile';
 import Header from 'src/components/sigil/Header';
@@ -17,8 +16,9 @@ import { LoadingStandBy } from 'src/components/Loading';
 import { t } from '@lingui/macro';
 import { toast } from 'react-toastify';
 import clsx from 'clsx';
+import Register from 'src/components/sigil/Register';
 
-type Step = 0 | 1;
+type Step = 0 | 1 | 2;
 
 const Sigil: React.FC = () => {
   const router = useRouter();
@@ -47,7 +47,7 @@ const Sigil: React.FC = () => {
 
   const goToNextStep = useCallback(() => {
     setCurrentStep((currentStep) => {
-      if (currentStep === 1) {
+      if (currentStep === 2) {
         return currentStep;
       }
       return (currentStep + 1) as Step;
@@ -58,6 +58,8 @@ const Sigil: React.FC = () => {
     switch (currentStep) {
       case 0:
         return <Welcome onNext={goToNextStep} />;
+      case 1:
+        return <Register />;
       default:
         return <Dashboard />;
     }
@@ -84,12 +86,17 @@ const Sigil: React.FC = () => {
   }, [currentStep]);
 
   React.useEffect(() => {
-    if (!user?.user_id) {
-      setCurrentStep(0);
+    if (user && user.user_name && user.credits) {
+      setCurrentStep(2);
+      return;
     }
 
-    if (user && user.alliance) {
+    if (user?.user_id) {
       setCurrentStep(1);
+    }
+
+    if (!user?.user_id) {
+      setCurrentStep(0);
     }
   }, [user]);
 
@@ -97,9 +104,9 @@ const Sigil: React.FC = () => {
 
   return (
     <>
-      <div className={`relative`}>
+      <div className={`relative ${currentStep === 1 ? 'min-w-[1300px]' : ''}`}>
         {isLoading && (
-          <div className="absolute inset-0 z-10 flex w-full items-center justify-center bg-dark/10 text-white">
+          <div className="bg-dark/10 absolute inset-0 z-10 flex w-full items-center justify-center text-white">
             <LoadingStandBy />
           </div>
         )}
@@ -116,7 +123,7 @@ const Sigil: React.FC = () => {
                   isLoading
               })}>
               {!isLoading && <div>{content}</div>}
-              {currentStep !== 1 && (
+              {currentStep === 0 && (
                 <div className="absolute bottom-1 left-1/2 ml-auto mr-auto mt-auto w-full max-w-[577px] -translate-x-1/2">
                   <SigilStepper
                     steps={[
