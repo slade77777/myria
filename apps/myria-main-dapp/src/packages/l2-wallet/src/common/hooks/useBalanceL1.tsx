@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import { minABI } from '../../common/abis/minABI';
+import { initialWeb3 } from '../../services/myriaCoreSdk';
 
 declare let window: any;
 
@@ -18,7 +19,13 @@ function useBalanceL1(token: any, account: string) {
   }
 
   useEffect(() => {
+    initialWeb3()
+      .then(result => {
+        window.web3 = result;
+      })
+      .catch();
     if (!window.web3 || !window.web3.eth) return;
+
     const setBalanceFunc = async () => {
       if (token.name === 'Ethereum') {
         const tb = await window.web3.eth.getBalance(account);

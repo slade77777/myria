@@ -22,6 +22,10 @@ import {
   setWithdrawClaimPopover,
 } from '../../app/slices/uiSlice';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
+import {
+  convertQuantizedAmountToEth,
+  convertWeiToEth,
+} from '../../utils/Converter';
 
 type Props = {
   isShowMessage: Boolean;
@@ -102,13 +106,12 @@ export default function MessageWithdrawModal({
   };
 
   const renderClaimMessage = (name: string) => {
+    const ethAmount = convertWeiToEth(claimAmount.toString());
     if (parseFloat(claimAmount.toString()) > 0) {
       return (
         <div>
           Your withdrawal of{' '}
-          {name === 'Ethereum'
-            ? `${Web3.utils.fromWei(claimAmount.toString())} eth`
-            : `${claimAmount} tokens`}{' '}
+          {name === 'Ethereum' ? `${ethAmount} eth` : `${claimAmount} tokens`}{' '}
           is now complete and ready to claim
         </div>
       );
@@ -140,7 +143,7 @@ export default function MessageWithdrawModal({
               <div className="mt-[10px] mb-[20px] text-sm font-normal">
                 Now you can use this amount to claim.
                 {selectedToken?.name === 'Ethereum'
-                  ? Web3.utils.fromWei(claimAmount.toString())
+                  ? convertQuantizedAmountToEth(claimAmount.toString())
                   : claimAmount}{' '}
               </div>
             ) : (
