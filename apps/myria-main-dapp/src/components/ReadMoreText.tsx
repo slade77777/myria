@@ -13,12 +13,12 @@ const ReadMoreText: FC<{ text: string; textClass?: string }> = ({ text, textClas
           : `${text?.substring(0, limitNumber)}${text?.length > limitNumber ? '...' : ''}`}
       </p>
       {text?.length > limitNumber && !showFull && (
-        <p className="cursor-pointer text-[#A4CEE6]" onClick={() => setShow(true)}>
+        <p className="cursor-pointer text-[#A4CEE6] mt-2" onClick={() => setShow(true)}>
           Read more
         </p>
       )}
       {showFull && (
-        <p className="cursor-pointer text-[#A4CEE6]" onClick={() => setShow(false)}>
+        <p className="cursor-pointer text-[#A4CEE6] mt-2" onClick={() => setShow(false)}>
           Show Less
         </p>
       )}
