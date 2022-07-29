@@ -155,7 +155,7 @@ export default function MainScreen({
           onClick={async () => {
             gotoDepositScreen();
           }}
-          className="text-base/10 mr-4 flex w-[118px] items-center justify-center rounded-lg bg-[#0B2231] p-3 text-sm"
+          className="text-base/10 bg-base/4 mr-4 flex w-[118px] items-center justify-center rounded-lg p-3 text-sm"
         >
           <div>
             <ArrowDownLeft />
@@ -168,7 +168,7 @@ export default function MainScreen({
           onClick={() => {
             gotoWithdrawScreen();
           }}
-          className="text-base/10 flex w-[114px] items-center justify-center rounded-lg bg-[#0B2231] p-3 px-[18px] text-sm"
+          className="text-base/10 bg-base/4 flex w-[114px] items-center justify-center rounded-lg p-3 text-sm"
         >
           <div>
             <ArrowUpRight />
