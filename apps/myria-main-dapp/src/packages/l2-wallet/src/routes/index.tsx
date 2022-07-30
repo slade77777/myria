@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
 import Assets from '../pages/Assets';
 import Asset from '../pages/Asset';
-import MainLayout from '../components/Layout/MainLayout';
+// import MainLayout from '../components/Layout/MainLayout';
 
 export default function index() {
   return (
@@ -12,25 +12,25 @@ export default function index() {
       <Route
         path="/"
         element={
-          <MainLayout>
-            <Home />
-          </MainLayout>
+          // <MainLayout>
+          <Home />
+          // </MainLayout>
         }
       />
       <Route
         path="/assets"
         element={
-          <MainLayout>
-            <Assets />
-          </MainLayout>
+          // <MainLayout>
+          <Assets />
+          // </MainLayout>
         }
       />
       <Route
         path="/assets/:id"
         element={
-          <MainLayout>
-            <Asset />
-          </MainLayout>
+          // <MainLayout>
+          <Asset />
+          // </MainLayout>
         }
       />
       <Route path="*" element={<Navigate to="/" />} />

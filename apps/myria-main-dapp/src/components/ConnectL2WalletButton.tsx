@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useWalletContext } from 'src/context/wallet';
 import truncateString from 'src/helper';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
-import { ConnectIcon } from 'src/packages/l2-wallet/src/components/Icons';
 import ClaimWithdrawPopover from 'src/packages/l2-wallet/src/components/Popover/ClaimWithdrawPopover';
 import L2WalletPopover from 'src/packages/l2-wallet/src/components/Popover/L2WalletPopover';
 import ChevronDownIcon from './icons/ChevronDownIcon';
@@ -34,7 +33,15 @@ const ConnectL2WalletButton: React.FC = () => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [showMismatchedWalletModal, setShowMismatchedWalletModal] = React.useState(false);
+  const [isConnectWallet, setIsConnectWallet] = React.useState(false);
+
   const dispatch = useDispatch();
+
+  const onConnectWallet = () => {
+    event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
+    onConnectCompaign('B2C Marketplace');
+    setIsConnectWallet(true);
+  };
 
   // Set wallet address and local stark key to redux
   useEffect(() => {
@@ -90,6 +97,12 @@ const ConnectL2WalletButton: React.FC = () => {
   };
 
   const showConnectedWallet = () => {
+    // First time registration
+    if (walletAddress && address && (!user || !user?.wallet_id)) {
+      return true;
+    }
+
+    // Normal non-first time user
     if (
       address &&
       user &&
@@ -186,16 +199,13 @@ const ConnectL2WalletButton: React.FC = () => {
       ) : (
         <MetamaskOnboarding>
           <button
-            onClick={() => {
-              event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
-              onConnectCompaign('B2C Marketplace');
-            }}
+            onClick={onConnectWallet}
             className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
             <Trans>Connect wallet</Trans>
           </button>
         </MetamaskOnboarding>
       )}
-      <MainL2Wallet />
+      <MainL2Wallet isConnectWallet={isConnectWallet} />
     </>
   );
 };

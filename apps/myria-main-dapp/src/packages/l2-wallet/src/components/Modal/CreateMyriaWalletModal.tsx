@@ -19,6 +19,7 @@ type RefType = {
 type Props = {
   metaMaskConnect: any;
   setWelcomeModal: any;
+  setStarkKeyToLocalStorage: (starkKey: string) => void;
 };
 
 // const steps = [
@@ -37,7 +38,7 @@ type Props = {
 // ];
 declare let window: any;
 const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
-  const { metaMaskConnect, setWelcomeModal } = props;
+  const { metaMaskConnect, setWelcomeModal, setStarkKeyToLocalStorage } = props;
   const dispatch = useDispatch();
   const [display, setDisplay] = useState<boolean>(false);
 
@@ -75,6 +76,8 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
       const commonModule = moduleFactory.getCommonModule();
       const userModule = moduleFactory.getUserModule();
       const starkKey = commonModule.getStarkPublicKey(wSignature);
+      setStarkKeyToLocalStorage(starkKey);
+
       setStep({
         ...step,
         loadingSign: false,
@@ -95,7 +98,7 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
             setWelcomeModal(true);
           })
           .catch(err => {
-            setWelcomeModal(true);
+            console.log('[CreateMyriaWalletModal] Register user error ->', err);
           })
           .finally(() => {
             onCloseModal();
@@ -107,7 +110,6 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
     setStep({ ...step, loadingSign: true });
     metaMaskConnect().then(() => {
       onRequestSignature();
-      // onCloseModal();
     });
   };
   useImperativeHandle(ref, () => ({
