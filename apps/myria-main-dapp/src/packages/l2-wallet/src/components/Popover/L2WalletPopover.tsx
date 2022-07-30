@@ -62,6 +62,7 @@ import {
   convertEthToWei,
   convertQuantizedAmountToEth,
 } from '../../utils/Converter';
+import { TxResult } from 'myria-core-sdk/dist/types/src/types';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -129,6 +130,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const { address, onConnect, disconnect } = useWalletContext();
 
   const [activeToken, setActiveToken] = useState<string>('tokens');
+  const [depositResponse, setDepositResponse] = useState<TxResult>();
 
   const initForm = () => {
     setErrorAmount('');
@@ -306,6 +308,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   }, [amount, selectedToken, etheCost, screen]);
 
   const deposit = async () => {
+    let resultDepoit: TxResult;
     trackWalletAction({
       eventName: 'Wallet Deposit Selected',
       hide_balance: true,
@@ -318,7 +321,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       const depositModule = moduleFactory.getDepositModule();
 
       if (selectedToken.name === 'Ethereum') {
-        await depositModule.depositEth(
+        resultDepoit = await depositModule.depositEth(
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
@@ -331,7 +334,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           },
         );
       } else {
-        await depositModule.depositERC20Token(
+        resultDepoit = await depositModule.depositERC20Token(
           {
             starkKey: '0x' + pKey,
             tokenAddress: selectedToken.tokenAddress,
@@ -343,6 +346,9 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             confirmationType: Types.ConfirmationType.Confirmed,
           },
         );
+      }
+      if (resultDepoit) {
+        setDepositResponse(resultDepoit);
       }
       setDepositInProgress(false);
       setScreen(SCREENS.DEPOSIT_COMPLETE_SCREEN);
@@ -654,6 +660,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         {screen === SCREENS.DEPOSIT_COMPLETE_SCREEN && (
           <DepositCompleteScreen
             amount={amount}
+            items={depositResponse}
             selectedToken={selectedToken}
             successHandler={() => {
               initForm();

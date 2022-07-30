@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Web3 from 'web3';
-import { Types } from 'myria-core-sdk';
 import cn from 'classnames';
+import { Types } from 'myria-core-sdk';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from '../../app/store';
 import CurrencySelector, { TOption } from '../Dropdown/CurrencySelector';
-import MaxInput from '../Input/MaxInput';
 import { ThreeDotsVerticalIcon } from '../Icons';
+import MaxInput from '../Input/MaxInput';
 
 // import TestToken from '../../assets/images/TT.png';
 import useBalanceL1 from '../../common/hooks/useBalanceL1';
 
 import {
-  ProgressIcon,
   InfoCircleIcon,
+  ProgressIcon,
   TickCircleIcon,
 } from '../../components/Icons';
 
-import { TokenType } from '../../common/type';
-import { setDepositAmount } from '../../app/slices/uiSlice';
-import Tooltip from '../../../../../components/Tooltip';
 import { Trans } from '@lingui/macro';
+import { TxResult } from 'myria-core-sdk/dist/types/src/types';
 import DAOIcon from '../../../../../components/icons/DAOIcon';
+import Tooltip from '../../../../../components/Tooltip';
+import { setDepositAmount } from '../../app/slices/uiSlice';
+import { TokenType } from '../../common/type';
+import { ethersLink } from '../../constants';
 import { useEthereumPrice } from '../../hooks/useEthereumPrice';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
 import {
@@ -81,9 +81,14 @@ export default function FirstDepositModal({
     PROGRESS.START,
   );
   const [errorAmount, setErrorAmount] = useState('');
+  const [depositResponse, setDepositResponse] = useState<TxResult>();
+
   const { data: etheCost = 0 } = useEthereumPrice();
 
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
+  const URL_LINK = `${ethersLink.goerli_goerli}${
+    depositResponse?.transactionHash ? depositResponse?.transactionHash : ''
+  }`;
 
   console.log('Connection account', connectedAccount);
   console.log('selectedToken', selectedToken);
@@ -133,6 +138,8 @@ export default function FirstDepositModal({
   }, [selectedToken, amount, balanceL1]);
 
   const deposit = async () => {
+    let resultDepoit: TxResult;
+
     try {
       setDepositProgress(PROGRESS.PROCESSING);
       const moduleFactory = await getModuleFactory();
@@ -140,7 +147,7 @@ export default function FirstDepositModal({
 
       const depositModule = moduleFactory.getDepositModule();
       if (selectedToken.name === 'Ethereum') {
-        await depositModule.depositEth(
+        resultDepoit = await depositModule.depositEth(
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
@@ -153,7 +160,7 @@ export default function FirstDepositModal({
           },
         );
       } else {
-        await depositModule.depositERC20Token(
+        resultDepoit = await depositModule.depositERC20Token(
           {
             starkKey: '0x' + pKey,
             tokenAddress: selectedToken.tokenAddress,
@@ -165,6 +172,9 @@ export default function FirstDepositModal({
             confirmationType: Types.ConfirmationType.Confirmed,
           },
         );
+      }
+      if (resultDepoit) {
+        setDepositResponse(resultDepoit);
       }
       setDepositProgress(PROGRESS.COMPLETED);
     } catch (err) {
@@ -300,10 +310,6 @@ export default function FirstDepositModal({
                       </span>
                       <span className="text-white">1-2 minutes</span>
                     </div>
-                    <div className="mt-[13px] flex justify-between">
-                      <span className="text-[#9BA1A5]">Transaction ID</span>
-                      <span className="text-[#F5B941]">View</span>
-                    </div>
                   </div>
                   <div className="mt-4 flex rounded-[8px] border border-[rgba(154,201,227,0.2)] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">
                     <div className="mr-[9px] flex-none">
@@ -347,7 +353,15 @@ export default function FirstDepositModal({
                       <span className="text-[16px] text-[#9BA1A5]">
                         Transaction ID
                       </span>
-                      <span className="text-[16px] text-[#F5B941]">View</span>
+                      {/* <span className="text-[16px] text-[#F5B941]">View</span> */}
+                      <a
+                        className="text-primary/6 text-[16px]"
+                        target="_blank"
+                        href={URL_LINK}
+                        rel="noreferrer"
+                      >
+                        View
+                      </a>
                     </div>
                   </div>
                   <div className="mt-4 flex rounded-[8px] border border-[#D9D9D9] py-4 px-[14px]">
