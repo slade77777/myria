@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useWalletContext } from 'src/context/wallet';
 import truncateString from 'src/helper';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
@@ -17,16 +17,39 @@ import { useGA4 } from '../lib/ga';
 import Modal from './Modal';
 import ErrorIcon from './icons/ErrorIcon';
 import WalletIcon from './icons/WalletIcon';
+import { localStorageKeys } from 'src/configs';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { setAccount, setStarkPublicKey } from 'src/packages/l2-wallet/src/app/slices/accountSlice';
+import { getAccounts } from 'src/services/myriaCoreSdk';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { event } = useGA4();
-  const { address, onConnectCompaign, disconnect } = useWalletContext();
+  const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
+    useWalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
   const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [showMismatchedWalletModal, setShowMismatchedWalletModal] = React.useState(false);
+  const dispatch = useDispatch();
+
+  // Set wallet address and local stark key to redux
+  useEffect(() => {
+    dispatch(setAccount(walletAddress));
+    dispatch(setStarkPublicKey(localStarkKey));
+    subscribeProvider();
+    getAccounts()
+      .then((accounts) => {
+        if (accounts[0]?.toLowerCase() === user?.wallet_id?.toLowerCase()) {
+          setAddress(accounts[0]?.toLowerCase());
+          setWalletAddress(accounts[0]?.toLowerCase());
+        }
+      })
+      .catch();
+  }, [walletAddress, localStarkKey, user?.wallet_id, address]);
 
   useEffect(() => {
     if (userProfileQuery.isFetching) {
@@ -45,6 +68,8 @@ const ConnectL2WalletButton: React.FC = () => {
   }, [address, user, loginByWalletMutation, userProfileQuery]);
 
   useEffect(() => {
+    console.log('Current address', address);
+    console.log('Wallet ID', user?.wallet_id);
     if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
       setShowMismatchedWalletModal(true);
     }
@@ -62,6 +87,18 @@ const ConnectL2WalletButton: React.FC = () => {
 
   const handleCloseDropdown = () => {
     setOpenDropdown(false);
+  };
+
+  const showConnectedWallet = () => {
+    if (
+      address &&
+      user &&
+      address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
+      localStarkKey
+    ) {
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -101,14 +138,14 @@ const ConnectL2WalletButton: React.FC = () => {
           </p>
         </Modal.Content>
       </Modal>
-      {address && starkKeyUser ? (
+      {walletAddress && showConnectedWallet() ? (
         <div>
           <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
             <Popover.Trigger asChild>
               <span className="uppercase">
                 <button className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border px-2 py-[9px]">
                   <WalletIcon width={24} height={24} />
-                  <span>{truncateString(address)}</span>
+                  <span>{truncateString(walletAddress)}</span>
                   <i className="w-4">
                     <ChevronDownIcon />
                   </i>

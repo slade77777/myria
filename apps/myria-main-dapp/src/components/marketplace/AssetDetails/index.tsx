@@ -289,8 +289,9 @@ function AssetDetails({ id }: Props) {
       if (!moduleFactory) return;
 
       const withdrawalModule = moduleFactory.getWithdrawModule();
+
       const balance = await withdrawalModule.getWithdrawalBalance(
-        address,
+        address.toLowerCase(),
         assetDetails?.assetMintId + ''
       );
       if (balance > 0) {
@@ -656,7 +657,6 @@ function AssetDetails({ id }: Props) {
         <AssetList
           title={'More from this collection'}
           items={moreCollectionList?.items?.map((elm, index: number) => {
-            console.log({ elm });
             const item: NFTItemType = {
               id: `${elm.id}`,
               rarity: (elm.metadata as any).rarity,
