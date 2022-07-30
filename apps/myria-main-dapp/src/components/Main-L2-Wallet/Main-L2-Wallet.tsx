@@ -12,7 +12,6 @@ import {
 import { setWithdrawClaimModal } from 'src/packages/l2-wallet/src/app/slices/uiSlice';
 import TermsOfServiceModal from 'src/packages/l2-wallet/src/components/Modal/TermsOfServiceModal';
 import CreateMyriaWalletModal from 'src/packages/l2-wallet/src/components/Modal/CreateMyriaWalletModal';
-import CreateMyriaAccountModal from 'src/packages/l2-wallet/src/components/Modal/CreateMyriaAccountModal';
 import FirstDepositModal from 'src/packages/l2-wallet/src/components/Modal/FirstDepositModal';
 import MessageDepositModal from 'src/packages/l2-wallet/src/components/Modal/MessageDepositModal';
 import MessageWithdrawModal from 'src/packages/l2-wallet/src/components/Modal/MessageWithdrawModal';
@@ -25,6 +24,10 @@ import { localStorageKeys } from 'src/configs';
 
 // @ts-ignore
 
+interface IProp {
+  isConnectWallet: boolean;
+}
+
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
 const { asset } = StarkwareLib;
@@ -32,12 +35,14 @@ declare const window: any;
 
 const QUANTUM_CONSTANT = 10000000000;
 
-export default function MainL2Wallet() {
+export default function MainL2Wallet(props: IProp) {
+  const { isConnectWallet } = props;
   const walletModalRef = useRef<any>();
   const [showPrivacyModal, setPrivacyModal] = useState<Boolean>(false);
   const [openMyriaWalletModal, setOpenMyriaWallet] = useState<Boolean>(false);
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
-  const [wallet, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const { address } = useWalletContext();
   const [isShowMessage, setIsShowMessage] = useState<Boolean>(false);
   const [previousBalance, setPreviousBalance] = useState<any>(0);
   const [welcomeModal, setWelcomeModal] = useState<boolean>(false);
@@ -49,6 +54,12 @@ export default function MainL2Wallet() {
   const pKey = useSelector((state: RootState) => state.account.starkPublicKeyFromPrivateKey);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isConnectWallet) {
+      loadWeb3();
+    }
+  }, [isConnectWallet]);
 
   useEffect(() => {
     const getBalanceOfMyriaL1Wallet = async () => {
@@ -95,8 +106,6 @@ export default function MainL2Wallet() {
     return () => clearInterval(interval);
   }, [pKey, selectedToken, dispatch, previousBalance]);
 
-  const { address: walletAddress } = useWalletContext();
-
   const onRequestSignature = useCallback(
     async (web3Account: string) => {
       if (!web3Account) {
@@ -115,11 +124,13 @@ export default function MainL2Wallet() {
 
       dispatch(setStarkPublicKey(starkKey));
       setLocalStarkKey(starkKey);
+      setWalletAddress(web3Account?.toLowerCase());
     },
     [dispatch]
   );
 
   const loadWeb3 = useCallback(async () => {
+    console.log('Load web3....');
     const accounts = await getAccounts();
     const currentAccount = accounts[0];
     if (!accounts || accounts.length === 0) return null;
@@ -147,25 +158,21 @@ export default function MainL2Wallet() {
     return null;
   }, [account, dispatch, onRequestSignature]);
 
-  useEffect(() => {
-    if (!walletAddress) return;
-    if (pKey.length == 0) {
-      loadWeb3();
-    }
-  }, [walletAddress, loadWeb3]);
+  const onSetStarkKeyToLocalStorage = (starkKey: string) => {
+    setLocalStarkKey(starkKey);
+  };
 
   useEffect(() => {
-    if (!walletAddress) {
+    if (!address) {
       const isOpen = walletModalRef.current.getModalState();
       if (isOpen) {
         walletModalRef.current.onCloseModal();
       }
     }
-  }, [walletAddress]);
+  }, [address]);
 
   const metaMaskConnect = async () => {
     await getModuleFactory();
-    await loadWeb3();
   };
 
   const onAcceptTermOfService = async () => {
@@ -188,13 +195,10 @@ export default function MainL2Wallet() {
       <CreateMyriaWalletModal
         metaMaskConnect={metaMaskConnect}
         ref={walletModalRef}
+        setStarkKeyToLocalStorage={onSetStarkKeyToLocalStorage}
         setWelcomeModal={setWelcomeModal}
       />
-      <CreateMyriaAccountModal
-        className="px-[40px] pt-[37px] pb-[32px]"
-        modalShow={openMyriaWalletModal}
-        closeModal={() => setOpenMyriaWallet(false)}
-      />
+
       <FirstDepositModal
         modalShow={showFirstDepositModal}
         closeModal={() => setShowFirstDepositModal(false)}

@@ -1,3 +1,5 @@
+// DEPRECATED TO BE REMOVE AND UNUSED FILES
+
 // Import packages
 import React, { useState, useEffect, useRef } from 'react';
 import Web3 from 'web3';
@@ -8,8 +10,8 @@ import Header from '../Header';
 import TermsOfServiceModal from '../Modal/TermsOfServiceModal';
 import FirstDepositModal from '../Modal/FirstDepositModal';
 import { RootState } from '../../app/store';
-import CreateMyriaAccountModal from '../Modal/CreateMyriaAccountModal';
-import CreateMyriaWalletModal from '../Modal/CreateMyriaWalletModal';
+// import CreateMyriaAccountModal from '../Modal/CreateMyriaAccountModal';
+// import CreateMyriaWalletModal from '../Modal/CreateMyriaWalletModal';
 import MessageDepositModal from '../Modal/MessageDepositModal';
 import MessageWithdrawModal from '../Modal/MessageWithdrawModal';
 import WelcomeMyriaModal from '../Modal/WelcomeMyriaModal';
@@ -127,9 +129,9 @@ export default function MainLayout({ children }: TProps) {
     }
     return null;
   };
-  const metaMaskConnect = async () => {
-    await loadWeb3();
-  };
+  // const metaMaskConnect = async () => {
+  //   await loadWeb3();
+  // };
 
   const connectWallet = async () => {
     try {
@@ -192,16 +194,16 @@ export default function MainLayout({ children }: TProps) {
         modalShow={showPrivacyModal}
         closeModal={() => setPrivacyModal(false)}
       />
-      <CreateMyriaWalletModal
+      {/* <CreateMyriaWalletModal
         metaMaskConnect={metaMaskConnect}
         ref={walletModalRef}
         setWelcomeModal={setWelcomeModal}
-      />
-      <CreateMyriaAccountModal
+      /> */}
+      {/* <CreateMyriaWalletModal
         className="px-[40px] pt-[37px] pb-[32px]"
         modalShow={openMyriaWalletModal}
         closeModal={() => setOpenMyriaWallet(false)}
-      />
+      /> */}
       <FirstDepositModal
         modalShow={showFirstDepositModal}
         closeModal={() => setShowFirstDepositModal(false)}
