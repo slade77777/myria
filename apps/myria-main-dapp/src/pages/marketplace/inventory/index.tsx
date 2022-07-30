@@ -3,12 +3,13 @@ import Inventory from 'src/components/marketplace/Inventory';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { useWalletContext } from 'src/context/wallet';
-import testavatarImg from './testavatar.png';
+import avatar from 'public/images/marketplace/avatar.png';
 import { useRouter } from 'next/router';
 import useMarketplaceInventory from 'src/hooks/useMarketplaceInventory';
-import {useSelector} from "react-redux";
+import { useSelector } from 'react-redux';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import truncateString from 'src/helper';
+import Page from 'src/components/Page';
 
 function InventoryPage() {
   const { user } = useAuthenticationContext();
@@ -28,7 +29,6 @@ function InventoryPage() {
   const { rawData } = useMarketplaceInventory(starkKey);
 
   const items: NFTItemType[] = React.useMemo(() => {
-    
     if (rawData instanceof Array) {
       return rawData.map((item) => ({
         id: item.id,
@@ -37,7 +37,7 @@ function InventoryPage() {
         image_url: item.imageUrl,
         collection: item.collection?.name,
         creator: truncateString(item.collection.ownerPublicKey),
-        creatorImg: testavatarImg.src, // MOCK
+        creatorImg: avatar.src, // MOCK
         priceETH: +item?.order?.nonQuantizedAmountBuy
       }));
     }
@@ -47,13 +47,15 @@ function InventoryPage() {
   if (!address) return null;
 
   return (
-    <Inventory
-      userAddress={address}
-      userAvatar={testavatarImg.src}
-      userName={user?.user_name || 'Unknown'}
-      userJoinDate={user?.date_registered}
-      items={items}
-    />
+    <Page includeFooter={false}>
+      <Inventory
+        userAddress={user?.wallet_id ? user?.wallet_id : address}
+        userAvatar={avatar.src}
+        userName={user?.user_name || 'Unknown'}
+        userJoinDate={user?.date_registered}
+        items={items}
+      />
+    </Page>
   );
 }
 

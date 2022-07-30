@@ -2,13 +2,13 @@ import { Trans } from '@lingui/macro';
 import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
 import { CommonPaginateDataTypes } from 'myria-core-sdk/dist/types/src/types/CommonTypes';
 import Link from 'next/link';
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import { useQuery } from 'react-query';
 import { collectionModule } from 'src/services/myriaCore';
 import { validatedImage } from 'src/utils';
-import {useGA4} from "../../../lib/ga";
-import {useAuthenticationContext} from "../../../context/authentication";
-import {useWalletContext} from "../../../context/wallet";
+import { useGA4 } from '../../../lib/ga';
+import { useAuthenticationContext } from '../../../context/authentication';
+import { useWalletContext } from '../../../context/wallet';
 
 const HotCollection: React.FC = () => {
   const { event } = useGA4();
@@ -25,14 +25,17 @@ const HotCollection: React.FC = () => {
     collectionModule?.getCollectionList(payload)
   );
 
-  const onClickCollectionTracking = useCallback((itm: CollectionItems) => {
-    return event('MKP Collection Selected', {
-      myria_id: user?.user_id,
-      wallet_address: `_${address}`,
-      collection_name: itm?.name,
-      collection_author: itm?.project?.name
-    });
-  }, [user, address])
+  const onClickCollectionTracking = useCallback(
+    (itm: CollectionItems) => {
+      return event('MKP Collection Selected', {
+        myria_id: user?.user_id,
+        wallet_address: `_${address}`,
+        collection_name: itm?.name,
+        collection_author: itm?.project?.name
+      });
+    },
+    [user, address]
+  );
 
   const hotCollection: CommonPaginateDataTypes<CollectionItems[]> | undefined = data?.data;
 
@@ -53,25 +56,25 @@ const HotCollection: React.FC = () => {
                     style={{
                       backgroundImage: `url(${validatedImage(itm.collectionImageUrl)})`
                     }}></div>
-                  <div className="bg-base/3 relative flex  flex-col  items-center pb-[32px]">
+                  <div className="bg-base/3 relative flex  flex-col  items-center pb-8">
                     <div
-                      className="border-base/3 absolute left-1/2 h-[80px] w-[80px] -translate-x-1/2 -translate-y-1/2 transform rounded-[40px] border-[4px] bg-center "
+                      className="border-base/3 absolute left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 transform rounded-full border-[4px] bg-center "
                       style={{
                         backgroundImage: `url(${
                           itm.iconUrl ? itm.iconUrl : '/images/marketplace/collection-2-logo.png'
                         })`
                       }}></div>
-                    <div className="mt-[40px] text-center">
-                      <p className="mt-[16px] text-xl font-bold">
+                    <div className="mt-10 text-center px-8 w-full">
+                      <p className="mt-4 text-xl font-bold">
                         <Trans>{itm.name}</Trans>
                       </p>
-                      <p className="text-light mt-[9px] text-[16px]">
+                      <p className="text-light mt-[9px] text-base">
                         by
                         <Trans>
                           <span className="text-blue/6">{' ' + itm.project.companyName} </span>
                         </Trans>
                       </p>
-                      <p className="text-light mt-[16px] px-[32px] text-center text-[16px]">
+                      <p className="text-light mt-4 text-center text-base truncate">
                         <Trans>{itm.description}</Trans>
                       </p>
                     </div>

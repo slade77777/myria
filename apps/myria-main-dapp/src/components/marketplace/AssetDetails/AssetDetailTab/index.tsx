@@ -32,7 +32,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
     let convertPrice;
     if (assetDetails) {
       const priceConverted = formatPrice(parseFloat(assetDetails?.order.nonQuantizedAmountBuy));
-      const usdPriceConverted = formatUSDPrice(parseFloat(priceConverted) * etheCost);
+      const usdPriceConverted = `$${formatUSDPrice(parseFloat(priceConverted) * etheCost)}`;
       convertPrice = isPriceUSD ? usdPriceConverted : priceConverted;
     }
     return convertPrice;
@@ -84,7 +84,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
                       <DAOIcon /> {convertPrice(false)}
                     </p>
                   </td>
-                  <td className="py-4 pr-6 truncate w-1/4">${convertPrice(true)}</td>
+                  <td className="py-4 pr-6 truncate w-1/4">{convertPrice(true)}</td>
                   <td className="py-4 pr-6 truncate w-1/4">
                     <Trans>You</Trans>
                   </td>

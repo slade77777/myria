@@ -94,14 +94,12 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
               key={idx}
               className={clsx('hover:bg-base/4 rounded-[8px] py-[9px] px-[13px]', {
                 'bg-base/4': isActive
-              })}
-            >
+              })}>
               <Link href={item.url as string}>
                 <a
                   className={clsx('hover:text-blue/6', {
                     'text-blue/6': isActive
-                  })}
-                >
+                  })}>
                   {item.text}
                 </a>
               </Link>
@@ -173,7 +171,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
 
   return (
-    <header ref={headerRef} className="bg-base/3 w-full bg-opacity-60">
+    <header ref={headerRef} className="bg-base/3 w-full">
       {/* <div className="hidden text-black lg:block">
         <NotiBanner />
       </div> */}
