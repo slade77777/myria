@@ -18,8 +18,10 @@ import MessageDepositModal from 'src/packages/l2-wallet/src/components/Modal/Mes
 import MessageWithdrawModal from 'src/packages/l2-wallet/src/components/Modal/MessageWithdrawModal';
 import WelcomeMyriaModal from 'src/packages/l2-wallet/src/components/Modal/WelcomeMyriaModal';
 import { useWalletContext } from 'src/context/wallet';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 
 import { getAccounts, getModuleFactory, initialWeb3 } from 'src/services/myriaCoreSdk';
+import { localStorageKeys } from 'src/configs';
 
 // @ts-ignore
 
@@ -34,6 +36,8 @@ export default function MainL2Wallet() {
   const walletModalRef = useRef<any>();
   const [showPrivacyModal, setPrivacyModal] = useState<Boolean>(false);
   const [openMyriaWalletModal, setOpenMyriaWallet] = useState<Boolean>(false);
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const [wallet, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [isShowMessage, setIsShowMessage] = useState<Boolean>(false);
   const [previousBalance, setPreviousBalance] = useState<any>(0);
   const [welcomeModal, setWelcomeModal] = useState<boolean>(false);
@@ -110,6 +114,7 @@ export default function MainL2Wallet() {
       console.log('[onRequestSignature] starkKey', starkKey);
 
       dispatch(setStarkPublicKey(starkKey));
+      setLocalStarkKey(starkKey);
     },
     [dispatch]
   );

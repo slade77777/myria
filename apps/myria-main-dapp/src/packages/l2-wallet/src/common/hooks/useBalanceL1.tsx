@@ -24,7 +24,7 @@ function useBalanceL1(token: any, account: string) {
         window.web3 = result;
       })
       .catch();
-    if (!window.web3 || !window.web3.eth) return;
+    if (!window.web3 || !window.web3.eth || !account) return;
 
     const setBalanceFunc = async () => {
       if (token.name === 'Ethereum') {
