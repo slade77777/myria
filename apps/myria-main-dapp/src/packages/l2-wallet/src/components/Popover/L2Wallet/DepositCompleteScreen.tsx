@@ -1,4 +1,6 @@
+import { TxResult } from 'myria-core-sdk/dist/types/src/types';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import { ethersLink } from '../../../constants';
 import { ArrowIcon, TickCircleIcon } from '../../Icons';
 
 type Props = {
@@ -6,6 +8,7 @@ type Props = {
   successHandler: any;
   selectedToken: any;
   goBack: any;
+  items: TxResult | undefined;
 };
 
 export default function DepositCompleteScreen({
@@ -13,7 +16,11 @@ export default function DepositCompleteScreen({
   successHandler,
   selectedToken,
   goBack,
+  items,
 }: Props) {
+  const URL_LINK = `${ethersLink.goerli_goerli}${
+    items?.transactionHash ? items?.transactionHash : ''
+  }`;
   return (
     <div>
       <div
@@ -45,7 +52,14 @@ export default function DepositCompleteScreen({
         </div>
         <div className="mt-2 flex justify-between text-sm">
           <span>Transaction ID</span>
-          <span className="text-primary/6">View</span>
+          <a
+            className="text-primary/6"
+            target="_blank"
+            href={URL_LINK}
+            rel="noreferrer"
+          >
+            View
+          </a>
         </div>
       </div>
       <div className="mt-[136px]">

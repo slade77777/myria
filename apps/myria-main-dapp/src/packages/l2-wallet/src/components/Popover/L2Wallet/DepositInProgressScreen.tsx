@@ -49,10 +49,6 @@ export default function DepositInProgressScreen({
           <span>Estimated completion</span>
           <span className="text-white">1-2 minutes</span>
         </div>
-        <div className="mt-4 flex justify-between">
-          <span>Transaction ID</span>
-          <span className="text-primary/6">View</span>
-        </div>
       </div>
       <div className="mt-[103px]">
         <button
