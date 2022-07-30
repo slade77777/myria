@@ -840,7 +840,7 @@ const ModifyListing: React.FC<IProp> = ({
         <div className="flex flex-row items-center">
           <DAOIcon className="mr-[8px]" />
           <span className="text-[28px] font-bold">{currentPrice}</span>
-          <span className="text-light mb-[5px] ml-1 self-end text-[14px]">
+          <span className="text-light mb-[5px] ml-2 self-end text-[14px]">
             {'(~$'}
             {currentUSDPrice}
             {')'}
@@ -871,7 +871,7 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
         <div className="flex flex-row items-center">
           <DAOIcon className="mr-[8px]" />
           <span className="text-[28px] font-bold">{currentPrice}</span>
-          <span className="text-light mb-[5px] ml-1 self-end text-[14px]">
+          <span className="text-light mb-[5px] ml-2 self-end text-[14px]">
             {'(~$'}
             {currentUSDPrice}
             {')'}
