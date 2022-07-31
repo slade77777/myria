@@ -2,7 +2,9 @@ import { Trans } from '@lingui/macro';
 import Link from 'next/link';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { localStorageKeys } from 'src/configs';
 import { useWalletContext } from 'src/context/wallet';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 import { setStarkPublicKey } from 'src/packages/l2-wallet/src/app/slices/accountSlice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import DropdownMenu from '../DropdownMenu';
@@ -12,15 +14,18 @@ import LogoutIcon from '../icons/LogoutIcon';
 const UserAvatar: React.FC = () => {
   const dispatch = useDispatch();
   const { address, onConnect, disconnect } = useWalletContext();
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
-
+  const avatar = localStarkKey
+    ? '/images/marketplace/collection-1-logo.png'
+    : '/images/marketplace/user.png';
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger disabled={!starkKeyUser}>
         <div className="h-9 w-9 overflow-hidden rounded-full">
-          <img width="100%" src={'/images/marketplace/user.png'} alt="" />
+          <img width="100%" src={avatar} alt="" />
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
