@@ -128,11 +128,13 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
       )}
     >
       <div className="flex items-center justify-end px-4">
-        <div className="mr-1 text-[14px] text-[#A1AFBA]">
-          {account.substring(0, 4) +
-            '...' +
-            account.substring(account.length - 4, account.length)}
-        </div>
+        {account && (
+          <div className="mr-1 text-[14px] text-[#A1AFBA]">
+            {account.substring(0, 4) +
+              '...' +
+              account.substring(account.length - 4, account.length)}
+          </div>
+        )}
         <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
       </div>
 
