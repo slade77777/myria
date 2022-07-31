@@ -1,4 +1,5 @@
 import { Trans } from '@lingui/macro';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,7 +26,7 @@ const UserAvatar: React.FC = () => {
     <DropdownMenu>
       <DropdownMenu.Trigger disabled={!starkKeyUser}>
         <div className="h-9 w-9 overflow-hidden rounded-full">
-          <img width="100%" src={avatar} alt="" />
+          <Image width={100} height={100} src={avatar} alt="" />
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
