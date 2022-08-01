@@ -1,13 +1,14 @@
 import { Trans } from '@lingui/macro';
 import CircleCheck from 'src/components/icons/CircleCheck';
 import { toast } from 'react-toastify';
+import CheckIcon from 'src/components/icons/CheckIcon';
 export default function MessageListingPriceModal({ price = 2.99 }) {
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
         <div className="relative mb-1 font-semibold dark:text-white text-lg leading-normal">
           <span className="absolute -left-[45px]">
-            <CircleCheck size={24} className="mt-[1px]" />
+            <CheckIcon size={24} className="mt-[1px] text-[#2EA64F]" />
           </span>
           <span>
             <Trans>Listing price has been updated</Trans>

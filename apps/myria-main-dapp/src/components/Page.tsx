@@ -7,6 +7,9 @@ import FirstTimeVisitModal from './FirstTimeVisitModal';
 import Footer from './Footer';
 import Header from './Header';
 import { Action } from './Header/type';
+import MessageDepositModal from './marketplace/MessageModal/MessageDepositModal';
+import MessageModal from './marketplace/MessageModal/MessageModal';
+import { useDepositContext } from 'src/context/deposit-context';
 
 type Props = {
   action?: Action;
@@ -44,6 +47,8 @@ const Page: React.FC<Props> = ({
     };
   }, [firstTimeVisit, setFirtTimeVisit]);
 
+  const { showMessageDeposit, handleShowMessageDeposit } = useDepositContext();
+
   const handleCloseFirstTimeVisitModal = () => {
     setShowFirstTimeVisitModal(false);
   };
@@ -74,6 +79,13 @@ const Page: React.FC<Props> = ({
           </div>
         </div>
       </div>
+      {typeof window !== 'undefined' && (
+        <MessageModal
+          isShowMessage={showMessageDeposit}
+          setIsShowMessage={() => handleShowMessageDeposit(false)}>
+          <MessageDepositModal />
+        </MessageModal>
+      )}
     </>
   );
 };

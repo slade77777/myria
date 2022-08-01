@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CheckIcon: React.FC<{ className?: string }> = ({ className }) => {
+const CheckIcon: React.FC<{ className?: string; size?: number }> = ({ className, size }) => {
   return (
     <svg
       className={className}
-      width="20"
-      height="20"
+      width={size}
+      height={size}
       viewBox="0 0 20 20"
       fill="#97AAB5"
       xmlns="http://www.w3.org/2000/svg">
