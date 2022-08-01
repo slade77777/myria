@@ -31,7 +31,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
   const convertPrice = (isPriceUSD: boolean) => {
     let convertPrice;
     if (assetDetails) {
-      const priceConverted = formatPrice(parseFloat(assetDetails?.order.nonQuantizedAmountBuy));
+      const priceConverted = formatPrice(parseFloat(assetDetails?.order?.nonQuantizedAmountBuy));
       const usdPriceConverted = `$${formatUSDPrice(parseFloat(priceConverted) * etheCost)}`;
       convertPrice = isPriceUSD ? usdPriceConverted : priceConverted;
     }

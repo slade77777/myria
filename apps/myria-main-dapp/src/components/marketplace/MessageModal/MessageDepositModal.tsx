@@ -18,15 +18,17 @@ export default function MessageDepositModal({ onClose = () => {} }) {
           </div>
           <div className="text-sm font-normal mt-[10px]">
             <span className="text-base/9">
-              <Trans>Your deposit of {amount} ETH is now complete.</Trans>
+              <Trans>Your deposit of</Trans> {amount} <Trans>ETH is now complete.</Trans>
             </span>
           </div>
         </div>
       </div>
       <div className="flex justify-end mt-6">
-        <button onClick={onClose}>Dismiss</button>
+        <button onClick={onClose}>
+          <Trans>Dismiss</Trans>
+        </button>
         <button className="ml-[10px] rounded bg-[#F5B941] p-[7px] font-semibold text-black">
-          View in wallet
+          <Trans>View in wallet</Trans>
         </button>
       </div>
     </div>
