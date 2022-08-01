@@ -5,6 +5,7 @@ import Profile from '../Profile';
 import Mission from './MissionV2';
 import Inventory from '../Inventory';
 import NftReward from '../NftReward';
+import { Trans } from '@lingui/macro';
 
 const Dashboard: React.FC = () => {
   const [tab, setTab] = useState<'rewards' | 'inventory'>('rewards');
@@ -58,7 +59,23 @@ const Dashboard: React.FC = () => {
             {tab === 'rewards' ? (
               <div className="space-y-8">
                 <NftReward />
-                <Mission />
+                <div className="mt-[120px] flex flex-col items-center space-y-4">
+                  <p className="h6">
+                    <Trans>Missions are now locked</Trans>
+                  </p>
+                  <p className="body-14-regular max-w-[364px] text-center text-light">
+                    <Trans>
+                      Thanks for participating! You can still claim your NFT rewards and open your
+                      chests. Reward minting will begin soon.
+                    </Trans>
+                  </p>
+                  <button
+                    onClick={() => setTab('inventory')}
+                    type="button"
+                    className="btn-lg btn-primary">
+                    GO TO INVENTORY
+                  </button>
+                </div>
               </div>
             ) : (
               <Inventory />
