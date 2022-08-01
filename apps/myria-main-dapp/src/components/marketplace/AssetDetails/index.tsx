@@ -550,7 +550,7 @@ function AssetDetails({ id }: Props) {
             <div className="flex flex-row items-center justify-between">
               {/* first row */}
               <div className="flex flex-row items-center">
-                <img src={testavatarImg.src} className="h-[24px] w-[24px]" />
+                <img src={avatar.src} className="h-[24px] w-[24px]" />
                 <span className="text-light ml-[8px] text-base">
                   {assetDetails?.collectionName}
                 </span>
