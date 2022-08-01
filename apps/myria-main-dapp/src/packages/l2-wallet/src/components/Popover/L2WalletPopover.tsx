@@ -63,6 +63,7 @@ import {
   convertQuantizedAmountToEth,
 } from '../../utils/Converter';
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
+import { useDepositContext } from 'src/context/deposit-context';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -496,6 +497,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
   const { event } = useGA4();
   const { user, logout } = useAuthenticationContext();
+  const { handleSetAmount, handleShowMessageDeposit } = useDepositContext();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
@@ -664,7 +666,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             selectedToken={selectedToken}
             successHandler={() => {
               initForm();
-              setScreen(SCREENS.MAIN_SCREEN);
+              handleSetAmount(amount);
+              handleShowMessageDeposit(true);
             }}
             goBack={() => {
               setScreen(SCREENS.MAIN_SCREEN);

@@ -1,5 +1,6 @@
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import Popover from 'src/components/Popover';
 import { ethersLink } from '../../../constants';
 import { ArrowIcon, TickCircleIcon } from '../../Icons';
 
@@ -65,16 +66,13 @@ export default function DepositCompleteScreen({
         </div>
       </div>
 
-      <div>
-        <button
-          onClick={() => {
-            successHandler();
-          }}
-          className="bg-primary/6 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold text-black"
-        >
-          OK
-        </button>
-      </div>
+      <Popover.Close aria-label="Close" onClick={() => successHandler()}>
+        <div>
+          <button className="bg-primary/6 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold text-black">
+            OK
+          </button>
+        </div>
+      </Popover.Close>
     </>
   );
 }
