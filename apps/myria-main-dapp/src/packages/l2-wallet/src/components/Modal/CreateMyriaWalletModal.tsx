@@ -121,74 +121,72 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
   }));
 
   return (
-    <div
-      className={cn(
-        `absolute top-[100px] right-[21px] w-[406px] rounded-[20px] border border-[#202230] bg-[#081824] py-6`,
-        display ? 'block' : 'hidden',
-      )}
-    >
-      <div className="flex items-center justify-end px-4">
-        {account && (
-          <div className="mr-1 text-[14px] text-[#A1AFBA]">
-            {account.substring(0, 4) +
-              '...' +
-              account.substring(account.length - 4, account.length)}
+    <div className={cn(display ? 'block' : 'hidden')}>
+      <div className="absolute -bottom-[30px] left-1/2 z-30 h-[20px] w-[20px] rotate-45 border-t border-l border-[#202230] bg-[#081824]" />
+      <div className="absolute top-16 right-16 max-h-[80vh] w-[406px] overflow-auto rounded-[20px] border border-[#202230] bg-[#081824] py-6">
+        <div className="flex items-center justify-end px-4">
+          {account && (
+            <div className="mr-1 text-[14px] text-[#A1AFBA]">
+              {account.substring(0, 4) +
+                '...' +
+                account.substring(account.length - 4, account.length)}
+            </div>
+          )}
+          <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
+        </div>
+        <div>
+          <div className="mt-[24px] flex justify-center">
+            <MyriaLogoIcon className="text-white" size={82} />
           </div>
-        )}
-        <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
-      </div>
 
-      <div className="relative h-[20px] w-[20px]">
-        <div className="absolute top-[-66px] left-[250px] h-[20px] w-[20px] rotate-45 border-t border-l border-[#202230] bg-[#081824]" />
-      </div>
-
-      <div>
-        <div className="mt-[24px] flex justify-center">
-          <MyriaLogoIcon className="text-white" size={82} />
-        </div>
-
-        <div className="mt-6 text-center text-[24px] font-bold text-white">
-          Welcome to Myria
-        </div>
-
-        <div className="text-center text-[16px] text-white">
-          {' '}
-          Let’s get your account set up.
-        </div>
-
-        <div className="mx-auto mt-[57px] w-[193px]">
-          <div>
-            🚀 <span className="text-[16px] text-white">0 gas fee trading</span>
+          <div className="mt-6 text-center text-[24px] font-bold text-white">
+            Welcome to Myria
           </div>
-          <div className="mt-5">
-            ⚡️{' '}
-            <span className="text-[16px] text-white">Instant transactions</span>
-          </div>
-          <div className="mt-5">
-            🔒{' '}
-            <span className="text-[16px] text-white">Secured by Ethereum </span>
-          </div>
-        </div>
 
-        <div className="mt-[56px] px-[50px] text-center text-[12px] text-[#A1AFBA]">
-          By creating your Myria L2 wallet and using Myria, you agree to our{' '}
-          <span className="text-[#F5B941]">Terms of Service</span> and{' '}
-          <span className="text-[#F5B941]">Privacy Policy.</span>
-        </div>
+          <div className="text-center text-[16px] text-white">
+            {' '}
+            Let’s get your account set up.
+          </div>
 
-        <div className="mt-[49px] flex justify-between px-[24px]">
-          <button
-            onClick={onCloseModal}
-            className="rounded-[8px] border border-[#A1AFBA] bg-transparent py-[9px] px-[35px] text-[14px] font-bold uppercase text-white"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={onSendRequest}
-            className="flex items-center justify-center rounded-[8px] bg-[#F5B941] py-[9px] px-[26px] text-[14px] font-bold uppercase text-[#040B10]"
-          >
-            agree and sign
-          </button>
+          <div className="mx-auto mt-[57px] w-[193px]">
+            <div>
+              🚀{' '}
+              <span className="text-[16px] text-white">0 gas fee trading</span>
+            </div>
+            <div className="mt-5">
+              ⚡️{' '}
+              <span className="text-[16px] text-white">
+                Instant transactions
+              </span>
+            </div>
+            <div className="mt-5">
+              🔒{' '}
+              <span className="text-[16px] text-white">
+                Secured by Ethereum{' '}
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-[56px] px-[50px] text-center text-[12px] text-[#A1AFBA]">
+            By creating your Myria L2 wallet and using Myria, you agree to our{' '}
+            <span className="text-[#F5B941]">Terms of Service</span> and{' '}
+            <span className="text-[#F5B941]">Privacy Policy.</span>
+          </div>
+
+          <div className="mt-[49px] flex justify-between px-[24px]">
+            <button
+              onClick={onCloseModal}
+              className="rounded-[8px] border border-[#A1AFBA] bg-transparent py-[9px] px-[35px] text-[14px] font-bold uppercase text-white"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={onSendRequest}
+              className="flex items-center justify-center rounded-[8px] bg-[#F5B941] py-[9px] px-[26px] text-[14px] font-bold uppercase text-[#040B10]"
+            >
+              agree and sign
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -185,13 +185,10 @@ export default function FirstDepositModal({
   };
 
   return (
-    <div>
-      <div
-        className={cn(
-          'absolute top-[100px] right-[21px] w-[406px] rounded-[20px] border border-[#202230] bg-[#081824] py-6',
-          modalShow ? 'block' : 'hidden',
-        )}
-      >
+    <div className={cn(modalShow ? 'block' : 'hidden')}>
+      <div className="absolute -bottom-[30px] left-1/2 z-30 h-[20px] w-[20px] rotate-45 border-t border-l border-[#202230] bg-[#081824]" />
+
+      <div className="absolute top-16 right-16 max-h-[80vh] w-[406px] overflow-auto rounded-[20px] border border-[#202230] bg-[#081824] py-6">
         <div>
           <div className="">
             <div className="flex items-center justify-between px-6">
@@ -200,11 +197,7 @@ export default function FirstDepositModal({
               </div>
               <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
             </div>
-
-            <div className="relative h-[20px] w-[20px]">
-              <div className="absolute top-[-66px] left-[250px] h-[20px] w-[20px] rotate-45 border-t border-l border-[#202230] bg-[#081824]" />
-            </div>
-            <div className="px-6">
+            <div className="px-6 pt-5">
               {depositProgress === PROGRESS.START && (
                 <div>
                   <div className="mt-[15px]">
