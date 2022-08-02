@@ -64,6 +64,15 @@ export default function MainScreen({
     }
   };
 
+  const renderAmount = (type: string, amount: number) => {
+    switch (type) {
+      case 'SettlementRequest':
+        return 1;
+      default:
+        return amount;
+    }
+  };
+
   useEffect(() => {
     const temp: any = [];
     options.map((option: any, index: number) => {
@@ -255,9 +264,11 @@ export default function MainScreen({
                       <span>{renderType(item.type)}</span>
                       <span className="flex items-center">
                         <span className="mb-[2px] mr-1">
-                          <DAOIcon size={16} />{' '}
+                          {item.type !== 'SettlementRequest' && (
+                            <DAOIcon size={16} />
+                          )}
                         </span>
-                        <span>{item.amount}</span>
+                        <span>{renderAmount(item.type, item.amount)}</span>
                       </span>
                     </div>
                     <div className="text-base/9 flex items-center justify-between text-xs">
