@@ -63,7 +63,6 @@ export const WalletProvider: React.FC = ({ children }) => {
     }
 
     provider.on('accountsChanged', async (accounts: string[]) => {
-      console.log('Listening account changes ---<');
       setAddress(accounts[0]);
     });
 
@@ -96,7 +95,7 @@ export const WalletProvider: React.FC = ({ children }) => {
     setWalletAddress('');
     reset();
     address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
-  }, [w3Provider, event, address, localStarkKey, walletAddress]);
+  }, [address, event, setLocalStarkKey, setWalletAddress, w3Provider]);
 
   const getBalanceETH = React.useCallback(() => {
     if (!address) return;

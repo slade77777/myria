@@ -43,6 +43,7 @@ import { useAuthenticationContext } from '../../../context/authentication';
 import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { usePurchaseNFTContext } from 'src/context/purchase-nft';
 
 interface Props {
   id: string;
@@ -91,7 +92,7 @@ function AssetDetails({ id }: Props) {
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
       handleSetValueNFT(assetDetails?.data);
-
+      
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
@@ -102,6 +103,7 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = useMemo(() => `0x${starkKeyUser}`, [starkKeyUser]);
+  
   const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
   const ownedBy = useMemo(() => {
     if (assetDetails?.owner?.starkKey == starkKey) {
@@ -165,7 +167,7 @@ function AssetDetails({ id }: Props) {
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
   const { data: etheCost = 0 } = useEtheriumPrice();
-  const { address, onConnect } = useWalletContext();
+  const { address, onConnect, onConnectCompaign } = useWalletContext();
   // wait update sdk
   const bgImage = assetDetails?.metadataOptional
     ? (assetDetails?.metadataOptional as any)?.rarity
@@ -198,9 +200,55 @@ function AssetDetails({ id }: Props) {
     return formatNumber2digits(price * etheCost);
   }, [assetDetails?.order?.nonQuantizedAmountBuy, etheCost]);
 
+  const { event } = useGA4();
+  const { user } = useAuthenticationContext();
   const handleCloseModal = useCallback(() => {
     setShowModal((showModal) => !showModal);
   }, [setShowModal]);
+  const onTrackingItem = useCallback(
+    ({
+      eventName,
+      newEthPrice,
+      newUsdPrice
+    }: {
+      eventName: NFTItemAction;
+      newEthPrice?: number;
+      newUsdPrice?: number;
+    }) => {
+      const ifModify = eventName === 'MKP Item Listing Modify Completed';
+      const ethPrice = assetDetails?.order?.nonQuantizedAmountBuy;
+      const usdPrice = ethPrice ? +ethPrice * etheCost : 0;
+      event(eventName, {
+        myria_id: user?.user_id,
+        wallet_address: `_${address}`,
+        item_name: assetDetails?.name || '',
+        item_id: `${assetDetails?.id}`,
+        collection_name: assetDetails?.collectionName,
+        collection_author: assetDetails?.creator?.name,
+        item_owner: assetDetails?.owner?.ethAddress || '',
+        item_price_eth: ifModify ? newEthPrice && +newEthPrice : ethPrice ? +ethPrice : 0,
+        item_price_usd: ifModify ? newUsdPrice && +newUsdPrice : usdPrice ? +usdPrice : 0,
+        ...(ifModify
+          ? {
+              old_price_eth: ethPrice && +ethPrice,
+              old_price_usd: usdPrice && +usdPrice
+            }
+          : {})
+      });
+    },
+    [
+      address,
+      assetDetails?.collectionName,
+      assetDetails?.creator?.name,
+      assetDetails?.id,
+      assetDetails?.name,
+      assetDetails?.order?.nonQuantizedAmountBuy,
+      assetDetails?.owner?.ethAddress,
+      etheCost,
+      event,
+      user?.user_id
+    ]
+  );
   const onSubmitModifyOrder = async ({ price }: { price: string }) => {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
@@ -279,7 +327,15 @@ function AssetDetails({ id }: Props) {
         }
       }
     },
-    [address, assetDetails?.tokenAddress, assetDetails?.tokenId, id, refetch, starkKey]
+    [
+      address,
+      assetDetails?.tokenAddress,
+      assetDetails?.tokenId,
+      id,
+      onTrackingItem,
+      refetch,
+      starkKey
+    ]
   );
   useEffect(() => {
     // cronjob run every 2 minutes
@@ -322,7 +378,7 @@ function AssetDetails({ id }: Props) {
 
   useEffect(() => {
     let currentStatus: number = AssetStatus.UNCONNECTED;
-
+    
     if (assetDetails?.order) {
       // item for sale
       if (starkKey === assetDetails?.owner?.starkKey) {
@@ -362,43 +418,6 @@ function AssetDetails({ id }: Props) {
     }
   };
 
-  const { event } = useGA4();
-  const { user } = useAuthenticationContext();
-
-  const onTrackingItem = useCallback(
-    ({
-      eventName,
-      newEthPrice,
-      newUsdPrice
-    }: {
-      eventName: NFTItemAction;
-      newEthPrice?: number;
-      newUsdPrice?: number;
-    }) => {
-      const ifModify = eventName === 'MKP Item Listing Modify Completed';
-      const ethPrice = assetDetails?.order?.nonQuantizedAmountBuy;
-      const usdPrice = ethPrice ? +ethPrice * etheCost : 0;
-      event(eventName, {
-        myria_id: user?.user_id,
-        wallet_address: `_${address}`,
-        item_name: assetDetails?.name || '',
-        item_id: `${assetDetails?.id}`,
-        collection_name: assetDetails?.collectionName,
-        collection_author: assetDetails?.creator?.name,
-        item_owner: assetDetails?.owner?.ethAddress || '',
-        item_price_eth: ifModify ? newEthPrice && +newEthPrice : ethPrice ? +ethPrice : 0,
-        item_price_usd: ifModify ? newUsdPrice && +newUsdPrice : usdPrice ? +usdPrice : 0,
-        ...(ifModify
-          ? {
-              old_price_eth: ethPrice && +ethPrice,
-              old_price_usd: usdPrice && +usdPrice
-            }
-          : {})
-      });
-    },
-    [user, address, currentUSDPrice, assetDetails?.order?.nonQuantizedAmountBuy, assetDetails]
-  );
-
   const onTrackingNoPriceItem = useCallback(
     (eventName: NFTItemNoPriceAction) => {
       event(eventName, {
@@ -410,7 +429,15 @@ function AssetDetails({ id }: Props) {
         collection_author: assetDetails?.creator?.name
       });
     },
-    [user, address, assetDetails]
+    [
+      address,
+      assetDetails?.collectionName,
+      assetDetails?.creator?.name,
+      assetDetails?.id,
+      assetDetails?.name,
+      event,
+      user?.user_id
+    ]
   );
 
   const onTrackingConnectWallet = useCallback(() => {
@@ -420,7 +447,13 @@ function AssetDetails({ id }: Props) {
       collection_name: assetDetails?.collectionName,
       collection_author: assetDetails?.creator?.name
     });
-  }, [assetDetails]);
+  }, [
+    assetDetails?.collectionName,
+    assetDetails?.creator?.name,
+    assetDetails?.id,
+    assetDetails?.name,
+    event
+  ]);
 
   const handleCreateTrade = async (tradeData: any) => {
     const moduleFactory = await getModuleFactory();
@@ -610,7 +643,7 @@ function AssetDetails({ id }: Props) {
                 currentUSDPrice={currentUSDPrice}
                 setStatus={() => {
                   onTrackingConnectWallet();
-                  onConnect();
+                  onConnectCompaign('B2C Marketplace');
                 }}
               />
             )}
@@ -687,6 +720,7 @@ function AssetDetails({ id }: Props) {
           }}
           assetBuy={assetBuy}
           setChangeStatusSuccess={() => {
+            setStatus(AssetStatus.SALE);
             refetch();
           }}
         />

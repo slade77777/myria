@@ -22,24 +22,16 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { getAccounts, getModuleFactory, initialWeb3 } from 'src/services/myriaCoreSdk';
 import { localStorageKeys } from 'src/configs';
 
-// @ts-ignore
-
-interface IProp {
-  isConnectWallet: boolean;
-}
 
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
 const { asset } = StarkwareLib;
-declare const window: any;
 
 const QUANTUM_CONSTANT = 10000000000;
 
-export default function MainL2Wallet(props: IProp) {
-  const { isConnectWallet } = props;
+export default function MainL2Wallet() {
   const walletModalRef = useRef<any>();
   const [showPrivacyModal, setPrivacyModal] = useState<Boolean>(false);
-  const [openMyriaWalletModal, setOpenMyriaWallet] = useState<Boolean>(false);
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const { address } = useWalletContext();
@@ -48,18 +40,61 @@ export default function MainL2Wallet(props: IProp) {
   const [welcomeModal, setWelcomeModal] = useState<boolean>(false);
   const [showFirstDepositModal, setShowFirstDepositModal] = useState<Boolean>(false);
   const selectedToken = useSelector((state: RootState) => state.token.selectedToken);
-  const account = useSelector((state: RootState) => state.account.connectedAccount);
 
   const showWithDrawClaimModal = useSelector((state: RootState) => state.ui.showWithDrawClaimModal);
   const pKey = useSelector((state: RootState) => state.account.starkPublicKeyFromPrivateKey);
 
   const dispatch = useDispatch();
+  const onRequestSignature = useCallback(
+    async (web3Account: string) => {
+      
+      if (!web3Account) {
+        console.error('Please connect wallet first.');
+        return;
+      }
+      const signMessage = 'Message request signature: ';
+      const web3 = await initialWeb3();
+      const wSignature = await web3.eth.personal.sign(signMessage, web3Account, '');
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
 
+      const commonModule = moduleFactory.getCommonModule();
+      const starkKey = commonModule.getStarkPublicKey(wSignature);
+      dispatch(setStarkPublicKey(starkKey));
+      setLocalStarkKey(starkKey);
+      setWalletAddress(web3Account?.toLowerCase());
+    },
+    [dispatch, setLocalStarkKey, setWalletAddress]
+  );
+  
   useEffect(() => {
-    if (isConnectWallet) {
+    const loadWeb3 = async () => {
+      const accounts = await getAccounts();
+      const currentAccount = accounts[0];
+      if (!accounts || accounts.length === 0) return null;
+  
+      dispatch(markWalletConnected());
+      dispatch(setAccount(accounts[0]));
+  
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+  
+      const userModule = moduleFactory.getUserModule();
+  
+      try {
+        const user = await userModule.getUserByWalletAddress(currentAccount);
+        if (user.status === 'success' && user.data) {
+          onRequestSignature(currentAccount);
+        }
+      } catch {
+        walletModalRef.current.onOpenModal();
+      }
+      return null;
+    }
+    if ((!pKey || pKey.length < 3 ) && address &&  address?.length > 0) {
       loadWeb3();
     }
-  }, [isConnectWallet]);
+  }, [address, pKey]);
 
   useEffect(() => {
     const getBalanceOfMyriaL1Wallet = async () => {
@@ -95,7 +130,7 @@ export default function MainL2Wallet(props: IProp) {
           })
         );
       } else {
-        console.log('not updated');
+        console.log('[Balance is not update yet]');
       }
     };
     const interval = setInterval(() => {
@@ -105,58 +140,6 @@ export default function MainL2Wallet(props: IProp) {
     }, 10000);
     return () => clearInterval(interval);
   }, [pKey, selectedToken, dispatch, previousBalance]);
-
-  const onRequestSignature = useCallback(
-    async (web3Account: string) => {
-      if (!web3Account) {
-        console.error('Please connect wallet first.');
-        return;
-      }
-      const signMessage = 'Message request signature: ';
-      const web3 = await initialWeb3();
-      const wSignature = await web3.eth.personal.sign(signMessage, web3Account, '');
-      const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
-
-      const commonModule = moduleFactory.getCommonModule();
-      const starkKey = commonModule.getStarkPublicKey(wSignature);
-      console.log('[onRequestSignature] starkKey', starkKey);
-
-      dispatch(setStarkPublicKey(starkKey));
-      setLocalStarkKey(starkKey);
-      setWalletAddress(web3Account?.toLowerCase());
-    },
-    [dispatch]
-  );
-
-  const loadWeb3 = useCallback(async () => {
-    console.log('Load web3....');
-    const accounts = await getAccounts();
-    const currentAccount = accounts[0];
-    if (!accounts || accounts.length === 0) return null;
-
-    dispatch(markWalletConnected());
-    dispatch(setAccount(accounts[0]));
-
-    const moduleFactory = await getModuleFactory();
-    if (!moduleFactory) return;
-
-    const userModule = moduleFactory.getUserModule();
-
-    if (!account) return null;
-
-    try {
-      const user = await userModule.getUserByWalletAddress(currentAccount);
-      console.log('[Load web3] L2 wallet user -> ', user);
-      if (user.status === 'success' && user.data) {
-        console.log('[Load web3] request signature');
-        onRequestSignature(currentAccount);
-      }
-    } catch {
-      walletModalRef.current.onOpenModal();
-    }
-    return null;
-  }, [account, dispatch, onRequestSignature]);
 
   const onSetStarkKeyToLocalStorage = (starkKey: string) => {
     setLocalStarkKey(starkKey);

@@ -90,8 +90,8 @@ export default function FirstDepositModal({
     depositResponse?.transactionHash ? depositResponse?.transactionHash : ''
   }`;
 
-  console.log('Connection account', connectedAccount);
-  console.log('selectedToken', selectedToken);
+  // console.log('Connection account', connectedAccount);
+  // console.log('selectedToken', selectedToken);
 
   const selectCurrency = (param: any) => {
     setSelectedToken(param);
