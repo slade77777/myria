@@ -41,6 +41,9 @@ const ConnectL2WalletButton: React.FC = () => {
   const onConnectWallet = () => {
     event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
     onConnectCompaign('B2C Marketplace');
+    if (loginByWalletMutation.isError) {
+      loginByWalletMutation.mutate();
+    }
   };
 
   useEffect(() => {
@@ -155,7 +158,7 @@ const ConnectL2WalletButton: React.FC = () => {
           </p>
         </Modal.Content>
       </Modal>
-      {walletAddress && showConnectedWallet ? (
+      {!loginByWalletMutation.isError && walletAddress && showConnectedWallet ? (
         <div>
           <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
             <Popover.Trigger asChild>
