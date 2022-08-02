@@ -19,7 +19,7 @@ import { t } from '@lingui/macro';
 import TabProvider from 'src/context/tabContext';
 import { Provider } from 'react-redux';
 import { store } from 'src/packages/l2-wallet/src/app/store';
-import { WithfrawNFT } from 'src/context/withdraw-nft';
+import { WithdrawNFT } from 'src/context/withdraw-nft';
 import { DepositProvider } from 'src/context/deposit-context';
 
 const WithLanguageStyle: React.FC<any> = ({ children }) => {
@@ -61,7 +61,7 @@ function App({ Component, pageProps }: AppProps) {
         />
         <ToastContainer hideProgressBar className={toastStyle.toast} />
         <WalletProvider>
-          <WithfrawNFT>
+          <WithdrawNFT>
             <DepositProvider>
               <AuthenticationProvider>
                 <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
@@ -77,7 +77,7 @@ function App({ Component, pageProps }: AppProps) {
                 </Tooltip.Provider>
               </AuthenticationProvider>
             </DepositProvider>
-          </WithfrawNFT>
+          </WithdrawNFT>
         </WalletProvider>
       </LanguageProvider>
       <ReactQueryDevtools initialIsOpen={false} />

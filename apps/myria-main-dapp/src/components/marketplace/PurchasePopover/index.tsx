@@ -147,11 +147,18 @@ const PurchasePopover: FC<IProp> = ({
         />
       )
     };
-  }, [assetBuy.name, isProgressPurchase, onCloseMessage, onConfirm, statusPurchase]);
+  }, [
+    assetBuy.name,
+    isProgressPurchase,
+    onCloseMessage,
+    onConfirm,
+    setChangeStatusSuccess,
+    statusPurchase
+  ]);
 
   return (
-    <div className="p-8">
-      <div className="mt-[20px] text-white">
+    <div className="px-8 flex flex-col h-[calc(100%-56px)]">
+      <div className="mt-[20px] text-white grow">
         <div className="flex flex-col items-center justify-center">
           {elementContent.icon}
           <h3 className="mt-[24px] text-[24px] font-medium">{elementContent.title}</h3>
@@ -169,8 +176,8 @@ const PurchasePopover: FC<IProp> = ({
           </div>
           {elementContent.history}
         </div>
-        <div className="mt-[162px] flex justify-between">{elementContent.action}</div>
       </div>
+      <div className="flex justify-between">{elementContent.action}</div>
     </div>
   );
 };

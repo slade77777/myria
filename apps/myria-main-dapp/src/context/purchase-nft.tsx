@@ -6,30 +6,35 @@ interface WithdrawNFT {
   handleSetValueNFT: (value: any) => void;
   isWithdrawing: boolean;
   handleWithdrawing: (value: boolean) => void;
+  visible: boolean;
+  handleVisible: (value: boolean) => void;
   status: StatusWithdrawNFT;
   setStatus: (value: StatusWithdrawNFT) => void;
 }
 
-const WithDrawNFT = React.createContext<WithdrawNFT>({} as WithdrawNFT);
+const PurchaseNFTContext = React.createContext<WithdrawNFT>({} as WithdrawNFT);
 
-export const WithdrawNFT: React.FC = ({ children }) => {
+export const PurchaseNFT: React.FC = ({ children }) => {
   const [valueNFT, setValueNFT] = useState({});
   const [isWithdrawing, setIsWithdrawing] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [status, setStatus] = useState(StatusWithdrawNFT.MAIN_SCREEN);
   const handleSetValueNFT = (value: any) => {
     setValueNFT(value);
   };
-
+  const handleVisible = (value: boolean) => {
+    setVisible(value);
+  };
   const handleWithdrawing = (isValue: boolean) => {
     setIsWithdrawing(isValue);
   };
 
   return (
-    <WithDrawNFT.Provider
-      value={{ valueNFT, handleSetValueNFT, isWithdrawing, handleWithdrawing, status, setStatus }}>
+    <PurchaseNFTContext.Provider
+      value={{ valueNFT, handleSetValueNFT, isWithdrawing, handleWithdrawing, status, setStatus, visible, handleVisible }}>
       {children}
-    </WithDrawNFT.Provider>
+    </PurchaseNFTContext.Provider>
   );
 };
 
-export const useWithDrawNFTContext = () => useContext(WithDrawNFT);
+export const usePurchaseNFTContext = () => useContext(PurchaseNFTContext);
