@@ -45,12 +45,14 @@ const ConnectL2WalletButton: React.FC = () => {
     dispatch(setAccount(walletAddress));
     dispatch(setStarkPublicKey(localStarkKey));
     subscribeProvider();
-    
+
     getAccounts()
       .then((accounts) => {
-        if (user?.wallet_id 
-          && accounts[0]?.toLowerCase() === user?.wallet_id?.toLowerCase() 
-          && (!address || address.toLowerCase() != user?.wallet_id.toLowerCase())) {
+        if (
+          user?.wallet_id &&
+          accounts[0]?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
+          (!address || address.toLowerCase() != user?.wallet_id.toLowerCase())
+        ) {
           setAddress(accounts[0]?.toLowerCase());
           setWalletAddress(accounts[0]?.toLowerCase());
         }
@@ -169,7 +171,7 @@ const ConnectL2WalletButton: React.FC = () => {
               style={{
                 boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
               }}
-              className="text-base/3 w-[406px] h-[565px] rounded-xl bg-current p-6 max-h-[80vh] overflow-auto">
+              className="text-base/3 h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-xl bg-current p-6">
               <Popover.Arrow
                 width={24}
                 height={13}
