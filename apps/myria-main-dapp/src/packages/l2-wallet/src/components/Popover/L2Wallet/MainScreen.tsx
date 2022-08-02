@@ -150,7 +150,9 @@ export default function MainScreen({
       <div>
         <div className="mt-2 flex items-center justify-center">
           <ETHIcon />
-          <div className="text-base/10 ml-2 text-[32px]">{balanceEth}</div>
+          <div className="text-base/10 ml-2 text-[32px]">
+            {balanceEth || '0'}
+          </div>
         </div>
         <p className="text-base/9 text-center">
           ${formatNumber2digits(etheCost * balanceEth)}
