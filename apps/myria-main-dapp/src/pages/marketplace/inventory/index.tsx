@@ -12,21 +12,20 @@ import truncateString from 'src/helper';
 import Page from 'src/components/Page';
 
 function InventoryPage() {
-  const { user } = useAuthenticationContext();
-  const { address } = useWalletContext();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!address) {
-      router.push('/marketplace');
-    }
-  }, [address, router]);
-
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = '0x' + starkKeyUser;
+  const { user, userProfileQuery } = useAuthenticationContext();
+  const { address } = useWalletContext();
   const { rawData, refetch, isFetching } = useMarketplaceInventory(starkKey);
+  const router = useRouter();
+  useEffect(() => {
+    if (userProfileQuery.isFetched && !user?.wallet_id) {
+      router.push('/marketplace');
+    }
+  }, [router, user?.wallet_id, userProfileQuery.isFetched]);
+
   const items: NFTItemType[] = React.useMemo(() => {
     if (rawData instanceof Array) {
       return rawData.map((item) => ({
@@ -43,7 +42,7 @@ function InventoryPage() {
     return [];
   }, [rawData]);
 
-  if (!address) return null;
+  // if (!address) return null;
 
   return (
     <Page includeFooter={false}>
