@@ -1,19 +1,12 @@
 import { Trans } from '@lingui/macro';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import * as React from 'react';
+import useInstalledWallet from 'src/hooks/useInstalledWallet';
 import MetaMaskIcon from './icons/MetaMaskIcon';
 
 const MetamaskOnboarding: React.FC = ({ children }) => {
-  const [installedWallet, setInstalledWallet] = React.useState<'PENDING' | boolean>('PENDING');
+  const { installedWallet } = useInstalledWallet();
   const onboarding = React.useRef<MetaMaskOnboarding | null>(null);
-
-  React.useEffect(() => {
-    if (!!window.ethereum) {
-      setInstalledWallet(true);
-    } else {
-      setInstalledWallet(false);
-    }
-  }, []);
 
   React.useEffect(() => {
     if (!onboarding.current) {
