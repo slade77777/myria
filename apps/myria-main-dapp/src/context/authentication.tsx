@@ -166,6 +166,12 @@ const AuthenticationContext = React.createContext<IAuthenticationContext>(
   {} as IAuthenticationContext
 );
 
+const getSignatureMessage = (ts: number) => {
+  return `Welcome to Myria!\n\nSelect 'Sign' to create and sign in to your Myria account.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\n${JSON.stringify(
+    { created_on: ts }
+  )}`;
+};
+
 export const AuthenticationProvider: React.FC = ({ children }) => {
   const [referalCode] = useLocalStorage(localStorageKeys.referralCode, undefined);
   const [user, setUser] = React.useState<User | undefined>();
@@ -300,7 +306,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   const loginByWalletMutation = useMutation(async () => {
     const timestamp = await apiClient.get(`/time`).then((res) => res.data?.data?.time);
 
-    const message = JSON.stringify({ created_on: timestamp });
+    const message = getSignatureMessage(timestamp);
     const signature = await signMessage(message);
 
     if (signature && address) {
