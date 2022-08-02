@@ -22,7 +22,6 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { getAccounts, getModuleFactory, initialWeb3 } from 'src/services/myriaCoreSdk';
 import { localStorageKeys } from 'src/configs';
 
-
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
 const { asset } = StarkwareLib;
@@ -47,7 +46,6 @@ export default function MainL2Wallet() {
   const dispatch = useDispatch();
   const onRequestSignature = useCallback(
     async (web3Account: string) => {
-      
       if (!web3Account) {
         console.error('Please connect wallet first.');
         return;
@@ -66,37 +64,39 @@ export default function MainL2Wallet() {
     },
     [dispatch, setLocalStarkKey, setWalletAddress]
   );
-  
+
   useEffect(() => {
     const loadWeb3 = async () => {
       const accounts = await getAccounts();
       const currentAccount = accounts[0];
       if (!accounts || accounts.length === 0) return null;
-  
+
       dispatch(markWalletConnected());
       dispatch(setAccount(accounts[0]));
-  
+
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
-  
+
       const userModule = moduleFactory.getUserModule();
-  
+
       try {
         const user = await userModule.getUserByWalletAddress(currentAccount);
-        if (user.status === 'success' && user.data) {
+        if (user && user?.ethAddress?.toLowerCase() === currentAccount?.toLowerCase()) {
           onRequestSignature(currentAccount);
         }
       } catch {
         walletModalRef.current.onOpenModal();
       }
       return null;
-    }
-    if ((!pKey || pKey.length < 3 ) && address &&  address?.length > 0) {
+    };
+    if ((!pKey || pKey.length < 3) && address && address?.length > 0) {
       loadWeb3();
     }
   }, [address, pKey]);
 
   useEffect(() => {
+    if (!address) return;
+
     const getBalanceOfMyriaL1Wallet = async () => {
       let assetType: string = '';
       if (selectedToken.name === 'Ethereum') {
@@ -120,7 +120,7 @@ export default function MainL2Wallet() {
 
       const withdrawModule = moduleFactory.getWithdrawModule();
 
-      const assetList = await withdrawModule.getWithdrawalBalance('0x' + pKey, assetType);
+      const assetList = await withdrawModule.getWithdrawalBalance(address, assetType);
       if (assetList !== previousBalance && previousBalance !== 0) {
         dispatch(
           setWithdrawClaimModal({

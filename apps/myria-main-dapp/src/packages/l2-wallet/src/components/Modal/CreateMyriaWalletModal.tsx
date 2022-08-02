@@ -93,7 +93,7 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
           fastTransaction: true,
         });
         userModule
-          .registerUser('0x' + starkKey, account)
+          .registerUser({ starkKey: '0x' + starkKey, ethAddress: account })
           .then(data => {
             setWelcomeModal(true);
           })
