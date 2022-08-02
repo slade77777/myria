@@ -1,6 +1,7 @@
 import React from 'react';
 import { InfoCircleIcon, Arrow2Icon, Arrow3Icon } from '../../Icons';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import { toast } from 'react-toastify';
 interface TProps {
   goBack: React.MouseEventHandler<HTMLButtonElement>;
   transactionDetail: any;
@@ -39,7 +40,10 @@ export default function TransactionHistoryDetailScreen({
         </div>
         <div className="mt-2 flex justify-between">
           <span className="text-base/9 text-sm">Transaction ID</span>
-          <div className="text-primary/6 flex cursor-pointer items-center">
+          <div
+            onClick={() => toast('The function is not ready yet!')}
+            className="text-primary/6 flex cursor-pointer items-center"
+          >
             View
           </div>
         </div>

@@ -59,7 +59,7 @@ const Marketplace: React.FC = () => {
                 items={dataOrder.map((elm, index) => {
                   const item: NFTItemType = {
                     id: `${elm.id}`,
-                    rarity: 'rare',
+                    rarity: (elm.metadata as any).rarity,
                     name: elm.name || '',
                     image_url: elm.imageUrl || '',
                     // @ts-ignore need update sdk AssetByCollectionType
