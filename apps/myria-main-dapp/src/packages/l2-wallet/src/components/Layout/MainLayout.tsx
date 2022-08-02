@@ -50,7 +50,7 @@ export default function MainLayout({ children }: TProps) {
     useState<boolean>(false);
   const [showFirstDepositModal, setShowFirstDepositModal] =
     useState<Boolean>(false);
-  // const [] = useWalletContext();
+
   const selectedToken = useSelector(
     (state: RootState) => state.token.selectedToken,
   );
@@ -75,7 +75,6 @@ export default function MainLayout({ children }: TProps) {
           type: 'ETH',
           data: {
             quantum: QUANTUM_CONSTANT.toString(),
-            // tokenAddress: '0xD5f1cC0264d0E22BE4488109dbf5d097eb37a576',
           },
         });
       } else {
@@ -92,7 +91,7 @@ export default function MainLayout({ children }: TProps) {
       const withdrawModule = moduleFactory.getWithdrawModule();
 
       const assetList = await withdrawModule.getWithdrawalBalance(
-        '0x' + pKey,
+        account,
         assetType,
       );
       if (assetList !== previousBalance && previousBalance !== 0) {
@@ -129,9 +128,6 @@ export default function MainLayout({ children }: TProps) {
     }
     return null;
   };
-  // const metaMaskConnect = async () => {
-  //   await loadWeb3();
-  // };
 
   const connectWallet = async () => {
     try {
@@ -141,7 +137,10 @@ export default function MainLayout({ children }: TProps) {
 
       const userModule = moduleFactory.getUserModule();
       const user = await userModule.getUserByWalletAddress(web3Account);
-      if (user.status === 'success' && user.data) {
+      if (
+        user &&
+        user?.ethAddress?.toLowerCase() === web3Account?.toLowerCase()
+      ) {
         onRequestSignature(web3Account);
       }
     } catch (e) {

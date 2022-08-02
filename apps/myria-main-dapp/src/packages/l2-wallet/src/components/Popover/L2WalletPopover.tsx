@@ -380,7 +380,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
-            amount: String(convertAmountToQuantizedAmount(amount.toString())),
+            amount: String(convertEthToWei(amount.toString())),
             vaultId: undefined,
             assetId: assetType,
           },
@@ -463,7 +463,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     const withdrawModule = moduleFactory.getWithdrawModule();
 
     const assetList = await withdrawModule.getWithdrawalBalance(
-      '0x' + pKey,
+      connectedAccount,
       assetType,
     );
     return assetList;
