@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import React, { useEffect, useRef, useState } from 'react';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import AssetList from '../AssetList';
+import { Loading } from '../../Loading';
 
 interface Props {
   userAvatar: string;
@@ -9,15 +10,23 @@ interface Props {
   userAddress: string | undefined;
   userJoinDate?: Date;
   items: NFTItemType[];
+  refreshAssets: () => void;
+  assetLoading?: boolean;
 }
 
-function Inventory({ items, userAddress, userAvatar, userJoinDate, userName }: Props) {
+function Inventory({
+  items,
+  userAddress,
+  userAvatar,
+  userJoinDate,
+  userName,
+  refreshAssets,
+  assetLoading
+}: Props) {
   const itemForSaleCount = React.useMemo(
     () => items.filter((item) => !!item.priceETH).length,
     [items]
   );
-  console.log(userAddress);
-
   return (
     <div className="w-full bg-base/2 py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <div className="w-full overflow-y h-screen overflow-y-auto">
@@ -53,7 +62,13 @@ function Inventory({ items, userAddress, userAvatar, userJoinDate, userName }: P
             </div>
           </div>
           <div>
-            <AssetList showIcon title={'My items'} items={items} />
+            {assetLoading ? (
+              <div className="w-full flex justify-center items-center">
+                <Loading loadingSize={16} className="px-2" />
+              </div>
+            ) : (
+              <AssetList refreshList={refreshAssets} title={'My items'} items={items} />
+            )}
           </div>
         </div>
       </div>
