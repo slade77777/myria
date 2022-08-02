@@ -20,9 +20,11 @@ import { localStorageKeys } from 'src/configs';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { setAccount, setStarkPublicKey } from 'src/packages/l2-wallet/src/app/slices/accountSlice';
 import { getAccounts } from 'src/services/myriaCoreSdk';
+import useInstalledWallet from 'src/hooks/useInstalledWallet';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { event } = useGA4();
+  const { installedWallet } = useInstalledWallet();
   const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
     useWalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
@@ -44,7 +46,9 @@ const ConnectL2WalletButton: React.FC = () => {
   useEffect(() => {
     dispatch(setAccount(walletAddress));
     dispatch(setStarkPublicKey(localStarkKey));
-    subscribeProvider();
+    if (installedWallet === true) {
+      subscribeProvider();
+    }
 
     getAccounts()
       .then((accounts) => {
@@ -58,7 +62,7 @@ const ConnectL2WalletButton: React.FC = () => {
         }
       })
       .catch();
-  }, [walletAddress, localStarkKey, user?.wallet_id, address]);
+  }, [walletAddress, localStarkKey, user?.wallet_id, address, installedWallet]);
 
   useEffect(() => {
     if (userProfileQuery.isFetching) {
