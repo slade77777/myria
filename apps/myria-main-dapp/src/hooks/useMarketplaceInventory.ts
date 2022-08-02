@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import { assetModule } from '../services/myriaCore';
 
 export default function useMarketplaceInventory(starkKey: string) {
-  const { data, isLoading, error } = useQuery(
+  const { data, isFetching, error, refetch } = useQuery(
     ['marketplaceInventory', starkKey],
     () => assetModule?.getAssetByStarkKey(starkKey, 1, 50),
     {
@@ -13,7 +13,8 @@ export default function useMarketplaceInventory(starkKey: string) {
   return {
     // @ts-ignore
     rawData: data?.data?.items || {},
-    isLoading,
-    error
+    isFetching,
+    error,
+    refetch
   };
 }

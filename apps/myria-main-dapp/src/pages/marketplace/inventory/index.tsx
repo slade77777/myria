@@ -26,8 +26,7 @@ function InventoryPage() {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = '0x' + starkKeyUser;
-  const { rawData } = useMarketplaceInventory(starkKey);
-
+  const { rawData, refetch, isFetching } = useMarketplaceInventory(starkKey);
   const items: NFTItemType[] = React.useMemo(() => {
     if (rawData instanceof Array) {
       return rawData.map((item) => ({
@@ -54,6 +53,8 @@ function InventoryPage() {
         userName={user?.user_name || 'Unknown'}
         userJoinDate={user?.date_registered}
         items={items}
+        refreshAssets={refetch}
+        assetLoading={isFetching}
       />
     </Page>
   );
