@@ -20,7 +20,7 @@ function Inventory({ items, userAddress, userAvatar, userJoinDate, userName }: P
 
   return (
     <div className="w-full bg-base/2 py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
-      <div className="w-full overflow-y h-screen overflow-y-auto">
+      <div className="w-full">
         <div className="max-w-content mx-auto">
           <div className="mb-[58px] flex items-end justify-between">
             <div className="flex">
