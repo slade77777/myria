@@ -100,7 +100,8 @@ const ConnectL2WalletButton: React.FC = () => {
     setOpenDropdown(false);
   };
 
-  const showConnectedWallet = () => {
+  const showConnectedWallet = React.useMemo(() => {
+    
     // First time registration
     if (walletAddress && address && (!user || !user?.wallet_id)) {
       return true;
@@ -116,8 +117,7 @@ const ConnectL2WalletButton: React.FC = () => {
       return true;
     }
     return false;
-  };
-
+  },[address, localStarkKey, user, walletAddress]);
   return (
     <>
       <Modal
@@ -155,7 +155,7 @@ const ConnectL2WalletButton: React.FC = () => {
           </p>
         </Modal.Content>
       </Modal>
-      {walletAddress && showConnectedWallet() ? (
+      {walletAddress && showConnectedWallet ? (
         <div>
           <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
             <Popover.Trigger asChild>
@@ -202,11 +202,15 @@ const ConnectL2WalletButton: React.FC = () => {
         </div>
       ) : (
         <MetamaskOnboarding>
+          {!userProfileQuery.isFetched ? <button
+          className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
+            <Trans>Loading...</Trans>
+        </button> : 
           <button
-            onClick={onConnectWallet}
-            className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
+          onClick={onConnectWallet}
+          className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
             <Trans>Connect Wallet</Trans>
-          </button>
+        </button>}
         </MetamaskOnboarding>
       )}
       <MainL2Wallet />
