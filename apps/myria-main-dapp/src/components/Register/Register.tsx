@@ -83,20 +83,20 @@ const Register: React.FC = () => {
   const { doRegister, registerError, isPostingRegister } = useAuthenticationContext();
 
   useEffect(() => {
-    registerError?.errors.forEach(({ code, details }) => {
+    registerError?.errors.forEach(({ code, detail }) => {
 
       if (code === "invalid_password") {
-        setError("password", { type: 'custom', message: details });
+        setError("password", { type: 'custom', message: detail });
         return;
       }
 
       if (code === "username_in_use") {
-        setError("username", { type: 'custom', message: details });
+        setError("username", { type: 'custom', message: detail });
         return;
       }
 
       if (code === "email_in_use") {
-        setError("email", { type: 'custom', message: details });
+        setError("email", { type: 'custom', message: detail });
         return;
       }
 
@@ -115,7 +115,7 @@ const Register: React.FC = () => {
         return;
       }
 
-      setError("firstName", { type: 'custom', message: details });
+      setError("firstName", { type: 'custom', message: detail });
     });
   }, [registerError, setError])
 
