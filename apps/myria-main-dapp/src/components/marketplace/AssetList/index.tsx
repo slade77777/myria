@@ -9,16 +9,11 @@ interface Props {
   refreshList?: () => void;
 }
 
-const AssetList: React.FC<Props> = ({ title, items, refreshList }) => {
+const AssetList: React.FC<Props> = ({ title, items }) => {
   return (
     <div className="max-w-content mx-auto">
       <div className="flex justify-between">
         <span className="text-[24px] font-bold text-white">{title}</span>
-        {refreshList && (
-          <div className="cursor-pointer" onClick={refreshList}>
-            <ClockIcon size={48} />
-          </div>
-        )}
       </div>
       <div className="mt-8 grid grid-cols-1 justify-start justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {items?.map((item) => (

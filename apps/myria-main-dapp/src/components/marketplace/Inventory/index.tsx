@@ -10,7 +10,6 @@ interface Props {
   userAddress: string | undefined;
   userJoinDate?: Date;
   items: NFTItemType[];
-  refreshAssets: () => void;
   assetLoading?: boolean;
 }
 
@@ -20,7 +19,6 @@ function Inventory({
   userAvatar,
   userJoinDate,
   userName,
-  refreshAssets,
   assetLoading
 }: Props) {
   const itemForSaleCount = React.useMemo(
@@ -67,7 +65,7 @@ function Inventory({
                 <Loading loadingSize={16} className="px-2" />
               </div>
             ) : (
-              <AssetList refreshList={refreshAssets} title={'My items'} items={items} />
+              <AssetList title={'My items'} items={items} />
             )}
           </div>
         </div>
