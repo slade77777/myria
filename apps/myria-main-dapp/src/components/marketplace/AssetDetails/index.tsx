@@ -724,7 +724,6 @@ function AssetDetails({ id }: Props) {
           }}
           assetBuy={assetBuy}
           setChangeStatusSuccess={() => {
-            setStatus(AssetStatus.SALE);
             refetch();
           }}
         />

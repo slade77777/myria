@@ -8,6 +8,7 @@ import DAOIcon from 'src/components/icons/DAOIcon';
 import ProgressIcon from 'src/components/icons/ProgressIcon';
 import { PurchaseStatus } from 'src/types/marketplace';
 import FailedIcon from 'src/components/icons/FailedIcon';
+import { Loading } from 'src/components/Loading';
 interface IProp {
   assetBuy: {
     name: string;
@@ -16,18 +17,24 @@ interface IProp {
   onCloseMessage: () => void;
   onConfirm: () => Promise<any>;
   setChangeStatusSuccess: () => void;
+  isDeposit: boolean;
+  isLoading: boolean;
 }
 interface ButtonProps {
   onCloseMessage: () => void;
   isProgressPurchase: boolean;
   onConfirm: () => void;
+  isDeposit: boolean;
+  isLoading: boolean;
 }
 
 const PurchasePopover: FC<IProp> = ({
   assetBuy,
   onCloseMessage,
   onConfirm,
-  setChangeStatusSuccess
+  setChangeStatusSuccess,
+  isDeposit,
+  isLoading
 }) => {
   const [isProgressPurchase, setIsProgressPurchase] = useState<boolean>(false);
   const [statusPurchase, setStatusPurchase] = useState<PurchaseStatus>(PurchaseStatus.CHECK);
@@ -144,16 +151,20 @@ const PurchasePopover: FC<IProp> = ({
           onConfirm={onPurchase}
           onCloseMessage={onCloseMessage}
           isProgressPurchase={isProgressPurchase}
+          isDeposit={isDeposit}
+          isLoading={isLoading}
         />
       )
     };
   }, [
+    statusPurchase,
     assetBuy.name,
-    isProgressPurchase,
     onCloseMessage,
+    isProgressPurchase,
+    isDeposit,
+    isLoading,
     onConfirm,
-    setChangeStatusSuccess,
-    statusPurchase
+    setChangeStatusSuccess
   ]);
 
   return (
@@ -186,8 +197,46 @@ export default PurchasePopover;
 const ActionButtonCheckout: FC<ButtonProps> = ({
   onCloseMessage,
   isProgressPurchase,
-  onConfirm
+  onConfirm,
+  isDeposit,
+  isLoading
 }) => {
+  const triggerPopoverDeposit = () => {
+    onCloseMessage();
+    const triggerMainScreen = document.getElementById('trigger-popover-main-screen');
+    triggerMainScreen?.click();
+    setTimeout(() => {
+      const triggerDeposit = document.getElementById('trigger-popover-deposit');
+      triggerDeposit?.click();
+    });
+  };
+
+  if (isLoading) {
+    return (
+      <Button disabled={true} loading={false} className="btn-lg my-8 h-[50px] w-full">
+        <Loading />
+      </Button>
+    );
+  }
+
+  if (isDeposit) {
+    return (
+      <>
+        <Button
+          onClick={onCloseMessage}
+          loading={false}
+          className="btn-lg my-8 h-[50px] w-[120px] border">
+          <Trans>CANCEL</Trans>
+        </Button>
+        <Button
+          className="btn-lg btn-primary my-8 h-[50px] w-[120px]"
+          onClick={triggerPopoverDeposit}>
+          <Trans>Deposit</Trans>
+        </Button>
+      </>
+    );
+  }
+
   return (
     <>
       <Button
