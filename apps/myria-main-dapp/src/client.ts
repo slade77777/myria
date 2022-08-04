@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 export interface IResponseError {
   httpCode: number | undefined;
-  errors: [{ code: string; title: string; details: string }];
+  errors: [{ code: string; title: string; detail: string }];
 }
 
 export function mapError(error: AxiosError): IResponseError {
