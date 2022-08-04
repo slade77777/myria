@@ -69,6 +69,8 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       setStatus(StatusWithdrawNFT.FAILED);
     } finally {
       setPending(false);
+      const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
+      triggerWithdraw?.click();
     }
   };
   return (

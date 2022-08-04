@@ -14,6 +14,7 @@ const UserAvatar: React.FC = () => {
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
+  
   const avatar = localStarkKey
     ? '/images/marketplace/collection-1-logo.png'
     : '/images/marketplace/user.png';

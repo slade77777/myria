@@ -175,6 +175,7 @@ function AssetDetails({ id }: Props) {
   const rarityColor = getRarityColor(bgImage);
   const {
     isWithdrawing,
+    status: withdrawalStatus,
     setStatus: setWithdrawalStatus,
     handleSetValueNFT
   } = useWithDrawNFTContext();
@@ -354,8 +355,12 @@ function AssetDetails({ id }: Props) {
         address.toLowerCase(),
         assetDetails?.assetMintId + ''
       );
+      console.log(balance);
+      
       if (balance > 0) {
-        setShowWithdrawalMessage(true);
+        if(withdrawalStatus != StatusWithdrawNFT.COMPLETED){
+          setShowWithdrawalMessage(true);
+        }
         return true;
       }
       return false;
@@ -543,14 +548,16 @@ function AssetDetails({ id }: Props) {
     );
   }
   return (
-    <div className="w-full bg-base/2 py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
+    <div className="max-w-content mx-auto w-full bg-base/2 py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <button
         onClick={router.back}
-        className="max-w-content mx-auto mb-14 flex w-full flex-row items-center">
-        <BackIcon />
-        <span className="ml-[6px] font-normal text-[14px]">{titleBack}</span>
+        className="mb-14 items-center">
+          <div className="flex">
+            <BackIcon />
+            <span className="ml-[6px] font-normal text-[14px]">{titleBack}</span>
+          </div>
       </button>
-      <div className="max-w-content mx-auto  flex flex-row space-x-28">
+      <div className="flex flex-row space-x-28">
         {/* container */}
         <div className="w-[620px]">
           <div className="relative flex h-[620px] w-full items-center justify-center lg:h-[620px]  rounded-[12px] ">
@@ -811,31 +818,37 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
       </div>
       {starkKey === assetDetails?.owner?.starkKey && (
         <>
-          {assetDetails?.status !== 'WITHDRAWING' && !isWithdrawing ? (
+          {assetDetails?.status == 'WITHDRAWING' && isWithdrawing ? (
+            <>
+            <button
+              disabled
+              className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold">
+              <Trans>LIST ITEM FOR SALE</Trans>
+            </button>
+            <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+              <Trans>WITHDRAWAL IN PROGRESS</Trans>
+            </button>
+          </>
+          ) : (assetDetails?.status == 'WITHDRAWAL_COMPLETED')? (
             <>
               <button
-                className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
-                onClick={setStatus}>
-                <Trans>LIST ITEM FOR SALE</Trans>
-              </button>
-              <button
-                className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-                onClick={handleWithdraw}>
-                <Trans>WITHDRAW</Trans>
+                className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+                <Trans>WITHDRAW COMPLETED</Trans>
               </button>
             </>
-          ) : (
-            <>
-              <button
-                disabled
-                className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold">
-                <Trans>LIST ITEM FOR SALE</Trans>
-              </button>
-              <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
-                <Trans>WITHDRAWAL IN PROGRESS</Trans>
-              </button>
-            </>
-          )}
+          ):
+          <>
+            <button
+              className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
+              onClick={setStatus}>
+              <Trans>LIST ITEM FOR SALE</Trans>
+            </button>
+            <button
+              className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
+              onClick={handleWithdraw}>
+              <Trans>WITHDRAW</Trans>
+            </button>
+          </>}
         </>
       )}
       <span className="text-light mt-[10px] text-[14px]">

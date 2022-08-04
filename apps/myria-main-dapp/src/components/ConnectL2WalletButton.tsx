@@ -47,30 +47,41 @@ const ConnectL2WalletButton: React.FC = () => {
   };
 
   useEffect(() => {
+    console.log('error', walletAddress, localStarkKey);
     dispatch(setAccount(walletAddress));
     dispatch(setStarkPublicKey(localStarkKey));
     if (installedWallet === true) {
       subscribeProvider();
     }
-
     getAccounts()
       .then((accounts) => {
+        console.log('getAccounts', user?.wallet_id ,address,accounts[0]);
         if (
           user?.wallet_id &&
           accounts[0]?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
-          (!address || address.toLowerCase() != user?.wallet_id.toLowerCase())
+          (!address || (address.toLowerCase() != user?.wallet_id.toLowerCase()))
         ) {
           setAddress(accounts[0]?.toLowerCase());
           setWalletAddress(accounts[0]?.toLowerCase());
         }
       })
-      .catch();
+      .catch((e)=>{
+        console.log('error', e);
+        
+      });
   }, [walletAddress, localStarkKey, user?.wallet_id, address, installedWallet]);
 
   useEffect(() => {
     if (userProfileQuery.isFetching) {
       return;
     }
+    console.log('CHECK ',address ,
+    !user?.user_id ,
+    !loginByWalletMutation.isLoading ,
+    !loginByWalletMutation.isError,
+    userProfileQuery.isFetched ,
+    !userProfileQuery.data);
+    
     if (
       address &&
       !user?.user_id &&

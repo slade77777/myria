@@ -4,7 +4,7 @@ import {
   EqualMetadataByAssetIdResponse,
   FeeTypes
 } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
@@ -13,6 +13,7 @@ import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { formatPrice, formatUSDPrice } from 'src/utils';
 import { AssetStatus } from '..';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import Web3 from 'web3';
 
 type Prop = {
   data: EqualMetadataByAssetIdResponse | any;
@@ -37,7 +38,10 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
     }
     return convertPrice;
   };
-
+  const etherScanLinked = useMemo( ()=>{
+    const networkId =  Web3.givenProvider.networkVersion
+    return `https://${networkId == 5 ? 'goerli.' : ''}etherscan.io/address/${assetDetails?.tokenAddress}`
+  },[assetDetails?.tokenAddress])
   return (
     <Root defaultValue="Listing">
       <List className="my-[24px]">
@@ -138,10 +142,10 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
         <div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Contract Address</Trans>
-            <div className="text-blue/6 flex flex-row items-center gap-[3px] font-medium">
+            <a target={'_blank'} href={etherScanLinked} className="text-blue/6 flex flex-row cursor-pointer items-center gap-[3px] font-medium" rel="noreferrer">
               <span>{assetDetails ? truncateString(assetDetails?.tokenAddress) : ''}</span>
               <EnternalLinkIcon />
-            </div>
+            </a>
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Token ID</Trans>
