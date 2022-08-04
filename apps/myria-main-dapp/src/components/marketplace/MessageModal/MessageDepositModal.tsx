@@ -27,7 +27,9 @@ export default function MessageDepositModal({ onClose = () => {} }) {
         <button onClick={onClose}>
           <Trans>Dismiss</Trans>
         </button>
-        <button className="ml-[10px] rounded bg-[#F5B941] p-[7px] font-semibold text-black">
+        <button
+          className="ml-[10px] rounded bg-[#F5B941] p-[7px] font-semibold text-black"
+          onClick={() => toast('The function is not ready yet!')}>
           <Trans>View in wallet</Trans>
         </button>
       </div>

@@ -52,7 +52,6 @@ function InventoryPage() {
         userName={user?.user_name || 'Unknown'}
         userJoinDate={user?.date_registered}
         items={items}
-        refreshAssets={refetch}
         assetLoading={isFetching}
       />
     </Page>

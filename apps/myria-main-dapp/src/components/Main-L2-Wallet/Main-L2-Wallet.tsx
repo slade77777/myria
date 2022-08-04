@@ -13,7 +13,6 @@ import { setWithdrawClaimModal } from 'src/packages/l2-wallet/src/app/slices/uiS
 import TermsOfServiceModal from 'src/packages/l2-wallet/src/components/Modal/TermsOfServiceModal';
 import CreateMyriaWalletModal from 'src/packages/l2-wallet/src/components/Modal/CreateMyriaWalletModal';
 import FirstDepositModal from 'src/packages/l2-wallet/src/components/Modal/FirstDepositModal';
-import MessageDepositModal from 'src/packages/l2-wallet/src/components/Modal/MessageDepositModal';
 import MessageWithdrawModal from 'src/packages/l2-wallet/src/components/Modal/MessageWithdrawModal';
 import WelcomeMyriaModal from 'src/packages/l2-wallet/src/components/Modal/WelcomeMyriaModal';
 import { useWalletContext } from 'src/context/wallet';
@@ -34,7 +33,7 @@ export default function MainL2Wallet() {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const { address } = useWalletContext();
-  const [isShowMessage, setIsShowMessage] = useState<Boolean>(false);
+  const [isShowMessage, setIsShowMessage] = useState<boolean>(false);
   const [previousBalance, setPreviousBalance] = useState<any>(0);
   const [welcomeModal, setWelcomeModal] = useState<boolean>(false);
   const [showFirstDepositModal, setShowFirstDepositModal] = useState<Boolean>(false);
@@ -187,7 +186,6 @@ export default function MainL2Wallet() {
         closeModal={() => setShowFirstDepositModal(false)}
         completeDepositModal={() => setIsShowMessage(true)}
       />
-      <MessageDepositModal isShowMessage={isShowMessage} setIsShowMessage={setIsShowMessage} />
       <MessageWithdrawModal
         isShowMessage={showWithDrawClaimModal}
         setIsShowMessage={() =>

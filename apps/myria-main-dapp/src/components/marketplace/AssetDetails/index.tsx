@@ -92,7 +92,7 @@ function AssetDetails({ id }: Props) {
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
       handleSetValueNFT(assetDetails?.data);
-      
+
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
@@ -103,7 +103,7 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = useMemo(() => `0x${starkKeyUser}`, [starkKeyUser]);
-  
+
   const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
   const ownedBy = useMemo(() => {
     if (assetDetails?.owner?.starkKey == starkKey) {
@@ -163,7 +163,7 @@ function AssetDetails({ id }: Props) {
   const [showWithdrawalMessage, setShowWithdrawalMessage] = useState(false);
   const [showMessageEdit, setShowMessageEdit] = useState(false);
   const [showModalUnlist, setShowModalUnlist] = useState(false);
-  const [showMessageModify, setShowMessageModify] = useState(false);
+  const [showMessageModify, setShowMessageModify] = useState({ isShow: false, newPrice: 0 });
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
   const { data: etheCost = 0 } = useEtheriumPrice();
@@ -262,7 +262,11 @@ function AssetDetails({ id }: Props) {
     });
 
     if (result) {
-      setShowMessageModify(true);
+      setShowMessageModify({
+        ...showMessageModify,
+        isShow: true,
+        newPrice: (result as any).nonQuantizedAmountBuy
+      });
       setShowModal(false);
       refetch();
       onTrackingItem({
@@ -378,7 +382,7 @@ function AssetDetails({ id }: Props) {
 
   useEffect(() => {
     let currentStatus: number = AssetStatus.UNCONNECTED;
-    
+
     if (assetDetails?.order) {
       // item for sale
       if (starkKey === assetDetails?.owner?.starkKey) {
@@ -761,11 +765,11 @@ function AssetDetails({ id }: Props) {
           onClose={handleCloseModal}
         />
       )}
-      {showMessageModify && (
+      {showMessageModify.isShow && (
         <MessageModal
-          isShowMessage={showMessageModify}
-          setIsShowMessage={() => setShowMessageModify(false)}>
-          <MessageListingPriceModal />
+          isShowMessage={showMessageModify.isShow}
+          setIsShowMessage={() => setShowMessageModify({ ...showMessageModify, isShow: false })}>
+          <MessageListingPriceModal price={showMessageModify.newPrice} />
         </MessageModal>
       )}
       {showMessageUnlist && (

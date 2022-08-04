@@ -30,6 +30,7 @@ import {
   convertAmountToQuantizedAmount,
   convertEthToWei,
 } from '../../utils/Converter';
+import { useDepositContext } from 'src/context/deposit-context';
 
 type Props = {
   modalShow: Boolean;
@@ -89,6 +90,7 @@ export default function FirstDepositModal({
   const URL_LINK = `${ethersLink.goerli_goerli}${
     depositResponse?.transactionHash ? depositResponse?.transactionHash : ''
   }`;
+  const { handleSetAmount, handleShowMessageDeposit } = useDepositContext();
 
   // console.log('Connection account', connectedAccount);
   // console.log('selectedToken', selectedToken);
@@ -186,169 +188,168 @@ export default function FirstDepositModal({
 
   return (
     <div className={cn(modalShow ? 'block' : 'hidden')}>
-      <div className="absolute -bottom-[30px] left-1/2 z-30 h-[20px] w-[20px] rotate-45 border-t border-l border-[#202230] bg-[#081824]" />
+      <div className="bg-brand-deep-blue absolute -bottom-[30px] left-1/2 z-30 h-[20px] w-[20px] rotate-45 border-t border-l border-[#202230]" />
 
-      <div className="absolute top-16 right-16 max-h-[80vh] w-[406px] overflow-auto rounded-[20px] border border-[#202230] bg-[#081824] py-6">
-        <div>
-          <div className="">
-            <div className="flex items-center justify-between px-6">
-              <div className="text-[20px] font-bold text-[#E7EBEE]">
-                Make your first deposit
-              </div>
-              <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
+      <div className="bg-brand-deep-blue absolute top-16 right-16 h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-[20px] border border-[#202230] py-6">
+        <div className="h-full">
+          <div className="flex items-center justify-between px-6">
+            <div className="text-[20px] font-bold text-[#E7EBEE]">
+              Make your first deposit
             </div>
-            <div className="px-6 pt-5">
-              {depositProgress === PROGRESS.START && (
-                <div>
-                  <div className="mt-[15px]">
-                    <div className="mb-2 text-[14px] text-white">Asset</div>
-                    <CurrencySelector
-                      options={options}
-                      selectHandle={selectCurrency}
-                    />
-                  </div>
-                  <div className="mt-6">
-                    <div className="mb-2  flex justify-between">
-                      <div className=" text-[14px] text-white">Amount</div>
-                      <div className="flex items-center text-[14px] text-[#777777]">
-                        <span className="text-[#9DA3A7]">Available</span>
-                        <DAOIcon className="ml-2 mr-1" size={14} />
-                        <span className=" text-white">{balanceL1}</span>
-                        <Tooltip>
-                          <Tooltip.Trigger className="focus:outline-none">
-                            <InfoCircleIcon className="ml-2 text-[#A1AFBA]" />
-                          </Tooltip.Trigger>
-                          <Tooltip.Content className="mf-10 max-w-[256px]">
-                            <div className="bg-base/5 mf-10 absolute right-0 top-4 min-w-[256px] rounded-[8px]  p-4 ">
-                              <div className="bg-base/5 absolute right-8 -mt-6  h-4 w-4 rotate-45"></div>
-                              <p className="text-base/9">
-                                <Trans>
-                                  This is the amount you have available to
-                                  deposit from your L1 wallet.
-                                </Trans>
-                              </p>
-                            </div>
-                          </Tooltip.Content>
-                        </Tooltip>
-                      </div>
-                    </div>
-                    <MaxInput
-                      max={parseFloat(balanceL1)}
-                      onChangeHandle={setAmountHandle}
-                    />
-                    {errorAmount && (
-                      <div className="mt-2 text-[#F83D5C]">{errorAmount}</div>
-                    )}
-                    {/* <div className="flex justify-between mt-2">
-                      <div className="text-[rgba(255,255,255,0.6)] text-[14px]">
-                        Estimated gas fee
-                      </div>
-                      <div className="text-[#777777] text-[14px]">
-                        <span className="text-[#9DA3A7]">0.0431917 ETH</span>
-                      </div>
-                    </div> */}
-                  </div>
-                  {/* <div className="mt-4 text-[12px] text-[#A1AFBA] p-4 bg-[#050E15] mt-6 rounded-[8px]">
-                    If you deposit more than{' '}
-                    <span className="text-white text-[14px]">$500 USD</span> for
-                    your first transaction, we will cover the gas fees.{' '}
-                    <Link className="text-[#f5b941]" to="/">
-                      Learn more
-                    </Link>
-                  </div> */}
-                  <div className="mt-[32px] mt-[239px] flex w-full justify-between px-1">
-                    <button
-                      className="text-[14px] text-white"
-                      onClick={closeModal}
-                    >
-                      I&apos;ll do this later
-                    </button>
-                    <button
-                      disabled={!isValidDeposit}
-                      onClick={deposit}
-                      className={cn(
-                        'rounded-[8px] py-[9px] px-[33px] text-[14px]',
-                        isValidDeposit
-                          ? 'bg-[#F5B941] text-[#040B10]'
-                          : 'bg-[#4B5563] text-[#9CA3AF]',
-                      )}
-                    >
-                      DEPOSIT
-                    </button>
-                  </div>
+            <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
+          </div>
+          <div className="h-[calc(100%-32px)] px-6 pt-5">
+            {depositProgress === PROGRESS.START && (
+              <div className="flex h-full flex-col">
+                <div className="mt-[15px]">
+                  <div className="mb-2 text-sm text-white">Asset</div>
+                  <CurrencySelector
+                    options={options}
+                    selectHandle={selectCurrency}
+                  />
                 </div>
-              )}
+                <div className="mt-6 grow">
+                  <div className="mb-2  flex justify-between">
+                    <div className=" text-sm text-white">Amount</div>
+                    <div className="flex items-center text-sm text-[#777777]">
+                      <span className="text-[#9DA3A7]">Available</span>
+                      <DAOIcon className="ml-2 mr-1" size={14} />
+                      <span className=" text-white">{balanceL1}</span>
+                      <Tooltip>
+                        <Tooltip.Trigger className="focus:outline-none">
+                          <InfoCircleIcon className="ml-2 text-[#A1AFBA]" />
+                        </Tooltip.Trigger>
+                        <Tooltip.Content className="mf-10 max-w-[256px]">
+                          <div className="bg-base/5 mf-10 absolute right-0 top-4 min-w-[256px] rounded-lg  p-4 ">
+                            <div className="bg-base/5 absolute right-8 -mt-6  h-4 w-4 rotate-45"></div>
+                            <p className="text-base/9">
+                              <Trans>
+                                This is the amount you have available to deposit
+                                from your L1 wallet.
+                              </Trans>
+                            </p>
+                          </div>
+                        </Tooltip.Content>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <MaxInput
+                    max={parseFloat(balanceL1)}
+                    onChangeHandle={setAmountHandle}
+                  />
+                  {errorAmount && (
+                    <div className="text-error/6 mt-2 text-sm">
+                      {errorAmount}
+                    </div>
+                  )}
+                  {/* <div className="flex justify-between mt-2">
+                    <div className="text-[rgba(255,255,255,0.6)] text-sm">
+                      Estimated gas fee
+                    </div>
+                    <div className="text-[#777777] text-sm">
+                      <span className="text-[#9DA3A7]">0.0431917 ETH</span>
+                    </div>
+                  </div> */}
+                </div>
+                {/* <div className="mt-4 text-[12px] text-[#A1AFBA] p-4 bg-[#050E15] mt-6 rounded-lg">
+                  If you deposit more than{' '}
+                  <span className="text-white text-sm">$500 USD</span> for
+                  your first transaction, we will cover the gas fees.{' '}
+                  <Link className="text-[#f5b941]" to="/">
+                    Learn more
+                  </Link>
+                </div> */}
+                <div className="flex w-full justify-between px-1">
+                  <button className="text-sm text-white" onClick={closeModal}>
+                    I&apos;ll do this later
+                  </button>
+                  <button
+                    disabled={!isValidDeposit}
+                    onClick={deposit}
+                    className={cn(
+                      'rounded-lg py-[9px] px-[33px] text-sm',
+                      isValidDeposit
+                        ? 'bg-primary/6 text-[#040B10]'
+                        : 'text-gray/6 bg-[#4B5563]',
+                    )}
+                  >
+                    DEPOSIT
+                  </button>
+                </div>
+              </div>
+            )}
 
-              {depositProgress === PROGRESS.PROCESSING && (
-                <div>
-                  <div className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center">
+            {depositProgress === PROGRESS.PROCESSING && (
+              <div className="flex h-full flex-col">
+                <div className="grow">
+                  <div className="mx-auto mt-5 flex h-16 w-16 justify-center">
                     <ProgressIcon
                       size={64}
-                      className="w-full text-[#9ECEAB] "
+                      className="text-light-green w-full"
                     />
                   </div>
-                  <div className="mt-[24px] text-center text-[24px] text-white">
+                  <div className="mt-6 text-center text-2xl text-white">
                     Deposit in progress
                   </div>
-                  <div className="mt-[32px] rounded-[8px] bg-[rgba(5,14,21,0.5)] py-2 px-4 text-[16px] text-black">
+                  <div className="text-base/9 bg-base/2/50 mt-4 rounded-lg py-2 px-4 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-[#9BA1A5]">Amount</span>
-                      <span className="text-white">
-                        {amount} {selectedToken.short}
+                      <span>Amount</span>
+                      <span className="flex items-center text-white">
+                        <DAOIcon size={14} className="mb-[2px]" />
+                        <span className="ml-1">{amount}</span>
                       </span>
                     </div>
-                    <div className="mt-[13px] flex justify-between">
-                      <span className="text-[#9BA1A5]">
-                        Estimated completion
-                      </span>
+                    <div className="mt-4 flex justify-between">
+                      <span>Estimated completion</span>
                       <span className="text-white">1-2 minutes</span>
                     </div>
                   </div>
-                  <div className="mt-4 flex rounded-[8px] border border-[rgba(154,201,227,0.2)] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">
+                  <div className="mt-4 flex rounded-lg border border-[rgba(154,201,227,0.2)] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">
                     <div className="mr-[9px] flex-none">
-                      <InfoCircleIcon className="text-[#9AC9E3]" />
+                      <InfoCircleIcon className="text-blue/6" />
                     </div>
-                    <div className="text-[12px] text-[#9AC9E3]">
+                    <div className="text-blue/6 text-[12px]">
                       Your deposit has been confirmed and is now in progress.
                       You will receive a notification once the deposit is
                       complete.
                     </div>
                   </div>
-                  <div className="mt-[32px] flex w-full justify-end">
-                    <button
-                      disabled
-                      className="flex rounded-[8px] bg-[#4B5563] py-[9px] px-4 text-[14px] font-bold uppercase text-[#9CA3AF]"
-                    >
-                      Processing{' '}
-                      <ProgressIcon className="ml-2 text-[#9CA3AF]" size={16} />
-                    </button>
-                  </div>
                 </div>
-              )}
 
-              {depositProgress === PROGRESS.COMPLETED && (
-                <div>
-                  <div className="mt-[57px] flex justify-center">
+                <div className="flex w-full justify-end">
+                  <button
+                    disabled
+                    className="text-gray/6 flex h-10 rounded-lg bg-[#4B5563] text-sm font-bold uppercase"
+                  >
+                    Processing{' '}
+                    <ProgressIcon className="text-gray/6 ml-2" size={16} />
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {depositProgress === PROGRESS.COMPLETED && (
+              <div className="flex h-full flex-col">
+                <div className="grow">
+                  <div className="mt-6 flex justify-center">
                     <TickCircleIcon className="text-[#9ECEAB]" />
                   </div>
 
-                  <div className="mt-[24px] text-center text-[24px] text-white">
+                  <div className="mt-6 text-center text-2xl text-white">
                     Deposit complete
                   </div>
-                  <div className="mt-[32px] rounded-[8px] bg-[rgba(5,14,21,0.5)] py-2 px-4 text-[16px] text-black">
+                  <div className="text-base/9 bg-base/2/50 mt-4 rounded-lg py-2 px-4 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-[16px] text-[#9BA1A5]">Amount</span>
-                      <span className="text-[16px] text-white">
-                        {amount} {selectedToken.short}
+                      <span>Amount</span>
+                      <span className="flex items-center text-white">
+                        <DAOIcon size={14} className="mb-[2px]" />
+                        <span className="ml-1">{amount}</span>
                       </span>
                     </div>
-                    <div className="mt-2 flex justify-between">
-                      <span className="text-[16px] text-[#9BA1A5]">
-                        Transaction ID
-                      </span>
-                      {/* <span className="text-[16px] text-[#F5B941]">View</span> */}
+                    <div className="mt-4 flex justify-between">
+                      <span>Transaction ID</span>
                       <a
-                        className="text-primary/6 text-[16px]"
+                        className="text-primary/6 text-base"
                         target="_blank"
                         href={URL_LINK}
                         rel="noreferrer"
@@ -357,7 +358,7 @@ export default function FirstDepositModal({
                       </a>
                     </div>
                   </div>
-                  <div className="mt-4 flex rounded-[8px] border border-[#D9D9D9] py-4 px-[14px]">
+                  <div className="mt-4 flex rounded-lg border border-[#D9D9D9] py-4 px-[14px]">
                     <div className="mr-[9px] flex-none">
                       <InfoCircleIcon />
                     </div>
@@ -366,21 +367,23 @@ export default function FirstDepositModal({
                       added to your Myria wallet
                     </div>
                   </div>
-                  <div className="mt-[32px] flex w-full justify-end">
-                    <button
-                      className="flex w-full w-[126px] items-center justify-center rounded-[8px] bg-[#F5B941] py-[13px] pt-[15px] text-[16px] font-bold text-[#040B10]"
-                      onClick={() => {
-                        dispatch(setDepositAmount(amount));
-                        closeModal();
-                        completeDepositModal();
-                      }}
-                    >
-                      OK
-                    </button>
-                  </div>
                 </div>
-              )}
-            </div>
+
+                <div className="mt-8 flex w-full justify-end">
+                  <button
+                    className="bg-primary/6 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold text-black"
+                    onClick={() => {
+                      handleSetAmount(amount);
+                      closeModal();
+                      handleShowMessageDeposit(true);
+                      completeDepositModal();
+                    }}
+                  >
+                    OK
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
