@@ -104,7 +104,6 @@ const ConnectL2WalletButton: React.FC = () => {
   };
 
   const showConnectedWallet = React.useMemo(() => {
-    
     // First time registration
     if (walletAddress && address && (!user || !user?.wallet_id)) {
       return true;
@@ -120,7 +119,7 @@ const ConnectL2WalletButton: React.FC = () => {
       return true;
     }
     return false;
-  },[address, localStarkKey, user, walletAddress]);
+  }, [address, localStarkKey, user, walletAddress]);
   return (
     <>
       <Modal
@@ -163,7 +162,9 @@ const ConnectL2WalletButton: React.FC = () => {
           <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
             <Popover.Trigger asChild>
               <span className="uppercase">
-                <button className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border px-2 py-[9px]">
+                <button
+                  className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border px-2 py-[9px]"
+                  id="trigger-popover-main-screen">
                   <WalletIcon width={24} height={24} />
                   <span>{truncateString(walletAddress)}</span>
                   <i className="w-4">
@@ -205,15 +206,17 @@ const ConnectL2WalletButton: React.FC = () => {
         </div>
       ) : (
         <MetamaskOnboarding>
-          {!userProfileQuery.isFetched ? <button
-          className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
-            <Trans>Loading...</Trans>
-        </button> : 
-          <button
-          onClick={onConnectWallet}
-          className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
-            <Trans>Connect Wallet</Trans>
-        </button>}
+          {!userProfileQuery.isFetched ? (
+            <button className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
+              <Trans>Loading...</Trans>
+            </button>
+          ) : (
+            <button
+              onClick={onConnectWallet}
+              className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
+              <Trans>Connect Wallet</Trans>
+            </button>
+          )}
         </MetamaskOnboarding>
       )}
       <MainL2Wallet />

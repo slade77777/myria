@@ -163,6 +163,7 @@ export default function MainScreen({
           onClick={async () => {
             gotoDepositScreen();
           }}
+          id="trigger-popover-deposit"
           className="text-base/10 bg-base/4 mr-4 flex w-[118px] items-center justify-center rounded-lg p-3 text-sm"
         >
           <div>
