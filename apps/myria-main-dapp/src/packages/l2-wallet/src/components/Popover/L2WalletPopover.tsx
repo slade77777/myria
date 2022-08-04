@@ -64,6 +64,7 @@ import {
 } from '../../utils/Converter';
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
 import { useDepositContext } from 'src/context/deposit-context';
+import { WithdrawOffchainParamsV2 } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -365,7 +366,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     try {
       setWithdrawInProgress(true);
       const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
+      if (!moduleFactory || !address) return;
 
       const withdrawModule = moduleFactory.getWithdrawModule();
 
@@ -376,20 +377,16 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             quantum: QUANTUM_CONSTANT.toString(),
           },
         });
-        await withdrawModule.withdrawalOffchain(
-          {
-            starkKey: '0x' + pKey,
-            tokenType: TokenType.ETH,
-            amount: String(convertEthToWei(amount.toString())),
-            vaultId: undefined,
-            assetId: assetType,
-          },
-          {
-            from: connectedAccount,
-            nonce: new Date().getTime(),
-            confirmationType: Types.ConfirmationType.Confirmed,
-          },
-        );
+        const withdrawParamsV2: WithdrawOffchainParamsV2 = {
+          senderPublicKey: `0x${pKey}`,
+          senderEthAddress: address,
+          receiverPublicKey: address,
+          quantizedAmount: String(
+            convertAmountToQuantizedAmount(amount.toString()),
+          ),
+          token: assetType,
+        };
+        await withdrawModule.withdrawalOffchainV2(withdrawParamsV2);
       } else {
         const assetType = asset.getAssetType({
           type: 'ERC20',

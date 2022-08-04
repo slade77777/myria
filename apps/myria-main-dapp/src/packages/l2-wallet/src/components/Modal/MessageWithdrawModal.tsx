@@ -8,7 +8,6 @@ import Web3 from 'web3';
 import { asset } from '@starkware-industries/starkware-crypto-utils';
 
 // Import components
-import CloseCircleIcon from '../Icons/CloseCircleIcon';
 import CheckIcon from '../Icons/CheckIcon';
 
 // Import Redux
@@ -39,6 +38,9 @@ export default function MessageWithdrawModal({
   const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
   const isUpdated = useSelector((state: RootState) => state.ui.isUpdated);
   const [withdrawProgress, setWithdrawProgress] = useState(false);
+  const pKey = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
+  );
   const selectedToken = useSelector(
     (state: RootState) => state.token.selectedToken,
   );
@@ -66,7 +68,7 @@ export default function MessageWithdrawModal({
         });
         await withdrawModule.withdrawalOnchain(
           {
-            starkKey: connectedAccount,
+            starkKey: `0x${pKey}`,
             assetType,
           },
           {

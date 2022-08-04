@@ -86,7 +86,7 @@ export default function ClaimWithdrawPopover({
         });
         await withdrawModule.withdrawalOnchain(
           {
-            starkKey: connectedAccount,
+            starkKey: `0x${pKey}`,
             assetType,
           },
           {
