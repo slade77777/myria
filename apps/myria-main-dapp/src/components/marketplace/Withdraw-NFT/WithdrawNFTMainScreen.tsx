@@ -11,6 +11,7 @@ import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
+import { WithdrawNftOffChainParams } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -59,18 +60,21 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
       );
 
       if (getVaultDetail?.status === 'success') {
-        const dataVaultDetail = getVaultDetail.data;
         const moduleFactory = await getModuleFactory();
-        if (!moduleFactory) return;
+        if (!moduleFactory || !data || !data.assetDetails || !address) return;
 
         const withdrawModule = moduleFactory.getWithdrawModule();
-        const withdraw = await withdrawModule?.withdrawNftOffChain({
-          id: valueNFT.id,
-          vaultId: dataVaultDetail.vaultId,
-          assetId: dataVaultDetail.assetId,
-          quantizedAmount: 1,
-          starkKey: dataVaultDetail.starkKey
-        });
+        const payloadWithdrawNftOffchain: WithdrawNftOffChainParams = {
+          id: data?.assetDetails?.id,
+          tokenId: data?.assetDetails?.tokenId,
+          tokenAddress: data?.assetDetails?.tokenAddress,
+          senderVaultId: getVaultDetail.data.vaultId,
+          senderPublicKey: starkKey,
+          receiverPublicKey: address,
+          assetId: data?.assetDetails?.assetMintId,
+          quantizedAmount: '1'
+        };
+        await withdrawModule?.withdrawNftOffChain(payloadWithdrawNftOffchain);
         await refetch();
         handleWithdrawing(true);
         onChangeStatus();

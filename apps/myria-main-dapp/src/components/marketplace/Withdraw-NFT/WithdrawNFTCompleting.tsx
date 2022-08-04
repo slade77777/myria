@@ -37,14 +37,18 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
 
       if (!getVaultDetail || !address || !starkKeyUser) return;
       const blueprint = valueNFT.uri;
+      const orignialMetadataUrl = blueprint.substring(0, valueNFT.uri.lastIndexOf('/'));
+      const originalBlueprint = `${orignialMetadataUrl}/${valueNFT.tokenId}`;
+      const mintingblob = `{${valueNFT.tokenId}}:{${originalBlueprint}}`;
+
       const result = await withdrawalModule.withdrawAndMint(
         {
           assetType: getVaultDetail.data.assetType,
-          starkKey: starkKey,
+          starkKey: address,
           walletAddress: address,
           tokenType: TokenType.MINTABLE_ERC721,
           tokenAddress: valueNFT.tokenAddress,
-          mintingBlob: `{${valueNFT.tokenId}}:{${blueprint}}`
+          mintingBlob: mintingblob
         },
         {
           from: address,
@@ -53,11 +57,10 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
         }
       );
       if (result) {
-        const resultWithdrawComplete = await withdrawalModule.withdrawNftComplete({
+        await withdrawalModule.withdrawNftComplete({
           assetId: getVaultDetail.data.assetId,
           id: valueNFT.id,
-          starkKey,
-          vaultId: getVaultDetail.data.vaultId
+          starkKey
         });
         setStatus(StatusWithdrawNFT.SUCCESS);
       }

@@ -120,6 +120,7 @@ export const WalletProvider: React.FC = ({ children }) => {
     setChainId(network.chainId);
     setAddress(address);
     setWalletAddress(address); // Set wallet address in localstorage
+    setLocalStarkKey('');
   };
 
   const onSetWalletAddress = (walletAddress: string) => {
@@ -139,6 +140,7 @@ export const WalletProvider: React.FC = ({ children }) => {
     setChainId(network.chainId);
     setAddress(address);
     setWalletAddress(address); // Set wallet address in localstorage
+    setLocalStarkKey('');
     event('Wallet Connected', { wallet_address: address, campaign });
   };
 
