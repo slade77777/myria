@@ -89,12 +89,12 @@ export const WalletProvider: React.FC = ({ children }) => {
     if (w3Provider?.close) {
       await w3Provider.close();
     }
-    await web3Modal.clearCachedProvider();
+    web3Modal.clearCachedProvider();
 
     setLocalStarkKey('');
     setWalletAddress('');
+    address && await event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
     reset();
-    address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
   }, [address, event, setLocalStarkKey, setWalletAddress, w3Provider]);
 
   const getBalanceETH = React.useCallback(() => {
