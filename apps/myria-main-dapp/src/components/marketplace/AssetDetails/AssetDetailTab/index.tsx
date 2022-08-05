@@ -4,7 +4,7 @@ import {
   EqualMetadataByAssetIdResponse,
   FeeTypes
 } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import { FC, useEffect, useMemo } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
@@ -14,6 +14,8 @@ import { formatPrice, formatUSDPrice } from 'src/utils';
 import { AssetStatus } from '..';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import Web3 from 'web3';
+import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { ETHERS_LINK } from 'src/services/common-ethers';
 
 type Prop = {
   data: EqualMetadataByAssetIdResponse | any;
@@ -28,6 +30,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = `0x${starkKeyUser}`;
+  const [etherLinkContract, setEtherLinkContract] = useState<string>();
 
   const convertPrice = (isPriceUSD: boolean) => {
     let convertPrice;
@@ -38,10 +41,17 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
     }
     return convertPrice;
   };
-  const etherScanLinked = useMemo( ()=>{
-    const networkId =  Web3.givenProvider.networkVersion
-    return `https://${networkId == 5 ? 'goerli.' : ''}etherscan.io/address/${assetDetails?.tokenAddress}`
-  },[assetDetails?.tokenAddress])
+  useMemo(async () => {
+    const networkId = await getNetworkId();
+    if (!networkId) return '';
+
+    const baseEtherLink = ETHERS_LINK[networkId as keyof typeof ETHERS_LINK];
+    const etherLink = `${baseEtherLink}/${assetDetails?.tokenAddress}`;
+    setEtherLinkContract(etherLink);
+
+    return etherLink;
+  }, [assetDetails?.tokenAddress]);
+
   return (
     <Root defaultValue="Listing">
       <List className="my-[24px]">
@@ -142,7 +152,11 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
         <div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-[16px] font-normal">
             <Trans>Contract Address</Trans>
-            <a target={'_blank'} href={etherScanLinked} className="text-blue/6 flex flex-row cursor-pointer items-center gap-[3px] font-medium" rel="noreferrer">
+            <a
+              target={'_blank'}
+              href={etherLinkContract}
+              className="text-blue/6 flex flex-row cursor-pointer items-center gap-[3px] font-medium"
+              rel="noreferrer">
               <span>{assetDetails ? truncateString(assetDetails?.tokenAddress) : ''}</span>
               <EnternalLinkIcon />
             </a>
