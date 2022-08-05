@@ -24,6 +24,20 @@ async function getAccounts() {
   return await web3.eth.getAccounts();
 }
 
+async function getNetworkId(): Promise<number> {
+  let windowBrowser;
+  if (window && window.ethereum) {
+    windowBrowser = await initialWeb3();
+    window.web3 = windowBrowser;
+  } else {
+    return 0;
+  }
+  await signMetamask();
+
+  const networkId = await windowBrowser.eth.net.getId();
+  return networkId;
+}
+
 async function getModuleFactory() {
   let windowBrowser;
   if (window && window.ethereum) {
@@ -46,4 +60,4 @@ async function getModuleFactory() {
   return new Modules.ModuleFactory(myriaClient);
 }
 
-export { getModuleFactory, getAccounts, getNetworkType, initialWeb3 };
+export { getModuleFactory, getAccounts, getNetworkType, initialWeb3, getNetworkId };

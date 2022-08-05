@@ -1,19 +1,27 @@
 import { Trans } from '@lingui/macro';
-import { FC, useMemo } from 'react';
-import CircleCheckSuccess from 'src/components/icons/CircleCheckSuccess';
+import { FC, useEffect, useMemo, useState } from 'react';
 import CircleCheckSuccessOutline from 'src/components/icons/CircleCheckSuccessOutline';
-import DAOIcon from 'src/components/icons/DAOIcon';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
-import { validatedImage } from 'src/utils';
+import { ETHERS_LINK } from 'src/services/common-ethers';
+import { getNetworkId } from 'src/services/myriaCoreSdk';
 import Web3 from 'web3';
 interface IProp {}
 
 const WithdrawNFTSuccess: FC<IProp> = ({}) => {
   const { valueNFT } = useWithDrawNFTContext();
-  const etherScanLinked = useMemo( ()=>{
-    const networkId =  Web3.givenProvider.networkVersion
-    return `https://${networkId == 5 ? 'goerli.' : ''}etherscan.io/address/${valueNFT?.tokenAddress}`
-  },[valueNFT?.tokenAddress])
+  const [etherLinkContract, setEtherLinkContract] = useState<string>();
+
+  useMemo(async () => {
+    const networkId = await getNetworkId();
+    if (!networkId) return '';
+
+    const baseEtherLink = ETHERS_LINK[networkId as keyof typeof ETHERS_LINK];
+    const etherLink = `${baseEtherLink}/${valueNFT?.tokenAddress}`;
+    setEtherLinkContract(etherLink);
+
+    return etherLink;
+  }, [valueNFT?.tokenAddress]);
+
   return (
     <div className="mt-[29px]">
       <div className="px-[25px]">
@@ -41,7 +49,11 @@ const WithdrawNFTSuccess: FC<IProp> = ({}) => {
           <span className="flex items-center text-base/9">
             <Trans>Transaction ID</Trans>
           </span>
-          <a target={'_blank'} href={etherScanLinked} className="flex items-center text-[#F5B941] font-medium cursor-pointer cursor-pointer" rel="noreferrer">
+          <a
+            target={'_blank'}
+            href={etherLinkContract}
+            className="flex items-center text-[#F5B941] font-medium cursor-pointer cursor-pointer"
+            rel="noreferrer">
             <Trans>View</Trans>
           </a>
         </div>
