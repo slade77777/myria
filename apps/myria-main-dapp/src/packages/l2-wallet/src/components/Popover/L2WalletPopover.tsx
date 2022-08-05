@@ -2,12 +2,11 @@
 import { Trans } from '@lingui/macro';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Web3 from 'web3';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
 import cn from 'classnames';
 import moment from 'moment';
-import { IMyriaClient, Modules, MyriaClient, Types } from 'myria-core-sdk';
+import { Types } from 'myria-core-sdk';
 import Link from 'next/link';
 
 // Import components
@@ -48,13 +47,15 @@ import { setWithdrawClaimModal } from '../../app/slices/uiSlice';
 import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 
 //compoment POC
+import { TxResult } from 'myria-core-sdk/dist/types/src/types';
+import { WithdrawOffchainParamsV2 } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
+import { useDepositContext } from 'src/context/deposit-context';
 import DropdownMenu from '../../../../../components/DropdownMenu';
 import LogoutIcon from '../../../../../components/icons/LogoutIcon';
+import { useAuthenticationContext } from '../../../../../context/authentication';
 import { useWalletContext } from '../../../../../context/wallet';
 import { useEtheriumPrice } from '../../../../../hooks/useEtheriumPrice';
-import ChevronIcon from '../Icons/ChevronIcon';
 import { useGA4 } from '../../../../../lib/ga';
-import { useAuthenticationContext } from '../../../../../context/authentication';
 import { WalletMarketPlaceAction } from '../../../../../lib/ga/use-ga/event';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
 import {
@@ -62,9 +63,7 @@ import {
   convertEthToWei,
   convertQuantizedAmountToEth,
 } from '../../utils/Converter';
-import { TxResult } from 'myria-core-sdk/dist/types/src/types';
-import { useDepositContext } from 'src/context/deposit-context';
-import { WithdrawOffchainParamsV2 } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
+import ChevronIcon from '../Icons/ChevronIcon';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -264,10 +263,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
                 : item.quantizedAmount,
               time: moment(item.createdAt).fromNow(),
               updatedAt: moment(item.updatedAt).fromNow(),
-              status:
-                item.transactionStatus === 'Success'
-                  ? 'success'
-                  : 'in_progress',
+              status: item.transactionStatus,
               ico: '/assets/images/eth.svg',
               tokenType: item.tokenType,
             };
