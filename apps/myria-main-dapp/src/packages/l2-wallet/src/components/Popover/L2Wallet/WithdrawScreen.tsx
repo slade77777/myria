@@ -52,7 +52,7 @@ export default function WithdrawScreen({
           }}
         >
           <ArrowIcon direction="left" />
-          <div className="ml-2 text-[20px] text-white">Withdraw</div>
+          <div className="ml-2 text-[14px] text-white">Withdraw</div>
         </div>
       </div>
       <div className="text-base/10 mt-6 grow">
@@ -66,11 +66,15 @@ export default function WithdrawScreen({
             <div className="mb-2 text-base">Amount</div>
             <div className="flex items-center text-base">
               <div className="flex items-center">
-                <span className="mr-1">Available: </span>
+                <span className="text-base/9 mr-1 text-[14px]  leading-[17px]">
+                  Available{' '}
+                </span>
                 <span className="mr-1">
                   <DAOIcon size={16} />
                 </span>
-                <span className="mr-1">{balance}</span>
+                <span className="text-base/9  mr-1 text-[14px] ">
+                  {balance}
+                </span>
                 <Tooltip>
                   <Tooltip.Trigger className="focus:outline-none">
                     <InfoCircleIcon className="text-blue/6" size={18} />

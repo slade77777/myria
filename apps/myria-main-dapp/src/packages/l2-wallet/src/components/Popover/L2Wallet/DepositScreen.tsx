@@ -63,17 +63,19 @@ export default function DepositScreen({
         </div>
         <div className="mt-6">
           <div className="mb-2 flex justify-between">
-            <div className="text-base">Amount</div>
+            <div className="text-base text-[14px]">Amount</div>
             <div className="flex items-center text-base">
               <div className="flex items-center">
-                <span className="mr-1">Available: </span>
+                <span className="text-base/9 mr-1  text-[14px]">
+                  Available{' '}
+                </span>
                 <span className="mr-1">
                   <DAOIcon size={16} />
                 </span>
-                <span className="mr-1">{balance}</span>
+                <span className="text-base/9  mr-1 text-[14px]">{balance}</span>
                 <Tooltip>
                   <Tooltip.Trigger className="focus:outline-none">
-                    <InfoCircleIcon className="text-blue/6" size={18} />
+                    <InfoCircleIcon className="text-base/1" size={18} />
                   </Tooltip.Trigger>
                   <Tooltip.Content className="mf-10 max-w-[256px]">
                     <div className="bg-base/5 mf-10 absolute right-0 top-2 min-w-[256px] rounded-lg p-4">
