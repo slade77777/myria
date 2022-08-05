@@ -25,7 +25,7 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
       <div className="max-w-content mx-auto mb-10">
         <div className="relative">
           {/* <img src={collectionImageUrl ? collectionImageUrl : "/images/marketplace/header.png"} className="h-[327px] w-full " alt={name} /> */}
-          <div className="absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full bg-[#0F2F45]">
+          <div className="absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full bg-[#0F2F45] border-[4px] border-base/2">
             <MyriaIcon />
           </div>
         </div>
@@ -43,9 +43,9 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
             <div className="flex flex-row gap-12">
               <div>
                 {totalAssets < 1000 ? (
-                  <p className="text-3xl text-white text-right">{totalAssets}</p>
+                  <p className="text-[28px] font-bold text-white text-right">{totalAssets}</p>
                 ) : (
-                  <p className="text-3xl text-white text-right">
+                  <p className="text-[28px] font-bold text-white text-right">
                     {totalAssets ? `${totalAssets / 1000}K` : '0'}
                   </p>
                 )}
@@ -53,9 +53,11 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
               </div>
               <div>
                 {totalAssetsForSale < 1000 ? (
-                  <p className="text-3xl text-white text-right">{totalAssetsForSale}</p>
+                  <p className="text-[28px] font-bold text-white text-right">
+                    {totalAssetsForSale}
+                  </p>
                 ) : (
-                  <p className="text-3xl text-white text-right">
+                  <p className="text-[28px] font-bold text-white text-right">
                     {totalAssetsForSale ? `${totalAssetsForSale / 1000}K` : '0'}
                   </p>
                 )}
