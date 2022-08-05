@@ -68,7 +68,7 @@ export default function MessageWithdrawModal({
         });
         await withdrawModule.withdrawalOnchain(
           {
-            starkKey: `0x${pKey}`,
+            starkKey: connectedAccount,
             assetType,
           },
           {
