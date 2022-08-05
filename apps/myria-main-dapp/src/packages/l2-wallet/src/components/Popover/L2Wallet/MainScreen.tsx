@@ -7,7 +7,7 @@ import { asset } from '@starkware-industries/starkware-crypto-utils';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { formatNumber2digits } from 'src/utils';
-import { CompletedIcon } from '../../Icons';
+import { CircleCloseIcon, CompletedIcon } from '../../Icons';
 import ArrowDownLeft from '../../Icons/ArrowDownLeft';
 import ArrowUpRight from '../../Icons/ArrowUpRight';
 import ETHIcon from '../../Icons/ETHIcon';
@@ -37,6 +37,12 @@ const historyData: any[] = [];
 
 const QUANTUM_CONSTANT = 10000000000;
 
+enum STATUS_HISTORY {
+  SUCCESS = 'Success',
+  FAILED = 'Failed',
+  IN_PROGRESS = 'Pending',
+}
+
 export default function MainScreen({
   gotoDepositScreen,
   gotoWithdrawScreen,
@@ -48,6 +54,7 @@ export default function MainScreen({
   activeToken,
   setActiveToken,
 }: Props) {
+  console.log(transactionList.map((item: any) => item.type));
   const [coinPrices, setCoinPrices] = useState([]);
   const { data: etheCost = 0 } = useEtheriumPrice();
 
@@ -55,6 +62,8 @@ export default function MainScreen({
     switch (type) {
       case 'DepositRequest':
         return 'Deposit';
+      case 'TransferRequest':
+        return 'Withdrawal';
       case 'WithdrawalRequest':
         return 'Withdrawal';
       case 'SettlementRequest':
@@ -116,18 +125,30 @@ export default function MainScreen({
   }, [balanceList, options]);
 
   const renderStatus = (item: any) => {
-    if (item.status === 'in_progress') {
+    if (item.status === STATUS_HISTORY.IN_PROGRESS) {
       return (
         <div className="text-base/9 mt-1 flex items-center">
           In progress <ProgressHistoryIcon size={14} className="ml-1" />
         </div>
       );
-    } else {
-      if (item.type === 'WithdrawalRequest') {
+    }
+
+    if (item.status === STATUS_HISTORY.FAILED) {
+      return (
+        <div className="text-base/9 mt-1 flex items-center">
+          Failed <CircleCloseIcon size={14} className="ml-1" />
+        </div>
+      );
+    }
+
+    if (item.status === STATUS_HISTORY.SUCCESS) {
+      if (
+        item.type === 'TransferRequest' ||
+        item.type === 'WithdrawalRequest'
+      ) {
         return (
           <div className="text-primary/6 mt-1 flex items-center">
             Complete withdrawal{' '}
-            {/* <ArrowDownLeft className="ml-1 text-primary/6" size={14} /> */}
             <ChevronIcon
               className="text-primary/6 ml-1"
               size={14}
@@ -135,13 +156,12 @@ export default function MainScreen({
             />
           </div>
         );
-      } else {
-        return (
-          <div className="text-base/9 mt-1 flex items-center">
-            Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
-          </div>
-        );
       }
+      return (
+        <div className="text-base/9 mt-1 flex items-center">
+          Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
+        </div>
+      );
     }
   };
 
