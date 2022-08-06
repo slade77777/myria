@@ -8,6 +8,7 @@ import Popover from '../Popover';
 import Tooltip from 'src/components/Tooltip';
 import clsx from 'clsx';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 const ProfileMenus = [
   {
@@ -25,11 +26,13 @@ type Props = {
 
 const ProfileComponent = ({ className, contentClassName, showArrow }: Props) => {
   const { disconnect } = useWalletContext();
+  const { disconnectL2Wallet } = useL2WalletContext();
   const { user, logout } = useAuthenticationContext();
   const walletId = user?.wallet_id;
 
   const onDisconnect = () => {
     disconnect();
+    disconnectL2Wallet();
     logout();
   };
 

@@ -36,14 +36,13 @@ import UnlistModalContent from '../Modals/UnlistModal';
 import { NFTItemType } from '../NftItem/type';
 import AssetDetailTab from './AssetDetailTab';
 import PurchaseModal from './PurchaseModal';
-import testavatarImg from './testavatar.png';
 import avatar from '../../../../public/images/marketplace/avatar.png';
 import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import { usePurchaseNFTContext } from 'src/context/purchase-nft';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 interface Props {
   id: string;
@@ -103,6 +102,7 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = useMemo(() => `0x${starkKeyUser}`, [starkKeyUser]);
+  const { connectL2Wallet, disconnectL2Wallet } = useL2WalletContext();
 
   const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
   const ownedBy = useMemo(() => {
@@ -168,6 +168,7 @@ function AssetDetails({ id }: Props) {
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect, onConnectCompaign } = useWalletContext();
+  const { loginByWalletMutation } = useAuthenticationContext();
   // wait update sdk
   const bgImage = assetDetails?.metadataOptional
     ? (assetDetails?.metadataOptional as any)?.rarity
@@ -653,6 +654,10 @@ function AssetDetails({ id }: Props) {
                 setStatus={() => {
                   onTrackingConnectWallet();
                   onConnectCompaign('B2C Marketplace');
+                  if (loginByWalletMutation.isError) {
+                    loginByWalletMutation.mutate();
+                  }
+                  connectL2Wallet();
                 }}
               />
             )}

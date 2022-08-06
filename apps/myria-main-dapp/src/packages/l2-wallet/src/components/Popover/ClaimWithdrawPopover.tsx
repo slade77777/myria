@@ -22,6 +22,7 @@ import { setWithdrawClaimPopover } from '../../app/slices/uiSlice';
 
 // import { useWalletContext } from '../../../src/context/wallet';
 import { useWalletContext } from '../../../../../../src/context/wallet';
+import { useL2WalletContext } from '../../../../../../src/context/l2-wallet';
 import { useAuthenticationContext } from '../../../../../../src/context/authentication';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
 import {
@@ -66,6 +67,7 @@ export default function ClaimWithdrawPopover({
   );
 
   const { disconnect } = useWalletContext();
+  const { disconnectL2Wallet } = useL2WalletContext();
   const { user, logout } = useAuthenticationContext();
 
   const dispatch = useDispatch();
@@ -127,6 +129,7 @@ export default function ClaimWithdrawPopover({
     localStorage.clear();
     dispatch(disconnectAccount());
     disconnect();
+    disconnectL2Wallet();
     logout();
   };
 

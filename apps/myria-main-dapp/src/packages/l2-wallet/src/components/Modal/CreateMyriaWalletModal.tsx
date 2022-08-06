@@ -5,11 +5,9 @@ import cn from 'classnames';
 
 // Import components
 import { ThreeDotsVerticalIcon, MyriaLogoIcon } from '../Icons';
-import { setStarkPublicKey } from '../../app/slices/accountSlice';
 
 // Import Redux
 import { RootState } from '../../app/store';
-import { getModuleFactory } from '../../services/myriaCoreSdk';
 
 type RefType = {
   onOpenModal: () => void;
@@ -59,58 +57,8 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
     setDisplay(false);
   };
 
-  const onRequestSignature = async () => {
-    if (!account) {
-      console.error('Please connect wallet first.');
-      return;
-    }
-    const message = 'Message request signature: ';
-    const fromWalletAddress = account;
-    if (window.web3) {
-      const wSignature = await window.web3.eth.personal.sign(
-        message,
-        fromWalletAddress,
-      );
-      const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
-      const commonModule = moduleFactory.getCommonModule();
-      const userModule = moduleFactory.getUserModule();
-      const starkKey = commonModule.getStarkPublicKey(wSignature);
-      setStarkKeyToLocalStorage(starkKey);
-
-      setStep({
-        ...step,
-        loadingSign: false,
-        sign: true,
-        loadingFastTransaction: true,
-      });
-      dispatch(setStarkPublicKey(starkKey));
-      setTimeout(() => {
-        setStep({
-          loadingSign: false,
-          sign: true,
-          loadingFastTransaction: false,
-          fastTransaction: true,
-        });
-        userModule
-          .registerUser({ starkKey: '0x' + starkKey, ethAddress: account })
-          .then(data => {
-            setWelcomeModal(true);
-          })
-          .catch(err => {
-            console.log('[CreateMyriaWalletModal] Register user error ->', err);
-          })
-          .finally(() => {
-            onCloseModal();
-          });
-      }, 200);
-    }
-  };
   const onSendRequest = () => {
-    setStep({ ...step, loadingSign: true });
-    metaMaskConnect().then(() => {
-      onRequestSignature();
-    });
+    metaMaskConnect();
   };
   useImperativeHandle(ref, () => ({
     onOpenModal,
