@@ -1,8 +1,9 @@
 import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
 import Web3 from 'web3';
+import { number } from 'yup';
 
 declare const window: any;
-
+const MAINNET = 1;
 async function signMetamask() {
   if (window.ethereum) {
     window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -40,22 +41,24 @@ async function getNetworkId(): Promise<number> {
 
 async function getModuleFactory() {
   let windowBrowser;
+  let networkId;
   if (window && window.ethereum) {
     windowBrowser = await initialWeb3();
     window.web3 = windowBrowser;
   } else {
-    return;
+    windowBrowser = window.web3;
   }
   await signMetamask();
-
-  const networkId = await windowBrowser.eth.net.getId();
-
+  try {
+    networkId = await windowBrowser.eth.net.getId();
+  } catch (error) {
+    console.log(error);
+  }
   const client: IMyriaClient = {
     provider: windowBrowser.eth.currentProvider as any,
-    networkId,
+    networkId: networkId ? networkId : MAINNET,
     web3: windowBrowser as any
   };
-
   const myriaClient = new MyriaClient(client);
   return new Modules.ModuleFactory(myriaClient);
 }
