@@ -68,10 +68,7 @@ export default function MainL2Wallet() {
     const loadWeb3 = async () => {
       const accounts = await getAccounts();
       const currentAccount = accounts[0];
-      if (!accounts || accounts.length === 0) return null;
-
-      dispatch(markWalletConnected());
-      dispatch(setAccount(accounts[0]));
+      if (!accounts || accounts.length === 0 || !address) return null;
 
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
