@@ -18,38 +18,35 @@ import ErrorIcon from './icons/ErrorIcon';
 import WalletIcon from './icons/WalletIcon';
 import { localStorageKeys } from 'src/configs';
 import useLocalStorage from 'src/hooks/useLocalStorage';
-import { setAccount, setStarkPublicKey } from 'src/packages/l2-wallet/src/app/slices/accountSlice';
 import { getAccounts } from 'src/services/myriaCoreSdk';
 import useInstalledWallet from 'src/hooks/useInstalledWallet';
 import UserAvatar from './Header/UserAvatar';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { event } = useGA4();
   const { installedWallet } = useInstalledWallet();
   const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
     useWalletContext();
+
+  const { connectL2Wallet, disconnectL2Wallet } = useL2WalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
   const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
-  const starkKeyUser = useSelector(
-    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
-  );
+
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [showMismatchedWalletModal, setShowMismatchedWalletModal] = React.useState(false);
 
-  const dispatch = useDispatch();
-
   const onConnectWallet = () => {
     event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
     onConnectCompaign('B2C Marketplace');
+    connectL2Wallet();
     if (loginByWalletMutation.isError) {
       loginByWalletMutation.mutate();
     }
   };
 
   useEffect(() => {
-    dispatch(setAccount(walletAddress));
-    dispatch(setStarkPublicKey(localStarkKey));
     if (installedWallet === true) {
       subscribeProvider();
     }
@@ -63,7 +60,6 @@ const ConnectL2WalletButton: React.FC = () => {
           address?.toLowerCase() != user?.wallet_id.toLowerCase()
         ) {
           setAddress(accounts[0]?.toLowerCase());
-          setWalletAddress(accounts[0]?.toLowerCase());
         }
       })
       .catch((e) => {
@@ -75,15 +71,6 @@ const ConnectL2WalletButton: React.FC = () => {
     if (userProfileQuery.isFetching) {
       return;
     }
-    console.log(
-      'CHECK ',
-      address,
-      !user?.user_id,
-      !loginByWalletMutation.isLoading,
-      !loginByWalletMutation.isError,
-      userProfileQuery.isFetched,
-      !userProfileQuery.data
-    );
 
     if (
       address &&
@@ -146,6 +133,7 @@ const ConnectL2WalletButton: React.FC = () => {
         onOpenChange={() => {
           setShowMismatchedWalletModal(false);
           disconnect();
+          disconnectL2Wallet();
         }}>
         <Modal.Content
           title={
@@ -167,6 +155,7 @@ const ConnectL2WalletButton: React.FC = () => {
             <button
               onClick={() => {
                 disconnect();
+                disconnectL2Wallet();
                 logout();
                 setShowMismatchedWalletModal(false);
               }}

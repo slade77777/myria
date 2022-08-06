@@ -90,10 +90,7 @@ export const WalletProvider: React.FC = ({ children }) => {
       await w3Provider.close();
     }
     web3Modal.clearCachedProvider();
-
-    setLocalStarkKey('');
-    setWalletAddress('');
-    address && await event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
+    address && (await event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address }));
     reset();
   }, [address, event, setLocalStarkKey, setWalletAddress, w3Provider]);
 
@@ -119,8 +116,6 @@ export const WalletProvider: React.FC = ({ children }) => {
     setSignerProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
-    setWalletAddress(address); // Set wallet address in localstorage
-    setLocalStarkKey('');
   };
 
   const onSetWalletAddress = (walletAddress: string) => {
@@ -139,8 +134,6 @@ export const WalletProvider: React.FC = ({ children }) => {
     setSignerProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
-    setWalletAddress(address); // Set wallet address in localstorage
-    setLocalStarkKey('');
     event('Wallet Connected', { wallet_address: address, campaign });
   };
 

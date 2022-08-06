@@ -64,6 +64,7 @@ import {
   convertQuantizedAmountToEth,
 } from '../../utils/Converter';
 import ChevronIcon from '../Icons/ChevronIcon';
+import { useL2WalletContext } from '../../../../../context/l2-wallet';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -128,7 +129,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
   const [balanceL2Eth, setBalanceL2Eth] = useState<any>('');
   const [transactionDetail, setTransactionDetail] = useState<any>(null);
-  const { address, onConnect, disconnect } = useWalletContext();
+  const { address, disconnect } = useWalletContext();
+  const { disconnectL2Wallet } = useL2WalletContext();
 
   const [activeToken, setActiveToken] = useState<string>('tokens');
   const [depositResponse, setDepositResponse] = useState<TxResult>();
@@ -566,6 +568,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
                 className="body-14-medium flex items-center space-x-2.5 text-white"
                 onClick={() => {
                   disconnect();
+                  disconnectL2Wallet();
                   logout();
                 }}
               >

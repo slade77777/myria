@@ -3,12 +3,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 
-// Import Redux
-import {
-  markWalletConnected,
-  setAccount,
-  setStarkPublicKey
-} from 'src/packages/l2-wallet/src/app/slices/accountSlice';
 import { setWithdrawClaimModal } from 'src/packages/l2-wallet/src/app/slices/uiSlice';
 import TermsOfServiceModal from 'src/packages/l2-wallet/src/components/Modal/TermsOfServiceModal';
 import CreateMyriaWalletModal from 'src/packages/l2-wallet/src/components/Modal/CreateMyriaWalletModal';
@@ -18,8 +12,9 @@ import WelcomeMyriaModal from 'src/packages/l2-wallet/src/components/Modal/Welco
 import { useWalletContext } from 'src/context/wallet';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 
-import { getAccounts, getModuleFactory, initialWeb3 } from 'src/services/myriaCoreSdk';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { localStorageKeys } from 'src/configs';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
@@ -31,7 +26,6 @@ export default function MainL2Wallet() {
   const walletModalRef = useRef<any>();
   const [showPrivacyModal, setPrivacyModal] = useState<Boolean>(false);
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
-  const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const { address } = useWalletContext();
   const [isShowMessage, setIsShowMessage] = useState<boolean>(false);
   const [previousBalance, setPreviousBalance] = useState<any>(0);
@@ -42,53 +36,8 @@ export default function MainL2Wallet() {
   const showWithDrawClaimModal = useSelector((state: RootState) => state.ui.showWithDrawClaimModal);
   const pKey = useSelector((state: RootState) => state.account.starkPublicKeyFromPrivateKey);
 
+  const { isFirstTimeUser, connectL2WalletFirstTime } = useL2WalletContext();
   const dispatch = useDispatch();
-  const onRequestSignature = useCallback(
-    async (web3Account: string) => {
-      if (!web3Account) {
-        console.error('Please connect wallet first.');
-        return;
-      }
-      const signMessage = 'Message request signature: ';
-      const web3 = await initialWeb3();
-      const wSignature = await web3.eth.personal.sign(signMessage, web3Account, '');
-      const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
-
-      const commonModule = moduleFactory.getCommonModule();
-      const starkKey = commonModule.getStarkPublicKey(wSignature);
-      dispatch(setStarkPublicKey(starkKey));
-      setLocalStarkKey(starkKey);
-      setWalletAddress(web3Account?.toLowerCase());
-    },
-    [dispatch, setLocalStarkKey, setWalletAddress]
-  );
-
-  useEffect(() => {
-    const loadWeb3 = async () => {
-      const accounts = await getAccounts();
-      const currentAccount = accounts[0];
-      if (!accounts || accounts.length === 0 || !address) return null;
-
-      const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
-
-      const userModule = moduleFactory.getUserModule();
-
-      try {
-        const user = await userModule.getUserByWalletAddress(currentAccount);
-        if (user && user?.ethAddress?.toLowerCase() === currentAccount?.toLowerCase()) {
-          onRequestSignature(currentAccount);
-        }
-      } catch {
-        walletModalRef.current.onOpenModal();
-      }
-      return null;
-    };
-    if ((!pKey || pKey.length < 3) && address && address?.length > 0) {
-      loadWeb3();
-    }
-  }, [address, pKey]);
 
   useEffect(() => {
     if (!address) return;
@@ -142,16 +91,19 @@ export default function MainL2Wallet() {
   };
 
   useEffect(() => {
-    if (!address) {
-      const isOpen = walletModalRef.current.getModalState();
-      if (isOpen) {
-        walletModalRef.current.onCloseModal();
-      }
+    if (isFirstTimeUser) {
+      walletModalRef.current.onOpenModal();
+    } else {
+      walletModalRef.current.onCloseModal();
     }
-  }, [address]);
+  }, [isFirstTimeUser]);
 
-  const metaMaskConnect = async () => {
-    await getModuleFactory();
+  const metaMaskConnect = useCallback(async () => {
+    await connectL2WalletFirstTime(welcomeToMyriaL2Wallet);
+  }, []);
+
+  const welcomeToMyriaL2Wallet = () => {
+    setWelcomeModal(true);
   };
 
   const onAcceptTermOfService = async () => {
