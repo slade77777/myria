@@ -83,7 +83,7 @@ const Page: React.FC<Props> = ({
         <MessageModal
           isShowMessage={showMessageDeposit}
           setIsShowMessage={() => handleShowMessageDeposit(false)}>
-          <MessageDepositModal />
+          <MessageDepositModal onClose={() => handleShowMessageDeposit(false)} />
         </MessageModal>
       )}
     </>

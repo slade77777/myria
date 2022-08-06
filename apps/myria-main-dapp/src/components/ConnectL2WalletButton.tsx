@@ -21,6 +21,7 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { setAccount, setStarkPublicKey } from 'src/packages/l2-wallet/src/app/slices/accountSlice';
 import { getAccounts } from 'src/services/myriaCoreSdk';
 import useInstalledWallet from 'src/hooks/useInstalledWallet';
+import UserAvatar from './Header/UserAvatar';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { event } = useGA4();
@@ -47,7 +48,6 @@ const ConnectL2WalletButton: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log('error', walletAddress, localStarkKey);
     dispatch(setAccount(walletAddress));
     dispatch(setStarkPublicKey(localStarkKey));
     if (installedWallet === true) {
@@ -55,9 +55,10 @@ const ConnectL2WalletButton: React.FC = () => {
     }
     getAccounts()
       .then((accounts) => {
-        console.log('getAccounts', user?.wallet_id, address, accounts[0]);
+        console.log('getAccounts', address, user?.wallet_id, address, accounts[0]);
         if (
           user?.wallet_id &&
+          localStarkKey &&
           accounts[0]?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
           address?.toLowerCase() != user?.wallet_id.toLowerCase()
         ) {
@@ -133,6 +134,11 @@ const ConnectL2WalletButton: React.FC = () => {
     }
     return false;
   }, [address, localStarkKey, user, walletAddress]);
+
+  const avatar =
+    !loginByWalletMutation.isError && walletAddress && showConnectedWallet
+      ? '/images/marketplace/collection-1-logo.png'
+      : '/images/marketplace/user.png';
   return (
     <>
       <Modal
@@ -170,68 +176,74 @@ const ConnectL2WalletButton: React.FC = () => {
           </p>
         </Modal.Content>
       </Modal>
-      {!loginByWalletMutation.isError && walletAddress && showConnectedWallet ? (
-        <div>
-          <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
-            <Popover.Trigger asChild>
-              <span className="uppercase">
-                <button
-                  className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border px-2 py-[9px]"
-                  id="trigger-popover-main-screen">
-                  <WalletIcon width={24} height={24} />
-                  <span>{truncateString(walletAddress)}</span>
-                  <i className="w-4">
-                    <ChevronDownIcon />
-                  </i>
-                </button>
-              </span>
-            </Popover.Trigger>
-            <Popover.Content
-              sideOffset={8}
-              align="end"
-              style={{
-                boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
-              }}
-              className="text-base/3 h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-xl bg-current p-6">
-              <Popover.Arrow
-                width={24}
-                height={13}
+      <div className="flex items-center">
+        {!loginByWalletMutation.isError && walletAddress && showConnectedWallet ? (
+          <div>
+            <Popover
+              modal
+              defaultOpen={openDropdown}
+              onOpenChange={(open) => setOpenDropdown(open)}>
+              <Popover.Trigger asChild>
+                <span className="uppercase">
+                  <button
+                    className=" body-14-bold border-base/5 bg-base/3 flex items-center space-x-4 rounded-lg border px-2 py-[9px]"
+                    id="trigger-popover-main-screen">
+                    <WalletIcon width={24} height={24} />
+                    <span>{truncateString(walletAddress)}</span>
+                    <i className="w-4">
+                      <ChevronDownIcon />
+                    </i>
+                  </button>
+                </span>
+              </Popover.Trigger>
+              <Popover.Content
+                sideOffset={8}
+                align="end"
                 style={{
-                  filter: `drop-shadow(0px 1px 0px #202230)`
+                  boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
                 }}
-                className="translate-x-8 fill-current"
-              />
-              <div className="h-full">
-                {showClaimPopover ? (
-                  <ClaimWithdrawPopover
-                    abbreviationAddress={abbreviationAddress}
-                    onClosePopover={handleCloseDropdown}
-                  />
-                ) : (
-                  <L2WalletPopover
-                    onClosePopover={handleCloseDropdown}
-                    abbreviationAddress={abbreviationAddress}
-                  />
-                )}
-              </div>
-            </Popover.Content>
-          </Popover>
-        </div>
-      ) : (
-        <MetamaskOnboarding>
-          {!userProfileQuery.isFetched ? (
-            <button className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
-              <Trans>Loading...</Trans>
-            </button>
-          ) : (
-            <button
-              onClick={onConnectWallet}
-              className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
-              <Trans>Connect Wallet</Trans>
-            </button>
-          )}
-        </MetamaskOnboarding>
-      )}
+                className="text-base/3 h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-xl bg-current p-6">
+                <Popover.Arrow
+                  width={24}
+                  height={13}
+                  style={{
+                    filter: `drop-shadow(0px 1px 0px #202230)`
+                  }}
+                  className="translate-x-8 fill-current"
+                />
+                <div className="h-full">
+                  {showClaimPopover ? (
+                    <ClaimWithdrawPopover
+                      abbreviationAddress={abbreviationAddress}
+                      onClosePopover={handleCloseDropdown}
+                    />
+                  ) : (
+                    <L2WalletPopover
+                      onClosePopover={handleCloseDropdown}
+                      abbreviationAddress={abbreviationAddress}
+                    />
+                  )}
+                </div>
+              </Popover.Content>
+            </Popover>
+          </div>
+        ) : (
+          <MetamaskOnboarding>
+            {!userProfileQuery.isFetched ? (
+              <button className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
+                <Trans>Loading...</Trans>
+              </button>
+            ) : (
+              <button
+                onClick={onConnectWallet}
+                className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
+                <Trans>Connect Wallet</Trans>
+              </button>
+            )}
+          </MetamaskOnboarding>
+        )}
+        <UserAvatar avatar={avatar} />
+      </div>
       <MainL2Wallet />
     </>
   );
