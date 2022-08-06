@@ -9,20 +9,21 @@ import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import DropdownMenu from '../DropdownMenu';
 import InventoryIcon from '../icons/InventoryIcon';
 
-const UserAvatar: React.FC = () => {
+interface IProps {
+  avatar: string;
+}
+
+const UserAvatar: React.FC<IProps> = (items) => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
-  
-  const avatar = localStarkKey
-    ? '/images/marketplace/collection-1-logo.png'
-    : '/images/marketplace/user.png';
+
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger disabled={!starkKeyUser}>
-        <div className="h-9 w-9 overflow-hidden rounded-full">
-          <Image width={100} height={100} src={avatar} alt="" />
+        <div className="ml-6 h-9 w-9 overflow-hidden rounded-full">
+          <Image width={100} height={100} src={items.avatar} alt="" />
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content

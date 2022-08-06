@@ -199,7 +199,6 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
               <WithdrawNFTScreen />
             </WthdrawNFTPopover>
           </div>
-          <UserAvatar />
         </div>
       </nav>
     </header>
