@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
@@ -12,13 +12,14 @@ import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WithdrawNftOffChainParams } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
+import { Trans } from '@lingui/macro';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
 }
 
 const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
-  const { handleWithdrawing, valueNFT: assetDetail } = useWithDrawNFTContext();
+  const { handleWithdrawing, valueNFT: assetDetail, handleLearnMore } = useWithDrawNFTContext();
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', assetDetail.id],
     async () => {
@@ -100,15 +101,17 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
 
       <div className="mt-[24px] text-center text-[24px] text-white">Withdraw NFT to L1 wallet</div>
       <div className="text-[14px] text-base/9 text-center mt-4">
-        Withdrawals are processed in batches every 20 hours. Click{' '}
+        <Trans>Withdrawals are processed in batches every 20 hours. Click</Trans>{' '}
         <span
           onClick={() => {
-            toast('This function is not ready!');
+            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
+            triggerWithdraw?.click();
+            handleLearnMore(true);
           }}
-          className="text-[#F5B941] cursor-pointer">
-          here
+          className="text-primary/6 cursor-pointer">
+          <Trans>here</Trans>
         </span>{' '}
-        to learn more.
+        <Trans>to learn more.</Trans>
       </div>
       <div className="mt-[32px] rounded-[8px] bg-[#050E15] p-4 text-[14px] text-white">
         <div className="flex justify-between">
@@ -129,12 +132,12 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
             triggerWithdraw?.click();
           }}
           className="flex w-[126px] items-center justify-center rounded-[8px] px-[20px] py-[12px] text-[16px] font-bold text-white border">
-          CANCEL
+          <Trans>CANCEL</Trans>
         </button>
         <button
           className="flex w-[126px] items-center justify-center rounded-[8px] bg-[#F5B941] px-[20px] py-[12px] text-[16px] font-bold text-[#040B10]"
           onClick={handleConfirmWithdrawNftOffchain}>
-          CONFIRM
+          <Trans>CONFIRM</Trans>
         </button>
       </div>
     </div>
