@@ -43,6 +43,7 @@ import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/even
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
 
 interface Props {
   id: string;
@@ -178,7 +179,9 @@ function AssetDetails({ id }: Props) {
     isWithdrawing,
     status: withdrawalStatus,
     setStatus: setWithdrawalStatus,
-    handleSetValueNFT
+    handleSetValueNFT,
+    isShowLearnMore,
+    handleLearnMore
   } = useWithDrawNFTContext();
   const [assetBuy, setAssetBuy] = useState<{
     name: string;
@@ -788,6 +791,16 @@ function AssetDetails({ id }: Props) {
           <MessageUnlist />
         </MessageModal>
       )}
+      {isShowLearnMore && (
+        <LearnMoreWithdrawNFTModal
+          open={isShowLearnMore}
+          onClose={() => {
+            handleLearnMore(false);
+            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
+            triggerWithdraw?.click();
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -971,6 +984,16 @@ const UnlistModal: React.FC<any> = ({ open, onClose, onHandleCancel, onHandleUnl
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={'Unlist Your NFT?'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
         <UnlistModalContent onHandleCancel={onHandleCancel} onHandleUnlist={onHandleUnlist} />
+      </Modal.Content>
+    </Modal>
+  );
+};
+
+const LearnMoreWithdrawNFTModal: React.FC<any> = ({ open, onClose }) => {
+  return (
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title={'Learn More'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
+        <LearnMoreWithdrawNFT />
       </Modal.Content>
     </Modal>
   );
