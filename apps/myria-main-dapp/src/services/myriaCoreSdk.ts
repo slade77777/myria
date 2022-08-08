@@ -1,4 +1,5 @@
 import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
+import { CommonModule } from 'myria-core-sdk/dist/types/src/modules';
 import Web3 from 'web3';
 import { number } from 'yup';
 
@@ -59,8 +60,10 @@ async function getModuleFactory() {
     networkId: networkId ? networkId : MAINNET,
     web3: windowBrowser as any
   };
+
   const myriaClient = new MyriaClient(client);
-  return new Modules.ModuleFactory(myriaClient);
+  const moduleFactory = Modules.ModuleFactory.getInstance(myriaClient);
+  return moduleFactory;
 }
 
 export { getModuleFactory, getAccounts, getNetworkType, initialWeb3, getNetworkId };

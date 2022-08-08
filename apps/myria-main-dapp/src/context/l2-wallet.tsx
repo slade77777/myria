@@ -61,8 +61,7 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     if (!moduleFactory) return;
 
     const commonModule = moduleFactory.getCommonModule();
-    const walletSignature = await commonModule.signMessage(signMessage, metamaskAccount, '');
-    const starkKey = commonModule.getStarkPublicKey(walletSignature);
+    const starkKey = await commonModule.generateStarkKey(metamaskAccount);
     dispatch(setStarkPublicKey(starkKey));
     dispatch(setAccount(metamaskAccount));
     setLocalStarkKey(starkKey);
@@ -81,8 +80,7 @@ export const L2WalletProvider: React.FC = ({ children }) => {
 
     const commonModule = moduleFactory.getCommonModule();
     const userModule = moduleFactory.getUserModule();
-    const walletSignature = await commonModule.signMessage(signMessage, currentAccount, '');
-    const starkKey = commonModule.getStarkPublicKey(walletSignature);
+    const starkKey = await commonModule.generateStarkKey(currentAccount);
 
     // Create user
     const registerPayload: UserData = {

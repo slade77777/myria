@@ -43,7 +43,7 @@ async function getModuleFactory() {
   };
 
   const myriaClient = new MyriaClient(client);
-  return new Modules.ModuleFactory(myriaClient);
+  return Modules.ModuleFactory.getInstance(myriaClient);
 }
 
 export { getModuleFactory, getAccounts, getNetworkType, initialWeb3 };
