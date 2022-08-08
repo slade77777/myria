@@ -79,7 +79,7 @@ const Page: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      {typeof window !== 'undefined' && (
+      {showMessageDeposit && (
         <MessageModal
           isShowMessage={showMessageDeposit}
           setIsShowMessage={() => handleShowMessageDeposit(false)}>

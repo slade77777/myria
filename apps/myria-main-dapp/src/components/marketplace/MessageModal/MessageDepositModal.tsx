@@ -5,7 +5,7 @@ import { useDepositContext } from 'src/context/deposit-context';
 export default function MessageDepositModal({ onClose = () => {} }) {
   const { amount } = useDepositContext();
   return (
-    <div>
+    <div className="w-full">
       <div className="flex">
         <div className="ml-3 font-normal leading-normal text-white">
           <div className="relative mb-1 text-lg font-semibold leading-normal dark:text-white">
