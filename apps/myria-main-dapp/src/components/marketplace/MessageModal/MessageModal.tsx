@@ -1,6 +1,4 @@
-import cn from 'classnames';
-import ReactDOM from 'react-dom';
-import CloseIcon from 'src/components/icons/CloseIcon';
+import Modal from 'src/components/Modal';
 
 type Props = {
   isShowMessage: boolean;
@@ -9,25 +7,15 @@ type Props = {
 };
 
 export default function MessageModal({ isShowMessage, setIsShowMessage, children }: Props) {
-  const modalRoot: any = document.getElementById('modal-root');
-  if (modalRoot) {
-    return ReactDOM.createPortal(
-      <div
-        className={cn(
-          `absolute top-[80px] right-[21px] max-w-[450px] z-50`,
-          isShowMessage ? 'block' : 'hidden'
-        )}>
-        <div className="flex w-full max-w-lg rounded-[16px] shadow text-gray-400 py-[32px] pl-[72px] pr-[48px]  bg-base/5 ">
+  return (
+    <Modal open={isShowMessage} onOpenChange={setIsShowMessage}>
+      <Modal.Content
+        className="shadow-[0_0_40px_10px_#0000004D] absolute top-8 right-14 max-w-[450px] rounded-xl bg-base/5 max-h-[80vh] border-[#202230] border"
+        headerClassName="absolute right-0 top-4 pt-0">
+        <div className="flex w-full max-w-lg rounded-[16px] shadow text-gray-400 py-[32px] pl-[72px] pr-[48px]">
           {children}
-          <div
-            onClick={setIsShowMessage}
-            className="cursor-pointer absolute right-5 top-5 text-white">
-            <CloseIcon size={25} />
-          </div>
         </div>
-      </div>,
-      modalRoot
-    );
-  }
-  return <></>;
+      </Modal.Content>
+    </Modal>
+  );
 }
