@@ -325,7 +325,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
-            amount: String(convertAmountToQuantizedAmount(amount.toString())),
+            amount: String(amount),
           },
           {
             confirmationType: Types.ConfirmationType.Confirmed,

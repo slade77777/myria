@@ -153,7 +153,7 @@ export default function FirstDepositModal({
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
-            amount: String(convertAmountToQuantizedAmount(amount.toString())),
+            amount: String(amount),
           },
           {
             confirmationType: Types.ConfirmationType.Confirmed,

@@ -706,7 +706,7 @@ function AssetDetails({ id }: Props) {
       <div className="mt-[64px]">
         <AssetList
           title={'More from this collection'}
-          items={moreCollectionList?.items?.map((elm, index: number) => {
+          items={moreCollectionList?.items?.map((elm: any, index: number) => {
             const item: NFTItemType = {
               id: `${elm.id}`,
               rarity: (elm.metadata as any).rarity,
