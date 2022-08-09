@@ -129,7 +129,6 @@ export default function MainL2Wallet() {
         setStarkKeyToLocalStorage={onSetStarkKeyToLocalStorage}
         setWelcomeModal={setWelcomeModal}
       />
-
       <FirstDepositModal
         modalShow={showFirstDepositModal}
         closeModal={() => setShowFirstDepositModal(false)}
