@@ -54,7 +54,6 @@ export default function MainScreen({
   activeToken,
   setActiveToken,
 }: Props) {
-  console.log(transactionList.map((item: any) => item.type));
   const [coinPrices, setCoinPrices] = useState([]);
   const { data: etheCost = 0 } = useEtheriumPrice();
 

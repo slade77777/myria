@@ -25,6 +25,7 @@ import {
   convertQuantizedAmountToEth,
   convertWeiToEth,
 } from '../../utils/Converter';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 type Props = {
   isShowMessage: Boolean;
@@ -38,21 +39,23 @@ export default function MessageWithdrawModal({
   const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
   const isUpdated = useSelector((state: RootState) => state.ui.isUpdated);
   const [withdrawProgress, setWithdrawProgress] = useState(false);
-  const pKey = useSelector(
-    (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
-  );
+
   const selectedToken = useSelector(
     (state: RootState) => state.token.selectedToken,
   );
   const connectedAccount = useSelector(
     (state: RootState) => state.account.connectedAccount,
   );
+
+  const { showWithdrawCompleteScreen } = useL2WalletContext();
+
   const dispatch = useDispatch();
   const closeMessage = () => {
     setIsShowMessage(!isShowMessage);
   };
 
   const claim = async () => {
+    let responseWithdraw: any = null;
     try {
       setWithdrawProgress(true);
       const moduleFactory = await getModuleFactory();
@@ -66,7 +69,7 @@ export default function MessageWithdrawModal({
             quantum: QUANTUM_CONSTANT.toString(),
           },
         });
-        await withdrawModule.withdrawalOnchain(
+        responseWithdraw = await withdrawModule.withdrawalOnchain(
           {
             starkKey: connectedAccount,
             assetType,
@@ -85,7 +88,7 @@ export default function MessageWithdrawModal({
             tokenAddress: selectedToken.tokenAddress,
           },
         });
-        await withdrawModule.withdrawalOnchain(
+        responseWithdraw = await withdrawModule.withdrawalOnchain(
           {
             starkKey: connectedAccount,
             assetType,
@@ -96,6 +99,16 @@ export default function MessageWithdrawModal({
             confirmationType: Types.ConfirmationType.Confirmed,
           },
         );
+      }
+      if (responseWithdraw && responseWithdraw.status) {
+        const triggerMainScreen = document.getElementById(
+          'trigger-popover-main-screen',
+        );
+        triggerMainScreen?.click();
+        showWithdrawCompleteScreen({
+          isShow: true,
+          transactionHash: responseWithdraw.transactionHash,
+        });
       }
     } catch (err) {
       console.log(err);
@@ -131,7 +144,7 @@ export default function MessageWithdrawModal({
       <div className="w-full max-w-lg rounded-lg bg-[#0B2231] p-[32px] text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
         <div className="flex">
           <CheckIcon className="mt-[4px] text-[#2EA64F]" size={24} />
-          <div className="ml-3 font-normal leading-normal text-white">
+          <div className="ml-3 grow font-normal leading-normal text-white">
             {isUpdated ? (
               <span className="mb-1 text-lg font-semibold leading-normal dark:text-white">
                 Your withdraw is completed
@@ -164,7 +177,7 @@ export default function MessageWithdrawModal({
                   'rounded font-semibold',
                   parseFloat(claimAmount.toString()) === 0 || withdrawProgress
                     ? 'cursor-not-allowed text-[#9CA3AF]'
-                    : 'text-[#F5B941] text-black',
+                    : 'text-primary/6',
                 )}
                 onClick={claim}
               >

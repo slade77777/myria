@@ -49,6 +49,7 @@ import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 //compoment POC
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
 import { WithdrawOffchainParamsV2 } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
+// @ts-ignore
 import { useDepositContext } from 'src/context/deposit-context';
 import DropdownMenu from '../../../../../components/DropdownMenu';
 import LogoutIcon from '../../../../../components/icons/LogoutIcon';
@@ -65,6 +66,7 @@ import {
 } from '../../utils/Converter';
 import ChevronIcon from '../Icons/ChevronIcon';
 import { useL2WalletContext } from '../../../../../context/l2-wallet';
+import WithdrawPendingScreen from './L2Wallet/WithdrawPendingScreen';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -91,6 +93,7 @@ enum SCREENS {
   WITHDRAW_REQUEST,
   WITHDRAW_IN_PROGRESS,
   WITHDRAW_COMPLETE,
+  WITHDRAW_PENDING,
   DEPOSIT_FAILED,
   WITHDRAW_FAILED,
   TRANSACTION_HISTORY_DETAILED,
@@ -130,7 +133,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const [balanceL2Eth, setBalanceL2Eth] = useState<any>('');
   const [transactionDetail, setTransactionDetail] = useState<any>(null);
   const { address, disconnect } = useWalletContext();
-  const { disconnectL2Wallet } = useL2WalletContext();
+  const { disconnectL2Wallet, isWithdrawComplete, showWithdrawCompleteScreen } =
+    useL2WalletContext();
 
   const [activeToken, setActiveToken] = useState<string>('tokens');
   const [depositResponse, setDepositResponse] = useState<TxResult>();
@@ -142,6 +146,13 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     dispatch(setSelectedTokenFunc(null));
     setAmount(0);
   };
+
+  useEffect(() => {
+    if (isWithdrawComplete.isShow) {
+      setScreen(SCREENS.WITHDRAW_COMPLETE);
+    }
+    return () => showWithdrawCompleteScreen({ isShow: false });
+  }, [isWithdrawComplete.isShow]);
 
   useEffect(() => {
     if (withdrawScreenMounted || depositScreenMounted) {
@@ -362,6 +373,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
   const withdraw = async () => {
     try {
+      let responseWithdraw: any = null;
       setWithdrawInProgress(true);
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory || !address) return;
@@ -384,7 +396,9 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           ),
           token: assetType,
         };
-        await withdrawModule.withdrawalOffchainV2(withdrawParamsV2);
+        responseWithdraw = await withdrawModule.withdrawalOffchainV2(
+          withdrawParamsV2,
+        );
       } else {
         const assetType = asset.getAssetType({
           type: 'ERC20',
@@ -393,7 +407,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             tokenAddress: selectedToken.tokenAddress,
           },
         });
-        await withdrawModule.withdrawalOffchain(
+        responseWithdraw = await withdrawModule.withdrawalOffchain(
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ERC20,
@@ -409,12 +423,14 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           },
         );
       }
-      setScreen(SCREENS.WITHDRAW_COMPLETE);
+      if (responseWithdraw) {
+        setScreen(SCREENS.WITHDRAW_PENDING);
+        trackWalletAction({
+          eventName: 'Wallet Withdraw Completed',
+          trx_url: '',
+        });
+      }
       setWithdrawInProgress(false);
-      trackWalletAction({
-        eventName: 'Wallet Withdraw Completed',
-        trx_url: '',
-      });
     } catch (err) {
       setWithdrawInProgress(false);
       setScreen(SCREENS.WITHDRAW_FAILED);
@@ -432,49 +448,6 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
   const setAmountHandle = (param: number) => {
     setAmount(param);
-  };
-
-  const getBalanceOfMyriaL1Wallet = async () => {
-    let assetType: string = '';
-
-    if (selectedToken.name === 'Ethereum') {
-      assetType = asset.getAssetType({
-        type: 'ETH',
-        data: {
-          quantum: QUANTUM_CONSTANT.toString(),
-        },
-      });
-    } else {
-      assetType = asset.getAssetType({
-        type: 'ERC20',
-        data: {
-          quantum: '1',
-          tokenAddress: selectedToken.tokenAddress,
-        },
-      });
-    }
-    const moduleFactory = await getModuleFactory();
-    if (!moduleFactory) return;
-    const withdrawModule = moduleFactory.getWithdrawModule();
-
-    const assetList = await withdrawModule.getWithdrawalBalance(
-      connectedAccount,
-      assetType,
-    );
-    return assetList;
-  };
-
-  const handleClaimFunction = async () => {
-    const assetList = await getBalanceOfMyriaL1Wallet();
-    dispatch(
-      setWithdrawClaimModal({
-        show: true,
-        claimAmount: assetList,
-        isUpdated: false,
-      }),
-    );
-    onClosePopover();
-    setScreen(SCREENS.MAIN_SCREEN);
   };
 
   // const disconnect = async () => {
@@ -698,7 +671,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
         {screen === SCREENS.WITHDRAW_REQUEST && (
           <WithdrawRequestScreen
-            goBack={() => setScreen(SCREENS.WITHDRAW_COMPLETE)}
+            goBack={() => setScreen(SCREENS.WITHDRAW_SCREEN)}
             amount={amount}
             cancelHandler={() => {
               setScreen(SCREENS.MAIN_SCREEN);
@@ -711,9 +684,6 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         {screen === SCREENS.WITHDRAW_IN_PROGRESS && (
           <WithdrawInProgressScreen
             goBack={() => setScreen(SCREENS.WITHDRAW_REQUEST)}
-            okHandler={() => {
-              setScreen(SCREENS.WITHDRAW_COMPLETE);
-            }}
             amount={amount}
           />
         )}
@@ -722,10 +692,12 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           <WithdrawCompleteScreen
             amount={amount}
             selectedToken={selectedToken}
-            successHandler={() => {
-              handleClaimFunction();
-            }}
+            successHandler={() => setScreen(SCREENS.MAIN_SCREEN)}
           />
+        )}
+
+        {screen === SCREENS.WITHDRAW_PENDING && (
+          <WithdrawPendingScreen amount={amount} />
         )}
 
         {screen === SCREENS.DEPOSIT_FAILED && (
