@@ -82,6 +82,10 @@ const openChest = async (lootboxId: string) => {
   }
 };
 
+const mintReward = async () => {
+  return http.post('/sigil/l2/mint');
+};
+
 export const inventoryQueryKeys = {
   inventory_getInventory: 'inventory_getInventory'
 };
@@ -94,9 +98,11 @@ export const useInventoryQuery = ({
     () => getInventory(getInventoryParams)
   );
   const inventoryOpenChestMutation = useMutation(openChest);
+  const mintRewardMutation = useMutation(mintReward);
 
   return {
     inventoryQuery,
-    inventoryOpenChestMutation
+    inventoryOpenChestMutation,
+    mintRewardMutation
   };
 };

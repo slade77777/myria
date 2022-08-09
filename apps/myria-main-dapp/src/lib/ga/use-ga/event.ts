@@ -30,7 +30,7 @@ export type BasedParams = {
   page_name: PageName;
 };
 
-export type Campaign = 'Sigil' | 'Nodes' | 'AB de Villers' | 'B2C Marketplace';
+export type Campaign = 'Sigil' | 'Nodes' | 'AB de Villers' | 'B2C Marketplace' | 'B2B';
 
 export type NFTItemAction =
   | 'MKP Item Buy Now Selected'
@@ -99,6 +99,25 @@ type NFTItemTrackWithPrice = {
 };
 
 export type EventDefined = {
+  'B2B Discord Button Clicked': {
+    campaign?: string;
+  };
+  'B2B Contact Form Submitted': {
+    campaign?: string;
+    name: string;
+    email: string;
+    company: string;
+    website: string;
+    company_size: string;
+    current_chain: string;
+    project_info: string;
+  };
+  'B2B Start Building Selected': {
+    campaign?: string;
+  };
+  'B2B Contact Sales Selected': {
+    campaign?: string;
+  };
   'Discord Button Clicked': {
     game_name?: string;
     button_location: ButtonLocation;

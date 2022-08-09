@@ -4,7 +4,8 @@ import ChevronLeftIcon from 'src/components/icons/ChevronLeftIcon';
 import Logo from 'src/components/icons/Logo';
 import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { Trans } from '@lingui/macro';
-import ProfileComponent from 'src/components/Header/ProfileComponent';
+import ConnectL2WalletButton from '../ConnectL2WalletButton';
+import UserAvatar from '../Header/UserAvatar';
 
 type Props = {
   step: number;
@@ -16,9 +17,8 @@ const Header: React.FC<Props> = ({ step }) => {
 
   return (
     <header ref={headerRef} className="fixed top-0 left-0 z-50 w-full">
-      <div className="body-14-bold w-full bg-brand-gold p-4 text-center text-black">
-        On August 1 you will no longer be able to earn points and unlock new reward tiers from Sigil
-        missions
+      <div className="body-14-bold bg-brand-gold w-full p-4 text-center text-black">
+        You can now mint your rewards on the Myria L2 chain!
       </div>
       <div className="grid h-[80px] w-full grid-cols-[1fr_auto_1fr] items-center bg-[rgba(0,0,0,0.1)] p-4 px-6">
         <Link href="/">
@@ -36,7 +36,7 @@ const Header: React.FC<Props> = ({ step }) => {
             <Logo />
           </a>
         </Link>
-        <div className="flex items-center justify-end">{step > 1 && <ProfileComponent />}</div>
+        <div className="flex items-center justify-end">{step > 1 && <ConnectL2WalletButton />}</div>
       </div>
     </header>
   );
