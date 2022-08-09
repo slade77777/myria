@@ -92,9 +92,6 @@ export default function FirstDepositModal({
   }`;
   const { handleSetAmount, handleShowMessageDeposit } = useDepositContext();
 
-  // console.log('Connection account', connectedAccount);
-  // console.log('selectedToken', selectedToken);
-
   const selectCurrency = (param: any) => {
     setSelectedToken(param);
   };
@@ -319,9 +316,9 @@ export default function FirstDepositModal({
                 <div className="flex w-full justify-end">
                   <button
                     disabled
-                    className="text-gray/6 flex h-10 rounded-lg bg-[#4B5563] text-sm font-bold uppercase"
+                    className="text-gray/6 bg-gray/4 flex h-10 items-center rounded-lg px-3 text-sm font-bold uppercase"
                   >
-                    Processing{' '}
+                    <span>Processing </span>
                     <ProgressIcon className="text-gray/6 ml-2" size={16} />
                   </button>
                 </div>

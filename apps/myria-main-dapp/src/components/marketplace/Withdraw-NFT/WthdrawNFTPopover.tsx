@@ -19,7 +19,7 @@ const WthdrawNFTPopover: React.FC<{}> = ({ children }) => {
         style={{
           boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
         }}
-        className="text-base/3 w-[408px] rounded-xl bg-current p-8">
+        className="text-base/3 h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-xl bg-current p-6">
         <Popover.Arrow
           width={24}
           height={13}
@@ -28,7 +28,7 @@ const WthdrawNFTPopover: React.FC<{}> = ({ children }) => {
           }}
           className="translate-x-8 fill-current"
         />
-        <div>{children}</div>
+        <div className="flex flex-col h-full">{children}</div>
       </Popover.Content>
     </Popover>
   );
