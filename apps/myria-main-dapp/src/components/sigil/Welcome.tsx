@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
-  const { address, onConnectCompaign } = useWalletContext();
+  const { address, onConnectCompaign, onConnect } = useWalletContext();
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -36,18 +36,9 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
     }
     if (user?.user_id) {
       onNext();
+      return;
     }
-    if (
-      address &&
-      !user?.user_id &&
-      !loginByWalletMutation.isLoading &&
-      !loginByWalletMutation.isError &&
-      userProfileQuery.isFetched &&
-      !userProfileQuery.data
-    ) {
-      loginByWalletMutation.mutate();
-    }
-  }, [address, user, loginByWalletMutation, onNext, userProfileQuery]);
+  }, [address, user, onNext, userProfileQuery]);
 
   React.useEffect(() => {
     if (!onboarding.current) {
@@ -115,48 +106,39 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
             </Trans>
           </p>
         )}
-        {address && isSupportedBrowser ? (
-          <>
+
+        <>
+          {installedWallet === true && isSupportedBrowser && (
             <Button
               loading={loginByWalletMutation.isLoading}
-              onClick={() => {
+              disabled={loginByWalletMutation.isLoading}
+              onClick={async () => {
+                await onConnect();
+                event('Connect Wallet Selected', { campaign: 'Sigil' });
                 loginByWalletMutation.mutate();
-                event('Join Now Selected', { campaign: 'Sigil' });
               }}
-              className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
-              {loginByWalletMutation.isLoading ? t`LOGGING IN` : t`JOIN NOW`}
+              className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
+              {address ? <Trans>LOGGING IN</Trans> : <Trans>CONNECT WALLET</Trans>}
             </Button>
-          </>
-        ) : (
-          <>
-            {installedWallet === true && isSupportedBrowser && (
-              <button
-                onClick={() => {
-                  onConnectCompaign('Sigil');
-                  event('Connect Wallet Selected', { campaign: 'Sigil' });
-                }}
-                className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
-                <Trans>CONNECT WALLET</Trans>
-              </button>
-            )}
-            {installedWallet === false && isSupportedBrowser && (
-              <a
-                className="btn-lg btn-secondary mx-auto mt-10 flex h-[40px]  w-[194px] items-center justify-center space-x-2 p-0 text-[16px] normal-case"
-                onClick={() => {
-                  if (onboarding.current) {
-                    onboarding.current.startOnboarding();
-                  }
-                  event('Install Metamask Clicked', {});
-                }}>
-                <i className="w-6">
-                  <MetaMaskIcon />
-                </i>
-                <span>
-                  <Trans>Install Metamask</Trans>
-                </span>
-              </a>
-            )}
-            {/* <button
+          )}
+          {installedWallet === false && isSupportedBrowser && (
+            <a
+              className="btn-lg btn-secondary mx-auto mt-10 flex h-[40px]  w-[194px] items-center justify-center space-x-2 p-0 text-[16px] normal-case"
+              onClick={() => {
+                if (onboarding.current) {
+                  onboarding.current.startOnboarding();
+                }
+                event('Install Metamask Clicked', {});
+              }}>
+              <i className="w-6">
+                <MetaMaskIcon />
+              </i>
+              <span>
+                <Trans>Install Metamask</Trans>
+              </span>
+            </a>
+          )}
+          {/* <button
               className="btn-sm btn-secondary mt-4  h-[40px] w-[194px] rounded-lg px-4 py-3"
               onClick={() => {
                 login();
@@ -164,8 +146,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
               }}>
               Sign in
             </button> */}
-          </>
-        )}
+        </>
         {!isSupportedBrowser && (
           <Link href="/">
             <a className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[171px] items-center justify-center p-0">
