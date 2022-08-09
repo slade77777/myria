@@ -121,7 +121,7 @@ export default function MessageWithdrawModal({
   };
 
   const renderClaimMessage = (name: string) => {
-    const ethAmount = convertWeiToEth(claimAmount.toString());
+    const ethAmount = claimAmount;
     if (parseFloat(claimAmount.toString()) > 0) {
       return (
         <div>
@@ -157,9 +157,7 @@ export default function MessageWithdrawModal({
             {isUpdated ? (
               <div className="mt-[10px] mb-[20px] text-sm font-normal">
                 Now you can use this amount to claim.
-                {selectedToken?.name === 'Ethereum'
-                  ? convertQuantizedAmountToEth(claimAmount.toString())
-                  : claimAmount}{' '}
+                {claimAmount}{' '}
               </div>
             ) : (
               <div className="mt-[10px] mb-[20px] text-sm font-normal text-[#A1AFBA]">

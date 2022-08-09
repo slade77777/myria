@@ -15,6 +15,7 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { convertWeiToEth } from 'src/utils';
 
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
@@ -65,12 +66,13 @@ export default function MainL2Wallet() {
 
       const withdrawModule = moduleFactory.getWithdrawModule();
 
-      const assetList = await withdrawModule.getWithdrawalBalance(address, assetType);
-      if (assetList !== previousBalance && previousBalance !== 0) {
+      const currentBalance = await withdrawModule.getWithdrawalBalance(address, assetType);
+      console.log('L1 Current balance ->', currentBalance);
+      if (currentBalance > 0) {
         dispatch(
           setWithdrawClaimModal({
             show: true,
-            claimAmount: assetList,
+            claimAmount: convertWeiToEth(String(currentBalance)),
             isUpdated: true
           })
         );
