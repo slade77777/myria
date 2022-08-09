@@ -122,10 +122,6 @@ const ConnectL2WalletButton: React.FC = () => {
     return false;
   }, [address, localStarkKey, user, walletAddress]);
 
-  const avatar =
-    !loginByWalletMutation.isError && walletAddress && showConnectedWallet
-      ? '/images/marketplace/collection-1-logo.png'
-      : '/images/marketplace/user.png';
   return (
     <>
       <Modal
@@ -231,7 +227,14 @@ const ConnectL2WalletButton: React.FC = () => {
             )}
           </MetamaskOnboarding>
         )}
-        <UserAvatar avatar={avatar} />
+        <UserAvatar
+          items={{
+            loginByWalletMutation,
+            walletAddress,
+            showConnectedWallet,
+            localStarkKey
+          }}
+        />
       </div>
       <MainL2Wallet />
     </>

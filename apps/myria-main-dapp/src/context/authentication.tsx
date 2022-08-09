@@ -21,7 +21,7 @@ import { useWalletContext } from './wallet';
 import { toast } from 'react-toastify';
 import { AllianceName } from 'src/types/sigil';
 
-type User = {
+export type User = {
   user_id: string;
   wallet_id?: string;
   last_name?: string;
