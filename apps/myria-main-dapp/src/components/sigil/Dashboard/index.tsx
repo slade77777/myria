@@ -60,12 +60,12 @@ const Dashboard: React.FC = () => {
                 <NftReward />
                 <div className="mt-[120px] flex flex-col items-center space-y-4">
                   <p className="h6">
-                    <Trans>Minting is now available</Trans>
+                    <Trans>Missions are now locked</Trans>
                   </p>
-                  <p className="body-14-regular text-light max-w-[364px] text-center">
+                  <p className="body-14-regular max-w-[364px] text-center text-light">
                     <Trans>
-                      You can still claim your NFT rewards and open your chests. Click below to
-                      mint.
+                      Thanks for participating! You can still claim your NFT rewards and open your
+                      chests. Reward minting will begin soon.
                     </Trans>
                   </p>
                   <button

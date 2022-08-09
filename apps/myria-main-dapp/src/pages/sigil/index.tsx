@@ -131,9 +131,6 @@ const Sigil: React.FC = () => {
                         title: t`Connect Wallet`
                       },
                       {
-                        title: t`Choose Alliance`
-                      },
-                      {
                         title: t`Claim your NFT reward`
                       }
                     ]}
