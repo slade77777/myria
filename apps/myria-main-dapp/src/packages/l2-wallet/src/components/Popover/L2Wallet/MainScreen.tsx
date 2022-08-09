@@ -260,7 +260,7 @@ export default function MainScreen({
             </div>
           </TabContent>
           <TabContent id="history" activeTab={activeToken}>
-            <div className="mt-3 max-h-[244px] overflow-y-auto">
+            <div className="mt-3 max-h-[244px] overflow-y-auto pr-2">
               {transactionList.length === 0 && <div>No data available yet</div>}
               {transactionList.map((item: any, index: number) => (
                 <div
