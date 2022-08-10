@@ -23,6 +23,8 @@ interface IL2WalletContext {
     transactionHash: string;
   };
   showWithdrawCompleteScreen: any;
+  isFirstPurchase: boolean;
+  handleSetFirstPurchase: (value: boolean) => void;
 }
 
 const L2WalletContext = React.createContext<IL2WalletContext>({} as IL2WalletContext);
@@ -32,6 +34,7 @@ export const L2WalletProvider: React.FC = ({ children }) => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [isFirstTimeWallet, setIsFirstTimeWallet] = React.useState(false);
+  const [isFirstPurchase, setIsFirstPurchase] = React.useState(false);
   const [isWithdrawComplete, setIsWithdrawComplete] = React.useState({
     isShow: false,
     transactionHash: ''
@@ -138,6 +141,10 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     setIsWithdrawComplete({ ...isWithdrawComplete, ...data });
   };
 
+  const handleSetFirstPurchase = (value: boolean) => {
+    setIsFirstPurchase(value);
+  };
+
   return (
     <L2WalletContext.Provider
       value={{
@@ -146,7 +153,9 @@ export const L2WalletProvider: React.FC = ({ children }) => {
         connectL2WalletFirstTime: onConnectL2WalletFirstTime,
         disconnectL2Wallet: onDisconnectL2Wallet,
         isWithdrawComplete: isWithdrawComplete,
-        showWithdrawCompleteScreen: showWithdrawCompleteScreen
+        showWithdrawCompleteScreen: showWithdrawCompleteScreen,
+        isFirstPurchase: isFirstPurchase,
+        handleSetFirstPurchase: handleSetFirstPurchase
       }}>
       {children}
     </L2WalletContext.Provider>

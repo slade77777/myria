@@ -103,7 +103,7 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = useMemo(() => `0x${starkKeyUser}`, [starkKeyUser]);
-  const { connectL2Wallet, disconnectL2Wallet } = useL2WalletContext();
+  const { connectL2Wallet, handleSetFirstPurchase } = useL2WalletContext();
 
   const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
   const ownedBy = useMemo(() => {
@@ -656,6 +656,8 @@ function AssetDetails({ id }: Props) {
                 setStatus={() => {
                   onTrackingConnectWallet();
                   onConnectCompaign('B2C Marketplace');
+                  // handle if the first purchase
+                  handleSetFirstPurchase(true);
                   if (loginByWalletMutation.isError) {
                     loginByWalletMutation.mutate();
                   }
