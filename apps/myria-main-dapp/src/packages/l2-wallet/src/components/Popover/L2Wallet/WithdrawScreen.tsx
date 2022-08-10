@@ -52,7 +52,7 @@ export default function WithdrawScreen({
           }}
         >
           <ArrowIcon direction="left" />
-          <div className="ml-2 text-[14px] text-white">Withdraw</div>
+          <div className="text-base/10 ml-2 text-[20px]">Withdraw</div>
         </div>
       </div>
       <div className="text-base/10 mt-6 grow">
