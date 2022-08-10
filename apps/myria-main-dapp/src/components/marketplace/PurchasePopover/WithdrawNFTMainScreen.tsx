@@ -121,10 +121,10 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           <span>{valueNFT.name}</span>
         </div>
         <div className="mt-[13px] flex justify-between">
-          <span className="text-base/9"><Trans>Estimated completion</Trans></span>
-          <span className="flex">
-            10-20 hours
+          <span className="text-base/9">
+            <Trans>Estimated completion</Trans>
           </span>
+          <span className="flex">10-20 hours</span>
         </div>
       </div>
       <div className="mt-[138px] flex justify-between">

@@ -19,6 +19,7 @@ type Props = {
   metaMaskConnect: any;
   setWelcomeModal: any;
   setStarkKeyToLocalStorage: (starkKey: string) => void;
+  isSigil?: boolean;
 };
 
 // const steps = [
@@ -37,7 +38,7 @@ type Props = {
 // ];
 declare let window: any;
 const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
-  const { metaMaskConnect } = props;
+  const { metaMaskConnect, isSigil } = props;
   const [display, setDisplay] = useState<boolean>(false);
 
   const { isFirstPurchase } = useL2WalletContext();
@@ -65,6 +66,9 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
 
   return (
     <div className={cn(display ? 'block' : 'hidden')}>
+      {isSigil && (
+        <div className="fixed inset-0 z-[-1] bg-[#040B10] opacity-70" />
+      )}
       <div className="absolute -bottom-[30px] left-1/2 z-30 h-[20px] w-[20px] rotate-45 border-t border-l border-[#202230] bg-[#081824]" />
       <div className="absolute top-16 right-16 max-h-[80vh] w-[406px] overflow-auto rounded-[20px] border border-[#202230] bg-[#081824] py-6">
         <div className="flex items-center justify-end px-4">
@@ -86,9 +90,10 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
             {isFirstPurchase ? 'Continue to checkout' : 'Welcome to Myria'}
           </div>
 
-          <div className="text-center text-[16px] text-white">
-            {' '}
-            Let’s get your account set up.
+          <div className="px-2 text-center text-[16px] text-white">
+            {isSigil
+              ? 'Let’s get your account set up so you can mint your Sigil rewards.'
+              : 'Let’s get your account set up.'}
           </div>
 
           <div className="mx-auto mt-[57px] w-[193px]">

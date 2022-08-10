@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
-  const { address, onConnectCompaign, onConnect } = useWalletContext();
+  const { address, onConnectCompaign } = useWalletContext();
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -113,7 +113,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
               loading={loginByWalletMutation.isLoading}
               disabled={loginByWalletMutation.isLoading}
               onClick={async () => {
-                await onConnect();
+                await onConnectCompaign('Sigil');
                 event('Connect Wallet Selected', { campaign: 'Sigil' });
                 loginByWalletMutation.mutate();
               }}

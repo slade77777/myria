@@ -1,7 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs';
-import {
-  EqualMetadataByAssetIdResponse} from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { EqualMetadataByAssetIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
@@ -36,12 +35,12 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
     }
     return convertPrice;
   };
-  useEffect(()=>{
+  useEffect(() => {
     const setLink = async () => {
       const networkId = await getNetworkId();
       if (!networkId || !assetDetails?.tokenAddress) return '';
       setEtherLinkContract(getExplorerForAddress(assetDetails?.tokenAddress, networkId));
-    }
+    };
     setLink();
   }, [assetDetails?.tokenAddress]);
 
@@ -69,16 +68,16 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
           <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
             <thead className="text-base/9 bg-base/2 sticky text-[14px] font-medium">
               <tr>
-                <th scope="col" className="py-3 pr-6 w-1/4">
+                <th scope="col" className="w-1/4 py-3 pr-6">
                   Price
                 </th>
-                <th scope="col" className="py-3 pr-6 w-1/4">
+                <th scope="col" className="w-1/4 py-3 pr-6">
                   USD Price
                 </th>
-                <th scope="col" className="py-3 pr-6 w-1/4">
+                <th scope="col" className="w-1/4 py-3 pr-6">
                   Owner
                 </th>
-                <th scope="col" className="py-3 pr-6 w-1/4">
+                <th scope="col" className="w-1/4 py-3 pr-6">
                   <span className="sr-only">Edit</span>
                 </th>
               </tr>
@@ -86,16 +85,16 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
             <tbody className="border-blue/3 max-h-[100px] overflow-scroll border-b">
               {assetDetails && isModifing && (
                 <tr className="border-blue/3 border-t text-[16px] font-normal text-white">
-                  <td className="whitespace-nowrap py-4 pr-6 overflow-hidden w-1/4">
+                  <td className="w-1/4 overflow-hidden whitespace-nowrap py-4 pr-6">
                     <p className="flex flex-row items-center gap-[7px] truncate">
                       <DAOIcon /> {convertPrice(false)}
                     </p>
                   </td>
-                  <td className="py-4 pr-6 truncate w-1/4">{convertPrice(true)}</td>
-                  <td className="py-4 pr-6 truncate w-1/4">
+                  <td className="w-1/4 truncate py-4 pr-6">{convertPrice(true)}</td>
+                  <td className="w-1/4 truncate py-4 pr-6">
                     <Trans>You</Trans>
                   </td>
-                  <td className="py-4 pr-6 truncate w-1/4 text-right"></td>
+                  <td className="w-1/4 truncate py-4 pr-6 text-right"></td>
                 </tr>
               )}
               {data?.map((elm: EqualMetadataByAssetIdResponse | any, _idx: number) => {
@@ -113,16 +112,16 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
                   <tr
                     key={_idx}
                     className="border-blue/3 border-t text-[16px] font-normal text-white">
-                    <td className="whitespace-nowrap py-4 pr-6 overflow-hidden w-1/4">
+                    <td className="w-1/4 overflow-hidden whitespace-nowrap py-4 pr-6">
                       <p className="flex flex-row items-center gap-[7px] truncate">
                         <DAOIcon /> {priceConverted}
                       </p>
                     </td>
-                    <td className="py-4 pr-6 truncate w-1/4">${usdPriceConverted}</td>
-                    <td className="py-4 pr-6 truncate w-1/4">
+                    <td className="w-1/4 truncate py-4 pr-6">${usdPriceConverted}</td>
+                    <td className="w-1/4 truncate py-4 pr-6">
                       {elm?.starkKey !== starkKey ? ownerName : <Trans>You</Trans>}
                     </td>
-                    <td className="py-4 pr-6 truncate w-1/4 text-right">
+                    <td className="w-1/4 truncate py-4 pr-6 text-right">
                       {starkKeyUser && elm?.starkKey !== starkKey && (
                         <button
                           onClick={() => onBuyNow(elm)}
@@ -148,7 +147,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
             <a
               target={'_blank'}
               href={etherLinkContract}
-              className="text-blue/6 flex flex-row cursor-pointer items-center gap-[3px] font-medium"
+              className="text-blue/6 flex cursor-pointer flex-row items-center gap-[3px] font-medium"
               rel="noreferrer">
               <span>{assetDetails ? truncateString(assetDetails?.tokenAddress) : ''}</span>
               <EnternalLinkIcon />

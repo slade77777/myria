@@ -11,12 +11,12 @@ const WithdrawNFTSuccess: FC<IProp> = ({}) => {
   const { valueNFT } = useWithDrawNFTContext();
   const [etherLinkContract, setEtherLinkContract] = useState<string>();
 
-  useEffect(()=>{
+  useEffect(() => {
     const setLink = async () => {
       const networkId = await getNetworkId();
       if (!networkId || !valueNFT?.tokenAddress) return '';
       setEtherLinkContract(getExplorerForAddress(valueNFT?.tokenAddress, networkId));
-    }
+    };
     setLink();
   }, [valueNFT?.tokenAddress]);
 
