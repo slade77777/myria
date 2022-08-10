@@ -99,9 +99,10 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
               })}>
               <Link href={item.url as string}>
                 <a
-                  className={clsx('hover:text-blue/6', {
+                  className={clsx('hover:text-blue/6 flex items-center space-x-1', {
                     'text-blue/6': isActive
-                  })}>
+                  })}
+                  target={item.target}>
                   <span>{item.text}</span>
                   {item.icon && <i className="w-4">{item.icon}</i>}
                 </a>

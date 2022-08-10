@@ -8,7 +8,6 @@ import LanguageSwitcher from 'src/components/LanguageSwitcher';
 import { MyriaIcon } from 'src/components/icons/MyriaIcon';
 import WalletIcon from 'src/components/icons/WalletIcon';
 import clsx from 'clsx';
-// import UserAvatar from 'src/components/Header/UserAvatar';
 
 const items = [
   {
@@ -61,7 +60,9 @@ const InventoryHeader: FC<{ active: string }> = ({ active }) => {
           </div>
         </div>
         <LanguageSwitcher />
-        {/* <UserAvatar avatar="" /> */}
+        <div className="h-8 w-8 overflow-hidden rounded-full">
+          <img width="100%" src={'/images/marketplace/collection-1-logo.png'} alt="" />
+        </div>
       </div>
     </header>
   );

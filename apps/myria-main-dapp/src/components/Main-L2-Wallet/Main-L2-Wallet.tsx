@@ -15,6 +15,7 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { useRouter } from 'next/router';
 
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
@@ -38,6 +39,7 @@ export default function MainL2Wallet() {
 
   const { isFirstTimeUser, connectL2WalletFirstTime } = useL2WalletContext();
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     if (!address) return;
@@ -128,6 +130,7 @@ export default function MainL2Wallet() {
         ref={walletModalRef}
         setStarkKeyToLocalStorage={onSetStarkKeyToLocalStorage}
         setWelcomeModal={setWelcomeModal}
+        isSigil={router.pathname === '/sigil'}
       />
       <FirstDepositModal
         modalShow={showFirstDepositModal}

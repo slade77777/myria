@@ -552,24 +552,24 @@ function AssetDetails({ id }: Props) {
     );
   }
   return (
-    <div className="max-w-content mx-auto w-full bg-base/2 py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
+    <div className="max-w-content bg-base/2 mx-auto w-full py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <button onClick={router.back} className="mb-14 items-center">
         <div className="flex">
           <BackIcon />
-          <span className="ml-[6px] font-normal text-[14px]">{titleBack}</span>
+          <span className="ml-[6px] text-[14px] font-normal">{titleBack}</span>
         </div>
       </button>
       <div className="flex flex-row space-x-28">
         {/* container */}
         <div className="w-[620px]">
-          <div className="relative flex h-[620px] w-full items-center justify-center lg:h-[620px]  rounded-[12px] ">
-            <div className="absolute h-full w-full bg-[#081824] rounded-[12px]" />
+          <div className="relative flex h-[620px] w-full items-center justify-center rounded-[12px]  lg:h-[620px] ">
+            <div className="absolute h-full w-full rounded-[12px] bg-[#081824]" />
             <div
-              className="z-1 absolute h-full w-full opacity-[0.3] rounded-[12px]"
+              className="z-1 absolute h-full w-full rounded-[12px] opacity-[0.3]"
               style={{ backgroundColor: rarityColor }}
             />
             <div
-              className="z-2 absolute h-[372px] w-[372px] bg-cover bg-center bg-no-repeat  rounded-[12px]"
+              className="z-2 absolute h-[372px] w-[372px] rounded-[12px] bg-cover bg-center  bg-no-repeat"
               style={{
                 backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})`
               }}

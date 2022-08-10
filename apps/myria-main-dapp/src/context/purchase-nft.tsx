@@ -31,7 +31,16 @@ export const PurchaseNFT: React.FC = ({ children }) => {
 
   return (
     <PurchaseNFTContext.Provider
-      value={{ valueNFT, handleSetValueNFT, isWithdrawing, handleWithdrawing, status, setStatus, visible, handleVisible }}>
+      value={{
+        valueNFT,
+        handleSetValueNFT,
+        isWithdrawing,
+        handleWithdrawing,
+        status,
+        setStatus,
+        visible,
+        handleVisible
+      }}>
       {children}
     </PurchaseNFTContext.Provider>
   );

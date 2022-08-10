@@ -17,7 +17,7 @@ interface IWalletContext {
   readerProviderApi?: ReaderProvider;
   chainId?: number | string;
   onConnect: () => void;
-  onConnectCompaign: (campaign: Campaign) => void;
+  onConnectCompaign: (campaign: Campaign) => Promise<void>;
   ready: boolean;
   disconnect: () => void;
   setAddress: (walletAddress: string) => void;
@@ -92,7 +92,7 @@ export const WalletProvider: React.FC = ({ children }) => {
     web3Modal.clearCachedProvider();
     address && (await event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address }));
     reset();
-  }, [address, event, setLocalStarkKey, setWalletAddress, w3Provider]);
+  }, [address, event, w3Provider]);
 
   const getBalanceETH = React.useCallback(() => {
     if (!address) return;
