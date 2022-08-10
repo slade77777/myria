@@ -31,6 +31,7 @@ export default function useGamesData() {
         label: string | JSX.Element;
         href: string;
       };
+      gameUrl?: string
     }
   > = useMemo(
     () => ({
@@ -428,7 +429,8 @@ export default function useGamesData() {
         action: {
           label: 'Start',
           href: 'https://moonville-dev.nonprod-myria.com/'
-        }
+        },
+        gameUrl: 'https://moonville-[env].nonprod-myria.com/',
       }
     }),
     []
