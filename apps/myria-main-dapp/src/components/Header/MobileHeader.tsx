@@ -27,15 +27,11 @@ type OverlayProps = {
 };
 
 export const links: NavItem[] = [
-  linkSources.home,
   linkSources.games,
-  linkSources.store,
+  linkSources.marketplace,
   linkSources.nodes,
-  linkSources.ecosystem,
-  linkSources.forDevelopers,
-  linkSources.ourSolution,
-  linkSources.about,
-  linkSources.community
+  linkSources.buildWithMyria,
+  linkSources.sigilRewards
 ];
 
 const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
@@ -127,8 +123,8 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
           opacity: open ? 1 : 0,
           paddingTop: navHeightMobile
         }}
-        className="flex h-full w-full flex-col bg-dark/70 backdrop-blur-lg transition duration-500">
-        <div className="flex">
+        className="bg-dark/70 flex h-full w-full flex-col backdrop-blur-lg transition duration-500">
+        {/* <div className="flex">
           {tabRoutes.map((item) => (
             <Link key={item.href} href={item.href}>
               <a
@@ -142,7 +138,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
               </a>
             </Link>
           ))}
-        </div>
+        </div> */}
         <ul
           style={{
             overscrollBehavior: 'contain'
@@ -157,12 +153,12 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                 return (
                   <li key={idx}>
                     <div className="relative w-fit">
-                      <a className="hover:cursor-pointer hover:text-brand-gold">{item.text}</a>
+                      <a className="hover:text-brand-gold hover:cursor-pointer">{item.text}</a>
                       <div
                         style={{
                           boxShadow: '0 0 0 0.5px #9AC9E3'
                         }}
-                        className="bg-opacity-4 absolute -top-[9px] -right-6 rounded-sm bg-brand-light-blue/40 p-[3px] text-[6px] font-extrabold">
+                        className="bg-opacity-4 bg-brand-light-blue/40 absolute -top-[9px] -right-6 rounded-sm p-[3px] text-[6px] font-extrabold">
                         <Trans>Soon!</Trans>
                       </div>
                     </div>
@@ -179,7 +175,7 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                           <Collapse.Trigger asChild>
                             <div
                               className={clsx(
-                                'flex items-center justify-between hover:cursor-pointer hover:text-brand-gold',
+                                'hover:text-brand-gold flex items-center justify-between hover:cursor-pointer',
                                 {
                                   'text-brand-gold': open
                                 }
@@ -231,7 +227,9 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
                 return (
                   <li key={idx}>
                     <Link href={item.url as string}>
-                      <a className="hover:text-brand-gold">{item.text}</a>
+                      <a className="hover:text-brand-gold" target={item.target}>
+                        {item.text}
+                      </a>
                     </Link>
                   </li>
                 );

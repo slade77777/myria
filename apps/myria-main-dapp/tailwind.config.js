@@ -441,6 +441,10 @@ module.exports = {
             backgroundColor: theme('colors.brand-orange')
           }
         },
+        '.btn-disabled': {
+          backgroundColor: theme('colors.gray/4'),
+          color: theme('colors.gray/6')
+        },
         '.btn-secondary': {
           color: theme('colors.brand-gold'),
           borderColor: theme('colors.brand-gold'),

@@ -4,7 +4,9 @@ import Web3Modal from '../components/Web3Modal';
 
 import { BigNumber, ethers } from 'ethers';
 import { useGA4 } from 'src/lib/ga';
-import { bal } from 'make-plural';
+import { Campaign } from '../lib/ga/use-ga/event';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { localStorageKeys } from 'src/configs';
 
 let web3Modal: Web3Modal;
 export type ReaderProvider = ethers.providers.InfuraProvider;
@@ -14,29 +16,33 @@ interface IWalletContext {
   signerProviderApi?: ethers.providers.Web3Provider;
   readerProviderApi?: ReaderProvider;
   chainId?: number | string;
-  onConnect: () => Promise<void>;
+  onConnect: () => void;
+  onConnectCompaign: (campaign: Campaign) => void;
   ready: boolean;
   disconnect: () => void;
+  setAddress: (walletAddress: string) => void;
   signMessage: (message: string) => Promise<string> | undefined;
+  subscribeProvider: () => void;
 }
 
 const WalletContext = React.createContext<IWalletContext>({} as IWalletContext);
-const defaultEnvChainId =  parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '0x1');
+const defaultEnvChainId = parseInt(process.env.NEXT_PUBLIC_CHAIN_ID ?? '0x1');
 
-function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvider | null{
+function createReaderProvider(chainid: number = defaultEnvChainId): ReaderProvider | null {
   try {
-    return new ethers.providers.InfuraProvider(
-      chainid,
-        {
-          projectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_SECRET,
-        }
-    )  
+    return new ethers.providers.InfuraProvider(chainid, {
+      projectId: process.env.NEXT_PUBLIC_INFURA_PROJECT_SECRET
+    });
   } catch (error) {
     return null;
   }
-  
 }
-
+if (typeof window !== 'undefined') {
+  web3Modal = new Web3Modal({
+    network: process.env.NEXT_PUBLIC_ETH_ENV,
+    cacheProvider: true
+  });
+}
 export const WalletProvider: React.FC = ({ children }) => {
   const [address, setAddress] = React.useState<string | undefined>(undefined);
   const [balance, setBalance] = React.useState<BigNumber>();
@@ -44,6 +50,8 @@ export const WalletProvider: React.FC = ({ children }) => {
   const [chainId, setChainId] = React.useState<number | undefined>(undefined);
   const [w3Provider, setW3Provider] = useState<any>();
   const [signerProviderApi, setSignerProviderApi] = useState<ethers.providers.Web3Provider>();
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [readerProviderApi, setReaderProvider] = useState<ReaderProvider | null>(
     createReaderProvider()
   );
@@ -81,29 +89,25 @@ export const WalletProvider: React.FC = ({ children }) => {
     if (w3Provider?.close) {
       await w3Provider.close();
     }
-    await web3Modal.clearCachedProvider();
+    web3Modal.clearCachedProvider();
+    address && (await event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address }));
     reset();
+  }, [address, event, setLocalStarkKey, setWalletAddress, w3Provider]);
 
-    address && event('Wallet Disconnected', { campaign: 'Sigil', wallet_address: address });
-  }, [w3Provider, event, address]);
+  const getBalanceETH = React.useCallback(() => {
+    if (!address) return;
+    return readerProviderApi?.getBalance(address);
+  }, [readerProviderApi, address]);
 
-  const getBalanceETH = React.useCallback(
-    () => {
-      if (!address) return;
-      return readerProviderApi?.getBalance(address);
-    },
-    [readerProviderApi, address]
-  );
-
-  const onConnect = async () => {
-    web3Modal = new Web3Modal({
-      network: process.env.NEXT_PUBLIC_ETH_ENV,
-      cacheProvider: false
-    });
-
+  const initializeSubcribeProvider = async () => {
     const w3provider = await web3Modal.connect();
     await subscribeProvider(w3provider);
+  };
 
+  const onConnect = async () => {
+    reset();
+    const w3provider = await web3Modal.connect();
+    await subscribeProvider(w3provider);
     const providerApi = new ethers.providers.Web3Provider(w3provider);
     const accounts = await providerApi.listAccounts();
     const address = accounts[0];
@@ -112,7 +116,25 @@ export const WalletProvider: React.FC = ({ children }) => {
     setSignerProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
-    event('Wallet Connected', { wallet_address: address, campaign: 'Sigil' });
+  };
+
+  const onSetWalletAddress = (walletAddress: string) => {
+    setAddress(walletAddress);
+  };
+
+  const onConnectCompaign = async (campaign: Campaign) => {
+    reset();
+    const w3provider = await web3Modal.connect();
+    await subscribeProvider(w3provider);
+    const providerApi = new ethers.providers.Web3Provider(w3provider);
+    const accounts = await providerApi.listAccounts();
+    const address = accounts[0];
+    const network = await providerApi.getNetwork();
+    setW3Provider(w3provider);
+    setSignerProviderApi(providerApi);
+    setChainId(network.chainId);
+    setAddress(address);
+    event('Wallet Connected', { wallet_address: address, campaign });
   };
 
   const signMessage = (message: string) => {
@@ -120,7 +142,9 @@ export const WalletProvider: React.FC = ({ children }) => {
   };
 
   React.useEffect(() => {
-    getBalanceETH()?.then(setBalance).catch(() => null);
+    getBalanceETH()
+      ?.then(setBalance)
+      .catch(() => null);
   }, [getBalanceETH]);
 
   return (
@@ -131,10 +155,13 @@ export const WalletProvider: React.FC = ({ children }) => {
         readerProviderApi: readerProviderApi as any,
         chainId,
         onConnect,
+        onConnectCompaign,
         ready,
         disconnect,
         signMessage,
-        balance
+        balance,
+        setAddress: onSetWalletAddress,
+        subscribeProvider: initializeSubcribeProvider
       }}>
       {children}
     </WalletContext.Provider>

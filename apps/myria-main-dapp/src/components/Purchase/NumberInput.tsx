@@ -3,21 +3,21 @@ import React from 'react';
 import styles from './styles.module.css';
 
 interface INumberInputProps {
-  setQuantityNumber: (arg: number) => void
+  setQuantityNumber: (arg: number) => void;
 }
 
-const NumberInput: React.FC<INumberInputProps> = ({setQuantityNumber}) => {
+const NumberInput: React.FC<INumberInputProps> = ({ setQuantityNumber }) => {
   const [quantity, setQuantity] = React.useState(0);
-  function increaseQuantity(){
-    let quantity_temp=quantity;
-    quantity_temp=quantity_temp+1;
+  function increaseQuantity() {
+    let quantity_temp = quantity;
+    quantity_temp = quantity_temp + 1;
     setQuantity(quantity_temp);
     setQuantityNumber(quantity_temp);
   }
-  function decreaseQuantity(){
-    let quantity_temp=quantity;
-    if(quantity_temp>0){
-      quantity_temp=quantity_temp-1;
+  function decreaseQuantity() {
+    let quantity_temp = quantity;
+    if (quantity_temp > 0) {
+      quantity_temp = quantity_temp - 1;
       setQuantity(quantity_temp);
       setQuantityNumber(quantity_temp);
     }
@@ -37,7 +37,7 @@ const NumberInput: React.FC<INumberInputProps> = ({setQuantityNumber}) => {
       <input
         type="number"
         value={quantity}
-        onChange={e => {
+        onChange={(e) => {
           setQuantity(parseInt(e.target.value));
           setQuantityNumber(parseInt(e.target.value));
         }}

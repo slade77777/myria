@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SafetyIcon: React.FC = () => {
   return (
@@ -17,15 +17,9 @@ const SafetyIcon: React.FC = () => {
           width="29"
           height="30"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -39,11 +33,7 @@ const SafetyIcon: React.FC = () => {
             type="matrix"
             values="0 0 0 0 1 0 0 0 0 0.980833 0 0 0 0 0.808333 0 0 0 0.4 0"
           />
-          <feBlend
-            mode="normal"
-            in2="shape"
-            result="effect1_innerShadow_654_6228"
-          />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_654_6228" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -123,8 +113,7 @@ const SafetyIcon: React.FC = () => {
           y1="4"
           x2="14.3229"
           y2="28"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFE926" />
           <stop offset="1" stopColor="#FDAB0C" />
         </linearGradient>

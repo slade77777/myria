@@ -29,11 +29,11 @@ const Index = () => {
   return (
     <Page action="mint">
       <div className={headerNavSpacingClassName}>
-        <div className="md:mt-7">
+        <div>
           <Hero />
         </div>
         <div className={clsx(paddingX)}>
-          <div className="mx-auto max-w-content">
+          <div className="max-w-content mx-auto">
             <div className="mx-auto mt-12 max-w-[1155px] md:mt-20">
               <OurGames />
             </div>
@@ -41,9 +41,9 @@ const Index = () => {
               <Program />
             </div>
             <div className="mt-10 md:mt-11">
-              <div className="mx-auto max-w-content rounded-xl bg-[url('/images/home/network-mobile_op.png')] bg-cover bg-right-bottom p-8 pb-[300px] shadow-dark-panel md:bg-[url('/images/home/network_op.png')] md:px-[64px] md:pt-[73px] md:pb-[81px]">
+              <div className="max-w-content shadow-dark-panel mx-auto rounded-xl bg-[url('/images/home/network-mobile_op.png')] bg-cover bg-right-bottom p-8 pb-[300px] md:bg-[url('/images/home/network_op.png')] md:px-[64px] md:pt-[73px] md:pb-[81px]">
                 <div className="md:max-w-[422px]">
-                  <p className="text-[20px] leading-[1.25] text-brand-gold">
+                  <p className="text-brand-gold text-[20px] leading-[1.25]">
                     Scale with confidence with Myria
                   </p>
                   <p className="mt-4 text-[24px] font-bold leading-[1.25] md:text-[28px]">
@@ -70,7 +70,7 @@ const Index = () => {
           </h1>
           <p
             data-aos="fade-up"
-            className="mx-auto mt-[32px] max-w-[717px] text-center  text-lg text-light md:text-[20px] md:leading-[1.5]">
+            className="text-light mx-auto mt-[32px] max-w-[717px]  text-center text-lg md:text-[20px] md:leading-[1.5]">
             <Trans>
               Myria has been built by an all-star team of over 150 people, united with a common
               vision of revolutionizing gaming with blockchain technology.
@@ -78,17 +78,17 @@ const Index = () => {
           </p>
         </section>
         <section className={clsx(paddingX, 'mt-[50px] md:mt-[88px]')}>
-          <div data-aos="fade-up" className="mx-auto max-w-content md:mt-[59px]">
+          <div data-aos="fade-up" className="max-w-content mx-auto md:mt-[59px]">
             <ExperenceLogos />
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[43px] md:mt-[103px]')}>
-          <div className="mx-auto max-w-content">
+          <div className="max-w-content mx-auto">
             <JoinTheRevolution textAnimation="fade-up" />
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-[64px] mb-[156px] md:mb-[168px]')}>
-          <div className="mx-auto max-w-content">
+          <div className="max-w-content mx-auto">
             <Subscribe />
           </div>
         </section>

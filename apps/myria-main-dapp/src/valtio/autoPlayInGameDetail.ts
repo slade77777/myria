@@ -1,4 +1,4 @@
-import { proxy, useSnapshot } from "valtio";
+import { proxy, useSnapshot } from 'valtio';
 
 const state = proxy({ autoPlay: true });
 

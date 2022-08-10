@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react';
 import useClickOutside from 'src/hooks/useClickOutside';
 import Collapse from '../Collapse';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
@@ -9,23 +9,23 @@ import Input from '../Input';
 type FilterOption = {
   id: string;
   name: string;
-}
+};
 export type FilterList = {
   id: string;
   title: string;
-  options: FilterOption[]
-}[]
-export type ActiveFilter = { [filterId: string]: FilterOption[]; }
+  options: FilterOption[];
+}[];
+export type ActiveFilter = { [filterId: string]: FilterOption[] };
 
 interface Props {
   filterList: FilterList;
   setFilter: (activeFilter: ActiveFilter) => void;
-  activeFilter: ActiveFilter
+  activeFilter: ActiveFilter;
 }
 
 const Filter = ({ filterList, activeFilter, setFilter }: Props) => {
   const handleFilter = (filterId: string, option: FilterOption) => {
-    const newFilterOption = activeFilter[filterId]?.find(filter => filter.id === option.id)
+    const newFilterOption = activeFilter[filterId]?.find((filter) => filter.id === option.id)
       ? activeFilter[filterId]?.filter((v) => v.id !== option.id)
       : [...(activeFilter[filterId] || []), option];
 
@@ -69,7 +69,9 @@ const Filter = ({ filterList, activeFilter, setFilter }: Props) => {
                         <Input
                           className="h-4 w-4"
                           type="checkbox"
-                          checked={activeFilter[f.id]?.findIndex(filter => filter.id === option.id) >= 0}
+                          checked={
+                            activeFilter[f.id]?.findIndex((filter) => filter.id === option.id) >= 0
+                          }
                           onChange={() => handleFilter(f.id, option)}
                         />
                         <span>{option.name}</span>
@@ -117,4 +119,4 @@ const Filter = ({ filterList, activeFilter, setFilter }: Props) => {
   );
 };
 
-export default Filter
+export default Filter;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const ChartIcon: React.FC = () => {
   return (
@@ -21,15 +21,9 @@ const ChartIcon: React.FC = () => {
           width="54"
           height="54"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -43,11 +37,7 @@ const ChartIcon: React.FC = () => {
             type="matrix"
             values="0 0 0 0 0.495833 0 0 0 0 0.879 0 0 0 0 1 0 0 0 0.4 0"
           />
-          <feBlend
-            mode="normal"
-            in2="shape"
-            result="effect1_innerShadow_654_7399"
-          />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_654_7399" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -111,10 +101,7 @@ const ChartIcon: React.FC = () => {
           <feOffset dx="-1" dy="-1" />
           <feGaussianBlur stdDeviation="0.5" />
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.075 0 0 0 0 0.778 0 0 0 0 1 0 0 0 0.2 0"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.075 0 0 0 0 0.778 0 0 0 0 1 0 0 0 0.2 0" />
           <feBlend
             mode="normal"
             in2="effect4_innerShadow_654_7399"
@@ -127,8 +114,7 @@ const ChartIcon: React.FC = () => {
           y1="8"
           x2="32"
           y2="56"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#9AC9E3" />
           <stop offset="1" stopColor="#4B9CB9" />
         </linearGradient>
@@ -138,8 +124,7 @@ const ChartIcon: React.FC = () => {
           y1="8"
           x2="32"
           y2="56"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#9AC9E3" />
           <stop offset="1" stopColor="#4B9CB9" />
         </linearGradient>

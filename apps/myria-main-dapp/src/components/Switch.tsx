@@ -1,5 +1,5 @@
-import React from "react";
-import * as SwitchPrimitive from "@radix-ui/react-switch";
+import React from 'react';
+import * as SwitchPrimitive from '@radix-ui/react-switch';
 
 const Switch: React.FC<{
   defaultChecked: boolean;
@@ -9,8 +9,7 @@ const Switch: React.FC<{
     <SwitchPrimitive.Root
       defaultChecked={defaultChecked}
       onCheckedChange={onChange}
-      className=" switchRoot"
-    >
+      className=" switchRoot">
       <SwitchPrimitive.Thumb className=" switchThumb" />
     </SwitchPrimitive.Root>
   );

@@ -41,5 +41,12 @@ export const noCacheApiClient = axios.create({
   withCredentials: true
 });
 
+export const devApiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_DEV_API_URL,
+  headers: {
+    accept: 'application/json',
+    'Content-type': 'application/json'
+  }
+});
 
 export default apiClient;

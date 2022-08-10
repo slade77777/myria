@@ -61,7 +61,13 @@ const ChestItem = ({ type, rarity, image, name, credit }: ChestItemProps) => {
   );
 };
 
-const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, chestName, chestRarity }) => {
+const OpenInventoryChestModal: React.FC<Props> = ({
+  open,
+  onClose,
+  openedChest,
+  chestName,
+  chestRarity
+}) => {
   const { event } = useGA4();
   const { user } = useAuthenticationContext();
   const credit = React.useMemo<AssetCreditType | undefined>(() => {
@@ -78,9 +84,9 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
 
   const animationVideo = React.useMemo(() => {
     if (chestRarity === 'rare') {
-      return "/videos/inventory/open_chest_rare.m4v";
+      return '/videos/inventory/open_chest_rare.m4v';
     }
-    return "/videos/inventory/open_chest_common.m4v";
+    return '/videos/inventory/open_chest_common.m4v';
   }, [chestRarity]);
 
   useEffect(() => {
@@ -89,7 +95,7 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
         campaign: 'Sigil',
         wallet_address: user.wallet_id,
         item_list: [sigil?.name, title?.name].filter(Boolean).join('; '),
-        credit_amount: Number(credit?.amount),
+        credit_amount: Number(credit?.amount)
       });
     }
   }, [event, user?.wallet_id, credit?.amount, sigil?.name, title?.name]);
@@ -110,12 +116,16 @@ const OpenInventoryChestModal: React.FC<Props> = ({ open, onClose, openedChest, 
               <CloseIcon />
             </button>
           </Modal.Close>
-          <div
-            className={`flex h-full flex-row justify-end bg-brand-deep-blue`}>
-            <div className='w-1/2 overflow-hidden relative'>
-              <video className='absolute max-w-none -left-1/2 h-full w-[200%] object-cover' src={animationVideo} autoPlay loop />
+          <div className={`flex h-full flex-row justify-end bg-brand-deep-blue`}>
+            <div className="w-1/2 overflow-hidden relative">
+              <video
+                className="absolute max-w-none -left-1/2 h-full w-[200%] object-cover"
+                src={animationVideo}
+                autoPlay
+                loop
+              />
             </div>
-            
+
             <div className="flex w-1/2 flex-col items-center justify-between py-12 px-12">
               <span className="mb-2 text-[14px] font-medium">
                 <Trans>You have opened</Trans>

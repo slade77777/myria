@@ -10,7 +10,7 @@ import { validatePassword } from 'src/utils';
 
 export interface IFormResetPasswordInput {
   password: string;
-  confirmPassword: string
+  confirmPassword: string;
 }
 
 const schema = yup
@@ -37,14 +37,14 @@ const ResetPassword: React.FC = () => {
     handleSubmit,
     setError,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting }
   } = useForm<IFormResetPasswordInput>({
     resolver: yupResolver(schema)
   });
 
-  useEffect(() => { 
-    setError("password", { type: 'custom', message: resetPasswordError })
-  }, [resetPasswordError, setError])
+  useEffect(() => {
+    setError('password', { type: 'custom', message: resetPasswordError });
+  }, [resetPasswordError, setError]);
 
   const toggleVisiblePassword = () => {
     setVisiblePassword(!visiblePassword);
@@ -55,12 +55,12 @@ const ResetPassword: React.FC = () => {
   };
 
   const onSubmit = (data: IFormResetPasswordInput) => {
-    const passwordError = validatePassword(data.password)
-    setError("password", { type: 'custom', message: passwordError })
+    const passwordError = validatePassword(data.password);
+    setError('password', { type: 'custom', message: passwordError });
     if (!passwordError) {
-      doResetPassword(data)
+      doResetPassword(data);
     }
-  }
+  };
 
   return (
     <div className="px-8">
@@ -99,7 +99,7 @@ const ResetPassword: React.FC = () => {
         </div>
         <button className="btn-lg btn-primary my-8 w-full">
           <Trans>Reset Password</Trans>
-        </button> 
+        </button>
       </form>
     </div>
   );

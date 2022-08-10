@@ -4,6 +4,7 @@ import { AssetType, OpenChestContent, useInventoryQuery } from '../inventory/use
 import InventoryItem from '../inventory/InventoryItem';
 import { Trans } from '@lingui/macro';
 import OpenInventoryChestModal from '../inventory/OpenChest';
+import MintRewardModal from '../inventory/MintReward';
 
 const Inventory: React.FC = () => {
   const { inventoryQuery } = useInventoryQuery();
@@ -11,6 +12,7 @@ const Inventory: React.FC = () => {
   const [modalData, setModalData] = React.useState<
     { openedChest: OpenChestContent[] | undefined; item: AssetType } | undefined
   >();
+  const [openMintingModal, setOpenMintingModal] = React.useState<boolean>(false);
 
   const handleChestClaimed = React.useCallback(
     (item: AssetType, openedChest?: OpenChestContent[]) => {
@@ -37,23 +39,25 @@ const Inventory: React.FC = () => {
         chestName={modalData?.item.name}
         chestRarity={modalData?.item.rarity}
       />
-
-      <section className="mt-12 mr-10 flex h-[102px] flex-col items-center justify-center overflow-hidden rounded-xl bg-[#081824] bg-[url('/images/inventory/header-bg.png')] bg-cover text-center">
-        <p className="mx-auto font-extrabold md:mx-0">
-          <Trans>
-            <span className="text-[20px] text-brand-white">
-              <Trans>
-                Sigils are going to be activated later in time when the mysterious Sigma mission is
-                set into motion.
-              </Trans>
-            </span>
-          </Trans>
-        </p>
-        <Trans>
-          <span className="text-[16px] font-normal text-brand-light-blue">
-            <Trans>Be prepared as this might be the key to survival in the Myriaverse.</Trans>
-          </span>
-        </Trans>
+      {openMintingModal && (
+        <MintRewardModal onClose={() => setOpenMintingModal(false)} /> // force modal to unmount
+      )}
+      <section className="mt-12 mr-10 grid grid-cols-1 items-center gap-4 overflow-hidden rounded-xl bg-[#081824] bg-[url('/images/inventory/header-bg.png')] bg-cover py-6 px-8 xl:grid-cols-[1fr_auto_1fr] xl:gap-2">
+        <div className="space-y-2 text-center xl:col-start-2">
+          <p className="text-[20px] font-extrabold leading-[1.3] text-white">
+            <Trans>Minting is now live!</Trans>
+          </p>
+          <p className="text-light text-[16px] font-normal">
+            <Trans>You can now mint your rewards on the Myria L2 chain!</Trans>
+          </p>
+        </div>
+        <div className="flex justify-center xl:justify-end">
+          <button
+            className="btn-lg body-14-bold btn-primary mr-4 py-[9px]"
+            onClick={() => setOpenMintingModal(true)}>
+            <Trans>MINT MY REWARDS</Trans>
+          </button>
+        </div>
       </section>
       <section className="mt-12 mr-10">
         <div className="flex w-full flex-row flex-wrap gap-8">

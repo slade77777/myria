@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Profile from '../Profile';
-import Mission from './MissionV2';
 import Inventory from '../Inventory';
 import NftReward from '../NftReward';
 import { Trans } from '@lingui/macro';
@@ -49,7 +48,7 @@ const Dashboard: React.FC = () => {
               </button>
             ))}
             <p className="ml-auto min-w-[182px] bg-[url('/images/nodes/sigil/point-bg.png')] bg-cover bg-left py-2 pl-8">
-              <span className="text-[14px] leading-[17px] text-light">POINTS</span>
+              <span className="text-light text-[14px] leading-[17px]">POINTS</span>
               <span className="sigil-text ml-[14px] text-[20px] font-extrabold leading-[25px]">
                 {user?.credits}
               </span>

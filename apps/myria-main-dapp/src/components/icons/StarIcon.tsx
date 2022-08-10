@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const StarIcon: React.FC = () => {
   return (
@@ -17,15 +17,9 @@ const StarIcon: React.FC = () => {
           width="54"
           height="51"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -39,11 +33,7 @@ const StarIcon: React.FC = () => {
             type="matrix"
             values="0 0 0 0 1 0 0 0 0 0.7625 0 0 0 0 0.7625 0 0 0 0.4 0"
           />
-          <feBlend
-            mode="normal"
-            in2="shape"
-            result="effect1_innerShadow_654_7408"
-          />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_654_7408" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -53,10 +43,7 @@ const StarIcon: React.FC = () => {
           <feOffset dx="-4" dy="-4" />
           <feGaussianBlur stdDeviation="3" />
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.583333 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.583333 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
           <feBlend
             mode="normal"
             in2="effect1_innerShadow_654_7408"
@@ -89,10 +76,7 @@ const StarIcon: React.FC = () => {
           <feOffset dx="-2" dy="-2" />
           <feGaussianBlur stdDeviation="2" />
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.304167 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.304167 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
           <feBlend
             mode="normal"
             in2="effect3_innerShadow_654_7408"
@@ -107,10 +91,7 @@ const StarIcon: React.FC = () => {
           <feOffset dx="-1" dy="-1" />
           <feGaussianBlur stdDeviation="0.5" />
           <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 1 0 0 0 0 0.25 0 0 0 0 0.25 0 0 0 0.2 0"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.25 0 0 0 0 0.25 0 0 0 0.2 0" />
           <feBlend
             mode="normal"
             in2="effect4_innerShadow_654_7408"
@@ -123,8 +104,7 @@ const StarIcon: React.FC = () => {
           y1="10"
           x2="32"
           y2="55"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#F5B941" />
           <stop offset="1" stopColor="#F5B941" />
         </linearGradient>

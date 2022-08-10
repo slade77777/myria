@@ -3,12 +3,12 @@ const ConnectToBinanceChainWallet = async () => {
   if (typeof window.BinanceChain !== 'undefined') {
     provider = window.BinanceChain;
     try {
-      await provider.request({ method: 'eth_requestAccounts' })
+      await provider.request({ method: 'eth_requestAccounts' });
     } catch (error) {
-      throw new Error("User Rejected");
+      throw new Error('User Rejected');
     }
   } else {
-    throw new Error("No Binance Chain Wallet found");
+    throw new Error('No Binance Chain Wallet found');
   }
   return provider;
 };

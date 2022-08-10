@@ -40,7 +40,7 @@ type Sigil = {
 
 const SIGILS: Sigil[] = [
   {
-    ...getAllianceInfo("federation"),
+    ...getAllianceInfo('federation'),
     order: 1,
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
     width: 584 / 4,
@@ -61,7 +61,7 @@ const SIGILS: Sigil[] = [
     )
   },
   {
-    ...getAllianceInfo("vector_prime"),
+    ...getAllianceInfo('vector_prime'),
     order: 2,
     img: '/images/nodes/insignia/alliance_sigilB.png',
     selectModalBgImg: '/images/nodes/insignia/sigilB_modal_bg.png',
@@ -84,7 +84,7 @@ const SIGILS: Sigil[] = [
     )
   },
   {
-    ...getAllianceInfo("equinox"),
+    ...getAllianceInfo('equinox'),
     order: 3,
     img: '/images/nodes/insignia/alliance_sigilC.png',
     selectModalBgImg: '/images/nodes/insignia/sigilC_modal_bg.png',

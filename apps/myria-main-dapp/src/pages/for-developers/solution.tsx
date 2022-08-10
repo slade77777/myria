@@ -12,7 +12,7 @@ const data = [
     title: <Trans>Scale with security </Trans>,
     items: [
       <Trans key={0}>Ethereum-level security provided by zk-STARKs</Trans>,
-      <Trans key={1}>Transparent and post-quantum secure -  no trusted setup</Trans>,
+      <Trans key={1}>Transparent and post-quantum secure - no trusted setup</Trans>,
       <Trans key={2}>
         Instantly able to withdraw assets from the rollup back into ethereum when needed
       </Trans>,
@@ -25,7 +25,9 @@ const data = [
       <Trans key={0}>Cairo, allows for development of provable on-chain complexity</Trans>,
       <Trans key={1}>Native support for core token types ERC20 and ERC721</Trans>,
       <Trans key={2}>Simpler formal verification of contracts due to safe VM architecture</Trans>,
-      <Trans key={3}>Complete privacy, not only from other users, but also from the Operator.</Trans>
+      <Trans key={3}>
+        Complete privacy, not only from other users, but also from the Operator.
+      </Trans>
     ]
   },
   {
@@ -89,8 +91,8 @@ const Solution: React.FC = () => {
                   uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2
                   transactions into one single transaction. This then sends a validity proof back to
                   the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based
-                  zkrollup solution enable NFTs and dApps to achieve unlimited
-                  scale, low transaction fees without sacrificing on security.
+                  zkrollup solution enable NFTs and dApps to achieve unlimited scale, low
+                  transaction fees without sacrificing on security.
                 </Trans>
               </p>
             </div>

@@ -12,7 +12,6 @@ import { useWalletContext } from 'src/context/wallet';
 import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
 import { useAuthenticationContext } from 'src/context/authentication';
-import WhiteListSale from 'src/components/Purchase/Modals/WhiteListSale';
 
 const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -24,7 +23,7 @@ const Purchase: React.FC = () => {
     nonce: '',
     transactionId: ''
   });
-  const { onConnect, address } = useWalletContext();
+  const { onConnectCompaign, address } = useWalletContext();
   const { user, userProfileQuery } = useAuthenticationContext();
   const router = useRouter();
 
@@ -36,7 +35,7 @@ const Purchase: React.FC = () => {
   }, [address, router, user, userProfileQuery.isFetching]);
 
   const onPlaceOrder = async (data: PurchaseInformationProps) => {
-    await onConnect();
+    await onConnectCompaign('Nodes');
     if (data.quantity > 0) {
       setModalData(data);
       setOpenModal(true);

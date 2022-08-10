@@ -10,7 +10,7 @@ type Props = {
 };
 
 const LinkWalletConfirmModal: React.FC<Props> = ({ open, onClose, onLink }) => {
-  const { address, onConnect } = useWalletContext();
+  const { address, onConnectCompaign } = useWalletContext();
 
   return (
     <Modal open={open} onOpenChange={onClose}>
@@ -33,7 +33,9 @@ const LinkWalletConfirmModal: React.FC<Props> = ({ open, onClose, onLink }) => {
               <Trans>LINK WALLET</Trans>
             </button>
           ) : (
-            <button onClick={onConnect} className="btn-lg btn-primary w-full">
+            <button
+              onClick={() => onConnectCompaign('Sigil')}
+              className="btn-lg btn-primary w-full">
               <Trans>CONNECT WALLET</Trans>
             </button>
           )}
