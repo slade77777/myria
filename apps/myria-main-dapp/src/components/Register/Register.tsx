@@ -241,7 +241,7 @@ const Register: React.FC = () => {
             <div
               className={clsx('mt-2 flex items-center', { 'opacity-50': !hint.validate })}
               key={hint.text}>
-              {hint.validate ? <CheckIcon /> : <WarningIcon />}
+              {hint.validate ? <CheckIcon size={20} /> : <WarningIcon />}
               <p className=" ml-[10px]">{hint.text}</p>
             </div>
           );

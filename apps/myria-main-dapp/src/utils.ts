@@ -1,5 +1,7 @@
 import { t } from '@lingui/macro';
 import { BigNumber, ethers } from 'ethers';
+import { ETHERS_LINK } from './services/common-ethers';
+import { getNetworkId } from './services/myriaCoreSdk';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
 const FORMAT_PRICE = 1000000;
@@ -107,3 +109,11 @@ export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
       };
   }
 };
+const getBaseExploreLink = (networkId: number) => {
+  return ETHERS_LINK[networkId as keyof typeof ETHERS_LINK];
+}
+export const getExplorerForAddress = (ContractAddress: string, networkId: number) => {
+   const baseEtherLink = getBaseExploreLink(networkId);
+   const etherLink = `${baseEtherLink}/${ContractAddress}`;
+   return etherLink;
+}

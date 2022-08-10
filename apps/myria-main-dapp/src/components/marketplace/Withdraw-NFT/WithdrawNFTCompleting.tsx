@@ -74,42 +74,44 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
     }
   };
   return (
-    <div className="mt-[29px]">
-      <div className="px-[25px]">
-        <div className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center">
-          <WithdrawalCompletedIcon size={64} className="w-full text-[#9ECEAB]" />
-        </div>
+    <>
+      <div className="grow">
+        <div className="px-6">
+          <div className="mx-auto mt-14 flex h-16 w-16 justify-center">
+            <WithdrawalCompletedIcon size={64} className="w-full text-light-green" />
+          </div>
 
-        <div className="mt-[24px] text-center text-[24px] text-white">Complete your withdrawal</div>
-        <div className="text-[#777777] text-[14px] text-center mt-4">
-          <span>
-            <Trans>
-              Click below to claim this withdrawal to your L1 wallet. Gas fees will apply to this
-              transaction.
-            </Trans>
-          </span>
+          <div className="mt-6 text-center text-2xl text-white">Complete your withdrawal</div>
+          <div className="text-gray/6 text-sm text-center mt-4">
+            <span>
+              <Trans>
+                Click below to claim this withdrawal to your L1 wallet. Gas fees will apply to this
+                transaction.
+              </Trans>
+            </span>
+          </div>
+        </div>
+        <div className="mt-8 text-sm  rounded-lg bg-base/2/50 p-4 text-white">
+          <div className="flex justify-between">
+            <span>
+              <Trans>Item</Trans>
+            </span>
+            <span className="flex">{valueNFT.name}</span>
+          </div>
+          <div className="mt-3 flex justify-between">
+            <span className="flex items-center gap-1">
+              <Trans>Estimated gas fee</Trans>
+            </span>
+            <span className="flex items-center">
+              <DAOIcon size={14} />
+              0.000561
+            </span>
+          </div>
         </div>
       </div>
-      <div className="mt-[32px] text-[14px]  rounded-[8px] bg-base/2/50 p-4 text-white">
-        <div className="flex justify-between">
-          <span>
-            <Trans>Item</Trans>
-          </span>
-          <span className="flex">{valueNFT.name}</span>
-        </div>
-        <div className="mt-[13px] flex justify-between">
-          <span className="flex items-center gap-1">
-            <Trans>Estimated gas fee</Trans>
-          </span>
-          <span className="flex items-center">
-            <DAOIcon size={14} />
-            0.000561
-          </span>
-        </div>
-      </div>
-      <div className="mt-[138px] flex justify-end">
+      <div className="flex justify-end">
         {pending ? (
-          <button className="flex w-full items-center justify-center rounded-[8px] bg-gray/4 px-[20px] py-[12px] text-[16px] font-bold text-gray/6">
+          <button className="flex w-full items-center justify-center rounded-lg bg-gray/4 px-5 py-3 text-base font-bold text-gray/6">
             <span>
               <Trans>WITHDRAW PENDING</Trans>
             </span>
@@ -126,7 +128,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
           </button>
         )}
       </div>
-    </div>
+    </>
   );
 };
 export default WithdrawNFTCompleting;

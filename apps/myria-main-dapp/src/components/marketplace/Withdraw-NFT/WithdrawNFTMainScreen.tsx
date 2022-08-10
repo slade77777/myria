@@ -92,55 +92,57 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   };
 
   return (
-    <div className="mt-[29px]">
-      <div
-        className="mx-auto mt-[57px] flex h-[64px] w-[64px] justify-center bg-cover bg-center rounded-full"
-        style={{
-          backgroundImage: `url(${validatedImage(valueNFT.imageUrl)})`
-        }}></div>
+    <>
+      <div className="grow">
+        <div
+          className="mx-auto mt-14 flex h-16 w-16 justify-center bg-cover bg-center rounded-full"
+          style={{
+            backgroundImage: `url(${validatedImage(valueNFT.imageUrl)})`
+          }}></div>
 
-      <div className="mt-[24px] text-center text-[24px] text-white">Withdraw NFT to L1 wallet</div>
-      <div className="text-[14px] text-base/9 text-center mt-4">
-        <Trans>Withdrawals are processed in batches every 20 hours. Click</Trans>{' '}
-        <span
-          onClick={() => {
-            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-            triggerWithdraw?.click();
-            handleLearnMore(true);
-          }}
-          className="text-primary/6 cursor-pointer">
-          <Trans>here</Trans>
-        </span>{' '}
-        <Trans>to learn more.</Trans>
-      </div>
-      <div className="mt-[32px] rounded-[8px] bg-[#050E15] p-4 text-[14px] text-white">
-        <div className="flex justify-between">
-          <span className="text-base/9">Item</span>
-          <span>{valueNFT.name}</span>
+        <div className="mt-6 text-center text-2xl text-white">Withdraw NFT to L1 wallet</div>
+        <div className="text-sm text-base/9 text-center mt-4">
+          <Trans>Withdrawals are processed in batches every 20 hours. Click</Trans>{' '}
+          <span
+            onClick={() => {
+              const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
+              triggerWithdraw?.click();
+              handleLearnMore(true);
+            }}
+            className="text-primary/6 cursor-pointer">
+            <Trans>here</Trans>
+          </span>{' '}
+          <Trans>to learn more.</Trans>
         </div>
+        <div className="mt-8 rounded-lg bg-base/2 p-4 text-sm text-white">
+          <div className="flex justify-between">
+            <span className="text-base/9">Item</span>
+            <span>{valueNFT.name}</span>
+          </div>
         <div className="mt-[13px] flex justify-between">
-          <span className="text-base/9">Estimated gas fee</span>
+          <span className="text-base/9">Estimated completion</span>
           <span className="flex">
-            <DAOIcon /> 10-20 hours
+            10-20 hours
           </span>
         </div>
       </div>
-      <div className="mt-[138px] flex justify-between">
+      <div className="flex justify-between">
         <button
           onClick={() => {
             const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
             triggerWithdraw?.click();
           }}
-          className="flex w-[126px] items-center justify-center rounded-[8px] px-[20px] py-[12px] text-[16px] font-bold text-white border">
+          className="flex w-32 items-center justify-center rounded-lg px-5 py-3 text-base font-bold text-white border">
           <Trans>CANCEL</Trans>
         </button>
         <button
-          className="flex w-[126px] items-center justify-center rounded-[8px] bg-[#F5B941] px-[20px] py-[12px] text-[16px] font-bold text-[#040B10]"
+          className="flex w-32 items-center justify-center rounded-lg bg-primary/6 px-5 py-3 text-base font-bold text-base/1"
           onClick={handleConfirmWithdrawNftOffchain}>
           <Trans>CONFIRM</Trans>
         </button>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 export default WithdrawNFTMainScreen;

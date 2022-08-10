@@ -12,4 +12,5 @@ export type NavItem = {
   position: 'left' | 'right';
   action?: Action[];
   event?: string;
+  icon?: ReactNode;
 };

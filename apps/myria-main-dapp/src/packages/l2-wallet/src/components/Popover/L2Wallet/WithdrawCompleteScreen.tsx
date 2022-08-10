@@ -1,5 +1,7 @@
 import React from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import { useL2WalletContext } from 'src/context/l2-wallet';
+import { ethersLink } from '../../../constants/ethers';
 import { TickCircleIcon } from '../../Icons';
 
 interface TProps {
@@ -13,6 +15,14 @@ export default function WithdrawCompleteScreen({
   amount,
   selectedToken,
 }: TProps) {
+  const { isWithdrawComplete } = useL2WalletContext();
+
+  const URL_LINK = `${ethersLink.goerli_goerli}${
+    isWithdrawComplete?.transactionHash
+      ? isWithdrawComplete?.transactionHash
+      : ''
+  }`;
+
   return (
     <>
       <div className="text-base/10">
@@ -39,7 +49,14 @@ export default function WithdrawCompleteScreen({
           <div className="mt-4 flex items-center justify-between">
             <div className="text-base/9">Transaction ID</div>
             <div>
-              <span className="text-primary/6">View</span>
+              <a
+                target={'_blank'}
+                href={URL_LINK}
+                className="text-primary/6 flex cursor-pointer items-center font-medium"
+                rel="noreferrer"
+              >
+                View
+              </a>
             </div>
           </div>
         </div>
@@ -49,7 +66,7 @@ export default function WithdrawCompleteScreen({
           onClick={successHandler}
           className="bg-primary/6 text-base/1 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold"
         >
-          CLAIM WITHDRAWAL
+          OK
         </button>
       </div>
     </>

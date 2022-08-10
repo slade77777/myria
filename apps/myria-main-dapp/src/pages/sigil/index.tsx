@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Page from 'src/components/Page';
 import Dashboard from 'src/components/sigil/Dashboard';
 import SigilStepper from 'src/components/sigil/SigilStepper';
-import ChooseAlliance from 'src/components/sigil/ChooseAlliance';
 import Welcome from 'src/components/sigil/Welcome';
 import WelcomeMobile from 'src/components/sigil/WelcomeMobile';
 import Header from 'src/components/sigil/Header';
@@ -17,6 +16,7 @@ import { LoadingStandBy } from 'src/components/Loading';
 import { t } from '@lingui/macro';
 import { toast } from 'react-toastify';
 import clsx from 'clsx';
+import Register from 'src/components/sigil/Register';
 
 type Step = 0 | 1 | 2;
 
@@ -59,20 +59,14 @@ const Sigil: React.FC = () => {
       case 0:
         return <Welcome onNext={goToNextStep} />;
       case 1:
-        return (
-          <ChooseAlliance
-            onNext={() => {
-              goToNextStep();
-            }}
-          />
-        );
+        return <Register />;
       default:
         return <Dashboard />;
     }
   }, [currentStep, goToNextStep]);
 
   React.useEffect(() => {
-    if ([0, 1].includes(currentStep)) {
+    if (currentStep === 0) {
       if (!bgSoundRef.current) {
         timerBgSoundRef.current = setTimeout(() => {
           bgSoundRef.current = soundService.playSound(SUPPORT_SOUND.SIGIL_DASHBOARD_BG, {
@@ -92,12 +86,17 @@ const Sigil: React.FC = () => {
   }, [currentStep]);
 
   React.useEffect(() => {
-    if (!user?.user_id) {
-      setCurrentStep(0);
+    if (user && user.user_name && user.credits) {
+      setCurrentStep(2);
+      return;
     }
 
-    if (user && user.alliance) {
-      setCurrentStep(2);
+    if (user?.user_id) {
+      setCurrentStep(1);
+    }
+
+    if (!user?.user_id) {
+      setCurrentStep(0);
     }
   }, [user]);
 
@@ -107,7 +106,7 @@ const Sigil: React.FC = () => {
     <>
       <div className={`relative ${currentStep === 1 ? 'min-w-[1300px]' : ''}`}>
         {isLoading && (
-          <div className="absolute inset-0 z-10 flex w-full items-center justify-center bg-dark/10 text-white">
+          <div className="bg-dark/10 absolute inset-0 z-10 flex w-full items-center justify-center text-white">
             <LoadingStandBy />
           </div>
         )}
@@ -124,15 +123,12 @@ const Sigil: React.FC = () => {
                   isLoading
               })}>
               {!isLoading && <div>{content}</div>}
-              {currentStep !== 2 && (
-                <div className="ml-auto mr-auto mt-auto w-full max-w-[577px] absolute bottom-1 left-1/2 -translate-x-1/2">
+              {currentStep === 0 && (
+                <div className="absolute bottom-1 left-1/2 ml-auto mr-auto mt-auto w-full max-w-[577px] -translate-x-1/2">
                   <SigilStepper
                     steps={[
                       {
                         title: t`Connect Wallet`
-                      },
-                      {
-                        title: t`Choose Alliance`
                       },
                       {
                         title: t`Claim your NFT reward`
@@ -145,7 +141,7 @@ const Sigil: React.FC = () => {
             </div>
           </div>
 
-          {[0, 1].includes(currentStep) && <Sound />}
+          {currentStep === 0 && <Sound />}
         </Page>
       </div>
     </>

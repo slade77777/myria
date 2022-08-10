@@ -2,22 +2,60 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-import BuildYourBlockchain from 'src/components/for-developers/BuildYourBlockchain';
+import React, { useState } from 'react';
+import axios from 'axios';
+import ContactSalesTeamModal from 'src/components/ContactSalesTeamModal';
 import Ethereum from 'src/components/for-developers/Ethereum';
 import Myria from 'src/components/for-developers/Myria';
 import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
 import Page from 'src/components/Page';
+import Input from 'src/components/Input';
 import { paddingX } from 'src/utils';
+import DiscordGameIcon from 'src/packages/l2-wallet/src/components/Icons/DiscordGameIcon';
+import { socialLinks } from '../../configs';
+
+// import { useGA4 } from '../lib/ga';
+import { useGA4 } from 'src/lib/ga';
+import NewsLetter from '../newsletter';
+
+const listId = process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID;
 
 const ForDevelopers: React.FC = () => {
+  const [showContactSalesTeamModal, setShowFirstTimeVisitModal] = useState(false);
+  const [email, setEmail] = useState<string>('');
+  const { event } = useGA4();
+
+  const handleCloseContactSalesTeamModal = () => {
+    setShowFirstTimeVisitModal(false);
+  };
+
+  const emailsubmit = async () => {
+    let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
+    if (regex.test(email)) {
+      try {
+        const options = {
+          method: 'POST',
+          headers: { Accept: 'text/html', 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            data: `{"token": "${process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID}","properties": {"$email":"${email}"}}`
+          })
+        };
+        await axios.post('https://a.klaviyo.com/api/identify', options);
+      } catch (err) {
+        console.error(err);
+      }
+      setEmail('');
+      event('Email Subscribed', { campaign: 'B2B', user_email: email });
+    }
+  };
+
   return (
     <Page action="start-building">
       <div className={bannerSpacingClassName}>
         <section
           className={clsx(
             paddingX,
-            "relative isolate lg:pt-[200px] flex min-h-[520px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile_op.png')] bg-cover bg-top pt-[150px] pb-[87px] md:bg-none md:pt-[150px]"
+            "relative isolate flex min-h-[520px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile_op.png')] bg-cover bg-top pt-[150px] pb-[87px] md:bg-none md:pt-[150px] lg:pt-[200px]"
           )}>
           <div className="hidden md:block">
             <div
@@ -45,27 +83,34 @@ const ForDevelopers: React.FC = () => {
                 blockchain gaming.
               </Trans>
             </p>
-            <Link href={'#dev-contact'}>
-              <a className="btn-lg btn-primary mt-8">
-                <Trans>START BUILDING</Trans>
-              </a>
-            </Link>
-          </div>
-          {/* <div className="mx-auto mt-10 flex max-w-[1048px] flex-col items-start rounded-xl bg-brand-deep-blue bg-[url('/images/for-developers/panel-2_op.png')] bg-cover bg-bottom p-8 shadow-dark-panel md:mt-[112px] md:flex-row md:items-center md:space-x-[93px] md:bg-transparent md:bg-[url('/images/for-developers/panel_op.png')]">
-            <div>
-              <h3 className="text-[24px] font-bold leading-[1.25] md:text-[18px]">
-                <Trans>Myria launches $200M game developer grant program</Trans>
-              </h3>
-              <p className="mt-4 max-w-[488px] text-[16px] leading-[1.5] text-light md:mt-6 md:text-[18px]">
-                <Trans>We are funding the builders and creators to power the future of blockchain gaming.
-                Apply for grant consideration.</Trans>
-              </p>
+            <div className="space-x-6">
+              <Link href="http://docs.myria.com/">
+                <a
+                  className="btn-lg btn-primary mt-8"
+                  onClick={() => {
+                    event('B2B Start Building Selected', {
+                      campaign: 'B2B'
+                    });
+                  }}>
+                  <Trans>START BUILDING</Trans>
+                </a>
+              </Link>
+              <button
+                onClick={() => {
+                  setShowFirstTimeVisitModal(true);
+                  event('B2B Contact Sales Selected', {
+                    campaign: 'B2B'
+                  });
+                }}>
+                <a className="btn-lg border-base/9 border">
+                  <Trans>CONTACT SALES</Trans>
+                </a>
+              </button>
             </div>
-            <button className="btn-lg btn-primary mt-8 md:mt-0"><Trans>Apply now</Trans></button>
-          </div> */}
+          </div>
         </section>
         <section className={clsx(paddingX, 'mt-14 md:mt-10')}>
-          <div className="mx-auto max-w-content">
+          <div className="max-w-content mx-auto">
             <Ethereum />
           </div>
         </section>
@@ -93,11 +138,61 @@ const ForDevelopers: React.FC = () => {
             )}>
             <Myria />
           </section>
-          <section className={clsx(paddingX, 'mx-auto mt-[45px] md:mt-[163px]')} id="dev-contact">
-            <BuildYourBlockchain />
+          <section className="mx-auto max-w-[1440px] px-[88px] pt-[200px] pb-[160px]">
+            <div className="flex space-x-6">
+              <div className="w-[620px] rounded-[20px] bg-[#081825] p-[48px]">
+                <div className="text-[32px] leading-[47px] text-white">Stay up to date with us</div>
+                <p className="text-base/9 mt-4 text-[20px] leading-[26px]">
+                  Sign up to our newsletter for development updates
+                </p>
+                <div className="mt-[84px] flex space-x-5">
+                  <div className="w-full flex-1">
+                    <Input
+                      value={email}
+                      className="border-none bg-[#172630]"
+                      type="text"
+                      placeholder="Enter your email address"
+                      onChange={(e: any) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <button
+                    className="btn-lg btn-primary"
+                    onClick={() => {
+                      emailsubmit();
+                    }}>
+                    Submit
+                  </button>
+                </div>
+              </div>
+              <div className="w-[620px] rounded-[20px] bg-[#081825] p-[48px]">
+                <div className="text-[32px] leading-[47px] text-white">
+                  Join Myria Developers Discord
+                </div>
+                <p className="text-base/9 mt-4 text-[20px] leading-[26px]">
+                  We are funding the builders and creators to power the future of blockchain gaming.
+                  Join our developer Discord to learn more.
+                </p>
+                <div className="mt-8 space-x-5">
+                  <a href={socialLinks.discord}>
+                    <button
+                      className="btn-lg bg-blue/7 text-base/2 flex items-center px-6 py-[12.5px] uppercase"
+                      onClick={() => {
+                        event('B2B Discord Button Clicked', { campaign: 'B2B' });
+                      }}>
+                      <DiscordGameIcon size={28} className="mr-2 text-black" />
+                      Join our discord
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </div>
+      <ContactSalesTeamModal
+        open={showContactSalesTeamModal}
+        onClose={handleCloseContactSalesTeamModal}
+      />
     </Page>
   );
 };
