@@ -52,7 +52,6 @@ const ConnectL2WalletButton: React.FC = () => {
     }
     getAccounts()
       .then((accounts) => {
-        console.log('getAccounts', address, user?.wallet_id, address, accounts[0]);
         if (
           user?.wallet_id &&
           localStarkKey &&

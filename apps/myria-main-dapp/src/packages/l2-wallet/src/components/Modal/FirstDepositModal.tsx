@@ -21,16 +21,11 @@ import { Trans } from '@lingui/macro';
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
 import DAOIcon from '../../../../../components/icons/DAOIcon';
 import Tooltip from '../../../../../components/Tooltip';
-import { setDepositAmount } from '../../app/slices/uiSlice';
 import { TokenType } from '../../common/type';
 import { ethersLink } from '../../constants';
 import { useEthereumPrice } from '../../hooks/useEthereumPrice';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
-import {
-  convertAmountToQuantizedAmount,
-  convertEthToWei,
-} from '../../utils/Converter';
-import { useDepositContext } from 'src/context/deposit-context';
+import { convertEthToWei } from '../../utils/Converter';
 
 type Props = {
   modalShow: Boolean;
@@ -90,10 +85,6 @@ export default function FirstDepositModal({
   const URL_LINK = `${ethersLink.goerli_goerli}${
     depositResponse?.transactionHash ? depositResponse?.transactionHash : ''
   }`;
-  const { handleSetAmount, handleShowMessageDeposit } = useDepositContext();
-
-  // console.log('Connection account', connectedAccount);
-  // console.log('selectedToken', selectedToken);
 
   const selectCurrency = (param: any) => {
     setSelectedToken(param);
@@ -319,9 +310,9 @@ export default function FirstDepositModal({
                 <div className="flex w-full justify-end">
                   <button
                     disabled
-                    className="text-gray/6 flex h-10 rounded-lg bg-[#4B5563] text-sm font-bold uppercase"
+                    className="text-gray/6 bg-gray/4 flex h-10 items-center rounded-lg px-3 text-sm font-bold uppercase"
                   >
-                    Processing{' '}
+                    <span>Processing </span>
                     <ProgressIcon className="text-gray/6 ml-2" size={16} />
                   </button>
                 </div>
@@ -373,9 +364,7 @@ export default function FirstDepositModal({
                   <button
                     className="bg-primary/6 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold text-black"
                     onClick={() => {
-                      handleSetAmount(amount);
                       closeModal();
-                      handleShowMessageDeposit(true);
                       completeDepositModal();
                     }}
                   >

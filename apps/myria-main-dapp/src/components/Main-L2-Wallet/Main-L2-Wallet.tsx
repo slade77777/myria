@@ -8,6 +8,7 @@ import TermsOfServiceModal from 'src/packages/l2-wallet/src/components/Modal/Ter
 import CreateMyriaWalletModal from 'src/packages/l2-wallet/src/components/Modal/CreateMyriaWalletModal';
 import FirstDepositModal from 'src/packages/l2-wallet/src/components/Modal/FirstDepositModal';
 import MessageWithdrawModal from 'src/packages/l2-wallet/src/components/Modal/MessageWithdrawModal';
+import MessageDepositModal from 'src/packages/l2-wallet/src/components/Modal/MessageDepositModal';
 import WelcomeMyriaModal from 'src/packages/l2-wallet/src/components/Modal/WelcomeMyriaModal';
 import { useWalletContext } from 'src/context/wallet';
 import useLocalStorage from 'src/hooks/useLocalStorage';
@@ -15,6 +16,7 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { convertWeiToEth } from 'src/utils';
 
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
@@ -65,12 +67,13 @@ export default function MainL2Wallet() {
 
       const withdrawModule = moduleFactory.getWithdrawModule();
 
-      const assetList = await withdrawModule.getWithdrawalBalance(address, assetType);
-      if (assetList !== previousBalance && previousBalance !== 0) {
+      const currentBalance = await withdrawModule.getWithdrawalBalance(address, assetType);
+      console.log('L1 Current balance ->', currentBalance);
+      if (currentBalance > 0) {
         dispatch(
           setWithdrawClaimModal({
             show: true,
-            claimAmount: assetList,
+            claimAmount: convertWeiToEth(String(currentBalance)),
             isUpdated: true
           })
         );
@@ -129,7 +132,6 @@ export default function MainL2Wallet() {
         setStarkKeyToLocalStorage={onSetStarkKeyToLocalStorage}
         setWelcomeModal={setWelcomeModal}
       />
-
       <FirstDepositModal
         modalShow={showFirstDepositModal}
         closeModal={() => setShowFirstDepositModal(false)}
@@ -147,6 +149,12 @@ export default function MainL2Wallet() {
           )
         }
       />
+      {isShowMessage && (
+        <MessageDepositModal
+          isShowMessage={isShowMessage}
+          setIsShowMessage={() => setIsShowMessage(false)}
+        />
+      )}
       <WelcomeMyriaModal modalShow={welcomeModal} closeModal={onGetStarted} />
     </div>
   );

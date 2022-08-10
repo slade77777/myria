@@ -176,7 +176,6 @@ function AssetDetails({ id }: Props) {
     : 'common';
   const rarityColor = getRarityColor(bgImage);
   const {
-    isWithdrawing,
     status: withdrawalStatus,
     setStatus: setWithdrawalStatus,
     handleSetValueNFT,
@@ -834,7 +833,7 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
       </div>
       {starkKey === assetDetails?.owner?.starkKey && (
         <>
-          {assetDetails?.status == 'WITHDRAWING' && isWithdrawing ? (
+          {assetDetails?.status == 'WITHDRAWING' || isWithdrawing ? (
             <>
               <button
                 disabled

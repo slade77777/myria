@@ -3,15 +3,10 @@ import { ArrowIcon, ProgressIcon } from '../../Icons';
 
 type Props = {
   goBack: any;
-  okHandler: any;
   amount: number;
 };
 
-export default function WithdrawInProgressScreen({
-  goBack,
-  okHandler,
-  amount,
-}: Props) {
+export default function WithdrawInProgressScreen({ goBack, amount }: Props) {
   return (
     <>
       <div className="text-white">

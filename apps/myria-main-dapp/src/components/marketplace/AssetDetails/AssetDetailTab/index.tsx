@@ -1,21 +1,16 @@
 import { Trans } from '@lingui/macro';
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs';
 import {
-  EqualMetadataByAssetIdResponse,
-  FeeTypes
-} from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import { FC, useEffect, useMemo, useState } from 'react';
+  EqualMetadataByAssetIdResponse} from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
-import { formatPrice, formatUSDPrice } from 'src/utils';
-import { AssetStatus } from '..';
+import { formatPrice, formatUSDPrice, getExplorerForAddress } from 'src/utils';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import Web3 from 'web3';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
-import { ETHERS_LINK } from 'src/services/common-ethers';
 
 type Prop = {
   data: EqualMetadataByAssetIdResponse | any;
@@ -41,15 +36,13 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
     }
     return convertPrice;
   };
-  useMemo(async () => {
-    const networkId = await getNetworkId();
-    if (!networkId) return '';
-
-    const baseEtherLink = ETHERS_LINK[networkId as keyof typeof ETHERS_LINK];
-    const etherLink = `${baseEtherLink}/${assetDetails?.tokenAddress}`;
-    setEtherLinkContract(etherLink);
-
-    return etherLink;
+  useEffect(()=>{
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !assetDetails?.tokenAddress) return '';
+      setEtherLinkContract(getExplorerForAddress(assetDetails?.tokenAddress, networkId));
+    }
+    setLink();
   }, [assetDetails?.tokenAddress]);
 
   return (

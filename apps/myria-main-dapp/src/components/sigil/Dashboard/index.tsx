@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Profile from '../Profile';
-import Mission from './MissionV2';
 import Inventory from '../Inventory';
 import NftReward from '../NftReward';
+import { Trans } from '@lingui/macro';
 
 const Dashboard: React.FC = () => {
   const [tab, setTab] = useState<'rewards' | 'inventory'>('rewards');
@@ -48,7 +48,7 @@ const Dashboard: React.FC = () => {
               </button>
             ))}
             <p className="ml-auto min-w-[182px] bg-[url('/images/nodes/sigil/point-bg.png')] bg-cover bg-left py-2 pl-8">
-              <span className="text-[14px] leading-[17px] text-light">POINTS</span>
+              <span className="text-light text-[14px] leading-[17px]">POINTS</span>
               <span className="sigil-text ml-[14px] text-[20px] font-extrabold leading-[25px]">
                 {user?.credits}
               </span>
@@ -58,7 +58,23 @@ const Dashboard: React.FC = () => {
             {tab === 'rewards' ? (
               <div className="space-y-8">
                 <NftReward />
-                <Mission />
+                <div className="mt-[120px] flex flex-col items-center space-y-4">
+                  <p className="h6">
+                    <Trans>Missions are now locked</Trans>
+                  </p>
+                  <p className="body-14-regular max-w-[364px] text-center text-light">
+                    <Trans>
+                      Thanks for participating! You can still claim your NFT rewards and open your
+                      chests. Reward minting will begin soon.
+                    </Trans>
+                  </p>
+                  <button
+                    onClick={() => setTab('inventory')}
+                    type="button"
+                    className="btn-lg btn-primary">
+                    GO TO INVENTORY
+                  </button>
+                </div>
               </div>
             ) : (
               <Inventory />

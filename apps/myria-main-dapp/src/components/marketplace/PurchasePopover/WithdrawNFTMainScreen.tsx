@@ -12,6 +12,7 @@ import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WithdrawNftOffChainParams } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
+import { Trans } from '@lingui/macro';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -120,9 +121,9 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           <span>{valueNFT.name}</span>
         </div>
         <div className="mt-[13px] flex justify-between">
-          <span className="text-base/9">Estimated gas fee</span>
+          <span className="text-base/9"><Trans>Estimated completion</Trans></span>
           <span className="flex">
-            <DAOIcon /> 10-20 hours
+            10-20 hours
           </span>
         </div>
       </div>
