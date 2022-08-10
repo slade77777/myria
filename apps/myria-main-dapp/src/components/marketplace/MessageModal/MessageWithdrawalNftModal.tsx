@@ -8,7 +8,7 @@ interface Prop {
   onClose: () => void;
 }
 const MessageWithdrawalNftModal: FC<Prop> = ({ onClose }) => {
-  const { handleWithdrawing, valueNFT: assetDetail, setStatus } = useWithDrawNFTContext();
+  const { valueNFT: assetDetail, setStatus } = useWithDrawNFTContext();
   const completeWithdrawal = useCallback(() => {
     const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
     triggerWithdraw?.click();
