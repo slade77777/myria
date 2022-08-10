@@ -5,7 +5,7 @@ import { LoadingStandBy } from '../Loading';
 import InventoryItem from './InventoryItem';
 
 interface Props {
-  filterParams: GetInventoryParams
+  filterParams: GetInventoryParams;
 }
 
 const ListInventory = ({ filterParams }: Props) => {
@@ -14,7 +14,7 @@ const ListInventory = ({ filterParams }: Props) => {
 
   const handleChestClaimed = () => {
     inventoryQuery.refetch();
-  }
+  };
 
   if (inventoryQuery.isLoading) {
     return (

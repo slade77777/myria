@@ -1,8 +1,33 @@
-import { t } from "@lingui/macro";
+import { t } from '@lingui/macro';
+import { BigNumber, ethers } from 'ethers';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
+
+const FORMAT_PRICE = 1000000;
 
 export const formatNumber = (num: number) => {
   return new Intl.NumberFormat('en').format(num);
+};
+export const formatNumber2digits = (num: number) => {
+  return Number(num).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+};
+export const formatPrice = (amountPrice: number) => {
+  if (!amountPrice) return `0.00`;
+  let lenghtPrice;
+  if (amountPrice.toString().includes('-')) {
+    const splitPrice = amountPrice.toString().split('-');
+    lenghtPrice = splitPrice[1];
+  } else {
+    lenghtPrice = amountPrice.toString().length - 2;
+  }
+
+  return amountPrice >= 1
+    ? formatNumber2digits(amountPrice)
+    : amountPrice.toFixed(Number(lenghtPrice));
+};
+export const formatUSDPrice = (amountPrice: number) => {
+  if (!amountPrice) return `0.00`;
+  if (amountPrice >= 1) return formatNumber2digits(amountPrice);
+  return `${Math.round(amountPrice * FORMAT_PRICE) / FORMAT_PRICE}`;
 };
 export const paddingX = 'px-6 md:px-12 xl:px-16';
 export const negativeMarginXSm = '-mx-6';
@@ -30,6 +55,19 @@ export const validatePassword = (password: string) => {
   return undefined;
 };
 
+export function convertWeiToEth(amount: string): string {
+  const balance = BigNumber.from(amount);
+  return ethers.utils.formatEther(balance);
+}
+
+export const validatedImage = (url: string | null | undefined) => {
+  const imagesDefault = '/images/marketplace/collection-2-bg.png';
+  if (!url) {
+    return imagesDefault;
+  }
+  return url;
+};
+
 export const getRarityColor = (rarity: RarityType) => {
   switch (rarity) {
     case 'common':
@@ -47,26 +85,25 @@ export const getRarityColor = (rarity: RarityType) => {
   }
 };
 
-
 export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
   switch (allianceId) {
-    case "equinox":
+    case 'equinox':
       return {
         id: allianceId,
-        name: "EQUINOX",
-        img: "/images/nodes/insignia/alliance_sigilC.png"
+        name: 'EQUINOX',
+        img: '/images/nodes/insignia/alliance_sigilC.png'
       };
-    case "federation":
+    case 'federation':
       return {
         id: allianceId,
-        name: "FEDERATION",
-        img: "/images/nodes/insignia/alliance_sigilA.png"
+        name: 'FEDERATION',
+        img: '/images/nodes/insignia/alliance_sigilA.png'
       };
-    case "vector_prime":
+    case 'vector_prime':
       return {
         id: allianceId,
-        name: "VECTOR PRIME",
-        img: "/images/nodes/insignia/alliance_sigilB.png"
+        name: 'VECTOR PRIME',
+        img: '/images/nodes/insignia/alliance_sigilB.png'
       };
   }
-}
+};

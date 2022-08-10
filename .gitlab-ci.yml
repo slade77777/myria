@@ -49,7 +49,7 @@ dev-deploy-1:
     - dev-build
 
 # Dev CD target 2
-dev-deploy-2:
+dev-deploy-b:
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev-b"'
   image:
@@ -72,6 +72,33 @@ dev-deploy-2:
     bucket_name: myria-dev-b.nonprod-myria.com
     artifacts_folder: apps/myria-main-dapp/out-dev
     cloudfront_id: E3JI3MT5BO66BZ
+  dependencies:
+    - dev-build
+
+# Dev CD target 3
+dev-deploy-c:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev-c"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: ['']
+  services:
+    - docker:dind
+  stage: dev-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # Deploy to S3 and invalidate Cloudfront Distributions
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-nonprod
+    region: us-east-1
+    bucket_name: myria-dev-c.nonprod-myria.com
+    artifacts_folder: apps/myria-main-dapp/out-dev
+    cloudfront_id: E1AJPQ621AM9J9
   dependencies:
     - dev-build
 
@@ -115,7 +142,7 @@ staging-deploy-1:
     - staging-build
 
 # Staging CD target 2
-staging-deploy-2:
+staging-deploy-b:
   rules:
     - if: '$CI_COMMIT_BRANCH == "staging-b"'
   image:
@@ -141,9 +168,36 @@ staging-deploy-2:
   dependencies:
     - staging-build
 
-# The below is legacy using the previous manually created bucket
 # Staging CD target 3
-staging-deploy-3-legacy:
+staging-deploy-c:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "staging-c"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: ['']
+  services:
+    - docker:dind
+  stage: staging-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # Deploy to S3 and invalidate Cloudfront Distributions
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-nonprod
+    region: us-east-1
+    bucket_name: myria-staging-c.nonprod-myria.com
+    artifacts_folder: apps/myria-main-dapp/out-staging
+    cloudfront_id: E3GPNS4QH6B5IZ
+  dependencies:
+    - staging-build
+
+# The below is legacy using the previous manually created bucket
+# Staging CD target 4
+staging-deploy-d-legacy:
   rules:
     - if: '$CI_COMMIT_BRANCH == "staging"'
   image:

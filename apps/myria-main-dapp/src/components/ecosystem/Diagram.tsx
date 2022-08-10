@@ -15,7 +15,12 @@ const Diagram: React.FC = () => {
         </Link>
       </div>
       <div className="hidden min-w-full justify-center sm:flex">
-        <Image src="/images/ecosystem/Blockchain_Diagram_v2.svg" alt="" width={1048} height={1148} />
+        <Image
+          src="/images/ecosystem/Blockchain_Diagram_v2.svg"
+          alt=""
+          width={1048}
+          height={1148}
+        />
       </div>
     </div>
   );

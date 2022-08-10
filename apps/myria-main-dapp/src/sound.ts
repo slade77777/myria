@@ -2,11 +2,11 @@ export enum SUPPORT_SOUND {
   SIGIL_HOVER = '/sounds/sigil.wav',
   SIGIL_SELECT = '/sounds/sigil_select.wav',
   SIGIL_DASHBOARD_BG = '/sounds/sigil_bg.mp3',
-  SIGIL_CLAIM_REWARD = '/sounds/claim_reward.wav',
+  SIGIL_CLAIM_REWARD = '/sounds/claim_reward.wav'
 }
 
 class SoundService {
-  private playing: { [id: string]: HTMLAudioElement }
+  private playing: { [id: string]: HTMLAudioElement };
   private mute: boolean;
 
   constructor() {
@@ -22,14 +22,14 @@ class SoundService {
     audio.loop = loop;
     audio.onended = () => {
       delete this.playing[audio.id];
-    }
+    };
     this.playing[audio.id] = audio;
     return audio;
   }
 
   setMuted(isMuted: boolean) {
     this.mute = isMuted;
-    Object.values(this.playing).forEach((audio) => audio.muted = isMuted);
+    Object.values(this.playing).forEach((audio) => (audio.muted = isMuted));
   }
 }
 

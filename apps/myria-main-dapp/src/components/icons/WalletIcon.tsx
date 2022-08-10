@@ -1,8 +1,14 @@
 import React from 'react';
 
-const WalletIcon: React.FC = () => {
+const WalletIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}>
       <path
         d="M8.66602 6.5H4.66602C4.39268 6.5 4.16602 6.27333 4.16602 6C4.16602 5.72667 4.39268 5.5 4.66602 5.5H8.66602C8.93935 5.5 9.16602 5.72667 9.16602 6C9.16602 6.27333 8.93935 6.5 8.66602 6.5Z"
         fill="white"

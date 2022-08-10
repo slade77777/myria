@@ -1,4 +1,4 @@
-import { IAbstractConnectorOptions } from "../../helpers";
+import { IAbstractConnectorOptions } from '../../helpers';
 
 export interface IVenlyConnectorOptions extends IAbstractConnectorOptions {
   clientId: string;
@@ -14,18 +14,16 @@ const ConnectToVenly = (Venly: any, opts: IVenlyConnectorOptions) => {
           clientId: opts.clientId,
           secretType: opts.secretType || 'ETHEREUM',
           environment: opts.environment,
-          signMethod: "POPUP"
+          signMethod: 'POPUP'
         };
-        const provider = await (window as any).Venly.createProviderEngine(
-          options
-        );
+        const provider = await (window as any).Venly.createProviderEngine(options);
         return resolve(provider);
       } catch (error) {
         console.error(error);
-        return reject(new Error("Failed to login to Venly"));
+        return reject(new Error('Failed to login to Venly'));
       }
     } else {
-      return reject(new Error("Please provide an Venly client id"));
+      return reject(new Error('Please provide an Venly client id'));
     }
   });
 };

@@ -28,8 +28,8 @@ const moduleExports = {
         domains: ['assets.myria.com']
       }
     : {
-      domains: ['assets-dev.nonprod-myria.com']
-    },
+        domains: ['assets-dev.nonprod-myria.com']
+      },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.po/,

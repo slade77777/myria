@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, ReactNode, memo } from 'react';
+import React, { useRef, useState, useEffect, ReactNode, memo, useCallback } from 'react';
 import { getRandomNumberByRange, sum, square } from './tool';
 import styles from './styles.module.css';
 import clsx from 'clsx';
@@ -181,13 +181,13 @@ const Verify = ({
     blockCtx.putImageData(ImageData, 0, y1);
   };
 
-  const initImg = () => {
+  const initImg = useCallback(() => {
     const img = createImg(() => {
       setLoading(false);
       draw(img);
     });
     imgRef.current = img;
-  };
+  }, [createImg, draw]);
 
   const reset = () => {
     const canvasCtx = canvasRef.current.getContext('2d');
@@ -273,7 +273,7 @@ const Verify = ({
     if (visible) {
       imgRef.current ? reset() : initImg();
     }
-  }, [visible]);
+  }, [visible, initImg, reset]);
 
   return (
     <div

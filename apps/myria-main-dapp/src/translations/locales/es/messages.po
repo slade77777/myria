@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: es\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: src/components/home/Hero.tsx:192
 msgid "$MYRIA Token"
@@ -23,11 +29,11 @@ msgstr ""
 "Garantías de seguridad de nivel 100% Ethereum; al mismo tiempo que aumenta la velocidad y el rendimiento de las transacciones\n"
 ""
 
-#: src/pages/nodes/index.tsx:128
+#: src/pages/nodes/index.tsx:135
 msgid "2 CPU Cores"
 msgstr "2 núcleos de CPU"
 
-#: src/pages/nodes/index.tsx:131
+#: src/pages/nodes/index.tsx:138
 msgid "60 GB Disk Space"
 msgstr "60 GB de espacio en disco"
 
@@ -55,13 +61,13 @@ msgstr "<0>Cambios en el Aviso de Privacidad:</0> Le recomendamos que revise reg
 msgid "<0>Contact Us</0>: Please contact the Issuer Group if You have any questions about this Privacy Notice, the personal data we hold about You or to discuss Your rights under applicable law."
 msgstr "<0>Contacte con nosotros</0>: Por favor, ponte en contacto con el Grupo Emisor en caso de que tengas alguna pregunta sobre este Aviso de Privacidad, sobre los datos personales que tenemos de ti o para discutir tus derechos bajo la legislación aplicable."
 
-#: src/hooks/useGamesData.tsx:391
+#: src/hooks/useGamesData.tsx:395
 msgid "<0>If it’s yours, it stays yours</0> - You’ve worked hard to build that neat graveyard farm for two whole days and now it’s yours to stay… forever!"
 msgstr ""
 "<0>Si es tuyo, sigue siendo tuyo</0> - Trabajaste duro para construir ese cementerio de granja durante dos días enteros y ahora es tuyo para quedártelo... ¡para siempre!\n"
 ""
 
-#: src/pages/nodes/index.tsx:64
+#: src/pages/nodes/index.tsx:71
 msgid "<0>In order to run any blockchain, including the Myria chain, nodes are required for verification of network transactions. Nodes in the Myria ecosystem will be used for a variety of network-supporting activities including initial test networks, block production and validation.</0><1>In addition to their role as potential validators, node owners will also be asked to - and rewarded for auxiliary blockchain network functions as the Myria ecosystem becomes more advanced. These include the need for decentralized storage of certain critical information in the Myria ecosystem, oracles, governance voting, as well as voting on game-specific concepts.</1>"
 msgstr "<0>Para que funcione la cadena de bloques, incluida la cadena Myria, se necesitan nodos para verificar las transacciones de la red. Los nodos del ecosistema Myria se utilizarán para una variedad de actividades de apoyo a la red, incluyendo las redes de prueba iniciales, la producción de bloques y la validación.</0><1>Además de su papel como validadores potenciales, también se pedirá a los propietarios de los nodos -y se les recompensará- que realicen funciones auxiliares de la red blockchain a medida que el ecosistema Myria vaya avanzando. Entre ellas se encuentran la necesidad de almacenamiento descentralizado de cierta información crítica en el ecosistema Myria, los oráculos, la votación de gobernanza, así como la votación de conceptos específicos del juego.</1>"
 
@@ -69,7 +75,7 @@ msgstr "<0>Para que funcione la cadena de bloques, incluida la cadena Myria, se 
 msgid "<0>Interoperable</0> & Interconnected NFTs"
 msgstr "NFTs <0>Interoperables</0> e Interconectados"
 
-#: src/pages/nodes/index.tsx:84
+#: src/pages/nodes/index.tsx:91
 msgid "<0>Myria node operators will receive daily $MYRIA token rewards for the nodes work.</0><1>Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members.</1><2>Reputation scores will be determined by the playing activity of node owners, the number of tokens they own and stake, previous uptime metrics, and their history of network support (e.g. validation or oracle provider).</2>"
 msgstr "<0>Los operadores de nodos Myria recibirán recompensas diarias de tokens $MYRIA por el funcionamiento de los nodos.</0><1>Los propietarios de nodos también serán recompensados con drops de NFTs y tokens en base a su puntuación por reputación como operadores de nodos y miembros de la comunidad en general.</1><2>Las puntuaciones de reputación se determinarán por la actividad de juego de los propietarios de nodos, el número de tokens que posean y apuesten, las métricas de tiempo de actividad anteriores y su historial de apoyo a la red (por ejemplo, proveedor de validaciones u oráculos).</2>"
 
@@ -81,7 +87,7 @@ msgstr "<0>Una vez que los Sigils estén activos, se acuñarán directamente en 
 msgid "<0>Personal data</0>: By virtue of acquiring Products, the Issuer Group and certain other service providers and their respective Affiliates and delegates (the “<1>Authorised Entities</1>”) may collect, record, store, transfer and otherwise process personal data by which individuals may be directly or indirectly identified. We may combine personal data that You provide to us with personal data that we collect from or about You. This may include personal data collected in an online or offline context including from credit reference agencies and other available public databases or data sources, such as news outlets, websites and other media sources and international sanctions lists. It may also include data which, when aggregated with other data, enables an individual to be identified, such as an IP address and geolocation data."
 msgstr "<0>Datos personales</0>: Con motivo de la adquisición de los Productos, el Grupo Emisor y otros proveedores de servicios, y sus respectivos Afiliados y delegados (las \"<1>Entidades Autorizadas</1>\") podrán recopilar, registrar, almacenar, transferir y tratar de otro modo datos personales mediante los cuales las personas puedan ser identificadas directa o indirectamente. Podremos combinar los datos personales que nos proporcione con los datos personales que recopilemos de usted o sobre usted. Esto puede comprender datos personales recogidos dentro de un contexto en línea o fuera de línea, incluyendo los procedentes de agencias de referencia crediticia y otras bases de datos o fuentes de datos públicas disponibles, como medios de comunicación, sitios web y otras fuentes de medios de comunicación y listas de sanciones internacionales. También pueden incluir datos que, agregados a otros datos, permiten identificar a una persona, como una dirección IP y datos de geolocalización."
 
-#: src/hooks/useGamesData.tsx:384
+#: src/hooks/useGamesData.tsx:388
 msgid "<0>Play and earn</0> - Convert your score and time spent into tangible rewards (when Beta kicks in). Addictive fun aside, not a single day of gameplay will be time wasted."
 msgstr ""
 "<0>Juega y gana</0> - Convierte tu puntuación y el tiempo empleado en recompensas tangibles (cuando comience la versión beta). Además de la diversión adictiva, no se desperdiciará ningún día de juego.\n"
@@ -93,7 +99,7 @@ msgstr ""
 "<0>Juega</0> y gana <1/> recompensas y NFT\n"
 ""
 
-#: src/hooks/useGamesData.tsx:397
+#: src/hooks/useGamesData.tsx:401
 msgid "<0>Resourcefulness rules!</0> - Overcome your competition with the best strategy and become the master of Moonville."
 msgstr ""
 "<0>¡Reglas del ingenio!</0> - Supera a tu competencia con la mejor estrategia y conviértete en el maestro de Moonville.\n"
@@ -121,7 +127,7 @@ msgstr ""
 msgid "<0>Why is Your personal data processed</0>: The storage, processing and use of personal data by the Issuer Group will take place for lawful purposes, including:"
 msgstr "<0>Por qué se procesan sus datos personales</0>: El almacenamiento, el procesamiento y la utilización de los datos personales por parte del Grupo Emisor se llevarán a cabo con fines lícitos, incluyendo:"
 
-#: src/pages/nodes/index.tsx:114
+#: src/pages/nodes/index.tsx:121
 msgid "<0>You can choose whether you prefer to run your node in the cloud or locally.</0><1>Myria node software will be available to download on Windows, Mac and Linux. Our node operation is not heavily resource-intensive like traditional cryptocurrency mining. You’ll be able to run our node software from your home computer with the following minimum requirements:</1>"
 msgstr ""
 "<0>Tiene la opción de ejecutar su nodo localmente o en la nube.</0><1>El software del nodo Myria estará disponible para descargar para usuarios de Windows, Mac y Linux. A diferencia de la minería de bitcoin tradicional, nuestra operación de nodo no requiere muchos recursos. Podrá ejecutar nuestro software de nodo en la computadora de su hogar con los siguientes requisitos mínimos:</1>\n"
@@ -131,11 +137,15 @@ msgstr ""
 msgid "<0>Your rights:</0> You may have certain rights under applicable law, including:"
 msgstr "<0>Sus derechos:</0> Puede tener ciertos derechos en virtud de la legislación aplicable, incluyendo:"
 
+#: src/components/marketplace/HotCollection/index.tsx:52
+msgid "<0>{0} </0>"
+msgstr ""
+
 #: src/pages/studios_no.tsx:187
 msgid "A <0>decentralized ecosystem</0> of blockchain games and worlds"
 msgstr "Un <0>ecosistema descentralizado</0> de juegos y mundos de blockchain"
 
-#: src/pages/nodes/index.tsx:137
+#: src/pages/nodes/index.tsx:144
 msgid "A Stable Internet Connection"
 msgstr "Una conexión a Internet estable"
 
@@ -143,13 +153,13 @@ msgstr "Una conexión a Internet estable"
 msgid "A battle-royale shooter game"
 msgstr "Un juego de disparos battle-royale"
 
-#: src/hooks/useGamesData.tsx:329
+#: src/hooks/useGamesData.tsx:333
 msgid "A competitive play-and-earn tycoon farming simulator."
 msgstr ""
 "Un simulador de agricultura magnate competitivo de jugar y ganar.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:37
+#: src/hooks/useGamesData.tsx:41
 msgid "A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory."
 msgstr ""
 "Mientras saltas, caes y derribas a tus amigos y oponentes en este divertidísimo juego multijugador, tus bandos se dividirán. Lucha a través de paisajes cada vez más extraños para ganar un lugar en el salón de la fama.\n"
@@ -175,22 +185,21 @@ msgstr "Un juego de carreras de go-karts multijugador"
 msgid "A multiplayer obstacle course game"
 msgstr "Un juego de carreras de obstáculos multijugador"
 
-#: src/hooks/useGamesData.tsx:360
+#: src/hooks/useGamesData.tsx:364
 msgid "A rewarding experience"
 msgstr ""
 "Una experiencia gratificante\n"
 ""
 
 #: src/components/Footer.tsx:92
-#: src/components/Header/linkSources.tsx:64
 msgid "About"
 msgstr "Acerca de"
 
-#: src/hooks/useGamesData.tsx:66
-#: src/hooks/useGamesData.tsx:142
-#: src/hooks/useGamesData.tsx:221
-#: src/hooks/useGamesData.tsx:280
-#: src/hooks/useGamesData.tsx:353
+#: src/hooks/useGamesData.tsx:70
+#: src/hooks/useGamesData.tsx:146
+#: src/hooks/useGamesData.tsx:225
+#: src/hooks/useGamesData.tsx:284
+#: src/hooks/useGamesData.tsx:357
 msgid "About the game"
 msgstr ""
 "Sobre el juego\n"
@@ -217,6 +226,11 @@ msgstr ""
 "¿Ya tienes una cuenta?\n"
 ""
 
+#: src/components/marketplace/PurchasePopover/index.tsx:39
+#: src/components/marketplace/PurchasePopover/index.tsx:77
+msgid "Amount"
+msgstr ""
+
 #: src/pages/for-studios.tsx:82
 msgid "An end-to-end solution for token-based game economies and NFTs that benefits the community"
 msgstr "Una solución integral para las economías de juego basadas en tokens y NFTs que beneficia a la comunidad"
@@ -225,7 +239,7 @@ msgstr "Una solución integral para las economías de juego basadas en tokens y 
 msgid "An objective-based shooter game"
 msgstr "Un juego de disparos basado en objetivos"
 
-#: src/pages/nodes/index.tsx:134
+#: src/pages/nodes/index.tsx:141
 msgid "An x86/X64 Processor"
 msgstr "Un procesador x86/X64"
 
@@ -243,13 +257,17 @@ msgstr ""
 "Arquitectura\n"
 ""
 
-#: src/hooks/useGamesData.tsx:145
+#: src/hooks/useGamesData.tsx:149
 msgid "Are you ready for a crazy ride that is nothing short of hilarious? Hop into your shiny kart and race till your wheels burn. Can you handle the heat and destroy your opponents before they throw you off the track?"
 msgstr "¿Estás listo para un viaje loco que es nada menos que hilarante? Súbete a tu brillante kart y corre hasta que se te quemen los neumáticos. ¿Puedes manejar el calor y destruir a tus oponentes antes de que te saquen de la pista?"
 
 #: src/components/Purchase/Modals/PrivacyPolicyModal.tsx:117
 msgid "As a data controller, we will only use Your personal data for the purposes for which we collected it as set out in this Privacy Notice. If we need to use Your personal data for an unrelated purpose, we will contact You. In certain circumstances, we may share Your personal data with regulatory, prosecuting and other governmental agencies or departments, and parties to litigation (whether pending or threatened), in any country or territory."
 msgstr "En calidad de responsables del tratamiento de datos, únicamente utilizaremos sus datos personales para los fines para los que los hemos recogido, según se establece en el presente Aviso de Privacidad. En caso de que necesitemos utilizar sus datos personales para un fin no relacionado, contactaremos con usted. En determinadas circunstancias, podremos compartir sus datos personales con organismos o departamentos reguladores, fiscales y otros organismos gubernamentales, y con las partes de un litigio (ya sea pendiente o amenazado), en cualquier país o territorio."
+
+#: src/components/marketplace/AssetDetails/index.tsx:207
+msgid "Assets remain in your wallet when you list on Myria Marketplace"
+msgstr ""
 
 #: src/components/interop/DesktopInterop.tsx:227
 #: src/components/interop/MobileInterop.tsx:131
@@ -261,6 +279,10 @@ msgid "At least 8 characters—the more characters, the better"
 msgstr ""
 "Al menos 8 caracteres—cuantos más caracteres, mejor\n"
 ""
+
+#: src/components/marketplace/AssetDetails/index.tsx:104
+msgid "Attributes"
+msgstr ""
 
 #: src/components/Video/Setting.tsx:19
 msgid "Autoplay"
@@ -285,11 +307,15 @@ msgstr ""
 ""
 
 #: src/components/BuyANode.tsx:6
-#: src/pages/nodes/index.tsx:288
+#: src/pages/nodes/index.tsx:293
 msgid "BUY A NODE"
 msgstr "COMPRAR UN NODO"
 
-#: src/hooks/useGamesData.tsx:240
+#: src/components/marketplace/AssetDetails/index.tsx:248
+msgid "BUY NOW"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:244
 msgid "Battle with style!"
 msgstr ""
 "¡Lucha con estilo!\n"
@@ -308,7 +334,7 @@ msgstr ""
 "Conviértase en propietario de un nodo Myria y reciba recompensas\n"
 ""
 
-#: src/pages/nodes/index.tsx:281
+#: src/pages/nodes/index.tsx:286
 msgid "Become an integral part of the Myria ecosystem and reap the benefits of your contribution. Early founder node operators receive preferential pricing, which increases as nodes are sold."
 msgstr "Conviértase en una parte integral del ecosistema de Myria y coseche los beneficios de su contribución. Los primeros operadores de nodos fundadores reciben un precio preferencial, que aumenta a medida que se venden los nodos."
 
@@ -326,13 +352,17 @@ msgstr "Infraestructura Blockchain para estudios de juegos"
 msgid "Blockchain platform for game studios"
 msgstr "Plataforma Blockchain para estudios de juegos"
 
+#: src/components/Header/linkSources.tsx:37
+msgid "Build with myria"
+msgstr ""
+
 #: src/components/for-developers/BuildYourBlockchain.tsx:82
 msgid "Build your blockchain game with Myria"
 msgstr ""
 "Construye tu juego de blockchain con Myria\n"
 ""
 
-#: src/hooks/useGamesData.tsx:366
+#: src/hooks/useGamesData.tsx:370
 msgid "Build, upgrade, and earn!"
 msgstr ""
 "¡Construye, mejora y gana!\n"
@@ -344,9 +374,17 @@ msgstr ""
 "Creación de una red descentralizada y sin permisos\n"
 ""
 
-#: src/pages/nodes/index.tsx:103
+#: src/components/marketplace/AssetDetails/AssetDetailTab/index.tsx:87
+msgid "Buy now"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:110
 msgid "Buying a node license will give the owner the right to run the node (either locally or in the cloud) and receive rewards as determined by governance."
 msgstr "La compra de una licencia de nodo dará al propietario el derecho a ejecutar el nodo (ya sea localmente o en la nube) y a recibir las recompensas que determine la gobernanza."
+
+#: src/components/marketplace/PurchasePopover/index.tsx:50
+msgid "CANCEL"
+msgstr ""
 
 #: src/components/sigil/RewardItem.tsx:73
 msgid "CLAIM NOW"
@@ -370,13 +408,17 @@ msgstr ""
 "RECOGER AHORA\n"
 ""
 
-#: src/components/games/GameList.tsx:157
+#: src/components/games/GameList.tsx:170
 #: src/components/home/Hero.tsx:115
 #: src/components/home/Hero.tsx:189
 msgid "COMING SOON"
 msgstr ""
 "PRÓXIMAMENTE\n"
 ""
+
+#: src/components/marketplace/PurchasePopover/index.tsx:62
+msgid "CONFIRM"
+msgstr ""
 
 #: src/components/sigil/LinkWalletConfirmModal.tsx:37
 #: src/components/sigil/Welcome.tsx:140
@@ -404,11 +446,10 @@ msgstr ""
 ""
 
 #: src/components/Footer.tsx:104
-#: src/components/Header/linkSources.tsx:74
 msgid "Careers"
 msgstr "Carreras profesionales"
 
-#: src/hooks/useGamesData.tsx:290
+#: src/hooks/useGamesData.tsx:294
 msgid "Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?"
 msgstr ""
 "Al comienzo de la ronda, seleccione cuidadosamente el equipo apropiado. Depende de ti si quieres disparar a tus oponentes desde lejos o quemar todo el nivel hasta los cimientos. - Es tu elección. ¿Tienes lo que se necesita para ser el maestro de la destrucción?\n"
@@ -426,25 +467,25 @@ msgstr ""
 "¡Elegir sabiamente!\n"
 ""
 
-#: src/hooks/useGamesData.tsx:242
+#: src/hooks/useGamesData.tsx:246
 msgid "Choose the best outfit that expresses your inner self. Unlock and collect multiple cosmetic skins and items that will carry across other games as interoperable NFTs."
 msgstr ""
 "Elige el atuendo que mejor represente tu ser interior. Desbloquee y recolecte una variedad de máscaras y elementos cosméticos que se pueden usar en otros juegos como NFT.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:87
+#: src/hooks/useGamesData.tsx:91
 msgid "Choose the best outfit that expresses your personality. Unlock and collect multiple cosmetic skins and items that will carry over to other games as interoperable NFTs."
 msgstr ""
 "Elige el atuendo que mejor exprese tu personalidad. Desbloquee y recolecte una variedad de máscaras y elementos cosméticos que se pueden usar en otros juegos como NFT.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:81
+#: src/hooks/useGamesData.tsx:85
 msgid "Choose the game mode that best suits your playstyle and fight for your right to party! Play alone or with friends and collect endless rewards."
 msgstr ""
 "¡Elige el modo de juego que mejor se adapte a tu estilo de juego y lucha por tu derecho a la fiesta! Juega solo o con amigos para ganar infinitas recompensas.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:234
+#: src/hooks/useGamesData.tsx:238
 msgid "Choose your champion"
 msgstr ""
 "Elige tu campeón\n"
@@ -480,7 +521,7 @@ msgstr ""
 "Recoge RECOMPENSAS\n"
 ""
 
-#: src/hooks/useGamesData.tsx:159
+#: src/hooks/useGamesData.tsx:163
 msgid "Combine the right amount of acceleration, handling, and looks to nail the right recipe for the current track. You can also sprinkle in a bit of armour – just to play it safe – because, as my grandma always says, “if you ain’t ready for some rockets down the road, boy, you better come home!”"
 msgstr ""
 "Combine la cantidad correcta de aceleración, manejo y apariencia para lograr la receta correcta para la pista actual. También puedes espolvorear un poco de armadura, solo para ir a lo seguro, porque, como siempre dice mi abuela, \"si no estás listo para algunos cohetes en el camino, chico, ¡es mejor que vuelvas a casa!\"\n"
@@ -491,10 +532,10 @@ msgid "Coming Soon"
 msgstr "Próximamente"
 
 #: src/components/Header/linkSources.tsx:91
-msgid "Community"
-msgstr "Comunidad"
+#~ msgid "Community"
+#~ msgstr "Comunidad"
 
-#: src/hooks/useGamesData.tsx:79
+#: src/hooks/useGamesData.tsx:83
 msgid "Compete, survive, win and earn!"
 msgstr "¡Compite, sobrevive, gana y obtener"
 
@@ -503,6 +544,10 @@ msgid "Complete"
 msgstr ""
 "Completo\n"
 ""
+
+#: src/components/marketplace/PurchasePopover/index.tsx:34
+msgid "Complete checkout"
+msgstr ""
 
 #: src/pages/for-developers/solution.tsx:28
 msgid "Complete privacy, not only from other users, but also from the Operator."
@@ -552,6 +597,7 @@ msgstr ""
 "Conéctese a su cartera para unirse a Myriaverse\n"
 ""
 
+#: src/components/Header/DesktopHeader.tsx:225
 #: src/components/nodes/Header.tsx:171
 msgid "Connect wallet"
 msgstr ""
@@ -578,6 +624,10 @@ msgstr "Contacta con nosotros"
 msgid "Contact us"
 msgstr "Contacta con nosotros"
 
+#: src/components/marketplace/AssetDetails/AssetDetailTab/index.tsx:104
+msgid "Contract Address"
+msgstr ""
+
 #: src/components/sigil/Dashboard/MissionV2.tsx:88
 msgid "Copy invite link"
 msgstr "Copiar enlace de invitación"
@@ -587,6 +637,10 @@ msgid "Creating the new standard for blockchain games and experiences"
 msgstr ""
 "Creando el nuevo estándar para juegos y experiencias blockchain\n"
 ""
+
+#: src/components/marketplace/AssetDetails/AssetDetailTab/index.tsx:119
+msgid "Creator Fees"
+msgstr ""
 
 #: src/components/home/Hero.tsx:168
 #: src/pages/cricket.tsx:96
@@ -605,13 +659,18 @@ msgstr ""
 "Aperturas Actuales\n"
 ""
 
-#: src/hooks/useGamesData.tsx:374
+#: src/components/marketplace/AssetDetails/index.tsx:217
+#: src/components/marketplace/AssetDetails/index.tsx:239
+msgid "Current price"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:378
 msgid "Customize your Moon Village with a range of cosmetic skins for various buildings and crew. These skins are NFTs, therefore remain yours forever, and are reusable across games."
 msgstr ""
 "Elija entre una variedad de máscaras cosméticas para varios edificios y miembros de la tripulación para personalizar su Moon Village. Estas máscaras son NFT, lo que significa que son tuyas para siempre y se pueden usar en varios juegos.\n"
 ""
 
-#: src/pages/nodes/index.tsx:22
+#: src/pages/nodes/index.tsx:29
 msgid "Daily $MYRIA token rewards"
 msgstr "Recompensas diarias del token $MYRIA"
 
@@ -627,21 +686,22 @@ msgstr ""
 "Fecha de Registro\n"
 ""
 
-#: src/pages/nodes/index.tsx:188
+#: src/pages/nodes/index.tsx:193
 msgid "Decentralize the network by providing computing resources"
 msgstr "Descentralizar la red proporcionando recursos informáticos"
 
-#: src/pages/nodes/index.tsx:154
+#: src/pages/nodes/index.tsx:161
 msgid "Details will be announced soon."
 msgstr "Los detalles se anunciarán pronto."
 
+#: src/components/Header/DesktopHeader.tsx:212
 #: src/components/nodes/Header.tsx:158
 msgid "Disconnect"
 msgstr ""
 "Desconectar\n"
 ""
 
-#: src/hooks/useGamesData.tsx:224
+#: src/hooks/useGamesData.tsx:228
 msgid "Dive in, we dare you. You’ll find yourself gracefully descending from the sky while you survey the lands to select your ideal landing spot. Enjoy that moment of peace, because once your feet touch the ground you’ll be plunged into an intense battle for loot and powerful equipment.As expected, life in this world ain’t easy, and at given intervals of time the playable area of the map will shrink, pushing you closer to your enemies. Needless to say, they ain’t waiting for you in a bed of roses, so be prepared!"
 msgstr ""
 "Te retamos a bucear. Descenderás con gracia del cielo mientras examinas el paisaje en busca del lugar perfecto para aterrizar. Aprovecha este breve respiro, porque tan pronto como tus pies toquen el suelo, te lanzarás a una feroz batalla por poderosos objetos y armas. Como era de esperar, la vida en este mundo no es fácil y el área jugable del mapa disminuirá con el tiempo, acercándote a tus enemigos. No te estarán esperando en un lecho de rosas, ¡así que prepárate!\n"
@@ -659,13 +719,13 @@ msgstr ""
 "¿Todavía no tienes una cartera? <0/>Instala la Metamask a continuación.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:114
+#: src/hooks/useGamesData.tsx:118
 msgid "Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse."
 msgstr ""
 "En una carrera hacia la línea de meta, recorre emocionantes pistas. Diviértete disparando a tus oponentes y causando estragos por todos lados para acumular puntos extra y subir en las tablas de clasificación. Sumérgete en nuestros muchos modos de juego y pistas para ganarte el lugar que te corresponde entre las leyendas de las carreras de Myriaverse.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:151
+#: src/hooks/useGamesData.tsx:155
 msgid "Drift it up!"
 msgstr "¡A la deriva!"
 
@@ -675,7 +735,7 @@ msgstr ""
 "Equinox está impulsado por el deseo de aprender y recopilar toda la información que pueda tener en sus manos. Debe haber una solución para la paz en algún lugar de todos estos datos. Tú puedes ser el que resuelva el rompecabezas.\n"
 ""
 
-#: src/pages/nodes/index.tsx:37
+#: src/pages/nodes/index.tsx:44
 msgid "Each node is allowed to vote on proposed changes to the Myria chain and nodes will also hold greater voting power throughout the Myriaverse"
 msgstr "Cada nodo puede votar sobre los cambios propuestos en la cadena Myria y los nodos también tendrán mayor poder de voto en todo el Myriaverse"
 
@@ -720,14 +780,13 @@ msgstr ""
 msgid "Earn {point} points when you send your first message on any Myria Discord channel"
 msgstr "Gana {point} puntos por enviar tu primer mensaje en cualquier canal de Myria Discord"
 
-#: src/hooks/useGamesData.tsx:355
+#: src/hooks/useGamesData.tsx:359
 msgid "Easy to play, difficult to master. Select the right terrain to base your industrial revolution. Choose wisely, as this will determine the types of resources and production opportunities available to you. Make sure to look after your base in order to increase your score and climb the ranks. At the end of each tournament, the competition is reset, so don’t worry if you get it wrong the first time!"
 msgstr ""
 "Fácil de jugar, difícil de dominar. Seleccione el mejor terreno para tu revolución industrial. Elija sabiamente, ya que esto determinará los tipos de recursos y oportunidades de producción disponibles para usted. Asegúrate de cuidar tu base para aumentar tu puntuación y subir de rango. Al final de cada torneo, la competencia se reinicia, ¡así que no te preocupes si te equivocas la primera vez!\n"
 ""
 
 #: src/components/Footer.tsx:41
-#: src/components/Header/linkSources.tsx:15
 msgid "Ecosystem"
 msgstr "Ecosistema"
 
@@ -735,7 +794,7 @@ msgstr "Ecosistema"
 msgid "Education and support"
 msgstr "Educación y apoyo"
 
-#: src/hooks/useGamesData.tsx:193
+#: src/hooks/useGamesData.tsx:197
 msgid "Eliminate your opponents in this fast-paced-action-packed-survival game, to achieve victory and claim the spoils of war. There can be only one hero or team standing when the crimson curtain hits the ground."
 msgstr ""
 "Elimina a tus oponentes en este trepidante juego de supervivencia lleno de acción para ganar y reclamar el botín de guerra. Cuando cae el telón carmesí, solo puede quedar un héroe o equipo en pie.\n"
@@ -785,7 +844,7 @@ msgstr ""
 "Permitir una verdadera escalabilidad mientras se aprovecha la red Ethereum\n"
 ""
 
-#: src/hooks/useGamesData.tsx:73
+#: src/hooks/useGamesData.tsx:77
 msgid "Endless online fun"
 msgstr ""
 "Diversión en línea sin fin\n"
@@ -845,11 +904,11 @@ msgstr ""
 "Seguridad a nivel de Ethereum proporcionada por zk-STARKs\n"
 ""
 
-#: src/hooks/useGamesData.tsx:296
+#: src/hooks/useGamesData.tsx:300
 msgid "Every hero has three unique abilities, each requiring charges, as well as one ultimate ability that requires charging through kills, deaths, collectibles, or objectives. It’s easier than it sounds, and even funnier…"
 msgstr "Cada héroe tiene tres habilidades únicas, cada una de las cuales requiere cargas, así como una habilidad máxima que requiere cargar a través de asesinatos, muertes, coleccionables u objetivos. Es más fácil de lo que parece e incluso más divertido..."
 
-#: src/pages/nodes/index.tsx:49
+#: src/pages/nodes/index.tsx:56
 msgid "Exclusive NFTs"
 msgstr "NFTs exclusivos"
 
@@ -879,7 +938,7 @@ msgstr ""
 msgid "Fast transaction confirmation times provided by the L2 chain, while zk proofs and L1 data availability provide Ethereum-level security."
 msgstr "La cadena L2 proporciona tiempos rápidos de confirmación de transacciones, mientras que las pruebas zk y la disponibilidad de datos L1 brindan seguridad a nivel de Ethereum."
 
-#: src/hooks/useGamesData.tsx:378
+#: src/hooks/useGamesData.tsx:382
 msgid "Features"
 msgstr ""
 "Características\n"
@@ -926,8 +985,8 @@ msgstr ""
 msgid "Founded by leading gaming and blockchain industry veterans"
 msgstr "Fundado por los principales veteranos de la industria del juego y del blockchain"
 
-#: src/components/Header/DesktopHeader.tsx:137
-#: src/components/Header/MobileHeader.tsx:86
+#: src/components/Header/DesktopHeader.tsx:142
+#: src/components/Header/MobileHeader.tsx:81
 msgid "Free Sigil NFT"
 msgstr ""
 "Secreto NFT gratuito\n"
@@ -975,7 +1034,7 @@ msgstr "La jugabilidad es lo primero"
 
 #: src/components/Footer.tsx:14
 #: src/components/Footer.tsx:45
-#: src/components/Header/linkSources.tsx:22
+#: src/components/Header/linkSources.tsx:15
 #: src/components/nodes/NodesLayout.tsx:30
 msgid "Games"
 msgstr "Juegos"
@@ -1004,7 +1063,7 @@ msgstr ""
 "Tasa de gas\n"
 ""
 
-#: src/hooks/useGamesData.tsx:230
+#: src/hooks/useGamesData.tsx:234
 msgid "Gather and upgrade the best equipment on the battlefield. Collect power-ups and build combat facilities to overcome your foes. You can deal with this harsh reality alone or with your friends in a team of three."
 msgstr ""
 "Reúne y mejora el mejor equipo en el campo de batalla. Recoge potenciadores y construye instalaciones de combate para vencer a tus enemigos. Puedes manejar esta dura realidad solo o con tus amigos en un equipo de tres.\n"
@@ -1028,7 +1087,7 @@ msgstr ""
 "Empezar\n"
 ""
 
-#: src/pages/nodes/index.tsx:278
+#: src/pages/nodes/index.tsx:283
 msgid "Get a founders node today"
 msgstr "Consigue un nodo de fundadores hoy mismo"
 
@@ -1055,19 +1114,21 @@ msgstr ""
 "Crece con nosotros y disfruta de las recompensas. Una licencia de Myria Node le permite ejecutar un nodo desde la computadora de su hogar y contribuir al crecimiento de la red descentralizada. Por tu aporte, recibirás recompensas diarias y beneficios exclusivos como dueño de nodo.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:294
+#: src/hooks/useGamesData.tsx:298
 msgid "Heroes don’t all wear capes"
 msgstr ""
 "No todos los héroes usan capa\n"
 ""
 
-#: src/components/Header/linkSources.tsx:8
-#: src/components/Header/linkSources.tsx:44
 #: src/components/nodes/Sidebar.tsx:19
 msgid "Home"
 msgstr "Inicio"
 
-#: src/pages/nodes/index.tsx:101
+#: src/components/marketplace/HotCollection/index.tsx:28
+msgid "Hot Collections 🔥"
+msgstr ""
+
+#: src/pages/nodes/index.tsx:108
 msgid "How can I become a Myria node operator?"
 msgstr "¿Cómo puedo convertirme en operador de nodos Myria?"
 
@@ -1080,11 +1141,11 @@ msgstr "¿Cómo puedo convertirme en operador de nodos Myria?"
 msgid "How it works"
 msgstr "Cómo funciona"
 
-#: src/pages/nodes/index.tsx:163
+#: src/pages/nodes/index.tsx:170
 msgid "How many Myria node licenses will be released?"
 msgstr "¿Cuántas licencias de nodos Myria se pondrán a la venta?"
 
-#: src/pages/nodes/index.tsx:152
+#: src/pages/nodes/index.tsx:159
 msgid "How much will a Myria node license cost?"
 msgstr "¿Cuánto costará una licencia de nodo Myria?"
 
@@ -1108,7 +1169,7 @@ msgstr ""
 "Acabo de reclamar un Rare Alliance Sigil en Myria\n"
 ""
 
-#: src/pages/game-detail/[id].tsx:121
+#: src/pages/game-detail/[id].tsx:125
 msgid "IN DEVELOPMENT"
 msgstr ""
 "EN DESARROLLO\n"
@@ -1122,13 +1183,13 @@ msgstr "Si usted es titular de un producto nominativo o una entidad corporativa,
 msgid "If you want to make a real impact in gaming and blockchain, join us at Myria. We’re scouring the world for the best and brightest to join our rapidly growing company."
 msgstr "Si quiere tener un impacto real en el juego y la blockchain, únase a nosotros en Myria. Estamos recorriendo el mundo en busca de los mejores y más brillantes para unirse a nuestra empresa de rápido crecimiento."
 
-#: src/hooks/useGamesData.tsx:147
+#: src/hooks/useGamesData.tsx:151
 msgid "In this lawless racing game, you’ll need to do whatever it takes to thwart your rivals’ attempts at reaching the finish line before you. Choosing the optimal combination of driver and kart parts could be the difference between triumph and defeat. But don’t worry if your ride isn’t souped-up, you still have your shot at 1st place. Just make good use of the vicious power-ups scattered around the track to literally blast your competition into oblivion!"
 msgstr ""
 "En este juego de carreras sin ley, deberás hacer lo que sea necesario para frustrar los intentos de tus rivales de llegar a la meta antes que tú. Elegir la combinación ideal de piezas de conductor y kart puede ser la diferencia entre el triunfo y la derrota. Pero no te preocupes si tu viaje no tiene turbo, todavía tienes tu oportunidad de quedar en primer lugar. ¡Solo haz un buen uso de los poderosos potenciadores repartidos por la pista para literalmente hacer estallar a tu competencia en el olvido!\n"
 ""
 
-#: src/hooks/useGamesData.tsx:69
+#: src/hooks/useGamesData.tsx:73
 msgid "In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later."
 msgstr ""
 "Los visitantes de esta parte de Myriaverse se transforman en Bobble-Heads. Esto está de acuerdo con los términos de uso de este mundo y las leyes del metaverso que solo pueden romper los administradores misteriosos... pero hablaremos de eso más adelante.\n"
@@ -1170,13 +1231,13 @@ msgstr ""
 "Alcance y cree instantáneamente una comunidad de jugadores comprometidos de evangelistas en torno a su proyecto a través de la plataforma Myria y los socios de la red.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:228
+#: src/hooks/useGamesData.tsx:232
 msgid "Intense battle to the very end"
 msgstr ""
 "Intensa batalla hasta el final.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:302
+#: src/hooks/useGamesData.tsx:306
 msgid "Interoperability FTW! Yes, we’ve got you covered - you can bring those crazy skins, sprays, hats, and every other exclusive NFT you’ve gathered along your journey through the Myriaverse. The last thing I want to see on the battlefield is tie-dye tights, but hey – it’s your party after all!"
 msgstr ""
 "¡FTW para la interoperabilidad! Sí, puede llevar consigo esas máscaras locas, aerosoles, sombreros y todos los demás NFT exclusivos que ha recolectado en su viaje a través de Myriaverse. Lo último que quiero ver en el campo de batalla son mallas teñidas, pero bueno, ¡es tu fiesta después de todo!\n"
@@ -1205,13 +1266,13 @@ msgstr ""
 msgid "Invite your friends to Myria by sharing the following link with them."
 msgstr "Invita a tus amigos a Myria compartiendo el siguiente enlace con ellos."
 
-#: src/hooks/useGamesData.tsx:75
+#: src/hooks/useGamesData.tsx:79
 msgid "It was a calm day in the land of candy hammers and fiery strawberry lakes when a mysterious portal suddenly spawned a roaring crowd of brave players. Ready to rock, they started to roll down the hill of chocolate donuts in a chaotic race for the win."
 msgstr ""
 "Un portal misterioso generó una multitud de jugadores valientes en un día tranquilo en la tierra de los martillos de caramelo y estanques de fresas ardientes. Listos para rockear, comenzaron a descender por la colina de donas de chocolate en una caótica carrera por la victoria.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:157
+#: src/hooks/useGamesData.tsx:161
 msgid "It’s all in your hands"
 msgstr ""
 "Todo esta en tus manos\n"
@@ -1219,11 +1280,11 @@ msgstr ""
 
 #: src/components/ComingSoon.tsx:59
 #: src/components/FirstTimeVisitModal.tsx:49
-#: src/components/Header/DesktopHeader.tsx:151
-#: src/components/Header/MobileHeader.tsx:55
-#: src/components/Header/MobileHeader.tsx:98
+#: src/components/Header/DesktopHeader.tsx:156
+#: src/components/Header/MobileHeader.tsx:50
+#: src/components/Header/MobileHeader.tsx:93
 #: src/components/NotiBanner.tsx:49
-#: src/pages/game-detail/[id].tsx:138
+#: src/pages/game-detail/[id].tsx:143
 msgid "JOIN DISCORD"
 msgstr "ÚNETE AL DISCORD"
 
@@ -1242,10 +1303,10 @@ msgid "JOIN {sigilName}"
 msgstr "Únete a {sigilName}"
 
 #: src/components/Header/linkSources.tsx:79
-msgid "Jobs"
-msgstr ""
-"Trabajo\n"
-""
+#~ msgid "Jobs"
+#~ msgstr ""
+#~ "Trabajo\n"
+#~ ""
 
 #: src/components/JoinMyriaCard.tsx:14
 msgid "Join MYRIA"
@@ -1275,7 +1336,7 @@ msgstr ""
 msgid "Join the Federation alongside mercenaries, militants, and anyone with a weapon and the desire to knock the Rift back to where it came from. There might be a place for you here, if you’re dedicated enough to fight until the very end."
 msgstr "Únete a la Federación junto a mercenarios, militantes y cualquiera que tenga un arma y el deseo de recuperar el Rift de donde vino. Podría haber un lugar para ti aquí, si eres lo suficientemente dedicado para luchar hasta el final."
 
-#: src/hooks/useGamesData.tsx:283
+#: src/hooks/useGamesData.tsx:287
 msgid "Just make sure you’re still alive till the end of the round or you’ll be spectating from the sidelines. And that means nobody will be able to appreciate your cute hot-dog suit that you’ve just brought over from a zany skirmish in the Metarush world."
 msgstr ""
 "Solo asegúrate de llegar al final de la ronda o estarás mirando desde un costado. Eso significa que nadie podrá apreciar tu adorable disfraz de perrito caliente, que acabas de traer de una escaramuza loca de Metarush.\n"
@@ -1291,6 +1352,10 @@ msgid "LINK WALLET"
 msgstr ""
 "LINK DE LA CARTERA\n"
 ""
+
+#: src/components/marketplace/AssetDetails/index.tsx:201
+msgid "LIST ITEM FOR SALE"
+msgstr ""
 
 #: src/components/sigil/Welcome.tsx:128
 msgid "LOGGING IN"
@@ -1364,7 +1429,7 @@ msgid "Locked"
 msgstr "Bloqueado"
 
 #: src/components/ForgotPassword/ForgotPassword.tsx:63
-#: src/components/Header/MobileHeader.tsx:74
+#: src/components/Header/MobileHeader.tsx:69
 #: src/context/authentication.tsx:103
 msgid "Log in"
 msgstr ""
@@ -1397,7 +1462,11 @@ msgstr ""
 "CONVERTIR SELECCIONADO\n"
 ""
 
-#: src/hooks/useGamesData.tsx:372
+#: src/components/marketplace/AssetDetails/index.tsx:226
+msgid "MODIFY LISTING"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:376
 msgid "Make it out of this world!"
 msgstr ""
 "Hazlo extremadamente agradable\n"
@@ -1415,11 +1484,20 @@ msgstr ""
 "Administre su escaparate y mercado digital\n"
 ""
 
+#: src/components/marketplace/AssetDetails/index.tsx:194
+msgid "Market Status"
+msgstr ""
+
 #: src/components/for-developers/Myria.tsx:52
 msgid "Market your project across our platforms"
 msgstr ""
 "Comparte tu proyecto en nuestras plataformas\n"
 ""
+
+#: src/components/Header/linkSources.tsx:8
+#: src/pages/marketplace/index.tsx:28
+msgid "Marketplace"
+msgstr ""
 
 #: src/components/nodes/dashboard/Licenses.tsx:8
 msgid "Maximise your network"
@@ -1493,7 +1571,7 @@ msgstr ""
 "Mis licencias de nodo\n"
 ""
 
-#: src/pages/nodes/index.tsx:236
+#: src/pages/nodes/index.tsx:241
 msgid "Myria FAQ"
 msgstr "Preguntas frecuentes sobre Myria"
 
@@ -1629,13 +1707,13 @@ msgstr ""
 "Myria es la columna vertebral de los juegos blockchain\n"
 ""
 
-#: src/pages/nodes/index.tsx:146
+#: src/pages/nodes/index.tsx:153
 msgid "Myria node license sales are anticipated to commence in Q2 2022 (subject to change)."
 msgstr ""
 "Se espera que las ventas de licencias de nodos de Myria comiencen en el segundo trimestre de 2022 (sujeto a cambios).\n"
 ""
 
-#: src/pages/nodes/index.tsx:24
+#: src/pages/nodes/index.tsx:31
 msgid "Myria node operators will receive daily $MYRIA token rewards for the nodes work."
 msgstr "Los operadores de nodos Myria recibirán recompensas diarias de tokens $MYRIA por el trabajo de los nodos."
 
@@ -1703,6 +1781,10 @@ msgstr ""
 msgid "News"
 msgstr "Noticias"
 
+#: src/components/marketplace/AssetDetails/index.tsx:112
+msgid "No attributes"
+msgstr ""
+
 #: src/components/interop/DesktopInterop.tsx:263
 #: src/components/interop/MobileInterop.tsx:178
 msgid "No matter the shape and size of your avatar, use the same NFT on them all. Buy once, use on any character. Designed to be interoperable."
@@ -1714,17 +1796,17 @@ msgstr ""
 "No se detectó una cartera web, asegúrese de tener una configuración para reclamar sus recompensas.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:282
+#: src/hooks/useGamesData.tsx:286
 msgid "Nobody lives forever, and these heroes sure as hell don’t care – they literally die for the sake of fun. Dive into a series of short combat rounds to win a match of 5 vs 5. The attacking team must activate a bomb on a specified location on the map. If you’re on the defending side…you know what you need to do, right?"
 msgstr ""
 "Nadie vive para siempre, y a estos héroes seguro que no les importa – literalmente mueren por diversión. Sumérgete en una serie de breves rondas de combate para ganar una partida de 5 contra 5. El equipo atacante debe activar una bomba en una ubicación específica del mapa. Si estás del lado de la defensa...sabes lo que tienes que hacer, ¿verdad?\n"
 ""
 
-#: src/pages/nodes/index.tsx:213
+#: src/pages/nodes/index.tsx:218
 msgid "Node owner rewards"
 msgstr "Recompensas para los propietarios de nodos"
 
-#: src/pages/nodes/index.tsx:51
+#: src/pages/nodes/index.tsx:58
 msgid "Node owners will also be rewarded with NFT drops and tokens based on their reputational score as node operators and general community members."
 msgstr "Los propietarios de nodos también serán recompensados con gotas de NFT y tokens en función de su reputación como operadores de nodos y miembros de la comunidad en general."
 
@@ -1742,18 +1824,23 @@ msgstr ""
 ""
 
 #: src/components/Footer.tsx:49
-#: src/components/Header/linkSources.tsx:29
+#: src/components/Header/linkSources.tsx:22
 #: src/components/nodes/Sidebar.tsx:32
 msgid "Nodes"
 msgstr "Nodos"
 
-#: src/hooks/useGamesData.tsx:300
+#: src/components/marketplace/AssetDetails/index.tsx:196
+msgid "Not for Sale"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:304
 msgid "Not the face!"
 msgstr ""
 "¡No la cara!\n"
 ""
 
 #: src/components/Purchase/Modals/WhiteListSale.tsx:87
+#: src/components/marketplace/PurchasePopover/index.tsx:92
 msgid "OK"
 msgstr "OK"
 
@@ -1762,10 +1849,10 @@ msgid "OPEN"
 msgstr "ABIERTO"
 
 #: src/components/Header/linkSources.tsx:51
-msgid "OUR SOLUTION"
-msgstr ""
-"NUESTRA SOLUCIÓN\n"
-""
+#~ msgid "OUR SOLUTION"
+#~ msgstr ""
+#~ "NUESTRA SOLUCIÓN\n"
+#~ ""
 
 #: src/components/nodes/mint-assets/index.tsx:100
 msgid "Off Chain Assets"
@@ -1773,13 +1860,13 @@ msgstr ""
 "Activos fuera de la cadena\n"
 ""
 
-#: src/hooks/useGamesData.tsx:223
+#: src/hooks/useGamesData.tsx:227
 msgid "Once in a while, a portal opens to a special game world – the BR Arena."
 msgstr ""
 "De vez en cuando, se abre un portal a un mundo de juego especial: el BR Arena.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:362
+#: src/hooks/useGamesData.tsx:366
 msgid "Once you figure out the optimal production pipeline, the game will start yielding rewards for all your hard work. Are you curious how difficult is to produce a batch of Starberry Jam? What about Moonsteel? It surely can’t be that hard, right?"
 msgstr ""
 "Una vez que descubras la tubería de producción ideal, el juego comenzará a dar recompensas por todo tu arduo trabajo. ¿Tiene curiosidad por saber lo difícil que es producir un lote de Starberry Jam? ¿Y Moonsteel? Ciertamente no puede ser tan difícil, ¿verdad?\n"
@@ -1791,7 +1878,7 @@ msgstr ""
 "Solo se liberarán 50.000 licencias de nodo. Los precios aumentarán a medida que se vendan los nodos para garantizar que nuestros primeros seguidores sean recompensados.\n"
 ""
 
-#: src/pages/nodes/index.tsx:164
+#: src/pages/nodes/index.tsx:171
 msgid "Only 55,000 Myria node licenses will ever be released."
 msgstr "Solo se lanzarán 55.000 licencias de nodos Myria."
 
@@ -1832,8 +1919,8 @@ msgstr ""
 ""
 
 #: src/components/Header/linkSources.tsx:69
-msgid "Our vision"
-msgstr "Nuestra visión"
+#~ msgid "Our vision"
+#~ msgstr "Nuestra visión"
 
 #: src/components/interop/DesktopInterop.tsx:325
 #: src/components/interop/MobileInterop.tsx:197
@@ -1875,31 +1962,31 @@ msgstr ""
 "¡Se requiere contraseña!\n"
 ""
 
-#: src/utils.ts:23
+#: src/utils.ts:26
 msgid "Password must be mixture of letters and numbers"
 msgstr ""
 "La contraseña debe ser una mezcla de letras y números.\n"
 ""
 
-#: src/utils.ts:27
+#: src/utils.ts:30
 msgid "Password must contain at least one special character"
 msgstr ""
 "La contraseña debe contener al menos un carácter especial\n"
 ""
 
-#: src/utils.ts:15
+#: src/utils.ts:18
 msgid "Password must have at least 8 characters—the more characters, the better"
 msgstr ""
 "La contraseña debe tener al menos 8 caracteres—cuantos más caracteres, mejor\n"
 ""
 
-#: src/utils.ts:19
+#: src/utils.ts:22
 msgid "Password must have both uppercase and lowercase letters"
 msgstr ""
 "La contraseña debe estar en letras mayúsculas y minúsculas\n"
 ""
 
-#: src/hooks/useGamesData.tsx:236
+#: src/hooks/useGamesData.tsx:240
 msgid "Pick one of the available warrior classes that best suits your playstyle. Are you a one-man army or a silent assassin who strikes from the shadows? Or maybe you’re a mysterious alien psychic who can suck the life out of his enemies..."
 msgstr ""
 "Elige la clase de guerrero que mejor se adapte a tu estilo de juego entre las opciones disponibles. ¿Eres un lobo solitario o un asesino silencioso que opera en las sombras? O tal vez eres un misterioso médium alienígena que puede chupar la vida de tus enemigos...\n"
@@ -1910,6 +1997,10 @@ msgid "Platform"
 msgstr ""
 "Plataforma\n"
 ""
+
+#: src/pages/marketplace/index.tsx:33
+msgid "Play and earn rewards and NFTs"
+msgstr ""
 
 #: src/components/for-developers/BuildYourBlockchain.tsx:31
 msgid "Please enter correct url!"
@@ -1947,11 +2038,11 @@ msgstr "Impulsado y gobernado por <0>$MYRIA</0>"
 msgid "Powered by the community"
 msgstr "Impulsado por la comunidad"
 
-#: src/pages/nodes/index.tsx:200
+#: src/pages/nodes/index.tsx:205
 msgid "Powered by the community of player-run nodes"
 msgstr "Impulsado por la comunidad de nodos gestionados por los jugadores"
 
-#: src/pages/nodes/index.tsx:191
+#: src/pages/nodes/index.tsx:196
 msgid "Pre register now"
 msgstr "Preinscríbase ahora"
 
@@ -1974,6 +2065,11 @@ msgstr ""
 #: src/pages/for-gamers.tsx:167
 msgid "Pupose-built infrastructure"
 msgstr "Infraestructura construida con fines específicos"
+
+#: src/components/marketplace/MessageModal/MessagePurchaseModal.tsx:11
+#: src/components/marketplace/PurchasePopover/index.tsx:72
+msgid "Purchase Successful"
+msgstr ""
 
 #: src/components/Purchase/Order.tsx:186
 msgid "Quantity"
@@ -2031,7 +2127,7 @@ msgstr "Regístrese para ganar NFTs exclusivos del juego de cricket de <0/>AB de
 msgid "Registration Successful"
 msgstr "Registro exitoso"
 
-#: src/pages/nodes/index.tsx:224
+#: src/pages/nodes/index.tsx:229
 msgid "Releasing soon"
 msgstr "Próximo lanzamiento"
 
@@ -2070,13 +2166,13 @@ msgstr ""
 "¡Las recompensas llegarán pronto! La información sobre cómo instalar su cliente de nodo se publicará pronto.\n"
 ""
 
-#: src/hooks/useGamesData.tsx:85
+#: src/hooks/useGamesData.tsx:89
 msgid "Roll with style!"
 msgstr ""
 "¡Rueda con estilo!\n"
 ""
 
-#: src/pages/nodes/index.tsx:182
+#: src/pages/nodes/index.tsx:187
 msgid "Run a node and earn <0>$MYRIA</0> and NFT rewards"
 msgstr "Dirige un nodo y gana <0>$MYRIA</0> y recompensas NFT"
 
@@ -2090,7 +2186,7 @@ msgstr ""
 msgid "SHIFTING POWER BACK TO THE PEOPLE"
 msgstr "DEVUELVE EL PODER A LA GENTE"
 
-#: src/components/Header/DesktopHeader.tsx:121
+#: src/components/Header/DesktopHeader.tsx:126
 #: src/pages/for-developers/index.tsx:50
 msgid "START BUILDING"
 msgstr ""
@@ -2153,7 +2249,7 @@ msgstr ""
 "Iniciar sesión\n"
 ""
 
-#: src/components/Header/MobileHeader.tsx:71
+#: src/components/Header/MobileHeader.tsx:66
 #: src/components/nodes/Header.tsx:178
 #: src/components/sigil/Dashboard/MissionV2.tsx:71
 msgid "Sign up"
@@ -2173,8 +2269,8 @@ msgstr ""
 "Verificación de contrato formal más simple debido a la arquitectura segura de VM\n"
 ""
 
-#: src/components/Header/DesktopHeader.tsx:46
-#: src/components/Header/MobileHeader.tsx:166
+#: src/components/Header/DesktopHeader.tsx:49
+#: src/components/Header/MobileHeader.tsx:161
 msgid "Soon!"
 msgstr ""
 "¡Pronto!\n"
@@ -2205,7 +2301,6 @@ msgstr ""
 ""
 
 #: src/components/Footer.tsx:53
-#: src/components/Header/linkSources.tsx:36
 msgid "Store"
 msgstr "Tienda"
 
@@ -2270,7 +2365,7 @@ msgstr "¡Gracias por suscribirse!"
 msgid "The Issuer Group is committed to processing personal data in accordance with applicable law. In its use of personal data, certain members of the Issuer Group will be characterised under applicable law as a data controller, whilst certain of the Issuer Group’s service providers, Affiliates and delegates may act as data processors under applicable law. For the purposes of this Privacy Notice, <0>we, us or our</0> means each member of the Issuer Group in its capacity (as relevant) as data controller of the personal data and <1>You</1> or <2>Your</2> means the Product holder or relevant individual affiliated or connected with the Product holder receiving this Privacy Notice."
 msgstr "El Grupo Emisor está comprometido a procesar los datos personales de acuerdo con la legislación aplicable. En el uso que hace de los datos personales, algunos miembros del Grupo Emisor serán calificados, en virtud de la legislación aplicable, como responsables del tratamiento de datos, en tanto que algunos de los proveedores de servicios, afiliados y delegados del Grupo Emisor pueden actuar como encargados del tratamiento de datos en virtud de la legislación aplicable. A los efectos del presente Aviso de Privacidad, <0>nosotros, nos o nuestro</0> se refiere a cada miembro del Grupo Emisor en su calidad (según corresponda) de responsable del tratamiento de los datos personales y <1>Usted</1> o <2>Su</2> significa el titular del Producto o la persona física pertinente afiliada o relacionada con el titular del Producto que recibe este Aviso de Privacidad."
 
-#: src/pages/nodes/index.tsx:203
+#: src/pages/nodes/index.tsx:208
 msgid "The Myria chain is supported by a network of player-run nodes. Use your home computer to become a node operator and receive rewards and benefits for your contribution to the ecosystem."
 msgstr "La cadena Myria se sustenta en una red de nodos gestionados por jugadores. Utiliza tu ordenador personal para convertirte en un operador de nodos y recibir recompensas y beneficios por tu contribución al ecosistema."
 
@@ -2303,7 +2398,7 @@ msgstr "El nombre debe tener entre 3 y 16 caracteres."
 msgid "The new standard for interoperable NFTs"
 msgstr "El nuevo estándar para las NFTs interoperables"
 
-#: src/hooks/useGamesData.tsx:68
+#: src/hooks/useGamesData.tsx:72
 msgid "The objective is simple – get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing."
 msgstr ""
 "El objetivo es simple: llegar primero a la línea de meta y no caer en la perdición mientras lo intentas. Cada partido comienza con una horda de jugadores que son eliminados a través de una serie de obstáculos en el camino hacia la final. Los jugadores sobrevivientes continúan la batalla en rondas de dificultad creciente hasta que solo queda uno en pie.\n"
@@ -2320,7 +2415,7 @@ msgstr ""
 msgid "The world’s first Morphing NFTs™"
 msgstr "Los primeras NFTs™ morfológicas del mundo"
 
-#: src/hooks/useGamesData.tsx:288
+#: src/hooks/useGamesData.tsx:292
 msgid "Think before you shoot!"
 msgstr ""
 "¡Piensa antes de disparar!\n"
@@ -2336,7 +2431,7 @@ msgstr ""
 msgid "This privacy notice (the “<0>Privacy Notice</0>”) explains the manner in which Metagalactic Jump Ltd. and its Affiliates (the “<1>Issuer Group</1>”) collects, processes and maintains personal data about You."
 msgstr "Este aviso de privacidad (el \"<0>Aviso de Privacidad</0>\") expone la forma en que Metagalactic Jump Ltd. y sus Afiliadas (el \"<1>Grupo Emisor</1>\") recopila, procesa y mantiene los datos personales de Usted."
 
-#: src/hooks/useGamesData.tsx:153
+#: src/hooks/useGamesData.tsx:157
 msgid "Throw your prized vehicle around the deadly turns of the track as you throw a dice to decide your destiny. Drifting and performing crazy stunts is your way of expressing your inner speed demons, so don’t be shy– let them come out and play!"
 msgstr "Lanza tu preciado vehículo por las curvas mortales de la pista mientras lanzas un dado para decidir tu destino. Derrapar y realizar acrobacias locas son tu forma de expresar tus demonios de velocidad internos, así que no seas tímido, ¡déjalos salir y jugar!"
 
@@ -2346,11 +2441,19 @@ msgstr ""
 "Tiempo en línea\n"
 ""
 
+#: src/components/marketplace/AssetDetails/AssetDetailTab/index.tsx:111
+msgid "Token ID"
+msgstr ""
+
 #: src/components/nodes/rewards/TotalRewards.tsx:11
 msgid "Token Rewards"
 msgstr ""
 "Recompensas de fichas\n"
 ""
+
+#: src/components/marketplace/AssetDetails/AssetDetailTab/index.tsx:115
+msgid "Token Standard"
+msgstr ""
 
 #: src/components/for-developers/Myria.tsx:39
 msgid "Tokenomics consultancy"
@@ -2388,6 +2491,10 @@ msgstr ""
 msgid "Trailer Coming Soon"
 msgstr "Tráiler próximamente"
 
+#: src/components/marketplace/PurchasePopover/index.tsx:84
+msgid "Transaction History"
+msgstr ""
+
 #: src/components/nodes/Sidebar2.tsx:23
 msgid "Transaction List"
 msgstr ""
@@ -2405,6 +2512,15 @@ msgid "Transparent and post-quantum secure -  no trusted setup"
 msgstr ""
 "Post-cuántico transparente y seguro: sin configuración confiable\n"
 ""
+
+#: src/components/marketplace/AssetDetails/index.tsx:229
+msgid "UNLIST THIS ITEM"
+msgstr ""
+
+#: src/components/marketplace/PurchasePopover/index.tsx:35
+#: src/components/marketplace/PurchasePopover/index.tsx:73
+msgid "Ultra rare Vector Prime Sigil"
+msgstr ""
 
 #: src/pages/studios_no.tsx:349
 msgid "Unified through the Myriaverse"
@@ -2440,7 +2556,7 @@ msgstr ""
 "¡Se requiere nombre de usuario!\n"
 ""
 
-#: src/hooks/useGamesData.tsx:269
+#: src/hooks/useGamesData.tsx:273
 msgid "Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning."
 msgstr ""
 "Utiliza tus habilidades de tiro en combinación con tus habilidades únicas de héroe para ganar una serie de batallas en equipo u otros modos de juego. Administre las mejoras de sus habilidades y las armas de su elección para optimizar sus posibilidades de ganar.\n"
@@ -2456,7 +2572,7 @@ msgstr ""
 msgid "VIEW ITEMS"
 msgstr "VER ARTÍCULOS"
 
-#: src/hooks/useGamesData.tsx:163
+#: src/hooks/useGamesData.tsx:167
 msgid "Vanity factor number 1"
 msgstr ""
 "Factor de vanidad número 1\n"
@@ -2476,21 +2592,33 @@ msgstr ""
 "Write a comment...\n"
 "Vegan PBR&B listicle sriracha. Migas lomo helvetica, listicle paleo salvia sartorial crucifix dreamcatcher try-hard ugh lyft. Intelligentsia whatever mlkshk salvia, authentic jianbing wolf coloring book echo park fam. Iceland cray occupy ennui, franzen tilde poke. Poutine echo park meditation cliche franzen, shaman messenger bag. Hot chicken umami adaptogen DIY yuccie whatever subway tile, narwhal helvetica meggings scenester twee iPhone tumblr lumbersexual."
 
+#: src/components/marketplace/PurchasePopover/index.tsx:85
+msgid "View"
+msgstr ""
+
+#: src/components/marketplace/MessageModal/MessagePurchaseModal.tsx:17
+msgid "View Transaction History"
+msgstr ""
+
 #: src/components/Careers/Careers.tsx:91
 msgid "View job"
 msgstr ""
 "Ver trabajo\n"
 ""
 
-#: src/pages/nodes/index.tsx:35
+#: src/pages/nodes/index.tsx:42
 msgid "Voting rights"
 msgstr "Derechos al voto"
+
+#: src/components/marketplace/AssetDetails/index.tsx:204
+msgid "WITHDRAW"
+msgstr ""
 
 #: src/components/Purchase/Modals/index.tsx:209
 msgid "Wallet balance"
 msgstr "Saldo de la cartera"
 
-#: src/hooks/useGamesData.tsx:368
+#: src/hooks/useGamesData.tsx:372
 msgid "Watch your village grow and flourish as you move up the ranks. Are you able to devise the best strategy and outperform your rivals?"
 msgstr ""
 "Observa cómo crece y florece tu aldea a medida que subes de rango. ¿Eres capaz de idear la mejor estrategia y dejar atrás a tus rivales?\n"
@@ -2561,19 +2689,19 @@ msgstr ""
 msgid "We’re hiring, join the future of gaming"
 msgstr "Estamos contratando, únete al futuro del juego"
 
-#: src/pages/nodes/index.tsx:111
+#: src/pages/nodes/index.tsx:118
 msgid "What are the software and hardware requirements to run a node?"
 msgstr "¿Cuáles son los requisitos de software y hardware para ejecutar un nodo?"
 
-#: src/pages/nodes/index.tsx:62
+#: src/pages/nodes/index.tsx:69
 msgid "What is a Myria node?"
 msgstr "¿Qué es un nodo Myria?"
 
-#: src/pages/nodes/index.tsx:82
+#: src/pages/nodes/index.tsx:89
 msgid "What rewards do Myria node operators receive?"
 msgstr "¿Qué recompensas reciben los operadores de nodos Myria?"
 
-#: src/pages/nodes/index.tsx:144
+#: src/pages/nodes/index.tsx:151
 msgid "When will Myria node licenses be sold?"
 msgstr "¿Cuándo se venderán las licencias de los nodos Myria?"
 
@@ -2638,7 +2766,11 @@ msgstr ""
 "Su compra está completa.\n"
 ""
 
-#: src/pages/nodes/index.tsx:197
+#: src/components/marketplace/MessageModal/MessagePurchaseModal.tsx:14
+msgid "Your purchase of Ultra Rare Vector Prime Sigil was successful."
+msgstr ""
+
+#: src/pages/nodes/index.tsx:202
 msgid "a decentralized ecosystem"
 msgstr "un ecosistema descentralizado"
 
@@ -2654,7 +2786,13 @@ msgstr "para cumplir con cualquier obligación legal, fiscal o reglamentaria apl
 msgid "view now"
 msgstr "ver ahora"
 
-#: src/hooks/useGamesData.tsx:165
+#: src/components/marketplace/HotCollection/index.tsx:48
+#: src/components/marketplace/HotCollection/index.tsx:57
+#: src/pages/game-detail/[id].tsx:121
+msgid "{0}"
+msgstr ""
+
+#: src/hooks/useGamesData.tsx:169
 msgid ""
 "“Mirror, mirror on the wall, who's the fairest of them all?”\n"
 "If you’re still wondering whether those shiny pink rims or the NFT unicorn sticker on the hood are going to make you stand out on the track, then wonder no more. You're gonna shine like a star as your opponents remain a distant glimpse in the rear-view mirror."

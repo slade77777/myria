@@ -27,6 +27,10 @@ export default function useGamesData() {
         paragraph?: string[] | JSX.Element[];
       }[];
       discord: string;
+      action?: {
+        label: string | JSX.Element;
+        href: string;
+      };
     }
   > = useMemo(
     () => ({
@@ -420,7 +424,11 @@ export default function useGamesData() {
             label: 'Status',
             value: 'IN DEVELOPMENT'
           }
-        ]
+        ],
+        action: {
+          label: 'Start',
+          href: 'https://moonville-dev.nonprod-myria.com/'
+        }
       }
     }),
     []

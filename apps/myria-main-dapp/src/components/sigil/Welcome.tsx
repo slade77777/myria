@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
-  const { address, onConnect } = useWalletContext();
+  const { address, onConnectCompaign, onConnect } = useWalletContext();
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -96,10 +96,10 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
       <div className="mx-auto max-w-[408px] pt-[213px] text-center">
         <h1 className="text-[28px] font-bold leading-[1.2]">{content.title}</h1>
         {(address || !isSupportedBrowser) && (
-          <p className="mt-8 text-[16px] leading-[1.5] text-light">{content.message}</p>
+          <p className="text-light mt-8 text-[16px] leading-[1.5]">{content.message}</p>
         )}
         {!address && !installedWallet && isSupportedBrowser && (
-          <p className="mt-8 text-[16px] leading-[1.5] text-light">
+          <p className="text-light mt-8 text-[16px] leading-[1.5]">
             <Trans>
               Don&apos;t have a wallet yet? <br />
               Install Metamask below.

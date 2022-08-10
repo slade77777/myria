@@ -17,6 +17,11 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { t } from '@lingui/macro';
 import TabProvider from 'src/context/tabContext';
+import { Provider } from 'react-redux';
+import { store } from 'src/packages/l2-wallet/src/app/store';
+import { WithdrawNFT } from 'src/context/withdraw-nft';
+import { DepositProvider } from 'src/context/deposit-context';
+import { L2WalletProvider } from 'src/context/l2-wallet';
 
 const WithLanguageStyle: React.FC<any> = ({ children }) => {
   const { language } = useLanguage();
@@ -57,15 +62,25 @@ function App({ Component, pageProps }: AppProps) {
         />
         <ToastContainer hideProgressBar className={toastStyle.toast} />
         <WalletProvider>
-          <AuthenticationProvider>
-            <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
-              <WithLanguageStyle>
-                <TabProvider>
-                  <Component {...pageProps} />
-                </TabProvider>
-              </WithLanguageStyle>
-            </Tooltip.Provider>
-          </AuthenticationProvider>
+          <WithdrawNFT>
+            <DepositProvider>
+              <AuthenticationProvider>
+                <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
+                  <WithLanguageStyle>
+                    <TabProvider>
+                      <>
+                        <Provider store={store}>
+                          <L2WalletProvider>
+                            <Component {...pageProps} />
+                          </L2WalletProvider>
+                        </Provider>
+                      </>
+                    </TabProvider>
+                  </WithLanguageStyle>
+                </Tooltip.Provider>
+              </AuthenticationProvider>
+            </DepositProvider>
+          </WithdrawNFT>
         </WalletProvider>
       </LanguageProvider>
       <ReactQueryDevtools initialIsOpen={false} />

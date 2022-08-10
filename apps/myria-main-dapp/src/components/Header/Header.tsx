@@ -11,7 +11,7 @@ export const navHeight = 93;
 export const bannerHeight = 50;
 export const headerHeight = navHeight + bannerHeight;
 export const bannerSpacingClassName = 'lg:pt-[50px]';
-export const headerNavSpacingClassName = 'pt-[104px] md:pt-[133px]';
+export const headerNavSpacingClassName = 'pt-[104px] md:pt-[93px]';
 
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
   action = 'login',

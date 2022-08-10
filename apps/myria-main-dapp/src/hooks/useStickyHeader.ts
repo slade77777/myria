@@ -14,7 +14,7 @@ export function useStickyHeader(headerRef: RefObject<HTMLElement | null>, sticky
       trigger: headerRef.current,
       start: 'top top',
       endTrigger: 'body',
-      end: 'bottom+=1000px bottom',
+      end: `+=${document.documentElement?.scrollHeight * 100}`,
       toggleClass: 'sticky-header'
     });
     return () => {

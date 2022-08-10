@@ -84,40 +84,39 @@ const Register: React.FC = () => {
 
   useEffect(() => {
     registerError?.errors.forEach(({ code, detail }) => {
-
-      if (code === "invalid_password") {
-        setError("password", { type: 'custom', message: detail });
+      if (code === 'invalid_password') {
+        setError('password', { type: 'custom', message: detail });
         return;
       }
 
-      if (code === "username_in_use") {
-        setError("username", { type: 'custom', message: detail });
+      if (code === 'username_in_use') {
+        setError('username', { type: 'custom', message: detail });
         return;
       }
 
-      if (code === "email_in_use") {
-        setError("email", { type: 'custom', message: detail });
+      if (code === 'email_in_use') {
+        setError('email', { type: 'custom', message: detail });
         return;
       }
 
-      if (code === "firstname_contains_profanity") {
-        setError("firstName", { type: 'custom', message: 'First name contains profanity' });
+      if (code === 'firstname_contains_profanity') {
+        setError('firstName', { type: 'custom', message: 'First name contains profanity' });
         return;
       }
 
-      if (code === "lastname_contains_profanity") {
-        setError("lastName", { type: 'custom', message: 'Last name contains profanity'});
+      if (code === 'lastname_contains_profanity') {
+        setError('lastName', { type: 'custom', message: 'Last name contains profanity' });
         return;
       }
 
-      if (code === "username_contains_profanity") {
-        setError("username", { type: 'custom', message: 'Username contains profanity'});
+      if (code === 'username_contains_profanity') {
+        setError('username', { type: 'custom', message: 'Username contains profanity' });
         return;
       }
 
-      setError("firstName", { type: 'custom', message: detail });
+      setError('firstName', { type: 'custom', message: detail });
     });
-  }, [registerError, setError])
+  }, [registerError, setError]);
 
   const toggleVisiblePassword = () => {
     setVisiblePassword(!visiblePassword);
@@ -130,18 +129,21 @@ const Register: React.FC = () => {
   const onSubmit = (data: IFormRegisterInput) => {
     const passwordError = validatePassword(data.password);
     if (passwordError) {
-      setError("password", { type: 'custom', message: passwordError })
+      setError('password', { type: 'custom', message: passwordError });
       return;
-    };
+    }
 
     const usernameLength = data.username.length;
     if (usernameLength < 3 || usernameLength > 16) {
-      setError("username", { type: 'custom', message: t`The name must be between 3 and 16 characters long.` });
+      setError('username', {
+        type: 'custom',
+        message: t`The name must be between 3 and 16 characters long.`
+      });
       return;
-    };
+    }
 
     doRegister(data);
-  }
+  };
 
   React.useEffect(() => {
     const subscription = watch((value, { name, type }) => {
@@ -239,14 +241,12 @@ const Register: React.FC = () => {
             <div
               className={clsx('mt-2 flex items-center', { 'opacity-50': !hint.validate })}
               key={hint.text}>
-              {hint.validate ? <CheckIcon /> : <WarningIcon />}
+              {hint.validate ? <CheckIcon size={20} /> : <WarningIcon />}
               <p className=" ml-[10px]">{hint.text}</p>
             </div>
           );
         })}
-        <Button
-          loading={isPostingRegister}
-          className="btn-lg btn-primary my-8 w-full">
+        <Button loading={isPostingRegister} className="btn-lg btn-primary my-8 w-full">
           <Trans>Register</Trans>
         </Button>
       </form>

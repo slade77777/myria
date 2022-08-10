@@ -1,16 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const BookIcon: React.FC = () => {
   return (
     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="32" height="32" fill="url(#patternbook)" />
       <defs>
-        <pattern
-          id="patternbook"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
+        <pattern id="patternbook" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_1034_1653" transform="scale(0.00357143)" />
         </pattern>
         <image

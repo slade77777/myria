@@ -1,10 +1,10 @@
-import * as list from "../providers";
+import * as list from '../providers';
 import {
   CONNECT_EVENT,
   ERROR_EVENT,
   INJECTED_PROVIDER_ID,
   CACHED_PROVIDER_KEY
-} from "../constants";
+} from '../constants';
 import {
   isMobile,
   IProviderControllerOptions,
@@ -20,11 +20,11 @@ import {
   IProviderUserOptions,
   getInjectedProvider,
   findMatchingRequiredOptions
-} from "../helpers";
-import { EventController } from "./events";
+} from '../helpers';
+import { EventController } from './events';
 
 export class ProviderController {
-  public cachedProvider: string = "";
+  public cachedProvider: string = '';
   public shouldCacheProvider: boolean = false;
   public disableInjectedProvider: boolean = false;
 
@@ -32,10 +32,10 @@ export class ProviderController {
   private injectedProvider: IProviderInfo | null = null;
   private providers: IProviderDisplayWithConnector[] = [];
   private providerOptions: IProviderOptions;
-  private network: string = "";
+  private network: string = '';
 
   constructor(opts: IProviderControllerOptions) {
-    this.cachedProvider = getLocal(CACHED_PROVIDER_KEY) || "";
+    this.cachedProvider = getLocal(CACHED_PROVIDER_KEY) || '';
 
     this.disableInjectedProvider = opts.disableInjectedProvider;
     this.shouldCacheProvider = opts.cacheProvider;
@@ -54,7 +54,7 @@ export class ProviderController {
       // parse custom display options
       if (this.providerOptions[id]) {
         const options = this.providerOptions[id];
-        if (typeof options.display !== "undefined") {
+        if (typeof options.display !== 'undefined') {
           providerInfo = {
             ...providerInfo,
             ...this.providerOptions[id].display
@@ -69,14 +69,11 @@ export class ProviderController {
     });
     // parse custom providers
     Object.keys(this.providerOptions)
-      .filter(key => key.startsWith("custom-"))
-      .map(id => {
+      .filter((key) => key.startsWith('custom-'))
+      .map((id) => {
         if (id && this.providerOptions[id]) {
           const options = this.providerOptions[id];
-          if (
-            typeof options.display !== "undefined" &&
-            typeof options.connector !== "undefined"
-          ) {
+          if (typeof options.display !== 'undefined' && typeof options.connector !== 'undefined') {
             this.providers.push({
               ...list.providers.FALLBACK,
               id,
@@ -90,21 +87,16 @@ export class ProviderController {
 
   public shouldDisplayProvider(id: string) {
     const provider = this.getProvider(id);
-    if (typeof provider !== "undefined") {
+    if (typeof provider !== 'undefined') {
       const providerPackageOptions = this.providerOptions[id];
       if (providerPackageOptions) {
         const isProvided = !!providerPackageOptions.package;
         if (isProvided) {
-          const requiredOptions = provider.package
-            ? provider.package.required
-            : undefined;
+          const requiredOptions = provider.package ? provider.package.required : undefined;
           if (requiredOptions && requiredOptions.length) {
             const providedOptions = providerPackageOptions.options;
             if (providedOptions && Object.keys(providedOptions).length) {
-              const matches = findMatchingRequiredOptions(
-                requiredOptions,
-                providedOptions
-              );
+              const matches = findMatchingRequiredOptions(requiredOptions, providedOptions);
               if (requiredOptions.length === matches.length) {
                 return true;
               }
@@ -123,8 +115,7 @@ export class ProviderController {
 
     const defaultProviderList = this.providers.map(({ id }) => id);
 
-    const displayInjected =
-      !!this.injectedProvider && !this.disableInjectedProvider;
+    const displayInjected = !!this.injectedProvider && !this.disableInjectedProvider;
     const onlyInjected = displayInjected && mobile;
 
     const providerList = [];
@@ -150,7 +141,7 @@ export class ProviderController {
 
     providerList.forEach((id: string) => {
       let provider = this.getProvider(id);
-      if (typeof provider !== "undefined") {
+      if (typeof provider !== 'undefined') {
         const { id, name, logo, connector } = provider;
         userOptions.push({
           name,
@@ -167,21 +158,19 @@ export class ProviderController {
   public getProvider(id: string) {
     return filterMatches<IProviderDisplayWithConnector>(
       this.providers,
-      x => x.id === id,
+      (x) => x.id === id,
       undefined
     );
   }
 
   public getProviderOption(id: string, key: keyof IProviderOptions[string]) {
-    return this.providerOptions &&
-      this.providerOptions[id] &&
-      this.providerOptions[id][key]
+    return this.providerOptions && this.providerOptions[id] && this.providerOptions[id][key]
       ? this.providerOptions[id][key]
       : {};
   }
 
   public clearCachedProvider() {
-    this.cachedProvider = "";
+    this.cachedProvider = '';
     removeLocal(CACHED_PROVIDER_KEY);
   }
 
@@ -195,8 +184,8 @@ export class ProviderController {
     connector: (providerPackage: any, opts: any) => Promise<any>
   ) => {
     try {
-      const providerPackage = this.getProviderOption(id, "package");
-      const providerOptions = this.getProviderOption(id, "options");
+      const providerPackage = this.getProviderOption(id, 'package');
+      const providerOptions = this.getProviderOption(id, 'options');
       const opts = { network: this.network || undefined, ...providerOptions };
       const provider = await connector(providerPackage, opts);
       this.eventController.trigger(CONNECT_EVENT, provider);
@@ -210,7 +199,7 @@ export class ProviderController {
 
   public async connectToCachedProvider() {
     const provider = this.getProvider(this.cachedProvider);
-    if (typeof provider !== "undefined") {
+    if (typeof provider !== 'undefined') {
       await this.connectTo(provider.id, provider.connector);
     }
   }

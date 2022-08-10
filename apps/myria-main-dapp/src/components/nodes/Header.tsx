@@ -66,7 +66,7 @@ const links = [
 
 const navHeightMobile = 104;
 const Header: React.FC = () => {
-  const { address, onConnect, disconnect } = useWalletContext();
+  const { address, onConnectCompaign, disconnect } = useWalletContext();
   const { user, register } = useAuthenticationContext();
   const { event } = useGA4();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -164,11 +164,11 @@ const Header: React.FC = () => {
           ) : (
             <button
               onClick={() => {
-                onConnect();
+                onConnectCompaign('Nodes');
                 // event('Connect Wallet Selected', { campaign: 'Sigil' });
               }}
               className="body-14-bold rounded-lg border border-white py-[9px] px-4 uppercase hover:border-primary/7">
-              <Trans>Connect wallet</Trans>
+              <Trans>Connect wallet 456</Trans>
             </button>
           )}
           {user && !user.user_name && (

@@ -1,4 +1,4 @@
-import { IAbstractConnectorOptions } from "../../helpers";
+import { IAbstractConnectorOptions } from '../../helpers';
 
 export interface INetwork {
   nodeUrl: string;
@@ -6,7 +6,7 @@ export interface INetwork {
   gasRelayHubAddress?: string;
 }
 
-export type Scope = "email";
+export type Scope = 'email';
 
 export interface IOptions {
   scope?: Scope[];
@@ -25,7 +25,7 @@ const ConnectToPortis = (Portis: any, opts: IPortisConnectorOptions) => {
     if (opts && opts.id) {
       try {
         const id = opts.id;
-        const network = opts.network || "mainnet";
+        const network = opts.network || 'mainnet';
         const config = opts.config;
         const pt = new Portis(id, network, config);
         await pt.provider.enable();
@@ -35,7 +35,7 @@ const ConnectToPortis = (Portis: any, opts: IPortisConnectorOptions) => {
         return reject(error);
       }
     } else {
-      return reject(new Error("Missing Portis Id"));
+      return reject(new Error('Missing Portis Id'));
     }
   });
 };
