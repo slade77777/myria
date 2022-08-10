@@ -221,8 +221,11 @@ const ConnectL2WalletButton: React.FC = () => {
             ) : (
               <button
                 onClick={onConnectWallet}
-                className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
-                <Trans>Connect Wallet</Trans>
+                className="border-base/5 font-medium  bg-base/1 flex items-center space-x-4 rounded-lg border px-[10px] pr-[18px] py-[11px]">
+                <WalletIcon width={24} height={24} />
+                <span className="text-base/10">
+                  <Trans>Connect Wallet</Trans>
+                </span>
               </button>
             )}
           </MetamaskOnboarding>

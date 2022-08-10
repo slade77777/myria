@@ -71,7 +71,7 @@ const CollectionDetailPage = () => {
               ...prev,
               data: {
                 ...prev?.data,
-                items: prev?.data.items.concat(currentAssetList)
+                items: prev?.data.items?.concat(currentAssetList)
               }
             };
           });

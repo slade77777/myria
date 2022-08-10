@@ -1,21 +1,20 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
 
-import Web3 from 'web3';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { formatNumber2digits } from 'src/utils';
+import { convertQuantizedAmountToEth } from '../../../utils/Converter';
 import { CircleCloseIcon, CompletedIcon } from '../../Icons';
 import ArrowDownLeft from '../../Icons/ArrowDownLeft';
 import ArrowUpRight from '../../Icons/ArrowUpRight';
+import ChevronIcon from '../../Icons/ChevronIcon';
 import ETHIcon from '../../Icons/ETHIcon';
 import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
-import ChevronIcon from '../../Icons/ChevronIcon';
-import { convertQuantizedAmountToEth } from '../../../utils/Converter';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -43,6 +42,32 @@ enum STATUS_HISTORY {
   IN_PROGRESS = 'Pending',
 }
 
+export const renderType = (type: string) => {
+  switch (type) {
+    case 'DepositRequest':
+      return 'Deposit';
+    case 'TransferRequest':
+      return 'Withdrawal';
+    case 'WithdrawalRequest':
+      return 'Withdrawal';
+    case 'SettlementRequest':
+      return 'Purchase';
+    case 'MintRequest':
+      return 'Mint';
+    default:
+      return '';
+  }
+};
+
+const renderAmount = (type: string, amount: number) => {
+  switch (type) {
+    case 'SettlementRequest':
+      return 1;
+    default:
+      return amount;
+  }
+};
+
 export default function MainScreen({
   gotoDepositScreen,
   gotoWithdrawScreen,
@@ -56,30 +81,6 @@ export default function MainScreen({
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
   const { data: etheCost = 0 } = useEtheriumPrice();
-
-  const renderType = (type: string) => {
-    switch (type) {
-      case 'DepositRequest':
-        return 'Deposit';
-      case 'TransferRequest':
-        return 'Withdrawal';
-      case 'WithdrawalRequest':
-        return 'Withdrawal';
-      case 'SettlementRequest':
-        return 'Purchase';
-      default:
-        return '';
-    }
-  };
-
-  const renderAmount = (type: string, amount: number) => {
-    switch (type) {
-      case 'SettlementRequest':
-        return 1;
-      default:
-        return amount;
-    }
-  };
 
   useEffect(() => {
     const temp: any = [];
@@ -134,8 +135,8 @@ export default function MainScreen({
 
     if (item.status === STATUS_HISTORY.FAILED) {
       return (
-        <div className="text-base/9 mt-1 flex items-center">
-          Failed <CircleCloseIcon size={14} className="ml-1" />
+        <div className="text-error/6 mt-1 flex items-center">
+          Failed <CircleCloseIcon size={14} className="text-error/6 ml-1" />
         </div>
       );
     }

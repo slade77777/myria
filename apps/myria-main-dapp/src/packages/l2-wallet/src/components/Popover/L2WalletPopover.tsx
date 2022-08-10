@@ -267,6 +267,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           .sort((a: any, b: any) => b.createdAt - a.createdAt)
           .map((item: any, index: number) => {
             return {
+              ...item,
               id: index,
               type: item.transactionType,
               amount: item.partyAOrder
@@ -278,7 +279,6 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
               updatedAt: moment(item.updatedAt).fromNow(),
               status: item.transactionStatus,
               ico: '/assets/images/eth.svg',
-              tokenType: item.tokenType,
             };
           });
         dispatch(setTransactions(processedData));
