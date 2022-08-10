@@ -8,6 +8,7 @@ import TermsOfServiceModal from 'src/packages/l2-wallet/src/components/Modal/Ter
 import CreateMyriaWalletModal from 'src/packages/l2-wallet/src/components/Modal/CreateMyriaWalletModal';
 import FirstDepositModal from 'src/packages/l2-wallet/src/components/Modal/FirstDepositModal';
 import MessageWithdrawModal from 'src/packages/l2-wallet/src/components/Modal/MessageWithdrawModal';
+import MessageDepositModal from 'src/packages/l2-wallet/src/components/Modal/MessageDepositModal';
 import WelcomeMyriaModal from 'src/packages/l2-wallet/src/components/Modal/WelcomeMyriaModal';
 import { useWalletContext } from 'src/context/wallet';
 import useLocalStorage from 'src/hooks/useLocalStorage';
@@ -148,6 +149,12 @@ export default function MainL2Wallet() {
           )
         }
       />
+      {isShowMessage && (
+        <MessageDepositModal
+          isShowMessage={isShowMessage}
+          setIsShowMessage={() => setIsShowMessage(false)}
+        />
+      )}
       <WelcomeMyriaModal modalShow={welcomeModal} closeModal={onGetStarted} />
     </div>
   );
