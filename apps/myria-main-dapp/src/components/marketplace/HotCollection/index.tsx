@@ -71,7 +71,7 @@ const HotCollection: React.FC = () => {
                       <p className="text-light mt-[9px] text-base">
                         by
                         <Trans>
-                          <span className="text-blue/6">{' ' + itm.project.companyName} </span>
+                          <span className="text-blue/6 font-medium">{' ' + itm.project.companyName} </span>
                         </Trans>
                       </p>
                       <p className="text-light mt-4 text-center text-base truncate">
