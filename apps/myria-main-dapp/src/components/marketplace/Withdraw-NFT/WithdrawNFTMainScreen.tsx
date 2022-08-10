@@ -119,12 +119,11 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
             <span className="text-base/9">Item</span>
             <span>{valueNFT.name}</span>
           </div>
-          <div className="mt-3 flex justify-between">
-            <span className="text-base/9">Estimated gas fee</span>
-            <span className="flex">
-              <DAOIcon /> 10-20 hours
-            </span>
-          </div>
+        <div className="mt-[13px] flex justify-between">
+          <span className="text-base/9">Estimated completion</span>
+          <span className="flex">
+            10-20 hours
+          </span>
         </div>
       </div>
       <div className="flex justify-between">
@@ -141,6 +140,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           onClick={handleConfirmWithdrawNftOffchain}>
           <Trans>CONFIRM</Trans>
         </button>
+      </div>
       </div>
     </>
   );
