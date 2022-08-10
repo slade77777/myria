@@ -42,6 +42,8 @@ export default function DepositScreen({
       setDepositScreenMounted(false);
     };
   }, [setDepositScreenMounted]);
+  console.log('isValidForm', isValidForm);
+  
   return (
     <>
       <div className="-mt-8">
@@ -99,6 +101,7 @@ export default function DepositScreen({
               setInputChanged(true);
               setAmountHandle(value);
             }}
+            isValidForm={isValidForm}
           />
           {inputChanged && errorAmount && (
             <div className="text-error/6 mt-2 text-sm">{errorAmount}</div>
