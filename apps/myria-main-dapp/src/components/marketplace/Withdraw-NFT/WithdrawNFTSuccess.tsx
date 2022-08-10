@@ -1,8 +1,8 @@
 import { Trans } from '@lingui/macro';
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import CircleCheckSuccessOutline from 'src/components/icons/CircleCheckSuccessOutline';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
-import { ETHERS_LINK } from 'src/services/common-ethers';
+import { getExplorerForAddress } from 'src/utils';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 
 interface IProp {}
@@ -11,15 +11,13 @@ const WithdrawNFTSuccess: FC<IProp> = ({}) => {
   const { valueNFT } = useWithDrawNFTContext();
   const [etherLinkContract, setEtherLinkContract] = useState<string>();
 
-  useMemo(async () => {
-    const networkId = await getNetworkId();
-    if (!networkId) return '';
-
-    const baseEtherLink = ETHERS_LINK[networkId as keyof typeof ETHERS_LINK];
-    const etherLink = `${baseEtherLink}/${valueNFT?.tokenAddress}`;
-    setEtherLinkContract(etherLink);
-
-    return etherLink;
+  useEffect(()=>{
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !valueNFT?.tokenAddress) return '';
+      setEtherLinkContract(getExplorerForAddress(valueNFT?.tokenAddress, networkId));
+    }
+    setLink();
   }, [valueNFT?.tokenAddress]);
 
   return (
