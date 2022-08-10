@@ -4,8 +4,6 @@ import { StatusWithdrawNFT } from 'src/types/marketplace';
 interface WithdrawNFT {
   valueNFT: any;
   handleSetValueNFT: (value: any) => void;
-  isWithdrawing: boolean;
-  handleWithdrawing: (value: boolean) => void;
   visible: boolean;
   handleVisible: (value: boolean) => void;
   status: StatusWithdrawNFT;
@@ -16,7 +14,6 @@ const PurchaseNFTContext = React.createContext<WithdrawNFT>({} as WithdrawNFT);
 
 export const PurchaseNFT: React.FC = ({ children }) => {
   const [valueNFT, setValueNFT] = useState({});
-  const [isWithdrawing, setIsWithdrawing] = useState(false);
   const [visible, setVisible] = useState(false);
   const [status, setStatus] = useState(StatusWithdrawNFT.MAIN_SCREEN);
   const handleSetValueNFT = (value: any) => {
@@ -25,22 +22,9 @@ export const PurchaseNFT: React.FC = ({ children }) => {
   const handleVisible = (value: boolean) => {
     setVisible(value);
   };
-  const handleWithdrawing = (isValue: boolean) => {
-    setIsWithdrawing(isValue);
-  };
-
   return (
     <PurchaseNFTContext.Provider
-      value={{
-        valueNFT,
-        handleSetValueNFT,
-        isWithdrawing,
-        handleWithdrawing,
-        status,
-        setStatus,
-        visible,
-        handleVisible
-      }}>
+      value={{ valueNFT, handleSetValueNFT, status, setStatus, visible, handleVisible }}>
       {children}
     </PurchaseNFTContext.Provider>
   );

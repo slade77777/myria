@@ -1,8 +1,6 @@
 import cn from 'classnames';
-import { useSelector } from 'react-redux';
-import CloseCircleIcon from '../Icons/CloseCircleIcon';
-import CheckIcon from '../Icons/CheckIcon';
-import { RootState } from '../../app/store';
+import { CrossIcon } from '../Icons';
+import WalletIcon from '../Icons/WalletIcon';
 
 type Props = {
   isShowMessage: Boolean;
@@ -16,35 +14,37 @@ export default function MessageDepositModal({
   const closeMessage = () => {
     setIsShowMessage(!isShowMessage);
   };
-  const amount = useSelector((state: RootState) => state.ui.depositAmount);
 
   return (
-    <div
-      className={cn(
-        `absolute top-[80px] right-[21px]`,
-        isShowMessage ? 'block' : 'hidden',
-      )}
-    >
-      <div className="w-full max-w-lg rounded-lg bg-[#0B2231] p-[32px] text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
-        <div className="flex">
-          <CheckIcon className="mt-[4px] text-[#2EA64F]" size={24} />
-          <div className="ml-3 font-normal leading-normal text-white">
-            <span className="mb-1 text-lg font-semibold leading-normal dark:text-white">
-              Your deposit is complete
-            </span>
-            <div className="mt-[10px] mb-[20px] text-sm font-normal">
-              Your deposit of {amount} ETH is now complete.
-            </div>
+    <div className={cn(isShowMessage ? 'block' : 'hidden')}>
+      <div className="bg-brand-deep-blue absolute -bottom-8 left-1/2 z-30 h-5 w-5 rotate-45 border-t border-l border-[#202230]"></div>
+      <div className="bg-brand-deep-blue absolute top-16 right-16 max-h-[80vh] overflow-auto rounded-xl border border-[#202230] p-6">
+        <div className="relative w-[302px]">
+          <div
+            className="absolute right-0 cursor-pointer"
+            onClick={closeMessage}
+          >
+            <CrossIcon className="text-base/9" />
           </div>
-          <div onClick={closeMessage}>
-            <CloseCircleIcon size={16} className="text-[#E7EBEE]" />
+          <div className="text-blue/6">
+            <WalletIcon size={35} />
           </div>
-        </div>
-        <div className="flex justify-end">
-          <button onClick={closeMessage}>Dismiss</button>
-          <button className="ml-[10px] rounded bg-[#F5B941] p-[7px] font-semibold text-black">
-            View in wallet
-          </button>
+          <div className="mt-4">
+            <p className="text-lg font-bold text-[#EEEBF1]">
+              Your Myria Wallet
+            </p>
+          </div>
+          <div className="text-base/9 mt-2 text-sm font-normal">
+            <p>
+              You can access your wallet here to view your assets and make
+              deposits or withdrawals.{' '}
+            </p>
+          </div>
+          <div className="mt-5" onClick={closeMessage}>
+            <p className="text-primary/6 cursor-pointer text-sm font-medium uppercase">
+              GOT IT
+            </p>
+          </div>
         </div>
       </div>
     </div>

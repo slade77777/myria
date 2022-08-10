@@ -1,12 +1,13 @@
 // Import packages
-import { forwardRef, useImperativeHandle, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
+import { forwardRef, useImperativeHandle, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // Import components
-import { ThreeDotsVerticalIcon, MyriaLogoIcon } from '../Icons';
+import { MyriaLogoIcon, ThreeDotsVerticalIcon } from '../Icons';
 
 // Import Redux
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { RootState } from '../../app/store';
 
 type RefType = {
@@ -37,21 +38,10 @@ type Props = {
 // ];
 declare let window: any;
 const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
-  const {
-    metaMaskConnect,
-    setWelcomeModal,
-    setStarkKeyToLocalStorage,
-    isSigil,
-  } = props;
-  const dispatch = useDispatch();
+  const { metaMaskConnect, isSigil } = props;
   const [display, setDisplay] = useState<boolean>(false);
 
-  const [step, setStep] = useState({
-    sign: false,
-    fastTransaction: false,
-    loadingSign: false,
-    loadingFastTransaction: false,
-  });
+  const { isFirstPurchase } = useL2WalletContext();
   const account = useSelector(
     (state: RootState) => state.account.connectedAccount,
   );
@@ -97,7 +87,7 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
           </div>
 
           <div className="mt-6 text-center text-[24px] font-bold text-white">
-            Welcome to Myria
+            {isFirstPurchase ? 'Continue to checkout' : 'Welcome to Myria'}
           </div>
 
           <div className="px-2 text-center text-[16px] text-white">

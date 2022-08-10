@@ -1,8 +1,9 @@
 import { format } from 'date-fns';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import AssetList from '../AssetList';
 import { Loading } from '../../Loading';
+import truncateString from 'src/helper';
 
 interface Props {
   userAvatar: string;
@@ -38,7 +39,7 @@ function Inventory({
                 <span className="text-[40px] font-bold text-white">{userName}</span>
                 {userAddress && (
                   <span className="text-[16px] font-medium text-[#9AC9E3]">
-                    {userAddress.substring(0, 7)}...{userAddress.substring(userAddress.length - 4)}
+                    {truncateString(userAddress)}
                   </span>
                 )}
                 {userJoinDate && (

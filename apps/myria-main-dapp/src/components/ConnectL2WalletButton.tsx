@@ -29,7 +29,7 @@ const ConnectL2WalletButton: React.FC = () => {
   const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
     useWalletContext();
 
-  const { connectL2Wallet, disconnectL2Wallet } = useL2WalletContext();
+  const { connectL2Wallet, disconnectL2Wallet, handleSetFirstPurchase } = useL2WalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
   const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
 
@@ -40,6 +40,7 @@ const ConnectL2WalletButton: React.FC = () => {
   const onConnectWallet = () => {
     event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
     onConnectCompaign('B2C Marketplace');
+    handleSetFirstPurchase(false);
     connectL2Wallet();
     if (loginByWalletMutation.isError) {
       loginByWalletMutation.mutate();
@@ -52,7 +53,6 @@ const ConnectL2WalletButton: React.FC = () => {
     }
     getAccounts()
       .then((accounts) => {
-        console.log('getAccounts', address, user?.wallet_id, address, accounts[0]);
         if (
           user?.wallet_id &&
           localStarkKey &&
