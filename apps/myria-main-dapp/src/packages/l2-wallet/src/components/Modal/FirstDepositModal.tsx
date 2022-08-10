@@ -21,16 +21,11 @@ import { Trans } from '@lingui/macro';
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
 import DAOIcon from '../../../../../components/icons/DAOIcon';
 import Tooltip from '../../../../../components/Tooltip';
-import { setDepositAmount } from '../../app/slices/uiSlice';
 import { TokenType } from '../../common/type';
 import { ethersLink } from '../../constants';
 import { useEthereumPrice } from '../../hooks/useEthereumPrice';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
-import {
-  convertAmountToQuantizedAmount,
-  convertEthToWei,
-} from '../../utils/Converter';
-import { useDepositContext } from 'src/context/deposit-context';
+import { convertEthToWei } from '../../utils/Converter';
 
 type Props = {
   modalShow: Boolean;
@@ -90,7 +85,6 @@ export default function FirstDepositModal({
   const URL_LINK = `${ethersLink.goerli_goerli}${
     depositResponse?.transactionHash ? depositResponse?.transactionHash : ''
   }`;
-  const { handleSetAmount, handleShowMessageDeposit } = useDepositContext();
 
   const selectCurrency = (param: any) => {
     setSelectedToken(param);
@@ -370,9 +364,7 @@ export default function FirstDepositModal({
                   <button
                     className="bg-primary/6 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold text-black"
                     onClick={() => {
-                      handleSetAmount(amount);
                       closeModal();
-                      handleShowMessageDeposit(true);
                       completeDepositModal();
                     }}
                   >

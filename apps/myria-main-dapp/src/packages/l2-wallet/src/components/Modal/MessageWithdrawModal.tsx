@@ -1,9 +1,8 @@
 // import packages
-import React, { useState } from 'react';
 import cn from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
 import { Types } from 'myria-core-sdk';
-import Web3 from 'web3';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
 
@@ -12,20 +11,13 @@ import CheckIcon from '../Icons/CheckIcon';
 
 // Import Redux
 import { RootState } from '../../app/store';
-
-const QUANTUM_CONSTANT = 10000000000;
 import CrossIcon from '../Icons/CrossIcon';
 
-import {
-  setWithdrawClaimModal,
-  setWithdrawClaimPopover,
-} from '../../app/slices/uiSlice';
-import { getModuleFactory } from '../../services/myriaCoreSdk';
-import {
-  convertQuantizedAmountToEth,
-  convertWeiToEth,
-} from '../../utils/Converter';
+const QUANTUM_CONSTANT = 10000000000;
+
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { setWithdrawClaimModal } from '../../app/slices/uiSlice';
+import { getModuleFactory } from '../../services/myriaCoreSdk';
 
 type Props = {
   isShowMessage: Boolean;
@@ -37,7 +29,6 @@ export default function MessageWithdrawModal({
   setIsShowMessage,
 }: Props) {
   const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
-  const isUpdated = useSelector((state: RootState) => state.ui.isUpdated);
   const [withdrawProgress, setWithdrawProgress] = useState(false);
 
   const selectedToken = useSelector(
@@ -120,52 +111,29 @@ export default function MessageWithdrawModal({
     }
   };
 
-  const renderClaimMessage = (name: string) => {
-    const ethAmount = claimAmount;
-    if (parseFloat(claimAmount.toString()) > 0) {
-      return (
-        <div>
-          Your withdrawal of{' '}
-          {name === 'Ethereum' ? `${ethAmount} eth` : `${claimAmount} tokens`}{' '}
-          is now complete and ready to claim
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
     <div
       className={cn(
-        `absolute top-[80px] right-[21px] w-[406px]`,
+        `absolute top-20 right-5 w-[406px]`,
         isShowMessage ? 'block' : 'hidden',
       )}
     >
-      <div className="w-full max-w-lg rounded-lg bg-[#0B2231] p-[32px] text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
+      <div className="bg-base/4 w-full max-w-lg rounded-lg p-8 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
         <div className="flex">
-          <CheckIcon className="mt-[4px] text-[#2EA64F]" size={24} />
+          <CheckIcon className="mt-1 text-[#367641]" size={24} />
           <div className="ml-3 grow font-normal leading-normal text-white">
-            {isUpdated ? (
-              <span className="mb-1 text-lg font-semibold leading-normal dark:text-white">
-                Your withdraw is completed
+            <span className="mb-1 text-lg font-semibold leading-normal dark:text-white">
+              Your withdrawal is complete
+            </span>
+            <div className="text-base/9 mt-[10px] mb-5 text-sm font-normal">
+              Your withdrawal of{' '}
+              <span className="uppercase text-white">
+                {selectedToken?.name === 'Ethereum'
+                  ? `${claimAmount} eth`
+                  : `${claimAmount} tokens`}{' '}
               </span>
-            ) : (
-              <span className="mb-1 text-lg font-semibold leading-normal dark:text-white">
-                Your withdraw is pending
-              </span>
-            )}
-            {isUpdated ? (
-              <div className="mt-[10px] mb-[20px] text-sm font-normal">
-                Now you can use this amount to claim.
-                {claimAmount}{' '}
-              </div>
-            ) : (
-              <div className="mt-[10px] mb-[20px] text-sm font-normal text-[#A1AFBA]">
-                The withdrawal transaction is on progress in system. Please wait
-                and patient.
-                <div>{renderClaimMessage(selectedToken?.name)}</div>
-              </div>
-            )}
+              is now complete and ready to claim.
+            </div>
             <div className="flex justify-start">
               <button
                 disabled={
@@ -174,7 +142,7 @@ export default function MessageWithdrawModal({
                 className={cn(
                   'rounded font-semibold',
                   parseFloat(claimAmount.toString()) === 0 || withdrawProgress
-                    ? 'cursor-not-allowed text-[#9CA3AF]'
+                    ? 'text-gray/6 cursor-not-allowed'
                     : 'text-primary/6',
                 )}
                 onClick={claim}
@@ -184,7 +152,7 @@ export default function MessageWithdrawModal({
             </div>
           </div>
           <div onClick={closeMessage}>
-            <CrossIcon size={20} className="text-white" />
+            <CrossIcon size={20} className="cursor-pointer text-white" />
           </div>
         </div>
       </div>
