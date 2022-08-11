@@ -133,7 +133,6 @@ export const truncateAddress = (
   }
   return abbreviationAddress;
 };
-
 export function hexifyKey(key: string) {
   return `0x${key}`;
 }

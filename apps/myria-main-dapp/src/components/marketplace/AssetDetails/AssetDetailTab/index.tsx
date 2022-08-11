@@ -126,7 +126,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
                         <button
                           onClick={() => onBuyNow(elm)}
                           className="rounded-[8px] border border-white/[0.4] px-4 py-[5px] font-bold">
-                          <Trans>Buy now</Trans>
+                          <Trans>Buy Now</Trans>
                         </button>
                       )}
                     </td>

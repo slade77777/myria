@@ -99,6 +99,7 @@ export default function DepositScreen({
               setInputChanged(true);
               setAmountHandle(value);
             }}
+            isValidForm={isValidForm}
           />
           {inputChanged && errorAmount && (
             <div className="text-error/6 mt-2 text-sm">{errorAmount}</div>

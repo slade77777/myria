@@ -314,9 +314,17 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       );
       return false;
     }
+    if(screen === SCREENS.DEPOSIT_SCREEN && parseFloat(balanceL1) < amount) {
+      setErrorAmount(`Deposit amount cannot be higher than available ETH.`);
+      return false;
+    }
+    if(screen === SCREENS.WITHDRAW_SCREEN && parseFloat(balance) < amount) {
+      setErrorAmount(`Withdraw amount cannot be higher than available ETH.`,);
+      return false;
+    }
     setErrorAmount('');
     return true;
-  }, [amount, selectedToken, etheCost, screen]);
+  }, [amount, selectedToken, etheCost, screen, balanceL1, balance]);
 
   const deposit = async () => {
     let resultDepoit: TxResult;

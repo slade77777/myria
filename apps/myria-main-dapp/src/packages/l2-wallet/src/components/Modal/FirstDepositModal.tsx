@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { Types } from 'myria-core-sdk';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from '../../app/store';
@@ -90,46 +90,35 @@ export default function FirstDepositModal({
     setSelectedToken(param);
   };
 
-  const setAmountHandle = (param: string) => {
-    if (param !== '') {
-      setAmount(parseFloat(param.toString()));
-    } else setAmount(0);
+  const setAmountHandle = (param: number) => {
+    setAmount(param);
   };
-
-  useEffect(() => {
-    console.log('Balance L1 -> ', balanceL1);
+  const isValidForm = useMemo(() => {
     if (!amount) {
-      return setErrorAmount('');
-    }
-    if (
-      selectedToken &&
-      !(amount > parseFloat(balanceL1)) &&
-      amount !== parseFloat('0') &&
-      amount * etheCost > 10
-    ) {
       setErrorAmount('');
-      setIsValidDeposit(true);
-    } else {
-      setIsValidDeposit(false);
-      if (!selectedToken) {
-        return setErrorAmount('Select Asset required.');
-      }
-      if (amount === 0) {
-        return setErrorAmount("Amount can't be 0.");
-      }
-      if (amount > parseFloat(balanceL1)) {
-        return setErrorAmount('Your balance is not enough.');
-      }
-      if (amount * etheCost < 10) {
-        return setErrorAmount(
-          `Deposit amount cannot be less than ${(10 / etheCost).toFixed(
-            6,
-          )} ETH.`,
-        );
-      }
+      return false;
     }
-  }, [selectedToken, amount, balanceL1]);
-
+    if (!selectedToken) {
+      setErrorAmount('Select Asset required.');
+      return false;
+    }
+    if (amount === 0) {
+      setErrorAmount("Amount can't be 0.");
+      return false;
+    }
+    if (amount * etheCost < 10) {
+      setErrorAmount(
+        `Deposit amount cannot be less than ${(10 / etheCost).toFixed(6)} ETH.`,
+      );
+      return false;
+    }
+    if(parseFloat(balanceL1) < amount) {
+      setErrorAmount(`Deposit amount cannot be higher than available ETH.`);
+      return false;
+    }
+    setErrorAmount('');
+    return true;
+  }, [amount, balanceL1, etheCost, selectedToken]);
   const deposit = async () => {
     let resultDepoit: TxResult;
 
@@ -227,46 +216,30 @@ export default function FirstDepositModal({
                   <MaxInput
                     max={parseFloat(balanceL1)}
                     onChangeHandle={setAmountHandle}
+                    isValidForm={isValidForm}
                   />
                   {errorAmount && (
                     <div className="text-error/6 mt-2 text-sm">
                       {errorAmount}
                     </div>
                   )}
-                  {/* <div className="flex justify-between mt-2">
-                    <div className="text-[rgba(255,255,255,0.6)] text-sm">
-                      Estimated gas fee
-                    </div>
-                    <div className="text-[#777777] text-sm">
-                      <span className="text-[#9DA3A7]">0.0431917 ETH</span>
-                    </div>
-                  </div> */}
                 </div>
-                {/* <div className="mt-4 text-[12px] text-[#A1AFBA] p-4 bg-[#050E15] mt-6 rounded-lg">
-                  If you deposit more than{' '}
-                  <span className="text-white text-sm">$500 USD</span> for
-                  your first transaction, we will cover the gas fees.{' '}
-                  <Link className="text-[#f5b941]" to="/">
-                    Learn more
-                  </Link>
-                </div> */}
-                <div className="flex w-full justify-between px-1">
-                  <button className="text-sm text-white" onClick={closeModal}>
-                    I&apos;ll do this later
+                <div className="flex justify-between justify-self-end">
+                  <button onClick={closeModal}
+                    className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-lg border py-2 px-9 text-base font-bold text-white"
+                  >
+                    CANCEL
                   </button>
                   <button
-                    disabled={!isValidDeposit}
-                    onClick={deposit}
                     className={cn(
-                      'rounded-lg py-[9px] px-[33px] text-sm',
-                      isValidDeposit
-                        ? 'bg-primary/6 text-[#040B10]'
-                        : 'text-gray/6 bg-[#4B5563]',
+                      'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
+                      isValidForm ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
                     )}
+                    onClick={deposit}
                   >
-                    DEPOSIT
+                    NEXT
                   </button>
-                </div>
+              </div>
               </div>
             )}
 

@@ -100,6 +100,7 @@ export default function WithdrawScreen({
               setInputChanged(true);
               setAmountHandle(value);
             }}
+            isValidForm={isValidForm}
           />
           {errorAmount && inputChanged && (
             <div className="text-error/6 mt-2 text-sm">{errorAmount}</div>
