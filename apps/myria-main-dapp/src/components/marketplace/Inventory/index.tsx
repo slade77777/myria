@@ -81,7 +81,7 @@ function Inventory({
         </div>
       </div>
       {!assetLoading && items?.length === 0 && (
-        <div className="flex h-3/4 items-center justify-center text-center px-[400px] max-w-content mx-auto">
+        <div className="flex mt-20 items-center justify-center text-center px-[400px] max-w-content mx-auto">
           <p>
             <Trans>
               You don’t have any items yet. Visit the&nbsp;
