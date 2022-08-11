@@ -33,7 +33,6 @@ export default function MaxInput({ max = 100, onChangeHandle, isValidForm = true
           !isValidForm && 'border border-red-600'
         }`}
         displayType={'input'}
-        min={0}
         allowNegative={false}
         thousandSeparator={true}
         onValueChange={({floatValue}) => {
