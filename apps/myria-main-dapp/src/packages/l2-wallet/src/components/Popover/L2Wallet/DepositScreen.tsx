@@ -42,8 +42,6 @@ export default function DepositScreen({
       setDepositScreenMounted(false);
     };
   }, [setDepositScreenMounted]);
-  console.log('isValidForm', isValidForm);
-  
   return (
     <>
       <div className="-mt-8">
