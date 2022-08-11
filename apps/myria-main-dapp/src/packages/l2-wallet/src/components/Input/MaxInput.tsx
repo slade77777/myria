@@ -29,7 +29,9 @@ export default function MaxInput({ max = 100, onChangeHandle, isValidForm = true
     <div className="relative">
       <NumberFormat
         placeholder="Enter an amount"
-        className="h-[48px] w-full rounded-[8px] bg-input pl-4 pr-[45px] text-white"
+        className={`bg-input h-12 w-full rounded-lg pl-4 pr-[45px] text-white focus-visible:outline-none ${
+          !isValidForm && 'border border-red-600'
+        }`}
         displayType={'input'}
         min={0}
         allowNegative={false}
