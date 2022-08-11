@@ -4,7 +4,7 @@ import NftItem from '../NftItem';
 import { NFTItemType } from '../NftItem/type';
 
 interface Props {
-  title: string;
+  title?: string;
   items: NFTItemType[] | undefined;
   refreshList?: () => void;
 }
@@ -12,9 +12,11 @@ interface Props {
 const AssetList: React.FC<Props> = ({ title, items }) => {
   return (
     <div className="max-w-content mx-auto">
-      <div className="flex justify-between">
-        <span className="text-[24px] font-bold text-white">{title}</span>
-      </div>
+      {title && (
+        <div className="flex justify-between">
+          <span className="text-[24px] font-bold text-white">{title}</span>
+        </div>
+      )}
       <div className="mt-8 grid grid-cols-1 justify-start justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {items?.map((item) => (
           <div key={item.id} className="w-full max-w-[298px]">
