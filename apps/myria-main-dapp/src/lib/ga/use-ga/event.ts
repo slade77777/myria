@@ -212,18 +212,14 @@ export type EventDefined = {
     l2_wallet_address: string;
   };
   'L2 Wallet Registration Selected': {
-    campaign: Campaign;
     myria_id?: string;
-    myria_username: string;
-    user_email: string;
+    user_email?: string;
     wallet_address: string;
-    l2_wallet_address: string;
   };
   'L2 Wallet Registered': {
-    campaign: Campaign;
     myria_id?: string;
     myria_username: string;
-    user_email: string;
+    user_email?: string;
     wallet_address: string;
     l2_wallet_address: string;
   };
