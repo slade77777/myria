@@ -67,7 +67,7 @@ const Page: React.FC<Props> = ({
           stickyHeader={!!stickyHeader || stickyHeader === undefined}
         />
         <div className="h-screen">
-          <div className={clsx('bg-dark', { 'pb-[149px] md:pb-[112px] h-full': !includeFooter })}>
+          <div className={clsx('bg-dark', { 'pb-[149px] md:pb-[112px]': !includeFooter })}>
             {children}
             {includeFooter && (
               <div className={clsx(paddingX, 'bg-dark pb-[149px] md:pb-[112px]', footerClassName)}>
