@@ -30,7 +30,13 @@ export type BasedParams = {
   page_name: PageName;
 };
 
-export type Campaign = 'Sigil' | 'Nodes' | 'AB de Villers' | 'B2C Marketplace' | 'B2B';
+export type Campaign =
+  | 'Sigil'
+  | 'Sigil Minting'
+  | 'Nodes'
+  | 'AB de Villers'
+  | 'B2C Marketplace'
+  | 'B2B';
 
 export type NFTItemAction =
   | 'MKP Item Buy Now Selected'
@@ -179,6 +185,47 @@ export type EventDefined = {
     sigil_alias: string;
     credits: string;
     date_registered: string;
+  };
+  'Mint Reward Selected': {
+    campaign: Campaign;
+    myria_id?: string;
+    myria_username: string;
+    user_email: string;
+    wallet_address: string;
+    l2_wallet_address: string;
+  };
+  'Mint Now Selected': {
+    campaign: Campaign;
+    myria_id?: string;
+    myria_username: string;
+    user_email: string;
+    wallet_address: string;
+    l2_wallet_address: string;
+  };
+
+  'Minting Completed': {
+    campaign: Campaign;
+    myria_id?: string;
+    myria_username: string;
+    user_email: string;
+    wallet_address: string;
+    l2_wallet_address: string;
+  };
+  'L2 Wallet Registration Selected': {
+    campaign: Campaign;
+    myria_id?: string;
+    myria_username: string;
+    user_email: string;
+    wallet_address: string;
+    l2_wallet_address: string;
+  };
+  'L2 Wallet Registered': {
+    campaign: Campaign;
+    myria_id?: string;
+    myria_username: string;
+    user_email: string;
+    wallet_address: string;
+    l2_wallet_address: string;
   };
   'Account Sign-up Clicked': {
     campaign: Campaign;
@@ -349,3 +396,5 @@ export type EventDefined = {
     trx_url?: string;
   };
 };
+
+export const forceGAStringParam = (t?: string) => (t ? `_${t}` : '');

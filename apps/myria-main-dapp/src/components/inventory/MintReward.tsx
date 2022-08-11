@@ -2,9 +2,16 @@ import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import Modal from 'src/components/Modal';
+import { useAuthenticationContext } from 'src/context/authentication';
+import { useWalletContext } from 'src/context/wallet';
+import { useGA4 } from 'src/lib/ga';
+import { forceGAStringParam } from 'src/lib/ga/use-ga/event';
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { hexifyKey } from 'src/utils';
 import Button from '../core/Button';
 import CircleCheckIcon from '../icons/CircleCheckIcon';
 import LoaderIcon from '../icons/LoaderIcon';
@@ -86,10 +93,36 @@ const MintComplete: React.FC<{ onContinue: () => void }> = ({ onContinue }) => {
 const MintRewardModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [isMintSuccess, setIsMintSuccess] = React.useState<boolean>(false);
   const router = useRouter();
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const { address } = useWalletContext();
+  const { user } = useAuthenticationContext();
+  const { event } = useGA4();
 
   const onCompleteMint = () => {
     onClose();
+    event('Minting Completed', {
+      campaign: 'Sigil Minting',
+      wallet_address: forceGAStringParam(address),
+      l2_wallet_address: forceGAStringParam(hexifyKey(starkKeyUser)),
+      myria_username: user?.user_name || '',
+      myria_id: user?.user_id || '',
+      user_email: user?.email || ''
+    });
     router.push('/marketplace/inventory/');
+  };
+
+  const handleStartMintClick = () => {
+    setIsMintSuccess(true);
+    event('Mint Now Selected', {
+      campaign: 'Sigil Minting',
+      wallet_address: forceGAStringParam(address),
+      l2_wallet_address: forceGAStringParam(hexifyKey(starkKeyUser)),
+      myria_username: user?.user_name || '',
+      myria_id: user?.user_id || '',
+      user_email: user?.email || ''
+    });
   };
   return (
     <Modal open overlayClassName="bg-[rgba(5,14,21,0.7)]">
@@ -104,7 +137,7 @@ const MintRewardModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           </Modal.Close>
           <div className={`bg-brand-deep-blue mt-6 h-full`}>
             {!isMintSuccess ? (
-              <ReadyToMint onMintSuccess={() => setIsMintSuccess(true)} />
+              <ReadyToMint onMintSuccess={handleStartMintClick} />
             ) : (
               <MintComplete onContinue={onCompleteMint} />
             )}
