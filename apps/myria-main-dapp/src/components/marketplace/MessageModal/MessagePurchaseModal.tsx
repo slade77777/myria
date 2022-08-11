@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro';
 import { toast } from 'react-toastify';
 import CheckIcon from 'src/components/icons/CheckIcon';
 
-export default function MessagePurchaseModal({}) {
+export default function MessagePurchaseModal({ assetName = '' }) {
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
@@ -16,16 +16,9 @@ export default function MessagePurchaseModal({}) {
         </div>
         <div className="text-sm font-normal mt-[10px] mb-[20px]">
           <span className="text-base/9">
-            <Trans>
-              Your purchase of
-              <span
-                className="text-[16px] text-white mx-1 cursor-pointer"
-                onClick={() => toast('This function is not ready yet!')}>
-                {' '}
-                Ultra Rare Vector Prime Sigil{' '}
-              </span>
-              successful.
-            </Trans>
+            <Trans>Your purchase of</Trans>
+            <span className="text-[16px] text-white mx-1 cursor-pointer"> {assetName} </span>
+            <Trans>successful.</Trans>
           </span>
         </div>
         <div className="cursor-pointer" onClick={() => toast('This function is not ready yet!')}>

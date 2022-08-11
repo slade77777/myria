@@ -63,12 +63,12 @@ export const ModalEditListing: React.FC<Props> = ({
     status === AssetStatus.MODIFY
       ? {
           title: 'Modify Listing',
-          titleConfirm: <Trans>CONFIRMING CHANGE</Trans>,
+          titleConfirm: <Trans>CONFIRM CHANGE</Trans>,
           labelInput: <Trans>Listing Price</Trans>
         }
       : {
           title: 'List your item for sale',
-          titleConfirm: <Trans>CONFIRMING YOUR LISTING</Trans>,
+          titleConfirm: <Trans>CONFIRMING LISTING</Trans>,
           labelInput: <Trans>Listing Price</Trans>
         };
 

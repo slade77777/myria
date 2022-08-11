@@ -69,7 +69,7 @@ const PurchasePopover: FC<IProp> = ({
         ),
         assetName: (
           <span className="text-[14px]">
-            You have purchased <span className="text-base/10">{assetBuy.name}</span>
+            <Trans>You have purchased</Trans> <span className="text-base/10">{assetBuy.name}</span>
           </span>
         ),
         icon: <CompleteIcon size={64} />,
