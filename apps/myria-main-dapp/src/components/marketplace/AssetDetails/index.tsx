@@ -70,9 +70,9 @@ const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="border-base/6 bg-base/3 rounded-[8px] border py-4 text-center">
-      <p className="text-blue/6 uppercase">{keyword}</p>
-      <p className="font-medium">{val}</p>
+    <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
+      <p className="text-blue/6 uppercase text-xs font-normal">{keyword}</p>
+      <p className="font-medium text-sm">{val}</p>
     </div>
   );
 };
@@ -139,7 +139,10 @@ function AssetDetails({ id }: Props) {
         assetType: 'FOR_SALE',
         collectionId: Number(assetDetails?.collectionId)
       });
-      return res?.data;
+      // get only 4 elements
+      return res?.data.items.filter((item: any, index: number) => {
+        return index <= 3;
+      });
     },
     {
       enabled: !!assetDetails?.collectionId //dependence by assetDetails?.collectionId
@@ -596,12 +599,10 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className="flex flex-row items-center">
                 <img src={avatar.src} className="h-[24px] w-[24px]" />
-                <span className="text-light ml-[8px] text-base">
-                  {assetDetails?.collectionName}
-                </span>
+                <span className="text-light ml-2 text-base">{assetDetails?.collectionName}</span>
               </div>
               <div
-                className="bg-base/3 w-10 cursor-pointer rounded p-[10px]"
+                className="bg-base/3 w-10 cursor-pointer rounded p-3"
                 onClick={() => {
                   toast('The function is not ready yet!');
                 }}>
@@ -611,7 +612,7 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="text-light mt-6 flex">
+              <div className="text-light mt-6 flex text-sm font-normal">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
@@ -621,7 +622,7 @@ function AssetDetails({ id }: Props) {
                 </span>
               </div>
 
-              <div className="text-light flex gap-6">
+              <div className="text-light flex gap-6 text-sm font-normal">
                 <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
                   <MintedIcon />
                   <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
@@ -704,10 +705,10 @@ function AssetDetails({ id }: Props) {
           </div>
         </div>
       </div>
-      <div className="mt-[64px]">
+      <div className="mt-16">
         <AssetList
           title={'More from this collection'}
-          items={moreCollectionList?.items?.map((elm: any, index: number) => {
+          items={moreCollectionList?.map((elm: any, index: number) => {
             const item: NFTItemType = {
               id: `${elm.id}`,
               rarity: (elm.metadata as any).rarity,
@@ -735,6 +736,7 @@ function AssetDetails({ id }: Props) {
           onCloseMessage={() => {
             onTrackingItem({ eventName: 'MKP Check Out Canceled' });
             setShowPopup(false);
+            setShowMessage(true);
           }}
           assetBuy={assetBuy}
           setChangeStatusSuccess={() => {
@@ -748,6 +750,7 @@ function AssetDetails({ id }: Props) {
           onClose={() => setShowModalUnlist(false)}
           onHandleUnlist={onHandleUnlist}
           onHandleCancel={() => setShowModalUnlist(false)}
+          assetName={assetDetails?.name}
         />
       )}
       <MessageModal
@@ -757,14 +760,14 @@ function AssetDetails({ id }: Props) {
       </MessageModal>
       {showMessage && (
         <MessageModal isShowMessage={showMessage} setIsShowMessage={() => setShowMessage(false)}>
-          <MessagePurchaseModal />
+          <MessagePurchaseModal assetName={assetDetails?.name} />
         </MessageModal>
       )}
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
           setIsShowMessage={() => setShowMessageEdit(false)}>
-          <MessageEditListingModal />
+          <MessageEditListingModal assetName={assetDetails?.name} />
         </MessageModal>
       )}
       {showModal && (
@@ -782,14 +785,17 @@ function AssetDetails({ id }: Props) {
         <MessageModal
           isShowMessage={showMessageModify.isShow}
           setIsShowMessage={() => setShowMessageModify({ ...showMessageModify, isShow: false })}>
-          <MessageListingPriceModal price={showMessageModify.newPrice} />
+          <MessageListingPriceModal
+            price={showMessageModify.newPrice}
+            assetName={assetDetails?.name}
+          />
         </MessageModal>
       )}
       {showMessageUnlist && (
         <MessageModal
           isShowMessage={showMessageUnlist}
           setIsShowMessage={() => setShowMessageUnlist(false)}>
-          <MessageUnlist />
+          <MessageUnlist assetName={assetDetails?.name} />
         </MessageModal>
       )}
       {isShowLearnMore && (
@@ -980,11 +986,21 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
   );
 };
 
-const UnlistModal: React.FC<any> = ({ open, onClose, onHandleCancel, onHandleUnlist }) => {
+const UnlistModal: React.FC<any> = ({
+  open,
+  onClose,
+  onHandleCancel,
+  onHandleUnlist,
+  assetName
+}) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={'Unlist Your NFT?'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
-        <UnlistModalContent onHandleCancel={onHandleCancel} onHandleUnlist={onHandleUnlist} />
+        <UnlistModalContent
+          onHandleCancel={onHandleCancel}
+          onHandleUnlist={onHandleUnlist}
+          assetName={assetName}
+        />
       </Modal.Content>
     </Modal>
   );

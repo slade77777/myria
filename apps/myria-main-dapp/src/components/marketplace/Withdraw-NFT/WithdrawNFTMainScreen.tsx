@@ -120,25 +120,27 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
             <span>{valueNFT.name}</span>
           </div>
           <div className="mt-[13px] flex justify-between">
-            <span className="text-base/9">Estimated completion</span>
+            <span className="text-base/9">
+              <Trans>Estimated completion</Trans>
+            </span>
             <span className="flex">10-20 hours</span>
           </div>
         </div>
-        <div className="flex justify-between">
-          <button
-            onClick={() => {
-              const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-              triggerWithdraw?.click();
-            }}
-            className="flex w-32 items-center justify-center rounded-lg px-5 py-3 text-base font-bold text-white border">
-            <Trans>CANCEL</Trans>
-          </button>
-          <button
-            className="flex w-32 items-center justify-center rounded-lg bg-primary/6 px-5 py-3 text-base font-bold text-base/1"
-            onClick={handleConfirmWithdrawNftOffchain}>
-            <Trans>CONFIRM</Trans>
-          </button>
-        </div>
+      </div>
+      <div className="flex justify-between">
+        <button
+          onClick={() => {
+            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
+            triggerWithdraw?.click();
+          }}
+          className="flex w-32 items-center justify-center rounded-lg px-5 py-3 text-base font-bold text-white border">
+          <Trans>CANCEL</Trans>
+        </button>
+        <button
+          className="flex w-32 items-center justify-center rounded-lg bg-primary/6 px-5 py-3 text-base font-bold text-base/1"
+          onClick={handleConfirmWithdrawNftOffchain}>
+          <Trans>CONFIRM</Trans>
+        </button>
       </div>
     </>
   );
