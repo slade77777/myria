@@ -18,6 +18,8 @@ import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { convertWeiToEth } from 'src/utils';
 import { useRouter } from 'next/router';
+import { useGA4 } from '../../lib/ga';
+import { useAuthenticationContext } from '../../context/authentication';
 
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
@@ -42,6 +44,12 @@ export default function MainL2Wallet() {
   const { isFirstTimeUser, connectL2WalletFirstTime } = useL2WalletContext();
   const dispatch = useDispatch();
   const router = useRouter();
+  const { user } = useAuthenticationContext();
+  const { event } = useGA4();
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const starkKey = `0x${starkKeyUser}`;
 
   useEffect(() => {
     if (!address) return;
@@ -103,13 +111,32 @@ export default function MainL2Wallet() {
     }
   }, [isFirstTimeUser]);
 
-  const metaMaskConnect = useCallback(async () => {
-    await connectL2WalletFirstTime(welcomeToMyriaL2Wallet);
-  }, []);
-
-  const welcomeToMyriaL2Wallet = () => {
+  const welcomeToMyriaL2Wallet = useCallback(() => {
+    event('L2 Wallet Registered', {
+      user_email: user?.email,
+      myria_id: user?.user_id,
+      wallet_address: `_${address}`,
+      l2_wallet_address: `_${starkKey}`,
+      myria_username: user?.user_name || ''
+    });
     setWelcomeModal(true);
-  };
+  }, [address, event, starkKey, user?.email, user?.user_id, user?.user_name]);
+
+  const metaMaskConnect = useCallback(async () => {
+    event('L2 Wallet Registration Selected', {
+      user_email: user?.email,
+      myria_id: user?.user_id,
+      wallet_address: `_${address}`
+    });
+    await connectL2WalletFirstTime(welcomeToMyriaL2Wallet);
+  }, [
+    address,
+    connectL2WalletFirstTime,
+    event,
+    user?.email,
+    user?.user_id,
+    welcomeToMyriaL2Wallet
+  ]);
 
   const onAcceptTermOfService = async () => {
     setPrivacyModal(false);
