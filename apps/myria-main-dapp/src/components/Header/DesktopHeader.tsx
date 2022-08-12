@@ -104,7 +104,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                   })}
                   target={item.target}>
                   <span>{item.text}</span>
-                  {item.icon && <i className="w-4">{item.icon}</i>}
+                  {item.icon && <i className="mb-0.5 w-4">{item.icon}</i>}
                 </a>
               </Link>
             </li>
