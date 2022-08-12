@@ -10,7 +10,7 @@ import ChevronDownIcon from './icons/ChevronDownIcon';
 import Popover from './Popover';
 import MetamaskOnboarding from './InstallMetamaskButton';
 import { useAuthenticationContext } from '../context/authentication';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import MainL2Wallet from './Main-L2-Wallet/Main-L2-Wallet';
 import { useGA4 } from '../lib/ga';
 import Modal from './Modal';
@@ -36,6 +36,8 @@ const ConnectL2WalletButton: React.FC = () => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [showMismatchedWalletModal, setShowMismatchedWalletModal] = React.useState(false);
+  const [requestedEmail, setRequestedEmail] = React.useState(false);
+  const mainL2Ref = useRef(null);
 
   const onConnectWallet = () => {
     event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
@@ -121,6 +123,23 @@ const ConnectL2WalletButton: React.FC = () => {
     }
     return false;
   }, [address, localStarkKey, user, walletAddress]);
+
+  useEffect(() => {
+    const emailRequestNumber = localStorage.getItem('emailRequestNumber');
+    const emailRequestTime = emailRequestNumber ? parseInt(emailRequestNumber) : 0;
+    if (
+      loginByWalletMutation.isSuccess &&
+      user &&
+      !user.email &&
+      !requestedEmail &&
+      emailRequestTime < 10
+    ) {
+      // @ts-ignore
+      mainL2Ref.current?.openRequestEmailModal();
+      setRequestedEmail(true);
+      localStorage.setItem('emailRequestNumber', (emailRequestTime + 1).toString());
+    }
+  }, [loginByWalletMutation.isSuccess, user, requestedEmail]);
 
   return (
     <>
@@ -239,7 +258,7 @@ const ConnectL2WalletButton: React.FC = () => {
           }}
         />
       </div>
-      <MainL2Wallet />
+      <MainL2Wallet ref={mainL2Ref} />
     </>
   );
 };

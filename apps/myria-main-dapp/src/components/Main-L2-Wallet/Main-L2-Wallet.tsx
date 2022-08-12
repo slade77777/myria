@@ -1,5 +1,12 @@
 // Import packages
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  forwardRef,
+  useImperativeHandle
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 
@@ -20,6 +27,7 @@ import { convertWeiToEth } from 'src/utils';
 import { useRouter } from 'next/router';
 import { useGA4 } from '../../lib/ga';
 import { useAuthenticationContext } from '../../context/authentication';
+import RequestEmailModal from 'src/packages/l2-wallet/src/components/Modal/RequestEmailModal';
 
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
@@ -27,7 +35,7 @@ const { asset } = StarkwareLib;
 
 const QUANTUM_CONSTANT = 10000000000;
 
-export default function MainL2Wallet() {
+const MainL2Wallet = forwardRef((props, ref) => {
   const walletModalRef = useRef<any>();
   const [showPrivacyModal, setPrivacyModal] = useState<Boolean>(false);
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
@@ -35,7 +43,10 @@ export default function MainL2Wallet() {
   const [isShowMessage, setIsShowMessage] = useState<boolean>(false);
   const [previousBalance, setPreviousBalance] = useState<any>(0);
   const [welcomeModal, setWelcomeModal] = useState<boolean>(false);
+  const [requestEmailModal, setRequestEmailModal] = useState<string>();
   const [showFirstDepositModal, setShowFirstDepositModal] = useState<Boolean>(false);
+  const { user } = useAuthenticationContext();
+
   const selectedToken = useSelector((state: RootState) => state.token.selectedToken);
 
   const showWithDrawClaimModal = useSelector((state: RootState) => state.ui.showWithDrawClaimModal);
@@ -44,7 +55,6 @@ export default function MainL2Wallet() {
   const { isFirstTimeUser, connectL2WalletFirstTime } = useL2WalletContext();
   const dispatch = useDispatch();
   const router = useRouter();
-  const { user } = useAuthenticationContext();
   const { event } = useGA4();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
@@ -143,10 +153,26 @@ export default function MainL2Wallet() {
     walletModalRef.current.onOpenModal();
   };
 
-  const onGetStarted = () => {
+  useImperativeHandle(ref, () => ({
+    openRequestEmailModal() {
+      setRequestEmailModal('center');
+    }
+  }));
+
+  const onGetStarted = useCallback(() => {
     setWelcomeModal(false);
-    setShowFirstDepositModal(true);
-  };
+    if (user?.email) {
+      setShowFirstDepositModal(true);
+    }
+    setRequestEmailModal('top-left');
+  }, [user]);
+
+  const onCloseEmail = useCallback(() => {
+    setRequestEmailModal(undefined);
+    if (requestEmailModal === 'top-left') {
+      setShowFirstDepositModal(true);
+    }
+  }, [requestEmailModal]);
 
   return (
     <div className="flex bg-[#050E15]">
@@ -186,6 +212,13 @@ export default function MainL2Wallet() {
         />
       )}
       <WelcomeMyriaModal modalShow={welcomeModal} closeModal={onGetStarted} />
+      <RequestEmailModal
+        modalShow={!!requestEmailModal}
+        closeModal={onCloseEmail}
+        position={requestEmailModal}
+      />
     </div>
   );
-}
+});
+
+export default MainL2Wallet;
