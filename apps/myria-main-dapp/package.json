@@ -52,6 +52,7 @@
     "myria-core-sdk": "^0.0.132",
     "next": "12.0.8",
     "next-seo": "4.29.0",
+    "node-klaviyo": "^1.1.3",
     "react": "17.0.2",
     "react-device-detect": "^2.2.2",
     "react-dom": "17.0.2",
