@@ -314,12 +314,12 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       );
       return false;
     }
-    if(screen === SCREENS.DEPOSIT_SCREEN && parseFloat(balanceL1) < amount) {
+    if (screen === SCREENS.DEPOSIT_SCREEN && parseFloat(balanceL1) < amount) {
       setErrorAmount(`Deposit amount cannot be higher than available ETH.`);
       return false;
     }
-    if(screen === SCREENS.WITHDRAW_SCREEN && parseFloat(balance) < amount) {
-      setErrorAmount(`Withdraw amount cannot be higher than available ETH.`,);
+    if (screen === SCREENS.WITHDRAW_SCREEN && parseFloat(balance) < amount) {
+      setErrorAmount(`Withdraw amount cannot be higher than available ETH.`);
       return false;
     }
     setErrorAmount('');
@@ -524,13 +524,13 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       >
         {screen === SCREENS.TRANSACTION_HISTORY_DETAILED && (
           <div
-            className="flex cursor-pointer items-center text-white"
+            className="text-base/10 flex cursor-pointer items-center"
             onClick={() => {
               setScreen(SCREENS.MAIN_SCREEN);
               setActiveToken('history');
             }}
           >
-            <ChevronIcon direction="left" />
+            <ChevronIcon direction="left" size={30} />
             <span className="text-[20px] font-bold">History</span>
           </div>
         )}

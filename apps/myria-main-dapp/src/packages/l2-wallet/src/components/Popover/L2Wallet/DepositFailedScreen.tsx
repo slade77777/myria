@@ -37,7 +37,7 @@ export default function DepositFailedScreen({
           <div className="text-base/9 flex items-center justify-between">
             <div className="text-sm">Amount</div>
             <span className="flex items-center text-white">
-              <DAOIcon size={14} className="mb-[2px]" />
+              <DAOIcon size={16} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>
           </div>

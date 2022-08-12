@@ -110,7 +110,7 @@ export default function FirstDepositModal({
       );
       return false;
     }
-    if(parseFloat(balanceL1) < amount) {
+    if (parseFloat(balanceL1) < amount) {
       setErrorAmount(`Deposit amount cannot be higher than available ETH.`);
       return false;
     }
@@ -223,7 +223,8 @@ export default function FirstDepositModal({
                   )}
                 </div>
                 <div className="flex justify-between justify-self-end">
-                  <button onClick={closeModal}
+                  <button
+                    onClick={closeModal}
                     className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-lg border py-2 px-9 text-base font-bold text-white"
                   >
                     CANCEL
@@ -237,7 +238,7 @@ export default function FirstDepositModal({
                   >
                     NEXT
                   </button>
-              </div>
+                </div>
               </div>
             )}
 
@@ -257,7 +258,7 @@ export default function FirstDepositModal({
                     <div className="flex justify-between">
                       <span>Amount</span>
                       <span className="flex items-center text-white">
-                        <DAOIcon size={14} className="mb-[2px]" />
+                        <DAOIcon size={16} className="mb-[2px]" />
                         <span className="ml-1">{amount}</span>
                       </span>
                     </div>
@@ -304,7 +305,7 @@ export default function FirstDepositModal({
                     <div className="flex justify-between">
                       <span>Amount</span>
                       <span className="flex items-center text-white">
-                        <DAOIcon size={14} className="mb-[2px]" />
+                        <DAOIcon size={16} className="mb-[2px]" />
                         <span className="ml-1">{amount}</span>
                       </span>
                     </div>
