@@ -77,7 +77,8 @@ const Inventory: React.FC = () => {
         </div>
         <div className="flex justify-center xl:justify-end">
           <button
-            className="btn-lg body-14-bold btn-primary mr-4 py-[9px]"
+            disabled={!address || !starkKeyUser}
+            className="btn-lg body-14-bold btn-primary mr-4 py-[9px] disabled:bg-gray-500 disabled:text-white disabled:opacity-50"
             onClick={handleOpenMintModal}>
             <Trans>MINT MY REWARDS</Trans>
           </button>
