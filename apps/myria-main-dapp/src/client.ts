@@ -1,3 +1,5 @@
+const Klaviyo = require('node-klaviyo');
+
 import axios, { AxiosError } from 'axios';
 
 export interface IResponseError {
@@ -20,6 +22,20 @@ const apiClient = axios.create({
     'Content-type': 'application/json'
   },
   withCredentials: true
+});
+
+export const salesforceAPIClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_SALESFORCE_URL,
+  timeout: 10000,
+  headers: {
+    accept: 'application/json',
+    'Content-type': 'application/json'
+  }
+});
+
+export const klaviyoClient = new Klaviyo({
+  publicToken: process.env.NEXT_PUBLIC_KLAVIYO_PUBLIC_TOKEN,
+  privateToken: process.env.NEXT_PUBLIC_KLAVIYO_PRIVATE_TOKEN
 });
 
 export const additionalApiClient = axios.create({
