@@ -554,14 +554,14 @@ function AssetDetails({ id }: Props) {
     );
   }
   return (
-    <div className="max-w-content bg-base/2 mx-auto w-full py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
+    <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] ">
       <button onClick={router.back} className="mb-14 items-center">
         <div className="flex">
           <BackIcon />
           <span className="ml-[6px] text-[14px] font-normal">{titleBack}</span>
         </div>
       </button>
-      <div className="flex flex-row space-x-28">
+      <div className="flex flex-row gap-[104px]">
         {/* container */}
         <div className="w-[620px]">
           <div className="relative flex h-[620px] w-full items-center justify-center rounded-[12px]  lg:h-[620px] ">
@@ -591,7 +591,7 @@ function AssetDetails({ id }: Props) {
             </div>
           )}
         </div>
-        <div className="w-[620px]">
+        <div className="w-[540px]">
           {/* right */}
           <div>
             {/* very top */}
