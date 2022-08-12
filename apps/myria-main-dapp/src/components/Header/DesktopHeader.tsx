@@ -92,14 +92,13 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
           );
         } else {
           return (
-            <Link href={item.url as string}>
+            <Link key={idx} href={item.url as string}>
               <a
                 className={clsx('hover:text-blue/6 flex items-center space-x-1', {
                   'text-blue/6': isActive
                 })}
                 target={item.target}>
                 <li
-                  key={idx}
                   className={clsx(
                     'hover:bg-base/4 flex items-center rounded-[8px] py-[9px] px-[13px]',
                     {
