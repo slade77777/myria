@@ -2,6 +2,7 @@
 import cn from 'classnames';
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 // Import components
 import { MyriaLogoIcon, ThreeDotsVerticalIcon } from '../Icons';
@@ -117,8 +118,16 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
 
           <div className="mt-[56px] px-[50px] text-center text-[12px] text-[#A1AFBA]">
             By creating your Myria L2 wallet and using Myria, you agree to our{' '}
-            <span className="text-[#F5B941]">Terms of Service</span> and{' '}
-            <span className="text-[#F5B941]">Privacy Policy.</span>
+            <Link href="/terms-conditions">
+              <span className="cursor-pointer text-[#F5B941]">
+                Terms of Service
+              </span>
+            </Link>{' '}
+            and{' '}
+            <Link href="/privacy-policy">
+              <span className="text-[#F5B941]">Privacy Policy</span>
+            </Link>
+            .
           </div>
 
           <div className="mt-[49px] flex justify-between px-[24px]">
