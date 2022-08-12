@@ -5,7 +5,7 @@ import { getNetworkId } from './services/myriaCoreSdk';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
 const FORMAT_PRICE = 1000000;
-
+export const FORMAT_DATE = 'ddd Do MMM YYYY';
 export const formatNumber = (num: number) => {
   return new Intl.NumberFormat('en').format(num);
 };

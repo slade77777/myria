@@ -53,7 +53,7 @@ export const ModalEditListing: React.FC<Props> = ({
     register,
     handleSubmit,
     watch,
-    formState: { errors, isDirty, isValid, isSubmitSuccessful }
+    formState: { errors, isDirty, isValid, isSubmitSuccessful, isSubmitted }
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   });
@@ -122,10 +122,10 @@ export const ModalEditListing: React.FC<Props> = ({
           {description && <p className="text-light mt-5">{description}</p>}
           <div className="mt-8">
             <Button
-              onClick={handleSubmit(onSubmit)}
+              onClick={handleSubmit((value) => setTimeout(() => onSubmit(value), 100))}
               disabled={!isDirty}
               className={clsx('btn-lg  w-full px-10', BUTTON_BG)}>
-              {isSubmitSuccessful && <ProgressIcon size={23} />}
+              {isSubmitted && <ProgressIcon size={23} />}
               <span className="ml-1">{defaultModal.titleConfirm}</span>
             </Button>
             <Button onClick={onClose} className="btn-lg text-brand-white mt-4 w-full ">

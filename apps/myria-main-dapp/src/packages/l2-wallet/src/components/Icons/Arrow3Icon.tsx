@@ -26,7 +26,7 @@ export default function Arrow3Icon({
       break;
   }
 
-  deg = parseInt(direction.toString(), 10);
+  deg = parseInt(deg.toString(), 10);
 
   return (
     <div className={className}>

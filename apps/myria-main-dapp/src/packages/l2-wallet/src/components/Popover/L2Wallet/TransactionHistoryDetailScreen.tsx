@@ -1,11 +1,16 @@
 import { Trans } from '@lingui/macro';
+import moment from 'moment';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
-import { getExplorerForAddress, truncateAddress } from 'src/utils';
+import { getExplorerForAddress, truncateAddress, FORMAT_DATE } from 'src/utils';
 import { Arrow3Icon } from '../../Icons';
-import { renderType } from './MainScreen';
-
+import {
+  DF_TRANSACTION_TYPE,
+  renderType,
+  TRANSACTION_TYPE,
+} from './MainScreen';
 interface TProps {
   goBack: React.MouseEventHandler<HTMLButtonElement>;
   transactionDetail: any;
@@ -28,23 +33,42 @@ export default function TransactionHistoryDetailScreen({
 
   return (
     <div className="text-base/10 mt-[29px]">
-      <div className="mx-auto flex h-16 w-16 justify-center">
-        <Arrow3Icon direction="bottom" className="text-blue/6 mr-1" size={60} />
-      </div>
-
+      {transactionDetail.type !== TRANSACTION_TYPE.SETTLEMENT && (
+        <div className="mx-auto flex h-16 w-16 justify-center">
+          <Arrow3Icon
+            direction={
+              transactionDetail?.type &&
+              DF_TRANSACTION_TYPE[transactionDetail.type]?.rotateIcon
+            }
+            className="text-blue/6 mr-1"
+            size={60}
+          />
+        </div>
+      )}
+      {transactionDetail.type === TRANSACTION_TYPE.SETTLEMENT && (
+        <div className="flex items-center justify-center ">
+          <Image
+            className=""
+            src={DF_TRANSACTION_TYPE[transactionDetail.type]?.icon}
+            width={89}
+            height={89}
+          />
+        </div>
+      )}
       <div className="text-base/10 mt-6 text-center text-2xl">
         {renderType(transactionDetail.type)}
       </div>
       {transactionDetail.status === 'success' ? (
-        <div className="text-base/9 text-center text-sm">
-          Transaction completed {transactionDetail.updatedAt}
+        <div className="text-base/9 mt-6 text-center text-sm">
+          Transaction completed{' '}
+          {moment(transactionDetail.updatedAt).format(FORMAT_DATE)}
         </div>
       ) : (
-        <div className="text-base/9 text-center text-sm">
-          Transaction started {transactionDetail.createdAt}
+        <div className="text-base/9 mt-6 text-center text-sm">
+          Transaction started{' '}
+          {moment(transactionDetail.createdAt).format(FORMAT_DATE)}
         </div>
       )}
-
       <div className="bg-base/2/50 mt-8 rounded-lg p-4 text-sm">
         {transactionDetail.transactionType !== 'SettlementRequest' && (
           <div className="flex justify-between">

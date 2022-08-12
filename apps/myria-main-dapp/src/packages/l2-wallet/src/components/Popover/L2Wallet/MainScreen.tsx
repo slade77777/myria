@@ -15,6 +15,7 @@ import ETHIcon from '../../Icons/ETHIcon';
 import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
+import Image from 'next/image';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -41,6 +42,42 @@ enum STATUS_HISTORY {
   FAILED = 'Failed',
   IN_PROGRESS = 'Pending',
 }
+
+export const TRANSACTION_TYPE = {
+  DEPOSIT: 'DepositRequest',
+  TRANSFER: 'TransferRequest',
+  WITHDRAWAL: 'WithdrawalRequest',
+  SETTLEMENT: 'SettlementRequest',
+  MINT: 'MintRequest',
+};
+
+export const DF_TRANSACTION_TYPE = {
+  [TRANSACTION_TYPE.DEPOSIT]: {
+    title: 'Deposit',
+    rotateIcon: 'bottom',
+    icon: '',
+  },
+  [TRANSACTION_TYPE.WITHDRAWAL]: {
+    title: 'Withdrawal',
+    rotateIcon: 'top',
+    icon: '',
+  },
+  [TRANSACTION_TYPE.SETTLEMENT]: {
+    title: 'Purchase',
+    icon: '/images/marketplace/icoPurchase.png',
+    rotateIcon: 'top',
+  },
+  [TRANSACTION_TYPE.TRANSFER]: {
+    title: 'Transfer',
+    rotateIcon: 'top',
+    icon: '',
+  },
+  [TRANSACTION_TYPE.MINT]: {
+    title: 'Mint',
+    rotateIcon: 'top',
+    icon: '',
+  },
+};
 
 export const renderType = (type: string) => {
   switch (type) {
@@ -276,18 +313,28 @@ export default function MainScreen({
                   key={index}
                 >
                   <div className="mr-2">
-                    <img
-                      className="w-8 flex-none"
-                      src={item.ico}
-                      alt="token_icon"
-                    />
+                    {item.type !== TRANSACTION_TYPE.SETTLEMENT && (
+                      <img
+                        className="w-8 flex-none"
+                        src={item.ico}
+                        alt="token_icon"
+                      />
+                    )}
+                    {item.type === TRANSACTION_TYPE.SETTLEMENT && (
+                      <Image
+                        className="rounded-[16px]"
+                        src={'/assets/images/assetPurchase.png'}
+                        width={32}
+                        height={32}
+                      />
+                    )}
                   </div>
                   <div className="grow">
                     <div className="text-base/10 flex items-center justify-between text-sm">
                       <span>{renderType(item.type)}</span>
                       <span className="flex items-center">
                         <span className="mb-[2px] mr-1">
-                          {item.type !== 'SettlementRequest' && (
+                          {item.type !== TRANSACTION_TYPE.SETTLEMENT && (
                             <DAOIcon size={16} />
                           )}
                         </span>
