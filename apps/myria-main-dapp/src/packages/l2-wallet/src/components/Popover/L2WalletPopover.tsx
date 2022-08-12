@@ -647,7 +647,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             selectedToken={selectedToken}
             successHandler={() => {
               initForm();
-              handleSetAmount(amount);
+              handleSetAmount(amount || 0);
               handleShowMessageDeposit(true);
             }}
             goBack={() => {
