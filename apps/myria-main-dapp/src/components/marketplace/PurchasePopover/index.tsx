@@ -19,6 +19,7 @@ interface IProp {
   setChangeStatusSuccess: () => void;
   isDeposit: boolean;
   isLoading: boolean;
+  onClose: () => void;
 }
 interface ButtonProps {
   onCloseMessage: () => void;
@@ -26,6 +27,7 @@ interface ButtonProps {
   onConfirm: () => void;
   isDeposit: boolean;
   isLoading: boolean;
+  onClose: () => void;
 }
 
 const PurchasePopover: FC<IProp> = ({
@@ -34,7 +36,8 @@ const PurchasePopover: FC<IProp> = ({
   onConfirm,
   setChangeStatusSuccess,
   isDeposit,
-  isLoading
+  isLoading,
+  onClose
 }) => {
   const [isProgressPurchase, setIsProgressPurchase] = useState<boolean>(false);
   const [statusPurchase, setStatusPurchase] = useState<PurchaseStatus>(PurchaseStatus.CHECK);
@@ -117,7 +120,7 @@ const PurchasePopover: FC<IProp> = ({
           <Button
             loading={false}
             className="btn-lg btn-primary my-8 w-full border"
-            onClick={onCloseMessage}>
+            onClick={() => setStatusPurchase(PurchaseStatus.CHECK)}>
             <Trans>Retry</Trans>
           </Button>
         ),
@@ -148,6 +151,7 @@ const PurchasePopover: FC<IProp> = ({
       icon: <CartIcon color="#9AC9E3" size={64} />,
       action: (
         <ActionButtonCheckout
+          onClose={onClose}
           onConfirm={onPurchase}
           onCloseMessage={onCloseMessage}
           isProgressPurchase={isProgressPurchase}
@@ -175,14 +179,14 @@ const PurchasePopover: FC<IProp> = ({
           <h3 className="mt-[24px] text-[24px] font-medium">{elementContent.title}</h3>
           <p className="text-base/9 mt-[16px] font-normal">{elementContent.assetName}</p>
         </div>
-        <div className="bg-base/2/50 text-base/9/[.6] mt-[32px] rounded-[8px] p-4 text-[16px]">
+        <div className="bg-base/2/50 text-base/9/[.6] mt-[32px] rounded-[8px] p-4 text-sm">
           <div className="flex justify-between">
             <span>
               <Trans>Amount</Trans>
             </span>
             <div className="flex items-center text-white">
-              <DAOIcon />
-              <span>{assetBuy.price}</span>
+              <DAOIcon size={16} className="mb-[2px] m" />
+              <span className="ml-1">{assetBuy.price}</span>
             </div>
           </div>
           {elementContent.history}
@@ -199,10 +203,11 @@ const ActionButtonCheckout: FC<ButtonProps> = ({
   isProgressPurchase,
   onConfirm,
   isDeposit,
-  isLoading
+  isLoading,
+  onClose
 }) => {
   const triggerPopoverDeposit = () => {
-    onCloseMessage();
+    onClose();
     const triggerMainScreen = document.getElementById('trigger-popover-main-screen');
     triggerMainScreen?.click();
     setTimeout(() => {
@@ -222,10 +227,7 @@ const ActionButtonCheckout: FC<ButtonProps> = ({
   if (isDeposit) {
     return (
       <>
-        <Button
-          onClick={onCloseMessage}
-          loading={false}
-          className="btn-lg my-8 h-[50px] w-[120px] border">
+        <Button onClick={onClose} loading={false} className="btn-lg my-8 h-[50px] w-[120px] border">
           <Trans>CANCEL</Trans>
         </Button>
         <Button
@@ -239,10 +241,7 @@ const ActionButtonCheckout: FC<ButtonProps> = ({
 
   return (
     <>
-      <Button
-        onClick={onCloseMessage}
-        loading={false}
-        className="btn-lg my-8 h-[50px] w-[120px] border">
+      <Button onClick={onClose} loading={false} className="btn-lg my-8 h-[50px] w-[120px] border">
         <Trans>CANCEL</Trans>
       </Button>
       {isProgressPurchase ? (

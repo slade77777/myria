@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { RootState } from '../../../app/store';
 import { ethersLink } from '../../../constants/ethers';
 import { TickCircleIcon } from '../../Icons';
 
@@ -10,11 +12,7 @@ interface TProps {
   selectedToken: any;
 }
 
-export default function WithdrawCompleteScreen({
-  successHandler,
-  amount,
-  selectedToken,
-}: TProps) {
+export default function WithdrawCompleteScreen({ successHandler }: TProps) {
   const { isWithdrawComplete } = useL2WalletContext();
 
   const URL_LINK = `${ethersLink.goerli_goerli}${
@@ -22,6 +20,8 @@ export default function WithdrawCompleteScreen({
       ? isWithdrawComplete?.transactionHash
       : ''
   }`;
+
+  const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
 
   return (
     <>
@@ -43,7 +43,7 @@ export default function WithdrawCompleteScreen({
             <span>Amount</span>
             <span className="text-base/10 flex items-center">
               <DAOIcon size={12} className="mb-[2px]" />
-              <span className="ml-1">{amount}</span>
+              <span className="ml-1">{claimAmount}</span>
             </span>
           </div>
           <div className="mt-4 flex items-center justify-between">

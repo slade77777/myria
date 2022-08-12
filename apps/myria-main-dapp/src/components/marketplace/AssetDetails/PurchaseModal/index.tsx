@@ -60,6 +60,7 @@ const PurchaseModal: React.FC<Props> = ({
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content className="shadow-[0_0_40px_10px_#0000004D] absolute top-6 right-28 h-[565px] w-[406px] rounded-xl bg-base/3 max-h-[80vh] border-[#202230] border z-50">
         <PurchasePopover
+          onClose={onClose}
           onConfirm={onCreate}
           assetBuy={assetBuy}
           onCloseMessage={onCloseMessage}

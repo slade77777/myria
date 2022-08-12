@@ -779,6 +779,7 @@ function AssetDetails({ id }: Props) {
           imgSrc={assetDetails?.imageUrl}
           open={showModal}
           onClose={handleCloseModal}
+          rarityColor={rarityColor}
         />
       )}
       {showMessageModify.isShow && (
