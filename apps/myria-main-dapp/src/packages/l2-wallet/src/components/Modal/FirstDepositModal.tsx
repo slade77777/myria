@@ -1,14 +1,13 @@
 import cn from 'classnames';
 import { Types } from 'myria-core-sdk';
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { RootState } from '../../app/store';
 import CurrencySelector, { TOption } from '../Dropdown/CurrencySelector';
 import { ThreeDotsVerticalIcon } from '../Icons';
 import MaxInput from '../Input/MaxInput';
 
-// import TestToken from '../../assets/images/TT.png';
 import useBalanceL1 from '../../common/hooks/useBalanceL1';
 
 import {
@@ -69,10 +68,9 @@ export default function FirstDepositModal({
   const connectedAccount = useSelector(
     (state: RootState) => state.account.connectedAccount,
   );
-  const dispatch = useDispatch();
   const [selectedToken, setSelectedToken] = useState<TOption>(options[0]);
-  const [amount, setAmount] = useState<number>(0);
-  const [isValidDeposit, setIsValidDeposit] = useState<Boolean>(false);
+  const [amount, setAmount] = useState<number | undefined>(undefined);
+  // const [isValidDeposit, setIsValidDeposit] = useState<Boolean>(false);
   const [depositProgress, setDepositProgress] = useState<number>(
     PROGRESS.START,
   );
@@ -94,9 +92,9 @@ export default function FirstDepositModal({
     setAmount(param);
   };
   const isValidForm = useMemo(() => {
-    if (!amount) {
+    if (amount == undefined) {
       setErrorAmount('');
-      return false;
+      return true;
     }
     if (!selectedToken) {
       setErrorAmount('Select Asset required.');
@@ -121,7 +119,7 @@ export default function FirstDepositModal({
   }, [amount, balanceL1, etheCost, selectedToken]);
   const deposit = async () => {
     let resultDepoit: TxResult;
-
+    if(amount == undefined) return;
     try {
       setDepositProgress(PROGRESS.PROCESSING);
       const moduleFactory = await getModuleFactory();
@@ -233,9 +231,9 @@ export default function FirstDepositModal({
                   <button
                     className={cn(
                       'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
-                      isValidForm ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
+                      (isValidForm && amount != undefined) ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
                     )}
-                    onClick={deposit}
+                    onClick={isValidForm && amount != undefined ? deposit : ()=>{}}
                   >
                     NEXT
                   </button>

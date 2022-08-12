@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import InputErrorIcon from '../Icons/InputErrorIcon';
 
 import NumberFormat from 'react-number-format';
@@ -10,32 +10,24 @@ interface TProps {
 
 export default function MaxInput({ max = 100, onChangeHandle, isValidForm = true }: TProps) {
   const [inputValue, setInputValue] = useState<number>();
-  const [errorInput, setErrorInput] = useState<boolean>(false);
+  // const [errorInput, setErrorInput] = useState<boolean>(false);
   const setMax = () => {
     setInputValue(max);
     onChangeHandle(max);
   };
-
-  const onHandleValiteInput = (value: number) => {
-    if (value <= max) {
-      setErrorInput(false);
-      onChangeHandle(value);
-    } else {
-      onChangeHandle(0);
-      setErrorInput(true);
-    }
-  };
   return (
     <div className="relative">
       <NumberFormat
+        value={inputValue}
         placeholder="Enter an amount"
         className={`bg-input h-12 w-full rounded-lg pl-4 pr-[45px] text-white focus-visible:outline-none ${
           !isValidForm && 'border border-red-600'
         }`}
         displayType={'input'}
+        allowEmptyFormatting={true}
         allowNegative={false}
         thousandSeparator={true}
-        onValueChange={({floatValue}) => {
+        onValueChange={({floatValue, formattedValue, value}) => {
           setInputValue(floatValue);
           onChangeHandle(floatValue);
         }}

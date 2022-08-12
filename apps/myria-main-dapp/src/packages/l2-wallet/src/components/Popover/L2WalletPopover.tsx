@@ -112,7 +112,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     (state: RootState) => state.account.connectedAccount,
   );
   const [selectedToken, setSelectedToken] = useState<TOption>(options[0]);
-  const [amount, setAmount] = useState<number>(0);
+  const [amount, setAmount] = useState<number | undefined>(undefined);
   const [errorMessageAsset, setErrorMessageAsset] = useState('');
   const [errorAmount, setErrorAmount] = useState('');
   const [balance, setBalance] = useState('0');
@@ -294,9 +294,9 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   }, [pKey, dispatch, screen]);
 
   const isValidForm = useMemo(() => {
-    if (!amount) {
+    if (amount == undefined) {
       setErrorAmount('');
-      return false;
+      return true;
     }
     if (!selectedToken) {
       setErrorAmount('Select Asset required.');
@@ -327,6 +327,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   }, [amount, selectedToken, etheCost, screen, balanceL1, balance]);
 
   const deposit = async () => {
+    if(amount == undefined) return;
     let resultDepoit: TxResult;
     trackWalletAction({
       eventName: 'Wallet Deposit Selected',
@@ -380,6 +381,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   };
 
   const withdraw = async () => {
+    if(amount == undefined) return;
     try {
       let responseWithdraw: any = null;
       setWithdrawInProgress(true);
@@ -489,6 +491,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       error_code?: string;
       hide_balance?: boolean;
     }) => {
+      if(amount == undefined) return;
       event(eventName, {
         myria_id: user?.user_id,
         wallet_address: `_${address}`,
@@ -611,6 +614,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             errorMessageAsset={errorMessageAsset}
             balance={balanceL1}
             setAmountHandle={setAmountHandle}
+            amount={amount}
             selectedToken={selectedToken}
             isValidForm={isValidForm}
             errorAmount={errorAmount}
@@ -627,7 +631,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             goBack={() => {
               setScreen(SCREENS.MAIN_SCREEN);
             }}
-            amount={amount}
+            amount={amount || 0}
             selectedToken={selectedToken}
             depositInProgress={depositInProgress}
             successHandler={() => {
@@ -638,12 +642,12 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
         {screen === SCREENS.DEPOSIT_COMPLETE_SCREEN && (
           <DepositCompleteScreen
-            amount={amount}
+            amount={amount || 0}
             items={depositResponse}
             selectedToken={selectedToken}
             successHandler={() => {
               initForm();
-              handleSetAmount(amount);
+              handleSetAmount(amount || 0);
               handleShowMessageDeposit(true);
             }}
             goBack={() => {
@@ -672,6 +676,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             }}
             errorAmount={errorAmount}
             options={options}
+            amount={amount}
             setWithdrawScreenMounted={setWithdrawScreenMounted}
             isValidForm={isValidForm}
           />
@@ -680,7 +685,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         {screen === SCREENS.WITHDRAW_REQUEST && (
           <WithdrawRequestScreen
             goBack={() => setScreen(SCREENS.WITHDRAW_SCREEN)}
-            amount={amount}
+            amount={amount || 0}
             cancelHandler={() => {
               setScreen(SCREENS.MAIN_SCREEN);
             }}
@@ -692,25 +697,25 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         {screen === SCREENS.WITHDRAW_IN_PROGRESS && (
           <WithdrawInProgressScreen
             goBack={() => setScreen(SCREENS.WITHDRAW_REQUEST)}
-            amount={amount}
+            amount={amount || 0}
           />
         )}
 
         {screen === SCREENS.WITHDRAW_COMPLETE && (
           <WithdrawCompleteScreen
-            amount={amount}
+            amount={amount || 0}
             selectedToken={selectedToken}
             successHandler={() => setScreen(SCREENS.MAIN_SCREEN)}
           />
         )}
 
         {screen === SCREENS.WITHDRAW_PENDING && (
-          <WithdrawPendingScreen amount={amount} />
+          <WithdrawPendingScreen amount={amount || 0} />
         )}
 
         {screen === SCREENS.DEPOSIT_FAILED && (
           <DepositFailedScreen
-            amount={amount}
+            amount={amount || 0}
             depositRetryHandler={depositRetryHandler}
             goBack={() => {
               setScreen(SCREENS.MAIN_SCREEN);
@@ -720,7 +725,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
         {screen === SCREENS.WITHDRAW_FAILED && (
           <WithdrawFailedScreen
-            amount={amount}
+            amount={amount || 0}
             withdrawRetryHandler={withdrawRetryHandler}
           />
         )}
