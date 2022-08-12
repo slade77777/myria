@@ -13,6 +13,7 @@ type Props = {
   selectCurrency: any;
   errorMessageAsset: string;
   balance: string;
+  amount?: number;
   setAmountHandle: any;
   selectedToken: any;
   isValidForm: any;
@@ -34,6 +35,7 @@ export default function DepositScreen({
   gotoProgressScreen,
   options,
   setDepositScreenMounted,
+  amount
 }: Props) {
   const [inputChanged, setInputChanged] = useState(false);
   useEffect(() => {
@@ -122,10 +124,10 @@ export default function DepositScreen({
         <button
           className={cn(
             'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
-            isValidForm ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
+            (isValidForm && amount != undefined) ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
           )}
           onClick={() => {
-            if (isValidForm) {
+            if ((isValidForm && amount != undefined)) {
               gotoProgressScreen();
             }
           }}
