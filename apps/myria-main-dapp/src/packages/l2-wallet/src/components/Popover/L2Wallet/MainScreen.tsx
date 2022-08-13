@@ -54,46 +54,34 @@ export const TRANSACTION_TYPE = {
 export const DF_TRANSACTION_TYPE = {
   [TRANSACTION_TYPE.DEPOSIT]: {
     title: 'Deposit',
+    titleHistoryDetail: 'Deposit Received',
     rotateIcon: 'bottom',
     icon: '',
   },
   [TRANSACTION_TYPE.WITHDRAWAL]: {
     title: 'Withdrawal',
+    titleHistoryDetail: 'Withdrawal',
     rotateIcon: 'top',
     icon: '',
   },
   [TRANSACTION_TYPE.SETTLEMENT]: {
     title: 'Purchase',
+    titleHistoryDetail: 'Purchase',
     icon: '/images/marketplace/icoPurchase.png',
     rotateIcon: 'top',
   },
   [TRANSACTION_TYPE.TRANSFER]: {
-    title: 'Transfer',
+    title: 'Withdrawal',
+    titleHistoryDetail: 'Withdrawal',
     rotateIcon: 'top',
     icon: '',
   },
   [TRANSACTION_TYPE.MINT]: {
     title: 'Mint',
+    titleHistoryDetail: 'Deposit',
     rotateIcon: 'top',
     icon: '',
   },
-};
-
-export const renderType = (type: string) => {
-  switch (type) {
-    case 'DepositRequest':
-      return 'Deposit';
-    case 'TransferRequest':
-      return 'Withdrawal';
-    case 'WithdrawalRequest':
-      return 'Withdrawal';
-    case 'SettlementRequest':
-      return 'Purchase';
-    case 'MintRequest':
-      return 'Mint';
-    default:
-      return '';
-  }
 };
 
 const renderAmount = (type: string, amount: number) => {
@@ -331,7 +319,7 @@ export default function MainScreen({
                   </div>
                   <div className="grow">
                     <div className="text-base/10 flex items-center justify-between text-sm">
-                      <span>{renderType(item.type)}</span>
+                      <span>{DF_TRANSACTION_TYPE[item?.type]?.title}</span>
                       <span className="flex items-center">
                         <span className="mb-[2px] mr-1">
                           {item.type !== TRANSACTION_TYPE.SETTLEMENT && (

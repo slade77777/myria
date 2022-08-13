@@ -4,13 +4,9 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
-import { getExplorerForAddress, truncateAddress, FORMAT_DATE } from 'src/utils';
+import { FORMAT_DATE, getExplorerForAddress, truncateAddress } from 'src/utils';
 import { Arrow3Icon } from '../../Icons';
-import {
-  DF_TRANSACTION_TYPE,
-  renderType,
-  TRANSACTION_TYPE,
-} from './MainScreen';
+import { DF_TRANSACTION_TYPE, TRANSACTION_TYPE } from './MainScreen';
 interface TProps {
   goBack: React.MouseEventHandler<HTMLButtonElement>;
   transactionDetail: any;
@@ -25,7 +21,11 @@ export default function TransactionHistoryDetailScreen({
       const networkId = await getNetworkId();
       if (!networkId || !transactionDetail?.transactionHash) return '';
       setEtherLinkContract(
-        getExplorerForAddress(transactionDetail?.transactionHash, networkId),
+        getExplorerForAddress(
+          transactionDetail?.transactionHash,
+          networkId,
+          'transaction',
+        ),
       );
     };
     setLink();
@@ -56,7 +56,8 @@ export default function TransactionHistoryDetailScreen({
         </div>
       )}
       <div className="text-base/10 mt-6 text-center text-2xl">
-        {renderType(transactionDetail.type)}
+        {transactionDetail?.type &&
+          DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail}
       </div>
       {transactionDetail.status === 'success' ? (
         <div className="text-base/9 mt-6 text-center text-sm">

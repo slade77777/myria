@@ -109,11 +109,19 @@ export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
       };
   }
 };
-const getBaseExploreLink = (networkId: number) => {
-  return EXPLORE_LINKS[networkId as keyof typeof EXPLORE_LINKS];
+const getBaseExploreLink = (type: 'address' | 'transaction' = 'address', networkId: number) => {
+  if (type === 'address') {
+    return EXPLORE_LINKS[networkId as keyof typeof EXPLORE_LINKS]?.address;
+  } else {
+    return EXPLORE_LINKS[networkId as keyof typeof EXPLORE_LINKS]?.transaction;
+  }
 };
-export const getExplorerForAddress = (ContractAddress: string, networkId: number) => {
-  const baseEtherLink = getBaseExploreLink(networkId);
+export const getExplorerForAddress = (
+  ContractAddress: string,
+  networkId: number,
+  type?: 'address' | 'transaction'
+) => {
+  const baseEtherLink = getBaseExploreLink(type, networkId);
   const etherLink = `${baseEtherLink}/${ContractAddress}`;
   return etherLink;
 };

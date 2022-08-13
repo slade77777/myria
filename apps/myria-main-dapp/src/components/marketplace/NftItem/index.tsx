@@ -6,6 +6,7 @@ import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
 import { assetModule } from 'src/services/myriaCore';
+import { useRouter } from 'next/router';
 
 interface Props {
   item: NFTItemType;
@@ -53,6 +54,7 @@ const NftItem = ({ item }: Props) => {
   const { event } = useGA4();
   const { user } = useAuthenticationContext();
   const { address } = useWalletContext();
+  const router = useRouter();
 
   const rarityColor = getRarityColor(item.rarity);
   const price = parseFloat(item.priceETH + '');
@@ -69,10 +71,17 @@ const NftItem = ({ item }: Props) => {
       });
     });
   }, [item, user, address]);
-
+  const hastPath = router.pathname.split('/');
+  const beforeHash = hastPath[hastPath.length - 1];
   return (
-    <Link href={`/marketplace/asset-detail?id=${item.id}`} key={item.id}>
-      <a href={`/marketplace/asset-detail?id=${item.id}`} onClick={onClickItemTracking}>
+    <Link
+      href={{
+        pathname: `/marketplace/asset-detail`,
+        query: { id: item.id },
+        hash: `${beforeHash}`
+      }}
+      key={item.id}>
+      <a onClick={onClickItemTracking}>
         <div className="cursor-pointer snap-start">
           <div className="bg-brand-deep-blue block w-full max-w-[298px] overflow-hidden rounded-[5px]">
             <div className="relative flex h-[298px] w-full items-center justify-center lg:h-[248px]">

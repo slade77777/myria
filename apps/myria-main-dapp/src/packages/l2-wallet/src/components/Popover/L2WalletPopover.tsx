@@ -327,7 +327,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   }, [amount, selectedToken, etheCost, screen, balanceL1, balance]);
 
   const deposit = async () => {
-    if(amount == undefined) return;
+    if (amount == undefined) return;
     let resultDepoit: TxResult;
     trackWalletAction({
       eventName: 'Wallet Deposit Selected',
@@ -381,7 +381,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   };
 
   const withdraw = async () => {
-    if(amount == undefined) return;
+    if (amount == undefined) return;
     try {
       let responseWithdraw: any = null;
       setWithdrawInProgress(true);
@@ -491,7 +491,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       error_code?: string;
       hide_balance?: boolean;
     }) => {
-      if(amount == undefined) return;
+      if (amount == undefined) return;
       event(eventName, {
         myria_id: user?.user_id,
         wallet_address: `_${address}`,
@@ -607,6 +607,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         {screen === SCREENS.DEPOSIT_SCREEN && (
           <DepositScreen
             goBack={() => {
+              setAmount(undefined);
               setScreen(SCREENS.MAIN_SCREEN);
             }}
             options={options}
@@ -629,6 +630,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         {screen === SCREENS.DEPOSIT_IN_PROGRESS_SCREEN && (
           <DepositInProgressScreen
             goBack={() => {
+              setAmount(undefined);
               setScreen(SCREENS.MAIN_SCREEN);
             }}
             amount={amount || 0}
@@ -659,6 +661,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         {screen === SCREENS.WITHDRAW_SCREEN && (
           <WithdrawScreen
             goBack={() => {
+              setAmount(undefined);
               setScreen(SCREENS.MAIN_SCREEN);
             }}
             balance={balance}

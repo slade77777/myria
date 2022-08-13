@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import cn from 'classnames';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { ArrowIcon, ProgressIcon } from '../../Icons';
@@ -38,7 +39,9 @@ export default function WithdrawRequestScreen({
             isNotAnimate={!withdrawInProgress}
           />
         </div>
-        <div className="mt-6 text-center text-2xl">Withdrawal to L1 wallet</div>
+        <div className="mt-6 text-center text-2xl">
+          <Trans> Withdrawal In progress </Trans>
+        </div>
         <div className="text-base/9 mt-4 px-7 text-center text-sm">
           Withdrawals are processed in batches every 20 hours. Click{' '}
           <span className="text-primary/6 cursor-pointer">here</span> to learn

@@ -71,8 +71,8 @@ const INTERVAL_DURATION = 2 * 60 * 1000;
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
     <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
-      <p className="text-blue/6 uppercase text-xs font-normal">{keyword}</p>
-      <p className="font-medium text-sm">{val}</p>
+      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
+      <p className="text-sm font-medium">{val}</p>
     </div>
   );
 };
@@ -113,19 +113,18 @@ function AssetDetails({ id }: Props) {
     return truncateString(`${assetDetails?.owner?.starkKey}`);
   }, [assetDetails?.owner?.starkKey, starkKey]);
   const listOrder = useMemo(() => data?.listOrder, [data?.listOrder]);
-  const titleBack = useMemo(
-    () =>
-      assetDetails?.collectionName ? (
-        <span>
-          <Trans>BACK TO</Trans> {assetDetails.collectionName.toUpperCase()}
-        </span>
-      ) : (
-        <span>
-          <Trans>BACK</Trans>
-        </span>
-      ),
-    [assetDetails]
-  );
+  const titleBack = useMemo(() => {
+    const result = router?.asPath.includes('inventory') ? (
+      <span>
+        <Trans>BACK TO INVENTORY</Trans>
+      </span>
+    ) : (
+      <span>
+        <Trans>BACK MYRIA HOT COLLECTIONS</Trans>
+      </span>
+    );
+    return result;
+  }, [router]);
 
   const { data: moreCollectionList } = useQuery(
     ['moreCollection', assetDetails?.collectionId],

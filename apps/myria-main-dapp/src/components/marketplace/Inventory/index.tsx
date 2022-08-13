@@ -5,6 +5,7 @@ import AssetList from '../AssetList';
 import { Loading } from '../../Loading';
 import truncateString from 'src/helper';
 import { Trans } from '@lingui/macro';
+import Link from 'next/link';
 
 interface Props {
   userAvatar: string;
@@ -81,15 +82,15 @@ function Inventory({
         </div>
       </div>
       {!assetLoading && items?.length === 0 && (
-        <div className="flex mt-20 items-center justify-center text-center px-[400px] max-w-content mx-auto">
+        <div className="max-w-content mx-auto mt-20 flex items-center justify-center px-[400px] text-center">
           <p>
-            <Trans>
-              You don’t have any items yet. Visit the&nbsp;
-              <span className="text-primary/6 cursor-pointer ">
-                <Trans> Myria Marketplace </Trans>
-              </span>
-              &nbsp;to browse and purchase items.
-            </Trans>
+            <Trans>You don’t have any items yet. Visit the </Trans>&nbsp;
+            <Link href="/marketplace">
+              <a className="text-primary/6 cursor-pointer">
+                <Trans>Myria Marketplace </Trans>&nbsp;
+              </a>
+            </Link>
+            <Trans>to browse and purchase items.</Trans>
           </p>
         </div>
       )}
