@@ -846,10 +846,10 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
             <>
               <button
                 disabled
-                className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold">
+                className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
                 <Trans>LIST ITEM FOR SALE</Trans>
               </button>
-              <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+              <button className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
                 <Trans>WITHDRAWAL IN PROGRESS</Trans>
               </button>
             </>
