@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 
 import { BigNumber, ethers } from 'ethers';
@@ -9,6 +9,7 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { UserData } from 'myria-core-sdk/dist/types/src/types/UserTypes';
 import { SimpleFunction } from 'web3modal';
+import { WalletTabs } from 'src/types';
 
 export type ReaderProvider = ethers.providers.InfuraProvider;
 interface IL2WalletContext {
@@ -25,6 +26,8 @@ interface IL2WalletContext {
   showWithdrawCompleteScreen: any;
   isFirstPurchase: boolean;
   handleSetFirstPurchase: (value: boolean) => void;
+  activeWalletTabs: WalletTabs;
+  handleActiveWalletTabs: (value: WalletTabs) => void
 }
 
 const L2WalletContext = React.createContext<IL2WalletContext>({} as IL2WalletContext);
@@ -34,6 +37,7 @@ export const L2WalletProvider: React.FC = ({ children }) => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [isFirstTimeWallet, setIsFirstTimeWallet] = React.useState(false);
+  const [activeWalletTabs, setActiveWalletTabs] = useState<WalletTabs>(WalletTabs.TOKENS);
   const [isFirstPurchase, setIsFirstPurchase] = React.useState(false);
   const [isWithdrawComplete, setIsWithdrawComplete] = React.useState({
     isShow: false,
@@ -144,7 +148,9 @@ export const L2WalletProvider: React.FC = ({ children }) => {
   const handleSetFirstPurchase = (value: boolean) => {
     setIsFirstPurchase(value);
   };
-
+  const handleActiveWalletTabs = (value: WalletTabs) => {
+    setActiveWalletTabs(value)
+  }
   return (
     <L2WalletContext.Provider
       value={{
@@ -155,7 +161,9 @@ export const L2WalletProvider: React.FC = ({ children }) => {
         isWithdrawComplete: isWithdrawComplete,
         showWithdrawCompleteScreen: showWithdrawCompleteScreen,
         isFirstPurchase: isFirstPurchase,
-        handleSetFirstPurchase: handleSetFirstPurchase
+        handleSetFirstPurchase: handleSetFirstPurchase,
+        handleActiveWalletTabs,
+        activeWalletTabs
       }}>
       {children}
     </L2WalletContext.Provider>

@@ -43,7 +43,6 @@ import {
   setSelectedTokenFunc,
   setTransactions,
 } from '../../app/slices/tokenSlice';
-import { setWithdrawClaimModal } from '../../app/slices/uiSlice';
 import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 
 //compoment POC
@@ -67,6 +66,7 @@ import {
 import ChevronIcon from '../Icons/ChevronIcon';
 import { useL2WalletContext } from '../../../../../context/l2-wallet';
 import WithdrawPendingScreen from './L2Wallet/WithdrawPendingScreen';
+import { WalletTabs } from 'src/types';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -133,10 +133,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const [balanceL2Eth, setBalanceL2Eth] = useState<any>('');
   const [transactionDetail, setTransactionDetail] = useState<any>(null);
   const { address, disconnect } = useWalletContext();
-  const { disconnectL2Wallet, isWithdrawComplete, showWithdrawCompleteScreen } =
+  const { disconnectL2Wallet, isWithdrawComplete, showWithdrawCompleteScreen, activeWalletTabs, handleActiveWalletTabs } =
     useL2WalletContext();
 
-  const [activeToken, setActiveToken] = useState<string>('history');
+  // const [activeWalletTabs, setActiveToken] = useState<string>('tokens');
   const [depositResponse, setDepositResponse] = useState<TxResult>();
 
   const initForm = () => {
@@ -527,7 +527,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             className="text-base/10 flex cursor-pointer items-center"
             onClick={() => {
               setScreen(SCREENS.MAIN_SCREEN);
-              setActiveToken('history');
+              handleActiveWalletTabs(WalletTabs.HISTORY);
             }}
           >
             <ChevronIcon direction="left" size={30} />
@@ -599,8 +599,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
               setTransactionDetail(detail);
               setScreen(SCREENS.TRANSACTION_HISTORY_DETAILED);
             }}
-            activeToken={activeToken}
-            setActiveToken={setActiveToken}
+            activeToken={activeWalletTabs}
+            setActiveToken={handleActiveWalletTabs}
           />
         )}
 
