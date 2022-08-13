@@ -29,8 +29,8 @@ type Props = {
 };
 
 const tabs = [
-  { id: 'tokens', title: 'Tokens' },
   { id: 'history', title: 'History' },
+  { id: 'tokens', title: 'Tokens' },
 ];
 
 const historyData: any[] = [];

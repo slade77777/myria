@@ -136,7 +136,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const { disconnectL2Wallet, isWithdrawComplete, showWithdrawCompleteScreen } =
     useL2WalletContext();
 
-  const [activeToken, setActiveToken] = useState<string>('tokens');
+  const [activeToken, setActiveToken] = useState<string>('history');
   const [depositResponse, setDepositResponse] = useState<TxResult>();
 
   const initForm = () => {
