@@ -41,12 +41,6 @@ export default function DepositFailedScreen({
               <span className="ml-1">{amount}</span>
             </span>
           </div>
-          <div className="mt-2 flex items-center justify-between">
-            <div className="text-base/9 text-sm">Transaction ID</div>
-            <div>
-              <span className="text-primary/6 text-sm">View</span>
-            </div>
-          </div>
         </div>
       </div>
       <div className="absolute bottom-6 w-[calc(100%-48px)]">

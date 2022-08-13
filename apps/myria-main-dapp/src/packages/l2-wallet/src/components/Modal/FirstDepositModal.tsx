@@ -1,31 +1,29 @@
 import cn from 'classnames';
 import { Types } from 'myria-core-sdk';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '../../app/store';
-import CurrencySelector, { TOption } from '../Dropdown/CurrencySelector';
-import { ThreeDotsVerticalIcon } from '../Icons';
-import MaxInput from '../Input/MaxInput';
-
 import useBalanceL1 from '../../common/hooks/useBalanceL1';
-
 import {
   InfoCircleIcon,
   ProgressIcon,
   TickCircleIcon,
 } from '../../components/Icons';
+import CurrencySelector, { TOption } from '../Dropdown/CurrencySelector';
+import { ThreeDotsVerticalIcon } from '../Icons';
+import MaxInput from '../Input/MaxInput';
 
 import { Trans } from '@lingui/macro';
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
+import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { getExplorerForAddress } from 'src/utils';
 import DAOIcon from '../../../../../components/icons/DAOIcon';
 import Tooltip from '../../../../../components/Tooltip';
 import { TokenType } from '../../common/type';
-import { ethersLink } from '../../constants';
 import { useEthereumPrice } from '../../hooks/useEthereumPrice';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
 import { convertEthToWei } from '../../utils/Converter';
-
 type Props = {
   modalShow: Boolean;
   closeModal: any;
@@ -76,13 +74,24 @@ export default function FirstDepositModal({
   );
   const [errorAmount, setErrorAmount] = useState('');
   const [depositResponse, setDepositResponse] = useState<TxResult>();
-
   const { data: etheCost = 0 } = useEthereumPrice();
-
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
-  const URL_LINK = `${ethersLink.goerli_goerli}${
-    depositResponse?.transactionHash ? depositResponse?.transactionHash : ''
-  }`;
+  const [etherLinkContract, setEtherLinkContract] = useState<string>();
+
+  useEffect(() => {
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !depositResponse?.transactionHash) return '';
+      setEtherLinkContract(
+        getExplorerForAddress(
+          depositResponse?.transactionHash,
+          networkId,
+          'transaction',
+        ),
+      );
+    };
+    setLink();
+  }, [depositResponse?.transactionHash]);
 
   const selectCurrency = (param: any) => {
     setSelectedToken(param);
@@ -119,7 +128,7 @@ export default function FirstDepositModal({
   }, [amount, balanceL1, etheCost, selectedToken]);
   const deposit = async () => {
     let resultDepoit: TxResult;
-    if(amount == undefined) return;
+    if (amount == undefined) return;
     try {
       setDepositProgress(PROGRESS.PROCESSING);
       const moduleFactory = await getModuleFactory();
@@ -232,9 +241,13 @@ export default function FirstDepositModal({
                   <button
                     className={cn(
                       'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
-                      (isValidForm && amount != undefined) ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
+                      isValidForm && amount != undefined
+                        ? 'bg-primary/6 text-base/1'
+                        : 'bg-[#737373]',
                     )}
-                    onClick={isValidForm && amount != undefined ? deposit : ()=>{}}
+                    onClick={
+                      isValidForm && amount != undefined ? deposit : () => {}
+                    }
                   >
                     NEXT
                   </button>
@@ -264,7 +277,7 @@ export default function FirstDepositModal({
                     </div>
                     <div className="mt-4 flex justify-between">
                       <span>Estimated completion</span>
-                      <span className="text-white">1-2 minutes</span>
+                      <span className="text-primary/6">10 minutes</span>
                     </div>
                   </div>
                   <div className="mt-4 flex rounded-lg border border-[rgba(154,201,227,0.2)] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">
@@ -314,7 +327,7 @@ export default function FirstDepositModal({
                       <a
                         className="text-primary/6 text-base"
                         target="_blank"
-                        href={URL_LINK}
+                        href={etherLinkContract}
                         rel="noreferrer"
                       >
                         View

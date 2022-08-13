@@ -1,17 +1,16 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
+import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
 import React from 'react';
+import { useQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import AssetList from 'src/components/marketplace/AssetList';
 import HotCollection from 'src/components/marketplace/HotCollection';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
-import { useQuery } from 'react-query';
 import { collectionModule } from 'src/services/myriaCore';
 import { formatPrice, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';
-import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
-import truncateString from 'src/helper';
 const payload = {
   limit: 10,
   page: 1,

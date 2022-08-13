@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { getExplorerForAddress } from 'src/utils';
 import { RootState } from '../../../app/store';
-import { ethersLink } from '../../../constants/ethers';
 import { TickCircleIcon } from '../../Icons';
-
 interface TProps {
   successHandler: React.MouseEventHandler<HTMLButtonElement>;
   amount: any;
@@ -14,12 +14,21 @@ interface TProps {
 
 export default function WithdrawCompleteScreen({ successHandler }: TProps) {
   const { isWithdrawComplete } = useL2WalletContext();
-
-  const URL_LINK = `${ethersLink.goerli_goerli}${
-    isWithdrawComplete?.transactionHash
-      ? isWithdrawComplete?.transactionHash
-      : ''
-  }`;
+  const [etherLinkContract, setEtherLinkContract] = useState<string>();
+  useEffect(() => {
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !isWithdrawComplete?.transactionHash) return '';
+      setEtherLinkContract(
+        getExplorerForAddress(
+          isWithdrawComplete?.transactionHash,
+          networkId,
+          'transaction',
+        ),
+      );
+    };
+    setLink();
+  }, [isWithdrawComplete?.transactionHash]);
 
   const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
 
@@ -51,7 +60,7 @@ export default function WithdrawCompleteScreen({ successHandler }: TProps) {
             <div>
               <a
                 target={'_blank'}
-                href={URL_LINK}
+                href={etherLinkContract}
                 className="text-primary/6 flex cursor-pointer items-center font-medium"
                 rel="noreferrer"
               >

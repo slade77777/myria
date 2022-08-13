@@ -48,7 +48,7 @@ export default function DepositInProgressScreen({
           </div>
           <div className="mt-4 flex justify-between">
             <span>Estimated completion</span>
-            <span className="text-white">1-2 minutes</span>
+            <span className="text-primary/6">10 minutes</span>
           </div>
         </div>
       </div>
