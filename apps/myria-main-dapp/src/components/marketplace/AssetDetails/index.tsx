@@ -759,7 +759,7 @@ function AssetDetails({ id }: Props) {
       </MessageModal>
       {showMessage && (
         <MessageModal isShowMessage={showMessage} setIsShowMessage={() => setShowMessage(false)}>
-          <MessagePurchaseModal assetName={assetDetails?.name} />
+          <MessagePurchaseModal assetName={assetDetails?.name} onClose={() => setShowMessage(false)} />
         </MessageModal>
       )}
       {showMessageEdit && (

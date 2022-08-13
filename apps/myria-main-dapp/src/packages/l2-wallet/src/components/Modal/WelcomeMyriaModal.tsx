@@ -64,7 +64,7 @@ export default function WelcomeMyriaModal({ modalShow, closeModal }: Props) {
               onClick={closeModal}
               className="flex w-full items-center justify-center rounded-[8px] bg-[#F5B941] py-[9px] px-[26px] text-[14px] font-bold uppercase text-[#040B10]"
             >
-              Get Started
+              OK
             </button>
           </div>
         </div>

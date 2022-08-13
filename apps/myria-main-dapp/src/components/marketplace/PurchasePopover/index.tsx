@@ -189,7 +189,7 @@ const PurchasePopover: FC<IProp> = ({
               <span className="ml-1">{assetBuy.price}</span>
             </div>
           </div>
-          {elementContent.history}
+          {/* {elementContent.history} */}
         </div>
       </div>
       <div className="flex justify-between">{elementContent.action}</div>

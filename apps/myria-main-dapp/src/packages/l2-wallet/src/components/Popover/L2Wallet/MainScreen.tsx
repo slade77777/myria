@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { asset } from '@starkware-industries/starkware-crypto-utils';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
+import { WalletTabs } from 'src/types';
 import { formatNumber2digits } from 'src/utils';
 import { convertQuantizedAmountToEth } from '../../../utils/Converter';
 import { CircleCloseIcon, CompletedIcon } from '../../Icons';
@@ -29,8 +30,8 @@ type Props = {
 };
 
 const tabs = [
-  { id: 'history', title: 'History' },
-  { id: 'tokens', title: 'Tokens' },
+  { id: WalletTabs.TOKENS, title: 'Tokens' },
+  { id: WalletTabs.HISTORY, title: 'History' },
 ];
 
 const historyData: any[] = [];
@@ -235,17 +236,17 @@ export default function MainScreen({
       <div className="Tabs mt-[35px]">
         <ul className="flex justify-center">
           {tabs.map((item: any, index) => (
-            <TabNavItem
-              key={index}
-              id={item.id}
-              title={item.title}
-              activeTab={activeToken}
-              setActiveTab={setActiveToken}
-            />
+              <TabNavItem
+                key={index}
+                id={item.id}
+                title={item.title}
+                activeTab={activeToken}
+                setActiveTab={setActiveToken}
+              />
           ))}
         </ul>
         <div className="outlet">
-          <TabContent id="tokens" activeTab={activeToken}>
+          <TabContent id={WalletTabs.TOKENS} activeTab={activeToken}>
             <div className="mt-3">
               {coinPrices.map((item: any, index: number) => (
                 <div
@@ -285,7 +286,7 @@ export default function MainScreen({
               ))}
             </div>
           </TabContent>
-          <TabContent id="history" activeTab={activeToken}>
+          <TabContent id={WalletTabs.HISTORY} activeTab={activeToken}>
             <div className="mt-3 max-h-[244px] pr-2">
               {transactionList.length === 0 && <div>No data available yet</div>}
               {transactionList.map((item: any, index: number) => (
