@@ -278,7 +278,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
              * We assume that it is success status on FE until the BE have newer version for that changes
              */
             const transactionStatus =
-              item.transactionType === 'WithdrawalRequest'
+              item.transactionType === 'WithdrawalRequest' ||
+              item.transactionType === 'TransferRequest'
                 ? item.transactionStatus
                 : item.transactionStatus === 'Pending'
                 ? STATUS_HISTORY.SUCCESS
