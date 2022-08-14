@@ -843,20 +843,19 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
         <>
           {assetDetails?.status == 'WITHDRAWING' || isWithdrawing ? (
             <>
-              <button
-                disabled
+              <div
                 className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
                 <Trans>LIST ITEM FOR SALE</Trans>
-              </button>
-              <button className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+              </div>
+              <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
                 <Trans>WITHDRAWAL IN PROGRESS</Trans>
-              </button>
+              </div>
             </>
           ) : assetDetails?.status == 'WITHDRAWAL_COMPLETED' ? (
             <>
-              <button className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+              <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
                 <Trans>WITHDRAW COMPLETED</Trans>
-              </button>
+              </div>
             </>
           ) : (
             <>
