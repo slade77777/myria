@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Types } from 'myria-core-sdk';
+import { ConfirmationType } from 'myria-core-sdk';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -143,7 +143,7 @@ export default function FirstDepositModal({
             amount: String(amount),
           },
           {
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
             from: connectedAccount,
             value: String(convertEthToWei(amount.toString())),
           },
@@ -158,7 +158,7 @@ export default function FirstDepositModal({
           },
           {
             from: connectedAccount,
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
           },
         );
       }

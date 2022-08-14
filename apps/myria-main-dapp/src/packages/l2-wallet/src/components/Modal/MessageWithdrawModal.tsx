@@ -1,6 +1,6 @@
 // import packages
 import cn from 'classnames';
-import { Types } from 'myria-core-sdk';
+import { ConfirmationType } from 'myria-core-sdk';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // @ts-ignore
@@ -68,7 +68,7 @@ export default function MessageWithdrawModal({
           {
             from: connectedAccount,
             nonce: new Date().getTime(),
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
           },
         );
       } else {
@@ -87,7 +87,7 @@ export default function MessageWithdrawModal({
           {
             from: connectedAccount,
             nonce: new Date().getTime(),
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
           },
         );
       }

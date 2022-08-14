@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Types } from 'myria-core-sdk';
+import { ConfirmationType } from 'myria-core-sdk';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
@@ -53,7 +53,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
         {
           from: address,
           nonce: Math.floor(Math.random() * 10000),
-          confirmationType: Types.ConfirmationType.Confirmed
+          confirmationType: ConfirmationType.Confirmed
         }
       );
       if (result) {

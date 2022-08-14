@@ -1,12 +1,10 @@
 import { Trans } from '@lingui/macro';
-import { toast } from 'react-toastify';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { WalletTabs } from 'src/types';
 
 export default function MessagePurchaseModal({ assetName = '', onClose = ()=>{} }) {
-  const { activeWalletTabs, handleActiveWalletTabs } =
-  useL2WalletContext();
+  const { handleActiveWalletTabs } = useL2WalletContext();
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
