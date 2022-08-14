@@ -1,16 +1,18 @@
-const ETHER_HOT = 'https://etherscan.io';
+const ETHER_HOST = 'https://etherscan.io';
+const GOERLI_ETHER_HOST = 'https://goerli.etherscan.io';
+const ROPSTEN_ETHER_HOST = 'https://ropsten.etherscan.io';
 
 export const EXPLORE_LINKS = {
   [1]: {
-    address: `${ETHER_HOT}/address`,
-    transaction: `${ETHER_HOT}/tx`
+    address: `${ETHER_HOST}/address`,
+    transaction: `${ETHER_HOST}/tx`
   },
   [5]: {
-    address: `${ETHER_HOT}/address`,
-    transaction: `${ETHER_HOT}/tx`
+    address: `${GOERLI_ETHER_HOST}/address`,
+    transaction: `${GOERLI_ETHER_HOST}/tx`
   },
   [3]: {
-    address: `${ETHER_HOT}/address`,
-    transaction: `${ETHER_HOT}/tx`
+    address: `${ROPSTEN_ETHER_HOST}/address`,
+    transaction: `${ROPSTEN_ETHER_HOST}/tx`
   }
 };

@@ -15,7 +15,7 @@ import DepositCompleteScreen from './L2Wallet/DepositCompleteScreen';
 import DepositFailedScreen from './L2Wallet/DepositFailedScreen';
 import DepositInProgressScreen from './L2Wallet/DepositInProgressScreen';
 import DepositScreen from './L2Wallet/DepositScreen';
-import MainScreen from './L2Wallet/MainScreen';
+import MainScreen, { STATUS_HISTORY } from './L2Wallet/MainScreen';
 import WithdrawCompleteScreen from './L2Wallet/WithdrawCompleteScreen';
 import WithdrawInProgressScreen from './L2Wallet/WithdrawInProgressScreen';
 import WithdrawRequestScreen from './L2Wallet/WithdrawRequestScreen';
@@ -271,6 +271,18 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         const processedData = result
           .sort((a: any, b: any) => b.createdAt - a.createdAt)
           .map((item: any, index: number) => {
+            console.log('Item -> ', item);
+            // TEMPORARILY TODO
+            /**
+             * If all of the transactions (except withdraw) has pending status in BE
+             * We assume that it is success status on FE until the BE have newer version for that changes
+             */
+            const transactionStatus =
+              item.transactionType === 'WithdrawalRequest'
+                ? item.transactionStatus
+                : item.transactionStatus === 'Pending'
+                ? STATUS_HISTORY.SUCCESS
+                : item.transactionStatus;
             return {
               ...item,
               id: index,
@@ -282,7 +294,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
                 : item.quantizedAmount,
               time: moment(item.createdAt).fromNow(),
               updatedAt: moment(item.updatedAt).fromNow(),
-              status: item.transactionStatus,
+              status: transactionStatus,
               ico: '/assets/images/eth.svg',
             };
           });
