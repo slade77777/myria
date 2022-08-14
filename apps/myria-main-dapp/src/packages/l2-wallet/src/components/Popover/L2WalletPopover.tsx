@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { asset } from '@starkware-industries/starkware-crypto-utils';
 import cn from 'classnames';
 import moment from 'moment';
-import { Types } from 'myria-core-sdk';
+import { ConfirmationType } from 'myria-core-sdk';
 import Link from 'next/link';
 
 // Import components
@@ -133,8 +133,13 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const [balanceL2Eth, setBalanceL2Eth] = useState<any>('');
   const [transactionDetail, setTransactionDetail] = useState<any>(null);
   const { address, disconnect } = useWalletContext();
-  const { disconnectL2Wallet, isWithdrawComplete, showWithdrawCompleteScreen, activeWalletTabs, handleActiveWalletTabs } =
-    useL2WalletContext();
+  const {
+    disconnectL2Wallet,
+    isWithdrawComplete,
+    showWithdrawCompleteScreen,
+    activeWalletTabs,
+    handleActiveWalletTabs,
+  } = useL2WalletContext();
 
   // const [activeWalletTabs, setActiveToken] = useState<string>('tokens');
   const [depositResponse, setDepositResponse] = useState<TxResult>();
@@ -348,7 +353,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             amount: String(amount),
           },
           {
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
             from: connectedAccount,
             value: String(convertEthToWei(amount.toString())),
           },
@@ -363,7 +368,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           },
           {
             from: connectedAccount,
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
           },
         );
       }
@@ -429,7 +434,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           {
             from: connectedAccount,
             nonce: new Date().getTime(),
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
           },
         );
       }

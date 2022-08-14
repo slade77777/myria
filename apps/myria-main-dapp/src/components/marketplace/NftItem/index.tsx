@@ -60,7 +60,7 @@ const NftItem = ({ item }: Props) => {
   const price = parseFloat(item.priceETH + '');
 
   const onClickItemTracking = useCallback(() => {
-    assetModule?.getAssetById(item.id).then((asset) => {
+    assetModule?.getAssetById(item.id).then((asset: any) => {
       event('MKP Item Selected', {
         myria_id: user?.user_id,
         wallet_address: `_${address}`,

@@ -1,8 +1,11 @@
 import { Trans } from '@lingui/macro';
 import { toast } from 'react-toastify';
 import CheckIcon from 'src/components/icons/CheckIcon';
+import { useL2WalletContext } from 'src/context/l2-wallet';
+import { WalletTabs } from 'src/types';
 
-export function MessageEditListingModal({ assetName = '' }) {
+export function MessageEditListingModal({ assetName = '', onClose = ()=>{} }) {
+  const { handleActiveWalletTabs } = useL2WalletContext();
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
@@ -23,7 +26,12 @@ export function MessageEditListingModal({ assetName = '' }) {
         </div>
         <div
           onClick={() => {
-            toast('This function is not ready yet!');
+            const triggerMainScreen = document.getElementById(
+              'trigger-popover-main-screen',
+            );
+            triggerMainScreen?.click();
+            handleActiveWalletTabs(WalletTabs.HISTORY)
+            onClose();
           }}
           className="cursor-pointer">
           <span className="text-primary/6">
