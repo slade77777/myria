@@ -38,7 +38,7 @@ const historyData: any[] = [];
 
 const QUANTUM_CONSTANT = 10000000000;
 
-enum STATUS_HISTORY {
+export enum STATUS_HISTORY {
   SUCCESS = 'Success',
   FAILED = 'Failed',
   IN_PROGRESS = 'Pending',
@@ -236,13 +236,13 @@ export default function MainScreen({
       <div className="Tabs mt-[35px]">
         <ul className="flex justify-center">
           {tabs.map((item: any, index) => (
-              <TabNavItem
-                key={index}
-                id={item.id}
-                title={item.title}
-                activeTab={activeToken}
-                setActiveTab={setActiveToken}
-              />
+            <TabNavItem
+              key={index}
+              id={item.id}
+              title={item.title}
+              activeTab={activeToken}
+              setActiveTab={setActiveToken}
+            />
           ))}
         </ul>
         <div className="outlet">
