@@ -74,7 +74,7 @@ const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
       </div>
 
       <div className="mt-6 text-center text-[24px] font-bold text-white">
-        Add an email yo your account
+        Add an email to your account
       </div>
 
       <div className="mt-6 px-[20px] text-center text-[16px] text-white">
