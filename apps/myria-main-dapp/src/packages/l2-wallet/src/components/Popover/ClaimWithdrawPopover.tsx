@@ -94,7 +94,7 @@ export default function ClaimWithdrawPopover({
           {
             from: connectedAccount,
             nonce: new Date().getTime(),
-            confirmationType: ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Sender,
           },
         );
       } else {

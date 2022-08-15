@@ -47,7 +47,7 @@ const MainL2Wallet = forwardRef((props, ref) => {
   const [showFirstDepositModal, setShowFirstDepositModal] = useState<Boolean>(false);
   const { user } = useAuthenticationContext();
 
-  const selectedToken = useSelector((state: RootState) => state.token.selectedToken);
+  const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
 
   const showWithDrawClaimModal = useSelector((state: RootState) => state.ui.showWithDrawClaimModal);
   const pKey = useSelector((state: RootState) => state.account.starkPublicKeyFromPrivateKey);
@@ -62,32 +62,30 @@ const MainL2Wallet = forwardRef((props, ref) => {
   const starkKey = `0x${starkKeyUser}`;
 
   useEffect(() => {
-    if (!address) return;
+    let addressWallet: any = null;
+
+    if (walletAddress) {
+      addressWallet = walletAddress;
+    }
+    if (address) {
+      addressWallet = address;
+    }
+    if (!addressWallet) return;
 
     const getBalanceOfMyriaL1Wallet = async () => {
       let assetType: string = '';
-      if (selectedToken.name === 'Ethereum') {
-        assetType = asset.getAssetType({
-          type: 'ETH',
-          data: {
-            quantum: QUANTUM_CONSTANT.toString()
-          }
-        });
-      } else {
-        assetType = asset.getAssetType({
-          type: 'ERC20',
-          data: {
-            quantum: '1',
-            tokenAddress: selectedToken.tokenAddress
-          }
-        });
-      }
+      assetType = asset.getAssetType({
+        type: 'ETH',
+        data: {
+          quantum: QUANTUM_CONSTANT.toString()
+        }
+      });
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
       const withdrawModule = moduleFactory.getWithdrawModule();
 
-      const currentBalance = await withdrawModule.getWithdrawalBalance(address, assetType);
+      const currentBalance = await withdrawModule.getWithdrawalBalance(addressWallet, assetType);
       console.log('L1 Current balance ->', currentBalance);
       if (currentBalance > 0) {
         dispatch(
@@ -102,12 +100,12 @@ const MainL2Wallet = forwardRef((props, ref) => {
       }
     };
     const interval = setInterval(() => {
-      if (pKey && selectedToken) {
+      if (pKey && localStarkKey) {
         getBalanceOfMyriaL1Wallet();
       }
     }, 10000);
     return () => clearInterval(interval);
-  }, [pKey, selectedToken, dispatch, previousBalance]);
+  }, [pKey, dispatch, previousBalance]);
 
   const onSetStarkKeyToLocalStorage = (starkKey: string) => {
     setLocalStarkKey(starkKey);
