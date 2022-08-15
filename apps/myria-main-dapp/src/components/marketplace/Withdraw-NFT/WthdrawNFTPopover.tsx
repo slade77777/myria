@@ -11,7 +11,7 @@ const WthdrawNFTPopover: React.FC<{}> = ({ children }) => {
   return (
     <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
       <Popover.Trigger asChild>
-        <div id="trigger-popover-withdraw"></div>
+        <div id="trigger-popover-withdraw" className="appearance-none"></div>
       </Popover.Trigger>
       <Popover.Content
         sideOffset={8}

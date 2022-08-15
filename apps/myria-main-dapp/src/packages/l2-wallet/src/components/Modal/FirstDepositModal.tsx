@@ -35,7 +35,7 @@ const options: Array<TOption> = [
     id: 1,
     name: 'Ethereum',
     short: 'ETH',
-    ico: '/assets/images/eth.png',
+    ico: '/assets/images/eth.svg',
     tokenAddress: '',
   },
   // {
