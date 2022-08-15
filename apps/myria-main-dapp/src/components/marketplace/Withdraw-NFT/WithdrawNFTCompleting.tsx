@@ -53,7 +53,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
         {
           from: address,
           nonce: Math.floor(Math.random() * 10000),
-          confirmationType: ConfirmationType.Confirmed
+          confirmationType: ConfirmationType.Sender
         }
       );
       if (result) {

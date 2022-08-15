@@ -53,45 +53,24 @@ export default function MessageWithdrawModal({
       if (!moduleFactory) return;
 
       const withdrawModule = moduleFactory.getWithdrawModule();
-      if (selectedToken.name === 'Ethereum') {
-        const assetType = asset.getAssetType({
-          type: 'ETH',
-          data: {
-            quantum: QUANTUM_CONSTANT.toString(),
-          },
-        });
-        responseWithdraw = await withdrawModule.withdrawalOnchain(
-          {
-            starkKey: connectedAccount,
-            assetType,
-          },
-          {
-            from: connectedAccount,
-            nonce: new Date().getTime(),
-            confirmationType: ConfirmationType.Confirmed,
-          },
-        );
-      } else {
-        const assetType = asset.getAssetType({
-          type: 'ERC20',
-          data: {
-            quantum: '1',
-            tokenAddress: selectedToken.tokenAddress,
-          },
-        });
-        responseWithdraw = await withdrawModule.withdrawalOnchain(
-          {
-            starkKey: connectedAccount,
-            assetType,
-          },
-          {
-            from: connectedAccount,
-            nonce: new Date().getTime(),
-            confirmationType: ConfirmationType.Confirmed,
-          },
-        );
-      }
-      if (responseWithdraw && responseWithdraw.status) {
+      const assetType = asset.getAssetType({
+        type: 'ETH',
+        data: {
+          quantum: QUANTUM_CONSTANT.toString(),
+        },
+      });
+      responseWithdraw = await withdrawModule.withdrawalOnchain(
+        {
+          starkKey: connectedAccount,
+          assetType,
+        },
+        {
+          from: connectedAccount,
+          nonce: new Date().getTime(),
+          confirmationType: ConfirmationType.Sender,
+        },
+      );
+      if (responseWithdraw) {
         const triggerMainScreen = document.getElementById(
           'trigger-popover-main-screen',
         );
@@ -128,9 +107,7 @@ export default function MessageWithdrawModal({
             <div className="text-base/9 mt-[10px] mb-5 text-sm font-normal">
               Your withdrawal of{' '}
               <span className="uppercase text-white">
-                {selectedToken?.name === 'Ethereum'
-                  ? `${claimAmount} eth`
-                  : `${claimAmount} tokens`}{' '}
+                ${claimAmount} eth &nbsp;
               </span>
               is now complete and ready to claim.
             </div>
