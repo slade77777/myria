@@ -4,7 +4,7 @@ interface IProp {}
 
 const LearnMoreWithdrawNFT: React.FC<IProp> = ({}) => {
   return (
-    <div className="px-8 mt-4 pb-8">
+    <div className="px-8 mt-4 pb-8 text-base/10">
       <p className="mb-2">
         <Trans>
           Myria uses ZK rollup technology to increase the scalability of the Ethereum network by

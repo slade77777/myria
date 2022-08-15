@@ -2,6 +2,7 @@ import { Trans } from '@lingui/macro';
 import cn from 'classnames';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { ArrowIcon, ProgressIcon } from '../../Icons';
+import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 
 type Props = {
   goBack: any;
@@ -18,6 +19,7 @@ export default function WithdrawRequestScreen({
   withdrawHandler,
   withdrawInProgress,
 }: Props) {
+  const { handleLearnMore } = useWithDrawNFTContext();
   return (
     <>
       <div className="text-white">
@@ -44,8 +46,19 @@ export default function WithdrawRequestScreen({
         </div>
         <div className="text-base/9 mt-4 px-7 text-center text-sm">
           Withdrawals are processed in batches every 20 hours. Click{' '}
-          <span className="text-primary/6 cursor-pointer">here</span> to learn
-          more.
+          <span
+            className="text-primary/6 cursor-pointer"
+            onClick={() => {
+              const triggerWithdraw = document.getElementById(
+                'trigger-popover-main-screen',
+              );
+              triggerWithdraw?.click();
+              handleLearnMore(true);
+            }}
+          >
+            here
+          </span>{' '}
+          to learn more.
         </div>
         <div className="bg-base/2/50 text-base/9 mt-4 rounded-lg p-4 text-sm">
           <div className="flex justify-between">
