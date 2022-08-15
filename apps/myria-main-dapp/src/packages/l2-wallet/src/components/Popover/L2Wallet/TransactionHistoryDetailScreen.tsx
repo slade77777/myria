@@ -6,7 +6,11 @@ import DAOIcon from 'src/components/icons/DAOIcon';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 import { FORMAT_DATE, getExplorerForAddress, truncateAddress } from 'src/utils';
 import { Arrow3Icon } from '../../Icons';
-import { DF_TRANSACTION_TYPE, TRANSACTION_TYPE } from './MainScreen';
+import {
+  DF_TRANSACTION_TYPE,
+  STATUS_HISTORY,
+  TRANSACTION_TYPE,
+} from './MainScreen';
 interface TProps {
   goBack: React.MouseEventHandler<HTMLButtonElement>;
   transactionDetail: any;
@@ -35,14 +39,9 @@ export default function TransactionHistoryDetailScreen({
     <div className="text-base/10 mt-[29px]">
       {transactionDetail.type !== TRANSACTION_TYPE.SETTLEMENT && (
         <div className="mx-auto flex h-16 w-16 justify-center">
-          <Arrow3Icon
-            direction={
-              transactionDetail?.type &&
-              DF_TRANSACTION_TYPE[transactionDetail.type]?.rotateIcon
-            }
-            className="text-blue/6 mr-1"
-            size={60}
-          />
+          {transactionDetail.status === STATUS_HISTORY.SUCCESS
+            ? DF_TRANSACTION_TYPE[transactionDetail.type]?.iconReceived
+            : DF_TRANSACTION_TYPE[transactionDetail.type]?.iconFailed}
         </div>
       )}
       {transactionDetail.type === TRANSACTION_TYPE.SETTLEMENT && (
@@ -57,16 +56,18 @@ export default function TransactionHistoryDetailScreen({
       )}
       <div className="text-base/10 mt-6 text-center text-2xl">
         {transactionDetail?.type &&
-          DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail}
+        transactionDetail.status === STATUS_HISTORY.SUCCESS
+          ? DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail
+          : DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed}
       </div>
-      {transactionDetail.status === 'success' ? (
+      {transactionDetail.status === STATUS_HISTORY.SUCCESS ? (
         <div className="text-base/9 mt-6 text-center text-sm">
           Transaction completed{' '}
-          {moment(transactionDetail.updatedAt).format(FORMAT_DATE)}
+          {moment(transactionDetail.createdAt).format(FORMAT_DATE)}
         </div>
       ) : (
         <div className="text-base/9 mt-6 text-center text-sm">
-          Transaction started{' '}
+          Transaction failed{' '}
           {moment(transactionDetail.createdAt).format(FORMAT_DATE)}
         </div>
       )}
@@ -102,19 +103,20 @@ export default function TransactionHistoryDetailScreen({
             </div>
           </>
         )}
-        {transactionDetail.transactionType === 'DepositRequest' && (
-          <div className="mt-4 flex justify-between">
-            <span className="text-base/9 text-sm">Transaction ID</span>
-            <a
-              className="text-primary/6 flex cursor-pointer items-center text-base"
-              target="_blank"
-              href={etherLinkContract}
-              rel="noreferrer"
-            >
-              <Trans>View</Trans>
-            </a>
-          </div>
-        )}
+        {transactionDetail.transactionType === TRANSACTION_TYPE.DEPOSIT &&
+          transactionDetail.status === STATUS_HISTORY.SUCCESS && (
+            <div className="mt-4 flex justify-between">
+              <span className="text-base/9 text-sm">Transaction ID</span>
+              <a
+                className="text-primary/6 flex cursor-pointer items-center text-base"
+                target="_blank"
+                href={etherLinkContract}
+                rel="noreferrer"
+              >
+                <Trans>View</Trans>
+              </a>
+            </div>
+          )}
       </div>
     </div>
   );

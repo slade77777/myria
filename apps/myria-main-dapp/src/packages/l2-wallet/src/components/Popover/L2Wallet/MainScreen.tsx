@@ -8,7 +8,7 @@ import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { WalletTabs } from 'src/types';
 import { formatNumber2digits } from 'src/utils';
 import { convertQuantizedAmountToEth } from '../../../utils/Converter';
-import { CircleCloseIcon, CompletedIcon } from '../../Icons';
+import { Arrow3Icon, CircleCloseIcon, CompletedIcon } from '../../Icons';
 import ArrowDownLeft from '../../Icons/ArrowDownLeft';
 import ArrowUpRight from '../../Icons/ArrowUpRight';
 import ChevronIcon from '../../Icons/ChevronIcon';
@@ -56,31 +56,47 @@ export const DF_TRANSACTION_TYPE = {
   [TRANSACTION_TYPE.DEPOSIT]: {
     title: 'Deposit',
     titleHistoryDetail: 'Deposit Received',
-    rotateIcon: 'bottom',
+    titleFailed: 'Deposit Failed',
+    iconFailed: <CircleCloseIcon className="text-error/6" />,
+    iconReceived: (
+      <Arrow3Icon direction="top" className="text-blue/6 mr-1" size={60} />
+    ),
     icon: '',
   },
   [TRANSACTION_TYPE.WITHDRAWAL]: {
     title: 'Withdrawal',
     titleHistoryDetail: 'Withdrawal',
-    rotateIcon: 'top',
+    titleFailed: 'Withdrawal Failed',
+    iconReceived: (
+      <Arrow3Icon direction="bottom" className="text-blue/6 mr-1" size={60} />
+    ),
+    iconFailed: <CircleCloseIcon className="text-error/6" />,
     icon: '',
   },
   [TRANSACTION_TYPE.SETTLEMENT]: {
     title: 'Purchase',
     titleHistoryDetail: 'Purchase',
+    titleFailed: 'Purchase',
     icon: '/images/marketplace/icoPurchase.png',
+    iconFailed: '',
     rotateIcon: 'top',
   },
   [TRANSACTION_TYPE.TRANSFER]: {
     title: 'Withdrawal',
     titleHistoryDetail: 'Withdrawal',
-    rotateIcon: 'top',
+    titleFailed: '',
+    iconReceived: (
+      <Arrow3Icon direction="bottom" className="text-blue/6 mr-1" size={60} />
+    ),
+    iconFailed: <CircleCloseIcon className="text-error/6" />,
     icon: '',
   },
   [TRANSACTION_TYPE.MINT]: {
     title: 'Mint',
     titleHistoryDetail: 'Deposit',
-    rotateIcon: 'top',
+    titleFailed: '',
+    iconReceived: '',
+    iconFailed: '',
     icon: '',
   },
 };

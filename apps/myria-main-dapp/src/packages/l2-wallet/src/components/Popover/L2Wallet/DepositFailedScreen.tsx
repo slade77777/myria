@@ -17,9 +17,7 @@ export default function DepositFailedScreen({
       <div className="text-center">
         <div
           className="-mt-8 flex cursor-pointer items-center"
-          onClick={() => {
-            goBack();
-          }}
+          onClick={goBack}
         >
           <ArrowIcon direction="left" />
           <div className="ml-2 text-[20px] text-white">Deposit</div>
