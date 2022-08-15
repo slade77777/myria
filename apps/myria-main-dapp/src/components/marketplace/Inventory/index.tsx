@@ -36,7 +36,7 @@ function Inventory({
           <div className="mb-[58px] flex items-end justify-between">
             <div className="flex">
               <div className="mr-[40px] w-[120px] overflow-hidden rounded-full">
-                <img width="100%" src={'/images/marketplace/collection-1-logo.png'} alt="" />
+                <img width="100%" src={'/images/marketplace/user.png'} alt="" />
               </div>
               <div className="flex flex-col">
                 <span className="text-[40px] font-bold text-white">{userName}</span>
