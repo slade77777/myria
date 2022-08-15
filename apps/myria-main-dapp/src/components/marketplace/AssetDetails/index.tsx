@@ -180,9 +180,7 @@ function AssetDetails({ id }: Props) {
   const {
     status: withdrawalStatus,
     setStatus: setWithdrawalStatus,
-    handleSetValueNFT,
-    isShowLearnMore,
-    handleLearnMore
+    handleSetValueNFT
   } = useWithDrawNFTContext();
   const [assetBuy, setAssetBuy] = useState<{
     name: string;
@@ -759,14 +757,20 @@ function AssetDetails({ id }: Props) {
       </MessageModal>
       {showMessage && (
         <MessageModal isShowMessage={showMessage} setIsShowMessage={() => setShowMessage(false)}>
-          <MessagePurchaseModal assetName={assetDetails?.name} onClose={() => setShowMessage(false)} />
+          <MessagePurchaseModal
+            assetName={assetDetails?.name}
+            onClose={() => setShowMessage(false)}
+          />
         </MessageModal>
       )}
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
           setIsShowMessage={() => setShowMessageEdit(false)}>
-          <MessageEditListingModal assetName={assetDetails?.name} onClose={() => setShowMessageEdit(false)} />
+          <MessageEditListingModal
+            assetName={assetDetails?.name}
+            onClose={() => setShowMessageEdit(false)}
+          />
         </MessageModal>
       )}
       {showModal && (
@@ -797,16 +801,6 @@ function AssetDetails({ id }: Props) {
           setIsShowMessage={() => setShowMessageUnlist(false)}>
           <MessageUnlist assetName={assetDetails?.name} />
         </MessageModal>
-      )}
-      {isShowLearnMore && (
-        <LearnMoreWithdrawNFTModal
-          open={isShowLearnMore}
-          onClose={() => {
-            handleLearnMore(false);
-            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-            triggerWithdraw?.click();
-          }}
-        />
       )}
     </div>
   );
@@ -843,8 +837,7 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
         <>
           {assetDetails?.status == 'WITHDRAWING' || isWithdrawing ? (
             <>
-              <div
-                className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
+              <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
                 <Trans>LIST ITEM FOR SALE</Trans>
               </div>
               <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
@@ -1000,16 +993,6 @@ const UnlistModal: React.FC<any> = ({
           onHandleUnlist={onHandleUnlist}
           assetName={assetName}
         />
-      </Modal.Content>
-    </Modal>
-  );
-};
-
-const LearnMoreWithdrawNFTModal: React.FC<any> = ({ open, onClose }) => {
-  return (
-    <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title={'Learn More'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
-        <LearnMoreWithdrawNFT />
       </Modal.Content>
     </Modal>
   );

@@ -9,14 +9,9 @@ import { useGA4 } from 'src/lib/ga';
 import ConnectL2WalletButton from '../ConnectL2WalletButton';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import Logo from '../icons/Logo';
-import PurchaseCheckout from '../marketplace/PurchasePopover/PurchaseCheckout';
-import PurchaseScreen from '../marketplace/PurchasePopover/PurchaseScreen';
-import WithdrawNFTScreen from '../marketplace/Withdraw-NFT/WithdrawNFTScreen';
-import WthdrawNFTPopover from '../marketplace/Withdraw-NFT/WthdrawNFTPopover';
 import { links, navHeight } from './Header';
 import ProfileComponent from './ProfileComponent';
 import { Action, NavItem } from './type';
-import UserAvatar from './UserAvatar';
 
 type Props = {
   action: Action;
@@ -197,9 +192,6 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
           <div>
             <ConnectL2WalletButton />
-            <WthdrawNFTPopover>
-              <WithdrawNFTScreen />
-            </WthdrawNFTPopover>
           </div>
         </div>
       </nav>

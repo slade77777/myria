@@ -10,6 +10,9 @@ import { Action } from './Header/type';
 import MessageDepositModal from './marketplace/MessageModal/MessageDepositModal';
 import MessageModal from './marketplace/MessageModal/MessageModal';
 import { useDepositContext } from 'src/context/deposit-context';
+import Modal from './Modal';
+import LearnMoreWithdrawNFT from './marketplace/Modals/LearnMoreWithdrawNFT';
+import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 
 type Props = {
   action?: Action;
@@ -48,7 +51,7 @@ const Page: React.FC<Props> = ({
   }, [firstTimeVisit, setFirtTimeVisit]);
 
   const { showMessageDeposit, handleShowMessageDeposit } = useDepositContext();
-
+  const { isShowLearnMore, handleLearnMore } = useWithDrawNFTContext();
   const handleCloseFirstTimeVisitModal = () => {
     setShowFirstTimeVisitModal(false);
   };
@@ -86,7 +89,25 @@ const Page: React.FC<Props> = ({
           <MessageDepositModal onClose={() => handleShowMessageDeposit(false)} />
         </MessageModal>
       )}
+      {isShowLearnMore && (
+        <LearnMoreWithdrawNFTModal
+          open={isShowLearnMore}
+          onClose={() => {
+            handleLearnMore(false);
+          }}
+        />
+      )}
     </>
+  );
+};
+
+const LearnMoreWithdrawNFTModal: React.FC<any> = ({ open, onClose }) => {
+  return (
+    <Modal open={open} onOpenChange={onClose}>
+      <Modal.Content title={'Learn More'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
+        <LearnMoreWithdrawNFT />
+      </Modal.Content>
+    </Modal>
   );
 };
 
