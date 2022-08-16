@@ -4,7 +4,7 @@ import DAOIcon from 'src/components/icons/DAOIcon';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { assetModule } from 'src/services/myriaCore';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { validatedImage } from 'src/utils';
 import { toast } from 'react-toastify';
 import { useGA4 } from '../../../lib/ga';
@@ -19,6 +19,7 @@ interface IProp {
 }
 
 const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
+  const queryClient = useQueryClient();
   const { handleWithdrawing, valueNFT: assetDetail, handleLearnMore } = useWithDrawNFTContext();
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', assetDetail.id],
@@ -46,7 +47,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   const { address } = useWalletContext();
 
   const handleConfirmWithdrawNftOffchain = async () => {
-    /// call api confirm withdraw
+    // / call api confirm withdraw
     if (starkKey) {
       event('NFT Withdraw Selected', {
         myria_id: user?.user_id,
@@ -76,7 +77,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           quantizedAmount: '1'
         };
         await withdrawModule?.withdrawNftOffChain(payloadWithdrawNftOffchain);
-        await refetch();
+        await queryClient.invalidateQueries(['assetDetail', assetDetail.id]);
         handleWithdrawing(true);
         onChangeStatus();
         event('NFT Withdraw Completed', {
