@@ -30,8 +30,6 @@ export default function WithdrawCompleteScreen({ successHandler }: TProps) {
     setLink();
   }, [isWithdrawComplete?.transactionHash]);
 
-  const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
-
   return (
     <>
       <div className="text-base/10">
@@ -52,7 +50,7 @@ export default function WithdrawCompleteScreen({ successHandler }: TProps) {
             <span>Amount</span>
             <span className="text-base/10 flex items-center">
               <DAOIcon size={12} className="mb-[2px]" />
-              <span className="ml-1">{claimAmount}</span>
+              <span className="ml-1">{isWithdrawComplete?.claimAmount}</span>
             </span>
           </div>
           <div className="mt-4 flex items-center justify-between">

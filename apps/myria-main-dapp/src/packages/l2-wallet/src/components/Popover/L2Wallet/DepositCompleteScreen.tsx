@@ -56,7 +56,7 @@ export default function DepositCompleteScreen({
         </div>
         <div className="text-base/9 bg-base/2/50 mt-8 rounded-lg py-2 px-4 text-sm">
           <div className="flex justify-between text-sm">
-            <span>Amount</span>
+            {/* <span>Amount</span> */}
             <span className="flex items-center text-white">
               <DAOIcon size={16} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>

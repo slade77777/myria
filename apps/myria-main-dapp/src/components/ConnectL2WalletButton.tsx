@@ -149,7 +149,7 @@ const ConnectL2WalletButton: React.FC = () => {
       setRequestedEmail(true);
       localStorage.setItem('emailRequestNumber', (emailRequestTime + 1).toString());
     }
-  }, [loginByWalletMutation.isSuccess, user, requestedEmail]);
+  }, [loginByWalletMutation?.isSuccess, user, requestedEmail]);
 
   return (
     <>
@@ -192,7 +192,7 @@ const ConnectL2WalletButton: React.FC = () => {
       </Modal>
       <div className="flex items-center">
         <div>
-          {!loginByWalletMutation.isError && walletAddress && showConnectedWallet ? (
+          {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet ? (
             <div>
               <Popover
                 modal
@@ -251,7 +251,7 @@ const ConnectL2WalletButton: React.FC = () => {
             </div>
           ) : (
             <MetamaskOnboarding>
-              {!userProfileQuery.isFetched ? (
+              {!userProfileQuery?.isFetched ? (
                 <button className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
                   <Trans>Loading...</Trans>
                 </button>
