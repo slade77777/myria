@@ -27,7 +27,11 @@ interface IL2WalletContext {
   isFirstPurchase: boolean;
   handleSetFirstPurchase: (value: boolean) => void;
   activeWalletTabs: WalletTabs;
-  handleActiveWalletTabs: (value: WalletTabs) => void
+  handleActiveWalletTabs: (value: WalletTabs) => void;
+  isDisplayPopover: boolean;
+  handleDisplayPopover: (value: boolean) => void;
+  isDisplayPopoverWithdrawNFT: boolean;
+  handleDisplayPopoverWithdrawNFT: (value: boolean) => void;
 }
 
 const L2WalletContext = React.createContext<IL2WalletContext>({} as IL2WalletContext);
@@ -43,6 +47,8 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     isShow: false,
     transactionHash: ''
   });
+  const [isDisplayPopover, setIsDisplayPopover] = React.useState(false);
+  const [isDisplayPopoverWithdrawNFT, setIsDisplayPopoverWithdrawNFT] = React.useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -149,8 +155,16 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     setIsFirstPurchase(value);
   };
   const handleActiveWalletTabs = (value: WalletTabs) => {
-    setActiveWalletTabs(value)
-  }
+    setActiveWalletTabs(value);
+  };
+
+  const handleDisplayPopover = (value: boolean) => {
+    setIsDisplayPopover(value);
+  };
+
+  const handleDisplayPopoverWithdrawNFT = (value: boolean) => {
+    setIsDisplayPopoverWithdrawNFT(value);
+  };
   return (
     <L2WalletContext.Provider
       value={{
@@ -163,7 +177,11 @@ export const L2WalletProvider: React.FC = ({ children }) => {
         isFirstPurchase: isFirstPurchase,
         handleSetFirstPurchase: handleSetFirstPurchase,
         handleActiveWalletTabs,
-        activeWalletTabs
+        activeWalletTabs,
+        isDisplayPopover,
+        handleDisplayPopover,
+        isDisplayPopoverWithdrawNFT,
+        handleDisplayPopoverWithdrawNFT
       }}>
       {children}
     </L2WalletContext.Provider>
