@@ -140,7 +140,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
         <button
           className="flex w-32 items-center justify-center rounded-lg bg-primary/6 px-5 py-3 text-base font-bold text-base/1"
           onClick={handleConfirmWithdrawNftOffchain}>
-          <Trans>CONFIRM2</Trans>
+          <Trans>CONFIRM</Trans>
         </button>
       </div>
     </>
