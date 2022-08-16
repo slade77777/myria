@@ -19,6 +19,8 @@ interface TProps {
 export default function TransactionHistoryDetailScreen({
   transactionDetail,
 }: TProps) {
+  console.log('transactionDetail', transactionDetail);
+
   const [etherLinkContract, setEtherLinkContract] = useState<string>();
   useEffect(() => {
     const setLink = async () => {
@@ -39,9 +41,9 @@ export default function TransactionHistoryDetailScreen({
     <div className="text-base/10 mt-[29px]">
       {transactionDetail.type !== TRANSACTION_TYPE.SETTLEMENT && (
         <div className="mx-auto flex h-16 w-16 justify-center">
-          {transactionDetail.status === STATUS_HISTORY.SUCCESS
-            ? DF_TRANSACTION_TYPE[transactionDetail.type]?.iconReceived
-            : DF_TRANSACTION_TYPE[transactionDetail.type]?.iconFailed}
+          {transactionDetail.status === STATUS_HISTORY.FAILED
+            ? DF_TRANSACTION_TYPE[transactionDetail.type]?.iconFailed
+            : DF_TRANSACTION_TYPE[transactionDetail.type]?.iconReceived}
         </div>
       )}
       {transactionDetail.type === TRANSACTION_TYPE.SETTLEMENT && (
@@ -56,9 +58,9 @@ export default function TransactionHistoryDetailScreen({
       )}
       <div className="text-base/10 mt-6 text-center text-2xl">
         {transactionDetail?.type &&
-        transactionDetail.status === STATUS_HISTORY.SUCCESS
-          ? DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail
-          : DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed}
+        transactionDetail.status === STATUS_HISTORY.FAILED
+          ? DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed
+          : DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail}
       </div>
       {transactionDetail.status === STATUS_HISTORY.SUCCESS ? (
         <div className="text-base/9 mt-6 text-center text-sm">

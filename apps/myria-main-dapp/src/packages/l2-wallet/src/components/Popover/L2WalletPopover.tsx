@@ -67,6 +67,7 @@ import ChevronIcon from '../Icons/ChevronIcon';
 import { useL2WalletContext } from '../../../../../context/l2-wallet';
 import WithdrawPendingScreen from './L2Wallet/WithdrawPendingScreen';
 import { WalletTabs } from 'src/types';
+import WithdrawNowScreen from './L2Wallet/WithdrawNowScreen';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
@@ -96,6 +97,7 @@ enum SCREENS {
   WITHDRAW_PENDING,
   DEPOSIT_FAILED,
   WITHDRAW_FAILED,
+  WITHDRAW_NOW,
   TRANSACTION_HISTORY_DETAILED,
 }
 
@@ -152,12 +154,13 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     setAmount(0);
   };
 
-  useEffect(() => {
-    if (isWithdrawComplete.isShow) {
-      setScreen(SCREENS.WITHDRAW_COMPLETE);
-    }
-    return () => showWithdrawCompleteScreen({ isShow: false });
-  }, [isWithdrawComplete.isShow]);
+  // useEffect(() => {
+  //   console.log('isWithdrawComplete -> ', isWithdrawComplete);
+  //   if (isWithdrawComplete.isShow) {
+  //     setScreen(SCREENS.WITHDRAW_COMPLETE);
+  //   }
+  //   return () => showWithdrawCompleteScreen({ isShow: false });
+  // }, [isWithdrawComplete]);
 
   useEffect(() => {
     if (withdrawScreenMounted || depositScreenMounted) {
@@ -271,7 +274,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         const processedData = result
           .sort((a: any, b: any) => b.createdAt - a.createdAt)
           .map((item: any, index: number) => {
-            // console.log('Item -> ', item);
+            console.log('Item -> ', item);
             // TEMPORARILY TODO
             /**
              * If all of the transactions (except withdraw) has pending status in BE
@@ -611,6 +614,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             gotoWithdrawScreen={() => {
               setScreen(SCREENS.WITHDRAW_SCREEN);
             }}
+            gotoWithdrawNowScreen={(detail: any) => {
+              setTransactionDetail(detail);
+              setScreen(SCREENS.WITHDRAW_NOW);
+            }}
             balanceList={balanceList}
             balanceEth={balanceL2Eth}
             gotoDetailTransaction={(detail: any) => {
@@ -732,6 +739,16 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
         {screen === SCREENS.WITHDRAW_PENDING && (
           <WithdrawPendingScreen amount={amount || 0} />
+        )}
+
+        {screen === SCREENS.WITHDRAW_NOW && (
+          <WithdrawNowScreen
+            transactionDetail={transactionDetail}
+            successHandler={(amount: string) => {
+              setAmount(Number(amount));
+              setScreen(SCREENS.WITHDRAW_COMPLETE);
+            }}
+          />
         )}
 
         {screen === SCREENS.DEPOSIT_FAILED && (

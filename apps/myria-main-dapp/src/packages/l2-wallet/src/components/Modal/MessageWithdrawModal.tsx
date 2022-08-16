@@ -78,6 +78,7 @@ export default function MessageWithdrawModal({
         showWithdrawCompleteScreen({
           isShow: true,
           transactionHash: responseWithdraw.transactionHash,
+          claimAmount,
         });
       }
     } catch (err) {

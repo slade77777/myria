@@ -1,13 +1,24 @@
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
+import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import { useWalletContext } from 'src/context/wallet';
+import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WalletTabs } from 'src/types';
+import { StatusWithdrawNFT } from 'src/types/marketplace';
 import { formatNumber2digits } from 'src/utils';
-import { convertQuantizedAmountToEth } from '../../../utils/Converter';
+import {
+  convertQuantizedAmountToEth,
+  convertWeiToEth,
+} from '../../../utils/Converter';
 import { Arrow3Icon, CircleCloseIcon, CompletedIcon } from '../../Icons';
 import ArrowDownLeft from '../../Icons/ArrowDownLeft';
 import ArrowUpRight from '../../Icons/ArrowUpRight';
@@ -16,7 +27,7 @@ import ETHIcon from '../../Icons/ETHIcon';
 import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
-import Image from 'next/image';
+
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -25,6 +36,7 @@ type Props = {
   balanceEth: any;
   transactionList: any;
   gotoDetailTransaction: any;
+  gotoWithdrawNowScreen: any;
   activeToken: any;
   setActiveToken: any;
 };
@@ -42,6 +54,7 @@ export enum STATUS_HISTORY {
   SUCCESS = 'Success',
   FAILED = 'Failed',
   IN_PROGRESS = 'Pending',
+  COMPLETED = 'Completed',
 }
 
 export const TRANSACTION_TYPE = {
@@ -120,9 +133,22 @@ export default function MainScreen({
   gotoDetailTransaction,
   activeToken,
   setActiveToken,
+  gotoWithdrawNowScreen,
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
   const { data: etheCost = 0 } = useEtheriumPrice();
+  const { address, onConnect, onConnectCompaign } = useWalletContext();
+  const { valueNFT, setStatus, handleSetValueNFT } = useWithDrawNFTContext();
+
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
+  );
+
+  const completeWithdrawal = useCallback(() => {
+    const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
+    triggerWithdraw?.click();
+    setStatus(StatusWithdrawNFT.COMPLETED);
+  }, [setStatus]);
 
   useEffect(() => {
     const temp: any = [];
@@ -166,6 +192,40 @@ export default function MainScreen({
     setCoinPrices(temp);
   }, [balanceList, options]);
 
+  const onWithdrawActionFromHistory = async (item: any) => {
+    if (!starkKeyUser || !address || !item.assetId) return;
+    const moduleFactory = await getModuleFactory();
+    if (!moduleFactory) return;
+    const withdrawalModule = moduleFactory.getWithdrawModule();
+    const balance = await withdrawalModule.getWithdrawalBalance(
+      address.toLowerCase(),
+      item.assetId,
+    );
+    if (Number(balance) > 0) {
+      if (item.name === 'Ethereum') {
+        const transactionDetails = {
+          ...item,
+          ethAmount: convertWeiToEth(String(balance)),
+        };
+        gotoWithdrawNowScreen(transactionDetails);
+      } else {
+        const triggerMainScreen = document.getElementById(
+          'trigger-popover-main-screen',
+        );
+        triggerMainScreen?.click();
+        handleSetValueNFT({
+          ...item,
+          name: item.transactionCategory,
+          assetMintId: item.assetId,
+          isComeFrom: WalletTabs.HISTORY,
+        });
+        completeWithdrawal();
+      }
+    } else {
+      toast('Your L1 balance is not availabe yet. Please wait and be patient.');
+    }
+  };
+
   const renderStatus = (item: any) => {
     if (item.status === STATUS_HISTORY.IN_PROGRESS) {
       return (
@@ -183,20 +243,37 @@ export default function MainScreen({
       );
     }
 
+    if (
+      item.status === STATUS_HISTORY.COMPLETED &&
+      (item.type === 'TransferRequest' || item.type === 'WithdrawalRequest')
+    ) {
+      return (
+        <div className="text-base/9 mt-1 flex items-center">
+          Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
+        </div>
+      );
+    }
+
     if (item.status === STATUS_HISTORY.SUCCESS) {
       if (
         item.type === 'TransferRequest' ||
         item.type === 'WithdrawalRequest'
       ) {
         return (
-          <div className="text-primary/6 mt-1 flex items-center">
+          <button
+            onClick={e => {
+              e.stopPropagation();
+              onWithdrawActionFromHistory(item);
+            }}
+            className="text-primary/6 mt-1 flex cursor-pointer items-center"
+          >
             Complete withdrawal{' '}
             <ChevronIcon
               className="text-primary/6 ml-1"
               size={14}
               direction="right"
             />
-          </div>
+          </button>
         );
       }
       return (

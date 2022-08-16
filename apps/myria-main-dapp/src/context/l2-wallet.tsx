@@ -22,6 +22,7 @@ interface IL2WalletContext {
   isWithdrawComplete: {
     isShow: boolean;
     transactionHash: string;
+    claimAmount: number;
   };
   showWithdrawCompleteScreen: any;
   isFirstPurchase: boolean;
@@ -35,7 +36,7 @@ interface IL2WalletContext {
 }
 
 const L2WalletContext = React.createContext<IL2WalletContext>({} as IL2WalletContext);
-const signMessage = 'Message request signature: ';
+// const signMessage = 'Message request signature: ';
 
 export const L2WalletProvider: React.FC = ({ children }) => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
@@ -45,7 +46,8 @@ export const L2WalletProvider: React.FC = ({ children }) => {
   const [isFirstPurchase, setIsFirstPurchase] = React.useState(false);
   const [isWithdrawComplete, setIsWithdrawComplete] = React.useState({
     isShow: false,
-    transactionHash: ''
+    transactionHash: '',
+    claimAmount: 0
   });
   const [isDisplayPopover, setIsDisplayPopover] = React.useState(false);
   const [isDisplayPopoverWithdrawNFT, setIsDisplayPopoverWithdrawNFT] = React.useState(false);
@@ -147,7 +149,11 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     setWalletAddress('');
   };
 
-  const showWithdrawCompleteScreen = (data: { isShow: boolean; transactionHash: string }) => {
+  const showWithdrawCompleteScreen = (data: {
+    isShow: boolean;
+    transactionHash: string;
+    claimAmount: number;
+  }) => {
     setIsWithdrawComplete({ ...isWithdrawComplete, ...data });
   };
 
@@ -157,7 +163,6 @@ export const L2WalletProvider: React.FC = ({ children }) => {
   const handleActiveWalletTabs = (value: WalletTabs) => {
     setActiveWalletTabs(value);
   };
-
   const handleDisplayPopover = (value: boolean) => {
     setIsDisplayPopover(value);
   };
