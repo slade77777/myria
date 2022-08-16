@@ -43,7 +43,6 @@ import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/even
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useL2WalletContext } from 'src/context/l2-wallet';
-import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
 
 interface Props {
   id: string;
@@ -56,6 +55,7 @@ interface IProp {
   starkKey?: string;
   assetDetails?: AssetDetailsResponse;
   setShowUnlist?: any;
+  onShowPopover?: any;
 }
 
 export enum AssetStatus {
@@ -103,7 +103,8 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = useMemo(() => `0x${starkKeyUser}`, [starkKeyUser]);
-  const { connectL2Wallet, handleSetFirstPurchase } = useL2WalletContext();
+  const { connectL2Wallet, handleSetFirstPurchase, handleDisplayPopoverWithdrawNFT } =
+    useL2WalletContext();
 
   const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
   const ownedBy = useMemo(() => {
@@ -671,6 +672,7 @@ function AssetDetails({ id }: Props) {
                   setShowModal(true);
                   onTrackingNoPriceItem('MKP Item Listing Selected');
                 }}
+                onShowPopover={() => handleDisplayPopoverWithdrawNFT(true)}
                 trackWithDraw={() => onTrackingNoPriceItem('MKP Item Withdrawal Selected')}
               />
             )}
@@ -810,12 +812,14 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
   setStatus,
   starkKey,
   assetDetails,
-  trackWithDraw
+  trackWithDraw,
+  onShowPopover
 }) => {
   const { isWithdrawing, handleSetValueNFT } = useWithDrawNFTContext();
 
   const handleWithdraw = async () => {
     handleSetValueNFT(assetDetails);
+    onShowPopover();
     const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
     triggerWithdraw?.click();
     trackWithDraw?.();

@@ -106,8 +106,6 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           <Trans>Withdrawals are processed in batches every 20 hours. Click</Trans>{' '}
           <span
             onClick={() => {
-              const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-              triggerWithdraw?.click();
               handleLearnMore(true);
             }}
             className="text-primary/6 cursor-pointer">

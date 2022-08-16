@@ -24,6 +24,7 @@ import UserAvatar from './Header/UserAvatar';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import WthdrawNFTPopover from './marketplace/Withdraw-NFT/WthdrawNFTPopover';
 import WithdrawNFTScreen from './marketplace/Withdraw-NFT/WithdrawNFTScreen';
+import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { event } = useGA4();
@@ -31,9 +32,16 @@ const ConnectL2WalletButton: React.FC = () => {
   const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
     useWalletContext();
 
-  const { connectL2Wallet, disconnectL2Wallet, handleSetFirstPurchase } = useL2WalletContext();
+  const {
+    connectL2Wallet,
+    disconnectL2Wallet,
+    handleSetFirstPurchase,
+    isDisplayPopover,
+    handleDisplayPopover
+  } = useL2WalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
   const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
+  const { isShowLearnMore } = useWithDrawNFTContext();
 
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
@@ -188,13 +196,20 @@ const ConnectL2WalletButton: React.FC = () => {
             <div>
               <Popover
                 modal
+                open={isDisplayPopover}
                 defaultOpen={openDropdown}
-                onOpenChange={(open) => setOpenDropdown(open)}>
+                onOpenChange={(open) => {
+                  if (!open && !isShowLearnMore) {
+                    handleDisplayPopover(false);
+                  }
+                  setOpenDropdown(open);
+                }}>
                 <Popover.Trigger asChild>
                   <span className="uppercase">
                     <button
                       className="body-14-bold border-base/4 bg-base/1 flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] text-sm font-medium"
-                      id="trigger-popover-main-screen">
+                      id="trigger-popover-main-screen"
+                      onClick={() => handleDisplayPopover(true)}>
                       <WalletIcon width={24} height={24} />
                       <span>{truncateString(walletAddress)}</span>
                       <i className="w-4">

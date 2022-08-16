@@ -226,12 +226,12 @@ export default function MainScreen({
             gotoDepositScreen();
           }}
           id="trigger-popover-deposit"
-          className="text-base/10 bg-base/4 mr-4 flex w-[118px] items-center justify-center rounded-lg p-3 text-sm"
+          className="text-base/10 bg-base/4 mr-4 flex items-center justify-center rounded-lg py-[10px] px-[18px] text-sm"
         >
           <div>
             <ArrowDownLeft />
           </div>
-          <span className="text-brand-light-blue ml-1 font-medium">
+          <span className="text-brand-light-blue ml-1 text-sm font-medium">
             DEPOSIT
           </span>
         </button>
@@ -239,12 +239,12 @@ export default function MainScreen({
           onClick={() => {
             gotoWithdrawScreen();
           }}
-          className="text-base/10 bg-base/4 flex w-[114px] items-center justify-center rounded-lg p-3 text-sm"
+          className="text-base/10 bg-base/4 flex items-center justify-center rounded-lg py-[10px] pl-2 pr-3 text-sm"
         >
           <div>
             <ArrowUpRight />
           </div>
-          <span className="text-brand-light-blue ml-1 flex gap-1 font-medium">
+          <span className="text-brand-light-blue ml-1 flex gap-1 text-sm font-medium">
             WITHDRAW
           </span>
         </button>

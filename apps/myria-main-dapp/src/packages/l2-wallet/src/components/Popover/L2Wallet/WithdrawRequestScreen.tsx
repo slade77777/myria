@@ -49,10 +49,6 @@ export default function WithdrawRequestScreen({
           <span
             className="text-primary/6 cursor-pointer"
             onClick={() => {
-              const triggerWithdraw = document.getElementById(
-                'trigger-popover-main-screen',
-              );
-              triggerWithdraw?.click();
               handleLearnMore(true);
             }}
           >
