@@ -141,6 +141,7 @@ const ConnectL2WalletButton: React.FC = () => {
       loginByWalletMutation.isSuccess &&
       user &&
       !user.email &&
+      localStarkKey &&
       !requestedEmail &&
       emailRequestTime < 10
     ) {
@@ -149,7 +150,7 @@ const ConnectL2WalletButton: React.FC = () => {
       setRequestedEmail(true);
       localStorage.setItem('emailRequestNumber', (emailRequestTime + 1).toString());
     }
-  }, [loginByWalletMutation?.isSuccess, user, requestedEmail]);
+  }, [loginByWalletMutation?.isSuccess, user, requestedEmail, localStarkKey]);
 
   return (
     <>
