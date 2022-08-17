@@ -92,7 +92,6 @@ function AssetDetails({ id }: Props) {
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
       handleSetValueNFT(assetDetails?.data);
-
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
@@ -106,7 +105,7 @@ function AssetDetails({ id }: Props) {
   const { connectL2Wallet, handleSetFirstPurchase, handleDisplayPopoverWithdrawNFT } =
     useL2WalletContext();
 
-  const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
+  const assetDetails = data?.assetDetails
   const ownedBy = useMemo(() => {
     if (assetDetails?.owner?.starkKey == starkKey) {
       return <Trans>You</Trans>;
@@ -176,7 +175,7 @@ function AssetDetails({ id }: Props) {
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
   const { data: etheCost = 0 } = useEtheriumPrice();
-  const { address, onConnect, onConnectCompaign } = useWalletContext();
+  const { address, onConnectCompaign } = useWalletContext();
   const { loginByWalletMutation } = useAuthenticationContext();
   // wait update sdk
   const bgImage = assetDetails?.metadataOptional
@@ -712,7 +711,7 @@ function AssetDetails({ id }: Props) {
       <div className="mt-16">
         <AssetList
           title={'More from this collection'}
-          items={moreCollectionList?.map((elm: any, index: number) => {
+          items={moreCollectionList?.map((elm: any) => {
             const item: NFTItemType = {
               id: `${elm.id}`,
               rarity: (elm.metadata as any).rarity,
@@ -820,7 +819,7 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
   trackWithDraw,
   onShowPopover
 }) => {
-  const { isWithdrawing, handleSetValueNFT } = useWithDrawNFTContext();
+  const { handleSetValueNFT } = useWithDrawNFTContext();
 
   const handleWithdraw = async () => {
     handleSetValueNFT(assetDetails);
@@ -844,7 +843,7 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
       </div>
       {starkKey === assetDetails?.owner?.starkKey && (
         <>
-          {assetDetails?.status == 'WITHDRAWING' || isWithdrawing ? (
+          {assetDetails?.status == 'WITHDRAWING' ? (
             <>
               <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
                 <Trans>LIST ITEM FOR SALE</Trans>

@@ -4,21 +4,29 @@ import CircleCheckSuccessOutline from 'src/components/icons/CircleCheckSuccessOu
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { getExplorerForAddress } from 'src/utils';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 interface IProp {}
 
 const WithdrawNFTSuccess: FC<IProp> = ({}) => {
+  const { isWithdrawComplete } = useL2WalletContext();
   const { valueNFT } = useWithDrawNFTContext();
   const [etherLinkContract, setEtherLinkContract] = useState<string>();
 
   useEffect(() => {
     const setLink = async () => {
       const networkId = await getNetworkId();
-      if (!networkId || !valueNFT?.tokenAddress) return '';
-      setEtherLinkContract(getExplorerForAddress(valueNFT?.tokenAddress, networkId));
+      if (!networkId || !isWithdrawComplete?.transactionHash) return '';
+      setEtherLinkContract(
+        getExplorerForAddress(
+          isWithdrawComplete?.transactionHash,
+          networkId,
+          'transaction',
+        ),
+      );
     };
     setLink();
-  }, [valueNFT?.tokenAddress]);
+  }, [isWithdrawComplete]);
 
   return (
     <>
