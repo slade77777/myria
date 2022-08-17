@@ -28,7 +28,7 @@ const WithLanguageStyle: React.FC<any> = ({ children }) => {
   return <div className={language}>{children}</div>;
 };
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 function App({ Component, pageProps }: AppProps) {
   useGATrackPageview();

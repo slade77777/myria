@@ -1,14 +1,19 @@
 import { Trans } from '@lingui/macro';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { InfoCircleIcon, ProgressIcon } from 'src/packages/l2-wallet/src/components/Icons';
+import { StatusWithdrawNFT } from 'src/types/marketplace';
 import { formatPrice } from 'src/utils';
 
 type Props = {
-  valueNFT: any;
 };
 
-export default function WithdrawNFTInProgress({ valueNFT }: Props) {
+export default function WithdrawNFTInProgress({ }: Props) {
+  const { valueNFT, status, setStatus } = useWithDrawNFTContext();
+  useEffect(()=>{
+    return () => setStatus(StatusWithdrawNFT.MAIN_SCREEN)
+  })
   return (
     <>
       <div className="grow">

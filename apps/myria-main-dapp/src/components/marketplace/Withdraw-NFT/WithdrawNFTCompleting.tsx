@@ -12,11 +12,14 @@ import { StatusWithdrawNFT } from 'src/types/marketplace';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WalletTabs } from 'src/types';
 import { toast } from 'react-toastify';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 interface IProp {}
 
 const WithdrawNFTCompleting: FC<IProp> = ({}) => {
   const [pending, setPending] = useState(false);
+  const { showWithdrawCompleteScreen } = useL2WalletContext();
+
   const { address } = useWalletContext();
   const { valueNFT, setStatus } = useWithDrawNFTContext();
   const starkKeyUser = useSelector(
@@ -68,10 +71,13 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
           starkKey,
           transactionHash: result.transactionHash
         });
+        showWithdrawCompleteScreen({
+          transactionHash: result.transactionHash,
+          claimAmount: "1"
+        });
         setStatus(StatusWithdrawNFT.SUCCESS);
       }
     } catch (err) {
-      console.log(err);
       setStatus(StatusWithdrawNFT.FAILED);
       toast('Something wrong has happened, withdraw transaction is failure. Please retry..');
     } finally {
