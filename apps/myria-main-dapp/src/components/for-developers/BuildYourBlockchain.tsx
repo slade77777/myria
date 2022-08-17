@@ -25,6 +25,7 @@ interface IFormInputs {
 
 type Props = {
   onClose: () => void;
+  onSuccessClose: () => void;
 };
 
 const schema = yup
@@ -63,7 +64,7 @@ const schema = yup
   })
   .required();
 
-const BuildYourBlockchain: React.FC<Props> = ({ onClose }: Props) => {
+const BuildYourBlockchain: React.FC<Props> = ({ onSuccessClose }: Props) => {
   const inputClassName = 'border-none bg-[#0B2231] text-[14px] focus:shadow-[0_0_0_1px_#9AC9E3]';
   const { event } = useGA4();
   const [error, setError] = useState('');
@@ -111,13 +112,12 @@ const BuildYourBlockchain: React.FC<Props> = ({ onClose }: Props) => {
         if (previousValue) return previousValue + `&${currentValue}=${params[currentValue]}`;
         else return `${currentValue}=${params[currentValue]}`;
       }, '');
-
-      const result = await salesforceAPIClient.post(`/servlet.WebToLead?${url}`);
+      await salesforceAPIClient.post(`/servlet.WebToLead?${url}`);
       reset();
-      onClose();
     } catch (error: any) {
       reset();
-      onClose();
+    } finally {
+      onSuccessClose();
     }
   };
 
@@ -126,8 +126,7 @@ const BuildYourBlockchain: React.FC<Props> = ({ onClose }: Props) => {
       <form
         className="mx-auto mt-8 max-w-[616px] space-y-6 md:mt-8"
         onSubmit={handleSubmit(onSubmit)}
-        noValidate
-      >
+        noValidate>
         <Input
           {...register('name')}
           error={!!errors.name}

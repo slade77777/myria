@@ -1,20 +1,17 @@
 import { Trans } from '@lingui/macro';
-import Image from 'next/image';
 import React from 'react';
-import { socialLinks } from 'src/configs';
 import { useGA4 } from 'src/lib/ga';
 import BuildYourBlockchain from './for-developers/BuildYourBlockchain';
 import CloseIcon from './icons/CloseIcon';
-import DiscordIcon from './icons/DiscordIcon';
-import TwitterIcon from './icons/TwitterIcon';
 import Modal from './Modal';
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  onSuccessClose: () => void;
 };
 
-const ContactSalesTeamModal: React.FC<Props> = ({ open, onClose }) => {
+const ContactSalesTeamModal: React.FC<Props> = ({ open, onClose, onSuccessClose }) => {
   const { event } = useGA4();
   return (
     <Modal open={open}>
@@ -28,7 +25,7 @@ const ContactSalesTeamModal: React.FC<Props> = ({ open, onClose }) => {
           <h1 className="font-bold leading-[1.15] md:text-[24px]">
             <Trans>Contact Our Sales Team</Trans>
           </h1>
-          <BuildYourBlockchain onClose={onClose} />
+          <BuildYourBlockchain onClose={onClose} onSuccessClose={onSuccessClose} />
         </div>
       </Modal.Content>
     </Modal>
