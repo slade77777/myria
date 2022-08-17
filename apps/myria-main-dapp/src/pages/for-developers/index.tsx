@@ -18,11 +18,16 @@ import { socialLinks } from '../../configs';
 // import { useGA4 } from '../lib/ga';
 import { useGA4 } from 'src/lib/ga';
 import NewsLetter from '../newsletter';
+import ContactUsSalesForceSuccessModal from 'src/components/modals/ContactUsSalesForceSuccessModal';
+import SubscriptionSuccessModal from 'src/components/modals/SubscriptionSuccessModal';
 
 const listId = process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID;
 
 const ForDevelopers: React.FC = () => {
   const [showContactSalesTeamModal, setShowFirstTimeVisitModal] = useState(false);
+  const [showContactSalesSuccessModal, setShowContactSalesSuccessModal] = useState(false);
+  const [showSubscriptionSuccessModal, setShowSubscriptionSuccessModal] = useState(false);
+
   const [email, setEmail] = useState<string>('');
   const { event } = useGA4();
 
@@ -30,11 +35,24 @@ const ForDevelopers: React.FC = () => {
     setShowFirstTimeVisitModal(false);
   };
 
+  const handleSuccessCloseContactSalesModal = () => {
+    setShowFirstTimeVisitModal(false);
+    setShowContactSalesSuccessModal(true);
+  };
+
+  const handleCloseContactSalesSuccessModal = () => {
+    setShowContactSalesSuccessModal(false);
+  };
+
+  const handleCloseSubscriptionSuccessModal = () => {
+    setShowSubscriptionSuccessModal(false);
+  };
+
   const emailsubmit = async () => {
     let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
     if (regex.test(email)) {
       try {
-        klaviyoClient.public.identify({
+        await klaviyoClient.public.identify({
           email,
           properties: {
             $first_name: 'hey testname',
@@ -42,11 +60,12 @@ const ForDevelopers: React.FC = () => {
           },
           post: true
         });
+        setShowSubscriptionSuccessModal(true);
+        event('Email Subscribed', { campaign: 'B2B', user_email: email });
       } catch (err) {
         console.error(err);
       }
       setEmail('');
-      event('Email Subscribed', { campaign: 'B2B', user_email: email });
     }
   };
 
@@ -57,15 +76,13 @@ const ForDevelopers: React.FC = () => {
           className={clsx(
             paddingX,
             "relative isolate flex min-h-[520px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile_op.png')] bg-cover bg-top pt-[150px] pb-[87px] md:bg-none md:pt-[150px] lg:pt-[200px]"
-          )}
-        >
+          )}>
           <div className="hidden md:block">
             <div
               style={{
                 background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)'
               }}
-              className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"
-            ></div>
+              className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
             <div className="absolute top-0 left-0 z-[-1] w-full">
               <Image
                 src="/images/for-developers/header-bg_op.png"
@@ -95,8 +112,7 @@ const ForDevelopers: React.FC = () => {
                       event('B2B Start Building Selected', {
                         campaign: 'B2B'
                       });
-                    }}
-                  >
+                    }}>
                     <Trans>START BUILDING</Trans>
                   </a>
                 </Link>
@@ -108,8 +124,7 @@ const ForDevelopers: React.FC = () => {
                   event('B2B Contact Sales Selected', {
                     campaign: 'B2B'
                   });
-                }}
-              >
+                }}>
                 <a className="border btn-lg border-base/9">
                   <Trans>CONTACT SALES</Trans>
                 </a>
@@ -132,8 +147,7 @@ const ForDevelopers: React.FC = () => {
           }
           className={clsx(
             'mt-[95px] mb-[120px] bg-no-repeat md:mt-[170px] md:mb-[152px] md:[background-image:var(--bg)]'
-          )}
-        >
+          )}>
           <section
             style={
               {
@@ -144,8 +158,7 @@ const ForDevelopers: React.FC = () => {
             className={clsx(
               paddingX,
               'mx-auto max-w-[966px] bg-bottom bg-no-repeat [background-size:100%_calc(100%-238px)] [background-image:var(--bg)] md:bg-none'
-            )}
-          >
+            )}>
             <Myria />
           </section>
           <section className="mx-auto max-w-[1440px] pb-[160px] pt-[50px] md:px-[88px] md:pt-[200px]">
@@ -171,8 +184,7 @@ const ForDevelopers: React.FC = () => {
                     className="btn-lg btn-primary"
                     onClick={() => {
                       emailsubmit();
-                    }}
-                  >
+                    }}>
                     Submit
                   </button>
                 </div>
@@ -191,8 +203,7 @@ const ForDevelopers: React.FC = () => {
                       className="btn-lg bg-blue/7 text-base/2 flex items-center px-6 py-[12.5px] uppercase"
                       onClick={() => {
                         event('B2B Discord Button Clicked', { campaign: 'B2B' });
-                      }}
-                    >
+                      }}>
                       <DiscordGameIcon size={28} className="mr-2 text-black" />
                       Join our discord
                     </button>
@@ -206,6 +217,15 @@ const ForDevelopers: React.FC = () => {
       <ContactSalesTeamModal
         open={showContactSalesTeamModal}
         onClose={handleCloseContactSalesTeamModal}
+        onSuccessClose={handleSuccessCloseContactSalesModal}
+      />
+      <ContactUsSalesForceSuccessModal
+        open={showContactSalesSuccessModal}
+        onClose={handleCloseContactSalesSuccessModal}
+      />
+      <SubscriptionSuccessModal
+        open={showSubscriptionSuccessModal}
+        onClose={handleCloseSubscriptionSuccessModal}
       />
     </Page>
   );
