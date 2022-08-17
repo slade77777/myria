@@ -3,7 +3,7 @@ import CheckIcon from 'src/components/icons/CheckIcon';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { WalletTabs } from 'src/types';
 
-export default function MessagePurchaseModal({ assetName = '', onClose = ()=>{} }) {
+export default function MessagePurchaseModal({ assetName = '', onClose = () => {} }) {
   const { handleActiveWalletTabs } = useL2WalletContext();
   return (
     <div className="flex">
@@ -19,18 +19,18 @@ export default function MessagePurchaseModal({ assetName = '', onClose = ()=>{} 
         <div className="text-sm font-normal mt-[10px] mb-[20px]">
           <span className="text-base/9">
             <Trans>Your purchase of</Trans>
-            <span className="text-[16px] text-white mx-1 cursor-pointer"> {assetName} </span>
+            <span className="text-[16px] text-white mx-1"> {assetName} </span>
             <Trans>successful.</Trans>
           </span>
         </div>
-        <div className="cursor-pointer" onClick={() => {
-          const triggerMainScreen = document.getElementById(
-            'trigger-popover-main-screen',
-          );
-          triggerMainScreen?.click();
-          handleActiveWalletTabs(WalletTabs.HISTORY)
-          onClose();
-        }}>
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            const triggerMainScreen = document.getElementById('trigger-popover-main-screen');
+            triggerMainScreen?.click();
+            handleActiveWalletTabs(WalletTabs.HISTORY);
+            onClose();
+          }}>
           <span className="text-primary/6">
             <Trans>View Transaction History</Trans>
           </span>

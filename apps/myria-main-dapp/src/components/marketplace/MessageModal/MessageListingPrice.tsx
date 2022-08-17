@@ -16,7 +16,7 @@ export default function MessageListingPriceModal({ price = 2.99, assetName = '' 
         <div className="text-sm font-normal mt-[10px]">
           <span className="text-base/9">
             <Trans>Your</Trans>
-            <span className="text-[16px] text-white mx-1 cursor-pointer"> {assetName} </span>
+            <span className="text-[16px] text-white mx-1"> {assetName} </span>
             <Trans>listing price has been updated to</Trans> {price} <Trans>ETH.</Trans>
           </span>
         </div>

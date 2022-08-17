@@ -48,7 +48,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
       <DialogPrimitive.Content {...props} className={clsx('dialog-content')} ref={forwardedRef}>
         <div
           className={clsx(
-            'mx-auto my-auto w-full max-w-[576px] rounded-lg bg-brand-deep-blue',
+            'mx-auto my-auto w-full max-w-[576px] rounded-lg bg-brand-deep-blue z-50',
             className
           )}>
           {includingHeader && (
