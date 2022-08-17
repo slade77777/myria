@@ -81,7 +81,7 @@ function AssetDetails({ id }: Props) {
   const router = useRouter();
 
   const { data, isLoading, refetch } = useQuery(
-    ['assetDetail', id],
+    ['assetDetail', +id],
     async () => {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
