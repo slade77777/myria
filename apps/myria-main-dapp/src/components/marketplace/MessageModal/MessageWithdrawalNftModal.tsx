@@ -29,11 +29,7 @@ const MessageWithdrawalNftModal: FC<Prop> = ({ onClose }) => {
         <span className="">
           <Trans>Your withdrawal of</Trans>
         </span>
-        <span
-          className="mx-1 cursor-pointer font-medium text-white"
-          onClick={() => toast('This function is not ready yet!')}>
-          {assetDetail?.name}
-        </span>
+        <span className="mx-1 font-medium text-white">{assetDetail?.name}</span>
         <span>
           <Trans>is now ready to claim.</Trans>
         </span>
