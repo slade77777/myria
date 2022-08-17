@@ -274,7 +274,6 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         const processedData = result
           .sort((a: any, b: any) => b.createdAt - a.createdAt)
           .map((item: any, index: number) => {
-            console.log('Item -> ', item);
             // TEMPORARILY TODO
             /**
              * If all of the transactions (except withdraw) has pending status in BE

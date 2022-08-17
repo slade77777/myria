@@ -59,13 +59,12 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
         {
           from: address,
           nonce: Math.floor(Math.random() * 10000),
-          confirmationType: ConfirmationType.Sender
+          confirmationType: ConfirmationType.Confirmed
         }
       );
       if (result && result.transactionHash) {
         await withdrawalModule.withdrawNftComplete({
           assetId: getVaultDetail.data.assetId,
-          id: valueNFT.id,
           starkKey,
           transactionHash: result.transactionHash
         });

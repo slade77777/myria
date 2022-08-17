@@ -19,8 +19,6 @@ interface TProps {
 export default function TransactionHistoryDetailScreen({
   transactionDetail,
 }: TProps) {
-  console.log('transactionDetail', transactionDetail);
-
   const [etherLinkContract, setEtherLinkContract] = useState<string>();
   useEffect(() => {
     const setLink = async () => {

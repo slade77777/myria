@@ -27,7 +27,7 @@ import ETHIcon from '../../Icons/ETHIcon';
 import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
-
+import { useL2WalletContext } from 'src/context/l2-wallet';
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -72,7 +72,7 @@ export const DF_TRANSACTION_TYPE = {
     titleFailed: 'Deposit Failed',
     iconFailed: <CircleCloseIcon className="text-error/6" />,
     iconReceived: (
-      <Arrow3Icon direction="top" className="text-blue/6 mr-1" size={60} />
+      <Arrow3Icon direction="bottom" className="text-blue/6 mr-1" size={60} />
     ),
     icon: '',
   },
@@ -81,7 +81,7 @@ export const DF_TRANSACTION_TYPE = {
     titleHistoryDetail: 'Withdrawal',
     titleFailed: 'Withdrawal Failed',
     iconReceived: (
-      <Arrow3Icon direction="bottom" className="text-blue/6 mr-1" size={60} />
+      <Arrow3Icon direction="top" className="text-blue/6 mr-1" size={60} />
     ),
     iconFailed: <CircleCloseIcon className="text-error/6" />,
     icon: '',
@@ -99,7 +99,7 @@ export const DF_TRANSACTION_TYPE = {
     titleHistoryDetail: 'Withdrawal',
     titleFailed: '',
     iconReceived: (
-      <Arrow3Icon direction="bottom" className="text-blue/6 mr-1" size={60} />
+      <Arrow3Icon direction="top" className="text-blue/6 mr-1" size={60} />
     ),
     iconFailed: <CircleCloseIcon className="text-error/6" />,
     icon: '',
@@ -139,14 +139,17 @@ export default function MainScreen({
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect, onConnectCompaign } = useWalletContext();
   const { valueNFT, setStatus, handleSetValueNFT } = useWithDrawNFTContext();
-
+  const {
+    connectL2Wallet,
+    handleSetFirstPurchase,
+    handleDisplayPopoverWithdrawNFT,
+  } = useL2WalletContext();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
 
   const completeWithdrawal = useCallback(() => {
-    const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-    triggerWithdraw?.click();
+    handleDisplayPopoverWithdrawNFT(true);
     setStatus(StatusWithdrawNFT.COMPLETED);
   }, [setStatus]);
 
@@ -201,6 +204,7 @@ export default function MainScreen({
       address.toLowerCase(),
       item.assetId,
     );
+    console.log('===balance', balance);
     if (Number(balance) > 0) {
       if (item.name === 'Ethereum') {
         const transactionDetails = {
