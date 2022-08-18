@@ -7,7 +7,12 @@ import DAOIcon from 'src/components/icons/DAOIcon';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
-import { formatPrice, formatUSDPrice, getExplorerForAddress } from 'src/utils';
+import {
+  capitalizeFirstLetter,
+  formatPrice,
+  formatUSDPrice,
+  getExplorerForAddress
+} from 'src/utils';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 
@@ -138,7 +143,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
         </div>
       </Content>
       <Content value="Description">
-        <p className="max-w-full">{assetDetails?.description}</p>
+        <p className="max-w-full">{capitalizeFirstLetter(assetDetails?.description)}</p>
       </Content>
       <Content value="Details">
         <div>
