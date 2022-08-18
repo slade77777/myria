@@ -58,9 +58,14 @@ export const ModalEditListing: React.FC<Props> = ({
     resolver: yupResolver(schema)
   });
   const ethPrice = watch('price');
+  const canConfirm = !isNaN(parseFloat(ethPrice)) && parseFloat(ethPrice) > 0;
+
   const BUTTON_BG = useMemo(() => {
-    return (isDirty || isValid) && !isSubmitSuccessful ? 'btn-primary' : 'btn-disabled';
-  }, [isDirty, isValid, isSubmitSuccessful]);
+    return (isDirty || isValid) && !isSubmitSuccessful && canConfirm
+      ? 'btn-primary'
+      : 'btn-disabled';
+  }, [isDirty, isValid, isSubmitSuccessful, canConfirm]);
+
   const defaultModal =
     status === AssetStatus.MODIFY
       ? {
@@ -80,9 +85,9 @@ export const ModalEditListing: React.FC<Props> = ({
         <form className="p-[24px] pt-[32px]">
           <div className="bg-base/4 flex items-center  gap-6 rounded-lg p-4">
             <div className="relative w-32">
-              <img className="rounded-[6px] z-10" src={imgSrc} />
+              <img className="z-10 rounded-[6px]" src={imgSrc} />
               <div
-                className="z-1 absolute h-full w-full rounded-xl opacity-[0.3] top-0"
+                className="z-1 absolute top-0 h-full w-full rounded-xl opacity-[0.3]"
                 style={{ backgroundColor: rarityColor }}
               />
             </div>
@@ -123,7 +128,7 @@ export const ModalEditListing: React.FC<Props> = ({
           <div className="mt-8">
             <Button
               onClick={handleSubmit((value) => setTimeout(() => onSubmit(value), 100))}
-              disabled={!isDirty}
+              disabled={!canConfirm}
               className={clsx('btn-lg  w-full px-10', BUTTON_BG)}>
               {isSubmitted && <ProgressIcon size={23} />}
               <span className="ml-1">{defaultModal.titleConfirm}</span>
