@@ -4,7 +4,7 @@ import { useL2WalletContext } from 'src/context/l2-wallet';
 import { WalletTabs } from 'src/types';
 
 export default function MessagePurchaseModal({ assetName = '', onClose = () => {} }) {
-  const { handleActiveWalletTabs } = useL2WalletContext();
+  const { handleActiveWalletTabs, handleDisplayPopover } = useL2WalletContext();
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
@@ -26,8 +26,7 @@ export default function MessagePurchaseModal({ assetName = '', onClose = () => {
         <div
           className="cursor-pointer"
           onClick={() => {
-            const triggerMainScreen = document.getElementById('trigger-popover-main-screen');
-            triggerMainScreen?.click();
+            handleDisplayPopover(true);
             handleActiveWalletTabs(WalletTabs.HISTORY);
             onClose();
           }}>

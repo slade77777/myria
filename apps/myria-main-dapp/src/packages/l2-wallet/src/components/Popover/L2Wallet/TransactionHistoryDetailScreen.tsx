@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 import { FORMAT_DATE, getExplorerForAddress, truncateAddress } from 'src/utils';
-import { Arrow3Icon } from '../../Icons';
 import {
   DF_TRANSACTION_TYPE,
   STATUS_HISTORY,
@@ -34,6 +33,7 @@ export default function TransactionHistoryDetailScreen({
     };
     setLink();
   }, [transactionDetail?.transactionHash]);
+  console.log('transactionDetail', transactionDetail);
 
   return (
     <div className="text-base/10 mt-[29px]">
@@ -60,14 +60,24 @@ export default function TransactionHistoryDetailScreen({
           ? DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed
           : DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail}
       </div>
-      {transactionDetail.status === STATUS_HISTORY.SUCCESS ? (
+      {(transactionDetail.status === STATUS_HISTORY.SUCCESS ||
+        transactionDetail.status === STATUS_HISTORY.COMPLETED) && (
         <div className="text-base/9 mt-6 text-center text-sm">
           Transaction completed{' '}
           {moment(transactionDetail.createdAt).format(FORMAT_DATE)}
         </div>
-      ) : (
+      )}
+      {transactionDetail.status === STATUS_HISTORY.FAILED && (
         <div className="text-base/9 mt-6 text-center text-sm">
           Transaction failed{' '}
+          {moment(transactionDetail.createdAt).format(FORMAT_DATE)}
+        </div>
+      )}
+
+      {(transactionDetail.status === STATUS_HISTORY.IN_PROGRESS ||
+        transactionDetail.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING) && (
+        <div className="text-base/9 mt-6 text-center text-sm">
+          Transaction started{' '}
           {moment(transactionDetail.createdAt).format(FORMAT_DATE)}
         </div>
       )}
