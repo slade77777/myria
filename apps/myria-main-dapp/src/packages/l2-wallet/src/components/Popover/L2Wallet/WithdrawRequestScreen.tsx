@@ -42,19 +42,34 @@ export default function WithdrawRequestScreen({
           />
         </div>
         <div className="mt-6 text-center text-2xl">
-          <Trans> Withdrawal In progress </Trans>
+          {withdrawInProgress ? (
+            <Trans> Withdrawal In progress </Trans>
+          ) : (
+            <Trans> Withdraw to L1 wallet </Trans>
+          )}
         </div>
         <div className="text-base/9 mt-4 px-7 text-center text-sm">
-          Withdrawals are processed in batches every 20 hours. Click{' '}
-          <span
-            className="text-primary/6 cursor-pointer"
-            onClick={() => {
-              handleLearnMore(true);
-            }}
-          >
-            here
-          </span>{' '}
-          to learn more.
+          {withdrawInProgress ? (
+            <>
+              <Trans>
+                Withdrawals are processed in batches every 20 hours. Click
+              </Trans>
+              <span
+                className="text-primary/6 cursor-pointer"
+                onClick={() => {
+                  handleLearnMore(true);
+                }}
+              >
+                &nbsp;<Trans>here</Trans>&nbsp;
+              </span>
+              <Trans>to learn more.</Trans>
+            </>
+          ) : (
+            <Trans>
+              You will receive a notification once your funds are ready to be
+              claimed.
+            </Trans>
+          )}
         </div>
         <div className="bg-base/2/50 text-base/9 mt-4 rounded-lg p-4 text-sm">
           <div className="flex justify-between">
