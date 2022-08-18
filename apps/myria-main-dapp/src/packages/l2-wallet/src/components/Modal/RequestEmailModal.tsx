@@ -50,7 +50,7 @@ const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
   const { mutate: linkAccountEmail, isLoading } = useMutation(linkEmail, {
     onSuccess: res => {
       closeModal();
-      toast('Link email successfully, please check your email to complete', {
+      toast('Email linked successfully, please check your email to complete', {
         type: 'success',
       });
     },
@@ -79,7 +79,7 @@ const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
 
       <div className="mt-6 px-[20px] text-center text-[16px] text-white">
         <p className="text-base/9">
-          Enter your email address to be get notifications about wallet
+          Enter your email address to get notifications about wallet
           transactions and marketplace trades.
         </p>
       </div>
