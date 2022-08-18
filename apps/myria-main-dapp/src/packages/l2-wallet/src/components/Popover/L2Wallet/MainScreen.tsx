@@ -27,7 +27,10 @@ import ETHIcon from '../../Icons/ETHIcon';
 import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
+import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+
 type Props = {
   gotoDepositScreen: any;
   gotoWithdrawScreen: any;
@@ -54,6 +57,7 @@ export enum STATUS_HISTORY {
   SUCCESS = 'Success',
   FAILED = 'Failed',
   IN_PROGRESS = 'Pending',
+  IN_PROGRESS_VALIDATING = 'Validating',
   COMPLETED = 'Completed',
 }
 
@@ -136,6 +140,7 @@ export default function MainScreen({
   gotoWithdrawNowScreen,
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
+  const [l1Balance, setL1Balance] = useState(0);
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect, onConnectCompaign } = useWalletContext();
   const { valueNFT, setStatus, handleSetValueNFT } = useWithDrawNFTContext();
@@ -147,6 +152,52 @@ export default function MainScreen({
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
+  const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(
+    localStorageKeys.starkKey,
+    '',
+  );
+
+  useEffect(() => {
+    let addressWallet: any = null;
+
+    if (walletAddress) {
+      addressWallet = walletAddress;
+    }
+    if (address) {
+      addressWallet = address;
+    }
+    if (!addressWallet) return;
+
+    const getBalanceOfMyriaL1Wallet = async () => {
+      let assetType: string = '';
+      assetType = asset.getAssetType({
+        type: 'ETH',
+        data: {
+          quantum: QUANTUM_CONSTANT.toString(),
+        },
+      });
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+
+      const withdrawModule = moduleFactory.getWithdrawModule();
+
+      const currentBalance = await withdrawModule.getWithdrawalBalance(
+        addressWallet,
+        assetType,
+      );
+      console.log('L1 Current balance ->', currentBalance);
+      if (currentBalance > 0) {
+        setL1Balance(Number(currentBalance));
+      }
+    };
+    const interval = setInterval(() => {
+      if (walletAddress && localStarkKey) {
+        getBalanceOfMyriaL1Wallet();
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [walletAddress, localStarkKey]);
 
   const completeWithdrawal = useCallback(() => {
     handleDisplayPopoverWithdrawNFT(true);
@@ -231,7 +282,10 @@ export default function MainScreen({
   };
 
   const renderStatus = (item: any) => {
-    if (item.status === STATUS_HISTORY.IN_PROGRESS) {
+    if (
+      item.status === STATUS_HISTORY.IN_PROGRESS ||
+      item.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING
+    ) {
       return (
         <div className="text-base/9 mt-1 flex items-center">
           In progress <ProgressHistoryIcon size={14} className="ml-1" />
@@ -263,22 +317,33 @@ export default function MainScreen({
         item.type === 'TransferRequest' ||
         item.type === 'WithdrawalRequest'
       ) {
-        return (
-          <button
-            onClick={e => {
-              e.stopPropagation();
-              onWithdrawActionFromHistory(item);
-            }}
-            className="text-primary/6 mt-1 flex cursor-pointer items-center"
-          >
-            Complete withdrawal{' '}
-            <ChevronIcon
-              className="text-primary/6 ml-1"
-              size={14}
-              direction="right"
-            />
-          </button>
-        );
+        if (
+          (item.tokenType === 'ETH' && l1Balance > 0) ||
+          item.tokenType === 'MINTABLE_ERC721'
+        ) {
+          return (
+            <button
+              onClick={e => {
+                e.stopPropagation();
+                onWithdrawActionFromHistory(item);
+              }}
+              className="text-primary/6 mt-1 flex cursor-pointer items-center"
+            >
+              Complete withdrawal{' '}
+              <ChevronIcon
+                className="text-primary/6 ml-1"
+                size={14}
+                direction="right"
+              />
+            </button>
+          );
+        } else if (item.tokenType === 'ETH' && l1Balance === 0) {
+          return (
+            <div className="text-base/9 mt-1 flex items-center">
+              In progress <ProgressHistoryIcon size={14} className="ml-1" />
+            </div>
+          );
+        }
       }
       return (
         <div className="text-base/9 mt-1 flex items-center">
