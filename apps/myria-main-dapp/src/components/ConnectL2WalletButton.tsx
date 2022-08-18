@@ -209,7 +209,6 @@ const ConnectL2WalletButton: React.FC = () => {
                   <span className="uppercase">
                     <button
                       className="body-14-bold border-base/4 bg-base/1 flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] text-sm font-medium"
-                      id="trigger-popover-main-screen"
                       onClick={() => handleDisplayPopover(true)}>
                       <WalletIcon width={24} height={24} />
                       <span>{truncateString(walletAddress)}</span>

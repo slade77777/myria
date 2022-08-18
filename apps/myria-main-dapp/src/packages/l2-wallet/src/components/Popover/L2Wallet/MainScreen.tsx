@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { useWalletContext } from 'src/context/wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
@@ -28,8 +29,8 @@ import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
 import { localStorageKeys } from 'src/configs';
-import { useL2WalletContext } from 'src/context/l2-wallet';
 import useLocalStorage from 'src/hooks/useLocalStorage';
+import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 
 type Props = {
   gotoDepositScreen: any;
@@ -91,7 +92,7 @@ export const DF_TRANSACTION_TYPE = {
     icon: '',
   },
   [TRANSACTION_TYPE.SETTLEMENT]: {
-    title: 'Purchase',
+    title: 'NFT Purchase',
     titleHistoryDetail: 'Purchase',
     titleFailed: 'Purchase',
     icon: '/images/marketplace/icoPurchase.png',
@@ -99,7 +100,7 @@ export const DF_TRANSACTION_TYPE = {
     rotateIcon: 'top',
   },
   [TRANSACTION_TYPE.TRANSFER]: {
-    title: 'Withdrawal',
+    title: 'NFT Withdrawal',
     titleHistoryDetail: 'Withdrawal',
     titleFailed: '',
     iconReceived: (
@@ -118,10 +119,10 @@ export const DF_TRANSACTION_TYPE = {
   },
 };
 
-const renderAmount = (type: string, amount: number) => {
+const renderAmount = (type: string, amount: number, item: any) => {
   switch (type) {
     case 'SettlementRequest':
-      return 1;
+      return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
     default:
       return amount;
   }
@@ -144,11 +145,8 @@ export default function MainScreen({
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnect, onConnectCompaign } = useWalletContext();
   const { valueNFT, setStatus, handleSetValueNFT } = useWithDrawNFTContext();
-  const {
-    connectL2Wallet,
-    handleSetFirstPurchase,
-    handleDisplayPopoverWithdrawNFT,
-  } = useL2WalletContext();
+  const { handleDisplayPopoverWithdrawNFT, handleDisplayPopover } =
+    useL2WalletContext();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
@@ -255,7 +253,6 @@ export default function MainScreen({
       address.toLowerCase(),
       item.assetId,
     );
-    console.log('===balance', balance);
     if (Number(balance) > 0) {
       if (item.name === 'Ethereum') {
         const transactionDetails = {
@@ -264,10 +261,7 @@ export default function MainScreen({
         };
         gotoWithdrawNowScreen(transactionDetails);
       } else {
-        const triggerMainScreen = document.getElementById(
-          'trigger-popover-main-screen',
-        );
-        triggerMainScreen?.click();
+        handleDisplayPopover(false);
         handleSetValueNFT({
           ...item,
           name: item.transactionCategory,
@@ -349,6 +343,31 @@ export default function MainScreen({
         <div className="text-base/9 mt-1 flex items-center">
           Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
         </div>
+      );
+    }
+  };
+
+  const renderIcon = (item: any) => {
+    if (
+      !item.name &&
+      (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
+        item.type === TRANSACTION_TYPE.TRANSFER)
+    ) {
+      return <WithdrawNFTIcon size={32} />;
+    }
+
+    if (item.type !== TRANSACTION_TYPE.SETTLEMENT) {
+      return <img className="w-8 flex-none" src={item.ico} alt="token_icon" />;
+    }
+
+    if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
+      return (
+        <Image
+          className="rounded-[16px]"
+          src={'/assets/images/assetPurchase.png'}
+          width={32}
+          height={32}
+        />
       );
     }
   };
@@ -463,33 +482,29 @@ export default function MainScreen({
                   )}
                   key={index}
                 >
-                  <div className="mr-2">
-                    {item.type !== TRANSACTION_TYPE.SETTLEMENT && (
-                      <img
-                        className="w-8 flex-none"
-                        src={item.ico}
-                        alt="token_icon"
-                      />
-                    )}
-                    {item.type === TRANSACTION_TYPE.SETTLEMENT && (
-                      <Image
-                        className="rounded-[16px]"
-                        src={'/assets/images/assetPurchase.png'}
-                        width={32}
-                        height={32}
-                      />
-                    )}
-                  </div>
+                  <div className="mr-2">{renderIcon(item)}</div>
                   <div className="grow">
                     <div className="text-base/10 flex items-center justify-between text-sm">
-                      <span>{DF_TRANSACTION_TYPE[item?.type]?.title}</span>
+                      <span>
+                        {!item.name &&
+                        (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
+                          item.type === TRANSACTION_TYPE.TRANSFER)
+                          ? 'NFT Withdraw'
+                          : DF_TRANSACTION_TYPE[item?.type]?.title}
+                      </span>
                       <span className="flex items-center">
                         <span className="mb-[2px] mr-1">
-                          {item.type !== TRANSACTION_TYPE.SETTLEMENT && (
+                          {!item.name &&
+                          (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
+                            item.type === TRANSACTION_TYPE.TRANSFER) ? (
+                            ''
+                          ) : (
                             <DAOIcon size={16} />
                           )}
                         </span>
-                        <span>{renderAmount(item.type, item.amount)}</span>
+                        <span>
+                          {renderAmount(item.type, item.amount, item)}
+                        </span>
                       </span>
                     </div>
                     <div className="text-base/9 flex items-center justify-between text-xs">

@@ -38,7 +38,8 @@ export default function MessageWithdrawModal({
     (state: RootState) => state.account.connectedAccount,
   );
 
-  const { showWithdrawCompleteScreen } = useL2WalletContext();
+  const { showWithdrawCompleteScreen, handleDisplayPopover } =
+    useL2WalletContext();
 
   const dispatch = useDispatch();
   const closeMessage = () => {
@@ -71,10 +72,7 @@ export default function MessageWithdrawModal({
         },
       );
       if (responseWithdraw) {
-        const triggerMainScreen = document.getElementById(
-          'trigger-popover-main-screen',
-        );
-        triggerMainScreen?.click();
+        handleDisplayPopover(true);
         showWithdrawCompleteScreen({
           isShow: true,
           transactionHash: responseWithdraw.transactionHash,

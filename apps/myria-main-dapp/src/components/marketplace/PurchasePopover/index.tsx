@@ -9,6 +9,7 @@ import ProgressIcon from 'src/components/icons/ProgressIcon';
 import { PurchaseStatus } from 'src/types/marketplace';
 import FailedIcon from 'src/components/icons/FailedIcon';
 import { Loading } from 'src/components/Loading';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 interface IProp {
   assetBuy: {
     name: string;
@@ -206,10 +207,10 @@ const ActionButtonCheckout: FC<ButtonProps> = ({
   isLoading,
   onClose
 }) => {
+  const { handleDisplayPopover } = useL2WalletContext();
   const triggerPopoverDeposit = () => {
     onClose();
-    const triggerMainScreen = document.getElementById('trigger-popover-main-screen');
-    triggerMainScreen?.click();
+    handleDisplayPopover(true);
     setTimeout(() => {
       const triggerDeposit = document.getElementById('trigger-popover-deposit');
       triggerDeposit?.click();
