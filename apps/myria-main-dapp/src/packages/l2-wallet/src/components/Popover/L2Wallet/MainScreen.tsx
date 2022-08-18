@@ -193,7 +193,7 @@ export default function MainScreen({
       if (walletAddress && localStarkKey) {
         getBalanceOfMyriaL1Wallet();
       }
-    }, 5000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [walletAddress, localStarkKey]);
 
