@@ -31,7 +31,7 @@ export default function useGamesData() {
         label: string | JSX.Element;
         href: string;
       };
-      gameUrl?: string
+      gameUrl?: string;
     }
   > = useMemo(
     () => ({
@@ -384,7 +384,7 @@ export default function useGamesData() {
             paragraph: [
               <ol
                 key="feature-1"
-                className=" body mt-6 list-inside list-decimal space-y-2 text-light">
+                className=" body text-light mt-6 list-inside list-decimal space-y-2">
                 <li>
                   <Trans>
                     <strong>Play and earn</strong> - Convert your score and time spent into tangible
@@ -428,9 +428,9 @@ export default function useGamesData() {
         ],
         action: {
           label: 'Start',
-          href: 'https://moonville-dev.nonprod-myria.com/'
+          href: process.env.NEXT_PUBLIC_MOONVILLE_URL || ''
         },
-        gameUrl: 'https://moonville-[env].nonprod-myria.com/',
+        gameUrl: process.env.NEXT_PUBLIC_MOONVILLE_URL || ''
       }
     }),
     []
