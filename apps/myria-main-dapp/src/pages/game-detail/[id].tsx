@@ -34,9 +34,10 @@ const GameDetail: React.FC = () => {
   const { id } = router.query;
   const games = useGamesData();
   const { address, onConnect } = useWalletContext();
-  const { connectL2Wallet } = useL2WalletContext()
+  const { connectL2Wallet } = useL2WalletContext();
   const { user, loginByWalletMutation } = useAuthenticationContext();
-  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, ''); const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
 
   const showConnectedWallet = React.useMemo(() => {
     // First time registration
@@ -61,7 +62,8 @@ const GameDetail: React.FC = () => {
   }
 
   const game = games[id];
-  const { title, assets, logo, logoMobile, content, info, image, description, headerBg, gameUrl } = game;
+  const { title, assets, logo, logoMobile, content, info, image, description, headerBg, gameUrl } =
+    game;
 
   const onConnectWallet = () => {
     onConnect();
@@ -72,9 +74,7 @@ const GameDetail: React.FC = () => {
   };
 
   const playGame = () => {
-    const env = process.env.NODE_ENV === 'development' ? 'dev' : 'staging';
-    const moonvilleGameUrl = gameUrl?.replace('[env]', env);
-    window.open(moonvilleGameUrl, '_blank');
+    window.open(gameUrl, '_blank');
   };
 
   return (
@@ -164,9 +164,9 @@ const GameDetail: React.FC = () => {
                     </button> */}
                     {id.toLowerCase() === 'moonville-farms' ? (
                       !loginByWalletMutation.isError &&
-                        !loginByWalletMutation.isLoading &&
-                        walletAddress &&
-                        showConnectedWallet ? (
+                      !loginByWalletMutation.isLoading &&
+                      walletAddress &&
+                      showConnectedWallet ? (
                         <button
                           className="btn-lg btn-primary w-full justify-center"
                           onClick={playGame}>
