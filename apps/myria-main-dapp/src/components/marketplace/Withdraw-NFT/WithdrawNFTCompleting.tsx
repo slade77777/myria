@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Types } from 'myria-core-sdk';
+import { ConfirmationType } from 'myria-core-sdk';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
@@ -10,11 +10,16 @@ import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
+import { WalletTabs } from 'src/types';
+import { toast } from 'react-toastify';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 interface IProp {}
 
 const WithdrawNFTCompleting: FC<IProp> = ({}) => {
   const [pending, setPending] = useState(false);
+  const { showWithdrawCompleteScreen } = useL2WalletContext();
+
   const { address } = useWalletContext();
   const { valueNFT, setStatus } = useWithDrawNFTContext();
   const starkKeyUser = useSelector(
@@ -29,17 +34,21 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
     const withdrawalModule = moduleFactory.getWithdrawModule();
     const assetModule = moduleFactory.getAssetModule();
     setPending(true);
+
     try {
       const getVaultDetail = await assetModule?.getAssetVaultDetails(
         starkKey,
         valueNFT?.assetMintId + ''
       );
-
       if (!getVaultDetail || !address || !starkKeyUser) return;
-      const blueprint = valueNFT.uri;
-      const orignialMetadataUrl = blueprint.substring(0, valueNFT.uri.lastIndexOf('/'));
-      const originalBlueprint = `${orignialMetadataUrl}/${valueNFT.tokenId}`;
-      const mintingblob = `{${valueNFT.tokenId}}:{${originalBlueprint}}`;
+      let blueprint;
+      if (valueNFT.isComeFrom === WalletTabs.HISTORY) {
+        blueprint = valueNFT.blueprint;
+      } else {
+        const orignialMetadataUrl = valueNFT.uri.substring(0, valueNFT.uri.lastIndexOf('/'));
+        blueprint = `${orignialMetadataUrl}/${valueNFT.tokenId}`;
+      }
+      const mintingblob = `{${valueNFT.tokenId}}:{${blueprint}}`;
 
       const result = await withdrawalModule.withdrawAndMint(
         {
@@ -53,24 +62,28 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
         {
           from: address,
           nonce: Math.floor(Math.random() * 10000),
-          confirmationType: Types.ConfirmationType.Confirmed
+          confirmationType: ConfirmationType.Confirmed
         }
       );
-      if (result) {
+      if (result && result.transactionHash) {
         await withdrawalModule.withdrawNftComplete({
           assetId: getVaultDetail.data.assetId,
-          id: valueNFT.id,
-          starkKey
+          starkKey,
+          transactionHash: result.transactionHash
+        });
+        showWithdrawCompleteScreen({
+          transactionHash: result.transactionHash,
+          claimAmount: '1'
         });
         setStatus(StatusWithdrawNFT.SUCCESS);
       }
     } catch (err) {
-      console.log(err);
       setStatus(StatusWithdrawNFT.FAILED);
+      toast('Something wrong has happened, withdraw transaction is failure. Please retry..');
     } finally {
       setPending(false);
-      const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-      triggerWithdraw?.click();
+      // const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
+      // triggerWithdraw?.click();
     }
   };
   return (
@@ -78,11 +91,11 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       <div className="grow">
         <div className="px-6">
           <div className="mx-auto mt-14 flex h-16 w-16 justify-center">
-            <WithdrawalCompletedIcon size={64} className="w-full text-light-green" />
+            <WithdrawalCompletedIcon size={64} className="text-light-green w-full" />
           </div>
 
           <div className="mt-6 text-center text-2xl text-white">Complete your withdrawal</div>
-          <div className="text-gray/6 text-sm text-center mt-4">
+          <div className="text-gray/6 mt-4 text-center text-sm">
             <span>
               <Trans>
                 Click below to claim this withdrawal to your L1 wallet. Gas fees will apply to this
@@ -91,7 +104,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
             </span>
           </div>
         </div>
-        <div className="mt-8 text-sm  rounded-lg bg-base/2/50 p-4 text-white">
+        <div className="bg-base/2/50 mt-8  rounded-lg p-4 text-sm text-white">
           <div className="flex justify-between">
             <span>
               <Trans>Item</Trans>
@@ -111,7 +124,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       </div>
       <div className="flex justify-end">
         {pending ? (
-          <button className="flex w-full items-center justify-center rounded-lg bg-gray/4 px-5 py-3 text-base font-bold text-gray/6">
+          <button className="bg-gray/4 text-gray/6 flex w-full items-center justify-center rounded-lg px-5 py-3 text-base font-bold">
             <span>
               <Trans>WITHDRAW PENDING</Trans>
             </span>

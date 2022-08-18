@@ -1,8 +1,10 @@
 import { Trans } from '@lingui/macro';
-import { toast } from 'react-toastify';
 import CheckIcon from 'src/components/icons/CheckIcon';
+import { useL2WalletContext } from 'src/context/l2-wallet';
+import { WalletTabs } from 'src/types';
 
-export default function MessagePurchaseModal({}) {
+export default function MessagePurchaseModal({ assetName = '', onClose = () => {} }) {
+  const { handleActiveWalletTabs, handleDisplayPopover } = useL2WalletContext();
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
@@ -16,19 +18,18 @@ export default function MessagePurchaseModal({}) {
         </div>
         <div className="text-sm font-normal mt-[10px] mb-[20px]">
           <span className="text-base/9">
-            <Trans>
-              Your purchase of
-              <span
-                className="text-[16px] text-white mx-1 cursor-pointer"
-                onClick={() => toast('This function is not ready yet!')}>
-                {' '}
-                Ultra Rare Vector Prime Sigil{' '}
-              </span>
-              successful.
-            </Trans>
+            <Trans>Your purchase of</Trans>
+            <span className="text-[16px] text-white mx-1"> {assetName} </span>
+            <Trans>successful.</Trans>
           </span>
         </div>
-        <div className="cursor-pointer" onClick={() => toast('This function is not ready yet!')}>
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            handleDisplayPopover(true);
+            handleActiveWalletTabs(WalletTabs.HISTORY);
+            onClose();
+          }}>
           <span className="text-primary/6">
             <Trans>View Transaction History</Trans>
           </span>

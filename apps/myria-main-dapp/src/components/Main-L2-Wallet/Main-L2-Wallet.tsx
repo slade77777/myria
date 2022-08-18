@@ -1,5 +1,12 @@
 // Import packages
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  forwardRef,
+  useImperativeHandle
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 
@@ -17,6 +24,10 @@ import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { convertWeiToEth } from 'src/utils';
+import { useRouter } from 'next/router';
+import { useGA4 } from '../../lib/ga';
+import { useAuthenticationContext } from '../../context/authentication';
+import RequestEmailModal from 'src/packages/l2-wallet/src/components/Modal/RequestEmailModal';
 
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
@@ -24,7 +35,7 @@ const { asset } = StarkwareLib;
 
 const QUANTUM_CONSTANT = 10000000000;
 
-export default function MainL2Wallet() {
+const MainL2Wallet = forwardRef((props, ref) => {
   const walletModalRef = useRef<any>();
   const [showPrivacyModal, setPrivacyModal] = useState<Boolean>(false);
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
@@ -32,42 +43,49 @@ export default function MainL2Wallet() {
   const [isShowMessage, setIsShowMessage] = useState<boolean>(false);
   const [previousBalance, setPreviousBalance] = useState<any>(0);
   const [welcomeModal, setWelcomeModal] = useState<boolean>(false);
+  const [requestEmailModal, setRequestEmailModal] = useState<string>();
   const [showFirstDepositModal, setShowFirstDepositModal] = useState<Boolean>(false);
-  const selectedToken = useSelector((state: RootState) => state.token.selectedToken);
+  const { user } = useAuthenticationContext();
+
+  const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
 
   const showWithDrawClaimModal = useSelector((state: RootState) => state.ui.showWithDrawClaimModal);
   const pKey = useSelector((state: RootState) => state.account.starkPublicKeyFromPrivateKey);
 
   const { isFirstTimeUser, connectL2WalletFirstTime } = useL2WalletContext();
   const dispatch = useDispatch();
+  const router = useRouter();
+  const { event } = useGA4();
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const starkKey = `0x${starkKeyUser}`;
 
   useEffect(() => {
-    if (!address) return;
+    let addressWallet: any = null;
+
+    if (walletAddress) {
+      addressWallet = walletAddress;
+    }
+    if (address) {
+      addressWallet = address;
+    }
+    if (!addressWallet) return;
 
     const getBalanceOfMyriaL1Wallet = async () => {
       let assetType: string = '';
-      if (selectedToken.name === 'Ethereum') {
-        assetType = asset.getAssetType({
-          type: 'ETH',
-          data: {
-            quantum: QUANTUM_CONSTANT.toString()
-          }
-        });
-      } else {
-        assetType = asset.getAssetType({
-          type: 'ERC20',
-          data: {
-            quantum: '1',
-            tokenAddress: selectedToken.tokenAddress
-          }
-        });
-      }
+      assetType = asset.getAssetType({
+        type: 'ETH',
+        data: {
+          quantum: QUANTUM_CONSTANT.toString()
+        }
+      });
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
       const withdrawModule = moduleFactory.getWithdrawModule();
 
-      const currentBalance = await withdrawModule.getWithdrawalBalance(address, assetType);
+      const currentBalance = await withdrawModule.getWithdrawalBalance(addressWallet, assetType);
       console.log('L1 Current balance ->', currentBalance);
       if (currentBalance > 0) {
         dispatch(
@@ -82,12 +100,12 @@ export default function MainL2Wallet() {
       }
     };
     const interval = setInterval(() => {
-      if (pKey && selectedToken) {
+      if (pKey && localStarkKey) {
         getBalanceOfMyriaL1Wallet();
       }
     }, 10000);
     return () => clearInterval(interval);
-  }, [pKey, selectedToken, dispatch, previousBalance]);
+  }, [pKey, dispatch, previousBalance]);
 
   const onSetStarkKeyToLocalStorage = (starkKey: string) => {
     setLocalStarkKey(starkKey);
@@ -101,23 +119,58 @@ export default function MainL2Wallet() {
     }
   }, [isFirstTimeUser]);
 
-  const metaMaskConnect = useCallback(async () => {
-    await connectL2WalletFirstTime(welcomeToMyriaL2Wallet);
-  }, []);
-
-  const welcomeToMyriaL2Wallet = () => {
+  const welcomeToMyriaL2Wallet = useCallback(() => {
+    event('L2 Wallet Registered', {
+      user_email: user?.email,
+      myria_id: user?.user_id,
+      wallet_address: `_${address}`,
+      l2_wallet_address: `_${starkKey}`,
+      myria_username: user?.user_name || ''
+    });
     setWelcomeModal(true);
-  };
+  }, [address, event, starkKey, user?.email, user?.user_id, user?.user_name]);
+
+  const metaMaskConnect = useCallback(async () => {
+    event('L2 Wallet Registration Selected', {
+      user_email: user?.email,
+      myria_id: user?.user_id,
+      wallet_address: `_${address}`
+    });
+    await connectL2WalletFirstTime(welcomeToMyriaL2Wallet);
+  }, [
+    address,
+    connectL2WalletFirstTime,
+    event,
+    user?.email,
+    user?.user_id,
+    welcomeToMyriaL2Wallet
+  ]);
 
   const onAcceptTermOfService = async () => {
     setPrivacyModal(false);
     walletModalRef.current.onOpenModal();
   };
 
-  const onGetStarted = () => {
+  useImperativeHandle(ref, () => ({
+    openRequestEmailModal() {
+      setRequestEmailModal('center');
+    }
+  }));
+
+  const onGetStarted = useCallback(() => {
     setWelcomeModal(false);
-    setShowFirstDepositModal(true);
-  };
+    if (user?.email) {
+      setShowFirstDepositModal(true);
+    }
+    setRequestEmailModal('top-left');
+  }, [user]);
+
+  const onCloseEmail = useCallback(() => {
+    setRequestEmailModal(undefined);
+    if (requestEmailModal === 'top-left') {
+      setShowFirstDepositModal(true);
+    }
+  }, [requestEmailModal]);
 
   return (
     <div className="flex bg-[#050E15]">
@@ -131,6 +184,7 @@ export default function MainL2Wallet() {
         ref={walletModalRef}
         setStarkKeyToLocalStorage={onSetStarkKeyToLocalStorage}
         setWelcomeModal={setWelcomeModal}
+        isSigil={router.pathname === '/sigil'}
       />
       <FirstDepositModal
         modalShow={showFirstDepositModal}
@@ -156,6 +210,13 @@ export default function MainL2Wallet() {
         />
       )}
       <WelcomeMyriaModal modalShow={welcomeModal} closeModal={onGetStarted} />
+      <RequestEmailModal
+        modalShow={!!requestEmailModal}
+        closeModal={onCloseEmail}
+        position={requestEmailModal}
+      />
     </div>
   );
-}
+});
+
+export default MainL2Wallet;

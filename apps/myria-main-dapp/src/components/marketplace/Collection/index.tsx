@@ -17,11 +17,13 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
     collection;
   return (
     <Page includeFooter={false}>
-      <img
-        src={collectionImageUrl ? collectionImageUrl : '/images/marketplace/header.png'}
-        className="h-[327px] w-full "
-        alt={name}
-      />
+      <div
+        className="h-[327px] w-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${
+            collectionImageUrl ? collectionImageUrl : '/images/marketplace/header.png'
+          })`
+        }}></div>
       <div className="max-w-content mx-auto mb-10">
         <div className="relative">
           {/* <img src={collectionImageUrl ? collectionImageUrl : "/images/marketplace/header.png"} className="h-[327px] w-full " alt={name} /> */}

@@ -1,6 +1,8 @@
+import { Trans } from '@lingui/macro';
 import cn from 'classnames';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { ArrowIcon, ProgressIcon } from '../../Icons';
+import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 
 type Props = {
   goBack: any;
@@ -17,6 +19,7 @@ export default function WithdrawRequestScreen({
   withdrawHandler,
   withdrawInProgress,
 }: Props) {
+  const { handleLearnMore } = useWithDrawNFTContext();
   return (
     <>
       <div className="text-white">
@@ -38,17 +41,41 @@ export default function WithdrawRequestScreen({
             isNotAnimate={!withdrawInProgress}
           />
         </div>
-        <div className="mt-6 text-center text-2xl">Withdrawal to L1 wallet</div>
+        <div className="mt-6 text-center text-2xl">
+          {withdrawInProgress ? (
+            <Trans> Withdrawal In progress </Trans>
+          ) : (
+            <Trans> Withdraw to L1 wallet </Trans>
+          )}
+        </div>
         <div className="text-base/9 mt-4 px-7 text-center text-sm">
-          Withdrawals are processed in batches every 20 hours. Click{' '}
-          <span className="text-primary/6 cursor-pointer">here</span> to learn
-          more.
+          {withdrawInProgress ? (
+            <>
+              <Trans>
+                Withdrawals are processed in batches every 20 hours. Click
+              </Trans>
+              <span
+                className="text-primary/6 cursor-pointer"
+                onClick={() => {
+                  handleLearnMore(true);
+                }}
+              >
+                &nbsp;<Trans>here</Trans>&nbsp;
+              </span>
+              <Trans>to learn more.</Trans>
+            </>
+          ) : (
+            <Trans>
+              You will receive a notification once your funds are ready to be
+              claimed.
+            </Trans>
+          )}
         </div>
         <div className="bg-base/2/50 text-base/9 mt-4 rounded-lg p-4 text-sm">
           <div className="flex justify-between">
             <span>Amount</span>
             <span className="flex items-center text-white">
-              <DAOIcon size={14} className="mb-[2px]" />
+              <DAOIcon size={16} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>
           </div>

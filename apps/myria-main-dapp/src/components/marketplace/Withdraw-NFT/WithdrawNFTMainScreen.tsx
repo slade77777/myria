@@ -4,7 +4,8 @@ import DAOIcon from 'src/components/icons/DAOIcon';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { assetModule } from 'src/services/myriaCore';
-import { useQuery } from 'react-query';
+import cn from 'classnames';
+import { QueryClient, useQuery, useQueryClient } from 'react-query';
 import { validatedImage } from 'src/utils';
 import { toast } from 'react-toastify';
 import { useGA4 } from '../../../lib/ga';
@@ -13,15 +14,17 @@ import { useWalletContext } from '../../../context/wallet';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WithdrawNftOffChainParams } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
 import { Trans } from '@lingui/macro';
+import { queryClient } from 'src/pages/_app';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
 }
 
 const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
-  const { handleWithdrawing, valueNFT: assetDetail, handleLearnMore } = useWithDrawNFTContext();
+  const { valueNFT: assetDetail, handleLearnMore } = useWithDrawNFTContext();
+  const [isPending, setIsPending] = useState<boolean>(false);
   const { data, isLoading, refetch } = useQuery(
-    ['assetDetail', assetDetail.id],
+    ['assetDetail', +assetDetail.id],
     async () => {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
@@ -34,7 +37,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
-      enabled: !!assetDetail.id
+      // enabled: !!assetDetail.id
     }
   );
   const starkKeyUser = useSelector(
@@ -48,6 +51,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   const handleConfirmWithdrawNftOffchain = async () => {
     /// call api confirm withdraw
     if (starkKey) {
+      setIsPending(true);
       event('NFT Withdraw Selected', {
         myria_id: user?.user_id,
         wallet_address: `_${address}`,
@@ -76,8 +80,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           quantizedAmount: '1'
         };
         await withdrawModule?.withdrawNftOffChain(payloadWithdrawNftOffchain);
-        await refetch();
-        handleWithdrawing(true);
+        await queryClient.invalidateQueries(['assetDetail', +assetDetail.id]);
         onChangeStatus();
         event('NFT Withdraw Completed', {
           myria_id: user?.user_id,
@@ -88,6 +91,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           trx_url: ''
         });
       }
+      setIsPending(false);
     }
   };
 
@@ -105,8 +109,6 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           <Trans>Withdrawals are processed in batches every 20 hours. Click</Trans>{' '}
           <span
             onClick={() => {
-              const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-              triggerWithdraw?.click();
               handleLearnMore(true);
             }}
             className="text-primary/6 cursor-pointer">
@@ -119,11 +121,12 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
             <span className="text-base/9">Item</span>
             <span>{valueNFT.name}</span>
           </div>
-        <div className="mt-[13px] flex justify-between">
-          <span className="text-base/9">Estimated completion</span>
-          <span className="flex">
-            10-20 hours
-          </span>
+          <div className="mt-[13px] flex justify-between">
+            <span className="text-base/9">
+              <Trans>Estimated completion</Trans>
+            </span>
+            <span className="flex">10-20 hours</span>
+          </div>
         </div>
       </div>
       <div className="flex justify-between">
@@ -136,11 +139,14 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           <Trans>CANCEL</Trans>
         </button>
         <button
-          className="flex w-32 items-center justify-center rounded-lg bg-primary/6 px-5 py-3 text-base font-bold text-base/1"
+          className={cn(
+            'flex w-32 items-center justify-center rounded-lg  px-5 py-3 text-base font-bold',
+            isPending ? 'text-gray/6 bg-gray/4' : 'bg-primary/6 text-base/1'
+          )}
+          disabled={isPending}
           onClick={handleConfirmWithdrawNftOffchain}>
           <Trans>CONFIRM</Trans>
         </button>
-      </div>
       </div>
     </>
   );

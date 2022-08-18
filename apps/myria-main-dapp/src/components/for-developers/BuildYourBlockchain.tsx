@@ -8,7 +8,7 @@ import Select from '../select';
 import Textarea from '../Textarea';
 import { useForm, Controller } from 'react-hook-form';
 import { useGA4 } from 'src/lib/ga';
-import apiClient, { additionalApiClient } from 'src/client';
+import apiClient, { salesforceAPIClient } from 'src/client';
 import CircleCheck from '../icons/CircleCheck';
 
 interface IFormInputs {
@@ -18,9 +18,15 @@ interface IFormInputs {
   message: string;
   company: string;
   website: string;
-  companySize: string;
+  companySize: any;
   chain: string;
+  description: string;
 }
+
+type Props = {
+  onClose: () => void;
+  onSuccessClose: () => void;
+};
 
 const schema = yup
   .object({
@@ -51,14 +57,14 @@ const schema = yup
       .string()
       .email(t`Invalid email!`)
       .required(t`Email is required!`),
-    message: yup
+    description: yup
       .string()
       .trim()
       .required(t`Message is required!`)
   })
   .required();
 
-const BuildYourBlockchain: React.FC = () => {
+const BuildYourBlockchain: React.FC<Props> = ({ onSuccessClose }: Props) => {
   const inputClassName = 'border-none bg-[#0B2231] text-[14px] focus:shadow-[0_0_0_1px_#9AC9E3]';
   const { event } = useGA4();
   const [error, setError] = useState('');
@@ -77,7 +83,6 @@ const BuildYourBlockchain: React.FC = () => {
     try {
       setError('');
       setIsSubmitSuccess(false);
-
       data.subject = `Build with Myria`;
 
       event('B2B Contact Form Submitted', {
@@ -86,22 +91,33 @@ const BuildYourBlockchain: React.FC = () => {
         email: data.fromEmail,
         company: data.company,
         website: data.website,
-        company_size: data.companySize,
+        company_size: data.companySize?.name,
         current_chain: data.chain,
         project_info: data.message
       });
 
-      await additionalApiClient
-        .post('/contact-us', data)
-        .then(() => setIsSubmitSuccess(true))
-        .catch((error) => {
-          setError(error.message);
-          setIsSubmitSuccess(false);
-        });
+      const params: any = {
+        encoding: 'UTF-8',
+        oid: '00D5j00000B9arN',
+        retURL: 'https://myria-dev.nonprod-myria.com/for-developers/',
+        first_name: data.name,
+        email: data.fromEmail,
+        company: data.company,
+        url: data.website,
+        revenue: data.companySize?.name,
+        '00N5j00000Iydwc': data.chain,
+        description: data.description
+      };
+      const url = Object.keys(params).reduce((previousValue, currentValue) => {
+        if (previousValue) return previousValue + `&${currentValue}=${params[currentValue]}`;
+        else return `${currentValue}=${params[currentValue]}`;
+      }, '');
+      await salesforceAPIClient.post(`/servlet.WebToLead?${url}`);
       reset();
     } catch (error: any) {
-      setError(error?.message);
-      setIsSubmitSuccess(false);
+      reset();
+    } finally {
+      onSuccessClose();
     }
   };
 
@@ -109,58 +125,65 @@ const BuildYourBlockchain: React.FC = () => {
     <div>
       <form
         className="mx-auto mt-8 max-w-[616px] space-y-6 md:mt-8"
-        // onSubmit={handleSubmit(onSubmit)}
-        action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
-        method="POST"
-        noValidate
-      >
-        <input className="hidden" name="oid" value="00D5j00000B9arN" />
-        <input
-          className="hidden"
-          name="retURL"
-          value="https://myria-dev.nonprod-myria.com/for-developers/"
-        />
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate>
         <Input
-          id="first_name"
-          name="first_name"
+          {...register('name')}
+          error={!!errors.name}
+          errorText={errors.name?.message}
           className={inputClassName}
           type="text"
           placeholder="Name"
         />
         <Input
           className={inputClassName}
-          id="email"
+          error={!!errors.fromEmail}
+          {...register('fromEmail')}
+          errorText={errors.fromEmail?.message}
           type="email"
           placeholder="Email"
-          name="email"
         />
         <Input
           className={inputClassName}
-          id="company"
+          error={!!errors.company}
+          {...register('company')}
+          errorText={errors.company?.message}
           type="text"
-          name="company"
           placeholder="Studio/Company Name"
         />
-        <Input className={inputClassName} name="company" type="text" placeholder="Website" />
+        <Input
+          className={inputClassName}
+          error={!!errors.website}
+          {...register('website')}
+          errorText={errors.website?.message}
+          type="text"
+          placeholder="Website"
+        />
         <Controller
           control={control}
           defaultValue=""
+          {...register('companySize')}
           name="companySize"
           render={({ field: { onChange } }) => (
-            <Select id="revenue" name="revenue" changeHandler={onChange} />
+            <Select
+              error={!!errors.companySize}
+              errorText={errors.company?.message}
+              changeHandler={onChange}
+            />
           )}
         />
         <Input
           className={inputClassName}
-          id="00N5j00000Iydwc"
-          name="00N5j00000Iydwc"
+          error={!!errors.chain}
+          errorText={errors.chain?.message}
           type="text"
+          {...register('chain')}
           placeholder="Current Chain (if applicable)"
         />
         <Textarea
           className={clsx(inputClassName, 'h-[200px]')}
-          placeholder="Tell us more about your project, your needs, and timing"
-          name="description"
+          placeholder="Tell us more about your project, needs, and timing"
+          {...register('description')}
         />
         {success && (
           <p className="flex items-center text-xs leading-[15px] text-white">
@@ -171,11 +194,7 @@ const BuildYourBlockchain: React.FC = () => {
           </p>
         )}
         {error && <p className="text-xs leading-[15px] text-[#F37272]">{error}</p>}
-        <button
-          disabled={isSubmitting}
-          type="submit"
-          className="btn-lg btn-primary !mt-8 flex w-full justify-center"
-        >
+        <button className="btn-lg btn-primary !mt-8 flex w-full justify-center">
           {isSubmitting ? <Trans>Submitting...</Trans> : <Trans>Submit</Trans>}
         </button>
       </form>

@@ -2,8 +2,10 @@ import { Trans } from '@lingui/macro';
 import { toast } from 'react-toastify';
 import CheckIcon from 'src/components/icons/CheckIcon';
 import { useDepositContext } from 'src/context/deposit-context';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 export default function MessageDepositModal({ onClose = () => {} }) {
   const { amount } = useDepositContext();
+  const { handleDisplayPopover } = useL2WalletContext();
   return (
     <div className="w-full">
       <div className="flex">
@@ -31,8 +33,7 @@ export default function MessageDepositModal({ onClose = () => {} }) {
           className="ml-[10px] rounded bg-[#F5B941] p-[7px] font-semibold text-black"
           onClick={() => {
             onClose();
-            const triggerMainScreen = document.getElementById('trigger-popover-main-screen');
-            triggerMainScreen?.click();
+            handleDisplayPopover(true);
           }}>
           <Trans>View in wallet</Trans>
         </button>

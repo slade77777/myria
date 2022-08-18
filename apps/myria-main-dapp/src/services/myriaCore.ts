@@ -1,4 +1,4 @@
-import { IMyriaClient, Modules } from 'myria-core-sdk';
+import { IMyriaClient, ModuleFactory } from 'myria-core-sdk';
 
 const getModuleFactory = () => {
   if (typeof window === 'object') {
@@ -8,7 +8,7 @@ const getModuleFactory = () => {
       web3: window.web3
     };
 
-    const moduleFactory = new Modules.ModuleFactory(initializeClient);
+    const moduleFactory = new ModuleFactory(initializeClient);
 
     return moduleFactory;
   }

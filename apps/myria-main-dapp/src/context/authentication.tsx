@@ -424,7 +424,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
             alliance: data.alliance as AllianceName,
             date_registered: new Date(data.date_registered),
             wallet_id: data.wallet_id,
-            user_name: data.user_name
+            user_name: data.user_name,
+            email: data.email
           };
           setUser(user);
           return user;

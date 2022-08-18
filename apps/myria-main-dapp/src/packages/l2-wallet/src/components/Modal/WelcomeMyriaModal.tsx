@@ -59,12 +59,12 @@ export default function WelcomeMyriaModal({ modalShow, closeModal }: Props) {
             </p>
           </div>
 
-          <div className="mt-[182px] flex justify-center px-[32px]">
+          <div className="mt-32 flex justify-center px-[32px]">
             <button
               onClick={closeModal}
               className="flex w-full items-center justify-center rounded-[8px] bg-[#F5B941] py-[9px] px-[26px] text-[14px] font-bold uppercase text-[#040B10]"
             >
-              Get Started
+              OK
             </button>
           </div>
         </div>

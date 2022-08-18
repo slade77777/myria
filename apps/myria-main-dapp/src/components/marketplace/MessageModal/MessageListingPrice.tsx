@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro';
 import { toast } from 'react-toastify';
 import CheckIcon from 'src/components/icons/CheckIcon';
-export default function MessageListingPriceModal({ price = 2.99 }) {
+export default function MessageListingPriceModal({ price = 2.99, assetName = '' }) {
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
@@ -16,12 +16,7 @@ export default function MessageListingPriceModal({ price = 2.99 }) {
         <div className="text-sm font-normal mt-[10px]">
           <span className="text-base/9">
             <Trans>Your</Trans>
-            <span
-              className="text-[16px] text-white mx-1 cursor-pointer"
-              onClick={() => toast('This function is not ready yet!')}>
-              {' '}
-              <Trans>Ultra Rare Vector Prime Sigil</Trans>{' '}
-            </span>
+            <span className="text-[16px] text-white mx-1"> {assetName} </span>
             <Trans>listing price has been updated to</Trans> {price} <Trans>ETH.</Trans>
           </span>
         </div>

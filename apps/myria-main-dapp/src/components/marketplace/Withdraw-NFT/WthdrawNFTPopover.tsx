@@ -1,17 +1,22 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import Popover from 'src/components/Popover';
-import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { useL2WalletContext } from 'src/context/l2-wallet';
+import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 
 const WthdrawNFTPopover: React.FC<{}> = ({ children }) => {
-  const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
-
-  const [openDropdown, setOpenDropdown] = useState(showClaimPopover);
+  const { isShowLearnMore } = useWithDrawNFTContext();
+  const { isDisplayPopoverWithdrawNFT, handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
 
   return (
-    <Popover modal defaultOpen={openDropdown} onOpenChange={(open) => setOpenDropdown(open)}>
+    <Popover
+      modal
+      open={isDisplayPopoverWithdrawNFT}
+      onOpenChange={(open) => {
+        if (!open && !isShowLearnMore) {
+          handleDisplayPopoverWithdrawNFT(false);
+        }
+      }}>
       <Popover.Trigger asChild>
-        <div id="trigger-popover-withdraw"></div>
+        <div id="trigger-popover-withdraw" className="appearance-none"></div>
       </Popover.Trigger>
       <Popover.Content
         sideOffset={8}

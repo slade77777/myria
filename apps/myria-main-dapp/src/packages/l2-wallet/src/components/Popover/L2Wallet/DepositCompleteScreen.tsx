@@ -1,9 +1,10 @@
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
+import { useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import Popover from 'src/components/Popover';
-import { ethersLink } from '../../../constants';
+import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { getExplorerForAddress } from 'src/utils';
 import { ArrowIcon, TickCircleIcon } from '../../Icons';
-
 type Props = {
   amount: Number;
   successHandler: any;
@@ -19,9 +20,18 @@ export default function DepositCompleteScreen({
   goBack,
   items,
 }: Props) {
-  const URL_LINK = `${ethersLink.goerli_goerli}${
-    items?.transactionHash ? items?.transactionHash : ''
-  }`;
+  const [etherLinkContract, setEtherLinkContract] = useState<string>();
+  useEffect(() => {
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !items?.transactionHash) return '';
+      setEtherLinkContract(
+        getExplorerForAddress(items?.transactionHash, networkId, 'transaction'),
+      );
+    };
+    setLink();
+  }, [items?.transactionHash]);
+
   return (
     <>
       <div
@@ -48,7 +58,7 @@ export default function DepositCompleteScreen({
           <div className="flex justify-between text-sm">
             <span>Amount</span>
             <span className="flex items-center text-white">
-              <DAOIcon size={14} className="mb-[2px]" />
+              <DAOIcon size={16} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>
           </div>
@@ -57,7 +67,7 @@ export default function DepositCompleteScreen({
             <a
               className="text-primary/6"
               target="_blank"
-              href={URL_LINK}
+              href={etherLinkContract}
               rel="noreferrer"
             >
               View

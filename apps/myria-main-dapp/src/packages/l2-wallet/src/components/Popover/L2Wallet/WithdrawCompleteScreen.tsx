@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { useL2WalletContext } from 'src/context/l2-wallet';
-import { ethersLink } from '../../../constants/ethers';
+import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { getExplorerForAddress } from 'src/utils';
+import { RootState } from '../../../app/store';
 import { TickCircleIcon } from '../../Icons';
-
 interface TProps {
   successHandler: React.MouseEventHandler<HTMLButtonElement>;
   amount: any;
   selectedToken: any;
 }
 
-export default function WithdrawCompleteScreen({
-  successHandler,
-  amount,
-  selectedToken,
-}: TProps) {
+export default function WithdrawCompleteScreen({ successHandler }: TProps) {
   const { isWithdrawComplete } = useL2WalletContext();
-
-  const URL_LINK = `${ethersLink.goerli_goerli}${
-    isWithdrawComplete?.transactionHash
-      ? isWithdrawComplete?.transactionHash
-      : ''
-  }`;
+  const [etherLinkContract, setEtherLinkContract] = useState<string>();
+  useEffect(() => {
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !isWithdrawComplete?.transactionHash) return '';
+      setEtherLinkContract(
+        getExplorerForAddress(
+          isWithdrawComplete?.transactionHash,
+          networkId,
+          'transaction',
+        ),
+      );
+    };
+    setLink();
+  }, [isWithdrawComplete?.transactionHash]);
 
   return (
     <>
@@ -43,7 +50,7 @@ export default function WithdrawCompleteScreen({
             <span>Amount</span>
             <span className="text-base/10 flex items-center">
               <DAOIcon size={12} className="mb-[2px]" />
-              <span className="ml-1">{amount}</span>
+              <span className="ml-1">{isWithdrawComplete?.claimAmount}</span>
             </span>
           </div>
           <div className="mt-4 flex items-center justify-between">
@@ -51,7 +58,7 @@ export default function WithdrawCompleteScreen({
             <div>
               <a
                 target={'_blank'}
-                href={URL_LINK}
+                href={etherLinkContract}
                 className="text-primary/6 flex cursor-pointer items-center font-medium"
                 rel="noreferrer"
               >

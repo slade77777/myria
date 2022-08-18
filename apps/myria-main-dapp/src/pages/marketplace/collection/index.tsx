@@ -8,6 +8,7 @@ import { refresh } from 'aos';
 import { AssetByCollectionIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { APIResponseType } from 'myria-core-sdk/dist/types/src/types/APIResponseType';
 import { CommonPaginateDataTypes } from 'myria-core-sdk/dist/types/src/types/CommonTypes';
+import { Loading } from 'src/components/Loading';
 
 const DEFAULT_PARAMS = {
   PAGE: 1,
@@ -18,7 +19,6 @@ const CollectionDetailPage = () => {
   const router = useRouter();
   const publicId = router.query.id as string;
   const { collection } = useMarketplaceCollection(publicId);
-  const observer = useRef();
   const [loadMore, setLoadMore] = useState(false);
   const [payload, setPayload] = useState({
     page: DEFAULT_PARAMS.PAGE,
@@ -27,7 +27,8 @@ const CollectionDetailPage = () => {
 
   const [assetDataList, setAssetDataList] =
     useState<APIResponseType<CommonPaginateDataTypes<AssetByCollectionIdResponse>>>();
-  const { assets, refetch } = useCollectionAsset({
+
+  const { assets, refetch, isLoading } = useCollectionAsset({
     collectionId: collection.id,
     page: payload.page,
     limit: payload.limit
@@ -42,7 +43,7 @@ const CollectionDetailPage = () => {
   //handle event scroll
   const handleScroll = (e: any) => {
     const { scrollTop, scrollHeight } = e.target.documentElement;
-    if (scrollTop + window.innerHeight + 1 > scrollHeight) {
+    if (scrollTop + window.innerHeight + 1 > scrollHeight && !isLoading) {
       setLoadMore(true);
     }
   };
@@ -55,7 +56,7 @@ const CollectionDetailPage = () => {
   }, []);
 
   useEffect(() => {
-    if (loadMore) {
+    if (loadMore && payload.page < Number(assetDataList?.data.meta.totalPages)) {
       setPayload({ ...payload, page: ++payload.page });
       setLoadMore(false);
     }
@@ -71,12 +72,12 @@ const CollectionDetailPage = () => {
               ...prev,
               data: {
                 ...prev?.data,
-                items: prev?.data.items.concat(currentAssetList)
+                items: prev?.data.items?.concat(currentAssetList)
               }
             };
           });
         } else if (`${res?.data?.data.items}`.length === 0) {
-          setPayload({ ...payload, page: Number(res.data?.data.meta.currentPage) - 1 });
+          // setPayload({ ...payload, page: Number(res.data?.data.meta.currentPage) - 1 });
         }
       });
     }
