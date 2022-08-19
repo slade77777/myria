@@ -118,15 +118,15 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
 
           <div className="mt-[56px] px-[50px] text-center text-[12px] text-[#A1AFBA]">
             By creating your Myria L2 wallet and using Myria, you agree to our{' '}
-            <Link href="/terms-conditions">
+            <a href="/terms-conditions">
               <span className="cursor-pointer text-[#F5B941]">
                 Terms of Service
               </span>
-            </Link>{' '}
+            </a>{' '}
             and{' '}
-            <Link href="/privacy-policy">
+            <a href="/privacy">
               <span className="text-[#F5B941]">Privacy Policy</span>
-            </Link>
+            </a>
             .
           </div>
 
