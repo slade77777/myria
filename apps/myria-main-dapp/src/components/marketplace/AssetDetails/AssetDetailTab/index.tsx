@@ -69,7 +69,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
         </Trigger>
       </List>
       <Content value="Listing">
-        <div className="relative max-h-[267px] overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="relative max-h-[338px] overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
             <thead className="text-base/9 bg-base/2 sticky text-[14px] font-medium">
               <tr>

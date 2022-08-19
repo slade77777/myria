@@ -390,8 +390,15 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       if (resultDepoit) {
         setDepositResponse(resultDepoit);
       }
-      setDepositInProgress(false);
-      setScreen(SCREENS.DEPOSIT_COMPLETE_SCREEN);
+      const isShowPopover = document.getElementById('deposit-in-progress');
+      if (isShowPopover) {
+        setDepositInProgress(false);
+        setScreen(SCREENS.DEPOSIT_COMPLETE_SCREEN);
+      } else {
+        handleSetAmount(amount || 0);
+        handleShowMessageDeposit(true);
+      }
+
       trackWalletAction({ eventName: 'Wallet Deposit Completed', trx_url: '' });
     } catch (err) {
       trackWalletAction({ eventName: 'Wallet Deposit Failed', error_code: '' });
