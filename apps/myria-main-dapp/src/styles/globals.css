@@ -96,7 +96,7 @@ input::-ms-clear {
   width: 5px;
 }
 button[data-state='active'] {
-  @apply text-primary/6 border-b-[2px];
+  @apply text-primary/6 border-b-[2px] font-medium;
 }
 
 /* Chrome, Safari, Edge, Opera */

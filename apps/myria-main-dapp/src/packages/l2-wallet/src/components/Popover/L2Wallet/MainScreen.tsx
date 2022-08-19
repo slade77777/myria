@@ -271,7 +271,9 @@ export default function MainScreen({
         completeWithdrawal();
       }
     } else {
-      toast('Your L1 balance is not availabe yet. Please wait and be patient.');
+      toast(
+        'Your L1 balance is not available yet. Please wait and be patient.',
+      );
     }
   };
 
