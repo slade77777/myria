@@ -381,7 +381,7 @@ export default function MainScreen({
     const startKey = `0x${starkKeyUser}`;
     if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
       if (item.partyAOrder.publicKey === startKey) {
-        return 'Sale';
+        return 'NFT Sale';
       }
       if (item.partyBOrder.publicKey === startKey) {
         return 'NFT Purchase';
