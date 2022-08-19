@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
-  const { address, onConnectCompaign } = useWalletContext();
+  const { address, onConnectCompaign, disconnect } = useWalletContext();
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -87,6 +87,12 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
 
     return { title: t`Connect to your wallet to enter the Myriaverse` };
   })();
+
+  React.useEffect(() => {
+    if (loginByWalletMutation && loginByWalletMutation.isError) {
+      disconnect();
+    }
+  }, [loginByWalletMutation?.isError]);
 
   return (
     <div
