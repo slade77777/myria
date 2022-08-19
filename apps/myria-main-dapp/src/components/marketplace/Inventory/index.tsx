@@ -59,7 +59,7 @@ function Inventory({
               </div>
               <div className="flex flex-col items-end">
                 <span className="text-[28px] font-bold text-white">{itemForSaleCount}</span>
-                <span className="text-[16px] font-normal text-[#97AAB5]">For Sales</span>
+                <span className="text-[16px] font-normal text-[#97AAB5]">For Sale</span>
               </div>
             </div>
           </div>

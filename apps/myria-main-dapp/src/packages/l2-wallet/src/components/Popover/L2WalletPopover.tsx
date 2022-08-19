@@ -58,6 +58,7 @@ import { useEtheriumPrice } from '../../../../../hooks/useEtheriumPrice';
 import { useGA4 } from '../../../../../lib/ga';
 import { WalletMarketPlaceAction } from '../../../../../lib/ga/use-ga/event';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
+import useTransactionList from 'src/hooks/useTransactionList';
 import {
   convertAmountToQuantizedAmount,
   convertEthToWei,
@@ -68,12 +69,14 @@ import { useL2WalletContext } from '../../../../../context/l2-wallet';
 import WithdrawPendingScreen from './L2Wallet/WithdrawPendingScreen';
 import { WalletTabs } from 'src/types';
 import WithdrawNowScreen from './L2Wallet/WithdrawNowScreen';
+import { localStorageKeys } from 'src/configs';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 type Props = {
   abbreviationAddress: string;
   onClosePopover?: () => void;
 };
 
-const options: Array<TOption> = [
+export const options: Array<TOption> = [
   {
     id: 1,
     name: 'Ethereum',
@@ -113,6 +116,12 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const connectedAccount = useSelector(
     (state: RootState) => state.account.connectedAccount,
   );
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(
+    localStorageKeys.starkKey,
+    '',
+  );
+  const { data: transactionListHistory, refetch: refetchTransactionList } =
+    useTransactionList(localStarkKey);
   const [selectedToken, setSelectedToken] = useState<TOption>(options[0]);
   const [amount, setAmount] = useState<number | undefined>(undefined);
   const [errorMessageAsset, setErrorMessageAsset] = useState('');
@@ -246,72 +255,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   ]);
 
   useEffect(() => {
-    const fetchTransactionHistory = async () => {
-      const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
-      const transactionModule = moduleFactory.getTransactionModule();
-      try {
-        const { data } = await transactionModule.getTransactionList(
-          '0x' + pKey,
-        );
-        const result = data
-          .filter((item: any, index: number) => {
-            if (item.assetType || item.settlementInfo) return true;
-            else return false;
-          })
-          .map((transaction: any, index: number) => {
-            const matched = options.filter(
-              (option: TOption, index: number) =>
-                option.assetType === transaction.assetType,
-            );
-            if (matched && matched.length > 0) {
-              return {
-                ...transaction,
-                ...matched[0],
-              };
-            } else return transaction;
-          });
-        const processedData = result
-          .sort((a: any, b: any) => b.createdAt - a.createdAt)
-          .map((item: any, index: number) => {
-            // TEMPORARILY TODO
-            /**
-             * If all of the transactions (except withdraw) has pending status in BE
-             * We assume that it is success status on FE until the BE have newer version for that changes
-             */
-            const transactionStatus =
-              item.transactionType === 'WithdrawalRequest' ||
-              item.transactionType === 'TransferRequest'
-                ? item.transactionStatus
-                : item.transactionStatus === 'Pending'
-                ? STATUS_HISTORY.SUCCESS
-                : item.transactionStatus;
-            return {
-              ...item,
-              id: index,
-              type: item.transactionType,
-              amount: item.partyAOrder
-                ? convertQuantizedAmountToEth(item.partyAOrder.amountSell)
-                : item.name === 'Ethereum'
-                ? convertQuantizedAmountToEth(item.quantizedAmount)
-                : item.quantizedAmount,
-              time: moment(item.createdAt).fromNow(),
-              updatedAt: moment(item.updatedAt).fromNow(),
-              status: transactionStatus,
-              ico: '/assets/images/eth.svg',
-            };
-          });
-        dispatch(setTransactions(processedData));
-        setTransactionList(processedData);
-      } catch (ex) {
-        console.log('Transaction list error ', ex);
-      }
-    };
-
     if (pKey) {
-      fetchTransactionHistory();
+      refetchTransactionList();
     }
-  }, [pKey, dispatch, screen]);
+  }, [pKey, screen]);
 
   const isValidForm = useMemo(() => {
     if (amount == undefined) {
@@ -368,7 +315,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             amount: String(amount),
           },
           {
-            confirmationType: ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Sender,
             from: connectedAccount,
             value: String(convertEthToWei(amount.toString())),
           },
@@ -390,8 +337,15 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       if (resultDepoit) {
         setDepositResponse(resultDepoit);
       }
-      setDepositInProgress(false);
-      setScreen(SCREENS.DEPOSIT_COMPLETE_SCREEN);
+      const isShowPopover = document.getElementById('deposit-in-progress');
+      if (isShowPopover) {
+        setDepositInProgress(false);
+        setScreen(SCREENS.DEPOSIT_COMPLETE_SCREEN);
+      } else {
+        handleSetAmount(amount || 0);
+        handleShowMessageDeposit(true);
+      }
+
       trackWalletAction({ eventName: 'Wallet Deposit Completed', trx_url: '' });
     } catch (err) {
       trackWalletAction({ eventName: 'Wallet Deposit Failed', error_code: '' });
@@ -460,6 +414,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           trx_url: '',
         });
       }
+      refetchTransactionList();
       setWithdrawInProgress(false);
     } catch (err) {
       setWithdrawInProgress(false);
@@ -530,6 +485,73 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     },
     [amount, address, user?.user_id, etheCost],
   );
+
+  useEffect(() => {
+    const fetchTransactionHistory = async () => {
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+      const transactionModule = moduleFactory.getTransactionModule();
+      try {
+        const { data } = await transactionModule.getTransactionList(
+          '0x' + pKey,
+        );
+        const result = data
+          .filter((item: any, index: number) => {
+            if (item.assetType || item.settlementInfo) return true;
+            else return false;
+          })
+          .map((transaction: any, index: number) => {
+            const matched = options.filter(
+              (option: TOption, index: number) =>
+                option.assetType === transaction.assetType,
+            );
+            if (matched && matched.length > 0) {
+              return {
+                ...transaction,
+                ...matched[0],
+              };
+            } else return transaction;
+          });
+        const processedData = result
+          .sort((a: any, b: any) => b.createdAt - a.createdAt)
+          .map((item: any, index: number) => {
+            // TEMPORARILY TODO
+            /**
+             * If all of the transactions (except withdraw) has pending status in BE
+             * We assume that it is success status on FE until the BE have newer version for that changes
+             */
+            const transactionStatus =
+              item.transactionType === 'WithdrawalRequest' ||
+              item.transactionType === 'TransferRequest'
+                ? item.transactionStatus
+                : item.transactionStatus === 'Pending'
+                ? STATUS_HISTORY.SUCCESS
+                : item.transactionStatus;
+            return {
+              ...item,
+              id: index,
+              type: item.transactionType,
+              amount: item.partyAOrder
+                ? convertQuantizedAmountToEth(item.partyAOrder.amountSell)
+                : item.name === 'Ethereum'
+                ? convertQuantizedAmountToEth(item.quantizedAmount)
+                : item.quantizedAmount,
+              time: moment(item.createdAt).fromNow(),
+              updatedAt: moment(item.updatedAt).fromNow(),
+              status: transactionStatus,
+              ico: '/assets/images/eth.svg',
+            };
+          });
+        dispatch(setTransactions(processedData));
+      } catch (ex) {
+        console.log('Transaction list error ', ex);
+      }
+    };
+
+    if (pKey) {
+      fetchTransactionHistory();
+    }
+  }, [pKey, dispatch]);
 
   return (
     <>
@@ -605,7 +627,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       <div className="flex h-[calc(100%-32px)] flex-col">
         {screen === SCREENS.MAIN_SCREEN && (
           <MainScreen
-            transactionList={transactionList}
+            transactionList={transactionListHistory}
             gotoDepositScreen={() => {
               setScreen(SCREENS.DEPOSIT_SCREEN);
             }}
@@ -771,6 +793,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           <TransactionHistoryDetailScreen
             goBack={() => setScreen(SCREENS.MAIN_SCREEN)}
             transactionDetail={transactionDetail}
+            starkKeyUser={starkKeyUser}
           />
         )}
       </div>
