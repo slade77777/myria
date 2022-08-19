@@ -1,6 +1,6 @@
 stages:
-  - dev-build
-  - dev-deploy
+  # - dev-build
+  # - dev-deploy
   - staging-build
   - staging-deploy
   - prod-build
