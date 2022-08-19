@@ -105,7 +105,7 @@ function AssetDetails({ id }: Props) {
   const { connectL2Wallet, handleSetFirstPurchase, handleDisplayPopoverWithdrawNFT } =
     useL2WalletContext();
 
-  const assetDetails = data?.assetDetails
+  const assetDetails = data?.assetDetails;
   const ownedBy = useMemo(() => {
     if (assetDetails?.owner?.starkKey == starkKey) {
       return <Trans>You</Trans>;
@@ -824,8 +824,6 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
   const handleWithdraw = async () => {
     handleSetValueNFT(assetDetails);
     onShowPopover();
-    const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-    triggerWithdraw?.click();
     trackWithDraw?.();
   };
 

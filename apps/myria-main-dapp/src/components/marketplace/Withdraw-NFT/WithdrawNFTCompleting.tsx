@@ -73,7 +73,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
         });
         showWithdrawCompleteScreen({
           transactionHash: result.transactionHash,
-          claimAmount: "1"
+          claimAmount: '1'
         });
         setStatus(StatusWithdrawNFT.SUCCESS);
       }
@@ -82,8 +82,6 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       toast('Something wrong has happened, withdraw transaction is failure. Please retry..');
     } finally {
       setPending(false);
-      // const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-      // triggerWithdraw?.click();
     }
   };
   return (
