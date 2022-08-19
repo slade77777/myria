@@ -17,7 +17,7 @@ export default function index({}: Props) {
 
           <div className="mt-8">
             <h3 className="mt-8 text-xl font-bold leading-[26px] text-white">
-              End User License Agreement (WIP)
+              End User License Agreement
             </h3>
             <div className="text-base/9 mt-4 list-disc pl-4 font-light leading-[24px]">
               <div className="space-y-1">
@@ -1547,7 +1547,7 @@ export default function index({}: Props) {
           </div>
 
           <div className="mt-8">
-            <h3 className="mt-8 text-xl font-bold leading-[26px] text-white">Definitions (WIP)</h3>
+            <h3 className="mt-8 text-xl font-bold leading-[26px] text-white">Definitions</h3>
             <div className="text-base/9 mt-4 list-disc space-y-3 pl-4 font-light leading-[24px]">
               <p>
                 <b>Account</b> means the account that the Developer may be required to create with
