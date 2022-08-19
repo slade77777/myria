@@ -13,11 +13,14 @@ import {
 interface TProps {
   goBack: React.MouseEventHandler<HTMLButtonElement>;
   transactionDetail: any;
+  starkKeyUser: string;
 }
 
 export default function TransactionHistoryDetailScreen({
   transactionDetail,
+  starkKeyUser,
 }: TProps) {
+  const startKey = `0x${starkKeyUser}`;
   const [etherLinkContract, setEtherLinkContract] = useState<string>();
   useEffect(() => {
     const setLink = async () => {
@@ -34,6 +37,23 @@ export default function TransactionHistoryDetailScreen({
     setLink();
   }, [transactionDetail?.transactionHash]);
   console.log('transactionDetail', transactionDetail);
+
+  const renderTitle = (transactionDetail: any) => {
+    const startKey = `0x${starkKeyUser}`;
+    if (
+      transactionDetail.type === TRANSACTION_TYPE.SETTLEMENT &&
+      transactionDetail.partyAOrder.publicKey === startKey
+    ) {
+      return 'Sale';
+    }
+    if (
+      transactionDetail?.type &&
+      transactionDetail.status === STATUS_HISTORY.FAILED
+    ) {
+      return DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed;
+    }
+    return DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail;
+  };
 
   return (
     <div className="text-base/10 mt-[29px]">
@@ -55,10 +75,7 @@ export default function TransactionHistoryDetailScreen({
         </div>
       )}
       <div className="text-base/10 mt-6 text-center text-2xl">
-        {transactionDetail?.type &&
-        transactionDetail.status === STATUS_HISTORY.FAILED
-          ? DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed
-          : DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail}
+        {renderTitle(transactionDetail)}
       </div>
       {(transactionDetail.status === STATUS_HISTORY.SUCCESS ||
         transactionDetail.status === STATUS_HISTORY.COMPLETED) && (
@@ -75,7 +92,8 @@ export default function TransactionHistoryDetailScreen({
       )}
 
       {(transactionDetail.status === STATUS_HISTORY.IN_PROGRESS ||
-        transactionDetail.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING) && (
+        transactionDetail.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING ||
+        transactionDetail.status === STATUS_HISTORY.PREPARE) && (
         <div className="text-base/9 mt-6 text-center text-sm">
           Transaction started{' '}
           {moment(transactionDetail.createdAt).format(FORMAT_DATE)}
@@ -103,14 +121,25 @@ export default function TransactionHistoryDetailScreen({
                 {transactionDetail.transactionCategory}
               </span>
             </div>
-            <div className="mt-4 flex justify-between">
-              <span className="text-base/9">
-                <Trans>Purchased from</Trans>
-              </span>
-              <span className="ml-1">
-                {truncateAddress(transactionDetail.partyAOrder.publicKey)}
-              </span>
-            </div>
+            {startKey === transactionDetail.partyAOrder.publicKey ? (
+              <div className="mt-4 flex justify-between">
+                <span className="text-base/9">
+                  <Trans>Sold to</Trans>
+                </span>
+                <span className="ml-1">
+                  {truncateAddress(transactionDetail.partyBOrder.publicKey)}
+                </span>
+              </div>
+            ) : (
+              <div className="mt-4 flex justify-between">
+                <span className="text-base/9">
+                  <Trans>Purchased from</Trans>
+                </span>
+                <span className="ml-1">
+                  {truncateAddress(transactionDetail.partyAOrder.publicKey)}
+                </span>
+              </div>
+            )}
           </>
         )}
         {transactionDetail.transactionType === TRANSACTION_TYPE.DEPOSIT &&
