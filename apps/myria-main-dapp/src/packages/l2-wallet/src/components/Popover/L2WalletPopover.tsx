@@ -793,6 +793,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           <TransactionHistoryDetailScreen
             goBack={() => setScreen(SCREENS.MAIN_SCREEN)}
             transactionDetail={transactionDetail}
+            starkKeyUser={starkKeyUser}
           />
         )}
       </div>

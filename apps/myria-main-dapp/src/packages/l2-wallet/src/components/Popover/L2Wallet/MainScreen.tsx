@@ -60,6 +60,7 @@ export enum STATUS_HISTORY {
   IN_PROGRESS = 'Pending',
   IN_PROGRESS_VALIDATING = 'Validating',
   COMPLETED = 'Completed',
+  PREPARE = 'Prepare',
 }
 
 export const TRANSACTION_TYPE = {
@@ -150,6 +151,7 @@ export default function MainScreen({
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
+  console.log('starkKeyUser', starkKeyUser);
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(
     localStorageKeys.starkKey,
@@ -280,7 +282,8 @@ export default function MainScreen({
   const renderStatus = (item: any) => {
     if (
       item.status === STATUS_HISTORY.IN_PROGRESS ||
-      item.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING
+      item.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING ||
+      item.status === STATUS_HISTORY.PREPARE
     ) {
       return (
         <div className="text-base/9 mt-1 flex items-center">
@@ -371,6 +374,27 @@ export default function MainScreen({
           height={32}
         />
       );
+    }
+  };
+
+  const renderTitle = (item: any) => {
+    const startKey = `0x${starkKeyUser}`;
+    if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
+      if (item.partyAOrder.publicKey === startKey) {
+        return 'Sale';
+      }
+      if (item.partyBOrder.publicKey === startKey) {
+        return 'NFT Purchase';
+      }
+    }
+    if (
+      !item.name &&
+      (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
+        item.type === TRANSACTION_TYPE.TRANSFER)
+    ) {
+      return 'NFT Withdraw';
+    } else {
+      return DF_TRANSACTION_TYPE[item?.type]?.title;
     }
   };
 
@@ -489,13 +513,7 @@ export default function MainScreen({
                   <div className="mr-2">{renderIcon(item)}</div>
                   <div className="grow">
                     <div className="text-base/10 flex items-center justify-between text-sm">
-                      <span>
-                        {!item.name &&
-                        (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-                          item.type === TRANSACTION_TYPE.TRANSFER)
-                          ? 'NFT Withdraw'
-                          : DF_TRANSACTION_TYPE[item?.type]?.title}
-                      </span>
+                      <span>{renderTitle(item)}</span>
                       <span className="flex items-center">
                         <span className="mb-[2px] mr-1">
                           {!item.name &&

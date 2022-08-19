@@ -56,7 +56,8 @@ export default function useTransactionList(starkKey: string) {
             item.transactionType === 'WithdrawalRequest' ||
             item.transactionType === 'TransferRequest'
               ? item.transactionStatus
-              : item.transactionStatus === 'Pending'
+              : item.transactionStatus === STATUS_HISTORY.IN_PROGRESS ||
+                item.transactionStatus === STATUS_HISTORY.PREPARE
               ? STATUS_HISTORY.SUCCESS
               : item.transactionStatus;
           return {
