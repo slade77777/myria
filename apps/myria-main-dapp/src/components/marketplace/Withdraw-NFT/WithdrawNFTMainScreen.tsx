@@ -15,6 +15,7 @@ import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WithdrawNftOffChainParams } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
 import { Trans } from '@lingui/macro';
 import { queryClient } from 'src/pages/_app';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -22,6 +23,8 @@ interface IProp {
 
 const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   const { valueNFT: assetDetail, handleLearnMore } = useWithDrawNFTContext();
+  const { handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
+
   const [isPending, setIsPending] = useState<boolean>(false);
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', +assetDetail.id],
@@ -80,7 +83,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           quantizedAmount: '1'
         };
         await withdrawModule?.withdrawNftOffChain(payloadWithdrawNftOffchain);
-        await queryClient.invalidateQueries(['assetDetail', +assetDetail.id])
+        await queryClient.invalidateQueries(['assetDetail', +assetDetail.id]);
         onChangeStatus();
         event('NFT Withdraw Completed', {
           myria_id: user?.user_id,
@@ -131,16 +134,15 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
       </div>
       <div className="flex justify-between">
         <button
-          onClick={() => {
-            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-            triggerWithdraw?.click();
-          }}
+          onClick={() => handleDisplayPopoverWithdrawNFT(false)}
           className="flex w-32 items-center justify-center rounded-lg px-5 py-3 text-base font-bold text-white border">
           <Trans>CANCEL</Trans>
         </button>
         <button
-          className={cn("flex w-32 items-center justify-center rounded-lg  px-5 py-3 text-base font-bold",
-          isPending ? 'text-gray/6 bg-gray/4': 'bg-primary/6 text-base/1')}
+          className={cn(
+            'flex w-32 items-center justify-center rounded-lg  px-5 py-3 text-base font-bold',
+            isPending ? 'text-gray/6 bg-gray/4' : 'bg-primary/6 text-base/1'
+          )}
           disabled={isPending}
           onClick={handleConfirmWithdrawNftOffchain}>
           <Trans>CONFIRM</Trans>

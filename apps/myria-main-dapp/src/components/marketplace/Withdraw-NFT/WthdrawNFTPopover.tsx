@@ -1,9 +1,10 @@
 import Popover from 'src/components/Popover';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
+import { StatusWithdrawNFT } from 'src/types/marketplace';
 
 const WthdrawNFTPopover: React.FC<{}> = ({ children }) => {
-  const { isShowLearnMore } = useWithDrawNFTContext();
+  const { isShowLearnMore, setStatus } = useWithDrawNFTContext();
   const { isDisplayPopoverWithdrawNFT, handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
 
   return (
@@ -13,10 +14,11 @@ const WthdrawNFTPopover: React.FC<{}> = ({ children }) => {
       onOpenChange={(open) => {
         if (!open && !isShowLearnMore) {
           handleDisplayPopoverWithdrawNFT(false);
+          setStatus(StatusWithdrawNFT.MAIN_SCREEN);
         }
       }}>
       <Popover.Trigger asChild>
-        <div id="trigger-popover-withdraw" className="appearance-none"></div>
+        <div className="appearance-none"></div>
       </Popover.Trigger>
       <Popover.Content
         sideOffset={8}
