@@ -2,6 +2,7 @@ import { Trans } from '@lingui/macro';
 import { FC, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import CheckIcon from 'src/components/icons/CheckIcon';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
 interface Prop {
@@ -9,9 +10,9 @@ interface Prop {
 }
 const MessageWithdrawalNftModal: FC<Prop> = ({ onClose }) => {
   const { valueNFT: assetDetail, setStatus } = useWithDrawNFTContext();
+  const { handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
   const completeWithdrawal = useCallback(() => {
-    const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-    triggerWithdraw?.click();
+    handleDisplayPopoverWithdrawNFT(true);
     setStatus(StatusWithdrawNFT.COMPLETED);
     onClose();
   }, [onClose, setStatus]);

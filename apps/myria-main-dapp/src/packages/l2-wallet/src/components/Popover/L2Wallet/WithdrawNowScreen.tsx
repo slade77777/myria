@@ -70,13 +70,17 @@ export default function WithdrawNowScreen({
 
       if (responseWithdraw) {
         setIsProcess(false);
-        const transactionModule = moduleFactory.getTransactionModule();
-        const result = await transactionModule.updateTransactionComplete({
-          starkKey: `0x${localStarkKey}`,
-          transactionId: Number(transactionDetail.transactionId),
-          transactionHash: responseWithdraw.transactionHash,
-        });
-        console.log('Withdraw result complete ->', result);
+        try {
+          const transactionModule = moduleFactory.getTransactionModule();
+          const result = await transactionModule.updateTransactionComplete({
+            starkKey: `0x${localStarkKey}`,
+            transactionId: Number(transactionDetail.transactionId),
+            transactionHash: responseWithdraw.transactionHash,
+          });
+          console.log('Withdraw result complete ->', result);
+        } catch (ex) {
+          console.log('Transaction complete failed', ex);
+        }
         showWithdrawCompleteScreen({
           transactionHash: responseWithdraw.transactionHash,
           claimAmount: transactionDetail?.ethAmount,

@@ -7,10 +7,12 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import { localStorageKeys } from 'src/configs';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWalletContext } from 'src/context/wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
-import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WalletTabs } from 'src/types';
@@ -26,11 +28,9 @@ import ArrowUpRight from '../../Icons/ArrowUpRight';
 import ChevronIcon from '../../Icons/ChevronIcon';
 import ETHIcon from '../../Icons/ETHIcon';
 import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
+import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
-import { localStorageKeys } from 'src/configs';
-import useLocalStorage from 'src/hooks/useLocalStorage';
-import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 
 type Props = {
   gotoDepositScreen: any;
@@ -471,8 +471,10 @@ export default function MainScreen({
           </TabContent>
           <TabContent id={WalletTabs.HISTORY} activeTab={activeToken}>
             <div className="mt-3 max-h-[244px] pr-2">
-              {transactionList.length === 0 && <div>No data available yet</div>}
-              {transactionList.map((item: any, index: number) => (
+              {transactionList?.length === 0 && (
+                <div>No data available yet</div>
+              )}
+              {transactionList?.map((item: any, index: number) => (
                 <div
                   onClick={() => {
                     gotoDetailTransaction(item);
