@@ -15,12 +15,12 @@ export default function MessageDepositModal({ onClose = () => {} }) {
               <CheckIcon size={24} className="mt-[1px] text-[#2EA64F]" />
             </span>
             <span>
-              <Trans> Your deposit is complete</Trans>
+              <Trans> Your deposit is in progress </Trans>
             </span>
           </div>
           <div className="mt-[10px] text-sm font-normal">
             <span className="text-base/9">
-              <Trans>Your deposit of</Trans> {amount} <Trans>ETH is now complete.</Trans>
+              <Trans>Your deposit of</Trans> {amount} <Trans>ETH is in progress.</Trans>
             </span>
           </div>
         </div>
