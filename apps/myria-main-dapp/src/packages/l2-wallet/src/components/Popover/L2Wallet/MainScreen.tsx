@@ -7,10 +7,12 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import { localStorageKeys } from 'src/configs';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWalletContext } from 'src/context/wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
-import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WalletTabs } from 'src/types';
@@ -26,11 +28,9 @@ import ArrowUpRight from '../../Icons/ArrowUpRight';
 import ChevronIcon from '../../Icons/ChevronIcon';
 import ETHIcon from '../../Icons/ETHIcon';
 import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
+import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
-import { localStorageKeys } from 'src/configs';
-import useLocalStorage from 'src/hooks/useLocalStorage';
-import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 
 type Props = {
   gotoDepositScreen: any;
@@ -60,6 +60,7 @@ export enum STATUS_HISTORY {
   IN_PROGRESS = 'Pending',
   IN_PROGRESS_VALIDATING = 'Validating',
   COMPLETED = 'Completed',
+  PREPARE = 'Prepare',
 }
 
 export const TRANSACTION_TYPE = {
@@ -150,6 +151,7 @@ export default function MainScreen({
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
+  console.log('starkKeyUser', starkKeyUser);
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(
     localStorageKeys.starkKey,
@@ -271,14 +273,17 @@ export default function MainScreen({
         completeWithdrawal();
       }
     } else {
-      toast('Your L1 balance is not availabe yet. Please wait and be patient.');
+      toast(
+        'Your L1 balance is not available yet. Please wait and be patient.',
+      );
     }
   };
 
   const renderStatus = (item: any) => {
     if (
       item.status === STATUS_HISTORY.IN_PROGRESS ||
-      item.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING
+      item.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING ||
+      item.status === STATUS_HISTORY.PREPARE
     ) {
       return (
         <div className="text-base/9 mt-1 flex items-center">
@@ -369,6 +374,27 @@ export default function MainScreen({
           height={32}
         />
       );
+    }
+  };
+
+  const renderTitle = (item: any) => {
+    const startKey = `0x${starkKeyUser}`;
+    if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
+      if (item.partyAOrder.publicKey === startKey) {
+        return 'NFT Sale';
+      }
+      if (item.partyBOrder.publicKey === startKey) {
+        return 'NFT Purchase';
+      }
+    }
+    if (
+      !item.name &&
+      (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
+        item.type === TRANSACTION_TYPE.TRANSFER)
+    ) {
+      return 'NFT Withdraw';
+    } else {
+      return DF_TRANSACTION_TYPE[item?.type]?.title;
     }
   };
 
@@ -469,8 +495,10 @@ export default function MainScreen({
           </TabContent>
           <TabContent id={WalletTabs.HISTORY} activeTab={activeToken}>
             <div className="mt-3 max-h-[244px] pr-2">
-              {transactionList.length === 0 && <div>No data available yet</div>}
-              {transactionList.map((item: any, index: number) => (
+              {transactionList?.length === 0 && (
+                <div>No data available yet</div>
+              )}
+              {transactionList?.map((item: any, index: number) => (
                 <div
                   onClick={() => {
                     gotoDetailTransaction(item);
@@ -485,13 +513,7 @@ export default function MainScreen({
                   <div className="mr-2">{renderIcon(item)}</div>
                   <div className="grow">
                     <div className="text-base/10 flex items-center justify-between text-sm">
-                      <span>
-                        {!item.name &&
-                        (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-                          item.type === TRANSACTION_TYPE.TRANSFER)
-                          ? 'NFT Withdraw'
-                          : DF_TRANSACTION_TYPE[item?.type]?.title}
-                      </span>
+                      <span>{renderTitle(item)}</span>
                       <span className="flex items-center">
                         <span className="mb-[2px] mr-1">
                           {!item.name &&

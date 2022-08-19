@@ -24,6 +24,7 @@ export default function DepositInProgressScreen({
         onClick={() => {
           goBack();
         }}
+        id="deposit-in-progress"
       >
         <ArrowIcon direction="left" />
         <div className="ml-2 text-[20px] text-white">Deposit</div>

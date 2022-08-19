@@ -1,11 +1,7 @@
 import { Trans } from '@lingui/macro';
-import { toast } from 'react-toastify';
 import CheckIcon from 'src/components/icons/CheckIcon';
-import { useL2WalletContext } from 'src/context/l2-wallet';
-import { WalletTabs } from 'src/types';
 
 export function MessageEditListingModal({ assetName = '', onClose = () => {} }) {
-  const { handleActiveWalletTabs, handleDisplayPopover } = useL2WalletContext();
   return (
     <div className="flex">
       <div className="ml-3 font-normal text-white leading-normal">
@@ -22,17 +18,6 @@ export function MessageEditListingModal({ assetName = '', onClose = () => {} }) 
             <Trans>Your</Trans>
             <span className="text-base text-white mx-1"> {assetName} </span>
             <Trans>has been listed for sale.</Trans>
-          </span>
-        </div>
-        <div
-          onClick={() => {
-            handleDisplayPopover(true);
-            handleActiveWalletTabs(WalletTabs.HISTORY);
-            onClose();
-          }}
-          className="cursor-pointer">
-          <span className="text-primary/6">
-            <Trans>View Transaction</Trans>
           </span>
         </div>
       </div>
