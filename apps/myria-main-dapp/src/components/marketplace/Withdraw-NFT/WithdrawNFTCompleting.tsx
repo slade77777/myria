@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { ConfirmationType } from 'myria-core-sdk';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import WithdrawalCompletedIcon from 'src/components/icons/WithdrawalCompletedIcon';
@@ -13,6 +13,11 @@ import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WalletTabs } from 'src/types';
 import { toast } from 'react-toastify';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import useTransactionList from 'src/hooks/useTransactionList';
+import {
+  STATUS_HISTORY,
+  TRANSACTION_TYPE
+} from 'src/packages/l2-wallet/src/components/Popover/L2Wallet/MainScreen';
 
 interface IProp {}
 
@@ -25,12 +30,22 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
+
+  const { data: transactionHistoryData, refetch: refetchTransactionList } =
+    useTransactionList(starkKeyUser);
+
   const withdrawNftOnchain = async () => {
     const starkKey = '0x' + starkKeyUser;
+    const transactions: any = transactionHistoryData?.filter(
+      (item: any, index: number) =>
+        item.transactionType === TRANSACTION_TYPE.WITHDRAWAL &&
+        item.tokenType === TokenType.MINTABLE_ERC721 &&
+        item.transactionStatus === STATUS_HISTORY.SUCCESS &&
+        item.assetId === valueNFT.assetMintId
+    );
 
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
-
     const withdrawalModule = moduleFactory.getWithdrawModule();
     const assetModule = moduleFactory.getAssetModule();
     setPending(true);
@@ -75,6 +90,21 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
           transactionHash: result.transactionHash,
           claimAmount: '1'
         });
+
+        if (transactions && transactions?.length > 0 && transactions[0]?.transactionId) {
+          try {
+            const transactionModule = moduleFactory.getTransactionModule();
+            const resultTransaction = await transactionModule.updateTransactionComplete({
+              starkKey: `0x${starkKeyUser}`,
+              transactionId: Number(transactions[0]?.transactionId),
+              transactionHash: result.transactionHash
+            });
+            console.log('Withdraw result complete ->', resultTransaction);
+          } catch (ex) {
+            console.log('Transaction complete failed', ex);
+          }
+        }
+        refetchTransactionList();
         setStatus(StatusWithdrawNFT.SUCCESS);
       }
     } catch (err) {
@@ -129,9 +159,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
           </button>
         ) : (
           <button
-            onClick={() => {
-              withdrawNftOnchain();
-            }}
+            onClick={withdrawNftOnchain}
             className="flex w-full items-center justify-center rounded-[8px] bg-[#F5B941] px-[20px] py-[12px] text-[16px] font-bold text-[#040B10]">
             <span>
               <Trans>WITHDRAW NOW</Trans>
