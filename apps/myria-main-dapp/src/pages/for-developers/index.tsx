@@ -20,13 +20,14 @@ import { useGA4 } from 'src/lib/ga';
 import NewsLetter from '../newsletter';
 import ContactUsSalesForceSuccessModal from 'src/components/modals/ContactUsSalesForceSuccessModal';
 import SubscriptionSuccessModal from 'src/components/modals/SubscriptionSuccessModal';
+import SuccessTickIcon from 'src/components/icons/SuccessTickIcon';
 
 const listId = process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID;
 
 const ForDevelopers: React.FC = () => {
   const [showContactSalesTeamModal, setShowFirstTimeVisitModal] = useState(false);
   const [showContactSalesSuccessModal, setShowContactSalesSuccessModal] = useState(false);
-  const [showSubscriptionSuccessModal, setShowSubscriptionSuccessModal] = useState(false);
+  const [submittedSubscription, setSubmittedSubscription] = useState(false);
 
   const [email, setEmail] = useState<string>('');
   const { event } = useGA4();
@@ -45,7 +46,7 @@ const ForDevelopers: React.FC = () => {
   };
 
   const handleCloseSubscriptionSuccessModal = () => {
-    setShowSubscriptionSuccessModal(false);
+    setSubmittedSubscription(false);
   };
 
   const emailsubmit = async () => {
@@ -60,12 +61,11 @@ const ForDevelopers: React.FC = () => {
           },
           post: true
         });
-        setShowSubscriptionSuccessModal(true);
+        setSubmittedSubscription(true);
         event('Email Subscribed', { campaign: 'B2B', user_email: email });
       } catch (err) {
         console.error(err);
       }
-      setEmail('');
     }
   };
 
@@ -76,13 +76,15 @@ const ForDevelopers: React.FC = () => {
           className={clsx(
             paddingX,
             "relative isolate flex min-h-[520px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile_op.png')] bg-cover bg-top pt-[150px] pb-[87px] md:bg-none md:pt-[150px] lg:pt-[200px]"
-          )}>
+          )}
+        >
           <div className="hidden md:block">
             <div
               style={{
                 background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)'
               }}
-              className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
+              className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"
+            ></div>
             <div className="absolute top-0 left-0 z-[-1] w-full">
               <Image
                 src="/images/for-developers/header-bg_op.png"
@@ -112,7 +114,8 @@ const ForDevelopers: React.FC = () => {
                       event('B2B Start Building Selected', {
                         campaign: 'B2B'
                       });
-                    }}>
+                    }}
+                  >
                     <Trans>START BUILDING</Trans>
                   </a>
                 </Link>
@@ -124,7 +127,8 @@ const ForDevelopers: React.FC = () => {
                   event('B2B Contact Sales Selected', {
                     campaign: 'B2B'
                   });
-                }}>
+                }}
+              >
                 <a className="border btn-lg border-base/9">
                   <Trans>CONTACT SALES</Trans>
                 </a>
@@ -147,7 +151,8 @@ const ForDevelopers: React.FC = () => {
           }
           className={clsx(
             'mt-[95px] mb-[120px] bg-no-repeat md:mt-[170px] md:mb-[152px] md:[background-image:var(--bg)]'
-          )}>
+          )}
+        >
           <section
             style={
               {
@@ -158,36 +163,52 @@ const ForDevelopers: React.FC = () => {
             className={clsx(
               paddingX,
               'mx-auto max-w-[966px] bg-bottom bg-no-repeat [background-size:100%_calc(100%-238px)] [background-image:var(--bg)] md:bg-none'
-            )}>
+            )}
+          >
             <Myria />
           </section>
           <section className="mx-auto max-w-[1440px] pb-[160px] pt-[50px] md:px-[88px] md:pt-[200px]">
             <div className="grid grid-cols-1 space-y-4 lg:grid-cols-2 lg:space-x-6 lg:space-y-0">
-              <div className="mx-4 rounded-[20px] bg-[#081825] p-[30px] md:mx-0 md:p-[48px] xl:w-[620px]">
+              <div className="mx-4 rounded-[20px] bg-[#081825] p-[30px] pb-14 md:mx-0 md:p-12 xl:w-[620px]">
                 <div className="text-[25px] leading-[47px] text-white md:text-[32px]">
                   Stay up to date with us
                 </div>
                 <p className="text-base/9 mt-4 text-[20px] leading-[26px]">
                   Sign up to our newsletter for development updates
                 </p>
-                <div className="mt-4 flex space-x-5 md:mt-[84px]">
-                  <div className="flex-1 w-full">
+                <div className="relative mt-4 flex space-x-5 md:mt-[84px]">
+                  <div className="relative flex-1 w-full">
                     <Input
+                      disabled={submittedSubscription}
                       value={email}
-                      className="border-none bg-[#172630]"
+                      className={clsx(
+                        'bg-[#172630]',
+                        submittedSubscription ? 'border-success/8 border' : 'border-none'
+                      )}
                       type="text"
                       placeholder="Enter your email address"
                       onChange={(e: any) => setEmail(e.target.value)}
                     />
+                    {submittedSubscription && (
+                      <div className="text-success/8 absolute top-[14px] right-4 h-5 w-5">
+                        <SuccessTickIcon />
+                      </div>
+                    )}
                   </div>
                   <button
                     className="btn-lg btn-primary"
                     onClick={() => {
                       emailsubmit();
-                    }}>
+                    }}
+                  >
                     Submit
                   </button>
                 </div>
+                {submittedSubscription && (
+                  <p className="text-success/8 absolute mt-1.5 text-sm font-normal leading-[150%]">
+                    Email submitted. Thanks for subscribing!
+                  </p>
+                )}
               </div>
               <div className="mx-4 rounded-[20px] bg-[#081825] p-[30px] md:mx-0 md:p-[48px] xl:w-[620px]">
                 <div className="text-[25px] leading-[47px] text-white md:text-[32px]">
@@ -203,7 +224,8 @@ const ForDevelopers: React.FC = () => {
                       className="btn-lg bg-blue/7 text-base/2 flex items-center px-6 py-[12.5px] uppercase"
                       onClick={() => {
                         event('B2B Discord Button Clicked', { campaign: 'B2B' });
-                      }}>
+                      }}
+                    >
                       <DiscordGameIcon size={28} className="mr-2 text-black" />
                       Join our discord
                     </button>
@@ -222,10 +244,6 @@ const ForDevelopers: React.FC = () => {
       <ContactUsSalesForceSuccessModal
         open={showContactSalesSuccessModal}
         onClose={handleCloseContactSalesSuccessModal}
-      />
-      <SubscriptionSuccessModal
-        open={showSubscriptionSuccessModal}
-        onClose={handleCloseSubscriptionSuccessModal}
       />
     </Page>
   );
