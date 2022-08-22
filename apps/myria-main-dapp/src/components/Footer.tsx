@@ -1,5 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
+// import { Link } from 'react-router-dom';
 import Link from 'next/link';
 import React from 'react';
 import { socialLinks } from 'src/configs';
@@ -174,7 +175,7 @@ const Footer: React.FC = () => {
                           </a>
                         </Link>
                         {item.moreText && (
-                          <div className="rounded-lg bg-brand-dark-blue px-[10px] py-[6px] text-[9px] uppercase leading-[1.3] text-brand-light-blue">
+                          <div className="bg-brand-dark-blue text-brand-light-blue rounded-lg px-[10px] py-[6px] text-[9px] uppercase leading-[1.3]">
                             {item.moreText}
                           </div>
                         )}
@@ -195,7 +196,9 @@ const Footer: React.FC = () => {
       <div className="mt-[14px] text-[16px] leading-[1.5] md:mt-0">
         <p>© Copyright 2022 Myria</p>
         <p>
-          <Trans>Terms | Privacy</Trans>
+          <Trans>
+            <a href={'/terms-conditions'}>Terms</a> | <a href={'/privacy'}>Privacy</a>
+          </Trans>
         </p>
       </div>
     </footer>

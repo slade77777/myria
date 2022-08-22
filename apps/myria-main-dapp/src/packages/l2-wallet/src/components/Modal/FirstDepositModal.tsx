@@ -1,37 +1,29 @@
 import cn from 'classnames';
-import { Types } from 'myria-core-sdk';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { ConfirmationType } from 'myria-core-sdk';
+import { useEffect, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { RootState } from '../../app/store';
-import CurrencySelector, { TOption } from '../Dropdown/CurrencySelector';
-import { ThreeDotsVerticalIcon } from '../Icons';
-import MaxInput from '../Input/MaxInput';
-
-// import TestToken from '../../assets/images/TT.png';
 import useBalanceL1 from '../../common/hooks/useBalanceL1';
-
 import {
   InfoCircleIcon,
   ProgressIcon,
   TickCircleIcon,
 } from '../../components/Icons';
+import CurrencySelector, { TOption } from '../Dropdown/CurrencySelector';
+import { ThreeDotsVerticalIcon } from '../Icons';
+import MaxInput from '../Input/MaxInput';
 
 import { Trans } from '@lingui/macro';
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
+import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { getExplorerForAddress } from 'src/utils';
 import DAOIcon from '../../../../../components/icons/DAOIcon';
 import Tooltip from '../../../../../components/Tooltip';
-import { setDepositAmount } from '../../app/slices/uiSlice';
 import { TokenType } from '../../common/type';
-import { ethersLink } from '../../constants';
 import { useEthereumPrice } from '../../hooks/useEthereumPrice';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
-import {
-  convertAmountToQuantizedAmount,
-  convertEthToWei,
-} from '../../utils/Converter';
-import { useDepositContext } from 'src/context/deposit-context';
-
+import { convertEthToWei } from '../../utils/Converter';
 type Props = {
   modalShow: Boolean;
   closeModal: any;
@@ -43,7 +35,7 @@ const options: Array<TOption> = [
     id: 1,
     name: 'Ethereum',
     short: 'ETH',
-    ico: '/assets/images/eth.png',
+    ico: '/assets/images/eth.svg',
     tokenAddress: '',
   },
   // {
@@ -74,71 +66,69 @@ export default function FirstDepositModal({
   const connectedAccount = useSelector(
     (state: RootState) => state.account.connectedAccount,
   );
-  const dispatch = useDispatch();
   const [selectedToken, setSelectedToken] = useState<TOption>(options[0]);
-  const [amount, setAmount] = useState<number>(0);
-  const [isValidDeposit, setIsValidDeposit] = useState<Boolean>(false);
+  const [amount, setAmount] = useState<number | undefined>(undefined);
+  // const [isValidDeposit, setIsValidDeposit] = useState<Boolean>(false);
   const [depositProgress, setDepositProgress] = useState<number>(
     PROGRESS.START,
   );
   const [errorAmount, setErrorAmount] = useState('');
   const [depositResponse, setDepositResponse] = useState<TxResult>();
-
   const { data: etheCost = 0 } = useEthereumPrice();
-
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
-  const URL_LINK = `${ethersLink.goerli_goerli}${
-    depositResponse?.transactionHash ? depositResponse?.transactionHash : ''
-  }`;
-  const { handleSetAmount, handleShowMessageDeposit } = useDepositContext();
+  const [etherLinkContract, setEtherLinkContract] = useState<string>();
+
+  useEffect(() => {
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !depositResponse?.transactionHash) return '';
+      setEtherLinkContract(
+        getExplorerForAddress(
+          depositResponse?.transactionHash,
+          networkId,
+          'transaction',
+        ),
+      );
+    };
+    setLink();
+  }, [depositResponse?.transactionHash]);
 
   const selectCurrency = (param: any) => {
     setSelectedToken(param);
   };
 
-  const setAmountHandle = (param: string) => {
-    if (param !== '') {
-      setAmount(parseFloat(param.toString()));
-    } else setAmount(0);
+  const setAmountHandle = (param: number) => {
+    setAmount(param);
   };
-
-  useEffect(() => {
-    console.log('Balance L1 -> ', balanceL1);
-    if (!amount) {
-      return setErrorAmount('');
-    }
-    if (
-      selectedToken &&
-      !(amount > parseFloat(balanceL1)) &&
-      amount !== parseFloat('0') &&
-      amount * etheCost > 10
-    ) {
+  const isValidForm = useMemo(() => {
+    if (amount == undefined) {
       setErrorAmount('');
-      setIsValidDeposit(true);
-    } else {
-      setIsValidDeposit(false);
-      if (!selectedToken) {
-        return setErrorAmount('Select Asset required.');
-      }
-      if (amount === 0) {
-        return setErrorAmount("Amount can't be 0.");
-      }
-      if (amount > parseFloat(balanceL1)) {
-        return setErrorAmount('Your balance is not enough.');
-      }
-      if (amount * etheCost < 10) {
-        return setErrorAmount(
-          `Deposit amount cannot be less than ${(10 / etheCost).toFixed(
-            6,
-          )} ETH.`,
-        );
-      }
+      return true;
     }
-  }, [selectedToken, amount, balanceL1]);
-
+    if (!selectedToken) {
+      setErrorAmount('Select Asset required.');
+      return false;
+    }
+    if (amount === 0) {
+      setErrorAmount("Amount can't be 0.");
+      return false;
+    }
+    if (amount * etheCost < 10) {
+      setErrorAmount(
+        `Deposit amount cannot be less than ${(10 / etheCost).toFixed(6)} ETH.`,
+      );
+      return false;
+    }
+    if (parseFloat(balanceL1) < amount) {
+      setErrorAmount(`Deposit amount cannot be higher than available ETH.`);
+      return false;
+    }
+    setErrorAmount('');
+    return true;
+  }, [amount, balanceL1, etheCost, selectedToken]);
   const deposit = async () => {
     let resultDepoit: TxResult;
-
+    if (amount == undefined) return;
     try {
       setDepositProgress(PROGRESS.PROCESSING);
       const moduleFactory = await getModuleFactory();
@@ -153,7 +143,7 @@ export default function FirstDepositModal({
             amount: String(amount),
           },
           {
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
             from: connectedAccount,
             value: String(convertEthToWei(amount.toString())),
           },
@@ -168,7 +158,7 @@ export default function FirstDepositModal({
           },
           {
             from: connectedAccount,
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
           },
         );
       }
@@ -233,44 +223,33 @@ export default function FirstDepositModal({
                   <MaxInput
                     max={parseFloat(balanceL1)}
                     onChangeHandle={setAmountHandle}
+                    isValidForm={isValidForm}
                   />
                   {errorAmount && (
                     <div className="text-error/6 mt-2 text-sm">
                       {errorAmount}
                     </div>
                   )}
-                  {/* <div className="flex justify-between mt-2">
-                    <div className="text-[rgba(255,255,255,0.6)] text-sm">
-                      Estimated gas fee
-                    </div>
-                    <div className="text-[#777777] text-sm">
-                      <span className="text-[#9DA3A7]">0.0431917 ETH</span>
-                    </div>
-                  </div> */}
                 </div>
-                {/* <div className="mt-4 text-[12px] text-[#A1AFBA] p-4 bg-[#050E15] mt-6 rounded-lg">
-                  If you deposit more than{' '}
-                  <span className="text-white text-sm">$500 USD</span> for
-                  your first transaction, we will cover the gas fees.{' '}
-                  <Link className="text-[#f5b941]" to="/">
-                    Learn more
-                  </Link>
-                </div> */}
-                <div className="flex w-full justify-between px-1">
-                  <button className="text-sm text-white" onClick={closeModal}>
-                    I&apos;ll do this later
+                <div className="flex justify-between justify-self-end">
+                  <button
+                    onClick={closeModal}
+                    className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-lg border py-2 px-9 text-base font-bold text-white"
+                  >
+                    CANCEL
                   </button>
                   <button
-                    disabled={!isValidDeposit}
-                    onClick={deposit}
                     className={cn(
-                      'rounded-lg py-[9px] px-[33px] text-sm',
-                      isValidDeposit
-                        ? 'bg-primary/6 text-[#040B10]'
-                        : 'text-gray/6 bg-[#4B5563]',
+                      'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
+                      isValidForm && amount != undefined
+                        ? 'bg-primary/6 text-base/1'
+                        : 'bg-[#737373]',
                     )}
+                    onClick={
+                      isValidForm && amount != undefined ? deposit : () => {}
+                    }
                   >
-                    DEPOSIT
+                    NEXT
                   </button>
                 </div>
               </div>
@@ -292,13 +271,13 @@ export default function FirstDepositModal({
                     <div className="flex justify-between">
                       <span>Amount</span>
                       <span className="flex items-center text-white">
-                        <DAOIcon size={14} className="mb-[2px]" />
+                        <DAOIcon size={16} className="mb-[2px]" />
                         <span className="ml-1">{amount}</span>
                       </span>
                     </div>
                     <div className="mt-4 flex justify-between">
                       <span>Estimated completion</span>
-                      <span className="text-white">1-2 minutes</span>
+                      <span className="text-primary/6">10 minutes</span>
                     </div>
                   </div>
                   <div className="mt-4 flex rounded-lg border border-[rgba(154,201,227,0.2)] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">
@@ -339,7 +318,7 @@ export default function FirstDepositModal({
                     <div className="flex justify-between">
                       <span>Amount</span>
                       <span className="flex items-center text-white">
-                        <DAOIcon size={14} className="mb-[2px]" />
+                        <DAOIcon size={16} className="mb-[2px]" />
                         <span className="ml-1">{amount}</span>
                       </span>
                     </div>
@@ -348,7 +327,7 @@ export default function FirstDepositModal({
                       <a
                         className="text-primary/6 text-base"
                         target="_blank"
-                        href={URL_LINK}
+                        href={etherLinkContract}
                         rel="noreferrer"
                       >
                         View
@@ -370,9 +349,7 @@ export default function FirstDepositModal({
                   <button
                     className="bg-primary/6 flex h-10 w-full items-center justify-center rounded-lg text-base font-bold text-black"
                     onClick={() => {
-                      handleSetAmount(amount);
                       closeModal();
-                      handleShowMessageDeposit(true);
                       completeDepositModal();
                     }}
                   >

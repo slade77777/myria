@@ -5,15 +5,39 @@ import InventoryItem from '../inventory/InventoryItem';
 import { Trans } from '@lingui/macro';
 import OpenInventoryChestModal from '../inventory/OpenChest';
 import MintRewardModal from '../inventory/MintReward';
+import { useGA4 } from 'src/lib/ga';
+import { forceGAStringParam } from 'src/lib/ga/use-ga/event';
+import { useWalletContext } from 'src/context/wallet';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { hexifyKey } from 'src/utils';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 const Inventory: React.FC = () => {
   const { inventoryQuery } = useInventoryQuery();
+  const starkKeyUser = useSelector(
+    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
+  );
+  const { address } = useWalletContext();
+  const { user } = useAuthenticationContext();
+  const { event } = useGA4();
   const inventories = inventoryQuery.data || [];
   const [modalData, setModalData] = React.useState<
     { openedChest: OpenChestContent[] | undefined; item: AssetType } | undefined
   >();
   const [openMintingModal, setOpenMintingModal] = React.useState<boolean>(false);
 
+  const handleOpenMintModal = () => {
+    setOpenMintingModal(true);
+    event('Mint Reward Selected', {
+      campaign: 'Sigil Minting',
+      wallet_address: forceGAStringParam(address),
+      l2_wallet_address: forceGAStringParam(hexifyKey(starkKeyUser)),
+      myria_username: user?.user_name || '',
+      myria_id: user?.user_id || '',
+      user_email: user?.email || ''
+    });
+  };
   const handleChestClaimed = React.useCallback(
     (item: AssetType, openedChest?: OpenChestContent[]) => {
       setModalData({ openedChest, item });
@@ -48,13 +72,14 @@ const Inventory: React.FC = () => {
             <Trans>Minting is now live!</Trans>
           </p>
           <p className="text-light text-[16px] font-normal">
-            <Trans>You can now mint your rewards on the Myria L2 chain!</Trans>
+            <Trans>You can now mint your rewards on the Myria L2!</Trans>
           </p>
         </div>
         <div className="flex justify-center xl:justify-end">
           <button
-            className="btn-lg body-14-bold btn-primary mr-4 py-[9px]"
-            onClick={() => setOpenMintingModal(true)}>
+            disabled={!address || !starkKeyUser}
+            className="btn-lg body-14-bold btn-primary mr-4 py-[9px] disabled:bg-gray-500 disabled:text-white disabled:opacity-50"
+            onClick={handleOpenMintModal}>
             <Trans>MINT MY REWARDS</Trans>
           </button>
         </div>

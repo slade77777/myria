@@ -18,7 +18,7 @@ const Header: React.FC<Props> = ({ step }) => {
   return (
     <header ref={headerRef} className="fixed top-0 left-0 z-50 w-full">
       <div className="body-14-bold bg-brand-gold w-full p-4 text-center text-black">
-        You can now mint your rewards on the Myria L2 chain!
+        You can now mint your rewards on the Myria L2!
       </div>
       <div className="grid h-[80px] w-full grid-cols-[1fr_auto_1fr] items-center bg-[rgba(0,0,0,0.1)] p-4 px-6">
         <Link href="/">

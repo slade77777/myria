@@ -1,38 +1,51 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import InputErrorIcon from '../Icons/InputErrorIcon';
 
+import NumberFormat from 'react-number-format';
 interface TProps {
   max: number;
   onChangeHandle: any;
+  isValidForm?: boolean
 }
 
-export default function MaxInput({ max = 100, onChangeHandle }: TProps) {
+export default function MaxInput({ max = 100, onChangeHandle, isValidForm = true }: TProps) {
   const [inputValue, setInputValue] = useState<number>();
+  // const [errorInput, setErrorInput] = useState<boolean>(false);
   const setMax = () => {
     setInputValue(max);
     onChangeHandle(max);
   };
   return (
     <div className="relative">
-      <input
-        placeholder="Enter an amount"
-        type="number"
-        min="0"
-        className="h-[48px] w-full rounded-[8px] bg-[#132533] pl-4 pr-[45px] text-white"
+      <NumberFormat
         value={inputValue}
-        onChange={(event: any) => {
-          if (event.target.value < 0) return;
-          setInputValue(event.target.value);
-          onChangeHandle(event.target.value);
+        placeholder="Enter an amount"
+        className={`bg-input h-12 w-full rounded-lg pl-4 pr-[45px] text-white focus-visible:outline-none ${
+          !isValidForm && 'border border-red-600'
+        }`}
+        displayType={'input'}
+        allowEmptyFormatting={true}
+        allowNegative={false}
+        thousandSeparator={true}
+        onValueChange={({floatValue, formattedValue, value}) => {
+          setInputValue(floatValue);
+          onChangeHandle(floatValue);
         }}
       />
-      <div
-        className="text-base/10 absolute top-[14px] right-4 cursor-pointer text-base font-medium"
-        onClick={() => {
-          setMax();
-        }}
-      >
-        Max
-      </div>
+      {!isValidForm ? (
+        <div className="text-base/10 absolute top-[14px] right-4">
+          <InputErrorIcon />
+        </div>
+      ) : (
+        <div
+          className="text-base/10 absolute top-[14px] right-4 cursor-pointer text-base font-medium"
+          onClick={() => {
+            setMax();
+          }}
+        >
+          Max
+        </div>
+      )}
     </div>
   );
 }

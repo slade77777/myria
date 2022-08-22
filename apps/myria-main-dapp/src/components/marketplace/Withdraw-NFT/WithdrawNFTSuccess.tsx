@@ -1,26 +1,29 @@
 import { Trans } from '@lingui/macro';
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import CircleCheckSuccessOutline from 'src/components/icons/CircleCheckSuccessOutline';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
-import { ETHERS_LINK } from 'src/services/common-ethers';
+import { getExplorerForAddress } from 'src/utils';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { useL2WalletContext } from 'src/context/l2-wallet';
+import { StatusWithdrawNFT } from 'src/types/marketplace';
 
 interface IProp {}
 
 const WithdrawNFTSuccess: FC<IProp> = ({}) => {
-  const { valueNFT } = useWithDrawNFTContext();
+  const { isWithdrawComplete, handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
+  const { valueNFT, setStatus } = useWithDrawNFTContext();
   const [etherLinkContract, setEtherLinkContract] = useState<string>();
 
-  useMemo(async () => {
-    const networkId = await getNetworkId();
-    if (!networkId) return '';
-
-    const baseEtherLink = ETHERS_LINK[networkId as keyof typeof ETHERS_LINK];
-    const etherLink = `${baseEtherLink}/${valueNFT?.tokenAddress}`;
-    setEtherLinkContract(etherLink);
-
-    return etherLink;
-  }, [valueNFT?.tokenAddress]);
+  useEffect(() => {
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !isWithdrawComplete?.transactionHash) return '';
+      setEtherLinkContract(
+        getExplorerForAddress(isWithdrawComplete?.transactionHash, networkId, 'transaction')
+      );
+    };
+    setLink();
+  }, [isWithdrawComplete]);
 
   return (
     <>
@@ -63,8 +66,8 @@ const WithdrawNFTSuccess: FC<IProp> = ({}) => {
       <div className="flex justify-end">
         <button
           onClick={() => {
-            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-            triggerWithdraw?.click();
+            handleDisplayPopoverWithdrawNFT(false);
+            setStatus(StatusWithdrawNFT.MAIN_SCREEN);
           }}
           className="flex w-full items-center justify-center rounded-lg bg-primary/6 px-5 py-3 text-base font-bold text-base/1">
           <span>

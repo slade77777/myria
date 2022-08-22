@@ -225,7 +225,7 @@ staging-deploy-d-legacy:
 
 prod-build:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "main-b"'
   image: node:14
   stage: prod-build
   script:
@@ -235,8 +235,8 @@ prod-build:
     paths:
       - apps/myria-main-dapp/out-prod
 
-# Prod CD target 1
-preprod-deploy-1:
+# Prod CD target 1 - a
+preprod-deploy-a:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   image:
@@ -259,6 +259,33 @@ preprod-deploy-1:
     bucket_name: myria-preprod.myria.com
     artifacts_folder: apps/myria-main-dapp/out-prod
     cloudfront_id: E1SN30T2UKSLIF
+  dependencies:
+    - prod-build
+
+# Prod CD target 1 - b
+preprod-deploy-b:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main-b"'
+  image:
+    name: amazon/aws-cli
+    entrypoint: ['']
+  services:
+    - docker:dind
+  stage: prod-deploy
+  extends:
+    - .aws_cli_init
+  script:
+    - |
+      ./scripts/assume_deployer_role.sh $account
+
+      # Deploy to S3 and invalidate Cloudfront Distributions
+      ./scripts/deploy_to_s3.sh $bucket_name $artifacts_folder $cloudfront_id
+  variables:
+    account: myria-net-prod
+    region: us-east-1
+    bucket_name: myria-preprod-b.myria.com
+    artifacts_folder: apps/myria-main-dapp/out-prod
+    cloudfront_id: E1OZUTYN5YIVS8
   dependencies:
     - prod-build
 

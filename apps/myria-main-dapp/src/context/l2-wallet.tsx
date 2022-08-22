@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 
 import { BigNumber, ethers } from 'ethers';
@@ -9,6 +9,7 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import { UserData } from 'myria-core-sdk/dist/types/src/types/UserTypes';
 import { SimpleFunction } from 'web3modal';
+import { WalletTabs } from 'src/types';
 
 export type ReaderProvider = ethers.providers.InfuraProvider;
 interface IL2WalletContext {
@@ -21,21 +22,35 @@ interface IL2WalletContext {
   isWithdrawComplete: {
     isShow: boolean;
     transactionHash: string;
+    claimAmount: number;
   };
   showWithdrawCompleteScreen: any;
+  isFirstPurchase: boolean;
+  handleSetFirstPurchase: (value: boolean) => void;
+  activeWalletTabs: WalletTabs;
+  handleActiveWalletTabs: (value: WalletTabs) => void;
+  isDisplayPopover: boolean;
+  handleDisplayPopover: (value: boolean) => void;
+  isDisplayPopoverWithdrawNFT: boolean;
+  handleDisplayPopoverWithdrawNFT: (value: boolean) => void;
 }
 
 const L2WalletContext = React.createContext<IL2WalletContext>({} as IL2WalletContext);
-const signMessage = 'Message request signature: ';
+// const signMessage = 'Message request signature: ';
 
 export const L2WalletProvider: React.FC = ({ children }) => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [isFirstTimeWallet, setIsFirstTimeWallet] = React.useState(false);
+  const [activeWalletTabs, setActiveWalletTabs] = useState<WalletTabs>(WalletTabs.TOKENS);
+  const [isFirstPurchase, setIsFirstPurchase] = React.useState(false);
   const [isWithdrawComplete, setIsWithdrawComplete] = React.useState({
     isShow: false,
-    transactionHash: ''
+    transactionHash: '',
+    claimAmount: 0
   });
+  const [isDisplayPopover, setIsDisplayPopover] = React.useState(false);
+  const [isDisplayPopoverWithdrawNFT, setIsDisplayPopoverWithdrawNFT] = React.useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -134,10 +149,27 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     setWalletAddress('');
   };
 
-  const showWithdrawCompleteScreen = (data: { isShow: boolean; transactionHash: string }) => {
+  const showWithdrawCompleteScreen = (data: {
+    isShow: boolean;
+    transactionHash: string;
+    claimAmount: number;
+  }) => {
     setIsWithdrawComplete({ ...isWithdrawComplete, ...data });
   };
 
+  const handleSetFirstPurchase = (value: boolean) => {
+    setIsFirstPurchase(value);
+  };
+  const handleActiveWalletTabs = (value: WalletTabs) => {
+    setActiveWalletTabs(value);
+  };
+  const handleDisplayPopover = (value: boolean) => {
+    setIsDisplayPopover(value);
+  };
+
+  const handleDisplayPopoverWithdrawNFT = (value: boolean) => {
+    setIsDisplayPopoverWithdrawNFT(value);
+  };
   return (
     <L2WalletContext.Provider
       value={{
@@ -146,7 +178,15 @@ export const L2WalletProvider: React.FC = ({ children }) => {
         connectL2WalletFirstTime: onConnectL2WalletFirstTime,
         disconnectL2Wallet: onDisconnectL2Wallet,
         isWithdrawComplete: isWithdrawComplete,
-        showWithdrawCompleteScreen: showWithdrawCompleteScreen
+        showWithdrawCompleteScreen: showWithdrawCompleteScreen,
+        isFirstPurchase: isFirstPurchase,
+        handleSetFirstPurchase: handleSetFirstPurchase,
+        handleActiveWalletTabs,
+        activeWalletTabs,
+        isDisplayPopover,
+        handleDisplayPopover,
+        isDisplayPopoverWithdrawNFT,
+        handleDisplayPopoverWithdrawNFT
       }}>
       {children}
     </L2WalletContext.Provider>

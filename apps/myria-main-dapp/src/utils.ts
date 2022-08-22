@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro';
 import { BigNumber, ethers } from 'ethers';
+import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { EXPLORE_LINKS } from './services/common-ethers';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
 const FORMAT_PRICE = 1000000;
-
+export const FORMAT_DATE = 'ddd Do MMM YYYY';
 export const formatNumber = (num: number) => {
   return new Intl.NumberFormat('en').format(num);
 };
@@ -107,3 +109,71 @@ export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
       };
   }
 };
+const getBaseExploreLink = (type: 'address' | 'transaction' = 'address', networkId: number) => {
+  if (type === 'address') {
+    return EXPLORE_LINKS[networkId as keyof typeof EXPLORE_LINKS]?.address;
+  } else {
+    return EXPLORE_LINKS[networkId as keyof typeof EXPLORE_LINKS]?.transaction;
+  }
+};
+export const getExplorerForAddress = (
+  ContractAddress: string,
+  networkId: number,
+  type?: 'address' | 'transaction'
+) => {
+  const baseEtherLink = getBaseExploreLink(type, networkId);
+  const etherLink = `${baseEtherLink}/${ContractAddress}`;
+  return etherLink;
+};
+
+export const truncateAddress = (
+  string: string,
+  firstSymbols: number = 4,
+  lastSymbols: number = 4
+) => {
+  let abbreviationAddress = '';
+  if (string) {
+    abbreviationAddress =
+      string.substring(0, firstSymbols) +
+      '...' +
+      string.substring(string.length - lastSymbols, string.length);
+    return abbreviationAddress;
+  }
+  return abbreviationAddress;
+};
+export function hexifyKey(key: string) {
+  return `0x${key}`;
+}
+
+export function capitalizeFirstLetter(str: string = '') {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export const getItemsPagination = (pages: any[]) => {
+  if (!pages?.length || pages.length === 0) {
+    return [];
+  }
+
+  return pages.reduce(
+    (
+      acc: any[],
+      page: {
+        data: {
+          items: AssetDetailsResponse[];
+        };
+      }
+    ) => {
+      return [...acc, ...(page?.data?.items || [])];
+    },
+    []
+  );
+};
+
+export function validateResolution() {
+  if (typeof window === 'undefined') return false;
+  const widthScreen = window.screen.width;
+  if (widthScreen < 768) {
+    return true;
+  }
+  return false;
+}

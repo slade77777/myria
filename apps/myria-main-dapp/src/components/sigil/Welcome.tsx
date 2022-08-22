@@ -8,13 +8,15 @@ import * as env from 'detect-browser';
 import Link from 'next/link';
 import { t, Trans } from '@lingui/macro';
 import MetaMaskOnboarding from '@metamask/onboarding';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 type Props = {
   onNext: () => void;
 };
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
-  const { address, onConnectCompaign, onConnect } = useWalletContext();
+  const { address, onConnectCompaign, disconnect } = useWalletContext();
+  const { connectL2Wallet } = useL2WalletContext();
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -88,6 +90,12 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
     return { title: t`Connect to your wallet to enter the Myriaverse` };
   })();
 
+  React.useEffect(() => {
+    if (loginByWalletMutation && loginByWalletMutation?.isError) {
+      disconnect();
+    }
+  }, [loginByWalletMutation?.isError]);
+
   return (
     <div
       className={
@@ -110,12 +118,13 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         <>
           {installedWallet === true && isSupportedBrowser && (
             <Button
-              loading={loginByWalletMutation.isLoading}
-              disabled={loginByWalletMutation.isLoading}
+              loading={loginByWalletMutation?.isLoading}
+              disabled={loginByWalletMutation?.isLoading}
               onClick={async () => {
-                await onConnect();
+                await onConnectCompaign('Sigil');
+                await connectL2Wallet();
                 event('Connect Wallet Selected', { campaign: 'Sigil' });
-                loginByWalletMutation.mutate();
+                loginByWalletMutation?.mutate();
               }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
               {address ? <Trans>LOGGING IN</Trans> : <Trans>CONNECT WALLET</Trans>}

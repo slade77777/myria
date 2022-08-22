@@ -48,7 +48,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
       <DialogPrimitive.Content {...props} className={clsx('dialog-content')} ref={forwardedRef}>
         <div
           className={clsx(
-            'mx-auto my-auto w-full max-w-[576px] rounded-lg bg-brand-deep-blue',
+            'mx-auto my-auto w-full max-w-[576px] rounded-lg bg-brand-deep-blue z-50',
             className
           )}>
           {includingHeader && (
@@ -56,7 +56,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
               <div className="flex items-center justify-between">
                 <div className={clsx('heading-md text-white', titleClassName)}>{title}</div>
                 <DialogPrimitive.Close asChild>
-                  <button className="h-[24px] w-[24px] text-white hover:cursor-pointer">
+                  <button className="h-[24px] w-[24px] text-white hover:cursor-pointer focus:outline-none">
                     <CloseIcon />
                   </button>
                 </DialogPrimitive.Close>

@@ -18,7 +18,7 @@ interface IProp {
 }
 
 const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
-  const { handleWithdrawing, valueNFT: assetDetail } = useWithDrawNFTContext();
+  const { valueNFT: assetDetail } = useWithDrawNFTContext();
   const { address } = useWalletContext();
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', assetDetail.id],
@@ -65,7 +65,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
 
         const withdrawModule = moduleFactory.getWithdrawModule();
 
-        handleWithdrawing(true);
+        // handleWithdrawing(true);
         const payloadWithdrawNftOffchain: WithdrawNftOffChainParams = {
           id: data?.assetDetails?.id,
           tokenId: data?.assetDetails?.tokenId,
@@ -77,7 +77,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           quantizedAmount: '1'
         };
         await withdrawModule?.withdrawNftOffChain(payloadWithdrawNftOffchain);
-        handleWithdrawing(false);
+        // handleWithdrawing(false);
 
         await refetch();
 

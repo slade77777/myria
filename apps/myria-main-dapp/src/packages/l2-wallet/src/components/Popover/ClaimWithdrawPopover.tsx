@@ -5,7 +5,7 @@ import Web3 from 'web3';
 import cn from 'classnames';
 // @ts-ignore
 import { asset } from '@starkware-industries/starkware-crypto-utils';
-import { Types } from 'myria-core-sdk';
+import { ConfirmationType } from 'myria-core-sdk';
 
 // Import components
 import {
@@ -94,7 +94,7 @@ export default function ClaimWithdrawPopover({
           {
             from: connectedAccount,
             nonce: new Date().getTime(),
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
           },
         );
       } else {
@@ -113,7 +113,7 @@ export default function ClaimWithdrawPopover({
           {
             from: connectedAccount,
             nonce: new Date().getTime(),
-            confirmationType: Types.ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Confirmed,
           },
         );
       }
