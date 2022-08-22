@@ -10,8 +10,11 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import truncateString from 'src/helper';
 import Page from 'src/components/Page';
+import useCheckMobileView from 'src/hooks/useCheckMobileView';
+import MessageMobileView from 'src/components/marketplace/Modals/MessageMobileView';
 
 function InventoryPage() {
+  const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
@@ -43,6 +46,10 @@ function InventoryPage() {
   }, [rawData]);
 
   // if (!address) return null;
+
+  if (isMobile) {
+    return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
+  }
 
   return (
     <Page includeFooter={false}>

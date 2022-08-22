@@ -9,6 +9,8 @@ import { AssetByCollectionIdResponse } from 'myria-core-sdk/dist/types/src/types
 import { APIResponseType } from 'myria-core-sdk/dist/types/src/types/APIResponseType';
 import { CommonPaginateDataTypes } from 'myria-core-sdk/dist/types/src/types/CommonTypes';
 import { Loading } from 'src/components/Loading';
+import MessageMobileView from 'src/components/marketplace/Modals/MessageMobileView';
+import useCheckMobileView from 'src/hooks/useCheckMobileView';
 
 const DEFAULT_PARAMS = {
   PAGE: 1,
@@ -24,6 +26,7 @@ const CollectionDetailPage = () => {
     page: DEFAULT_PARAMS.PAGE,
     limit: DEFAULT_PARAMS.LIMIT
   });
+  const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
 
   const [assetDataList, setAssetDataList] =
     useState<APIResponseType<CommonPaginateDataTypes<AssetByCollectionIdResponse>>>();
@@ -82,6 +85,10 @@ const CollectionDetailPage = () => {
       });
     }
   }, [payload]);
+
+  if (isMobile) {
+    return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
+  }
 
   return <Collection collection={collection} assetItems={assetDataList?.data} />;
 };
