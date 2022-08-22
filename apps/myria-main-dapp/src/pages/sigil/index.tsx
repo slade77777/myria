@@ -110,7 +110,7 @@ const Sigil: React.FC = () => {
             <LoadingStandBy />
           </div>
         )}
-        <Page headerClassName="hidden" footerClassName="hidden">
+        <Page headerClassName="hidden" footerClassName="hidden" includeHeader={false}>
           <Header step={currentStep} />
 
           <div className="md:hidden">
