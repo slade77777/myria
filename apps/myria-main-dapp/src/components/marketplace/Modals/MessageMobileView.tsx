@@ -11,7 +11,7 @@ const MessageMobileView: React.FC<IProp> = ({ isShow, handleClose }) => {
     <Modal open={isShow} onOpenChange={handleClose}>
       <Modal.Content title={'Notification'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
         <div className="p-8 text-white">
-          Sorry, mobile is not currently supported. Visit us on your desktop browser
+          Sorry, mobile is not currently supported. Visit us on your desktop browser.
         </div>
       </Modal.Content>
     </Modal>

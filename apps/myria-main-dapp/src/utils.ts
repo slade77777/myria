@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro';
 import { BigNumber, ethers } from 'ethers';
+import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { EXPLORE_LINKS } from './services/common-ethers';
-import { getNetworkId } from './services/myriaCoreSdk';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
 const FORMAT_PRICE = 1000000;
@@ -148,6 +148,26 @@ export function hexifyKey(key: string) {
 export function capitalizeFirstLetter(str: string = '') {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export const getItemsPagination = (pages: any[]) => {
+  if (!pages?.length || pages.length === 0) {
+    return [];
+  }
+
+  return pages.reduce(
+    (
+      acc: any[],
+      page: {
+        data: {
+          items: AssetDetailsResponse[];
+        };
+      }
+    ) => {
+      return [...acc, ...(page?.data?.items || [])];
+    },
+    []
+  );
+};
 
 export function validateResolution() {
   if (typeof window === 'undefined') return false;
