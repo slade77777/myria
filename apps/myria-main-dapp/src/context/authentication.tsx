@@ -129,8 +129,8 @@ const RegisterSuccessdModal = ({ open, onClose }: { open: boolean; onClose?: () 
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title="Email confirmation sent" className="shadow-[0_0_40px_10px_#0000004D]">
         <div className="px-8">
-          <p className="body my-8 text-light">
-            Please check your inbox and follow the link to to confirm your email.
+          <p className="body text-light my-8">
+            Please check your inbox and follow the link to confirm your email.
           </p>
         </div>
       </Modal.Content>
