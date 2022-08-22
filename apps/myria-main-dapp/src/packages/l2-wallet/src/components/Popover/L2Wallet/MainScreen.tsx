@@ -101,8 +101,8 @@ export const DF_TRANSACTION_TYPE = {
     rotateIcon: 'top',
   },
   [TRANSACTION_TYPE.TRANSFER]: {
-    title: 'NFT Withdrawal',
-    titleHistoryDetail: 'Withdrawal',
+    title: 'NFT Transfer',
+    titleHistoryDetail: 'Transfer',
     titleFailed: '',
     iconReceived: (
       <Arrow3Icon direction="top" className="text-blue/6 mr-1" size={60} />
@@ -387,12 +387,11 @@ export default function MainScreen({
         return 'NFT Purchase';
       }
     }
-    if (
-      !item.name &&
-      (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-        item.type === TRANSACTION_TYPE.TRANSFER)
-    ) {
+    if (!item.name && item.type === TRANSACTION_TYPE.WITHDRAWAL) {
       return 'NFT Withdraw';
+    }
+    if (!item.name && item.type === TRANSACTION_TYPE.TRANSFER) {
+      return 'NFT Transfer';
     } else {
       return DF_TRANSACTION_TYPE[item?.type]?.title;
     }
