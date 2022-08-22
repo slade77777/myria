@@ -148,3 +148,12 @@ export function hexifyKey(key: string) {
 export function capitalizeFirstLetter(str: string = '') {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export function validateResolution() {
+  if (typeof window === 'undefined') return false;
+  const widthScreen = window.screen.width;
+  if (widthScreen < 768) {
+    return true;
+  }
+  return false;
+}

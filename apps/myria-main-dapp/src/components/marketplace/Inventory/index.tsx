@@ -33,7 +33,7 @@ function Inventory({
     <div className="bg-base/2 h-full w-full py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <div className="w-full ">
         <div className="max-w-content mx-auto h-full">
-          <div className="mb-[58px] flex items-end justify-between">
+          <div className="mb-[58px] md:flex items-end justify-between">
             <div className="flex">
               <div className="mr-[40px] w-[120px] overflow-hidden rounded-full">
                 <img width="100%" src={'/images/marketplace/user.png'} alt="" />
