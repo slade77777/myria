@@ -17,9 +17,7 @@ export default function DepositFailedScreen({
       <div className="text-center">
         <div
           className="-mt-8 flex cursor-pointer items-center"
-          onClick={() => {
-            goBack();
-          }}
+          onClick={goBack}
         >
           <ArrowIcon direction="left" />
           <div className="ml-2 text-[20px] text-white">Deposit</div>
@@ -37,15 +35,9 @@ export default function DepositFailedScreen({
           <div className="text-base/9 flex items-center justify-between">
             <div className="text-sm">Amount</div>
             <span className="flex items-center text-white">
-              <DAOIcon size={14} className="mb-[2px]" />
+              <DAOIcon size={16} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>
-          </div>
-          <div className="mt-2 flex items-center justify-between">
-            <div className="text-base/9 text-sm">Transaction ID</div>
-            <div>
-              <span className="text-primary/6 text-sm">View</span>
-            </div>
           </div>
         </div>
       </div>

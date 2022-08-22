@@ -24,6 +24,7 @@ export default function DepositInProgressScreen({
         onClick={() => {
           goBack();
         }}
+        id="deposit-in-progress"
       >
         <ArrowIcon direction="left" />
         <div className="ml-2 text-[20px] text-white">Deposit</div>
@@ -42,13 +43,13 @@ export default function DepositInProgressScreen({
           <div className="flex justify-between">
             <span>Amount</span>
             <span className="flex items-center text-white">
-              <DAOIcon size={14} className="mb-[2px]" />
+              <DAOIcon size={16} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>
           </div>
           <div className="mt-4 flex justify-between">
             <span>Estimated completion</span>
-            <span className="text-white">1-2 minutes</span>
+            <span className="text-primary/6">10 minutes</span>
           </div>
         </div>
       </div>

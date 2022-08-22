@@ -23,10 +23,9 @@ interface IProps {
 const UserAvatar: React.FC<IProps> = ({ items }) => {
   const { loginByWalletMutation, showConnectedWallet, walletAddress, localStarkKey } = items;
   const isLogin =
-    !loginByWalletMutation.isError && walletAddress && showConnectedWallet && localStarkKey;
-  const avatar = isLogin
-    ? '/images/marketplace/collection-1-logo.png'
-    : '/images/marketplace/user.png';
+    !loginByWalletMutation?.isError && walletAddress && showConnectedWallet && localStarkKey;
+
+  const avatar = '/images/marketplace/user.png';
 
   return (
     <DropdownMenu>

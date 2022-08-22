@@ -1,7 +1,5 @@
-import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
-import { CommonModule } from 'myria-core-sdk/dist/types/src/modules';
+import { IMyriaClient, MyriaClient, ModuleFactory } from 'myria-core-sdk';
 import Web3 from 'web3';
-import { number } from 'yup';
 
 declare const window: any;
 const MAINNET = 1;
@@ -62,7 +60,7 @@ async function getModuleFactory() {
   };
 
   const myriaClient = new MyriaClient(client);
-  const moduleFactory = Modules.ModuleFactory.getInstance(myriaClient);
+  const moduleFactory = ModuleFactory.getInstance(myriaClient);
   return moduleFactory;
 }
 

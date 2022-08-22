@@ -51,10 +51,10 @@ export default function CurrencySelector({ selectHandle, options }: TProp) {
     <div ref={setDropdownRef}>
       <div className="relative">
         <div
-          onClick={() => {
-            toggleDropDown();
-          }}
-          className="relative flex h-[52px] w-full cursor-pointer items-center justify-between rounded-[8px] bg-[#132533] px-4"
+          // onClick={() => {
+          //   toggleDropDown();
+          // }}
+          className="relative flex h-[52px] w-full items-center justify-between rounded-[8px] bg-[#132533] px-4"
         >
           <div>
             {selectedItem ? (
@@ -75,11 +75,11 @@ export default function CurrencySelector({ selectHandle, options }: TProp) {
               'Select Currency'
             )}
           </div>
-          <button aria-label="toggle menu">
+          {/* <button aria-label="toggle menu">
             <ChevronIcon />
-          </button>
+          </button> */}
         </div>
-        {isOpen && (
+        {/* {isOpen && (
           <ul className="absolute z-[10] w-full rounded-[10px] border bg-[#132533]">
             {options.map((item: any, index: number) => (
               <div
@@ -110,7 +110,7 @@ export default function CurrencySelector({ selectHandle, options }: TProp) {
               </div>
             ))}
           </ul>
-        )}
+        )} */}
       </div>
     </div>
   );

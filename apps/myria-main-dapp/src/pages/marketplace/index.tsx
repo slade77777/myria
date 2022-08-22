@@ -1,47 +1,56 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
+import { AssetOrderBy, OrderStatus, OrderType } from 'myria-core-sdk';
 import React from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
+import { useInfiniteQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import AssetList from 'src/components/marketplace/AssetList';
 import HotCollection from 'src/components/marketplace/HotCollection';
+import MessageMobileView from 'src/components/marketplace/Modals/MessageMobileView';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
-import { useQuery } from 'react-query';
-import { collectionModule } from 'src/services/myriaCore';
-import { formatPrice, negativeMarginXSm, paddingX } from 'src/utils';
+import useCheckMobileView from 'src/hooks/useCheckMobileView';
+import { assetModule } from 'src/services/myriaCore';
+import { getItemsPagination, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';
-import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
-import truncateString from 'src/helper';
-const payload = {
-  limit: 10,
-  page: 1,
-  isHot: true
-};
 const Marketplace: React.FC = () => {
-  const { data: fetchHotCollection } = useQuery(['marketplace', 'hotCollection'], () =>
-    collectionModule?.getCollectionList(payload)
-  );
-  const hotCollection: CollectionItems[] | undefined = fetchHotCollection?.data.items;
-
-  const { data: dataOrder } = useQuery(
+  const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
+  const {
+    fetchNextPage,
+    fetchPreviousPage,
+    hasNextPage,
+    hasPreviousPage,
+    isFetchingNextPage,
+    isFetchingPreviousPage,
+    ...result
+  } = useInfiniteQuery(
     ['homepage', 'listorder'],
-    async () => {
-      if (!hotCollection || !collectionModule) return;
-      const firstList = await collectionModule.getAssetByCollectionId({
-        collectionId: hotCollection[0].id,
-        assetType: 'FOR_SALE'
-      });
-      const secondList = await collectionModule.getAssetByCollectionId({
-        collectionId: hotCollection[1].id,
-        assetType: 'FOR_SALE'
-      });
-      const listOrder = [];
-      firstList?.data.items && listOrder.push(...firstList?.data.items);
-      secondList?.data.items && listOrder.push(...secondList?.data.items);
-      return listOrder;
-    },
-    { enabled: !!hotCollection }
+    ({ pageParam = 1 }) =>
+      assetModule?.getNftAssetsByStatus({
+        limit: 15,
+        orderType: OrderType.SELL,
+        page: pageParam,
+        status: OrderStatus.ACTIVE,
+        sortingField: 'amountBuy',
+        orderBy: AssetOrderBy.ASC
+      }),
+    {
+      getNextPageParam: (lastPage, pages) => {
+        if (!lastPage) return;
+        const { currentPage, totalPages } = lastPage?.data.meta;
+        if (currentPage <= totalPages) {
+          return pages.length + 1;
+        }
+        return undefined;
+      }
+    }
   );
+  if (isMobile) {
+    return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
+  }
+
+  const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   return (
     <Page includeFooter={false}>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
@@ -53,24 +62,38 @@ const Marketplace: React.FC = () => {
             <HotCollection />
           </section>
           <section className="mb-20 mt-[64px]">
-            {dataOrder && (
-              <AssetList
-                title="Explore"
-                items={dataOrder.map((elm, index) => {
-                  const item: NFTItemType = {
-                    id: `${elm.id}`,
-                    rarity: (elm.metadata as any).rarity,
-                    name: elm.name || '',
-                    image_url: elm.imageUrl || '',
-                    // @ts-ignore need update sdk AssetByCollectionType
-                    creator: elm.creator?.name || '',
-                    creatorImg: avatar.src,
-                    priceETH: formatPrice(parseFloat(elm.order.nonQuantizedAmountBuy)) // +elm... to convert string to number
-                  };
-                  return item;
-                })}
-              />
-            )}
+            <div className="overflow-auto">
+              <div>
+                <InfiniteScroll
+                  pageStart={1}
+                  loadMore={() => fetchNextPage()}
+                  hasMore={!isFetchingNextPage && hasNextPage}
+                  loader={
+                    <div className="loader text-white" key={0}>
+                      Loading ...
+                    </div>
+                  }>
+                  <AssetList
+                    title={'Explore'}
+                    items={items?.map((elm: any, index: number) => {
+                      const isOrder = Array.isArray(elm?.order);
+                      const item: NFTItemType = {
+                        id: `${elm.id}`,
+                        rarity: (elm.metadata as any).rarity,
+                        name: elm.name || '',
+                        image_url: elm.imageUrl || '',
+                        creator: elm.creator?.name || '',
+                        creatorImg: avatar.src,
+                        priceETH: isOrder
+                          ? Number(elm?.order[0]?.nonQuantizedAmountBuy)
+                          : elm?.order?.nonQuantizedAmountBuy
+                      };
+                      return item;
+                    })}
+                  />
+                </InfiniteScroll>
+              </div>
+            </div>
           </section>
         </div>
       </div>

@@ -43,7 +43,6 @@ import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/even
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useL2WalletContext } from 'src/context/l2-wallet';
-import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
 
 interface Props {
   id: string;
@@ -56,6 +55,7 @@ interface IProp {
   starkKey?: string;
   assetDetails?: AssetDetailsResponse;
   setShowUnlist?: any;
+  onShowPopover?: any;
 }
 
 export enum AssetStatus {
@@ -70,9 +70,9 @@ const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="border-base/6 bg-base/3 rounded-[8px] border py-4 text-center">
-      <p className="text-blue/6 uppercase">{keyword}</p>
-      <p className="font-medium">{val}</p>
+    <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
+      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
+      <p className="text-sm font-medium">{val}</p>
     </div>
   );
 };
@@ -81,7 +81,7 @@ function AssetDetails({ id }: Props) {
   const router = useRouter();
 
   const { data, isLoading, refetch } = useQuery(
-    ['assetDetail', id],
+    ['assetDetail', +id],
     async () => {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
@@ -92,7 +92,6 @@ function AssetDetails({ id }: Props) {
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
       handleSetValueNFT(assetDetails?.data);
-
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
@@ -103,9 +102,10 @@ function AssetDetails({ id }: Props) {
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
   const starkKey = useMemo(() => `0x${starkKeyUser}`, [starkKeyUser]);
-  const { connectL2Wallet, disconnectL2Wallet } = useL2WalletContext();
+  const { connectL2Wallet, handleSetFirstPurchase, handleDisplayPopoverWithdrawNFT } =
+    useL2WalletContext();
 
-  const assetDetails = useMemo(() => data?.assetDetails, [data?.assetDetails]);
+  const assetDetails = data?.assetDetails;
   const ownedBy = useMemo(() => {
     if (assetDetails?.owner?.starkKey == starkKey) {
       return <Trans>You</Trans>;
@@ -113,19 +113,18 @@ function AssetDetails({ id }: Props) {
     return truncateString(`${assetDetails?.owner?.starkKey}`);
   }, [assetDetails?.owner?.starkKey, starkKey]);
   const listOrder = useMemo(() => data?.listOrder, [data?.listOrder]);
-  const titleBack = useMemo(
-    () =>
-      assetDetails?.collectionName ? (
-        <span>
-          <Trans>BACK TO</Trans> {assetDetails.collectionName.toUpperCase()}
-        </span>
-      ) : (
-        <span>
-          <Trans>BACK</Trans>
-        </span>
-      ),
-    [assetDetails]
-  );
+  const titleBack = useMemo(() => {
+    const result = router?.asPath.includes('inventory') ? (
+      <span>
+        <Trans>BACK TO INVENTORY</Trans>
+      </span>
+    ) : (
+      <span>
+        <Trans>BACK MYRIA HOT COLLECTIONS</Trans>
+      </span>
+    );
+    return result;
+  }, [router]);
 
   const { data: moreCollectionList } = useQuery(
     ['moreCollection', assetDetails?.collectionId],
@@ -139,7 +138,10 @@ function AssetDetails({ id }: Props) {
         assetType: 'FOR_SALE',
         collectionId: Number(assetDetails?.collectionId)
       });
-      return res?.data;
+      // get only 4 elements
+      return res?.data.items.filter((item: any, index: number) => {
+        return index <= 3;
+      });
     },
     {
       enabled: !!assetDetails?.collectionId //dependence by assetDetails?.collectionId
@@ -149,12 +151,17 @@ function AssetDetails({ id }: Props) {
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
     lodash.map(assetDetails?.metadataOptional, (val, key) => {
+      if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('tokenid')) {
+        resultArray.push({ key, val }); // remove all key what has 'url'.
+      }
+    });
+    lodash.map(assetDetails?.metadata, (val, key) => {
       if (!key.toLowerCase().includes('url')) {
         resultArray.push({ key, val }); // remove all key what has 'url'.
       }
     });
     return resultArray;
-  }, [assetDetails?.metadataOptional]);
+  }, [assetDetails?.metadataOptional, assetDetails?.metadata]);
   // the status will be get from based on the order Object in API get assetDetails
 
   const [status, setStatus] = useState<AssetStatus>(AssetStatus.UNCONNECTED);
@@ -168,7 +175,7 @@ function AssetDetails({ id }: Props) {
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
   const { data: etheCost = 0 } = useEtheriumPrice();
-  const { address, onConnect, onConnectCompaign } = useWalletContext();
+  const { address, onConnectCompaign } = useWalletContext();
   const { loginByWalletMutation } = useAuthenticationContext();
   // wait update sdk
   const bgImage = assetDetails?.metadataOptional
@@ -176,12 +183,9 @@ function AssetDetails({ id }: Props) {
     : 'common';
   const rarityColor = getRarityColor(bgImage);
   const {
-    isWithdrawing,
     status: withdrawalStatus,
     setStatus: setWithdrawalStatus,
-    handleSetValueNFT,
-    isShowLearnMore,
-    handleLearnMore
+    handleSetValueNFT
   } = useWithDrawNFTContext();
   const [assetBuy, setAssetBuy] = useState<{
     name: string;
@@ -552,24 +556,24 @@ function AssetDetails({ id }: Props) {
     );
   }
   return (
-    <div className="max-w-content mx-auto w-full bg-base/2 py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
+    <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] ">
       <button onClick={router.back} className="mb-14 items-center">
         <div className="flex">
           <BackIcon />
-          <span className="ml-[6px] font-normal text-[14px]">{titleBack}</span>
+          <span className="ml-[6px] text-[14px] font-normal">{titleBack}</span>
         </div>
       </button>
-      <div className="flex flex-row space-x-28">
+      <div className="flex flex-row gap-[104px]">
         {/* container */}
         <div className="w-[620px]">
-          <div className="relative flex h-[620px] w-full items-center justify-center lg:h-[620px]  rounded-[12px] ">
-            <div className="absolute h-full w-full bg-[#081824] rounded-[12px]" />
+          <div className="relative flex h-[620px] w-full items-center justify-center rounded-[12px]  lg:h-[620px] ">
+            <div className="absolute h-full w-full rounded-[12px] bg-[#081824]" />
             <div
-              className="z-1 absolute h-full w-full opacity-[0.3] rounded-[12px]"
+              className="z-1 absolute h-full w-full rounded-[12px] opacity-[0.3]"
               style={{ backgroundColor: rarityColor }}
             />
             <div
-              className="z-2 absolute h-[372px] w-[372px] bg-cover bg-center bg-no-repeat  rounded-[12px]"
+              className="z-2 absolute h-[372px] w-[372px] rounded-[12px] bg-cover bg-center  bg-no-repeat"
               style={{
                 backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})`
               }}
@@ -589,7 +593,7 @@ function AssetDetails({ id }: Props) {
             </div>
           )}
         </div>
-        <div className="w-[620px]">
+        <div className="w-[540px]">
           {/* right */}
           <div>
             {/* very top */}
@@ -597,12 +601,10 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className="flex flex-row items-center">
                 <img src={avatar.src} className="h-[24px] w-[24px]" />
-                <span className="text-light ml-[8px] text-base">
-                  {assetDetails?.collectionName}
-                </span>
+                <span className="text-light ml-2 text-base">{assetDetails?.collectionName}</span>
               </div>
               <div
-                className="bg-base/3 w-10 cursor-pointer rounded p-[10px]"
+                className="bg-base/3 w-10 cursor-pointer rounded p-3"
                 onClick={() => {
                   toast('The function is not ready yet!');
                 }}>
@@ -612,7 +614,7 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="text-light mt-6 flex">
+              <div className="text-light mt-6 flex text-sm font-normal">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
@@ -622,7 +624,7 @@ function AssetDetails({ id }: Props) {
                 </span>
               </div>
 
-              <div className="text-light flex gap-6">
+              <div className="text-light flex gap-6 text-sm font-normal">
                 <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
                   <MintedIcon />
                   <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
@@ -657,8 +659,10 @@ function AssetDetails({ id }: Props) {
                 setStatus={() => {
                   onTrackingConnectWallet();
                   onConnectCompaign('B2C Marketplace');
-                  if (loginByWalletMutation.isError) {
-                    loginByWalletMutation.mutate();
+                  // handle if the first purchase
+                  handleSetFirstPurchase(true);
+                  if (loginByWalletMutation?.isError) {
+                    loginByWalletMutation?.mutate();
                   }
                   connectL2Wallet();
                 }}
@@ -672,6 +676,7 @@ function AssetDetails({ id }: Props) {
                   setShowModal(true);
                   onTrackingNoPriceItem('MKP Item Listing Selected');
                 }}
+                onShowPopover={() => handleDisplayPopoverWithdrawNFT(true)}
                 trackWithDraw={() => onTrackingNoPriceItem('MKP Item Withdrawal Selected')}
               />
             )}
@@ -703,10 +708,10 @@ function AssetDetails({ id }: Props) {
           </div>
         </div>
       </div>
-      <div className="mt-[64px]">
+      <div className="mt-16">
         <AssetList
           title={'More from this collection'}
-          items={moreCollectionList?.items?.map((elm: any, index: number) => {
+          items={moreCollectionList?.map((elm: any) => {
             const item: NFTItemType = {
               id: `${elm.id}`,
               rarity: (elm.metadata as any).rarity,
@@ -734,6 +739,7 @@ function AssetDetails({ id }: Props) {
           onCloseMessage={() => {
             onTrackingItem({ eventName: 'MKP Check Out Canceled' });
             setShowPopup(false);
+            setShowMessage(true);
           }}
           assetBuy={assetBuy}
           setChangeStatusSuccess={() => {
@@ -747,6 +753,7 @@ function AssetDetails({ id }: Props) {
           onClose={() => setShowModalUnlist(false)}
           onHandleUnlist={onHandleUnlist}
           onHandleCancel={() => setShowModalUnlist(false)}
+          assetName={assetDetails?.name}
         />
       )}
       <MessageModal
@@ -756,14 +763,20 @@ function AssetDetails({ id }: Props) {
       </MessageModal>
       {showMessage && (
         <MessageModal isShowMessage={showMessage} setIsShowMessage={() => setShowMessage(false)}>
-          <MessagePurchaseModal />
+          <MessagePurchaseModal
+            assetName={assetDetails?.name}
+            onClose={() => setShowMessage(false)}
+          />
         </MessageModal>
       )}
       {showMessageEdit && (
         <MessageModal
           isShowMessage={showMessageEdit}
           setIsShowMessage={() => setShowMessageEdit(false)}>
-          <MessageEditListingModal />
+          <MessageEditListingModal
+            assetName={assetDetails?.name}
+            onClose={() => setShowMessageEdit(false)}
+          />
         </MessageModal>
       )}
       {showModal && (
@@ -775,31 +788,25 @@ function AssetDetails({ id }: Props) {
           imgSrc={assetDetails?.imageUrl}
           open={showModal}
           onClose={handleCloseModal}
+          rarityColor={rarityColor}
         />
       )}
       {showMessageModify.isShow && (
         <MessageModal
           isShowMessage={showMessageModify.isShow}
           setIsShowMessage={() => setShowMessageModify({ ...showMessageModify, isShow: false })}>
-          <MessageListingPriceModal price={showMessageModify.newPrice} />
+          <MessageListingPriceModal
+            price={showMessageModify.newPrice}
+            assetName={assetDetails?.name}
+          />
         </MessageModal>
       )}
       {showMessageUnlist && (
         <MessageModal
           isShowMessage={showMessageUnlist}
           setIsShowMessage={() => setShowMessageUnlist(false)}>
-          <MessageUnlist />
+          <MessageUnlist assetName={assetDetails?.name} />
         </MessageModal>
-      )}
-      {isShowLearnMore && (
-        <LearnMoreWithdrawNFTModal
-          open={isShowLearnMore}
-          onClose={() => {
-            handleLearnMore(false);
-            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-            triggerWithdraw?.click();
-          }}
-        />
       )}
     </div>
   );
@@ -809,14 +816,14 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
   setStatus,
   starkKey,
   assetDetails,
-  trackWithDraw
+  trackWithDraw,
+  onShowPopover
 }) => {
-  const { isWithdrawing, handleSetValueNFT } = useWithDrawNFTContext();
+  const { handleSetValueNFT } = useWithDrawNFTContext();
 
   const handleWithdraw = async () => {
     handleSetValueNFT(assetDetails);
-    const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-    triggerWithdraw?.click();
+    onShowPopover();
     trackWithDraw?.();
   };
 
@@ -834,22 +841,20 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
       </div>
       {starkKey === assetDetails?.owner?.starkKey && (
         <>
-          {assetDetails?.status == 'WITHDRAWING' && isWithdrawing ? (
+          {assetDetails?.status == 'WITHDRAWING' ? (
             <>
-              <button
-                disabled
-                className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold">
+              <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
                 <Trans>LIST ITEM FOR SALE</Trans>
-              </button>
-              <button className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+              </div>
+              <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
                 <Trans>WITHDRAWAL IN PROGRESS</Trans>
-              </button>
+              </div>
             </>
           ) : assetDetails?.status == 'WITHDRAWAL_COMPLETED' ? (
             <>
-              <button className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+              <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
                 <Trans>WITHDRAW COMPLETED</Trans>
-              </button>
+              </div>
             </>
           ) : (
             <>
@@ -979,21 +984,21 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
   );
 };
 
-const UnlistModal: React.FC<any> = ({ open, onClose, onHandleCancel, onHandleUnlist }) => {
+const UnlistModal: React.FC<any> = ({
+  open,
+  onClose,
+  onHandleCancel,
+  onHandleUnlist,
+  assetName
+}) => {
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={'Unlist Your NFT?'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
-        <UnlistModalContent onHandleCancel={onHandleCancel} onHandleUnlist={onHandleUnlist} />
-      </Modal.Content>
-    </Modal>
-  );
-};
-
-const LearnMoreWithdrawNFTModal: React.FC<any> = ({ open, onClose }) => {
-  return (
-    <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content title={'Learn More'} className="mt-0 shadow-[0_0_40px_10px_#0000004D]">
-        <LearnMoreWithdrawNFT />
+        <UnlistModalContent
+          onHandleCancel={onHandleCancel}
+          onHandleUnlist={onHandleUnlist}
+          assetName={assetName}
+        />
       </Modal.Content>
     </Modal>
   );

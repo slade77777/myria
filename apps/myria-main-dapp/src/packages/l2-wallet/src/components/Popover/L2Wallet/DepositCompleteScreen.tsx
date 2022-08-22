@@ -1,9 +1,10 @@
 import { TxResult } from 'myria-core-sdk/dist/types/src/types';
+import { useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import Popover from 'src/components/Popover';
-import { ethersLink } from '../../../constants';
-import { ArrowIcon, TickCircleIcon } from '../../Icons';
-
+import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { getExplorerForAddress } from 'src/utils';
+import { ArrowIcon, ProgressIcon, TickCircleIcon } from '../../Icons';
 type Props = {
   amount: Number;
   successHandler: any;
@@ -19,9 +20,18 @@ export default function DepositCompleteScreen({
   goBack,
   items,
 }: Props) {
-  const URL_LINK = `${ethersLink.goerli_goerli}${
-    items?.transactionHash ? items?.transactionHash : ''
-  }`;
+  const [etherLinkContract, setEtherLinkContract] = useState<string>();
+  useEffect(() => {
+    const setLink = async () => {
+      const networkId = await getNetworkId();
+      if (!networkId || !items?.transactionHash) return '';
+      setEtherLinkContract(
+        getExplorerForAddress(items?.transactionHash, networkId, 'transaction'),
+      );
+    };
+    setLink();
+  }, [items?.transactionHash]);
+
   return (
     <>
       <div
@@ -34,21 +44,25 @@ export default function DepositCompleteScreen({
         <div className="ml-2 text-[20px] text-white">Deposit</div>
       </div>
       <div className="grow">
-        <div className="mt-8 flex justify-center">
-          <TickCircleIcon className="text-light-green" />
+        <div className="mx-auto mt-5 flex h-16 w-16 justify-center">
+          <ProgressIcon size={64} className="text-light-green w-full" />
         </div>
+        {/* <div className="mt-8 flex justify-center"> */}
+        {/* <TickCircleIcon className="text-light-green" /> */}
+        {/* <ProgressIcon size={64} className="text-blue/6 w-full" /> */}
+        {/* </div> */}
 
         <div className="mt-6 text-center text-2xl text-white">
-          Deposit complete
+          Deposit is in progress
         </div>
         <div className="text-base/9 mt-4 px-7 text-center text-sm">
-          Your funds are now available in your Myria wallet.
+          Funds to be available in your Myria wallet soon
         </div>
         <div className="text-base/9 bg-base/2/50 mt-8 rounded-lg py-2 px-4 text-sm">
           <div className="flex justify-between text-sm">
             <span>Amount</span>
             <span className="flex items-center text-white">
-              <DAOIcon size={14} className="mb-[2px]" />
+              <DAOIcon size={16} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>
           </div>
@@ -57,7 +71,7 @@ export default function DepositCompleteScreen({
             <a
               className="text-primary/6"
               target="_blank"
-              href={URL_LINK}
+              href={etherLinkContract}
               rel="noreferrer"
             >
               View

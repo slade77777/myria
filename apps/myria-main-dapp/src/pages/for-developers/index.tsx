@@ -3,13 +3,14 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import axios from 'axios';
 import ContactSalesTeamModal from 'src/components/ContactSalesTeamModal';
 import Ethereum from 'src/components/for-developers/Ethereum';
 import Myria from 'src/components/for-developers/Myria';
 import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
 import Page from 'src/components/Page';
 import Input from 'src/components/Input';
+import { klaviyoClient } from 'src/client';
+
 import { paddingX } from 'src/utils';
 import DiscordGameIcon from 'src/packages/l2-wallet/src/components/Icons/DiscordGameIcon';
 import { socialLinks } from '../../configs';
@@ -17,11 +18,16 @@ import { socialLinks } from '../../configs';
 // import { useGA4 } from '../lib/ga';
 import { useGA4 } from 'src/lib/ga';
 import NewsLetter from '../newsletter';
+import ContactUsSalesForceSuccessModal from 'src/components/modals/ContactUsSalesForceSuccessModal';
+import SubscriptionSuccessModal from 'src/components/modals/SubscriptionSuccessModal';
 
 const listId = process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID;
 
 const ForDevelopers: React.FC = () => {
   const [showContactSalesTeamModal, setShowFirstTimeVisitModal] = useState(false);
+  const [showContactSalesSuccessModal, setShowContactSalesSuccessModal] = useState(false);
+  const [showSubscriptionSuccessModal, setShowSubscriptionSuccessModal] = useState(false);
+
   const [email, setEmail] = useState<string>('');
   const { event } = useGA4();
 
@@ -29,23 +35,37 @@ const ForDevelopers: React.FC = () => {
     setShowFirstTimeVisitModal(false);
   };
 
+  const handleSuccessCloseContactSalesModal = () => {
+    setShowFirstTimeVisitModal(false);
+    setShowContactSalesSuccessModal(true);
+  };
+
+  const handleCloseContactSalesSuccessModal = () => {
+    setShowContactSalesSuccessModal(false);
+  };
+
+  const handleCloseSubscriptionSuccessModal = () => {
+    setShowSubscriptionSuccessModal(false);
+  };
+
   const emailsubmit = async () => {
     let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
     if (regex.test(email)) {
       try {
-        const options = {
-          method: 'POST',
-          headers: { Accept: 'text/html', 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({
-            data: `{"token": "${process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID}","properties": {"$email":"${email}"}}`
-          })
-        };
-        await axios.post('https://a.klaviyo.com/api/identify', options);
+        await klaviyoClient.public.identify({
+          email,
+          properties: {
+            $first_name: 'hey testname',
+            $last_name: 'hey lastname'
+          },
+          post: true
+        });
+        setShowSubscriptionSuccessModal(true);
+        event('Email Subscribed', { campaign: 'B2B', user_email: email });
       } catch (err) {
         console.error(err);
       }
       setEmail('');
-      event('Email Subscribed', { campaign: 'B2B', user_email: email });
     }
   };
 
@@ -83,18 +103,21 @@ const ForDevelopers: React.FC = () => {
                 blockchain gaming.
               </Trans>
             </p>
-            <div className="space-x-6">
-              <Link href="http://docs.myria.com/">
-                <a
-                  className="btn-lg btn-primary mt-8"
-                  onClick={() => {
-                    event('B2B Start Building Selected', {
-                      campaign: 'B2B'
-                    });
-                  }}>
-                  <Trans>START BUILDING</Trans>
-                </a>
-              </Link>
+            <div className="flex justify-center mt-8 space-x-6">
+              <div>
+                <Link href="http://docs.myria.com/">
+                  <a
+                    className="btn-lg btn-primary"
+                    onClick={() => {
+                      event('B2B Start Building Selected', {
+                        campaign: 'B2B'
+                      });
+                    }}>
+                    <Trans>START BUILDING</Trans>
+                  </a>
+                </Link>
+              </div>
+
               <button
                 onClick={() => {
                   setShowFirstTimeVisitModal(true);
@@ -102,7 +125,7 @@ const ForDevelopers: React.FC = () => {
                     campaign: 'B2B'
                   });
                 }}>
-                <a className="btn-lg border-base/9 border">
+                <a className="border btn-lg border-base/9">
                   <Trans>CONTACT SALES</Trans>
                 </a>
               </button>
@@ -138,15 +161,17 @@ const ForDevelopers: React.FC = () => {
             )}>
             <Myria />
           </section>
-          <section className="mx-auto max-w-[1440px] px-[88px] pt-[200px] pb-[160px]">
-            <div className="flex space-x-6">
-              <div className="w-[620px] rounded-[20px] bg-[#081825] p-[48px]">
-                <div className="text-[32px] leading-[47px] text-white">Stay up to date with us</div>
+          <section className="mx-auto max-w-[1440px] pb-[160px] pt-[50px] md:px-[88px] md:pt-[200px]">
+            <div className="grid grid-cols-1 space-y-4 lg:grid-cols-2 lg:space-x-6 lg:space-y-0">
+              <div className="mx-4 rounded-[20px] bg-[#081825] p-[30px] md:mx-0 md:p-[48px] xl:w-[620px]">
+                <div className="text-[25px] leading-[47px] text-white md:text-[32px]">
+                  Stay up to date with us
+                </div>
                 <p className="text-base/9 mt-4 text-[20px] leading-[26px]">
                   Sign up to our newsletter for development updates
                 </p>
-                <div className="mt-[84px] flex space-x-5">
-                  <div className="w-full flex-1">
+                <div className="mt-4 flex space-x-5 md:mt-[84px]">
+                  <div className="flex-1 w-full">
                     <Input
                       value={email}
                       className="border-none bg-[#172630]"
@@ -164,8 +189,8 @@ const ForDevelopers: React.FC = () => {
                   </button>
                 </div>
               </div>
-              <div className="w-[620px] rounded-[20px] bg-[#081825] p-[48px]">
-                <div className="text-[32px] leading-[47px] text-white">
+              <div className="mx-4 rounded-[20px] bg-[#081825] p-[30px] md:mx-0 md:p-[48px] xl:w-[620px]">
+                <div className="text-[25px] leading-[47px] text-white md:text-[32px]">
                   Join Myria Developers Discord
                 </div>
                 <p className="text-base/9 mt-4 text-[20px] leading-[26px]">
@@ -192,6 +217,15 @@ const ForDevelopers: React.FC = () => {
       <ContactSalesTeamModal
         open={showContactSalesTeamModal}
         onClose={handleCloseContactSalesTeamModal}
+        onSuccessClose={handleSuccessCloseContactSalesModal}
+      />
+      <ContactUsSalesForceSuccessModal
+        open={showContactSalesSuccessModal}
+        onClose={handleCloseContactSalesSuccessModal}
+      />
+      <SubscriptionSuccessModal
+        open={showSubscriptionSuccessModal}
+        onClose={handleCloseSubscriptionSuccessModal}
       />
     </Page>
   );

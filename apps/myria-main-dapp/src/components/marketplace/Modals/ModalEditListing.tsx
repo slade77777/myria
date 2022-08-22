@@ -25,6 +25,7 @@ interface Props {
   imgSrc?: string;
   onSubmit: (data: IFormInputs) => void;
   status: AssetStatus;
+  rarityColor: string;
 }
 
 interface IFormInputs {
@@ -39,7 +40,8 @@ export const ModalEditListing: React.FC<Props> = ({
   onClose,
   items,
   status,
-  onSubmit
+  onSubmit,
+  rarityColor
 }) => {
   const schema = yup
     .object({
@@ -51,24 +53,29 @@ export const ModalEditListing: React.FC<Props> = ({
     register,
     handleSubmit,
     watch,
-    formState: { errors, isDirty, isValid, isSubmitSuccessful }
+    formState: { errors, isDirty, isValid, isSubmitSuccessful, isSubmitted }
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   });
   const ethPrice = watch('price');
+  const canConfirm = !isNaN(parseFloat(ethPrice)) && parseFloat(ethPrice) > 0;
+
   const BUTTON_BG = useMemo(() => {
-    return (isDirty || isValid) && !isSubmitSuccessful ? 'btn-primary' : 'btn-disabled';
-  }, [isDirty, isValid, isSubmitSuccessful]);
+    return (isDirty || isValid) && !isSubmitSuccessful && canConfirm
+      ? 'btn-primary'
+      : 'btn-disabled';
+  }, [isDirty, isValid, isSubmitSuccessful, canConfirm]);
+
   const defaultModal =
     status === AssetStatus.MODIFY
       ? {
           title: 'Modify Listing',
-          titleConfirm: <Trans>CONFIRMING CHANGE</Trans>,
+          titleConfirm: <Trans>CONFIRM CHANGE</Trans>,
           labelInput: <Trans>Listing Price</Trans>
         }
       : {
           title: 'List your item for sale',
-          titleConfirm: <Trans>CONFIRMING YOUR LISTING</Trans>,
+          titleConfirm: <Trans>CONFIRM LISTING</Trans>,
           labelInput: <Trans>Listing Price</Trans>
         };
 
@@ -76,9 +83,13 @@ export const ModalEditListing: React.FC<Props> = ({
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={defaultModal.title} className="shadow-[0_0_40px_10px_#0000004D] ">
         <form className="p-[24px] pt-[32px]">
-          <div className="bg-base/4 flex items-center  gap-6 rounded-[8px] p-[16px] ">
-            <div>
-              <img className=" rounded-[6px]" src={imgSrc} width={120} height={120} />
+          <div className="bg-base/4 flex items-center  gap-6 rounded-lg p-4">
+            <div className="relative w-32">
+              <img className="z-10 rounded-[6px]" src={imgSrc} />
+              <div
+                className="z-1 absolute top-0 h-full w-full rounded-xl opacity-[0.3]"
+                style={{ backgroundColor: rarityColor }}
+              />
             </div>
             <div>
               <p className="text-light text-[14px] ">
@@ -116,10 +127,10 @@ export const ModalEditListing: React.FC<Props> = ({
           {description && <p className="text-light mt-5">{description}</p>}
           <div className="mt-8">
             <Button
-              onClick={handleSubmit(onSubmit)}
-              disabled={!isDirty}
+              onClick={handleSubmit((value) => setTimeout(() => onSubmit(value), 100))}
+              disabled={!canConfirm}
               className={clsx('btn-lg  w-full px-10', BUTTON_BG)}>
-              {isSubmitSuccessful && <ProgressIcon size={23} />}
+              {isSubmitted && <ProgressIcon size={23} />}
               <span className="ml-1">{defaultModal.titleConfirm}</span>
             </Button>
             <Button onClick={onClose} className="btn-lg text-brand-white mt-4 w-full ">

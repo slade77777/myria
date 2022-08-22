@@ -16,6 +16,7 @@ type Props = {
   setAmountHandle: any;
   withdrawHandle: any;
   balance: string;
+  amount?: number;
   options: Array<TOption>;
   setWithdrawScreenMounted: any;
   isValidForm: any;
@@ -33,6 +34,7 @@ export default function WithdrawScreen({
   setWithdrawScreenMounted,
   isValidForm,
   errorAmount,
+  amount
 }: Props) {
   const [inputChanged, setInputChanged] = useState(false);
 
@@ -52,7 +54,7 @@ export default function WithdrawScreen({
           }}
         >
           <ArrowIcon direction="left" />
-          <div className="ml-2 text-[14px] text-white">Withdraw</div>
+          <div className="text-base/10 ml-2 text-[20px]">Withdraw</div>
         </div>
       </div>
       <div className="text-base/10 mt-6 grow">
@@ -100,6 +102,7 @@ export default function WithdrawScreen({
               setInputChanged(true);
               setAmountHandle(value);
             }}
+            isValidForm={isValidForm}
           />
           {errorAmount && inputChanged && (
             <div className="text-error/6 mt-2 text-sm">{errorAmount}</div>
@@ -122,10 +125,10 @@ export default function WithdrawScreen({
         <button
           className={cn(
             'flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg text-base font-bold text-white',
-            isValidForm ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
+            isValidForm && amount != undefined ? 'bg-primary/6 text-base/1' : 'bg-[#737373]',
           )}
           onClick={() => {
-            if (isValidForm) {
+            if (isValidForm && amount != undefined) {
               withdrawHandle();
             }
           }}

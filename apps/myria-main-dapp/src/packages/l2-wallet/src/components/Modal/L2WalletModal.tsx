@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
+
 import Modal from '.';
 import Checkbox from '../Checkbox';
 
@@ -23,9 +25,11 @@ export default function DepositWalletModal({ modalShow, closeModal }: Props) {
         >
           <div>
             <div className="mt-[59px] h-[323px] overflow-y-auto ">
-              <div className="text-center text-[24px] font-bold text-black">
-                Terms of Service
-              </div>
+              <Link href="/terms-conditions">
+                <div className="text-center text-[24px] font-bold text-black">
+                  Terms of Service
+                </div>
+              </Link>
               <div className="mt-[39px] text-[12px] leading-[18px]">
                 <p>
                   Vegan PBR&B listicle sriracha. Migas lomo helvetica, listicle

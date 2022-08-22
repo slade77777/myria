@@ -18,7 +18,7 @@ const WithdrawNFTScreen: FC<IProp> = () => {
           onChangeStatus={() => setStatus(StatusWithdrawNFT.INPROGRESS)}
         />
       )}
-      {status === StatusWithdrawNFT.INPROGRESS && <WithdrawNFTInProgress valueNFT={valueNFT} />}
+      {status === StatusWithdrawNFT.INPROGRESS && <WithdrawNFTInProgress />}
       {status === StatusWithdrawNFT.SUCCESS && <WithdrawNFTSuccess />}
       {status === StatusWithdrawNFT.COMPLETED && <WithdrawNFTCompleting />}
       {status === StatusWithdrawNFT.FAILED && <WithdrawNFTFailed />}

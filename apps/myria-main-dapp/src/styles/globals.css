@@ -96,7 +96,7 @@ input::-ms-clear {
   width: 5px;
 }
 button[data-state='active'] {
-  @apply text-primary/6 border-b-[2px];
+  @apply text-primary/6 border-b-[2px] font-medium;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -109,4 +109,9 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+/* popover  */
+div[data-aria-hidden='true'] {
+  z-index: 10 !important;
 }

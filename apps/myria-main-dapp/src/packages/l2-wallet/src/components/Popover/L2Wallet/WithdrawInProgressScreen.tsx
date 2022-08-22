@@ -37,7 +37,7 @@ export default function WithdrawInProgressScreen({ goBack, amount }: Props) {
           <div className="flex justify-between">
             <span>Amount</span>
             <span className="text-base/10 flex items-center">
-              <DAOIcon size={14} className="mb-[2px]" />
+              <DAOIcon size={16} className="mb-[2px]" />
               <span className="ml-1">{amount}</span>
             </span>
           </div>
