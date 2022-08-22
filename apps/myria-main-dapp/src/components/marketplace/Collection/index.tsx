@@ -6,23 +6,31 @@ import Page from 'src/components/Page';
 import AssetList from '../AssetList';
 import avatar from '../../../../public/images/marketplace/avatar.png';
 import { AssetByCollectionIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import useCollectionAsset from 'src/hooks/useCollectionAsset';
+import InfiniteScroll from 'react-infinite-scroller';
+import { getItemsPagination } from 'src/utils';
+
 interface Props {
   collection: AssetByCollectionIdResponse;
-  assetItems: any;
 }
 
-const Collection: FC<Props> = ({ collection, assetItems }) => {
-  // @ts-ignore
-  const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale } =
+const Collection: FC<Props> = ({ collection }) => {
+  const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale, id } =
     collection;
+  const { fetchNextPage, hasNextPage, isFetchingNextPage, result } = useCollectionAsset({
+    collectionId: id
+  });
+  const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
+
   return (
     <Page includeFooter={false}>
       <div
         className="h-[327px] w-full bg-cover bg-center"
         style={{
-          backgroundImage: `url(${collectionImageUrl ? collectionImageUrl : '/images/marketplace/header.png'})`
-        }}
-      ></div>
+          backgroundImage: `url(${
+            collectionImageUrl ? collectionImageUrl : '/images/marketplace/header.png'
+          })`
+        }}></div>
       <div className="max-w-content mx-auto mb-10">
         <div className="relative">
           {/* <img src={collectionImageUrl ? collectionImageUrl : "/images/marketplace/header.png"} className="h-[327px] w-full " alt={name} /> */}
@@ -67,24 +75,36 @@ const Collection: FC<Props> = ({ collection, assetItems }) => {
             </div>
           </div>
           <div className="mt-12">
-            <AssetList
-              title={'Items'}
-              items={assetItems?.items?.map((elm: any, index: number) => {
-                const isOrder = Array.isArray(elm?.order);
-                const item: NFTItemType = {
-                  id: `${elm.id}`,
-                  rarity: (elm.metadata as any).rarity,
-                  name: elm.name || '',
-                  image_url: elm.imageUrl || '',
-                  creator: elm.creator?.name || '',
-                  creatorImg: avatar.src,
-                  priceETH: isOrder
-                    ? Number(elm?.order[0]?.nonQuantizedAmountBuy)
-                    : elm?.order?.nonQuantizedAmountBuy
-                };
-                return item;
-              })}
-            />
+            <InfiniteScroll
+              pageStart={1}
+              loadMore={() => fetchNextPage()}
+              hasMore={!isFetchingNextPage && hasNextPage}
+              loader={
+                <div className="loader text-white" key={0}>
+                  Loading ...
+                </div>
+              }
+              // useWindow={false}
+            >
+              <AssetList
+                title={'Items'}
+                items={items?.map((elm: any, index: number) => {
+                  const isOrder = Array.isArray(elm?.order);
+                  const item: NFTItemType = {
+                    id: `${elm.id}`,
+                    rarity: (elm.metadata as any).rarity,
+                    name: elm.name || '',
+                    image_url: elm.imageUrl || '',
+                    creator: elm.creator?.name || '',
+                    creatorImg: avatar.src,
+                    priceETH: isOrder
+                      ? Number(elm?.order[0]?.nonQuantizedAmountBuy)
+                      : elm?.order?.nonQuantizedAmountBuy
+                  };
+                  return item;
+                })}
+              />
+            </InfiniteScroll>
           </div>
         </div>
       </div>
