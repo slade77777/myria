@@ -12,6 +12,7 @@ type ModalContentProps = {
   includingHeader?: boolean;
   headerClassName?: string;
   titleClassName?: string;
+  isIcon?: boolean;
 };
 
 type ModalType = React.FC<ModalProps & DialogPrimitive.DialogProps> & {
@@ -40,6 +41,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
       includingHeader = true,
       headerClassName,
       titleClassName,
+      isIcon = false,
       ...props
     },
     forwardedRef
@@ -54,7 +56,15 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
           {includingHeader && (
             <div className={clsx('px-8 pt-8', headerClassName)}>
               <div className="flex items-center justify-between">
-                <div className={clsx('heading-md text-white', titleClassName)}>{title}</div>
+                <div className={clsx('heading-md text-white', titleClassName)}>
+                  <span>{title}</span>
+                  {isIcon && (
+                    <span className="ml-2 my-auto">
+                      {' '}
+                      <img src="/assets/images/sad-face.png" alt="" width={24} />
+                    </span>
+                  )}
+                </div>
                 <DialogPrimitive.Close asChild>
                   <button className="h-[24px] w-[24px] text-white hover:cursor-pointer focus:outline-none">
                     <CloseIcon />
