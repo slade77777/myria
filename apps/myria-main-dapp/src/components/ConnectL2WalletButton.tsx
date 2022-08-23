@@ -89,8 +89,8 @@ const ConnectL2WalletButton: React.FC = () => {
       !user?.user_id &&
       !loginByWalletMutation?.isLoading &&
       !loginByWalletMutation?.isError &&
-      userProfileQuery.isFetched &&
-      !userProfileQuery.data
+      userProfileQuery?.isFetched &&
+      !userProfileQuery?.data
     ) {
       loginByWalletMutation?.mutate();
     }

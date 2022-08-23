@@ -873,7 +873,7 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
         </>
       )}
       <span className="text-light mt-[10px] text-[14px]">
-        <Trans>Assets remain in your wallet when you list on Myria Marketplace</Trans>
+        <Trans>Assets remain in your wallet when you list them on Myria Marketplace</Trans>
       </span>
     </div>
   );
