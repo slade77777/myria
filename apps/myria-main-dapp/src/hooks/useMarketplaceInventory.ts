@@ -1,20 +1,35 @@
-import { useQuery } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 import { assetModule } from '../services/myriaCore';
 
+const DEFAULT_PAGE = 1;
+const DEFAULT_LIMIT = 15;
 export default function useMarketplaceInventory(starkKey: string) {
-  const { data, isFetching, error, refetch } = useQuery(
+  const {
+    fetchNextPage,
+    fetchPreviousPage,
+    hasNextPage,
+    hasPreviousPage,
+    isFetchingNextPage,
+    isFetchingPreviousPage,
+    ...result } = useInfiniteQuery(
     ['marketplaceInventory', starkKey],
-    () => assetModule?.getAssetByStarkKey(starkKey, 1, 50),
+    ({pageParam= DEFAULT_PAGE}) => assetModule?.getAssetByStarkKey(starkKey, pageParam, DEFAULT_LIMIT),
     {
-      enabled: !!starkKey
+      getNextPageParam: (lastPage, pages) => {
+        if(!lastPage?.data) return;
+        const {currentPage, totalPages} = lastPage?.data?.meta
+        if (currentPage < totalPages) {
+          return pages.length + 1;
+        }
+        return undefined;
+      }
     }
   );
 
   return {
-    // @ts-ignore
-    rawData: data?.data?.items || {},
-    isFetching,
-    error,
-    refetch
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    result
   };
 }
