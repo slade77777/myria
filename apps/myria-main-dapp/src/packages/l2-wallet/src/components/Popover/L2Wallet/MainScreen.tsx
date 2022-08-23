@@ -151,7 +151,6 @@ export default function MainScreen({
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
-  console.log('starkKeyUser', starkKeyUser);
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(
     localStorageKeys.starkKey,
