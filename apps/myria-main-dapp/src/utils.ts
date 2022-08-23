@@ -145,10 +145,6 @@ export function hexifyKey(key: string) {
   return `0x${key}`;
 }
 
-export function capitalizeFirstLetter(str: string = '') {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 export const getItemsPagination = (pages: any[]) => {
   if (!pages?.length || pages.length === 0) {
     return [];
@@ -168,6 +164,9 @@ export const getItemsPagination = (pages: any[]) => {
     []
   );
 };
+export function capitalizeFirstLetter(str: string = '') {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 export function validateResolution() {
   if (typeof window === 'undefined') return false;
