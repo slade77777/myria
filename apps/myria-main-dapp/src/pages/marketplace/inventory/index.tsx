@@ -38,6 +38,14 @@ function InventoryPage() {
       return 0;
     }
   },[result.data?.pages])
+  const totalForSaleItems = useMemo(()=>{
+    try{
+      return result.data?.pages[0]?.data.meta.totalAssetsForSale || 0;
+    }catch(err){
+      console.log(err);
+      return 0;
+    }
+  },[result.data?.pages])
   if (isMobile) {
     return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
   }
@@ -62,6 +70,7 @@ function InventoryPage() {
         hasMore={!isFetchingNextPage && hasNextPage}
         fetchNextPage={fetchNextPage}
         totalItems={totalItems}
+        totalForSaleItems={totalForSaleItems}
       />
     </Page>
   );

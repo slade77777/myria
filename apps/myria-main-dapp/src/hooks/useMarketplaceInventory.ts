@@ -17,7 +17,7 @@ export default function useMarketplaceInventory(starkKey: string) {
     {
       getNextPageParam: (lastPage, pages) => {
         if(!lastPage?.data) return;
-        const {currentPage, totalPages} = lastPage?.data?.meta
+        const {currentPage, totalPages} = lastPage.data.meta
         if (currentPage < totalPages) {
           return pages.length + 1;
         }
