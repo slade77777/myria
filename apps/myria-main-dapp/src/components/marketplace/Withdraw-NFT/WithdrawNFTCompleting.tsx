@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { ConfirmationType } from 'myria-core-sdk';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
@@ -14,6 +14,10 @@ import { TokenType } from 'src/packages/l2-wallet/src/common/type';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WalletTabs } from 'src/types';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
+import {
+  STATUS_HISTORY,
+  TRANSACTION_TYPE
+} from 'src/packages/l2-wallet/src/components/Popover/L2Wallet/MainScreen';
 
 interface IProp {}
 
@@ -93,12 +97,12 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
     <>
       <div className="grow">
         <div className="px-6">
-          <div className="mx-auto mt-14 flex h-16 w-16 justify-center">
-            <WithdrawalCompletedIcon size={64} className="text-light-green w-full" />
+          <div className="flex justify-center w-16 h-16 mx-auto mt-14">
+            <WithdrawalCompletedIcon size={64} className="w-full text-light-green" />
           </div>
 
-          <div className="mt-6 text-center text-2xl text-white">Complete your withdrawal</div>
-          <div className="text-gray/6 mt-4 text-center text-sm">
+          <div className="mt-6 text-2xl text-center text-white">Complete your withdrawal</div>
+          <div className="mt-4 text-sm text-center text-gray/6">
             <span>
               <Trans>
                 Click below to claim this withdrawal to your L1 wallet. Gas fees will apply to this
@@ -107,14 +111,14 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
             </span>
           </div>
         </div>
-        <div className="bg-base/2/50 mt-8  rounded-lg p-4 text-sm text-white">
+        <div className="p-4 mt-8 text-sm text-white rounded-lg bg-base/2/50">
           <div className="flex justify-between">
             <span>
               <Trans>Item</Trans>
             </span>
             <span className="flex">{valueNFT.name}</span>
           </div>
-          <div className="mt-3 flex justify-between">
+          <div className="flex justify-between mt-3">
             <span className="flex items-center gap-1">
               <Trans>Estimated gas fee</Trans>
             </span>
@@ -127,7 +131,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       </div>
       <div className="flex justify-end">
         {pending ? (
-          <button className="bg-gray/4 text-gray/6 flex w-full items-center justify-center rounded-lg px-5 py-3 text-base font-bold">
+          <button className="flex items-center justify-center w-full px-5 py-3 text-base font-bold rounded-lg bg-gray/4 text-gray/6">
             <span>
               <Trans>WITHDRAW PENDING</Trans>
             </span>

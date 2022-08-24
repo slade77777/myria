@@ -281,6 +281,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       );
       return false;
     }
+    if (amount === parseFloat(balanceL1) || parseFloat(balance) === amount) {
+      setErrorAmount('Please, consider transaction fee costs.');
+      return false;
+    }
     if (screen === SCREENS.DEPOSIT_SCREEN && parseFloat(balanceL1) < amount) {
       setErrorAmount(`Deposit amount cannot be higher than available ETH.`);
       return false;
