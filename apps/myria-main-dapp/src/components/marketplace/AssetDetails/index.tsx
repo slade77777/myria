@@ -366,7 +366,6 @@ function AssetDetails({ id }: Props) {
         address.toLowerCase(),
         assetDetails?.assetMintId + ''
       );
-      console.log(balance);
 
       if (balance > 0) {
         if (withdrawalStatus != StatusWithdrawNFT.COMPLETED) {
