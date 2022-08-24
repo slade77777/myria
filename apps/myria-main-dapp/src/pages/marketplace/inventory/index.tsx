@@ -13,16 +13,17 @@ import Page from 'src/components/Page';
 import useCheckMobileView from 'src/hooks/useCheckMobileView';
 import MessageMobileView from 'src/components/marketplace/Modals/MessageMobileView';
 import { getItemsPagination } from 'src/utils';
+import { localStorageKeys } from 'src/configs';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 
 function InventoryPage() {
   const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
-  const starkKeyUser = useSelector(
-    (state: RootState) => state.account.starkPublicKeyFromPrivateKey
-  );
-  const starkKey = '0x' + starkKeyUser;
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const starkKey = `0x${localStarkKey}`;
   const { user, userProfileQuery } = useAuthenticationContext();
   const { address } = useWalletContext();
-  const { fetchNextPage, hasNextPage, isFetchingNextPage, result } = useMarketplaceInventory(starkKey);
+  const { fetchNextPage, hasNextPage, isFetchingNextPage, result } =
+    useMarketplaceInventory(starkKey);
   const router = useRouter();
   useEffect(() => {
     if (userProfileQuery.isFetched && !user?.wallet_id) {
@@ -30,22 +31,23 @@ function InventoryPage() {
     }
   }, [router, user?.wallet_id, userProfileQuery.isFetched]);
   const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
-  const totalItems = useMemo(()=>{
-    try{
+  const totalItems = useMemo(() => {
+    try {
       return result.data?.pages[0]?.data.meta.totalItems || 0;
-    }catch(err){
+    } catch (err) {
       console.log(err);
       return 0;
     }
-  },[result.data?.pages])
-  const totalForSaleItems = useMemo(()=>{
-    try{
+  }, [result.data?.pages]);
+
+  const totalForSaleItems = useMemo(() => {
+    try {
       return result.data?.pages[0]?.data.meta.totalAssetsForSale || 0;
-    }catch(err){
+    } catch (err) {
       console.log(err);
       return 0;
     }
-  },[result.data?.pages])
+  }, [result.data?.pages]);
   if (isMobile) {
     return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
   }

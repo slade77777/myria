@@ -16,7 +16,7 @@ interface Props {
   items: NFTItemType[];
   assetLoading?: boolean;
   hasMore?: boolean;
-  fetchNextPage: ()=>void;
+  fetchNextPage: () => void;
   totalItems: number;
   totalForSaleItems: number;
 }
@@ -72,26 +72,26 @@ function Inventory({
               </div>
             </div>
           </div>
-            <>
-              <div className="flex justify-between">
-                <span className="text-[24px] font-bold text-white">
-                  <Trans>My Items</Trans>
-                </span>
-              </div>
-              <InfiniteScroll
-                pageStart={1}
-                loadMore={() => fetchNextPage()}
-                hasMore={hasMore}
-                loader={
-                  <div className="loader" key={0}>
-                    Loading ...
-                  </div>
-                }
-                // useWindow={false}
-              >
-                <AssetList items={items} />
-              </InfiniteScroll>
-            </>
+          <>
+            <div className="flex justify-between">
+              <span className="text-[24px] font-bold text-white">
+                <Trans>My Items</Trans>
+              </span>
+            </div>
+            <InfiniteScroll
+              pageStart={1}
+              loadMore={() => fetchNextPage()}
+              hasMore={hasMore}
+              loader={
+                <div className="loader" key={0}>
+                  Loading ...
+                </div>
+              }
+              // useWindow={false}
+            >
+              <AssetList items={items} />
+            </InfiniteScroll>
+          </>
         </div>
       </div>
       {assetLoading && items?.length === 0 && (
