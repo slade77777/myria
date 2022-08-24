@@ -16,8 +16,9 @@ interface Props {
   items: NFTItemType[];
   assetLoading?: boolean;
   hasMore?: boolean;
-  fetchNextPage: ()=>void;
+  fetchNextPage: () => void;
   totalItems: number;
+  totalForSaleItems: number;
 }
 
 function Inventory({
@@ -29,7 +30,8 @@ function Inventory({
   assetLoading,
   hasMore = false,
   fetchNextPage,
-  totalItems
+  totalItems,
+  totalForSaleItems
 }: Props) {
   const itemForSaleCount = React.useMemo(
     () => items.filter((item) => !!item.priceETH).length,
@@ -65,31 +67,31 @@ function Inventory({
                 <span className="text-[16px] font-normal text-[#97AAB5]">Items</span>
               </div>
               <div className="flex flex-col items-end">
-                <span className="text-[28px] font-bold text-white">{itemForSaleCount}</span>
+                <span className="text-[28px] font-bold text-white">{totalForSaleItems}</span>
                 <span className="text-[16px] font-normal text-[#97AAB5]">For Sale</span>
               </div>
             </div>
           </div>
-            <>
-              <div className="flex justify-between">
-                <span className="text-[24px] font-bold text-white">
-                  <Trans>My Items</Trans>
-                </span>
-              </div>
-              <InfiniteScroll
-                pageStart={1}
-                loadMore={() => fetchNextPage()}
-                hasMore={hasMore}
-                loader={
-                  <div className="loader" key={0}>
-                    Loading ...
-                  </div>
-                }
-                // useWindow={false}
-              >
-                <AssetList items={items} />
-              </InfiniteScroll>
-            </>
+          <>
+            <div className="flex justify-between">
+              <span className="text-[24px] font-bold text-white">
+                <Trans>My Items</Trans>
+              </span>
+            </div>
+            <InfiniteScroll
+              pageStart={1}
+              loadMore={() => fetchNextPage()}
+              hasMore={hasMore}
+              loader={
+                <div className="loader" key={0}>
+                  Loading ...
+                </div>
+              }
+              // useWindow={false}
+            >
+              <AssetList items={items} />
+            </InfiniteScroll>
+          </>
         </div>
       </div>
       {assetLoading && items?.length === 0 && (

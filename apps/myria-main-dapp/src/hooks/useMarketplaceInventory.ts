@@ -11,13 +11,15 @@ export default function useMarketplaceInventory(starkKey: string) {
     hasPreviousPage,
     isFetchingNextPage,
     isFetchingPreviousPage,
-    ...result } = useInfiniteQuery(
+    ...result
+  } = useInfiniteQuery(
     ['marketplaceInventory', starkKey],
-    ({pageParam= DEFAULT_PAGE}) => assetModule?.getAssetByStarkKey(starkKey, pageParam, DEFAULT_LIMIT),
+    ({ pageParam = DEFAULT_PAGE }) =>
+      assetModule?.getAssetByStarkKey(starkKey, pageParam, DEFAULT_LIMIT),
     {
       getNextPageParam: (lastPage, pages) => {
-        if(!lastPage?.data) return;
-        const {currentPage, totalPages} = lastPage?.data?.meta
+        if (!lastPage?.data) return;
+        const { currentPage, totalPages } = lastPage.data.meta;
         if (currentPage < totalPages) {
           return pages.length + 1;
         }
