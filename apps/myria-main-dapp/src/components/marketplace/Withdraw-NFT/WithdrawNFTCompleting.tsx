@@ -139,8 +139,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
         ) : (
           <button
             onClick={withdrawNftOnchain}
-            className="flex w-full items-center justify-center rounded-[8px] bg-[#F5B941] px-[20px] py-[12px] text-[16px] font-bold text-[#040B10]"
-          >
+            className="flex w-full items-center justify-center rounded-[8px] bg-[#F5B941] px-[20px] py-[12px] text-[16px] font-bold text-[#040B10]">
             <span>
               <Trans>WITHDRAW NOW</Trans>
             </span>

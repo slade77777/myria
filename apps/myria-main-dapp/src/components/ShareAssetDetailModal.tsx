@@ -27,8 +27,7 @@ const ShareAssetDetailModal: React.FC<Props> = ({ open, onClose }) => {
             </h1>
             <button
               onClick={onClose}
-              className="absolute top-5 right-6 w-[32px] text-white/50 focus:outline-none md:top-6"
-            >
+              className="absolute top-5 right-6 w-[32px] text-white/50 focus:outline-none md:top-6">
               <CloseIcon />
             </button>
           </div>
@@ -41,8 +40,7 @@ const ShareAssetDetailModal: React.FC<Props> = ({ open, onClose }) => {
                   copyTextToClipboard(location.href);
                   toast('Copied successfully!');
                 }}
-                className="flex-none rounded-lg border border-[rgba(255,255,255,0.4)] px-4 py-[5px] text-center font-bold leading-5 text-white"
-              >
+                className="flex-none rounded-lg border border-[rgba(255,255,255,0.4)] px-4 py-[5px] text-center font-bold leading-5 text-white">
                 Copy Link
               </button>
             </div>
