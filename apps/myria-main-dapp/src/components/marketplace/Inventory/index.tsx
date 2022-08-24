@@ -18,6 +18,7 @@ interface Props {
   hasMore?: boolean;
   fetchNextPage: ()=>void;
   totalItems: number;
+  totalForSaleItems: number;
 }
 
 function Inventory({
@@ -29,7 +30,8 @@ function Inventory({
   assetLoading,
   hasMore = false,
   fetchNextPage,
-  totalItems
+  totalItems,
+  totalForSaleItems
 }: Props) {
   const itemForSaleCount = React.useMemo(
     () => items.filter((item) => !!item.priceETH).length,
@@ -65,7 +67,7 @@ function Inventory({
                 <span className="text-[16px] font-normal text-[#97AAB5]">Items</span>
               </div>
               <div className="flex flex-col items-end">
-                <span className="text-[28px] font-bold text-white">{itemForSaleCount}</span>
+                <span className="text-[28px] font-bold text-white">{totalForSaleItems}</span>
                 <span className="text-[16px] font-normal text-[#97AAB5]">For Sale</span>
               </div>
             </div>
