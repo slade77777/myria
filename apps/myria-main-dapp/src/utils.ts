@@ -170,10 +170,18 @@ export function capitalizeFirstLetter(str: string = '') {
 
 export function validateResolution() {
   if (typeof window === 'undefined') return false;
-  const widthScreen = window.screen.width;
-  if (widthScreen < 768) {
-    return true;
-  }
+  var mobile = [
+    'iphone',
+    'android',
+    'blackberry',
+    'nokia',
+    'opera mini',
+    'windows mobile',
+    'windows phone',
+    'iemobile'
+  ];
+  for (var i in mobile)
+    if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true;
   return false;
 }
 
