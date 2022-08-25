@@ -5,10 +5,14 @@ import NumberFormat from 'react-number-format';
 interface TProps {
   max: number;
   onChangeHandle: any;
-  isValidForm?: boolean
+  isValidForm?: boolean;
 }
 
-export default function MaxInput({ max = 100, onChangeHandle, isValidForm = true }: TProps) {
+export default function MaxInput({
+  max = 100,
+  onChangeHandle,
+  isValidForm = true,
+}: TProps) {
   const [inputValue, setInputValue] = useState<number>();
   // const [errorInput, setErrorInput] = useState<boolean>(false);
   const setMax = () => {
@@ -27,7 +31,7 @@ export default function MaxInput({ max = 100, onChangeHandle, isValidForm = true
         allowEmptyFormatting={true}
         allowNegative={false}
         thousandSeparator={true}
-        onValueChange={({floatValue, formattedValue, value}) => {
+        onValueChange={({ floatValue, formattedValue, value }) => {
           setInputValue(floatValue);
           onChangeHandle(floatValue);
         }}

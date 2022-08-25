@@ -76,15 +76,13 @@ const ForDevelopers: React.FC = () => {
           className={clsx(
             paddingX,
             "relative isolate flex min-h-[520px] flex-col items-center bg-[url('/images/for-developers/header-bg-mobile_op.png')] bg-cover bg-top pt-[150px] pb-[87px] md:bg-none md:pt-[150px] lg:pt-[200px]"
-          )}
-        >
+          )}>
           <div className="hidden md:block">
             <div
               style={{
                 background: 'linear-gradient(180deg, #003552 0%, #050E15 100%)'
               }}
-              className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"
-            ></div>
+              className="absolute left-0 right-0 top-0 z-[-2] h-[606px]"></div>
             <div className="absolute top-0 left-0 z-[-1] w-full">
               <Image
                 src="/images/for-developers/header-bg_op.png"
@@ -114,8 +112,7 @@ const ForDevelopers: React.FC = () => {
                       event('B2B Start Building Selected', {
                         campaign: 'B2B'
                       });
-                    }}
-                  >
+                    }}>
                     <Trans>START BUILDING</Trans>
                   </a>
                 </Link>
@@ -127,8 +124,7 @@ const ForDevelopers: React.FC = () => {
                   event('B2B Contact Sales Selected', {
                     campaign: 'B2B'
                   });
-                }}
-              >
+                }}>
                 <a className="border btn-lg border-base/9">
                   <Trans>CONTACT SALES</Trans>
                 </a>
@@ -151,8 +147,7 @@ const ForDevelopers: React.FC = () => {
           }
           className={clsx(
             'mt-[95px] mb-[120px] bg-no-repeat md:mt-[170px] md:mb-[152px] md:[background-image:var(--bg)]'
-          )}
-        >
+          )}>
           <section
             style={
               {
@@ -163,8 +158,7 @@ const ForDevelopers: React.FC = () => {
             className={clsx(
               paddingX,
               'mx-auto max-w-[966px] bg-bottom bg-no-repeat [background-size:100%_calc(100%-238px)] [background-image:var(--bg)] md:bg-none'
-            )}
-          >
+            )}>
             <Myria />
           </section>
           <section className="mx-auto max-w-[1440px] pb-[160px] pt-[50px] md:px-[88px] md:pt-[200px]">
@@ -199,8 +193,7 @@ const ForDevelopers: React.FC = () => {
                     className="btn-lg btn-primary"
                     onClick={() => {
                       emailsubmit();
-                    }}
-                  >
+                    }}>
                     Submit
                   </button>
                 </div>
@@ -224,8 +217,7 @@ const ForDevelopers: React.FC = () => {
                       className="btn-lg bg-blue/7 text-base/2 flex items-center px-6 py-[12.5px] uppercase"
                       onClick={() => {
                         event('B2B Discord Button Clicked', { campaign: 'B2B' });
-                      }}
-                    >
+                      }}>
                       <DiscordGameIcon size={28} className="mr-2 text-black" />
                       Join our discord
                     </button>

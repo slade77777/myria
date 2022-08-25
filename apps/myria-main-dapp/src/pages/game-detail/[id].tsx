@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGA4 } from 'src/lib/ga';
 import { headerHeight } from '../../components/Header';
 import DiscordIcon from '../../components/icons/DiscordIcon';
@@ -15,6 +15,11 @@ import Subscribe from 'src/components/Subscribe';
 import { Trans } from '@lingui/macro';
 import { socialLinks } from 'src/configs';
 import useGamesData from '../../hooks/useGamesData';
+import { useWalletContext } from 'src/context/wallet';
+import { useAuthenticationContext } from 'src/context/authentication';
+import { localStorageKeys } from 'src/configs';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 export type Asset = {
   type: 'video' | 'image';
@@ -28,13 +33,50 @@ const GameDetail: React.FC = () => {
   const { event } = useGA4();
   const { id } = router.query;
   const games = useGamesData();
+  const { address, onConnect } = useWalletContext();
+  const { connectL2Wallet } = useL2WalletContext();
+  const { user, loginByWalletMutation } = useAuthenticationContext();
+  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+
+  const showConnectedWallet = React.useMemo(() => {
+    // First time registration
+    if (walletAddress && address && (!user || !user?.wallet_id)) {
+      return true;
+    }
+
+    // Normal non-first time user
+    if (
+      address &&
+      user &&
+      address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
+      localStarkKey
+    ) {
+      return true;
+    }
+    return false;
+  }, [address, localStarkKey, user, walletAddress]);
 
   if (typeof id !== 'string') {
     return null;
   }
 
   const game = games[id];
-  const { title, assets, logo, logoMobile, content, info, image, description, headerBg } = game;
+  const { title, assets, logo, logoMobile, content, info, image, description, headerBg, gameUrl } =
+    game;
+
+  const onConnectWallet = () => {
+    onConnect();
+    connectL2Wallet();
+    if (loginByWalletMutation.isError) {
+      loginByWalletMutation.mutate();
+    }
+  };
+
+  const playGame = () => {
+    window.open(gameUrl, '_blank');
+  };
+
   return (
     <Page stickyHeader={false}>
       <div>
@@ -117,9 +159,31 @@ const GameDetail: React.FC = () => {
                       disabled>
                       IN DEVELOPMENT
                     </button> */}
-                    <button className="btn-lg btn-primary w-full justify-center">
+                    {/* <button className="btn-lg btn-primary w-full justify-center">
                       <Trans>IN DEVELOPMENT</Trans>
-                    </button>
+                    </button> */}
+                    {id.toLowerCase() === 'moonville-farms' ? (
+                      !loginByWalletMutation.isError &&
+                      !loginByWalletMutation.isLoading &&
+                      walletAddress &&
+                      showConnectedWallet ? (
+                        <button
+                          className="btn-lg btn-primary w-full justify-center"
+                          onClick={playGame}>
+                          <Trans>PLAY</Trans>
+                        </button>
+                      ) : (
+                        <button
+                          className="btn-lg btn-primary w-full justify-center"
+                          onClick={onConnectWallet}>
+                          <Trans>CONNECT TO PLAY</Trans>
+                        </button>
+                      )
+                    ) : (
+                      <button className="btn-lg btn-primary w-full justify-center">
+                        <Trans>IN DEVELOPMENT</Trans>
+                      </button>
+                    )}
                     <a
                       href={game.discord}
                       target="_blank"
