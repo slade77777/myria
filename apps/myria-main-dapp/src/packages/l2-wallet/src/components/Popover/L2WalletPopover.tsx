@@ -163,13 +163,14 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     setAmount(0);
   };
 
-  // useEffect(() => {
-  //   console.log('isWithdrawComplete -> ', isWithdrawComplete);
-  //   if (isWithdrawComplete.isShow) {
-  //     setScreen(SCREENS.WITHDRAW_COMPLETE);
-  //   }
-  //   return () => showWithdrawCompleteScreen({ isShow: false });
-  // }, [isWithdrawComplete]);
+  useEffect(() => {
+    if (isWithdrawComplete?.isShow) {
+      setScreen(SCREENS.WITHDRAW_NOW);
+      setTransactionDetail(isWithdrawComplete.transactionData);
+    }
+    return () =>
+      showWithdrawCompleteScreen({ ...isWithdrawComplete, isShow: false });
+  }, [isWithdrawComplete.isShow]);
 
   useEffect(() => {
     if (withdrawScreenMounted || depositScreenMounted) {
