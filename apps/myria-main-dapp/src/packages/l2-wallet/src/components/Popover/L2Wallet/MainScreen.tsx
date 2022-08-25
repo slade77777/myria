@@ -260,7 +260,10 @@ export default function MainScreen({
           ...item,
           ethAmount: convertWeiToEth(String(balance)),
         };
-        gotoWithdrawNowScreen(transactionDetails);
+        gotoWithdrawNowScreen({
+          isComeFrom: WalletTabs.HISTORY,
+          transactionDetails,
+        });
       } else {
         handleDisplayPopover(false);
         handleSetValueNFT({

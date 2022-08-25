@@ -91,7 +91,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   })();
 
   React.useEffect(() => {
-    if (loginByWalletMutation && loginByWalletMutation?.isError) {
+    if (loginByWalletMutation && loginByWalletMutation.isError) {
       disconnect();
     }
   }, [loginByWalletMutation?.isError]);
@@ -118,13 +118,13 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
         <>
           {installedWallet === true && isSupportedBrowser && (
             <Button
-              loading={loginByWalletMutation?.isLoading}
-              disabled={loginByWalletMutation?.isLoading}
+              loading={loginByWalletMutation.isLoading}
+              disabled={loginByWalletMutation.isLoading}
               onClick={async () => {
                 await onConnectCompaign('Sigil');
                 await connectL2Wallet();
                 event('Connect Wallet Selected', { campaign: 'Sigil' });
-                loginByWalletMutation?.mutate();
+                loginByWalletMutation.mutate();
               }}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
               {address ? <Trans>LOGGING IN</Trans> : <Trans>CONNECT WALLET</Trans>}

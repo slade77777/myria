@@ -23,6 +23,7 @@ interface IL2WalletContext {
     isShow: boolean;
     transactionHash: string;
     claimAmount: number;
+    transactionData?: any;
   };
   showWithdrawCompleteScreen: any;
   isFirstPurchase: boolean;
