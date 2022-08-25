@@ -17,11 +17,11 @@ import CircleCheckIcon from '../icons/CircleCheckIcon';
 import LoaderIcon from '../icons/LoaderIcon';
 import { useInventoryQuery } from './useInventoryQuery';
 
-const ReadyToMint: React.FC<{ onMintSuccess: () => void }> = ({ onMintSuccess }) => {
+const ReadyToMint: React.FC<{ onMintSuccess: (data: any[]) => void }> = ({ onMintSuccess }) => {
   const { mintRewardMutation } = useInventoryQuery();
   const mintReward = () => {
     return mintRewardMutation.mutate(undefined, {
-      onSuccess: onMintSuccess,
+      onSuccess: (res) => onMintSuccess(res.data.data),
       onError: (err: any) => {
         toast(err.message, { type: 'error' });
       }
@@ -66,7 +66,10 @@ const ReadyToMint: React.FC<{ onMintSuccess: () => void }> = ({ onMintSuccess })
   );
 };
 
-const MintComplete: React.FC<{ onContinue: () => void }> = ({ onContinue }) => {
+const MintComplete: React.FC<{ onContinue: () => void; isDataEmpty: boolean }> = ({
+  onContinue,
+  isDataEmpty
+}) => {
   return (
     <div className="mt-[40px] flex h-full flex-col items-center">
       <div className="!text-success/8">
@@ -76,10 +79,14 @@ const MintComplete: React.FC<{ onContinue: () => void }> = ({ onContinue }) => {
         <Trans>Minting complete!</Trans>
       </h1>
       <p className="text-base/9 mt-6 max-w-[327px] text-center">
-        <Trans>
-          Your rewards have been minted and are now in your Myria L2 Wallet. Click below to view
-          your items in your Myria inventory
-        </Trans>
+        {isDataEmpty ? (
+          <Trans>There are no rewards to mint anymore!</Trans>
+        ) : (
+          <Trans>
+            Your rewards have been minted and are now in your Myria L2 Wallet. Click below to view
+            your items in your Myria inventory
+          </Trans>
+        )}
       </p>
       <Button className="btn-sm btn-primary mt-[182px] h-10 w-full !p-0" onClick={onContinue}>
         <span className="!m-0 text-sm">
@@ -91,7 +98,7 @@ const MintComplete: React.FC<{ onContinue: () => void }> = ({ onContinue }) => {
 };
 
 const MintRewardModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  const [isMintSuccess, setIsMintSuccess] = React.useState<boolean>(false);
+  const [mintSuccessData, setMintSuccessData] = React.useState<any[] | null>(null);
   const router = useRouter();
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
@@ -101,6 +108,7 @@ const MintRewardModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const { event } = useGA4();
 
   const onCompleteMint = () => {
+    setMintSuccessData(null);
     onClose();
     event('Minting Completed', {
       campaign: 'Sigil Minting',
@@ -113,8 +121,8 @@ const MintRewardModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     router.push('/marketplace/inventory/');
   };
 
-  const handleStartMintClick = () => {
-    setIsMintSuccess(true);
+  const handleStartMintClick = (data: any[]) => {
+    setMintSuccessData(data);
     event('Mint Now Selected', {
       campaign: 'Sigil Minting',
       wallet_address: forceGAStringParam(address),
@@ -124,6 +132,7 @@ const MintRewardModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       user_email: user?.email || ''
     });
   };
+
   return (
     <Modal open overlayClassName="bg-[rgba(5,14,21,0.7)]">
       <Modal.Content
@@ -136,10 +145,13 @@ const MintRewardModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             </button>
           </Modal.Close>
           <div className={`bg-brand-deep-blue mt-6 h-full`}>
-            {!isMintSuccess ? (
+            {!mintSuccessData ? (
               <ReadyToMint onMintSuccess={handleStartMintClick} />
             ) : (
-              <MintComplete onContinue={onCompleteMint} />
+              <MintComplete
+                isDataEmpty={mintSuccessData.length === 0}
+                onContinue={onCompleteMint}
+              />
             )}
           </div>
         </div>

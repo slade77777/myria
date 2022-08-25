@@ -7,8 +7,8 @@ export default function MessagePurchaseModal({ assetName = '', onClose = () => {
   const { handleActiveWalletTabs, handleDisplayPopover } = useL2WalletContext();
   return (
     <div className="flex">
-      <div className="ml-3 font-normal text-white leading-normal">
-        <div className="relative mb-1 font-semibold dark:text-white text-lg leading-normal">
+      <div className="ml-3 font-normal leading-normal text-white">
+        <div className="relative mb-1 text-lg font-semibold leading-normal dark:text-white">
           <span className="absolute -left-[45px]">
             <CheckIcon size={24} className="mt-[1px] text-[#2EA64F]" />
           </span>
@@ -16,10 +16,10 @@ export default function MessagePurchaseModal({ assetName = '', onClose = () => {
             <Trans>Purchase Successful</Trans>
           </span>
         </div>
-        <div className="text-sm font-normal mt-[10px] mb-[20px]">
+        <div className="mt-[10px] mb-[20px] text-sm font-normal">
           <span className="text-base/9">
             <Trans>Your purchase of</Trans>
-            <span className="text-[16px] text-white mx-1"> {assetName} </span>
+            <span className="mx-1 text-[16px] text-white"> {assetName} </span>
             <Trans>successful.</Trans>
           </span>
         </div>

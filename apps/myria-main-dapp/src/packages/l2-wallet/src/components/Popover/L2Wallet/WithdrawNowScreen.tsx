@@ -1,20 +1,23 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 // @ts-ignore
 import DAOIcon from 'src/components/icons/DAOIcon';
 // @ts-ignore
-import WithdrawalCompletedIcon from 'src/components/icons/WithdrawalCompletedIcon';
-import { getModuleFactory } from 'src/services/myriaCoreSdk';
-import { useSelector } from 'react-redux';
-import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { Trans } from '@lingui/macro';
+import clsx from 'clsx';
 import { ConfirmationType } from 'myria-core-sdk';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from 'src/components/core/Button';
 import ProgressIcon from 'src/components/icons/ProgressIcon';
-import clsx from 'clsx';
-import { Trans } from '@lingui/macro';
+import WithdrawalCompletedIcon from 'src/components/icons/WithdrawalCompletedIcon';
 import { localStorageKeys } from 'src/configs';
-import useLocalStorage from 'src/hooks/useLocalStorage';
 import { useL2WalletContext } from 'src/context/l2-wallet';
-
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import useTransactionList from 'src/hooks/useTransactionList';
+import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
+import { WalletTabs } from 'src/types';
+import { setWithdrawClaimModal } from '../../../app/slices/uiSlice';
+import { STATUS_HISTORY, TRANSACTION_TYPE } from './MainScreen';
 const starkwareLib = require('@starkware-industries/starkware-crypto-utils');
 const asset = starkwareLib.asset;
 interface TProps {
@@ -32,10 +35,12 @@ export default function WithdrawNowScreen({
     '',
   );
   const { showWithdrawCompleteScreen } = useL2WalletContext();
-
+  const { transactionHistoryData, refetch: refetchTransactionList } =
+    useTransactionList(`0x${localStarkKey}`);
   const connectedAccount = useSelector(
     (state: RootState) => state.account.connectedAccount,
   );
+  const dispatch = useDispatch();
 
   const [isProcess, setIsProcess] = useState(false);
 
@@ -44,6 +49,26 @@ export default function WithdrawNowScreen({
   }, [isProcess]);
 
   const withdrawEthNow = async () => {
+    let transactionId = null;
+    if (
+      transactionHistoryData?.length > 0 &&
+      transactionDetail.isComeFrom === 'NOTIFICATION_TOAST'
+    ) {
+      console.log('isComeFrom toast');
+      const transactions: any = transactionHistoryData?.filter(
+        (item: any, index: number) =>
+          item.transactionType === TRANSACTION_TYPE.WITHDRAWAL &&
+          item.tokenType === 'ETH' &&
+          item.transactionStatus === STATUS_HISTORY.SUCCESS,
+      );
+      if (transactions?.length > 0) {
+        transactionId = transactions[0].transactionId;
+      }
+    } else if (transactionDetail.isComeFrom === WalletTabs.HISTORY) {
+      console.log('isComeFrom History');
+      transactionId = transactionDetail.transactionId;
+    }
+
     try {
       setIsProcess(true);
       let responseWithdraw: any = null;
@@ -70,25 +95,36 @@ export default function WithdrawNowScreen({
 
       if (responseWithdraw) {
         setIsProcess(false);
-        try {
-          const transactionModule = moduleFactory.getTransactionModule();
-          const result = await transactionModule.updateTransactionComplete({
-            starkKey: `0x${localStarkKey}`,
-            transactionId: Number(transactionDetail.transactionId),
-            transactionHash: responseWithdraw.transactionHash,
-          });
-          console.log('Withdraw result complete ->', result);
-        } catch (ex) {
-          console.log('Transaction complete failed', ex);
+        if (transactionId) {
+          try {
+            const transactionModule = moduleFactory.getTransactionModule();
+            const result = await transactionModule.updateTransactionComplete({
+              starkKey: `0x${localStarkKey}`,
+              transactionId: Number(transactionId),
+              transactionHash: responseWithdraw.transactionHash,
+            });
+            console.log('Withdraw result complete ->', result);
+          } catch (ex) {
+            console.log('Transaction complete failed', ex);
+          }
         }
         showWithdrawCompleteScreen({
           transactionHash: responseWithdraw.transactionHash,
           claimAmount: transactionDetail?.ethAmount,
         });
         successHandler(transactionDetail.ethAmount);
+        refetchTransactionList();
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(
+        setWithdrawClaimModal({
+          show: false,
+          claimAmount: 0,
+          isUpdated: false,
+        }),
+      );
     }
   };
 

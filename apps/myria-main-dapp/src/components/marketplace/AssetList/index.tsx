@@ -13,10 +13,9 @@ interface Props {
 }
 
 const AssetList: React.FC<Props> = ({ title, items }) => {
-  
   return (
     <div>
-       {title && (
+      {title && (
         <div className="flex justify-between">
           <span className="text-[24px] font-bold text-white">{title}</span>
         </div>

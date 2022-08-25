@@ -89,7 +89,7 @@ const Register: React.FC = () => {
         return;
       }
 
-      if (code === 'username_in_use') {
+      if (code === 'username_in_use' || code === 'invalid_username') {
         setError('username', { type: 'custom', message: detail });
         return;
       }
@@ -164,7 +164,7 @@ const Register: React.FC = () => {
               {...register('firstName')}
               error={!!errors.firstName}
               errorText={errors.firstName?.message}
-              className="w-full bg-input border-none"
+              className="bg-input w-full border-none"
               containerClassName={!!errors.firstName ? 'mt-4' : 'mt-6'}
             />
           </div>
@@ -175,7 +175,7 @@ const Register: React.FC = () => {
               {...register('lastName')}
               error={!!errors.lastName}
               errorText={errors.lastName?.message}
-              className="w-full bg-input border-none"
+              className="bg-input w-full border-none"
               containerClassName={!!errors.lastName ? 'mt-4' : 'mt-6'}
             />
           </div>
@@ -187,7 +187,7 @@ const Register: React.FC = () => {
               {...register('username')}
               error={!!errors.username}
               errorText={errors.username?.message}
-              className="w-full bg-input border-none"
+              className="bg-input w-full border-none"
               containerClassName={!!errors.username ? 'mt-4' : 'mt-6'}
               autoComplete="off"
             />
@@ -198,7 +198,7 @@ const Register: React.FC = () => {
               {...register('email')}
               error={!!errors.email}
               errorText={errors.email?.message}
-              className="w-full bg-input border-none"
+              className="bg-input w-full border-none"
               containerClassName={!!errors.email ? 'mt-4' : 'mt-6'}
               autoComplete="off"
             />
@@ -209,7 +209,7 @@ const Register: React.FC = () => {
               {...register('password')}
               error={!!errors.password}
               errorText={errors.password?.message}
-              className="w-full pr-9 bg-input border-none"
+              className="bg-input w-full border-none pr-9"
               containerClassName={!!errors.password ? 'mt-4' : 'mt-6'}
               type={visiblePassword ? 'text' : 'password'}
             />
@@ -225,7 +225,7 @@ const Register: React.FC = () => {
               {...register('confirmPassword')}
               error={!!errors.confirmPassword}
               errorText={errors.confirmPassword?.message}
-              className="w-full pr-9 bg-input border-none"
+              className="bg-input w-full border-none pr-9"
               containerClassName={!!errors.email ? 'mt-4 ' : 'mt-6'}
               type={visibleConfirmPassword ? 'text' : 'password'}
             />
