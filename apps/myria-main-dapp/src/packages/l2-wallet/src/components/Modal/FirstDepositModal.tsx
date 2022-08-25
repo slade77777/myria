@@ -119,6 +119,10 @@ export default function FirstDepositModal({
       );
       return false;
     }
+    if (parseFloat(balanceL1) === amount) {
+      setErrorAmount(`Please, consider transaction fee costs.`);
+      return false;
+    }
     if (parseFloat(balanceL1) < amount) {
       setErrorAmount(`Deposit amount cannot be higher than available ETH.`);
       return false;
@@ -143,7 +147,7 @@ export default function FirstDepositModal({
             amount: String(amount),
           },
           {
-            confirmationType: ConfirmationType.Sender,
+            confirmationType: ConfirmationType.Confirmed,
             from: connectedAccount,
             value: String(convertEthToWei(amount.toString())),
           },
@@ -226,7 +230,13 @@ export default function FirstDepositModal({
                     isValidForm={isValidForm}
                   />
                   {errorAmount && (
-                    <div className="text-error/6 mt-2 text-sm">
+                    <div
+                      className={
+                        amount && amount > 0 && amount === parseFloat(balanceL1)
+                          ? 'text-primary/6 mt-2 text-sm'
+                          : 'text-error/6 mt-2 text-sm'
+                      }
+                    >
                       {errorAmount}
                     </div>
                   )}

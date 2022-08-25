@@ -1,31 +1,42 @@
-import { useQuery } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 import { assetModule } from 'src/services/myriaCore';
-import { NFTItemType } from 'src/components/marketplace/NftItem/type';
-import { CollectionByIdParams } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 
-type DataTypes = {
-  items: NFTItemType[];
-};
-
-export default function useCollectionAsset(payload: CollectionByIdParams) {
-  const queryKey = ['collection', payload.collectionId, 'assets'];
-  const { data, isLoading, error, refetch } = useQuery(
+const DEFAULT_PAGE = 1;
+const DEFAULT_LIMIT = 15;
+export default function useCollectionAsset({ collectionId }: { collectionId: number }) {
+  const queryKey = ['collection', collectionId, 'assets'];
+  const {
+    fetchNextPage,
+    fetchPreviousPage,
+    hasNextPage,
+    hasPreviousPage,
+    isFetchingNextPage,
+    isFetchingPreviousPage,
+    ...result
+  } = useInfiniteQuery(
     queryKey,
-    () =>
+    ({ pageParam = DEFAULT_PAGE }) =>
       assetModule?.getAssetByCollectionId({
-        collectionId: payload.collectionId,
-        limit: payload.limit,
-        page: payload.page
+        collectionId: collectionId,
+        limit: DEFAULT_LIMIT,
+        page: pageParam
       }),
     {
-      enabled: !!payload.collectionId
+      getNextPageParam: (lastPage, pages) => {
+        if (!lastPage) return;
+        const { currentPage, totalPages } = lastPage?.data.meta;
+        if (currentPage <= totalPages) {
+          return pages.length + 1;
+        }
+        return undefined;
+      }
     }
   );
 
   return {
-    assets: data,
-    isLoading,
-    error,
-    refetch
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    result
   };
 }

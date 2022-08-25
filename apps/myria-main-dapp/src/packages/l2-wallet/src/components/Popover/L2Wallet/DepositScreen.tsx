@@ -65,16 +65,14 @@ export default function DepositScreen({
         </div>
         <div className="mt-6">
           <div className="mb-2 flex justify-between">
-            <div className="text-base text-[14px]">Amount</div>
+            <div className="text-sm">Amount</div>
             <div className="flex items-center text-base">
               <div className="flex items-center">
-                <span className="text-base/9 mr-1  text-[14px]">
-                  Available{' '}
-                </span>
+                <span className="text-base/9 mr-1  text-sm">Available </span>
                 <span className="mr-1">
                   <DAOIcon size={16} />
                 </span>
-                <span className="text-base/9  mr-1 text-[14px]">{balance}</span>
+                <span className="text-base/9  mr-1 text-sm">{balance}</span>
                 <Tooltip>
                   <Tooltip.Trigger className="focus:outline-none">
                     <InfoCircleIcon className="text-base/1" size={18} />
@@ -104,17 +102,25 @@ export default function DepositScreen({
             isValidForm={isValidForm}
           />
           {inputChanged && errorAmount && (
-            <div className="text-error/6 mt-2 text-sm">{errorAmount}</div>
+            <div
+              className={
+                amount === parseFloat(balance)
+                  ? 'text-primary/6 mt-2 text-sm'
+                  : 'text-error/6 mt-2 text-sm'
+              }
+            >
+              {errorAmount}
+            </div>
           )}
         </div>
-        <div className="mt-2 flex justify-between text-sm">
+        <div className="mt-2 flex justify-between text-sm text-white/60">
           <p>Estimated gas fee</p>
           <p>0.0431917 ETH</p>
         </div>
       </div>
       <div className="flex justify-between justify-self-end">
         <button
-          className="border-base/9 flex w-full max-w-[126px] items-center justify-center rounded-lg border py-2 px-9 text-base font-bold text-white"
+          className="border-base/9 flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg border text-base font-bold text-white"
           onClick={() => {
             goBack();
           }}
@@ -123,7 +129,7 @@ export default function DepositScreen({
         </button>
         <button
           className={cn(
-            'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
+            'flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg text-base font-bold text-white',
             isValidForm && amount != undefined
               ? 'bg-primary/6 text-base/1'
               : 'bg-[#737373]',

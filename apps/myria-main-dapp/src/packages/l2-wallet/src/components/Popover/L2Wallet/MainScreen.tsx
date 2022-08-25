@@ -101,8 +101,8 @@ export const DF_TRANSACTION_TYPE = {
     rotateIcon: 'top',
   },
   [TRANSACTION_TYPE.TRANSFER]: {
-    title: 'NFT Withdrawal',
-    titleHistoryDetail: 'Withdrawal',
+    title: 'NFT Transfer',
+    titleHistoryDetail: 'Transfer',
     titleFailed: '',
     iconReceived: (
       <Arrow3Icon direction="top" className="text-blue/6 mr-1" size={60} />
@@ -151,7 +151,6 @@ export default function MainScreen({
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
   );
-  console.log('starkKeyUser', starkKeyUser);
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(
     localStorageKeys.starkKey,
@@ -279,6 +278,17 @@ export default function MainScreen({
     }
   };
 
+  const showWithdrawPopover = (item: any) => {
+    handleDisplayPopover(false);
+    handleSetValueNFT({
+      ...item,
+      name: item.transactionCategory,
+      assetMintId: item.assetId,
+      isComeFrom: WalletTabs.HISTORY,
+    });
+    completeWithdrawal();
+  };
+
   const renderStatus = (item: any) => {
     if (
       item.status === STATUS_HISTORY.IN_PROGRESS ||
@@ -300,26 +310,9 @@ export default function MainScreen({
       );
     }
 
-    if (
-      item.status === STATUS_HISTORY.COMPLETED &&
-      (item.type === 'TransferRequest' || item.type === 'WithdrawalRequest')
-    ) {
-      return (
-        <div className="text-base/9 mt-1 flex items-center">
-          Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
-        </div>
-      );
-    }
-
     if (item.status === STATUS_HISTORY.SUCCESS) {
-      if (
-        item.type === 'TransferRequest' ||
-        item.type === 'WithdrawalRequest'
-      ) {
-        if (
-          (item.tokenType === 'ETH' && l1Balance > 0) ||
-          item.tokenType === 'MINTABLE_ERC721'
-        ) {
+      if (item.type === TRANSACTION_TYPE.WITHDRAWAL) {
+        if (item.tokenType === 'ETH' && l1Balance > 0) {
           return (
             <button
               onClick={e => {
@@ -336,14 +329,39 @@ export default function MainScreen({
               />
             </button>
           );
-        } else if (item.tokenType === 'ETH' && l1Balance === 0) {
+        }
+
+        if (item.tokenType === 'ETH' && l1Balance === 0) {
           return (
             <div className="text-base/9 mt-1 flex items-center">
               In progress <ProgressHistoryIcon size={14} className="ml-1" />
             </div>
           );
         }
+
+        if (item.tokenType === 'MINTABLE_ERC721') {
+          return (
+            <RenderStatus
+              item={item}
+              showWithdrawPopover={() => showWithdrawPopover(item)}
+              starkKeyUser={`0x${localStarkKey}`}
+              address={walletAddress}
+            />
+          );
+        }
       }
+      return (
+        <div className="text-base/9 mt-1 flex items-center">
+          Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
+        </div>
+      );
+    }
+
+    if (
+      item.status === STATUS_HISTORY.COMPLETED &&
+      (item.type === TRANSACTION_TYPE.TRANSFER ||
+        item.type === TRANSACTION_TYPE.WITHDRAWAL)
+    ) {
       return (
         <div className="text-base/9 mt-1 flex items-center">
           Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
@@ -387,12 +405,11 @@ export default function MainScreen({
         return 'NFT Purchase';
       }
     }
-    if (
-      !item.name &&
-      (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-        item.type === TRANSACTION_TYPE.TRANSFER)
-    ) {
+    if (!item.name && item.type === TRANSACTION_TYPE.WITHDRAWAL) {
       return 'NFT Withdraw';
+    }
+    if (!item.name && item.type === TRANSACTION_TYPE.TRANSFER) {
+      return 'NFT Transfer';
     } else {
       return DF_TRANSACTION_TYPE[item?.type]?.title;
     }
@@ -543,3 +560,53 @@ export default function MainScreen({
     </div>
   );
 }
+
+const RenderStatus: React.FC<{
+  item: any;
+  starkKeyUser: string;
+  address: string;
+  showWithdrawPopover: any;
+}> = ({ item, starkKeyUser, address, showWithdrawPopover }) => {
+  const [balance, setBalance] = useState<number>(0);
+  useEffect(() => {
+    const getBalance = async (item: any) => {
+      if (!starkKeyUser || !address || !item?.assetId) return;
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+
+      const withdrawalModule = moduleFactory.getWithdrawModule();
+
+      const balance = await withdrawalModule.getWithdrawalBalance(
+        address.toLowerCase(),
+        item?.assetId + '',
+      );
+      setBalance(Number(balance));
+    };
+    getBalance(item);
+  }, [address, item, starkKeyUser]);
+
+  return (
+    <>
+      {balance > 0 ? (
+        <button
+          onClick={e => {
+            e.stopPropagation();
+            showWithdrawPopover();
+          }}
+          className="text-primary/6 mt-1 flex cursor-pointer items-center"
+        >
+          Complete withdrawal{' '}
+          <ChevronIcon
+            className="text-primary/6 ml-1"
+            size={14}
+            direction="right"
+          />
+        </button>
+      ) : (
+        <div className="text-base/9 mt-1 flex items-center">
+          In progress <ProgressHistoryIcon size={14} className="ml-1" />
+        </div>
+      )}
+    </>
+  );
+};

@@ -5,12 +5,13 @@ import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { getExplorerForAddress } from 'src/utils';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { StatusWithdrawNFT } from 'src/types/marketplace';
 
 interface IProp {}
 
 const WithdrawNFTSuccess: FC<IProp> = ({}) => {
-  const { isWithdrawComplete } = useL2WalletContext();
-  const { valueNFT } = useWithDrawNFTContext();
+  const { isWithdrawComplete, handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
+  const { valueNFT, setStatus } = useWithDrawNFTContext();
   const [etherLinkContract, setEtherLinkContract] = useState<string>();
 
   useEffect(() => {
@@ -65,8 +66,8 @@ const WithdrawNFTSuccess: FC<IProp> = ({}) => {
       <div className="flex justify-end">
         <button
           onClick={() => {
-            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-            triggerWithdraw?.click();
+            handleDisplayPopoverWithdrawNFT(false);
+            setStatus(StatusWithdrawNFT.MAIN_SCREEN);
           }}
           className="flex w-full items-center justify-center rounded-lg bg-primary/6 px-5 py-3 text-base font-bold text-base/1">
           <span>

@@ -38,7 +38,6 @@ const PurchaseModal: React.FC<Props> = ({
   });
 
   const [balanceL2Eth, setBalanceL2Eth] = useState<string>('');
-
   useEffect(() => {
     const assetType = asset.getAssetType({
       type: 'ETH',
@@ -53,12 +52,14 @@ const PurchaseModal: React.FC<Props> = ({
 
     if (exactBalance && exactBalance.length > 0) {
       setBalanceL2Eth(convertQuantizedAmountToEth(exactBalance[0].quantizedAmount).toString());
+    } else {
+      setBalanceL2Eth('0');
     }
   }, [balanceList]);
 
   return (
     <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content className="shadow-[0_0_40px_10px_#0000004D] absolute top-6 right-28 h-[565px] w-[406px] rounded-xl bg-base/3 max-h-[80vh] border-[#202230] border z-50">
+      <Modal.Content className="bg-base/3 absolute top-6 right-28 z-50 h-[565px] max-h-[80vh] w-[406px] rounded-xl border border-[#202230] shadow-[0_0_40px_10px_#0000004D]">
         <PurchasePopover
           onClose={onClose}
           onConfirm={onCreate}
@@ -68,7 +69,7 @@ const PurchaseModal: React.FC<Props> = ({
           isDeposit={parseFloat(balanceL2Eth) < parseFloat(assetBuy.price)}
           isLoading={isLoading}
         />
-        <div className="absolute right-5 -top-1 w-10 h-6 bg-base/3 rotate-45 z-10"></div>
+        <div className="bg-base/3 absolute right-5 -top-1 z-10 h-6 w-10 rotate-45"></div>
       </Modal.Content>
     </Modal>
   );

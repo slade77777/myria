@@ -20,13 +20,14 @@ import { useGA4 } from 'src/lib/ga';
 import NewsLetter from '../newsletter';
 import ContactUsSalesForceSuccessModal from 'src/components/modals/ContactUsSalesForceSuccessModal';
 import SubscriptionSuccessModal from 'src/components/modals/SubscriptionSuccessModal';
+import SuccessTickIcon from 'src/components/icons/SuccessTickIcon';
 
 const listId = process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID;
 
 const ForDevelopers: React.FC = () => {
   const [showContactSalesTeamModal, setShowFirstTimeVisitModal] = useState(false);
   const [showContactSalesSuccessModal, setShowContactSalesSuccessModal] = useState(false);
-  const [showSubscriptionSuccessModal, setShowSubscriptionSuccessModal] = useState(false);
+  const [submittedSubscription, setSubmittedSubscription] = useState(false);
 
   const [email, setEmail] = useState<string>('');
   const { event } = useGA4();
@@ -45,7 +46,7 @@ const ForDevelopers: React.FC = () => {
   };
 
   const handleCloseSubscriptionSuccessModal = () => {
-    setShowSubscriptionSuccessModal(false);
+    setSubmittedSubscription(false);
   };
 
   const emailsubmit = async () => {
@@ -60,12 +61,11 @@ const ForDevelopers: React.FC = () => {
           },
           post: true
         });
-        setShowSubscriptionSuccessModal(true);
+        setSubmittedSubscription(true);
         event('Email Subscribed', { campaign: 'B2B', user_email: email });
       } catch (err) {
         console.error(err);
       }
-      setEmail('');
     }
   };
 
@@ -163,22 +163,31 @@ const ForDevelopers: React.FC = () => {
           </section>
           <section className="mx-auto max-w-[1440px] pb-[160px] pt-[50px] md:px-[88px] md:pt-[200px]">
             <div className="grid grid-cols-1 space-y-4 lg:grid-cols-2 lg:space-x-6 lg:space-y-0">
-              <div className="mx-4 rounded-[20px] bg-[#081825] p-[30px] md:mx-0 md:p-[48px] xl:w-[620px]">
+              <div className="mx-4 rounded-[20px] bg-[#081825] p-[30px] pb-14 md:mx-0 md:p-12 xl:w-[620px]">
                 <div className="text-[25px] leading-[47px] text-white md:text-[32px]">
                   Stay up to date with us
                 </div>
                 <p className="text-base/9 mt-4 text-[20px] leading-[26px]">
                   Sign up to our newsletter for development updates
                 </p>
-                <div className="mt-4 flex space-x-5 md:mt-[84px]">
-                  <div className="flex-1 w-full">
+                <div className="relative mt-4 flex space-x-5 md:mt-[84px]">
+                  <div className="relative flex-1 w-full">
                     <Input
+                      disabled={submittedSubscription}
                       value={email}
-                      className="border-none bg-[#172630]"
+                      className={clsx(
+                        'bg-[#172630]',
+                        submittedSubscription ? 'border-success/8 border' : 'border-none'
+                      )}
                       type="text"
                       placeholder="Enter your email address"
                       onChange={(e: any) => setEmail(e.target.value)}
                     />
+                    {submittedSubscription && (
+                      <div className="text-success/8 absolute top-[14px] right-4 h-5 w-5">
+                        <SuccessTickIcon />
+                      </div>
+                    )}
                   </div>
                   <button
                     className="btn-lg btn-primary"
@@ -188,6 +197,11 @@ const ForDevelopers: React.FC = () => {
                     Submit
                   </button>
                 </div>
+                {submittedSubscription && (
+                  <p className="text-success/8 absolute mt-1.5 text-sm font-normal leading-[150%]">
+                    Email submitted. Thanks for subscribing!
+                  </p>
+                )}
               </div>
               <div className="mx-4 rounded-[20px] bg-[#081825] p-[30px] md:mx-0 md:p-[48px] xl:w-[620px]">
                 <div className="text-[25px] leading-[47px] text-white md:text-[32px]">
@@ -222,10 +236,6 @@ const ForDevelopers: React.FC = () => {
       <ContactUsSalesForceSuccessModal
         open={showContactSalesSuccessModal}
         onClose={handleCloseContactSalesSuccessModal}
-      />
-      <SubscriptionSuccessModal
-        open={showSubscriptionSuccessModal}
-        onClose={handleCloseSubscriptionSuccessModal}
       />
     </Page>
   );

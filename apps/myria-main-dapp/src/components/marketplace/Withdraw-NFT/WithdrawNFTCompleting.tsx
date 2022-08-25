@@ -1,18 +1,23 @@
 import { Trans } from '@lingui/macro';
 import { ConfirmationType } from 'myria-core-sdk';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import WithdrawalCompletedIcon from 'src/components/icons/WithdrawalCompletedIcon';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWalletContext } from 'src/context/wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
+import useTransactionList from 'src/hooks/useTransactionList';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
-import { StatusWithdrawNFT } from 'src/types/marketplace';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WalletTabs } from 'src/types';
-import { toast } from 'react-toastify';
-import { useL2WalletContext } from 'src/context/l2-wallet';
+import { StatusWithdrawNFT } from 'src/types/marketplace';
+import {
+  STATUS_HISTORY,
+  TRANSACTION_TYPE
+} from 'src/packages/l2-wallet/src/components/Popover/L2Wallet/MainScreen';
 
 interface IProp {}
 
@@ -25,12 +30,14 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
+
+  const { refetch: refetchTransactionList } = useTransactionList(starkKeyUser);
+
   const withdrawNftOnchain = async () => {
     const starkKey = '0x' + starkKeyUser;
 
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
-
     const withdrawalModule = moduleFactory.getWithdrawModule();
     const assetModule = moduleFactory.getAssetModule();
     setPending(true);
@@ -75,6 +82,8 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
           transactionHash: result.transactionHash,
           claimAmount: '1'
         });
+
+        refetchTransactionList();
         setStatus(StatusWithdrawNFT.SUCCESS);
       }
     } catch (err) {
@@ -82,20 +91,18 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       toast('Something wrong has happened, withdraw transaction is failure. Please retry..');
     } finally {
       setPending(false);
-      // const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-      // triggerWithdraw?.click();
     }
   };
   return (
     <>
       <div className="grow">
         <div className="px-6">
-          <div className="mx-auto mt-14 flex h-16 w-16 justify-center">
-            <WithdrawalCompletedIcon size={64} className="text-light-green w-full" />
+          <div className="flex justify-center w-16 h-16 mx-auto mt-14">
+            <WithdrawalCompletedIcon size={64} className="w-full text-light-green" />
           </div>
 
-          <div className="mt-6 text-center text-2xl text-white">Complete your withdrawal</div>
-          <div className="text-gray/6 mt-4 text-center text-sm">
+          <div className="mt-6 text-2xl text-center text-white">Complete your withdrawal</div>
+          <div className="mt-4 text-sm text-center text-gray/6">
             <span>
               <Trans>
                 Click below to claim this withdrawal to your L1 wallet. Gas fees will apply to this
@@ -104,14 +111,14 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
             </span>
           </div>
         </div>
-        <div className="bg-base/2/50 mt-8  rounded-lg p-4 text-sm text-white">
+        <div className="p-4 mt-8 text-sm text-white rounded-lg bg-base/2/50">
           <div className="flex justify-between">
             <span>
               <Trans>Item</Trans>
             </span>
             <span className="flex">{valueNFT.name}</span>
           </div>
-          <div className="mt-3 flex justify-between">
+          <div className="flex justify-between mt-3">
             <span className="flex items-center gap-1">
               <Trans>Estimated gas fee</Trans>
             </span>
@@ -124,16 +131,14 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       </div>
       <div className="flex justify-end">
         {pending ? (
-          <button className="bg-gray/4 text-gray/6 flex w-full items-center justify-center rounded-lg px-5 py-3 text-base font-bold">
+          <button className="flex items-center justify-center w-full px-5 py-3 text-base font-bold rounded-lg bg-gray/4 text-gray/6">
             <span>
               <Trans>WITHDRAW PENDING</Trans>
             </span>
           </button>
         ) : (
           <button
-            onClick={() => {
-              withdrawNftOnchain();
-            }}
+            onClick={withdrawNftOnchain}
             className="flex w-full items-center justify-center rounded-[8px] bg-[#F5B941] px-[20px] py-[12px] text-[16px] font-bold text-[#040B10]">
             <span>
               <Trans>WITHDRAW NOW</Trans>

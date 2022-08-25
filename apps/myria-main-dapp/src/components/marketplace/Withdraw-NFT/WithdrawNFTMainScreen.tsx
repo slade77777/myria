@@ -1,20 +1,20 @@
+import { Trans } from '@lingui/macro';
+import cn from 'classnames';
+import { WithdrawNftOffChainParams } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
 import { FC, useState } from 'react';
+import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { queryClient } from 'src/pages/_app';
 import { assetModule } from 'src/services/myriaCore';
-import cn from 'classnames';
-import { QueryClient, useQuery, useQueryClient } from 'react-query';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { validatedImage } from 'src/utils';
-import { toast } from 'react-toastify';
-import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
-import { getModuleFactory } from 'src/services/myriaCoreSdk';
-import { WithdrawNftOffChainParams } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
-import { Trans } from '@lingui/macro';
-import { queryClient } from 'src/pages/_app';
+import { useGA4 } from '../../../lib/ga';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -22,6 +22,8 @@ interface IProp {
 
 const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   const { valueNFT: assetDetail, handleLearnMore } = useWithDrawNFTContext();
+  const { handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
+
   const [isPending, setIsPending] = useState<boolean>(false);
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', +assetDetail.id],
@@ -123,18 +125,18 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           </div>
           <div className="mt-[13px] flex justify-between">
             <span className="text-base/9">
-              <Trans>Estimated completion</Trans>
+              <Trans>Estimated gas fee</Trans>
             </span>
-            <span className="flex">10-20 hours</span>
+            <span className="flex items-center">
+              <DAOIcon size={16} className="mr-1 mb-[2px]" />
+              <span>0.000561</span>
+            </span>
           </div>
         </div>
       </div>
       <div className="flex justify-between">
         <button
-          onClick={() => {
-            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-            triggerWithdraw?.click();
-          }}
+          onClick={() => handleDisplayPopoverWithdrawNFT(false)}
           className="flex w-32 items-center justify-center rounded-lg px-5 py-3 text-base font-bold text-white border">
           <Trans>CANCEL</Trans>
         </button>

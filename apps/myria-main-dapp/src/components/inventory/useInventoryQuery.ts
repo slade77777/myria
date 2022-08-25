@@ -83,7 +83,7 @@ const openChest = async (lootboxId: string) => {
 };
 
 const mintReward = async () => {
-  return http.post('/sigil/l2/mint');
+  return http.post('/sigil/l2/mint') as Promise<{ data: { data: any[] } }>;
 };
 
 export const inventoryQueryKeys = {

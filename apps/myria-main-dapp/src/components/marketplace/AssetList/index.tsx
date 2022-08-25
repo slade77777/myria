@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 import ClockIcon from 'src/components/icons/ClockIcon';
+import { formatPrice } from 'src/utils';
 import NftItem from '../NftItem';
 import { NFTItemType } from '../NftItem/type';
+import avatar from '../../../../public/images/marketplace/avatar.png';
 
 interface Props {
   title?: string;
@@ -11,7 +14,7 @@ interface Props {
 
 const AssetList: React.FC<Props> = ({ title, items }) => {
   return (
-    <div className="max-w-content mx-auto">
+    <div>
       {title && (
         <div className="flex justify-between">
           <span className="text-[24px] font-bold text-white">{title}</span>

@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro';
 import { BigNumber, ethers } from 'ethers';
+import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { EXPLORE_LINKS } from './services/common-ethers';
-import { getNetworkId } from './services/myriaCoreSdk';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
 const FORMAT_PRICE = 1000000;
@@ -145,6 +145,50 @@ export function hexifyKey(key: string) {
   return `0x${key}`;
 }
 
+export const getItemsPagination = (pages: any[]) => {
+  if (!pages?.length || pages.length === 0) {
+    return [];
+  }
+
+  return pages.reduce(
+    (
+      acc: any[],
+      page: {
+        data: {
+          items: AssetDetailsResponse[];
+        };
+      }
+    ) => {
+      return [...acc, ...(page?.data?.items || [])];
+    },
+    []
+  );
+};
 export function capitalizeFirstLetter(str: string = '') {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function validateResolution() {
+  if (typeof window === 'undefined') return false;
+  var mobile = [
+    'iphone',
+    'android',
+    'blackberry',
+    'nokia',
+    'opera mini',
+    'windows mobile',
+    'windows phone',
+    'iemobile'
+  ];
+  for (var i in mobile)
+    if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true;
+  return false;
+}
+
+export async function copyTextToClipboard(text: string) {
+  if ('clipboard' in navigator) {
+    return await navigator.clipboard.writeText(text);
+  } else {
+    return document.execCommand('copy', true, text);
+  }
 }

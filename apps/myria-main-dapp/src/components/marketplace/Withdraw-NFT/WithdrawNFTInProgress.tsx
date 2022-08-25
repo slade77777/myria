@@ -1,18 +1,15 @@
 import { Trans } from '@lingui/macro';
-import React, { useEffect, useMemo } from 'react';
-import DAOIcon from 'src/components/icons/DAOIcon';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { InfoCircleIcon, ProgressIcon } from 'src/packages/l2-wallet/src/components/Icons';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
-import { formatPrice } from 'src/utils';
 
 type Props = {};
 
 export default function WithdrawNFTInProgress({}: Props) {
-  const { valueNFT, status, setStatus } = useWithDrawNFTContext();
-  useEffect(() => {
-    return () => setStatus(StatusWithdrawNFT.MAIN_SCREEN);
-  });
+  const { setStatus } = useWithDrawNFTContext();
+  const { handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
+
   return (
     <>
       <div className="grow">
@@ -45,8 +42,8 @@ export default function WithdrawNFTInProgress({}: Props) {
       <div className="flex justify-end">
         <button
           onClick={() => {
-            const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-            triggerWithdraw?.click();
+            handleDisplayPopoverWithdrawNFT(false);
+            setStatus(StatusWithdrawNFT.MAIN_SCREEN);
           }}
           className="flex w-full items-center justify-center rounded-lg bg-primary/6 px-5 py-3 text-base font-bold text-base/1">
           <span>

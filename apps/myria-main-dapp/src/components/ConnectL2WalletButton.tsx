@@ -25,6 +25,7 @@ import { useL2WalletContext } from 'src/context/l2-wallet';
 import WthdrawNFTPopover from './marketplace/Withdraw-NFT/WthdrawNFTPopover';
 import WithdrawNFTScreen from './marketplace/Withdraw-NFT/WithdrawNFTScreen';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
+import { noCacheApiClient } from '../client';
 
 const ConnectL2WalletButton: React.FC = () => {
   const { event } = useGA4();
@@ -137,19 +138,22 @@ const ConnectL2WalletButton: React.FC = () => {
   useEffect(() => {
     const emailRequestNumber = localStorage.getItem('emailRequestNumber');
     const emailRequestTime = emailRequestNumber ? parseInt(emailRequestNumber) : 0;
-    if (
-      loginByWalletMutation.isSuccess &&
-      user &&
-      !user.email &&
-      localStarkKey &&
-      !requestedEmail &&
-      emailRequestTime < 10
-    ) {
-      // @ts-ignore
-      mainL2Ref.current?.openRequestEmailModal();
-      setRequestedEmail(true);
-      localStorage.setItem('emailRequestNumber', (emailRequestTime + 1).toString());
-    }
+    noCacheApiClient.get('accounts/users').then((data) => {
+      const userData = data?.data?.data;
+      if (
+        loginByWalletMutation.isSuccess &&
+        userData &&
+        !userData.normalized_email &&
+        localStarkKey &&
+        !requestedEmail &&
+        emailRequestTime < 10
+      ) {
+        // @ts-ignore
+        mainL2Ref.current?.openRequestEmailModal();
+        setRequestedEmail(true);
+        localStorage.setItem('emailRequestNumber', (emailRequestTime + 1).toString());
+      }
+    });
   }, [loginByWalletMutation?.isSuccess, user, requestedEmail, localStarkKey]);
 
   return (

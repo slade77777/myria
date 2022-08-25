@@ -53,53 +53,53 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
     <Root defaultValue="Listing">
       <List className="my-6">
         <Trigger
-          className="text-base/9 border-primary/6 px-4 py-[12.5px] text-base"
+          className="text-base/9 border-primary/6 px-4 py-[12.5px] text-base font-normal"
           value="Listing">
           Listing
         </Trigger>
         <Trigger
-          className="text-base/9 border-primary/6 mx-2 px-4 py-[12.5px] text-base"
+          className="text-base/9 border-primary/6 mx-2 px-4 py-[12.5px] text-base font-normal"
           value="Description">
           Description
         </Trigger>
         <Trigger
-          className="text-base/9 border-primary/6 px-4 py-[12.5px] text-base"
+          className="text-base/9 border-primary/6 px-4 py-[12.5px] text-base font-normal"
           value="Details">
           Details
         </Trigger>
       </List>
       <Content value="Listing">
-        <div className="relative max-h-[338px] overflow-x-auto shadow-md sm:rounded-lg">
-          <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+        <div className="relative max-h-[305px] overflow-x-auto shadow-md sm:rounded-lg">
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-base/9 bg-base/2 sticky text-[14px] font-medium">
               <tr>
-                <th scope="col" className="py-3 pr-6 w-1/4">
+                <th scope="col" className="w-1/4 py-[17px] pr-6">
                   Price
                 </th>
-                <th scope="col" className="py-3 pr-6 w-1/4">
+                <th scope="col" className="w-1/4 py-[17px] pr-6">
                   USD Price
                 </th>
-                <th scope="col" className="py-3 pr-6 w-1/4">
+                <th scope="col" className="w-1/4 py-[17px] pr-6">
                   Owner
                 </th>
-                <th scope="col" className="w-1/4 py-3 pr-6">
+                <th scope="col" className="w-1/4 py-[17px] pr-6">
                   <span className="sr-only">Edit</span>
                 </th>
               </tr>
             </thead>
-            <tbody className="border-blue/3 max-h-[100px] overflow-scroll border-b">
+            <tbody className="border-blue/3 max-h-[100px] overflow-y-auto border-b">
               {assetDetails && isModifing && (
-                <tr className="border-blue/3 border-t text-base font-normal text-white h-[65px]">
-                  <td className="whitespace-nowrap py-3 pr-6 overflow-hidden w-1/4">
+                <tr className="border-blue/3 h-[65px] border-t text-base font-normal text-white">
+                  <td className="w-1/4 py-3 pr-6 overflow-hidden whitespace-nowrap">
                     <p className="flex flex-row items-center gap-[7px] truncate">
                       <DAOIcon size={16} /> {convertPrice(false)}
                     </p>
                   </td>
-                  <td className="py-4 pr-6 truncate w-1/4">{convertPrice(true)}</td>
-                  <td className="py-4 pr-6 truncate w-1/4">
+                  <td className="w-1/4 py-4 pr-6 truncate">{convertPrice(true)}</td>
+                  <td className="w-1/4 py-4 pr-6 truncate">
                     <Trans>You</Trans>
                   </td>
-                  <td className="py-4 pr-6 truncate w-1/4 text-right"></td>
+                  <td className="w-1/4 py-4 pr-6 text-right truncate"></td>
                 </tr>
               )}
               {data?.map((elm: EqualMetadataByAssetIdResponse | any, _idx: number) => {
@@ -116,17 +116,17 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
                 return (
                   <tr
                     key={_idx}
-                    className="border-blue/3 border-t text-[16px] font-normal text-white">
-                    <td className="whitespace-nowrap py-4 pr-6 overflow-hidden w-1/4">
+                    className="border-blue/3 h-[55px] border-t text-[16px] font-normal text-white">
+                    <td className="w-1/4 py-4 pr-6 overflow-hidden whitespace-nowrap">
                       <p className="flex flex-row items-center gap-[7px] truncate">
                         <DAOIcon size={16} className="mb-[2px]" /> {priceConverted}
                       </p>
                     </td>
-                    <td className="py-4 pr-6 truncate w-1/4">${usdPriceConverted}</td>
-                    <td className="py-4 pr-6 truncate w-1/4">
+                    <td className="w-1/4 py-4 pr-6 truncate">${usdPriceConverted}</td>
+                    <td className="w-1/4 py-4 pr-6 truncate">
                       {elm?.starkKey !== starkKey ? ownerName : <Trans>You</Trans>}
                     </td>
-                    <td className="py-4 pr-6 truncate w-1/4 text-right">
+                    <td className="w-1/4 py-4 pr-6 text-right truncate">
                       {starkKeyUser && elm?.starkKey !== starkKey && (
                         <button
                           onClick={() => onBuyNow(elm)}

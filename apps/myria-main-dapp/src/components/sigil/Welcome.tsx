@@ -8,6 +8,7 @@ import * as env from 'detect-browser';
 import Link from 'next/link';
 import { t, Trans } from '@lingui/macro';
 import MetaMaskOnboarding from '@metamask/onboarding';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 type Props = {
   onNext: () => void;
@@ -15,6 +16,7 @@ type Props = {
 
 const Welcome: React.FC<Props> = ({ onNext }) => {
   const { address, onConnectCompaign, disconnect } = useWalletContext();
+  const { connectL2Wallet } = useL2WalletContext();
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -120,6 +122,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
               disabled={loginByWalletMutation.isLoading}
               onClick={async () => {
                 await onConnectCompaign('Sigil');
+                await connectL2Wallet();
                 event('Connect Wallet Selected', { campaign: 'Sigil' });
                 loginByWalletMutation.mutate();
               }}

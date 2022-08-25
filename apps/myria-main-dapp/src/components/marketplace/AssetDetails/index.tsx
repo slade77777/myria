@@ -1,3 +1,4 @@
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
 import {
@@ -6,10 +7,8 @@ import {
 } from 'myria-core-sdk/dist/types/src/types/OrderTypes';
 import { TradesRequestTypes } from 'myria-core-sdk/dist/types/src/types/TradesTypes';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import BackIcon from 'src/components/icons/BackIcon';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
@@ -43,6 +42,7 @@ import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/even
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
 
 interface Props {
   id: string;
@@ -70,8 +70,8 @@ const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
-      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
+    <div className="p-4 text-center border rounded-lg border-base/6 bg-base/3">
+      <p className="text-xs font-normal uppercase text-blue/6">{keyword}</p>
       <p className="text-sm font-medium">{val}</p>
     </div>
   );
@@ -174,6 +174,9 @@ function AssetDetails({ id }: Props) {
   const [showMessageModify, setShowMessageModify] = useState({ isShow: false, newPrice: 0 });
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
+
+  const [showShareModal, setShowShareModal] = useState(false);
+
   const { data: etheCost = 0 } = useEtheriumPrice();
   const { address, onConnectCompaign } = useWalletContext();
   const { loginByWalletMutation } = useAuthenticationContext();
@@ -363,7 +366,6 @@ function AssetDetails({ id }: Props) {
         address.toLowerCase(),
         assetDetails?.assetMintId + ''
       );
-      console.log(balance);
 
       if (balance > 0) {
         if (withdrawalStatus != StatusWithdrawNFT.COMPLETED) {
@@ -557,10 +559,10 @@ function AssetDetails({ id }: Props) {
   }
   return (
     <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] ">
-      <button onClick={router.back} className="mb-14 items-center">
-        <div className="flex">
+      <button onClick={router.back} className="items-center mb-14">
+        <div className="flex items-center">
           <BackIcon />
-          <span className="ml-[6px] text-[14px] font-normal">{titleBack}</span>
+          <span className="ml-[6px] text-sm font-normal leading-[17px]">{titleBack}</span>
         </div>
       </button>
       <div className="flex flex-row gap-[104px]">
@@ -601,12 +603,12 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className="flex flex-row items-center">
                 <img src={avatar.src} className="h-[24px] w-[24px]" />
-                <span className="text-light ml-2 text-base">{assetDetails?.collectionName}</span>
+                <span className="ml-2 text-base text-light">{assetDetails?.collectionName}</span>
               </div>
               <div
-                className="bg-base/3 w-10 cursor-pointer rounded p-3"
+                className="w-10 p-3 rounded cursor-pointer bg-base/3"
                 onClick={() => {
-                  toast('The function is not ready yet!');
+                  setShowShareModal(true);
                 }}>
                 <ShareIcon />
               </div>
@@ -614,7 +616,7 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="text-light mt-6 flex text-sm font-normal">
+              <div className="flex mt-6 text-sm font-normal text-light">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
@@ -624,7 +626,7 @@ function AssetDetails({ id }: Props) {
                 </span>
               </div>
 
-              <div className="text-light flex gap-6 text-sm font-normal">
+              <div className="flex gap-6 text-sm font-normal text-light">
                 <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
                   <MintedIcon />
                   <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
@@ -696,7 +698,7 @@ function AssetDetails({ id }: Props) {
               />
             )}
           </div>
-          <div className="border-blue/3 border-t">
+          <div className="border-t border-blue/3">
             {/* TAB */}
             <AssetDetailTab
               data={listOrder?.items}
@@ -808,6 +810,12 @@ function AssetDetails({ id }: Props) {
           <MessageUnlist assetName={assetDetails?.name} />
         </MessageModal>
       )}
+      <ShareAssetDetailModal
+        open={showShareModal}
+        onClose={() => {
+          setShowShareModal(false);
+        }}
+      />
     </div>
   );
 }
@@ -824,8 +832,6 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
   const handleWithdraw = async () => {
     handleSetValueNFT(assetDetails);
     onShowPopover();
-    const triggerWithdraw = document.getElementById('trigger-popover-withdraw');
-    triggerWithdraw?.click();
     trackWithDraw?.();
   };
 
@@ -875,7 +881,7 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
         </>
       )}
       <span className="text-light mt-[10px] text-[14px]">
-        <Trans>Assets remain in your wallet when you list on Myria Marketplace</Trans>
+        <Trans>Assets remain in your wallet when you list them on Myria Marketplace</Trans>
       </span>
     </div>
   );

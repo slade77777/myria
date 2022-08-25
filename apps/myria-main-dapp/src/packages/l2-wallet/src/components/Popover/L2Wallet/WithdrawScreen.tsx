@@ -64,19 +64,15 @@ export default function WithdrawScreen({
           <div className="text-error/6">{errorMessageAsset}</div>
         </div>
         <div className="mt-6">
-          <div className="flex justify-between">
-            <div className="mb-2 text-base">Amount</div>
+          <div className="mb-2 flex justify-between">
+            <div className="text-sm">Amount</div>
             <div className="flex items-center text-base">
               <div className="flex items-center">
-                <span className="text-base/9 mr-1 text-[14px]  leading-[17px]">
-                  Available{' '}
-                </span>
+                <span className="text-base/9 mr-1 text-sm">Available </span>
                 <span className="mr-1">
                   <DAOIcon size={16} />
                 </span>
-                <span className="text-base/9  mr-1 text-[14px] ">
-                  {balance}
-                </span>
+                <span className="text-base/9  mr-1 text-sm ">{balance}</span>
                 <Tooltip>
                   <Tooltip.Trigger className="focus:outline-none">
                     <InfoCircleIcon className="text-blue/6" size={18} />
@@ -105,10 +101,18 @@ export default function WithdrawScreen({
             isValidForm={isValidForm}
           />
           {errorAmount && inputChanged && (
-            <div className="text-error/6 mt-2 text-sm">{errorAmount}</div>
+            <div
+              className={
+                amount && amount > 0 && amount === parseFloat(balance)
+                  ? 'text-primary/6 mt-2 text-sm'
+                  : 'text-error/6 mt-2 text-sm'
+              }
+            >
+              {errorAmount}
+            </div>
           )}
         </div>
-        <div className=" mt-2 flex justify-between text-sm text-white/60">
+        <div className="mt-2 flex justify-between text-sm text-white/60">
           <p>Estimated gas fee</p>
           <p>0.0431917 ETH</p>
         </div>

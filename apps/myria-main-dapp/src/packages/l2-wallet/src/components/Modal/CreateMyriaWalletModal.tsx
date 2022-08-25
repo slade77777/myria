@@ -2,12 +2,12 @@
 import cn from 'classnames';
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Link from 'next/link';
 
 // Import components
 import { MyriaLogoIcon, ThreeDotsVerticalIcon } from '../Icons';
 
 // Import Redux
+import Image from 'next/image';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { RootState } from '../../app/store';
 
@@ -98,19 +98,21 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
           </div>
 
           <div className="mx-auto mt-[57px] w-[193px]">
-            <div>
-              🚀{' '}
-              <span className="text-[16px] text-white">0 gas fee trading</span>
+            <div className="flex items-center">
+              <Image src="/images/iconGasFee.png" width={20} height={23} />
+              <span className="ml-[14px] text-[16px] text-white">
+                0 gas fee trading
+              </span>
             </div>
-            <div className="mt-5">
-              ⚡️{' '}
-              <span className="text-[16px] text-white">
+            <div className="mt-5 flex items-center">
+              <Image src="/images/iconInstant.png" width={20} height={23} />
+              <span className="ml-[14px] text-[16px] text-white">
                 Instant transactions
               </span>
             </div>
-            <div className="mt-5">
-              🔒{' '}
-              <span className="text-[16px] text-white">
+            <div className=" mt-5 flex items-center">
+              <Image src="/images/iconLock.png" width={20} height={23} />
+              <span className="ml-[14px] text-[16px] text-white">
                 Secured by Ethereum{' '}
               </span>
             </div>
@@ -118,15 +120,15 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
 
           <div className="mt-[56px] px-[50px] text-center text-[12px] text-[#A1AFBA]">
             By creating your Myria L2 wallet and using Myria, you agree to our{' '}
-            <Link href="/terms-conditions">
+            <a href="/terms-conditions">
               <span className="cursor-pointer text-[#F5B941]">
                 Terms of Service
               </span>
-            </Link>{' '}
+            </a>{' '}
             and{' '}
-            <Link href="/privacy-policy">
+            <a href="/privacy">
               <span className="text-[#F5B941]">Privacy Policy</span>
-            </Link>
+            </a>
             .
           </div>
 

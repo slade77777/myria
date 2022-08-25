@@ -6,6 +6,7 @@ import { Loading } from '../../Loading';
 import truncateString from 'src/helper';
 import { Trans } from '@lingui/macro';
 import Link from 'next/link';
+import InfiniteScroll from 'react-infinite-scroller';
 
 interface Props {
   userAvatar: string;
@@ -14,6 +15,10 @@ interface Props {
   userJoinDate?: Date;
   items: NFTItemType[];
   assetLoading?: boolean;
+  hasMore?: boolean;
+  fetchNextPage: () => void;
+  totalItems: number;
+  totalForSaleItems: number;
 }
 
 function Inventory({
@@ -22,7 +27,11 @@ function Inventory({
   userAvatar,
   userJoinDate,
   userName,
-  assetLoading
+  assetLoading,
+  hasMore = false,
+  fetchNextPage,
+  totalItems,
+  totalForSaleItems
 }: Props) {
   const itemForSaleCount = React.useMemo(
     () => items.filter((item) => !!item.priceETH).length,
@@ -33,7 +42,7 @@ function Inventory({
     <div className="bg-base/2 h-full w-full py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
       <div className="w-full ">
         <div className="max-w-content mx-auto h-full">
-          <div className="mb-[58px] flex items-end justify-between">
+          <div className="mb-[58px] md:flex items-end justify-between">
             <div className="flex">
               <div className="mr-[40px] w-[120px] overflow-hidden rounded-full">
                 <img width="100%" src={'/images/marketplace/user.png'} alt="" />
@@ -54,34 +63,38 @@ function Inventory({
             </div>
             <div className="flex">
               <div className="mr-[64px] flex flex-col items-end">
-                <span className="text-[28px] font-bold text-white">{items.length}</span>
+                <span className="text-[28px] font-bold text-white">{totalItems}</span>
                 <span className="text-[16px] font-normal text-[#97AAB5]">Items</span>
               </div>
               <div className="flex flex-col items-end">
-                <span className="text-[28px] font-bold text-white">{itemForSaleCount}</span>
+                <span className="text-[28px] font-bold text-white">{totalForSaleItems}</span>
                 <span className="text-[16px] font-normal text-[#97AAB5]">For Sale</span>
               </div>
             </div>
           </div>
-          <div className="">
-            {assetLoading ? (
-              <div className="flex w-full items-center justify-center">
-                <Loading loadingSize={16} className="px-2" />
-              </div>
-            ) : (
-              <>
-                <div className="flex justify-between">
-                  <span className="text-[24px] font-bold text-white">
-                    <Trans>My Items</Trans>
-                  </span>
+          <>
+            <div className="flex justify-between">
+              <span className="text-[24px] font-bold text-white">
+                <Trans>My Items</Trans>
+              </span>
+            </div>
+            <InfiniteScroll
+              pageStart={1}
+              loadMore={() => fetchNextPage()}
+              hasMore={hasMore}
+              loader={
+                <div className="loader" key={0}>
+                  Loading ...
                 </div>
-                {items && items?.length > 0 && <AssetList items={items} />}
-              </>
-            )}
-          </div>
+              }
+              // useWindow={false}
+            >
+              <AssetList items={items} />
+            </InfiniteScroll>
+          </>
         </div>
       </div>
-      {!assetLoading && items?.length === 0 && (
+      {assetLoading && items?.length === 0 && (
         <div className="max-w-content mx-auto mt-20 flex items-center justify-center px-[400px] text-center">
           <p>
             <Trans>You don’t have any items yet. Visit the </Trans>&nbsp;
