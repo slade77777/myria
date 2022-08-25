@@ -36,13 +36,12 @@ export default function TransactionHistoryDetailScreen({
     };
     setLink();
   }, [transactionDetail?.transactionHash]);
-  console.log('transactionDetail', transactionDetail);
 
   const renderTitle = (transactionDetail: any) => {
     const startKey = `0x${starkKeyUser}`;
     if (
       transactionDetail.type === TRANSACTION_TYPE.SETTLEMENT &&
-      transactionDetail.partyAOrder.publicKey === startKey
+      transactionDetail.partyAOrder?.publicKey === startKey
     ) {
       return 'Sale';
     }
@@ -100,34 +99,37 @@ export default function TransactionHistoryDetailScreen({
         </div>
       )}
       <div className="bg-base/2/50 mt-8 rounded-lg p-4 text-sm">
+        {transactionDetail.name !== 'Ethereum' && (
+          <div className="mb-4 flex justify-between">
+            <span className="text-base/9">
+              <Trans>Item</Trans>
+            </span>
+            <span className="ml-1">Sigil NFT</span>
+          </div>
+        )}
+
         {transactionDetail.transactionType !== 'SettlementRequest' && (
-          <div className="flex justify-between">
+          <div className="flex justify-between ">
             <span className="text-base/9">
               <Trans>Amount</Trans>
             </span>
             <span className="text-base/10 flex items-center">
-              <DAOIcon size={16} className="mb-[2px]" />
+              {transactionDetail.name === 'Ethereum' && (
+                <DAOIcon size={16} className="mb-[2px]" />
+              )}
               <span className="ml-1">{transactionDetail.amount}</span>
             </span>
           </div>
         )}
         {transactionDetail.transactionType === 'SettlementRequest' && (
           <>
-            <div className="flex justify-between">
-              <span className="text-base/9">
-                <Trans>Item</Trans>
-              </span>
-              <span className="ml-1">
-                {transactionDetail.transactionCategory}
-              </span>
-            </div>
-            {startKey === transactionDetail.partyAOrder.publicKey ? (
+            {startKey === transactionDetail.partyAOrder?.publicKey ? (
               <div className="mt-4 flex justify-between">
                 <span className="text-base/9">
                   <Trans>Sold to</Trans>
                 </span>
                 <span className="ml-1">
-                  {truncateAddress(transactionDetail.partyBOrder.publicKey)}
+                  {truncateAddress(transactionDetail.partyBOrder?.publicKey)}
                 </span>
               </div>
             ) : (
@@ -136,7 +138,7 @@ export default function TransactionHistoryDetailScreen({
                   <Trans>Purchased from</Trans>
                 </span>
                 <span className="ml-1">
-                  {truncateAddress(transactionDetail.partyAOrder.publicKey)}
+                  {truncateAddress(transactionDetail.partyAOrder?.publicKey)}
                 </span>
               </div>
             )}
