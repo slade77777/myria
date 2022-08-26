@@ -56,7 +56,17 @@ const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
     },
     onError: (err: any) => {
       const message = err?.response?.data?.errors?.[0]?.detail;
-      toast(message || 'Something error, please try later', { type: 'error' });
+      if (message === 'Invalid Role') {
+        closeModal();
+        toast("We've already got your email!", {
+          type: 'success',
+        });
+        localStorage.setItem('emailRequestNumber', '10');
+      } else {
+        toast(message || 'Something error, please try later', {
+          type: 'error',
+        });
+      }
     },
   });
 
