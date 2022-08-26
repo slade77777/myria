@@ -11,19 +11,32 @@ import CheckIcon from '../Icons/CheckIcon';
 import { RootState } from '../../app/store';
 import CrossIcon from '../Icons/CrossIcon';
 
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { getModuleFactory } from '../../services/myriaCoreSdk';
+import { convertWeiToEth } from '../../utils/Converter';
+const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
+const { asset } = StarkwareLib;
 
 type Props = {
   isShowMessage: Boolean;
   setIsShowMessage: (arg0: Boolean) => void;
 };
 
+const QUANTUM = '10000000000';
+
 export default function MessageWithdrawModal({
   isShowMessage,
   setIsShowMessage,
 }: Props) {
-  const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
+  // const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
+  const [claimAmount, setClaimAmount] = useState(0);
   const [withdrawProgress, setWithdrawProgress] = useState(false);
+  const [walletAddress, setWalletAddress] = useLocalStorage(
+    localStorageKeys.walletAddress,
+    '',
+  );
 
   const { showWithdrawCompleteScreen, handleDisplayPopover } =
     useL2WalletContext();
@@ -32,9 +45,30 @@ export default function MessageWithdrawModal({
   };
 
   const claimNow = async () => {
+    let assetType: string = '';
+    assetType = asset.getAssetType({
+      type: 'ETH',
+      data: {
+        quantum: QUANTUM.toString(),
+      },
+    });
+    const moduleFactory = await getModuleFactory();
+    if (!moduleFactory) return;
+
+    const withdrawModule = moduleFactory.getWithdrawModule();
+
+    const currentBalance = await withdrawModule.getWithdrawalBalance(
+      walletAddress,
+      assetType,
+    );
+    setClaimAmount(Number(convertWeiToEth(String(currentBalance))));
+    console.log(
+      '[MessageWithdrawModal] L1 balance currently is: ->',
+      currentBalance,
+    );
     handleDisplayPopover(true);
     const transactionData = {
-      ethAmount: claimAmount,
+      ethAmount: convertWeiToEth(String(currentBalance)),
       isComeFrom: 'NOTIFICATION_TOAST',
     };
     showWithdrawCompleteScreen({ isShow: true, transactionData });

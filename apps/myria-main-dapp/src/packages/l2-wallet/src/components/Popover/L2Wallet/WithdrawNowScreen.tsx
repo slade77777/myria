@@ -34,8 +34,9 @@ export default function WithdrawNowScreen({
     localStorageKeys.starkKey,
     '',
   );
+  console.log('transactionDetail -> ', transactionDetail);
   const { showWithdrawCompleteScreen } = useL2WalletContext();
-  const { transactionHistoryData, refetch: refetchTransactionList } =
+  const { refetch: refetchTransactionList, data: transactionHistoryData } =
     useTransactionList(localStarkKey);
   const connectedAccount = useSelector(
     (state: RootState) => state.account.connectedAccount,
@@ -50,6 +51,7 @@ export default function WithdrawNowScreen({
 
   const withdrawEthNow = async () => {
     let transactionId = null;
+    console.log('transactionHistoryData -> ', transactionHistoryData);
     if (
       transactionHistoryData?.length > 0 &&
       transactionDetail.isComeFrom === 'NOTIFICATION_TOAST'
@@ -95,6 +97,7 @@ export default function WithdrawNowScreen({
 
       if (responseWithdraw) {
         setIsProcess(false);
+        console.log('Transaction ID ->', transactionId);
         if (transactionId) {
           try {
             const transactionModule = moduleFactory.getTransactionModule();
