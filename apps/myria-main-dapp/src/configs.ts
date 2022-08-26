@@ -3,7 +3,8 @@ export const socialLinks = {
   twitter: 'https://twitter.com/myria',
   instagram: 'https://www.instagram.com/myriagames/',
   medium: 'https://medium.com/@myriagames',
-  linkedin: 'https://www.linkedin.com/company/myriaworld/'
+  linkedin: 'https://www.linkedin.com/company/myriaworld/',
+  telegram: 'https://t.me/myriaofficialgroup'
 };
 
 export const localStorageKeys = {
