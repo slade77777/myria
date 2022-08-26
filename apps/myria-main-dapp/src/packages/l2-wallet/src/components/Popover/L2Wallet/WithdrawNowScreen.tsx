@@ -36,7 +36,7 @@ export default function WithdrawNowScreen({
   );
   const { showWithdrawCompleteScreen } = useL2WalletContext();
   const { transactionHistoryData, refetch: refetchTransactionList } =
-    useTransactionList(`0x${localStarkKey}`);
+    useTransactionList(localStarkKey);
   const connectedAccount = useSelector(
     (state: RootState) => state.account.connectedAccount,
   );
