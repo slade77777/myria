@@ -3,6 +3,7 @@ import { socialLinks } from '../configs';
 import DiscordIcon from './icons/DiscordIcon';
 import InstagramIcon from './icons/InstagramIcon';
 import MediumIcon from './icons/MediumIcon';
+import TelegramIcon from './icons/TelegramIcon';
 import TwitterIcon from './icons/TwitterIcon';
 
 const Socials = [
@@ -33,6 +34,13 @@ const Socials = [
     link: socialLinks.instagram,
     name: 'Instagram',
     event: 'Instagram Button Clicked'
+  },
+  {
+    id: 'instagram',
+    icon: <TelegramIcon />,
+    link: socialLinks.telegram,
+    name: 'Telegram',
+    event: 'Telegram Button Clicked'
   }
 ];
 

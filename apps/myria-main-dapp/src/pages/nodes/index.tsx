@@ -235,7 +235,7 @@ const Nodes: React.FC = () => {
             </section>
           </div>
         </div>
-        <section className={clsx(paddingX, 'mx-auto mt-[152px] w-full max-w-[832px]')}>
+        <section className={clsx(paddingX, 'hidden mx-auto mt-[152px] w-full max-w-[832px]')}>
           <h3 className="heading-sm text-center md:heading-md">
             <Trans>Myria FAQ</Trans>
           </h3>
