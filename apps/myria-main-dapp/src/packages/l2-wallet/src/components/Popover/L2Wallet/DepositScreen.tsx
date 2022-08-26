@@ -115,7 +115,7 @@ export default function DepositScreen({
         </div>
         <div className="mt-2 flex justify-between text-sm text-white/60">
           <p>Estimated gas fee</p>
-          <p>0.0431917 ETH</p>
+          <p>0.000431917 ETH</p>
         </div>
       </div>
       <div className="flex justify-between justify-self-end">
