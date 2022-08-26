@@ -256,10 +256,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   ]);
 
   useEffect(() => {
-    if (pKey) {
+    if (localStarkKey) {
       refetchTransactionList();
     }
-  }, [pKey, screen]);
+  }, [localStarkKey, screen]);
 
   const isValidForm = useMemo(() => {
     if (amount == undefined) {
@@ -498,7 +498,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       const transactionModule = moduleFactory.getTransactionModule();
       try {
         const { data } = await transactionModule.getTransactionList(
-          '0x' + pKey,
+          `0x${localStarkKey}`,
         );
         const result = data
           .filter((item: any, index: number) => {
