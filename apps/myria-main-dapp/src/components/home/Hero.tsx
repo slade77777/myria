@@ -90,6 +90,25 @@ const Hero: React.FC = () => {
     <div className="relative">
       <Slider {...settings}>
         <div>
+          <div className="flex min-h-[615px] flex-col justify-end md:justify-center bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:min-h-[805px] md:rounded-xl md:bg-[url('/images/home/banner-1_op.png')] md:pb-[91px] md:pl-[107px]">
+            <div className="text-center md:max-w-[539px] md:text-left">
+              <p className="text-[28px] font-black leading-[1.15] text-[#93F6FF]">
+                <Trans>MYRIA L2 IS LIVE! </Trans>
+              </p>
+              <p className="mt-5 text-[40px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
+                <Trans>Trade and collect NFTs with 0 fees </Trans>
+              </p>
+              <Link href={'/marketplace'}>
+                <a
+                  className="btn-sm btn-primary mt-6 md:mt-6 md:py-[15px] cursor-pointer"
+                  href={'/marketplace'}>
+                  <Trans>EXPLORE MARKETPLACE</Trans>
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div>
           <div
             className={clsx(
               'relative isolate flex min-h-[615px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:min-h-[805px] md:justify-end md:px-[100px] md:pb-[162px]'
@@ -181,24 +200,6 @@ const Hero: React.FC = () => {
                   <Trans>LEARN MORE</Trans>
                 </a>
               </Link>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="flex min-h-[615px] flex-col justify-end bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:min-h-[805px] md:rounded-xl md:bg-[url('/images/home/banner-1_op.png')] md:pb-[91px] md:pl-[107px]">
-            <div className="text-center md:max-w-[539px] md:text-left">
-              <p className="text-[28px] font-black leading-[1.15] text-[#93F6FF]">
-                <Trans>COMING SOON</Trans>
-              </p>
-              <p className="mt-5 text-[40px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
-                <Trans>$MYRIA Token</Trans>
-              </p>
-              <button className="btn-sm btn-primary mt-6 md:mt-6 md:py-[9px]">
-                <i className="mr-2.5 w-[30px]">
-                  <DiscordIcon />
-                </i>
-                <Trans>STAY TUNED ON DISCORD</Trans>
-              </button>
             </div>
           </div>
         </div>
