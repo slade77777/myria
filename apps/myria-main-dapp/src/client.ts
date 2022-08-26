@@ -2,6 +2,8 @@ const Klaviyo = require('node-klaviyo');
 
 import axios, { AxiosError } from 'axios';
 
+const timeout = 60000;
+
 export interface IResponseError {
   httpCode: number | undefined;
   errors: [{ code: string; title: string; detail: string }];
@@ -16,7 +18,7 @@ export function mapError(error: AxiosError): IResponseError {
 
 const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
-  timeout: 10000,
+  timeout,
   headers: {
     accept: 'application/json',
     'Content-type': 'application/json'
@@ -26,7 +28,7 @@ const apiClient = axios.create({
 
 export const salesforceAPIClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_SALESFORCE_URL,
-  timeout: 10000,
+  timeout,
   headers: {
     accept: 'application/json',
     'Content-type': 'application/json'
@@ -40,6 +42,7 @@ export const klaviyoClient = new Klaviyo({
 
 export const additionalApiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_ADDITIONAL_API_URL,
+  timeout,
   headers: {
     accept: 'application/json',
     'Content-type': 'application/json'
@@ -48,7 +51,7 @@ export const additionalApiClient = axios.create({
 
 export const noCacheApiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
-  timeout: 10000,
+  timeout,
   headers: {
     accept: 'application/json',
     'Content-type': 'application/json',
@@ -59,6 +62,7 @@ export const noCacheApiClient = axios.create({
 
 export const devApiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_DEV_API_URL,
+  timeout,
   headers: {
     accept: 'application/json',
     'Content-type': 'application/json'
