@@ -150,18 +150,14 @@ function AssetDetails({ id }: Props) {
 
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
-    lodash.map(assetDetails?.metadataOptional, (val, key) => {
-      if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('tokenid')) {
-        resultArray.push({ key, val }); // remove all key what has 'url'.
-      }
-    });
+
     lodash.map(assetDetails?.metadata, (val, key) => {
       if (!key.toLowerCase().includes('url')) {
         resultArray.push({ key, val }); // remove all key what has 'url'.
       }
     });
     return resultArray;
-  }, [assetDetails?.metadataOptional, assetDetails?.metadata]);
+  }, [assetDetails?.metadata]);
   // the status will be get from based on the order Object in API get assetDetails
 
   const [status, setStatus] = useState<AssetStatus>(AssetStatus.UNCONNECTED);
