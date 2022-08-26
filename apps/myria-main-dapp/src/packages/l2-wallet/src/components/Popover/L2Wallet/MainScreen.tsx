@@ -260,15 +260,16 @@ export default function MainScreen({
           ...item,
           ethAmount: convertWeiToEth(String(balance)),
         };
+        console.log('Go to withdraw now screen');
         gotoWithdrawNowScreen({
           isComeFrom: WalletTabs.HISTORY,
-          transactionDetails,
+          ...transactionDetails,
         });
       } else {
         handleDisplayPopover(false);
         handleSetValueNFT({
           ...item,
-          name: item.transactionCategory,
+          name: 'Sigil NFT',
           assetMintId: item.assetId,
           isComeFrom: WalletTabs.HISTORY,
         });
