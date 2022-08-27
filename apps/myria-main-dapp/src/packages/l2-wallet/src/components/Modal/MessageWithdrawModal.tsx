@@ -30,8 +30,7 @@ export default function MessageWithdrawModal({
   isShowMessage,
   setIsShowMessage,
 }: Props) {
-  // const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
-  const [claimAmount, setClaimAmount] = useState(0);
+  const claimAmount = useSelector((state: RootState) => state.ui.claimAmount);
   const [withdrawProgress, setWithdrawProgress] = useState(false);
   const [walletAddress, setWalletAddress] = useLocalStorage(
     localStorageKeys.walletAddress,
@@ -61,7 +60,7 @@ export default function MessageWithdrawModal({
       walletAddress,
       assetType,
     );
-    setClaimAmount(Number(convertWeiToEth(String(currentBalance))));
+
     console.log(
       '[MessageWithdrawModal] L1 balance currently is: ->',
       currentBalance,
