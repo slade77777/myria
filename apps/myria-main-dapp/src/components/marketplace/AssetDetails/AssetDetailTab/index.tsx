@@ -112,7 +112,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
                   )
                 );
                 const usdPriceConverted = formatUSDPrice(parseFloat(priceConverted) * etheCost);
-                const ownerName = truncateString(elm?.creatorStarkKey);
+                const ownerName = truncateString(elm?.starkKey);
                 return (
                   <tr
                     key={_idx}
