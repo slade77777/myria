@@ -125,8 +125,8 @@ const ForDevelopers: React.FC = () => {
                     campaign: 'B2B'
                   });
                 }}>
-                <a className="border btn-lg border-base/9">
-                  <Trans>CONTACT SALES</Trans>
+                <a className="uppercase border btn-lg border-base/9">
+                  <Trans>Contact Us</Trans>
                 </a>
               </button>
             </div>

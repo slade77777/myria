@@ -23,7 +23,7 @@ const ContactSalesTeamModal: React.FC<Props> = ({ open, onClose, onSuccessClose 
             <CloseIcon />
           </button>
           <h1 className="font-bold leading-[1.15] md:text-[24px]">
-            <Trans>Contact Our Sales Team</Trans>
+            <Trans>Contact Our Team</Trans>
           </h1>
           <BuildYourBlockchain onClose={onClose} onSuccessClose={onSuccessClose} />
         </div>
