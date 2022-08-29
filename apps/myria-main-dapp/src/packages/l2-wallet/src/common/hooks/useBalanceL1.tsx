@@ -29,9 +29,10 @@ function useBalanceL1(token: any, account: string) {
     const setBalanceFunc = async () => {
       if (token.name === 'Ethereum') {
         const tb = await window.web3.eth.getBalance(account);
-        setBalanceL1(
-          parseFloat(Web3.utils.fromWei(tb.toString(), 'ether')) + '',
-        );
+        const balance =
+          parseFloat(Web3.utils.fromWei(tb.toString(), 'ether')).toFixed(6) +
+          '';
+        setBalanceL1(balance);
       } else {
         const result = await getBalance(token.tokenAddress, account);
         setBalanceL1(result);
