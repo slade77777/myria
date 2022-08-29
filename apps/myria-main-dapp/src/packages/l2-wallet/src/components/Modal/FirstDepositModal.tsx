@@ -205,7 +205,7 @@ export default function FirstDepositModal({
                     <div className="flex items-center text-sm text-[#777777]">
                       <span className="text-[#9DA3A7]">Available</span>
                       <DAOIcon className="ml-2 mr-1" size={14} />
-                      <span className=" text-white">{balanceL1}</span>
+                      <span className=" text-base/9">{balanceL1}</span>
                       <Tooltip>
                         <Tooltip.Trigger className="focus:outline-none">
                           <InfoCircleIcon className="ml-2 text-[#A1AFBA]" />
@@ -253,7 +253,7 @@ export default function FirstDepositModal({
                       'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
                       isValidForm && amount != undefined
                         ? 'bg-primary/6 text-base/1'
-                        : 'bg-[#737373]',
+                        : 'bg-gray/4 text-gray/6',
                     )}
                     onClick={
                       isValidForm && amount != undefined ? deposit : () => {}
@@ -287,7 +287,7 @@ export default function FirstDepositModal({
                     </div>
                     <div className="mt-4 flex justify-between">
                       <span>Estimated completion</span>
-                      <span className="text-primary/6">10 minutes</span>
+                      <span className="text-white">10 minutes</span>
                     </div>
                   </div>
                   <div className="mt-4 flex rounded-lg border border-[rgba(154,201,227,0.2)] bg-[rgba(154,201,227,0.1)] py-4 px-[14px]">
