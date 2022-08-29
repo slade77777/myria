@@ -43,7 +43,7 @@ export const L2WalletProvider: React.FC = ({ children }) => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [isFirstTimeWallet, setIsFirstTimeWallet] = React.useState(false);
-  const [activeWalletTabs, setActiveWalletTabs] = useState<WalletTabs>(WalletTabs.TOKENS);
+  const [activeWalletTabs, setActiveWalletTabs] = useState<WalletTabs>(WalletTabs.HISTORY);
   const [isFirstPurchase, setIsFirstPurchase] = React.useState(false);
   const [isWithdrawComplete, setIsWithdrawComplete] = React.useState({
     isShow: false,
