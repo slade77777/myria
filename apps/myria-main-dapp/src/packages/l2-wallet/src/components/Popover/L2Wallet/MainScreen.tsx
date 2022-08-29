@@ -46,8 +46,8 @@ type Props = {
 };
 
 const tabs = [
-  { id: WalletTabs.TOKENS, title: 'Tokens' },
   { id: WalletTabs.HISTORY, title: 'History' },
+  { id: WalletTabs.TOKENS, title: 'Tokens' },
 ];
 
 const historyData: any[] = [];
@@ -474,46 +474,6 @@ export default function MainScreen({
           ))}
         </ul>
         <div className="outlet">
-          <TabContent id={WalletTabs.TOKENS} activeTab={activeToken}>
-            <div className="mt-3">
-              {coinPrices.map((item: any, index: number) => (
-                <div
-                  className={cn(
-                    'flex cursor-pointer justify-between py-4',
-                    index !== coinPrices.length - 1 &&
-                      'border-base/10 border-b',
-                  )}
-                  key={index}
-                >
-                  <div className="flex w-full justify-between">
-                    <div className="flex items-center">
-                      <img
-                        className="h-8 w-8 flex-none"
-                        src={item.ico}
-                        alt="token_icon"
-                      />
-                      <div className="ml-4">
-                        <p className="text-base/9 text-sm">{item.name}</p>
-                        <div>
-                          <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px] font-bold">
-                            {item.short}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-base/10 mt-1 text-right text-sm">
-                        {item.balance}
-                      </div>
-                      <div className="text-base/8 mt-1 text-right text-sm">
-                        ${item.price}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabContent>
           <TabContent id={WalletTabs.HISTORY} activeTab={activeToken}>
             <div className="mt-3 max-h-[244px] pr-2">
               {transactionList?.length === 0 && (
@@ -553,6 +513,46 @@ export default function MainScreen({
                     <div className="text-base/9 flex items-center justify-between text-xs">
                       <span>{item.time}</span>
                       {renderStatus(item)}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabContent>
+          <TabContent id={WalletTabs.TOKENS} activeTab={activeToken}>
+            <div className="mt-3">
+              {coinPrices.map((item: any, index: number) => (
+                <div
+                  className={cn(
+                    'flex cursor-pointer justify-between py-4',
+                    index !== coinPrices.length - 1 &&
+                      'border-base/10 border-b',
+                  )}
+                  key={index}
+                >
+                  <div className="flex w-full justify-between">
+                    <div className="flex items-center">
+                      <img
+                        className="h-8 w-8 flex-none"
+                        src={item.ico}
+                        alt="token_icon"
+                      />
+                      <div className="ml-4">
+                        <p className="text-base/9 text-sm">{item.name}</p>
+                        <div>
+                          <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px] font-bold">
+                            {item.short}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-base/10 mt-1 text-right text-sm">
+                        {item.balance}
+                      </div>
+                      <div className="text-base/8 mt-1 text-right text-sm">
+                        ${item.price}
+                      </div>
                     </div>
                   </div>
                 </div>

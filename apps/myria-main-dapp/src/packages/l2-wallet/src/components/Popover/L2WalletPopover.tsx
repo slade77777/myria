@@ -133,7 +133,6 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const [depositScreenMounted, setDepositScreenMounted] =
     useState<boolean>(false);
   const [depositInProgress, setDepositInProgress] = useState<boolean>(false);
-  const [transactionList, setTransactionList] = useState<Array<any>>([]);
 
   const dispatch = useDispatch();
 
@@ -146,10 +145,10 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const { address, disconnect } = useWalletContext();
   const {
     disconnectL2Wallet,
-    isWithdrawComplete,
-    showWithdrawCompleteScreen,
     activeWalletTabs,
     handleActiveWalletTabs,
+    isWithdrawComplete,
+    showWithdrawCompleteScreen,
   } = useL2WalletContext();
 
   // const [activeWalletTabs, setActiveToken] = useState<string>('tokens');
@@ -320,7 +319,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             amount: String(amount),
           },
           {
-            confirmationType: ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Sender,
             from: connectedAccount,
             value: String(convertEthToWei(amount.toString())),
           },
@@ -494,11 +493,11 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   useEffect(() => {
     const fetchTransactionHistory = async () => {
       const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
+      if (!moduleFactory || !pKey || !localStarkKey) return;
       const transactionModule = moduleFactory.getTransactionModule();
       try {
         const { data } = await transactionModule.getTransactionList(
-          `0x${localStarkKey}`,
+          '0x' + localStarkKey,
         );
         const result = data
           .filter((item: any, index: number) => {
