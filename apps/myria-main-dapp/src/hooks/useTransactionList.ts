@@ -14,7 +14,7 @@ export default function useTransactionList(starkKey: string) {
     queryKey,
     async () => {
       const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
+      if (!moduleFactory || !starkKey) return;
 
       let data = [];
       const transactionModule = moduleFactory.getTransactionModule();
