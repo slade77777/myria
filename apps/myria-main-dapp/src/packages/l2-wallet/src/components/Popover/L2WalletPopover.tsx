@@ -320,7 +320,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             amount: String(amount),
           },
           {
-            confirmationType: ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Sender,
             from: connectedAccount,
             value: String(convertEthToWei(amount.toString())),
           },
