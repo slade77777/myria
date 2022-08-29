@@ -59,6 +59,8 @@ function App({ Component, pageProps }: AppProps) {
             site: '@site',
             cardType: 'summary_large_image'
           }}
+          dangerouslySetAllPagesToNoIndex={process.env.NEXT_PUBLIC_DISABLE_SEO === 'true'}
+          dangerouslySetAllPagesToNoFollow={process.env.NEXT_PUBLIC_DISABLE_SEO === 'true'}
         />
         <ToastContainer hideProgressBar className={toastStyle.toast} />
         <WalletProvider>
