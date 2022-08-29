@@ -147,7 +147,7 @@ export default function FirstDepositModal({
             amount: String(amount),
           },
           {
-            confirmationType: ConfirmationType.Confirmed,
+            confirmationType: ConfirmationType.Sender,
             from: connectedAccount,
             value: String(convertEthToWei(amount.toString())),
           },
