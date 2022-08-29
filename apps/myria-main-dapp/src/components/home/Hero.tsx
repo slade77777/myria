@@ -90,17 +90,17 @@ const Hero: React.FC = () => {
     <div className="relative">
       <Slider {...settings}>
         <div>
-          <div className="flex min-h-[615px] flex-col justify-end md:justify-center bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:min-h-[805px] md:rounded-xl md:bg-[url('/images/home/banner-1_op.png')] md:pb-[91px] md:pl-[107px]">
+          <div className="flex min-h-[615px] flex-col justify-end md:justify-center bg-[url('/images/home/banner-1-mobile_op.png')] bg-cover px-8 pb-[65px] md:min-h-[calc(100vw/2.38)] md:rounded-xl md:bg-[url('/images/home/banner-1_op.png')] md:pb-[91px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
-              <p className="text-[28px] font-black leading-[1.15] text-[#93F6FF]">
+              <p className="text-lg md:text-xl font-black leading-[1.15] text-[#93F6FF]">
                 <Trans>MYRIA L2 IS LIVE! </Trans>
               </p>
-              <p className="mt-5 text-[40px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
+              <p className="mt-5 text-[34px] md:text-[40px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
                 <Trans>Trade and collect NFTs with 0 fees </Trans>
               </p>
               <Link href={'/marketplace'}>
                 <a
-                  className="btn-sm btn-primary mt-6 md:mt-6 md:py-[15px] cursor-pointer"
+                  className="text-base btn-sm btn-primary mt-6 md:mt-6 md:py-[15px] cursor-pointer"
                   href={'/marketplace'}>
                   <Trans>EXPLORE MARKETPLACE</Trans>
                 </a>
@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
         <div>
           <div
             className={clsx(
-              'relative isolate flex min-h-[615px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:min-h-[805px] md:justify-end md:px-[100px] md:pb-[162px]'
+              'relative isolate flex min-h-[615px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:min-h-[calc(100vw/2.38)] md:justify-end md:px-[100px] md:pb-[162px]'
             )}>
             {isDesktop && (
               <video
@@ -172,7 +172,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div>
-          <div className="flex min-h-[615px] flex-col justify-end bg-[url('/images/home/banner-3-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:min-h-[805px] md:justify-start md:bg-[url('/images/home/banner-3_op.png')] md:pt-[137px] md:pl-[107px]">
+          <div className="flex min-h-[615px] flex-col justify-end bg-[url('/images/home/banner-3-mobile_op.png')] bg-cover bg-center px-8 pb-[65px] md:min-h-[calc(100vw/2.38)] md:justify-start md:bg-[url('/images/home/banner-3_op.png')] md:pt-[137px] md:pl-[107px]">
             <div className="text-center md:max-w-[539px] md:text-left">
               <div className="flex items-center justify-center space-x-4 md:justify-start md:space-x-[57px]">
                 <i className="w-[108px]">
