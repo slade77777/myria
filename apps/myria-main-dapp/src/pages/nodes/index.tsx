@@ -18,6 +18,9 @@ import { useGA4 } from 'src/lib/ga';
 import { useRouter } from 'next/router';
 import Header from 'src/components/nodes/Header';
 import { useAuthenticationContext } from 'src/context/authentication';
+import Link from 'next/link';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { localStorageKeys } from '../../configs';
 
 const rewards = [
   {
@@ -172,6 +175,35 @@ const questions = [
   }
 ];
 const Nodes: React.FC = () => {
+  const { event } = useGA4();
+  const { address, onConnectCompaign } = useWalletContext();
+  const { loginByWalletMutation, user } = useAuthenticationContext();
+  const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+
+  const onConnectWallet = () => {
+    event('Connect Wallet Selected', { campaign: 'Nodes' });
+    onConnectCompaign('B2C Marketplace');
+    if (loginByWalletMutation.isError) {
+      loginByWalletMutation.mutate();
+    }
+  };
+
+  const showConnectedWallet = React.useMemo(() => {
+    if (walletAddress && address && (!user || !user?.wallet_id)) {
+      return true;
+    }
+    if (
+      address &&
+      user &&
+      address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
+      localStarkKey
+    ) {
+      return true;
+    }
+    return false;
+  }, [address, localStarkKey, user, walletAddress]);
+
   return (
     <Page action="start-building">
       <div className="pt-[120px]">
@@ -189,12 +221,22 @@ const Nodes: React.FC = () => {
                   rewards
                 </Trans>
               </h1>
-              <p className="heading-sm mx-auto mt-[32px] max-w-[518px]">
+              <p className="heading-sm mx-auto mt-[32px] text-base/10 text-xl">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              <a className="btn-lg btn-primary mt-[38px]" href="#subcribe">
-                <Trans>Pre register now</Trans>
-              </a>
+              {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet ? (
+                <Link href={'/nodes/purchase'}>
+                  <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
+                    <Trans>Purchase Now</Trans>
+                  </div>
+                </Link>
+              ) : (
+                <div
+                  className="btn-lg btn-primary mt-[38px] cursor-pointer"
+                  onClick={onConnectWallet}>
+                  <Trans>Connect wallet</Trans>
+                </div>
+              )}
             </section>
             <section className="mt-[100px]">
               <div className="max-w-[715px]">
@@ -288,9 +330,11 @@ const Nodes: React.FC = () => {
                   increases as nodes are sold.
                 </Trans>
               </p>
-              <a className="btn-lg btn-primary mt-[32px]" href="#subcribe">
-                <Trans>BUY A NODE</Trans>
-              </a>
+              <Link href={'/nodes/purchase'}>
+                <a className="btn-lg btn-primary mt-[32px]" href="/nodes/purchase">
+                  <Trans>BUY A NODE</Trans>
+                </a>
+              </Link>
             </div>
           </div>
         </section>

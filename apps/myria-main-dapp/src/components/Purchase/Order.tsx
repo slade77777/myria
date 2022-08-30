@@ -251,7 +251,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
           </div>
         </div>
       </div>
-      <WhiteListSale open={whitelistError} onClose={() => setWhitelistError(false)} />
+      {/*<WhiteListSale open={whitelistError} onClose={() => setWhitelistError(false)} />*/}
     </>
   );
 };
