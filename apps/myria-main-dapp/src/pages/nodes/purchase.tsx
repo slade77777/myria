@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import React from 'react';
 import Order from 'src/components/Purchase/Order';
@@ -12,9 +12,11 @@ import { useWalletContext } from 'src/context/wallet';
 import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
 import { useAuthenticationContext } from 'src/context/authentication';
+import WhiteListSale, { WarningNodeType } from '../../components/Purchase/Modals/WhiteListSale';
 
 const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
+  const [warningType, setWarningType] = useState<WarningNodeType>();
   const [modalData, setModalData] = React.useState<PurchaseInformationProps>({
     quantity: 0,
     totalPriceEth: 0,
@@ -29,7 +31,7 @@ const Purchase: React.FC = () => {
 
   useEffect(() => {
     // validate either wallet is connected
-    if (!address) {
+    if (!address || (!userProfileQuery.isFetching && !user)) {
       router.push('/nodes');
     }
   }, [address, router, user, userProfileQuery.isFetching]);
@@ -81,7 +83,7 @@ const Purchase: React.FC = () => {
       />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
-      {/* <WhiteListSale open onClose={() => null} /> */}
+      <WhiteListSale warningType={warningType} onClose={() => null} />
     </Page>
   );
 };
