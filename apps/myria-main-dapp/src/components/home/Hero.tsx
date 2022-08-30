@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
         <div>
           <div
             className={clsx(
-              'relative isolate flex min-h-[615px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:min-h-[calc(100vw/2.38)] md:justify-end md:px-[100px] md:pb-[162px]'
+              'relative isolate flex min-h-[615px] flex-col justify-end overflow-hidden bg-cover bg-center py-4 px-8 pb-[65px] md:min-h-[calc(100vw/2.38)] md:justify-end md:px-[100px]'
             )}>
             {isDesktop && (
               <video
