@@ -21,6 +21,7 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import Link from 'next/link';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { localStorageKeys } from '../../configs';
+import useInstalledWallet from '../../hooks/useInstalledWallet';
 
 const rewards = [
   {
@@ -180,6 +181,7 @@ const Nodes: React.FC = () => {
   const { loginByWalletMutation, user } = useAuthenticationContext();
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const { installedWallet } = useInstalledWallet();
 
   const onConnectWallet = () => {
     event('Connect Wallet Selected', { campaign: 'Nodes' });
@@ -224,17 +226,21 @@ const Nodes: React.FC = () => {
               <p className="heading-sm mx-auto mt-[32px] text-base/10 text-xl">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet ? (
-                <Link href={'/nodes/purchase'}>
-                  <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
-                    <Trans>Purchase Now</Trans>
-                  </div>
-                </Link>
-              ) : (
-                <div
-                  className="btn-lg btn-primary mt-[38px] cursor-pointer"
-                  onClick={onConnectWallet}>
-                  <Trans>Connect wallet</Trans>
+              {installedWallet && (
+                <div>
+                  {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet ? (
+                    <Link href={'/nodes/purchase'}>
+                      <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
+                        <Trans>Purchase Now</Trans>
+                      </div>
+                    </Link>
+                  ) : (
+                    <div
+                      className="btn-lg btn-primary mt-[38px] cursor-pointer"
+                      onClick={onConnectWallet}>
+                      <Trans>Connect wallet</Trans>
+                    </div>
+                  )}
                 </div>
               )}
             </section>

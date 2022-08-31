@@ -19,7 +19,7 @@ import { useMutation } from 'react-query';
 import Button from 'src/components/core/Button';
 import { toast } from 'react-toastify';
 import { useGA4 } from '../../lib/ga';
-import WhiteListSale from './Modals/WhiteListSale';
+import WhiteListSale, { WarningNodeType } from './Modals/WhiteListSale';
 import { WhitelistAddress } from '../../constant/whitelist-address';
 import PrivacyPolicyModal from './Modals/PrivacyPolicyModal';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
@@ -39,6 +39,7 @@ const licenses = [
 
 interface IOrderProps {
   onPlaceOrder: (data: PurchaseInformationProps) => void;
+  warningType?: WarningNodeType;
 }
 
 const schema = yup.object({
@@ -49,7 +50,7 @@ const schema = yup.object({
 
 const ToAddress = process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string;
 
-const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
+const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
   const { onConnect, address } = useWalletContext();
   const { login } = useAuthenticationContext();
   const [firstLicense, setFirstLicense] = useState(false);
@@ -241,7 +242,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder }) => {
               )}
               onClick={handleSubmit(doPurchase)}
               loading={isSubmiting}
-              disabled={!isValid}>
+              disabled={!isValid || !!warningType}>
               <Trans>PLACE ORDER</Trans>
             </Button>
             <p className="mt-2">
