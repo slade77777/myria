@@ -72,8 +72,8 @@ const Cricket = () => {
           "bg-[url('/images/cricket/background-mobile_op.png')] bg-cover md:bg-[url('/images/cricket/background_op.png')]"
         )}>
         <div className={clsx('pt-10 pb-[280px] md:pt-[160px]', paddingX)}>
-          <div className="mx-auto flex max-w-content flex-col items-center text-center md:items-start md:text-left">
-            <div className="flex items-center space-x-9 text-light">
+          <div className="max-w-content mx-auto flex flex-col items-center text-center md:items-start md:text-left">
+            <div className="text-light flex items-center space-x-9">
               <i className="w-[80px]">
                 <LogoSm />
               </i>
@@ -92,7 +92,7 @@ const Cricket = () => {
               </Trans>
             </h1>
             <div className="contents max-w-[750px] md:block">
-              <p className="mt-10 text-[16px] leading-[1.5] md:mt-6 md:text-[22px] px-[30px] md:px-0">
+              <p className="mt-10 px-[30px] text-[16px] leading-[1.5] md:mt-6 md:px-0 md:text-[22px]">
                 <Trans>
                   Cricket legend AB de Villiers has joined forces with Myria to deliver the next
                   generation of blockchain gaming to cricket fans around the world
