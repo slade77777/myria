@@ -43,6 +43,7 @@ import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
+import MessageCopyModal from '../MessageModal/MessageCopyModal';
 
 interface Props {
   id: string;
@@ -169,6 +170,7 @@ function AssetDetails({ id }: Props) {
   const [showModalUnlist, setShowModalUnlist] = useState(false);
   const [showMessageModify, setShowMessageModify] = useState({ isShow: false, newPrice: 0 });
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
+  const [showMessageCopied, setShowMessageCopied] = useState(false);
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
 
   const [showShareModal, setShowShareModal] = useState(false);
@@ -811,7 +813,15 @@ function AssetDetails({ id }: Props) {
         onClose={() => {
           setShowShareModal(false);
         }}
+        onShowMessageCopied={() => setShowMessageCopied(true)}
       />
+      {showMessageCopied && (
+        <MessageModal
+          isShowMessage={showMessageCopied}
+          setIsShowMessage={() => setShowMessageCopied(false)}>
+          <MessageCopyModal />
+        </MessageModal>
+      )}
     </div>
   );
 }

@@ -14,9 +14,10 @@ import { copyTextToClipboard } from 'src/utils';
 type Props = {
   open: boolean;
   onClose: () => void;
+  onShowMessageCopied: () => void;
 };
 
-const ShareAssetDetailModal: React.FC<Props> = ({ open, onClose }) => {
+const ShareAssetDetailModal: React.FC<Props> = ({ open, onClose, onShowMessageCopied }) => {
   return (
     <Modal open={open}>
       <Modal.Content includingHeader={false}>
@@ -38,7 +39,7 @@ const ShareAssetDetailModal: React.FC<Props> = ({ open, onClose }) => {
               <button
                 onClick={() => {
                   copyTextToClipboard(location.href);
-                  toast('Copied successfully!');
+                  onShowMessageCopied();
                 }}
                 className="flex-none rounded-lg border border-[rgba(255,255,255,0.4)] px-4 py-[5px] text-center font-bold leading-5 text-white">
                 Copy Link
