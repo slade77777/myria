@@ -230,14 +230,7 @@ export default function FirstDepositModal({
                     isValidForm={isValidForm}
                   />
                   {errorAmount && (
-                    <div
-                      className={
-                        amount &&
-                        amount > 0 &&
-                        amount === parseFloat(balanceL1) &&
-                        'text-error/6 mt-2 text-sm' || ''
-                      }
-                    >
+                    <div className={'text-error/6 mt-2 text-sm'}>
                       {errorAmount}
                     </div>
                   )}

@@ -101,16 +101,7 @@ export default function WithdrawScreen({
             isValidForm={isValidForm}
           />
           {errorAmount && inputChanged && (
-            <div
-              className={
-                amount &&
-                amount > 0 &&
-                amount === parseFloat(balance) &&
-                'text-error/6 mt-2 text-sm' || ''
-              }
-            >
-              {errorAmount}
-            </div>
+            <div className={'text-error/6 mt-2 text-sm'}>{errorAmount}</div>
           )}
         </div>
         <div className="mt-2 flex justify-between text-sm text-white/60">
