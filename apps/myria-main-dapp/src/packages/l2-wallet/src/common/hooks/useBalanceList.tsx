@@ -9,7 +9,7 @@ function useBalanceList(pKey: string, screen: number) {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
-      const assetModule = moduleFactory.getAssetModule();
+      const assetModule = moduleFactory.getAssetOnchainManager();
 
       const assetList = await assetModule.getListAssetsByStarkKey('0x' + pKey);
 

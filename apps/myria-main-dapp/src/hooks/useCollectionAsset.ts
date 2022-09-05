@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from 'react-query';
-import { assetModule } from 'src/services/myriaCore';
+import { collectionModule } from 'src/services/myriaCore';
 
 const DEFAULT_PAGE = 1;
 const DEFAULT_LIMIT = 15;
@@ -15,12 +15,17 @@ export default function useCollectionAsset({ collectionId }: { collectionId: num
     ...result
   } = useInfiniteQuery(
     queryKey,
-    ({ pageParam = DEFAULT_PAGE }) =>
-      assetModule?.getAssetByCollectionId({
-        collectionId: collectionId,
-        limit: DEFAULT_LIMIT,
-        page: pageParam
-      }),
+    ({ pageParam = DEFAULT_PAGE }) => {
+      if (collectionId) {
+        return collectionModule?.getAssetByCollectionId({
+          collectionId: collectionId,
+          limit: DEFAULT_LIMIT,
+          page: pageParam,
+          assetType: 'FOR_SALE'
+        });
+      }
+      return undefined;
+    },
     {
       getNextPageParam: (lastPage, pages) => {
         if (!lastPage) return;

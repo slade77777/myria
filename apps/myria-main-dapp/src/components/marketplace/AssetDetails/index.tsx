@@ -1,11 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
-import {
-  CreateOrderEntity,
-  SignableOrderInput
-} from 'myria-core-sdk/dist/types/src/types/OrderTypes';
-import { TradesRequestTypes } from 'myria-core-sdk/dist/types/src/types/TradesTypes';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
@@ -40,8 +35,14 @@ import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
-import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
+import {
+  AssetDetailsResponse,
+  CreateOrderEntity,
+  SignableOrderInput,
+  TradesRequestTypes
+} from 'myria-core-sdk';
 import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
 import MessageCopyModal from '../MessageModal/MessageCopyModal';
 
@@ -87,7 +88,7 @@ function AssetDetails({ id }: Props) {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
-      const assetModule = moduleFactory.getAssetModule();
+      const assetModule = moduleFactory.getAssetOnchainManager();
       const [assetDetails, listOrder] = await Promise.all([
         assetModule?.getAssetById(id), //getAssetDetail by assetId
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
@@ -133,7 +134,7 @@ function AssetDetails({ id }: Props) {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
-      const collectionModule = moduleFactory.getCollectionModule();
+      const collectionModule = moduleFactory.getCollectionManager();
       // more from this Collection (status:'FOR_SALE')
       const res = await collectionModule?.getAssetByCollectionId({
         assetType: 'FOR_SALE',
@@ -262,7 +263,7 @@ function AssetDetails({ id }: Props) {
   const onSubmitModifyOrder = async ({ price }: { price: string }) => {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
-    const orderModule = moduleFactory.getOrderModule();
+    const orderModule = moduleFactory.getOrderManager();
     if (!address) return;
     const result = await orderModule?.updateOrderPrice(assetDetails?.order.orderId + '', {
       newAmountBuy: price,
@@ -292,7 +293,7 @@ function AssetDetails({ id }: Props) {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
-      const orderModule = moduleFactory.getOrderModule();
+      const orderModule = moduleFactory.getOrderManager();
       if (!address) return;
       const payload: SignableOrderInput = {
         orderType: 'SELL',
@@ -421,7 +422,7 @@ function AssetDetails({ id }: Props) {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
 
-    const orderModule = moduleFactory.getOrderModule();
+    const orderModule = moduleFactory.getOrderManager();
     if (!address || !assetDetails?.order.orderId) return;
     const result = await orderModule?.deleteOrderById({
       orderId: assetDetails?.order.orderId,
@@ -475,8 +476,8 @@ function AssetDetails({ id }: Props) {
   const handleCreateTrade = async (tradeData: any) => {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
-    const orderModule = moduleFactory.getOrderModule();
-    const tradeModule = moduleFactory.getTradeModule();
+    const orderModule = moduleFactory.getOrderManager();
+    const tradeModule = moduleFactory.getTradeManager();
     if (!address || !tradeData?.order.orderId) return;
 
     try {

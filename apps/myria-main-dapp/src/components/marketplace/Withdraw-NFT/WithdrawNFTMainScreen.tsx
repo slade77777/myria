@@ -1,6 +1,4 @@
-import { Trans } from '@lingui/macro';
 import cn from 'classnames';
-import { WithdrawNftOffChainParams } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
 import { FC, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
@@ -10,11 +8,13 @@ import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { queryClient } from 'src/pages/_app';
 import { assetModule } from 'src/services/myriaCore';
-import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { validatedImage } from 'src/utils';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
-import { useGA4 } from '../../../lib/ga';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
+import { WithdrawNftOffChainParams } from 'myria-core-sdk';
+import { Trans } from '@lingui/macro';
+import { useGA4 } from 'src/lib/ga';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -31,7 +31,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
-      const assetModule = moduleFactory.getAssetModule();
+      const assetModule = moduleFactory.getAssetOnchainManager();
       const [assetDetails, listOrder] = await Promise.all([
         assetModule?.getAssetById(assetDetail.id), //getAssetDetail by assetId
         assetModule?.getAssetEqualMetadataById({ assetId: +assetDetail.id }) //getListOrder by assetId

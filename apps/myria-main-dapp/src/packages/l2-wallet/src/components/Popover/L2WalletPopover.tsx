@@ -46,8 +46,7 @@ import {
 import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 
 //compoment POC
-import { TxResult } from 'myria-core-sdk/dist/types/src/types';
-import { WithdrawOffchainParamsV2 } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
+import { WithdrawOffchainParamsV2, TxResult } from 'myria-core-sdk';
 // @ts-ignore
 import { useDepositContext } from 'src/context/deposit-context';
 import DropdownMenu from '../../../../../components/DropdownMenu';
@@ -494,7 +493,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     const fetchTransactionHistory = async () => {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory || !pKey || !localStarkKey) return;
-      const transactionModule = moduleFactory.getTransactionModule();
+      const transactionModule = moduleFactory.getTransactionManager();
       try {
         const { data } = await transactionModule.getTransactionList(
           '0x' + localStarkKey,

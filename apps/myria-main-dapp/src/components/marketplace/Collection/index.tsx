@@ -5,7 +5,7 @@ import ReadMoreText from 'src/components/ReadMoreText';
 import Page from 'src/components/Page';
 import AssetList from '../AssetList';
 import avatar from '../../../../public/images/marketplace/avatar.png';
-import { AssetByCollectionIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { AssetByCollectionIdResponse } from 'myria-core-sdk';
 import useCollectionAsset from 'src/hooks/useCollectionAsset';
 import InfiniteScroll from 'react-infinite-scroller';
 import { getItemsPagination } from 'src/utils';

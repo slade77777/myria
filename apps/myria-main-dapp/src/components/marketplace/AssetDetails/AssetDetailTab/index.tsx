@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs';
-import { EqualMetadataByAssetIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { NftAssetEqualMetadataResponse, AssetDetailsResponse } from 'myria-core-sdk';
 import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
@@ -13,13 +13,12 @@ import {
   formatUSDPrice,
   getExplorerForAddress
 } from 'src/utils';
-import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 import { toast } from 'react-toastify';
 
 type Prop = {
-  data: EqualMetadataByAssetIdResponse | any;
-  onBuyNow: (data: EqualMetadataByAssetIdResponse) => void;
+  data: NftAssetEqualMetadataResponse | any;
+  onBuyNow: (data: NftAssetEqualMetadataResponse) => void;
   etheCost: number;
   isModifing: boolean;
   assetDetails: AssetDetailsResponse | undefined;
@@ -103,7 +102,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
                   <td className="w-1/4 py-4 pr-6 text-right truncate"></td>
                 </tr>
               )}
-              {data?.map((elm: EqualMetadataByAssetIdResponse | any, _idx: number) => {
+              {data?.map((elm: NftAssetEqualMetadataResponse | any, _idx: number) => {
                 const isOrder = Array.isArray(elm?.order);
                 const priceConverted = formatPrice(
                   parseFloat(
@@ -144,7 +143,9 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
         </div>
       </Content>
       <Content value="Description">
-        <p className="max-w-full text-base/9 text-normal text-base leading-6">{capitalizeFirstLetter(assetDetails?.description)}</p>
+        <p className="max-w-full text-base/9 text-normal text-base leading-6">
+          {capitalizeFirstLetter(assetDetails?.description)}
+        </p>
       </Content>
       <Content value="Details">
         <div>

@@ -100,7 +100,7 @@ export default function WithdrawNowScreen({
         console.log('Transaction ID ->', transactionId);
         if (transactionId) {
           try {
-            const transactionModule = moduleFactory.getTransactionModule();
+            const transactionModule = moduleFactory.getTransactionManager();
             const result = await transactionModule.updateTransactionComplete({
               starkKey: `0x${localStarkKey}`,
               transactionId: Number(transactionId),

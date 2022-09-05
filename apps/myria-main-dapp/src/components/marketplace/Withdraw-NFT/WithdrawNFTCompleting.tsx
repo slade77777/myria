@@ -35,7 +35,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
     const withdrawalModule = moduleFactory.getWithdrawModule();
-    const assetModule = moduleFactory.getAssetModule();
+    const assetModule = moduleFactory.getAssetOnchainManager();
     setPending(true);
 
     try {
