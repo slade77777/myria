@@ -98,12 +98,14 @@ const Purchase: React.FC = () => {
       />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
-      <WhiteListSale
-        open={showWarning}
-        warningType={warningType}
-        setWarningType={setWarningType}
-        onClose={() => setShowWarning(false)}
-      />
+      {showWarning && (
+        <WhiteListSale
+          open
+          warningType={warningType}
+          setWarningType={setWarningType}
+          onClose={() => setShowWarning(false)}
+        />
+      )}
     </Page>
   );
 };
