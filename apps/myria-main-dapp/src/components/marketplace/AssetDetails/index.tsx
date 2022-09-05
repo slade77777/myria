@@ -92,7 +92,7 @@ function AssetDetails({ id }: Props) {
         assetModule?.getAssetById(id), //getAssetDetail by assetId
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
-      handleSetValueNFT(assetDetails?.data);
+      handleSetValueNFT({ ...assetDetails?.data, name: 'Sigil NFT' });
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
