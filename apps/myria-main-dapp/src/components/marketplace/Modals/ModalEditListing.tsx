@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { AssetDetailsResponse } from 'myria-core-sdk';
 import React, { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from 'src/components/core/Button';

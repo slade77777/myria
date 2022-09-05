@@ -1,6 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { CollectionItems } from 'myria-core-sdk/dist/types/src/types/CollectionTypes';
-import { CommonPaginateDataTypes } from 'myria-core-sdk/dist/types/src/types/CommonTypes';
+import { CollectionListResponse, CommonPaginateDataTypes } from 'myria-core-sdk';
 import Link from 'next/link';
 import React, { useCallback } from 'react';
 import { useQuery } from 'react-query';
@@ -26,7 +25,7 @@ const HotCollection: React.FC = () => {
   );
 
   const onClickCollectionTracking = useCallback(
-    (itm: CollectionItems) => {
+    (itm: CollectionListResponse) => {
       return event('MKP Collection Selected', {
         myria_id: user?.user_id,
         wallet_address: `_${address}`,
@@ -37,13 +36,13 @@ const HotCollection: React.FC = () => {
     [user, address]
   );
 
-  const hotCollection: CommonPaginateDataTypes<CollectionItems[]> | undefined = data?.data;
+  const hotCollection: CommonPaginateDataTypes<CollectionListResponse[]> | undefined = data?.data;
 
   if (isLoading) return <></>;
   return (
     <>
       <div className="grid gap-8 overflow-x-scroll md:grid-cols-2 ">
-        {hotCollection?.items.map((itm: CollectionItems, idx: number) => {
+        {hotCollection?.items.map((itm: CollectionListResponse, idx: number) => {
           return (
             <Link href={`/marketplace/collection?id=${itm.publicId}`} key={idx}>
               <a

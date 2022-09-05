@@ -1,8 +1,10 @@
-import { IMyriaClient, MyriaClient, ModuleFactory } from 'myria-core-sdk';
+import { IMyriaClient, MyriaClient, ModuleFactory, EnvTypes } from 'myria-core-sdk';
 import Web3 from 'web3';
 
 declare const window: any;
 const MAINNET = 1;
+
+const ENV_CORE_SDK = process.env.NEXT_PUBLIC_CORE_SDK_ENV;
 async function signMetamask() {
   if (window.ethereum) {
     window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -38,6 +40,18 @@ async function getNetworkId(): Promise<number> {
   return networkId;
 }
 
+function getEnvTypes() {
+  console.log('ENV SDK -> ', ENV_CORE_SDK);
+  if (ENV_CORE_SDK === 'DEV') {
+    return EnvTypes.DEV;
+  } else if (ENV_CORE_SDK === 'STAGING') {
+    return EnvTypes.STAGING;
+  } else if (ENV_CORE_SDK === 'PROD') {
+    return EnvTypes.PRODUCTION;
+  }
+  return EnvTypes.STAGING;
+}
+
 async function getModuleFactory() {
   let windowBrowser;
   let networkId;
@@ -56,7 +70,8 @@ async function getModuleFactory() {
   const client: IMyriaClient = {
     provider: windowBrowser.eth.currentProvider as any,
     networkId: networkId ? networkId : MAINNET,
-    web3: windowBrowser as any
+    web3: windowBrowser as any,
+    env: getEnvTypes()
   };
 
   const myriaClient = new MyriaClient(client);
