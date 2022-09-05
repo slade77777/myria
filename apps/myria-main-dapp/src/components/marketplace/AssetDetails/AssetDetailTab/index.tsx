@@ -15,6 +15,7 @@ import {
 } from 'src/utils';
 import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
+import { toast } from 'react-toastify';
 
 type Prop = {
   data: EqualMetadataByAssetIdResponse | any;
@@ -143,7 +144,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
         </div>
       </Content>
       <Content value="Description">
-        <p className="max-w-full">{capitalizeFirstLetter(assetDetails?.description)}</p>
+        <p className="max-w-full text-base/9 text-normal text-base leading-6">{capitalizeFirstLetter(assetDetails?.description)}</p>
       </Content>
       <Content value="Details">
         <div>

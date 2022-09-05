@@ -121,7 +121,7 @@ function AssetDetails({ id }: Props) {
       </span>
     ) : (
       <span>
-        <Trans>BACK MYRIA HOT COLLECTIONS</Trans>
+        <Trans>BACK TO MYRIA HOT COLLECTIONS</Trans>
       </span>
     );
     return result;
