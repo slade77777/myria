@@ -132,7 +132,7 @@ export default function DepositScreen({
             'flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg text-base font-bold text-white',
             isValidForm && amount != undefined
               ? 'bg-primary/6 text-base/1'
-              : 'text-gray/6  bg-[#737373]',
+              : 'text-gray/6  bg-gray/4',
           )}
           onClick={() => {
             if (isValidForm && amount != undefined) {
