@@ -102,13 +102,7 @@ export default function DepositScreen({
             isValidForm={isValidForm}
           />
           {inputChanged && errorAmount && (
-            <div
-              className={
-                amount === parseFloat(balance) && 'text-error/6 mt-2 text-sm' || ''
-              }
-            >
-              {errorAmount}
-            </div>
+            <div className={'text-error/6 mt-2 text-sm'}>{errorAmount}</div>
           )}
         </div>
         <div className="mt-2 flex justify-between text-sm text-white/60">
