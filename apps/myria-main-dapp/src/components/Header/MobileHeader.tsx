@@ -139,6 +139,18 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             </Link>
           ))}
         </div> */}
+        <div className="w-full flex flex-row h-[56px]">
+          <Link href={'/'}>
+            <div className="border-white border-2 w-1/2 flex items-center justify-center">
+              <Trans>FOR GAMES</Trans>
+            </div>
+          </Link>
+          <Link href={'/for-developers'}>
+            <div className="border-white border-2 w-1/2 flex items-center justify-center">
+              <Trans>FOR DEVELOPERS</Trans>
+            </div>
+          </Link>
+        </div>
         <ul
           style={{
             overscrollBehavior: 'contain'
