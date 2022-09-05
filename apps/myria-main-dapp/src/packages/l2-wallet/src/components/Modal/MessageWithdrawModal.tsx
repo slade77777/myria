@@ -77,11 +77,11 @@ export default function MessageWithdrawModal({
   return (
     <div
       className={cn(
-        `absolute top-20 right-5 w-[406px]`,
+        `absolute top-24 right-6 w-[406px]`,
         isShowMessage ? 'block' : 'hidden',
       )}
     >
-      <div className="bg-base/4 w-full max-w-lg rounded-lg p-8 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
+      <div className="bg-base/5 w-full max-w-lg rounded-2xl p-8 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
         <div className="flex">
           <CheckIcon className="mt-1 text-[#367641]" size={24} />
           <div className="ml-3 grow font-normal leading-normal text-white">

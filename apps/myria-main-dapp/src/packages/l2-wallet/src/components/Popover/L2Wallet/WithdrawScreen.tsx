@@ -103,9 +103,10 @@ export default function WithdrawScreen({
           {errorAmount && inputChanged && (
             <div
               className={
-                amount && amount > 0 && amount === parseFloat(balance)
-                  ? 'text-primary/6 mt-2 text-sm'
-                  : 'text-error/6 mt-2 text-sm'
+                amount &&
+                amount > 0 &&
+                amount === parseFloat(balance) &&
+                'text-error/6 mt-2 text-sm' || ''
               }
             >
               {errorAmount}

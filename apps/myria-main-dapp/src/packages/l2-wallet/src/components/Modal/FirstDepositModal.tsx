@@ -232,9 +232,10 @@ export default function FirstDepositModal({
                   {errorAmount && (
                     <div
                       className={
-                        amount && amount > 0 && amount === parseFloat(balanceL1)
-                          ? 'text-primary/6 mt-2 text-sm'
-                          : 'text-error/6 mt-2 text-sm'
+                        amount &&
+                        amount > 0 &&
+                        amount === parseFloat(balanceL1) &&
+                        'text-error/6 mt-2 text-sm' || ''
                       }
                     >
                       {errorAmount}
