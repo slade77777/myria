@@ -13,10 +13,12 @@ import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
 import { useAuthenticationContext } from 'src/context/authentication';
 import WhiteListSale, { WarningNodeType } from '../../components/Purchase/Modals/WhiteListSale';
+import { noCacheApiClient } from '../../client';
 
 const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const [warningType, setWarningType] = useState<WarningNodeType>();
+  const [showWarning, setShowWarning] = useState(false);
   const [modalData, setModalData] = React.useState<PurchaseInformationProps>({
     quantity: 0,
     totalPriceEth: 0,
@@ -33,6 +35,19 @@ const Purchase: React.FC = () => {
     // validate either wallet is connected
     if (!address || (!userProfileQuery.isFetching && !user)) {
       router.push('/nodes');
+    } else {
+      noCacheApiClient.get('accounts/users').then((data) => {
+        const userData = data?.data?.data;
+        if (userData) {
+          if (!userData.email) {
+            setShowWarning(true);
+            setWarningType('not-email');
+          } else if (!userData.normalized_email) {
+            setShowWarning(true);
+            setWarningType('not-verified');
+          }
+        }
+      });
     }
   }, [address, router, user, userProfileQuery.isFetching]);
 
@@ -66,11 +81,11 @@ const Purchase: React.FC = () => {
         )}>
         <div className="mx-auto mt-[30px] w-full max-w-[1734]">
           <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[67.5fr_32.5fr]">
-            <div className="relative float-left h-[calc(100vh_-_80px)] w-full overflow-hidden md:mt-0">
+            <div className="relative w-full overflow-hidden md:mt-0">
               <License />
             </div>
             <div className="float-right -mx-6 mt-[130px] md:mx-0 md:mt-0">
-              <Order onPlaceOrder={onPlaceOrder} />
+              <Order onPlaceOrder={onPlaceOrder} warningType={warningType} />
             </div>
           </div>
         </div>
@@ -83,7 +98,12 @@ const Purchase: React.FC = () => {
       />
       {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
       {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
-      <WhiteListSale warningType={warningType} onClose={() => null} />
+      <WhiteListSale
+        open={showWarning}
+        warningType={warningType}
+        setWarningType={setWarningType}
+        onClose={() => setShowWarning(false)}
+      />
     </Page>
   );
 };

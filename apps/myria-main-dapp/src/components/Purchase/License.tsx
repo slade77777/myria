@@ -84,18 +84,17 @@ const License: React.FC = () => {
   ];
 
   return (
-    <div className="absolute top-0 left-0 bottom-0 right-[-17px] overflow-y-auto rounded-lg p-8 text-center md:bg-brand-deep-blue md:text-left">
+    <div className="rounded-lg p-8 text-center md:bg-brand-deep-blue md:text-left">
       <p className="heading-list text-white md:heading-md">
         <Trans>Myria Node License</Trans>
       </p>
       <p className="body-sm mt-6 font-normal text-light md:mr-[42px]">
         <Trans>
-          Grow with us and be rewarded. A Myria Node License allows you to operate a node from your
-          home computer to support the growth of Myria’s decentralized network. As a node owner,
-          you’ll earn daily rewards and exclusive benefits for your contribution.
+          Grow with us and be rewarded. A Myria Node License will allow you to operate a node from
+          your home computer to support the growth of Myria’s decentralized network. As a node
+          owner, you’ll earn daily rewards and exclusive benefits for your contribution.
         </Trans>
       </p>
-      <img src={'/images/dashboard.png'} className="mt-[59px] w-full" alt="" />
       {licenses.map((item, idx) => {
         return (
           <div

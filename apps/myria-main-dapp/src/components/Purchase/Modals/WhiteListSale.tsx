@@ -4,10 +4,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Modal from 'src/components/Modal';
 import Input from 'src/components/Input';
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import Button from 'src/components/core/Button';
 import { toast } from 'react-toastify';
 import TreeIcon from '../../icons/TreeIcon';
+import { useMutation } from 'react-query';
+import apiClient from '../../../client';
 
 interface IFormInputs {
   email: string;
@@ -24,14 +26,20 @@ const schema = yup
 
 export type WarningNodeType = 'not-verified' | 'not-whitelist' | 'not-email';
 
+const linkEmail = (email: string) => {
+  return apiClient.post(`/accounts/email`, { email, redirect: 1 });
+};
+
 const WhiteListSale = ({
   warningType,
-  onClose,
-  onSubscribed
+  setWarningType,
+  open,
+  onClose
 }: {
   warningType?: WarningNodeType;
-  onClose?: () => void;
-  onSubscribed?: () => void;
+  setWarningType: (val?: WarningNodeType) => void;
+  open: boolean;
+  onClose: () => void;
 }) => {
   const {
     register,
@@ -43,15 +51,31 @@ const WhiteListSale = ({
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = async (data: IFormInputs) => {
-    try {
-      reset();
-      toast.success(t`Email subscribed`);
-      onSubscribed?.();
-    } catch (error: any) {
-      toast.error(t`Subscribe email failed, please try again.`);
+  const { mutate: linkAccountEmail, isLoading } = useMutation(linkEmail, {
+    onSuccess: (res) => {
+      setWarningType('not-verified');
+    },
+    onError: (err: any) => {
+      const message = err?.response?.data?.errors?.[0]?.detail;
+      if (message === 'Invalid Role') {
+        toast("We've already got your email!", {
+          type: 'success'
+        });
+      } else {
+        toast(message || 'Something error, please try later', {
+          type: 'error'
+        });
+      }
     }
-  };
+  });
+
+  const updateMail = useCallback(
+    (data: IFormInputs) => {
+      linkAccountEmail(data.email);
+      reset();
+    },
+    [linkAccountEmail, reset]
+  );
 
   const content = useMemo(() => {
     if (warningType === 'not-email') {
@@ -63,7 +87,7 @@ const WhiteListSale = ({
               your email address to proceed to purchasing your Node!
             </Trans>
           </p>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
+          <form onSubmit={handleSubmit(updateMail)} noValidate className="w-full">
             <div className="mb-4 w-full">
               <span className="mb-2 block text-[16px] font-normal text-[#A1AFBA]">
                 <Trans>Email Address</Trans>
@@ -111,7 +135,7 @@ const WhiteListSale = ({
               available to the public.
             </Trans>
           </p>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
+          <form onSubmit={handleSubmit(updateMail)} noValidate className="w-full">
             <div className="mb-4 w-full">
               <span className="mb-2 block text-[16px] font-normal text-[#A1AFBA]">
                 <Trans>Email Address</Trans>
@@ -134,10 +158,10 @@ const WhiteListSale = ({
     }
 
     return <div />;
-  }, [errors.email, handleSubmit, onSubmit, register, warningType]);
+  }, [errors.email, handleSubmit, register, updateMail, warningType]);
 
   return (
-    <Modal open={!!warningType} onOpenChange={onClose}>
+    <Modal open={open} onOpenChange={onClose}>
       <Modal.Content className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[576px]">
         <div className="p-8">
           <div className="mb-6 flex flex-col items-center">
