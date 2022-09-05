@@ -558,7 +558,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   }, [pKey, dispatch]);
 
   return (
-    <>
+    <div className="wallet-popover">
       {/* Header Part */}
       <div
         className={cn(
@@ -801,7 +801,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           />
         )}
       </div>
-    </>
+    </div>
   );
 }
 
