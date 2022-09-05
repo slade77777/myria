@@ -27,7 +27,7 @@ const Index = () => {
   }, []);
 
   return (
-    <Page action="mint">
+    <Page action="start-building">
       <div className={headerNavSpacingClassName}>
         <div>
           <Hero />

@@ -50,11 +50,11 @@ const links = [
           label: <Trans>Nodes</Trans>,
           link: '/nodes'
         },
-        {
-          label: <Trans>Store</Trans>,
-          link: '/store',
-          inactive: true
-        },
+        // {
+        //   label: <Trans>Store</Trans>,
+        //   link: '/store',
+        //   inactive: true
+        // },
         // {
         //   label: <Trans>Myria Studios</Trans>,
         //   link: '/studios'
@@ -62,6 +62,11 @@ const links = [
         {
           label: <Trans>For Developers</Trans>,
           link: '/for-developers'
+        },
+        {
+          label: <Trans>FAQ</Trans>,
+          link: 'https://myriahelp.zendesk.com/',
+          external: true
         }
       ]
     ]
@@ -92,13 +97,13 @@ const links = [
         {
           label: <Trans>About</Trans>,
           link: '/ecosystem'
-        },
-        {
-          label: <Trans>Whitepaper</Trans>,
-          link: '/',
-          disabled: true,
-          inactive: true
         }
+        // {
+        //   label: <Trans>Whitepaper</Trans>,
+        //   link: '/',
+        //   disabled: true,
+        //   inactive: true
+        // }
       ],
       [
         {
