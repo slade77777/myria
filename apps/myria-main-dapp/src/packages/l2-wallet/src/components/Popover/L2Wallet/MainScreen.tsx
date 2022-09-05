@@ -286,7 +286,7 @@ export default function MainScreen({
     handleDisplayPopover(false);
     handleSetValueNFT({
       ...item,
-      name: item.transactionCategory,
+      name: 'Sigil NFT',
       assetMintId: item.assetId,
       isComeFrom: WalletTabs.HISTORY,
     });
