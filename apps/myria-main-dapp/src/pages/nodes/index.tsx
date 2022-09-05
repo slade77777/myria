@@ -22,6 +22,7 @@ import Link from 'next/link';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { localStorageKeys } from '../../configs';
 import useInstalledWallet from '../../hooks/useInstalledWallet';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 
 const rewards = [
   {
@@ -182,10 +183,12 @@ const Nodes: React.FC = () => {
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const { installedWallet } = useInstalledWallet();
+  const { connectL2Wallet } = useL2WalletContext();
 
-  const onConnectWallet = () => {
+  const onConnectWallet = async () => {
     event('Connect Wallet Selected', { campaign: 'Nodes' });
-    onConnectCompaign('B2C Marketplace');
+    await onConnectCompaign('B2C Marketplace');
+    await connectL2Wallet();
     if (loginByWalletMutation.isError) {
       loginByWalletMutation.mutate();
     }
@@ -215,20 +218,23 @@ const Nodes: React.FC = () => {
             alt=""
             className="absolute top-0 left-1/2 z-[-1] w-full max-w-[900px] -translate-x-1/2"
           />
-          <div className="mx-auto w-full max-w-content">
+          <div className="max-w-content mx-auto w-full">
             <section className={'text-center '}>
-              <h1 className="heading-lg mx-auto mt-[50px] max-w-[756px] text-center text-brand-white md:heading-massive md:mt-[120px]">
+              <h1 className="heading-lg text-brand-white md:heading-massive mx-auto mt-[50px] max-w-[756px] text-center md:mt-[120px]">
                 <Trans>
                   Run a node and earn <span className="text-brand-mid-blue">$MYRIA</span> and NFT
                   rewards
                 </Trans>
               </h1>
-              <p className="heading-sm mx-auto mt-[32px] text-base/10 text-xl">
+              <p className="heading-sm text-base/10 mx-auto mt-[32px] text-xl">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
               {installedWallet && (
                 <div>
-                  {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet ? (
+                  {!loginByWalletMutation.isError &&
+                  !loginByWalletMutation.isLoading &&
+                  walletAddress &&
+                  showConnectedWallet ? (
                     <Link href={'/nodes/purchase'}>
                       <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
                         <Trans>Purchase Now</Trans>
@@ -252,7 +258,7 @@ const Nodes: React.FC = () => {
                 <h2 className="heading-lg mt-4">
                   <Trans>Powered by the community of player-run nodes</Trans>
                 </h2>
-                <p className="body mt-6 text-light">
+                <p className="body text-light mt-6">
                   <Trans>
                     The Myria chain is supported by a network of player-run nodes. Use your home
                     computer to become a node operator and receive rewards and benefits for your
@@ -262,7 +268,7 @@ const Nodes: React.FC = () => {
               </div>
             </section>
             <section className="mt-[152px]">
-              <h2 className="heading-sm text-center md:heading-md">
+              <h2 className="heading-sm md:heading-md text-center">
                 <Trans>Node owner rewards</Trans>
               </h2>
               <div className="mt-[92px] grid gap-[32px] gap-y-[76px] md:grid-cols-2 lg:grid-cols-3">
@@ -283,8 +289,8 @@ const Nodes: React.FC = () => {
             </section>
           </div>
         </div>
-        <section className={clsx(paddingX, 'hidden mx-auto mt-[152px] w-full max-w-[832px]')}>
-          <h3 className="heading-sm text-center md:heading-md">
+        <section className={clsx(paddingX, 'mx-auto mt-[152px] hidden w-full max-w-[832px]')}>
+          <h3 className="heading-sm md:heading-md text-center">
             <Trans>Myria FAQ</Trans>
           </h3>
           <div className="mt-[48px]">
@@ -307,7 +313,7 @@ const Nodes: React.FC = () => {
                         </Collapse.Trigger>
                         <Collapse.Content>
                           <div className="pb-2">
-                            <p className="body mt-6 text-light">{item.content}</p>
+                            <p className="body text-light mt-6">{item.content}</p>
                           </div>
                         </Collapse.Content>
                       </div>
@@ -324,7 +330,7 @@ const Nodes: React.FC = () => {
             paddingX,
             "mt-[112px] mb-[124px] flex min-h-[792px] w-full flex-col justify-center  bg-[url('/images/globe_op.png')] bg-center bg-no-repeat md:bg-right"
           )}>
-          <div className="mx-auto max-w-content ">
+          <div className="max-w-content mx-auto ">
             <div className="md:w-1/2">
               <h3 className="heading-sm md:heading-md">
                 <Trans>Get a founders node today</Trans>
@@ -345,7 +351,7 @@ const Nodes: React.FC = () => {
           </div>
         </section>
         <section className={clsx(paddingX, 'mb-[124px]')} id="subcribe">
-          <div className="mx-auto max-w-content">
+          <div className="max-w-content mx-auto">
             <Subscribe />
           </div>
         </section>
