@@ -378,24 +378,14 @@ export default function MainScreen({
     if (
       !item.name &&
       (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-        item.type === TRANSACTION_TYPE.TRANSFER)
+        item.type === TRANSACTION_TYPE.TRANSFER ||
+        item.type === TRANSACTION_TYPE.SETTLEMENT)
     ) {
       return <WithdrawNFTIcon size={32} />;
     }
 
     if (item.type !== TRANSACTION_TYPE.SETTLEMENT) {
       return <img className="w-8 flex-none" src={item.ico} alt="token_icon" />;
-    }
-
-    if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
-      return (
-        <Image
-          className="rounded-[16px]"
-          src={'/assets/images/assetPurchase.png'}
-          width={32}
-          height={32}
-        />
-      );
     }
   };
 

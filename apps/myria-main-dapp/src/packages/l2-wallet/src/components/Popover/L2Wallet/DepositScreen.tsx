@@ -104,9 +104,7 @@ export default function DepositScreen({
           {inputChanged && errorAmount && (
             <div
               className={
-                amount === parseFloat(balance)
-                  ? 'text-primary/6 mt-2 text-sm'
-                  : 'text-error/6 mt-2 text-sm'
+                amount === parseFloat(balance) && 'text-error/6 mt-2 text-sm' || ''
               }
             >
               {errorAmount}
