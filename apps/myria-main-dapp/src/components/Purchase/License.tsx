@@ -73,7 +73,7 @@ const License: React.FC = () => {
     },
     {
       title: t`Limited supply available`,
-      content: t`Only 50,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded.`,
+      content: t`Only 40,000 Node Licenses will ever be released. Prices will increase as nodes are sold, to ensure our early supporters are rewarded.`,
       icon: key
     },
     {

@@ -27,8 +27,8 @@ import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 const licenses = [
   {
     key: 'term',
-    content: <span>I have read, understood and agree to the </span>,
-    action: 'terms of conditions'
+    content: <span>I have read, understood and agree to sign the </span>,
+    action: 'future node purchase agreement'
   },
   {
     key: 'privacy',

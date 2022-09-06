@@ -19,7 +19,7 @@ import { EventDefined } from '../../lib/ga/use-ga/event';
 const links = [
   {
     label: 'For gamers',
-    href: '/'
+    href: '/games'
   },
   {
     label: 'For developers',
@@ -171,12 +171,14 @@ const Header: React.FC = () => {
               <Trans>Connect wallet</Trans>
             </button>
           )}
-          {user && !user.user_name && (
+          {user && !user.email ? (
             <button
               onClick={register}
               className="body-14-bold hidden rounded-lg bg-primary/6 py-[9px] px-4 uppercase text-base/1 hover:bg-primary/5 md:block">
               <Trans>Sign up</Trans>
             </button>
+          ) : (
+            <img width="25" src={'/images/marketplace/user.png'} alt="" />
           )}
           <button className="md:hidden" onClick={() => setIsMobileMenuOpen((o) => !o)}>
             <Hamburger size={24} />

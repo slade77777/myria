@@ -69,13 +69,13 @@
     "react-slick": "0.28.1",
     "react-toastify": "^9.0.1",
     "slick-carousel": "1.8.1",
-    "ui": "*",
     "valtio": "1.2.9",
     "video.js": "7.17.0",
     "web-vitals": "^2.1.4",
     "web3": "^1.7.3",
     "web3modal": "1.9.5",
-    "yup": "0.32.11"
+    "yup": "0.32.11",
+    "design-system": "*"
   },
   "devDependencies": {
     "@babel/core": "7.17.2",
