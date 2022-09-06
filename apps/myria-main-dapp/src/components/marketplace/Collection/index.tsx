@@ -54,26 +54,14 @@ const Collection: FC<Props> = ({ collection }) => {
               </div>
               <div className="flex flex-row gap-12">
                 <div>
-                  {totalAssets < 1000 ? (
-                    <p className="text-right text-[28px] font-bold text-white">{totalAssets}</p>
-                  ) : (
-                    <p className="text-right text-[28px] font-bold text-white">
-                      {totalAssets ? `${totalAssets / 1000}K` : '0'}
-                    </p>
-                  )}
-                  <p className="mt-2 text-[#97AAB5]">Items</p>
+                  <p className="text-right text-[28px] font-bold text-white">{totalAssets}</p>
+                  <p className="mt-2 text-[#97AAB5] text-right">Items</p>
                 </div>
                 <div>
-                  {totalAssetsForSale < 1000 ? (
-                    <p className="text-right text-[28px] font-bold text-white">
-                      {totalAssetsForSale}
-                    </p>
-                  ) : (
-                    <p className="text-right text-[28px] font-bold text-white">
-                      {totalAssetsForSale ? `${totalAssetsForSale / 1000}K` : '0'}
-                    </p>
-                  )}
-                  <p className="mt-2 text-[#97AAB5]">For Sale</p>
+                  <p className="text-right text-[28px] font-bold text-white">
+                    {totalAssetsForSale}
+                  </p>
+                  <p className="mt-2 text-[#97AAB5] text-right">For Sale</p>
                 </div>
               </div>
             </div>

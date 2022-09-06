@@ -18,7 +18,7 @@ export default function MessageDepositModal({
   return (
     <div className={cn(isShowMessage ? 'block' : 'hidden')}>
       <div className="bg-brand-deep-blue absolute -bottom-8 left-1/2 z-30 h-5 w-5 rotate-45 border-t border-l border-[#202230]"></div>
-      <div className="bg-brand-deep-blue absolute top-16 right-16 max-h-[80vh] overflow-auto rounded-xl border border-[#202230] p-6">
+      <div className="bg-brand-deep-blue absolute top-[71px] right-16 max-h-[80vh] overflow-auto rounded-xl border border-[#202230] p-6">
         <div className="relative w-[302px]">
           <div
             className="absolute right-0 cursor-pointer"
