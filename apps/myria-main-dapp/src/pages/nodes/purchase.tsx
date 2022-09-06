@@ -68,8 +68,8 @@ const Purchase: React.FC = () => {
   );
 
   return (
-    <Page headerClassName="hidden" footerClassName="hidden md:block">
-      <Header />
+    <Page action="start-building">
+      {/*<Header />*/}
       <div
         style={{
           paddingTop: headerHeight,
