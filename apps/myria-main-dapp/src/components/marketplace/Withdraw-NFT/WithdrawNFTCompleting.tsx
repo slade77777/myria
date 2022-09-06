@@ -84,7 +84,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       }
     } catch (err) {
       setStatus(StatusWithdrawNFT.FAILED);
-      toast('Something wrong has happened, withdraw transaction is failure. Please retry..');
+      toast('Something wrong has happened, withdraw transaction is failure. Please retry.');
     } finally {
       setPending(false);
     }

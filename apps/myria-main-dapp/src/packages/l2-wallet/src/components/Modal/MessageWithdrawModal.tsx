@@ -77,13 +77,13 @@ export default function MessageWithdrawModal({
   return (
     <div
       className={cn(
-        `absolute top-24 right-6 w-[406px]`,
+        `absolute top-20 right-5 w-[406px]`,
         isShowMessage ? 'block' : 'hidden',
       )}
     >
-      <div className="bg-base/5 w-full max-w-lg rounded-2xl p-8 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
+      <div className="bg-base/5 relative w-full max-w-lg rounded-2xl p-8 pr-12 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400">
         <div className="flex">
-          <CheckIcon className="mt-1 text-[#367641]" size={24} />
+          <CheckIcon className="text-[#81CA95]" size={24} />
           <div className="ml-3 grow font-normal leading-normal text-white">
             <span className="mb-1 text-lg font-semibold leading-normal dark:text-white">
               Your withdrawal is complete
@@ -112,9 +112,12 @@ export default function MessageWithdrawModal({
               </button>
             </div>
           </div>
-          <div onClick={closeMessage}>
-            <CrossIcon size={20} className="cursor-pointer text-white" />
-          </div>
+        </div>
+        <div
+          onClick={closeMessage}
+          className="absolute right-5 top-5 text-white"
+        >
+          <CrossIcon size={22} className="cursor-pointer" />
         </div>
       </div>
     </div>

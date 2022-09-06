@@ -367,7 +367,10 @@ function AssetDetails({ id }: Props) {
       );
 
       if (balance > 0) {
-        if (withdrawalStatus != StatusWithdrawNFT.COMPLETED) {
+        if (
+          withdrawalStatus != StatusWithdrawNFT.COMPLETED &&
+          withdrawalStatus !== StatusWithdrawNFT.FAILED
+        ) {
           setShowWithdrawalMessage(true);
         }
         return true;
