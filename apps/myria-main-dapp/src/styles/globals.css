@@ -84,6 +84,12 @@ button:disabled {
   border-radius: 100vh;
 }
 
+.wallet-popover::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px transparent !important;
+  border: solid 1px transparent;
+  border-radius: 100vh;
+}
+
 input::-ms-reveal,
 input::-ms-clear {
   display: none;

@@ -175,13 +175,13 @@ const ConnectL2WalletButton: React.FC = () => {
             </div>
           }
           className="shadow-[0_0_40px_10px_#0000004D]">
-          <p className="body-16-regular p-6 px-8">
+          <p className="p-6 px-8 body-16-regular">
             <Trans>
               The MetaMask account that is selected does not match the one used to create your Myria
               account. Please select the correct MetaMask account and try again.
             </Trans>
           </p>
-          <p className="body-16-regular p-6 px-8">
+          <p className="p-6 px-8 body-16-regular">
             <button
               onClick={() => {
                 disconnect();
@@ -228,7 +228,7 @@ const ConnectL2WalletButton: React.FC = () => {
                   style={{
                     boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
                   }}
-                  className="text-base/3 h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-xl bg-current p-6">
+                  className="text-base/3 wallet-popover h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-xl bg-current p-6">
                   <Popover.Arrow
                     width={24}
                     height={13}
@@ -262,9 +262,9 @@ const ConnectL2WalletButton: React.FC = () => {
               ) : (
                 <button
                   onClick={onConnectWallet}
-                  className="border-base/5 font-medium  bg-base/1 flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px]">
+                  className="border-base/5 bg-base/1  flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] font-medium">
                   <WalletIcon width={24} height={24} />
-                  <span className="text-base/10 text-sm">
+                  <span className="text-sm text-base/10">
                     <Trans>Connect Wallet</Trans>
                   </span>
                 </button>
