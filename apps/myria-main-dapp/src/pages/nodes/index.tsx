@@ -23,6 +23,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { localStorageKeys } from '../../configs';
 import useInstalledWallet from '../../hooks/useInstalledWallet';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import useNodePurchase from '../../hooks/useNodePurchase';
 
 const rewards = [
   {
@@ -184,6 +185,7 @@ const Nodes: React.FC = () => {
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const { installedWallet } = useInstalledWallet();
   const { connectL2Wallet } = useL2WalletContext();
+  const { data } = useNodePurchase();
 
   const onConnectWallet = async () => {
     event('Connect Wallet Selected', { campaign: 'Nodes' });
