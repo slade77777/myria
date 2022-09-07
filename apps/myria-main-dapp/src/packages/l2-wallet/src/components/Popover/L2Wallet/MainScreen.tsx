@@ -465,7 +465,7 @@ export default function MainScreen({
         </ul>
         <div className="outlet">
           <TabContent id={WalletTabs.HISTORY} activeTab={activeToken}>
-            <div className="mt-3 max-h-[244px] pr-2">
+            <div className="mt-3 max-h-[244px]">
               {transactionList?.length === 0 && (
                 <div>No data available yet</div>
               )}
@@ -527,7 +527,7 @@ export default function MainScreen({
                         src={item.ico}
                         alt="token_icon"
                       />
-                      <div className="ml-4">
+                      <div className="ml-2">
                         <p className="text-base/9 text-sm">{item.name}</p>
                         <div>
                           <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px] font-bold">
