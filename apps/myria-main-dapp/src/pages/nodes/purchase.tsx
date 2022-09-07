@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import { useAuthenticationContext } from 'src/context/authentication';
 import WhiteListSale, { WarningNodeType } from '../../components/Purchase/Modals/WhiteListSale';
 import { noCacheApiClient } from '../../client';
+import useNodePurchase from '../../hooks/useNodePurchase';
 
 const Purchase: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
@@ -30,26 +31,30 @@ const Purchase: React.FC = () => {
   const { onConnectCompaign, address } = useWalletContext();
   const { user, userProfileQuery } = useAuthenticationContext();
   const router = useRouter();
+  const { error, data } = useNodePurchase();
 
   useEffect(() => {
     // validate either wallet is connected
     if (!address || (!userProfileQuery.isFetching && !user)) {
       router.push('/nodes');
-    } else {
-      noCacheApiClient.get('accounts/users').then((data) => {
-        const userData = data?.data?.data;
-        if (userData) {
-          if (!userData.email) {
-            setShowWarning(true);
-            setWarningType('not-email');
-          } else if (!userData.normalized_email) {
-            setShowWarning(true);
-            setWarningType('not-verified');
-          }
-        }
-      });
     }
   }, [address, router, user, userProfileQuery.isFetching]);
+
+  useEffect(() => {
+    noCacheApiClient.get('accounts/users').then((data) => {
+      const userData = data?.data?.data;
+      if (error?.status === 403 && !userData?.normalized_email) {
+        setShowWarning(true);
+        setWarningType('not-valid');
+      } else if (!userData?.normalized_email) {
+        setShowWarning(true);
+        setWarningType('not-verified');
+      } else if (error?.status === 403) {
+        setShowWarning(true);
+        setWarningType('not-whitelist');
+      }
+    });
+  }, [error?.status]);
 
   const onPlaceOrder = async (data: PurchaseInformationProps) => {
     await onConnectCompaign('Nodes');
@@ -96,15 +101,8 @@ const Purchase: React.FC = () => {
         onClose={() => setOpenModal(false)}
         onPurchaseComplete={handlePurchaseComplete}
       />
-      {/* <SignInModal open={false} onClose={() => console.log('abc')} /> */}
-      {/* <RegisterModal open={true} onClose={() => console.log('abc')} /> */}
       {showWarning && (
-        <WhiteListSale
-          open
-          warningType={warningType}
-          setWarningType={setWarningType}
-          onClose={() => setShowWarning(false)}
-        />
+        <WhiteListSale open warningType={warningType} setWarningType={setWarningType} />
       )}
     </Page>
   );

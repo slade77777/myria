@@ -20,7 +20,6 @@ import Button from 'src/components/core/Button';
 import { toast } from 'react-toastify';
 import { useGA4 } from '../../lib/ga';
 import WhiteListSale, { WarningNodeType } from './Modals/WhiteListSale';
-import { WhitelistAddress } from '../../constant/whitelist-address';
 import PrivacyPolicyModal from './Modals/PrivacyPolicyModal';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 
@@ -97,16 +96,6 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
   const doPurchase = useCallback(
     (data: any) => {
       const { quantity } = data;
-      if (!WhitelistAddress.find((item) => item.address.toLowerCase() === address?.toLowerCase())) {
-        event('Node Order Placed', {
-          campaign: 'Nodes',
-          wallet_address: address,
-          node_quantity: quantity,
-          order_status: 'Error',
-          error_details: 'Not in whitelist address'
-        });
-        return setWhitelistError(true);
-      }
       submitPurchase({ numberOfNode: quantity })
         .then((response) => {
           onPlaceOrder({
@@ -238,7 +227,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
             <Button
               className={clsx(
                 'btn-lg w-full px-4 uppercase text-black',
-                isValid ? 'bg-brand-gold' : 'bg-gray-400'
+                isValid && !warningType ? 'bg-brand-gold' : 'bg-gray-400'
               )}
               onClick={handleSubmit(doPurchase)}
               loading={isSubmiting}

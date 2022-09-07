@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import TreeIcon from '../../icons/TreeIcon';
 import { useMutation } from 'react-query';
 import apiClient from '../../../client';
+import { useWalletContext } from '../../../context/wallet';
 
 interface IFormInputs {
   email: string;
@@ -24,7 +25,7 @@ const schema = yup
   })
   .required();
 
-export type WarningNodeType = 'not-verified' | 'not-whitelist' | 'not-email';
+export type WarningNodeType = 'not-verified' | 'not-whitelist' | 'not-valid';
 
 const linkEmail = (email: string) => {
   return apiClient.post(`/accounts/email`, { email, redirect: 1 });
@@ -33,14 +34,13 @@ const linkEmail = (email: string) => {
 const WhiteListSale = ({
   warningType,
   setWarningType,
-  open,
-  onClose
+  open
 }: {
   warningType?: WarningNodeType;
   setWarningType: (val?: WarningNodeType) => void;
   open: boolean;
-  onClose: () => void;
 }) => {
+  const { address } = useWalletContext();
   const {
     register,
     handleSubmit,
@@ -78,7 +78,7 @@ const WhiteListSale = ({
   );
 
   const content = useMemo(() => {
-    if (warningType === 'not-email') {
+    if (warningType === 'not-verified') {
       return (
         <div>
           <p className="mb-6 text-[16px] font-normal text-[#A1AFBA] text-center">
@@ -108,19 +108,19 @@ const WhiteListSale = ({
         </div>
       );
     }
-    if (warningType === 'not-verified') {
+    if (warningType === 'not-whitelist') {
       return (
         <div>
           <p className="text-[16px] font-normal text-[#A1AFBA] text-center">
-            <Trans>Confirmation email sent.</Trans>
-          </p>
-          <p className="mb-6 text-[16px] font-normal text-[#A1AFBA] text-center">
-            <Trans>Please check your email and click on the link to verify.</Trans>
+            <Trans>
+              Oops, it looks like your wallet is not registered on our Whitelist, which means that
+              we can’t proceed with your purchase at the moment.
+            </Trans>
           </p>
         </div>
       );
     }
-    if (warningType === 'not-whitelist') {
+    if (warningType === 'not-valid') {
       return (
         <div>
           <p className="mb-6 mx-4 text-[16px] font-normal text-[#A1AFBA] text-center">
@@ -161,8 +161,10 @@ const WhiteListSale = ({
   }, [errors.email, handleSubmit, register, updateMail, warningType]);
 
   return (
-    <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[576px]">
+    <Modal open={open}>
+      <Modal.Content
+        canClose={false}
+        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[576px]">
         <div className="p-8">
           <div className="mb-6 flex flex-col items-center">
             <TreeIcon />

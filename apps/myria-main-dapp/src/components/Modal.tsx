@@ -13,6 +13,7 @@ type ModalContentProps = {
   headerClassName?: string;
   titleClassName?: string;
   isIcon?: boolean;
+  canClose?: boolean;
 };
 
 type ModalType = React.FC<ModalProps & DialogPrimitive.DialogProps> & {
@@ -42,6 +43,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
       headerClassName,
       titleClassName,
       isIcon = false,
+      canClose = true,
       ...props
     },
     forwardedRef
@@ -65,11 +67,13 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
                     </span>
                   )}
                 </div>
-                <DialogPrimitive.Close asChild>
-                  <button className="h-[24px] w-[24px] text-white hover:cursor-pointer focus:outline-none">
-                    <CloseIcon />
-                  </button>
-                </DialogPrimitive.Close>
+                {canClose && (
+                  <DialogPrimitive.Close asChild>
+                    <button className="h-[24px] w-[24px] text-white hover:cursor-pointer focus:outline-none">
+                      <CloseIcon />
+                    </button>
+                  </DialogPrimitive.Close>
+                )}
               </div>
             </div>
           )}
