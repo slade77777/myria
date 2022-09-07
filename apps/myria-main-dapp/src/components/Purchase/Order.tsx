@@ -145,17 +145,27 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
     }
   };
 
+  const onAgreeAgreement = () => {
+    setFirstLicense(false);
+    setValue('term', true);
+  };
+
+  const onAgreePolicy = () => {
+    setShowPrivacy(false);
+    setValue('privacy', true);
+  };
+
   return (
     <>
       <TermsOfServiceModal
         open={firstLicense}
         onClose={() => setFirstLicense(false)}
-        onAgree={() => setFirstLicense(false)}
+        onAgree={onAgreeAgreement}
       />
       <PrivacyPolicyModal
         open={showPrivacy}
         onClose={() => setShowPrivacy(false)}
-        onAgree={() => setShowPrivacy(false)}
+        onAgree={onAgreePolicy}
       />
       <div>
         <div className="bg-brand-deep-blue rounded-t-lg p-6 md:rounded-lg md:p-8">
@@ -217,6 +227,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
                   render={({ field }) => (
                     <Input
                       type="checkbox"
+                      checked={field.value === true}
                       onChange={(val) => field.onChange(val)}
                       className="mt-1"
                     />

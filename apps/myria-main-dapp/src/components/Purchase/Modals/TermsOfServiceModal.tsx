@@ -3,6 +3,7 @@ import Modal from 'src/components/Modal';
 import Input from 'src/components/Input';
 import React from 'react';
 import Button from 'src/components/core/Button';
+import clsx from 'clsx';
 
 const TermsOfServiceModal = ({
   open,
@@ -21,7 +22,7 @@ const TermsOfServiceModal = ({
         title="Future node purchase agreement"
         className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
         <div className="py-8">
-          <div className="overflow-y-auto h-72 px-8">
+          <div className="h-72 overflow-y-auto px-8">
             <p className="mb-6">
               <Trans>
                 THIS FUTURE NODE PURCHASE AGREEMENT HAS NOT BEEN REGISTERED UNDER THE SECURITIES
@@ -56,7 +57,7 @@ const TermsOfServiceModal = ({
               <Trans>a British Virgin Islands business company with limited liability</Trans>
             </p>
           </div>
-          <div className="pl-8 pt-4 flex">
+          <div className="flex pl-8 pt-4">
             <Input
               type="checkbox"
               checked={agree}
@@ -68,7 +69,9 @@ const TermsOfServiceModal = ({
           </div>
           <div className="flex w-full justify-end pr-8">
             <Button
-              className="btn-lg btn-primary justify-end px-10"
+              className={clsx(
+                'btn-lg btn-primary justify-end px-10 disabled:bg-gray-500 disabled:text-white disabled:opacity-50'
+              )}
               disabled={!agree}
               onClick={onAgree}>
               <Trans>Accept</Trans>
