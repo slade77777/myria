@@ -162,11 +162,13 @@ const WhiteListSale = ({
 
   return (
     <Modal open={open} onOpenChange={onClose}>
-      <Modal.Content className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[576px]">
+      <Modal.Content
+        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[576px]"
+        showClose={false}>
         <div className="p-8">
           <div className="mb-6 flex flex-col items-center">
             <TreeIcon />
-            <p className="mt-6 text-2xl font-bold text-white text-center">
+            <p className="mt-6 text-center text-2xl font-bold text-white">
               <Trans>Myria Node Whitelist Sale</Trans>
             </p>
           </div>

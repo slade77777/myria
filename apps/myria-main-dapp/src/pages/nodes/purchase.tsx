@@ -79,8 +79,8 @@ const Purchase: React.FC = () => {
           paddingX,
           "bg-[url('/images/nodes/purchase-page-bg.png')] bg-top bg-no-repeat md:mb-[120px]"
         )}>
-        <div className="mx-auto mt-[30px] w-full max-w-[1734]">
-          <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[67.5fr_32.5fr]">
+        <div className="mx-auto mt-[30px] w-full max-w-[1734] md:px-10">
+          <div className="grid grid-cols-1 items-start gap-y-8 gap-x-[26px] md:grid-cols-[67.5fr_32.5fr]">
             <div className="relative w-full overflow-hidden md:mt-0">
               <License />
             </div>
