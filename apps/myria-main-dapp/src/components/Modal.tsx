@@ -13,6 +13,7 @@ type ModalContentProps = {
   headerClassName?: string;
   titleClassName?: string;
   isIcon?: boolean;
+  showClose?: Boolean;
 };
 
 type ModalType = React.FC<ModalProps & DialogPrimitive.DialogProps> & {
@@ -42,6 +43,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
       headerClassName,
       titleClassName,
       isIcon = false,
+      showClose = true,
       ...props
     },
     forwardedRef
@@ -50,7 +52,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
       <DialogPrimitive.Content {...props} className={clsx('dialog-content')} ref={forwardedRef}>
         <div
           className={clsx(
-            'mx-auto my-auto w-full max-w-[576px] rounded-lg bg-brand-deep-blue z-50',
+            'bg-brand-deep-blue z-50 mx-auto my-auto w-full max-w-[576px] rounded-lg',
             className
           )}>
           {includingHeader && (
@@ -59,17 +61,19 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
                 <div className={clsx('heading-md text-white', titleClassName)}>
                   <span>{title}</span>
                   {isIcon && (
-                    <span className="ml-2 my-auto">
+                    <span className="my-auto ml-2">
                       {' '}
                       <img src="/assets/images/sad-face.png" alt="" width={24} />
                     </span>
                   )}
                 </div>
-                <DialogPrimitive.Close asChild>
-                  <button className="h-[24px] w-[24px] text-white hover:cursor-pointer focus:outline-none">
-                    <CloseIcon />
-                  </button>
-                </DialogPrimitive.Close>
+                {showClose && (
+                  <DialogPrimitive.Close asChild>
+                    <button className="h-[24px] w-[24px] text-white hover:cursor-pointer focus:outline-none">
+                      <CloseIcon />
+                    </button>
+                  </DialogPrimitive.Close>
+                )}
               </div>
             </div>
           )}

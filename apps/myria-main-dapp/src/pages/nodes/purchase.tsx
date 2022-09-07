@@ -103,7 +103,7 @@ const Purchase: React.FC = () => {
           open
           warningType={warningType}
           setWarningType={setWarningType}
-          onClose={() => setShowWarning(false)}
+          onClose={() => setShowWarning(true)}
         />
       )}
     </Page>

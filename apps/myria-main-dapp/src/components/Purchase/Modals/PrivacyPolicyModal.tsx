@@ -190,7 +190,7 @@ const PrivacyPolicyModal = ({
           </div>
           <div className="flex w-full justify-end">
             <Button
-              className="btn-lg btn-primary justify-end px-10"
+              className="btn-lg btn-primary justify-end px-10 disabled:bg-gray-500 disabled:text-white disabled:opacity-50"
               disabled={!agree}
               onClick={onAgree}>
               <Trans>Accept</Trans>
