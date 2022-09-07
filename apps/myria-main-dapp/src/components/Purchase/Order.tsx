@@ -168,7 +168,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
         onAgree={onAgreePolicy}
       />
       <div>
-        <div className="bg-brand-deep-blue rounded-t-lg p-6 md:rounded-lg md:p-8">
+        <div className="bg-base/3 rounded-t-lg p-6 md:rounded-lg md:p-8">
           <div className="flex items-center justify-between md:block">
             <p className="text-light md:body-sm hidden font-bold md:block">
               <Trans>Price</Trans>
