@@ -557,7 +557,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   }, [pKey, dispatch]);
 
   return (
-    <div className="wallet-popover">
+    <div className="h-full">
       {/* Header Part */}
       <div
         className={cn(
