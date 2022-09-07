@@ -27,11 +27,14 @@
     "@types/react": "17.0.38",
     "@types/react-dom": "17.0.11",
     "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
     "react": "17.0.2",
     "tailwindcss": "^3.1.2",
-    "tsup": "^5.10.1",
-    "typescript": "^4.7.3",
     "tsconfig": "*",
-    "eslint-config-custom": "*"
+    "tsup": "^5.10.1",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "clsx": "^1.2.1"
   }
 }
