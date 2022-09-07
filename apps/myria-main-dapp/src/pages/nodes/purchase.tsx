@@ -65,6 +65,7 @@ const Purchase: React.FC = () => {
 
   const handlePurchaseComplete = useCallback(
     async (txId: string) => {
+      console.log(txId);
       setOpenModal(false);
       router.push('/nodes/purchase-complete');
     },

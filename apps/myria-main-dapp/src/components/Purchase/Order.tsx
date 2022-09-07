@@ -15,7 +15,7 @@ import usePurchaseInfo from '../../hooks/usePurchaseInfo';
 import { formatCurrency } from 'src/lib/formatter';
 import Button from 'src/components/core/Button';
 import { useGA4 } from '../../lib/ga';
-import { WarningNodeType } from './Modals/WhiteListSale';
+import WhiteListSale, { WarningNodeType } from './Modals/WhiteListSale';
 import PrivacyPolicyModal from './Modals/PrivacyPolicyModal';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import useNodePurchase from '../../hooks/useNodePurchase';
