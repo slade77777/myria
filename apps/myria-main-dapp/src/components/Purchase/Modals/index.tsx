@@ -13,6 +13,8 @@ import { useWalletContext } from 'src/context/wallet';
 import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
 import { formatCurrency } from 'src/lib/formatter';
 import { useGA4 } from 'src/lib/ga';
+import apiClient from '../../../client';
+import useNodePurchase from '../../../hooks/useNodePurchase';
 
 export type PurchaseInformationProps = {
   quantity: number;
@@ -35,8 +37,9 @@ const ModalPurchase = ({
   onPurchaseComplete?: (tx: string) => void;
 }) => {
   const { readerProviderApi, signerProviderApi, address, balance } = useWalletContext();
-  const { quantity, totalPriceEth, totalPriceUsd, transactionId, nonce, toAddress } = data;
+  const { quantity, totalPriceEth, totalPriceUsd, toAddress } = data;
   const { event } = useGA4();
+  const { refetch } = useNodePurchase();
 
   const isInsufficientBalance = utils
     .parseEther(totalPriceEth.toString())
@@ -67,7 +70,6 @@ const ModalPurchase = ({
     if (txRequest && signerProviderApi) {
       const res = await transferEth(signerProviderApi?.getSigner(), txRequest);
       const tx = await res.wait();
-
       return tx.transactionHash;
     }
     throw new Error('Missing params');
@@ -75,24 +77,12 @@ const ModalPurchase = ({
 
   // submit purchase
   const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(
-    async ({
-      txHash,
-      nonce,
-      transactionId
-    }: {
-      txHash: string;
-      nonce: string;
-      transactionId: string;
-    }) => {
-      if (txHash && nonce && transactionId) {
-        await new Promise((resolve) => {
-          setTimeout(() => {
-            console.log('Submited', { txHash, nonce, transactionId });
-            resolve(txHash);
-          }, 2000);
+    async ({ txHash }: { txHash: string }) => {
+      if (txHash) {
+        apiClient.post('/nodes/purchase', { txHash }).then(() => {
+          refetch();
+          onPurchaseComplete?.(txHash);
         });
-
-        onPurchaseComplete?.(txHash);
       } else {
         throw new Error('Missing params');
       }
@@ -117,13 +107,12 @@ const ModalPurchase = ({
   const onPurchase = useCallback(async () => {
     try {
       const txHash = await handleTransferETH();
-
       if (!txHash) {
         trackPurchase('Empty transaction hash');
         throw new Error('Empty transaction hash');
       }
       trackPurchase();
-      await submitPurchase({ txHash, nonce, transactionId });
+      await submitPurchase({ txHash });
       event('Node Order Completed', {
         campaign: 'Nodes',
         wallet_address: address,
@@ -138,8 +127,6 @@ const ModalPurchase = ({
   }, [
     handleTransferETH,
     submitPurchase,
-    nonce,
-    transactionId,
     address,
     event,
     quantity,

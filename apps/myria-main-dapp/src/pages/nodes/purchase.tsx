@@ -57,7 +57,6 @@ const Purchase: React.FC = () => {
   }, [error?.status]);
 
   const onPlaceOrder = async (data: PurchaseInformationProps) => {
-    await onConnectCompaign('Nodes');
     if (data.quantity > 0) {
       setModalData(data);
       setOpenModal(true);
