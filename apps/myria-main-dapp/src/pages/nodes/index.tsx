@@ -237,7 +237,7 @@ const Nodes: React.FC = () => {
                   !loginByWalletMutation.isLoading &&
                   walletAddress &&
                   showConnectedWallet ? (
-                    <Link href={'/nodes/purchase'}>
+                    <Link href={data?.canPurchaseCount > 2 ? '/nodes/purchase' : '/'}>
                       <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
                         <Trans>Purchase Now</Trans>
                       </div>

@@ -2,8 +2,10 @@ import { useMutation, useQuery } from 'react-query';
 import apiClient from '../client';
 
 export type NodePurchase = {
-  price: string;
-  remainNumberOfNodes: number;
+  alreadyPurchasedCount: number;
+  canPurchaseCount: number;
+  nodePriceInETH: string;
+  destinationAddress: string;
 };
 
 export default function useNodePurchase() {
@@ -21,7 +23,7 @@ export default function useNodePurchase() {
     onSuccess: () => refetch()
   });
   return {
-    data: data?.data as NodePurchase,
+    data: data?.data?.data as NodePurchase,
     isLoading,
     // @ts-ignore
     error: error?.response as any,
