@@ -1,10 +1,8 @@
-import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Trans } from '@lingui/macro';
 import { BigNumber, ethers, utils } from 'ethers';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useMutation, useQuery } from 'react-query';
+import { useCallback, useMemo } from 'react';
+import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
-
 import Button from 'src/components/core/Button';
 import ETH from 'src/components/icons/ETHIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
@@ -45,14 +43,13 @@ const ModalPurchase = ({
     .parseEther(totalPriceEth.toString())
     .gt(balance ?? BigNumber.from(0));
 
-  const { data: txRequest } = useQuery<TransactionRequest | undefined>(
-    ['tx-transfer-request', totalPriceEth, address, open, isInsufficientBalance, toAddress],
-    async () => {
+  const createTxRequest = async () => {
       // this never happens due to line 53 but just by pass ts check
       // TODO: check if useQuery has some ts supports
       if (!address || !readerProviderApi || isInsufficientBalance) {
         return;
       }
+
       return await formatTransferTxRequest(
         readerProviderApi,
         totalPriceEth,
@@ -60,13 +57,11 @@ const ModalPurchase = ({
         toAddress,
         Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
       );
-    },
-    {
-      enabled: !!address && !!readerProviderApi && !isInsufficientBalance
-    }
-  );
+    };
+  
 
   const { mutateAsync: handleTransferETH, isLoading: isPurchasing } = useMutation(async () => {
+    const txRequest = await createTxRequest()
     if (txRequest && signerProviderApi) {
       const res = await transferEth(signerProviderApi?.getSigner(), txRequest);
       const tx = await res.wait();
