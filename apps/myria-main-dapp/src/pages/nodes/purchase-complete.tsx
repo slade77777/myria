@@ -3,15 +3,11 @@ import React from 'react';
 import { headerHeight } from '../../components/Header';
 import Page from '../../components/Page';
 import { Trans } from '@lingui/macro';
-import Header from 'src/components/nodes/Header';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const PurchaseComplete: React.FC = () => {
-  const router = useRouter();
   return (
-    <Page headerClassName="hidden">
-      <Header />
+    <Page action="start-building">
       <div
         style={{
           paddingTop: headerHeight,
@@ -30,11 +26,11 @@ const PurchaseComplete: React.FC = () => {
           <div className="heading-sm mt-8 mb-12 text-center">
             <Trans>Get started with your Myria node.</Trans>
           </div>
-          {/* <Link href="/nodes/dashboard/nodes">
+          <Link href="/nodes/my-nodes">
             <a className="btn-lg btn-primary">
-              <Trans>GO TO DASHBOARD</Trans>
+              <Trans>CHECK MY LICENCES</Trans>
             </a>
-          </Link> */}
+          </Link>
         </div>
       </div>
     </Page>

@@ -1,6 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React from 'react';
+import React, { useMemo } from 'react';
 import Subscribe from 'src/components/Subscribe';
 import CardWithIcon from 'src/components/CardWithIcon';
 import Collapse from 'src/components/Collapse';
@@ -211,6 +211,16 @@ const Nodes: React.FC = () => {
     return false;
   }, [address, localStarkKey, user, walletAddress]);
 
+  const purchaseLink = useMemo(() => {
+    if (data?.alreadyPurchasedCount === 2) {
+      return '/nodes/my-nodes';
+    }
+    if (data?.canPurchaseCount > 0) {
+      return '/nodes/purchase';
+    }
+    return '/nodes/purchase';
+  }, [data?.alreadyPurchasedCount, data?.canPurchaseCount]);
+
   return (
     <Page action="start-building">
       <div className="pt-[120px]">
@@ -237,7 +247,7 @@ const Nodes: React.FC = () => {
                   !loginByWalletMutation.isLoading &&
                   walletAddress &&
                   showConnectedWallet ? (
-                    <Link href={data?.canPurchaseCount > 2 ? '/nodes/purchase' : '/'}>
+                    <Link href={purchaseLink}>
                       <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
                         <Trans>Purchase Now</Trans>
                       </div>

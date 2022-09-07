@@ -19,14 +19,11 @@ export default function useNodePurchase() {
     }
   );
 
-  const { mutateAsync } = useMutation((data) => apiClient.post('/nodes/purchase', data), {
-    onSuccess: () => refetch()
-  });
   return {
     data: data?.data?.data as NodePurchase,
     isLoading,
     // @ts-ignore
     error: error?.response as any,
-    mutateAsync
+    refetch
   };
 }
