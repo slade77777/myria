@@ -1,21 +1,25 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import { AssetOrderBy, OrderStatus, OrderType } from 'myria-core-sdk';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import AssetList from 'src/components/marketplace/AssetList';
+import { dataSorting } from 'src/components/marketplace/Collection';
 import HotCollection from 'src/components/marketplace/HotCollection';
 import MessageMobileView from 'src/components/marketplace/Modals/MessageMobileView';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
+import SelectOrderBy from 'src/components/select/SelectOrderBy';
 import useCheckMobileView from 'src/hooks/useCheckMobileView';
 import { assetModule } from 'src/services/myriaCore';
 import { getItemsPagination, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';
 const Marketplace: React.FC = () => {
   const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
+  const [orderBy, setOrderBy] = useState(AssetOrderBy.ASC);
+
   const {
     fetchNextPage,
     fetchPreviousPage,
@@ -23,6 +27,7 @@ const Marketplace: React.FC = () => {
     hasPreviousPage,
     isFetchingNextPage,
     isFetchingPreviousPage,
+    refetch,
     ...result
   } = useInfiniteQuery(
     ['homepage', 'listorder'],
@@ -33,7 +38,7 @@ const Marketplace: React.FC = () => {
         page: pageParam,
         status: OrderStatus.ACTIVE,
         sortingField: 'amountBuy',
-        orderBy: AssetOrderBy.ASC
+        orderBy: orderBy
       }),
     {
       getNextPageParam: (lastPage, pages) => {
@@ -46,6 +51,17 @@ const Marketplace: React.FC = () => {
       }
     }
   );
+
+  const handleSelected = (e: any) => {
+    if (e.val === AssetOrderBy.ASC || e.val === AssetOrderBy.DESC) {
+      setOrderBy(e.val);
+    }
+  };
+
+  useEffect(() => {
+    refetch();
+  }, [orderBy]);
+
   if (isMobile) {
     return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
   }
@@ -73,8 +89,18 @@ const Marketplace: React.FC = () => {
                       Loading ...
                     </div>
                   }>
+                  <div className="flex items-center justify-between ">
+                    <div></div>
+                    <div className="w-1/5 ">
+                      <SelectOrderBy
+                        data={dataSorting}
+                        selectedDefault={'Recently listed'}
+                        changeHandler={handleSelected}
+                      />
+                    </div>
+                  </div>
                   <AssetList
-                    title={'Explore'}
+                    // title={'Explore'}
                     items={items?.map((elm: any, index: number) => {
                       const isOrder = Array.isArray(elm?.order);
                       const item: NFTItemType = {
