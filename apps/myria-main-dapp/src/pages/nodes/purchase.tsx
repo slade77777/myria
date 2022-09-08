@@ -66,7 +66,8 @@ const Purchase: React.FC = () => {
   const handlePurchaseComplete = useCallback(
     async (txId: string) => {
       setOpenModal(false);
-      router.push('/nodes/purchase-complete');
+      router.push('/nodes/purchase-pending');
+      localStorage.setItem('showSuccess', 'true');
     },
     [router]
   );
