@@ -1,11 +1,15 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { headerHeight } from '../../components/Header';
 import Page from '../../components/Page';
 import { Trans } from '@lingui/macro';
 import Link from 'next/link';
 
 const PurchaseComplete: React.FC = () => {
+  useEffect(() => {
+    localStorage.setItem('showSuccess', 'false');
+  }, []);
+
   return (
     <Page action="start-building">
       <div

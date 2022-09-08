@@ -1,17 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import ETH from '../icons/ETHIcon';
 import NumberInput from './NumberInput';
 import * as yup from 'yup';
 import { useWalletContext } from 'src/context/wallet';
-import { useAuthenticationContext } from 'src/context/authentication';
 import Input from '../Input';
 import TermsOfServiceModal from './Modals/TermsOfServiceModal';
 import { t, Trans } from '@lingui/macro';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm, useWatch } from 'react-hook-form';
-import usePurchaseInfo from '../../hooks/usePurchaseInfo';
 import { formatCurrency } from 'src/lib/formatter';
 import Button from 'src/components/core/Button';
 import { useGA4 } from '../../lib/ga';
@@ -45,27 +43,18 @@ const schema = yup.object({
 });
 
 const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
-  const { onConnect, address } = useWalletContext();
-  const { login } = useAuthenticationContext();
+  const { address } = useWalletContext();
   const [firstLicense, setFirstLicense] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
-  const [whitelistError, setWhitelistError] = useState(false);
   const { event } = useGA4();
-  const { data } = usePurchaseInfo();
   const { data: etheCost = 0 } = useEtheriumPrice();
 
   const {
-    register,
     handleSubmit,
     control,
-    setValue,
-    watch,
     formState: { errors, isValid }
   } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
 
-  useEffect(() => {
-    setValue('remainNumberOfNodes', data?.remainNumberOfNodes, { shouldValidate: true });
-  }, [data?.remainNumberOfNodes, setValue]);
   const { data: nodeData } = useNodePurchase();
 
   const price = nodeData?.nodePriceInETH ? +nodeData.nodePriceInETH : 0;
