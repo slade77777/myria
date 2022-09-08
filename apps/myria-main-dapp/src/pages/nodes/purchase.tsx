@@ -99,12 +99,7 @@ const Purchase: React.FC = () => {
         onPurchaseComplete={handlePurchaseComplete}
       />
       {showWarning && (
-        <WhiteListSale
-          open
-          warningType={warningType}
-          setWarningType={setWarningType}
-          onClose={() => setShowWarning(true)}
-        />
+        <WhiteListSale open warningType={warningType} setWarningType={setWarningType} />
       )}
     </Page>
   );
