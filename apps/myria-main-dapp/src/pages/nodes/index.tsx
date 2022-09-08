@@ -222,7 +222,7 @@ const Nodes: React.FC = () => {
     const showSuccess =
       typeof window !== 'undefined' ? localStorage.getItem('showSuccess') : 'false';
     if (hasPendingTransaction) {
-      return '/nodes/purchase-pending/' + hasPendingTransaction.txHash;
+      return '/nodes/purchase-pending?tx=' + hasPendingTransaction.txHash;
     }
     if (hasSuccessTransaction && showSuccess === 'true') {
       return '/nodes/purchase-complete';

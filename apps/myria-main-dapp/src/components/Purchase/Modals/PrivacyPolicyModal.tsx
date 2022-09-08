@@ -180,7 +180,7 @@ const PrivacyPolicyModal = ({
                 onChange={(e) => setAgree(e.currentTarget.checked)}
               />
               <p className="ml-4">
-                <Trans>I have read, understood and agree to the privacy and policy</Trans>
+                <Trans>I have read, understood and agree to the privacy policy</Trans>
               </p>
             </div>
           )}
