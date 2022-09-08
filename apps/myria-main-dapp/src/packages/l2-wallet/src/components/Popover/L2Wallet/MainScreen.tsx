@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import TailSpin from 'src/components/icons/TailSpin';
 import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWalletContext } from 'src/context/wallet';
@@ -409,13 +410,18 @@ export default function MainScreen({
     }
   };
 
+  if(!balanceEth) {
+    return (<div className="h-full w-full flex items-center justify-center">
+        <TailSpin />
+    </div>)
+  }
   return (
-    <div>
+    <div> 
       <div>
         <div className="mt-2 flex items-center justify-center">
           <ETHIcon />
           <div className="text-base/10 ml-2 text-[32px]">
-            {balanceEth || '0'}
+            {balanceEth}
           </div>
         </div>
         <p className="text-base/9 text-center">
