@@ -109,7 +109,10 @@ export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
       };
   }
 };
-const getBaseExploreLink = (type: 'address' | 'transaction' = 'address', networkId: number) => {
+export const getBaseExploreLink = (
+  type: 'address' | 'transaction' = 'address',
+  networkId: number
+) => {
   if (type === 'address') {
     return EXPLORE_LINKS[networkId as keyof typeof EXPLORE_LINKS]?.address;
   } else {

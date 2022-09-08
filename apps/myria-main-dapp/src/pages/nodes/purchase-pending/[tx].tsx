@@ -1,10 +1,17 @@
 import clsx from 'clsx';
 import React from 'react';
-import { headerHeight } from '../../components/Header';
-import Page from '../../components/Page';
+import { headerHeight } from '../../../components/Header';
+import Page from '../../../components/Page';
 import { Trans } from '@lingui/macro';
+import { getBaseExploreLink } from 'src/utils';
+import { useWalletContext } from 'src/context/wallet';
+import { useRouter } from 'next/router';
 
-const PurchaseComplete: React.FC = () => {
+const PurchasePending: React.FC = () => {
+  const { chainId } = useWalletContext();
+  const router = useRouter();
+  const { tx } = router.query;
+
   return (
     <Page action="start-building">
       <div
@@ -25,10 +32,17 @@ const PurchaseComplete: React.FC = () => {
           <div className="text-2xl mt-8 mb-12 text-center">
             <Trans>Check back shortly to see if your ethereum transaction is complete.</Trans>
           </div>
+          <a
+            className="btn-lg btn-primary mt-2"
+            target={'_blank'}
+            rel="noreferrer"
+            href={`${getBaseExploreLink('transaction', chainId as number)}/${tx}`}>
+            <Trans>Check Transaction</Trans>
+          </a>
         </div>
       </div>
     </Page>
   );
 };
 
-export default PurchaseComplete;
+export default PurchasePending;
