@@ -52,7 +52,8 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
   const {
     handleSubmit,
     control,
-    formState: { errors, isValid }
+    formState: { errors, isValid },
+    setValue
   } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
 
   const { data: nodeData } = useNodePurchase();
