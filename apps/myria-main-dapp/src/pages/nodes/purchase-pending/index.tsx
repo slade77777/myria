@@ -10,7 +10,8 @@ import { useRouter } from 'next/router';
 const PurchasePending: React.FC = () => {
   const { chainId } = useWalletContext();
   const router = useRouter();
-  const { tx } = router.query;
+  const tx = router.query['tx'];
+  console.log(tx);
 
   return (
     <Page action="start-building">
