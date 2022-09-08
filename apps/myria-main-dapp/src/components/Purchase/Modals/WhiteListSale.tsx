@@ -25,7 +25,7 @@ const schema = yup
   })
   .required();
 
-export type WarningNodeType = 'not-verified' | 'not-whitelist' | 'not-valid';
+export type WarningNodeType = 'not-verified' | 'not-whitelist' | 'not-valid' | 'not-email';
 
 const linkEmail = (email: string) => {
   return apiClient.post(`/accounts/email`, { email, redirect: 1 });
@@ -78,7 +78,7 @@ const WhiteListSale = ({
   );
 
   const content = useMemo(() => {
-    if (warningType === 'not-verified') {
+    if (warningType === 'not-email') {
       return (
         <div>
           <p className="mb-6 text-[16px] font-normal text-[#A1AFBA] text-center">
@@ -105,6 +105,18 @@ const WhiteListSale = ({
               <Trans>SUBMIT</Trans>
             </Button>
           </form>
+        </div>
+      );
+    }
+    if (warningType === 'not-verified') {
+      return (
+        <div>
+          <p className="text-[16px] font-normal text-[#A1AFBA] text-center">
+            <Trans>Confirmation email sent.</Trans>
+          </p>
+          <p className="text-[16px] font-normal text-[#A1AFBA] text-center">
+            <Trans>Please check your email and click on the link to verify.</Trans>
+          </p>
         </div>
       );
     }
