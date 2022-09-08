@@ -186,8 +186,8 @@ const Nodes: React.FC = () => {
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const { installedWallet } = useInstalledWallet();
   const { connectL2Wallet } = useL2WalletContext();
-  const { data } = useNodePurchase();
-  const { data: userNodes } = useUserNodes();
+  const { data, isLoading: nodeLoading } = useNodePurchase();
+  const { data: userNodes, isLoading: nodesLoading } = useUserNodes();
   const onConnectWallet = async () => {
     event('Connect Wallet Selected', { campaign: 'Nodes' });
     await onConnectCompaign('B2C Marketplace');
@@ -222,7 +222,7 @@ const Nodes: React.FC = () => {
     const showSuccess =
       typeof window !== 'undefined' ? localStorage.getItem('showSuccess') : 'false';
     if (hasPendingTransaction) {
-      return '/nodes/purchase-pending';
+      return '/nodes/purchase-pending/' + hasPendingTransaction.txHash;
     }
     if (hasSuccessTransaction && showSuccess === 'true') {
       return '/nodes/purchase-complete';
@@ -259,11 +259,15 @@ const Nodes: React.FC = () => {
                   !loginByWalletMutation.isLoading &&
                   walletAddress &&
                   showConnectedWallet ? (
-                    <Link href={purchaseLink}>
-                      <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
-                        <Trans>Purchase Now</Trans>
-                      </div>
-                    </Link>
+                    <div>
+                      {!nodeLoading && !nodesLoading && (
+                        <Link href={purchaseLink}>
+                          <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
+                            <Trans>Purchase Now</Trans>
+                          </div>
+                        </Link>
+                      )}
+                    </div>
                   ) : (
                     <div
                       className="btn-lg btn-primary mt-[38px] cursor-pointer"
