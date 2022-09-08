@@ -48,7 +48,7 @@ const Purchase: React.FC = () => {
         setWarningType('not-valid');
       } else if (!userData?.normalized_email) {
         setShowWarning(true);
-        setWarningType('not-verified');
+        setWarningType('not-email');
       } else if (error?.status === 403) {
         setShowWarning(true);
         setWarningType('not-whitelist');

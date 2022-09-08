@@ -33,16 +33,8 @@ const MyNode: React.FC = () => {
 
   return (
     <Page action="start-building">
-      <TermsOfServiceModal
-        open={firstLicense}
-        onClose={() => setFirstLicense(false)}
-        onAgree={() => setFirstLicense(false)}
-      />
-      <PrivacyPolicyModal
-        open={showPrivacy}
-        onClose={() => setShowPrivacy(false)}
-        onAgree={() => setShowPrivacy(false)}
-      />
+      <TermsOfServiceModal open={firstLicense} onClose={() => setFirstLicense(false)} />
+      <PrivacyPolicyModal open={showPrivacy} onClose={() => setShowPrivacy(false)} />
       <div
         style={{
           paddingTop: headerHeight,
