@@ -1,28 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import ETH from '../icons/ETHIcon';
 import NumberInput from './NumberInput';
 import * as yup from 'yup';
 import { useWalletContext } from 'src/context/wallet';
-import { useAuthenticationContext } from 'src/context/authentication';
 import Input from '../Input';
 import TermsOfServiceModal from './Modals/TermsOfServiceModal';
 import { t, Trans } from '@lingui/macro';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm, useWatch } from 'react-hook-form';
-import usePurchaseInfo from '../../hooks/usePurchaseInfo';
-import axios from 'axios';
-import { PurchaseInformationProps } from './Modals';
 import { formatCurrency } from 'src/lib/formatter';
-import { useMutation } from 'react-query';
 import Button from 'src/components/core/Button';
-import { toast } from 'react-toastify';
 import { useGA4 } from '../../lib/ga';
-import WhiteListSale, { WarningNodeType } from './Modals/WhiteListSale';
-import { WhitelistAddress } from '../../constant/whitelist-address';
+import { WarningNodeType } from './Modals/WhiteListSale';
 import PrivacyPolicyModal from './Modals/PrivacyPolicyModal';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
+import useNodePurchase from '../../hooks/useNodePurchase';
 
 const licenses = [
   {
@@ -38,7 +32,7 @@ const licenses = [
 ];
 
 interface IOrderProps {
-  onPlaceOrder: (data: PurchaseInformationProps) => void;
+  onPlaceOrder: (data: any) => void;
   warningType?: WarningNodeType;
 }
 
@@ -48,90 +42,42 @@ const schema = yup.object({
   privacy: yup.boolean().required().oneOf([true])
 });
 
-const ToAddress = process.env.NEXT_PUBLIC_NODE_RECIEVER_ADDRESS as string;
-
 const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
-  const { onConnect, address } = useWalletContext();
-  const { login } = useAuthenticationContext();
+  const { address } = useWalletContext();
   const [firstLicense, setFirstLicense] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
-  const [whitelistError, setWhitelistError] = useState(false);
   const { event } = useGA4();
-  const { data } = usePurchaseInfo();
   const { data: etheCost = 0 } = useEtheriumPrice();
 
   const {
-    register,
     handleSubmit,
     control,
-    setValue,
-    watch,
-    formState: { errors, isValid }
+    formState: { errors, isValid },
+    setValue
   } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
 
-  useEffect(() => {
-    setValue('remainNumberOfNodes', data?.remainNumberOfNodes, { shouldValidate: true });
-  }, [data?.remainNumberOfNodes, setValue]);
+  const { data: nodeData } = useNodePurchase();
 
-  const price = data?.price || 0.01;
+  const price = nodeData?.nodePriceInETH ? +nodeData.nodePriceInETH : 0;
   const quantity = useWatch({ control, name: 'quantity' }) || 0;
-
-  const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(
-    async ({ numberOfNode }: { numberOfNode: number }) => {
-      await new Promise((resolve, reject) => {
-        if (numberOfNode <= 2) {
-          console.log('Submited', { numberOfNode });
-          resolve(numberOfNode);
-        } else {
-          reject('The maximum node available is 2');
-        }
-      });
-      return {
-        transactionId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-        totalPrice: price * quantity,
-        toAddress: ToAddress
-      };
-    }
-  );
 
   const doPurchase = useCallback(
     (data: any) => {
       const { quantity } = data;
-      if (!WhitelistAddress.find((item) => item.address.toLowerCase() === address?.toLowerCase())) {
-        event('Node Order Placed', {
-          campaign: 'Nodes',
-          wallet_address: address,
-          node_quantity: quantity,
-          order_status: 'Error',
-          error_details: 'Not in whitelist address'
-        });
-        return setWhitelistError(true);
-      }
-      submitPurchase({ numberOfNode: quantity })
-        .then((response) => {
-          onPlaceOrder({
-            quantity,
-            totalPriceEth: response.totalPrice,
-            totalPriceUsd: price * quantity * etheCost,
-            toAddress: response.toAddress,
-            nonce: response.transactionId,
-            transactionId: response.transactionId
-          });
-          event('Node Order Placed', {
-            campaign: 'Nodes',
-            wallet_address: address,
-            node_quantity: quantity,
-            order_status: 'Completed'
-          });
-        })
-        .catch((e) => {
-          toast.clearWaitingQueue({ containerId: 'node purchase limit' });
-          toast.error(e, {
-            toastId: 'node purchase limit'
-          });
-        });
+      onPlaceOrder({
+        quantity,
+        totalPriceEth: price * quantity,
+        totalPriceUsd: price * quantity * etheCost,
+        toAddress: nodeData?.destinationAddress || '0xFdd2A40B69b7d5fD8Ae71222c84c814497A711B6'
+      });
+      event('Node Order Placed', {
+        campaign: 'Nodes',
+        wallet_address: address,
+        node_quantity: quantity,
+        order_status: 'Completed'
+      });
     },
-    [submitPurchase, address, onPlaceOrder, price, etheCost, event]
+    [onPlaceOrder, price, etheCost, nodeData?.destinationAddress, event, address]
   );
 
   const handleClickLicense = (licenseId: string) => {
@@ -203,19 +149,6 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
                 )}
               />
             </div>
-            {/*<div className="mt-6 flex flex-row justify-between">*/}
-            {/*  <p className="body-sm hidden text-light md:block">*/}
-            {/*    <Trans>Referral Code</Trans>*/}
-            {/*  </p>*/}
-            {/*  <p className="body-sm hidden md:block">*/}
-            {/*    <Trans>Optional</Trans>*/}
-            {/*  </p>*/}
-            {/*</div>*/}
-            {/*<Input*/}
-            {/*  placeholder={t`Enter referral code`}*/}
-            {/*  {...register('referralCode')}*/}
-            {/*  className="mt-2 border-none bg-[#0B2231]"*/}
-            {/*/>*/}
           </div>
 
           <div className="caption text-light md:body-sm mt-6 font-normal normal-case">
@@ -249,10 +182,10 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
             <Button
               className={clsx(
                 'btn-lg w-full px-4 uppercase text-black',
-                isValid ? 'bg-brand-gold' : 'bg-gray-400'
+                isValid && !warningType ? 'bg-brand-gold' : 'bg-gray-400'
               )}
               onClick={handleSubmit(doPurchase)}
-              loading={isSubmiting}
+              loading={false}
               disabled={!isValid || !!warningType}>
               <Trans>PLACE ORDER</Trans>
             </Button>

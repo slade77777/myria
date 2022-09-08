@@ -1,6 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React from 'react';
+import React, { useMemo } from 'react';
 import Subscribe from 'src/components/Subscribe';
 import CardWithIcon from 'src/components/CardWithIcon';
 import Collapse from 'src/components/Collapse';
@@ -23,6 +23,8 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import { localStorageKeys } from '../../configs';
 import useInstalledWallet from '../../hooks/useInstalledWallet';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import useNodePurchase from '../../hooks/useNodePurchase';
+import useUserNodes from '../../hooks/useUserNodes';
 
 const rewards = [
   {
@@ -184,7 +186,8 @@ const Nodes: React.FC = () => {
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const { installedWallet } = useInstalledWallet();
   const { connectL2Wallet } = useL2WalletContext();
-
+  const { data, isLoading: nodeLoading } = useNodePurchase();
+  const { data: userNodes, isLoading: nodesLoading } = useUserNodes();
   const onConnectWallet = async () => {
     event('Connect Wallet Selected', { campaign: 'Nodes' });
     await onConnectCompaign('B2C Marketplace');
@@ -208,6 +211,27 @@ const Nodes: React.FC = () => {
     }
     return false;
   }, [address, localStarkKey, user, walletAddress]);
+
+  const purchaseLink = useMemo(() => {
+    const hasPendingTransaction = userNodes.find(
+      (transaction) => transaction.purchaseStatus === 'PENDING'
+    );
+    const hasSuccessTransaction = userNodes.find(
+      (transaction) => transaction.purchaseStatus === 'SUCCESSFUL'
+    );
+    const showSuccess =
+      typeof window !== 'undefined' ? localStorage.getItem('showSuccess') : 'false';
+    if (hasPendingTransaction) {
+      return '/nodes/purchase-pending?tx=' + hasPendingTransaction.txHash;
+    }
+    if (hasSuccessTransaction && showSuccess === 'true') {
+      return '/nodes/purchase-complete';
+    }
+    if (data?.canPurchaseCount === 0) {
+      return '/nodes/my-nodes';
+    }
+    return '/nodes/purchase';
+  }, [data?.canPurchaseCount, userNodes]);
 
   return (
     <Page action="start-building">
@@ -235,11 +259,15 @@ const Nodes: React.FC = () => {
                   !loginByWalletMutation.isLoading &&
                   walletAddress &&
                   showConnectedWallet ? (
-                    <Link href={'/nodes/purchase'}>
-                      <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
-                        <Trans>Purchase Now</Trans>
-                      </div>
-                    </Link>
+                    <div>
+                      {!nodeLoading && !nodesLoading && (
+                        <Link href={purchaseLink}>
+                          <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
+                            <Trans>Purchase Now</Trans>
+                          </div>
+                        </Link>
+                      )}
+                    </div>
                   ) : (
                     <div
                       className="btn-lg btn-primary mt-[38px] cursor-pointer"

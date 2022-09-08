@@ -7,9 +7,11 @@ import { useSelector } from 'react-redux';
 import { localStorageKeys } from 'src/configs';
 import { User } from 'src/context/authentication';
 import useLocalStorage from 'src/hooks/useLocalStorage';
+import useUserNodes from 'src/hooks/useUserNodes';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import DropdownMenu from '../DropdownMenu';
 import InventoryIcon from '../icons/InventoryIcon';
+import NodeIcon from '../icons/NodeIcon';
 
 interface IProps {
   items: {
@@ -25,6 +27,7 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
   const isLogin =
     !loginByWalletMutation.isError && walletAddress && showConnectedWallet && localStarkKey;
 
+  const nodes = useUserNodes();
   const avatar = '/images/marketplace/user.png';
 
   return (
@@ -57,6 +60,20 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
                   </a>
                 </Link>
               </div>
+              {nodes.data.length > 0 && (
+                <div className="mt-6">
+                  <Link href={'/nodes/my-nodes'}>
+                    <a className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white">
+                      <i className="w-4">
+                        <NodeIcon />
+                      </i>
+                      <span>
+                        <Trans>Nodes</Trans>
+                      </span>
+                    </a>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </DropdownMenu.Item>

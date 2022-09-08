@@ -172,24 +172,28 @@ const PrivacyPolicyModal = ({
               </div>
             </div>
           </div>
-          <div className="mb-8 flex pt-4">
-            <Input
-              type="checkbox"
-              checked={agree}
-              onChange={(e) => setAgree(e.currentTarget.checked)}
-            />
-            <p className="ml-4">
-              <Trans>I have read, understood and agree to the privacy and policy</Trans>
-            </p>
-          </div>
-          <div className="flex w-full justify-end">
-            <Button
-              className="btn-lg btn-primary justify-end px-10 disabled:bg-gray-500 disabled:text-white disabled:opacity-50"
-              disabled={!agree}
-              onClick={onAgree}>
-              <Trans>Accept</Trans>
-            </Button>
-          </div>
+          {onAgree && (
+            <div className="mb-8 flex pt-4">
+              <Input
+                type="checkbox"
+                checked={agree}
+                onChange={(e) => setAgree(e.currentTarget.checked)}
+              />
+              <p className="ml-4">
+                <Trans>I have read, understood and agree to the privacy policy</Trans>
+              </p>
+            </div>
+          )}
+          {onAgree && (
+            <div className="flex w-full justify-end">
+              <Button
+                className="btn-lg btn-primary justify-end px-10 disabled:bg-gray-500 disabled:text-white disabled:opacity-50"
+                disabled={!agree}
+                onClick={onAgree}>
+                <Trans>Accept</Trans>
+              </Button>
+            </div>
+          )}
         </div>
       </Modal.Content>
     </Modal>
