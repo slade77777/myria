@@ -52,7 +52,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
       <DialogPrimitive.Content {...props} className={clsx('dialog-content')} ref={forwardedRef}>
         <div
           className={clsx(
-            'mx-auto my-auto w-full max-w-[576px] rounded-lg bg-brand-deep-blue z-50',
+            'bg-brand-deep-blue z-50 mx-auto my-auto w-full max-w-[576px] rounded-lg',
             className
           )}>
           {includingHeader && (
@@ -61,7 +61,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ExtractProps<ModalType['Co
                 <div className={clsx('heading-md text-white', titleClassName)}>
                   <span>{title}</span>
                   {isIcon && (
-                    <span className="ml-2 my-auto">
+                    <span className="my-auto ml-2">
                       {' '}
                       <img src="/assets/images/sad-face.png" alt="" width={24} />
                     </span>

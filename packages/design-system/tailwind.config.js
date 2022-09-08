@@ -841,6 +841,15 @@ module.exports = {
           fontSize: 12,
           lineHeight: 1.5,
           fontWeight: 600
+        },
+        '.bg-linear-green': {
+          background: `linear-gradient(154.25deg, rgba(45, 166, 79, 0.2) 12.96%, rgba(79, 166, 185, 0) 86.24%) !important`
+        },
+        '.bg-linear-gold': {
+          background: `linear-gradient(154.25deg, rgba(245, 185, 65, 0.2) 12.96%, rgba(245, 185, 65, 0) 86.24%) !important`
+        },
+        '.bg-linear-purple': {
+          background: `linear-gradient(154.25deg, rgba(156, 75, 185, 0.2) 12.96%, rgba(156, 75, 185, 0) 86.24%) !important`
         }
       });
     })
