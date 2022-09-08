@@ -29,7 +29,7 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
   const { activatingTab } = useTabContext();
   const { disconnect, address } = useWalletContext();
   const { disconnectL2Wallet } = useL2WalletContext();
-  const [showSessionTimeoutModal, setShowSessionTimeoutModal] = useState(true);
+  const [showSessionTimeoutModal, setShowSessionTimeoutModal] = useState(false);
 
   const ref = useRef<any>(null);
   let usedAction = action;
