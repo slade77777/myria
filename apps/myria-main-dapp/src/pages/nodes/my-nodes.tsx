@@ -40,10 +40,8 @@ const MyNode: React.FC = () => {
           paddingTop: headerHeight,
           backgroundSize: '100% auto'
         }}
-        className={clsx(
-          paddingX,
-          "bg-[url('/images/nodes/purchase-page-bg.png')] bg-top bg-no-repeat md:mb-[120px]"
-        )}>
+        className={clsx(paddingX, 'md:mb-[120px]')}
+      >
         <div className="mx-auto mt-[30px] w-full max-w-[1734]">
           <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[67.5fr_32.5fr]">
             <div className="relative w-full overflow-hidden md:mt-0">
@@ -51,7 +49,7 @@ const MyNode: React.FC = () => {
             </div>
             <div className="float-right -mx-6 mt-[130px] md:mx-0 md:mt-0">
               <div className="bg-brand-deep-blue rounded-t-lg p-6 md:rounded-lg md:p-8">
-                <p className="text-white font-bold text-2xl">My nodes</p>
+                <p className="text-2xl font-bold text-white">My nodes</p>
                 <p className="text-base/9 mt-2">Here are the node licenses you have purchased:</p>
                 <div className="mt-4">
                   {successTrans.map((transaction) => (
@@ -65,12 +63,13 @@ const MyNode: React.FC = () => {
                     </>
                   ))}
                 </div>
-                <div className="h-[0.5px] w-full bg-slate-200 my-8" />
+                <div className="my-8 h-[0.5px] w-full bg-slate-200" />
                 <p>
                   Read the{' '}
                   <span
                     onClick={() => setFirstLicense(true)}
-                    className="text-brand-gold cursor-pointer">
+                    className="text-brand-gold cursor-pointer"
+                  >
                     future node purchase agreement
                   </span>
                 </p>
@@ -78,7 +77,8 @@ const MyNode: React.FC = () => {
                   Read the{' '}
                   <span
                     onClick={() => setShowPrivacy(true)}
-                    className="text-brand-gold cursor-pointer">
+                    className="text-brand-gold cursor-pointer"
+                  >
                     privacy policy
                   </span>
                 </p>
