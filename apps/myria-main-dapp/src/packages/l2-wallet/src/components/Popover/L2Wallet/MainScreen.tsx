@@ -32,6 +32,7 @@ import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
+import useBalanceList from '../../../common/hooks/useBalanceList';
 
 type Props = {
   gotoDepositScreen: any;
@@ -144,9 +145,10 @@ export default function MainScreen({
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
   const [l1Balance, setL1Balance] = useState(0);
+  const { isLoading, isFetched } = useBalanceList();
   const { data: etheCost = 0 } = useEtheriumPrice();
-  const { address, onConnect, onConnectCompaign } = useWalletContext();
-  const { valueNFT, setStatus, handleSetValueNFT } = useWithDrawNFTContext();
+  const { address } = useWalletContext();
+  const { setStatus, handleSetValueNFT } = useWithDrawNFTContext();
   const { handleDisplayPopoverWithdrawNFT, handleDisplayPopover } =
     useL2WalletContext();
   const starkKeyUser = useSelector(
@@ -206,7 +208,7 @@ export default function MainScreen({
 
   useEffect(() => {
     const temp: any = [];
-    options.map((option: any, index: number) => {
+    options.map((option: any) => {
       let tempOption = option;
       let assetType: string;
       if (option.name === 'Ethereum') {
@@ -409,8 +411,8 @@ export default function MainScreen({
       return DF_TRANSACTION_TYPE[item?.type]?.title;
     }
   };
-
-  if(!balanceEth) {
+  
+  if(isLoading && !isFetched) {
     return (<div className="h-full w-full flex items-center justify-center">
         <TailSpin />
     </div>)
@@ -421,7 +423,7 @@ export default function MainScreen({
         <div className="mt-2 flex items-center justify-center">
           <ETHIcon />
           <div className="text-base/10 ml-2 text-[32px]">
-            {balanceEth}
+            {balanceEth || 0}
           </div>
         </div>
         <p className="text-base/9 text-center">
