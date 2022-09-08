@@ -1,17 +1,28 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { headerHeight } from '../../../components/Header';
 import Page from '../../../components/Page';
 import { Trans } from '@lingui/macro';
 import { getBaseExploreLink } from 'src/utils';
 import { useWalletContext } from 'src/context/wallet';
 import { useRouter } from 'next/router';
+import useUserNodes from '../../../hooks/useUserNodes';
 
 const PurchasePending: React.FC = () => {
   const { chainId } = useWalletContext();
   const router = useRouter();
   const tx = router.query['tx'];
-  console.log(tx);
+
+  const { data: userNodes } = useUserNodes();
+
+  useEffect(() => {
+    const hasPendingTransaction = userNodes.find(
+      (transaction) => transaction.purchaseStatus === 'PENDING'
+    );
+    if (!hasPendingTransaction) {
+      router.push('/nodes/purchase-complete');
+    }
+  }, [router, userNodes]);
 
   return (
     <Page action="start-building">
