@@ -24,6 +24,7 @@ import { localStorageKeys } from '../../configs';
 import useInstalledWallet from '../../hooks/useInstalledWallet';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import useNodePurchase from '../../hooks/useNodePurchase';
+import useUserNodes from '../../hooks/useUserNodes';
 
 const rewards = [
   {
@@ -186,7 +187,7 @@ const Nodes: React.FC = () => {
   const { installedWallet } = useInstalledWallet();
   const { connectL2Wallet } = useL2WalletContext();
   const { data } = useNodePurchase();
-
+  const { data: userNodes } = useUserNodes();
   const onConnectWallet = async () => {
     event('Connect Wallet Selected', { campaign: 'Nodes' });
     await onConnectCompaign('B2C Marketplace');
@@ -212,14 +213,25 @@ const Nodes: React.FC = () => {
   }, [address, localStarkKey, user, walletAddress]);
 
   const purchaseLink = useMemo(() => {
-    if (data?.alreadyPurchasedCount === 2) {
+    const hasPendingTransaction = userNodes.find(
+      (transaction) => transaction.purchaseStatus === 'PENDING'
+    );
+    const hasSuccessTransaction = userNodes.find(
+      (transaction) => transaction.purchaseStatus === 'SUCCESSFUL'
+    );
+    const showSuccess =
+      typeof window !== 'undefined' ? localStorage.getItem('showSuccess') : 'false';
+    if (hasPendingTransaction) {
+      return '/nodes/purchase-pending';
+    }
+    if (hasSuccessTransaction && showSuccess === 'true') {
+      return '/nodes/purchase-complete';
+    }
+    if (data?.canPurchaseCount === 0) {
       return '/nodes/my-nodes';
     }
-    if (data?.canPurchaseCount > 0) {
-      return '/nodes/purchase';
-    }
     return '/nodes/purchase';
-  }, [data?.alreadyPurchasedCount, data?.canPurchaseCount]);
+  }, [data?.canPurchaseCount, userNodes]);
 
   return (
     <Page action="start-building">
