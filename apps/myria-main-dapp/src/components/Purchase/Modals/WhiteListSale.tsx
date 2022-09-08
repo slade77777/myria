@@ -28,7 +28,7 @@ const schema = yup
 export type WarningNodeType = 'not-verified' | 'not-whitelist' | 'not-valid' | 'not-email';
 
 const linkEmail = (email: string) => {
-  return apiClient.post(`/accounts/email`, { email, redirect: 1 });
+  return apiClient.post(`/accounts/email`, { email, redirect: 2 });
 };
 
 const WhiteListSale = ({
