@@ -38,3 +38,5 @@ dist
 out-dev/
 out-staging/
 out-prod/
+
+storybook-static
