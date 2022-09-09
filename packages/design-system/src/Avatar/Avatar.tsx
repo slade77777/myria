@@ -8,7 +8,7 @@ export type TAvatarProps = {
   children?: React.ReactNode;
 };
 
-const IconSolid: React.FC<React.SVGProps<SVGSVGElement>> = ({ width = 56, height = 56 }) => (
+const IconSolid: React.FC<React.SVGProps<SVGSVGElement>> = ({ width = 50, height = 50 }) => (
   <svg
     width={width}
     height={height}
@@ -159,19 +159,19 @@ export const Avatar: React.FC<TAvatarProps> = ({
   const sizing = React.useMemo(() => {
     switch (size) {
       case 'xxl':
-        return { className: 'w-24 h-24', iconSize: 56 };
+        return { className: 'w-24 h-24 text-2xl', iconSize: 56 };
       case 'xl':
-        return { className: 'w-20 h-20', iconSize: 47 };
+        return { className: 'w-20 h-20 text-lg', iconSize: 47 };
       case 'l':
-        return { className: 'w-16 h-16', iconSize: 37 };
+        return { className: 'w-16 h-16 text-lg', iconSize: 37 };
       case 'm':
-        return { className: 'w-12 h-12', iconSize: 28 };
+        return { className: 'w-12 h-12 text-xs', iconSize: 28 };
       case 's':
-        return { className: 'w-8 h-8', iconSize: 19 };
+        return { className: 'w-8 h-8 text-xs', iconSize: 19 };
       case 'xs':
-        return { className: 'w-6 h-6', iconSize: 14 };
+        return { className: 'w-6 h-6 text-[10px]', iconSize: 14 };
       default:
-        return { className: 'w-24 h-24', iconSize: 56 };
+        return { className: 'w-24 h-24 text-2xl', iconSize: 56 };
     }
   }, [size]);
 
@@ -182,7 +182,7 @@ export const Avatar: React.FC<TAvatarProps> = ({
           <img
             src={src && src.length > 0 ? src : 'defaultAvatarImage.png'}
             alt="avatar"
-            className="rounded"
+            className={clsx({ 'rounded-full': shape === 'circle', rounded: shape !== 'circle' })}
           />
         );
       case 'icon':
@@ -192,16 +192,21 @@ export const Avatar: React.FC<TAvatarProps> = ({
       default:
         return children;
     }
-  }, [type, sizing.iconSize, src, children]);
+  }, [type, sizing.iconSize, src, children, shape]);
 
   return (
     <div
       className={clsx(
-        ' bg-base/6 flex items-center justify-center text-blue/9',
-        { 'rounded-full': shape === 'circle', rounded: shape !== 'circle' },
+        'flex items-center justify-center text-blue/9',
+        {
+          'rounded-full': shape === 'circle',
+          rounded: shape !== 'circle',
+          'bg-base/6': type !== 'iconColor',
+          'bg-base/5': type === 'iconColor'
+        },
         sizing?.className
       )}>
-      {component}
+      <div className="truncate text-center">{component}</div>
     </div>
   );
 };
