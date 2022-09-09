@@ -23,7 +23,7 @@ const MyNode: React.FC = () => {
 
   useEffect(() => {
     // validate either wallet is connected
-    if (!address || (!userProfileQuery.isFetching && !user)) {
+    if (!userProfileQuery.isFetching && !user) {
       router.push('/nodes');
     }
   }, [address, router, user, userProfileQuery.isFetching]);
@@ -40,8 +40,7 @@ const MyNode: React.FC = () => {
           paddingTop: headerHeight,
           backgroundSize: '100% auto'
         }}
-        className={clsx(paddingX, 'md:mb-[120px]')}
-      >
+        className={clsx(paddingX, 'md:mb-[120px]')}>
         <div className="mx-auto mt-[30px] w-full max-w-[1734]">
           <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[67.5fr_32.5fr]">
             <div className="relative w-full overflow-hidden md:mt-0">
@@ -68,8 +67,7 @@ const MyNode: React.FC = () => {
                   Read the{' '}
                   <span
                     onClick={() => setFirstLicense(true)}
-                    className="text-brand-gold cursor-pointer"
-                  >
+                    className="text-brand-gold cursor-pointer">
                     future node purchase agreement
                   </span>
                 </p>
@@ -77,8 +75,7 @@ const MyNode: React.FC = () => {
                   Read the{' '}
                   <span
                     onClick={() => setShowPrivacy(true)}
-                    className="text-brand-gold cursor-pointer"
-                  >
+                    className="text-brand-gold cursor-pointer">
                     privacy policy
                   </span>
                 </p>

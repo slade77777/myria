@@ -53,9 +53,9 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
     handleSubmit,
     control,
     formState: { errors, isValid },
-    setValue
+    reset,
+    getValues
   } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
-
   const { data: nodeData } = useNodePurchase();
 
   const price = nodeData?.nodePriceInETH ? +nodeData.nodePriceInETH : 0;
@@ -93,12 +93,14 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
 
   const onAgreeAgreement = () => {
     setFirstLicense(false);
-    setValue('term', true);
+    const values = getValues();
+    reset({ ...values, term: true });
   };
 
   const onAgreePolicy = () => {
     setShowPrivacy(false);
-    setValue('privacy', true);
+    const values = getValues();
+    reset({ ...values, privacy: true });
   };
 
   return (
@@ -137,6 +139,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
                 control={control}
                 render={({ field }) => (
                   <NumberInput
+                    max={2}
                     setQuantityNumber={(val: number) => {
                       field.onChange(val);
                       event('Node Order Updated', {

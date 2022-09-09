@@ -44,24 +44,23 @@ const ModalPurchase = ({
     .gt(balance ?? BigNumber.from(0));
 
   const createTxRequest = async () => {
-      // this never happens due to line 53 but just by pass ts check
-      // TODO: check if useQuery has some ts supports
-      if (!address || !readerProviderApi || isInsufficientBalance) {
-        return;
-      }
+    // this never happens due to line 53 but just by pass ts check
+    // TODO: check if useQuery has some ts supports
+    if (!address || !readerProviderApi || isInsufficientBalance) {
+      return;
+    }
 
-      return await formatTransferTxRequest(
-        readerProviderApi,
-        totalPriceEth,
-        address,
-        toAddress,
-        Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
-      );
-    };
-  
+    return await formatTransferTxRequest(
+      readerProviderApi,
+      totalPriceEth,
+      address,
+      toAddress,
+      Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
+    );
+  };
 
   const { mutateAsync: handleTransferETH, isLoading: isPurchasing } = useMutation(async () => {
-    const txRequest = await createTxRequest()
+    const txRequest = await createTxRequest();
     if (txRequest && signerProviderApi) {
       const res = await transferEth(signerProviderApi?.getSigner(), txRequest);
       const tx = await res.wait();
@@ -74,10 +73,18 @@ const ModalPurchase = ({
   const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(
     async ({ txHash }: { txHash: string }) => {
       if (txHash) {
-        apiClient.post('/nodes/purchase', { txHash }).then(() => {
-          refetch();
-          onPurchaseComplete?.(txHash);
-        });
+        apiClient
+          .post('/nodes/purchase', { txHash })
+          .then(() => {
+            refetch();
+            onPurchaseComplete?.(txHash);
+            toast.success('Purchase completed');
+          })
+          .catch((e) => {
+            toast.error(
+              e?.response?.data?.errors?.[0]?.detail || 'Something went wrong , please try later!'
+            );
+          });
       } else {
         throw new Error('Missing params');
       }
@@ -115,7 +122,6 @@ const ModalPurchase = ({
         eth_total_amount: totalPriceEth,
         usd_total_amount: totalPriceUsd
       });
-      toast.success('Purchase completed');
     } catch (e) {
       toast.error('Purchase uncompleted');
     }
