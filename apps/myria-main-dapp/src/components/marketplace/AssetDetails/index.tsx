@@ -1,11 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
-import {
-  CreateOrderEntity,
-  SignableOrderInput
-} from 'myria-core-sdk/dist/types/src/types/OrderTypes';
-import { TradesRequestTypes } from 'myria-core-sdk/dist/types/src/types/TradesTypes';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
@@ -40,9 +35,16 @@ import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
-import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
+import {
+  AssetDetailsResponse,
+  CreateOrderEntity,
+  SignableOrderInput,
+  TradesRequestTypes
+} from 'myria-core-sdk';
 import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
+import MessageCopyModal from '../MessageModal/MessageCopyModal';
 
 interface Props {
   id: string;
@@ -70,8 +72,8 @@ const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="p-4 text-center border rounded-lg border-base/6 bg-base/3">
-      <p className="text-xs font-normal uppercase text-blue/6">{keyword}</p>
+    <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
+      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
       <p className="text-sm font-medium">{val}</p>
     </div>
   );
@@ -86,12 +88,12 @@ function AssetDetails({ id }: Props) {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
-      const assetModule = moduleFactory.getAssetModule();
+      const assetModule = moduleFactory.getAssetOnchainManager();
       const [assetDetails, listOrder] = await Promise.all([
         assetModule?.getAssetById(id), //getAssetDetail by assetId
         assetModule?.getAssetEqualMetadataById({ assetId: +id }) //getListOrder by assetId
       ]);
-      handleSetValueNFT(assetDetails?.data);
+      handleSetValueNFT({ ...assetDetails?.data, name: 'Sigil NFT' });
       return { assetDetails: assetDetails?.data, listOrder: listOrder?.data };
     },
     {
@@ -120,7 +122,7 @@ function AssetDetails({ id }: Props) {
       </span>
     ) : (
       <span>
-        <Trans>BACK MYRIA HOT COLLECTIONS</Trans>
+        <Trans>BACK TO MYRIA HOT COLLECTIONS</Trans>
       </span>
     );
     return result;
@@ -132,7 +134,7 @@ function AssetDetails({ id }: Props) {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
-      const collectionModule = moduleFactory.getCollectionModule();
+      const collectionModule = moduleFactory.getCollectionManager();
       // more from this Collection (status:'FOR_SALE')
       const res = await collectionModule?.getAssetByCollectionId({
         assetType: 'FOR_SALE',
@@ -169,6 +171,7 @@ function AssetDetails({ id }: Props) {
   const [showModalUnlist, setShowModalUnlist] = useState(false);
   const [showMessageModify, setShowMessageModify] = useState({ isShow: false, newPrice: 0 });
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
+  const [showMessageCopied, setShowMessageCopied] = useState(false);
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
 
   const [showShareModal, setShowShareModal] = useState(false);
@@ -260,7 +263,7 @@ function AssetDetails({ id }: Props) {
   const onSubmitModifyOrder = async ({ price }: { price: string }) => {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
-    const orderModule = moduleFactory.getOrderModule();
+    const orderModule = moduleFactory.getOrderManager();
     if (!address) return;
     const result = await orderModule?.updateOrderPrice(assetDetails?.order.orderId + '', {
       newAmountBuy: price,
@@ -290,7 +293,7 @@ function AssetDetails({ id }: Props) {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
 
-      const orderModule = moduleFactory.getOrderModule();
+      const orderModule = moduleFactory.getOrderManager();
       if (!address) return;
       const payload: SignableOrderInput = {
         orderType: 'SELL',
@@ -364,7 +367,10 @@ function AssetDetails({ id }: Props) {
       );
 
       if (balance > 0) {
-        if (withdrawalStatus != StatusWithdrawNFT.COMPLETED) {
+        if (
+          withdrawalStatus != StatusWithdrawNFT.COMPLETED &&
+          withdrawalStatus !== StatusWithdrawNFT.FAILED
+        ) {
           setShowWithdrawalMessage(true);
         }
         return true;
@@ -419,7 +425,7 @@ function AssetDetails({ id }: Props) {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
 
-    const orderModule = moduleFactory.getOrderModule();
+    const orderModule = moduleFactory.getOrderManager();
     if (!address || !assetDetails?.order.orderId) return;
     const result = await orderModule?.deleteOrderById({
       orderId: assetDetails?.order.orderId,
@@ -473,8 +479,8 @@ function AssetDetails({ id }: Props) {
   const handleCreateTrade = async (tradeData: any) => {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
-    const orderModule = moduleFactory.getOrderModule();
-    const tradeModule = moduleFactory.getTradeModule();
+    const orderModule = moduleFactory.getOrderManager();
+    const tradeModule = moduleFactory.getTradeManager();
     if (!address || !tradeData?.order.orderId) return;
 
     try {
@@ -555,7 +561,7 @@ function AssetDetails({ id }: Props) {
   }
   return (
     <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] ">
-      <button onClick={router.back} className="items-center mb-14">
+      <button onClick={router.back} className="mb-14 items-center">
         <div className="flex items-center">
           <BackIcon />
           <span className="ml-[6px] text-sm font-normal leading-[17px]">{titleBack}</span>
@@ -599,10 +605,10 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className="flex flex-row items-center">
                 <img src={avatar.src} className="h-[24px] w-[24px]" />
-                <span className="ml-2 text-base text-light">{assetDetails?.collectionName}</span>
+                <span className="text-light ml-2 text-base">{assetDetails?.collectionName}</span>
               </div>
               <div
-                className="w-10 p-3 rounded cursor-pointer bg-base/3"
+                className="bg-base/3 w-10 cursor-pointer rounded p-3"
                 onClick={() => {
                   setShowShareModal(true);
                 }}>
@@ -612,7 +618,7 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="flex mt-6 text-sm font-normal text-light">
+              <div className="text-light mt-6 flex text-sm font-normal">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
@@ -622,7 +628,7 @@ function AssetDetails({ id }: Props) {
                 </span>
               </div>
 
-              <div className="flex gap-6 text-sm font-normal text-light">
+              <div className="text-light flex gap-6 text-sm font-normal">
                 <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
                   <MintedIcon />
                   <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
@@ -694,7 +700,7 @@ function AssetDetails({ id }: Props) {
               />
             )}
           </div>
-          <div className="border-t border-blue/3">
+          <div className="border-blue/3 border-t">
             {/* TAB */}
             <AssetDetailTab
               data={listOrder?.items}
@@ -811,7 +817,15 @@ function AssetDetails({ id }: Props) {
         onClose={() => {
           setShowShareModal(false);
         }}
+        onShowMessageCopied={() => setShowMessageCopied(true)}
       />
+      {showMessageCopied && (
+        <MessageModal
+          isShowMessage={showMessageCopied}
+          setIsShowMessage={() => setShowMessageCopied(false)}>
+          <MessageCopyModal />
+        </MessageModal>
+      )}
     </div>
   );
 }

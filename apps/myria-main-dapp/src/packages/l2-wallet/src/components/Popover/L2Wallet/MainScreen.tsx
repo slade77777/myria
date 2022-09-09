@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import TailSpin from 'src/components/icons/TailSpin';
 import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWalletContext } from 'src/context/wallet';
@@ -31,6 +32,7 @@ import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
+import useBalanceList from '../../../common/hooks/useBalanceList';
 
 type Props = {
   gotoDepositScreen: any;
@@ -143,9 +145,10 @@ export default function MainScreen({
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
   const [l1Balance, setL1Balance] = useState(0);
+  const { isLoading, isFetched } = useBalanceList();
   const { data: etheCost = 0 } = useEtheriumPrice();
-  const { address, onConnect, onConnectCompaign } = useWalletContext();
-  const { valueNFT, setStatus, handleSetValueNFT } = useWithDrawNFTContext();
+  const { address } = useWalletContext();
+  const { setStatus, handleSetValueNFT } = useWithDrawNFTContext();
   const { handleDisplayPopoverWithdrawNFT, handleDisplayPopover } =
     useL2WalletContext();
   const starkKeyUser = useSelector(
@@ -205,7 +208,7 @@ export default function MainScreen({
 
   useEffect(() => {
     const temp: any = [];
-    options.map((option: any, index: number) => {
+    options.map((option: any) => {
       let tempOption = option;
       let assetType: string;
       if (option.name === 'Ethereum') {
@@ -286,7 +289,7 @@ export default function MainScreen({
     handleDisplayPopover(false);
     handleSetValueNFT({
       ...item,
-      name: item.transactionCategory,
+      name: 'Sigil NFT',
       assetMintId: item.assetId,
       isComeFrom: WalletTabs.HISTORY,
     });
@@ -378,24 +381,14 @@ export default function MainScreen({
     if (
       !item.name &&
       (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-        item.type === TRANSACTION_TYPE.TRANSFER)
+        item.type === TRANSACTION_TYPE.TRANSFER ||
+        item.type === TRANSACTION_TYPE.SETTLEMENT)
     ) {
       return <WithdrawNFTIcon size={32} />;
     }
 
     if (item.type !== TRANSACTION_TYPE.SETTLEMENT) {
       return <img className="w-8 flex-none" src={item.ico} alt="token_icon" />;
-    }
-
-    if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
-      return (
-        <Image
-          className="rounded-[16px]"
-          src={'/assets/images/assetPurchase.png'}
-          width={32}
-          height={32}
-        />
-      );
     }
   };
 
@@ -418,14 +411,19 @@ export default function MainScreen({
       return DF_TRANSACTION_TYPE[item?.type]?.title;
     }
   };
-
+  
+  if(isLoading && !isFetched) {
+    return (<div className="h-full w-full flex items-center justify-center">
+        <TailSpin />
+    </div>)
+  }
   return (
-    <div>
+    <div> 
       <div>
         <div className="mt-2 flex items-center justify-center">
           <ETHIcon />
           <div className="text-base/10 ml-2 text-[32px]">
-            {balanceEth || '0'}
+            {balanceEth || 0}
           </div>
         </div>
         <p className="text-base/9 text-center">
@@ -475,7 +473,7 @@ export default function MainScreen({
         </ul>
         <div className="outlet">
           <TabContent id={WalletTabs.HISTORY} activeTab={activeToken}>
-            <div className="mt-3 max-h-[244px] pr-2">
+            <div className="mt-3 max-h-[244px]">
               {transactionList?.length === 0 && (
                 <div>No data available yet</div>
               )}
@@ -537,7 +535,7 @@ export default function MainScreen({
                         src={item.ico}
                         alt="token_icon"
                       />
-                      <div className="ml-4">
+                      <div className="ml-2">
                         <p className="text-base/9 text-sm">{item.name}</p>
                         <div>
                           <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px] font-bold">

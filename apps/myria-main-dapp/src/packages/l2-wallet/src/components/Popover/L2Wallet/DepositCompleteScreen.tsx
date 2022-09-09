@@ -1,10 +1,10 @@
-import { TxResult } from 'myria-core-sdk/dist/types/src/types';
+import { TxResult } from 'myria-core-sdk';
 import { useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import Popover from 'src/components/Popover';
-import { getNetworkId } from 'src/services/myriaCoreSdk';
 import { getExplorerForAddress } from 'src/utils';
-import { ArrowIcon, ProgressIcon, TickCircleIcon } from '../../Icons';
+import { getNetworkId } from '../../../services/myriaCoreSdk';
+import { ArrowIcon, ProgressIcon } from '../../Icons';
 type Props = {
   amount: Number;
   successHandler: any;

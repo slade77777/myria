@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { t, Trans } from '@lingui/macro';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 interface IFormInputs {
   email: string;
@@ -24,7 +25,6 @@ const schema = yup
 
 const Subscribe: React.FC = () => {
   const [error, setError] = useState('');
-  const [success, setIsSubmitSuccess] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -37,19 +37,16 @@ const Subscribe: React.FC = () => {
   const onSubmit = async (data: IFormInputs) => {
     try {
       setError('');
-      setIsSubmitSuccess(false);
 
       await additionalApiClient
         .post(`/subscribe`, data)
-        .then(() => setIsSubmitSuccess(true))
+        .then(() => toast.success('Thank you for subscribing!'))
         .catch((error) => {
           setError(error.message);
-          setIsSubmitSuccess(false);
         });
       reset();
     } catch (error: any) {
       setError(error?.message);
-      setIsSubmitSuccess(false);
     }
   };
 
@@ -77,16 +74,6 @@ const Subscribe: React.FC = () => {
               error={!!errors.email || !!error}
               errorText={errors.email?.message || error}
               containerClassName="relative"
-              message={
-                success ? (
-                  <p className="absolute bottom-[-20px] flex items-center text-xs leading-[15px] text-white">
-                    <CircleCheck />
-                    <span className="ml-1">
-                      <Trans>Thank you for subscribing!</Trans>
-                    </span>
-                  </p>
-                ) : null
-              }
             />
             <button className="btn-lg btn-primary" disabled={isSubmitting}>
               <Trans>SUBMIT</Trans>

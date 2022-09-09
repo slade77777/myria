@@ -1,10 +1,11 @@
+import { CollectionDetailsParams } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useInfiniteQuery } from 'react-query';
 import { assetModule } from 'src/services/myriaCore';
 
 const DEFAULT_PAGE = 1;
 const DEFAULT_LIMIT = 15;
-export default function useCollectionAsset({ collectionId }: { collectionId: number }) {
-  const queryKey = ['collection', collectionId, 'assets'];
+export default function useCollectionAsset(data: CollectionDetailsParams) {
+  const queryKey = ['collection', data.collectionId, 'assets'];
   const {
     fetchNextPage,
     fetchPreviousPage,
@@ -12,14 +13,15 @@ export default function useCollectionAsset({ collectionId }: { collectionId: num
     hasPreviousPage,
     isFetchingNextPage,
     isFetchingPreviousPage,
+    refetch,
     ...result
   } = useInfiniteQuery(
     queryKey,
     ({ pageParam = DEFAULT_PAGE }) =>
-      assetModule?.getAssetByCollectionId({
-        collectionId: collectionId,
+      assetModule?.getAssetsByCollectionId({
         limit: DEFAULT_LIMIT,
-        page: pageParam
+        page: pageParam,
+        ...data
       }),
     {
       getNextPageParam: (lastPage, pages) => {
@@ -35,8 +37,10 @@ export default function useCollectionAsset({ collectionId }: { collectionId: num
 
   return {
     fetchNextPage,
+    fetchPreviousPage,
     hasNextPage,
     isFetchingNextPage,
-    result
+    result,
+    refetch
   };
 }

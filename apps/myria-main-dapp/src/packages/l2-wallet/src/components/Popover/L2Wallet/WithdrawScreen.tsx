@@ -101,15 +101,7 @@ export default function WithdrawScreen({
             isValidForm={isValidForm}
           />
           {errorAmount && inputChanged && (
-            <div
-              className={
-                amount && amount > 0 && amount === parseFloat(balance)
-                  ? 'text-primary/6 mt-2 text-sm'
-                  : 'text-error/6 mt-2 text-sm'
-              }
-            >
-              {errorAmount}
-            </div>
+            <div className={'text-error/6 mt-2 text-sm'}>{errorAmount}</div>
           )}
         </div>
         <div className="mt-2 flex justify-between text-sm text-white/60">
@@ -131,7 +123,7 @@ export default function WithdrawScreen({
             'flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg text-base font-bold text-white',
             isValidForm && amount != undefined
               ? 'bg-primary/6 text-base/1'
-              : 'bg-[#737373]',
+              : 'text-gray/6 bg-gray/4',
           )}
           onClick={() => {
             if (isValidForm && amount != undefined) {

@@ -1,36 +1,57 @@
-import { Trans } from '@lingui/macro';
+import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 import React, { useState } from 'react';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import ContactSalesTeamModal from 'src/components/ContactSalesTeamModal';
 import Ethereum from 'src/components/for-developers/Ethereum';
 import Myria from 'src/components/for-developers/Myria';
-import { bannerHeight, bannerSpacingClassName } from 'src/components/Header/Header';
+import { bannerSpacingClassName } from 'src/components/Header/Header';
 import Page from 'src/components/Page';
 import Input from 'src/components/Input';
-import { klaviyoClient } from 'src/client';
+import { klaviyoClient, additionalApiClient } from 'src/client';
 
 import { paddingX } from 'src/utils';
 import DiscordGameIcon from 'src/packages/l2-wallet/src/components/Icons/DiscordGameIcon';
 import { socialLinks } from '../../configs';
 
-// import { useGA4 } from '../lib/ga';
 import { useGA4 } from 'src/lib/ga';
-import NewsLetter from '../newsletter';
 import ContactUsSalesForceSuccessModal from 'src/components/modals/ContactUsSalesForceSuccessModal';
-import SubscriptionSuccessModal from 'src/components/modals/SubscriptionSuccessModal';
 import SuccessTickIcon from 'src/components/icons/SuccessTickIcon';
 
-const listId = process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID;
+interface FormData {
+  email: string;
+}
+
+const schema = yup
+  .object({
+    email: yup
+      .string()
+      .email(t`Invalid email!`)
+      .required(t`Email is required!`)
+  })
+  .required();
 
 const ForDevelopers: React.FC = () => {
   const [showContactSalesTeamModal, setShowFirstTimeVisitModal] = useState(false);
   const [showContactSalesSuccessModal, setShowContactSalesSuccessModal] = useState(false);
   const [submittedSubscription, setSubmittedSubscription] = useState(false);
+  const [error, setError] = useState('');
 
   const [email, setEmail] = useState<string>('');
   const { event } = useGA4();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<FormData>({
+    resolver: yupResolver(schema)
+  });
 
   const handleCloseContactSalesTeamModal = () => {
     setShowFirstTimeVisitModal(false);
@@ -45,27 +66,26 @@ const ForDevelopers: React.FC = () => {
     setShowContactSalesSuccessModal(false);
   };
 
-  const handleCloseSubscriptionSuccessModal = () => {
-    setSubmittedSubscription(false);
-  };
-
-  const emailsubmit = async () => {
-    let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
-    if (regex.test(email)) {
-      try {
-        await klaviyoClient.public.identify({
-          email,
-          properties: {
-            $first_name: 'hey testname',
-            $last_name: 'hey lastname'
-          },
-          post: true
-        });
-        setSubmittedSubscription(true);
-        event('Email Subscribed', { campaign: 'B2B', user_email: email });
-      } catch (err) {
-        console.error(err);
+  const onSubmit = async (data: FormData) => {
+    try {
+      if (data.email) {
+        event('Email Subscribed', { campaign: 'AB de Villers', user_email: data.email });
       }
+
+      setError('');
+      setSubmittedSubscription(false);
+
+      await additionalApiClient
+        .post(`/subscribe-developer`, data)
+        .then(() => setSubmittedSubscription(true))
+        .catch((error) => {
+          setError(error.message);
+          setSubmittedSubscription(false);
+        });
+      reset();
+    } catch (error: any) {
+      setError(error?.message);
+      setSubmittedSubscription(false);
     }
   };
 
@@ -103,7 +123,7 @@ const ForDevelopers: React.FC = () => {
                 blockchain gaming.
               </Trans>
             </p>
-            <div className="flex justify-center mt-8 space-x-6">
+            <div className="mt-8 flex justify-center space-x-6">
               <div>
                 <Link href="http://docs.myria.com/">
                   <a
@@ -125,7 +145,7 @@ const ForDevelopers: React.FC = () => {
                     campaign: 'B2B'
                   });
                 }}>
-                <a className="uppercase border btn-lg border-base/9">
+                <a className="btn-lg border-base/9 border uppercase">
                   <Trans>Contact Us</Trans>
                 </a>
               </button>
@@ -133,7 +153,7 @@ const ForDevelopers: React.FC = () => {
           </div>
         </section>
         <section className={clsx(paddingX, 'mt-14 md:mt-10')}>
-          <div className="mx-auto max-w-content">
+          <div className="max-w-content mx-auto">
             <Ethereum />
           </div>
         </section>
@@ -170,9 +190,16 @@ const ForDevelopers: React.FC = () => {
                 <p className="text-base/9 mt-4 text-[20px] leading-[26px]">
                   Sign up to our newsletter for development updates
                 </p>
-                <div className="relative mt-4 flex space-x-5 md:mt-[84px]">
-                  <div className="relative flex-1 w-full">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  noValidate
+                  className="relative mt-4 flex space-x-5 md:mt-[84px]">
+                  <div className="relative w-full flex-1">
                     <Input
+                      error={!!errors.email || !!error}
+                      errorText={errors.email?.message || error}
+                      placeholder={t`Enter your email address`}
+                      {...register('email')}
                       disabled={submittedSubscription}
                       value={email}
                       className={clsx(
@@ -180,7 +207,6 @@ const ForDevelopers: React.FC = () => {
                         submittedSubscription ? 'border-success/8 border' : 'border-none'
                       )}
                       type="text"
-                      placeholder="Enter your email address"
                       onChange={(e: any) => setEmail(e.target.value)}
                     />
                     {submittedSubscription && (
@@ -189,14 +215,10 @@ const ForDevelopers: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  <button
-                    className="btn-lg btn-primary"
-                    onClick={() => {
-                      emailsubmit();
-                    }}>
+                  <button disabled={isSubmitting} className="btn-lg btn-primary">
                     Submit
                   </button>
-                </div>
+                </form>
                 {submittedSubscription && (
                   <p className="text-success/8 absolute mt-1.5 text-sm font-normal leading-[150%]">
                     Email submitted. Thanks for subscribing!

@@ -114,7 +114,7 @@ const PurchasePopover: FC<IProp> = ({
           </span>
         ),
         assetName: (
-          <span className="text-[14px]">Your deposit could not be completed due to an error.</span>
+          <span className="text-[14px]">Your purchase could not be completed due to an error.</span>
         ),
         icon: <FailedIcon size={64} />,
         action: (

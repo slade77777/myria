@@ -46,8 +46,7 @@ import {
 import WithdrawFailedScreen from './L2Wallet/WithdrawFailedScreen';
 
 //compoment POC
-import { TxResult } from 'myria-core-sdk/dist/types/src/types';
-import { WithdrawOffchainParamsV2 } from 'myria-core-sdk/dist/types/src/types/WithdrawType';
+import { WithdrawOffchainParamsV2, TxResult } from 'myria-core-sdk';
 // @ts-ignore
 import { useDepositContext } from 'src/context/deposit-context';
 import DropdownMenu from '../../../../../components/DropdownMenu';
@@ -136,7 +135,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
   const dispatch = useDispatch();
 
-  const { balanceList } = useBalanceList(pKey, screen);
+  const { data: balanceList } = useBalanceList();
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
   const { data: etheCost = 0 } = useEtheriumPrice();
 
@@ -494,7 +493,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     const fetchTransactionHistory = async () => {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory || !pKey || !localStarkKey) return;
-      const transactionModule = moduleFactory.getTransactionModule();
+      const transactionModule = moduleFactory.getTransactionManager();
       try {
         const { data } = await transactionModule.getTransactionList(
           '0x' + localStarkKey,
@@ -558,7 +557,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   }, [pKey, dispatch]);
 
   return (
-    <>
+    <div className="h-full">
       {/* Header Part */}
       <div
         className={cn(
@@ -801,7 +800,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           />
         )}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -24,7 +24,7 @@ export default function Assets() {
     const fetchNFTList = async () => {
       const moduleFactory = await getModuleFactory();
       if (!moduleFactory) return;
-      const assetModule = moduleFactory.getAssetModule();
+      const assetModule = moduleFactory.getAssetOnchainManager();
       const tAssetList: any = await assetModule.getNftAssets(
         '0x' + starkPublicKeyFromPrivateKey,
       );

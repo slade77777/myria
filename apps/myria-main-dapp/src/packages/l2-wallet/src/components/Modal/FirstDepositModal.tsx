@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import { ConfirmationType } from 'myria-core-sdk';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -15,7 +14,7 @@ import { ThreeDotsVerticalIcon } from '../Icons';
 import MaxInput from '../Input/MaxInput';
 
 import { Trans } from '@lingui/macro';
-import { TxResult } from 'myria-core-sdk/dist/types/src/types';
+import { TxResult, ConfirmationType } from 'myria-core-sdk';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 import { getExplorerForAddress } from 'src/utils';
 import DAOIcon from '../../../../../components/icons/DAOIcon';
@@ -68,7 +67,6 @@ export default function FirstDepositModal({
   );
   const [selectedToken, setSelectedToken] = useState<TOption>(options[0]);
   const [amount, setAmount] = useState<number | undefined>(undefined);
-  // const [isValidDeposit, setIsValidDeposit] = useState<Boolean>(false);
   const [depositProgress, setDepositProgress] = useState<number>(
     PROGRESS.START,
   );
@@ -230,13 +228,7 @@ export default function FirstDepositModal({
                     isValidForm={isValidForm}
                   />
                   {errorAmount && (
-                    <div
-                      className={
-                        amount && amount > 0 && amount === parseFloat(balanceL1)
-                          ? 'text-primary/6 mt-2 text-sm'
-                          : 'text-error/6 mt-2 text-sm'
-                      }
-                    >
+                    <div className={'text-error/6 mt-2 text-sm'}>
                       {errorAmount}
                     </div>
                   )}
