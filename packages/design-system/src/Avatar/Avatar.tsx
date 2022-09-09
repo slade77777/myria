@@ -153,7 +153,7 @@ export const Avatar: React.FC<TAvatarProps> = ({
   shape = 'circle',
   type = 'text',
   size = 'xxl',
-  src = 'defaultAvatarImage.png',
+  src,
   children
 }: TAvatarProps) => {
   const sizing = React.useMemo(() => {
@@ -178,7 +178,13 @@ export const Avatar: React.FC<TAvatarProps> = ({
   const component = React.useMemo(() => {
     switch (type) {
       case 'image':
-        return <img src={src} alt="avatar" className="rounded" />;
+        return (
+          <img
+            src={src && src.length > 0 ? src : 'defaultAvatarImage.png'}
+            alt="avatar"
+            className="rounded"
+          />
+        );
       case 'icon':
         return <IconSolid width={sizing?.iconSize} height={sizing?.iconSize} />;
       case 'iconColor':
@@ -196,7 +202,6 @@ export const Avatar: React.FC<TAvatarProps> = ({
         sizing?.className
       )}>
       {component}
-      <img src={src} alt="avatar" className="rounded" />
     </div>
   );
 };
