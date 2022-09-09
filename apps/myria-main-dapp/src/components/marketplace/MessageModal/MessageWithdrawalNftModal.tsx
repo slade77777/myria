@@ -17,7 +17,7 @@ const MessageWithdrawalNftModal: FC<Prop> = ({ onClose }) => {
     onClose();
   }, [onClose, setStatus]);
   return (
-    <div className="ml-3 font-normal leading-normal text-white">
+    <div className="ml-3  font-normal leading-normal text-white">
       <div className="relative mb-1 text-lg font-semibold leading-normal dark:text-white">
         <span className="absolute -left-[45px]">
           <CheckIcon size={24} className="mt-[1px] text-[#2EA64F]" />

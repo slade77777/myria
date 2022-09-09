@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro';
 import { BigNumber, ethers } from 'ethers';
-import { AssetDetailsResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { AssetDetailsResponse } from 'myria-core-sdk';
 import { EXPLORE_LINKS } from './services/common-ethers';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 
@@ -109,7 +109,10 @@ export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
       };
   }
 };
-const getBaseExploreLink = (type: 'address' | 'transaction' = 'address', networkId: number) => {
+export const getBaseExploreLink = (
+  type: 'address' | 'transaction' = 'address',
+  networkId: number
+) => {
   if (type === 'address') {
     return EXPLORE_LINKS[networkId as keyof typeof EXPLORE_LINKS]?.address;
   } else {

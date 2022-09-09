@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { setAccount, setStarkPublicKey } from 'src/packages/l2-wallet/src/app/slices/accountSlice';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
-import { UserData } from 'myria-core-sdk/dist/types/src/types/UserTypes';
+import { UserData } from 'myria-core-sdk';
 import { SimpleFunction } from 'web3modal';
 import { WalletTabs } from 'src/types';
 
@@ -63,7 +63,7 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
 
-    const userModule = moduleFactory.getUserModule();
+    const userModule = moduleFactory.getUserManager();
 
     try {
       const user = await userModule.getUserByWalletAddress(metamaskAccount);
@@ -104,7 +104,7 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     if (!moduleFactory) return;
 
     const commonModule = moduleFactory.getCommonModule();
-    const userModule = moduleFactory.getUserModule();
+    const userModule = moduleFactory.getUserManager();
     const starkKey = await commonModule.generateStarkKey(currentAccount);
 
     // Create user

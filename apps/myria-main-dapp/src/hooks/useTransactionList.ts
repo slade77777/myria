@@ -17,7 +17,7 @@ export default function useTransactionList(starkKey: string) {
       if (!moduleFactory || !starkKey) return;
 
       let data = [];
-      const transactionModule = moduleFactory.getTransactionModule();
+      const transactionModule = moduleFactory.getTransactionManager();
       const transactionHistoryResponse = await transactionModule.getTransactionList(
         '0x' + starkKey
       );

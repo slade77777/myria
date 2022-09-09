@@ -35,7 +35,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
     const moduleFactory = await getModuleFactory();
     if (!moduleFactory) return;
     const withdrawalModule = moduleFactory.getWithdrawModule();
-    const assetModule = moduleFactory.getAssetModule();
+    const assetModule = moduleFactory.getAssetOnchainManager();
     setPending(true);
 
     try {
@@ -84,7 +84,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
       }
     } catch (err) {
       setStatus(StatusWithdrawNFT.FAILED);
-      toast('Something wrong has happened, withdraw transaction is failure. Please retry..');
+      toast('Something wrong has happened, withdraw transaction is failure. Please retry.');
     } finally {
       setPending(false);
     }

@@ -33,7 +33,6 @@ export default function WithdrawNFTInProgress({}: Props) {
           <div className="mt-3 flex justify-between">
             <span className="flex items-center gap-1">
               <Trans>Estimated completion</Trans>
-              <InfoCircleIcon size={14} />
             </span>
             <span>10-20 hours</span>
           </div>

@@ -135,7 +135,7 @@ export default function MainLayout({ children }: TProps) {
       if (!moduleFactory) return;
       const web3Account = await loadWeb3();
 
-      const userModule = moduleFactory.getUserModule();
+      const userModule = moduleFactory.getUserManager();
       const user = await userModule.getUserByWalletAddress(web3Account);
       if (
         user &&
