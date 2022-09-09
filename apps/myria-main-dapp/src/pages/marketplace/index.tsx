@@ -89,7 +89,7 @@ const Marketplace: React.FC = () => {
                       Loading ...
                     </div>
                   }>
-                  <div className="flex items-center justify-between ">
+                  <div className="flex items-center justify-between">
                     <div></div>
                     <div className="w-1/5 ">
                       <SelectOrderBy

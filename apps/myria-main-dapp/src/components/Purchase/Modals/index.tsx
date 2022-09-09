@@ -23,6 +23,8 @@ export type PurchaseInformationProps = {
   nonce: string; // TODO
 };
 
+const feeRate = 0.00005;
+
 const ModalPurchase = ({
   data,
   open,
@@ -191,9 +193,14 @@ const ModalPurchase = ({
             </div>
             <div>
               <div className="flex items-center justify-end">
-                <ETH /> <p className="heading-list ml-2">{totalPriceEth}</p>
+                <ETH />{' '}
+                <p className="heading-list ml-2">
+                  {(totalPriceEth * feeRate).toFixed(7).replace(/\.?0+$/, '')}
+                </p>
               </div>
-              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
+              <p className="body-sm text-right text-light">
+                ~${formatCurrency(totalPriceUsd * feeRate, 5)}
+              </p>
             </div>
           </div>
         </div>
@@ -206,9 +213,13 @@ const ModalPurchase = ({
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">{totalPriceEth}</p>
+                <p className="heading-md ml-2">
+                  {(totalPriceEth * (1 + feeRate)).toFixed(7).replace(/\.?0+$/, '')}
+                </p>
               </div>
-              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
+              <p className="body-sm text-right text-light">
+                ~${formatCurrency(totalPriceUsd * (1 + feeRate), 2)}
+              </p>
             </div>
           </div>
           <div className="mb-4 flex items-center justify-between">
