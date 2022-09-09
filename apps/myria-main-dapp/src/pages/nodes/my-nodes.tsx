@@ -49,7 +49,10 @@ const MyNode: React.FC = () => {
             <div className="float-right -mx-6 mt-[130px] md:mx-0 md:mt-0">
               <div className="bg-brand-deep-blue rounded-t-lg p-6 md:rounded-lg md:p-8">
                 <p className="text-2xl font-bold text-white">My nodes</p>
-                <p className="text-base/9 mt-2">Here are the node licenses you have purchased:</p>
+                <p className="text-base/9 mt-2">
+                  Here are the node licenses you have purchased (if you have recently purchased,
+                  your license/s may take up to 10 minutes to appear):
+                </p>
                 <div className="mt-4">
                   {successTrans.map((transaction) => (
                     <>
@@ -76,7 +79,7 @@ const MyNode: React.FC = () => {
                   <span
                     onClick={() => setShowPrivacy(true)}
                     className="text-brand-gold cursor-pointer">
-                    privacy policy
+                    Privacy policy
                   </span>
                 </p>
               </div>

@@ -212,10 +212,9 @@ const Nodes: React.FC = () => {
     return false;
   }, [address, localStarkKey, user, walletAddress]);
 
-  const totalNode = userNodes.reduce(
-    (total, transaction) => total + (transaction.nodes?.length || 0),
-    0
-  );
+  const totalNodes = userNodes
+    ?.filter((item) => item.purchaseStatus === 'SUCCESSFUL')
+    .reduce((total, transaction) => total + (transaction.nodes?.length || 0), 0);
 
   const purchaseLink = useMemo(() => {
     const hasPendingTransaction = userNodes.find(
@@ -232,11 +231,11 @@ const Nodes: React.FC = () => {
     if (hasSuccessTransaction && showSuccess === 'true') {
       return '/nodes/purchase-complete';
     }
-    if (totalNode >= 2) {
+    if (totalNodes >= 2) {
       return '/nodes/my-nodes';
     }
     return '/nodes/purchase';
-  }, [totalNode, userNodes]);
+  }, [totalNodes, userNodes]);
 
   return (
     <Page action="start-building">
@@ -268,7 +267,7 @@ const Nodes: React.FC = () => {
                       {!nodeLoading && !nodesLoading && (
                         <Link href={purchaseLink}>
                           <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
-                            <Trans>{totalNode >= 2 ? 'View My Nodes' : 'Purchase Now'}</Trans>
+                            <Trans>{totalNodes >= 2 ? 'View My Nodes' : 'Purchase Now'}</Trans>
                           </div>
                         </Link>
                       )}

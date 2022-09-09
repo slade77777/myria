@@ -144,7 +144,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
                 control={control}
                 render={({ field }) => (
                   <NumberInput
-                    max={2}
+                    max={nodeData?.canPurchaseCount || 2}
                     setQuantityNumber={(val: number) => {
                       field.onChange(val);
                       event('Node Order Updated', {

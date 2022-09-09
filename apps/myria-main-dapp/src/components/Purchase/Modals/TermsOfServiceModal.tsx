@@ -34,7 +34,7 @@ const TermsOfServiceModal = ({
               <Trans>Product Terms and Conditions</Trans>
             </p>
             <p className="my-3 font-bold">
-              <Trans>Last Updated: September 2022</Trans>2
+              <Trans>Last Updated: September 2022</Trans>
             </p>
             <p className="my-3 font-bold">
               <Trans>
