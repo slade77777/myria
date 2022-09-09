@@ -8,6 +8,7 @@ import Web3 from 'web3';
 
 declare const window: any;
 
+const ENV_CORE_SDK = process.env.NEXT_PUBLIC_CORE_SDK_ENV;
 async function signMetamask() {
   if (window.ethereum) {
     window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -44,11 +45,11 @@ async function getAccounts() {
 }
 
 function getEnvTypes() {
-  if (process.env.ENV_CORE_SDK === 'DEV') {
+  if (ENV_CORE_SDK === 'DEV') {
     return EnvTypes.DEV;
-  } else if (process.env.ENV_CORE_SDK === 'STAGING') {
+  } else if (ENV_CORE_SDK === 'STAGING') {
     return EnvTypes.STAGING;
-  } else if (process.env.ENV_CORE_SDK === 'PROD') {
+  } else if (ENV_CORE_SDK === 'PROD') {
     return EnvTypes.PRODUCTION;
   }
   return EnvTypes.STAGING;
