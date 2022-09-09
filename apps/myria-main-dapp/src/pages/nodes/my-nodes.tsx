@@ -68,7 +68,7 @@ const MyNode: React.FC = () => {
                   <span
                     onClick={() => setFirstLicense(true)}
                     className="text-brand-gold cursor-pointer">
-                    future node purchase agreement
+                    Terms & conditions
                   </span>
                 </p>
                 <p className="mt-2">
