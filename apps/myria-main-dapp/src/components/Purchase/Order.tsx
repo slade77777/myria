@@ -28,7 +28,7 @@ const licenses = [
   {
     key: 'privacy',
     content: <span>I have read, understood and agree to the </span>,
-    action: 'privacy policy'
+    action: 'Privacy policy'
   }
 ];
 
