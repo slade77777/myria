@@ -1,5 +1,5 @@
+import { noCacheApiClient } from 'src/client';
 import { useQuery } from 'react-query';
-import apiClient from '../client';
 
 export type Purchase = {
   txHash: string;
@@ -14,7 +14,7 @@ export default function useUserNodes() {
   const queryKey = 'nodePurchase';
   const { data, isLoading, error, refetch } = useQuery(
     'userNodes',
-    () => apiClient.get('/nodes/purchase/list'),
+    () => noCacheApiClient.get('/nodes/purchase/list'),
     {
       refetchOnWindowFocus: true,
       retry: 1
