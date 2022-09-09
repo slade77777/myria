@@ -104,6 +104,12 @@ export const WalletProvider: React.FC = ({ children }) => {
     await subscribeProvider(w3provider);
   };
 
+  useEffect(() => {
+    if (web3Modal.cachedProvider) {
+      onConnect();
+    }
+  }, []);
+
   const onConnect = async () => {
     reset();
     const w3provider = await web3Modal.connect();
