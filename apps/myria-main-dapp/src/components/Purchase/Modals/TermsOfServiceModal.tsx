@@ -25,7 +25,7 @@ const TermsOfServiceModal = ({
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content
-        title="Future node purchase agreement"
+        title="Terms & conditions"
         className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
         <div className="py-8">
           <div className="h-96 overflow-y-auto px-8">
