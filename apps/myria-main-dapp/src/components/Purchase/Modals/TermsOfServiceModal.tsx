@@ -2417,26 +2417,30 @@ const TermsOfServiceModal = ({
               </p>
             </div>
           </div>
-          <div className="flex pl-8 pt-4">
-            <Input
-              type="checkbox"
-              checked={agree}
-              onChange={(e) => setAgree(e.currentTarget.checked)}
-            />
-            <p className="ml-4">
-              <Trans>Agree and sign</Trans>
-            </p>
-          </div>
-          <div className="flex w-full justify-end pr-8">
-            <Button
-              className={clsx(
-                'btn-lg btn-primary justify-end px-10 disabled:bg-gray-500 disabled:text-white disabled:opacity-50'
-              )}
-              disabled={!agree}
-              onClick={onAgree}>
-              <Trans>Accept</Trans>
-            </Button>
-          </div>
+          {onAgree && (
+            <div className="flex pl-8 pt-4">
+              <Input
+                type="checkbox"
+                checked={agree}
+                onChange={(e) => setAgree(e.currentTarget.checked)}
+              />
+              <p className="ml-4">
+                <Trans>Agree and sign</Trans>
+              </p>
+            </div>
+          )}
+          {onAgree && (
+            <div className="flex w-full justify-end pr-8">
+              <Button
+                className={clsx(
+                  'btn-lg btn-primary justify-end px-10 disabled:bg-gray-500 disabled:text-white disabled:opacity-50'
+                )}
+                disabled={!agree}
+                onClick={onAgree}>
+                <Trans>Accept</Trans>
+              </Button>
+            </div>
+          )}
         </div>
       </Modal.Content>
     </Modal>
