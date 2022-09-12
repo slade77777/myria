@@ -18,7 +18,7 @@ export const headerHeight = navHeight + bannerHeight;
 export const bannerSpacingClassName = 'lg:pt-[50px]';
 export const headerNavSpacingClassName = 'pt-[104px] md:pt-[93px]';
 
-const SESSION_TIME_OUT = 1000 * 10 * 20;
+const SESSION_TIME_OUT = 1000 * 60 * 20;
 
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
   action = 'login',
@@ -29,7 +29,7 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
   const { activatingTab } = useTabContext();
   const { disconnect, address } = useWalletContext();
   const { disconnectL2Wallet } = useL2WalletContext();
-  const [showSessionTimeoutModal, setShowSessionTimeoutModal] = useState(true);
+  const [showSessionTimeoutModal, setShowSessionTimeoutModal] = useState(false);
 
   const ref = useRef<any>(null);
   let usedAction = action;
