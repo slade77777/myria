@@ -148,7 +148,7 @@ const PurchasePopover: FC<IProp> = ({
           <Trans>Complete checkout</Trans>
         </span>
       ),
-      assetName: <span className="text-[14px]">Item {assetBuy.name}</span>,
+      assetName: <span className="text-[14px]">{assetBuy.name}</span>,
       icon: <CartIcon color="#9AC9E3" size={64} />,
       action: (
         <ActionButtonCheckout

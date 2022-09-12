@@ -37,8 +37,7 @@ const SessionTimeoutCountModal: React.FC<Props> = ({ open, onClose, successClose
         <div className="relative isolate space-y-4 p-6 text-white md:px-[31px] md:pt-6 md:pb-[38px]">
           <button
             onClick={onClose}
-            className="absolute top-5 right-6 w-[32px] text-white/50 focus:outline-none md:top-6"
-          >
+            className="absolute top-5 right-6 w-[32px] text-white/50 focus:outline-none md:top-6">
             <CloseIcon />
           </button>
           <h1 className="font-bold leading-[1.15] md:text-[24px]">
@@ -49,8 +48,7 @@ const SessionTimeoutCountModal: React.FC<Props> = ({ open, onClose, successClose
           </p>
           <button
             onClick={cancel}
-            className="w-full py-3 mt-4 font-bold leading-6 text-center uppercase rounded-lg bg-brand-gold text-base/1"
-          >
+            className="w-full py-3 mt-4 font-bold leading-6 text-center uppercase rounded-lg bg-brand-gold text-base/1">
             I AM STILL HERE
           </button>
           <div className="hidden">

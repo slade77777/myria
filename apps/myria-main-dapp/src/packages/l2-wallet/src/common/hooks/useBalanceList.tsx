@@ -11,18 +11,18 @@ function useBalanceList() {
   );
   const { data, isLoading, error, isFetched } = useQuery(
     ['useBalanceList'],
-      async () => {
-        const moduleFactory = await getModuleFactory();
-        if (!moduleFactory || _.isEmpty(pKey)) return;
+    async () => {
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory || _.isEmpty(pKey)) return;
 
-        const assetModule = moduleFactory.getAssetOnchainManager();
-        return assetModule.getListAssetsByStarkKey('0x' + pKey);
-      },
+      const assetModule = moduleFactory.getAssetOnchainManager();
+      return assetModule.getListAssetsByStarkKey('0x' + pKey);
+    },
     {
-      enabled: !!pKey
-    }
+      enabled: !!pKey,
+    },
   );
-  
+
   return { data: data?.data || [], isLoading, error, isFetched };
 }
 

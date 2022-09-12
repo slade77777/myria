@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react';
 
 const TailSpin = ({}) => (
   <svg
@@ -6,8 +6,7 @@ const TailSpin = ({}) => (
     height={32}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="animate-spin"
-  >
+    className="animate-spin">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,13 +20,12 @@ const TailSpin = ({}) => (
         cy={0}
         r={1}
         gradientUnits="userSpaceOnUse"
-        gradientTransform="matrix(-10.00004 -.9333 .9398 -10.06964 16 16)"
-      >
+        gradientTransform="matrix(-10.00004 -.9333 .9398 -10.06964 16 16)">
         <stop offset={0} stopColor="#8BB5CC" />
         <stop offset={0.819} stopColor="#8BB5CC" stopOpacity={0} />
       </radialGradient>
     </defs>
   </svg>
-)
+);
 
-export default TailSpin
+export default TailSpin;

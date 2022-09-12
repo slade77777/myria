@@ -411,20 +411,20 @@ export default function MainScreen({
       return DF_TRANSACTION_TYPE[item?.type]?.title;
     }
   };
-  
-  if(isLoading && !isFetched) {
-    return (<div className="h-full w-full flex items-center justify-center">
+
+  if (isLoading && !isFetched) {
+    return (
+      <div className="flex h-full w-full items-center justify-center">
         <TailSpin />
-    </div>)
+      </div>
+    );
   }
   return (
-    <div> 
+    <div>
       <div>
         <div className="mt-2 flex items-center justify-center">
           <ETHIcon />
-          <div className="text-base/10 ml-2 text-[32px]">
-            {balanceEth || 0}
-          </div>
+          <div className="text-base/10 ml-2 text-[32px]">{balanceEth || 0}</div>
         </div>
         <p className="text-base/9 text-center">
           ${formatNumber2digits(etheCost * balanceEth)}
@@ -536,7 +536,7 @@ export default function MainScreen({
                         alt="token_icon"
                       />
                       <div className="ml-2">
-                        <p className="text-base/9 text-sm">{item.name}</p>
+                        <p className="text-base/10 text-sm">{item.name}</p>
                         <div>
                           <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px] font-bold">
                             {item.short}
