@@ -10,6 +10,7 @@ import { Action, NavItem } from './type';
 import { useWalletContext } from 'src/context/wallet';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import SessionTimeoutCountModal from '../SessionTimeoutCountModal';
+import BrowserNotSupportedModal from '../modals/BrowserNotSupportedModal';
 
 export const links: NavItem[] = Object.values(linkSources);
 export const navHeight = 93;
@@ -82,6 +83,7 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
           disconnectAll();
         }}
       />
+      <BrowserNotSupportedModal />
     </div>
   );
 };
