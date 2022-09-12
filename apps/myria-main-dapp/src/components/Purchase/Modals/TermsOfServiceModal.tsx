@@ -1034,13 +1034,19 @@ const TermsOfServiceModal = ({
               </Trans>
             </p>
             <p className="my-3">
-              You further represent and warrant that any funds You use to purchase Products whether
-              in the Product Sale or otherwise are in each case Your property or You are duly
-              authorized to possess and transact using such funds by the owner of such funds.{' '}
+              5.5{' '}
+              <Trans>
+                You further represent and warrant that any funds You use to purchase Products
+                whether in the Product Sale or otherwise are in each case Your property or You are
+                duly authorized to possess and transact using such funds by the owner of such funds.{' '}
+              </Trans>
             </p>
             <p className="my-3">
-              You acknowledge and agree that the Company enters into these T&Cs with You in reliance
-              on the representations and warranties set out in this Clause 5.{' '}
+              5.6{' '}
+              <Trans>
+                You acknowledge and agree that the Company enters into these T&Cs with You in
+                reliance on the representations and warranties set out in this Clause 5.{' '}
+              </Trans>
             </p>
             <p className="my-3 font-bold">
               CLAUSE 6. RISKS OF PRODUCTS AND LIMITATIONS OF LIABILITIES
@@ -1160,7 +1166,7 @@ const TermsOfServiceModal = ({
             </p>
             <p className="my-3 font-bold">CLAUSE 8. LIMITATION OF LIABILITY</p>
             <p className="my-3">
-              8.7{' '}
+              8.1{' '}
               <Trans>
                 Other than as specified herein, all purchases of Products from the Company or any
                 Affiliate of the Company are final and non-refundable. By (i) purchasing Products
@@ -1390,7 +1396,15 @@ const TermsOfServiceModal = ({
             </p>
 
             <p className="my-3 font-bold">CLAUSE 12. APPLICABLE LAW</p>
+            <p>
+              12.1{' '}
+              <Trans>
+                PLEASE READ THIS CLAUSE CAREFULLY BECAUSE IT LIMITS THE MANNER IN WHICH YOU CAN SEEK
+                RELIEF.
+              </Trans>
+            </p>
             <p className="my-3">
+              12.2{' '}
               <Trans>
                 To resolve any dispute, controversy or claim between the Parties arising out of or
                 relating to these T&Cs, or the breach thereof, the Parties agree first to negotiate
@@ -1405,6 +1419,7 @@ const TermsOfServiceModal = ({
               </Trans>
             </p>
             <p className="my-3">
+              12.3{' '}
               <Trans>
                 All rights and obligations hereunder shall be governed by the Laws of the British
                 Virgin Islands, without regard to the conflicts of law provisions of such
@@ -1415,6 +1430,7 @@ const TermsOfServiceModal = ({
             </p>
 
             <p className="my-3">
+              12.4{' '}
               <Trans>
                 Except for any disputes, claims, suits, actions, causes of action, demands or
                 proceedings in which either Party seeks injunctive or other equitable relief for the
