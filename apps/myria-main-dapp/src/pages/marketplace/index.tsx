@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
+import TailSpin from 'src/components/icons/TailSpin';
 import AssetList from 'src/components/marketplace/AssetList';
 import { dataSorting } from 'src/components/marketplace/Collection';
 import HotCollection from 'src/components/marketplace/HotCollection';
@@ -31,6 +32,8 @@ const Marketplace: React.FC = () => {
     isFetchingNextPage,
     isFetchingPreviousPage,
     refetch,
+    isFetching,
+    isFetched,
     ...result
   } = useInfiniteQuery(
     ['homepage', 'listorder', selectedSort],
@@ -84,29 +87,36 @@ const Marketplace: React.FC = () => {
             </h2>
             <HotCollection />
           </section>
-
-          <section className="mb-20 mt-[64px]">
-            <div className="overflow-auto">
-              <div>
+          <div className="flex items-center justify-between">
+            <div></div>
+            <div className="w-1/5 pt-[52px]">
+              <SelectOrderBy
+                data={dataSorting}
+                selectedDefault={'Recently listed'}
+                changeHandler={handleSelected}
+              />
+            </div>
+          </div>
+          <section className="mb-20 mt-[6px]">
+            <div className="overflow-y-hidden overflow-x-auto">
+              {isFetching && !isFetchingNextPage ? (
+                <div className="flex items-center justify-center w-full mt-6" key={0}>
+                  <TailSpin />
+                </div>
+              ) : (
                 <InfiniteScroll
                   pageStart={1}
-                  loadMore={() => fetchNextPage()}
+                  loadMore={async () => {
+                    setTimeout(() => {
+                      fetchNextPage();
+                    }, 500);
+                  }}
                   hasMore={!isFetchingNextPage && hasNextPage}
                   loader={
-                    <div className="loader text-white" key={0}>
-                      Loading ...
+                    <div className="flex items-center justify-center w-full mt-6" key={0}>
+                      <TailSpin />
                     </div>
                   }>
-                  <div className="flex items-center justify-between">
-                    <div></div>
-                    <div className="w-1/5 ">
-                      <SelectOrderBy
-                        data={dataSorting}
-                        selectedDefault={'Recently listed'}
-                        changeHandler={handleSelected}
-                      />
-                    </div>
-                  </div>
                   <AssetList
                     // title={'Explore'}
                     items={items?.map((elm: any, index: number) => {
@@ -126,7 +136,7 @@ const Marketplace: React.FC = () => {
                     })}
                   />
                 </InfiniteScroll>
-              </div>
+              )}
             </div>
           </section>
         </div>

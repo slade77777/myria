@@ -1,10 +1,6 @@
-import React, { useRef } from 'react';
-import InfiniteScroll from 'react-infinite-scroller';
-import ClockIcon from 'src/components/icons/ClockIcon';
-import { formatPrice } from 'src/utils';
+import React from 'react';
 import NftItem from '../NftItem';
 import { NFTItemType } from '../NftItem/type';
-import avatar from '../../../../public/images/marketplace/avatar.png';
 
 interface Props {
   title?: string;
