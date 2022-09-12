@@ -11,39 +11,46 @@ import { getItemsPagination } from 'src/utils';
 import avatar from '../../../../public/images/marketplace/avatar.png';
 import AssetList from '../AssetList';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
+import { QueryClient } from 'react-query';
 
 interface Props {
   collection: AssetByCollectionIdResponse;
 }
 
 export const dataSorting = [
-  { id: 1, val: 1, name: 'Recently listed' },
-  { id: 2, val: AssetOrderBy.ASC, name: 'Price Low to High' },
-  { id: 3, val: AssetOrderBy.DESC, name: 'Price High to Low' },
-  { id: 4, val: 4, name: 'Most Viewed' }
+  { id: 1, sortingField: 'createdAt', val: 1, name: 'Recently listed' },
+  { id: 2, sortingField: 'amountBuy', val: AssetOrderBy.ASC, name: 'Price Low to High' },
+  { id: 3, sortingField: 'amountBuy', val: AssetOrderBy.DESC, name: 'Price High to Low' }
 ];
 
 const Collection: FC<Props> = ({ collection }) => {
-  const [orderBy, setOrderBy] = useState(undefined);
+  const [selectedSort, setSelectedSort] = useState({
+    sortingField: 'createdAt',
+    orderBy: undefined
+  });
 
   const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale, id } =
     collection;
   const { fetchNextPage, refetch, hasNextPage, isFetchingNextPage, result } = useCollectionAsset({
     collectionId: id,
-    sortingField: 'amountBuy',
-    orderBy: orderBy
+    sortingField: selectedSort.sortingField,
+    orderBy: selectedSort.orderBy
   });
   const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
 
-  const handleSelected = (e: any) => {
+  const handleSelected = async (e: any) => {
     if (e.val === AssetOrderBy.ASC || e.val === AssetOrderBy.DESC) {
-      setOrderBy(e.val);
+      setSelectedSort({
+        sortingField: e.sortingField,
+        orderBy: e.val
+      });
+    } else {
+      setSelectedSort({
+        ...selectedSort,
+        sortingField: e.sortingField
+      });
     }
   };
-
-  useEffect(() => {
-    refetch();
-  }, [orderBy]);
 
   return (
     <Page includeFooter={false}>
