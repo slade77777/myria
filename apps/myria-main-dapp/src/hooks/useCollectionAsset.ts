@@ -5,7 +5,7 @@ import { assetModule } from 'src/services/myriaCore';
 const DEFAULT_PAGE = 1;
 const DEFAULT_LIMIT = 15;
 export default function useCollectionAsset(data: CollectionDetailsParams) {
-  const queryKey = ['collection', data.collectionId, 'assets'];
+  const queryKey = ['collection', data.collectionId, data.orderBy, data.sortingField, 'assets'];
   const {
     fetchNextPage,
     fetchPreviousPage,
@@ -19,9 +19,11 @@ export default function useCollectionAsset(data: CollectionDetailsParams) {
     queryKey,
     ({ pageParam = DEFAULT_PAGE }) =>
       assetModule?.getAssetsByCollectionId({
+        collectionId: data.collectionId,
         limit: DEFAULT_LIMIT,
         page: pageParam,
-        ...data
+        orderBy: data.orderBy,
+        sortingField: data.sortingField
       }),
     {
       getNextPageParam: (lastPage, pages) => {

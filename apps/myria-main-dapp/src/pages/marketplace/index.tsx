@@ -18,7 +18,10 @@ import { getItemsPagination, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';
 const Marketplace: React.FC = () => {
   const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
-  const [orderBy, setOrderBy] = useState(AssetOrderBy.ASC);
+  const [selectedSort, setSelectedSort] = useState({
+    sortingField: 'createdAt',
+    orderBy: AssetOrderBy.ASC
+  });
 
   const {
     fetchNextPage,
@@ -30,15 +33,15 @@ const Marketplace: React.FC = () => {
     refetch,
     ...result
   } = useInfiniteQuery(
-    ['homepage', 'listorder'],
+    ['homepage', 'listorder', selectedSort],
     ({ pageParam = 1 }) =>
       assetModule?.getNftAssetsByStatus({
         limit: 15,
         orderType: OrderType.SELL,
         page: pageParam,
         status: OrderStatus.ACTIVE,
-        sortingField: 'amountBuy',
-        orderBy: orderBy
+        sortingField: selectedSort.sortingField,
+        orderBy: selectedSort.orderBy
       }),
     {
       getNextPageParam: (lastPage, pages) => {
@@ -54,13 +57,17 @@ const Marketplace: React.FC = () => {
 
   const handleSelected = (e: any) => {
     if (e.val === AssetOrderBy.ASC || e.val === AssetOrderBy.DESC) {
-      setOrderBy(e.val);
+      setSelectedSort({
+        sortingField: e.sortingField,
+        orderBy: e.val
+      });
+    } else {
+      setSelectedSort({
+        ...selectedSort,
+        sortingField: e.sortingField
+      });
     }
   };
-
-  useEffect(() => {
-    refetch();
-  }, [orderBy]);
 
   if (isMobile) {
     return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
@@ -77,6 +84,7 @@ const Marketplace: React.FC = () => {
             </h2>
             <HotCollection />
           </section>
+
           <section className="mb-20 mt-[64px]">
             <div className="overflow-auto">
               <div>
