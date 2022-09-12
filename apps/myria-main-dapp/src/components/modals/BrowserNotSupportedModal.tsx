@@ -34,7 +34,7 @@ const SessionTimeoutCountModal: React.FC<Props> = ({}) => {
 
       if (!showBrowserNotSupportedModal && !isBraveBrowser) {
         // @ts-ignore
-        setNameNotSupportedBrowser(browser?.name.replace('-', ' '));
+        setNameBrowser(browser?.name.replace('-', ' '));
       }
     }
 
