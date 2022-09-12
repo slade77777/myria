@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react';
 import { Trans } from '@lingui/macro';
 import { BigNumber, ethers, utils } from 'ethers';
 import { useCallback, useMemo } from 'react';
@@ -68,6 +69,11 @@ const ModalPurchase = ({
       const tx = await res.wait();
       return tx.transactionHash;
     }
+    Sentry.captureException(new Error('tx hash is missing'), {
+      tags: {
+        section: 'node-purchase'
+      }
+    });
     throw new Error('Missing params');
   });
 
@@ -83,6 +89,15 @@ const ModalPurchase = ({
             toast.success('Purchase completed');
           })
           .catch((e) => {
+            Sentry.captureException(new Error('Submit tx hash is failed'), {
+              tags: {
+                section: 'node-purchase'
+              },
+              extra: {
+                txHash,
+                errorDetail: e?.response?.data?.errors?.[0]
+              }
+            });
             toast.error(
               e?.response?.data?.errors?.[0]?.detail || 'Something went wrong , please try later!'
             );
@@ -157,7 +172,8 @@ const ModalPurchase = ({
         className={`btn-lg justify-end ${className}`}
         onClick={onPurchase}
         loading={isPurchasing || isSubmiting}
-        disabled={isPurchasing || isSubmiting || isInsufficientBalance}>
+        disabled={isPurchasing || isSubmiting || isInsufficientBalance}
+      >
         {label}
       </Button>
     );
@@ -167,7 +183,8 @@ const ModalPurchase = ({
     <Modal open={open} onOpenChange={isPurchasing || isSubmiting ? () => null : onClose}>
       <Modal.Content
         title="Complete your purchase"
-        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
+        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]"
+      >
         <div className=" p-8">
           <div className="mt-10 mb-4 flex justify-between">
             <div>
@@ -252,7 +269,8 @@ const ModalPurchase = ({
                     height: '0px'
                   }
                 : {})
-            }}>
+            }}
+          >
             <div className="mr-2 h-4 w-4 text-[#9AC9E3]">
               <InfoIcon />
             </div>

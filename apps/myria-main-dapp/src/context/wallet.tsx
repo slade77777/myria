@@ -7,6 +7,7 @@ import { useGA4 } from 'src/lib/ga';
 import { Campaign } from '../lib/ga/use-ga/event';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
+import reporter from 'src/error-reporter';
 
 let web3Modal: Web3Modal;
 export type ReaderProvider = ethers.providers.InfuraProvider;
@@ -122,6 +123,9 @@ export const WalletProvider: React.FC = ({ children }) => {
     setSignerProviderApi(providerApi);
     setChainId(network.chainId);
     setAddress(address);
+    reporter.setUserContext({
+      address
+    });
   };
 
   const onSetWalletAddress = (walletAddress: string) => {
@@ -168,7 +172,8 @@ export const WalletProvider: React.FC = ({ children }) => {
         balance,
         setAddress: onSetWalletAddress,
         subscribeProvider: initializeSubcribeProvider
-      }}>
+      }}
+    >
       {children}
     </WalletContext.Provider>
   );
