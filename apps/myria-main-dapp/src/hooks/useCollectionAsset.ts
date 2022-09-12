@@ -13,6 +13,7 @@ export default function useCollectionAsset(data: CollectionDetailsParams) {
     hasPreviousPage,
     isFetchingNextPage,
     isFetchingPreviousPage,
+    isFetching,
     refetch,
     ...result
   } = useInfiniteQuery(
@@ -42,6 +43,7 @@ export default function useCollectionAsset(data: CollectionDetailsParams) {
     fetchPreviousPage,
     hasNextPage,
     isFetchingNextPage,
+    isFetching,
     result,
     refetch
   };
