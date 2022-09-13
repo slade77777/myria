@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import CheckIcon from 'src/components/icons/CheckIcon';
+import CheckCircleIcon from 'src/components/icons/CheckCircleIcon';
 
 export function MessageEditListingModal({ assetName = '', onClose = () => {} }) {
   return (
@@ -7,7 +7,7 @@ export function MessageEditListingModal({ assetName = '', onClose = () => {} }) 
       <div className="ml-3 font-normal leading-normal text-white">
         <div className="relative mb-1 text-lg font-semibold leading-normal dark:text-white">
           <span className="absolute -left-[45px]">
-            <CheckIcon size={24} className="mt-[1px] text-[#81CA95]" />
+            <CheckCircleIcon size={24} className="mt-[1px] text-[#81CA95]" />
           </span>
           <span>
             <Trans>Item Listed Successfully</Trans>
