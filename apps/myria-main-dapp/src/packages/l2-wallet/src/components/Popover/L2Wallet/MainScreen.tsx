@@ -48,8 +48,8 @@ type Props = {
 };
 
 const tabs = [
-  { id: WalletTabs.HISTORY, title: 'History' },
   { id: WalletTabs.TOKENS, title: 'Tokens' },
+  { id: WalletTabs.HISTORY, title: 'History' },
 ];
 
 const historyData: any[] = [];
