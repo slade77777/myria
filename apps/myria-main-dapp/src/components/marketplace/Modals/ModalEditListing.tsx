@@ -121,7 +121,9 @@ export const ModalEditListing: React.FC<Props> = ({
             </div>
           </div>
           <p className="text-light mt-2 text-sm">
-            <Trans> Collection avg. price: 2.00 ETH </Trans>{' '}
+            <Trans>
+              Collection median price: <span className="text-white">2.00 ETH</span>
+            </Trans>
           </p>
           <div className="relative mt-8">
             <span className="text-light">{defaultModal.labelInput}</span>
@@ -146,7 +148,7 @@ export const ModalEditListing: React.FC<Props> = ({
               errorText={errors.price?.message}
               className="bg-base/4 mt-1 rounded-lg border-none pr-[100px] pl-10"
             />
-            <div className="absolute top-10 right-3 text-base/9">
+            <div className="text-base/9 absolute top-10 right-3">
               <span>${formatNumber2digits(ethPrice ? parseFloat(ethPrice) * ethereum : 0)}</span>
             </div>
           </div>
