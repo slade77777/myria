@@ -87,9 +87,9 @@ export const ModalEditListing: React.FC<Props> = ({
           labelInput: <Trans>Listing Price</Trans>
         };
 
-  const onHandleSubmit = (value: any) => {
+  const onHandleSubmit = (value: IFormInputs) => {
     setIsConfirmButton(true);
-    onSubmit(value);
+    onSubmit({ price: `${value.price}` });
   };
 
   const onHandleError = (errors: any) => {
