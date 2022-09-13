@@ -34,7 +34,7 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
     <DropdownMenu>
       <DropdownMenu.Trigger disabled={!isLogin}>
         <div className="ml-6 h-9 w-9 overflow-hidden rounded-full">
-          <Image width={100} height={100} src={avatar} alt="" />
+          <img width={100} height={100} src='/images/marketplace/user.png' alt="" />
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
