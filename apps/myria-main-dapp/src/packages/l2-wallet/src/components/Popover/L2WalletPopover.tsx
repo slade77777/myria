@@ -135,7 +135,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
   const dispatch = useDispatch();
 
-  const { balanceList } = useBalanceList(pKey, screen);
+  const { data: balanceList } = useBalanceList();
   const { balanceL1 } = useBalanceL1(selectedToken, connectedAccount);
   const { data: etheCost = 0 } = useEtheriumPrice();
 

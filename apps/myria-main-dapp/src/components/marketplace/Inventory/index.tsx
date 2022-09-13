@@ -7,6 +7,7 @@ import truncateString from 'src/helper';
 import { Trans } from '@lingui/macro';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroller';
+import TailSpin from 'src/components/icons/TailSpin';
 
 interface Props {
   userAvatar: string;
@@ -80,11 +81,11 @@ function Inventory({
             </div>
             <InfiniteScroll
               pageStart={1}
-              loadMore={() => fetchNextPage()}
+              loadMore={async() => {setTimeout(()=>{fetchNextPage()}, 500)}}
               hasMore={hasMore}
               loader={
-                <div className="loader" key={0}>
-                  Loading ...
+                <div className='flex items-center justify-center w-full mt-6' key={0}>
+                  <TailSpin />
                 </div>
               }
               // useWindow={false}

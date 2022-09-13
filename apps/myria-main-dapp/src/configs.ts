@@ -14,3 +14,5 @@ export const localStorageKeys = {
   starkKey: 'STARK_KEY',
   walletAddress: 'WALLET_ADDRESS'
 };
+
+export const MARKETPLACE = 'marketplace';

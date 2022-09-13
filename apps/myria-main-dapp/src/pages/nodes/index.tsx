@@ -212,6 +212,10 @@ const Nodes: React.FC = () => {
     return false;
   }, [address, localStarkKey, user, walletAddress]);
 
+  const totalNodes = userNodes
+    ?.filter((item) => item.purchaseStatus === 'SUCCESSFUL')
+    .reduce((total, transaction) => total + (transaction.nodes?.length || 0), 0);
+
   const purchaseLink = useMemo(() => {
     const hasPendingTransaction = userNodes.find(
       (transaction) => transaction.purchaseStatus === 'PENDING'
@@ -227,11 +231,11 @@ const Nodes: React.FC = () => {
     if (hasSuccessTransaction && showSuccess === 'true') {
       return '/nodes/purchase-complete';
     }
-    if (data?.canPurchaseCount === 0) {
+    if (totalNodes >= 2) {
       return '/nodes/my-nodes';
     }
     return '/nodes/purchase';
-  }, [data?.canPurchaseCount, userNodes]);
+  }, [totalNodes, userNodes]);
 
   return (
     <Page action="start-building">
@@ -263,7 +267,7 @@ const Nodes: React.FC = () => {
                       {!nodeLoading && !nodesLoading && (
                         <Link href={purchaseLink}>
                           <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
-                            <Trans>Purchase Now</Trans>
+                            <Trans>{totalNodes >= 2 ? 'View My Nodes' : 'Purchase Now'}</Trans>
                           </div>
                         </Link>
                       )}
@@ -272,7 +276,7 @@ const Nodes: React.FC = () => {
                     <div
                       className="btn-lg btn-primary mt-[38px] cursor-pointer"
                       onClick={onConnectWallet}>
-                      <Trans>Connect wallet</Trans>
+                      <Trans>Connect To Buy</Trans>
                     </div>
                   )}
                 </div>
@@ -361,20 +365,15 @@ const Nodes: React.FC = () => {
           <div className="max-w-content mx-auto ">
             <div className="md:w-1/2">
               <h3 className="heading-sm md:heading-md">
-                <Trans>Get a founders node today</Trans>
+                <Trans>Get a Myria node today</Trans>
               </h3>
               <p className="body mt-6">
                 <Trans>
                   Become an integral part of the Myria ecosystem and reap the benefits of your
-                  contribution. Early founder node operators receive preferential pricing, which
+                  contribution. Early Myria node operators receive preferential pricing, which
                   increases as nodes are sold.
                 </Trans>
               </p>
-              <Link href={'/nodes/purchase'}>
-                <a className="btn-lg btn-primary mt-[32px]" href="/nodes/purchase">
-                  <Trans>BUY A NODE</Trans>
-                </a>
-              </Link>
             </div>
           </div>
         </section>

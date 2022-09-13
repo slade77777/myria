@@ -105,9 +105,12 @@ export default function DepositScreen({
             <div className={'text-error/6 mt-2 text-sm'}>{errorAmount}</div>
           )}
         </div>
-        <div className="mt-2 flex justify-between text-sm text-white/60">
+        <div className="text-base/8 mt-2 flex justify-between text-sm">
           <p>Estimated gas fee</p>
-          <p>0.000431917 ETH</p>
+          <span className="flex items-center">
+            <DAOIcon color={'#5A7486'} colorCenter="#5A7486" size={16} />
+            0.0431917
+          </span>
         </div>
       </div>
       <div className="flex justify-between justify-self-end">

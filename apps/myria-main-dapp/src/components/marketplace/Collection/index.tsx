@@ -11,39 +11,47 @@ import { getItemsPagination } from 'src/utils';
 import avatar from '../../../../public/images/marketplace/avatar.png';
 import AssetList from '../AssetList';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
+import TailSpin from 'src/components/icons/TailSpin';
 
 interface Props {
   collection: AssetByCollectionIdResponse;
 }
 
 export const dataSorting = [
-  { id: 1, val: 1, name: 'Recently listed' },
-  { id: 2, val: AssetOrderBy.ASC, name: 'Price Low to High' },
-  { id: 3, val: AssetOrderBy.DESC, name: 'Price High to Low' },
-  { id: 4, val: 4, name: 'Most Viewed' }
+  { id: 1, sortingField: 'createdAt', val: AssetOrderBy.DESC, name: 'Recently listed' },
+  { id: 2, sortingField: 'amountBuy', val: AssetOrderBy.ASC, name: 'Price Low to High' },
+  { id: 3, sortingField: 'amountBuy', val: AssetOrderBy.DESC, name: 'Price High to Low' }
 ];
 
 const Collection: FC<Props> = ({ collection }) => {
-  const [orderBy, setOrderBy] = useState(undefined);
+  const [selectedSort, setSelectedSort] = useState({
+    sortingField: 'createdAt',
+    orderBy: undefined
+  });
 
   const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale, id } =
     collection;
-  const { fetchNextPage, refetch, hasNextPage, isFetchingNextPage, result } = useCollectionAsset({
-    collectionId: id,
-    sortingField: 'amountBuy',
-    orderBy: orderBy
-  });
+  const { fetchNextPage, refetch, hasNextPage, isFetchingNextPage, result, isFetching } =
+    useCollectionAsset({
+      collectionId: id,
+      sortingField: selectedSort.sortingField,
+      orderBy: selectedSort.orderBy
+    });
   const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
 
-  const handleSelected = (e: any) => {
+  const handleSelected = async (e: any) => {
     if (e.val === AssetOrderBy.ASC || e.val === AssetOrderBy.DESC) {
-      setOrderBy(e.val);
+      setSelectedSort({
+        sortingField: e.sortingField,
+        orderBy: e.val
+      });
+    } else {
+      setSelectedSort({
+        ...selectedSort,
+        sortingField: e.sortingField
+      });
     }
   };
-
-  useEffect(() => {
-    refetch();
-  }, [orderBy]);
 
   return (
     <Page includeFooter={false}>
@@ -88,46 +96,54 @@ const Collection: FC<Props> = ({ collection }) => {
                 </div>
               </div>
             </div>
-            <div className="mt-10">
-              <InfiniteScroll
-                pageStart={1}
-                loadMore={() => fetchNextPage()}
-                hasMore={!isFetchingNextPage && hasNextPage}
-                loader={
-                  <div className="loader text-white" key={0}>
-                    Loading ...
-                  </div>
-                }
-                // useWindow={false}
-              >
-                <div className="flex items-center justify-between ">
-                  <div></div>
-                  <div className="w-1/5 z-9">
-                    <SelectOrderBy
-                      data={dataSorting}
-                      selectedDefault={'Recently listed'}
-                      changeHandler={handleSelected}
-                    />
-                  </div>
-                </div>
-                <AssetList
-                  items={items?.map((elm: any, index: number) => {
-                    const isOrder = Array.isArray(elm?.order);
-                    const item: NFTItemType = {
-                      id: `${elm.id}`,
-                      rarity: (elm.metadata as any).rarity,
-                      name: elm.name || '',
-                      image_url: elm.imageUrl || '',
-                      creator: elm.creator?.name || '',
-                      creatorImg: avatar.src,
-                      priceETH: isOrder
-                        ? Number(elm?.order[0]?.nonQuantizedAmountBuy)
-                        : elm?.order?.nonQuantizedAmountBuy
-                    };
-                    return item;
-                  })}
+            <div className="flex items-center justify-between">
+              <div></div>
+              <div className="w-1/5 ">
+                <SelectOrderBy
+                  data={dataSorting}
+                  selectedDefault={'Recently listed'}
+                  changeHandler={handleSelected}
                 />
-              </InfiniteScroll>
+              </div>
+            </div>
+            <div className="mt-10">
+              {isFetching && !isFetchingNextPage ? (
+                <div className="flex items-center justify-center w-full mt-6" key={0}>
+                  <TailSpin />
+                </div>
+              ) : (
+                <InfiniteScroll
+                  pageStart={1}
+                  loadMore={async () => {
+                    setTimeout(() => {
+                      fetchNextPage();
+                    }, 500);
+                  }}
+                  hasMore={!isFetchingNextPage && hasNextPage}
+                  loader={
+                    <div className="flex items-center justify-center w-full mt-6" key={0}>
+                      <TailSpin />
+                    </div>
+                  }>
+                  <AssetList
+                    items={items?.map((elm: any, index: number) => {
+                      const isOrder = Array.isArray(elm?.order);
+                      const item: NFTItemType = {
+                        id: `${elm.id}`,
+                        rarity: (elm.metadata as any).rarity,
+                        name: elm.name || '',
+                        image_url: elm.imageUrl || '',
+                        creator: elm.creator?.name || '',
+                        creatorImg: avatar.src,
+                        priceETH: isOrder
+                          ? Number(elm?.order[0]?.nonQuantizedAmountBuy)
+                          : elm?.order?.nonQuantizedAmountBuy
+                      };
+                      return item;
+                    })}
+                  />
+                </InfiniteScroll>
+              )}
             </div>
           </div>
         </div>

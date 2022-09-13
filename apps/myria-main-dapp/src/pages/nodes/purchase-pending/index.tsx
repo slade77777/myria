@@ -16,13 +16,17 @@ const PurchasePending: React.FC = () => {
   const { data: userNodes } = useUserNodes();
 
   useEffect(() => {
-    const hasPendingTransaction = userNodes.find(
-      (transaction) => transaction.purchaseStatus === 'PENDING'
+    const transaction = userNodes.find(
+      (transaction) => transaction.txHash.toLowerCase() === (tx as string)?.toLowerCase()
     );
-    if (!hasPendingTransaction) {
-      router.push('/nodes/purchase-complete');
+    if (transaction) {
+      const isTransactionSuccess = transaction.purchaseStatus === 'SUCCESSFUL';
+      const hasNodeId = !!transaction?.nodes?.filter((item) => item.nodeId !== undefined)?.length;
+      if (isTransactionSuccess && hasNodeId) {
+        router.push('/nodes/purchase-complete');
+      }
     }
-  }, [router, userNodes]);
+  }, [router, tx, userNodes]);
 
   return (
     <Page action="start-building">

@@ -4,16 +4,20 @@ import styles from './styles.module.css';
 
 interface INumberInputProps {
   setQuantityNumber: (arg: number) => void;
+  max?: number;
 }
 
-const NumberInput: React.FC<INumberInputProps> = ({ setQuantityNumber }) => {
+const NumberInput: React.FC<INumberInputProps> = ({ setQuantityNumber, max }) => {
   const [quantity, setQuantity] = React.useState(0);
   function increaseQuantity() {
     let quantity_temp = quantity;
     quantity_temp = quantity_temp + 1;
-    setQuantity(quantity_temp);
-    setQuantityNumber(quantity_temp);
+    if (!max || quantity_temp <= max) {
+      setQuantity(quantity_temp);
+      setQuantityNumber(quantity_temp);
+    }
   }
+
   function decreaseQuantity() {
     let quantity_temp = quantity;
     if (quantity_temp > 0) {
@@ -38,8 +42,10 @@ const NumberInput: React.FC<INumberInputProps> = ({ setQuantityNumber }) => {
         type="number"
         value={quantity}
         onChange={(e) => {
-          setQuantity(parseInt(e.target.value));
-          setQuantityNumber(parseInt(e.target.value));
+          if (!max || !e.target.value || parseInt(e.target.value) <= max) {
+            setQuantity(parseInt(e.target.value));
+            setQuantityNumber(parseInt(e.target.value));
+          }
         }}
         className="flex w-full items-center bg-transparent text-center text-base font-semibold text-white outline-none md:body-lg"></input>
       <button

@@ -10,6 +10,7 @@ import { Action, NavItem } from './type';
 import { useWalletContext } from 'src/context/wallet';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import SessionTimeoutCountModal from '../SessionTimeoutCountModal';
+import BrowserNotSupportedModal from '../modals/BrowserNotSupportedModal';
 
 export const links: NavItem[] = Object.values(linkSources);
 export const navHeight = 93;
@@ -18,7 +19,7 @@ export const headerHeight = navHeight + bannerHeight;
 export const bannerSpacingClassName = 'lg:pt-[50px]';
 export const headerNavSpacingClassName = 'pt-[104px] md:pt-[93px]';
 
-const SESSION_TIME_OUT = 1000 * 10 * 20;
+const SESSION_TIME_OUT = 1000 * 60 * 20;
 
 const Header: React.FC<{ action?: Action; className?: string; stickyHeader: boolean }> = ({
   action = 'login',
@@ -82,6 +83,7 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
           disconnectAll();
         }}
       />
+      <BrowserNotSupportedModal />
     </div>
   );
 };
