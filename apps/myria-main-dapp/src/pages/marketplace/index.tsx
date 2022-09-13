@@ -91,7 +91,7 @@ const Marketplace: React.FC = () => {
                   }>
                   <div className="flex items-center justify-between ">
                     <div></div>
-                    <div className="w-1/5 ">
+                    <div className="w-1/5 z-9">
                       <SelectOrderBy
                         data={dataSorting}
                         selectedDefault={'Recently listed'}
