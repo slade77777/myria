@@ -99,7 +99,7 @@ const Marketplace: React.FC = () => {
           </div>
           <section className="mb-20 mt-[6px]">
             <div className="overflow-y-hidden overflow-x-auto">
-              {isFetching && !isFetchingNextPage ? (
+              {isFetching && !result.data?.pages && !isFetchingNextPage ? (
                 <div className="flex items-center justify-center w-full mt-6" key={0}>
                   <TailSpin />
                 </div>

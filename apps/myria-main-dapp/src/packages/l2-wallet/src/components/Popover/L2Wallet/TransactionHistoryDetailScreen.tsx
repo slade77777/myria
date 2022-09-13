@@ -64,14 +64,22 @@ export default function TransactionHistoryDetailScreen({
         </div>
       )}
       {transactionDetail.type === TRANSACTION_TYPE.SETTLEMENT && (
-        <div className="flex items-center justify-center ">
-          <Image
-            className=""
-            src={DF_TRANSACTION_TYPE[transactionDetail.type]?.icon}
-            width={89}
-            height={89}
-          />
-        </div>
+        <>
+          {transactionDetail.status === STATUS_HISTORY.FAILED ? (
+            <div className="flex items-center justify-center ">
+              {DF_TRANSACTION_TYPE[transactionDetail.type]?.iconFailed}
+            </div>
+          ) : (
+            <div className="flex items-center justify-center ">
+              <Image
+                className=""
+                src={DF_TRANSACTION_TYPE[transactionDetail.type]?.icon}
+                width={89}
+                height={89}
+              />
+            </div>
+          )}
+        </>
       )}
       <div className="text-base/10 mt-6 text-center text-2xl">
         {renderTitle(transactionDetail)}

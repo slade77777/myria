@@ -97,9 +97,9 @@ export const DF_TRANSACTION_TYPE = {
   [TRANSACTION_TYPE.SETTLEMENT]: {
     title: 'NFT Purchase',
     titleHistoryDetail: 'Purchase',
-    titleFailed: 'Purchase',
+    titleFailed: 'Purchase Failed',
     icon: '/images/marketplace/icoPurchase.png',
-    iconFailed: '',
+    iconFailed: <CircleCloseIcon className="text-error/6" />,
     rotateIcon: 'top',
   },
   [TRANSACTION_TYPE.TRANSFER]: {
