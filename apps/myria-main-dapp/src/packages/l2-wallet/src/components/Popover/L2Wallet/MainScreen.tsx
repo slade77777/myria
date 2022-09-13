@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import TailSpin from 'src/components/icons/TailSpin';
 import { localStorageKeys } from 'src/configs';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWalletContext } from 'src/context/wallet';
@@ -31,6 +32,7 @@ import ProgressHistoryIcon from '../../Icons/ProgressHistoryIcon';
 import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
+import useBalanceList from '../../../common/hooks/useBalanceList';
 
 type Props = {
   gotoDepositScreen: any;
@@ -46,8 +48,8 @@ type Props = {
 };
 
 const tabs = [
-  { id: WalletTabs.HISTORY, title: 'History' },
   { id: WalletTabs.TOKENS, title: 'Tokens' },
+  { id: WalletTabs.HISTORY, title: 'History' },
 ];
 
 const historyData: any[] = [];
@@ -95,9 +97,9 @@ export const DF_TRANSACTION_TYPE = {
   [TRANSACTION_TYPE.SETTLEMENT]: {
     title: 'NFT Purchase',
     titleHistoryDetail: 'Purchase',
-    titleFailed: 'Purchase',
+    titleFailed: 'Purchase Failed',
     icon: '/images/marketplace/icoPurchase.png',
-    iconFailed: '',
+    iconFailed: <CircleCloseIcon className="text-error/6" />,
     rotateIcon: 'top',
   },
   [TRANSACTION_TYPE.TRANSFER]: {
@@ -143,9 +145,10 @@ export default function MainScreen({
 }: Props) {
   const [coinPrices, setCoinPrices] = useState([]);
   const [l1Balance, setL1Balance] = useState(0);
+  const { isLoading, isFetched } = useBalanceList();
   const { data: etheCost = 0 } = useEtheriumPrice();
-  const { address, onConnect, onConnectCompaign } = useWalletContext();
-  const { valueNFT, setStatus, handleSetValueNFT } = useWithDrawNFTContext();
+  const { address } = useWalletContext();
+  const { setStatus, handleSetValueNFT } = useWithDrawNFTContext();
   const { handleDisplayPopoverWithdrawNFT, handleDisplayPopover } =
     useL2WalletContext();
   const starkKeyUser = useSelector(
@@ -205,7 +208,7 @@ export default function MainScreen({
 
   useEffect(() => {
     const temp: any = [];
-    options.map((option: any, index: number) => {
+    options.map((option: any) => {
       let tempOption = option;
       let assetType: string;
       if (option.name === 'Ethereum') {
@@ -409,14 +412,19 @@ export default function MainScreen({
     }
   };
 
+  if (isLoading && !isFetched) {
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <TailSpin />
+      </div>
+    );
+  }
   return (
     <div>
       <div>
         <div className="mt-2 flex items-center justify-center">
           <ETHIcon />
-          <div className="text-base/10 ml-2 text-[32px]">
-            {balanceEth || '0'}
-          </div>
+          <div className="text-base/10 ml-2 text-[32px]">{balanceEth || 0}</div>
         </div>
         <p className="text-base/9 text-center">
           ${formatNumber2digits(etheCost * balanceEth)}
@@ -528,7 +536,7 @@ export default function MainScreen({
                         alt="token_icon"
                       />
                       <div className="ml-2">
-                        <p className="text-base/9 text-sm">{item.name}</p>
+                        <p className="text-base/10 text-sm">{item.name}</p>
                         <div>
                           <span className="text-base/9 bg-base/4 rounded py-[2px] px-2 text-[10px] font-bold">
                             {item.short}

@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react';
 import { Trans } from '@lingui/macro';
 import { BigNumber, ethers, utils } from 'ethers';
 import { useCallback, useMemo } from 'react';
@@ -23,6 +24,8 @@ export type PurchaseInformationProps = {
   nonce: string; // TODO
 };
 
+const feeRate = 0.00005;
+
 const ModalPurchase = ({
   data,
   open,
@@ -44,29 +47,33 @@ const ModalPurchase = ({
     .gt(balance ?? BigNumber.from(0));
 
   const createTxRequest = async () => {
-      // this never happens due to line 53 but just by pass ts check
-      // TODO: check if useQuery has some ts supports
-      if (!address || !readerProviderApi || isInsufficientBalance) {
-        return;
-      }
+    // this never happens due to line 53 but just by pass ts check
+    // TODO: check if useQuery has some ts supports
+    if (!address || !readerProviderApi || isInsufficientBalance) {
+      return;
+    }
 
-      return await formatTransferTxRequest(
-        readerProviderApi,
-        totalPriceEth,
-        address,
-        toAddress,
-        Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
-      );
-    };
-  
+    return await formatTransferTxRequest(
+      readerProviderApi,
+      totalPriceEth,
+      address,
+      toAddress,
+      Number(process.env.NEXT_PUBLIC_NODE_GAS_LIMIT)
+    );
+  };
 
   const { mutateAsync: handleTransferETH, isLoading: isPurchasing } = useMutation(async () => {
-    const txRequest = await createTxRequest()
+    const txRequest = await createTxRequest();
     if (txRequest && signerProviderApi) {
       const res = await transferEth(signerProviderApi?.getSigner(), txRequest);
       const tx = await res.wait();
       return tx.transactionHash;
     }
+    Sentry.captureException(new Error('tx hash is missing'), {
+      tags: {
+        section: 'node-purchase'
+      }
+    });
     throw new Error('Missing params');
   });
 
@@ -74,10 +81,27 @@ const ModalPurchase = ({
   const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(
     async ({ txHash }: { txHash: string }) => {
       if (txHash) {
-        apiClient.post('/nodes/purchase', { txHash }).then(() => {
-          refetch();
-          onPurchaseComplete?.(txHash);
-        });
+        apiClient
+          .post('/nodes/purchase', { txHash })
+          .then(() => {
+            refetch();
+            onPurchaseComplete?.(txHash);
+            toast.success('Purchase completed');
+          })
+          .catch((e) => {
+            Sentry.captureException(new Error('Submit tx hash is failed'), {
+              tags: {
+                section: 'node-purchase'
+              },
+              extra: {
+                txHash,
+                errorDetail: e?.response?.data?.errors?.[0]
+              }
+            });
+            toast.error(
+              e?.response?.data?.errors?.[0]?.detail || 'Something went wrong , please try later!'
+            );
+          });
       } else {
         throw new Error('Missing params');
       }
@@ -115,7 +139,6 @@ const ModalPurchase = ({
         eth_total_amount: totalPriceEth,
         usd_total_amount: totalPriceUsd
       });
-      toast.success('Purchase completed');
     } catch (e) {
       toast.error('Purchase uncompleted');
     }
@@ -149,7 +172,8 @@ const ModalPurchase = ({
         className={`btn-lg justify-end ${className}`}
         onClick={onPurchase}
         loading={isPurchasing || isSubmiting}
-        disabled={isPurchasing || isSubmiting || isInsufficientBalance}>
+        disabled={isPurchasing || isSubmiting || isInsufficientBalance}
+      >
         {label}
       </Button>
     );
@@ -159,7 +183,8 @@ const ModalPurchase = ({
     <Modal open={open} onOpenChange={isPurchasing || isSubmiting ? () => null : onClose}>
       <Modal.Content
         title="Complete your purchase"
-        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
+        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]"
+      >
         <div className=" p-8">
           <div className="mt-10 mb-4 flex justify-between">
             <div>
@@ -185,9 +210,14 @@ const ModalPurchase = ({
             </div>
             <div>
               <div className="flex items-center justify-end">
-                <ETH /> <p className="heading-list ml-2">{totalPriceEth}</p>
+                <ETH />{' '}
+                <p className="heading-list ml-2">
+                  {(totalPriceEth * feeRate).toFixed(7).replace(/\.?0+$/, '')}
+                </p>
               </div>
-              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
+              <p className="body-sm text-right text-light">
+                ~${formatCurrency(totalPriceUsd * feeRate, 5)}
+              </p>
             </div>
           </div>
         </div>
@@ -200,9 +230,13 @@ const ModalPurchase = ({
             <div>
               <div className="flex items-center justify-end">
                 <ETH />
-                <p className="heading-md ml-2">{totalPriceEth}</p>
+                <p className="heading-md ml-2">
+                  {(totalPriceEth * (1 + feeRate)).toFixed(7).replace(/\.?0+$/, '')}
+                </p>
               </div>
-              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
+              <p className="body-sm text-right text-light">
+                ~${formatCurrency(totalPriceUsd * (1 + feeRate), 2)}
+              </p>
             </div>
           </div>
           <div className="mb-4 flex items-center justify-between">
@@ -235,7 +269,8 @@ const ModalPurchase = ({
                     height: '0px'
                   }
                 : {})
-            }}>
+            }}
+          >
             <div className="mr-2 h-4 w-4 text-[#9AC9E3]">
               <InfoIcon />
             </div>

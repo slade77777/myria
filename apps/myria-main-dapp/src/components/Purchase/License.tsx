@@ -96,7 +96,7 @@ const License: React.FC = () => {
     },
     {
       title: t`More power than just network support`,
-      content: t`Node owners will be rewarded with exclusive NFT drops and daily MYRIA token rewards for their contribution to the network.`,
+      content: t`Be a part of the Myria governance system and contribute to the scaling of future digital asset ownership.`,
       icon: gaming,
       bg: 'bg-linear-purple'
     }

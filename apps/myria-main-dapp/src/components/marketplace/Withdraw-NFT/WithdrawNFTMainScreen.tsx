@@ -9,6 +9,11 @@ import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { queryClient } from 'src/pages/_app';
 import { assetModule } from 'src/services/myriaCore';
 import { validatedImage } from 'src/utils';
+import { ArrowIcon, ThreeDotsVerticalIcon } from 'src/packages/l2-wallet/src/components/Icons';
+import LogoutIcon from 'src/components/icons/LogoutIcon';
+import InventoryIcon from 'src/components/icons/InventoryIcon';
+import DropdownMenu from 'src/components/DropdownMenu';
+import Link from 'next/link';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
@@ -22,7 +27,7 @@ interface IProp {
 
 const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   const { valueNFT: assetDetail, handleLearnMore } = useWithDrawNFTContext();
-  const { handleDisplayPopoverWithdrawNFT } = useL2WalletContext();
+  const { handleDisplayPopoverWithdrawNFT, disconnectL2Wallet } = useL2WalletContext();
 
   const [isPending, setIsPending] = useState<boolean>(false);
   const { data, isLoading, refetch } = useQuery(
@@ -47,8 +52,8 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   );
   const starkKey = `0x${starkKeyUser}`;
   const { event } = useGA4();
-  const { user } = useAuthenticationContext();
-  const { address } = useWalletContext();
+  const { user, logout } = useAuthenticationContext();
+  const { address, disconnect } = useWalletContext();
 
   const handleConfirmWithdrawNftOffchain = async () => {
     /// call api confirm withdraw
@@ -100,6 +105,56 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
   return (
     <>
       <div className="grow">
+        <div className="flex justify-between">
+          <div
+            className="flex cursor-pointer items-center"
+            onClick={() => handleDisplayPopoverWithdrawNFT(false)}>
+            <ArrowIcon direction="left" />
+            <div className="text-base/10 ml-2 text-[20px]">Withdraw</div>
+          </div>
+          <DropdownMenu>
+            <DropdownMenu.Trigger asChild>
+              <div className="text-primary/6">
+                <ThreeDotsVerticalIcon className="text-base/9" size={32} />
+              </div>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content
+              sideOffset={8}
+              align="end"
+              className="text-base/2 rounded-md bg-current p-3">
+              <DropdownMenu.Arrow className="translate-x-3 fill-current" />
+              <div className="text-white">
+                <button
+                  className="body-14-medium flex items-center space-x-2.5 text-white"
+                  onClick={() => {
+                    disconnect();
+                    disconnectL2Wallet();
+                    logout();
+                  }}>
+                  <i className="w-4">
+                    <LogoutIcon />
+                  </i>
+                  <span>Disconnect</span>
+                </button>
+                <div className="mt-2 text-white">
+                  <Link href={'/marketplace/inventory'}>
+                    <a
+                      href={'/marketplace/inventory'}
+                      className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white"
+                      onClick={() => handleDisplayPopoverWithdrawNFT(false)}>
+                      <i className="w-4">
+                        <InventoryIcon />
+                      </i>
+                      <span>
+                        <Trans>Inventory</Trans>
+                      </span>
+                    </a>
+                  </Link>
+                </div>
+              </div>
+            </DropdownMenu.Content>
+          </DropdownMenu>
+        </div>
         <div
           className="mx-auto mt-14 flex h-16 w-16 justify-center bg-cover bg-center rounded-full"
           style={{

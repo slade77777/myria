@@ -17,17 +17,18 @@ import { WarningNodeType } from './Modals/WhiteListSale';
 import PrivacyPolicyModal from './Modals/PrivacyPolicyModal';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import useNodePurchase from '../../hooks/useNodePurchase';
+import { toast } from 'react-toastify';
 
 const licenses = [
   {
     key: 'term',
     content: <span>I have read, understood and agree to sign the </span>,
-    action: 'future node purchase agreement'
+    action: 'Terms & conditions'
   },
   {
     key: 'privacy',
     content: <span>I have read, understood and agree to the </span>,
-    action: 'privacy policy'
+    action: 'Privacy policy'
   }
 ];
 
@@ -53,9 +54,9 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
     handleSubmit,
     control,
     formState: { errors, isValid },
-    setValue
+    reset,
+    getValues
   } = useForm({ resolver: yupResolver(schema), mode: 'onChange' });
-
   const { data: nodeData } = useNodePurchase();
 
   const price = nodeData?.nodePriceInETH ? +nodeData.nodePriceInETH : 0;
@@ -64,18 +65,22 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
   const doPurchase = useCallback(
     (data: any) => {
       const { quantity } = data;
-      onPlaceOrder({
-        quantity,
-        totalPriceEth: price * quantity,
-        totalPriceUsd: price * quantity * etheCost,
-        toAddress: nodeData?.destinationAddress || '0xFdd2A40B69b7d5fD8Ae71222c84c814497A711B6'
-      });
-      event('Node Order Placed', {
-        campaign: 'Nodes',
-        wallet_address: address,
-        node_quantity: quantity,
-        order_status: 'Completed'
-      });
+      if (nodeData?.destinationAddress) {
+        onPlaceOrder({
+          quantity,
+          totalPriceEth: price * quantity,
+          totalPriceUsd: price * quantity * etheCost,
+          toAddress: nodeData.destinationAddress
+        });
+        event('Node Order Placed', {
+          campaign: 'Nodes',
+          wallet_address: address,
+          node_quantity: quantity,
+          order_status: 'Completed'
+        });
+      } else {
+        toast.error('cannot process purchase, Please try later!');
+      }
     },
     [onPlaceOrder, price, etheCost, nodeData?.destinationAddress, event, address]
   );
@@ -93,12 +98,14 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
 
   const onAgreeAgreement = () => {
     setFirstLicense(false);
-    setValue('term', true);
+    const values = getValues();
+    reset({ ...values, term: true });
   };
 
   const onAgreePolicy = () => {
     setShowPrivacy(false);
-    setValue('privacy', true);
+    const values = getValues();
+    reset({ ...values, privacy: true });
   };
 
   return (
@@ -137,6 +144,7 @@ const Order: React.FC<IOrderProps> = ({ onPlaceOrder, warningType }) => {
                 control={control}
                 render={({ field }) => (
                   <NumberInput
+                    max={nodeData?.canPurchaseCount || 2}
                     setQuantityNumber={(val: number) => {
                       field.onChange(val);
                       event('Node Order Updated', {

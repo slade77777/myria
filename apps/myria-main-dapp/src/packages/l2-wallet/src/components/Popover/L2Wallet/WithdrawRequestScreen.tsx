@@ -49,7 +49,7 @@ export default function WithdrawRequestScreen({
           )}
         </div>
         <div className="text-base/9 mt-4 px-7 text-center text-sm">
-          {!withdrawInProgress ? (
+          {withdrawInProgress ? (
             <>
               <Trans>
                 Withdrawals are processed in batches every 20 hours. Click
