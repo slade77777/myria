@@ -118,7 +118,7 @@ const Marketplace: React.FC = () => {
                     </div>
                   }>
                   <AssetList
-                    // title={'Explore'}
+                    title="Explore"
                     items={items?.map((elm: any, index: number) => {
                       const isOrder = Array.isArray(elm?.order);
                       const item: NFTItemType = {
