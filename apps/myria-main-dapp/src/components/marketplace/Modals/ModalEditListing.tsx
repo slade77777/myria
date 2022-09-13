@@ -129,7 +129,7 @@ export const ModalEditListing: React.FC<Props> = ({
               <DAOIcon />
             </div>
             <Input
-              type="text"
+              type="number"
               {...register('price', {
                 required: true,
                 onChange: (e) => {
