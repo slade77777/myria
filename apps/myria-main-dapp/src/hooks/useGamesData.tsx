@@ -1,5 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import { useMemo } from 'react';
+import dataJson from 'src/components/games/data-json';
 import { socialLinks } from 'src/configs';
 import { Asset } from '../pages/game-detail/[id]';
 
@@ -431,7 +432,8 @@ export default function useGamesData() {
           href: process.env.NEXT_PUBLIC_MOONVILLE_URL || ''
         },
         gameUrl: process.env.NEXT_PUBLIC_MOONVILLE_URL || ''
-      }
+      },
+      ...dataJson
     }),
     []
   );

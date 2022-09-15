@@ -1,0 +1,67 @@
+{
+  "elite-tiger-planet": {
+    "shortcut": {
+      "image": "/images/partner-games/14-elite-tiger-planet/logo.png",
+      "title": "Elite Tiger Planet",
+      "feature": "Multi Player",
+      "genre": ["NFT Project"],
+      "publisher": "Myria Studios",
+      "id": "elite-tiger-planet"
+    },
+    "discord": "https://discord.gg/cYAwvznjfF",
+    "headerBg": "",
+    "title": "Elite Tiger Planet",
+    "description": "A unique collection 3D Elite Money Maker Tigers on ETH Network are ready to invade into the Metaverse With Own P2E MMORPG Game, Own Crypto & Online Marketplace ",
+    "logo": "/images/partner-games/14-elite-tiger-planet/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/14-elite-tiger-planet/banner_1.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "A unique collection 3D Elite Money Maker Tigers on ETH Network are ready to invade into the Metaverse With Own P2E MMORPG Game, Own Crypto & Online Marketplace "
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["elitetigerplanet@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/EliteTigerNFT"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["https://instagram.com/elitetigerplanet?igshid=YmMyMTA2M2Y="]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Elite Tech"
+      },
+      {
+        "label": "Platform",
+        "value": "Web"
+      },
+      {
+        "label": "Genre",
+        "value": "NFT Project"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "http://elitetigerplanet.com/"
+    },
+    "gameUrl": "http://elitetigerplanet.com/"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "dragonary": {
+    "shortcut": {
+      "image": "/images/partner-games/12-dragonary/logo.png",
+      "title": "Dragonary",
+      "feature": "Multi Player",
+      "genre": ["RPG Game"],
+      "publisher": "Myria Studios",
+      "id": "dragonary"
+    },
+    "discord": "https://discord.gg/Bm8N6k8mHb",
+    "headerBg": "",
+    "title": "Dragonary",
+    "description": "About Dragonary\n\nDragonary is the first NFT-Game developed by Coinary LTD. In this game, you can raise and battle with your army of dragons. Competitiveness is all that matters. Being the best is the goal, and beating everyone is the price. If you have a good strategy with your barracks, you could be invincible.\n\nBreed, Battle, and Conquer!\n\nYour Army can be prepared as you pleased. Get ready to create new eggs, fuse dragons, improve their stats and increase their rarities. Plan your own strategy to have the best team possible. Become a real dragon tamer and take the victory!\n\nAscend to glory with your allies\n\nGuilds are one of the most important features of Dragonary. They are part of the internal process of the game, testing updates, searching bugs, and testing in-coming Coinary´s games. You can join any of them or create your own guild. Besides, If you want to compete in official tournaments, you must be part of them. Battle in community will give you more abilities and strength to compete and win. \n\nNFT or Virtual. Either Way, you can play.\n\nThere are 2 ways you can play, with an NFT account, or with a virtual one. If you have an NFT account, you are going to receive Coinary Tokens everyday you make the obsidian. Either way, you will be able to experience the best of Dragonarya and what it has to offer. Completing missions, earning rewards, opening chest and battle against friends are just the top of the iceberg.",
+    "logo": "/images/partner-games/12-dragonary/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/12-dragonary/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/12-dragonary/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/12-dragonary/banner_3.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "About Dragonary\n\nDragonary is the first NFT-Game developed by Coinary LTD. In this game, you can raise and battle with your army of dragons. Competitiveness is all that matters. Being the best is the goal, and beating everyone is the price. If you have a good strategy with your barracks, you could be invincible.\n\nBreed, Battle, and Conquer!\n\nYour Army can be prepared as you pleased. Get ready to create new eggs, fuse dragons, improve their stats and increase their rarities. Plan your own strategy to have the best team possible. Become a real dragon tamer and take the victory!\n\nAscend to glory with your allies\n\nGuilds are one of the most important features of Dragonary. They are part of the internal process of the game, testing updates, searching bugs, and testing in-coming Coinary´s games. You can join any of them or create your own guild. Besides, If you want to compete in official tournaments, you must be part of them. Battle in community will give you more abilities and strength to compete and win. \n\nNFT or Virtual. Either Way, you can play.\n\nThere are 2 ways you can play, with an NFT account, or with a virtual one. If you have an NFT account, you are going to receive Coinary Tokens everyday you make the obsidian. Either way, you will be able to experience the best of Dragonarya and what it has to offer. Completing missions, earning rewards, opening chest and battle against friends are just the top of the iceberg."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["contacto@coinary.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/DragonaryGame"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["https://linktr.ee/dragonary"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Coinary LTD"
+      },
+      {
+        "label": "Platform",
+        "value": "PC, iOS, Android, MAC"
+      },
+      {
+        "label": "Genre",
+        "value": "RPG Game"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://dragonary.com/"
+    },
+    "gameUrl": "https://dragonary.com/"
+  }
+}

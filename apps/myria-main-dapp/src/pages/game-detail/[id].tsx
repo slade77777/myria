@@ -20,6 +20,7 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import { localStorageKeys } from 'src/configs';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import dataJson from 'src/components/games/data-json';
 
 export type Asset = {
   type: 'video' | 'image';
@@ -217,13 +218,17 @@ const GameDetail: React.FC = () => {
 };
 
 export async function getStaticPaths() {
+  const listIdGame = Object.keys(dataJson).map((item) => {
+    return { params: { id: item } };
+  });
   return {
     paths: [
       { params: { id: 'metarush' } },
       { params: { id: 'metakart' } },
       { params: { id: 'block-royale' } },
       { params: { id: 'starstrike' } },
-      { params: { id: 'moonville-farms' } }
+      { params: { id: 'moonville-farms' } },
+      ...listIdGame
     ],
     fallback: false
   };

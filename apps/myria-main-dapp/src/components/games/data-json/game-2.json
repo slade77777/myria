@@ -1,0 +1,91 @@
+{
+  "adamant-mine": {
+    "shortcut": {
+      "image": "/images/partner-games/02-adamant-mine/logo.png",
+      "title": "Adamant Mine",
+      "feature": "Multi Player",
+      "genre": ["Casual", "Puzzle", "Arcade"],
+      "publisher": "Myria Studios",
+      "id": "adamant-mine"
+    },
+    "discord": "discord.gg/adamant",
+    "headerBg": "",
+    "title": "Adamant Mine",
+    "description": "Adamant Mine is an NFT game that allows the players to EARN, DONATE, and BURN.\n    It is a 2-D Mining game with block type graphics. The game has two game modes, Normal mode and Survival mode.",
+    "logo": "/images/partner-games/02-adamant-mine/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/02-adamant-mine/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/02-adamant-mine/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/02-adamant-mine/banner_3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/02-adamant-mine/banner_4.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "ABOUT THE PROJECT",
+        "paragraph": [
+          "Adamant Mine is an NFT game that allows the players to EARN, DONATE, and BURN.\n          It is a 2-D Mining game with block type graphics. The game has two game modes, Normal mode and Survival mode."
+        ]
+      },
+      {
+        "heading": "Normal Mode",
+        "paragraph": [
+          "The contents of each block will be visible. As you play the game you can get those rewards and endlessly accumulate them. You can claim those items at any time you want.\n          If you die in the game, you return to the top with a new map to explore. Despite starting again from the top, you won't lose any unclaimed $ADMC blocks mined.\n          You can play the game over and over again as long as you still have energy points."
+        ]
+      },
+      {
+        "heading": "Survival Mode",
+        "paragraph": [
+          "In this mode, you don’t use up energy at all!\n          Upon starting the game, you will automatically drop down and will only have the choice of moving either left or right. Your character will start to drop down faster and faster as you go deeper.\n          The goal of this mode is to mine as many adamant blocks as possible while trying to avoid the bombs as you fall faster. Once you hit a bomb, the game is over."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["dom@adamantcoin.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/AdamantMine"]
+      },
+      {
+        "heading": "",
+        "paragraph": ["Start mining today!"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Adamant Metanetwork"
+      },
+      {
+        "label": "Platform",
+        "value": "Web"
+      },
+      {
+        "label": "Genre",
+        "value": "Casual, Puzzle, Arcade"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://adamantmine.com/"
+    },
+    "gameUrl": "https://adamantmine.com/"
+  }
+}

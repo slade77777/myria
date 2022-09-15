@@ -1,0 +1,63 @@
+{
+  "emoji-xox": {
+    "shortcut": {
+      "image": "/images/partner-games/11-emoji-xox/logo.jpg",
+      "title": "Emoji xox",
+      "feature": "Multi Player",
+      "genre": ["NFT"],
+      "publisher": "Myria Studios",
+      "id": "emoji-xox"
+    },
+    "discord": "https://discord.com/invite/J9WjzNmHpa",
+    "headerBg": "",
+    "title": "Emoji xox",
+    "description": "express yourself with emoji\n\nExpress yourself with emojis, don't get tired of talking in a\ncomprehensive project silogan inspired by 3D gif-shaped emos that \nare completely authentic",
+    "logo": "/images/partner-games/11-emoji-xox/logo.jpg",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/11-emoji-xox/banner_1.jpg"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "express yourself with emoji\n\nExpress yourself with emojis, don't get tired of talking in a\ncomprehensive project silogan inspired by 3D gif-shaped emos that \nare completely authentic"
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["hello.emojixox@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/emojixox"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "XOX"
+      },
+      {
+        "label": "Platform",
+        "value": "n/a"
+      },
+      {
+        "label": "Genre",
+        "value": "NFT"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://emojixox.io/"
+    },
+    "gameUrl": "https://emojixox.io/"
+  }
+}
