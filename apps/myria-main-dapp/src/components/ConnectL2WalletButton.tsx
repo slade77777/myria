@@ -81,23 +81,6 @@ const ConnectL2WalletButton: React.FC = () => {
   }, [walletAddress, localStarkKey, user?.wallet_id, address, installedWallet]);
 
   useEffect(() => {
-    if (userProfileQuery.isFetching) {
-      return;
-    }
-
-    if (
-      address &&
-      !user?.user_id &&
-      !loginByWalletMutation.isLoading &&
-      !loginByWalletMutation.isError &&
-      userProfileQuery.isFetched &&
-      !userProfileQuery.data
-    ) {
-      loginByWalletMutation.mutate();
-    }
-  }, [address, user, loginByWalletMutation, userProfileQuery]);
-
-  useEffect(() => {
     if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
       setShowMismatchedWalletModal(true);
     }
