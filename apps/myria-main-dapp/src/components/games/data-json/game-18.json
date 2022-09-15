@@ -1,0 +1,61 @@
+{
+  "everydaysheroe": {
+    "shortcut": {
+      "image": "/images/partner-games/18-everydays-heroe/logo.png",
+      "title": "Everydaysheroe",
+      "feature": "Multi Player",
+      "genre": ["NFT"],
+      "publisher": "Myria Studios",
+      "id": "everydaysheroe"
+    },
+    "discord": "https://discord.com/invite/rRVTjxEfw4",
+    "headerBg": "",
+    "title": "Everydaysheroe",
+    "description": "Sent to Jason via email",
+    "logo": "/images/partner-games/18-everydays-heroe/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/18-everydays-heroe/banner.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": ["Sent to Jason via email"]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["everydaysheroesnfts@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/EverydaySheroe"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "EverydaySHEROE"
+      },
+      {
+        "label": "Platform",
+        "value": "N/A"
+      },
+      {
+        "label": "Genre",
+        "value": "NFT "
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "http://everydaysheroe.io"
+    },
+    "gameUrl": "http://everydaysheroe.io"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "carnage-carnival": {
+    "shortcut": {
+      "image": "/images/partner-games/08-carnage-carnival/logo.png",
+      "title": "Carnage Carnival",
+      "feature": "Multi Player",
+      "genre": ["MOBA"],
+      "publisher": "Myria Studios",
+      "id": "carnage-carnival"
+    },
+    "discord": "https://discord.gg/TzrFaXcthe",
+    "headerBg": "",
+    "title": "Carnage Carnival",
+    "description": "Carnage Carnival is a free to play, play and earn MOBA game that utilizes blockchain technology. It’s a competitive team versus team game that rewards players in conjunction to their respective skills and knowledge of the game. Create your own META build with our heroes, mask & weapon to suit your play style. Compete in an E-sport ready game environment and earn your right to become the Ringmaster.",
+    "logo": "/images/partner-games/08-carnage-carnival/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/08-carnage-carnival/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/08-carnage-carnival/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/08-carnage-carnival/banner_3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/08-carnage-carnival/banner_4.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/08-carnage-carnival/banner_5.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Carnage Carnival is a free to play, play and earn MOBA game that utilizes blockchain technology. It’s a competitive team versus team game that rewards players in conjunction to their respective skills and knowledge of the game. Create your own META build with our heroes, mask & weapon to suit your play style. Compete in an E-sport ready game environment and earn your right to become the Ringmaster."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["hello@carnagecarnival.io"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/Cng_Carnival"]
+      },
+      {
+        "heading": "Balanced NFT Ecosystem",
+        "paragraph": [
+          "Unlike other NFT game projects where there’s an oversupply of NFTs minting the reward token, we created a balance ecosystem of minting and decaying of our NFTs. We do this by introducing our NFT Building system whereby, after our initial sales, only the NFT building owners will be able to produce NFT heroes/equipment aside from Limited Edition/Partnership NFTs."
+        ]
+      },
+      {
+        "heading": "E-Sport Ready",
+        "paragraph": [
+          "Our game will focus on the competitive gaming scene, with a leaderboard system, seasonal rewards and tournament hosting capabilities."
+        ]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["https://t.me/CarnageCarnival"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Carnage Carnival"
+      },
+      {
+        "label": "Platform",
+        "value": "PC, iOS, Android"
+      },
+      {
+        "label": "Genre",
+        "value": "MOBA"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://carnagecarnival.io"
+    },
+    "gameUrl": "https://carnagecarnival.io"
+  }
+}

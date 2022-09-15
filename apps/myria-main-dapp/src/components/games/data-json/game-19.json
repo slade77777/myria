@@ -1,0 +1,77 @@
+{
+  "crystals-of-fate": {
+    "shortcut": {
+      "image": "/images/partner-games/19-crystals-of-fate/logo.png",
+      "title": "Crystals of Fate",
+      "feature": "Multi Player",
+      "genre": ["Collectible Card Game"],
+      "publisher": "Myria Studios",
+      "id": "crystals-of-fate"
+    },
+    "discord": "https://discord.gg/zDVCaRe9WD",
+    "headerBg": "",
+    "title": "Crystals of Fate",
+    "description": "Next-generation competitive collectible card game. Play, Battle, Trade, Earn.",
+    "logo": "/images/partner-games/19-crystals-of-fate/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/19-crystals-of-fate/banner_1.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/19-crystals-of-fate/banner_2.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/19-crystals-of-fate/banner_3.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Next-generation competitive collectible card game. Play, Battle, Trade, Earn."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["jmckay@skymarch-entertainment.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/crystalsoffate"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://t.me/Skymarch_Collectors\nhttps://www.facebook.com/CrystalsofFate\nhttps://www.youtube.com/channel/UCmg9NPExNEJ2cwftz03y1BA"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Skymarch Entertainment"
+      },
+      {
+        "label": "Platform",
+        "value": "PC, Android, iOS"
+      },
+      {
+        "label": "Genre",
+        "value": "Collectible Card Game"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://www.crystalsoffate.com/"
+    },
+    "gameUrl": "https://www.crystalsoffate.com/"
+  }
+}

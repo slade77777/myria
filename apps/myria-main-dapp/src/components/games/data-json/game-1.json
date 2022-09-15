@@ -1,0 +1,77 @@
+{
+  "wing-of-misadventure": {
+    "shortcut": {
+      "image": "/images/partner-games/01-wing-of-misadventure/logo.png",
+      "title": "Wing of Misadventure",
+      "feature": "Multi Player",
+      "genre": ["MMORPG"],
+      "publisher": "Myria Studios",
+      "id": "wing-of-misadventure"
+    },
+    "discord": "https://discord.com/invite/wingofmisadventure",
+    "headerBg": "",
+    "title": "Wing of Misadventure",
+    "description": "Wing of Misadventure is a metaverse based on the world of Misadventure, the main idea of ​​the project is to create multiple game series and make possible for players to dictate an economy based on crypto tokens.",
+    "logo": "/images/partner-games/01-wing-of-misadventure/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/01-wing-of-misadventure/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/01-wing-of-misadventure/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/01-wing-of-misadventure/banner_3.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Wing of Misadventure is a metaverse based on the world of Misadventure, the main idea of ​​the project is to create multiple game series and make possible for players to dictate an economy based on crypto tokens."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["wingofmisadventure@4tabern.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/wingofmisad"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://t.me/WingOfMisadventure\n          https://www.youtube.com/c/WingofMisadventure\n          https://medium.com/@wingofmisadventure\n          https://www.instagram.com/wingofmisadventure/\n          https://www.facebook.com/wingofmisadventure"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "4Tabern"
+      },
+      {
+        "label": "Platform",
+        "value": "PC, iOS, Android"
+      },
+      {
+        "label": "Genre",
+        "value": "MMORPG"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://wingofmisadventure.4tabern.com/"
+    },
+    "gameUrl": "https://wingofmisadventure.4tabern.com/"
+  }
+}

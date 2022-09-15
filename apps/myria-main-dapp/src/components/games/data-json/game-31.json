@@ -1,0 +1,83 @@
+{
+  "warp-game": {
+    "shortcut": {
+      "image": "/images/partner-games/31-warp-game/logo.png",
+      "title": "WARP Game",
+      "feature": "Multi Player",
+      "genre": ["Sci Fi"],
+      "publisher": "Myria Studios",
+      "id": "warp-game"
+    },
+    "discord": "https://discord.com/invite/warpbond",
+    "headerBg": "",
+    "title": "WARP Game",
+    "description": "WARP brings together the best components of blockchain and gaming in a single, multifaceted package: GameFi, NFTs, DeFi and multichain integration, all in a sci-fi multiverse.  We aim to enhance the GameFi experience within a sustainable economy built around the WARP token.",
+    "logo": "/images/partner-games/31-warp-game/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/31-warp-game/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/31-warp-game/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/31-warp-game/banner_3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/31-warp-game/banner_4.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/31-warp-game/banner_5.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "WARP brings together the best components of blockchain and gaming in a single, multifaceted package: GameFi, NFTs, DeFi and multichain integration, all in a sci-fi multiverse.  We aim to enhance the GameFi experience within a sustainable economy built around the WARP token."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["marketing@warpbond.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/warpbond"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["Telegram: https://t.me/warpbond"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Axion Digital Technologies"
+      },
+      {
+        "label": "Platform",
+        "value": "WEB"
+      },
+      {
+        "label": "Genre",
+        "value": "Sci Fi"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://warp.game/"
+    },
+    "gameUrl": "https://warp.game/"
+  }
+}

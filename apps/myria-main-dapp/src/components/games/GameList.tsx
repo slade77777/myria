@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import Badge from '../Badge';
 import Filter, { ActiveFilter, FilterList } from '../Filter';
 import Overlay from '../overlay/Overlay';
+import dataJson from 'src/components/games/data-json';
 
 const filters: FilterList = [
   {
@@ -149,7 +150,8 @@ export const games: {
     id: 'cricket',
     comingsoon: true,
     link: '/cricket'
-  }
+  },
+  ...Object.values(dataJson).map((item: any) => item.shortcut)
 ];
 
 const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
@@ -199,15 +201,16 @@ const GameList: React.FC = () => {
   });
 
   return (
-    <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8">
-      <div className="min-w-[184px]">
-        <p className="text-[20px] font-medium leading-[1.5]">Filter</p>
-        <Filter
-          filterList={filters}
-          activeFilter={filter}
-          setFilter={(activeFilter) => setFilter(activeFilter)}
-        />
-      </div>
+    // <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8 w-full">
+    // <div className="min-w-[184px]">
+    //   <p className="text-[20px] font-medium leading-[1.5]">Filter</p>
+    //   <Filter
+    //     filterList={filters}
+    //     activeFilter={filter}
+    //     setFilter={(activeFilter) => setFilter(activeFilter)}
+    //   />
+    // </div>
+    <div className="w-full">
       <div className={clsx('mt-7 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4')}>
         {filteredGames.map((item, idx) => (
           <div key={idx} className="snap-start">

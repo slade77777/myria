@@ -1,0 +1,83 @@
+{
+  "gunstar-metaverse": {
+    "shortcut": {
+      "image": "/images/partner-games/16-gunstar-metaverse/logo.jpg",
+      "title": "Gunstar Metaverse",
+      "feature": "Multi Player",
+      "genre": ["Turn-based Artillery Strategy"],
+      "publisher": "Myria Studios",
+      "id": "gunstar-metaverse"
+    },
+    "discord": "https://discord.com/invite/cE2RD43Snn",
+    "headerBg": "",
+    "title": "Gunstar Metaverse",
+    "description": "First mini game from MadGum. Each holder of our NFT will be able to claim free chips as NFTs with his character on them and start playing for them with other holders. Play and collect opponent's chips. Can you collect them all?",
+    "logo": "/images/partner-games/16-gunstar-metaverse/logo.jpg",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/16-gunstar-metaverse/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/16-gunstar-metaverse/banner_2.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/16-gunstar-metaverse/banner_3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/16-gunstar-metaverse/banner_4.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/16-gunstar-metaverse/banner_5.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "First mini game from MadGum. Each holder of our NFT will be able to claim free chips as NFTs with his character on them and start playing for them with other holders. Play and collect opponent's chips. Can you collect them all?"
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["hello@gunstar.io"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/GunStar_io"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["TG: https://t.me/GunStarGlobal\n TG ANN: https://t.me/GunStarAnnouncements"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Gunstar Labs"
+      },
+      {
+        "label": "Platform",
+        "value": "Web3, iOS & Android"
+      },
+      {
+        "label": "Genre",
+        "value": "Turn-based Artillery Strategy"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://gunstar.io/"
+    },
+    "gameUrl": "https://gunstar.io/"
+  }
+}

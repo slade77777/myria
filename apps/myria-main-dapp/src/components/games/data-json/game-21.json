@@ -1,0 +1,73 @@
+{
+  "planet-eaters-game": {
+    "shortcut": {
+      "image": "/images/partner-games/21-planet-eaters-game/logo.jpeg",
+      "title": "Planet Eaters Game",
+      "feature": "Multi Player",
+      "genre": ["Battle Hunt", "Treasure Hunt", "Base Building with RPG Aspects"],
+      "publisher": "Myria Studios",
+      "id": "planet-eaters-game"
+    },
+    "discord": "https://discord.com/invite/vKggRQAm3C",
+    "headerBg": "",
+    "title": "Planet Eaters Game",
+    "description": "Planet Eaters is an exciting open world Battle Hunt game with role-playing aspects. Players complete missions, join teams, and battle against each other. Planet Eaters utilizes a token and NFT-based economy to reward players and enable them to upgrade their in-game characters called Dorts, by purchasing equipment, attributes, skins and weapons. They will also be able to lend or trade artifacts and valuables in the PE marketplace while exploring unknown environments. Players must engage in sanctioned \"\"Battle Hunts\"\" to gather resources needed for their survival, by order of Corporation Z. \nOur token economy allows holders to participate in the growth and success of the Planet Eaters ecosystem.",
+    "logo": "/images/partner-games/21-planet-eaters-game/logo.jpeg",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/21-planet-eaters-game/banner_1.jpeg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/21-planet-eaters-game/banner_2.jpeg"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Planet Eaters is an exciting open world Battle Hunt game with role-playing aspects. Players complete missions, join teams, and battle against each other. Planet Eaters utilizes a token and NFT-based economy to reward players and enable them to upgrade their in-game characters called Dorts, by purchasing equipment, attributes, skins and weapons. They will also be able to lend or trade artifacts and valuables in the PE marketplace while exploring unknown environments. Players must engage in sanctioned \"\"Battle Hunts\"\" to gather resources needed for their survival, by order of Corporation Z. \nOur token economy allows holders to participate in the growth and success of the Planet Eaters ecosystem."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["planeteatersgame@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/planeteatersnft"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "http://t.me/planeteaterschat\nhttps://www.instagram.com/planeteaters\nhttps://www.facebook.com/PlanetEatersGame/\nhttps://medium.com/planeteatersgame"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Planet Eaters"
+      },
+      {
+        "label": "Platform",
+        "value": "PC"
+      },
+      {
+        "label": "Genre",
+        "value": "Battle Hunt/Treasure Hunt/ Base Building with RPG Aspects"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "www.planeteaters.com"
+    },
+    "gameUrl": "www.planeteaters.com"
+  }
+}
