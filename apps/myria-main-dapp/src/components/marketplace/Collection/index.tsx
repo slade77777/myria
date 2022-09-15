@@ -1,6 +1,6 @@
 import { AssetOrderBy } from 'myria-core-sdk';
 import { AssetByCollectionIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, memo, useEffect, useMemo, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { MyriaIcon } from 'src/components/icons/MyriaIcon';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
@@ -12,6 +12,7 @@ import avatar from '../../../../public/images/marketplace/avatar.png';
 import AssetList from '../AssetList';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
 import TailSpin from 'src/components/icons/TailSpin';
+import { useFilterSortContext } from 'src/context/filter-sort-context';
 
 interface Props {
   collection: AssetByCollectionIdResponse;
@@ -24,31 +25,29 @@ export const dataSorting = [
 ];
 
 const Collection: FC<Props> = ({ collection }) => {
-  const [selectedSort, setSelectedSort] = useState({
-    sortingField: 'createdAt',
-    orderBy: undefined
-  });
-
+  const { sorting, handleUpdateSort } = useFilterSortContext();
   const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale, id } =
     collection;
   const { fetchNextPage, refetch, hasNextPage, isFetchingNextPage, result, isFetching } =
     useCollectionAsset({
       collectionId: id,
-      sortingField: selectedSort.sortingField,
-      orderBy: selectedSort.orderBy
+      sortingField: sorting.sortingField,
+      orderBy: sorting.orderBy
     });
   const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
 
   const handleSelected = async (e: any) => {
-    if (e.val === AssetOrderBy.ASC || e.val === AssetOrderBy.DESC) {
-      setSelectedSort({
+    if (e.sortingField === 'createdAt') {
+      handleUpdateSort({
+        orderBy: undefined,
         sortingField: e.sortingField,
-        orderBy: e.val
+        name: e.name
       });
     } else {
-      setSelectedSort({
-        ...selectedSort,
-        sortingField: e.sortingField
+      handleUpdateSort({
+        orderBy: e.val,
+        sortingField: e.sortingField,
+        name: e.name
       });
     }
   };
@@ -101,14 +100,14 @@ const Collection: FC<Props> = ({ collection }) => {
               <div className="w-1/5 ">
                 <SelectOrderBy
                   data={dataSorting}
-                  selectedDefault={'Recently listed'}
+                  selectedDefault={sorting.name}
                   changeHandler={handleSelected}
                 />
               </div>
             </div>
             <div className="mt-10">
-              {isFetching && !isFetchingNextPage ? (
-                <div className="flex items-center justify-center w-full mt-6" key={0}>
+              {isFetching && !result?.data?.pages && !isFetchingNextPage ? (
+                <div className="mt-6 flex w-full items-center justify-center" key={0}>
                   <TailSpin />
                 </div>
               ) : (
@@ -121,7 +120,7 @@ const Collection: FC<Props> = ({ collection }) => {
                   }}
                   hasMore={!isFetchingNextPage && hasNextPage}
                   loader={
-                    <div className="flex items-center justify-center w-full mt-6" key={0}>
+                    <div className="mt-6 flex w-full items-center justify-center" key={0}>
                       <TailSpin />
                     </div>
                   }>

@@ -13,16 +13,19 @@ import MessageMobileView from 'src/components/marketplace/Modals/MessageMobileVi
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
+import { useFilterSortContext } from 'src/context/filter-sort-context';
 import useCheckMobileView from 'src/hooks/useCheckMobileView';
 import { assetModule } from 'src/services/myriaCore';
 import { getItemsPagination, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';
 const Marketplace: React.FC = () => {
   const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
-  const [selectedSort, setSelectedSort] = useState({
-    sortingField: 'createdAt',
-    orderBy: AssetOrderBy.ASC
-  });
+  // const [selectedSort, setSelectedSort] = useState({
+  //   sortingField: 'createdAt',
+  //   orderBy: AssetOrderBy.ASC
+  // });
+
+  const { sorting, handleUpdateSort } = useFilterSortContext();
 
   const {
     fetchNextPage,
@@ -36,15 +39,15 @@ const Marketplace: React.FC = () => {
     isFetched,
     ...result
   } = useInfiniteQuery(
-    ['homepage', 'listorder', selectedSort],
+    ['homepage', 'listorder', sorting],
     ({ pageParam = 1 }) =>
       assetModule?.getNftAssetsByStatus({
         limit: 15,
         orderType: OrderType.SELL,
         page: pageParam,
         status: OrderStatus.ACTIVE,
-        sortingField: selectedSort.sortingField,
-        orderBy: selectedSort.orderBy
+        sortingField: sorting.sortingField,
+        orderBy: sorting.orderBy
       }),
     {
       getNextPageParam: (lastPage, pages) => {
@@ -59,15 +62,17 @@ const Marketplace: React.FC = () => {
   );
 
   const handleSelected = (e: any) => {
-    if (e.val === AssetOrderBy.ASC || e.val === AssetOrderBy.DESC) {
-      setSelectedSort({
+    if (e.sortingField === 'createdAt') {
+      handleUpdateSort({
+        orderBy: undefined,
         sortingField: e.sortingField,
-        orderBy: e.val
+        name: e.name
       });
     } else {
-      setSelectedSort({
-        ...selectedSort,
-        sortingField: e.sortingField
+      handleUpdateSort({
+        orderBy: e.val,
+        sortingField: e.sortingField,
+        name: e.name
       });
     }
   };
@@ -92,15 +97,15 @@ const Marketplace: React.FC = () => {
             <div className="w-1/5 pt-[52px]">
               <SelectOrderBy
                 data={dataSorting}
-                selectedDefault={'Recently listed'}
+                selectedDefault={sorting.name}
                 changeHandler={handleSelected}
               />
             </div>
           </div>
           <section className="mb-20 mt-[6px]">
-            <div className="overflow-y-hidden overflow-x-auto">
+            <div className="overflow-x-auto overflow-y-hidden">
               {isFetching && !result.data?.pages && !isFetchingNextPage ? (
-                <div className="flex items-center justify-center w-full mt-6" key={0}>
+                <div className="mt-6 flex w-full items-center justify-center" key={0}>
                   <TailSpin />
                 </div>
               ) : (
@@ -113,7 +118,7 @@ const Marketplace: React.FC = () => {
                   }}
                   hasMore={!isFetchingNextPage && hasNextPage}
                   loader={
-                    <div className="flex items-center justify-center w-full mt-6" key={0}>
+                    <div className="mt-6 flex w-full items-center justify-center" key={0}>
                       <TailSpin />
                     </div>
                   }>
