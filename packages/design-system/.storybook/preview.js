@@ -7,5 +7,14 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/
     }
+  },
+  backgrounds: {
+    default: 'myria',
+    values: [
+      {
+        name: 'myria',
+        value: '#040B10'
+      }
+    ]
   }
 };
