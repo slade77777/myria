@@ -141,7 +141,6 @@ export const ModalEditListing: React.FC<Props> = ({
               type="number"
               {...register('price')}
               onChange={(e: any) => {
-                if (!e.target.value) setValue('price', '');
                 if (parseFloat(e.target.value) < INPUT_MAX_LIMIT) setValue('price', e.target.value);
                 if (parseFloat(e.target.value) < MINIMUM_PRICE) {
                   setError('price', { message: `Minimum is ${MINIMUM_PRICE} price` });
