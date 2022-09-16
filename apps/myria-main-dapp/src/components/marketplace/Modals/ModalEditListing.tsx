@@ -6,9 +6,12 @@ import React, { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from 'src/components/core/Button';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import ETHWhite from 'src/components/icons/ETHWhite';
+import InfoCircle from 'src/components/icons/InfoCircle';
 import ProgressIcon from 'src/components/icons/ProgressIcon';
 import Input from 'src/components/Input';
 import Modal from 'src/components/Modal';
+import Tooltip from 'src/components/Tooltip';
 import { formatNumber2digits } from 'src/utils';
 import * as yup from 'yup';
 import { AssetStatus } from '../AssetDetails';
@@ -19,8 +22,6 @@ interface Props {
   onClose?: () => void;
   ethereum?: number;
   description?: string;
-  // titleConfirm?: string;
-  // labelInput: string;
   items?: AssetDetailsResponse;
   imgSrc?: string;
   onSubmit: (data: IFormInputs) => void;
@@ -99,7 +100,9 @@ export const ModalEditListing: React.FC<Props> = ({
   const onHandleError = (errors: any) => {
     setIsConfirmButton(false);
   };
-
+  const proceedsFrSale = useMemo(()=>{
+    return (items && ethPrice) ? (+ethPrice*(100-items?.fee[0]?.percentage)/100) : 0;
+  },[ethPrice, items])
   return (
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={defaultModal.title} className="shadow-[0_0_40px_10px_#0000004D] ">
@@ -161,7 +164,34 @@ export const ModalEditListing: React.FC<Props> = ({
               <span>${formatNumber2digits(ethPrice ? parseFloat(ethPrice) * ethereum : 0)}</span>
             </div>
           </div>
-          {description && <p className="mt-5 text-light">{description}</p>}
+          {description && <p className="text-light mt-5">{description}</p>}
+          <div className='flex flex-row items-center text-[#97AAB5] my-2'>
+            <span className='mr-2'>
+              <Trans>Proceeds from sale</Trans>
+            </span>
+            <ETHWhite/>
+            <span className='text-[#A1AFBA] ml-1'>{proceedsFrSale.toFixed(8)}</span>
+          </div>
+            <div className='flex flex-row items-center text-[#97AAB5]'>
+              <span className=''>
+                <Trans>Creator earnings</Trans>
+              </span>
+                <Tooltip>
+                  <Tooltip.Trigger asChild className="focus:outline-none cursor-pointer">
+                  <div className='flex flex-row items-center'>
+                    <InfoCircle className='ml-1 mr-3' />
+                    <ETHWhite/>
+                    <span className='text-[#A1AFBA] ml-1'>{(items && ethPrice) ? (+ethPrice-proceedsFrSale).toFixed(8) : 0}</span>
+                  </div>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content side='top' className="bg-base/5 max-w-[256px] ml-5">
+                      <Tooltip.Arrow  className='fill-base/5 ' width={16} height={8} />
+                      <p className="text-base/9">
+                        <Trans>The creator of this collection will earn</Trans>{' '+items?.fee[0].percentage+'% '}<Trans>of every sale.</Trans>
+                      </p>
+                  </Tooltip.Content>
+                </Tooltip>
+            </div>
           <div className="mt-8">
             <Button
               onClick={handleSubmit(onHandleSubmit, onHandleError)}

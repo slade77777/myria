@@ -34,7 +34,6 @@ export default function WithdrawNowScreen({
     localStorageKeys.starkKey,
     '',
   );
-  console.log('transactionDetail -> ', transactionDetail);
   const { showWithdrawCompleteScreen } = useL2WalletContext();
   const { refetch: refetchTransactionList, data: transactionHistoryData } =
     useTransactionList(localStarkKey);
@@ -51,12 +50,10 @@ export default function WithdrawNowScreen({
 
   const withdrawEthNow = async () => {
     let transactionId = null;
-    console.log('transactionHistoryData -> ', transactionHistoryData);
     if (
       transactionHistoryData?.length > 0 &&
       transactionDetail.isComeFrom === 'NOTIFICATION_TOAST'
     ) {
-      console.log('isComeFrom toast');
       const transactions: any = transactionHistoryData?.filter(
         (item: any, index: number) =>
           item.transactionType === TRANSACTION_TYPE.WITHDRAWAL &&
@@ -67,7 +64,6 @@ export default function WithdrawNowScreen({
         transactionId = transactions[0].transactionId;
       }
     } else if (transactionDetail.isComeFrom === WalletTabs.HISTORY) {
-      console.log('isComeFrom History');
       transactionId = transactionDetail.transactionId;
     }
 

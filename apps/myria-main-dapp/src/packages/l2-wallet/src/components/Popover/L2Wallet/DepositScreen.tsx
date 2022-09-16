@@ -77,17 +77,14 @@ export default function DepositScreen({
                   <Tooltip.Trigger className="focus:outline-none">
                     <InfoCircleIcon className="text-base/1" size={18} />
                   </Tooltip.Trigger>
-                  <Tooltip.Content className="mf-10 max-w-[256px]">
-                    <div className="bg-base/5 mf-10 absolute right-0 top-2 min-w-[256px] rounded-lg p-4">
-                      <div className="bg-base/5 absolute right-10 -mt-6 h-4 w-4 rotate-45"></div>
-                      <Tooltip.Arrow />
+                  <Tooltip.Content className=" bg-base/5 max-w-[256px] ml-[-100px]">
+                      <Tooltip.Arrow className='fill-base/5 mr-[200px]' width={16} height={8} />
                       <p className="text-base/9">
                         <Trans>
                           This is the amount you have available to deposit from
                           your L1 wallet.
                         </Trans>
                       </p>
-                    </div>
                   </Tooltip.Content>
                 </Tooltip>
               </div>
