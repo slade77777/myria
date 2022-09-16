@@ -65,20 +65,15 @@ export const ModalEditListing: React.FC<Props> = ({
     clearErrors,
     setValue,
     getValues,
-    formState: { errors, isDirty, isValid, isSubmitSuccessful }
+    formState: { errors, isSubmitSuccessful }
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   });
   const ethPrice = watch('price');
   const canConfirm = !isNaN(parseFloat(ethPrice)) && parseFloat(ethPrice) >= MINIMUM_PRICE;
-  console.log(canConfirm);
   const BUTTON_BG = useMemo(() => {
-    console.log('isDirty', isDirty);
-    console.log('isValid', isValid);
-    console.log('isSubmitSuccessful', isSubmitSuccessful);
-    console.log('canConfirm', canConfirm);
     return !isSubmitSuccessful && canConfirm ? 'btn-primary' : 'btn-disabled';
-  }, [isDirty, isValid, isSubmitSuccessful, canConfirm]);
+  }, [isSubmitSuccessful, canConfirm]);
 
   const defaultModal =
     status === AssetStatus.MODIFY

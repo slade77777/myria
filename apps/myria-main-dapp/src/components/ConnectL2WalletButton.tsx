@@ -55,9 +55,7 @@ const ConnectL2WalletButton: React.FC = () => {
     onConnectCompaign('B2C Marketplace');
     handleSetFirstPurchase(false);
     connectL2Wallet();
-    if (loginByWalletMutation.isError) {
-      loginByWalletMutation.mutate();
-    }
+    loginByWalletMutation.mutate();
   };
 
   useEffect(() => {
