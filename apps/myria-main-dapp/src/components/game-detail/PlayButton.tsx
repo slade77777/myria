@@ -21,9 +21,7 @@ const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
   const onConnectWallet = async () => {
     onConnect();
     await connectL2Wallet();
-    if (loginByWalletMutation.isError) {
-      loginByWalletMutation.mutate();
-    }
+    loginByWalletMutation.mutate();
   };
 
   const showConnectedWallet = React.useMemo(() => {
@@ -46,8 +44,13 @@ const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
 
   const playGame = useCallback(() => {
     const userData = loginByWalletMutation.data;
-    if (redirect_url && typeof redirect_url === 'string' && id === 'metarush') {
-      return window.open(`${redirect_url}?q=${userData?.access_token}`, '_blank');
+    if (
+      redirect_url &&
+      typeof redirect_url === 'string' &&
+      id === 'metarush' &&
+      userData?.access_token
+    ) {
+      return window.open(`${redirect_url}?q=${userData.access_token}`, '_blank');
     }
     if (gameUrl && id === 'moonville-farms') {
       return window.open(gameUrl, '_blank');
