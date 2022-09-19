@@ -43,8 +43,8 @@ const data = [
     title: <Trans>Myria Studios</Trans>,
     description: (
       <Trans>
-        <CustomLink title="Myria Studios" href="/studios" /> creates a range of free-to-play AAA
-        games spans across an entire interconnected ecosystem.
+        Myria Studios creates a range of free-to-play AAA games spans across an entire
+        interconnected ecosystem.
       </Trans>
     )
   },

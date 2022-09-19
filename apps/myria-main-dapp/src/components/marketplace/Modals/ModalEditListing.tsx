@@ -84,7 +84,7 @@ export const ModalEditListing: React.FC<Props> = ({
         }
       : {
           title: 'List your item for sale',
-          titleConfirm: <Trans>CONFIRM YOUR YOUR LISTING</Trans>,
+          titleConfirm: <Trans>CONFIRM YOUR LISTING</Trans>,
           labelInput: <Trans>Listing Price</Trans>
         };
 
