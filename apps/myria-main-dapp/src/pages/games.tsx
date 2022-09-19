@@ -5,7 +5,6 @@ import GameList from 'src/components/games/GameList';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import Program from 'src/components/Program';
 import Subscribe from 'src/components/Subscribe';
-import { headerHeight } from '../components/Header';
 import Page from '../components/Page';
 import { negativeMarginXSm, paddingX } from '../utils';
 
