@@ -51,14 +51,14 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
 
         if (item.children) {
           return (
-            <li key={idx} className="relative group">
+            <li key={idx} className="group relative">
               <div className={clsx('hover:text-brand-gold flex items-center hover:cursor-pointer')}>
                 {item.text}
                 <i className="w-[24px]">
                   <ChevronDownIcon />
                 </i>
               </div>
-              <div className="absolute left-0 hidden pt-4 -translate-x-6 top-full group-hover:block">
+              <div className="absolute left-0 top-full hidden -translate-x-6 pt-4 group-hover:block">
                 <ul className="bg-dark grid gap-6 whitespace-nowrap rounded-lg px-6 py-4 pr-[63px]">
                   {item.children.map((link, idx) => (
                     <li key={idx}>
@@ -101,7 +101,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
                     }
                   )}>
                   <span>{item.text}</span>
-                  {item.icon && <i className="w-4 ml-1">{item.icon}</i>}
+                  {item.icon && <i className="ml-1 w-4">{item.icon}</i>}
                 </li>
               </a>
             </Link>
@@ -172,7 +172,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
   const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
 
   return (
-    <header ref={headerRef} className="w-full bg-base/3">
+    <header ref={headerRef} className="bg-base/3 w-full">
       {/* <div className="hidden text-black lg:block">
         <NotiBanner />
       </div> */}
@@ -181,7 +181,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           height: navHeight
         }}
         className="flex w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
-        <div className="flex mr-12 items-left">
+        <div className="items-left mr-12 flex">
           <Link href="/">
             <a className="w-[164px]">
               <Logo />
@@ -190,7 +190,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         </div>
         <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
 
-        <div className="absolute flex items-center justify-end flex-shrink-0 right-8 space-x-9">
+        <div className="absolute right-8 flex flex-shrink-0 items-center justify-end space-x-9">
           <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
           <div>
             <ConnectL2WalletButton />
