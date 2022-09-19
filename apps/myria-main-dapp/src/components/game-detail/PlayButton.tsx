@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback } from 'react';
+import React, { FC, memo, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { Trans } from '@lingui/macro';
 import { useAuthenticationContext } from '../../context/authentication';
@@ -17,6 +17,8 @@ const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const { address, onConnect } = useWalletContext();
+
+  const userData = loginByWalletMutation.data;
 
   const onConnectWallet = async () => {
     onConnect();
@@ -43,7 +45,6 @@ const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
   }, [address, localStarkKey, user, walletAddress]);
 
   const playGame = useCallback(() => {
-    const userData = loginByWalletMutation.data;
     if (
       redirect_url &&
       typeof redirect_url === 'string' &&
@@ -55,15 +56,30 @@ const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
     if (gameUrl && id === 'moonville-farms') {
       return window.open(gameUrl, '_blank');
     }
-  }, [gameUrl, id, loginByWalletMutation.data, redirect_url]);
+  }, [gameUrl, id, redirect_url, userData?.access_token]);
 
-  if (typeof id === 'string' && availableGames.includes(id.toLowerCase())) {
-    if (
+  const canPlay = useMemo(() => {
+    const valid =
       !loginByWalletMutation.isError &&
       !loginByWalletMutation.isLoading &&
       walletAddress &&
-      showConnectedWallet
-    ) {
+      showConnectedWallet;
+
+    if (id === 'metarush') {
+      return !!valid && !!userData?.access_token;
+    }
+    return !!valid;
+  }, [
+    id,
+    loginByWalletMutation.isError,
+    loginByWalletMutation.isLoading,
+    showConnectedWallet,
+    userData?.access_token,
+    walletAddress
+  ]);
+
+  if (typeof id === 'string' && availableGames.includes(id.toLowerCase())) {
+    if (canPlay) {
       return (
         <button className="btn-lg btn-primary w-full justify-center" onClick={playGame}>
           <Trans>PLAY</Trans>
