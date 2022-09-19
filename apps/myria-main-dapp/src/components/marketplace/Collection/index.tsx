@@ -29,7 +29,7 @@ export const dataSorting = [
 ];
 
 const Collection: FC<Props> = ({ collection }) => {
-  const { sorting, handleUpdateSort } = useFilterSortContext();  
+  const { sorting, handleUpdateSort } = useFilterSortContext();
   const [filter, setFilter] = useState<ActiveFilter>({});
   const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale, id } =
     collection;
@@ -42,6 +42,7 @@ const Collection: FC<Props> = ({ collection }) => {
       },
       filter
     );
+
   const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   const [displayFilter, setDisplayFilter] = useState<boolean>(false);
 
@@ -198,7 +199,10 @@ const Collection: FC<Props> = ({ collection }) => {
                       </div>
                     </>
                   )}
-                  {isFetching && !result?.data?.pages && !result?.data?.pages && !isFetchingNextPage ? (
+                  {isFetching &&
+                  !result?.data?.pages &&
+                  !result?.data?.pages &&
+                  !isFetchingNextPage ? (
                     <div className="mt-6 flex w-full items-center justify-center" key={0}>
                       <TailSpin />
                     </div>

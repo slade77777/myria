@@ -208,12 +208,16 @@ export default function FirstDepositModal({
                         <Tooltip.Trigger className="focus:outline-none">
                           <InfoCircleIcon className="ml-2 text-[#A1AFBA]" />
                         </Tooltip.Trigger>
-                        <Tooltip.Content className="bg-base/5 max-w-[256px] ml-[-100px]">
-                          <Tooltip.Arrow className='fill-base/5 mr-[200px]' width={16} height={8} />
+                        <Tooltip.Content className="bg-base/5 ml-[-100px] max-w-[256px]">
+                          <Tooltip.Arrow
+                            className="fill-base/5 mr-[200px]"
+                            width={16}
+                            height={8}
+                          />
                           <p className="text-base/9">
                             <Trans>
-                              This is the amount you have available to deposit from
-                              your L1 wallet.
+                              This is the amount you have available to deposit
+                              from your L1 wallet.
                             </Trans>
                           </p>
                         </Tooltip.Content>
@@ -312,7 +316,7 @@ export default function FirstDepositModal({
                   </div>
 
                   <div className="mt-6 text-center text-2xl text-white">
-                    Deposit complete
+                    Deposit is in progress
                   </div>
                   <div className="text-base/9 bg-base/2/50 mt-4 rounded-lg py-2 px-4 text-sm">
                     <div className="flex justify-between">
@@ -334,7 +338,7 @@ export default function FirstDepositModal({
                       </a>
                     </div>
                   </div>
-                  <div className="mt-4 flex rounded-lg border border-[#D9D9D9] py-4 px-[14px]">
+                  {/* <div className="mt-4 flex rounded-lg border border-[#D9D9D9] py-4 px-[14px]">
                     <div className="mr-[9px] flex-none">
                       <InfoCircleIcon />
                     </div>
@@ -342,7 +346,7 @@ export default function FirstDepositModal({
                       Your deposit is now complete and your funds have been
                       added to your Myria wallet
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="mt-8 flex w-full justify-end">

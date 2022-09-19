@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import { AssetOrderBy, OrderStatus, OrderType } from 'myria-core-sdk';
-import React, { useEffect, useState } from 'react';
+import { OrderStatus, OrderType } from 'myria-core-sdk';
+import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
@@ -20,11 +20,6 @@ import { getItemsPagination, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';
 const Marketplace: React.FC = () => {
   const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
-  // const [selectedSort, setSelectedSort] = useState({
-  //   sortingField: 'createdAt',
-  //   orderBy: AssetOrderBy.ASC
-  // });
-
   const { sorting, handleUpdateSort } = useFilterSortContext();
 
   const {
