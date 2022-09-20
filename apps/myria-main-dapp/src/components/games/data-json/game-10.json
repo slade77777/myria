@@ -1,7 +1,7 @@
 {
   "metastrike": {
     "shortcut": {
-      "image": "/images/partner-games/10-metastrike/logo.png",
+      "image": "/images/partner-games-1/10-metastrike/logo.png",
       "title": "Metastrike",
       "feature": "Multi Player",
       "genre": ["Shooter", "Action"],
@@ -14,12 +14,12 @@
     "headerBg": "",
     "title": "Metastrike",
     "description": "",
-    "logo": "/images/partner-games/10-metastrike/logo.png",
+    "logo": "/images/partner-games-1/10-metastrike/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/10-metastrike/banner_1.png"
+        "src": "/images/partner-games-1/10-metastrike/banner_1.png"
       }
     ],
     "content": [

@@ -1,7 +1,7 @@
 {
   "goldefy": {
     "shortcut": {
-      "image": "/images/partner-games/03-goldefy/logo.png",
+      "image": "/images/partner-games-1/03-goldefy/logo.png",
       "title": "GoldeFy",
       "feature": "Multi Player",
       "genre": ["GameFi"],
@@ -14,16 +14,16 @@
     "headerBg": "",
     "title": "GoldeFy",
     "description": "",
-    "logo": "/images/partner-games/03-goldefy/logo.png",
+    "logo": "/images/partner-games-1/03-goldefy/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/03-goldefy/banner_1.png"
+        "src": "/images/partner-games-1/03-goldefy/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/03-goldefy/banner_2.jpg"
+        "src": "/images/partner-games-1/03-goldefy/banner_2.jpg"
       }
     ],
     "content": [

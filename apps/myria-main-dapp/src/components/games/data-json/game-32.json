@@ -1,7 +1,7 @@
 {
   "meta-dog-world": {
     "shortcut": {
-      "image": "/images/partner-games/32-meta-dog-world/logo.png",
+      "image": "/images/partner-games-1/32-meta-dog-world/logo.png",
       "title": "Meta Dog World",
       "feature": "Multi Player",
       "genre": ["Simulation"],
@@ -14,12 +14,12 @@
     "headerBg": "",
     "title": "Meta Dog World",
     "description": "",
-    "logo": "/images/partner-games/32-meta-dog-world/logo.png",
+    "logo": "/images/partner-games-1/32-meta-dog-world/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/32-meta-dog-world/banner_1.jpg"
+        "src": "/images/partner-games-1/32-meta-dog-world/banner_1.jpg"
       }
     ],
     "content": [

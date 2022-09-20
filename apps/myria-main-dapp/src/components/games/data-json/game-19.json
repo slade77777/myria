@@ -1,7 +1,7 @@
 {
   "crystals-of-fate": {
     "shortcut": {
-      "image": "/images/partner-games/19-crystals-of-fate/logo.png",
+      "image": "/images/partner-games-1/19-crystals-of-fate/logo.png",
       "title": "Crystals of Fate",
       "feature": "Multi Player",
       "genre": ["Collectable Cards"],
@@ -14,20 +14,20 @@
     "headerBg": "",
     "title": "Crystals of Fate",
     "description": "",
-    "logo": "/images/partner-games/19-crystals-of-fate/logo.png",
+    "logo": "/images/partner-games-1/19-crystals-of-fate/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/19-crystals-of-fate/banner_1.jpg"
+        "src": "/images/partner-games-1/19-crystals-of-fate/banner_1.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/19-crystals-of-fate/banner_2.jpg"
+        "src": "/images/partner-games-1/19-crystals-of-fate/banner_2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/19-crystals-of-fate/banner_3.png"
+        "src": "/images/partner-games-1/19-crystals-of-fate/banner_3.png"
       }
     ],
     "content": [

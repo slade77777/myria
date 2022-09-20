@@ -1,7 +1,7 @@
 {
   "minimal-figures": {
     "shortcut": {
-      "image": "/images/partner-games/13-minimal-figures/logo.png",
+      "image": "/images/partner-games-1/13-minimal-figures/logo.png",
       "title": "Minimal Figures",
       "feature": "",
       "genre": [],
@@ -14,24 +14,24 @@
     "headerBg": "",
     "title": "Minimal Figures",
     "description": "",
-    "logo": "/images/partner-games/13-minimal-figures/logo.png",
+    "logo": "/images/partner-games-1/13-minimal-figures/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/13-minimal-figures/banner_1.jpg"
+        "src": "/images/partner-games-1/13-minimal-figures/banner_1.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/13-minimal-figures/banner_2.jpg"
+        "src": "/images/partner-games-1/13-minimal-figures/banner_2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/13-minimal-figures/banner_3.jpg"
+        "src": "/images/partner-games-1/13-minimal-figures/banner_3.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/13-minimal-figures/banner_4.jpg"
+        "src": "/images/partner-games-1/13-minimal-figures/banner_4.jpg"
       }
     ],
     "content": [

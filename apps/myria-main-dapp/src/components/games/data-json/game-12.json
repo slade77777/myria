@@ -1,7 +1,7 @@
 {
   "dragonary": {
     "shortcut": {
-      "image": "/images/partner-games/12-dragonary/logo.png",
+      "image": "/images/partner-games-1/12-dragonary/logo.png",
       "title": "Dragonary",
       "feature": "Multi Player",
       "genre": ["RPG"],
@@ -14,20 +14,20 @@
     "headerBg": "",
     "title": "Dragonary",
     "description": "",
-    "logo": "/images/partner-games/12-dragonary/logo.png",
+    "logo": "/images/partner-games-1/12-dragonary/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/12-dragonary/banner_1.png"
+        "src": "/images/partner-games-1/12-dragonary/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/12-dragonary/banner_2.png"
+        "src": "/images/partner-games-1/12-dragonary/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/12-dragonary/banner_3.png"
+        "src": "/images/partner-games-1/12-dragonary/banner_3.png"
       }
     ],
     "content": [

@@ -1,7 +1,7 @@
 {
   "adamant-mine": {
     "shortcut": {
-      "image": "/images/partner-games/02-adamant-mine/logo.png",
+      "image": "/images/partner-games-1/02-adamant-mine/logo.png",
       "title": "Adamant Mine",
       "feature": "Multi Player",
       "genre": ["Casual", "Puzzle", "Arcade"],
@@ -13,24 +13,24 @@
     "headerBg": "",
     "title": "Adamant Mine",
     "description": "Adamant Mine is an NFT game that allows the players to EARN, DONATE, and BURN.\n    It is a 2-D Mining game with block type graphics. The game has two game modes, Normal mode and Survival mode.",
-    "logo": "/images/partner-games/02-adamant-mine/logo.png",
+    "logo": "/images/partner-games-1/02-adamant-mine/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/02-adamant-mine/banner_1.png"
+        "src": "/images/partner-games-1/02-adamant-mine/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/02-adamant-mine/banner_2.png"
+        "src": "/images/partner-games-1/02-adamant-mine/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/02-adamant-mine/banner_3.png"
+        "src": "/images/partner-games-1/02-adamant-mine/banner_3.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/02-adamant-mine/banner_4.png"
+        "src": "/images/partner-games-1/02-adamant-mine/banner_4.png"
       }
     ],
     "content": [

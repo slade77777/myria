@@ -1,7 +1,7 @@
 {
   "planet-eaters-game": {
     "shortcut": {
-      "image": "/images/partner-games/21-planet-eaters-game/logo.jpeg",
+      "image": "/images/partner-games-1/21-planet-eaters-game/logo.jpeg",
       "title": "Planet Eaters Game",
       "feature": "Multi Player",
       "genre": ["RPG"],
@@ -14,16 +14,16 @@
     "headerBg": "",
     "title": "Planet Eaters Game",
     "description": "",
-    "logo": "/images/partner-games/21-planet-eaters-game/logo.jpeg",
+    "logo": "/images/partner-games-1/21-planet-eaters-game/logo.jpeg",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/21-planet-eaters-game/banner_1.jpeg"
+        "src": "/images/partner-games-1/21-planet-eaters-game/banner_1.jpeg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/21-planet-eaters-game/banner_2.jpeg"
+        "src": "/images/partner-games-1/21-planet-eaters-game/banner_2.jpeg"
       }
     ],
     "content": [

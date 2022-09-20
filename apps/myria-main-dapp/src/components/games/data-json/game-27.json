@@ -1,7 +1,7 @@
 {
   "isekaiverse": {
     "shortcut": {
-      "image": "/images/partner-games/27-isekaiverse/logo.png",
+      "image": "/images/partner-games-1/27-isekaiverse/logo.png",
       "title": "Isekaiverse",
       "feature": "Multi Player",
       "genre": ["Competitive Multiplayer", "Tactics, Strategy"],
@@ -13,20 +13,20 @@
     "headerBg": "",
     "title": "Isekaiverse",
     "description": "",
-    "logo": "/images/partner-games/27-isekaiverse/logo.png",
+    "logo": "/images/partner-games-1/27-isekaiverse/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/27-isekaiverse/banner_1.png"
+        "src": "/images/partner-games-1/27-isekaiverse/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/27-isekaiverse/banner_2.png"
+        "src": "/images/partner-games-1/27-isekaiverse/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/27-isekaiverse/banner_3.png"
+        "src": "/images/partner-games-1/27-isekaiverse/banner_3.png"
       }
     ],
     "content": [

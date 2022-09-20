@@ -1,7 +1,7 @@
 {
   "fractal": {
     "shortcut": {
-      "image": "/images/partner-games/20-fractal/logo.png",
+      "image": "/images/partner-games-1/20-fractal/logo.png",
       "title": "Fractal",
       "feature": "Multi Player",
       "genre": ["AAA Action RPG Game"],
@@ -13,28 +13,28 @@
     "headerBg": "",
     "title": "Fractal",
     "description": "",
-    "logo": "/images/partner-games/20-fractal/logo.png",
+    "logo": "/images/partner-games-1/20-fractal/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_1.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_1.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_2.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_3.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_3.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_4.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_4.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_5.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_5.jpg"
       }
     ],
     "content": [

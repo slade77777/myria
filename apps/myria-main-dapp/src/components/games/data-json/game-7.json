@@ -1,7 +1,7 @@
 {
   "chillyrolls": {
     "shortcut": {
-      "image": "/images/partner-games/07-chilly-rolls/logo.png",
+      "image": "/images/partner-games-1/07-chilly-rolls/logo.png",
       "title": "ChillyRolls",
       "feature": "",
       "genre": [],
@@ -14,20 +14,20 @@
     "headerBg": "",
     "title": "ChillyRolls",
     "description": "",
-    "logo": "/images/partner-games/07-chilly-rolls/logo.png",
+    "logo": "/images/partner-games-1/07-chilly-rolls/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/07-chilly-rolls/banner_1.png"
+        "src": "/images/partner-games-1/07-chilly-rolls/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/07-chilly-rolls/banner_2.png"
+        "src": "/images/partner-games-1/07-chilly-rolls/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/07-chilly-rolls/banner_3.png"
+        "src": "/images/partner-games-1/07-chilly-rolls/banner_3.png"
       }
     ],
     "content": [

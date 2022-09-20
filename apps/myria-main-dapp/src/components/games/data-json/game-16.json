@@ -1,7 +1,7 @@
 {
   "gunstar-metaverse": {
     "shortcut": {
-      "image": "/images/partner-games/16-gunstar-metaverse/logo.png",
+      "image": "/images/partner-games-1/16-gunstar-metaverse/logo.png",
       "title": "Gunstar Metaverse",
       "feature": "Multi Player",
       "genre": ["Strategy"],
@@ -14,28 +14,28 @@
     "headerBg": "",
     "title": "Gunstar Metaverse",
     "description": "",
-    "logo": "/images/partner-games/16-gunstar-metaverse/logo.png",
+    "logo": "/images/partner-games-1/16-gunstar-metaverse/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/16-gunstar-metaverse/banner_1.png"
+        "src": "/images/partner-games-1/16-gunstar-metaverse/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/16-gunstar-metaverse/banner_2.jpg"
+        "src": "/images/partner-games-1/16-gunstar-metaverse/banner_2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/16-gunstar-metaverse/banner_3.png"
+        "src": "/images/partner-games-1/16-gunstar-metaverse/banner_3.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/16-gunstar-metaverse/banner_4.png"
+        "src": "/images/partner-games-1/16-gunstar-metaverse/banner_4.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/16-gunstar-metaverse/banner_5.png"
+        "src": "/images/partner-games-1/16-gunstar-metaverse/banner_5.png"
       }
     ],
     "content": [

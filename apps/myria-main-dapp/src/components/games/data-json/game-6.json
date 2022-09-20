@@ -1,7 +1,7 @@
 {
   "war-bunnys": {
     "shortcut": {
-      "image": "/images/partner-games/06-war-bunnys/logo.png",
+      "image": "/images/partner-games-1/06-war-bunnys/logo.png",
       "title": "War Bunnys",
       "feature": "Multi Player",
       "genre": ["Action", "Platformer", "Play-to-earn"],
@@ -13,28 +13,28 @@
     "headerBg": "",
     "title": "War Bunnys",
     "description": "",
-    "logo": "/images/partner-games/06-war-bunnys/logo.png",
+    "logo": "/images/partner-games-1/06-war-bunnys/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/06-war-bunnys/banner_1.png"
+        "src": "/images/partner-games-1/06-war-bunnys/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/06-war-bunnys/banner_2.png"
+        "src": "/images/partner-games-1/06-war-bunnys/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/06-war-bunnys/banner_3.jpg"
+        "src": "/images/partner-games-1/06-war-bunnys/banner_3.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/06-war-bunnys/banner_4.png"
+        "src": "/images/partner-games-1/06-war-bunnys/banner_4.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/06-war-bunnys/banner_5.png"
+        "src": "/images/partner-games-1/06-war-bunnys/banner_5.png"
       }
     ],
     "content": [

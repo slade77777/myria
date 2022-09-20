@@ -1,7 +1,7 @@
 {
   "fury-of-the-fur-teddys": {
     "shortcut": {
-      "image": "/images/partner-games/22-fury-of-the-fur-teddys/logo.png",
+      "image": "/images/partner-games-1/22-fury-of-the-fur-teddys/logo.png",
       "title": "Fury of the Fur Teddys",
       "feature": "",
       "genre": ["NFT"],
@@ -14,20 +14,20 @@
     "headerBg": "",
     "title": "Fury of the Fur Teddys",
     "description": "",
-    "logo": "/images/partner-games/22-fury-of-the-fur-teddys/logo.png",
+    "logo": "/images/partner-games-1/22-fury-of-the-fur-teddys/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/22-fury-of-the-fur-teddys/banner_1.png"
+        "src": "/images/partner-games-1/22-fury-of-the-fur-teddys/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/22-fury-of-the-fur-teddys/banner_2.png"
+        "src": "/images/partner-games-1/22-fury-of-the-fur-teddys/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/22-fury-of-the-fur-teddys/banner_3.png"
+        "src": "/images/partner-games-1/22-fury-of-the-fur-teddys/banner_3.png"
       }
     ],
     "content": [

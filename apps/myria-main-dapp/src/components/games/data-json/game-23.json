@@ -1,7 +1,7 @@
 {
   "virago": {
     "shortcut": {
-      "image": "/images/partner-games/23-virago/logo.png",
+      "image": "/images/partner-games-1/23-virago/logo.png",
       "title": "Virago",
       "feature": "Multi Player",
       "genre": ["GameFi"],
@@ -18,7 +18,7 @@
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/23-virago/banner_1.png"
+        "src": "/images/partner-games-1/23-virago/banner_1.png"
       }
     ],
     "content": [

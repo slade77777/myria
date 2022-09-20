@@ -1,7 +1,7 @@
 {
   "elite-tiger-planet": {
     "shortcut": {
-      "image": "/images/partner-games/14-elite-tiger-planet/logo.png",
+      "image": "/images/partner-games-1/14-elite-tiger-planet/logo.png",
       "title": "Elite Tiger Planet",
       "feature": "Multi Player",
       "genre": ["NFT Project"],
@@ -13,12 +13,12 @@
     "headerBg": "",
     "title": "Elite Tiger Planet",
     "description": "",
-    "logo": "/images/partner-games/14-elite-tiger-planet/logo.png",
+    "logo": "/images/partner-games-1/14-elite-tiger-planet/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/14-elite-tiger-planet/banner_1.png"
+        "src": "/images/partner-games-1/14-elite-tiger-planet/banner_1.png"
       }
     ],
     "content": [

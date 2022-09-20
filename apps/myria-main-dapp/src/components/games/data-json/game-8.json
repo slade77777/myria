@@ -1,7 +1,7 @@
 {
   "carnage-carnival": {
     "shortcut": {
-      "image": "/images/partner-games/08-carnage-carnival/logo.png",
+      "image": "/images/partner-games-1/08-carnage-carnival/logo.png",
       "title": "Carnage Carnival",
       "feature": "Multi Player",
       "genre": ["MOBA"],
@@ -14,28 +14,28 @@
     "headerBg": "",
     "title": "Carnage Carnival",
     "description": "",
-    "logo": "/images/partner-games/08-carnage-carnival/logo.png",
+    "logo": "/images/partner-games-1/08-carnage-carnival/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_1.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_2.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_3.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_3.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_4.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_4.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_5.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_5.png"
       }
     ],
     "content": [
