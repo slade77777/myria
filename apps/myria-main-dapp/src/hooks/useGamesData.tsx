@@ -4,6 +4,10 @@ import dataJson from 'src/components/games/data-json';
 import { socialLinks } from 'src/configs';
 import { Asset } from '../pages/game-detail/[id]';
 
+Object.keys(dataJson).forEach((key: string) => {
+  dataJson[key].isPartner = true;
+});
+
 export default function useGamesData() {
   const games: Record<
     string,
@@ -33,11 +37,14 @@ export default function useGamesData() {
         href: string;
       };
       gameUrl?: string;
+      twitter: string;
+      isPartner: boolean;
     }
   > = useMemo(
     () => ({
       metarush: {
         discord: socialLinks.discord,
+        twitter: socialLinks.twitter,
         headerBg: '/images/game-detail/header-bg-1.png',
         title: 'Metarush',
         description: t`A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory.`,
@@ -115,6 +122,7 @@ export default function useGamesData() {
       },
       metakart: {
         discord: socialLinks.discord,
+        twitter: socialLinks.twitter,
         headerBg: '/images/game-detail/header-bg-2.png',
         title: 'Metakart',
         description: t`Drift around thrilling tracks in a race for the finish line. Have endless fun shooting at your opponents and wreaking havoc all around you to gain extra points and climb the leaderboards. Dive into our numerous game modes and tracks to claim your rightful spot among the racing legends of the Myriaverse.`,
@@ -194,6 +202,7 @@ export default function useGamesData() {
       },
       'block-royale': {
         discord: socialLinks.discord,
+        twitter: socialLinks.twitter,
         headerBg: '/images/game-detail/header-bg-3.png',
         title: 'Block Royale',
         description: t`Eliminate your opponents in this fast-paced-action-packed-survival game, to achieve victory and claim the spoils of war. There can be only one hero or team standing when the crimson curtain hits the ground. `,
@@ -270,6 +279,7 @@ export default function useGamesData() {
       },
       starstrike: {
         discord: socialLinks.discord,
+        twitter: socialLinks.twitter,
         headerBg: '/images/game-detail/header-bg-4.png',
         title: 'Starstrike Legends',
         description: t`Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning.`,
@@ -330,6 +340,7 @@ export default function useGamesData() {
       },
       'moonville-farms': {
         discord: socialLinks.discord,
+        twitter: socialLinks.twitter,
         headerBg: '',
         title: 'Moonville Farms',
         description: t`A competitive play-and-earn tycoon farming simulator. `,

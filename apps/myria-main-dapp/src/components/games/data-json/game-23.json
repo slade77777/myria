@@ -4,15 +4,16 @@
       "image": "/images/partner-games/23-virago/logo.png",
       "title": "Virago",
       "feature": "Multi Player",
-      "genre": ["GameFi", "Privacy Defi"],
-      "publisher": "Myria Studios",
-      "id": "virago"
+      "genre": ["GameFi"],
+      "publisher": "Ecosystem Developer",
+      "id": "virago",
+      "category": "Games"
     },
     "discord": "discord.gg/virago",
+    "twitter": "https://twitter.com/virago_nft",
     "headerBg": "",
     "title": "Virago",
-    "description": "Virago is the first interchangeable NFT on the Ethereum Blockchain, allowing for true Ownership and Customization. Virago is also developing its own Metaverse with a series of Games.\n\nBy Holding a Virago you can choose between different poses to display and change the name of your NFTs.\n\nVirago is currently building a Non-KYC Exchange that will allow holders to withdraw and deposit Funds without having to provide any Documents. It is the epidemy of decentralization.\n\nBy owning a Virago NFT you will get access to Web3 Tools for free by using their Proxy Service that is currently in development\n‍\n\nVirago: Unchained is the Featured Game that Virago is currently developing. Virago has a Prototype which is currently available to download and play.\n\nVirago: Unchained is a fully hand animated competitive play and earn fighting game with beat’em up gameplay in the story mode..\n\nFight to survive and shape Tengri! Build the story with our community through our games, manga, products and services - this is the start of an IP that will never be forgotten.",
-    "logo": "/images/partner-games/23-virago/logo.png",
+    "description": "",
     "logoMobile": "",
     "assets": [
       {
@@ -24,7 +25,13 @@
       {
         "heading": "About the game",
         "paragraph": [
-          "Virago is the first interchangeable NFT on the Ethereum Blockchain, allowing for true Ownership and Customization. Virago is also developing its own Metaverse with a series of Games.\n\nBy Holding a Virago you can choose between different poses to display and change the name of your NFTs.\n\nVirago is currently building a Non-KYC Exchange that will allow holders to withdraw and deposit Funds without having to provide any Documents. It is the epidemy of decentralization.\n\nBy owning a Virago NFT you will get access to Web3 Tools for free by using their Proxy Service that is currently in development\n‍\n\nVirago: Unchained is the Featured Game that Virago is currently developing. Virago has a Prototype which is currently available to download and play.\n\nVirago: Unchained is a fully hand animated competitive play and earn fighting game with beat’em up gameplay in the story mode..\n\nFight to survive and shape Tengri! Build the story with our community through our games, manga, products and services - this is the start of an IP that will never be forgotten."
+          "Virago is the first interchangeable NFT on the Ethereum Blockchain, allowing for true Ownership and Customization. Virago is also developing its own Metaverse with a series of Games.",
+          "By Holding a Virago you can choose between different poses to display and change the name of your NFTs.",
+          "Virago is currently building a Non-KYC Exchange that will allow holders to withdraw and deposit Funds without having to provide any Documents. It is the epidemy of decentralization.",
+          "By owning a Virago NFT you will get access to Web3 Tools for free by using their Proxy Service that is currently in development",
+          "Virago: Unchained is the Featured Game that Virago is currently developing. Virago has a Prototype which is currently available to download and play.",
+          "Virago: Unchained is a fully hand animated competitive play and earn fighting game with beat’em up gameplay in the story mode..",
+          "Fight to survive and shape Tengri! Build the story with our community through our games, manga, products and services - this is the start of an IP that will never be forgotten."
         ]
       },
       {
@@ -48,10 +55,6 @@
       {
         "label": "Genre",
         "value": "GameFi, Privacy Defi"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

@@ -97,6 +97,10 @@ const Collection: FC<Props> = ({ collection }) => {
     }
   };
 
+  console.log('debug: filterList', filterList);
+  console.log('debug: activeFilter', filter);
+  console.log('debug: initialFilter', initialFilter);
+
   return (
     <Page includeFooter={false}>
       <div className="pt-[104px] md:pt-[93px]">
@@ -143,7 +147,7 @@ const Collection: FC<Props> = ({ collection }) => {
             <div className="mt-12">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <span className="font-bold text-white text-2xl">Filter</span>
+                  <span className="text-2xl font-bold text-white">Filter</span>
                   <span
                     className="ml-6 cursor-pointer"
                     onClick={() => setDisplayFilter(!displayFilter)}>
@@ -160,7 +164,7 @@ const Collection: FC<Props> = ({ collection }) => {
               </div>
               <div className={displayFilter ? 'flex' : ''}>
                 {displayFilter && (
-                  <div className="w-1/4 mt-8 mr-6">
+                  <div className="mt-8 mr-6 w-1/4">
                     <FilterAsset
                       filterList={filterList}
                       activeFilter={filter}
@@ -173,16 +177,16 @@ const Collection: FC<Props> = ({ collection }) => {
                 <div className={displayFilter ? 'w-3/4' : 'w-full'}>
                   {displayFilter && filterSummary.length > 0 && (
                     <>
-                      <p className="mt-8 text-light text-base">{items.length} Item found</p>
-                      <div className="flex items-center flex-wrap mt-4">
+                      <p className="text-light mt-8 text-base">{items.length} Item found</p>
+                      <div className="mt-4 flex flex-wrap items-center">
                         {filterSummary.map((item: { id: string; value: string }, index: number) => {
                           return (
                             <div
-                              className="flex items-center px-4 py-[10px] bg-base/4 rounded mr-4 my-2"
+                              className="bg-base/4 my-2 mr-4 flex items-center rounded px-4 py-[10px]"
                               key={index}>
-                              <p className="text-sm font-medium mr-2 max-w-max">{item.value}</p>
+                              <p className="mr-2 max-w-max text-sm font-medium">{item.value}</p>
                               <div
-                                className="w-[14px] h-[14px] font-medium cursor-pointer"
+                                className="h-[14px] w-[14px] cursor-pointer font-medium"
                                 onClick={() => handleFilter(item.id, item.value)}>
                                 <CloseFilterIcon />
                               </div>
@@ -191,7 +195,7 @@ const Collection: FC<Props> = ({ collection }) => {
                         })}
                         {filterSummary.length !== 0 && (
                           <span
-                            className="text-light text-base cursor-pointer"
+                            className="text-light cursor-pointer text-base"
                             onClick={() => initialFilter()}>
                             Clear Filter
                           </span>

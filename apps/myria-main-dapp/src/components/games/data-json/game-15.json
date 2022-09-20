@@ -9,9 +9,10 @@
       "id": "flip-the-chip"
     },
     "discord": "https://discord.com/invite/kUk7punWMb",
+    "twitter": "https://twitter.com/MadGum_",
     "headerBg": "",
     "title": "Flip the chip",
-    "description": "First mini game from MadGum. Each holder of our NFT will be able to claim free chips as NFTs with his character on them and start playing for them with other holders. Play and collect opponent's chips. Can you collect them all?",
+    "description": "",
     "logo": "/images/partner-games/15-flip-the-chip/logo.png",
     "logoMobile": "",
     "assets": [
@@ -48,10 +49,6 @@
       {
         "label": "Genre",
         "value": "Casual 1vs1"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

@@ -4,14 +4,16 @@
       "image": "/images/partner-games/04-x-metaverse/logo.png",
       "title": "X-Metaverse",
       "feature": "Multi Player",
-      "genre": ["CAG", "TBS"],
-      "publisher": "Myria Studios",
-      "id": "x-metaverse"
+      "genre": ["Combat"],
+      "publisher": "Ecosystem Developer",
+      "id": "x-metaverse",
+      "category": "Games"
     },
     "discord": "https://discord.com/invite/x-metaverse",
+    "twitter": "https://twitter.com/XMetaverse_",
     "headerBg": "",
     "title": "X-Metaverse",
-    "description": "X-Metaverse is a blockchain 3D game that runs on Android, IOS and PC. All game contents and characters are based on Blockchain tokens and NFTs. X-Metaverse’s visuals and gameplay are inspired by Starcraft and Star Wars. Players will be immersed in the vast expanse of space, spending time cultivating different races, Upgrading ships, reaching more galaxies and collecting rare materials. The most exciting part is that you can earn cryptocurrency with other players through actions such as conquest, exploration, competition, mining, production, breeding and combat.",
+    "description": "",
     "logo": "/images/partner-games/04-x-metaverse/logo.png",
     "logoMobile": "",
     "assets": [
@@ -56,10 +58,6 @@
       {
         "label": "Genre",
         "value": "CAG, TBS"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

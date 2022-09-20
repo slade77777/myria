@@ -9,6 +9,7 @@
       "id": "adamant-mine"
     },
     "discord": "discord.gg/adamant",
+    "twitter": "https://twitter.com/AdamantMine",
     "headerBg": "",
     "title": "Adamant Mine",
     "description": "Adamant Mine is an NFT game that allows the players to EARN, DONATE, and BURN.\n    It is a 2-D Mining game with block type graphics. The game has two game modes, Normal mode and Survival mode.",
@@ -76,10 +77,6 @@
       {
         "label": "Genre",
         "value": "Casual, Puzzle, Arcade"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

@@ -1,18 +1,20 @@
 {
   "gunstar-metaverse": {
     "shortcut": {
-      "image": "/images/partner-games/16-gunstar-metaverse/logo.jpg",
+      "image": "/images/partner-games/16-gunstar-metaverse/logo.png",
       "title": "Gunstar Metaverse",
       "feature": "Multi Player",
-      "genre": ["Turn-based Artillery Strategy"],
-      "publisher": "Myria Studios",
-      "id": "gunstar-metaverse"
+      "genre": ["Strategy"],
+      "publisher": "Ecosystem Developer",
+      "id": "gunstar-metaverse",
+      "category": "Games"
     },
     "discord": "https://discord.com/invite/cE2RD43Snn",
+    "twitter": "https://twitter.com/GunStar_io",
     "headerBg": "",
     "title": "Gunstar Metaverse",
-    "description": "First mini game from MadGum. Each holder of our NFT will be able to claim free chips as NFTs with his character on them and start playing for them with other holders. Play and collect opponent's chips. Can you collect them all?",
-    "logo": "/images/partner-games/16-gunstar-metaverse/logo.jpg",
+    "description": "",
+    "logo": "/images/partner-games/16-gunstar-metaverse/logo.png",
     "logoMobile": "",
     "assets": [
       {
@@ -40,7 +42,10 @@
       {
         "heading": "About the game",
         "paragraph": [
-          "First mini game from MadGum. Each holder of our NFT will be able to claim free chips as NFTs with his character on them and start playing for them with other holders. Play and collect opponent's chips. Can you collect them all?"
+          "Gunstar Metaverse is a massively multiplayer online role-playing (RPG) and turn-based Artillery strategy NFT Game that gives you the real value of enjoyment and excitement in gaming and the value provided through the blockchain platform. Gunstar and Fantasy StarWorld will also imbue players with the experience of reality-based adventures, something that goes beyond what a mere tactic game usually offers. Enthusiasm, thrilling anticipation while playing are core to allure customers’ interest",
+          "Level up your Pet <br /> The PvE campaigns are not designed for massive GSC earnings. You will earn enough Game material such as currency from the campaigns to fully level up 2 NFT pet. You will then use this powered up pet to participate in the PvP to earn the bigger rewards.",
+          "Have fun time with friends <br /> Raid boss is a special feature in the game. It's a time-limited event that only opens in a certain period of time. Players can choose co-op or solo for the Boss Raid. The reward will be calculated based on how much damage is removed from the boss. The stronger team the better reward obtained",
+          "Save & Build the StarWorld <br /> Defeat the monsters in abandoned cities, rebuild & upgrade House with clan members. Create creative cosmetic that expresses your personality."
         ]
       },
       {
@@ -53,7 +58,9 @@
       },
       {
         "heading": "Other Link",
-        "paragraph": ["TG: https://t.me/GunStarGlobal\n TG ANN: https://t.me/GunStarAnnouncements"]
+        "paragraph": [
+          "TG: https://t.me/GunStarGlobal <br /> TG ANN: https://t.me/GunStarAnnouncements"
+        ]
       }
     ],
     "info": [
@@ -68,10 +75,6 @@
       {
         "label": "Genre",
         "value": "Turn-based Artillery Strategy"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

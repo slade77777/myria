@@ -3,15 +3,17 @@
     "shortcut": {
       "image": "/images/partner-games/22-fury-of-the-fur-teddys/logo.png",
       "title": "Fury of the Fur Teddys",
-      "feature": "Multi Player",
+      "feature": "",
       "genre": ["NFT"],
-      "publisher": "Myria Studios",
-      "id": "fury-of-the-fur-teddys"
+      "publisher": "Ecosystem Developer",
+      "id": "fury-of-the-fur-teddys",
+      "category": "Art"
     },
     "discord": "https://discord.gg/fotf",
+    "twitter": "https://twitter.com/FuryofTheFurNFT/",
     "headerBg": "",
     "title": "Fury of the Fur Teddys",
-    "description": "Teddys are where it all started. Before life corrupted the Teds they were innocent, adorable little creatures. ",
+    "description": "",
     "logo": "/images/partner-games/22-fury-of-the-fur-teddys/logo.png",
     "logoMobile": "",
     "assets": [
@@ -45,7 +47,9 @@
       },
       {
         "heading": "Other Link",
-        "paragraph": ["https://instagram.com/furyofthefurnft https://www.tiktok.com/@furyofthefur/"]
+        "paragraph": [
+          "https://instagram.com/furyofthefurnft <br/> https://www.tiktok.com/@furyofthefur"
+        ]
       }
     ],
     "info": [
@@ -60,10 +64,6 @@
       {
         "label": "Genre",
         "value": "NFT"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {
