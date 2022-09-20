@@ -26,7 +26,9 @@ const formatDataAttributes = (dataAttr: any) => {
   const listAttribute = Object.entries(dataAttr).map((item) => {
     return {
       id: item[0],
-      options: (item[1] as any).values,
+      options: (item[1] as any).values.map(
+        (item: any) => item.charAt(0).toUpperCase() + item.slice(1)
+      ),
       name: item[0].charAt(0).toUpperCase() + item[0].slice(1)
     };
   });
