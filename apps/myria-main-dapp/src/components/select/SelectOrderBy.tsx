@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useCallback } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import ChevronIcon from 'src/packages/l2-wallet/src/components/Icons/ChevronIcon';
@@ -12,7 +12,7 @@ const items = [
 ];
 
 export default function SelectOrderBy(props: any) {
-  const [companySize, setCompanySize] = useState<any>(null);
+  const [companySize, setCompanySize] = useState<any>(props.data[0]);
   const dataDefault = {
     data: props.data || items,
     title: props.selectedDefault || 'Company Size'
@@ -24,7 +24,7 @@ export default function SelectOrderBy(props: any) {
         props.changeHandler(e);
         setCompanySize(e);
       }}>
-      <div className={clsx('relative  mt-1', props.containerStyle)}>
+      <div className={clsx('relative pb-3', props.containerStyle)}>
         <Listbox.Button
           className={clsx(
             props.buttonStyle,
