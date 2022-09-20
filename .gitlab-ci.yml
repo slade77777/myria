@@ -13,6 +13,8 @@ stages:
 
 dev-build:
   image: node:16
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
   stage: dev-build
   script:
     - yarn
