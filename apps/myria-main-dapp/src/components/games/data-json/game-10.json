@@ -4,14 +4,16 @@
       "image": "/images/partner-games/10-metastrike/logo.png",
       "title": "Metastrike",
       "feature": "Multi Player",
-      "genre": ["FPS game"],
-      "publisher": "Myria Studios",
-      "id": "metastrike"
+      "genre": ["Shooter", "Action"],
+      "publisher": "Ecosystem Developer",
+      "id": "metastrike",
+      "category": "Games"
     },
     "discord": "https://discord.com/invite/J9WjzNmHpa",
+    "twitter": "https://twitter.com/MetastrikeHQ",
     "headerBg": "",
     "title": "Metastrike",
-    "description": "Metastrike is an FPS Multiplayer Blockchain Game project that includes many essential and advanced features of a shooting game, with modern gameplay and high effort investment in both visuals and gameplay.",
+    "description": "",
     "logo": "/images/partner-games/10-metastrike/logo.png",
     "logoMobile": "",
     "assets": [
@@ -37,7 +39,7 @@
       },
       {
         "heading": "Other Link",
-        "paragraph": ["https://t.me/MetaStrike\n https://t.me/MetaStrikeChat"]
+        "paragraph": ["https://t.me/MetaStrike", "https://t.me/MetaStrikeChat"]
       }
     ],
     "info": [
@@ -52,10 +54,6 @@
       {
         "label": "Genre",
         "value": "FPS game"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

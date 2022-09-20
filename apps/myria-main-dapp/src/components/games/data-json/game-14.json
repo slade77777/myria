@@ -9,9 +9,10 @@
       "id": "elite-tiger-planet"
     },
     "discord": "https://discord.gg/cYAwvznjfF",
+    "twitter": "https://twitter.com/EliteTigerNFT",
     "headerBg": "",
     "title": "Elite Tiger Planet",
-    "description": "A unique collection 3D Elite Money Maker Tigers on ETH Network are ready to invade into the Metaverse With Own P2E MMORPG Game, Own Crypto & Online Marketplace ",
+    "description": "",
     "logo": "/images/partner-games/14-elite-tiger-planet/logo.png",
     "logoMobile": "",
     "assets": [
@@ -24,7 +25,7 @@
       {
         "heading": "About the game",
         "paragraph": [
-          "A unique collection 3D Elite Money Maker Tigers on ETH Network are ready to invade into the Metaverse With Own P2E MMORPG Game, Own Crypto & Online Marketplace "
+          "A unique collection 3D Elite Money Maker Tigers on ETH Network are ready to invade into the Metaverse With Own P2E MMORPG Game, Own Crypto & Online Marketplace"
         ]
       },
       {
@@ -52,10 +53,6 @@
       {
         "label": "Genre",
         "value": "NFT Project"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

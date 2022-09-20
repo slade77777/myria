@@ -1,18 +1,20 @@
 {
   "emoji-xox": {
     "shortcut": {
-      "image": "/images/partner-games/11-emoji-xox/logo.jpg",
+      "image": "/images/partner-games/11-emoji-xox/logo.png",
       "title": "Emoji xox",
-      "feature": "Multi Player",
-      "genre": ["NFT"],
-      "publisher": "Myria Studios",
-      "id": "emoji-xox"
+      "feature": "",
+      "genre": [],
+      "publisher": "Ecosystem Developer",
+      "id": "emoji-xox",
+      "category": "Art"
     },
-    "discord": "https://discord.com/invite/J9WjzNmHpa",
+    "discord": "",
+    "twitter": "https://twitter.com/emojixox",
     "headerBg": "",
     "title": "Emoji xox",
-    "description": "express yourself with emoji\n\nExpress yourself with emojis, don't get tired of talking in a\ncomprehensive project silogan inspired by 3D gif-shaped emos that \nare completely authentic",
-    "logo": "/images/partner-games/11-emoji-xox/logo.jpg",
+    "description": "",
+    "logo": "/images/partner-games/11-emoji-xox/logo.png",
     "logoMobile": "",
     "assets": [
       {
@@ -48,10 +50,6 @@
       {
         "label": "Genre",
         "value": "NFT"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

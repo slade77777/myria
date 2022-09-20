@@ -4,15 +4,16 @@
       "image": "/images/partner-games/26-apes-planet-nft/logo.png",
       "title": "Apes Planet NFT",
       "feature": "Multi Player",
-      "genre": ["Fighting", "adventure"],
-      "publisher": "Myria Studios",
-      "id": "apes-planet-nft"
+      "genre": ["Action"],
+      "publisher": "Ecosystem Developer",
+      "id": "apes-planet-nft",
+      "category": "Games"
     },
     "discord": "https://discord.gg/RQfrBAx4",
+    "twitter": "https://twitter.com/ApesPlanetNFT",
     "headerBg": "",
     "title": "Apes Planet NFT",
-    "description": "The Olympus of the Eternal Victory is an adventure game that goes beyond other mystery hidden object games. Help your Ape to solve puzzles and find cleverly disguised clues! If you like solving mysteries and finding objects, you have come to the right place! As you play, you’ll discover items, solve puzzle games and experience a thrilling adventure game plot! Prepare yourself for it!\nAs you explore the Olympus, you will discover forgotten artifacts and locations frequently connected. Players will experience an intense game where they will be entertained with a wide variety of games. In these games, they will have to challenge themselves and other members in order to accumulate and earn rewards.\n",
-    "logo": "/images/partner-games/26-apes-planet-nft/logo.png",
+    "description": "",
     "logoMobile": "",
     "assets": [
       {
@@ -24,7 +25,8 @@
       {
         "heading": "About the game",
         "paragraph": [
-          "The Olympus of the Eternal Victory is an adventure game that goes beyond other mystery hidden object games. Help your Ape to solve puzzles and find cleverly disguised clues! If you like solving mysteries and finding objects, you have come to the right place! As you play, you’ll discover items, solve puzzle games and experience a thrilling adventure game plot! Prepare yourself for it!\nAs you explore the Olympus, you will discover forgotten artifacts and locations frequently connected. Players will experience an intense game where they will be entertained with a wide variety of games. In these games, they will have to challenge themselves and other members in order to accumulate and earn rewards.\n"
+          "The Olympus of the Eternal Victory is an adventure game that goes beyond other mystery hidden object games. Help your Ape to solve puzzles and find cleverly disguised clues! If you like solving mysteries and finding objects, you have come to the right place! As you play, you’ll discover items, solve puzzle games and experience a thrilling adventure game plot! Prepare yourself for it!",
+          "As you explore the Olympus, you will discover forgotten artifacts and locations frequently connected. Players will experience an intense game where they will be entertained with a wide variety of games. In these games, they will have to challenge themselves and other members in order to accumulate and earn rewards."
         ]
       },
       {
@@ -52,10 +54,6 @@
       {
         "label": "Genre",
         "value": "Fighting, adventure"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

@@ -1,18 +1,19 @@
 {
   "search-for-animera": {
     "shortcut": {
-      "image": "/images/partner-games/05-search-for-animera/logo.jpeg",
+      "image": "/images/partner-games/05-search-for-animera/logo.png",
       "title": "SEARCH FOR ANIMERA",
       "feature": "Multi Player",
       "genre": ["MMORPG"],
-      "publisher": "Myria Studios",
+      "publisher": "Ecosystem Developer",
       "id": "search-for-animera"
     },
     "discord": "",
+    "twitter": "https://twitter.com/animeragame",
     "headerBg": "",
     "title": "SEARCH FOR ANIMERA",
-    "description": "Welcome to Animera, an upcoming interplanetary conquest, exploration and NFT crafting MMORPG game built on Blockchain, releasing on PC in 2022. The game presents you with a galaxy to explore, filled with unique planets and lifeforms, constant danger and action, immense PvP and PvE battles and a thriving player economy in an ever-expanding sandbox. The game will allow users to fly smoothly from deep space to 5 unique planetary surfaces without any loading screens, and explore an infinite procedurally generated galaxy. The Animera game utilizes “gacha” mechanics, meaning players earn in-game currency (or pay) in order to earn things like spaceships, weapons and rare NFT items.",
-    "logo": "/images/partner-games/05-search-for-animera/logo.jpeg",
+    "description": "",
+    "logo": "/images/partner-games/05-search-for-animera/logo.png",
     "logoMobile": "",
     "assets": [
       {
@@ -48,10 +49,6 @@
       {
         "label": "Genre",
         "value": "MMORPG"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

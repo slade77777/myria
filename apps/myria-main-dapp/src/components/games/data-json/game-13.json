@@ -3,15 +3,17 @@
     "shortcut": {
       "image": "/images/partner-games/13-minimal-figures/logo.png",
       "title": "Minimal Figures",
-      "feature": "Multi Player",
-      "genre": ["NFT Project"],
-      "publisher": "Myria Studios",
-      "id": "minimal-figures"
+      "feature": "",
+      "genre": [],
+      "publisher": "Ecosystem Developer",
+      "id": "minimal-figures",
+      "category": "Art"
     },
     "discord": "https://discord.gg/aK38fH5gtF",
+    "twitter": "https://twitter.com/Minimal_Figures",
     "headerBg": "",
     "title": "Minimal Figures",
-    "description": "Minimal Figures is a collection of unique 3D designed minimal figures on the Ethereum blockchain. \n     Each Minimal Figure gives its owner exclusive benefits, access to giveaways for holders and the ability to propose and vote on community-driven features. This makes the roadmap collaborative and holders will have a voice in the community and can help guide the direction of the project.\n     The project is focused to take advantage of the web3 opportunities, bring value to our community and elevate the NFT experience.",
+    "description": "",
     "logo": "/images/partner-games/13-minimal-figures/logo.png",
     "logoMobile": "",
     "assets": [
@@ -36,7 +38,9 @@
       {
         "heading": "About the game",
         "paragraph": [
-          "Minimal Figures is a collection of unique 3D designed minimal figures on the Ethereum blockchain. \n     Each Minimal Figure gives its owner exclusive benefits, access to giveaways for holders and the ability to propose and vote on community-driven features. This makes the roadmap collaborative and holders will have a voice in the community and can help guide the direction of the project.\n     The project is focused to take advantage of the web3 opportunities, bring value to our community and elevate the NFT experience."
+          "Minimal Figures is a collection of unique 3D designed minimal figures on the Ethereum blockchain.",
+          "Each Minimal Figure gives its owner exclusive benefits, access to giveaways for holders and the ability to propose and vote on community-driven features. This makes the roadmap collaborative and holders will have a voice in the community and can help guide the direction of the project.",
+          "The project is focused to take advantage of the web3 opportunities, bring value to our community and elevate the NFT experience."
         ]
       },
       {
@@ -60,10 +64,6 @@
       {
         "label": "Genre",
         "value": "NFT Project"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

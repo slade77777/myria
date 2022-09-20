@@ -3,16 +3,17 @@
     "shortcut": {
       "image": "/images/partner-games/09-happy-donuts/logo.png",
       "title": "Happy Donuts",
-      "feature": "Multi Player",
-      "genre": ["Jump and run"],
-      "publisher": "Myria Studios",
-      "id": "happy-donuts"
+      "feature": "",
+      "genre": ["Casual"],
+      "publisher": "Ecosystem Developer",
+      "id": "happy-donuts",
+      "category": "Games"
     },
     "discord": "https://discord.com/invite/VjqzGF2cMv",
+    "twitter": "https://twitter.com/HappyDonutsdao",
     "headerBg": "",
     "title": "Happy Donuts",
-    "description": "Happy Donuts is a way of life.\n    A clean collection of 10,000 sweet Donuts reminding us of what truly is important.\n    The goal of Happy Donuts is to build Candyland. A lovely place of like minded people whose goal is to connect our fundamental values of family and love to everyone in this world.\n    We are starting with the NFT launch of the Happy Donuts NFTs which enable exclusive access to Candyland, after this we are going to launch the $sugar token which will be the main currency in Candyland and help further increase the outreach after that the DAO happy cup will be launched because we are a community centric project. By the community for the community after that we will sell our Merch publicly and then build the Happy Arena, which will be the place where you can play the Happy Donuts games (starting with casino games and progressing to funny jump and run) where you can use the coins and even earn them by completing missions.\n    After reaching all these goals we would have finished the first part of our Roadmap and progress to the second part, which will be made by the DAO. Our current goal is to increase real life outreach.\n    We believe that this world is allowed to gain more abundance of love and happiness. \n    Family now, family forever",
-    "logo": "/images/partner-games/09-happy-donuts/logo.png",
+    "description": "",
     "logoMobile": "",
     "assets": [
       {
@@ -51,15 +52,11 @@
       },
       {
         "label": "Platform",
-        "value": "PC, iOS, Android"
+        "value": "n/a"
       },
       {
         "label": "Genre",
         "value": "Jump and run"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

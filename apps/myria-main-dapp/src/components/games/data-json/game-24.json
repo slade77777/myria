@@ -4,14 +4,16 @@
       "image": "/images/partner-games/24-psyber-x/logo.png",
       "title": "PsyberX",
       "feature": "Multi Player",
-      "genre": ["FPS"],
-      "publisher": "Myria Studios",
-      "id": "psyberx"
+      "genre": ["Shooter", "Action"],
+      "publisher": "Ecosystem Developer",
+      "id": "psyberx",
+      "category": "Games"
     },
     "discord": "https://discord.gg/2Fcger2xV3",
+    "twitter": "https://twitter.com/reptile_royal",
     "headerBg": "",
     "title": "PsyberX",
-    "description": "PsyberX is a first and third person battle royal game built into a world of infinite mini-games and bridges, that gives deep utility to its own NFTs and those of other projects and collections as well.  ",
+    "description": "",
     "logo": "/images/partner-games/24-psyber-x/logo.png",
     "logoMobile": "",
     "assets": [
@@ -68,10 +70,6 @@
       {
         "label": "Genre",
         "value": "FPS"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

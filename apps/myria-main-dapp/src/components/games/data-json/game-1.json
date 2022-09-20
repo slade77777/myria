@@ -4,11 +4,13 @@
       "image": "/images/partner-games/01-wing-of-misadventure/logo.png",
       "title": "Wing of Misadventure",
       "feature": "Multi Player",
-      "genre": ["MMORPG"],
-      "publisher": "Myria Studios",
-      "id": "wing-of-misadventure"
+      "genre": ["RPG"],
+      "publisher": "Ecosystem Developer",
+      "id": "wing-of-misadventure",
+      "category": "Games"
     },
     "discord": "https://discord.com/invite/wingofmisadventure",
+    "twitter": "https://twitter.com/wingofmisad",
     "headerBg": "",
     "title": "Wing of Misadventure",
     "description": "Wing of Misadventure is a metaverse based on the world of Misadventure, the main idea of ​​the project is to create multiple game series and make possible for players to dictate an economy based on crypto tokens.",
@@ -62,10 +64,6 @@
       {
         "label": "Genre",
         "value": "MMORPG"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

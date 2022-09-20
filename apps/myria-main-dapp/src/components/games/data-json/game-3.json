@@ -4,14 +4,16 @@
       "image": "/images/partner-games/03-goldefy/logo.png",
       "title": "GoldeFy",
       "feature": "Multi Player",
-      "genre": ["Gamefi"],
-      "publisher": "Myria Studios",
-      "id": "goldefy"
+      "genre": ["GameFi"],
+      "publisher": "Ecosystem Developer",
+      "id": "goldefy",
+      "category": "Games"
     },
     "discord": "https://discord.gg/goldefy",
+    "twitter": "https://twitter.com/Goldefy_",
     "headerBg": "",
     "title": "GoldeFy",
-    "description": "\"GoldeFy was born to transform the crypto market. It's different from countless other insecure projects. We create an ecosystem together with the community for true value by carrying stable coins.\n    In order to provide the collectability, value, and liquidity of NFT, all proceeds pursue an ecosystem that returns to users. The community also competes to increase its own value. The value of GoldeFy is create by the community, the community moves to make earnings, and that earnings can eventually be given away by the community.\n    True P2E and L2E (Lucky to earn) eventually become GoldeFy, which becomes a platform where safe profits, NFTs with values are maintained, and environment where you can enjoy games, and a platform where anyone can achieve the value of wealth that anyone dreams of, GoldeFy that can change lives, and GoldeFy where communities live. \"",
+    "description": "",
     "logo": "/images/partner-games/03-goldefy/logo.png",
     "logoMobile": "",
     "assets": [
@@ -58,10 +60,6 @@
       {
         "label": "Genre",
         "value": "Gamefi"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

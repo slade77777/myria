@@ -4,11 +4,13 @@
       "image": "/images/partner-games/29-antmons/logo.png",
       "title": "Antmons",
       "feature": "Multi Player",
-      "genre": ["Web3 Mental Health ecosystem"],
-      "publisher": "Myria Studios",
-      "id": "antmons"
+      "genre": ["MOBA"],
+      "publisher": "Ecosystem Developer",
+      "id": "antmons",
+      "category": "Games"
     },
     "discord": "http://discord.gg/np94zTNdpT",
+    "twitter": "http://twitter.com/AntmonsOfficial",
     "headerBg": "",
     "title": "Antmons",
     "description": "A MetaNFT, Battle-to-Earn GameFi compatible with web2 & web3 users.",
@@ -40,7 +42,16 @@
       {
         "heading": "About the game",
         "paragraph": [
-          "Antmons is set in a world of tiny insects. Players summon Antmons heroes to fight for themselves or set up guilds for more loots. Antmons heroes are divided into different combat attributes. You need to upgrade heroes and improve skills so that you can win the battle and generate rewards! You can earn daily revenue by participating in DEW Battles, or get more rewards in Token Pool \"\"Bettles\"\"!\n\nFeatures\n1. One-stop experience: One purchase of Antmons NFT for all Antmons games. The value of Antmons NFT will continue to grow as the number of games increases.\n\n2. Web 2.0  Compatible: Friendly interfaces for users to cash in and out without crypto wallets.\n\n3. Token Pool Battle: Responsible token-creating mechanics. Players could stake a certain amount of tokens into the pool before each battle, the winner takes all the stake and a commission fee is charged by the platform as a quest reward to avoid inflation or foam.\n\n4. Ultimate SocialFi: Live streaming & Interaction. Players can livestream their fight. Viewers can also interact,with interactive NFT like medical kits or bombs to mess up the fight."
+          "Antmons is set in a world of tiny insects. Players summon Antmons heroes to fight for themselves or set up guilds for more loots. Antmons heroes are divided into different combat attributes. You need to upgrade heroes and improve skills so that you can win the battle and generate rewards! You can earn daily revenue by participating in DEW Battles, or get more rewards in Token Pool \"Bettles\"!"
+        ]
+      },
+      {
+        "heading": "Features",
+        "paragraph": [
+          "1. One-stop experience: One purchase of Antmons NFT for all Antmons games. The value of Antmons NFT will continue to grow as the number of games increases.",
+          "2. Web 2.0  Compatible: Friendly interfaces for users to cash in and out without crypto wallets.",
+          "3. Token Pool Battle: Responsible token-creating mechanics. Players could stake a certain amount of tokens into the pool before each battle, the winner takes all the stake and a commission fee is charged by the platform as a quest reward to avoid inflation or foam.",
+          "4. Ultimate SocialFi: Live streaming & Interaction. Players can livestream their fight. Viewers can also interact,with interactive NFT like medical kits or bombs to mess up the fight."
         ]
       },
       {
@@ -54,7 +65,7 @@
       {
         "heading": "Other Link",
         "paragraph": [
-          "Facebook: https://www.facebook.com/AntmonsEntertainment/\n          Telegram Group: https://t.me/Antmons\n          Telegram News Channel: https://t.me/AntfromMars\n          Medium: https://medium.com/@AntmonsOfficial"
+          "Facebook: https://www.facebook.com/AntmonsEntertainment/ <br/> Telegram Group: https://t.me/Antmons<br/> Telegram News Channel: https://t.me/AntfromMars <br /> Medium: https://medium.com/@AntmonsOfficial"
         ]
       }
     ],
@@ -70,10 +81,6 @@
       {
         "label": "Genre",
         "value": "MOBA, Play 2 Earn"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

@@ -9,9 +9,10 @@
       "id": "zenme-app"
     },
     "discord": "https://discord.gg/CfakMZ3cXE",
+    "twitter": "https://twitter.com/Zenme_app",
     "headerBg": "",
     "title": "ZenMe App",
-    "description": "As a pioneer in using AI and Web3, ZenMe is striving to improve users’s mental health by providing a personalised, engaging, and accessible social app. ZenMe Well-being programs, which are scientifically proven, incorporate Western brain science and Eastern meditation.",
+    "description": "",
     "logo": "/images/partner-games/28-zenme-app/logo.png",
     "logoMobile": "",
     "assets": [
@@ -51,15 +52,11 @@
       },
       {
         "label": "Platform",
-        "value": "iOS, Android "
+        "value": "iOS, Android"
       },
       {
         "label": "Genre",
         "value": "Web3 Mental Health ecosystem"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {
