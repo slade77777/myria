@@ -1,7 +1,7 @@
 {
   "emoji-xox": {
     "shortcut": {
-      "image": "/images/partner-games/11-emoji-xox/logo.png",
+      "image": "/images/partner-games-1/11-emoji-xox/logo.png",
       "title": "Emoji xox",
       "feature": "",
       "genre": [],
@@ -14,12 +14,12 @@
     "headerBg": "",
     "title": "Emoji xox",
     "description": "",
-    "logo": "/images/partner-games/11-emoji-xox/logo.png",
+    "logo": "/images/partner-games-1/11-emoji-xox/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/11-emoji-xox/banner_1.jpg"
+        "src": "/images/partner-games-1/11-emoji-xox/banner_1.jpg"
       }
     ],
     "content": [

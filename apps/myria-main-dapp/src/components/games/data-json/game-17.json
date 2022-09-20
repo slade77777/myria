@@ -1,7 +1,7 @@
 {
   "solkeleton-army": {
     "shortcut": {
-      "image": "/images/partner-games/17-solkeleton-army/logo.png",
+      "image": "/images/partner-games-1/17-solkeleton-army/logo.png",
       "title": "Solkeleton Army",
       "feature": "Multi Player",
       "genre": ["NFT"],
@@ -13,12 +13,12 @@
     "headerBg": "",
     "title": "Solkeleton Army",
     "description": "Hey, Soldiers of the Ruined Kingdoms! We escaped from hell and started the awakening. With 5,000 awakened soldiers, we created the Solkeleton Army. Join the awakening, become a Solkeleton and join the army.",
-    "logo": "/images/partner-games/17-solkeleton-army/logo.png",
+    "logo": "/images/partner-games-1/17-solkeleton-army/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/17-solkeleton-army/banner_1.png"
+        "src": "/images/partner-games-1/17-solkeleton-army/banner_1.png"
       }
     ],
     "content": [

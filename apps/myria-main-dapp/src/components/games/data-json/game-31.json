@@ -1,7 +1,7 @@
 {
   "warp-game": {
     "shortcut": {
-      "image": "/images/partner-games/31-warp-game/logo.png",
+      "image": "/images/partner-games-1/31-warp-game/logo.png",
       "title": "WARP Game",
       "feature": "Multi Player",
       "genre": ["Sci Fi"],
@@ -13,28 +13,28 @@
     "headerBg": "",
     "title": "WARP Game",
     "description": "",
-    "logo": "/images/partner-games/31-warp-game/logo.png",
+    "logo": "/images/partner-games-1/31-warp-game/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/31-warp-game/banner_1.png"
+        "src": "/images/partner-games-1/31-warp-game/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/31-warp-game/banner_2.png"
+        "src": "/images/partner-games-1/31-warp-game/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/31-warp-game/banner_3.png"
+        "src": "/images/partner-games-1/31-warp-game/banner_3.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/31-warp-game/banner_4.png"
+        "src": "/images/partner-games-1/31-warp-game/banner_4.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/31-warp-game/banner_5.png"
+        "src": "/images/partner-games-1/31-warp-game/banner_5.png"
       }
     ],
     "content": [

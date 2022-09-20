@@ -1,7 +1,7 @@
 {
   "apes-planet-nft": {
     "shortcut": {
-      "image": "/images/partner-games/26-apes-planet-nft/logo.png",
+      "image": "/images/partner-games-1/26-apes-planet-nft/logo.png",
       "title": "Apes Planet NFT",
       "feature": "Multi Player",
       "genre": ["Action"],
@@ -18,7 +18,7 @@
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/26-apes-planet-nft/banner_1.jpg"
+        "src": "/images/partner-games-1/26-apes-planet-nft/banner_1.jpg"
       }
     ],
     "content": [

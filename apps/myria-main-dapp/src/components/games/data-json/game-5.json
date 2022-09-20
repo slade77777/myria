@@ -1,7 +1,7 @@
 {
   "search-for-animera": {
     "shortcut": {
-      "image": "/images/partner-games/05-search-for-animera/logo.png",
+      "image": "/images/partner-games-1/05-search-for-animera/logo.png",
       "title": "SEARCH FOR ANIMERA",
       "feature": "Multi Player",
       "genre": ["MMORPG"],
@@ -13,12 +13,12 @@
     "headerBg": "",
     "title": "SEARCH FOR ANIMERA",
     "description": "",
-    "logo": "/images/partner-games/05-search-for-animera/logo.png",
+    "logo": "/images/partner-games-1/05-search-for-animera/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/05-search-for-animera/banner_1.jpeg"
+        "src": "/images/partner-games-1/05-search-for-animera/banner_1.jpeg"
       }
     ],
     "content": [

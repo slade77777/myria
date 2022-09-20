@@ -1,7 +1,7 @@
 {
   "x-metaverse": {
     "shortcut": {
-      "image": "/images/partner-games/04-x-metaverse/logo.png",
+      "image": "/images/partner-games-1/04-x-metaverse/logo.png",
       "title": "X-Metaverse",
       "feature": "Multi Player",
       "genre": ["Combat"],
@@ -14,16 +14,16 @@
     "headerBg": "",
     "title": "X-Metaverse",
     "description": "",
-    "logo": "/images/partner-games/04-x-metaverse/logo.png",
+    "logo": "/images/partner-games-1/04-x-metaverse/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/04-x-metaverse/logo_2.png"
+        "src": "/images/partner-games-1/04-x-metaverse/logo_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/04-x-metaverse/logo_3.png"
+        "src": "/images/partner-games-1/04-x-metaverse/logo_3.png"
       }
     ],
     "content": [

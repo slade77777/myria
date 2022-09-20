@@ -1,7 +1,7 @@
 {
   "wing-of-misadventure": {
     "shortcut": {
-      "image": "/images/partner-games/01-wing-of-misadventure/logo.png",
+      "image": "/images/partner-games-1/01-wing-of-misadventure/logo.png",
       "title": "Wing of Misadventure",
       "feature": "Multi Player",
       "genre": ["RPG"],
@@ -14,20 +14,20 @@
     "headerBg": "",
     "title": "Wing of Misadventure",
     "description": "Wing of Misadventure is a metaverse based on the world of Misadventure, the main idea of ​​the project is to create multiple game series and make possible for players to dictate an economy based on crypto tokens.",
-    "logo": "/images/partner-games/01-wing-of-misadventure/logo.png",
+    "logo": "/partner-games-1/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/01-wing-of-misadventure/banner_1.png"
+        "src": "/partner-games-1/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/01-wing-of-misadventure/banner_2.png"
+        "src": "/partner-games-1/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/01-wing-of-misadventure/banner_3.png"
+        "src": "/partner-games-1/banner_3.png"
       }
     ],
     "content": [

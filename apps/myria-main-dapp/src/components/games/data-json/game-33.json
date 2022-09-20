@@ -1,7 +1,7 @@
 {
   "planet-hares": {
     "shortcut": {
-      "image": "/images/partner-games/33-planet-hares/logo.png",
+      "image": "/images/partner-games-1/33-planet-hares/logo.png",
       "title": "PLANET HARES",
       "feature": "",
       "genre": [],
@@ -14,28 +14,28 @@
     "headerBg": "",
     "title": "PLANET HARES",
     "description": "",
-    "logo": "/images/partner-games/33-planet-hares/logo.png",
+    "logo": "/images/partner-games-1/33-planet-hares/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/33-planet-hares/banner_1.png"
+        "src": "/images/partner-games-1/33-planet-hares/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/33-planet-hares/banner_2.png"
+        "src": "/images/partner-games-1/33-planet-hares/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/33-planet-hares/banner_3.png"
+        "src": "/images/partner-games-1/33-planet-hares/banner_3.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/33-planet-hares/banner_4.png"
+        "src": "/images/partner-games-1/33-planet-hares/banner_4.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/33-planet-hares/banner_5.png"
+        "src": "/images/partner-games-1/33-planet-hares/banner_5.png"
       }
     ],
     "content": [

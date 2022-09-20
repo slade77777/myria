@@ -1,7 +1,7 @@
 {
   "happy-donuts": {
     "shortcut": {
-      "image": "/images/partner-games/09-happy-donuts/logo.png",
+      "image": "/images/partner-games-1/09-happy-donuts/logo.png",
       "title": "Happy Donuts",
       "feature": "",
       "genre": ["Casual"],
@@ -18,11 +18,11 @@
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/09-happy-donuts/banner_1.gif"
+        "src": "/images/partner-games-1/09-happy-donuts/banner_1.gif"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/09-happy-donuts/banner_2.png"
+        "src": "/images/partner-games-1/09-happy-donuts/banner_2.png"
       }
     ],
     "content": [

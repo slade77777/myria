@@ -1,7 +1,7 @@
 {
   "xdroids-virtual-reality-warfare": {
     "shortcut": {
-      "image": "/images/partner-games/25-xdroids-virtual-reality-warfare/logo.png",
+      "image": "/images/partner-games-1/25-xdroids-virtual-reality-warfare/logo.png",
       "title": "Xdroids Virtual Reality Warfare",
       "feature": "Multi Player",
       "genre": ["Shooter", "Action"],
@@ -14,28 +14,28 @@
     "headerBg": "",
     "title": "Xdroids Virtual Reality Warfare",
     "description": "Xdroids is a metaverse gaming project featuring play-to-earn and kill-to-earn gameplay models. Compete against other players in arena-style maps, where precise gunplay meets unique weapons with different abilities. Think faster than your opponent if you want to survive!",
-    "logo": "/images/partner-games/25-xdroids-virtual-reality-warfare/logo.png",
+    "logo": "/images/partner-games-1/25-xdroids-virtual-reality-warfare/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_1.jpg"
+        "src": "/images/partner-games-1/25-xdroids-virtual-reality-warfare/banner_1.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_2.jpg"
+        "src": "/images/partner-games-1/25-xdroids-virtual-reality-warfare/banner_2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_3.jpg"
+        "src": "/images/partner-games-1/25-xdroids-virtual-reality-warfare/banner_3.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_4.jpg"
+        "src": "/images/partner-games-1/25-xdroids-virtual-reality-warfare/banner_4.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_5.png"
+        "src": "/images/partner-games-1/25-xdroids-virtual-reality-warfare/banner_5.png"
       }
     ],
     "content": [

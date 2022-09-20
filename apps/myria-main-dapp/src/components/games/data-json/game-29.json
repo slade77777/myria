@@ -1,7 +1,7 @@
 {
   "antmons": {
     "shortcut": {
-      "image": "/images/partner-games/29-antmons/logo.png",
+      "image": "/images/partner-games-1/29-antmons/logo.png",
       "title": "Antmons",
       "feature": "Multi Player",
       "genre": ["MOBA"],
@@ -14,28 +14,28 @@
     "headerBg": "",
     "title": "Antmons",
     "description": "A MetaNFT, Battle-to-Earn GameFi compatible with web2 & web3 users.",
-    "logo": "/images/partner-games/29-antmons/logo.png",
+    "logo": "/images/partner-games-1/29-antmons/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/29-antmons/banner_1.png"
+        "src": "/images/partner-games-1/29-antmons/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/29-antmons/banner_2.png"
+        "src": "/images/partner-games-1/29-antmons/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/29-antmons/banner_3.png"
+        "src": "/images/partner-games-1/29-antmons/banner_3.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/29-antmons/banner_4.png"
+        "src": "/images/partner-games-1/29-antmons/banner_4.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/29-antmons/banner_5.png"
+        "src": "/images/partner-games-1/29-antmons/banner_5.png"
       }
     ],
     "content": [

@@ -1,7 +1,7 @@
 {
   "psyberx": {
     "shortcut": {
-      "image": "/images/partner-games/24-psyber-x/logo.png",
+      "image": "/images/partner-games-1/24-psyber-x/logo.png",
       "title": "PsyberX",
       "feature": "Multi Player",
       "genre": ["Shooter", "Action"],
@@ -14,28 +14,28 @@
     "headerBg": "",
     "title": "PsyberX",
     "description": "",
-    "logo": "/images/partner-games/24-psyber-x/logo.png",
+    "logo": "/images/partner-games-1/24-psyber-x/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/24-psyber-x/banner_1.png"
+        "src": "/images/partner-games-1/24-psyber-x/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/24-psyber-x/banner_2.png"
+        "src": "/images/partner-games-1/24-psyber-x/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/24-psyber-x/banner_3.png"
+        "src": "/images/partner-games-1/24-psyber-x/banner_3.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/24-psyber-x/banner_4.png"
+        "src": "/images/partner-games-1/24-psyber-x/banner_4.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/24-psyber-x/banner_5.png"
+        "src": "/images/partner-games-1/24-psyber-x/banner_5.png"
       }
     ],
     "content": [

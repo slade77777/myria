@@ -1,7 +1,7 @@
 {
   "h-hedz-sharksquad": {
     "shortcut": {
-      "image": "/images/partner-games/30-h-hedz-sharksquad/logo.png",
+      "image": "/images/partner-games-1/30-h-hedz-sharksquad/logo.png",
       "title": "H-Hedz Sharksquad",
       "feature": "Multi Player",
       "genre": ["RPG"],
@@ -14,24 +14,24 @@
     "headerBg": "",
     "title": "H-Hedz Sharksquad",
     "description": "",
-    "logo": "/images/partner-games/30-h-hedz-sharksquad/logo.png",
+    "logo": "/images/partner-games-1/30-h-hedz-sharksquad/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/30-h-hedz-sharksquad/banner_1.png"
+        "src": "/images/partner-games-1/30-h-hedz-sharksquad/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/30-h-hedz-sharksquad/banner_2.jpg"
+        "src": "/images/partner-games-1/30-h-hedz-sharksquad/banner_2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/30-h-hedz-sharksquad/banner_3.jpg"
+        "src": "/images/partner-games-1/30-h-hedz-sharksquad/banner_3.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/30-h-hedz-sharksquad/banner_4.png"
+        "src": "/images/partner-games-1/30-h-hedz-sharksquad/banner_4.png"
       }
     ],
     "content": [

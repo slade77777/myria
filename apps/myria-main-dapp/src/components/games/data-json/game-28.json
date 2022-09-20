@@ -1,7 +1,7 @@
 {
   "zenme-app": {
     "shortcut": {
-      "image": "/images/partner-games/28-zenme-app/logo.png",
+      "image": "/images/partner-games-1/28-zenme-app/logo.png",
       "title": "ZenMe App",
       "feature": "Multi Player",
       "genre": ["Web3 Mental Health ecosystem"],
@@ -13,16 +13,16 @@
     "headerBg": "",
     "title": "ZenMe App",
     "description": "",
-    "logo": "/images/partner-games/28-zenme-app/logo.png",
+    "logo": "/images/partner-games-1/28-zenme-app/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/28-zenme-app/banner_1.jpg"
+        "src": "/images/partner-games-1/28-zenme-app/banner_1.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/28-zenme-app/banner_2.jpg"
+        "src": "/images/partner-games-1/28-zenme-app/banner_2.jpg"
       }
     ],
     "content": [

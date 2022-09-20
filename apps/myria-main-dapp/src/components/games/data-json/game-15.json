@@ -1,7 +1,7 @@
 {
   "flip-the-chip": {
     "shortcut": {
-      "image": "/images/partner-games/15-flip-the-chip/logo.png",
+      "image": "/images/partner-games-1/15-flip-the-chip/logo.png",
       "title": "Flip the chip",
       "feature": "Multi Player",
       "genre": ["Casual 1vs1"],
@@ -13,12 +13,12 @@
     "headerBg": "",
     "title": "Flip the chip",
     "description": "",
-    "logo": "/images/partner-games/15-flip-the-chip/logo.png",
+    "logo": "/images/partner-games-1/15-flip-the-chip/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/15-flip-the-chip/banner_1.png"
+        "src": "/images/partner-games-1/15-flip-the-chip/banner_1.png"
       }
     ],
     "content": [
