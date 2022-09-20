@@ -156,13 +156,13 @@ const ConnectL2WalletButton: React.FC = () => {
             </div>
           }
           className="shadow-[0_0_40px_10px_#0000004D]">
-          <p className="p-6 px-8 body-16-regular">
+          <p className="body-16-regular p-6 px-8">
             <Trans>
               The MetaMask account that is selected does not match the one used to create your Myria
               account. Please select the correct MetaMask account and try again.
             </Trans>
           </p>
-          <p className="p-6 px-8 body-16-regular">
+          <p className="body-16-regular p-6 px-8">
             <button
               onClick={() => {
                 disconnect();
@@ -245,7 +245,7 @@ const ConnectL2WalletButton: React.FC = () => {
                   onClick={onConnectWallet}
                   className="border-base/5 bg-base/1  flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] font-medium">
                   <WalletIcon width={24} height={24} />
-                  <span className="text-sm text-base/10">
+                  <span className="text-base/10 text-sm">
                     <Trans>Connect Wallet</Trans>
                   </span>
                 </button>
