@@ -214,7 +214,7 @@ const Collection: FC<Props> = ({ collection }) => {
                           fetchNextPage();
                         }, 500);
                       }}
-                      hasMore={isFetchingNextPage && hasNextPage}
+                      hasMore={!isFetchingNextPage && hasNextPage}
                       loader={
                         <div className="mt-6 flex w-full items-center justify-center" key={0}>
                           <TailSpin />
