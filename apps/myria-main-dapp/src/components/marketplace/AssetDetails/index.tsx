@@ -180,9 +180,9 @@ function AssetDetails({ id }: Props) {
   const { address, onConnectCompaign } = useWalletContext();
   const { loginByWalletMutation } = useAuthenticationContext();
   // wait update sdk
-  const bgImage = assetDetails?.metadataOptional
-    ? (assetDetails?.metadataOptional as any)?.rarity
-    : 'common';
+  const bgImage = assetDetails?.metadata
+    ? (assetDetails?.metadata as any)?.rarity
+    : 'Common';
   const rarityColor = getRarityColor(bgImage);
   const {
     status: withdrawalStatus,
@@ -627,18 +627,9 @@ function AssetDetails({ id }: Props) {
                   <Trans>Owned by</Trans> {ownedBy}
                 </span>
               </div>
-
-              <div className="flex gap-6 text-sm font-normal text-light">
-                <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
-                  <MintedIcon />
-                  <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
-                </div>
-                <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
-                  <OwnerAssetIcon />
-                  <span className="ml-[5px]">
-                    Owner: {truncateString(`${assetDetails?.owner?.ethAddress}`)}
-                  </span>
-                </div>
+              <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2 text-sm font-normal text-light">
+                <MintedIcon />
+                <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
               </div>
             </div>
             {status === AssetStatus.BUY_NOW && (
