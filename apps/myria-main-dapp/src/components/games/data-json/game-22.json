@@ -1,0 +1,75 @@
+{
+  "fury-of-the-fur-teddys": {
+    "shortcut": {
+      "image": "/images/partner-games/22-fury-of-the-fur-teddys/logo.png",
+      "title": "Fury of the Fur Teddys",
+      "feature": "Multi Player",
+      "genre": ["NFT"],
+      "publisher": "Myria Studios",
+      "id": "fury-of-the-fur-teddys"
+    },
+    "discord": "https://discord.gg/fotf",
+    "headerBg": "",
+    "title": "Fury of the Fur Teddys",
+    "description": "Teddys are where it all started. Before life corrupted the Teds they were innocent, adorable little creatures. ",
+    "logo": "/images/partner-games/22-fury-of-the-fur-teddys/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/22-fury-of-the-fur-teddys/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/22-fury-of-the-fur-teddys/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/22-fury-of-the-fur-teddys/banner_3.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Teddys are where it all started. Before life corrupted the Teds they were innocent, adorable little creatures. "
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["aaron@enctr.gg"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/FuryofTheFurNFT/"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["https://instagram.com/furyofthefurnft https://www.tiktok.com/@furyofthefur/"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Sneaky Bird Labs"
+      },
+      {
+        "label": "Platform",
+        "value": "n/a"
+      },
+      {
+        "label": "Genre",
+        "value": "NFT"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://furyofthefur.com"
+    },
+    "gameUrl": "https://furyofthefur.com"
+  }
+}

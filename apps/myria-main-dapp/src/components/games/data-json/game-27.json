@@ -1,0 +1,77 @@
+{
+  "isekaiverse": {
+    "shortcut": {
+      "image": "/images/partner-games/27-isekaiverse/logo.png",
+      "title": "Isekaiverse",
+      "feature": "Multi Player",
+      "genre": ["Competitive Multiplayer", "Tactics, Strategy"],
+      "publisher": "Myria Studios",
+      "id": "isekaiverse"
+    },
+    "discord": "http://discord.gg/IsekaiVerse",
+    "headerBg": "",
+    "title": "Isekaiverse",
+    "description": "Isekaiverse is a next-generation decentralized Anime Metaverse project that was founded in 2021. Our vision is to be the biggest Anime hub in the Web 3 space.\n\nIsekaiverse is using its original Anime TV series, “Isekai Island”, a unique franchise as the foundation for everything else we are doing. It is our goal to become a globally recognized brand not only in the Web 3 space but also outside in the real world with our Anime series streaming on platforms like Netflix, Hulu, and Crunchyroll. We have plans to feature a full gaming ecosystem, from a real-time strategy battle game to a NFT land game, allowing you to own part of our Isekai Island. The team wants to make sure that everyone can relate to the characters whether they are gamers, or an Anime lover. \n\nThe team behind Isekai Island have created the entire story, characters, and even the music in-house. We have already completed all the written scripts for season one, which will feature ten 30 minute long episodes. The amazing  soundtrack is already recorded which includes talent such as Mika Kobayashi, Lotus Juice and we have the incredible Raj Ramayya as our music director. Anime legend Karen Strassmen has signed on to voice one of the main characters, Princess Sukimi.\n\nThe Isekai Battle Game, is the first game in the eco-system featuring a fast-paced, real-time competitive playstyle allowing players to battle head on against each other using their favorite hero and characters of the corresponding affiliation. \n\nThe Isekai Battle Game will have multiple game modes catering to different play styles.",
+    "logo": "/images/partner-games/27-isekaiverse/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/27-isekaiverse/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/27-isekaiverse/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/27-isekaiverse/banner_3.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Isekaiverse is a next-generation decentralized Anime Metaverse project that was founded in 2021. Our vision is to be the biggest Anime hub in the Web 3 space.\n\nIsekaiverse is using its original Anime TV series, “Isekai Island”, a unique franchise as the foundation for everything else we are doing. It is our goal to become a globally recognized brand not only in the Web 3 space but also outside in the real world with our Anime series streaming on platforms like Netflix, Hulu, and Crunchyroll. We have plans to feature a full gaming ecosystem, from a real-time strategy battle game to a NFT land game, allowing you to own part of our Isekai Island. The team wants to make sure that everyone can relate to the characters whether they are gamers, or an Anime lover. \n\nThe team behind Isekai Island have created the entire story, characters, and even the music in-house. We have already completed all the written scripts for season one, which will feature ten 30 minute long episodes. The amazing  soundtrack is already recorded which includes talent such as Mika Kobayashi, Lotus Juice and we have the incredible Raj Ramayya as our music director. Anime legend Karen Strassmen has signed on to voice one of the main characters, Princess Sukimi.\n\nThe Isekai Battle Game, is the first game in the eco-system featuring a fast-paced, real-time competitive playstyle allowing players to battle head on against each other using their favorite hero and characters of the corresponding affiliation. \n\nThe Isekai Battle Game will have multiple game modes catering to different play styles."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["dev@isekaiverse.io"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/Isekai_Verse"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://www.youtube.com/channel/UCErXb0N0UPMbcJwSHFiT1Fg https://t.me/IsekaiVerseAnnouncements"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Isekaiverse LTD"
+      },
+      {
+        "label": "Platform",
+        "value": "PC (Browser)"
+      },
+      {
+        "label": "Genre",
+        "value": "Competitive Multiplayer, Tactics, Strategy"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://www.isekaiverse.io"
+    },
+    "gameUrl": "https://www.isekaiverse.io"
+  }
+}

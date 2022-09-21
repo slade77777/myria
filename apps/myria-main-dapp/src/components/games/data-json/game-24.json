@@ -1,0 +1,83 @@
+{
+  "psyberx": {
+    "shortcut": {
+      "image": "/images/partner-games/24-psyber-x/logo.png",
+      "title": "PsyberX",
+      "feature": "Multi Player",
+      "genre": ["FPS"],
+      "publisher": "Myria Studios",
+      "id": "psyberx"
+    },
+    "discord": "https://discord.gg/2Fcger2xV3",
+    "headerBg": "",
+    "title": "PsyberX",
+    "description": "PsyberX is a first and third person battle royal game built into a world of infinite mini-games and bridges, that gives deep utility to its own NFTs and those of other projects and collections as well.  ",
+    "logo": "/images/partner-games/24-psyber-x/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/24-psyber-x/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/24-psyber-x/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/24-psyber-x/banner_3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/24-psyber-x/banner_4.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/24-psyber-x/banner_5.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "PsyberX is a first and third person battle royal game built into a world of infinite mini-games and bridges, that gives deep utility to its own NFTs and those of other projects and collections as well.  "
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["trappae19@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/reptile_royal"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["peakd.com/@psyberx/posts"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Royal Reptile Studios"
+      },
+      {
+        "label": "Platform",
+        "value": "PC, Web"
+      },
+      {
+        "label": "Genre",
+        "value": "FPS"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://psyberxmarket.com/"
+    },
+    "gameUrl": "https://psyberxmarket.com/"
+  }
+}

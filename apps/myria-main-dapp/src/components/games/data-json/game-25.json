@@ -1,0 +1,104 @@
+{
+  "xdroids-virtual-reality-warfare": {
+    "shortcut": {
+      "image": "/images/partner-games/25-xdroids-virtual-reality-warfare/logo.png",
+      "title": "Xdroids Virtual Reality Warfare",
+      "feature": "Multi Player",
+      "genre": ["First Person Shooter"],
+      "publisher": "Myria Studios",
+      "id": "xdroids-virtual-reality-warfare"
+    },
+    "discord": "https://discord.gg/JDQZkYBHqq",
+    "headerBg": "",
+    "title": "Xdroids Virtual Reality Warfare",
+    "description": "Xdroids is a metaverse gaming project featuring play-to-earn and kill-to-earn gameplay models. Compete against other players in arena-style maps, where precise gunplay meets unique weapons with different abilities. Think faster than your opponent if you want to survive!",
+    "logo": "/images/partner-games/25-xdroids-virtual-reality-warfare/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_1.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_2.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_3.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_4.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/25-xdroids-virtual-reality-warfare/banner_5.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the project",
+        "paragraph": [
+          "Xdroids is built on the Unity game engine. Everything is made from scratch by our game development team and with our own custom pipelines and modular level design toolkits, we can rapidly prototype, customize and test new weapons, maps, and game mechanisms without wasting time and money. Design, validate and develope, that’s our motto!"
+        ]
+      },
+      {
+        "heading": "COMPETITIVE MATCHMAKING",
+        "paragraph": [
+          "Play and earn against other players in this competitive deathmatch mode. Matchmaking allows players to search for opponents as an individual or play as a team with friends and get matched by the system with other similar players. Matchmaking rules and gameplay modes will be updated every season to keep the competition exciting and varied."
+        ]
+      },
+      {
+        "heading": "CASUAL ONLINE MULTIPLAYER",
+        "paragraph": [
+          "Create online lobbies, customize rules and play against people from all around the world without any pressure. Just have fun, fine-tune your aiming skills, and maybe even meet some new friends to play with later. You can also make private rooms and keep them open only for your friends!"
+        ]
+      },
+      {
+        "heading": "OFFLINE MULTIPLAYER",
+        "paragraph": [
+          "Classic local coach split-screen multiplayer without any limits. Play anywhere, for any time, on this free game mode, where you can customize everything. Want to play alone? Not a problem - Xdroids offers a bot system, where you can set up ai-controlled opponents, so you never have to play alone."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["Rene@xdroidsgame.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/xdroidsgame"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://t.me/xdroidsgame",
+          "https://www.youtube.com/channel/UC77KNyXkUz61B-YMyJk1EZA"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Designton AG"
+      },
+      {
+        "label": "Platform",
+        "value": "PC for now  the full game on PC Android Apple Nintendo switch "
+      },
+      {
+        "label": "Genre",
+        "value": "First Person Shooter"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://www.xdroidsgame.com/"
+    },
+    "gameUrl": "https://www.xdroidsgame.com/"
+  }
+}

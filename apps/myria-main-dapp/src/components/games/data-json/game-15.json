@@ -1,0 +1,63 @@
+{
+  "flip-the-chip": {
+    "shortcut": {
+      "image": "/images/partner-games/15-flip-the-chip/logo.png",
+      "title": "Flip the chip",
+      "feature": "Multi Player",
+      "genre": ["Casual 1vs1"],
+      "publisher": "Myria Studios",
+      "id": "flip-the-chip"
+    },
+    "discord": "https://discord.com/invite/kUk7punWMb",
+    "headerBg": "",
+    "title": "Flip the chip",
+    "description": "First mini game from MadGum. Each holder of our NFT will be able to claim free chips as NFTs with his character on them and start playing for them with other holders. Play and collect opponent's chips. Can you collect them all?",
+    "logo": "/images/partner-games/15-flip-the-chip/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/15-flip-the-chip/banner_1.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "First mini game from MadGum. Each holder of our NFT will be able to claim free chips as NFTs with his character on them and start playing for them with other holders. Play and collect opponent's chips. Can you collect them all?"
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["sapabekov.madi@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/MadGum_"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "MadGum"
+      },
+      {
+        "label": "Platform",
+        "value": "Web"
+      },
+      {
+        "label": "Genre",
+        "value": "Casual 1vs1"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://madgum.io/"
+    },
+    "gameUrl": "https://madgum.io/"
+  }
+}

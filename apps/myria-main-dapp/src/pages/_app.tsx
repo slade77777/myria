@@ -22,6 +22,7 @@ import { store } from 'src/packages/l2-wallet/src/app/store';
 import { WithdrawNFT } from 'src/context/withdraw-nft';
 import { DepositProvider } from 'src/context/deposit-context';
 import { L2WalletProvider } from 'src/context/l2-wallet';
+import { FilterSortProvider } from 'src/context/filter-sort-context';
 
 const WithLanguageStyle: React.FC<any> = ({ children }) => {
   const { language } = useLanguage();
@@ -67,19 +68,21 @@ function App({ Component, pageProps }: AppProps) {
           <WithdrawNFT>
             <DepositProvider>
               <AuthenticationProvider>
-                <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
-                  <WithLanguageStyle>
-                    <TabProvider>
-                      <>
-                        <Provider store={store}>
-                          <L2WalletProvider>
-                            <Component {...pageProps} />
-                          </L2WalletProvider>
-                        </Provider>
-                      </>
-                    </TabProvider>
-                  </WithLanguageStyle>
-                </Tooltip.Provider>
+                <FilterSortProvider>
+                  <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
+                    <WithLanguageStyle>
+                      <TabProvider>
+                        <>
+                          <Provider store={store}>
+                            <L2WalletProvider>
+                              <Component {...pageProps} />
+                            </L2WalletProvider>
+                          </Provider>
+                        </>
+                      </TabProvider>
+                    </WithLanguageStyle>
+                  </Tooltip.Provider>
+                </FilterSortProvider>
               </AuthenticationProvider>
             </DepositProvider>
           </WithdrawNFT>

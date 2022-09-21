@@ -1,0 +1,69 @@
+{
+  "meta-dog-world": {
+    "shortcut": {
+      "image": "/images/partner-games/32-meta-dog-world/logo.png",
+      "title": "Meta Dog World",
+      "feature": "Multi Player",
+      "genre": ["Idle Simulation"],
+      "publisher": "Myria Studios",
+      "id": "meta-dog-world"
+    },
+    "discord": "https://discord.com/invite/mHWstn6yuB",
+    "headerBg": "",
+    "title": "Meta Dog World",
+    "description": "Meta Dog World is a dog racing metaverse born to digitize and gamify the traditional greyhound racing industry onto blockchain.\nUsers can own NFT dogs, feeding, training, breeding, competing in races without requiring expert knowledge of neither the traditional dog racing nor the gaming skills, it's designed so that everyone can join and earn with ease.\nNot only greyhounds, other cute and casual dog breeds will be added into the game for example: Shiba, Corgi, Dachshund, Husky, Alaska, etc… to make the races more exciting and joyful that can attract dog lovers and casual users around the globe.\nBelonging to the idle simulation genre, the game’s race results will be calculated from the server and blockchain, therefore, players will be able to enjoy the race simulation without having to possess gaming skills since the game is rather simple, easy to play and easy to understand.\nA single play session shall only take 15 to 45 minutes, players can feel free to play anytime in the day without having to constantly monitor or control their devices.\nPlayers can choose to invest in dog ownership to participate in races to earn, invest in other economic forms in the game, or just simply participate in betting (betting function will only be available in countries where betting is legal and will be distributed through licensed betting intermediaries) in races where dog ownership is not required.",
+    "logo": "/images/partner-games/32-meta-dog-world/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/32-meta-dog-world/banner_1.jpg"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Meta Dog World is a dog racing metaverse born to digitize and gamify the traditional greyhound racing industry onto blockchain.\nUsers can own NFT dogs, feeding, training, breeding, competing in races without requiring expert knowledge of neither the traditional dog racing nor the gaming skills, it's designed so that everyone can join and earn with ease.\nNot only greyhounds, other cute and casual dog breeds will be added into the game for example: Shiba, Corgi, Dachshund, Husky, Alaska, etc… to make the races more exciting and joyful that can attract dog lovers and casual users around the globe.\nBelonging to the idle simulation genre, the game’s race results will be calculated from the server and blockchain, therefore, players will be able to enjoy the race simulation without having to possess gaming skills since the game is rather simple, easy to play and easy to understand.\nA single play session shall only take 15 to 45 minutes, players can feel free to play anytime in the day without having to constantly monitor or control their devices.\nPlayers can choose to invest in dog ownership to participate in races to earn, invest in other economic forms in the game, or just simply participate in betting (betting function will only be available in countries where betting is legal and will be distributed through licensed betting intermediaries) in races where dog ownership is not required."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["h@metadogworld.io"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/metadogworld"]
+      },
+      {
+        "heading": "Core Gameplay",
+        "paragraph": [
+          "The world is stuck in a time loop and all living creatures will relive and reincarnate over and over until the boss is killed.\n\nPlayer develop their characters through battles and events, only by defeating the boss can push the world forward till the next boss emerges.\n \nDeath is permanent in Xia World. When a Xia dies in the game, their $KARMA will be measured and will greatly affect their next character spawn stats."
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "MultiDotVerse Ltd."
+      },
+      {
+        "label": "Platform",
+        "value": "WebGL"
+      },
+      {
+        "label": "Genre",
+        "value": "Idle Simulation"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://metadogworld.io"
+    },
+    "gameUrl": "https://metadogworld.io"
+  }
+}
