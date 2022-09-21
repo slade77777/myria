@@ -27,7 +27,7 @@ const HeaderLinks: React.FC<{ links: NavItem[]; className?: string }> = ({ links
   return (
     <ul
       className={clsx(
-        'text-brand-white flex items-center space-x-8 text-[14px] font-semibold uppercase leading-[1.25] tracking-wider',
+        'text-brand-white flex items-center xl:space-x-8 space-x-2 text-[14px] font-semibold uppercase leading-[1.25] tracking-wider',
         className
       )}>
       {links.map((item, idx) => {
@@ -180,18 +180,21 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
         style={{
           height: navHeight
         }}
-        className="flex w-full grid-cols-[1fr_auto_1fr] items-center gap-4 py-4 lg:px-4 xl:px-[54px]">
-        <div className="items-left mr-12 flex">
-          <Link href="/">
-            <a className="w-[164px]">
-              <Logo />
-            </a>
-          </Link>
+        className="flex w-full grid-cols-[1fr_auto_1fr] items-center justify-between gap-0 py-4 lg:px-4 xl:px-[54px]">
+        <div className='flex'>
+          <div className="flex xl:mr-12 mr-4 items-left">
+            <Link href="/">
+              <a className="w-[164px]">
+                <Logo />
+              </a>
+            </Link>
+          </div>
+          <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
         </div>
-        <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
-
-        <div className="absolute right-8 flex flex-shrink-0 items-center justify-end space-x-9">
-          <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
+        <div className="flex items-center justify-end flex-shrink-0 right-8 space-x-9">
+          {
+            filterdLinks.filter((link) => link.position == 'right').length > 0 && <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
+          }
           <div>
             <ConnectL2WalletButton />
           </div>
