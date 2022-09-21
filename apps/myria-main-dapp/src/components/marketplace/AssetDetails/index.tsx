@@ -4,6 +4,7 @@ import lodash from 'lodash';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 import BackIcon from 'src/components/icons/BackIcon';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
@@ -35,6 +36,7 @@ import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
+import { collectionModule } from 'src/services/myriaCore';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
 import {
@@ -72,8 +74,8 @@ const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="p-4 text-center border rounded-lg border-base/6 bg-base/3">
-      <p className="text-xs font-normal uppercase text-blue/6">{keyword}</p>
+    <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
+      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
       <p className="text-sm font-medium">{val}</p>
     </div>
   );
@@ -100,6 +102,7 @@ function AssetDetails({ id }: Props) {
       enabled: !!id
     }
   );
+
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
@@ -108,6 +111,27 @@ function AssetDetails({ id }: Props) {
     useL2WalletContext();
 
   const assetDetails = data?.assetDetails;
+
+  const collectionID = data?.assetDetails?.collectionId;
+
+  const {
+    data: collection,
+    isLoading: collectionLoading,
+    refetch: collectionRefetch
+  } = useQuery(
+    ['collectionDetail'],
+    async () => {
+      const collectionID = assetDetails?.collectionId;
+      if (collectionID) {
+        const result: any = await collectionModule?.getCollectionById(collectionID);
+        return { ...result?.data };
+      } else return null;
+    },
+    {
+      enabled: !!collectionID
+    }
+  );
+
   const ownedBy = useMemo(() => {
     if (assetDetails?.owner?.starkKey == starkKey) {
       return <Trans>You</Trans>;
@@ -180,9 +204,7 @@ function AssetDetails({ id }: Props) {
   const { address, onConnectCompaign } = useWalletContext();
   const { loginByWalletMutation } = useAuthenticationContext();
   // wait update sdk
-  const bgImage = assetDetails?.metadata
-    ? (assetDetails?.metadata as any)?.rarity
-    : 'Common';
+  const bgImage = assetDetails?.metadata ? (assetDetails?.metadata as any)?.rarity : 'Common';
   const rarityColor = getRarityColor(bgImage);
   const {
     status: withdrawalStatus,
@@ -561,7 +583,7 @@ function AssetDetails({ id }: Props) {
   }
   return (
     <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] ">
-      <button onClick={router.back} className="items-center mb-14">
+      <button onClick={router.back} className="mb-14 items-center">
         <div className="flex items-center">
           <BackIcon />
           <span className="ml-[6px] text-sm font-normal leading-[17px]">{titleBack}</span>
@@ -605,10 +627,14 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className="flex flex-row items-center">
                 <img src={avatar.src} className="h-[24px] w-[24px]" />
-                <span className="ml-2 text-base text-light">{assetDetails?.creator?.name}</span>
+                <Link href={`/marketplace/collection/?id=${collection?.publicId}`}>
+                  <span className="text-light ml-2 cursor-pointer text-base">
+                    {assetDetails?.creator?.name}
+                  </span>
+                </Link>
               </div>
               <div
-                className="w-10 p-3 rounded cursor-pointer bg-base/3"
+                className="bg-base/3 w-10 cursor-pointer rounded p-3"
                 onClick={() => {
                   setShowShareModal(true);
                 }}>
@@ -618,7 +644,7 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="flex mt-6 text-sm font-normal text-light">
+              <div className="text-light mt-6 flex text-sm font-normal">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
@@ -627,7 +653,7 @@ function AssetDetails({ id }: Props) {
                   <Trans>Owned by</Trans> {ownedBy}
                 </span>
               </div>
-              <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2 text-sm font-normal text-light">
+              <div className="bg-base/3 border-base/6 text-light mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2 text-sm font-normal">
                 <MintedIcon />
                 <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
               </div>
@@ -691,7 +717,7 @@ function AssetDetails({ id }: Props) {
               />
             )}
           </div>
-          <div className="border-t border-blue/3">
+          <div className="border-blue/3 border-t">
             {/* TAB */}
             <AssetDetailTab
               data={listOrder?.items}
