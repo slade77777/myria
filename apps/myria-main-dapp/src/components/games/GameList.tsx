@@ -235,7 +235,7 @@ const GameList: React.FC = () => {
   return (
     <div className="grid w-full gap-0 md:grid-cols-[auto_1fr] md:gap-8">
       <div className="min-w-[184px]">
-        <p className="text-[20px] font-medium leading-[1.5]">Filter</p>
+        <p className="hidden text-[20px] font-medium leading-[1.5] md:block">Filter</p>
         <Filter
           filterList={filters}
           activeFilter={filter}

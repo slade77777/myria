@@ -13,15 +13,15 @@ const Games: React.FC = () => {
     <Page>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
         <div className="max-w-content mx-auto">
-          <section className="mt-[80px]">
-            <h1 className="text-4xl font-bold leading-[125%] text-white">
+          <section className="mt-5 md:mt-[80px]">
+            <h1 className="text-center text-4xl font-bold leading-[125%] text-white md:text-left">
               Discover the latest projects on Myria
             </h1>
             <h3 className="mt-4 text-lg leading-[150%] text-white">
               Web3 projects build on Myria to offer 0 gas fee, high scalability and security
             </h3>
           </section>
-          <section className="-mt-7 md:mt-[88px]">
+          <section className="mt-4 md:mt-[88px]">
             <GameList />
           </section>
           <section className={'mt-[54px] md:mt-[116px]'}>
