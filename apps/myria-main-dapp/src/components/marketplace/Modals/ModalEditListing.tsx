@@ -142,13 +142,16 @@ export const ModalEditListing: React.FC<Props> = ({
               {...register('price')}
               onChange={(e: any) => {
                 if (parseFloat(e.target.value) < INPUT_MAX_LIMIT) setValue('price', e.target.value);
+                if (parseFloat(e.target.value) >= INPUT_MAX_LIMIT) {
+                  setValue('price', `${INPUT_MAX_LIMIT}`);
+                }
                 if (parseFloat(e.target.value) < MINIMUM_PRICE) {
                   setError('price', { message: `Minimum is ${MINIMUM_PRICE} price` });
                 } else {
                   clearErrors('price');
                 }
               }}
-              placeholder={ethPrice ? ethPrice : '0.00'}
+              placeholder={'0.00'}
               autoComplete="off"
               error={!!errors.price}
               errorText={errors.price?.message}
