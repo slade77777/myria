@@ -23,9 +23,9 @@ interface Props {
 }
 
 export const dataSorting = [
-  { id: 1, sortingField: 'createdAt', val: AssetOrderBy.DESC, name: 'Recently listed' },
-  { id: 2, sortingField: 'amountBuy', val: AssetOrderBy.ASC, name: 'Price Low to High' },
-  { id: 3, sortingField: 'amountBuy', val: AssetOrderBy.DESC, name: 'Price High to Low' }
+  { id: 1, sortingField: 'createdAt', orderBy: AssetOrderBy.DESC, name: 'Recently listed' },
+  { id: 2, sortingField: 'amountBuy', orderBy: AssetOrderBy.ASC, name: 'Price Low to High' },
+  { id: 3, sortingField: 'amountBuy', orderBy: AssetOrderBy.DESC, name: 'Price High to Low' }
 ];
 
 const Collection: FC<Props> = ({ collection }) => {
@@ -90,24 +90,14 @@ const Collection: FC<Props> = ({ collection }) => {
   };
 
   const handleSelected = async (e: any) => {
-    if (e.sortingField === 'createdAt') {
-      handleUpdateSort({
-        orderBy: undefined,
-        sortingField: e.sortingField,
-        name: e.name
-      });
-    } else {
-      handleUpdateSort({
-        orderBy: e.val,
-        sortingField: e.sortingField,
-        name: e.name
-      });
+    if (e) {
+      handleUpdateSort(e);
     }
   };
 
-  console.log('debug: filterList', filterList);
-  console.log('debug: activeFilter', filter);
-  console.log('debug: initialFilter', initialFilter);
+  // console.log('debug: filterList', filterList);
+  // console.log('debug: activeFilter', filter);
+  // console.log('debug: initialFilter', initialFilter);
 
   return (
     <Page includeFooter={false}>
@@ -165,7 +155,7 @@ const Collection: FC<Props> = ({ collection }) => {
                 <div className="w-1/5 ">
                   <SelectOrderBy
                     data={dataSorting}
-                    selectedDefault={'Recently listed'}
+                    selectedDefault={sorting}
                     changeHandler={handleSelected}
                   />
                 </div>
