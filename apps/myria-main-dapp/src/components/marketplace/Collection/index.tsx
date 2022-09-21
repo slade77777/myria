@@ -31,8 +31,16 @@ export const dataSorting = [
 const Collection: FC<Props> = ({ collection }) => {
   const { sorting, handleUpdateSort } = useFilterSortContext();
   const [filter, setFilter] = useState<ActiveFilter>({});
-  const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale, id } =
-    collection;
+  const {
+    iconUrl,
+    collectionImageUrl,
+    name,
+    project,
+    description,
+    totalAssets,
+    totalAssetsForSale,
+    id
+  } = collection;
   const { fetchNextPage, refetch, hasNextPage, isFetchingNextPage, result, isFetching } =
     useCollectionAsset(
       {
@@ -116,8 +124,8 @@ const Collection: FC<Props> = ({ collection }) => {
         <div className="max-w-content mx-auto mb-10">
           <div className="relative">
             {/* <img src={collectionImageUrl ? collectionImageUrl : "/images/marketplace/header.png"} className="h-[327px] w-full " alt={name} /> */}
-            <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45]">
-              <MyriaIcon />
+            <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-auto">
+              {iconUrl ? <img src={iconUrl} alt="" /> : <MyriaIcon />}
             </div>
           </div>
           <div className="pt-24">
