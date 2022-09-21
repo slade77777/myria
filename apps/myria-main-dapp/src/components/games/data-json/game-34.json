@@ -1,0 +1,85 @@
+{
+  "xia-one": {
+    "shortcut": {
+      "image": "/images/partner-games/34-xia-one/logo.png",
+      "title": "Xia One",
+      "feature": "Multi Player",
+      "genre": ["RPG"],
+      "publisher": "Myria Studios",
+      "id": "xia-one"
+    },
+    "discord": "https://discord.gg/xia-one",
+    "headerBg": "",
+    "title": "Xia One",
+    "description": "⚔️ Xia One is a free-to-play RPG game about exploration, Karma, and close-quarter combat.\n\nPlay as one of the Xia (vigilante) with unique talents, classes, and skills, to save or bend the world in any way you see fit.\n\nThe game will be openly accessible for all players, but only Xia One NFT holders can farm ERC-20 token $KARMA from the game.",
+    "logo": "/images/partner-games/34-xia-one/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/34-xia-one/banner_1.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/34-xia-one/banner_2.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/34-xia-one/banner_3.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/34-xia-one/banner_4.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/34-xia-one/banner_5.jpg"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "⚔️ Xia One is a free-to-play RPG game about exploration, Karma, and close-quarter combat.\n\nPlay as one of the Xia (vigilante) with unique talents, classes, and skills, to save or bend the world in any way you see fit.\n\nThe game will be openly accessible for all players, but only Xia One NFT holders can farm ERC-20 token $KARMA from the game."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["bcliff188@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/XiaOne_official"]
+      },
+      {
+        "heading": "Core Gameplay",
+        "paragraph": [
+          "The world is stuck in a time loop and all living creatures will relive and reincarnate over and over until the boss is killed.\n\nPlayer develop their characters through battles and events, only by defeating the boss can push the world forward till the next boss emerges.\n \n            Death is permanent in Xia World. When a Xia dies in the game, their $KARMA will be measured and will greatly affect their next character spawn stats."
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Leap Studio"
+      },
+      {
+        "label": "Platform",
+        "value": "Web, Android"
+      },
+      {
+        "label": "Genre",
+        "value": "RPG"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "https://xia-one.xyz"
+    },
+    "gameUrl": "https://xia-one.xyz"
+  }
+}

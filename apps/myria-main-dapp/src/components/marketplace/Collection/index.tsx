@@ -1,6 +1,6 @@
 import { AssetOrderBy } from 'myria-core-sdk';
 import { AssetByCollectionIdResponse } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, memo, useEffect, useMemo, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { MyriaIcon } from 'src/components/icons/MyriaIcon';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
@@ -12,6 +12,11 @@ import avatar from '../../../../public/images/marketplace/avatar.png';
 import AssetList from '../AssetList';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
 import TailSpin from 'src/components/icons/TailSpin';
+import { QueryClient } from 'react-query';
+import FilterAsset, { ActiveFilter } from './FilterAsset';
+import FilterIcon from 'src/components/icons/FilterIcon';
+import useAttributeCollection from 'src/hooks/useAttributeCollection';
+import { useFilterSortContext } from 'src/context/filter-sort-context';
 
 interface Props {
   collection: AssetByCollectionIdResponse;
@@ -24,31 +29,69 @@ export const dataSorting = [
 ];
 
 const Collection: FC<Props> = ({ collection }) => {
-  const [selectedSort, setSelectedSort] = useState({
-    sortingField: 'createdAt',
-    orderBy: undefined
-  });
-
+  const { sorting, handleUpdateSort } = useFilterSortContext();
+  const [filter, setFilter] = useState<ActiveFilter>({});
   const { collectionImageUrl, name, project, description, totalAssets, totalAssetsForSale, id } =
     collection;
   const { fetchNextPage, refetch, hasNextPage, isFetchingNextPage, result, isFetching } =
-    useCollectionAsset({
-      collectionId: id,
-      sortingField: selectedSort.sortingField,
-      orderBy: selectedSort.orderBy
-    });
+    useCollectionAsset(
+      {
+        collectionId: id,
+        sortingField: sorting.sortingField,
+        orderBy: sorting.orderBy
+      },
+      filter
+    );
   const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
+  const [displayFilter, setDisplayFilter] = useState<boolean>(false);
+
+  const [filterSummary, setFilterSummary] = useState<{ id: string; value: string }[]>([]);
+
+  const { data: filterList, isLoading } = useAttributeCollection(id);
+
+  const initialFilter = () => {
+    const obj = filterList.reduce((a, v) => ({ ...a, [v.id]: [] }), {});
+    setFilter({ ...filter, ...obj });
+  };
+
+  useEffect(() => {
+    initialFilter();
+  }, [isLoading]);
+
+  useEffect(() => {
+    let listSummary: { id: string; value: string }[] = [];
+    Object.entries(filter).forEach((item, index) => {
+      const itemList = item[1].map((i) => {
+        return { id: item[0], value: i };
+      });
+      listSummary = [...listSummary, ...itemList];
+    });
+    setFilterSummary(listSummary);
+  }, [filter]);
+
+  const handleFilter = (filterId: string, option: string) => {
+    const checkFilterOption = filter[filterId]?.find((filter) => filter === option);
+    let newFilterOption: string[] = [];
+    if (checkFilterOption) {
+      newFilterOption = filter[filterId]?.filter((v) => v !== option);
+    } else {
+      newFilterOption = [...filter[filterId], option];
+    }
+    setFilter({ ...(filter || {}), [filterId]: newFilterOption });
+  };
 
   const handleSelected = async (e: any) => {
-    if (e.val === AssetOrderBy.ASC || e.val === AssetOrderBy.DESC) {
-      setSelectedSort({
+    if (e.sortingField === 'createdAt') {
+      handleUpdateSort({
+        orderBy: undefined,
         sortingField: e.sortingField,
-        orderBy: e.val
+        name: e.name
       });
     } else {
-      setSelectedSort({
-        ...selectedSort,
-        sortingField: e.sortingField
+      handleUpdateSort({
+        orderBy: e.val,
+        sortingField: e.sortingField,
+        name: e.name
       });
     }
   };
@@ -96,59 +139,128 @@ const Collection: FC<Props> = ({ collection }) => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-between">
-              <div></div>
-              <div className="w-1/5 ">
-                <SelectOrderBy
-                  data={dataSorting}
-                  selectedDefault={'Recently listed'}
-                  changeHandler={handleSelected}
-                />
-              </div>
-            </div>
-            <div className="mt-10">
-              {isFetching && !isFetchingNextPage ? (
-                <div className="flex items-center justify-center w-full mt-6" key={0}>
-                  <TailSpin />
+            <div className="mt-12">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <span className="font-bold text-white text-2xl">Filter</span>
+                  <span
+                    className="ml-6 cursor-pointer"
+                    onClick={() => setDisplayFilter(!displayFilter)}>
+                    <FilterIcon />
+                  </span>
                 </div>
-              ) : (
-                <InfiniteScroll
-                  pageStart={1}
-                  loadMore={async () => {
-                    setTimeout(() => {
-                      fetchNextPage();
-                    }, 500);
-                  }}
-                  hasMore={!isFetchingNextPage && hasNextPage}
-                  loader={
-                    <div className="flex items-center justify-center w-full mt-6" key={0}>
+                <div className="w-1/5 ">
+                  <SelectOrderBy
+                    data={dataSorting}
+                    selectedDefault={'Recently listed'}
+                    changeHandler={handleSelected}
+                  />
+                </div>
+              </div>
+              <div className={displayFilter ? 'flex' : ''}>
+                {displayFilter && (
+                  <div className="w-1/4 mt-8 mr-6">
+                    <FilterAsset
+                      filterList={filterList}
+                      activeFilter={filter}
+                      handleFilter={handleFilter}
+                      initialFilter={initialFilter}
+                    />
+                  </div>
+                )}
+
+                <div className={displayFilter ? 'w-3/4' : 'w-full'}>
+                  {displayFilter && filterSummary.length > 0 && (
+                    <>
+                      <p className="mt-8 text-light text-base">{items.length} Item found</p>
+                      <div className="flex items-center flex-wrap mt-4">
+                        {filterSummary.map((item: { id: string; value: string }, index: number) => {
+                          return (
+                            <div
+                              className="flex items-center px-4 py-[10px] bg-base/4 rounded mr-4 my-2"
+                              key={index}>
+                              <p className="text-sm font-medium mr-2 max-w-max">{item.value}</p>
+                              <div
+                                className="w-[14px] h-[14px] font-medium cursor-pointer"
+                                onClick={() => handleFilter(item.id, item.value)}>
+                                <CloseFilterIcon />
+                              </div>
+                            </div>
+                          );
+                        })}
+                        {filterSummary.length !== 0 && (
+                          <span
+                            className="text-light text-base cursor-pointer"
+                            onClick={() => initialFilter()}>
+                            Clear Filter
+                          </span>
+                        )}
+                      </div>
+                    </>
+                  )}
+                  {isFetching &&
+                  !result?.data?.pages &&
+                  !result?.data?.pages &&
+                  !isFetchingNextPage ? (
+                    <div className="mt-6 flex w-full items-center justify-center" key={0}>
                       <TailSpin />
                     </div>
-                  }>
-                  <AssetList
-                    items={items?.map((elm: any, index: number) => {
-                      const isOrder = Array.isArray(elm?.order);
-                      const item: NFTItemType = {
-                        id: `${elm.id}`,
-                        rarity: (elm.metadata as any).rarity,
-                        name: elm.name || '',
-                        image_url: elm.imageUrl || '',
-                        creator: elm.creator?.name || '',
-                        creatorImg: avatar.src,
-                        priceETH: isOrder
-                          ? Number(elm?.order[0]?.nonQuantizedAmountBuy)
-                          : elm?.order?.nonQuantizedAmountBuy
-                      };
-                      return item;
-                    })}
-                  />
-                </InfiniteScroll>
-              )}
+                  ) : (
+                    <InfiniteScroll
+                      pageStart={1}
+                      loadMore={async () => {
+                        setTimeout(() => {
+                          fetchNextPage();
+                        }, 500);
+                      }}
+                      hasMore={isFetchingNextPage && hasNextPage}
+                      loader={
+                        <div className="mt-6 flex w-full items-center justify-center" key={0}>
+                          <TailSpin />
+                        </div>
+                      }
+                      className="w-full">
+                      <AssetList
+                        items={items?.map((elm: any, index: number) => {
+                          const isOrder = Array.isArray(elm?.order);
+                          const item: NFTItemType = {
+                            id: `${elm.id}`,
+                            rarity: (elm.metadata as any).rarity,
+                            name: elm.name || '',
+                            image_url: elm.imageUrl || '',
+                            creator: elm.creator?.name || '',
+                            creatorImg: avatar.src,
+                            priceETH: isOrder
+                              ? Number(elm?.order[0]?.nonQuantizedAmountBuy)
+                              : elm?.order?.nonQuantizedAmountBuy
+                          };
+                          return item;
+                        })}
+                        isFilter={displayFilter}
+                      />
+                    </InfiniteScroll>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </Page>
+  );
+};
+
+const CloseFilterIcon = () => {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M10.8891 3.11133L3.11133 10.8891M10.8891 10.8891L3.11133 3.11133"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 };
 

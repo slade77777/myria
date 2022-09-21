@@ -16,7 +16,7 @@ const UnlistModalContent: React.FC<IProp> = ({
       <div className="text-sm font-normal mt-[10px] mb-[20px]">
         <span className="text-base/9">
           <Trans>Please confirm your unlisting action. Your listed NFT</Trans>
-          <span className="text-base text-white mx-1"> {assetName} </span>{' '}
+          <span className="text-base/10 mx-1"> {assetName} </span>{' '}
           <Trans>will not be for sale after unlisted.</Trans>
         </span>
       </div>

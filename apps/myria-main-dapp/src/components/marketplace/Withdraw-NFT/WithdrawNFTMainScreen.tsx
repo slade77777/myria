@@ -9,7 +9,11 @@ import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { queryClient } from 'src/pages/_app';
 import { assetModule } from 'src/services/myriaCore';
 import { validatedImage } from 'src/utils';
-import { ArrowIcon, ThreeDotsVerticalIcon } from 'src/packages/l2-wallet/src/components/Icons';
+import {
+  ArrowIcon,
+  ThreeDotsVerticalIcon,
+  ArrowUpLeftIcon
+} from 'src/packages/l2-wallet/src/components/Icons';
 import LogoutIcon from 'src/components/icons/LogoutIcon';
 import InventoryIcon from 'src/components/icons/InventoryIcon';
 import DropdownMenu from 'src/components/DropdownMenu';
@@ -155,14 +159,11 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
             </DropdownMenu.Content>
           </DropdownMenu>
         </div>
-        <div
-          className="mx-auto mt-14 flex h-16 w-16 justify-center bg-cover bg-center rounded-full"
-          style={{
-            backgroundImage: `url(${validatedImage(valueNFT.imageUrl)})`
-          }}></div>
-
+        <div className="mx-auto mt-8 flex h-16 w-16 justify-center">
+          <ArrowUpLeftIcon size={64} className="w-full text-[#9AC9E3]" />
+        </div>
         <div className="mt-6 text-center text-2xl text-white">Withdraw NFT to L1 wallet</div>
-        <div className="text-sm text-base/9 text-center mt-4">
+        <div className="text-base/9 mt-4 px-7 text-center text-sm">
           <Trans>Withdrawals are processed in batches every 20 hours. Click</Trans>{' '}
           <span
             onClick={() => {
@@ -173,18 +174,18 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           </span>{' '}
           <Trans>to learn more.</Trans>
         </div>
-        <div className="mt-8 rounded-lg bg-base/2 p-4 text-sm text-white">
+        <div className="bg-base/2/50 text-base/9 mt-4 rounded-lg p-4 text-sm">
           <div className="flex justify-between">
             <span className="text-base/9">Item</span>
-            <span>{valueNFT.name}</span>
+            <span className="text-white">{valueNFT.name}</span>
           </div>
-          <div className="mt-[13px] flex justify-between">
+          <div className="mt-4 flex justify-between">
             <span className="text-base/9">
               <Trans>Estimated gas fee</Trans>
             </span>
             <span className="flex items-center">
               <DAOIcon size={16} className="mr-1 mb-[2px]" />
-              <span>0.000561</span>
+              <span className="text-white">0.000561</span>
             </span>
           </div>
         </div>
@@ -192,12 +193,12 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
       <div className="flex justify-between">
         <button
           onClick={() => handleDisplayPopoverWithdrawNFT(false)}
-          className="flex w-32 items-center justify-center rounded-lg px-5 py-3 text-base font-bold text-white border">
+          className="border-base/9 flex h-10 w-[112px] max-w-[126px] items-center justify-center rounded-lg border text-sm font-bold text-white">
           <Trans>CANCEL</Trans>
         </button>
         <button
           className={cn(
-            'flex w-32 items-center justify-center rounded-lg  px-5 py-3 text-base font-bold',
+            'flex h-10 w-[126px] items-center justify-center rounded-lg text-sm font-bold',
             isPending ? 'text-gray/6 bg-gray/4' : 'bg-primary/6 text-base/1'
           )}
           disabled={isPending}

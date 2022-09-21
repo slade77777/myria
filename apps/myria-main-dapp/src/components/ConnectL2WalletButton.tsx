@@ -55,9 +55,7 @@ const ConnectL2WalletButton: React.FC = () => {
     onConnectCompaign('B2C Marketplace');
     handleSetFirstPurchase(false);
     connectL2Wallet();
-    if (loginByWalletMutation.isError) {
-      loginByWalletMutation.mutate();
-    }
+    loginByWalletMutation.mutate();
   };
 
   useEffect(() => {
@@ -79,23 +77,6 @@ const ConnectL2WalletButton: React.FC = () => {
         console.log('error', e);
       });
   }, [walletAddress, localStarkKey, user?.wallet_id, address, installedWallet]);
-
-  useEffect(() => {
-    if (userProfileQuery.isFetching) {
-      return;
-    }
-
-    if (
-      address &&
-      !user?.user_id &&
-      !loginByWalletMutation.isLoading &&
-      !loginByWalletMutation.isError &&
-      userProfileQuery.isFetched &&
-      !userProfileQuery.data
-    ) {
-      loginByWalletMutation.mutate();
-    }
-  }, [address, user, loginByWalletMutation, userProfileQuery]);
 
   useEffect(() => {
     if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {

@@ -1,11 +1,24 @@
-import { CollectionDetailsParams } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
+import { CollectionByIdDetailsParams, CollectionDetailsParams } from 'myria-core-sdk/dist/types/src/types/AssetTypes';
 import { useInfiniteQuery } from 'react-query';
 import { assetModule } from 'src/services/myriaCore';
 
 const DEFAULT_PAGE = 1;
 const DEFAULT_LIMIT = 15;
-export default function useCollectionAsset(data: CollectionDetailsParams) {
-  const queryKey = ['collection', data.collectionId, data.orderBy, data.sortingField, 'assets'];
+const metadata: string = "metadata";
+export default function useCollectionAsset(
+  data: CollectionByIdDetailsParams,
+  filterData: { [key: string]: string[] }
+) {
+  const queryKey = [
+    'collection',
+    data.collectionId,
+    filterData,
+    data.orderBy,
+    data.sortingField,
+    'assets'
+  ];
+  const formatData = formatDataFilter(filterData);
+  
   const {
     fetchNextPage,
     fetchPreviousPage,
@@ -19,12 +32,14 @@ export default function useCollectionAsset(data: CollectionDetailsParams) {
   } = useInfiniteQuery(
     queryKey,
     ({ pageParam = DEFAULT_PAGE }) =>
-      assetModule?.getAssetsByCollectionId({
-        collectionId: data.collectionId,
+      assetModule?.getAssetsWithFilter({
         limit: DEFAULT_LIMIT,
         page: pageParam,
         orderBy: data.orderBy,
-        sortingField: data.sortingField
+        sortingField: data.sortingField,
+        filterField: metadata,
+        filterValue: formatData,
+        ...data,
       }),
     {
       getNextPageParam: (lastPage, pages) => {
@@ -48,3 +63,12 @@ export default function useCollectionAsset(data: CollectionDetailsParams) {
     refetch
   };
 }
+const formatDataFilter = (filterData: any) => {
+  if (!filterData || Object.keys(filterData).length === 0) return {};
+  const params: any = {};
+  for (const keys in filterData) {
+    if (filterData[keys].length === 0) continue;
+      params[keys] = filterData[keys];
+  }
+  return params;
+};

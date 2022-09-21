@@ -1,0 +1,79 @@
+{
+  "planet-hares": {
+    "shortcut": {
+      "image": "/images/partner-games/33-planet-hares/logo.png",
+      "title": "PLANET HARES",
+      "feature": "Multi Player",
+      "genre": ["MMO"],
+      "publisher": "Myria Studios",
+      "id": "planet-hares"
+    },
+    "discord": "https://discord.com/invite/FCjDuJ9yn9",
+    "headerBg": "",
+    "title": "PLANET HARES",
+    "description": "As a Next-Gen 3D immersive MMORPG metaverse game, we are committed to creating a realistic virtual world with smooth running speed, excellent graphics, and unrestricted interactions. The new NFT value system and business model, which are well associated with real values are also remarkable in the GameFi field. Holders of Hare NFTs can gather, explore, or even plunder the metaverse’s original resources in this game to prepare for future development.",
+    "logo": "/images/partner-games/33-planet-hares/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games/33-planet-hares/banner_1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/33-planet-hares/banner_2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/33-planet-hares/banner_3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/33-planet-hares/banner_4.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games/33-planet-hares/banner_5.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "As a Next-Gen 3D immersive MMORPG metaverse game, we are committed to creating a realistic virtual world with smooth running speed, excellent graphics, and unrestricted interactions. The new NFT value system and business model, which are well associated with real values are also remarkable in the GameFi field. Holders of Hare NFTs can gather, explore, or even plunder the metaverse’s original resources in this game to prepare for future development."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["admin@hypergem.io"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/0xhares  "]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "hypergem tech LTD"
+      },
+      {
+        "label": "Platform",
+        "value": "PC"
+      },
+      {
+        "label": "Genre",
+        "value": "MMO"
+      },
+      {
+        "label": "Status",
+        "value": "IN DEVELOPMENT"
+      }
+    ],
+    "action": {
+      "label": "Start",
+      "href": "http://0xhares.io"
+    },
+    "gameUrl": "http://0xhares.io"
+  }
+}

@@ -852,6 +852,7 @@ module.exports = {
           background: `linear-gradient(154.25deg, rgba(156, 75, 185, 0.2) 12.96%, rgba(156, 75, 185, 0) 86.24%) !important`
         }
       });
-    })
+    }),
+    require('tailwindcss-radix')()
   ]
 };
