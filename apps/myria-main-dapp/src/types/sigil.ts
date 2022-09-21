@@ -47,4 +47,4 @@ export type AllianceInfo = {
   name: string;
 };
 export type AllianceName = 'equinox' | 'federation' | 'vector_prime';
-export type RarityType = 'common' | 'rare' | 'ultra_rare' | 'epic' | 'celestial';
+export type RarityType = 'Common' | 'Rare' | 'Ultra Rare' | 'Epic' | 'Celestial';

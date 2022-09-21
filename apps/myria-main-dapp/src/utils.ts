@@ -72,15 +72,15 @@ export const validatedImage = (url: string | null | undefined) => {
 
 export const getRarityColor = (rarity: RarityType) => {
   switch (rarity) {
-    case 'common':
+    case 'Common':
       return '#A9A6B1';
-    case 'rare':
+    case 'Rare':
       return '#A9CB68';
-    case 'ultra_rare':
+    case 'Ultra Rare':
       return '#4FA6B9';
-    case 'epic':
+    case 'Epic':
       return '#D191E1';
-    case 'celestial':
+    case 'Celestial':
       return '#CBE352';
     default:
       return '#A9A6B1';
