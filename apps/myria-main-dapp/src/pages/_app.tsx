@@ -8,6 +8,10 @@ import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';
 
+import { useRouter } from 'next/router';
+
+import { useEffect } from 'react';
+
 import { WalletProvider } from 'src/context/wallet';
 import { AuthenticationProvider } from 'src/context/authentication';
 import Tooltip from 'src/components/Tooltip';
@@ -33,6 +37,20 @@ export const queryClient = new QueryClient();
 
 function App({ Component, pageProps }: AppProps) {
   useGATrackPageview();
+  const router = useRouter();
+
+  useEffect(() => storePathValues, [router.asPath]);
+
+  function storePathValues() {
+    const storage = globalThis?.sessionStorage;
+    if (!storage) return;
+
+    const prevPath: any = storage.getItem('currentPath');
+    storage.setItem('prevPath', prevPath);
+
+    storage.setItem('currentPath', globalThis.location.pathname);
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
