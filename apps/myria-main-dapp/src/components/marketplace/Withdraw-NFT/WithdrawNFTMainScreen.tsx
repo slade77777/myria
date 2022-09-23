@@ -193,12 +193,12 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
       <div className="flex justify-between">
         <button
           onClick={() => handleDisplayPopoverWithdrawNFT(false)}
-          className="border-base/9 flex h-10 w-[112px] max-w-[126px] items-center justify-center rounded-lg border text-sm font-bold text-white">
+          className="border-base/9 flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg border text-base font-bold text-white">
           <Trans>CANCEL</Trans>
         </button>
         <button
           className={cn(
-            'flex h-10 w-[126px] items-center justify-center rounded-lg text-sm font-bold',
+            'flex h-10 w-[126px] items-center justify-center rounded-lg text-base font-bold',
             isPending ? 'text-gray/6 bg-gray/4' : 'bg-primary/6 text-base/1'
           )}
           disabled={isPending}
