@@ -14,6 +14,10 @@ export const parameters = {
       {
         name: 'myria',
         value: '#040B10'
+      },
+      {
+        name: 'white',
+        value: '#fff'
       }
     ]
   }

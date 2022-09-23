@@ -84,13 +84,15 @@ export const ModalEditListing: React.FC<Props> = ({
         }
       : {
           title: 'List your item for sale',
-          titleConfirm: <Trans>CONFIRM YOUR LISTING</Trans>,
+          titleConfirm: <Trans>CONFIRM YOUR YOUR LISTING</Trans>,
           labelInput: <Trans>Listing Price</Trans>
         };
 
   const onHandleSubmit = (value: IFormInputs) => {
     setIsConfirmButton(true);
-    onSubmit({ price: `${{ price: `${value.price}` }.price}` });
+    onSubmit({
+      price: `${{ price: `${{ price: `${{ price: `${value.price}` }.price}` }.price}` }.price}`
+    });
   };
 
   const onHandleError = (errors: any) => {
@@ -142,13 +144,16 @@ export const ModalEditListing: React.FC<Props> = ({
               {...register('price')}
               onChange={(e: any) => {
                 if (parseFloat(e.target.value) < INPUT_MAX_LIMIT) setValue('price', e.target.value);
+                if (parseFloat(e.target.value) >= INPUT_MAX_LIMIT) {
+                  setValue('price', `${INPUT_MAX_LIMIT}`);
+                }
                 if (parseFloat(e.target.value) < MINIMUM_PRICE) {
                   setError('price', { message: `Minimum is ${MINIMUM_PRICE} price` });
                 } else {
                   clearErrors('price');
                 }
               }}
-              placeholder={ethPrice ? ethPrice : '0.00'}
+              placeholder={'0.00'}
               autoComplete="off"
               error={!!errors.price}
               errorText={errors.price?.message}
@@ -159,6 +164,49 @@ export const ModalEditListing: React.FC<Props> = ({
             </div>
           </div>
           {description && <p className="text-light mt-5">{description}</p>}
+          <div className="flex flex-row items-center text-[#97AAB5] my-2">
+            <span className="mr-2">
+              <Trans>Proceeds from sale</Trans>
+            </span>
+            <ETHWhite />
+            <span className="text-[#A1AFBA] ml-1">
+              {proceedsFrSale
+                ? String(proceedsFrSale).length > 8
+                  ? proceedsFrSale.toFixed(8)
+                  : proceedsFrSale
+                : 0}
+            </span>
+          </div>
+          <div className="flex flex-row items-center text-[#97AAB5]">
+            <span className="">
+              <Trans>Creator earnings</Trans>
+            </span>
+            <Tooltip>
+              <Tooltip.Trigger asChild className="focus:outline-none cursor-pointer">
+                <div className="flex flex-row items-center">
+                  <InfoCircle className="ml-1 mr-3" />
+                  <ETHWhite />
+                  <span className="text-[#A1AFBA] ml-1">
+                    {items && ethPrice
+                      ? String(+ethPrice - proceedsFrSale).length > 8
+                        ? (+ethPrice - proceedsFrSale).toFixed(8)
+                        : +ethPrice - proceedsFrSale
+                      : 0}
+                  </span>
+                </div>
+              </Tooltip.Trigger>
+              <Tooltip.Content side="top" className="bg-base/5 max-w-[256px] ml-5">
+                <Tooltip.Arrow className="fill-base/5 " width={16} height={8} />
+                <p className="text-base/9">
+                  <Trans>The creator of this collection will earn</Trans>
+                  {' ' +
+                    (items?.fee.length && items?.fee.length > 0 ? +items?.fee[0]?.percentage : 0) +
+                    '% '}
+                  <Trans>of every sale.</Trans>
+                </p>
+              </Tooltip.Content>
+            </Tooltip>
+          </div>
           <div className="flex flex-row items-center text-[#97AAB5] my-2">
             <span className="mr-2">
               <Trans>Proceeds from sale</Trans>

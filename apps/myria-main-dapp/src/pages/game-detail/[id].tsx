@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useGA4 } from 'src/lib/ga';
 import { headerHeight } from '../../components/Header';
 import DiscordIcon from '../../components/icons/DiscordIcon';
+import TwitterIcon from 'src/components/icons/TwitterIcon';
 import Page from '../../components/Page';
 import { paddingX } from '../../utils';
 import 'slick-carousel/slick/slick.css';
@@ -13,13 +14,8 @@ import SecondSlider from '../../components/game-detail/SecondSlider';
 import { useRouter } from 'next/router';
 import Subscribe from 'src/components/Subscribe';
 import { Trans } from '@lingui/macro';
-import { socialLinks } from 'src/configs';
 import useGamesData from '../../hooks/useGamesData';
-import { useWalletContext } from 'src/context/wallet';
-import { useAuthenticationContext } from 'src/context/authentication';
-import { localStorageKeys } from 'src/configs';
-import useLocalStorage from 'src/hooks/useLocalStorage';
-import { useL2WalletContext } from 'src/context/l2-wallet';
+import PlayButton from '../../components/game-detail/PlayButton';
 import dataJson from 'src/components/games/data-json';
 
 export type Asset = {
@@ -34,29 +30,6 @@ const GameDetail: React.FC = () => {
   const { event } = useGA4();
   const { id } = router.query;
   const games = useGamesData();
-  const { address, onConnect } = useWalletContext();
-  const { connectL2Wallet } = useL2WalletContext();
-  const { user, loginByWalletMutation } = useAuthenticationContext();
-  const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
-  const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
-
-  const showConnectedWallet = React.useMemo(() => {
-    // First time registration
-    if (walletAddress && address && (!user || !user?.wallet_id)) {
-      return true;
-    }
-
-    // Normal non-first time user
-    if (
-      address &&
-      user &&
-      address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
-      localStarkKey
-    ) {
-      return true;
-    }
-    return false;
-  }, [address, localStarkKey, user, walletAddress]);
 
   if (typeof id !== 'string') {
     return null;
@@ -66,17 +39,7 @@ const GameDetail: React.FC = () => {
   const { title, assets, logo, logoMobile, content, info, image, description, headerBg, gameUrl } =
     game;
 
-  const onConnectWallet = () => {
-    onConnect();
-    connectL2Wallet();
-    if (loginByWalletMutation.isError) {
-      loginByWalletMutation.mutate();
-    }
-  };
-
-  const playGame = () => {
-    window.open(gameUrl, '_blank');
-  };
+  console.log('debug: game', game);
 
   return (
     <Page stickyHeader={false}>
@@ -86,31 +49,35 @@ const GameDetail: React.FC = () => {
             paddingTop: headerHeight
           }}
           className={clsx(paddingX, 'relative isolate mb-[120px] md:min-h-screen ')}>
-          {headerBg && (
+          {headerBg && !game.isPartner && (
             <div className="absolute left-0 z-[-1] h-[809px] w-full">
               <div className="relative h-full w-full ">
                 <Image src={headerBg} alt="" layout="fill" objectFit="cover" />
               </div>
             </div>
           )}
-          <div className="mx-auto mt-10 w-full max-w-content">
+          <div className="max-w-content mx-auto mt-10 w-full">
             <h3 className="heading-lg text-center font-extrabold md:text-left">{title}</h3>
             <div className="mt-[32px] flex flex-col lg:flex-row lg:items-start">
               <div className="lg:w-[calc((100%-32px)*0.675)]">
-                <div>
-                  <FirstSlider
-                    currentSlide={currentSlide}
-                    setCurrentSlide={setCurrentSlide}
-                    assets={assets}
-                  />
-                </div>
-                <div className="mt-6">
-                  <SecondSlider
-                    currentSlide={currentSlide}
-                    setCurrentSlide={setCurrentSlide}
-                    assets={assets}
-                  />
-                </div>
+                {!game.isPartner && (
+                  <div>
+                    <FirstSlider
+                      currentSlide={currentSlide}
+                      setCurrentSlide={setCurrentSlide}
+                      assets={assets}
+                    />
+                  </div>
+                )}
+                {!game.isPartner && (
+                  <div className="mt-6">
+                    <SecondSlider
+                      currentSlide={currentSlide}
+                      setCurrentSlide={setCurrentSlide}
+                      assets={assets}
+                    />
+                  </div>
+                )}
                 <div className="">
                   <p className="body-lg mt-[70px]">{description}</p>
                   {image && (
@@ -119,14 +86,16 @@ const GameDetail: React.FC = () => {
                     </div>
                   )}
                   {content.map((item, idx) => (
-                    <div key={idx} className="mt-[48px] ">
+                    <div key={idx} className="mt-[48px] space-y-3">
                       <h4 className="heading-sm">{item.heading}</h4>
                       {item.paragraph?.map((p, idx) => {
                         if (typeof p === 'string') {
                           return (
-                            <p className="body mt-6 text-light" key={idx}>
-                              {p}
-                            </p>
+                            <p
+                              dangerouslySetInnerHTML={{ __html: p }}
+                              className="body text-light mt-1"
+                              key={idx}
+                            />
                           );
                         }
 
@@ -136,6 +105,7 @@ const GameDetail: React.FC = () => {
                   ))}
                 </div>
               </div>
+
               <div className="top-5 order-[-1] mb-6 lg:sticky lg:order-1 lg:mb-0 lg:ml-[32px] lg:w-[calc((100%-32px)*0.325)]">
                 <div className="lg:hidden">
                   <img src={logoMobile} className="w-full" alt="" />
@@ -143,70 +113,74 @@ const GameDetail: React.FC = () => {
                 <div className="hidden justify-center px-[30px] lg:flex">
                   <img src={logo} alt="" />
                 </div>
-                <div className="mt-[32px] flex flex-col rounded-[20px] bg-brand-deep-blue p-[32px]">
+
+                <div className="bg-brand-deep-blue mt-[32px] flex flex-col rounded-[20px] p-[32px]">
                   <div className="grid gap-6">
                     {info.map((item, idx) => (
                       <div className="flex items-center justify-between" key={idx}>
                         <p className="body-sm">{item.label}</p>
-                        <div className="caption rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold text-brand-light-blue">
+                        <div className="caption text-brand-light-blue rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold">
                           {item.value}
                         </div>
                       </div>
                     ))}
                   </div>
                   <div className="order-[-1] mb-6 md:order-1 md:mb-0 md:mt-[48px] ">
-                    {/* <button
-                      className="justify-center w-full btn-lg bg-[rgba(255,255,255,0.2)] text-[rgba(255,255,255,0.4)]"
-                      disabled>
-                      IN DEVELOPMENT
-                    </button> */}
-                    {/* <button className="btn-lg btn-primary w-full justify-center">
-                      <Trans>IN DEVELOPMENT</Trans>
-                    </button> */}
-                    {id.toLowerCase() === 'moonville-farms' ? (
-                      !loginByWalletMutation.isError &&
-                      !loginByWalletMutation.isLoading &&
-                      walletAddress &&
-                      showConnectedWallet ? (
-                        <button
-                          className="btn-lg btn-primary w-full justify-center"
-                          onClick={playGame}>
-                          <Trans>PLAY</Trans>
-                        </button>
-                      ) : (
-                        <button
-                          className="btn-lg btn-primary w-full justify-center"
-                          onClick={onConnectWallet}>
-                          <Trans>CONNECT TO PLAY</Trans>
-                        </button>
-                      )
-                    ) : (
-                      <button className="btn-lg btn-primary w-full justify-center">
-                        <Trans>IN DEVELOPMENT</Trans>
-                      </button>
+                    {/* <PlayButton gameUrl={gameUrl} /> */}
+                    {game.twitter && (
+                      <a
+                        href={game.twitter}
+                        target="_blank"
+                        className="btn-icon mt-6 flex w-full items-center justify-center bg-[#1DA1F2]"
+                        rel="noreferrer"
+                        onClick={() => {
+                          event('Discord Button Clicked', {
+                            button_location: 'Game',
+                            game_name: game.title
+                          });
+                        }}>
+                        <span className="w-[30px]">
+                          <TwitterIcon />
+                        </span>
+                        <span className="ml-2 text-base font-bold leading-5">
+                          <Trans>TWITTER</Trans>
+                        </span>
+                      </a>
                     )}
-                    <a
-                      href={game.discord}
-                      target="_blank"
-                      className="btn-icon btn-white mt-6 flex w-full items-center justify-center"
-                      rel="noreferrer"
-                      onClick={() => {
-                        event('Discord Button Clicked', {
-                          button_location: 'Game',
-                          game_name: game.title
-                        });
-                      }}>
-                      <span className="w-[30px]">
-                        <DiscordIcon />
-                      </span>
-                      <span>
-                        <Trans>JOIN DISCORD</Trans>
-                      </span>
-                    </a>
+                    {game.discord && (
+                      <a
+                        href={game.discord}
+                        target="_blank"
+                        className="btn-icon mt-6 flex w-full items-center justify-center bg-[#5B66F5]"
+                        rel="noreferrer"
+                        onClick={() => {
+                          event('Discord Button Clicked', {
+                            button_location: 'Game',
+                            game_name: game.title
+                          });
+                        }}>
+                        <span className="w-[30px]">
+                          <DiscordIcon />
+                        </span>
+                        <span className="ml-2 text-base font-bold leading-5">
+                          <Trans>JOIN DISCORD</Trans>
+                        </span>
+                      </a>
+                    )}
                   </div>
                 </div>
+                {game.isPartner && (
+                  <div className="bg-brand-deep-blue mt-[32px] flex flex-col rounded-[20px] p-[32px]">
+                    <div className="text-brand-light-blue">
+                      The information is provided by the owner of the associated project and not
+                      affiliated with Myria. Conduct your own research with projects listed on this
+                      directory.
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
+
             <div className="mt-10">
               <Subscribe />
             </div>
@@ -221,6 +195,9 @@ export async function getStaticPaths() {
   const listIdGame = Object.keys(dataJson).map((item) => {
     return { params: { id: item } };
   });
+  const listIdGame = Object.keys(dataJson).map((item) => {
+    return { params: { id: item } };
+  });
   return {
     paths: [
       { params: { id: 'metarush' } },
@@ -228,6 +205,7 @@ export async function getStaticPaths() {
       { params: { id: 'block-royale' } },
       { params: { id: 'starstrike' } },
       { params: { id: 'moonville-farms' } },
+      ...listIdGame,
       ...listIdGame
     ],
     fallback: false

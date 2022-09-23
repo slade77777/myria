@@ -1,42 +1,46 @@
 {
   "h-hedz-sharksquad": {
     "shortcut": {
-      "image": "/images/partner-games/30-h-hedz-sharksquad/logo.png",
+      "image": "/images/partner-games-1/30-h-hedz-sharksquad/logo.png",
       "title": "H-Hedz Sharksquad",
       "feature": "Multi Player",
       "genre": ["RPG"],
-      "publisher": "Myria Studios",
-      "id": "h-hedz-sharksquad"
+      "publisher": "Ecosystem Developer",
+      "id": "h-hedz-sharksquad",
+      "category": "Games"
     },
     "discord": "discord.gg/kd4keguPkH",
+    "twitter": "https://twitter.com/HHedzP2E",
     "headerBg": "",
     "title": "H-Hedz Sharksquad",
-    "description": "The H-Hedz are hammer-head-shark-human hybrids who are smart professionals by day, musicians by night, hip and classy humanoids from sunup to sundown.  \n\nA well-thought-out brand is the secret to lifting H-Hedz above the swarm of NFTs. It is the key to making a ground-breaking impact in the virtual space. The aim is to turn heads and make noise in the Metaverse.\n\nOur team is a mix of digital artists, technopreneurs, accountants, and branding specialists. We have more than 15 years of experience in entrepreneurship, digital design, and branding. We came together to create H-Hedz for you.  \n\nWe will release unique and rare NFTs. Holders will earn $TRK(Terakohin) coins every single day. And, they can use this to buy legendary items in the Play to Earn game. Amazing isn’t it!\nWords can’t express how excited we are, so we’re inviting you to join our plot to shake the Metaverse.",
-    "logo": "/images/partner-games/30-h-hedz-sharksquad/logo.png",
+    "description": "",
+    "logo": "/images/partner-games-1/30-h-hedz-sharksquad/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/30-h-hedz-sharksquad/banner_1.png"
+        "src": "/images/partner-games-1/30-h-hedz-sharksquad/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/30-h-hedz-sharksquad/banner_2.jpg"
+        "src": "/images/partner-games-1/30-h-hedz-sharksquad/banner_2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/30-h-hedz-sharksquad/banner_3.jpg"
+        "src": "/images/partner-games-1/30-h-hedz-sharksquad/banner_3.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/30-h-hedz-sharksquad/banner_4.png"
+        "src": "/images/partner-games-1/30-h-hedz-sharksquad/banner_4.png"
       }
     ],
     "content": [
       {
         "heading": "About the game",
         "paragraph": [
-          "The H-Hedz are hammer-head-shark-human hybrids who are smart professionals by day, musicians by night, hip and classy humanoids from sunup to sundown.  \n\nA well-thought-out brand is the secret to lifting H-Hedz above the swarm of NFTs. It is the key to making a ground-breaking impact in the virtual space. The aim is to turn heads and make noise in the Metaverse.\n\nOur team is a mix of digital artists, technopreneurs, accountants, and branding specialists. We have more than 15 years of experience in entrepreneurship, digital design, and branding. We came together to create H-Hedz for you.  \n\nWe will release unique and rare NFTs. Holders will earn $TRK(Terakohin) coins every single day. And, they can use this to buy legendary items in the Play to Earn game. Amazing isn’t it!\nWords can’t express how excited we are, so we’re inviting you to join our plot to shake the Metaverse."
+          "The H-Hedz are hammer-head-shark-human hybrids who are smart professionals by day, musicians by night, hip and classy humanoids from sunup to sundown. ",
+          "A well-thought-out brand is the secret to lifting H-Hedz above the swarm of NFTs. It is the key to making a ground-breaking impact in the virtual space. The aim is to turn heads and make noise in the Metaverse.<br />Our team is a mix of digital artists, technopreneurs, accountants, and branding specialists. We have more than 15 years of experience in entrepreneurship, digital design, and branding. We came together to create H-Hedz for you.",
+          "We will release unique and rare NFTs. Holders will earn $TRK(Terakohin) coins every single day. And, they can use this to buy legendary items in the Play to Earn game. Amazing isn’t it! <br />Words can’t express how excited we are, so we’re inviting you to join our plot to shake the Metaverse."
         ]
       },
       {
@@ -50,7 +54,13 @@
       {
         "heading": "Other Link",
         "paragraph": [
-          "Website: https://h-hedz.io/\n          Linktree: https://linktr.ee/hhedznft\n          Telegram: https://t.me/hhedzp2e\n          Twitter: https://twitter.com/HHedzP2E\n          Facebook: https://www.facebook.com/HHedzNFT\n          Instagram: https://www.instagram.com/HHedzNFT\n          Youtube: https://www.youtube.com/channel/UCuBvG5aexPWYS0Tso8Pvu4A"
+          "Website: https://h-hedz.io/",
+          "Linktree: https://linktr.ee/hhedznft",
+          "Telegram: https://t.me/hhedzp2e",
+          "Twitter: https://twitter.com/HHedzP2E",
+          "Facebook: https://www.facebook.com/HHedzNFT",
+          "Instagram: https://www.instagram.com/HHedzNFT",
+          "outube: https://www.youtube.com/channel/UCuBvG5aexPWYS0Tso8Pvu4A"
         ]
       }
     ],
@@ -66,10 +76,6 @@
       {
         "label": "Genre",
         "value": "RPG"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

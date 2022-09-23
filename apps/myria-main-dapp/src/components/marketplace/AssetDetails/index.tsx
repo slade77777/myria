@@ -4,6 +4,7 @@ import lodash from 'lodash';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 import BackIcon from 'src/components/icons/BackIcon';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
@@ -35,16 +36,19 @@ import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
+import { collectionModule } from 'src/services/myriaCore';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
 import {
   AssetDetailsResponse,
   CreateOrderEntity,
+  FeeType,
   SignableOrderInput,
   TradesRequestTypes
 } from 'myria-core-sdk';
 import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
 import MessageCopyModal from '../MessageModal/MessageCopyModal';
+import { convertAmountToQuantizedAmount } from 'src/packages/l2-wallet/src/utils/Converter';
 
 interface Props {
   id: string;
@@ -100,6 +104,7 @@ function AssetDetails({ id }: Props) {
       enabled: !!id
     }
   );
+
   const starkKeyUser = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey
   );
@@ -108,6 +113,27 @@ function AssetDetails({ id }: Props) {
     useL2WalletContext();
 
   const assetDetails = data?.assetDetails;
+
+  const collectionID = data?.assetDetails?.collectionId;
+
+  const {
+    data: collection,
+    isLoading: collectionLoading,
+    refetch: collectionRefetch
+  } = useQuery(
+    ['collectionDetail'],
+    async () => {
+      const collectionID = assetDetails?.collectionId;
+      if (collectionID) {
+        const result: any = await collectionModule?.getCollectionById(collectionID);
+        return { ...result?.data };
+      } else return null;
+    },
+    {
+      enabled: !!collectionID
+    }
+  );
+
   const ownedBy = useMemo(() => {
     if (assetDetails?.owner?.starkKey == starkKey) {
       return <Trans>You</Trans>;
@@ -180,9 +206,7 @@ function AssetDetails({ id }: Props) {
   const { address, onConnectCompaign } = useWalletContext();
   const { loginByWalletMutation } = useAuthenticationContext();
   // wait update sdk
-  const bgImage = assetDetails?.metadataOptional
-    ? (assetDetails?.metadataOptional as any)?.rarity
-    : 'common';
+  const bgImage = assetDetails?.metadata ? (assetDetails?.metadata as any)?.rarity : 'Common';
   const rarityColor = getRarityColor(bgImage);
   const {
     status: withdrawalStatus,
@@ -294,10 +318,22 @@ function AssetDetails({ id }: Props) {
       if (!moduleFactory) return;
 
       const orderModule = moduleFactory.getOrderManager();
-      if (!address) return;
+      if (!address || !assetDetails) return;
+      const signableFee =
+        (assetDetails.fee && assetDetails?.fee?.length) > 0
+          ? [
+              {
+                address: assetDetails?.fee[0].address,
+                percentage: assetDetails?.fee[0].percentage,
+                feeType: FeeType.ROYALTY
+              }
+            ]
+          : undefined;
+
       const payload: SignableOrderInput = {
         orderType: 'SELL',
         ethAddress: address,
+        assetRefId: parseInt(id, 10),
         starkKey: starkKey,
         tokenSell: {
           type: TokenType.MINTABLE_ERC721,
@@ -314,15 +350,34 @@ function AssetDetails({ id }: Props) {
           }
         },
         amountBuy: price + '',
-        includeFees: false
+        includeFees: signableFee ? true : false,
+        fees: signableFee
       };
       const signature = await orderModule?.signableOrder(payload);
+      const feeSign = signature?.feeInfo
+        ? {
+            feeLimit: signature?.feeInfo?.feeLimit,
+            feeToken: signature?.feeInfo?.assetId,
+            feeVaultId: signature?.feeInfo?.sourceVaultId
+          }
+        : undefined;
+
+      const feeData = signature?.feeInfo
+        ? [
+            {
+              feeType: FeeType.ROYALTY,
+              percentage: assetDetails?.fee[0].percentage,
+              address: address
+            }
+          ]
+        : undefined;
+
       if (signature) {
         const paramCreateOrder: CreateOrderEntity = {
           assetRefId: parseInt(id, 10),
           orderType: 'SELL',
-          fees: [{}],
-          includeFees: false,
+          feeSign: feeSign,
+          includeFees: true,
           amountSell: signature.amountSell,
           amountBuy: signature.amountBuy,
           sellerStarkKey: starkKey,
@@ -330,8 +385,10 @@ function AssetDetails({ id }: Props) {
           vaultIdBuy: signature.vaultIdBuy,
           sellerAddress: address,
           assetIdBuy: signature.assetIdBuy,
-          assetIdSell: signature.assetIdSell
+          assetIdSell: signature.assetIdSell,
+          fees: feeData
         };
+        console.log('CreateOrderParams -> ', paramCreateOrder);
         const res = await orderModule?.createOrder(paramCreateOrder);
         if (res) {
           setShowModal(false);
@@ -481,12 +538,29 @@ function AssetDetails({ id }: Props) {
     if (!moduleFactory) return;
     const orderModule = moduleFactory.getOrderManager();
     const tradeModule = moduleFactory.getTradeManager();
-    if (!address || !tradeData?.order.orderId) return;
+
+    if (!address || !tradeData?.order.orderId || !assetDetails) return;
 
     try {
+      const signableFee =
+        (assetDetails?.fee && assetDetails?.fee?.length) > 0
+          ? [
+              {
+                address: assetDetails?.fee[0].address,
+                percentage: assetDetails?.fee[0].percentage,
+                feeType: FeeType.ROYALTY
+              }
+            ]
+          : undefined;
+
+      const totalQuantizedAmount = convertAmountToQuantizedAmount(
+        assetDetails?.order.nonQuantizedAmountBuy
+      );
+
       const signableOrderInput: SignableOrderInput = {
         orderType: 'BUY',
         ethAddress: address,
+        assetRefId: assetDetails.id,
         starkKey,
         tokenBuy: {
           type: TokenType.MINTABLE_ERC721,
@@ -496,17 +570,22 @@ function AssetDetails({ id }: Props) {
           }
         },
         amountBuy: `${tradeData?.order.amountSell}`,
-        amountSell: `${tradeData?.order.amountBuy}`,
+        amountSell: String(totalQuantizedAmount),
         tokenSell: {
           type: TokenType.ETH,
           data: {
             quantum: QUANTUM
           }
         },
-        includeFees: false
+        includeFees: signableFee ? true : false,
+        fees: signableFee
       };
+      console.log('Before Signable Order -> ', signableOrderInput);
       const signableOrder = await orderModule?.signableOrder(signableOrderInput);
+      console.log('Signable Order -> ', signableOrder);
+
       if (!signableOrder) return;
+
       const payloadTrade: TradesRequestTypes = {
         orderId: tradeData?.order.orderId,
         amountBuy: signableOrder.amountBuy,
@@ -517,7 +596,14 @@ function AssetDetails({ id }: Props) {
         buyerAddress: address,
         assetIdSell: signableOrder.assetIdSell,
         assetIdBuy: signableOrder.assetIdBuy,
-        includeFees: false
+        includeFees: signableFee ? true : false,
+        feeInfo: [
+          {
+            feeLimit: signableOrder?.feeInfo?.feeLimit || '',
+            assetId: signableOrder?.feeInfo?.assetId || '',
+            sourceVaultId: Number(signableOrder?.feeInfo?.sourceVaultId)
+          }
+        ]
       };
 
       // code below will use in the future
@@ -605,7 +691,11 @@ function AssetDetails({ id }: Props) {
               {/* first row */}
               <div className="flex flex-row items-center">
                 <img src={avatar.src} className="h-[24px] w-[24px]" />
-                <span className="ml-2 text-base text-light">{assetDetails?.creator?.name}</span>
+                <Link href={`/marketplace/collection/?id=${collection?.publicId}`}>
+                  <span className="text-light ml-2 cursor-pointer text-base">
+                    {assetDetails?.creator?.name}
+                  </span>
+                </Link>
               </div>
               <div
                 className="w-10 p-3 rounded cursor-pointer bg-base/3"
@@ -627,18 +717,9 @@ function AssetDetails({ id }: Props) {
                   <Trans>Owned by</Trans> {ownedBy}
                 </span>
               </div>
-
-              <div className="flex gap-6 text-sm font-normal text-light">
-                <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
-                  <MintedIcon />
-                  <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
-                </div>
-                <div className="bg-base/3 border-base/6 mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2">
-                  <OwnerAssetIcon />
-                  <span className="ml-[5px]">
-                    Owner: {truncateString(`${assetDetails?.owner?.ethAddress}`)}
-                  </span>
-                </div>
+              <div className="bg-base/3 border-base/6 text-light mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2 text-sm font-normal">
+                <MintedIcon />
+                <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
               </div>
             </div>
             {status === AssetStatus.BUY_NOW && (

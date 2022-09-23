@@ -1,38 +1,40 @@
 {
   "chillyrolls": {
     "shortcut": {
-      "image": "/images/partner-games/07-chilly-rolls/logo.jpg",
+      "image": "/images/partner-games-1/07-chilly-rolls/logo.png",
       "title": "ChillyRolls",
-      "feature": "Multi Player",
-      "genre": ["Pfp Art - Brand"],
-      "publisher": "Myria Studios",
-      "id": "chillyrolls"
+      "feature": "",
+      "genre": [],
+      "publisher": "Ecosystem Developer",
+      "id": "chillyrolls",
+      "category": "Art"
     },
     "discord": "http://discord.gg/chillyrolls",
+    "twitter": "https://twitter.com/ChillyrollsNFT",
     "headerBg": "",
     "title": "ChillyRolls",
-    "description": "Chillyrolls is a worldwide brand aiming to bridge between Web3 and the real world, by providing it's holders the chance to make a real passive income through their different ventures under the brand of ChillyRolls",
-    "logo": "/images/partner-games/07-chilly-rolls/logo.jpg",
+    "description": "",
+    "logo": "/images/partner-games-1/07-chilly-rolls/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/07-chilly-rolls/banner_1.png"
+        "src": "/images/partner-games-1/07-chilly-rolls/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/07-chilly-rolls/banner_2.png"
+        "src": "/images/partner-games-1/07-chilly-rolls/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/07-chilly-rolls/banner_3.png"
+        "src": "/images/partner-games-1/07-chilly-rolls/banner_3.png"
       }
     ],
     "content": [
       {
         "heading": "About the game",
         "paragraph": [
-          "Chillyrolls is a worldwide brand aiming to bridge between Web3 and the real world, by providing it's holders the chance to make a real passive income through their different ventures under the brand of ChillyRolls"
+          "Chillyrolls is a worldwide brand aiming to bridge between Web3 and the real world, by providing it's holders the chance to make a real passive income through their different ventures under the brand of ChillyRolls."
         ]
       },
       {
@@ -46,7 +48,9 @@
       {
         "heading": "They are aiming to launch",
         "paragraph": [
-          "They are aiming to launch :\n\n- Real Merch Stores around the world ( Europe, USA...)\n- Product brand : our toilet paper brand\n- Music Festival : annual music festival we call it ChillyFestival !"
+          "- Real Merch Stores around the world ( Europe, USA...)",
+          "- Product brand : our toilet paper brand",
+          "- Music Festival : annual music festival we call it ChillyFestival !"
         ]
       },
       {
@@ -66,10 +70,6 @@
       {
         "label": "Genre",
         "value": "Pfp Art - Brand"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

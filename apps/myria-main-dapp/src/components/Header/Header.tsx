@@ -11,6 +11,8 @@ import { useWalletContext } from 'src/context/wallet';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import SessionTimeoutCountModal from '../SessionTimeoutCountModal';
 import BrowserNotSupportedModal from '../modals/BrowserNotSupportedModal';
+import { localStorageKeys } from 'src/configs';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 
 export const links: NavItem[] = Object.values(linkSources);
 export const navHeight = 93;
@@ -31,6 +33,8 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
   const { disconnect, address } = useWalletContext();
   const { disconnectL2Wallet } = useL2WalletContext();
   const [showSessionTimeoutModal, setShowSessionTimeoutModal] = useState(false);
+
+  const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
 
   const ref = useRef<any>(null);
   let usedAction = action;
@@ -59,7 +63,7 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
 
   return (
     <div className={clsx('absolute top-0 z-10 w-full', className)}>
-      {address && (
+      {walletAddress && (
         <IdleTimer
           ref={ref}
           stopOnIdle={true}

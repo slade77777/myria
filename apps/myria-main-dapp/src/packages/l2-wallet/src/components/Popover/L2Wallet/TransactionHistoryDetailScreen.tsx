@@ -67,16 +67,11 @@ export default function TransactionHistoryDetailScreen({
         <>
           {transactionDetail.status === STATUS_HISTORY.FAILED ? (
             <div className="flex items-center justify-center ">
-              {DF_TRANSACTION_TYPE[transactionDetail.type]?.iconFailed}
+              <img className="w-[83px] flex-none" src={'/assets/images/nft.svg'} alt="token_icon" />
             </div>
           ) : (
             <div className="flex items-center justify-center ">
-              <Image
-                className=""
-                src={DF_TRANSACTION_TYPE[transactionDetail.type]?.icon}
-                width={89}
-                height={89}
-              />
+              <img className="w-[83px] flex-none" src={'/assets/images/nft.svg'} alt="token_icon" />
             </div>
           )}
         </>
@@ -112,7 +107,7 @@ export default function TransactionHistoryDetailScreen({
             <span className="text-base/9">
               <Trans>Item</Trans>
             </span>
-            <span className="ml-1">Sigil NFT</span>
+            <span className="ml-1">NFT</span>
           </div>
         )}
 

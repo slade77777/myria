@@ -1,8 +1,11 @@
+import { AssetOrderBy } from 'myria-core-sdk';
 import React, { useContext, useState } from 'react';
+import { dataSorting } from 'src/components/marketplace/Collection';
 
 interface valueSort {
+  id: number;
   sortingField: string;
-  orderBy: undefined;
+  orderBy: AssetOrderBy;
   name: string;
 }
 
@@ -14,11 +17,7 @@ interface FilterSort {
 const FilterSortContext = React.createContext<FilterSort>({} as FilterSort);
 
 export const FilterSortProvider: React.FC = ({ children }) => {
-  const [sorting, setSorting] = useState<valueSort>({
-    sortingField: 'createdAt',
-    orderBy: undefined,
-    name: 'Recently listed'
-  });
+  const [sorting, setSorting] = useState<valueSort>(dataSorting[0]);
 
   const handleUpdateSort = (value: valueSort) => {
     setSorting(value);

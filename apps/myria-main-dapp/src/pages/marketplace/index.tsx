@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import { AssetOrderBy, OrderStatus, OrderType } from 'myria-core-sdk';
-import React, { useEffect, useState } from 'react';
+import { OrderStatus, OrderType } from 'myria-core-sdk';
+import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
@@ -57,18 +57,8 @@ const Marketplace: React.FC = () => {
   );
 
   const handleSelected = (e: any) => {
-    if (e.sortingField === 'createdAt') {
-      handleUpdateSort({
-        orderBy: undefined,
-        sortingField: e.sortingField,
-        name: e.name
-      });
-    } else {
-      handleUpdateSort({
-        orderBy: e.val,
-        sortingField: e.sortingField,
-        name: e.name
-      });
+    if (e) {
+      handleUpdateSort(e);
     }
   };
 
@@ -92,7 +82,7 @@ const Marketplace: React.FC = () => {
             <div className="w-1/5 pt-[52px]">
               <SelectOrderBy
                 data={dataSorting}
-                selectedDefault={sorting.name}
+                selectedDefault={sorting}
                 changeHandler={handleSelected}
               />
             </div>

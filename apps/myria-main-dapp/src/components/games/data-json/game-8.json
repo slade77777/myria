@@ -1,39 +1,41 @@
 {
   "carnage-carnival": {
     "shortcut": {
-      "image": "/images/partner-games/08-carnage-carnival/logo.png",
+      "image": "/images/partner-games-1/08-carnage-carnival/logo.png",
       "title": "Carnage Carnival",
       "feature": "Multi Player",
       "genre": ["MOBA"],
-      "publisher": "Myria Studios",
-      "id": "carnage-carnival"
+      "publisher": "Ecosystem Developer",
+      "id": "carnage-carnival",
+      "category": "Games"
     },
     "discord": "https://discord.gg/TzrFaXcthe",
+    "twitter": "https://twitter.com/Cng_Carnival",
     "headerBg": "",
     "title": "Carnage Carnival",
-    "description": "Carnage Carnival is a free to play, play and earn MOBA game that utilizes blockchain technology. It’s a competitive team versus team game that rewards players in conjunction to their respective skills and knowledge of the game. Create your own META build with our heroes, mask & weapon to suit your play style. Compete in an E-sport ready game environment and earn your right to become the Ringmaster.",
-    "logo": "/images/partner-games/08-carnage-carnival/logo.png",
+    "description": "",
+    "logo": "/images/partner-games-1/08-carnage-carnival/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_1.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_2.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_3.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_3.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_4.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_4.png"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/08-carnage-carnival/banner_5.png"
+        "src": "/images/partner-games-1/08-carnage-carnival/banner_5.png"
       }
     ],
     "content": [
@@ -80,10 +82,6 @@
       {
         "label": "Genre",
         "value": "MOBA"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {
