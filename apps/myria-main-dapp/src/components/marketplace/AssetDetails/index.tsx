@@ -146,7 +146,7 @@ function AssetDetails({ id }: Props) {
       </span>
     ) : (
       <span>
-        <Trans>BACK TO MYRIA HOT COLLECTIONS</Trans>
+        <Trans>BACK</Trans>
       </span>
     );
     return result;
@@ -574,6 +574,14 @@ function AssetDetails({ id }: Props) {
     return payloadDataTrade;
   };
 
+  const back = () => {
+    if (sessionStorage.getItem('prevPath')) {
+      router.back();
+    } else {
+      router.push('/');
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="flex justify-center">
@@ -583,7 +591,11 @@ function AssetDetails({ id }: Props) {
   }
   return (
     <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] ">
-      <button onClick={router.back} className="mb-14 items-center">
+      <button
+        onClick={() => {
+          back();
+        }}
+        className="mb-14 items-center">
         <div className="flex items-center">
           <BackIcon />
           <span className="ml-[6px] text-sm font-normal leading-[17px]">{titleBack}</span>
