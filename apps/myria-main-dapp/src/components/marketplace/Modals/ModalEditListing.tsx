@@ -207,49 +207,6 @@ export const ModalEditListing: React.FC<Props> = ({
               </Tooltip.Content>
             </Tooltip>
           </div>
-          <div className="flex flex-row items-center text-[#97AAB5] my-2">
-            <span className="mr-2">
-              <Trans>Proceeds from sale</Trans>
-            </span>
-            <ETHWhite />
-            <span className="text-[#A1AFBA] ml-1">
-              {proceedsFrSale
-                ? String(proceedsFrSale).length > 8
-                  ? proceedsFrSale.toFixed(8)
-                  : proceedsFrSale
-                : 0}
-            </span>
-          </div>
-          <div className="flex flex-row items-center text-[#97AAB5]">
-            <span className="">
-              <Trans>Creator earnings</Trans>
-            </span>
-            <Tooltip>
-              <Tooltip.Trigger asChild className="focus:outline-none cursor-pointer">
-                <div className="flex flex-row items-center">
-                  <InfoCircle className="ml-1 mr-3" />
-                  <ETHWhite />
-                  <span className="text-[#A1AFBA] ml-1">
-                    {items && ethPrice
-                      ? String(+ethPrice - proceedsFrSale).length > 8
-                        ? (+ethPrice - proceedsFrSale).toFixed(8)
-                        : +ethPrice - proceedsFrSale
-                      : 0}
-                  </span>
-                </div>
-              </Tooltip.Trigger>
-              <Tooltip.Content side="top" className="bg-base/5 max-w-[256px] ml-5">
-                <Tooltip.Arrow className="fill-base/5 " width={16} height={8} />
-                <p className="text-base/9">
-                  <Trans>The creator of this collection will earn</Trans>
-                  {' ' +
-                    (items?.fee.length && items?.fee.length > 0 ? +items?.fee[0]?.percentage : 0) +
-                    '% '}
-                  <Trans>of every sale.</Trans>
-                </p>
-              </Tooltip.Content>
-            </Tooltip>
-          </div>
           <div className="mt-8">
             <Button
               onClick={handleSubmit(onHandleSubmit, onHandleError)}
