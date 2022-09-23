@@ -195,9 +195,7 @@ export async function getStaticPaths() {
   const listIdGame = Object.keys(dataJson).map((item) => {
     return { params: { id: item } };
   });
-  const listIdGame = Object.keys(dataJson).map((item) => {
-    return { params: { id: item } };
-  });
+
   return {
     paths: [
       { params: { id: 'metarush' } },
