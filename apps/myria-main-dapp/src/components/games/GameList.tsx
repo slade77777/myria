@@ -9,47 +9,79 @@ import Overlay from '../overlay/Overlay';
 import dataJson from 'src/components/games/data-json';
 
 const filters: FilterList = [
-  {
-    title: 'Features',
-    id: 'Features',
-    options: [
-      {
-        id: 'Single Player',
-        name: 'Single Player'
-      },
-      {
-        id: 'Multi Player',
-        name: 'Multi Player'
-      }
-    ]
-  },
+  // {
+  //   title: 'Features',
+  //   id: 'Features',
+  //   options: [
+  //     {
+  //       id: 'Single Player',
+  //       name: 'Single Player'
+  //     },
+  //     {
+  //       id: 'Multi Player',
+  //       name: 'Multi Player'
+  //     }
+  //   ]
+  // },
   {
     title: 'Genre',
     id: 'Genre',
     options: [
       {
-        id: 'Simulation',
-        name: 'Simulation'
+        id: 'Action',
+        name: 'Action'
       },
       {
         id: 'Casual',
         name: 'Casual'
       },
       {
-        id: 'Survival',
-        name: 'Survival'
+        id: 'Collectable Cards',
+        name: 'Collectable Cards'
       },
       {
-        id: 'Action',
-        name: 'Action'
+        id: 'Combat',
+        name: 'Combat'
+      },
+      {
+        id: 'GameFi',
+        name: 'GameFi'
+      },
+      {
+        id: 'MMORPG',
+        name: 'MMORPG'
+      },
+      {
+        id: 'MOBA',
+        name: 'MOBA'
       },
       {
         id: 'Racing',
         name: 'Racing'
       },
       {
+        id: 'RPG',
+        name: 'RPG'
+      },
+      {
+        id: 'Survival',
+        name: 'Survival'
+      },
+      {
         id: 'Shooter',
         name: 'Shooter'
+      },
+      {
+        id: 'Simulation',
+        name: 'Simulation'
+      },
+      {
+        id: 'Sports',
+        name: 'Sports'
+      },
+      {
+        id: 'Strategy',
+        name: 'Strategy'
       }
     ]
   },
@@ -66,8 +98,12 @@ const filters: FilterList = [
         name: 'Leapblock Studios'
       },
       {
-        id: 'Playware Games',
-        name: 'Playware Games'
+        id: 'AB de Villiers',
+        name: 'AB de Villiers'
+      },
+      {
+        id: 'Ecosystem Developer',
+        name: 'Ecosystem Developer'
       }
     ]
   }
@@ -97,60 +133,56 @@ export const games: {
     feature: 'Multi Player',
     genre: ['Survival', 'Racing'],
     publisher: 'Myria Studios',
-    id: 'metarush'
+    id: 'metarush',
+    category: 'Games'
   },
   {
     image: '/images/our-games/metakart_op.png',
     title: 'Metakart',
     feature: 'Multi Player',
-    genre: ['Racing', 'Casual'],
+    genre: ['Racing'],
     publisher: 'Myria Studios',
-    id: 'metakart'
+    id: 'metakart',
+    category: 'Games'
   },
   {
     image: '/images/our-games/block-royale_op.png',
     title: 'Block Royale ',
     feature: 'Multi Player',
-    genre: ['Survival', 'Action', 'Shooter'],
+    genre: ['Shooter'],
     publisher: 'Myria Studios',
-    id: 'block-royale'
+    id: 'block-royale',
+    category: 'Games'
   },
   {
     image: '/images/our-games/starstrike_updated_card_op.png',
     title: 'Starstrike Legends',
     feature: 'Multi Player',
-    genre: ['Action', 'Shooter'],
+    genre: ['Shooter'],
     publisher: 'Myria Studios',
-    id: 'starstrike'
+    id: 'starstrike',
+    category: 'Games'
   },
   {
     image: '/images/our-games/moonville_op.png',
-    title: 'Moonville Farm',
-    feature: 'Single Player',
-    genre: ['Casual', 'Simulation'],
-    publisher: 'Leapblock Studios',
-    id: 'moonville-farms'
-  },
-  {
-    image: '/images/our-games/hot-slice_op.png',
-    title: 'Hot Slice Tycoon',
-    feature: 'Single Player',
-    genre: ['Casual', 'Simulation'],
-    publisher: 'Playware Games',
-    id: 'hotslice',
-    disabled: true,
-    comingsoon: true
-  },
-  {
-    image: '/images/home/game-1.png',
-    title: 'AB Cricket Game',
+    title: 'Moonville Farms',
     feature: 'Multi Player',
-    genre: ['Casual'],
-    publisher: 'AB DE VILLIERS',
-    id: 'cricket',
-    comingsoon: true,
+    genre: ['Simulation'],
+    publisher: 'Leapblock Studios',
+    id: 'moonville-farms',
+    category: 'Games'
+  },
+  {
+    image: '/images/our-games/mr_360_cricket.png',
+    title: 'Mr 360 Cricket',
+    feature: 'Multi Player',
+    genre: ['Casual', 'Sports'],
+    publisher: 'AB de Villiers',
+    id: 'mr-360-cricket',
+    category: 'Games',
     link: '/cricket'
   },
+
   ...Object.values(dataJson).map((item: any) => item.shortcut)
 ];
 
@@ -164,7 +196,7 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
         <Overlay className="h-[232px] overflow-hidden rounded-[5px] md:h-[344px]">
           <Image src={item.image} alt="" layout="fill" objectFit="cover" />
         </Overlay>
-        <p className="mt-4 flex text-[14px] font-bold uppercase leading-[1.5] text-brand-light-blue">
+        <p className="text-brand-light-blue mt-4 flex text-[14px] font-bold uppercase leading-[1.5]">
           <span>{item.publisher}</span>
           {item.comingsoon && (
             <div className="ml-auto">
@@ -201,22 +233,23 @@ const GameList: React.FC = () => {
   });
 
   return (
-    // <div className="grid gap-0 md:grid-cols-[auto_1fr] md:gap-8 w-full">
-    // <div className="min-w-[184px]">
-    //   <p className="text-[20px] font-medium leading-[1.5]">Filter</p>
-    //   <Filter
-    //     filterList={filters}
-    //     activeFilter={filter}
-    //     setFilter={(activeFilter) => setFilter(activeFilter)}
-    //   />
-    // </div>
-    <div className="w-full">
-      <div className={clsx('mt-7 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4')}>
-        {filteredGames.map((item, idx) => (
-          <div key={idx} className="snap-start">
-            <GameItem item={item} />
-          </div>
-        ))}
+    <div className="grid w-full gap-0 md:grid-cols-[auto_1fr] md:gap-8">
+      <div className="min-w-[184px]">
+        <p className="hidden text-[20px] font-medium leading-[1.5] md:block">Filter</p>
+        <Filter
+          filterList={filters}
+          activeFilter={filter}
+          setFilter={(activeFilter) => setFilter(activeFilter)}
+        />
+      </div>
+      <div className="w-full">
+        <div className={clsx('mt-7 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4')}>
+          {filteredGames.map((item, idx) => (
+            <div key={idx} className="snap-start">
+              <GameItem item={item} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

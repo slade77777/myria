@@ -35,13 +35,13 @@ const ChestItem = ({ type, rarity, image, name, credit }: ChestItemProps) => {
   const itemName = type === 'credits' ? `${credit} Sigil Event Points` : name;
   const bgColor = React.useMemo(() => {
     switch (rarity) {
-      case 'rare':
+      case 'Rare':
         return 'linear-gradient(180deg, rgba(169, 203, 104, 0.2) 5.86%, rgba(169, 203, 104, 0) 51.87%)';
-      case 'epic':
+      case 'Epic':
         return 'linear-gradient(180deg, rgba(168, 121, 180, 0.2) 5.86%, rgba(168, 121, 180, 0) 51.87%)';
-      case 'ultra_rare':
+      case 'Ultra Rare':
         return 'linear-gradient(180deg, rgba(79, 166, 185, 0.2) 5.86%, rgba(79, 166, 185, 0) 51.87%)';
-      case 'common':
+      case 'Common':
         return 'linear-gradient(180deg, rgba(169, 166, 177, 0.2) 5.86%, rgba(169, 166, 177, 0) 51.87%)';
       default:
         return 'linear-gradient(180deg, rgba(169, 166, 177, 0.2) 5.86%, rgba(169, 166, 177, 0) 51.87%)';
@@ -83,7 +83,7 @@ const OpenInventoryChestModal: React.FC<Props> = ({
   }, [openedChest]);
 
   const animationVideo = React.useMemo(() => {
-    if (chestRarity === 'rare') {
+    if (chestRarity === 'Rare') {
       return '/videos/inventory/open_chest_rare.m4v';
     }
     return '/videos/inventory/open_chest_common.m4v';

@@ -1,7 +1,7 @@
 {
   "solkeleton-army": {
     "shortcut": {
-      "image": "/images/partner-games/17-solkeleton-army/logo.png",
+      "image": "/images/partner-games-1/17-solkeleton-army/logo.png",
       "title": "Solkeleton Army",
       "feature": "Multi Player",
       "genre": ["NFT"],
@@ -9,20 +9,21 @@
       "id": "solkeleton-army"
     },
     "discord": "https://discord.gg/JzkWwKGVm2",
+    "twitter": "https://twitter.com/SolkeletonArmy",
     "headerBg": "",
     "title": "Solkeleton Army",
     "description": "Hey, Soldiers of the Ruined Kingdoms! We escaped from hell and started the awakening. With 5,000 awakened soldiers, we created the Solkeleton Army. Join the awakening, become a Solkeleton and join the army.",
-    "logo": "/images/partner-games/17-solkeleton-army/logo.png",
+    "logo": "/images/partner-games-1/17-solkeleton-army/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/17-solkeleton-army/banner_1.png"
+        "src": "/images/partner-games-1/17-solkeleton-army/banner_1.png"
       }
     ],
     "content": [
       {
-        "heading": "About the game",
+        "heading": " About Solkeleton Army",
         "paragraph": [
           "Solkeleton Army is a Cross Chain ( Solana & Myria ) 3D FULL BODY PFP NFT Collection aimed to develop NFT Tools, build NFT Communities and start a new era of PFP NFT Collections."
         ]
@@ -48,10 +49,6 @@
       {
         "label": "Genre",
         "value": "NFT"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

@@ -5,7 +5,6 @@ import GameList from 'src/components/games/GameList';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import Program from 'src/components/Program';
 import Subscribe from 'src/components/Subscribe';
-import { headerHeight } from '../components/Header';
 import Page from '../components/Page';
 import { negativeMarginXSm, paddingX } from '../utils';
 
@@ -13,20 +12,16 @@ const Games: React.FC = () => {
   return (
     <Page>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
-        <div className="mx-auto max-w-content">
-          <section
-            className={clsx(
-              negativeMarginXSm,
-              "mt-0 flex h-[479px] bg-[url('/images/games/header-bg-mobile.jpg')] bg-cover bg-center px-6 pt-[85px] text-center md:mx-0 md:mt-6 md:h-[288px] md:items-center md:rounded-[12px]  md:bg-[url('/images/games/header-bg.jpeg')] bg-no-repeat md:px-[56px] md:pt-0 md:text-left"
-            )}
-            style={{ backgroundSize: '110%' }}>
-            <p className="heading-lg mx-auto max-w-[420px] md:mx-0 md:font-medium">
-              <Trans>
-                <span className="text-brand-gold">Play</span> and earn <br /> rewards and NFTs
-              </Trans>
-            </p>
+        <div className="max-w-content mx-auto">
+          <section className="mt-5 md:mt-[80px]">
+            <h1 className="text-center text-4xl font-bold leading-[125%] text-white md:text-left">
+              Discover the latest projects on Myria
+            </h1>
+            <h3 className="mt-4 text-lg leading-[150%] text-white">
+              Web3 projects build on Myria to offer 0 gas fee, high scalability and security
+            </h3>
           </section>
-          <section className="-mt-7 md:mt-[88px]">
+          <section className="mt-4 md:mt-[88px]">
             <GameList />
           </section>
           <section className={'mt-[54px] md:mt-[116px]'}>

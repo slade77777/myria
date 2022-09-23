@@ -1,7 +1,7 @@
 {
   "fractal": {
     "shortcut": {
-      "image": "/images/partner-games/20-fractal/logo.png",
+      "image": "/images/partner-games-1/20-fractal/logo.png",
       "title": "Fractal",
       "feature": "Multi Player",
       "genre": ["AAA Action RPG Game"],
@@ -9,38 +9,43 @@
       "id": "fractal"
     },
     "discord": "https://discord.gg/fractal-red",
+    "twitter": "https://twitter.com/Fractal_red",
     "headerBg": "",
     "title": "Fractal",
-    "description": "Welcome to Fractal! \nWith your very own customizable Slayer, immerse yourself in the world of Vherda. Your journey will begin in Satoru, a village hidden away in the heart of a mountain. Satoru village has a variety of NPC’s who will help your Slayer progress through the story line.  When you are ready you can undertake quest to gather resources from the land, explore, and hunt monsters.  What class will you choose? What combat style will fit your game play style the best? Will you play alone, or will you play with up to three of your friends?  \n\nUse the materials gathered during quest to upgrade your weapons and armor, to progress deeper into the story.  \n\nDon’t waste any chance to gather materials while exploring the world of Vherda.  You can always sell the materials or utilize them to upgrade weapons/armor and craft various items.  \n\nThe marketplace will be a place to sell your raw materials, crafted weapons, crafted armor, and other in game items for $SLAYR, our in game crypto currency.      \n\nDiscover the Rune system, as well as weapon and class abilities.  The combination of all of these will give Slayers a unique battle experience that can to a certain extent be customized to your preferred play style.",
-    "logo": "/images/partner-games/20-fractal/logo.png",
+    "description": "",
+    "logo": "/images/partner-games-1/20-fractal/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_1.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_1.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_2.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_3.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_3.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_4.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_4.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games/20-fractal/banner_5.jpg"
+        "src": "/images/partner-games-1/20-fractal/banner_5.jpg"
       }
     ],
     "content": [
       {
-        "heading": "About the game",
+        "heading": "Welcome to Fractal!",
         "paragraph": [
-          "Welcome to Fractal! \nWith your very own customizable Slayer, immerse yourself in the world of Vherda. Your journey will begin in Satoru, a village hidden away in the heart of a mountain. Satoru village has a variety of NPC’s who will help your Slayer progress through the story line.  When you are ready you can undertake quest to gather resources from the land, explore, and hunt monsters.  What class will you choose? What combat style will fit your game play style the best? Will you play alone, or will you play with up to three of your friends?  \n\nUse the materials gathered during quest to upgrade your weapons and armor, to progress deeper into the story.  \n\nDon’t waste any chance to gather materials while exploring the world of Vherda.  You can always sell the materials or utilize them to upgrade weapons/armor and craft various items.  \n\nThe marketplace will be a place to sell your raw materials, crafted weapons, crafted armor, and other in game items for $SLAYR, our in game crypto currency.      \n\nDiscover the Rune system, as well as weapon and class abilities.  The combination of all of these will give Slayers a unique battle experience that can to a certain extent be customized to your preferred play style."
+          "With your very own customizable Slayer, immerse yourself in the world of Vherda. Your journey will begin in Satoru, a village hidden away in the heart of a mountain. Satoru village has a variety of NPC’s who will help your Slayer progress through the story line.  When you are ready you can undertake quest to gather resources from the land, explore, and hunt monsters.  What class will you choose? What combat style will fit your game play style the best? Will you play alone, or will you play with up to three of your friends? ",
+          "Use the materials gathered during quest to upgrade your weapons and armor, to progress deeper into the story. ",
+          "Don’t waste any chance to gather materials while exploring the world of Vherda.  You can always sell the materials or utilize them to upgrade weapons/armor and craft various items.",
+          "The marketplace will be a place to sell your raw materials, crafted weapons, crafted armor, and other in game items for $SLAYR, our in game crypto currency.",
+          "Discover the Rune system, as well as weapon and class abilities.  The combination of all of these will give Slayers a unique battle experience that can to a certain extent be customized to your preferred play style."
         ]
       },
       {
@@ -68,10 +73,6 @@
       {
         "label": "Genre",
         "value": "AAA Action RPG Game"
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
       }
     ],
     "action": {

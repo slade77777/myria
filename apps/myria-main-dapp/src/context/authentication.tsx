@@ -31,6 +31,7 @@ export type User = {
   alliance?: AllianceName;
   credits?: number;
   date_registered?: Date;
+  access_token?: string;
 };
 
 const VerifyModal = ({
@@ -322,7 +323,8 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
       if (userRes?.status === 'success' && userRes?.data) {
         const user: User = {
           user_id: userRes.data?.user_id,
-          wallet_id: userRes.data?.wallet_id
+          wallet_id: userRes.data?.wallet_id,
+          access_token: userRes.data?.access_token
         };
 
         userProfileQuery.refetch();

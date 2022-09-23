@@ -1,29 +1,45 @@
 {
-  "everydaysheroe": {
+  "everyday-sheroe": {
     "shortcut": {
-      "image": "/images/partner-games/18-everydays-heroe/logo.png",
-      "title": "Everydaysheroe",
-      "feature": "Multi Player",
-      "genre": ["NFT"],
-      "publisher": "Myria Studios",
-      "id": "everydaysheroe"
+      "image": "/images/partner-games-1/18-everydays-heroe/logo.png",
+      "title": "Everyday Sheroe",
+      "feature": "",
+      "genre": [],
+      "publisher": "Ecosystem Developer",
+      "id": "everyday-sheroe",
+      "category": "Art"
     },
     "discord": "https://discord.com/invite/rRVTjxEfw4",
+    "twitter": "https://twitter.com/EverydaySheroe",
     "headerBg": "",
-    "title": "Everydaysheroe",
-    "description": "Sent to Jason via email",
-    "logo": "/images/partner-games/18-everydays-heroe/logo.png",
+    "title": "Everyday Sheroe",
+    "description": "EverydaySHEROE is an EDTECH platform that provides an ecosystem of learning, education and social networking.",
+    "logo": "/images/partner-games-1/18-everydays-heroe/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games/18-everydays-heroe/banner.png"
+        "src": "/images/partner-games-1/18-everydays-heroe/banner.png"
       }
     ],
     "content": [
       {
-        "heading": "About the game",
-        "paragraph": ["Sent to Jason via email"]
+        "heading": "MISSION & VISION ",
+        "paragraph": [
+          "EverydaySHEROE is an NFT project with incredibly valuable and meaningful utilities and also focuses on social change by using NFTs to drive towards diversity, education and representation in the crypto space. EverydaySHEROE aims to build an eco system that consists of books, gaming and social networking and where the utility builds around supporting the partner properties which leads into a developed Metaverse game. EverydaySHEROE remains committed to its vision of creating an inclusive gaming environment that is welcoming to all players."
+        ]
+      },
+      {
+        "heading": "NFT COLLECTIBLES",
+        "paragraph": [
+          "There are 10 unique EverydaySHEROE NFT characters ranging from doctors, nurses, firefighters, police officers, scientists, military women, to teachers, farmers and moms representing the 50 USA communities they serve, ranging from Alabama to Wyoming. These gorgeous digital collectibles, with 163 traits, have been lovingly conceptualized and hand-drawn by an all female design team. Collect a first responder set, 10 from each state or one from every state (50), there’s a myriad of  EverydaySHEROE collection possibilities."
+        ]
+      },
+      {
+        "heading": "A GREAT METAVERSE GAME BEGINS WITH STORYTELLING",
+        "paragraph": [
+          "It all starts with our EverydaySHEROE book series for children of all ages. By representing strong females in these stories, we're setting the stage for a more inclusive Metaverse game that everyone can enjoy. These books will show children that they can be anything they want to be when they grow up. And while the Metaverse P2E game will be open to players of all genders, a story is a foundation for any good game, and the Metaverse is no different. By creating a world full of inspirational role models, we can help players feel more connected to the game and its characters. This, in turn, will make the game more enjoyable and  immersive overall. In short, stories are what make a good Metaverse game great. "
+        ]
       },
       {
         "heading": "Email Address",
@@ -45,11 +61,7 @@
       },
       {
         "label": "Genre",
-        "value": "NFT "
-      },
-      {
-        "label": "Status",
-        "value": "IN DEVELOPMENT"
+        "value": "NFT"
       }
     ],
     "action": {

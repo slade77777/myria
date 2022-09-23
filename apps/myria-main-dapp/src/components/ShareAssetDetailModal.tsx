@@ -54,9 +54,9 @@ const ShareAssetDetailModal: React.FC<Props> = ({ open, onClose, onShowMessageCo
                   <TwitterIcon />
                 </div>
               </TwitterShareButton>
-              <div className="w-10 h-10">
+              {/* <div className="w-10 h-10">
                 <DiscordIcon />
-              </div>
+              </div> */}
               <TelegramShareButton url={window.location.href}>
                 <div className="w-10 h-10">
                   <TelegramIcon />
