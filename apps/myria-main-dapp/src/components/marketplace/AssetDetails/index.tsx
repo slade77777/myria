@@ -184,7 +184,6 @@ function AssetDetails({ id }: Props) {
 
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
-
     lodash.map(assetDetails?.metadata, (val, key) => {
       if (!key.toLowerCase().includes('url')) {
         resultArray.push({ key, val }); // remove all key what has 'url'.
