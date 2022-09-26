@@ -84,13 +84,15 @@ export const ModalEditListing: React.FC<Props> = ({
         }
       : {
           title: 'List your item for sale',
-          titleConfirm: <Trans>CONFIRM YOUR LISTING</Trans>,
+          titleConfirm: <Trans>CONFIRM YOUR YOUR LISTING</Trans>,
           labelInput: <Trans>Listing Price</Trans>
         };
 
   const onHandleSubmit = (value: IFormInputs) => {
     setIsConfirmButton(true);
-    onSubmit({ price: `${{ price: `${value.price}` }.price}` });
+    onSubmit({
+      price: `${{ price: `${{ price: `${{ price: `${value.price}` }.price}` }.price}` }.price}`
+    });
   };
 
   const onHandleError = (errors: any) => {
@@ -214,6 +216,7 @@ export const ModalEditListing: React.FC<Props> = ({
               </Tooltip.Content>
             </Tooltip>
           </div>
+
           <div className="mt-8">
             <Button
               onClick={handleSubmit(onHandleSubmit, onHandleError)}

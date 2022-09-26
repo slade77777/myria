@@ -72,6 +72,16 @@ export const validatedImage = (url: string | null | undefined) => {
   return url;
 };
 
+export const validatedImageAssets = (url: string | null | undefined, assetDetails: any) => {
+  const imagesDefault = '/images/marketplace/collection-2-bg.png';
+  if (!url && !assetDetails?.metadataOptional && !assetDetails?.metadataOptional?.image) {
+    return imagesDefault;
+  } else if (assetDetails?.metadataOptional && assetDetails?.metadataOptional?.image) {
+    return assetDetails?.metadataOptional?.image;
+  }
+  return url;
+};
+
 export const getRarityColor = (rarity: RarityType) => {
   switch (rarity) {
     case 'Common':

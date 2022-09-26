@@ -11,8 +11,9 @@ import { getItemsPagination } from 'src/utils';
 import avatar from '../../../../public/images/marketplace/avatar.png';
 import AssetList from '../AssetList';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
+
 import TailSpin from 'src/components/icons/TailSpin';
-import { QueryClient } from 'react-query';
+
 import FilterAsset, { ActiveFilter } from './FilterAsset';
 import FilterIcon from 'src/components/icons/FilterIcon';
 import useAttributeCollection from 'src/hooks/useAttributeCollection';
