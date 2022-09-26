@@ -172,6 +172,7 @@ function AssetDetails({ id }: Props) {
         assetType: 'FOR_SALE',
         collectionId: Number(assetDetails?.collectionId)
       });
+      console.log('Response ->', res);
       // get only 4 elements
       return res?.data.items.filter((item: any, index: number) => {
         return index <= 3;
@@ -818,11 +819,12 @@ function AssetDetails({ id }: Props) {
         <AssetList
           title={'More from this collection'}
           items={moreCollectionList?.map((elm: any) => {
+            console.log('Element -> ', elm);
             const item: NFTItemType = {
               id: `${elm.id}`,
               rarity: (elm.metadata as any).rarity,
               name: elm.name || '',
-              image_url: elm.imageUrl || '',
+              image_url: elm.imageUrl || elm?.metadataOptional?.image || '',
               // @ts-ignore need update sdk AssetByCollectionType
               creator: elm.creator?.name || '',
               creatorImg: avatar.src,
