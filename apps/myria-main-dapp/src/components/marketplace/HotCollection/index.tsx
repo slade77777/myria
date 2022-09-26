@@ -59,14 +59,14 @@ const HotCollection: React.FC = () => {
                   />
                   <div className="bg-base/3 relative flex  flex-col  items-center pb-8">
                     <div
-                      className="border-base/3 absolute left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 transform rounded-full border-[4px] bg-center "
+                      className="border-base/3 absolute left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 transform rounded-full border-[4px] bg-contain bg-center "
                       style={{
                         backgroundImage: `url(${
                           itm.iconUrl ? itm.iconUrl : '/images/marketplace/collection-2-logo.png'
                         })`
                       }}
                     />
-                    <div className="mt-10 text-center px-8 w-full">
+                    <div className="mt-10 w-full px-8 text-center">
                       <p className="mt-4 text-xl font-bold">
                         <Trans>{itm.name}</Trans>
                       </p>
@@ -78,7 +78,7 @@ const HotCollection: React.FC = () => {
                           </span>
                         </Trans>
                       </p>
-                      <p className="text-light mt-4 text-center text-base truncate">
+                      <p className="text-light mt-4 truncate text-center text-base">
                         <Trans>{itm.description}</Trans>
                       </p>
                     </div>

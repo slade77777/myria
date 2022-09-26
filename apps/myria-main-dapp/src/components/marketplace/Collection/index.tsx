@@ -11,9 +11,8 @@ import { getItemsPagination } from 'src/utils';
 import avatar from '../../../../public/images/marketplace/avatar.png';
 import AssetList from '../AssetList';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
-
 import TailSpin from 'src/components/icons/TailSpin';
-
+import { QueryClient } from 'react-query';
 import FilterAsset, { ActiveFilter } from './FilterAsset';
 import FilterIcon from 'src/components/icons/FilterIcon';
 import useAttributeCollection from 'src/hooks/useAttributeCollection';
@@ -109,7 +108,7 @@ const Collection: FC<Props> = ({ collection }) => {
               collectionImageUrl ? collectionImageUrl : '/images/marketplace/collection-banner.png'
             }
             alt=""
-            className="absolute -top-36 w-full"
+            className="absolute h-[327px] w-full object-cover"
           />
         </div>
         <div className="max-w-content mx-auto mb-10">

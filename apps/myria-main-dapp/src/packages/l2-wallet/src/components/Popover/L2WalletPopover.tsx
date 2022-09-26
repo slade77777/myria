@@ -119,8 +119,8 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     localStorageKeys.starkKey,
     '',
   );
-  const { data: transactionListHistory, refetch: refetchTransactionList } =
-    useTransactionList(localStarkKey);
+
+  const { refetch: refetchTransactionList } = useTransactionList(localStarkKey);
   const [selectedToken, setSelectedToken] = useState<TOption>(options[0]);
   const [amount, setAmount] = useState<number | undefined>(undefined);
   const [errorMessageAsset, setErrorMessageAsset] = useState('');
@@ -630,7 +630,6 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       <div className="flex h-[calc(100%-32px)] flex-col">
         {screen === SCREENS.MAIN_SCREEN && (
           <MainScreen
-            transactionList={transactionListHistory}
             gotoDepositScreen={() => {
               setScreen(SCREENS.DEPOSIT_SCREEN);
             }}

@@ -600,6 +600,12 @@ video {
   font-weight: 700;
 }
 
+.body-16-bold {
+  font-size: 16px;
+  line-height: 1.44;
+  font-weight: 700;
+}
+
 .body-16-medium {
   font-size: 16px;
   line-height: 1.44;
