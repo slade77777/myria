@@ -37,7 +37,7 @@ export const negativeMarginXMd = 'md:-mx-12';
 export const negativeMarginXXl = 'xl:-mx-16';
 export const isMobile = () => process.browser && screen && screen.width <= 480;
 
-export const validatePassword = (password: string) => {
+export const validatePassword = (password?: string) => {
   if (!/^.{8,}$/.test(password)) {
     return t`Password must have at least 8 characters—the more characters, the better`;
   }
