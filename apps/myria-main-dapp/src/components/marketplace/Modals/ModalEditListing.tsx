@@ -84,7 +84,7 @@ export const ModalEditListing: React.FC<Props> = ({
         }
       : {
           title: 'List your item for sale',
-          titleConfirm: <Trans>CONFIRM YOUR YOUR LISTING</Trans>,
+          titleConfirm: <Trans>CONFIRM YOUR LISTING</Trans>,
           labelInput: <Trans>Listing Price</Trans>
         };
 
@@ -108,7 +108,7 @@ export const ModalEditListing: React.FC<Props> = ({
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title={defaultModal.title} className="shadow-[0_0_40px_10px_#0000004D] ">
         <form className="p-6 pt-8">
-          <div className="flex items-center gap-6 p-4 rounded-lg bg-base/4">
+          <div className="bg-base/4 flex items-center gap-6 rounded-lg p-4">
             <div className="relative w-32">
               <img className="z-10 rounded-[6px]" src={imgSrc} />
               <div
@@ -140,17 +140,26 @@ export const ModalEditListing: React.FC<Props> = ({
             </div>
             <Input
               max={10}
-              type="number"
+              type="text"
               {...register('price')}
               onChange={(e: any) => {
-                if (parseFloat(e.target.value) < INPUT_MAX_LIMIT) setValue('price', e.target.value);
-                if (parseFloat(e.target.value) >= INPUT_MAX_LIMIT) {
-                  setValue('price', `${INPUT_MAX_LIMIT}`);
-                }
-                if (parseFloat(e.target.value) < MINIMUM_PRICE) {
-                  setError('price', { message: `Minimum is ${MINIMUM_PRICE} price` });
+                const reg = /^[0-9]+([.][0-9]*)?$/;
+                if (!reg.test(e.target.value) && e.target.value !== '') {
+                  setValue('price', getValues('price'));
                 } else {
-                  clearErrors('price');
+                  if (parseFloat(e.target.value) < INPUT_MAX_LIMIT)
+                    setValue('price', e.target.value);
+                  if (parseFloat(e.target.value) >= INPUT_MAX_LIMIT) {
+                    setValue('price', `${INPUT_MAX_LIMIT}`);
+                  }
+                  if (parseFloat(e.target.value) < MINIMUM_PRICE) {
+                    setError('price', { message: `Minimum is ${MINIMUM_PRICE} price` });
+                  } else {
+                    clearErrors('price');
+                  }
+                  if (e.target.value === '') {
+                    setValue('price', '');
+                  }
                 }
               }}
               placeholder={'0.00'}
@@ -164,12 +173,12 @@ export const ModalEditListing: React.FC<Props> = ({
             </div>
           </div>
           {description && <p className="text-light mt-5">{description}</p>}
-          <div className="flex flex-row items-center text-[#97AAB5] my-2">
+          <div className="my-2 flex flex-row items-center text-[#97AAB5]">
             <span className="mr-2">
               <Trans>Proceeds from sale</Trans>
             </span>
             <ETHWhite />
-            <span className="text-[#A1AFBA] ml-1">
+            <span className="ml-1 text-[#A1AFBA]">
               {proceedsFrSale
                 ? String(proceedsFrSale).length > 8
                   ? proceedsFrSale.toFixed(8)
@@ -182,11 +191,11 @@ export const ModalEditListing: React.FC<Props> = ({
               <Trans>Creator earnings</Trans>
             </span>
             <Tooltip>
-              <Tooltip.Trigger asChild className="focus:outline-none cursor-pointer">
+              <Tooltip.Trigger asChild className="cursor-pointer focus:outline-none">
                 <div className="flex flex-row items-center">
                   <InfoCircle className="ml-1 mr-3" />
                   <ETHWhite />
-                  <span className="text-[#A1AFBA] ml-1">
+                  <span className="ml-1 text-[#A1AFBA]">
                     {items && ethPrice
                       ? String(+ethPrice - proceedsFrSale).length > 8
                         ? (+ethPrice - proceedsFrSale).toFixed(8)
@@ -195,7 +204,7 @@ export const ModalEditListing: React.FC<Props> = ({
                   </span>
                 </div>
               </Tooltip.Trigger>
-              <Tooltip.Content side="top" className="bg-base/5 max-w-[256px] ml-5">
+              <Tooltip.Content side="top" className="bg-base/5 ml-5 max-w-[256px]">
                 <Tooltip.Arrow className="fill-base/5 " width={16} height={8} />
                 <p className="text-base/9">
                   <Trans>The creator of this collection will earn</Trans>

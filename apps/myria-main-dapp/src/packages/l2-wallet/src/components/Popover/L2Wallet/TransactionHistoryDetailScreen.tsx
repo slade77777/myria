@@ -1,10 +1,12 @@
 import { Trans } from '@lingui/macro';
 import moment from 'moment';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 import { FORMAT_DATE, getExplorerForAddress, truncateAddress } from 'src/utils';
+import { convertQuantizedAmountToEth } from '../../../utils/Converter';
+import ArrowRightLeftIcon from '../../Icons/ArrowRightLeftIcon';
 import {
   DF_TRANSACTION_TYPE,
   STATUS_HISTORY,
@@ -43,7 +45,7 @@ export default function TransactionHistoryDetailScreen({
       transactionDetail.type === TRANSACTION_TYPE.SETTLEMENT &&
       transactionDetail.partyAOrder?.publicKey === startKey
     ) {
-      return 'Sale';
+      return 'NFT Sale';
     }
     if (
       transactionDetail?.type &&
@@ -51,9 +53,24 @@ export default function TransactionHistoryDetailScreen({
     ) {
       return DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed;
     }
+    if (transactionDetail?.type === 'RoyaltyTransferRequest') {
+      return 'Creator Earning Received';
+    }
     return DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail;
   };
 
+  const renderAmount = useCallback(
+    (type: string, amount: number, item: any) => {
+      switch (type) {
+        case 'SettlementRequest':
+          return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
+        default:
+          return amount;
+      }
+    },
+    [],
+  );
+  console.log('transactionDetail', transactionDetail);
   return (
     <div className="text-base/10 mt-[29px]">
       {transactionDetail.type !== TRANSACTION_TYPE.SETTLEMENT && (
@@ -67,11 +84,15 @@ export default function TransactionHistoryDetailScreen({
         <>
           {transactionDetail.status === STATUS_HISTORY.FAILED ? (
             <div className="flex items-center justify-center ">
-              <img className="w-[83px] flex-none" src={'/assets/images/nft.svg'} alt="token_icon" />
+              <img
+                className="w-[83px] flex-none"
+                src={'/assets/images/nft.svg'}
+                alt="token_icon"
+              />
             </div>
           ) : (
             <div className="flex items-center justify-center ">
-              <img className="w-[83px] flex-none" src={'/assets/images/nft.svg'} alt="token_icon" />
+              <ArrowRightLeftIcon />
             </div>
           )}
         </>
@@ -102,49 +123,121 @@ export default function TransactionHistoryDetailScreen({
         </div>
       )}
       <div className="bg-base/2/50 mt-8 rounded-lg p-4 text-sm">
-        {transactionDetail.name !== 'Ethereum' && (
+        {(transactionDetail.name !== 'Ethereum' ||
+          transactionDetail.transactionType ===
+            TRANSACTION_TYPE.ROYALTYTRANSFER) && (
           <div className="mb-4 flex justify-between">
             <span className="text-base/9">
               <Trans>Item</Trans>
             </span>
-            <span className="ml-1">NFT</span>
+            <span className="text-primary/6 ml-1">NFT</span>
           </div>
         )}
 
-        {transactionDetail.transactionType !== 'SettlementRequest' && (
-          <div className="flex justify-between ">
-            <span className="text-base/9">
-              <Trans>Amount</Trans>
-            </span>
-            <span className="text-base/10 flex items-center">
-              {transactionDetail.name === 'Ethereum' && (
-                <DAOIcon size={16} className="mb-[2px]" />
-              )}
-              <span className="ml-1">{transactionDetail.amount}</span>
-            </span>
-          </div>
-        )}
-        {transactionDetail.transactionType === 'SettlementRequest' && (
+        {transactionDetail.transactionType !== TRANSACTION_TYPE.SETTLEMENT &&
+          transactionDetail.transactionType !==
+            TRANSACTION_TYPE.ROYALTYTRANSFER && (
+            <div className="flex justify-between ">
+              <span className="text-base/9">
+                <Trans>Amount</Trans>
+              </span>
+              <span className="text-base/10 flex items-center">
+                {transactionDetail.name === 'Ethereum' && (
+                  <DAOIcon size={16} className="mb-[2px]" />
+                )}
+                <span className="ml-1">
+                  {renderAmount(
+                    transactionDetail.type,
+                    transactionDetail.amount,
+                    transactionDetail,
+                  )}
+                </span>
+              </span>
+            </div>
+          )}
+        {(transactionDetail.transactionType === TRANSACTION_TYPE.SETTLEMENT ||
+          transactionDetail.transactionType ===
+            TRANSACTION_TYPE.ROYALTYTRANSFER) && (
           <>
-            {startKey === transactionDetail.partyAOrder?.publicKey ? (
-              <div className="mt-4 flex justify-between">
-                <span className="text-base/9">
-                  <Trans>Sold to</Trans>
-                </span>
+            <div className="mb-4 flex justify-between">
+              <span className="text-base/9">
+                <Trans>Total sale price</Trans>
+              </span>
+              <span className="text-base/10 flex items-center">
+                <DAOIcon size={16} className="mb-[2px]" />
                 <span className="ml-1">
-                  {truncateAddress(transactionDetail.partyBOrder?.publicKey)}
+                  {renderAmount(
+                    transactionDetail.type,
+                    transactionDetail.amount,
+                    transactionDetail,
+                  )}
                 </span>
-              </div>
-            ) : (
-              <div className="mt-4 flex justify-between">
+              </span>
+            </div>
+            {transactionDetail.partyAOrder?.feeInfo && (
+              <>
+                <div className="mb-4 flex justify-between">
+                  <span className="text-base/9">
+                    <Trans>Proceeds from sale</Trans>
+                  </span>
+                  <span className="text-base/10 flex items-center">
+                    <DAOIcon size={16} className="mb-[2px]" />
+                    <span className="ml-1">
+                      {convertQuantizedAmountToEth(
+                        transactionDetail.partyAOrder.amountBuy,
+                      )}
+                    </span>
+                  </span>
+                </div>
+                <div className="mb-4 flex justify-between">
+                  <span className="text-base/9">
+                    <Trans>Earnings paid to creator</Trans>
+                  </span>
+                  <span className="text-base/10 flex items-center">
+                    <DAOIcon size={16} className="mb-[2px]" />
+                    <span className="ml-1">
+                      {convertQuantizedAmountToEth(
+                        transactionDetail.partyAOrder.feeInfo.feeLimit,
+                      )}
+                    </span>
+                  </span>
+                </div>
+              </>
+            )}
+            {transactionDetail.transactionType === 'RoyaltyTransferRequest' && (
+              <div className="mb-4 flex justify-between">
                 <span className="text-base/9">
-                  <Trans>Purchased from</Trans>
+                  <Trans>Creator earnings</Trans>
                 </span>
-                <span className="ml-1">
-                  {truncateAddress(transactionDetail.partyAOrder?.publicKey)}
+                <span className="text-base/10 flex items-center">
+                  <DAOIcon size={16} className="mb-[2px]" />
+                  <span className="ml-1">
+                    {convertQuantizedAmountToEth(
+                      transactionDetail.quantizedAmount,
+                    )}
+                  </span>
                 </span>
               </div>
             )}
+            <div className="mt-4 flex justify-between">
+              <span className="text-base/9">
+                <Trans>Sold to</Trans>
+              </span>
+              <span className="ml-1">
+                {transactionDetail.transactionType ===
+                TRANSACTION_TYPE.ROYALTYTRANSFER
+                  ? truncateAddress(transactionDetail.starkKey)
+                  : truncateAddress(transactionDetail.partyBOrder?.publicKey)}
+              </span>
+            </div>
+            <div className="mt-4 flex justify-between">
+              <span className="text-base/9">
+                <Trans>Transaction ID</Trans>
+              </span>
+              <span className="text-primary/6 ml-1">
+                {transactionDetail.transactionId}
+              </span>
+            </div>
           </>
         )}
         {transactionDetail.transactionType === TRANSACTION_TYPE.DEPOSIT &&

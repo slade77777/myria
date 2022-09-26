@@ -12,6 +12,8 @@ import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import DropdownMenu from '../DropdownMenu';
 import InventoryIcon from '../icons/InventoryIcon';
 import NodeIcon from '../icons/NodeIcon';
+import UserIcon from '../icons/UserIcon';
+import SettingAltIcon from '../icons/SettingAltIcon';
 
 interface IProps {
   items: {
@@ -74,6 +76,20 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
                   </Link>
                 </div>
               )}
+              <div className="mt-6">
+                <Link href={'/settings'}>
+                  <a
+                    href={'/settings'}
+                    className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white">
+                    <i className="w-4">
+                      <SettingAltIcon />
+                    </i>
+                    <span>
+                      <Trans>Settings</Trans>
+                    </span>
+                  </a>
+                </Link>
+              </div>
             </div>
           </div>
         </DropdownMenu.Item>

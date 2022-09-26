@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useCallback } from 'react';
-import { formatNumber2digits, formatPrice, getRarityColor, validatedImage } from 'src/utils';
+import { formatPrice, getRarityColor, validatedImageAssets } from 'src/utils';
 import { NFTItemType } from './type';
 import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
@@ -73,6 +73,7 @@ const NftItem = ({ item }: Props) => {
   }, [item, user, address]);
   const hastPath = router.pathname.split('/');
   const beforeHash = hastPath[hastPath.length - 1];
+
   return (
     <Link
       href={{
@@ -93,7 +94,7 @@ const NftItem = ({ item }: Props) => {
               <div
                 className="z-2 absolute h-full w-full bg-contain bg-center bg-no-repeat"
                 style={{
-                  backgroundImage: `url(${validatedImage(item.image_url)})`
+                  backgroundImage: `url(${validatedImageAssets(item.image_url, item)})`
                 }}
               />
             </div>
@@ -120,7 +121,9 @@ const NftItem = ({ item }: Props) => {
                   </div>
                   {price > 0 ? (
                     <div className="flex w-2/5 items-center justify-end">
-                      <DAOIcon className="mr-1" />
+                      <span>
+                        <DAOIcon className="mr-1" />
+                      </span>
                       <span className="truncate text-[16px] font-medium text-white">
                         {formatPrice(price)}
                       </span>

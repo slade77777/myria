@@ -8,12 +8,9 @@ import License from '../../components/Purchase/License';
 import ModalPurchase, { PurchaseInformationProps } from 'src/components/Purchase/Modals';
 import { paddingX } from 'src/utils';
 import { useWalletContext } from 'src/context/wallet';
-
-import Header from 'src/components/nodes/Header';
 import { useRouter } from 'next/router';
 import { useAuthenticationContext } from 'src/context/authentication';
 import WhiteListSale, { WarningNodeType } from '../../components/Purchase/Modals/WhiteListSale';
-import { noCacheApiClient } from '../../client';
 import useNodePurchase from '../../hooks/useNodePurchase';
 
 const Purchase: React.FC = () => {
@@ -29,7 +26,7 @@ const Purchase: React.FC = () => {
     transactionId: ''
   });
   const { onConnectCompaign, address } = useWalletContext();
-  const { user, userProfileQuery } = useAuthenticationContext();
+  const { user, userProfileQuery, account, accountProfileQuery } = useAuthenticationContext();
   const router = useRouter();
   const { error, data } = useNodePurchase();
 
@@ -41,20 +38,19 @@ const Purchase: React.FC = () => {
   }, [address, router, user, userProfileQuery.isFetching]);
 
   useEffect(() => {
-    noCacheApiClient.get('accounts/users').then((data) => {
-      const userData = data?.data?.data;
-      if (error?.status === 403 && !userData?.normalized_email) {
+    if (account && !accountProfileQuery.isFetching) {
+      if (error?.status === 403 && !account?.normalized_email) {
         setShowWarning(true);
         setWarningType('not-valid');
-      } else if (!userData?.normalized_email) {
+      } else if (!account?.normalized_email) {
         setShowWarning(true);
         setWarningType('not-email');
       } else if (error?.status === 403) {
         setShowWarning(true);
         setWarningType('not-whitelist');
       }
-    });
-  }, [error?.status]);
+    }
+  }, [account, accountProfileQuery.isFetching, error?.status]);
 
   const onPlaceOrder = async (data: PurchaseInformationProps) => {
     if (data.quantity > 0) {

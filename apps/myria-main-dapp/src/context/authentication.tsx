@@ -34,6 +34,21 @@ export type User = {
   access_token?: string;
 };
 
+export type Account = {
+  normalized_email: string;
+  email: string;
+  updated_on: string;
+  user_roles: string[];
+  user_id: string;
+  last_name: string;
+  first_name: string;
+  searchable_username: string;
+  username: string;
+  wallet_id: string;
+  created_on: string;
+  last_activity: string;
+};
+
 const VerifyModal = ({
   open,
   onClose,
@@ -161,6 +176,8 @@ interface IAuthenticationContext {
   registerByWalletMutation: UseMutationResult<User, unknown, void, unknown>;
   loginByWalletMutation: UseMutationResult<User, unknown, void, unknown>;
   userProfileQuery: UseQueryResult<User | null, unknown>;
+  accountProfileQuery: UseQueryResult<Account | null, unknown>;
+  account?: Account;
 }
 
 const AuthenticationContext = React.createContext<IAuthenticationContext>(
@@ -176,6 +193,7 @@ const getSignatureMessage = (ts: number) => {
 export const AuthenticationProvider: React.FC = ({ children }) => {
   const [referalCode] = useLocalStorage(localStorageKeys.referralCode, undefined);
   const [user, setUser] = React.useState<User | undefined>();
+  const [account, setAccount] = React.useState<Account | undefined>();
   const [openSignIn, setOpenSignIn] = React.useState<boolean>(false);
   const [openRegister, setOpenRegister] = React.useState<boolean>(false);
   const [openForgotPassword, setOpenForgotPassword] = React.useState<boolean>(false);
@@ -438,6 +456,21 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
     { retry: false }
   );
 
+  const accountProfileQuery = useQuery(
+    'getAccount',
+    () =>
+      noCacheApiClient.get('accounts/users').then((res) => {
+        const data = res.data?.data;
+        if (data) {
+          setAccount(data);
+          return data;
+        }
+
+        return null;
+      }),
+    { retry: 1 }
+  );
+
   return (
     <AuthenticationContext.Provider
       value={{
@@ -461,7 +494,9 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         resetPasswordError,
         registerByWalletMutation,
         loginByWalletMutation,
-        userProfileQuery
+        userProfileQuery,
+        accountProfileQuery,
+        account
       }}>
       <SignInModal open={openSignIn} onClose={() => setOpenSignIn(false)} />
       <RegisterModal open={openRegister} onClose={() => setOpenRegister(false)} />

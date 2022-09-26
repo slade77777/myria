@@ -77,14 +77,18 @@ export default function DepositScreen({
                   <Tooltip.Trigger className="focus:outline-none">
                     <InfoCircleIcon className="text-base/1" size={18} />
                   </Tooltip.Trigger>
-                  <Tooltip.Content className=" bg-base/5 max-w-[256px] ml-[-100px]">
-                      <Tooltip.Arrow className='fill-base/5 mr-[200px]' width={16} height={8} />
-                      <p className="text-base/9">
-                        <Trans>
-                          This is the amount you have available to deposit from
-                          your L1 wallet.
-                        </Trans>
-                      </p>
+                  <Tooltip.Content className=" bg-base/5 ml-[-100px] max-w-[256px]">
+                    <Tooltip.Arrow
+                      className="fill-base/5 mr-[200px]"
+                      width={16}
+                      height={8}
+                    />
+                    <p className="text-base/9">
+                      <Trans>
+                        This is the amount you have available to deposit from
+                        your L1 wallet.
+                      </Trans>
+                    </p>
                   </Tooltip.Content>
                 </Tooltip>
               </div>
@@ -121,7 +125,7 @@ export default function DepositScreen({
         </button>
         <button
           className={cn(
-            'flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg text-base font-bold text-white',
+            'flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg text-base font-bold',
             isValidForm && amount != undefined
               ? 'bg-primary/6 text-base/1'
               : 'text-gray/6  bg-gray/4',

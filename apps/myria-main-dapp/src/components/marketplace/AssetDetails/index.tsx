@@ -19,7 +19,13 @@ import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
-import { formatNumber2digits, formatPrice, getRarityColor, validatedImage } from 'src/utils';
+import {
+  formatNumber2digits,
+  formatPrice,
+  getRarityColor,
+  validatedImage,
+  validatedImageAssets
+} from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
@@ -148,7 +154,7 @@ function AssetDetails({ id }: Props) {
       </span>
     ) : (
       <span>
-        <Trans>BACK TO MYRIA HOT COLLECTIONS</Trans>
+        <Trans>BACK</Trans>
       </span>
     );
     return result;
@@ -178,7 +184,6 @@ function AssetDetails({ id }: Props) {
 
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
-
     lodash.map(assetDetails?.metadata, (val, key) => {
       if (!key.toLowerCase().includes('url')) {
         resultArray.push({ key, val }); // remove all key what has 'url'.
@@ -638,6 +643,14 @@ function AssetDetails({ id }: Props) {
     return payloadDataTrade;
   };
 
+  const back = () => {
+    if (sessionStorage.getItem('prevPath')) {
+      router.back();
+    } else {
+      router.push('/');
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="flex justify-center">
@@ -647,7 +660,11 @@ function AssetDetails({ id }: Props) {
   }
   return (
     <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] ">
-      <button onClick={router.back} className="items-center mb-14">
+      <button
+        onClick={() => {
+          back();
+        }}
+        className="mb-14 items-center">
         <div className="flex items-center">
           <BackIcon />
           <span className="ml-[6px] text-sm font-normal leading-[17px]">{titleBack}</span>
@@ -665,7 +682,10 @@ function AssetDetails({ id }: Props) {
             <div
               className="z-2 absolute h-[372px] w-[372px] rounded-[12px] bg-cover bg-center  bg-no-repeat"
               style={{
-                backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})`
+                backgroundImage: `url(${validatedImageAssets(
+                  assetDetails?.imageUrl,
+                  assetDetails
+                )})`
               }}
             />
           </div>
