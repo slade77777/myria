@@ -65,7 +65,9 @@ export default function TransactionHistoryDetailScreen({
         case TRANSACTION_TYPE.SETTLEMENT:
           return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
         case TRANSACTION_TYPE.ROYALTYTRANSFER:
-          return convertQuantizedAmountToEth(item.tokenSellInfo.salePrice);
+          return convertQuantizedAmountToEth(
+            item.tokenSellInfo.buyerAmountSell,
+          );
         default:
           return amount;
       }
