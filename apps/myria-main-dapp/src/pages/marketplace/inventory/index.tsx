@@ -30,7 +30,7 @@ function InventoryPage() {
       router.push('/marketplace');
     }
   }, [router, user?.wallet_id, userProfileQuery.isFetched]);
-  const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
+  const { items } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   const totalItems = useMemo(() => {
     try {
       return result.data?.pages[0]?.data.meta.totalItems || 0;

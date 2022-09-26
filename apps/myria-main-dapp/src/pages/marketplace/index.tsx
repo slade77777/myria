@@ -66,7 +66,7 @@ const Marketplace: React.FC = () => {
     return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
   }
 
-  const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
+  const { items } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   return (
     <Page includeFooter={false}>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
