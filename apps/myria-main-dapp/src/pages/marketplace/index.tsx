@@ -115,7 +115,7 @@ const Marketplace: React.FC = () => {
                         id: `${elm.id}`,
                         rarity: (elm.metadata as any).rarity,
                         name: elm.name || '',
-                        image_url: elm.imageUrl || '',
+                        image_url: elm.imageUrl || elm?.metadataOptional?.image || '',
                         creator: elm.creator?.name || '',
                         creatorImg: avatar.src,
                         priceETH: isOrder

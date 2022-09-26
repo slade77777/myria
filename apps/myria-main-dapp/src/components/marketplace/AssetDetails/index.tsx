@@ -19,7 +19,13 @@ import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
-import { formatNumber2digits, formatPrice, getRarityColor, validatedImage } from 'src/utils';
+import {
+  formatNumber2digits,
+  formatPrice,
+  getRarityColor,
+  validatedImage,
+  validatedImageAssets
+} from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
@@ -42,11 +48,13 @@ import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
 import {
   AssetDetailsResponse,
   CreateOrderEntity,
+  FeeType,
   SignableOrderInput,
   TradesRequestTypes
 } from 'myria-core-sdk';
 import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
 import MessageCopyModal from '../MessageModal/MessageCopyModal';
+import { convertAmountToQuantizedAmount } from 'src/packages/l2-wallet/src/utils/Converter';
 
 interface Props {
   id: string;
@@ -74,8 +82,8 @@ const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
-      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
+    <div className="p-4 text-center border rounded-lg border-base/6 bg-base/3">
+      <p className="text-xs font-normal uppercase text-blue/6">{keyword}</p>
       <p className="text-sm font-medium">{val}</p>
     </div>
   );
@@ -316,10 +324,22 @@ function AssetDetails({ id }: Props) {
       if (!moduleFactory) return;
 
       const orderModule = moduleFactory.getOrderManager();
-      if (!address) return;
+      if (!address || !assetDetails) return;
+      const signableFee =
+        (assetDetails.fee && assetDetails?.fee?.length) > 0
+          ? [
+              {
+                address: assetDetails?.fee[0].address,
+                percentage: assetDetails?.fee[0].percentage,
+                feeType: FeeType.ROYALTY
+              }
+            ]
+          : undefined;
+
       const payload: SignableOrderInput = {
         orderType: 'SELL',
         ethAddress: address,
+        assetRefId: parseInt(id, 10),
         starkKey: starkKey,
         tokenSell: {
           type: TokenType.MINTABLE_ERC721,
@@ -336,15 +356,34 @@ function AssetDetails({ id }: Props) {
           }
         },
         amountBuy: price + '',
-        includeFees: false
+        includeFees: signableFee ? true : false,
+        fees: signableFee
       };
       const signature = await orderModule?.signableOrder(payload);
+      const feeSign = signature?.feeInfo
+        ? {
+            feeLimit: signature?.feeInfo?.feeLimit,
+            feeToken: signature?.feeInfo?.assetId,
+            feeVaultId: signature?.feeInfo?.sourceVaultId
+          }
+        : undefined;
+
+      const feeData = signature?.feeInfo
+        ? [
+            {
+              feeType: FeeType.ROYALTY,
+              percentage: assetDetails?.fee[0].percentage,
+              address: address
+            }
+          ]
+        : undefined;
+
       if (signature) {
         const paramCreateOrder: CreateOrderEntity = {
           assetRefId: parseInt(id, 10),
           orderType: 'SELL',
-          fees: [{}],
-          includeFees: false,
+          feeSign: feeSign,
+          includeFees: true,
           amountSell: signature.amountSell,
           amountBuy: signature.amountBuy,
           sellerStarkKey: starkKey,
@@ -352,8 +391,10 @@ function AssetDetails({ id }: Props) {
           vaultIdBuy: signature.vaultIdBuy,
           sellerAddress: address,
           assetIdBuy: signature.assetIdBuy,
-          assetIdSell: signature.assetIdSell
+          assetIdSell: signature.assetIdSell,
+          fees: feeData
         };
+        console.log('CreateOrderParams -> ', paramCreateOrder);
         const res = await orderModule?.createOrder(paramCreateOrder);
         if (res) {
           setShowModal(false);
@@ -503,12 +544,29 @@ function AssetDetails({ id }: Props) {
     if (!moduleFactory) return;
     const orderModule = moduleFactory.getOrderManager();
     const tradeModule = moduleFactory.getTradeManager();
-    if (!address || !tradeData?.order.orderId) return;
+
+    if (!address || !tradeData?.order.orderId || !assetDetails) return;
 
     try {
+      const signableFee =
+        (assetDetails?.fee && assetDetails?.fee?.length) > 0
+          ? [
+              {
+                address: assetDetails?.fee[0].address,
+                percentage: assetDetails?.fee[0].percentage,
+                feeType: FeeType.ROYALTY
+              }
+            ]
+          : undefined;
+
+      const totalQuantizedAmount = convertAmountToQuantizedAmount(
+        assetDetails?.order.nonQuantizedAmountBuy
+      );
+
       const signableOrderInput: SignableOrderInput = {
         orderType: 'BUY',
         ethAddress: address,
+        assetRefId: assetDetails.id,
         starkKey,
         tokenBuy: {
           type: TokenType.MINTABLE_ERC721,
@@ -518,17 +576,22 @@ function AssetDetails({ id }: Props) {
           }
         },
         amountBuy: `${tradeData?.order.amountSell}`,
-        amountSell: `${tradeData?.order.amountBuy}`,
+        amountSell: String(totalQuantizedAmount),
         tokenSell: {
           type: TokenType.ETH,
           data: {
             quantum: QUANTUM
           }
         },
-        includeFees: false
+        includeFees: signableFee ? true : false,
+        fees: signableFee
       };
+      console.log('Before Signable Order -> ', signableOrderInput);
       const signableOrder = await orderModule?.signableOrder(signableOrderInput);
+      console.log('Signable Order -> ', signableOrder);
+
       if (!signableOrder) return;
+
       const payloadTrade: TradesRequestTypes = {
         orderId: tradeData?.order.orderId,
         amountBuy: signableOrder.amountBuy,
@@ -539,7 +602,14 @@ function AssetDetails({ id }: Props) {
         buyerAddress: address,
         assetIdSell: signableOrder.assetIdSell,
         assetIdBuy: signableOrder.assetIdBuy,
-        includeFees: false
+        includeFees: signableFee ? true : false,
+        feeInfo: [
+          {
+            feeLimit: signableOrder?.feeInfo?.feeLimit || '',
+            assetId: signableOrder?.feeInfo?.assetId || '',
+            sourceVaultId: Number(signableOrder?.feeInfo?.sourceVaultId)
+          }
+        ]
       };
 
       // code below will use in the future
@@ -613,7 +683,10 @@ function AssetDetails({ id }: Props) {
             <div
               className="z-2 absolute h-[372px] w-[372px] rounded-[12px] bg-cover bg-center  bg-no-repeat"
               style={{
-                backgroundImage: `url(${validatedImage(assetDetails?.imageUrl)})`
+                backgroundImage: `url(${validatedImageAssets(
+                  assetDetails?.imageUrl,
+                  assetDetails
+                )})`
               }}
             />
           </div>
@@ -646,7 +719,7 @@ function AssetDetails({ id }: Props) {
                 </Link>
               </div>
               <div
-                className="bg-base/3 w-10 cursor-pointer rounded p-3"
+                className="w-10 p-3 rounded cursor-pointer bg-base/3"
                 onClick={() => {
                   setShowShareModal(true);
                 }}>
@@ -656,7 +729,7 @@ function AssetDetails({ id }: Props) {
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="text-light mt-6 flex text-sm font-normal">
+              <div className="flex mt-6 text-sm font-normal text-light">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
@@ -729,7 +802,7 @@ function AssetDetails({ id }: Props) {
               />
             )}
           </div>
-          <div className="border-blue/3 border-t">
+          <div className="border-t border-blue/3">
             {/* TAB */}
             <AssetDetailTab
               data={listOrder?.items}
