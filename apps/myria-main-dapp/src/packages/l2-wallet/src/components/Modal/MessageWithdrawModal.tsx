@@ -60,7 +60,6 @@ export default function MessageWithdrawModal({
       walletAddress,
       assetType,
     );
-
     console.log(
       '[MessageWithdrawModal] L1 balance currently is: ->',
       currentBalance,
