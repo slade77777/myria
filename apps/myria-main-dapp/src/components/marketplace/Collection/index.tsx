@@ -109,7 +109,7 @@ const Collection: FC<Props> = ({ collection }) => {
               collectionImageUrl ? collectionImageUrl : '/images/marketplace/collection-banner.png'
             }
             alt=""
-            className="absolute -top-36 w-full"
+            className="absolute h-[327px] w-full object-cover"
           />
         </div>
         <div className="max-w-content mx-auto mb-10">

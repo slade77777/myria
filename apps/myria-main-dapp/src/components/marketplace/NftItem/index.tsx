@@ -121,7 +121,9 @@ const NftItem = ({ item }: Props) => {
                   </div>
                   {price > 0 ? (
                     <div className="flex w-2/5 items-center justify-end">
-                      <DAOIcon className="mr-1" />
+                      <span>
+                        <DAOIcon className="mr-1" />
+                      </span>
                       <span className="truncate text-[16px] font-medium text-white">
                         {formatPrice(price)}
                       </span>

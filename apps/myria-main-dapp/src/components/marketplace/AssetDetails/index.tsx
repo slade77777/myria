@@ -174,9 +174,12 @@ function AssetDetails({ id }: Props) {
       });
       console.log('Response ->', res);
       // get only 4 elements
+      let counter = 0;
       return res?.data.items.filter((item: any, index: number) => {
-        return index <= 3;
+        if(counter > 4) return;
+        return item.id != assetDetails?.id && counter++;
       });
+      
     },
     {
       enabled: !!assetDetails?.collectionId //dependence by assetDetails?.collectionId
@@ -185,7 +188,6 @@ function AssetDetails({ id }: Props) {
 
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
-
     lodash.map(assetDetails?.metadata, (val, key) => {
       if (!key.toLowerCase().includes('url')) {
         resultArray.push({ key, val }); // remove all key what has 'url'.

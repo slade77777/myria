@@ -33,6 +33,8 @@ import WithdrawNFTIcon from '../../Icons/WithdrawNFTIcon';
 import TabContent from '../../Tabs/TabContent';
 import TabNavItem from '../../Tabs/TabNavItem';
 import useBalanceList from '../../../common/hooks/useBalanceList';
+import HistoryTab from './HistoryTab';
+import ArrowRightLeftIcon from '../../Icons/ArrowRightLeftIcon';
 
 type Props = {
   gotoDepositScreen: any;
@@ -40,7 +42,6 @@ type Props = {
   options: any;
   balanceList: any;
   balanceEth: any;
-  transactionList: any;
   gotoDetailTransaction: any;
   gotoWithdrawNowScreen: any;
   activeToken: any;
@@ -71,6 +72,7 @@ export const TRANSACTION_TYPE = {
   WITHDRAWAL: 'WithdrawalRequest',
   SETTLEMENT: 'SettlementRequest',
   MINT: 'MintRequest',
+  ROYALTYTRANSFER: 'RoyaltyTransferRequest',
 };
 
 export const DF_TRANSACTION_TYPE = {
@@ -120,15 +122,14 @@ export const DF_TRANSACTION_TYPE = {
     iconFailed: '',
     icon: '',
   },
-};
-
-const renderAmount = (type: string, amount: number, item: any) => {
-  switch (type) {
-    case 'SettlementRequest':
-      return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
-    default:
-      return amount;
-  }
+  [TRANSACTION_TYPE.ROYALTYTRANSFER]: {
+    title: 'RoyaltyTransferRequest',
+    titleHistoryDetail: 'Creator Earning Received',
+    titleFailed: '',
+    iconReceived: <ArrowRightLeftIcon />,
+    iconFailed: '',
+    icon: '',
+  },
 };
 
 export default function MainScreen({
@@ -137,7 +138,6 @@ export default function MainScreen({
   options,
   balanceList,
   balanceEth,
-  transactionList,
   gotoDetailTransaction,
   activeToken,
   setActiveToken,
@@ -159,6 +159,7 @@ export default function MainScreen({
     localStorageKeys.starkKey,
     '',
   );
+  console.log('re-render main');
 
   useEffect(() => {
     let addressWallet: any = null;
@@ -248,44 +249,47 @@ export default function MainScreen({
     setCoinPrices(temp);
   }, [balanceList, options]);
 
-  const onWithdrawActionFromHistory = async (item: any) => {
-    if (!starkKeyUser || !address || !item.assetId) return;
-    const moduleFactory = await getModuleFactory();
-    if (!moduleFactory) return;
-    const withdrawalModule = moduleFactory.getWithdrawModule();
-    const balance = await withdrawalModule.getWithdrawalBalance(
-      address.toLowerCase(),
-      item.assetId,
-    );
-    if (Number(balance) > 0) {
-      if (item.name === 'Ethereum') {
-        const transactionDetails = {
-          ...item,
-          ethAmount: convertWeiToEth(String(balance)),
-        };
-        console.log('Go to withdraw now screen');
-        gotoWithdrawNowScreen({
-          isComeFrom: WalletTabs.HISTORY,
-          ...transactionDetails,
-        });
-      } else {
-        handleDisplayPopover(false);
-        handleSetValueNFT({
-          ...item,
-          name: 'Sigil NFT',
-          assetMintId: item.assetId,
-          isComeFrom: WalletTabs.HISTORY,
-        });
-        completeWithdrawal();
-      }
-    } else {
-      toast(
-        'Your L1 balance is not available yet. Please wait and be patient.',
+  const onWithdrawActionFromHistory = useCallback(
+    async (item: any) => {
+      if (!starkKeyUser || !address || !item.assetId) return;
+      const moduleFactory = await getModuleFactory();
+      if (!moduleFactory) return;
+      const withdrawalModule = moduleFactory.getWithdrawModule();
+      const balance = await withdrawalModule.getWithdrawalBalance(
+        address.toLowerCase(),
+        item.assetId,
       );
-    }
-  };
+      if (Number(balance) > 0) {
+        if (item.name === 'Ethereum') {
+          const transactionDetails = {
+            ...item,
+            ethAmount: convertWeiToEth(String(balance)),
+          };
+          console.log('Go to withdraw now screen');
+          gotoWithdrawNowScreen({
+            isComeFrom: WalletTabs.HISTORY,
+            ...transactionDetails,
+          });
+        } else {
+          handleDisplayPopover(false);
+          handleSetValueNFT({
+            ...item,
+            name: 'Sigil NFT',
+            assetMintId: item.assetId,
+            isComeFrom: WalletTabs.HISTORY,
+          });
+          completeWithdrawal();
+        }
+      } else {
+        toast(
+          'Your L1 balance is not available yet. Please wait and be patient.',
+        );
+      }
+    },
+    [address, starkKeyUser],
+  );
 
-  const showWithdrawPopover = (item: any) => {
+  const showWithdrawPopover = useCallback((item: any) => {
     handleDisplayPopover(false);
     handleSetValueNFT({
       ...item,
@@ -294,123 +298,11 @@ export default function MainScreen({
       isComeFrom: WalletTabs.HISTORY,
     });
     completeWithdrawal();
-  };
+  }, []);
 
-  const renderStatus = (item: any) => {
-    if (
-      item.status === STATUS_HISTORY.IN_PROGRESS ||
-      item.status === STATUS_HISTORY.IN_PROGRESS_VALIDATING ||
-      item.status === STATUS_HISTORY.PREPARE
-    ) {
-      return (
-        <div className="text-base/9 mt-1 flex items-center">
-          In progress <ProgressHistoryIcon size={14} className="ml-1" />
-        </div>
-      );
-    }
-
-    if (item.status === STATUS_HISTORY.FAILED) {
-      return (
-        <div className="text-error/6 mt-1 flex items-center">
-          Failed <CircleCloseIcon size={14} className="text-error/6 ml-1" />
-        </div>
-      );
-    }
-
-    if (item.status === STATUS_HISTORY.SUCCESS) {
-      if (item.type === TRANSACTION_TYPE.WITHDRAWAL) {
-        if (item.tokenType === 'ETH' && l1Balance > 0) {
-          return (
-            <button
-              onClick={e => {
-                e.stopPropagation();
-                onWithdrawActionFromHistory(item);
-              }}
-              className="text-primary/6 mt-1 flex cursor-pointer items-center"
-            >
-              Complete withdrawal{' '}
-              <ChevronIcon
-                className="text-primary/6 ml-1"
-                size={14}
-                direction="right"
-              />
-            </button>
-          );
-        }
-
-        if (item.tokenType === 'ETH' && l1Balance === 0) {
-          return (
-            <div className="text-base/9 mt-1 flex items-center">
-              In progress <ProgressHistoryIcon size={14} className="ml-1" />
-            </div>
-          );
-        }
-
-        if (item.tokenType === 'MINTABLE_ERC721') {
-          return (
-            <RenderStatus
-              item={item}
-              showWithdrawPopover={() => showWithdrawPopover(item)}
-              starkKeyUser={`0x${localStarkKey}`}
-              address={walletAddress}
-            />
-          );
-        }
-      }
-      return (
-        <div className="text-base/9 mt-1 flex items-center">
-          Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
-        </div>
-      );
-    }
-
-    if (
-      item.status === STATUS_HISTORY.COMPLETED &&
-      (item.type === TRANSACTION_TYPE.TRANSFER ||
-        item.type === TRANSACTION_TYPE.WITHDRAWAL)
-    ) {
-      return (
-        <div className="text-base/9 mt-1 flex items-center">
-          Complete <CompletedIcon className="text-base/9 ml-1" size={14} />
-        </div>
-      );
-    }
-  };
-
-  const renderIcon = (item: any) => {
-    if (
-      !item.name &&
-      (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-        item.type === TRANSACTION_TYPE.TRANSFER ||
-        item.type === TRANSACTION_TYPE.SETTLEMENT)
-    ) {
-      return <WithdrawNFTIcon size={32} />;
-    }
-
-    if (item.type !== TRANSACTION_TYPE.SETTLEMENT) {
-      return <img className="w-8 flex-none" src={item.ico} alt="token_icon" />;
-    }
-  };
-
-  const renderTitle = (item: any) => {
-    const startKey = `0x${starkKeyUser}`;
-    if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
-      if (item.partyAOrder.publicKey === startKey) {
-        return 'NFT Sale';
-      }
-      if (item.partyBOrder.publicKey === startKey) {
-        return 'NFT Purchase';
-      }
-    }
-    if (!item.name && item.type === TRANSACTION_TYPE.WITHDRAWAL) {
-      return 'NFT Withdraw';
-    }
-    if (!item.name && item.type === TRANSACTION_TYPE.TRANSFER) {
-      return 'NFT Transfer';
-    } else {
-      return DF_TRANSACTION_TYPE[item?.type]?.title;
-    }
-  };
+  const handleDetailTransaction = useCallback(item => {
+    gotoDetailTransaction(item);
+  }, []);
 
   if (isLoading && !isFetched) {
     return (
@@ -473,49 +365,15 @@ export default function MainScreen({
         </ul>
         <div className="outlet">
           <TabContent id={WalletTabs.HISTORY} activeTab={activeToken}>
-            <div className="mt-3 max-h-[244px]">
-              {transactionList?.length === 0 && (
-                <div>No data available yet</div>
-              )}
-              {transactionList?.map((item: any, index: number) => (
-                <div
-                  onClick={() => {
-                    gotoDetailTransaction(item);
-                  }}
-                  className={cn(
-                    'flex cursor-pointer items-center py-4',
-                    index !== historyData.length - 1 &&
-                      'border-b border-white/10',
-                  )}
-                  key={index}
-                >
-                  <div className="mr-2">{renderIcon(item)}</div>
-                  <div className="grow">
-                    <div className="text-base/10 flex items-center justify-between text-sm">
-                      <span>{renderTitle(item)}</span>
-                      <span className="flex items-center">
-                        <span className="mb-[2px] mr-1">
-                          {!item.name &&
-                          (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-                            item.type === TRANSACTION_TYPE.TRANSFER) ? (
-                            ''
-                          ) : (
-                            <DAOIcon size={16} />
-                          )}
-                        </span>
-                        <span>
-                          {renderAmount(item.type, item.amount, item)}
-                        </span>
-                      </span>
-                    </div>
-                    <div className="text-base/9 flex items-center justify-between text-xs">
-                      <span>{item.time}</span>
-                      {renderStatus(item)}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <HistoryTab
+              walletAddress={walletAddress}
+              l1Balance={l1Balance}
+              gotoDetailTransaction={handleDetailTransaction}
+              localStarkKey={localStarkKey}
+              onWithdrawActionFromHistory={onWithdrawActionFromHistory}
+              showWithdrawPopover={showWithdrawPopover}
+              starkKeyUser={starkKeyUser}
+            />
           </TabContent>
           <TabContent id={WalletTabs.TOKENS} activeTab={activeToken}>
             <div className="mt-3">
@@ -562,53 +420,3 @@ export default function MainScreen({
     </div>
   );
 }
-
-const RenderStatus: React.FC<{
-  item: any;
-  starkKeyUser: string;
-  address: string;
-  showWithdrawPopover: any;
-}> = ({ item, starkKeyUser, address, showWithdrawPopover }) => {
-  const [balance, setBalance] = useState<number>(0);
-  useEffect(() => {
-    const getBalance = async (item: any) => {
-      if (!starkKeyUser || !address || !item?.assetId) return;
-      const moduleFactory = await getModuleFactory();
-      if (!moduleFactory) return;
-
-      const withdrawalModule = moduleFactory.getWithdrawModule();
-
-      const balance = await withdrawalModule.getWithdrawalBalance(
-        address.toLowerCase(),
-        item?.assetId + '',
-      );
-      setBalance(Number(balance));
-    };
-    getBalance(item);
-  }, [address, item, starkKeyUser]);
-
-  return (
-    <>
-      {balance > 0 ? (
-        <button
-          onClick={e => {
-            e.stopPropagation();
-            showWithdrawPopover();
-          }}
-          className="text-primary/6 mt-1 flex cursor-pointer items-center"
-        >
-          Complete withdrawal{' '}
-          <ChevronIcon
-            className="text-primary/6 ml-1"
-            size={14}
-            direction="right"
-          />
-        </button>
-      ) : (
-        <div className="text-base/9 mt-1 flex items-center">
-          In progress <ProgressHistoryIcon size={14} className="ml-1" />
-        </div>
-      )}
-    </>
-  );
-};
