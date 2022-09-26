@@ -41,8 +41,10 @@ function HistoryTab({
   const renderAmount = useCallback(
     (type: string, amount: number, item: any) => {
       switch (type) {
-        case 'SettlementRequest':
+        case TRANSACTION_TYPE.SETTLEMENT:
           return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
+        case TRANSACTION_TYPE.ROYALTYTRANSFER:
+          return convertQuantizedAmountToEth(item.tokenSellInfo.salePrice);
         default:
           return amount;
       }
