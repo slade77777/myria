@@ -44,7 +44,7 @@ function HistoryTab({
         case TRANSACTION_TYPE.SETTLEMENT:
           return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
         case TRANSACTION_TYPE.ROYALTYTRANSFER:
-          return convertQuantizedAmountToEth(item.tokenSellInfo.salePrice);
+          return convertQuantizedAmountToEth(item.quantizedAmount);
         default:
           return amount;
       }
