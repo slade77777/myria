@@ -52,7 +52,7 @@ const Collection: FC<Props> = ({ collection }) => {
       filter
     );
 
-  const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
+  const { items, totalItem } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   const [displayFilter, setDisplayFilter] = useState<boolean>(false);
 
   const [filterSummary, setFilterSummary] = useState<{ id: string; value: string }[]>([]);
@@ -96,10 +96,6 @@ const Collection: FC<Props> = ({ collection }) => {
     }
   };
 
-  // console.log('debug: filterList', filterList);
-  // console.log('debug: activeFilter', filter);
-  // console.log('debug: initialFilter', initialFilter);
-
   return (
     <Page includeFooter={false}>
       <div className="pt-[104px] md:pt-[93px]">
@@ -127,7 +123,7 @@ const Collection: FC<Props> = ({ collection }) => {
                   Created By <span className="font-bold text-white">{project?.name}</span>
                 </p>
                 <div className="mt-6">
-                  <ReadMoreText text={description || ''} />
+                  {description && <ReadMoreText text={description || ''} />}
                 </div>
               </div>
               <div className="flex flex-row gap-12">
@@ -176,7 +172,7 @@ const Collection: FC<Props> = ({ collection }) => {
                 <div className={displayFilter ? 'w-3/4' : 'w-full'}>
                   {displayFilter && filterSummary.length > 0 && (
                     <>
-                      <p className="text-light mt-8 text-base">{items.length} Item found</p>
+                      <p className="text-light mt-8 text-base">{totalItem} Item found</p>
                       <div className="mt-4 flex flex-wrap items-center">
                         {filterSummary.map((item: { id: string; value: string }, index: number) => {
                           return (
