@@ -111,7 +111,7 @@ const Collection: FC<Props> = ({ collection }) => {
         <div className="max-w-content mx-auto mb-10">
           <div className="relative">
             {/* <img src={collectionImageUrl ? collectionImageUrl : "/images/marketplace/header.png"} className="h-[327px] w-full " alt={name} /> */}
-            <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-auto">
+            <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
               {iconUrl ? <img src={iconUrl} alt="" /> : <MyriaIcon />}
             </div>
           </div>

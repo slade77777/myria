@@ -159,7 +159,6 @@ export default function MainScreen({
     localStorageKeys.starkKey,
     '',
   );
-  console.log('re-render main');
 
   useEffect(() => {
     let addressWallet: any = null;

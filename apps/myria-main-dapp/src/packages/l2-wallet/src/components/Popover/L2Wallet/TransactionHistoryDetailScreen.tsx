@@ -1,10 +1,11 @@
 import { Trans } from '@lingui/macro';
 import moment from 'moment';
-import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
 import { FORMAT_DATE, getExplorerForAddress, truncateAddress } from 'src/utils';
+import Tooltip from 'src/components/Tooltip';
+import InfoCircle from 'src/components/icons/InfoCircle';
 import { convertQuantizedAmountToEth } from '../../../utils/Converter';
 import ArrowRightLeftIcon from '../../Icons/ArrowRightLeftIcon';
 import {
@@ -74,7 +75,7 @@ export default function TransactionHistoryDetailScreen({
     },
     [],
   );
-
+  console.log('transactionDetail', transactionDetail);
   return (
     <div className="text-base/10 mt-[29px]">
       {transactionDetail.type !== TRANSACTION_TYPE.SETTLEMENT && (
@@ -194,8 +195,16 @@ export default function TransactionHistoryDetailScreen({
                   </span>
                 </div>
                 <div className="mb-4 flex justify-between">
-                  <span className="text-base/9">
+                  <span className="text-base/9 flex items-center">
                     <Trans>Earnings paid to creator</Trans>
+                    <ToolTipInfo
+                      isPurchase
+                      percentage={
+                        (transactionDetail.partyAOrder.feeInfo.feeLimit /
+                          transactionDetail.partyBOrder.amountSell) *
+                        100
+                      }
+                    />
                   </span>
                   <span className="text-base/10 flex items-center">
                     <DAOIcon size={16} className="mb-[2px]" />
@@ -210,8 +219,15 @@ export default function TransactionHistoryDetailScreen({
             )}
             {transactionDetail.transactionType === 'RoyaltyTransferRequest' && (
               <div className="mb-4 flex justify-between">
-                <span className="text-base/9">
+                <span className="text-base/9 flex items-center">
                   <Trans>Creator earnings</Trans>
+                  <ToolTipInfo
+                    percentage={
+                      (transactionDetail.quantizedAmount /
+                        transactionDetail.tokenSellInfo.buyerAmountSell) *
+                      100
+                    }
+                  />
                 </span>
                 <span className="text-base/10 flex items-center">
                   <DAOIcon size={16} className="mb-[2px]" />
@@ -262,3 +278,34 @@ export default function TransactionHistoryDetailScreen({
     </div>
   );
 }
+
+const ToolTipInfo = ({ percentage = 0, isPurchase = false }) => {
+  return (
+    <Tooltip>
+      <Tooltip.Trigger asChild className="cursor-pointer focus:outline-none">
+        <div className="ml-1 flex flex-row items-center">
+          <InfoCircle />
+        </div>
+      </Tooltip.Trigger>
+      <Tooltip.Content side="bottom" className="bg-base/5 mt-2 max-w-[256px]">
+        <Tooltip.Arrow className="fill-base/5 " width={16} height={8} />
+        <p className="text-base/9">
+          {isPurchase ? (
+            <>
+              <Trans>The creator of this collection will earn</Trans>&nbsp;
+              {`${percentage}%`}&nbsp;
+              <Trans>of every sale.</Trans>
+            </>
+          ) : (
+            <>
+              <Trans>As the creator of this collection, you will earn</Trans>
+              &nbsp;
+              {`${percentage}%`}&nbsp;
+              <Trans>of every sale.</Trans>
+            </>
+          )}
+        </p>
+      </Tooltip.Content>
+    </Tooltip>
+  );
+};

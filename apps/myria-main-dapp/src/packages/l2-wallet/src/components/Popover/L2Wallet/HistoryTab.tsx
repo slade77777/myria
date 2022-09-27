@@ -34,9 +34,7 @@ function HistoryTab({
   walletAddress,
   starkKeyUser,
 }: Props) {
-  console.log('re-render');
   const { data: transactionListHistory } = useTransactionList(localStarkKey);
-  console.log('transactionListHistory', transactionListHistory);
 
   const renderAmount = useCallback(
     (type: string, amount: number, item: any) => {
