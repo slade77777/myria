@@ -176,10 +176,9 @@ function AssetDetails({ id }: Props) {
       // get only 4 elements
       let counter = 0;
       return res?.data.items.filter((item: any, index: number) => {
-        if(counter > 4) return;
+        if (counter > 4) return;
         return item.id != assetDetails?.id && counter++;
       });
-      
     },
     {
       enabled: !!assetDetails?.collectionId //dependence by assetDetails?.collectionId
