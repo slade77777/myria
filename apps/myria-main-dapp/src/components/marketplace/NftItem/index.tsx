@@ -100,7 +100,7 @@ const NftItem = ({ item }: Props) => {
             </div>
             <div className="p-4">
               <span className="block text-[12px] font-normal text-[#9CA3AF]">
-                {item?.collection?.name || 'Sigil Myriaverse'}
+                {item?.collection?.name || ''}
               </span>
               <span className="mb-4 block truncate text-[14px] font-medium text-white">
                 {item.name}
