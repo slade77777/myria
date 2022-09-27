@@ -821,9 +821,12 @@ function AssetDetails({ id }: Props) {
         <AssetList
           title={'More from this collection'}
           items={moreCollectionList?.map((elm: any) => {
-            console.log('Element -> ', elm);
             const item: NFTItemType = {
               id: `${elm.id}`,
+              collection: {
+                ...elm.collection, // api hasn't response this field yet. Keep any to not get error currently.
+                name: assetDetails?.collectionName
+              },
               rarity: (elm.metadata as any).rarity,
               name: elm.name || '',
               image_url: elm.imageUrl || elm?.metadataOptional?.image || '',

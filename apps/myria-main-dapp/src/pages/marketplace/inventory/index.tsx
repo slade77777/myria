@@ -61,9 +61,9 @@ function InventoryPage() {
         items={items.map((item: any) => ({
           id: item.id,
           rarity: item.metadata?.rarity,
+          collection: item.collection,
           name: item.name || 'Untitled',
           image_url: item.imageUrl,
-          collection: item.collection?.name,
           creator: truncateString(item.collection.ownerPublicKey),
           creatorImg: avatar.src, // MOCK
           priceETH: +item?.order?.nonQuantizedAmountBuy

@@ -225,6 +225,7 @@ const Collection: FC<Props> = ({ collection }) => {
                           const isOrder = Array.isArray(elm?.order);
                           const item: NFTItemType = {
                             id: `${elm.id}`,
+                            collection: elm.collection,
                             rarity: (elm.metadata as any).rarity,
                             name: elm.name || '',
                             image_url: elm.imageUrl || elm?.metadataOptional?.image || '',
