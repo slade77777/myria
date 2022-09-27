@@ -181,7 +181,7 @@ export const getItemsPagination = (pages: any[]): { items: any[]; totalItem: num
     },
     []
   );
-  const totalItem = pages[0].data.meta.totalItems;
+  const totalItem = pages[0].data?.meta.totalItems;
 
   return { items, totalItem };
 };

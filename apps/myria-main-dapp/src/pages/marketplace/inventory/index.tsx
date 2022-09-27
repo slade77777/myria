@@ -33,7 +33,7 @@ function InventoryPage() {
   const { items } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   const totalItems = useMemo(() => {
     try {
-      return result.data?.pages[0]?.data.meta.totalItems || 0;
+      return result.data?.pages[0]?.data?.meta.totalItems || 0;
     } catch (err) {
       console.log(err);
       return 0;
@@ -42,7 +42,7 @@ function InventoryPage() {
 
   const totalForSaleItems = useMemo(() => {
     try {
-      return result.data?.pages[0]?.data.meta.totalAssetsForSale || 0;
+      return result.data?.pages[0]?.data?.meta.totalAssetsForSale || 0;
     } catch (err) {
       console.log(err);
       return 0;
