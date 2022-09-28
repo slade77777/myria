@@ -13,13 +13,14 @@ import { useAuthenticationContext } from '../../context/authentication';
 
 const schema = yup
   .object({
-    first_name: yup.string().required(t`First Name is required!`)
+    first_name: yup.string().optional(),
+    last_name: yup.string().optional(),
+    username: yup.string().optional()
   })
   .required();
 
 const ProfileSetting = () => {
   const { account, accountProfileQuery } = useAuthenticationContext();
-
   const {
     register: registerForm,
     handleSubmit,
@@ -55,7 +56,6 @@ const ProfileSetting = () => {
     },
     [mutate]
   );
-
   const canUpdate = isValid && !isSubmitting && isDirty;
 
   return (
