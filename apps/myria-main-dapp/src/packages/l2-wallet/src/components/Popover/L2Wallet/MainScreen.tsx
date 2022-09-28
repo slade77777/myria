@@ -124,7 +124,7 @@ export const DF_TRANSACTION_TYPE = {
   },
   [TRANSACTION_TYPE.ROYALTYTRANSFER]: {
     title: 'RoyaltyTransferRequest',
-    titleHistoryDetail: 'Creator Earning Received',
+    titleHistoryDetail: 'Creator Earnings Received',
     titleFailed: '',
     iconReceived: <ArrowRightLeftIcon />,
     iconFailed: '',

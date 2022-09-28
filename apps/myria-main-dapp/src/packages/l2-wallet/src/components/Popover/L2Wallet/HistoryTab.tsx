@@ -169,7 +169,7 @@ function HistoryTab({
         return 'NFT Withdraw';
       }
       if (item.type === TRANSACTION_TYPE.ROYALTYTRANSFER) {
-        return 'Creator Earning';
+        return 'Creator Earnings';
       }
       if (!item.name && item.type === TRANSACTION_TYPE.TRANSFER) {
         return 'NFT Transfer';
