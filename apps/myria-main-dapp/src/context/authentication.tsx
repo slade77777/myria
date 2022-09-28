@@ -47,6 +47,7 @@ export type Account = {
   wallet_id: string;
   created_on: string;
   last_activity: string;
+  hasPassword?: boolean;
 };
 
 const VerifyModal = ({

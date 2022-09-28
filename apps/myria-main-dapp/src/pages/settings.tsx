@@ -1,5 +1,5 @@
 import Page from '../components/Page';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthenticationContext } from '../context/authentication';
 import { useRouter } from 'next/router';
 import { useWalletContext } from '../context/wallet';
@@ -17,14 +17,22 @@ const triggerStyle = 'text-grey/9 mr-10 hover:text-primary/6 border-primary/6';
 const Settings = () => {
   const { address } = useWalletContext();
   const { user, userProfileQuery } = useAuthenticationContext();
+  const [activeTab, setActiveTab] = useState('profile');
   const router = useRouter();
+  const { activeFromEmail } = router.query;
 
   useEffect(() => {
     // validate either wallet is connected
-    if (!address || (!userProfileQuery.isFetching && !user)) {
+    if (!userProfileQuery.isFetching && !user) {
       router.push('/');
     }
   }, [address, router, user, userProfileQuery.isFetching]);
+
+  useEffect(() => {
+    if (activeFromEmail === 'true') {
+      setActiveTab('security');
+    }
+  }, [activeFromEmail]);
 
   return (
     <Page includeFooter={false}>
@@ -40,7 +48,7 @@ const Settings = () => {
             <span className="ml-2 text-sm font-normal leading-[17px] text-white">Back</span>
           </div>
         </button>
-        <Tabs.Root defaultValue="profile">
+        <Tabs.Root value={activeTab} onValueChange={(val) => setActiveTab(val)}>
           <Tabs.List className="mb-6">
             <Tabs.Trigger value="profile" className={triggerStyle}>
               Profile Settings

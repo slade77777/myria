@@ -18,6 +18,7 @@ type Props = {
   modalShow: boolean;
   closeModal: () => void;
   position?: string;
+  content?: string;
 };
 
 interface IFormInputs {
@@ -37,7 +38,13 @@ const linkEmail = (email: string) => {
   return apiClient.post(`/accounts/email`, { email, redirect: 1 });
 };
 
-const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
+const ModalContent = ({
+  closeModal,
+  content,
+}: {
+  closeModal: () => void;
+  content?: string;
+}) => {
   const {
     register,
     handleSubmit,
@@ -89,8 +96,8 @@ const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
 
       <div className="mt-6 px-[20px] text-center text-[16px] text-white">
         <p className="text-base/9">
-          Enter your email address to get notifications about wallet
-          transactions and marketplace trades.
+          {content ||
+            'Enter your email address to get notifications about wallet transactions and marketplace trades.'}
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -130,6 +137,7 @@ export default function RequestEmailModal({
   modalShow,
   closeModal,
   position,
+  content,
 }: Props) {
   if (position === 'top-left') {
     return (
@@ -139,7 +147,7 @@ export default function RequestEmailModal({
           <div className="flex items-center justify-end px-4">
             <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
           </div>
-          <ModalContent closeModal={closeModal} />
+          <ModalContent closeModal={closeModal} content={content} />
         </div>
       </div>
     );
@@ -148,7 +156,7 @@ export default function RequestEmailModal({
   return (
     <Modal open={modalShow} onOpenChange={closeModal}>
       <Modal.Content className="z-[5000] shadow-[0_0_40px_10px_#0000004D]">
-        <ModalContent closeModal={closeModal} />
+        <ModalContent closeModal={closeModal} content={content} />
       </Modal.Content>
     </Modal>
   );
