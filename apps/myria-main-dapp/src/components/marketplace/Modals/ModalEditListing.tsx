@@ -181,7 +181,7 @@ export const ModalEditListing: React.FC<Props> = ({
             <span className="ml-1 text-[#A1AFBA]">
               {proceedsFrSale
                 ? String(proceedsFrSale).length > 8
-                  ? proceedsFrSale.toFixed(8)
+                  ? Number(proceedsFrSale.toFixed(8))
                   : proceedsFrSale
                 : 0}
             </span>
@@ -198,7 +198,7 @@ export const ModalEditListing: React.FC<Props> = ({
                   <span className="ml-1 text-[#A1AFBA]">
                     {items && ethPrice
                       ? String(+ethPrice - proceedsFrSale).length > 8
-                        ? (+ethPrice - proceedsFrSale).toFixed(8)
+                        ? Number((+ethPrice - proceedsFrSale).toFixed(8))
                         : +ethPrice - proceedsFrSale
                       : 0}
                   </span>
