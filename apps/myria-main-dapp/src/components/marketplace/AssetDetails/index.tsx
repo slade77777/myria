@@ -561,9 +561,9 @@ function AssetDetails({ id }: Props) {
             ]
           : undefined;
 
-      const totalQuantizedAmount = convertAmountToQuantizedAmount(
-        assetDetails?.order.nonQuantizedAmountBuy
-      );
+      // const totalQuantizedAmount = convertAmountToQuantizedAmount(
+      //   assetDetails?.order.nonQuantizedAmountBuy
+      // );
 
       const signableOrderInput: SignableOrderInput = {
         orderType: 'BUY',
@@ -578,7 +578,7 @@ function AssetDetails({ id }: Props) {
           }
         },
         amountBuy: `${tradeData?.order.amountSell}`,
-        amountSell: String(totalQuantizedAmount),
+        amountSell: String(assetDetails?.order.nonQuantizedAmountBuy),
         tokenSell: {
           type: TokenType.ETH,
           data: {
