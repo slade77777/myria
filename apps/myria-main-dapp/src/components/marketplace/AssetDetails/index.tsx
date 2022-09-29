@@ -382,7 +382,7 @@ function AssetDetails({ id }: Props) {
           assetRefId: parseInt(id, 10),
           orderType: 'SELL',
           feeSign: feeSign,
-          includeFees: true,
+          includeFees: feeData ? true : false,
           amountSell: signature.amountSell,
           amountBuy: signature.amountBuy,
           sellerStarkKey: starkKey,
