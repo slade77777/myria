@@ -578,7 +578,7 @@ function AssetDetails({ id }: Props) {
           }
         },
         amountBuy: `${tradeData?.order.amountSell}`,
-        amountSell: String(assetDetails?.order.nonQuantizedAmountBuy),
+        amountSell: `${tradeData?.order.amountBuy}`,
         tokenSell: {
           type: TokenType.ETH,
           data: {
@@ -636,8 +636,12 @@ function AssetDetails({ id }: Props) {
     const payloadDataTrade = {
       order: {
         orderId: isOrder ? listOrder?.order[0].id : listOrder?.order.orderId,
-        amountSell: isOrder ? listOrder?.order[0].amountSell : listOrder?.order.amountSell,
-        amountBuy: isOrder ? listOrder?.order[0].amountBuy : listOrder?.order.amountBuy
+        amountSell: isOrder
+          ? listOrder?.order[0].nonQuantizedAmountSell
+          : listOrder?.order.nonQuantizedAmountSell,
+        amountBuy: isOrder
+          ? listOrder?.order[0].nonQuantizedAmountBuy
+          : listOrder?.order.nonQuantizedAmountBuy
       },
       tokenId: listOrder.tokenId,
       tokenAddress: listOrder.tokenAddress
