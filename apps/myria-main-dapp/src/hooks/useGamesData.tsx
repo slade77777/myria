@@ -78,13 +78,13 @@ export default function useGamesData() {
           {
             heading: t`About the game`,
             paragraph: [
-              t`The objective is simple – get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing.`
+              t`The objective is simple &#45; get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing.`
             ]
           },
           {
             heading: t`Endless online fun`,
             paragraph: [
-              t`Everyone knows there’s no law in the Dark Corner. The Rift has literally turned the planet inside out and the track floats suspended in space. The aliens that were once experimented on have taken over the tech and throw everything they have at the metarushers in order to keep them from finding the portal out. You’d better do everything you can to win this race or you could get trapped in the Dark Corner. Forever.`
+              t`Everyone knows there&#39;s no law in the Dark Corner. The Rift has literally turned the planet inside out and the track floats suspended in space. The aliens that were once experimented on have taken over the tech and throw everything they have at the metarushers in order to keep them from finding the portal out. You&#39;d better do everything you can to win this race or you could get trapped in the Dark Corner. Forever.`
             ]
           },
           {
