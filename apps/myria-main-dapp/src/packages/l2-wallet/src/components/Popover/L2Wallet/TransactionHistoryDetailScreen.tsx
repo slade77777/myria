@@ -55,7 +55,7 @@ export default function TransactionHistoryDetailScreen({
       return DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed;
     }
     if (transactionDetail?.type === 'RoyaltyTransferRequest') {
-      return 'Creator Earning Received';
+      return 'Creator Earnings Received';
     }
     return DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail;
   };
