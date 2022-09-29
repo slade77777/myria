@@ -45,10 +45,10 @@ export default function useGamesData() {
       metarush: {
         discord: socialLinks.discord,
         twitter: 'https://twitter.com/playmetarush?s=21&t=HOqFS3SXBaEvnky4HHQtWA',
-        headerBg: '/images/game-detail/header-bg-1.png',
+        headerBg: '/images/game-detail/metarush/header.jpg',
         title: 'Metarush',
         description: t`A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory.`,
-        logo: '/images/game-detail/metarush/logo.png',
+        logo: '/images/game-detail/metarush1/logo.png',
         logoMobile: '/images/game-detail/metarush/logo-alt.png',
         image: {
           src: '/images/game-detail/metarush1/5.png',
