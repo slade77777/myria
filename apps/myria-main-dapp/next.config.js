@@ -21,9 +21,15 @@ const moduleExports = {
     dirs: ['src']
   },
   trailingSlash: true,
-  images: {
-    domains: ['assets-dev.nonprod-myria.com']
-  },
+  images: isProd
+    ? {
+        loader: 'imgix',
+        path: 'https://myria.imgix.net',
+        domains: ['assets.myria.com']
+      }
+    : {
+        domains: ['assets-dev.nonprod-myria.com']
+      },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.po/,
