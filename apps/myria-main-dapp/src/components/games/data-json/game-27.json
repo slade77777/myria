@@ -34,8 +34,10 @@
         "heading": "About the game",
         "paragraph": [
           "Isekaiverse is a next-generation decentralized Anime Metaverse project that was founded in 2021. Our vision is to be the biggest Anime hub in the Web 3 space.",
-          "Isekaiverse is using its original Anime TV series, “Isekai Island”, a unique franchise as the foundation for everything else we are doing. It is our goal to become a globally recognized brand not only in the Web 3 space but also outside in the real world with our Anime series streaming on platforms like Netflix, Hulu, and Crunchyroll. We have plans to feature a full gaming ecosystem, from a real-time strategy battle game to a NFT land game, allowing you to own part of our Isekai Island. The team wants to make sure that everyone can relate to the characters whether they are gamers, or an Anime lover. ",
-          "The team behind Isekai Island have created the entire story, characters, and even the music in-house. We have already completed all the written scripts for season one, which will feature ten 30 minute long episodes. The amazing  soundtrack is already recorded which includes talent such as Mika Kobayashi, Lotus Juice and we have the incredible Raj Ramayya as our music director. Anime legend Karen Strassmen has signed on to voice one of the main characters, Princess Sukimi.<br />The Isekai Battle Game, is the first game in the eco-system featuring a fast-paced, real-time competitive playstyle allowing players to battle head on against each other using their favorite hero and characters of the corresponding affiliation. <br />The Isekai Battle Game will have multiple game modes catering to different play styles."
+          "Isekaiverse is using its original Anime TV series, Isekai Island, a unique franchise as the foundation for everything else we are doing. It is our goal to become a globally recognized brand not only in the Web 3 space but also outside in the real world with our Anime series streaming on platforms like Netflix, Hulu, and Crunchyroll. We have plans to feature a full gaming ecosystem, from a real-time strategy battle game to an NFT land game, allowing you to own part of our Isekai Island. The team wants to make sure that everyone can relate to the characters whether they are gamers or Anime lovers ",
+          "The team behind Isekai Island have created the entire story, characters, and even the music in-house. We have already completed all the written scripts for season one, which will feature ten 30-minute-long episodes. The amazing soundtrack is already recorded which includes talent such as Mika Kobayashi, and Lotus Juice and we have the incredible Raj Ramayya as our music director. Anime legend Karen Strassman has signed on to voice one of the main characters, Princess Sukimi.",
+          "The Isekai Battle Game is the first game in the eco-system featuring a fast-paced, real-time competitive playstyle allowing players to battle head-on against each other using their favourite hero and characters of the corresponding affiliation.",
+          "The Isekai Battle Game will have multiple game modes catering to different play styles."
         ]
       },
       {
@@ -49,7 +51,8 @@
       {
         "heading": "Other Link",
         "paragraph": [
-          "https://www.youtube.com/channel/UCErXb0N0UPMbcJwSHFiT1Fg<br/>https://t.me/IsekaiVerseAnnouncements"
+          "https://www.youtube.com/c/IsekaiVerse/featured",
+          "https://t.me/IsekaiVerseAnnouncements"
         ]
       }
     ],
@@ -60,7 +63,7 @@
       },
       {
         "label": "Platform",
-        "value": "PC (Browser)"
+        "value": "PC, Web"
       },
       {
         "label": "Genre",

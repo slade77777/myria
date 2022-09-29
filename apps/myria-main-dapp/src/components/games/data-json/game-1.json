@@ -13,28 +13,28 @@
     "twitter": "https://twitter.com/wingofmisad",
     "headerBg": "",
     "title": "Wing of Misadventure",
-    "description": "Wing of Misadventure is a metaverse based on the world of Misadventure, the main idea of ​​the project is to create multiple game series and make possible for players to dictate an economy based on crypto tokens.",
-    "logo": "/partner-games-1/logo.png",
+    "description": "",
+    "logo": "/images/partner-games-1/01-wing-of-misadventure/logo.png",
     "logoMobile": "",
     "assets": [
       {
         "type": "image",
-        "src": "/partner-games-1/banner_1.png"
+        "src": "/images/partner-games-1/01-wing-of-misadventure/banner_1.png"
       },
       {
         "type": "image",
-        "src": "/partner-games-1/banner_2.png"
+        "src": "/images/partner-games-1/01-wing-of-misadventure/banner_2.png"
       },
       {
         "type": "image",
-        "src": "/partner-games-1/banner_3.png"
+        "src": "/images/partner-games-1/01-wing-of-misadventure/banner_3.png"
       }
     ],
     "content": [
       {
         "heading": "About the game",
         "paragraph": [
-          "Wing of Misadventure is a metaverse based on the world of Misadventure, the main idea of ​​the project is to create multiple game series and make possible for players to dictate an economy based on crypto tokens."
+          "Wing of Misadventure is a metaverse based on the world of Misadventure, the main idea of the project is to create multiple game series and make possible for players to dictate an economy based on crypto tokens."
         ]
       },
       {
@@ -48,7 +48,11 @@
       {
         "heading": "Other Link",
         "paragraph": [
-          "https://t.me/WingOfMisadventure\n          https://www.youtube.com/c/WingofMisadventure\n          https://medium.com/@wingofmisadventure\n          https://www.instagram.com/wingofmisadventure/\n          https://www.facebook.com/wingofmisadventure"
+          "https://t.me/WingOfMisadventure",
+          "https://www.youtube.com/c/WingofMisadventure",
+          "https://medium.com/@wingofmisadventure",
+          "https://www.instagram.com/wingofmisadventure/",
+          "https://www.facebook.com/wingofmisadventure"
         ]
       }
     ],

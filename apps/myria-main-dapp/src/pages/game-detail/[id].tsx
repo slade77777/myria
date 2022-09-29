@@ -60,24 +60,24 @@ const GameDetail: React.FC = () => {
             <h3 className="heading-lg text-center font-extrabold md:text-left">{title}</h3>
             <div className="mt-[32px] flex flex-col lg:flex-row lg:items-start">
               <div className="lg:w-[calc((100%-32px)*0.675)]">
-                {!game.isPartner && (
-                  <div>
-                    <FirstSlider
-                      currentSlide={currentSlide}
-                      setCurrentSlide={setCurrentSlide}
-                      assets={assets}
-                    />
-                  </div>
-                )}
-                {!game.isPartner && (
-                  <div className="mt-6">
-                    <SecondSlider
-                      currentSlide={currentSlide}
-                      setCurrentSlide={setCurrentSlide}
-                      assets={assets}
-                    />
-                  </div>
-                )}
+                {/* {!game.isPartner && ( */}
+                <div>
+                  <FirstSlider
+                    currentSlide={currentSlide}
+                    setCurrentSlide={setCurrentSlide}
+                    assets={assets}
+                  />
+                </div>
+                {/* )} */}
+                {/* {!game.isPartner && ( */}
+                <div className="mt-6">
+                  <SecondSlider
+                    currentSlide={currentSlide}
+                    setCurrentSlide={setCurrentSlide}
+                    assets={assets}
+                  />
+                </div>
+                {/* )} */}
                 <div className="">
                   <p className="body-lg mt-[70px]">{description}</p>
                   {image && (

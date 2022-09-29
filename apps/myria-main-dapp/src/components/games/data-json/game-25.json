@@ -13,7 +13,7 @@
     "twitter": "https://twitter.com/xdroidsgame",
     "headerBg": "",
     "title": "Xdroids Virtual Reality Warfare",
-    "description": "Xdroids is a metaverse gaming project featuring play-to-earn and kill-to-earn gameplay models. Compete against other players in arena-style maps, where precise gunplay meets unique weapons with different abilities. Think faster than your opponent if you want to survive!",
+    "description": "",
     "logo": "/images/partner-games-1/25-xdroids-virtual-reality-warfare/logo.png",
     "logoMobile": "",
     "assets": [
@@ -42,7 +42,7 @@
       {
         "heading": "About the project",
         "paragraph": [
-          "Xdroids is built on the Unity game engine. Everything is made from scratch by our game development team and with our own custom pipelines and modular level design toolkits, we can rapidly prototype, customize and test new weapons, maps, and game mechanisms without wasting time and money. Design, validate and develope, that’s our motto!"
+          "Xdroids is built on the Unity game engine. Everything is made from scratch by our game development team and with our own custom pipelines and modular level design toolkits, we can rapidly prototype, customize and test new weapons, maps, and game mechanisms without wasting time and money. Design, validate and develope, that&#39;s our motto!"
         ]
       },
       {
