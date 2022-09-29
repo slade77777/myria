@@ -944,7 +944,7 @@ export default function index({}: Props) {
                         5.1 Except as expressly provided under these Terms:
                       </p>
                       <ul className="list-decimal ml-4">
-                        <li className="ml-5">
+                        <li className="ml-4">
                           No Intellectual Property Right, or title or interest thereto, is granted
                           or conveyed to You under these Terms;
                         </li>
