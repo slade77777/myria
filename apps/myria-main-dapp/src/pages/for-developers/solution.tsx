@@ -71,8 +71,8 @@ const Solution: React.FC = () => {
             </h1>
             <p className="mt-6 text-[18px] leading-[1.5] md:text-[20px]">
               <Trans>
-                Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT,
-                blockchain gaming and more.
+                Myria is a decentralised Ethereum Layer 2 powered by StarkWare, built to empower
+                digital assets, NFT, blockchain gaming and more.
               </Trans>
             </p>
           </div>
