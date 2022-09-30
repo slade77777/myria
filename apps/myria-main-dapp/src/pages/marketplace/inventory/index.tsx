@@ -30,10 +30,10 @@ function InventoryPage() {
       router.push('/marketplace');
     }
   }, [router, user?.wallet_id, userProfileQuery.isFetched]);
-  const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
+  const { items } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   const totalItems = useMemo(() => {
     try {
-      return result.data?.pages[0]?.data.meta.totalItems || 0;
+      return result.data?.pages[0]?.data?.meta.totalItems || 0;
     } catch (err) {
       console.log(err);
       return 0;
@@ -42,7 +42,7 @@ function InventoryPage() {
 
   const totalForSaleItems = useMemo(() => {
     try {
-      return result.data?.pages[0]?.data.meta.totalAssetsForSale || 0;
+      return result.data?.pages[0]?.data?.meta.totalAssetsForSale || 0;
     } catch (err) {
       console.log(err);
       return 0;
@@ -61,9 +61,9 @@ function InventoryPage() {
         items={items.map((item: any) => ({
           id: item.id,
           rarity: item.metadata?.rarity,
+          collection: item.collection,
           name: item.name || 'Untitled',
           image_url: item.imageUrl,
-          collection: item.collection?.name,
           creator: truncateString(item.collection.ownerPublicKey),
           creatorImg: avatar.src, // MOCK
           priceETH: +item?.order?.nonQuantizedAmountBuy

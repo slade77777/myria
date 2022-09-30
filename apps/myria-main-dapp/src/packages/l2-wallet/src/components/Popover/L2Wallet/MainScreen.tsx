@@ -124,7 +124,7 @@ export const DF_TRANSACTION_TYPE = {
   },
   [TRANSACTION_TYPE.ROYALTYTRANSFER]: {
     title: 'RoyaltyTransferRequest',
-    titleHistoryDetail: 'Creator Earning Received',
+    titleHistoryDetail: 'Creator Earnings Received',
     titleFailed: '',
     iconReceived: <ArrowRightLeftIcon />,
     iconFailed: '',
@@ -159,7 +159,6 @@ export default function MainScreen({
     localStorageKeys.starkKey,
     '',
   );
-  console.log('re-render main');
 
   useEffect(() => {
     let addressWallet: any = null;

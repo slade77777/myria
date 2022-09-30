@@ -23,11 +23,11 @@ export default function useAttributeCollection(id: number) {
 const formatDataAttributes = (dataAttr: any) => {
   if (!dataAttr) return [];
   if (Object.keys(dataAttr).length === 0) return [];
-  const listAttribute = Object.entries(dataAttr).map((item) => {
+  const listAttribute = Object.entries(dataAttr).map((item: any) => {
     return {
       id: item[0],
-      options: (item[1] as any).values.map(
-        (item: any) => item.charAt(0).toUpperCase() + item.slice(1)
+      options: (item[1]).values.map(
+        (item: any) => item.toString().charAt(0).toUpperCase() + item.toString().slice(1)
       ),
       name: item[0].charAt(0).toUpperCase() + item[0].slice(1)
     };

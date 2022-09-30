@@ -117,18 +117,18 @@ export const ModalEditListing: React.FC<Props> = ({
               />
             </div>
             <div>
-              <p className="text-sm text-light">
+              <p className="text-light text-sm">
                 <Trans>{items?.collectionName}</Trans>
               </p>
               <p className="my-2 text-[18px] font-bold">
                 <Trans>{items?.name}</Trans>
               </p>
-              <p className="text-sm text-light">
+              <p className="text-light text-sm">
                 <Trans>Token ID:</Trans> {items?.tokenId}
               </p>
             </div>
           </div>
-          <p className="mt-2 text-sm text-light">
+          <p className="text-light mt-2 text-sm">
             <Trans>
               Collection median price: <span className="text-white">2.00 ETH</span>
             </Trans>
@@ -168,7 +168,7 @@ export const ModalEditListing: React.FC<Props> = ({
               errorText={errors.price?.message}
               className="bg-base/4 mt-1 rounded-lg border-none pr-[100px] pl-10"
             />
-            <div className="absolute text-base/9 top-10 right-3">
+            <div className="text-base/9 absolute top-10 right-3">
               <span>${formatNumber2digits(ethPrice ? parseFloat(ethPrice) * ethereum : 0)}</span>
             </div>
           </div>
@@ -181,7 +181,7 @@ export const ModalEditListing: React.FC<Props> = ({
             <span className="ml-1 text-[#A1AFBA]">
               {proceedsFrSale
                 ? String(proceedsFrSale).length > 8
-                  ? proceedsFrSale.toFixed(8)
+                  ? Number(proceedsFrSale.toFixed(8))
                   : proceedsFrSale
                 : 0}
             </span>
@@ -198,7 +198,7 @@ export const ModalEditListing: React.FC<Props> = ({
                   <span className="ml-1 text-[#A1AFBA]">
                     {items && ethPrice
                       ? String(+ethPrice - proceedsFrSale).length > 8
-                        ? (+ethPrice - proceedsFrSale).toFixed(8)
+                        ? Number((+ethPrice - proceedsFrSale).toFixed(8))
                         : +ethPrice - proceedsFrSale
                       : 0}
                   </span>
@@ -216,6 +216,7 @@ export const ModalEditListing: React.FC<Props> = ({
               </Tooltip.Content>
             </Tooltip>
           </div>
+
           <div className="mt-8">
             <Button
               onClick={handleSubmit(onHandleSubmit, onHandleError)}
@@ -224,7 +225,7 @@ export const ModalEditListing: React.FC<Props> = ({
               {isConfirmButton && <ProgressIcon size={23} />}
               <span className="ml-1">{defaultModal.titleConfirm}</span>
             </Button>
-            <Button onClick={onClose} className="w-full mt-4 btn-lg text-brand-white ">
+            <Button onClick={onClose} className="btn-lg text-brand-white mt-4 w-full ">
               <Trans>CANCEL</Trans>
             </Button>
           </div>

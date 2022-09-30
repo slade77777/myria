@@ -11,8 +11,9 @@ import { getItemsPagination } from 'src/utils';
 import avatar from '../../../../public/images/marketplace/avatar.png';
 import AssetList from '../AssetList';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
+
 import TailSpin from 'src/components/icons/TailSpin';
-import { QueryClient } from 'react-query';
+
 import FilterAsset, { ActiveFilter } from './FilterAsset';
 import FilterIcon from 'src/components/icons/FilterIcon';
 import useAttributeCollection from 'src/hooks/useAttributeCollection';
@@ -51,7 +52,7 @@ const Collection: FC<Props> = ({ collection }) => {
       filter
     );
 
-  const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
+  const { items, totalItem } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   const [displayFilter, setDisplayFilter] = useState<boolean>(false);
 
   const [filterSummary, setFilterSummary] = useState<{ id: string; value: string }[]>([]);
@@ -95,10 +96,6 @@ const Collection: FC<Props> = ({ collection }) => {
     }
   };
 
-  // console.log('debug: filterList', filterList);
-  // console.log('debug: activeFilter', filter);
-  // console.log('debug: initialFilter', initialFilter);
-
   return (
     <Page includeFooter={false}>
       <div className="pt-[104px] md:pt-[93px]">
@@ -114,7 +111,7 @@ const Collection: FC<Props> = ({ collection }) => {
         <div className="max-w-content mx-auto mb-10">
           <div className="relative">
             {/* <img src={collectionImageUrl ? collectionImageUrl : "/images/marketplace/header.png"} className="h-[327px] w-full " alt={name} /> */}
-            <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-auto">
+            <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
               {iconUrl ? <img src={iconUrl} alt="" /> : <MyriaIcon />}
             </div>
           </div>
@@ -126,7 +123,7 @@ const Collection: FC<Props> = ({ collection }) => {
                   Created By <span className="font-bold text-white">{project?.name}</span>
                 </p>
                 <div className="mt-6">
-                  <ReadMoreText text={description || ''} />
+                  {description && <ReadMoreText text={description || ''} />}
                 </div>
               </div>
               <div className="flex flex-row gap-12">
@@ -175,7 +172,7 @@ const Collection: FC<Props> = ({ collection }) => {
                 <div className={displayFilter ? 'w-3/4' : 'w-full'}>
                   {displayFilter && filterSummary.length > 0 && (
                     <>
-                      <p className="text-light mt-8 text-base">{items.length} Item found</p>
+                      <p className="text-light mt-8 text-base">{totalItem} Item found</p>
                       <div className="mt-4 flex flex-wrap items-center">
                         {filterSummary.map((item: { id: string; value: string }, index: number) => {
                           return (
@@ -228,9 +225,10 @@ const Collection: FC<Props> = ({ collection }) => {
                           const isOrder = Array.isArray(elm?.order);
                           const item: NFTItemType = {
                             id: `${elm.id}`,
+                            collection: elm.collection,
                             rarity: (elm.metadata as any).rarity,
                             name: elm.name || '',
-                            image_url: elm.imageUrl || '',
+                            image_url: elm.imageUrl || elm?.metadataOptional?.image || '',
                             creator: elm.creator?.name || '',
                             creatorImg: avatar.src,
                             priceETH: isOrder

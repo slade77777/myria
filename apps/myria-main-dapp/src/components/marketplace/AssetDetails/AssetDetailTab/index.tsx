@@ -4,6 +4,8 @@ import { NftAssetEqualMetadataResponse, AssetDetailsResponse } from 'myria-core-
 import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DAOIcon from 'src/components/icons/DAOIcon';
+import Tooltip from 'src/components/Tooltip';
+import InfoCircle from 'src/components/icons/InfoCircle';
 import EnternalLinkIcon from 'src/components/icons/EnternalLinkIcon';
 import truncateString from 'src/helper';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
@@ -169,7 +171,30 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
             <span className="font-medium text-white">{assetDetails?.assetType}</span>
           </div>
           <div className="text-base/9 border-blue/3 flex flex-row items-center justify-between border-b py-[16px] text-base font-normal">
-            <Trans>Creator Fees</Trans>
+            {/* <Tooltip.Content side="top" className="bg-base/5 ml-5 max-w-[256px]">
+              <Tooltip.Arrow className="fill-base/5 " width={16} height={8} />
+              <p className="text-base/9">
+                <Trans>Creator Fees</Trans>
+              </p>
+            </Tooltip.Content> */}
+            <Tooltip>
+              <Tooltip.Trigger asChild className="cursor-pointer focus:outline-none">
+                <div className="flex flex-row items-center">
+                  <Trans>Creator Earnings</Trans>
+                  <InfoCircle className="ml-1 mr-3" />
+                </div>
+              </Tooltip.Trigger>
+              <Tooltip.Content side="top" className="bg-base/5 ml-5 max-w-[256px]">
+                <Tooltip.Arrow className="fill-base/5 " width={16} height={8} />
+                <p className="text-base/9">
+                  <Trans>The creator of this collection will earn</Trans>{' '}
+                  {assetDetails && assetDetails?.fee.length > 0
+                    ? assetDetails?.fee[0].percentage + '%'
+                    : '0'}{' '}
+                  <Trans>of every sale.</Trans>
+                </p>
+              </Tooltip.Content>
+            </Tooltip>
             <span className="font-medium text-white">
               {assetDetails && assetDetails?.fee.length > 0
                 ? assetDetails?.fee[0].percentage + '%'

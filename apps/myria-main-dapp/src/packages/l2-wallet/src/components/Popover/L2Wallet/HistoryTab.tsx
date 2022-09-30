@@ -34,15 +34,15 @@ function HistoryTab({
   walletAddress,
   starkKeyUser,
 }: Props) {
-  console.log('re-render');
   const { data: transactionListHistory } = useTransactionList(localStarkKey);
-  console.log('transactionListHistory', transactionListHistory);
 
   const renderAmount = useCallback(
     (type: string, amount: number, item: any) => {
       switch (type) {
-        case 'SettlementRequest':
+        case TRANSACTION_TYPE.SETTLEMENT:
           return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
+        case TRANSACTION_TYPE.ROYALTYTRANSFER:
+          return convertQuantizedAmountToEth(item.quantizedAmount);
         default:
           return amount;
       }
@@ -169,7 +169,7 @@ function HistoryTab({
         return 'NFT Withdraw';
       }
       if (item.type === TRANSACTION_TYPE.ROYALTYTRANSFER) {
-        return 'Creator Earning';
+        return 'Creator Earnings';
       }
       if (!item.name && item.type === TRANSACTION_TYPE.TRANSFER) {
         return 'NFT Transfer';

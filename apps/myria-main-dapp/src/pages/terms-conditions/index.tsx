@@ -19,7 +19,7 @@ export default function index({}: Props) {
             <h3 className="mt-8 text-xl font-bold leading-[26px] text-white">
               End User License Agreement
             </h3>
-            <div className="text-base/9 mt-4 list-disc pl-4 font-light leading-[24px]">
+            <div className="text-base/9 mt-4 list-disc font-light leading-[24px]">
               <div className="space-y-1">
                 <p>
                   Please read carefully the terms of this End User License Agreement (the “EULA”)
@@ -88,7 +88,7 @@ export default function index({}: Props) {
                 </p>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">SCOPE OF LICENSE TO END USERS</h4>
+                <h4 className="font-bold text-white">SCOPE OF LICENSE TO END USERS</h4>
                 <div className="space-y-1">
                   <p>
                     The Service is licensed, not sold, to You for use only under the terms of the
@@ -130,7 +130,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">PROHIBITED ACTIVITIES</h4>
+                <h4 className="font-bold text-white">PROHIBITED ACTIVITIES</h4>
                 <div className="space-y-1">
                   <p>
                     You may not access or use the Service for any purpose other than that for which
@@ -252,7 +252,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">SITE MANAGEMENT</h4>
+                <h4 className="font-bold text-white">SITE MANAGEMENT</h4>
                 <div className="space-y-1">
                   <p>
                     We reserve the right, but not the obligation, to: (1) monitor the Site for
@@ -268,7 +268,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">TRADEMARKS</h4>
+                <h4 className="font-bold text-white">TRADEMARKS</h4>
                 <div className="space-y-1">
                   <p>
                     “Myria” and our logos, our product or service names, our slogans and the look
@@ -284,7 +284,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">NO REPRESENTATIVE ACTIONS </h4>
+                <h4 className="font-bold text-white">NO REPRESENTATIVE ACTIONS </h4>
                 <div className="space-y-1">
                   <p>
                     You and Myria agree that any dispute arising out of or related to this EULA or
@@ -295,7 +295,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">GOVERNING LAW AND VENUE</h4>
+                <h4 className="font-bold text-white">GOVERNING LAW AND VENUE</h4>
                 <div className="space-y-1">
                   <p>
                     Any dispute arising from these Terms and your use of the Service will be
@@ -306,7 +306,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">CORRECTIONS</h4>
+                <h4 className="font-bold text-white">CORRECTIONS</h4>
                 <div className="space-y-1">
                   <p>
                     There may be information on the Site that contains typographical errors,
@@ -320,7 +320,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">DISCLAIMER</h4>
+                <h4 className="font-bold text-white">DISCLAIMER</h4>
                 <div className="space-y-1">
                   <p>
                     THE SITE AND SERVICE IS PROVIDED ON AN “AS-IS” AND “AS-AVAILABLE” BASIS. TO THE
@@ -375,7 +375,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">INDEMNIFICATION</h4>
+                <h4 className="font-bold text-white">INDEMNIFICATION</h4>
                 <div className="space-y-1">
                   <p>
                     You hereby agree to defend, indemnify, and hold Myria harmless from and against
@@ -396,28 +396,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">INDEMNIFICATION</h4>
-                <div className="space-y-1">
-                  <p>
-                    You hereby agree to defend, indemnify, and hold Myria harmless from and against
-                    any loss, damage, liability, claim, or demand, including reasonable attorneys’
-                    fees and expenses, made by any third party due to or arising out of: (1) use of
-                    the Service; (2) breach of this EULA; (3) any breach of your representations and
-                    warranties set forth in this EULA; (4) your violation of the rights of a third
-                    party, including but not limited to intellectual property rights; (5) any overt
-                    harmful act toward any other End User of the Service with whom You connected via
-                    the Service; or (6) any breach of, or failure to comply with, applicable law.
-                    Notwithstanding the foregoing, we reserve the right, at your expense, to assume
-                    the exclusive defense and control of any matter for which You are required to
-                    indemnify us, and You agree to cooperate, at your expense, with our defense of
-                    such claims. We will use reasonable efforts to notify You of any such claim,
-                    action, or proceeding which is subject to this indemnification upon becoming
-                    aware of it.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-4">
-                <h4 className="font-bold">MODIFYING AND TERMINATING OUR SERVICE</h4>
+                <h4 className="font-bold text-white">MODIFYING AND TERMINATING OUR SERVICE</h4>
                 <div className="space-y-1">
                   <p>
                     We reserve the right to modify our Service or to suspend or stop providing all
@@ -428,7 +407,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">End User DATA</h4>
+                <h4 className="font-bold text-white">End User DATA</h4>
                 <div className="space-y-1">
                   <p>
                     We will maintain certain data that You transmit to the Site for the purpose of
@@ -442,7 +421,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">
+                <h4 className="font-bold text-white">
                   ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES
                 </h4>
                 <div className="space-y-1">
@@ -504,7 +483,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">MISCELLANEOUS</h4>
+                <h4 className="font-bold text-white">MISCELLANEOUS</h4>
                 <div className="space-y-1">
                   <p>
                     This EULA and any policies or operating rules posted by us on the Site or in
@@ -527,7 +506,7 @@ export default function index({}: Props) {
                 </div>
               </div>
               <div className="mt-4">
-                <h4 className="font-bold">CONTACT US</h4>
+                <h4 className="font-bold text-white">CONTACT US</h4>
                 <ul className="list-disc">
                   <li className="ml-5">
                     In order to resolve a complaint regarding the Site or to receive further
@@ -546,9 +525,9 @@ export default function index({}: Props) {
             <div className="text-base/9 mt-4 list-disc pl-4 font-light leading-[24px]">
               <div className="space-y-1">
                 <p>
-                  You must carefully read these terms (the “Terms”) before registering to use or
-                  using the Protocol. All capitalised terms and expressions used in these Terms are
-                  defined here.
+                  You must carefully read these terms (the “<span className="font-bold">Terms</span>
+                  ”) before registering to use or using the Protocol. All capitalised terms and
+                  expressions used in these Terms are defined here.
                 </p>
                 <p>
                   By installing, copying or otherwise using the Protocol, You accept that these
@@ -647,8 +626,9 @@ export default function index({}: Props) {
                           </li>
                           <li className="ml-6">
                             be responsible for the engagement of any End Users, including meeting
-                            any applicable anti-money laundering / counter terrorism financing
-                            (AML/CTF) or know your client (KYC) requirements at law, or any
+                            any applicable anti-money laundering / counter terrorism financing (
+                            <span className="font-bold">AML/CTF</span>) or know your client (
+                            <span className="font-bold">KYC</span>) requirements at law, or any
                             requirements for fair conduct in the operation of the Platform. To the
                             extent any AML/CTF or KYC procedures are required, You must keep copies
                             of any information required to be kept under those procedures for a
@@ -746,18 +726,20 @@ export default function index({}: Props) {
                             sufficient experience in dealing with Digital Assets and Smart Contracts
                             generally;
                           </li>
-                          <li>
+                          <li className="ml-6">
                             You have all necessary experience, resources, certificates, licences,
                             permits and approvals to use Digital Assets for the Permitted Purpose,
                             and to meet all other obligations under and in accordance with these
                             Terms and all Applicable Laws;
                           </li>
-                          <li>
+                          <li className="ml-6">
                             in operating the Platform it will deploy controls to prevent market
                             manipulation by End Users including dummy bidding and wash trading;
                           </li>
-                          <li>all information You supplied is true and accurate; and</li>
-                          <li>
+                          <li className="ml-6">
+                            all information You supplied is true and accurate; and
+                          </li>
+                          <li className="ml-6">
                             You are not involved in any capacity in any claim, legal action,
                             proceeding, suit, litigation, prosecution, investigation, enquiry,
                             mediation or arbitration (nor which are pending or threatened).
@@ -893,10 +875,11 @@ export default function index({}: Props) {
                           For the purposes of ensuring all Fees have been properly calculated and
                           paid, no more than once per calendar quarter, Myria may request that You
                           provide a revenue report setting out all gross revenue generated by your
-                          business which is subject to the Fees under these Terms (Revenue Report).
-                          Each Revenue Report must be signed by your director or Chief Financial
-                          Officer, who must confirm that the Revenue Report accurately reflects all
-                          revenue generated in the period covered by the request.
+                          business which is subject to the Fees under these Terms (
+                          <span className="font-bold">Revenue Report</span>). Each Revenue Report
+                          must be signed by your director or Chief Financial Officer, who must
+                          confirm that the Revenue Report accurately reflects all revenue generated
+                          in the period covered by the request.
                         </p>
                       </div>
                     </div>
@@ -960,9 +943,9 @@ export default function index({}: Props) {
                       <p className="font-bold">
                         5.1 Except as expressly provided under these Terms:
                       </p>
-                      <ul className="list-decimal">
+                      <ul className="list-decimal ml-4">
                         <li className="ml-4">
-                          no Intellectual Property Right, or title or interest thereto, is granted
+                          No Intellectual Property Right, or title or interest thereto, is granted
                           or conveyed to You under these Terms;
                         </li>
                         <li className="ml-4">
@@ -983,14 +966,15 @@ export default function index({}: Props) {
                           information made or conceived or reduced to practice, in whole or in part,
                           by You or on your behalf during the term of these Terms that arise out of
                           the performance of these Terms or relate to any of the Platform, the Work
-                          Product and the Transaction Data (collectively, “Inventions”). No Work
-                          Product shall be considered work made for hire, and You agree that all
-                          right, title and interest in and to the Work Product shall vest upon
-                          creation in Myria. All Developer Materials, and all worldwide Intellectual
-                          Property Rights therein, shall be your exclusive property. All End User
-                          Materials, and all worldwide Intellectual Property Rights in it, are the
-                          exclusive property of the applicable End User. All rights not expressly
-                          granted to You under these Terms are reserved by Myria.
+                          Product and the Transaction Data (collectively, “
+                          <span className="font-bold">Inventions</span>
+                          ”). No Work Product shall be considered work made for hire, and You agree
+                          that all right, title and interest in and to the Work Product shall vest
+                          upon creation in Myria. All Developer Materials, and all worldwide
+                          Intellectual Property Rights therein, shall be your exclusive property.
+                          All End User Materials, and all worldwide Intellectual Property Rights in
+                          it, are the exclusive property of the applicable End User. All rights not
+                          expressly granted to You under these Terms are reserved by Myria.
                         </li>
                       </ul>
                     </div>
@@ -998,7 +982,8 @@ export default function index({}: Props) {
                       <p>
                         5.2 You agree that any feedback or ideas that You provide to Myria regarding
                         the Protocol (including as to the Back-End Infrastructure) or any suggested
-                        improvements thereto (together, the “Feedback”) is and will be the exclusive
+                        improvements thereto (together, the “
+                        <span className="font-bold">Feedback</span>”) is and will be the exclusive
                         property of Myria.
                       </p>
                     </div>
@@ -1093,7 +1078,7 @@ export default function index({}: Props) {
                         7.2 Myria will not have access to, or keep any copies of any Private Key in
                         respect of any NFT minted using the Protocol, nor will Myria have any title
                         or interest in the NFTs which are listed, minted or traded by You using the
-                        Protocol other than the right to the Fees set out in these Terms
+                        Protocol other than the right to the Fees set out in these Terms.
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
@@ -1274,8 +1259,8 @@ export default function index({}: Props) {
                         for any loss of an NFT Asset, digital assets or tokens, and including in
                         respect of any loss of profit, loss of revenue, loss of opportunities or
                         loss of use, whether due to security breach or cyber attack, or electronic
-                        or technological failure, registration errors or for any other reason (End
-                        User Release).
+                        or technological failure, registration errors or for any other reason (
+                        <span className="font-bold">End User Release</span>).
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
@@ -1327,10 +1312,10 @@ export default function index({}: Props) {
                         their respective directors, officers, employees and agents, from and against
                         any damages, liabilities, losses, costs, and expenses (including reasonable
                         attorneys’ fees) arising out of or relating to (i) claims by the End Users
-                        relating to the Product (“End User Claims”); and (ii) your negligence or
-                        willful misconduct in performing obligations under these Terms; (iii) your
-                        violation or non-compliance with any laws or regulations; or (iv) your
-                        breach of these Terms.
+                        relating to the Product (“<span className="font-bold">End User Claims</span>
+                        ”); and (ii) your negligence or willful misconduct in performing obligations
+                        under these Terms; (iii) your violation or non-compliance with any laws or
+                        regulations; or (iv) your breach of these Terms.
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
@@ -1431,20 +1416,6 @@ export default function index({}: Props) {
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
-                      <p className="font-bold">14.4 Force Majeure</p>
-                      <p>
-                        Each party will be excused from performance for any period during which, and
-                        to the extent that, such party or any subcontractor is prevented from
-                        performing any obligation or service, in whole or in part, as a result of
-                        causes beyond its reasonable control, and without its fault or negligence,
-                        including without limitation, acts of God, strikes, lockouts, riots, acts of
-                        terrorism or war, epidemics, communication line and power failures, and
-                        regulatory impediments. If such an event prevails for a continuous period of
-                        more than 8 (eight) weeks, the other party will be entitled to terminate
-                        these Terms upon no less than fourteen (14) days prior written notice.
-                      </p>
-                    </div>
-                    <div className="mt-2 space-y-2">
                       <p className="font-bold">14.5 Waiver</p>
                       <p>
                         No waiver will be effective unless it is in writing and signed by the
@@ -1472,14 +1443,15 @@ export default function index({}: Props) {
                       <p className="font-bold">14.8 Sales Tax</p>
                       <p>
                         All Fees referred to in these Terms are exclusive of any applicable goods
-                        and services tax (GST) sales tax, value added tax, use tax or analogous tax
-                        which shall be added to the amount of any Fees due and shall be paid by you.
-                        In the event such tax is not paid and is later found to be applicable to any
-                        payments due under these Terms, You agrees to pay such taxation amounts on
-                        demand together with any interest, costs or penalties levied on Myria. If
-                        You impose any other fees or charges in addition to the Fees, You are solely
-                        responsible for the imposition and collection of any GST, sales tax, value
-                        added tax, use tax or analogous tax which may be payable on those fees.
+                        and services tax (<span className="font-bold">GST</span>) sales tax, value
+                        added tax, use tax or analogous tax which shall be added to the amount of
+                        any Fees due and shall be paid by you. In the event such tax is not paid and
+                        is later found to be applicable to any payments due under these Terms, You
+                        agrees to pay such taxation amounts on demand together with any interest,
+                        costs or penalties levied on Myria. If You impose any other fees or charges
+                        in addition to the Fees, You are solely responsible for the imposition and
+                        collection of any GST, sales tax, value added tax, use tax or analogous tax
+                        which may be payable on those fees.
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
