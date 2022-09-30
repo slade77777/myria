@@ -66,7 +66,7 @@ const Marketplace: React.FC = () => {
     return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
   }
 
-  const items = getItemsPagination(result?.data?.pages || []); // using this "items" to render
+  const { items } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   return (
     <Page includeFooter={false}>
       <div className={clsx(paddingX, headerNavSpacingClassName)}>
@@ -113,6 +113,7 @@ const Marketplace: React.FC = () => {
                       const isOrder = Array.isArray(elm?.order);
                       const item: NFTItemType = {
                         id: `${elm.id}`,
+                        collection: elm.collection,
                         rarity: (elm.metadata as any).rarity,
                         name: elm.name || '',
                         image_url: elm.imageUrl || elm?.metadataOptional?.image || '',

@@ -44,48 +44,47 @@ export default function useGamesData() {
     () => ({
       metarush: {
         discord: socialLinks.discord,
-        twitter: socialLinks.twitter,
+        twitter: 'https://twitter.com/playmetarush?s=21&t=HOqFS3SXBaEvnky4HHQtWA',
         headerBg: '/images/game-detail/header-bg-1.png',
         title: 'Metarush',
         description: t`A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory.`,
         logo: '/images/game-detail/metarush/logo.png',
         logoMobile: '/images/game-detail/metarush/logo-alt.png',
         image: {
-          src: '/images/game-detail/metarush/1.png',
+          src: '/images/game-detail/metarush1/5.png',
           width: 1854,
           height: 1042
         },
         assets: [
           {
             type: 'image',
-            src: '/images/game-detail/metarush/3.png'
+            src: '/images/game-detail/metarush1/1.png'
           },
           {
             type: 'image',
-            src: '/images/game-detail/metarush/2.png'
+            src: '/images/game-detail/metarush1/2.png'
           },
 
           {
             type: 'image',
-            src: '/images/game-detail/metarush/1.png'
+            src: '/images/game-detail/metarush1/3.png'
           },
           {
             type: 'image',
-            src: '/images/game-detail/metarush/4.png'
+            src: '/images/game-detail/metarush1/4.png'
           }
         ],
         content: [
           {
             heading: t`About the game`,
             paragraph: [
-              t`The objective is simple – get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing.`,
-              t`In this part of the Myriaverse, visitors are transformed into Bobble-Head form. This is according to this world’s terms of use and the laws of the metaverse that can be only broken by the mysterious Administrators...but more on that later.`
+              t`The objective is simple &#45; get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing.`
             ]
           },
           {
             heading: t`Endless online fun`,
             paragraph: [
-              t`It was a calm day in the land of candy hammers and fiery strawberry lakes when a mysterious portal suddenly spawned a roaring crowd of brave players. Ready to rock, they started to roll down the hill of chocolate donuts in a chaotic race for the win. `
+              t`Everyone knows there&#39;s no law in the Dark Corner. The Rift has literally turned the planet inside out and the track floats suspended in space. The aliens that were once experimented on have taken over the tech and throw everything they have at the metarushers in order to keep them from finding the portal out. You&#39;d better do everything you can to win this race or you could get trapped in the Dark Corner. Forever.`
             ]
           },
           {

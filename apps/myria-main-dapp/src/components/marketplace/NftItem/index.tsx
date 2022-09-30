@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { formatPrice, getRarityColor, validatedImageAssets } from 'src/utils';
 import { NFTItemType } from './type';
 import { useGA4 } from '../../../lib/ga';
@@ -56,19 +56,29 @@ const NftItem = ({ item }: Props) => {
   const { address } = useWalletContext();
   const router = useRouter();
 
+  const [assetInfo, setAssetInfo] = useState<any>(null);
+
   const rarityColor = getRarityColor(item.rarity);
   const price = parseFloat(item.priceETH + '');
 
+  useEffect(() => {
+    const fetchAssetDetail = async () => {
+      const result: any = await assetModule?.getAssetById(item.id);
+      setAssetInfo(result?.data);
+    };
+    if (item.id) {
+      fetchAssetDetail();
+    }
+  }, [item.id]);
+
   const onClickItemTracking = useCallback(() => {
-    assetModule?.getAssetById(item.id).then((asset: any) => {
-      event('MKP Item Selected', {
-        myria_id: user?.user_id,
-        wallet_address: `_${address}`,
-        item_name: item.name,
-        item_id: item.id,
-        collection_name: asset?.data?.collectionName,
-        collection_author: asset?.data?.creator?.name
-      });
+    event('MKP Item Selected', {
+      myria_id: user?.user_id,
+      wallet_address: `_${address}`,
+      item_name: item.name,
+      item_id: item.id,
+      collection_name: assetInfo.collectionName,
+      collection_author: assetInfo.creator?.name
     });
   }, [item, user, address]);
   const hastPath = router.pathname.split('/');
@@ -100,7 +110,7 @@ const NftItem = ({ item }: Props) => {
             </div>
             <div className="p-4">
               <span className="block text-[12px] font-normal text-[#9CA3AF]">
-                {item?.collection?.name || 'Sigil Myriaverse'}
+                {item?.collection?.name || ''}
               </span>
               <span className="mb-4 block truncate text-[14px] font-medium text-white">
                 {item.name}
@@ -116,7 +126,7 @@ const NftItem = ({ item }: Props) => {
                   <div className="flex w-3/5">
                     <img src={item.creatorImg} alt="creator" className="mr-1 h-5 w-5" />
                     <p className="truncate break-words text-[14px] font-medium text-white">
-                      {item.creator}
+                      {assetInfo?.creator?.name}
                     </p>
                   </div>
                   {price > 0 ? (

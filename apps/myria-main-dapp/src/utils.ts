@@ -160,12 +160,15 @@ export function hexifyKey(key: string) {
   return `0x${key}`;
 }
 
-export const getItemsPagination = (pages: any[]) => {
+export const getItemsPagination = (pages: any[]): { items: any[]; totalItem: number } => {
   if (!pages?.length || pages.length === 0) {
-    return [];
+    return {
+      items: [],
+      totalItem: 0
+    };
   }
 
-  return pages.reduce(
+  const items = pages.reduce(
     (
       acc: any[],
       page: {
@@ -178,6 +181,9 @@ export const getItemsPagination = (pages: any[]) => {
     },
     []
   );
+  const totalItem = pages[0].data?.meta.totalItems;
+
+  return { items, totalItem };
 };
 export function capitalizeFirstLetter(str: string = '') {
   return str.charAt(0).toUpperCase() + str.slice(1);

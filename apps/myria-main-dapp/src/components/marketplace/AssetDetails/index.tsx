@@ -172,9 +172,12 @@ function AssetDetails({ id }: Props) {
         assetType: 'FOR_SALE',
         collectionId: Number(assetDetails?.collectionId)
       });
+      console.log('Response ->', res);
       // get only 4 elements
+      let counter = 0;
       return res?.data.items.filter((item: any, index: number) => {
-        return index <= 3;
+        if (counter > 4) return;
+        return item.id != assetDetails?.id && counter++;
       });
     },
     {
@@ -185,7 +188,7 @@ function AssetDetails({ id }: Props) {
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
     lodash.map(assetDetails?.metadata, (val, key) => {
-      if (!key.toLowerCase().includes('url')) {
+      if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
         resultArray.push({ key, val }); // remove all key what has 'url'.
       }
     });
@@ -558,9 +561,9 @@ function AssetDetails({ id }: Props) {
             ]
           : undefined;
 
-      const totalQuantizedAmount = convertAmountToQuantizedAmount(
-        assetDetails?.order.nonQuantizedAmountBuy
-      );
+      // const totalQuantizedAmount = convertAmountToQuantizedAmount(
+      //   assetDetails?.order.nonQuantizedAmountBuy
+      // );
 
       const signableOrderInput: SignableOrderInput = {
         orderType: 'BUY',
@@ -575,7 +578,7 @@ function AssetDetails({ id }: Props) {
           }
         },
         amountBuy: `${tradeData?.order.amountSell}`,
-        amountSell: String(totalQuantizedAmount),
+        amountSell: `${tradeData?.order.amountBuy}`,
         tokenSell: {
           type: TokenType.ETH,
           data: {
@@ -633,8 +636,12 @@ function AssetDetails({ id }: Props) {
     const payloadDataTrade = {
       order: {
         orderId: isOrder ? listOrder?.order[0].id : listOrder?.order.orderId,
-        amountSell: isOrder ? listOrder?.order[0].amountSell : listOrder?.order.amountSell,
-        amountBuy: isOrder ? listOrder?.order[0].amountBuy : listOrder?.order.amountBuy
+        amountSell: isOrder
+          ? listOrder?.order[0].nonQuantizedAmountSell
+          : listOrder?.order.nonQuantizedAmountSell,
+        amountBuy: isOrder
+          ? listOrder?.order[0].nonQuantizedAmountBuy
+          : listOrder?.order.nonQuantizedAmountBuy
       },
       tokenId: listOrder.tokenId,
       tokenAddress: listOrder.tokenAddress
@@ -819,9 +826,13 @@ function AssetDetails({ id }: Props) {
           items={moreCollectionList?.map((elm: any) => {
             const item: NFTItemType = {
               id: `${elm.id}`,
+              collection: {
+                ...elm.collection, // api hasn't response this field yet. Keep any to not get error currently.
+                name: assetDetails?.collectionName
+              },
               rarity: (elm.metadata as any).rarity,
               name: elm.name || '',
-              image_url: elm.imageUrl || '',
+              image_url: elm.imageUrl || elm?.metadataOptional?.image || '',
               // @ts-ignore need update sdk AssetByCollectionType
               creator: elm.creator?.name || '',
               creatorImg: avatar.src,

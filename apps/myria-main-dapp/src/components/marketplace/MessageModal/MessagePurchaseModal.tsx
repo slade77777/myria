@@ -20,7 +20,7 @@ export default function MessagePurchaseModal({ assetName = '', onClose = () => {
           <span className="text-base/9">
             <Trans>Your purchase of</Trans>
             <span className="mx-1 text-[16px] text-white"> {assetName} </span>
-            <Trans>successful.</Trans>
+            <Trans>is successful.</Trans>
           </span>
         </div>
         <div

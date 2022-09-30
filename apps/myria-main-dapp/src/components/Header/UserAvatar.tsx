@@ -36,7 +36,7 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
     <DropdownMenu>
       <DropdownMenu.Trigger disabled={!isLogin}>
         <div className="ml-6 h-9 w-9 overflow-hidden rounded-full">
-          <img width={100} height={100} src="/images/marketplace/user.png" alt="" />
+          <Image width={100} height={100} src="/images/marketplace/user.png" alt="" />
         </div>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
@@ -49,10 +49,8 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
           <div className="text-white">
             <div>
               <div>
-                <Link href={'/marketplace/inventory'}>
-                  <a
-                    href={'/marketplace/inventory'}
-                    className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white">
+                <Link href={'/marketplace/inventory'} passHref>
+                  <a className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white">
                     <i className="w-4">
                       <InventoryIcon />
                     </i>
@@ -64,7 +62,7 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
               </div>
               {nodes.data.length > 0 && (
                 <div className="mt-6">
-                  <Link href={'/nodes/my-nodes'}>
+                  <Link href={'/nodes/my-nodes'} passHref>
                     <a className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white">
                       <i className="w-4">
                         <NodeIcon />
@@ -77,10 +75,8 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
                 </div>
               )}
               <div className="mt-6">
-                <Link href={'/settings'}>
-                  <a
-                    href={'/settings'}
-                    className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white">
+                <Link href={'/settings'} passHref>
+                  <a className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white">
                     <i className="w-4">
                       <SettingAltIcon />
                     </i>

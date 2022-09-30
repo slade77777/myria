@@ -148,6 +148,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
     handleActiveWalletTabs,
     isWithdrawComplete,
     showWithdrawCompleteScreen,
+    handleDisplayPopover,
   } = useL2WalletContext();
 
   // const [activeWalletTabs, setActiveToken] = useState<string>('tokens');
@@ -607,9 +608,11 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
                 <span>Disconnect</span>
               </button>
               <div className="mt-2 text-white">
-                <Link href={'/marketplace/inventory'}>
+                <Link href={'/marketplace/inventory'} passHref>
                   <a
-                    href={'/marketplace/inventory'}
+                    onClick={() => {
+                      handleDisplayPopover(false);
+                    }}
                     className="body-14-medium flex cursor-pointer items-center space-x-2.5 text-white"
                   >
                     <i className="w-4">
