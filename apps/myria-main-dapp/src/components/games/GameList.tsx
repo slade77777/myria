@@ -128,7 +128,7 @@ export const games: {
   link?: string;
 }[] = [
   {
-    image: '/images/our-games/metarush_op.png',
+    image: '/images/our-games/metarush_op1.jpg',
     title: 'Metarush',
     feature: 'Multi Player',
     genre: ['Survival', 'Racing'],
