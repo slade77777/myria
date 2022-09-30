@@ -21,20 +21,26 @@ const WalletInformation = () => {
         <div className="pl-6 pt-2">
           <p className="text-base/9 mb-2">Ethereum wallet</p>
           <div className="h-12 px-4 rounded bg-base/4 flex flex-row justify-between items-center">
-            <p>{address}</p>
-            <div onClick={() => address && copyToClipboard(address)} className="cursor-pointer">
-              <CopyIcon />
-            </div>
-          </div>
-          <p className="text-base/9 mb-2 mt-4">Myria wallet</p>
-          <div className="h-12 px-4 rounded bg-base/4 flex flex-row justify-between items-center">
-            <p>0x{localStarkKey}</p>
+            <p>{address?.toUpperCase()}</p>
             <div
-              onClick={() => address && copyToClipboard(`0x${localStarkKey}`)}
+              onClick={() => address && copyToClipboard(address.toUpperCase())}
               className="cursor-pointer">
               <CopyIcon />
             </div>
           </div>
+          {localStarkKey && (
+            <div>
+              <p className="text-base/9 mb-2 mt-4">Myria wallet</p>
+              <div className="h-12 px-4 rounded bg-base/4 flex flex-row justify-between items-center">
+                <p>0X{localStarkKey.toUpperCase()}</p>
+                <div
+                  onClick={() => copyToClipboard(`0X${localStarkKey.toUpperCase()}`)}
+                  className="cursor-pointer">
+                  <CopyIcon />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="h-screen" />

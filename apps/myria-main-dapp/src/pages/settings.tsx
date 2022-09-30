@@ -20,7 +20,6 @@ const Settings = () => {
   const [activeTab, setActiveTab] = useState('profile');
   const router = useRouter();
   const { activeFromEmail } = router.query;
-
   useEffect(() => {
     // validate either wallet is connected
     if (!userProfileQuery.isFetching && !user) {
