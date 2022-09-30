@@ -96,21 +96,19 @@ const Collection: FC<Props> = ({ collection }) => {
     }
   };
 
+  const image_url = collectionImageUrl
+    ? collectionImageUrl
+    : '/images/marketplace/collection-banner.png';
+
   return (
     <Page includeFooter={false}>
       <div className="pt-[104px] md:pt-[93px]">
-        <div className="relative h-[327px] w-full overflow-hidden">
-          <img
-            src={
-              collectionImageUrl ? collectionImageUrl : '/images/marketplace/collection-banner.png'
-            }
-            alt=""
-            className="absolute h-[327px] w-full object-cover"
-          />
-        </div>
+        <div
+          className="relative h-[327px] w-full overflow-hidden bg-center bg-cover"
+          style={{ backgroundImage: `url('${image_url}')` }}
+        />
         <div className="max-w-content mx-auto mb-10">
           <div className="relative">
-            {/* <img src={collectionImageUrl ? collectionImageUrl : "/images/marketplace/header.png"} className="h-[327px] w-full " alt={name} /> */}
             <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
               {iconUrl ? <img src={iconUrl} alt="" /> : <MyriaIcon />}
             </div>
