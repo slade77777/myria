@@ -88,11 +88,11 @@ const Solution: React.FC = () => {
                 <Trans>
                   Myria’s{' '}
                   <span className=" font-medium text-brand-gold">Ethereum L2 scaling solution</span>{' '}
-                  uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2
-                  transactions into one single transaction. This then sends a validity proof back to
-                  the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based
-                  zkrollup solution enable NFTs and dApps to achieve unlimited scale, low
-                  transaction fees without sacrificing on security.
+                  uses zero-knowledge technology (zk-STARKs with StarkEx) to “roll-up” or bundle
+                  thousands of L2 transactions into one single transaction. This then sends a
+                  validity proof back to the main blockchain, preserving the security of L1
+                  Ethereum. Myria’s STARK-based zkrollup solution enable NFTs and dApps to achieve
+                  unlimited scale, low transaction fees without sacrificing on security.
                 </Trans>
               </p>
             </div>
