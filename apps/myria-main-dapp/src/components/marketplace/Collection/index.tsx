@@ -170,7 +170,13 @@ const Collection: FC<Props> = ({ collection }) => {
                 <div className={displayFilter ? 'w-3/4' : 'w-full'}>
                   {displayFilter && filterSummary.length > 0 && (
                     <>
-                      <p className="text-light mt-8 text-base">{totalItem} Item found</p>
+                      <p className="text-light mt-8 text-base">
+                        {totalItem > 1 ? (
+                          <span>{totalItem} Items found</span>
+                        ) : (
+                          <span>{totalItem} Item found</span>
+                        )}
+                      </p>
                       <div className="mt-4 flex flex-wrap items-center">
                         {filterSummary.map((item: { id: string; value: string }, index: number) => {
                           return (
@@ -190,7 +196,11 @@ const Collection: FC<Props> = ({ collection }) => {
                           <span
                             className="text-light cursor-pointer text-base"
                             onClick={() => initialFilter()}>
-                            Clear Filter
+                            {filterSummary.length === 1 ? (
+                              <span>Clear Filter</span>
+                            ) : (
+                              <span>Clear Filters</span>
+                            )}
                           </span>
                         )}
                       </div>

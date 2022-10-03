@@ -16,7 +16,12 @@ interface Props {
   activeFilter: ActiveFilter;
   initialFilter: () => void;
 }
-export default function FilterAsset({ filterList, handleFilter, activeFilter, initialFilter }: Props) {
+export default function FilterAsset({
+  filterList,
+  handleFilter,
+  activeFilter,
+  initialFilter
+}: Props) {
   if (filterList?.length === 0) {
     return (
       <>
@@ -30,7 +35,9 @@ export default function FilterAsset({ filterList, handleFilter, activeFilter, in
     <>
       <div className="flex justify-between pb-4 border-blue/3 border-b">
         <span className="font-bold text-lg">Filter</span>
-        <span onClick={initialFilter} className="cursor-pointer text-base text-blue/4">Clear Filter</span>
+        <span onClick={initialFilter} className="cursor-pointer text-base text-blue/4">
+          Clear Filter
+        </span>
       </div>
       {filterList &&
         filterList.map((item: FilterItem, index: number) => {
@@ -48,21 +55,30 @@ export default function FilterAsset({ filterList, handleFilter, activeFilter, in
                   </div>
                   <Collapse.Content>
                     <div className="mt-4 space-y-4 pl-6 border-blue/3 border-b py-4 pt-2">
-                      {item.options.map((option, idx) => (
-                        <label
-                          key={idx}
-                          className="flex items-center space-x-2 text-sm text-light py-2">
-                          <Input
-                            className="h-4 w-4"
-                            type="checkbox"
-                            checked={
-                              activeFilter[item.id]?.findIndex((filter) => filter === option) >= 0
-                            }
-                            onChange={() => handleFilter(item.id, option)}
-                          />
-                          <span>{option}</span>
-                        </label>
-                      ))}
+                      {item.options.length > 0 &&
+                        item.options.map((option, idx) => (
+                          <>
+                            {option ? (
+                              <label
+                                key={idx}
+                                className="flex items-center space-x-2 text-sm text-light py-2">
+                                <Input
+                                  className="h-4 w-4"
+                                  type="checkbox"
+                                  checked={
+                                    activeFilter[item.id]?.findIndex(
+                                      (filter) => filter === option
+                                    ) >= 0
+                                  }
+                                  onChange={() => handleFilter(item.id, option)}
+                                />
+                                <span>{option}</span>
+                              </label>
+                            ) : (
+                              <></>
+                            )}
+                          </>
+                        ))}
                     </div>
                   </Collapse.Content>
                 </>
