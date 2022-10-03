@@ -256,14 +256,16 @@ const ConnectL2WalletButton: React.FC = () => {
             <WithdrawNFTScreen />
           </WthdrawNFTPopover>
         </div>
-        <UserAvatar
-          items={{
-            loginByWalletMutation,
-            walletAddress,
-            showConnectedWallet,
-            localStarkKey
-          }}
-        />
+        {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet && (
+          <UserAvatar
+            items={{
+              loginByWalletMutation,
+              walletAddress,
+              showConnectedWallet,
+              localStarkKey
+            }}
+          />
+        )}
       </div>
       <MainL2Wallet ref={mainL2Ref} />
     </>
