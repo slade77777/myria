@@ -169,7 +169,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
     }
   }, [action, user?.wallet_id, event]);
 
-  const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
+  // const filterdLinks = links.filter((link) => !link.action || link.action.includes(action));
 
   return (
     <header ref={headerRef} className="bg-base/3 w-full">
@@ -181,7 +181,7 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
           height: navHeight
         }}
         className="flex w-full grid-cols-[1fr_auto_1fr] items-center justify-between gap-0 py-4 lg:px-4 xl:px-[54px]">
-        <div className='flex'>
+        <div className="flex">
           <div className="flex xl:mr-12 mr-4 items-left">
             <Link href="/">
               <a className="w-[164px]">
@@ -189,12 +189,12 @@ const DesktopHeader: React.FC<Props> = ({ stickyHeader = true, action }) => {
               </a>
             </Link>
           </div>
-          <HeaderLinks links={filterdLinks.filter((link) => link.position === 'left')} />
+          <HeaderLinks links={links.filter((link) => link.position === 'left')} />
         </div>
         <div className="flex items-center justify-end flex-shrink-0 right-8 space-x-9">
-          {
-            filterdLinks.filter((link) => link.position == 'right').length > 0 && <HeaderLinks links={filterdLinks.filter((link) => link.position == 'right')} />
-          }
+          {links.filter((link) => link.position == 'right').length > 0 && (
+            <HeaderLinks links={links.filter((link) => link.position == 'right')} />
+          )}
           <div>
             <ConnectL2WalletButton />
           </div>
