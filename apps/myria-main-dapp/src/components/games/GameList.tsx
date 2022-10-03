@@ -168,7 +168,7 @@ export const games: {
     title: 'Moonville Farms',
     feature: 'Multi Player',
     genre: ['Simulation'],
-    publisher: 'Leapblock Studios',
+    publisher: 'Ecosystem Developer',
     id: 'moonville-farms',
     category: 'Games'
   },
@@ -177,7 +177,7 @@ export const games: {
     title: 'Mr 360 Cricket',
     feature: 'Multi Player',
     genre: ['Casual', 'Sports'],
-    publisher: 'AB de Villiers',
+    publisher: 'Ecosystem Developer',
     id: 'mr-360-cricket',
     category: 'Games',
     link: '/cricket'
