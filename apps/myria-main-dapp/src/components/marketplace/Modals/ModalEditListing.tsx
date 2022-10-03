@@ -12,7 +12,7 @@ import ProgressIcon from 'src/components/icons/ProgressIcon';
 import Input from 'src/components/Input';
 import Modal from 'src/components/Modal';
 import Tooltip from 'src/components/Tooltip';
-import { formatNumber2digits } from 'src/utils';
+import { formatNumber2digits, roundingNumber } from 'src/utils';
 import * as yup from 'yup';
 import { AssetStatus } from '../AssetDetails';
 
@@ -179,11 +179,7 @@ export const ModalEditListing: React.FC<Props> = ({
             </span>
             <ETHWhite />
             <span className="ml-1 text-[#A1AFBA]">
-              {proceedsFrSale
-                ? String(proceedsFrSale).length > 8
-                  ? Number(proceedsFrSale.toFixed(8))
-                  : proceedsFrSale
-                : 0}
+              {proceedsFrSale ? roundingNumber(String(proceedsFrSale), '', true, 8) : 0}
             </span>
           </div>
           <div className="flex flex-row items-center text-[#97AAB5]">
@@ -197,9 +193,7 @@ export const ModalEditListing: React.FC<Props> = ({
                   <ETHWhite />
                   <span className="ml-1 text-[#A1AFBA]">
                     {items && ethPrice
-                      ? String(+ethPrice - proceedsFrSale).length > 8
-                        ? Number((+ethPrice - proceedsFrSale).toFixed(8))
-                        : +ethPrice - proceedsFrSale
+                      ? roundingNumber(String(+ethPrice - proceedsFrSale), '', true, 8)
                       : 0}
                   </span>
                 </div>
@@ -221,7 +215,8 @@ export const ModalEditListing: React.FC<Props> = ({
             <Button
               onClick={handleSubmit(onHandleSubmit, onHandleError)}
               disabled={!canConfirm}
-              className={clsx('btn-lg  w-full px-10', BUTTON_BG)}>
+              className={clsx('btn-lg  w-full px-10', BUTTON_BG)}
+            >
               {isConfirmButton && <ProgressIcon size={23} />}
               <span className="ml-1">{defaultModal.titleConfirm}</span>
             </Button>

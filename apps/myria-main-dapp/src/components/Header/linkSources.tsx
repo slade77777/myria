@@ -14,7 +14,7 @@ export const linkSources: { [key: string]: NavItem } = {
   },
   games: {
     id: 'games',
-    text: <Trans>Games</Trans>,
+    text: <Trans>Ecosystem</Trans>,
     url: '/games',
     position: 'left',
     action: ['join-discord', 'login', 'mint', 'start-building']

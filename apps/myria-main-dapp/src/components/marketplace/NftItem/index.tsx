@@ -77,8 +77,8 @@ const NftItem = ({ item }: Props) => {
       wallet_address: `_${address}`,
       item_name: item.name,
       item_id: item.id,
-      collection_name: assetInfo.collectionName,
-      collection_author: assetInfo.creator?.name
+      collection_name: assetInfo?.collectionName,
+      collection_author: assetInfo?.creator?.name
     });
   }, [item, user, address]);
   const hastPath = router.pathname.split('/');
