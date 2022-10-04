@@ -25,8 +25,6 @@ interface Props {
 
 const Filter = ({ filterList, activeFilter, setFilter }: Props) => {
   const handleFilter = (filterId: string, option: FilterOption) => {
-    console.log('debug: filterId', filterId);
-    console.log('debug: option', option);
     const newFilterOption = activeFilter[filterId]?.find((filter) => filter.id === option.id)
       ? activeFilter[filterId]?.filter((v) => v.id !== option.id)
       : [...(activeFilter[filterId] || []), option];
