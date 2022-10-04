@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import EmailForm from './EmailForm';
 import PasswordForm from './PasswordForm';
@@ -7,20 +7,13 @@ import { useRouter } from 'next/router';
 const SecuritySetting = () => {
   const [tab, setTab] = useState<'email' | 'password'>('email');
   const router = useRouter();
-  const { activeFromEmail } = router.query;
-
-  useEffect(() => {
-    if (activeFromEmail === 'true') {
-      setTab('password');
-    }
-  }, [activeFromEmail]);
 
   const content = useMemo(() => {
     switch (tab) {
       case 'email':
         return <EmailForm />;
       case 'password':
-        return <PasswordForm />;
+        return <PasswordForm onSuccess={() => router.push('/settings')} />;
       default:
         return null;
     }

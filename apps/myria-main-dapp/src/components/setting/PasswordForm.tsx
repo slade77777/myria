@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { FC, memo, useCallback, useState } from 'react';
 import * as yup from 'yup';
 import { t, Trans } from '@lingui/macro';
 import { validatePassword } from '../../utils';
@@ -49,7 +49,7 @@ const schema = yup
   })
   .required();
 
-const PasswordForm = () => {
+const PasswordForm: FC<{ onSuccess: () => void }> = ({ onSuccess }) => {
   const { account, accountProfileQuery } = useAuthenticationContext();
   const [requestEmail, setRequestEmail] = useState(false);
   const [emailSent, setRequestSent] = useState(false);
@@ -62,7 +62,7 @@ const PasswordForm = () => {
     (data: any) => apiClient.post(`/accounts/password`, data),
     {
       onSuccess: (res) => {
-        router.push('/settings');
+        onSuccess();
         toast('Update password successfully!', {
           type: 'success'
         });
@@ -128,7 +128,7 @@ const PasswordForm = () => {
   return (
     <div className="pl-6 pt-2">
       {updateReady && (
-        <>
+        <div className="pr-4">
           <p className="text-base/9 mb-2">New Password</p>
           <Input
             placeholder={t`Password`}
@@ -147,7 +147,7 @@ const PasswordForm = () => {
             containerClassName="relative"
             type="password"
           />
-        </>
+        </div>
       )}
 
       {updateReady ? (

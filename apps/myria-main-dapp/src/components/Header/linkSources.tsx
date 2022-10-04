@@ -40,16 +40,16 @@ export const linkSources: { [key: string]: NavItem } = {
     url: '/for-developers',
     position: 'left',
     action: ['join-discord', 'login', 'mint', 'start-building']
-  },
-  sigilRewards: {
-    id: 'sigil',
-    text: <Trans>Sigil Rewards</Trans>,
-    url: '/sigil',
-    position: 'left',
-    action: ['join-discord', 'login', 'mint', 'start-building'],
-    icon: <EnternalLinkIcon size={16} stroke="white" />,
-    target: '_blank'
   }
+  // sigilRewards: {
+  //   id: 'sigil',
+  //   text: <Trans>Sigil Rewards</Trans>,
+  //   url: '/sigil',
+  //   position: 'left',
+  //   action: ['join-discord', 'login', 'mint', 'start-building'],
+  //   icon: <EnternalLinkIcon size={16} stroke="white" />,
+  //   target: '_blank'
+  // }
   // ourSolution: {
   //   id: 'ourSolution',
   //   text: <Trans>OUR SOLUTION</Trans>,
