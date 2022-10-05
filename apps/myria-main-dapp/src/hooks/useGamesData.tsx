@@ -48,7 +48,7 @@ export default function useGamesData() {
         headerBg: '/images/game-detail/metarush/header.jpg',
         title: 'Metarush',
         description: t`A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory.`,
-        logo: '/images/game-detail/metarush1/logo.png',
+        logo: '/images/game-detail/metarush1/logo1.png',
         logoMobile: '/images/game-detail/metarush/logo-alt.png',
         image: {
           src: '/images/game-detail/metarush1/5.png',
@@ -343,7 +343,7 @@ export default function useGamesData() {
         headerBg: '',
         title: 'Moonville Farms',
         description: t`A competitive play-and-earn tycoon farming simulator. `,
-        logo: '/images/game-detail/moonville-farms/logo.png',
+        logo: '/images/game-detail/moonville-farms/logo1.png',
         logoMobile: '/images/game-detail/moonville-farms/1.jpeg',
         assets: [
           {
