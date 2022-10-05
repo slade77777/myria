@@ -15,6 +15,8 @@ const BottomSheet = ({ open, setOpen, snapPoints, children }: Props) => {
         {/* <Sheet.Header></Sheet.Header> */}
         <Sheet.Content>{children}</Sheet.Content>
       </Sheet.Container>
+      {/* 
+      // @ts-ignore */}
       <Sheet.Backdrop onClick={() => setOpen(false)} />
     </Sheet>
   );
