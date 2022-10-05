@@ -15,16 +15,7 @@
     "title": "Happy Donuts",
     "description": "",
     "logoMobile": "",
-    "assets": [
-      {
-        "type": "image",
-        "src": "/images/partner-games-1/09-happy-donuts/banner_1.gif"
-      },
-      {
-        "type": "image",
-        "src": "/images/partner-games-1/09-happy-donuts/banner_2.png"
-      }
-    ],
+    "assets": [],
     "content": [
       {
         "heading": "About the game",

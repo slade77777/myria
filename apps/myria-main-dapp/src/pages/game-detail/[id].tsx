@@ -203,7 +203,6 @@ export async function getStaticPaths() {
       { params: { id: 'block-royale' } },
       { params: { id: 'starstrike' } },
       { params: { id: 'moonville-farms' } },
-      ...listIdGame,
       ...listIdGame
     ],
     fallback: false
