@@ -164,7 +164,7 @@ export const games: {
     category: 'Games'
   },
   {
-    image: '/images/our-games/moonville_op.png',
+    image: '/images/our-games/moonville_op1.png',
     title: 'Moonville Farms',
     feature: 'Multi Player',
     genre: ['Simulation'],
