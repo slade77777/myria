@@ -88,7 +88,16 @@ const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
     <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
       <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
-      <p className="text-sm font-medium">{val}</p>
+      <Tooltip>
+        <Tooltip.Trigger asChild className="cursor-pointer focus:outline-none">
+          <p className="line-clamp-1 break-words text-sm font-medium">{val}</p>
+        </Tooltip.Trigger>
+        <Tooltip.Content side="top" className="bg-base/3  mt-[-4px] max-w-[256px]">
+          <p className="text-base/9">
+            <Trans>{val}</Trans>
+          </p>
+        </Tooltip.Content>
+      </Tooltip>
     </div>
   );
 };
@@ -191,11 +200,22 @@ function AssetDetails({ id }: Props) {
 
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
-    lodash.map(assetDetails?.metadata, (val, key) => {
-      if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
-        resultArray.push({ key, val }); // remove all key what has 'url'.
-      }
-    });
+    if (assetDetails && !lodash.isEmpty(assetDetails.metadata)) {
+      lodash.map(assetDetails?.metadata, (val, key) => {
+        if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
+          resultArray.push({ key, val }); // remove all key what has 'url'.
+        }
+      });
+    } else {
+      // @ts-ignore
+      lodash.map(assetDetails?.metadataOptional?.attributes, (val, key) => {
+        const metadataOptionalAttributes = Object.values(val);
+        resultArray.push({
+          key: metadataOptionalAttributes?.[1],
+          val: metadataOptionalAttributes?.[0]
+        });
+      });
+    }
     return resultArray;
   }, [assetDetails?.metadata]);
   // the status will be get from based on the order Object in API get assetDetails
