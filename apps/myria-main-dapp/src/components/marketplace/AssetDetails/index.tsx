@@ -1,32 +1,44 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
+import {
+  AssetDetailsResponse,
+  CreateOrderEntity,
+  FeeType,
+  SignableOrderInput,
+  TradesRequestTypes
+} from 'myria-core-sdk';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import Link from 'next/link';
+import ArrowUpIcon from 'src/components/icons/ArrowUpIcon';
 import BackIcon from 'src/components/icons/BackIcon';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
-import OwnerAssetIcon from 'src/components/icons/OwnerAssetIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
 import { Loading } from 'src/components/Loading';
 import Modal from 'src/components/Modal';
+import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
+import Tooltip from 'src/components/Tooltip';
+import { useL2WalletContext } from 'src/context/l2-wallet';
 import { useWalletContext } from 'src/context/wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
+import { CompletedIcon, ProgressIcon } from 'src/packages/l2-wallet/src/components/Icons';
+import { collectionModule } from 'src/services/myriaCore';
+import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
-import {
-  formatNumber2digits,
-  formatPrice,
-  getRarityColor,
-  validatedImage,
-  validatedImageAssets
-} from 'src/utils';
+import { formatNumber2digits, formatPrice, getRarityColor, validatedImageAssets } from 'src/utils';
+import avatar from '../../../../public/images/marketplace/avatar.png';
+import { useAuthenticationContext } from '../../../context/authentication';
+import { useGA4 } from '../../../lib/ga';
+import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
 import AssetList from '../AssetList';
+import MessageCopyModal from '../MessageModal/MessageCopyModal';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
 import MessagePurchaseModal from '../MessageModal/MessagePurchaseModal';
@@ -37,24 +49,6 @@ import UnlistModalContent from '../Modals/UnlistModal';
 import { NFTItemType } from '../NftItem/type';
 import AssetDetailTab from './AssetDetailTab';
 import PurchaseModal from './PurchaseModal';
-import avatar from '../../../../public/images/marketplace/avatar.png';
-import { useGA4 } from '../../../lib/ga';
-import { useAuthenticationContext } from '../../../context/authentication';
-import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/event';
-import { getModuleFactory } from 'src/services/myriaCoreSdk';
-import { collectionModule } from 'src/services/myriaCore';
-import { useL2WalletContext } from 'src/context/l2-wallet';
-import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
-import {
-  AssetDetailsResponse,
-  CreateOrderEntity,
-  FeeType,
-  SignableOrderInput,
-  TradesRequestTypes
-} from 'myria-core-sdk';
-import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
-import MessageCopyModal from '../MessageModal/MessageCopyModal';
-import { convertAmountToQuantizedAmount } from 'src/packages/l2-wallet/src/utils/Converter';
 
 interface Props {
   id: string;
@@ -77,13 +71,19 @@ export enum AssetStatus {
   UNCONNECTED,
   UNCONNECTED_NOT_SALE
 }
+
+export enum WithDrawStatus {
+  MINTED = 'MINTED',
+  PENDING = 'WITHDRAWING',
+  COMPLETED = 'WITHDRAWAL_COMPLETED'
+}
 const QUANTUM = '10000000000';
 const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="p-4 text-center border rounded-lg border-base/6 bg-base/3">
-      <p className="text-xs font-normal uppercase text-blue/6">{keyword}</p>
+    <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
+      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
       <p className="text-sm font-medium">{val}</p>
     </div>
   );
@@ -631,6 +631,35 @@ function AssetDetails({ id }: Props) {
     setShowPopup(true);
   };
 
+  const handleWithdraw = async () => {
+    handleSetValueNFT(assetDetails);
+    handleDisplayPopoverWithdrawNFT(true);
+    onTrackingNoPriceItem('MKP Item Withdrawal Selected');
+  };
+
+  const withDrawStatus = (status: string | boolean | undefined) => {
+    switch (status) {
+      case WithDrawStatus.PENDING:
+        return {
+          icon: (
+            <ProgressIcon size={18} isNotAnimate={true} className="text-blue/6 " strokeWidth="5" />
+          ),
+          tooltipContent: 'Withdrawal in progress'
+        };
+      case WithDrawStatus.COMPLETED:
+        return {
+          icon: <CompletedIcon className="text-gray/6" />,
+          tooltipContent: 'Withdrawal complete'
+        };
+
+      default:
+        return {
+          icon: <ArrowUpIcon />,
+          tooltipContent: 'Withdraw this NFT to L1 wallet'
+        };
+    }
+  };
+
   const formatDataTrade = (listOrder: any) => {
     const isOrder = Array.isArray(listOrder.order);
     const payloadDataTrade = {
@@ -724,18 +753,42 @@ function AssetDetails({ id }: Props) {
                   </span>
                 </Link>
               </div>
-              <div
-                className="w-10 p-3 rounded cursor-pointer bg-base/3"
-                onClick={() => {
-                  setShowShareModal(true);
-                }}>
-                <ShareIcon />
+              <div className="flex gap-x-6 ">
+                {status === AssetStatus.SALE && starkKey === assetDetails?.owner?.starkKey && (
+                  <Tooltip>
+                    <Tooltip.Trigger
+                      asChild
+                      className="hover:bg-base/5 cursor-pointer focus:outline-none ">
+                      <div
+                        className="bg-base/3 flex h-10 w-10 cursor-pointer items-center justify-center rounded"
+                        onClick={() => {
+                          assetDetails?.status === WithDrawStatus.MINTED && handleWithdraw();
+                        }}>
+                        {withDrawStatus(assetDetails?.status)?.icon}
+                      </div>
+                    </Tooltip.Trigger>
+                    <Tooltip.Content side="top" className="bg-base/3  mt-[-4px] max-w-[256px]">
+                      <Tooltip.Arrow className="fill-base/3 " width={16} height={8} />
+                      <p className="text-base/9">
+                        <Trans> {withDrawStatus(assetDetails?.status)?.tooltipContent}</Trans>
+                      </p>
+                    </Tooltip.Content>
+                  </Tooltip>
+                )}
+
+                <div
+                  className="bg-base/3 flex h-10 w-10 cursor-pointer items-center justify-center rounded"
+                  onClick={() => {
+                    setShowShareModal(true);
+                  }}>
+                  <ShareIcon />
+                </div>
               </div>
             </div>
             <div className="mb-[36px] flex flex-col items-start">
               {/* detail asset */}
               <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="flex mt-6 text-sm font-normal text-light">
+              <div className="text-light mt-6 flex text-sm font-normal">
                 <span>
                   <Trans>Token ID</Trans>: {assetDetails?.tokenId}
                 </span>
@@ -808,7 +861,7 @@ function AssetDetails({ id }: Props) {
               />
             )}
           </div>
-          <div className="border-t border-blue/3">
+          <div className="border-blue/3 border-t">
             {/* TAB */}
             <AssetDetailTab
               data={listOrder?.items}
@@ -945,18 +998,8 @@ function AssetDetails({ id }: Props) {
 const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
   setStatus,
   starkKey,
-  assetDetails,
-  trackWithDraw,
-  onShowPopover
+  assetDetails
 }) => {
-  const { handleSetValueNFT } = useWithDrawNFTContext();
-
-  const handleWithdraw = async () => {
-    handleSetValueNFT(assetDetails);
-    onShowPopover();
-    trackWithDraw?.();
-  };
-
   return (
     <div className="mb-[48px]">
       <div>
@@ -971,18 +1014,15 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
       </div>
       {starkKey === assetDetails?.owner?.starkKey && (
         <>
-          {assetDetails?.status == 'WITHDRAWING' ? (
+          {assetDetails?.status == WithDrawStatus.PENDING ? (
             <>
               <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
-                <Trans>LIST ITEM FOR SALE</Trans>
-              </div>
-              <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
                 <Trans>WITHDRAWAL IN PROGRESS</Trans>
               </div>
             </>
-          ) : assetDetails?.status == 'WITHDRAWAL_COMPLETED' ? (
+          ) : assetDetails?.status == WithDrawStatus.COMPLETED ? (
             <>
-              <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+              <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
                 <Trans>WITHDRAW COMPLETED</Trans>
               </div>
             </>
@@ -992,11 +1032,6 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
                 className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
                 onClick={setStatus}>
                 <Trans>LIST ITEM FOR SALE</Trans>
-              </button>
-              <button
-                className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-                onClick={handleWithdraw}>
-                <Trans>WITHDRAW</Trans>
               </button>
             </>
           )}
