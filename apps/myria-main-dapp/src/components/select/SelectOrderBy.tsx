@@ -27,7 +27,7 @@ export default function SelectOrderBy(props: any) {
         setCompanySize(e);
       }}>
       {({ open }) => (
-        <div className={clsx('relative pb-3', props.containerStyle)}>
+        <div className={clsx('relative md:pb-3', props.containerStyle)}>
           <Listbox.Button
             className={clsx(
               props.buttonStyle,

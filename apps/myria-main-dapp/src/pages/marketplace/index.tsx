@@ -9,7 +9,7 @@ import TailSpin from 'src/components/icons/TailSpin';
 import AssetList from 'src/components/marketplace/AssetList';
 import { dataSorting } from 'src/components/marketplace/Collection';
 import HotCollection from 'src/components/marketplace/HotCollection';
-import MessageMobileView from 'src/components/marketplace/Modals/MessageMobileView';
+import HotCollectionMobile from 'src/components/marketplace/MobileView/HotCollectionMobile';
 import { NFTItemType } from 'src/components/marketplace/NftItem/type';
 import Page from 'src/components/Page';
 import SelectOrderBy from 'src/components/select/SelectOrderBy';
@@ -19,7 +19,7 @@ import { assetModule } from 'src/services/myriaCore';
 import { getItemsPagination, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';
 const Marketplace: React.FC = () => {
-  const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
+  const { isMobile } = useCheckMobileView();
   const { sorting, handleUpdateSort } = useFilterSortContext();
 
   const {
@@ -61,23 +61,18 @@ const Marketplace: React.FC = () => {
       handleUpdateSort(e);
     }
   };
-
-  if (isMobile) {
-    return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
-  }
-
   const { items } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   return (
     <Page includeFooter={false}>
-      <div className={clsx(paddingX, headerNavSpacingClassName)}>
-        <div className="max-w-content mx-auto mt-10">
-          <section className={clsx(negativeMarginXSm, 'md:mx-0')}>
-            <h2 className="h4 mb-10 px-6 md:px-0">
+      <div className={clsx(isMobile ? '' : paddingX, headerNavSpacingClassName)}>
+        <div className="md:max-w-content md:mx-auto md:mt-10">
+          <section className={clsx(isMobile ? '' : negativeMarginXSm, 'md:mx-0')}>
+            <h2 className="h5 md:h4 mb-10 px-6 md:px-0">
               <Trans>Marketplace</Trans>
             </h2>
-            <HotCollection />
+            {isMobile ? <HotCollectionMobile /> : <HotCollection />}
           </section>
-          <div className="flex items-center justify-between">
+          <div className="hidden items-center justify-between md:flex">
             <div></div>
             <div className="w-1/5 pt-[52px]">
               <SelectOrderBy
@@ -87,7 +82,7 @@ const Marketplace: React.FC = () => {
               />
             </div>
           </div>
-          <section className="mb-20 mt-[6px]">
+          <section className="mb-20 px-6 mt-16 md:mt-[6px] md:px-0">
             <div className="overflow-x-auto overflow-y-hidden">
               {isFetching && !result.data?.pages && !isFetchingNextPage ? (
                 <div className="mt-6 flex w-full items-center justify-center" key={0}>
