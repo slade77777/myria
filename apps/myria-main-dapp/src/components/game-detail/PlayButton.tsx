@@ -7,7 +7,7 @@ import { localStorageKeys } from '../../configs';
 import { useWalletContext } from '../../context/wallet';
 import { useL2WalletContext } from '../../context/l2-wallet';
 
-const availableGames = ['moonville-farms', 'metarush'];
+const availableGames = ['moonville-farms'];
 
 const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
   const router = useRouter();
@@ -94,11 +94,7 @@ const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
     }
   }
 
-  return (
-    <button className="btn-lg btn-primary w-full justify-center">
-      <Trans>IN DEVELOPMENT</Trans>
-    </button>
-  );
+  return null;
 };
 
 export default memo(PlayButton);
