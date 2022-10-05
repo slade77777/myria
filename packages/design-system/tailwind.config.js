@@ -16,6 +16,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      padding: {
+        '1/2': '50%'
+      },
       colors: {
         'brand-gold': '#F5B941',
         'brand-orange': '#ED8A33',

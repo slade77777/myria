@@ -84,7 +84,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
                 <th scope="col" className="w-1/4 py-[17px] pr-6">
                   Owner
                 </th>
-                <th scope="col" className="w-1/4 py-[17px] pr-6">
+                <th scope="col" className="w-1/4 py-[17px] pr-6 hidden lg:block">
                   <span className="sr-only">Edit</span>
                 </th>
               </tr>
@@ -128,7 +128,7 @@ const AssetDetailTab: FC<Prop> = ({ data = [], onBuyNow, etheCost, isModifing, a
                     <td className="w-1/4 py-4 pr-6 truncate">
                       {elm?.starkKey !== starkKey ? ownerName : <Trans>You</Trans>}
                     </td>
-                    <td className="w-1/4 py-4 pr-6 text-right truncate">
+                    <td className="w-1/4 py-4 pr-6 text-right truncate hidden lg:table-cell">
                       {starkKeyUser && elm?.starkKey !== starkKey && (
                         <button
                           onClick={() => onBuyNow(elm)}
