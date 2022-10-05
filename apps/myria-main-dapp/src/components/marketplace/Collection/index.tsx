@@ -21,6 +21,7 @@ import { useFilterSortContext } from 'src/context/filter-sort-context';
 
 interface Props {
   collection: AssetByCollectionIdResponse;
+  collectionFetched: boolean;
 }
 
 export const dataSorting = [
@@ -29,7 +30,7 @@ export const dataSorting = [
   { id: 3, sortingField: 'amountBuy', orderBy: AssetOrderBy.DESC, name: 'Price High to Low' }
 ];
 
-const Collection: FC<Props> = ({ collection }) => {
+const Collection: FC<Props> = ({ collection, collectionFetched }) => {
   const { sorting, handleUpdateSort } = useFilterSortContext();
   const [filter, setFilter] = useState<ActiveFilter>({});
   const {
@@ -103,15 +104,24 @@ const Collection: FC<Props> = ({ collection }) => {
   return (
     <Page includeFooter={false}>
       <div className="pt-[104px] md:pt-[93px]">
-        <div
-          className="relative h-[327px] w-full overflow-hidden bg-center bg-cover"
-          style={{ backgroundImage: `url('${image_url}')` }}
-        />
+        {collectionFetched ? (
+          <div
+            className="relative h-[327px] w-full overflow-hidden bg-center bg-cover"
+            style={{ backgroundImage: `url('${image_url}')` }}
+          />
+        ) : (
+          <div className="relative h-[327px] w-full overflow-hidden bg-center bg-cover bg-base/6 animate-bgEffect" />
+        )}
+
         <div className="max-w-content mx-auto mb-10">
           <div className="relative">
-            <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
-              {iconUrl ? <img src={iconUrl} alt="" /> : <MyriaIcon />}
-            </div>
+            {collectionFetched ? (
+              <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
+                {iconUrl ? <img src={iconUrl} alt="" /> : <MyriaIcon />}
+              </div>
+            ) : (
+              <div className="border-base/2 absolute -bottom-16 flex h-[120px] w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden"></div>
+            )}
           </div>
           <div className="pt-24">
             <div className="flex justify-between">

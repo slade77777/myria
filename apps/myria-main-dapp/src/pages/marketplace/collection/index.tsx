@@ -7,14 +7,14 @@ import useCheckMobileView from 'src/hooks/useCheckMobileView';
 const CollectionDetailPage = () => {
   const router = useRouter();
   const publicId = router.query.id as string;
-  const { collection } = useMarketplaceCollection(publicId);
+  const { collection, isFetched } = useMarketplaceCollection(publicId);
   const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
 
   if (isMobile) {
     return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
   }
 
-  return <Collection collection={collection} />;
+  return <Collection collection={collection} collectionFetched={isFetched} />;
 };
 
 export default CollectionDetailPage;
