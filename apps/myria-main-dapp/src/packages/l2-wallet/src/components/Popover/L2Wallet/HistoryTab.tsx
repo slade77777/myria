@@ -181,7 +181,7 @@ function HistoryTab({
   );
 
   return (
-    <div className="mt-3 max-h-[244px]">
+    <div className="transaction-popover mt-3 max-h-[290px] overflow-auto">
       {transactionListHistory?.length === 0 && <div>No data available yet</div>}
       {transactionListHistory?.map((item: any, index: number) => (
         <div

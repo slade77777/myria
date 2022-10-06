@@ -94,6 +94,16 @@ button:disabled {
   width: 0px;
 }
 
+.transaction-popover::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px transparent !important;
+  border: solid 1px transparent;
+  border-radius: 100vh;
+}
+
+.transaction-popover::-webkit-scrollbar {
+  width: 0px;
+}
+
 input::-ms-reveal,
 input::-ms-clear {
   display: none;
