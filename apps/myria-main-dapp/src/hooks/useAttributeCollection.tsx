@@ -35,12 +35,14 @@ const formatDataAttributes = (dataAttr: any) => {
     }
     return {
       id: item[0],
-      options: item[1].values.map(
-        (item: any) => item.toString().charAt(0).toUpperCase() + item.toString().slice(1)
-      ),
-      name: item[0].charAt(0).toUpperCase() + item[0].slice(1)
+      options: item[1].values.map((item: any) => upperCaseFirstText(item.toString())),
+      name: item[1].title ? upperCaseFirstText(item[1].title) : upperCaseFirstText(item[0])
     };
   });
 
   return listAttribute.filter((item) => item.id);
+};
+
+const upperCaseFirstText = (text: string) => {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 };
