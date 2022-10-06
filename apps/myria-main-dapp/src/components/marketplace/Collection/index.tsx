@@ -21,6 +21,8 @@ import BottomSheet from '../MobileView/BottomSheet';
 import FilterAssetMobile from '../MobileView/FilterAssetMobile';
 import SortMobile from '../MobileView/SortMobile';
 import FilterAsset, { ActiveFilter } from './FilterAsset';
+import { NonMyriaIcon } from 'src/components/icons/NonMyriaIcon';
+
 interface Props {
   collection: AssetByCollectionIdResponse;
   collectionFetched: boolean;
@@ -51,7 +53,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
     description,
     totalAssets,
     totalAssetsForSale,
-    id
+    id,
   } = collection;
   const { fetchNextPage, refetch, hasNextPage, isFetchingNextPage, result, isFetching } =
     useCollectionAsset(
@@ -65,6 +67,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
 
   const { items, totalItem } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   const [displayFilter, setDisplayFilter] = useState<boolean>(false);
+  const [isMyria, setIsMyria] = useState<boolean>(false);
   const [openFilterMobile, setOpenFilterMobile] = useState<boolean>(false);
   const [openSortMobile, setOpenSortMobile] = useState<boolean>(false);
   const [filterSummary, setFilterSummary] = useState<{ id: string; value: string }[]>([]);
@@ -112,6 +115,14 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
     ? collectionImageUrl
     : '/images/marketplace/collection-banner.png';
 
+  useEffect(() => {
+    if (project?.companyName && String(project.companyName).toLowerCase().includes("myria")) {
+      setIsMyria(true);
+    } else {
+      setIsMyria(false);
+    }
+  }, [project])
+
   return (
     <>
       <Page includeFooter={false}>
@@ -130,7 +141,9 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
           <div className="max-w-content mx-auto mb-10 px-6 md:px-0">
             <div className="relative">
               <div className="border-base/2 absolute -bottom-12 md:-bottom-16 flex w-24 h-24 md:h-[120px] md:w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
-                {iconUrl ? <img src={iconUrl} alt="" /> : <MyriaIcon />}
+                {
+                  iconUrl ? <img src={iconUrl} alt="" /> : isMyria ? <MyriaIcon /> : <NonMyriaIcon />
+                }
               </div>
             </div>
             <div className="pt-16 md:pt-24">
@@ -287,9 +300,9 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                       </>
                     )}
                     {isFetching &&
-                    !result?.data?.pages &&
-                    !result?.data?.pages &&
-                    !isFetchingNextPage ? (
+                      !result?.data?.pages &&
+                      !result?.data?.pages &&
+                      !isFetchingNextPage ? (
                       <div className="mt-6 flex w-full items-center justify-center" key={0}>
                         <TailSpin />
                       </div>
