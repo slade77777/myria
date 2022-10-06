@@ -102,9 +102,10 @@ const NftItem = ({ item }: Props) => {
                 style={{ backgroundColor: rarityColor }}
               />
               <div
-                className="z-2 absolute h-full w-full bg-contain bg-center bg-no-repeat"
+                className="z-2 absolute h-full w-full bg-cover bg-no-repeat"
                 style={{
-                  backgroundImage: `url(${validatedImageAssets(item.image_url, item)})`
+                  backgroundImage: `url(${validatedImageAssets(item.image_url, item)})`,
+                  backgroundPosition: 'center top'
                 }}
               />
             </div>

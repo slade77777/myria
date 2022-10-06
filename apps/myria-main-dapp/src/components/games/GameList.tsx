@@ -94,14 +94,6 @@ const filters: FilterList = [
         name: 'Myria Studios'
       },
       {
-        id: 'Leapblock Studios',
-        name: 'Leapblock Studios'
-      },
-      {
-        id: 'AB de Villiers',
-        name: 'AB de Villiers'
-      },
-      {
         id: 'Ecosystem Developer',
         name: 'Ecosystem Developer'
       }

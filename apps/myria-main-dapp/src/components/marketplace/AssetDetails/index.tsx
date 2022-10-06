@@ -733,166 +733,147 @@ function AssetDetails({ id }: Props) {
       </button>
       <div className="flex-row gap-[104px] lg:flex">
         {/* container */}
-          <div className="lg:w-[620px] w-full">
+        <div className="w-[620px]">
+          <div className="relative flex h-[620px] w-full items-center justify-center rounded-[12px]  lg:h-[620px] ">
             <div
-              className={`relative flex w-full items-center justify-center rounded-xl lg:h-[620px] pb-1/2 pt-1/2 overflow-hidden`}>
-              <div className="absolute h-full w-full rounded-xl bg-base/3" />
-              <div
-                className="z-1 absolute h-full w-full rounded-[12px] opacity-[0.3]"
-                style={{ backgroundColor: rarityColor }}
-              />
-              <div
-                className="z-2 absolute h-[372px] w-[372px] rounded-[12px] bg-cover bg-center  bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${validatedImageAssets(
-                    assetDetails?.imageUrl,
-                    assetDetails
-                  )})`
-                }}
-              />
-            </div>
-            {attributes.length > 0 && (
-              <div className="text-white hidden lg:block">
-                {/* list stat */}
-                <div className="mt-10 mb-4 text-lg font-bold">
-                  <Trans>Attributes</Trans>
-                </div>
-                <div className="grid grid-cols-4 gap-4">
-                  {attributes.map(({ key, val }) => {
-                    return <ItemAttribution key={key} keyword={key} val={val} />;
-                  })}
-                </div>
-              </div>
-            )}
+              className="z-2 absolute h-full w-full max-w-[620px] max-h-[620px] rounded-[12px] bg-center bg-no-repeat bg-contain"
+              style={{
+                backgroundImage: `url(${validatedImageAssets(
+                  assetDetails?.imageUrl,
+                  assetDetails
+                )})`
+              }}
+            />
           </div>
-          <div className="lg:w-[540px] w-full mt-6 lg:mt-0">
-            <div className='flex flex-row items-center justify-between'>
-              <div className="flex flex-row items-center">
+        </div>
+        <div className="lg:w-[540px] w-full mt-6 lg:mt-0">
+          <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center">
               <img src={avatar.src} className="h-[24px] w-[24px]" />
               <Link href={`/marketplace/collection/?id=${collection?.publicId}`}>
                 <span className="text-light ml-2 cursor-pointer text-base">
                   {assetDetails?.creator?.name}
                 </span>
               </Link>
-              </div>
-              <div className="flex gap-x-6 ">
-                {status === AssetStatus.SALE && starkKey === assetDetails?.owner?.starkKey && (
-                  <Tooltip>
-                    <Tooltip.Trigger
-                      asChild
-                      className="hover:bg-base/5 cursor-pointer focus:outline-none ">
-                      <div
-                        className="bg-base/3 flex h-10 w-10 cursor-pointer items-center justify-center rounded"
-                        onClick={() => {
-                          assetDetails?.status === WithDrawStatus.MINTED && handleWithdraw();
-                        }}>
-                        {withDrawStatus(assetDetails?.status)?.icon}
-                      </div>
-                    </Tooltip.Trigger>
-                    <Tooltip.Content side="top" className="bg-base/3  mt-[-4px] max-w-[256px]">
-                      <Tooltip.Arrow className="fill-base/3 " width={16} height={8} />
-                      <p className="text-base/9">
-                        <Trans> {withDrawStatus(assetDetails?.status)?.tooltipContent}</Trans>
-                      </p>
-                    </Tooltip.Content>
-                  </Tooltip>
-                )}
-                <div
-                  className="w-10 p-3 rounded cursor-pointer bg-base/3"
-                  onClick={() => {
-                    isMobile ? setOpenShareMobile(!openShareMobile) : setShowShareModal(true);
-                  }}>
-                  <ShareIcon />
-                  <BottomSheet
-                    open={openShareMobile}
-                    setOpen={setOpenShareMobile}
-                    snapPoints={[280, 0]}>
-                    <div className="flex h-full flex-col">
-                      <ShareMobile onCloseModal={() => setOpenShareMobile(false)} />
+            </div>
+            <div className="flex gap-x-6 ">
+              {status === AssetStatus.SALE && starkKey === assetDetails?.owner?.starkKey && (
+                <Tooltip>
+                  <Tooltip.Trigger
+                    asChild
+                    className="hover:bg-base/5 cursor-pointer focus:outline-none ">
+                    <div
+                      className="bg-base/3 flex h-10 w-10 cursor-pointer items-center justify-center rounded"
+                      onClick={() => {
+                        assetDetails?.status === WithDrawStatus.MINTED && handleWithdraw();
+                      }}>
+                      {withDrawStatus(assetDetails?.status)?.icon}
                     </div>
-                  </BottomSheet>
-                </div>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content side="top" className="bg-base/3  mt-[-4px] max-w-[256px]">
+                    <Tooltip.Arrow className="fill-base/3 " width={16} height={8} />
+                    <p className="text-base/9">
+                      <Trans> {withDrawStatus(assetDetails?.status)?.tooltipContent}</Trans>
+                    </p>
+                  </Tooltip.Content>
+                </Tooltip>
+              )}
+              <div
+                className="w-10 p-3 rounded cursor-pointer bg-base/3"
+                onClick={() => {
+                  isMobile ? setOpenShareMobile(!openShareMobile) : setShowShareModal(true);
+                }}>
+                <ShareIcon />
+                <BottomSheet
+                  open={openShareMobile}
+                  setOpen={setOpenShareMobile}
+                  snapPoints={[280, 0]}>
+                  <div className="flex h-full flex-col">
+                    <ShareMobile onCloseModal={() => setOpenShareMobile(false)} />
+                  </div>
+                </BottomSheet>
               </div>
             </div>
-            <div className="mb-9 flex flex-col items-start">
-              {/* detail asset */}
-              <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="text-light mt-6 flex text-sm font-normal">
-                <span>
-                  <Trans>Token ID</Trans>: {assetDetails?.tokenId}
-                </span>
-                <span className="mx-6">|</span>
-                <span>
-                  <Trans>Owned by</Trans> {ownedBy}
-                </span>
-              </div>
-              <div className="bg-base/3 border-base/6 text-light mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2 text-sm font-normal">
-                <MintedIcon />
-                <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
-              </div>
+          </div>
+          <div className="mb-9 flex flex-col items-start">
+            {/* detail asset */}
+            <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
+            <div className="text-light mt-6 flex text-sm font-normal">
+              <span>
+                <Trans>Token ID</Trans>: {assetDetails?.tokenId}
+              </span>
+              <span className="mx-6">|</span>
+              <span>
+                <Trans>Owned by</Trans> {ownedBy}
+              </span>
             </div>
-            {status === AssetStatus.BUY_NOW && (
-              <BuyNow
-                currentPrice={currentPrice?.toString()}
-                currentUSDPrice={currentUSDPrice}
-                setStatus={() => {
-                  if (isMobile) {
-                    setOpenSorryMobile(!openSorryMobile);
-                  } else {
-                    onTrackingItem({ eventName: 'MKP Item Buy Now Selected' });
-                    setAssetBuy({
-                      name: assetDetails?.name || '',
-                      price: String(currentPrice)
-                    });
-                    setPayloadDataTrade(formatDataTrade({ ...assetDetails }));
-                    setShowPopup(true);
-                  }
-                }}
-              />
-            )}
-            {status === AssetStatus.UNCONNECTED && (
-              <ConnectWalletToBuy
-                currentPrice={currentPrice?.toString()}
-                currentUSDPrice={currentUSDPrice}
-                setStatus={() => {
-                  onTrackingConnectWallet();
-                  onConnectCompaign('B2C Marketplace');
-                  // handle if the first purchase
-                  handleSetFirstPurchase(true);
-                  if (loginByWalletMutation.isError) {
-                    loginByWalletMutation.mutate();
-                  }
-                  connectL2Wallet();
-                }}
-              />
-            )}
-            {status === AssetStatus.SALE && (
-              <ItemForSale
-                starkKey={starkKey}
-                assetDetails={assetDetails}
-                setStatus={() => {
-                  setShowModal(true);
-                  onTrackingNoPriceItem('MKP Item Listing Selected');
-                }}
-                onShowPopover={() => handleDisplayPopoverWithdrawNFT(true)}
-                trackWithDraw={() => onTrackingNoPriceItem('MKP Item Withdrawal Selected')}
-              />
-            )}
-            {status === AssetStatus.UNCONNECTED_NOT_SALE && <ItemNotForSale />}
-            {status === AssetStatus.MODIFY && (
-              <ModifyListing
-                currentPrice={currentPrice?.toString()}
-                currentUSDPrice={currentUSDPrice}
-                setStatus={() => {
-                  onTrackingItem({ eventName: 'MKP Item Listing Modify Selected' });
-                  setShowModal(true);
-                }}
-                setShowUnlist={() => {
-                  onTrackingItem({ eventName: 'MKP Item Unlisting Selected' });
-                  setShowModalUnlist(true);
-                }}
-              />
-            )}
+            <div className="bg-base/3 border-base/6 text-light mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2 text-sm font-normal">
+              <MintedIcon />
+              <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
+            </div>
+          </div>
+          {status === AssetStatus.BUY_NOW && (
+            <BuyNow
+              currentPrice={currentPrice?.toString()}
+              currentUSDPrice={currentUSDPrice}
+              setStatus={() => {
+                if (isMobile) {
+                  setOpenSorryMobile(!openSorryMobile);
+                } else {
+                  onTrackingItem({ eventName: 'MKP Item Buy Now Selected' });
+                  setAssetBuy({
+                    name: assetDetails?.name || '',
+                    price: String(currentPrice)
+                  });
+                  setPayloadDataTrade(formatDataTrade({ ...assetDetails }));
+                  setShowPopup(true);
+                }
+              }}
+            />
+          )}
+          {status === AssetStatus.UNCONNECTED && (
+            <ConnectWalletToBuy
+              currentPrice={currentPrice?.toString()}
+              currentUSDPrice={currentUSDPrice}
+              setStatus={() => {
+                onTrackingConnectWallet();
+                onConnectCompaign('B2C Marketplace');
+                // handle if the first purchase
+                handleSetFirstPurchase(true);
+                if (loginByWalletMutation.isError) {
+                  loginByWalletMutation.mutate();
+                }
+                connectL2Wallet();
+              }}
+            />
+          )}
+          {status === AssetStatus.SALE && (
+            <ItemForSale
+              starkKey={starkKey}
+              assetDetails={assetDetails}
+              setStatus={() => {
+                setShowModal(true);
+                onTrackingNoPriceItem('MKP Item Listing Selected');
+              }}
+              onShowPopover={() => handleDisplayPopoverWithdrawNFT(true)}
+              trackWithDraw={() => onTrackingNoPriceItem('MKP Item Withdrawal Selected')}
+            />
+          )}
+          {status === AssetStatus.UNCONNECTED_NOT_SALE && <ItemNotForSale />}
+          {status === AssetStatus.MODIFY && (
+            <ModifyListing
+              currentPrice={currentPrice?.toString()}
+              currentUSDPrice={currentUSDPrice}
+              setStatus={() => {
+                onTrackingItem({ eventName: 'MKP Item Listing Modify Selected' });
+                setShowModal(true);
+              }}
+              setShowUnlist={() => {
+                onTrackingItem({ eventName: 'MKP Item Unlisting Selected' });
+                setShowModalUnlist(true);
+              }}
+            />
+          )}
           <div className="border-blue/3 border-t">
             {/* TAB */}
             <AssetDetailTab
