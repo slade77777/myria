@@ -33,10 +33,37 @@ export interface valueSort {
   name: string;
 }
 
+export enum SortingFieldType {
+  RECENT_SOLD = 'recent_sold',
+  MOST_VIEWED = 'most_viewed',
+  AMOUNT_BUY = 'amount_buy'
+}
+
 export const dataSorting: valueSort[] = [
-  { id: 1, sortingField: 'createdAt', orderBy: AssetOrderBy.DESC, name: 'Recently listed' },
-  { id: 2, sortingField: 'amountBuy', orderBy: AssetOrderBy.ASC, name: 'Price Low to High' },
-  { id: 3, sortingField: 'amountBuy', orderBy: AssetOrderBy.DESC, name: 'Price High to Low' }
+  {
+    id: 1,
+    sortingField: SortingFieldType.RECENT_SOLD,
+    orderBy: AssetOrderBy.DESC,
+    name: 'Recently listed'
+  },
+  {
+    id: 2,
+    sortingField: SortingFieldType.AMOUNT_BUY,
+    orderBy: AssetOrderBy.ASC,
+    name: 'Price Low to High'
+  },
+  {
+    id: 3,
+    sortingField: SortingFieldType.AMOUNT_BUY,
+    orderBy: AssetOrderBy.DESC,
+    name: 'Price High to Low'
+  },
+  {
+    id: 4,
+    sortingField: SortingFieldType.MOST_VIEWED,
+    orderBy: AssetOrderBy.DESC,
+    name: 'Most Viewed'
+  }
 ];
 
 const Collection: FC<Props> = ({ collection, collectionFetched }) => {
