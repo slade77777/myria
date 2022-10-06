@@ -39,8 +39,6 @@ const GameDetail: React.FC = () => {
   const { title, assets, logo, logoMobile, content, info, image, description, headerBg, gameUrl } =
     game;
 
-  console.log('debug: game', game);
-
   return (
     <Page stickyHeader={false}>
       <div>
