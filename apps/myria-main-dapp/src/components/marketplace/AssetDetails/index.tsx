@@ -733,10 +733,10 @@ function AssetDetails({ id }: Props) {
       </button>
       <div className="flex-row gap-[104px] lg:flex">
         {/* container */}
-        <div className="w-[620px]">
-          <div className="relative flex h-[620px] w-full items-center justify-center rounded-[12px]  lg:h-[620px] ">
+        <div className="lg:w-[620px] w-full">
+          <div className="relative flex w-full items-center justify-center rounded-xl lg:h-[620px] pb-1/2 pt-1/2 overflow-hidden">
             <div
-              className="z-2 absolute h-full w-full max-w-[620px] max-h-[620px] rounded-[12px] bg-center bg-no-repeat bg-contain"
+              className="z-2 absolute h-full w-full max-w-[620px] max-h-[620px] rounded-xl bg-center bg-no-repeat bg-contain"
               style={{
                 backgroundImage: `url(${validatedImageAssets(
                   assetDetails?.imageUrl,
@@ -836,14 +836,18 @@ function AssetDetails({ id }: Props) {
               currentPrice={currentPrice?.toString()}
               currentUSDPrice={currentUSDPrice}
               setStatus={() => {
-                onTrackingConnectWallet();
-                onConnectCompaign('B2C Marketplace');
-                // handle if the first purchase
-                handleSetFirstPurchase(true);
-                if (loginByWalletMutation.isError) {
-                  loginByWalletMutation.mutate();
+                if (isMobile) {
+                  setOpenSorryMobile(!openSorryMobile);
+                } else {
+                  onTrackingConnectWallet();
+                  onConnectCompaign('B2C Marketplace');
+                  // handle if the first purchase
+                  handleSetFirstPurchase(true);
+                  if (loginByWalletMutation.isError) {
+                    loginByWalletMutation.mutate();
+                  }
+                  connectL2Wallet();
                 }
-                connectL2Wallet();
               }}
             />
           )}
