@@ -39,8 +39,6 @@ const GameDetail: React.FC = () => {
   const { title, assets, logo, logoMobile, content, info, image, description, headerBg, gameUrl } =
     game;
 
-  console.log('debug: game', game);
-
   return (
     <Page stickyHeader={false}>
       <div>
@@ -126,7 +124,7 @@ const GameDetail: React.FC = () => {
                     ))}
                   </div>
                   <div className="order-[-1] mb-6 md:order-1 md:mb-0 md:mt-[48px] ">
-                    {/* <PlayButton gameUrl={gameUrl} /> */}
+                    {!game.isPartner && <PlayButton gameUrl={gameUrl} />}
                     {game.twitter && (
                       <a
                         href={game.twitter}

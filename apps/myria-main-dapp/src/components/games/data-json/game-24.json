@@ -13,7 +13,7 @@
     "twitter": "https://twitter.com/reptile_royal",
     "headerBg": "",
     "title": "PsyberX",
-    "description": "",
+    "description": "PsyberX is a first and third-person battle royal game built into a world of infinite mini-games and bridges, that gives deep utility to its own NFTs and those of other projects and collections as well.",
     "logo": "/images/partner-games-1/24-psyber-x/logo.png",
     "logoMobile": "",
     "assets": [
@@ -36,14 +36,26 @@
     ],
     "content": [
       {
-        "heading": "About the game",
+        "heading": "Phase 1",
         "paragraph": [
-          "PsyberX is a first and third person battle royal game built into a world of infinite mini-games and bridges, that gives deep utility to its own NFTs and those of other projects and collections as well.  "
+          "Royal Reptile Studios is building Psyber-X to launch initially as a 10 versus 10-brawler where players will battle it out for Level (LVL) token and bragging rights. It is a switchable first and third-person shooter game built on Unreal Engine 5."
+        ]
+      },
+      {
+        "heading": "Phase 2",
+        "paragraph": [
+          "Once the game is launched into closed beta, the next phase of development begins, the land &#39;between&#39; the brawls - the PsyberVerse.  With a myriad of mini-games and activities planned to give all of PsyberX NFTs, and those of our partners, a deep utility within an expanding ecosystem and player-driven economy, while continuing to develop the different FPS game environments available across the map."
+        ]
+      },
+      {
+        "heading": "Future Phases and Updates",
+        "paragraph": [
+          "We will integrate lands and partnership advertising through them, this includes the possibility to &#39;broadcast into&#39; the live PvP matches."
         ]
       },
       {
         "heading": "Email Address",
-        "paragraph": ["trappae19@gmail.com"]
+        "paragraph": ["admin@royalreptilestudiosllc.com"]
       },
       {
         "heading": "Twitter",
@@ -51,7 +63,11 @@
       },
       {
         "heading": "Other Link",
-        "paragraph": ["peakd.com/@psyberx/posts"]
+        "paragraph": [
+          "https://www.psyber-x.com",
+          "https://discord.gg/psyberx",
+          "https://peakd.com/@psyberx/posts"
+        ]
       }
     ],
     "info": [

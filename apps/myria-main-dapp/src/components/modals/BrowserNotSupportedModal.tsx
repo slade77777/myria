@@ -42,7 +42,7 @@ const SessionTimeoutCountModal: React.FC<Props> = ({}) => {
   });
 
   return (
-    <Modal open={showBrowserNotSupportedModal}>
+    <Modal open={false}>
       <Modal.Content includingHeader={false}>
         <div className="relative isolate space-y-4 p-6 text-white md:px-[31px] md:pt-6 md:pb-[38px]">
           <h1 className="font-bold leading-[1.15] md:text-[24px]">

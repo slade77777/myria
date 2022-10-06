@@ -43,8 +43,8 @@ const data = [
     title: <Trans>Myria Studios</Trans>,
     description: (
       <Trans>
-        Myria Studios creates a range of free-to-play AAA games spans across an entire
-        interconnected ecosystem.
+        <CustomLink href="/games" title="Myria Studios" /> creates a range of free-to-play AAA games
+        that spans across an entire interconnected ecosystem.
       </Trans>
     )
   },
@@ -66,7 +66,7 @@ const Backbone: React.FC = () => {
       <h2 className="text-center text-[32px] font-bold leading-[1.25] md:text-[40px]">
         <Trans>Myria is the backbone of blockchain gaming</Trans>
       </h2>
-      <p className="mx-auto mt-6 max-w-[713px] text-center text-[18px] leading-[1.5] text-light md:text-[20px]">
+      <p className="text-light mx-auto mt-6 max-w-[713px] text-center text-[18px] leading-[1.5] md:text-[20px]">
         <Trans>
           We bring together everything that is required to build a decentralized, scalable and
           secure digital asset and blockchain gaming platform
@@ -76,10 +76,10 @@ const Backbone: React.FC = () => {
         {data.map((item, idx) => (
           <div key={idx}>
             <div className="flex flex-col items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-4">
-              <div className="w-8 flex-shrink-0 text-light">{item.icon}</div>
+              <div className="text-light w-8 flex-shrink-0">{item.icon}</div>
               <div className="text-center md:text-left">
                 <h3 className="text-[20px] font-bold leading-[1.25]">{item.title}</h3>
-                <p className="mt-4 text-[16px] leading-[1.5] text-light md:text-[18px]">
+                <p className="text-light mt-4 text-[16px] leading-[1.5] md:text-[18px]">
                   {item.description}
                 </p>
               </div>

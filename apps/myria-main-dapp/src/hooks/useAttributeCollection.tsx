@@ -1,6 +1,8 @@
 import { useQuery } from 'react-query';
 import { collectionModule } from '../services/myriaCore';
 
+const skipAttributes = ['description', 'imageUrl', 'image'];
+
 export default function useAttributeCollection(id: number) {
   const queryKey = ['marketplace', 'collection-attributes', id];
   const { data, isLoading, error } = useQuery(
@@ -24,13 +26,21 @@ const formatDataAttributes = (dataAttr: any) => {
   if (!dataAttr) return [];
   if (Object.keys(dataAttr).length === 0) return [];
   const listAttribute = Object.entries(dataAttr).map((item: any) => {
+    if (skipAttributes.includes(item[0])) {
+      return {
+        id: '',
+        options: [],
+        name: ''
+      };
+    }
     return {
       id: item[0],
-      options: (item[1]).values.map(
+      options: item[1].values.map(
         (item: any) => item.toString().charAt(0).toUpperCase() + item.toString().slice(1)
       ),
       name: item[0].charAt(0).toUpperCase() + item[0].slice(1)
     };
   });
-  return listAttribute;
+
+  return listAttribute.filter((item) => item.id);
 };

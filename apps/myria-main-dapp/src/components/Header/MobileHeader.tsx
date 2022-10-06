@@ -159,8 +159,9 @@ const HeaderOverlay = ({ open, action, top }: OverlayProps & Props) => {
             'grid flex-grow content-start gap-[33px] overflow-auto px-[24px] pb-4 pt-8 text-[18px] font-medium uppercase leading-[1.25] text-white'
           )}>
           {links
-            .filter((link) => !link.action || link.action.includes(action))
+            // .filter((link) => !link.action || link.action.includes(action))
             .map((item, idx) => {
+              if (!item) return null;
               if (item.inactive) {
                 return (
                   <li key={idx}>

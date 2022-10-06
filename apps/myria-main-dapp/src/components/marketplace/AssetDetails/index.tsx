@@ -1,31 +1,34 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Trans } from '@lingui/macro';
 import lodash from 'lodash';
+import {
+  AssetDetailsResponse,
+  CreateOrderEntity,
+  FeeType,
+  SignableOrderInput,
+  TradesRequestTypes
+} from 'myria-core-sdk';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import Link from 'next/link';
+import ArrowUpIcon from 'src/components/icons/ArrowUpIcon';
 import BackIcon from 'src/components/icons/BackIcon';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import MintedIcon from 'src/components/icons/MintedIcon';
-import OwnerAssetIcon from 'src/components/icons/OwnerAssetIcon';
 import ShareIcon from 'src/components/icons/ShareIcon';
 import { Loading } from 'src/components/Loading';
 import Modal from 'src/components/Modal';
+import Tooltip from 'src/components/Tooltip';
 import { useWalletContext } from 'src/context/wallet';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import truncateString from 'src/helper';
 import { useEtheriumPrice } from 'src/hooks/useEtheriumPrice';
 import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import { TokenType } from 'src/packages/l2-wallet/src/common/type';
+import { CompletedIcon, ProgressIcon } from 'src/packages/l2-wallet/src/components/Icons';
 import { StatusWithdrawNFT } from 'src/types/marketplace';
-import {
-  formatNumber2digits,
-  formatPrice,
-  getRarityColor,
-  validatedImage,
-  validatedImageAssets
-} from 'src/utils';
+import { formatNumber2digits, formatPrice, getRarityColor, validatedImageAssets } from 'src/utils';
 import AssetList from '../AssetList';
 import MessageListingPriceModal from '../MessageModal/MessageListingPrice';
 import MessageModal from '../MessageModal/MessageModal';
@@ -44,17 +47,12 @@ import { NFTItemAction, NFTItemNoPriceAction } from '../../../lib/ga/use-ga/even
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { collectionModule } from 'src/services/myriaCore';
 import { useL2WalletContext } from 'src/context/l2-wallet';
-import LearnMoreWithdrawNFT from '../Modals/LearnMoreWithdrawNFT';
-import {
-  AssetDetailsResponse,
-  CreateOrderEntity,
-  FeeType,
-  SignableOrderInput,
-  TradesRequestTypes
-} from 'myria-core-sdk';
 import ShareAssetDetailModal from 'src/components/ShareAssetDetailModal';
 import MessageCopyModal from '../MessageModal/MessageCopyModal';
-import { convertAmountToQuantizedAmount } from 'src/packages/l2-wallet/src/utils/Converter';
+import BottomSheet from '../MobileView/BottomSheet';
+import ShareMobile from '../MobileView/ShareMobile';
+import useCheckMobileView from 'src/hooks/useCheckMobileView';
+import SorryActionMobile from '../MobileView/SorryActionMobile';
 
 interface Props {
   id: string;
@@ -77,21 +75,36 @@ export enum AssetStatus {
   UNCONNECTED,
   UNCONNECTED_NOT_SALE
 }
+
+export enum WithDrawStatus {
+  MINTED = 'MINTED',
+  PENDING = 'WITHDRAWING',
+  COMPLETED = 'WITHDRAWAL_COMPLETED'
+}
 const QUANTUM = '10000000000';
 const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
   return (
-    <div className="p-4 text-center border rounded-lg border-base/6 bg-base/3">
-      <p className="text-xs font-normal uppercase text-blue/6">{keyword}</p>
-      <p className="text-sm font-medium">{val}</p>
+    <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
+      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
+      <Tooltip>
+        <Tooltip.Trigger asChild className="cursor-pointer focus:outline-none">
+          <p className="line-clamp-1 break-words text-sm font-medium">{val}</p>
+        </Tooltip.Trigger>
+        <Tooltip.Content side="top" className="bg-base/3  mt-[-4px] max-w-[256px]">
+          <p className="text-base/9">
+            <Trans>{val}</Trans>
+          </p>
+        </Tooltip.Content>
+      </Tooltip>
     </div>
   );
 };
 
 function AssetDetails({ id }: Props) {
   const router = useRouter();
-
+  const { isMobile } = useCheckMobileView();
   const { data, isLoading, refetch } = useQuery(
     ['assetDetail', +id],
     async () => {
@@ -187,11 +200,22 @@ function AssetDetails({ id }: Props) {
 
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
-    lodash.map(assetDetails?.metadata, (val, key) => {
-      if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
-        resultArray.push({ key, val }); // remove all key what has 'url'.
-      }
-    });
+    if (assetDetails && !lodash.isEmpty(assetDetails.metadata)) {
+      lodash.map(assetDetails?.metadata, (val, key) => {
+        if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
+          resultArray.push({ key, val }); // remove all key what has 'url'.
+        }
+      });
+    } else {
+      // @ts-ignore
+      lodash.map(assetDetails?.metadataOptional?.attributes, (val, key) => {
+        const metadataOptionalAttributes = Object.values(val);
+        resultArray.push({
+          key: metadataOptionalAttributes?.[1],
+          val: metadataOptionalAttributes?.[0]
+        });
+      });
+    }
     return resultArray;
   }, [assetDetails?.metadata]);
   // the status will be get from based on the order Object in API get assetDetails
@@ -206,6 +230,8 @@ function AssetDetails({ id }: Props) {
   const [showMessageModify, setShowMessageModify] = useState({ isShow: false, newPrice: 0 });
   const [showMessageUnlist, setShowMessageUnlist] = useState(false);
   const [showMessageCopied, setShowMessageCopied] = useState(false);
+  const [openShareMobile, setOpenShareMobile] = useState(false);
+  const [openSorryMobile, setOpenSorryMobile] = useState(false);
   const [payloadDataTrade, setPayloadDataTrade] = useState({});
 
   const [showShareModal, setShowShareModal] = useState(false);
@@ -631,6 +657,35 @@ function AssetDetails({ id }: Props) {
     setShowPopup(true);
   };
 
+  const handleWithdraw = async () => {
+    handleSetValueNFT(assetDetails);
+    handleDisplayPopoverWithdrawNFT(true);
+    onTrackingNoPriceItem('MKP Item Withdrawal Selected');
+  };
+
+  const withDrawStatus = (status: string | boolean | undefined) => {
+    switch (status) {
+      case WithDrawStatus.PENDING:
+        return {
+          icon: (
+            <ProgressIcon size={18} isNotAnimate={true} className="text-blue/6 " strokeWidth="5" />
+          ),
+          tooltipContent: 'Withdrawal in progress'
+        };
+      case WithDrawStatus.COMPLETED:
+        return {
+          icon: <CompletedIcon className="text-gray/6" />,
+          tooltipContent: 'Withdrawal complete'
+        };
+
+      default:
+        return {
+          icon: <ArrowUpIcon />,
+          tooltipContent: 'Withdraw this NFT to L1 wallet'
+        };
+    }
+  };
+
   const formatDataTrade = (listOrder: any) => {
     const isOrder = Array.isArray(listOrder.order);
     const payloadDataTrade = {
@@ -666,28 +721,23 @@ function AssetDetails({ id }: Props) {
     );
   }
   return (
-    <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] ">
+    <div className="max-w-content bg-base/2 mx-auto w-full py-[58px]  pt-[104px] text-white md:pt-[133px] px-6 lg:px-0">
       <button
         onClick={() => {
           back();
         }}
-        className="mb-14 items-center">
+        className="mb-9 lg:mb-14 items-center">
         <div className="flex items-center">
           <BackIcon />
           <span className="ml-[6px] text-sm font-normal leading-[17px]">{titleBack}</span>
         </div>
       </button>
-      <div className="flex flex-row gap-[104px]">
+      <div className="flex-row gap-[104px] lg:flex">
         {/* container */}
         <div className="w-[620px]">
           <div className="relative flex h-[620px] w-full items-center justify-center rounded-[12px]  lg:h-[620px] ">
-            <div className="absolute h-full w-full rounded-[12px] bg-[#081824]" />
             <div
-              className="z-1 absolute h-full w-full rounded-[12px] opacity-[0.3]"
-              style={{ backgroundColor: rarityColor }}
-            />
-            <div
-              className="z-2 absolute h-[372px] w-[372px] rounded-[12px] bg-cover bg-center  bg-no-repeat"
+              className="z-2 absolute h-full w-full max-w-[620px] max-h-[620px] rounded-[12px] bg-center bg-no-repeat bg-contain"
               style={{
                 backgroundImage: `url(${validatedImageAssets(
                   assetDetails?.imageUrl,
@@ -696,64 +746,81 @@ function AssetDetails({ id }: Props) {
               }}
             />
           </div>
-          {attributes.length > 0 && (
-            <div className="text-white">
-              {/* list stat */}
-              <div className="mt-10 mb-4 text-[18px] font-bold">
-                <Trans>Attributes</Trans>
-              </div>
-              <div className="grid grid-cols-4 gap-4">
-                {attributes.map(({ key, val }) => {
-                  return <ItemAttribution key={key} keyword={key} val={val} />;
-                })}
-              </div>
-            </div>
-          )}
         </div>
-        <div className="w-[540px]">
-          {/* right */}
-          <div>
-            {/* very top */}
-            <div className="flex flex-row items-center justify-between">
-              {/* first row */}
-              <div className="flex flex-row items-center">
-                <img src={avatar.src} className="h-[24px] w-[24px]" />
-                <Link href={`/marketplace/collection/?id=${collection?.publicId}`}>
-                  <span className="text-light ml-2 cursor-pointer text-base">
-                    {assetDetails?.creator?.name}
-                  </span>
-                </Link>
-              </div>
+        <div className="lg:w-[540px] w-full mt-6 lg:mt-0">
+          <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center">
+              <img src={avatar.src} className="h-[24px] w-[24px]" />
+              <Link href={`/marketplace/collection/?id=${collection?.publicId}`}>
+                <span className="text-light ml-2 cursor-pointer text-base">
+                  {assetDetails?.creator?.name}
+                </span>
+              </Link>
+            </div>
+            <div className="flex gap-x-6 ">
+              {status === AssetStatus.SALE && starkKey === assetDetails?.owner?.starkKey && (
+                <Tooltip>
+                  <Tooltip.Trigger
+                    asChild
+                    className="hover:bg-base/5 cursor-pointer focus:outline-none ">
+                    <div
+                      className="bg-base/3 flex h-10 w-10 cursor-pointer items-center justify-center rounded"
+                      onClick={() => {
+                        assetDetails?.status === WithDrawStatus.MINTED && handleWithdraw();
+                      }}>
+                      {withDrawStatus(assetDetails?.status)?.icon}
+                    </div>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content side="top" className="bg-base/3  mt-[-4px] max-w-[256px]">
+                    <Tooltip.Arrow className="fill-base/3 " width={16} height={8} />
+                    <p className="text-base/9">
+                      <Trans> {withDrawStatus(assetDetails?.status)?.tooltipContent}</Trans>
+                    </p>
+                  </Tooltip.Content>
+                </Tooltip>
+              )}
               <div
                 className="w-10 p-3 rounded cursor-pointer bg-base/3"
                 onClick={() => {
-                  setShowShareModal(true);
+                  isMobile ? setOpenShareMobile(!openShareMobile) : setShowShareModal(true);
                 }}>
                 <ShareIcon />
+                <BottomSheet
+                  open={openShareMobile}
+                  setOpen={setOpenShareMobile}
+                  snapPoints={[280, 0]}>
+                  <div className="flex h-full flex-col">
+                    <ShareMobile onCloseModal={() => setOpenShareMobile(false)} />
+                  </div>
+                </BottomSheet>
               </div>
             </div>
-            <div className="mb-[36px] flex flex-col items-start">
-              {/* detail asset */}
-              <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
-              <div className="flex mt-6 text-sm font-normal text-light">
-                <span>
-                  <Trans>Token ID</Trans>: {assetDetails?.tokenId}
-                </span>
-                <span className="mx-6">|</span>
-                <span>
-                  <Trans>Owned by</Trans> {ownedBy}
-                </span>
-              </div>
-              <div className="bg-base/3 border-base/6 text-light mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2 text-sm font-normal">
-                <MintedIcon />
-                <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
-              </div>
+          </div>
+          <div className="mb-9 flex flex-col items-start">
+            {/* detail asset */}
+            <span className="mt-6 text-[28px] font-bold">{assetDetails?.name}</span>
+            <div className="text-light mt-6 flex text-sm font-normal">
+              <span>
+                <Trans>Token ID</Trans>: {assetDetails?.tokenId}
+              </span>
+              <span className="mx-6">|</span>
+              <span>
+                <Trans>Owned by</Trans> {ownedBy}
+              </span>
             </div>
-            {status === AssetStatus.BUY_NOW && (
-              <BuyNow
-                currentPrice={currentPrice?.toString()}
-                currentUSDPrice={currentUSDPrice}
-                setStatus={() => {
+            <div className="bg-base/3 border-base/6 text-light mt-6 flex flex-row items-center rounded-[5px] border px-3 py-2 text-sm font-normal">
+              <MintedIcon />
+              <span className="ml-[5px]">Minted: {assetDetails?.totalMintedAssets}</span>
+            </div>
+          </div>
+          {status === AssetStatus.BUY_NOW && (
+            <BuyNow
+              currentPrice={currentPrice?.toString()}
+              currentUSDPrice={currentUSDPrice}
+              setStatus={() => {
+                if (isMobile) {
+                  setOpenSorryMobile(!openSorryMobile);
+                } else {
                   onTrackingItem({ eventName: 'MKP Item Buy Now Selected' });
                   setAssetBuy({
                     name: assetDetails?.name || '',
@@ -761,54 +828,54 @@ function AssetDetails({ id }: Props) {
                   });
                   setPayloadDataTrade(formatDataTrade({ ...assetDetails }));
                   setShowPopup(true);
-                }}
-              />
-            )}
-            {status === AssetStatus.UNCONNECTED && (
-              <ConnectWalletToBuy
-                currentPrice={currentPrice?.toString()}
-                currentUSDPrice={currentUSDPrice}
-                setStatus={() => {
-                  onTrackingConnectWallet();
-                  onConnectCompaign('B2C Marketplace');
-                  // handle if the first purchase
-                  handleSetFirstPurchase(true);
-                  if (loginByWalletMutation.isError) {
-                    loginByWalletMutation.mutate();
-                  }
-                  connectL2Wallet();
-                }}
-              />
-            )}
-            {status === AssetStatus.SALE && (
-              <ItemForSale
-                starkKey={starkKey}
-                assetDetails={assetDetails}
-                setStatus={() => {
-                  setShowModal(true);
-                  onTrackingNoPriceItem('MKP Item Listing Selected');
-                }}
-                onShowPopover={() => handleDisplayPopoverWithdrawNFT(true)}
-                trackWithDraw={() => onTrackingNoPriceItem('MKP Item Withdrawal Selected')}
-              />
-            )}
-            {status === AssetStatus.UNCONNECTED_NOT_SALE && <ItemNotForSale />}
-            {status === AssetStatus.MODIFY && (
-              <ModifyListing
-                currentPrice={currentPrice?.toString()}
-                currentUSDPrice={currentUSDPrice}
-                setStatus={() => {
-                  onTrackingItem({ eventName: 'MKP Item Listing Modify Selected' });
-                  setShowModal(true);
-                }}
-                setShowUnlist={() => {
-                  onTrackingItem({ eventName: 'MKP Item Unlisting Selected' });
-                  setShowModalUnlist(true);
-                }}
-              />
-            )}
-          </div>
-          <div className="border-t border-blue/3">
+                }
+              }}
+            />
+          )}
+          {status === AssetStatus.UNCONNECTED && (
+            <ConnectWalletToBuy
+              currentPrice={currentPrice?.toString()}
+              currentUSDPrice={currentUSDPrice}
+              setStatus={() => {
+                onTrackingConnectWallet();
+                onConnectCompaign('B2C Marketplace');
+                // handle if the first purchase
+                handleSetFirstPurchase(true);
+                if (loginByWalletMutation.isError) {
+                  loginByWalletMutation.mutate();
+                }
+                connectL2Wallet();
+              }}
+            />
+          )}
+          {status === AssetStatus.SALE && (
+            <ItemForSale
+              starkKey={starkKey}
+              assetDetails={assetDetails}
+              setStatus={() => {
+                setShowModal(true);
+                onTrackingNoPriceItem('MKP Item Listing Selected');
+              }}
+              onShowPopover={() => handleDisplayPopoverWithdrawNFT(true)}
+              trackWithDraw={() => onTrackingNoPriceItem('MKP Item Withdrawal Selected')}
+            />
+          )}
+          {status === AssetStatus.UNCONNECTED_NOT_SALE && <ItemNotForSale />}
+          {status === AssetStatus.MODIFY && (
+            <ModifyListing
+              currentPrice={currentPrice?.toString()}
+              currentUSDPrice={currentUSDPrice}
+              setStatus={() => {
+                onTrackingItem({ eventName: 'MKP Item Listing Modify Selected' });
+                setShowModal(true);
+              }}
+              setShowUnlist={() => {
+                onTrackingItem({ eventName: 'MKP Item Unlisting Selected' });
+                setShowModalUnlist(true);
+              }}
+            />
+          )}
+          <div className="border-blue/3 border-t">
             {/* TAB */}
             <AssetDetailTab
               data={listOrder?.items}
@@ -818,9 +885,25 @@ function AssetDetails({ id }: Props) {
               isModifing={status === AssetStatus.MODIFY}
             />
           </div>
+          <BottomSheet open={openSorryMobile} setOpen={setOpenSorryMobile} snapPoints={[280, 0]}>
+            <SorryActionMobile onCloseModal={() => setOpenSorryMobile(false)} />
+          </BottomSheet>
         </div>
+        {attributes.length > 0 && (
+          <div className="text-white lg:hidden">
+            {/* list stat */}
+            <div className="mt-10 mb-4 text-lg font-bold">
+              <Trans>Attributes</Trans>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              {attributes.map(({ key, val }) => {
+                return <ItemAttribution key={key} keyword={key} val={val} />;
+              })}
+            </div>
+          </div>
+        )}
       </div>
-      <div className="mt-16">
+      <div className="mt-10 lg:mt-16">
         <AssetList
           title={'More from this collection'}
           items={moreCollectionList?.map((elm: any) => {
@@ -945,22 +1028,12 @@ function AssetDetails({ id }: Props) {
 const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
   setStatus,
   starkKey,
-  assetDetails,
-  trackWithDraw,
-  onShowPopover
+  assetDetails
 }) => {
-  const { handleSetValueNFT } = useWithDrawNFTContext();
-
-  const handleWithdraw = async () => {
-    handleSetValueNFT(assetDetails);
-    onShowPopover();
-    trackWithDraw?.();
-  };
-
   return (
-    <div className="mb-[48px]">
+    <div className="mb-12">
       <div>
-        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
+        <span className="text-light mt-9 mb-4 text-lg">
           <Trans>Market Status</Trans>
         </span>
         <div className="mt-[20px] flex flex-row items-center">
@@ -971,38 +1044,30 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
       </div>
       {starkKey === assetDetails?.owner?.starkKey && (
         <>
-          {assetDetails?.status == 'WITHDRAWING' ? (
+          {assetDetails?.status == WithDrawStatus.PENDING ? (
             <>
               <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
-                <Trans>LIST ITEM FOR SALE</Trans>
-              </div>
-              <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
                 <Trans>WITHDRAWAL IN PROGRESS</Trans>
               </div>
             </>
-          ) : assetDetails?.status == 'WITHDRAWAL_COMPLETED' ? (
+          ) : assetDetails?.status == WithDrawStatus.COMPLETED ? (
             <>
-              <div className="my-[10px] flex h-[56px] w-full items-center justify-center rounded-[8px] border text-[16px] font-bold text-white">
+              <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
                 <Trans>WITHDRAW COMPLETED</Trans>
               </div>
             </>
           ) : (
             <>
               <button
-                className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
+                className="bg-primary/6 text-base/1 mb-[10px] mt-10 flex h-14 w-full cursor-pointer items-center justify-center rounded-lg text-base font-bold"
                 onClick={setStatus}>
                 <Trans>LIST ITEM FOR SALE</Trans>
-              </button>
-              <button
-                className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
-                onClick={handleWithdraw}>
-                <Trans>WITHDRAW</Trans>
               </button>
             </>
           )}
         </>
       )}
-      <span className="text-light mt-[10px] text-[14px]">
+      <span className="text-light mt-[10px] text-sm">
         <Trans>Assets remain in your wallet when you list them on Myria Marketplace</Trans>
       </span>
     </div>
@@ -1011,12 +1076,12 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
 
 const ItemNotForSale: React.FC<IProp> = ({}) => {
   return (
-    <div className="mb-[48px]">
+    <div className="mb-12">
       <div>
-        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
+        <span className="text-light mt-9 mb-4 text-lg">
           <Trans>Market Status</Trans>
         </span>
-        <div className="mt-[20px] flex flex-row items-center">
+        <div className="mt-5 flex flex-row items-center">
           <span className="text-[28px] font-bold">
             <Trans>Not for Sale</Trans>
           </span>
@@ -1033,15 +1098,15 @@ const ModifyListing: React.FC<IProp> = ({
   setShowUnlist
 }) => {
   return (
-    <div className="mb-[48px]">
+    <div className="mb-12">
       <div>
-        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
+        <span className="text-light mt-9 mb-4 text-lg">
           <Trans>Current price</Trans>
         </span>
         <div className="flex flex-row items-center">
-          <DAOIcon className="mr-[8px]" />
+          <DAOIcon className="mr-2" />
           <span className="text-[28px] font-bold">{currentPrice}</span>
-          <span className="text-light mb-[5px] ml-2 self-end text-[14px]">
+          <span className="text-light mb-[5px] ml-2 self-end text-sm">
             {'(~$'}
             {currentUSDPrice}
             {')'}
@@ -1049,12 +1114,12 @@ const ModifyListing: React.FC<IProp> = ({
         </div>
       </div>
       <button
-        className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
+        className="bg-primary/6 text-base/1 mb-[10px] mt-10 flex h-14 w-full cursor-pointer items-center justify-center rounded-lg text-base font-bold"
         onClick={setStatus}>
         <Trans>MODIFY LISTING</Trans>
       </button>
       <button
-        className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] border text-[16px] font-bold text-white"
+        className="my-[10px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-lg border text-base font-bold text-white"
         onClick={setShowUnlist}>
         <Trans>UNLIST THIS ITEM</Trans>
       </button>
@@ -1064,15 +1129,15 @@ const ModifyListing: React.FC<IProp> = ({
 
 const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) => {
   return (
-    <div className="mb-[48px]">
+    <div className="mb-12">
       <div>
-        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
+        <span className="text-light mt-9 mb-4 text-lg">
           <Trans>Current price</Trans>
         </span>
         <div className="flex flex-row items-center">
-          <DAOIcon className="mr-[8px]" />
+          <DAOIcon className="mr-2" />
           <span className="text-[28px] font-bold">{currentPrice}</span>
-          <span className="text-light mb-[5px] ml-2 self-end text-[14px]">
+          <span className="text-light mb-[5px] ml-2 self-end text-sm">
             {'(~$'}
             {currentUSDPrice}
             {')'}
@@ -1080,7 +1145,7 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
         </div>
       </div>
       <button
-        className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
+        className="bg-primary/6 text-base/1 mb-[10px] mt-6 lg:mt-10 flex h-12 lg:h-14 w-full cursor-pointer items-center justify-center rounded-lg text-base font-bold"
         onClick={setStatus}>
         <Trans>BUY NOW</Trans>
       </button>
@@ -1090,15 +1155,15 @@ const BuyNow: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) =
 
 const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, setStatus }) => {
   return (
-    <div className="mb-[48px]">
+    <div className="mb-12">
       <div>
-        <span className="text-light mt-[36px] mb-[16px] text-[18px]">
+        <span className="text-light mt-9 mb-4 text-lg">
           <Trans>Current price</Trans>
         </span>
         <div className="flex flex-row items-center">
-          <DAOIcon className="mr-[8px]" />
+          <DAOIcon className="mr-2" />
           <span className="text-[28px] font-bold">{currentPrice}</span>
-          <span className="text-light mb-[5px] ml-1 self-end text-[14px]">
+          <span className="text-light mb-[5px] ml-1 self-end text-sm">
             {'(~$'}
             {currentUSDPrice}
             {')'}
@@ -1106,7 +1171,7 @@ const ConnectWalletToBuy: React.FC<IProp> = ({ currentPrice, currentUSDPrice, se
         </div>
       </div>
       <button
-        className="bg-primary/6 text-base/1 mb-[10px] mt-[40px] flex h-[56px] w-full cursor-pointer items-center justify-center rounded-[8px] text-[16px] font-bold"
+        className="bg-primary/6 text-base/1 mb-[10px] mt-10 flex h-14 w-full cursor-pointer items-center justify-center rounded-lg text-base font-bold"
         onClick={setStatus}>
         <Trans>Connect Wallet To Buy</Trans>
       </button>

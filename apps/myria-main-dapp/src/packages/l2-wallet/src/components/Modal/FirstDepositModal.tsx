@@ -12,7 +12,6 @@ import {
 import CurrencySelector, { TOption } from '../Dropdown/CurrencySelector';
 import { ThreeDotsVerticalIcon } from '../Icons';
 import MaxInput from '../Input/MaxInput';
-
 import { Trans } from '@lingui/macro';
 import { TxResult, ConfirmationType } from 'myria-core-sdk';
 import { getNetworkId } from 'src/services/myriaCoreSdk';
@@ -23,6 +22,7 @@ import { TokenType } from '../../common/type';
 import { useEthereumPrice } from '../../hooks/useEthereumPrice';
 import { getModuleFactory } from '../../services/myriaCoreSdk';
 import { convertEthToWei } from '../../utils/Converter';
+import FirstDepositFailed from './FirstDepositFailed';
 type Props = {
   modalShow: Boolean;
   closeModal: any;
@@ -52,6 +52,7 @@ enum PROGRESS {
   START,
   PROCESSING,
   COMPLETED,
+  FAILED,
 }
 
 export default function FirstDepositModal({
@@ -170,8 +171,7 @@ export default function FirstDepositModal({
       setDepositProgress(PROGRESS.COMPLETED);
     } catch (err) {
       console.log(err);
-      setDepositProgress(PROGRESS.START);
-      // toast('Error occured when deposit. Please try again!');
+      setDepositProgress(PROGRESS.FAILED);
     }
   };
 
@@ -338,15 +338,6 @@ export default function FirstDepositModal({
                       </a>
                     </div>
                   </div>
-                  {/* <div className="mt-4 flex rounded-lg border border-[#D9D9D9] py-4 px-[14px]">
-                    <div className="mr-[9px] flex-none">
-                      <InfoCircleIcon />
-                    </div>
-                    <div className="text-[12px] text-[#777777]">
-                      Your deposit is now complete and your funds have been
-                      added to your Myria wallet
-                    </div>
-                  </div> */}
                 </div>
 
                 <div className="mt-8 flex w-full justify-end">
@@ -361,6 +352,13 @@ export default function FirstDepositModal({
                   </button>
                 </div>
               </div>
+            )}
+
+            {depositProgress === PROGRESS.FAILED && (
+              <FirstDepositFailed
+                amount={amount || 0}
+                depositRetryHandler={() => setDepositProgress(PROGRESS.START)}
+              />
             )}
           </div>
         </div>

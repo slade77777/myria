@@ -20,7 +20,7 @@ const AssetList: React.FC<Props> = ({ title, items, isFilter = false }) => {
       )}
       <div
         className={clsx(
-          'grid grid-cols-1 justify-start justify-items-center sm:grid-cols-2 gap-6',
+          'grid grid-cols-2 justify-start justify-items-center sm:grid-cols-2 gap-6',
           isFilter ? 'mt-4 md:grid-cols-2 lg:grid-cols-3' : 'mt-8 md:grid-cols-3 lg:grid-cols-4'
         )}>
         {items?.map((item) => (

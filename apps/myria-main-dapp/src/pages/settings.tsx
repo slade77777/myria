@@ -1,5 +1,5 @@
 import Page from '../components/Page';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAuthenticationContext } from '../context/authentication';
 import { useRouter } from 'next/router';
 import { useWalletContext } from '../context/wallet';
@@ -11,6 +11,8 @@ import ProfileSetting from '../components/setting/ProfileSetting';
 import SecuritySetting from '../components/setting/SecuritySetting';
 import WalletInformation from '../components/setting/WalletInformation';
 import BackIcon from '../components/icons/BackIcon';
+import Modal from '../components/Modal';
+import PasswordForm from '../components/setting/PasswordForm';
 
 const triggerStyle = 'text-grey/9 mr-10 hover:text-primary/6 border-primary/6';
 
@@ -18,6 +20,8 @@ const Settings = () => {
   const { address } = useWalletContext();
   const { user, userProfileQuery } = useAuthenticationContext();
   const [activeTab, setActiveTab] = useState('profile');
+  const [modalShow, setModalShow] = useState(false);
+
   const router = useRouter();
   const { activeFromEmail } = router.query;
   useEffect(() => {
@@ -29,9 +33,13 @@ const Settings = () => {
 
   useEffect(() => {
     if (activeFromEmail === 'true') {
-      setActiveTab('security');
+      setModalShow(true);
     }
   }, [activeFromEmail]);
+
+  const closeModal = useCallback(() => {
+    setModalShow(false);
+  }, []);
 
   return (
     <Page includeFooter={false}>
@@ -70,6 +78,13 @@ const Settings = () => {
           </Tabs.Content>
         </Tabs.Root>
       </div>
+      <Modal open={modalShow} onOpenChange={closeModal}>
+        <Modal.Content className="z-[5000] shadow-[0_0_40px_10px_#0000004D]">
+          <div className="px-4 py-8">
+            <PasswordForm onSuccess={closeModal} />
+          </div>
+        </Modal.Content>
+      </Modal>
     </Page>
   );
 };

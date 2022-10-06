@@ -5,7 +5,7 @@ const ReadMoreText: FC<{ text: string; textClass?: string }> = ({ text, textClas
   const [showFull, setShow] = useState(false);
   return (
     <>
-      <div className={!showFull ? 'line-clamp-3' : ''}>
+      <div className={!showFull ? 'line-clamp-2 md:line-clamp-3' : ''}>
         <p className={clsx('text-light', textClass)}>{text}</p>
       </div>
       {showFull ? (
