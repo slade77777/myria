@@ -94,11 +94,7 @@ const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
     }
   }
 
-  return (
-    <button className="btn-lg btn-primary w-full justify-center">
-      <Trans>IN DEVELOPMENT</Trans>
-    </button>
-  );
+  return null;
 };
 
 export default memo(PlayButton);

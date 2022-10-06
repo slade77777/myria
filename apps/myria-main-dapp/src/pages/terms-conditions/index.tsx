@@ -549,7 +549,7 @@ export default function index({}: Props) {
               </div>
               <ul>
                 <li className="mt-4">
-                  <h4 className="text-[20px] font-bold">1. Myria’s Licences</h4>
+                  <h4 className="text-[20px] font-bold text-white">1. Myria’s Licences</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p className="font-bold">1.1 Protocol Licence</p>
@@ -581,7 +581,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">2. Your Licence</h4>
+                  <h4 className="text-[20px] font-bold text-white">2. Your Licence</h4>
                   <p>
                     You hereby grant to Myria the Developer Licence: a worldwide, nonexclusive,
                     non-transferable, royalty-free licence to use your trademarks, service marks,
@@ -591,7 +591,7 @@ export default function index({}: Props) {
                   </p>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">3. Your Obligations</h4>
+                  <h4 className="text-[20px] font-bold text-white">3. Your Obligations</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p className="font-bold">3.1 Responsibility and Commitments</p>
@@ -903,7 +903,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">4. Myria obligations</h4>
+                  <h4 className="text-[20px] font-bold text-white">4. Myria obligations</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p className="font-bold">
@@ -937,7 +937,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">5. Intellectual Property</h4>
+                  <h4 className="text-[20px] font-bold text-white">5. Intellectual Property</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p className="font-bold">
@@ -1019,7 +1019,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">6. Fees</h4>
+                  <h4 className="text-[20px] font-bold text-white">6. Fees</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p className="font-bold">
@@ -1063,7 +1063,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">7. NFT Minting</h4>
+                  <h4 className="text-[20px] font-bold text-white">7. NFT Minting</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p>
@@ -1102,7 +1102,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">8. Publicity</h4>
+                  <h4 className="text-[20px] font-bold text-white">8. Publicity</h4>
                   <p>
                     During the Term of these Terms, You will display Myria’s name, trademarks, and
                     logos in all marketing materials that include information about the partnerships
@@ -1112,7 +1112,7 @@ export default function index({}: Props) {
                   </p>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">9. Confidentiality</h4>
+                  <h4 className="text-[20px] font-bold text-white">9. Confidentiality</h4>
                   <p>
                     Neither party will use, copy, adapt, alter or part with possession of any
                     information of the other which is disclosed or otherwise comes into its
@@ -1126,7 +1126,7 @@ export default function index({}: Props) {
                   </p>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">10. Term and Termination</h4>
+                  <h4 className="text-[20px] font-bold text-white">10. Term and Termination</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p className="font-bold">10.1 Commencement</p>
@@ -1205,7 +1205,9 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">11. Limitation of liability and release</h4>
+                  <h4 className="text-[20px] font-bold text-white">
+                    11. Limitation of liability and release
+                  </h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p>
@@ -1296,7 +1298,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">12. Indemnity</h4>
+                  <h4 className="text-[20px] font-bold text-white">12. Indemnity</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p>
@@ -1334,7 +1336,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">13. Disputes</h4>
+                  <h4 className="text-[20px] font-bold text-white">13. Disputes</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p>
@@ -1361,7 +1363,7 @@ export default function index({}: Props) {
                   </div>
                 </li>
                 <li className="mt-4 space-y-2">
-                  <h4 className="text-[20px] font-bold">14. Miscellaneous</h4>
+                  <h4 className="text-[20px] font-bold text-white">14. Miscellaneous</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
                       <p className="font-bold">14.1 No Partnership or Joint Venture</p>

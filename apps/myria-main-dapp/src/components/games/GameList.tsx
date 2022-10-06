@@ -94,14 +94,6 @@ const filters: FilterList = [
         name: 'Myria Studios'
       },
       {
-        id: 'Leapblock Studios',
-        name: 'Leapblock Studios'
-      },
-      {
-        id: 'AB de Villiers',
-        name: 'AB de Villiers'
-      },
-      {
         id: 'Ecosystem Developer',
         name: 'Ecosystem Developer'
       }
@@ -128,7 +120,7 @@ export const games: {
   link?: string;
 }[] = [
   {
-    image: '/images/our-games/metarush_op.png',
+    image: '/images/our-games/metarush_op1.jpg',
     title: 'Metarush',
     feature: 'Multi Player',
     genre: ['Survival', 'Racing'],
@@ -164,11 +156,11 @@ export const games: {
     category: 'Games'
   },
   {
-    image: '/images/our-games/moonville_op.png',
+    image: '/images/our-games/moonville_op1.png',
     title: 'Moonville Farms',
     feature: 'Multi Player',
     genre: ['Simulation'],
-    publisher: 'Leapblock Studios',
+    publisher: 'Ecosystem Developer',
     id: 'moonville-farms',
     category: 'Games'
   },
@@ -177,7 +169,7 @@ export const games: {
     title: 'Mr 360 Cricket',
     feature: 'Multi Player',
     genre: ['Casual', 'Sports'],
-    publisher: 'AB de Villiers',
+    publisher: 'Ecosystem Developer',
     id: 'mr-360-cricket',
     category: 'Games',
     link: '/cricket'

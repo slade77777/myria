@@ -71,8 +71,8 @@ const Solution: React.FC = () => {
             </h1>
             <p className="mt-6 text-[18px] leading-[1.5] md:text-[20px]">
               <Trans>
-                Myria is a decentralised Ethereum Layer 2, built to empower digital assets, NFT,
-                blockchain gaming and more.
+                Myria is a decentralised Ethereum Layer 2 powered by StarkWare, built to empower
+                digital assets, NFT, blockchain gaming and more.
               </Trans>
             </p>
           </div>
@@ -88,11 +88,11 @@ const Solution: React.FC = () => {
                 <Trans>
                   Myria’s{' '}
                   <span className=" font-medium text-brand-gold">Ethereum L2 scaling solution</span>{' '}
-                  uses zero-knowledge technology (zk-STARKs) to “roll-up” or bundle thousands of L2
-                  transactions into one single transaction. This then sends a validity proof back to
-                  the main blockchain, preserving the security of L1 Ethereum. Myria’s STARK-based
-                  zkrollup solution enable NFTs and dApps to achieve unlimited scale, low
-                  transaction fees without sacrificing on security.
+                  uses zero-knowledge technology (zk-STARKs with StarkEx) to “roll-up” or bundle
+                  thousands of L2 transactions into one single transaction. This then sends a
+                  validity proof back to the main blockchain, preserving the security of L1
+                  Ethereum. Myria’s STARK-based zkrollup solution enable NFTs and dApps to achieve
+                  unlimited scale, low transaction fees without sacrificing on security.
                 </Trans>
               </p>
             </div>

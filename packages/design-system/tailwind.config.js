@@ -16,6 +16,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      padding: {
+        '1/2': '50%'
+      },
       colors: {
         'brand-gold': '#F5B941',
         'brand-orange': '#ED8A33',
@@ -208,6 +211,17 @@ module.exports = {
             transform: 'translateY(-50px)',
             opacity: 0
           }
+        },
+        opacityControl: {
+          '0%': {
+            opacity: 1
+          },
+          '30%': {
+            opacity: 0.6
+          },
+          '100%': {
+            opacity: 1
+          }
         }
       },
       animation: {
@@ -222,7 +236,8 @@ module.exports = {
         'fade-in': 'fadeIn 700ms cubic-bezier(0.16, 1, 0.3, 1)',
         'fade-out': 'fadeOut 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
         float: 'float 6s ease-in-out infinite;',
-        starUp: 'starUp 6s ease-in-out infinite'
+        starUp: 'starUp 6s ease-in-out infinite',
+        bgEffect: 'opacityControl 6s ease-in-out infinite'
       },
       boxShadow: {
         'dark-panel': '0px 0px 40px 10px rgba(0, 0, 0, 0.3)',
