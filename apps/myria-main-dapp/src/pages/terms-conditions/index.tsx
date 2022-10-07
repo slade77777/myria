@@ -22,9 +22,10 @@ export default function index({}: Props) {
             <div className="text-base/9 mt-4 list-disc font-light leading-[24px]">
               <div className="space-y-1">
                 <p>
-                  Please read carefully the terms of this End User License Agreement (the “EULA”)
-                  and note that there may be specific terms or conditions applicable to You as a End
-                  User in a given jurisdiction, as detailed below.{' '}
+                  Please read carefully the terms of this End User License Agreement (the{' '}
+                  <span className="font-bold">“EULA”</span>) and note that there may be specific
+                  terms or conditions applicable to You as a End User in a given jurisdiction, as
+                  detailed below.{' '}
                 </p>
                 <p>
                   All capitalised terms and expressions used in this EULA are defined in the last
