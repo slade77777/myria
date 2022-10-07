@@ -1022,7 +1022,7 @@ export default function index({}: Props) {
                   <h4 className="text-[20px] font-bold text-white">6. Fees</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
-                      <p className="font-bold">
+                      <p>
                         6.1 The Fees are payable in the currency (or cryptocurrency) in which a
                         transaction occurs involving the Protocol, including if occurring via the
                         Developer’s Platform.
