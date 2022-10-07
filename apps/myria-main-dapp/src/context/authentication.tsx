@@ -48,6 +48,7 @@ export type Account = {
   created_on: string;
   last_activity: string;
   hasPassword?: boolean;
+  image_url?: string;
 };
 
 const VerifyModal = ({
