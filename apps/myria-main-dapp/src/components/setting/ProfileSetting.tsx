@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { t, Trans } from '@lingui/macro';
@@ -32,10 +32,16 @@ const ProfileSetting = () => {
     formState: { errors, isSubmitting, isValid, isDirty }
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: account
+    defaultValues: useMemo(() => {
+      return account;
+    }, [account])
   });
   const inputFile = useRef<any>(null);
   const [isUploading, setUpload] = useState(false);
+
+  useEffect(() => {
+    reset(account);
+  }, [account, reset]);
 
   const { mutate, isLoading } = useMutation((data: any) => apiClient.put(`/accounts/users`, data), {
     onSuccess: (res) => {
@@ -107,7 +113,7 @@ const ProfileSetting = () => {
       try {
         setUpload(true);
         const preSignedRes = await apiClient.get(`/accounts/images/upload-url/${id}.${imageType}`);
-        const preSignedUrl = preSignedRes?.data?.data?.presigned_url;
+        const preSignedUrl = preSignedRes?.data?.data?.presign_url;
         if (preSignedUrl) {
           await axios.put(preSignedUrl, file);
           const response = await apiClient.post('/accounts/images', {

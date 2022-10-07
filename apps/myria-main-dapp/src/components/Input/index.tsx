@@ -2,6 +2,8 @@ import React, { ReactNode, useState } from 'react';
 import clsx from 'clsx';
 import ErrorIcon from '../icons/ErrorIcon';
 import styles from './styles.module.css';
+import EyeIcon from '../icons/EyeIcon';
+import StrickOutEyeIcon from '../icons/StrickOutEyeIcon';
 
 export type Props = {
   message?: ReactNode | string;
@@ -13,9 +15,19 @@ export type Props = {
 
 const Input = React.forwardRef<HTMLInputElement, Props & React.HTMLProps<HTMLInputElement>>(
   (
-    { className, message = null, errorText, error, containerClassName, icon, type, ...props },
+    {
+      className,
+      message = null,
+      errorText,
+      error,
+      containerClassName,
+      icon,
+      type = 'text',
+      ...props
+    },
     ref
   ) => {
+    const [visiblePassword, setVisiblePassword] = useState(false);
     if (type == 'checkbox') {
       return (
         <input
@@ -31,15 +43,22 @@ const Input = React.forwardRef<HTMLInputElement, Props & React.HTMLProps<HTMLInp
     }
     return (
       <div className={clsx(containerClassName)}>
-        <div>
+        <div className="relative">
           <input
             className={clsx(className, 'input block w-full', {
               'border-[#FFFFFF]': error
             })}
-            type={type || 'text'}
+            type={visiblePassword ? 'text' : type}
             ref={ref}
             {...props}
           />
+          {type === 'password' && (
+            <div
+              className="absolute right-3 top-4"
+              onClick={() => setVisiblePassword(!visiblePassword)}>
+              {visiblePassword ? <StrickOutEyeIcon /> : <EyeIcon />}
+            </div>
+          )}
         </div>
         {error && (
           <div className="mt-2 flex">
