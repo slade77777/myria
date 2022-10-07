@@ -1462,7 +1462,7 @@ export default function index({}: Props) {
                         These Terms (including all Schedules and exhibits) contains the entire
                         agreement of the parties and supersedes all previous oral and written
                         communications by the parties concerning the subject matter of these Terms.
-                        these Terms may be amended solely in writing signed by both parties.
+                        These Terms may be amended solely in writing signed by both parties.
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
