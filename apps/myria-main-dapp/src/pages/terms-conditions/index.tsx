@@ -7,7 +7,7 @@ type Props = {};
 export default function index({}: Props) {
   return (
     <Page action="mint">
-      <div className={`${headerNavSpacingClassName} mx-auto max-w-[832px]`}>
+      <div className={`${headerNavSpacingClassName} mx-auto max-w-[832px] terms-conditions`}>
         <div className="pt-[80px] pb-[160px]">
           <div>
             <h1 className="text-[40px] font-bold leading-[60px] text-white">
@@ -28,21 +28,28 @@ export default function index({}: Props) {
                   detailed below.{' '}
                 </p>
                 <p>
-                  All capitalised terms and expressions used in this EULA are defined in the last
-                  section of this page.
+                  All capitalised terms and expressions used in this EULA are defined{' '}
+                  <a href="https://myria.atlassian.net/wiki/spaces/LEG/pages/edit-v2/90898445?draftShareId=66a6e3d0-990b-40fe-9b02-6577e44af100">
+                    here.
+                  </a>
                 </p>
                 <p>
                   The licences and rights granted hereunder are so granted in consideration for your
                   continued compliance with all obligations set out herein.
                 </p>
                 <p>
-                  Please refer to our Privacy Notice for information about how we collect, use,
-                  share and otherwise process information about you.
+                  Please refer to our{' '}
+                  <a href="https://myria.atlassian.net/wiki/spaces/LEG/pages/93914497/Privacy+Notice+WIP?atlOrigin=eyJpIjoiNzMyNmEzNTcyODk5NGI5MTk5NTFiNjBjNTQ2MGRjMWIiLCJwIjoiYyJ9">
+                    Privacy Notice
+                  </a>{' '}
+                  for information about how we collect, use, share and otherwise process information
+                  about you.
                 </p>
                 <p>
                   This EULA is a binding contract between You and Myria concerning your use of
-                  Myria’s services (the “Service”) on www.myria.com, including the website as well
-                  as any other media form, media channel, or mobile website related, linked, or
+                  Myria’s services (the “Service”) on{' '}
+                  <a href="https://solana.com/">www.myria.com</a>, including the website as well as
+                  any other media form, media channel, or mobile website related, linked, or
                   otherwise connected thereto as operated by Myria and constituting the Myria
                   ecosystem (collectively, the “Site”).
                 </p>
@@ -275,12 +282,12 @@ export default function index({}: Props) {
                     “Myria” and our logos, our product or service names, our slogans and the look
                     and feel of the Service are trademarks of Myria and may not be copied, imitated
                     or used, in whole or in part, without our prior written permission, which may be
-                    obtained by emailing x@myria.com. All other trademarks, registered trademarks,
-                    product names and company names or logos mentioned on the Service are the
-                    property of their respective owners. Reference to any products, services,
-                    processes or other information by trade name, trademark, manufacturer, supplier
-                    or otherwise does not constitute or imply endorsement, sponsorship or
-                    recommendation by us.
+                    obtained by emailing <a href="mailto:x@myria.com">x@myria.com</a>. All other
+                    trademarks, registered trademarks, product names and company names or logos
+                    mentioned on the Service are the property of their respective owners. Reference
+                    to any products, services, processes or other information by trade name,
+                    trademark, manufacturer, supplier or otherwise does not constitute or imply
+                    endorsement, sponsorship or recommendation by us.
                   </p>
                 </div>
               </div>
@@ -528,7 +535,8 @@ export default function index({}: Props) {
                 <p>
                   You must carefully read these terms (the “<span className="font-bold">Terms</span>
                   ”) before registering to use or using the Protocol. All capitalised terms and
-                  expressions used in these Terms are defined here.
+                  expressions used in these Terms are defined{' '}
+                  <a href="https://hackmd.io/docs/terms/definitions">here.</a>
                 </p>
                 <p>
                   By installing, copying or otherwise using the Protocol, You accept that these

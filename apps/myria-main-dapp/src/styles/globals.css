@@ -150,3 +150,7 @@ div[data-aria-hidden='true'] {
 .react-modal-sheet-content .content-attributes::-webkit-scrollbar {
   width: 4px;
 }
+
+.terms-conditions a {
+  color: rgb(126, 126, 255);
+}
