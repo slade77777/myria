@@ -1469,7 +1469,7 @@ export default function index({}: Props) {
                       <p className="font-bold">14.10 Amendment</p>
                       <p>
                         Myria may amend the terms of these Terms from time to time and provide
-                        notice of the updated terms. Such terms take effect when You uses the
+                        notice of the updated terms. Such terms take effect when You use the
                         Protocol following the change.
                       </p>
                     </div>
