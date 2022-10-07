@@ -17,7 +17,7 @@ const SecuritySetting = () => {
       default:
         return null;
     }
-  }, [tab]);
+  }, [router, tab]);
 
   return (
     <div>

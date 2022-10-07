@@ -5,13 +5,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { t, Trans } from '@lingui/macro';
 import * as yup from 'yup';
-import EyeIcon from '../icons/EyeIcon';
 import CheckIcon from '../icons/CheckIcon';
 import WarningIcon from '../icons/WarningIcon';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { validatePassword } from 'src/utils';
 import Button from '../core/Button';
-import StrickOutEyeIcon from '../icons/StrickOutEyeIcon';
 
 export interface IFormRegisterInput {
   firstName: string;
@@ -65,8 +63,6 @@ const schema = yup
   .required();
 
 const Register: React.FC = () => {
-  const [visiblePassword, setVisiblePassword] = useState(false);
-  const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
   const [hints, setHints] = useState(() => passwordHints(''));
   const {
     register,
@@ -117,14 +113,6 @@ const Register: React.FC = () => {
       setError('firstName', { type: 'custom', message: detail });
     });
   }, [registerError, setError]);
-
-  const toggleVisiblePassword = () => {
-    setVisiblePassword(!visiblePassword);
-  };
-
-  const toggleVisibleConfirmPassword = () => {
-    setVisibleConfirmPassword(!visibleConfirmPassword);
-  };
 
   const onSubmit = (data: IFormRegisterInput) => {
     const passwordError = validatePassword(data.password);
@@ -203,38 +191,24 @@ const Register: React.FC = () => {
               autoComplete="off"
             />
           </div>
-          <div className="relative">
-            <Input
-              placeholder={t`Enter your password`}
-              {...register('password')}
-              error={!!errors.password}
-              errorText={errors.password?.message}
-              className="bg-input w-full border-none pr-9"
-              containerClassName={!!errors.password ? 'mt-4' : 'mt-6'}
-              type={visiblePassword ? 'text' : 'password'}
-            />
-            <span
-              className="absolute top-[17px] right-2 cursor-pointer"
-              onClick={toggleVisiblePassword}>
-              {visiblePassword ? <StrickOutEyeIcon /> : <EyeIcon />}
-            </span>
-          </div>
-          <div className="relative">
-            <Input
-              placeholder={t`Confirm password`}
-              {...register('confirmPassword')}
-              error={!!errors.confirmPassword}
-              errorText={errors.confirmPassword?.message}
-              className="bg-input w-full border-none pr-9"
-              containerClassName={!!errors.email ? 'mt-4 ' : 'mt-6'}
-              type={visibleConfirmPassword ? 'text' : 'password'}
-            />
-            <span
-              className="absolute top-[17px] right-2 cursor-pointer"
-              onClick={toggleVisibleConfirmPassword}>
-              {visibleConfirmPassword ? <StrickOutEyeIcon /> : <EyeIcon />}
-            </span>
-          </div>
+          <Input
+            placeholder={t`Enter your password`}
+            {...register('password')}
+            error={!!errors.password}
+            errorText={errors.password?.message}
+            className="bg-input w-full border-none pr-9"
+            containerClassName={!!errors.password ? 'mt-4' : 'mt-6'}
+            type="password"
+          />
+          <Input
+            placeholder={t`Confirm password`}
+            {...register('confirmPassword')}
+            error={!!errors.confirmPassword}
+            errorText={errors.confirmPassword?.message}
+            className="bg-input w-full border-none pr-9"
+            containerClassName={!!errors.email ? 'mt-4 ' : 'mt-6'}
+            type="password"
+          />
         </div>
         {hints.map((hint) => {
           return (

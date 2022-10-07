@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { t, Trans } from '@lingui/macro';
 import * as yup from 'yup';
 import Link from 'next/link';
-import EyeIcon from '../icons/EyeIcon';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Button from '../core/Button';
 
@@ -61,22 +60,15 @@ const SignIn: React.FC = () => {
             errorText={errors.email?.message || error}
             className="mt-7"
           />
-          <div className="relative">
-            <Input
-              placeholder={t`Enter your password`}
-              {...registerForm('password')}
-              error={!!errors.password}
-              errorText={errors.password?.message}
-              className="w-full pr-9"
-              containerClassName="mt-6"
-              type={visiblePassword ? 'text' : 'password'}
-            />
-            <span
-              className="absolute top-[17px] right-2 cursor-pointer"
-              onClick={toggleVisiblePassword}>
-              <EyeIcon />
-            </span>
-          </div>
+          <Input
+            placeholder={t`Enter your password`}
+            {...registerForm('password')}
+            error={!!errors.password}
+            errorText={errors.password?.message}
+            className="w-full pr-9"
+            containerClassName="mt-6"
+            type="password"
+          />
         </div>
         <a className="text-brand-gold hover:cursor-pointer" onClick={forgotPassword}>
           <Trans>Forgot your password?</Trans>
