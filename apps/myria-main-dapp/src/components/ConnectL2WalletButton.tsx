@@ -51,6 +51,13 @@ const ConnectL2WalletButton: React.FC = () => {
   const mainL2Ref = useRef(null);
 
   const onConnectWallet = () => {
+    if (
+      (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) ||
+      (!address && user?.wallet_id)
+    ) {
+      setShowMismatchedWalletModal(true);
+      return;
+    }
     event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
     onConnectCompaign('B2C Marketplace');
     handleSetFirstPurchase(false);
