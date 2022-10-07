@@ -983,7 +983,7 @@ function AssetDetails({ id }: Props) {
           onSubmit={status === AssetStatus.MODIFY ? onSubmitModifyOrder : onSubmitCreateOrder}
           items={assetDetails}
           ethereum={etheCost}
-          imgSrc={assetDetails?.imageUrl}
+          imgSrc={validatedImageAssets(assetDetails?.imageUrl, assetDetails)}
           open={showModal}
           onClose={handleCloseModal}
           rarityColor={rarityColor}

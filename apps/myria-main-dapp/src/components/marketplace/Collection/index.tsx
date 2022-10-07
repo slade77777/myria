@@ -35,10 +35,37 @@ export interface valueSort {
   name: string;
 }
 
+export enum SortingFieldType {
+  RECENT_SOLD = 'recent_sold',
+  MOST_VIEWED = 'most_viewed',
+  AMOUNT_BUY = 'amount_buy'
+}
+
 export const dataSorting: valueSort[] = [
-  { id: 1, sortingField: 'createdAt', orderBy: AssetOrderBy.DESC, name: 'Recently listed' },
-  { id: 2, sortingField: 'amountBuy', orderBy: AssetOrderBy.ASC, name: 'Price Low to High' },
-  { id: 3, sortingField: 'amountBuy', orderBy: AssetOrderBy.DESC, name: 'Price High to Low' }
+  {
+    id: 1,
+    sortingField: SortingFieldType.RECENT_SOLD,
+    orderBy: AssetOrderBy.DESC,
+    name: 'Recently listed'
+  },
+  {
+    id: 2,
+    sortingField: SortingFieldType.AMOUNT_BUY,
+    orderBy: AssetOrderBy.ASC,
+    name: 'Price Low to High'
+  },
+  {
+    id: 3,
+    sortingField: SortingFieldType.AMOUNT_BUY,
+    orderBy: AssetOrderBy.DESC,
+    name: 'Price High to Low'
+  },
+  {
+    id: 4,
+    sortingField: SortingFieldType.MOST_VIEWED,
+    orderBy: AssetOrderBy.DESC,
+    name: 'Most Viewed'
+  }
 ];
 
 const Collection: FC<Props> = ({ collection, collectionFetched }) => {
@@ -53,7 +80,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
     description,
     totalAssets,
     totalAssetsForSale,
-    id,
+    id
   } = collection;
   const { fetchNextPage, refetch, hasNextPage, isFetchingNextPage, result, isFetching } =
     useCollectionAsset(
@@ -116,12 +143,12 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
     : '/images/marketplace/collection-banner.png';
 
   useEffect(() => {
-    if (project?.companyName && String(project.companyName).toLowerCase().includes("myria")) {
+    if (project?.companyName && String(project.companyName).toLowerCase().includes('myria')) {
       setIsMyria(true);
     } else {
       setIsMyria(false);
     }
-  }, [project])
+  }, [project]);
 
   return (
     <>
@@ -141,9 +168,13 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
           <div className="max-w-content mx-auto mb-10 px-6 md:px-0">
             <div className="relative">
               <div className="border-base/2 absolute -bottom-12 md:-bottom-16 flex w-24 h-24 md:h-[120px] md:w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
-                {
-                  iconUrl ? <img src={iconUrl} alt="" /> : isMyria ? <MyriaIcon /> : <NonMyriaIcon />
-                }
+                {iconUrl ? (
+                  <img src={iconUrl} alt="" />
+                ) : isMyria ? (
+                  <MyriaIcon />
+                ) : (
+                  <NonMyriaIcon />
+                )}
               </div>
             </div>
             <div className="pt-16 md:pt-24">
@@ -300,9 +331,9 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                       </>
                     )}
                     {isFetching &&
-                      !result?.data?.pages &&
-                      !result?.data?.pages &&
-                      !isFetchingNextPage ? (
+                    !result?.data?.pages &&
+                    !result?.data?.pages &&
+                    !isFetchingNextPage ? (
                       <div className="mt-6 flex w-full items-center justify-center" key={0}>
                         <TailSpin />
                       </div>
