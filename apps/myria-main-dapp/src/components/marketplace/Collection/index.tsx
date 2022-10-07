@@ -132,7 +132,8 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
               src={
                 collectionImageUrl
                   ? collectionImageUrl
-                  : '/images/marketplace/collection-banner.png'
+                  : isMyria ? '/images/marketplace/collection-banner.png'
+                  : '/images/marketplace/default-background.svg'
               }
               alt=""
               className="absolute h-[327px] w-full object-cover"
