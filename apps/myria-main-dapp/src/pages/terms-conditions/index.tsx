@@ -42,7 +42,7 @@ export default function index({}: Props) {
                   This EULA is a binding contract between You and Myria concerning your use of
                   Myria’s services (the “Service”) on www.myria.com, including the website as well
                   as any other media form, media channel, or mobile website related, linked, or
-                  otherwise connected thereto) as operated by Myria and constituting the Myria
+                  otherwise connected thereto as operated by Myria and constituting the Myria
                   ecosystem (collectively, the “Site”).
                 </p>
                 <p>
