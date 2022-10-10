@@ -29,6 +29,7 @@ sonar-scan:
   allow_failure: false
   only:
     - merge_requests
+    - staging
 
 dev-build:
   image: node:16
