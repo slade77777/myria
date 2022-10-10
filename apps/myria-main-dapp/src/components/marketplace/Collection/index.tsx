@@ -159,7 +159,8 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
               src={
                 collectionImageUrl
                   ? collectionImageUrl
-                  : isMyria ? '/images/marketplace/collection-banner.png'
+                  : isMyria
+                  ? '/images/marketplace/collection-banner.png'
                   : '/images/marketplace/default-background.svg'
               }
               alt=""
@@ -257,7 +258,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                     <BottomSheet
                       open={openSortMobile}
                       setOpen={setOpenSortMobile}
-                      snapPoints={[240, 0]}>
+                      snapPoints={[280, 0]}>
                       <div className="flex h-full flex-col">
                         <SortMobile
                           data={dataSorting}

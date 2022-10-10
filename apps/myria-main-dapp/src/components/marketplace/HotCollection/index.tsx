@@ -52,7 +52,6 @@ const HotCollection: React.FC = () => {
                 <div key={idx} className={`bg-base/3 overflow-hidden rounded-lg`}>
                   <div
                     className="h-[248px] bg-cover bg-center "
-                    onError={() => console.log(idx)}
                     style={{
                       backgroundImage: `url(${validatedImage(itm.collectionImageUrl)})`
                     }}

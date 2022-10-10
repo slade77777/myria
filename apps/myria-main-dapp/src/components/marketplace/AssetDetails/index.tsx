@@ -745,6 +745,20 @@ function AssetDetails({ id }: Props) {
               }}
             />
           </div>
+          {/* attribute on desktop */}
+          {attributes.length > 0 && (
+            <div className="text-white hidden lg:block">
+              {/* list stat */}
+              <div className="mt-10 mb-4 text-lg font-bold">
+                <Trans>Attributes</Trans>
+              </div>
+              <div className="grid grid-cols-4 gap-6">
+                {attributes.map(({ key, val }) => {
+                  return <ItemAttribution key={key} keyword={key} val={val} />;
+                })}
+              </div>
+            </div>
+          )}
         </div>
         <div className="lg:w-[540px] w-full mt-6 lg:mt-0">
           <div className="flex flex-row items-center justify-between">
@@ -892,6 +906,7 @@ function AssetDetails({ id }: Props) {
             <SorryActionMobile onCloseModal={() => setOpenSorryMobile(false)} />
           </BottomSheet>
         </div>
+        {/* attributes on mobile */}
         {attributes.length > 0 && (
           <div className="text-white lg:hidden">
             {/* list stat */}

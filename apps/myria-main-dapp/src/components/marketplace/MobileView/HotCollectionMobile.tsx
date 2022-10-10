@@ -9,6 +9,8 @@ import { useGA4 } from '../../../lib/ga';
 import { useAuthenticationContext } from '../../../context/authentication';
 import { useWalletContext } from '../../../context/wallet';
 import Slider, { Settings } from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const HotCollectionMobile: React.FC = () => {
   const { event } = useGA4();
@@ -44,8 +46,6 @@ const HotCollectionMobile: React.FC = () => {
       infinite: false,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplaySpeed: 30000,
-      pauseOnHover: true,
       centerMode: true,
       className: 'left',
       centerPadding: '24px 0 0'
@@ -72,7 +72,6 @@ const HotCollectionMobile: React.FC = () => {
                       <div key={idx} className={`bg-base/3 overflow-hidden rounded-lg h-full`}>
                         <div
                           className="h-[124px] bg-cover bg-center "
-                          onError={() => console.log(idx)}
                           style={{
                             backgroundImage: `url(${validatedImage(itm.collectionImageUrl)})`
                           }}
