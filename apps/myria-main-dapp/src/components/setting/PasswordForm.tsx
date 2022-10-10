@@ -70,7 +70,7 @@ const PasswordForm: FC<{ onSuccess: () => void }> = ({ onSuccess }) => {
       },
       onError: (err: any) => {
         const message = err?.response?.data?.errors?.[0]?.detail;
-        toast(message || 'Something error, please try later', {
+        toast(message || 'Error, please try later', {
           type: 'error'
         });
       }
@@ -85,7 +85,7 @@ const PasswordForm: FC<{ onSuccess: () => void }> = ({ onSuccess }) => {
       },
       onError: (err: any) => {
         const message = err?.response?.data?.errors?.[0]?.detail;
-        toast(message || 'Something error, please try later', {
+        toast(message || 'Error, please try later', {
           type: 'error'
         });
       }
