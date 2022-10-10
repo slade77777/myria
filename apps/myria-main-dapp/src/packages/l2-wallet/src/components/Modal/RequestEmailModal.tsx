@@ -70,7 +70,7 @@ const ModalContent = ({
         });
         localStorage.setItem('emailRequestNumber', '10');
       } else {
-        toast(message || 'Something error, please try later', {
+        toast(message || 'Error, please try later', {
           type: 'error',
         });
       }

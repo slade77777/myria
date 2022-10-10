@@ -11,7 +11,6 @@ import apiClient from '../../client';
 import { toast } from 'react-toastify';
 import { useAuthenticationContext } from '../../context/authentication';
 import axios from 'axios';
-import { generateUUID } from '../../utils';
 
 const schema = yup
   .object({
@@ -52,7 +51,7 @@ const ProfileSetting = () => {
     },
     onError: (err: any) => {
       const message = err?.response?.data?.errors?.[0]?.detail;
-      toast(message || 'Something error, please try later', {
+      toast(message || 'Error, please try later', {
         type: 'error'
       });
     }
@@ -69,7 +68,7 @@ const ProfileSetting = () => {
       },
       onError: (err: any) => {
         const message = err?.response?.data?.errors?.[0]?.detail;
-        toast(message || 'Something error, please try later', {
+        toast(message || 'Error, please try later', {
           type: 'error'
         });
       }
@@ -108,16 +107,14 @@ const ProfileSetting = () => {
       if (file.size > MAX_FILE_SIZE) {
         return toast.error('File is too large, maximum allowed size - 5 MB.');
       }
-      const id = generateUUID();
-      const imageType = file.name.split('.')[1];
       try {
         setUpload(true);
-        const preSignedRes = await apiClient.get(`/accounts/images/upload-url/${id}.${imageType}`);
-        const preSignedUrl = preSignedRes?.data?.data?.presign_url;
-        if (preSignedUrl) {
-          await axios.put(preSignedUrl, file);
+        const preSignedRes = await apiClient.get(`/accounts/images/upload-url/${file.name}`);
+        const { presigned_url, image_name } = preSignedRes?.data?.data;
+        if (presigned_url && image_name) {
+          await axios.put(presigned_url, file);
           const response = await apiClient.post('/accounts/images', {
-            image_name: `${id}.${imageType}`
+            image_name
           });
           if (response?.data?.data?.image_url) {
             toast.success('Update avatar successfully!!');
@@ -127,7 +124,7 @@ const ProfileSetting = () => {
           throw new Error('Presigned url is not valid!');
         }
       } catch (e) {
-        toast.error('Something error, please try again later!');
+        toast.error('Error, please try again later!');
       }
       // eslint-disable-next-line no-param-reassign
       event.target.value = '';
