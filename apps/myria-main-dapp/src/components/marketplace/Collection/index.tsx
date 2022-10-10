@@ -181,7 +181,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
             <div className="pt-16 md:pt-24">
               <div className="md:flex justify-between">
                 <div className="md:w-2/3">
-                  <p className="text-[28px] md:text-4xl font-bold text-white">{name}</p>
+                  <p className="text-[28px] md:text-4xl font-bold text-white break-all">{name}</p>
                   <p className="mt-2 text-[#97AAB5]">
                     Created By <span className="font-bold text-white">{project?.name}</span>
                   </p>
@@ -232,7 +232,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                     <BottomSheet
                       open={openFilterMobile}
                       setOpen={setOpenFilterMobile}
-                      snapPoints={[700, 0]}>
+                      snapPoints={[750, 0]}>
                       <div className="flex h-full flex-col">
                         {/* filter on Mobile */}
                         <FilterAssetMobile
