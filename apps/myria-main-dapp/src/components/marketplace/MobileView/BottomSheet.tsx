@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Sheet from 'react-modal-sheet';
 
 type Props = {
@@ -9,6 +9,14 @@ type Props = {
 };
 
 const BottomSheet = ({ open, setOpen, snapPoints, children }: Props) => {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [open]);
+
   return (
     <Sheet rootId="root" isOpen={open} onClose={() => setOpen(false)} snapPoints={snapPoints}>
       <Sheet.Container>
