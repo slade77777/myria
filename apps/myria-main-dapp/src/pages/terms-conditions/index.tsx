@@ -1296,7 +1296,7 @@ export default function index({}: Props) {
                     </div>
                     <div className="mt-2 space-y-2">
                       <p>
-                        10.6 Neither party will be liable to the other for any indirect, incidental,
+                        11.6 Neither party will be liable to the other for any indirect, incidental,
                         special, consequential, or punitive damages of any kind, under or in
                         connection with these Terms, or for any loss of profits, revenues, business
                         opportunity, goodwill or data, or for interruption of business or the cost
