@@ -281,7 +281,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       );
       return false;
     }
-    if (amount === parseFloat(balanceL1) || parseFloat(balance) === amount) {
+    if (amount === parseFloat(balanceL1)) {
       setErrorAmount('Please, consider transaction fee costs.');
       return false;
     }
