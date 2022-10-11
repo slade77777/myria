@@ -13,10 +13,11 @@ import { useAuthenticationContext } from '../../context/authentication';
 import axios from 'axios';
 
 const schema = yup
-  .object({
-    first_name: yup.string().optional(),
-    last_name: yup.string().optional(),
-    username: yup.string().optional()
+  .object()
+  .shape({
+    first_name: yup.string().required(),
+    last_name: yup.string().required(),
+    username: yup.string().required()
   })
   .required();
 
@@ -30,6 +31,8 @@ const ProfileSetting = () => {
     reset,
     formState: { errors, isSubmitting, isValid, isDirty }
   } = useForm({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
     resolver: yupResolver(schema),
     defaultValues: useMemo(() => {
       return account;
@@ -135,7 +138,7 @@ const ProfileSetting = () => {
 
   return (
     <div className="w-full bg-base/3 p-8">
-      <p className="text-white text-3xl font-bold">Profile Setting</p>
+      <p className="text-white text-3xl font-bold">Profile Settings</p>
       <input type="file" id="file" ref={inputFile} className="hidden" onChange={onChangeFile} />
       <div className="mt-8 flex flex-row gap-8 items-center">
         <img

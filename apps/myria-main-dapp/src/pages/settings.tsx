@@ -81,7 +81,7 @@ const Settings = () => {
       <Modal open={modalShow} onOpenChange={closeModal}>
         <Modal.Content className="z-[5000] shadow-[0_0_40px_10px_#0000004D]">
           <div className="px-4 py-8">
-            <PasswordForm onSuccess={closeModal} />
+            <PasswordForm />
           </div>
         </Modal.Content>
       </Modal>
