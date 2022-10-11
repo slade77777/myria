@@ -37,14 +37,15 @@ export interface valueSort {
 
 export enum SortingFieldType {
   RECENT_SOLD = 'recent_sold',
+  AMOUNT_BUY = 'amount_buy',
   MOST_VIEWED = 'most_viewed',
-  AMOUNT_BUY = 'amount_buy'
+  CREATED_AT = 'created_at'
 }
 
 export const dataSorting: valueSort[] = [
   {
     id: 1,
-    sortingField: SortingFieldType.RECENT_SOLD,
+    sortingField: SortingFieldType.CREATED_AT,
     orderBy: AssetOrderBy.DESC,
     name: 'Recently listed'
   },
@@ -65,6 +66,12 @@ export const dataSorting: valueSort[] = [
     sortingField: SortingFieldType.MOST_VIEWED,
     orderBy: AssetOrderBy.DESC,
     name: 'Most Viewed'
+  },
+  {
+    id: 5,
+    sortingField: SortingFieldType.RECENT_SOLD,
+    orderBy: AssetOrderBy.DESC,
+    name: 'Recent Sold'
   }
 ];
 
