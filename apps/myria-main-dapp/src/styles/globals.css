@@ -148,7 +148,7 @@ div[data-aria-hidden='true'] {
 }
 
 .react-modal-sheet-content .content-attributes::-webkit-scrollbar {
-  width: 4px;
+  display: none;
 }
 
 .terms-conditions a {
