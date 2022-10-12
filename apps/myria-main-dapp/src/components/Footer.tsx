@@ -27,10 +27,10 @@ const links = [
           label: 'Block Royale',
           link: '/game-detail/block-royale'
         },
-        {
-          label: 'Starstrike Legends',
-          link: '/game-detail/starstrike'
-        },
+        // {
+        //   label: 'Starstrike Legends',
+        //   link: '/game-detail/starstrike'
+        // },
         {
           label: 'All games',
           link: '/games'

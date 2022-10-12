@@ -1,0 +1,59 @@
+{
+  "xandar": {
+    "shortcut": {
+      "image": "/images/partner-games-1/37-xandar/logo.jpg",
+      "title": "Xandar",
+      "feature": "Multi Player",
+      "genre": ["MMORPG", "MOBA"],
+      "publisher": "Ecosystem Developer",
+      "id": "xandar",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/xandargames",
+    "headerBg": "/images/partner-games-1/37-xandar/cover.jpg",
+    "title": "Xandar",
+    "description": "",
+    "logo": "/images/partner-games-1/37-xandar/logo.jpg",
+    "logoMobile": "",
+    "assets": [],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Xandar is a Play-to-Earn Adventure and Arena-based Massively Multiplayer Online Role-Playing Game (MMORPG) that also incorporates the Massive Online Battle Arena (MOBA) concept. It introduces the concept of Octa Attributes which enhances the user&#39;s gaming utility and provides them with eight distinct attributes. It is a game where players can combine their adventure as well as battle skills to win amazing rewards in the form of NFTs and game tokens. It encourages social and financial freedom by allowing users to interact with one another and own their in-game assets as NFTs. Xandar is powered by The Game Storm Studios and being built on the Unreal Engine."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["abdullah@xandar.games"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/xandargames"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://xandar.games/",
+          "https://discord.gg/cbUU65MVBj",
+          "https://linktr.ee/xandar.games"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "The Game Storm Studios (Ozz Reality)"
+      },
+      {
+        "label": "Platform",
+        "value": "PC, Web, iOS, Android"
+      },
+      {
+        "label": "Genre",
+        "value": ["MMORPG", "MOBA"]
+      }
+    ]
+  }
+}
