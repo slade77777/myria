@@ -17,7 +17,13 @@ const schema = yup
   .shape({
     first_name: yup.string().required(),
     last_name: yup.string().required(),
-    username: yup.string().required()
+    username: yup
+      .string()
+      .required()
+      .matches(
+        /^(?=.{3,20}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9.]+(?<![.])$/,
+        'Username should be 3-10 characters and not include special characters '
+      )
   })
   .required();
 
@@ -183,7 +189,7 @@ const ProfileSetting = () => {
           errorText={errors.last_name?.message}
           className="mt-2"
         />
-        <p className="text-base/9 mt-4">username</p>
+        <p className="text-base/9 mt-4">Username</p>
         <Input
           placeholder={t`Your username`}
           {...registerForm('username')}
