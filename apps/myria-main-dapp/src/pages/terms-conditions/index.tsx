@@ -1701,6 +1701,10 @@ export default function index({}: Props) {
                 association, trust, unincorporated entity or other legal entity;
               </p>
               <p>
+                <b>Personnel</b> means any employee, contractor, subcontractor, supplier, agent,
+                partner, shareholder, ultimate beneficial owner, director or officer of a party;
+              </p>
+              <p>
                 <b>Platform</b> means any of the Myria Platform and the Developer’s Platform
               </p>
               <p>
