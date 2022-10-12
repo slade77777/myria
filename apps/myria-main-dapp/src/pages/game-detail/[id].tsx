@@ -199,7 +199,7 @@ export async function getStaticPaths() {
       { params: { id: 'metarush' } },
       { params: { id: 'metakart' } },
       { params: { id: 'block-royale' } },
-      { params: { id: 'starstrike' } },
+      // { params: { id: 'starstrike' } },
       { params: { id: 'moonville-farms' } },
       ...listIdGame
     ],
