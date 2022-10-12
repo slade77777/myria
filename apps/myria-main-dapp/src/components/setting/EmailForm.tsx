@@ -51,9 +51,6 @@ const EmailForm = () => {
     {
       onSuccess: (res) => {
         setShowConfirm(true);
-        toast('Email linked successfully, please check your email to complete', {
-          type: 'success'
-        });
       },
       onError: (err: any) => {
         const message = err?.response?.data?.errors?.[0]?.detail;
