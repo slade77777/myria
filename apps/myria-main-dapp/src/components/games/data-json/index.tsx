@@ -32,6 +32,10 @@ import Game31 from './game-31.json';
 import Game32 from './game-32.json';
 import Game33 from './game-33.json';
 import Game34 from './game-34.json';
+import Game35 from './game-35.json';
+import Game36 from './game-36.json';
+import Game37 from './game-37.json';
+import Game38 from './game-38.json';
 
 const dataJson = {
   ...JSON.parse(JSON.stringify(Game1)),
@@ -67,7 +71,11 @@ const dataJson = {
   // ...JSON.parse(JSON.stringify(Game31)),
   ...JSON.parse(JSON.stringify(Game32)),
   ...JSON.parse(JSON.stringify(Game33)),
-  ...JSON.parse(JSON.stringify(Game34))
+  ...JSON.parse(JSON.stringify(Game34)),
+  ...JSON.parse(JSON.stringify(Game35)),
+  ...JSON.parse(JSON.stringify(Game36)),
+  ...JSON.parse(JSON.stringify(Game37)),
+  ...JSON.parse(JSON.stringify(Game38))
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
