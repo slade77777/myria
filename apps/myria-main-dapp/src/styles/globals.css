@@ -154,3 +154,7 @@ div[data-aria-hidden='true'] {
 .terms-conditions a {
   color: rgb(126, 126, 255);
 }
+
+.grid-two-col-auto {
+  grid-template-columns: 16px auto;
+}

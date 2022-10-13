@@ -24,6 +24,7 @@ import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WithdrawNftOffChainParams } from 'myria-core-sdk';
 import { Trans } from '@lingui/macro';
 import { useGA4 } from 'src/lib/ga';
+import InfoCircle2Icon from 'src/packages/l2-wallet/src/components/Icons/InfoCircle2Icon';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -188,6 +189,14 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
               <span className="text-white">0.000561</span>
             </span>
           </div>
+        </div>
+        <div className="bg-brand-light-blue border-brand-light-blue text-base/9 grid-two-col-auto mt-4  grid grid-rows-2 items-center gap-x-2 rounded-lg border-[1px] border-opacity-20 bg-opacity-10 p-4">
+          <InfoCircle2Icon size={16} />
+          <span className="text-xs font-bold text-[#9AC9E3]">Heads up</span>
+          <span></span>
+          <p className="pt-1 text-[12px] text-opacity-[85%]  font-normal text-[#9AC9E3]">
+            This action is permanent and cannot be undone!
+          </p>
         </div>
       </div>
       <div className="flex justify-between">
