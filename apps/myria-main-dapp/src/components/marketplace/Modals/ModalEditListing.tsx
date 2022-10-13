@@ -183,7 +183,7 @@ export const ModalEditListing: React.FC<Props> = ({
           {description && <p className="text-light mt-5">{description}</p>}
           <div className="my-2 flex flex-row items-center text-[#97AAB5]">
             <span className="mr-2">
-              <Trans>Proceeds from sale</Trans>
+              <Trans>Seller Proceeds</Trans>
             </span>
             <ETHWhite />
             <span className="ml-1 text-[#A1AFBA]">
