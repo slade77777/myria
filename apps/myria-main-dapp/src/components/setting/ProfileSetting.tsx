@@ -53,7 +53,7 @@ const ProfileSetting = () => {
 
   const { mutate, isLoading } = useMutation((data: any) => apiClient.put(`/accounts/users`, data), {
     onSuccess: (res) => {
-      toast('Update information successfully!', {
+      toast('Settings updated', {
         type: 'success'
       });
       accountProfileQuery.refetch();
@@ -199,7 +199,7 @@ const ProfileSetting = () => {
         />
         <button
           className={clsx(
-            'btn-lg mt-6 w-56',
+            'btn-lg mt-6 w-56 h-12',
             canUpdate ? 'cursor-pointer btn-primary' : 'bg-gray/4'
           )}
           onClick={canUpdate ? handleSubmit(updateUser) : undefined}>

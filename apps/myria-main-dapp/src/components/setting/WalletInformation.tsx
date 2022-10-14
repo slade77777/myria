@@ -20,7 +20,7 @@ const WalletInformation = () => {
       <div className="w-full bg-base/3 p-8">
         <div className="pl-6 pt-2">
           <p className="text-base/9 mb-2">Ethereum wallet</p>
-          <div className="h-12 px-4 rounded bg-base/4 flex flex-row justify-between items-center">
+          <div className="h-12 px-4 rounded bg-base/4 flex flex-row justify-between items-center md:w-[800px]">
             <p>{address?.toUpperCase()}</p>
             <div
               onClick={() => address && copyToClipboard(address.toUpperCase())}
@@ -31,7 +31,7 @@ const WalletInformation = () => {
           {localStarkKey && (
             <div>
               <p className="text-base/9 mb-2 mt-4">Myria wallet</p>
-              <div className="h-12 px-4 rounded bg-base/4 flex flex-row justify-between items-center">
+              <div className="h-12 px-4 rounded bg-base/4 flex flex-row justify-between items-center md:w-[800px]">
                 <p>0X{localStarkKey.toUpperCase()}</p>
                 <div
                   onClick={() => copyToClipboard(`0X${localStarkKey.toUpperCase()}`)}
