@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro';
 import moment from 'moment';
-import React, {  } from 'react';
+import React from 'react';
 import DAOIcon from 'src/components/icons/DAOIcon';
 import { FORMAT_DATE } from 'src/utils';
 import { DF_TRANSACTION_TYPE, STATUS_HISTORY } from '../../L2Wallet/MainScreen';
@@ -8,15 +8,11 @@ interface TProps {
   transactionDetail: any;
 }
 enum Token {
-  ETHEREUM = 'Ethereum'
+  ETHEREUM = 'Ethereum',
 }
-export default function DetailTransWithdraw({
-  transactionDetail,
-}: TProps) {
-
+export default function DetailTransWithdraw({ transactionDetail }: TProps) {
   const renderTitle = (transactionDetail: any) => {
-    if (transactionDetail.status === STATUS_HISTORY.FAILED
-    ) {
+    if (transactionDetail.status === STATUS_HISTORY.FAILED) {
       return DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleFailed;
     }
     return DF_TRANSACTION_TYPE[transactionDetail?.type]?.titleHistoryDetail;
@@ -25,11 +21,11 @@ export default function DetailTransWithdraw({
   return (
     <div className="text-base/10 mt-[29px]">
       {/* Icon */}
-        <div className="mx-auto flex h-16 w-16 justify-center">
-          {transactionDetail.status === STATUS_HISTORY.FAILED
-            ? DF_TRANSACTION_TYPE[transactionDetail.type]?.iconFailed
-            : DF_TRANSACTION_TYPE[transactionDetail.type]?.iconReceived}
-        </div>
+      <div className="mx-auto flex h-16 w-16 justify-center">
+        {transactionDetail.status === STATUS_HISTORY.FAILED
+          ? DF_TRANSACTION_TYPE[transactionDetail.type]?.iconFailed
+          : DF_TRANSACTION_TYPE[transactionDetail.type]?.iconReceived}
+      </div>
       {/* Title */}
       <div className="text-base/10 mt-6 text-center text-2xl">
         {renderTitle(transactionDetail)}
@@ -60,19 +56,27 @@ export default function DetailTransWithdraw({
       {/* Detail */}
       <div className="bg-base/2/50 mt-8 rounded-lg p-4 text-sm">
         {/* Withdraw token */}
-            <div className="flex justify-between ">
-              <span className="text-base/9">
-                <Trans>Amount</Trans>
-              </span>
-              <span className="text-base/10 flex items-center">
-                {transactionDetail.name === Token.ETHEREUM && (
-                  <DAOIcon size={16} className="mb-[2px]" />
-                )}
-                <span className="ml-1">
-                  {transactionDetail.amount}
-                </span>
-              </span>
-            </div>
+        {transactionDetail.name !== Token.ETHEREUM && (
+          <div className="mb-4 flex justify-between">
+            <span className="text-base/9">
+              <Trans>Item</Trans>
+            </span>
+            <span className="text-primary/6 ml-1">
+              {transactionDetail.tokenName || 'NFT'}
+            </span>
+          </div>
+        )}
+        <div className="flex justify-between ">
+          <span className="text-base/9">
+            <Trans>Amount</Trans>
+          </span>
+          <span className="text-base/10 flex items-center">
+            {transactionDetail.name === Token.ETHEREUM && (
+              <DAOIcon size={16} className="mb-[2px]" />
+            )}
+            <span className="ml-1">{transactionDetail.amount}</span>
+          </span>
+        </div>
       </div>
     </div>
   );

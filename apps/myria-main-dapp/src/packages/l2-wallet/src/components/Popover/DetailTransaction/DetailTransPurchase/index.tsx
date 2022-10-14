@@ -79,7 +79,9 @@ export default function DetailTransPurchase({
           <span className="text-base/9">
             <Trans>Item</Trans>
           </span>
-          <span className="text-primary/6 ml-1">NFT</span>
+          <span className="text-primary/6 ml-1">
+            {transactionDetail.sellTokenName || 'NFT'}
+          </span>
         </div>
         {/* Purchase, Sell */}
         <>
