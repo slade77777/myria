@@ -1142,7 +1142,7 @@ export default function index({}: Props) {
                       <p>
                         These Terms commence when You are granted access to use the Protocol and
                         continue until either You cease using the Protocol or these Terms are
-                        terminated (Term).
+                        terminated (<span className="font-bold">Term</span>).
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
@@ -1333,11 +1333,11 @@ export default function index({}: Props) {
                       <p>
                         12.3 Myria will (a) give You reasonable written notice of the matter for
                         which it is seeking indemnification hereunder; (b) permit You to have sole
-                        control over the defense and settlement thereof, and © reasonably cooperate
-                        with You (at your expense) in the defense and settlement thereof. You will
-                        keep Myria fully informed of the status of any litigation or dispute
-                        resolution procedure, will give due consideration to the suggestions and
-                        requests of Myria concerning the conduct of the litigation or dispute
+                        control over the defense and settlement thereof, and &#169; reasonably
+                        cooperate with You (at your expense) in the defense and settlement thereof.
+                        You will keep Myria fully informed of the status of any litigation or
+                        dispute resolution procedure, will give due consideration to the suggestions
+                        and requests of Myria concerning the conduct of the litigation or dispute
                         resolution procedure, and will not settle any matter covered by this Section
                         without the prior written consent of Myria.
                       </p>
@@ -1407,9 +1407,9 @@ export default function index({}: Props) {
                         Except as otherwise permitted in these Terms, notices under these Terms will
                         be in writing and will be deemed to have been given (a) five (5) business
                         days after mailing if sent by registered mail, (b) when transmitted, if sent
-                        by email, provided that a delivery receipt notice is obtained, or © when
-                        delivered, if delivered personally or sent by courier service; in each case
-                        to the address set forth below:
+                        by email, provided that a delivery receipt notice is obtained, or &#169;
+                        when delivered, if delivered personally or sent by courier service; in each
+                        case to the address set forth below:
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
