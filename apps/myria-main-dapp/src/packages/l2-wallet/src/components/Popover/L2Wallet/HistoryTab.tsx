@@ -38,9 +38,14 @@ function HistoryTab({
 
   const renderAmount = useCallback(
     (type: string, amount: number, item: any) => {
+      const starkKey = `0x${starkKeyUser}`
       switch (type) {
         case TRANSACTION_TYPE.SETTLEMENT:
-          return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
+          if(item.partyAOrder && starkKey === item.partyAOrder.publicKey){
+            return convertQuantizedAmountToEth(item.partyAOrder.amountBuy)
+          } else {
+            return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
+          }
         case TRANSACTION_TYPE.ROYALTYTRANSFER:
           return convertQuantizedAmountToEth(item.quantizedAmount);
         default:

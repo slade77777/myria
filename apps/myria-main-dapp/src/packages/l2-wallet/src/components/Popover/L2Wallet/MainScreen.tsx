@@ -116,10 +116,12 @@ export const DF_TRANSACTION_TYPE = {
   },
   [TRANSACTION_TYPE.MINT]: {
     title: 'Mint',
-    titleHistoryDetail: 'Deposit',
+    titleHistoryDetail: 'Mint',
     titleFailed: '',
-    iconReceived: '',
-    iconFailed: '',
+    iconReceived: (
+      <Arrow3Icon direction="top" className="text-blue/6 mr-1" size={60} />
+    ),
+    iconFailed: <CircleCloseIcon className="text-error/6" />,
     icon: '',
   },
   [TRANSACTION_TYPE.ROYALTYTRANSFER]: {
