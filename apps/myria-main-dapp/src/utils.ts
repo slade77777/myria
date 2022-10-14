@@ -23,9 +23,7 @@ export const formatPrice = (amountPrice: number) => {
     lenghtPrice = amountPrice.toString().length - 2;
   }
 
-  return amountPrice >= 1
-    ? formatNumber2digits(amountPrice)
-    : amountPrice.toFixed(Number(lenghtPrice));
+  return amountPrice >= 1 ? amountPrice.toFixed(4) : amountPrice.toFixed(Number(lenghtPrice));
 };
 export const formatUSDPrice = (amountPrice: number) => {
   if (!amountPrice) return `0.00`;

@@ -201,11 +201,18 @@ function AssetDetails({ id }: Props) {
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
     if (assetDetails && !lodash.isEmpty(assetDetails.metadata)) {
-      lodash.map(assetDetails?.metadata, (val, key) => {
-        if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
-          resultArray.push({ key, val }); // remove all key what has 'url'.
-        }
-      });
+      if (Object.keys(assetDetails.metadata).includes('attributes')) {
+        const valueAtributes = (assetDetails.metadata as any).attributes;
+        valueAtributes.forEach((item: { trait_type: string; value: string }) => {
+          resultArray.push({ key: item.trait_type, val: item.value });
+        });
+      } else {
+        lodash.map(assetDetails?.metadata, (val, key) => {
+          if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
+            resultArray.push({ key, val }); // remove all key what has 'url'.
+          }
+        });
+      }
     } else {
       // @ts-ignore
       lodash.map(assetDetails?.metadataOptional?.attributes, (val, key) => {
