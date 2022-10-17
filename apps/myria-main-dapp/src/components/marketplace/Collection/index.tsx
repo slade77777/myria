@@ -71,7 +71,7 @@ export const dataSorting: valueSort[] = [
     id: 5,
     sortingField: SortingFieldType.RECENT_SOLD,
     orderBy: AssetOrderBy.DESC,
-    name: 'Recent Sold'
+    name: 'Recently Sold'
   }
 ];
 
