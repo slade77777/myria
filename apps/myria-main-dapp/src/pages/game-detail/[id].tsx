@@ -117,7 +117,7 @@ const GameDetail: React.FC = () => {
                     {info.map((item, idx) => (
                       <div className="flex items-center justify-between" key={idx}>
                         <p className="body-sm">{item.label}</p>
-                        <div className="caption text-brand-light-blue rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold">
+                        <div className="caption text-brand-light-blue rounded-[8px] bg-[#0F2F45] py-[7px] px-[12px] font-bold max-w-[70%]">
                           {item.value}
                         </div>
                       </div>

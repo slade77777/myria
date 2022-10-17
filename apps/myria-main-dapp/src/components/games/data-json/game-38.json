@@ -71,7 +71,7 @@
       },
       {
         "label": "Genre",
-        "value": ["SLG", "Tower Defence", "Strategy Combat"]
+        "value": "SLG, Tower Defence, Strategy Combat"
       }
     ]
   }
