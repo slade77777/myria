@@ -3,11 +3,13 @@ import React from 'react';
 type Props = {
   className?: string;
   size?: number;
+  border?: number;
 };
 
 export default function CircleCloseIcon({
   className = 'text-[#F37272]',
   size = 64,
+  border = 2,
 }: Props) {
   return (
     <div className={className}>
@@ -20,7 +22,7 @@ export default function CircleCloseIcon({
         <path
           d="M32.0002 58.6693C46.6668 58.6693 58.6668 46.6693 58.6668 32.0026C58.6668 17.3359 46.6668 5.33594 32.0002 5.33594C17.3335 5.33594 5.3335 17.3359 5.3335 32.0026C5.3335 46.6693 17.3335 58.6693 32.0002 58.6693Z"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth={`${border}`}
           strokeLinecap="round"
           strokeLinejoin="round"
         />

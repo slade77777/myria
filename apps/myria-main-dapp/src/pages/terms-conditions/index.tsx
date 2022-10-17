@@ -1736,11 +1736,11 @@ export default function index({}: Props) {
                 to time in connection with the APIs;
               </p>
               <p>
-                <p>Smart Contract</p> means the system of software code running on the Ethereum
+                <b>Smart Contract</b> means the system of software code running on the Ethereum
                 Blockchain used as part of the Protocol;
               </p>
               <p>
-                <p>Term</p> has the meaning set out in Section 10.1;
+                <b>Term</b> has the meaning set out in Section 10.1;
               </p>
               <p>
                 <b>Trading</b> the trading of any Digital Asset on the Platform whether when minted

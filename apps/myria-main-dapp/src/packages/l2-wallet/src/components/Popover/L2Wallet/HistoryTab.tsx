@@ -38,11 +38,11 @@ function HistoryTab({
 
   const renderAmount = useCallback(
     (type: string, amount: number, item: any) => {
-      const starkKey = `0x${starkKeyUser}`
+      const starkKey = `0x${starkKeyUser}`;
       switch (type) {
         case TRANSACTION_TYPE.SETTLEMENT:
-          if(item.partyAOrder && starkKey === item.partyAOrder.publicKey){
-            return convertQuantizedAmountToEth(item.partyAOrder.amountBuy)
+          if (item.partyAOrder && starkKey === item.partyAOrder.publicKey) {
+            return convertQuantizedAmountToEth(item.partyAOrder.amountBuy);
           } else {
             return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
           }
@@ -72,7 +72,12 @@ function HistoryTab({
       if (item.status === STATUS_HISTORY.FAILED) {
         return (
           <div className="text-error/6 mt-1 flex items-center">
-            Failed <CircleCloseIcon size={14} className="text-error/6 ml-1" />
+            Failed{' '}
+            <CircleCloseIcon
+              size={14}
+              className="text-error/6 ml-1"
+              border={5}
+            />
           </div>
         );
       }
