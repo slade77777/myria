@@ -52,7 +52,7 @@
       },
       {
         "label": "Genre",
-        "value": ["MMORPG", "MOBA"]
+        "value": "MMORPG, MOBA"
       }
     ]
   }

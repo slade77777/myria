@@ -67,7 +67,7 @@
       },
       {
         "label": "Genre",
-        "value": ["Battle", "Royal", "MMO"]
+        "value": "Battle, Royal, MMO"
       }
     ]
   }

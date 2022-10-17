@@ -50,7 +50,7 @@ export default function index({}: Props) {
                   Myria’s services (the “Service”) on{' '}
                   <a href="https://solana.com/">www.myria.com</a>, including the website as well as
                   any other media form, media channel, or mobile website related, linked, or
-                  otherwise connected thereto as operated by Myria and constituting the Myria
+                  otherwise connected thereto, as operated by Myria and constituting the Myria
                   ecosystem (collectively, the “Site”).
                 </p>
                 <p>

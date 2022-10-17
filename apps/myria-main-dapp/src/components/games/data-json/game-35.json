@@ -58,7 +58,7 @@
       },
       {
         "label": "Genre",
-        "value": ["Action", "Platformer", "Play-to-earn"]
+        "value": "Action, Platformer, Play-to-earn"
       }
     ]
   }
