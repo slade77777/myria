@@ -257,30 +257,30 @@ const Nodes: React.FC = () => {
               <p className="heading-sm text-base/10 mx-auto mt-[32px] text-xl">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              {/*{installedWallet && (*/}
-              {/*  <div>*/}
-              {/*    {!loginByWalletMutation.isError &&*/}
-              {/*    !loginByWalletMutation.isLoading &&*/}
-              {/*    walletAddress &&*/}
-              {/*    showConnectedWallet ? (*/}
-              {/*      <div>*/}
-              {/*        {!nodeLoading && !nodesLoading && (*/}
-              {/*          <Link href={purchaseLink}>*/}
-              {/*            <div className="btn-lg btn-primary mt-[38px] cursor-pointer">*/}
-              {/*              <Trans>{totalNodes >= 2 ? 'View My Nodes' : 'Purchase Now'}</Trans>*/}
-              {/*            </div>*/}
-              {/*          </Link>*/}
-              {/*        )}*/}
-              {/*      </div>*/}
-              {/*    ) : (*/}
-              {/*      <div*/}
-              {/*        className="btn-lg btn-primary mt-[38px] cursor-pointer"*/}
-              {/*        onClick={onConnectWallet}>*/}
-              {/*        <Trans>Connect To Buy</Trans>*/}
-              {/*      </div>*/}
-              {/*    )}*/}
-              {/*  </div>*/}
-              {/*)}*/}
+              {installedWallet && (
+                <div>
+                  {!loginByWalletMutation.isError &&
+                  !loginByWalletMutation.isLoading &&
+                  walletAddress &&
+                  showConnectedWallet ? (
+                    <div>
+                      {!nodeLoading && !nodesLoading && (
+                        <Link href={purchaseLink}>
+                          <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
+                            <Trans>{totalNodes >= 2 ? 'View My Nodes' : 'Purchase Now'}</Trans>
+                          </div>
+                        </Link>
+                      )}
+                    </div>
+                  ) : (
+                    <div
+                      className="btn-lg btn-primary mt-[38px] cursor-pointer"
+                      onClick={onConnectWallet}>
+                      <Trans>Connect To Buy</Trans>
+                    </div>
+                  )}
+                </div>
+              )}
             </section>
             <section className="mt-[100px]">
               <div className="max-w-[715px]">
