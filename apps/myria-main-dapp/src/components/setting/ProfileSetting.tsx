@@ -15,11 +15,11 @@ import axios from 'axios';
 const schema = yup
   .object()
   .shape({
-    first_name: yup.string().required(),
-    last_name: yup.string().required(),
+    first_name: yup.string().required('First Name is a required field.'),
+    last_name: yup.string().required('Last Name is a required field.'),
     username: yup
       .string()
-      .required()
+      .required('Username is a required field.')
       .matches(
         /^(?=.{3,20}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9.]+(?<![.])$/,
         'Username should be 3-10 characters and not include special characters '
@@ -126,7 +126,7 @@ const ProfileSetting = () => {
             image_name
           });
           if (response?.data?.data?.image_url) {
-            toast.success('Update avatar successfully!!');
+            toast.success('Update avatar successfully!');
             accountProfileQuery.refetch();
           }
         } else {
