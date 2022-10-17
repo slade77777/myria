@@ -5,6 +5,10 @@ import { headerNavSpacingClassName } from 'src/components/Header/Header';
 type Props = {};
 
 export default function index({}: Props) {
+  function scrollToDefinitions() {
+    const element = document.getElementById('definitions');
+    element?.scrollIntoView();
+  }
   return (
     <Page action="mint">
       <div className={`${headerNavSpacingClassName} mx-auto max-w-[832px] terms-conditions`}>
@@ -536,7 +540,9 @@ export default function index({}: Props) {
                   You must carefully read these terms (the “<span className="font-bold">Terms</span>
                   ”) before registering to use or using the Protocol. All capitalised terms and
                   expressions used in these Terms are defined{' '}
-                  <a href="https://hackmd.io/docs/terms/definitions">here.</a>
+                  <a className="cursor-pointer" onClick={scrollToDefinitions}>
+                    here.
+                  </a>
                 </p>
                 <p>
                   By installing, copying or otherwise using the Protocol, You accept that these
@@ -1516,7 +1522,7 @@ export default function index({}: Props) {
                         terms take precedence to the extent of such inconsistency.
                       </p>
                     </div>
-                    <div className="mt-2 space-y-2">
+                    <div id="definitions" className="mt-2 space-y-2">
                       <p className="font-bold">14.15 Governing Law</p>
                       <p>
                         These Terms will be governed by and construed in accordance with the laws of
