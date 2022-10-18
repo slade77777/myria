@@ -7,7 +7,7 @@ import { localStorageKeys } from '../../configs';
 import { useWalletContext } from '../../context/wallet';
 import { useL2WalletContext } from '../../context/l2-wallet';
 
-const availableGames = ['moonville-farms'];
+const availableGames = ['moonville-farms', 'metarush'];
 
 const PlayButton: FC<{ gameUrl?: string }> = ({ gameUrl }) => {
   const router = useRouter();
