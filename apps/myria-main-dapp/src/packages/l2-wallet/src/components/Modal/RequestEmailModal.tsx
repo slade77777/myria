@@ -13,9 +13,10 @@ import apiClient from 'src/client';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import { Loading } from 'src/components/Loading';
+import clsx from 'clsx';
 
 type Props = {
-  modalShow: boolean;
+  modalShow?: boolean;
   closeModal: () => void;
   position?: string;
   content?: string;
@@ -38,13 +39,7 @@ const linkEmail = (email: string) => {
   return apiClient.post(`/accounts/email`, { email, redirect: 1 });
 };
 
-const ModalContent = ({
-  closeModal,
-  content,
-}: {
-  closeModal: () => void;
-  content?: string;
-}) => {
+const ModalContent = ({ closeModal, content, position }: Props) => {
   const {
     register,
     handleSubmit,
@@ -124,7 +119,12 @@ const ModalContent = ({
         </div>
       </form>
 
-      <div className="mt-20 mb-4 flex justify-center px-[32px]">
+      <div
+        className={clsx(
+          'flex justify-center px-[32px]',
+          position === 'top-left' ? 'mt-12' : 'my-4',
+        )}
+      >
         <p className="cursor-pointer font-bold text-white" onClick={closeModal}>
           I’ll do this later
         </p>
@@ -147,7 +147,11 @@ export default function RequestEmailModal({
           <div className="flex items-center justify-end px-4">
             <ThreeDotsVerticalIcon className="text-[#A1AFBA]" size={32} />
           </div>
-          <ModalContent closeModal={closeModal} content={content} />
+          <ModalContent
+            closeModal={closeModal}
+            content={content}
+            position={position}
+          />
         </div>
       </div>
     );
@@ -156,7 +160,11 @@ export default function RequestEmailModal({
   return (
     <Modal open={modalShow} onOpenChange={closeModal}>
       <Modal.Content className="z-[5000] shadow-[0_0_40px_10px_#0000004D]">
-        <ModalContent closeModal={closeModal} content={content} />
+        <ModalContent
+          closeModal={closeModal}
+          content={content}
+          position={position}
+        />
       </Modal.Content>
     </Modal>
   );
