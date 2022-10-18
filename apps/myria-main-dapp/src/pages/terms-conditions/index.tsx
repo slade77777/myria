@@ -1413,9 +1413,9 @@ export default function index({}: Props) {
                         Except as otherwise permitted in these Terms, notices under these Terms will
                         be in writing and will be deemed to have been given (a) five (5) business
                         days after mailing if sent by registered mail, (b) when transmitted, if sent
-                        by email, provided that a delivery receipt notice is obtained, or &#169;
-                        when delivered, if delivered personally or sent by courier service; in each
-                        case to the address set forth below:
+                        by email, provided that a delivery receipt notice is obtained, or (c) when
+                        delivered, if delivered personally or sent by courier service; in each case
+                        to the address set forth below:
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
