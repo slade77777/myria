@@ -1,0 +1,75 @@
+{
+  "apes-ascendance": {
+    "shortcut": {
+      "image": "/images/partner-games-1/39-apes-ascendance/logo.png",
+      "title": "Apes Ascendance",
+      "feature": "Multi Player",
+      "genre": ["Survival", "Action", "Strategy"],
+      "publisher": "Ecosystem Developer",
+      "id": "apes-ascendance",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/apesascendance",
+    "headerBg": "",
+    "title": "Apes Ascendance",
+    "description": "",
+    "logo": "/images/partner-games-1/39-apes-ascendance/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "video",
+        "src": "/images/partner-games-1/39-apes-ascendance/video-1.mp4",
+        "image": "/images/partner-games-1/39-apes-ascendance/video-1-poster.png"
+      },
+      {
+        "type": "video",
+        "src": "/images/partner-games-1/39-apes-ascendance/video-2.mp4",
+        "image": "/images/partner-games-1/39-apes-ascendance/video-2-poster.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "The project is all about empowering gamers. Create any tools necessary (software, hardware) to make a reality the Play to Earn. By creating Real Utility Tokens, and Real Economy Tokenomics.",
+          "Apes Ascendance is about creating Epic Worlds where communities collaborate in Survival-Action-Strategy immersive Multiplayer Worlds, sometimes to survive and sometimes even fighting in third player with their closest against Bad AI.",
+          "Collect resources and be able to sell them out of the game. Own a house and land in the game.",
+          "Conquer and fight to protect your people.",
+          "Survival and skills for playing will be enhanced for experience, we will create some tools for playing. We have a long term vision for the franchise.",
+          "Bad AI will be an algorithm and a trained Neural Network that will reward players that are traitors, so game difficulty may increase at some point of space-time."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["serpentnaturae@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/apesascendance"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://apesascendance.com",
+          "https://discord.gg/heXR95uJqH",
+          "https://www.youtube.com/channel/UCM3etnCUxoamA94w1-4QnUA"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Ascendance Studio"
+      },
+      {
+        "label": "Platform",
+        "value": "PC"
+      },
+      {
+        "label": "Genre",
+        "value": "Survival, Action, Strategy"
+      }
+    ]
+  }
+}
