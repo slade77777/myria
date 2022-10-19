@@ -93,9 +93,7 @@ const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
           <p className="line-clamp-1 break-words text-sm font-medium">{val}</p>
         </Tooltip.Trigger>
         <Tooltip.Content side="top" className="bg-base/3  mt-[-4px] max-w-[256px]">
-          <p className="text-base/9">
-            <Trans>{val}</Trans>
-          </p>
+          <p className="text-base/9">{val}</p>
         </Tooltip.Content>
       </Tooltip>
     </div>
