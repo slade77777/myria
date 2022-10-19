@@ -85,9 +85,10 @@ const QUANTUM = '10000000000';
 const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
+  const keywordHandle = lodash.startCase(keyword);
   return (
     <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
-      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
+      <p className="text-blue/6 text-xs font-normal uppercase">{keywordHandle}</p>
       <Tooltip>
         <Tooltip.Trigger asChild className="cursor-pointer focus:outline-none">
           <p className="line-clamp-1 break-words text-sm font-medium">{val}</p>
