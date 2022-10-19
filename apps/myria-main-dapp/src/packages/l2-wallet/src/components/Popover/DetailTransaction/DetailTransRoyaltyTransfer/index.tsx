@@ -96,9 +96,8 @@ export default function DetailTransRoyaltyTransfer({
                   <ToolTipInfo
                     isPurchase
                     percentage={
-                      (transactionDetail.partyAOrder.feeInfo.feeLimit /
-                        transactionDetail.partyBOrder.amountSell) *
-                      100
+                      (transactionDetail.partyAOrder?.feeInfo?.feeLimit ||
+                        0 / transactionDetail.partyBOrder.amountSell) * 100
                     }
                   />
                 </span>
@@ -106,7 +105,7 @@ export default function DetailTransRoyaltyTransfer({
                   <DAOIcon size={16} className="mb-[2px]" />
                   <span className="ml-1">
                     {convertQuantizedAmountToEth(
-                      transactionDetail.partyAOrder.feeInfo.feeLimit,
+                      transactionDetail.partyAOrder?.feeInfo?.feeLimit || 0,
                     )}
                   </span>
                 </span>
