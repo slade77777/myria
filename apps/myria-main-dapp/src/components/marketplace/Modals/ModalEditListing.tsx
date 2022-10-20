@@ -128,11 +128,11 @@ export const ModalEditListing: React.FC<Props> = ({
               </p>
             </div>
           </div>
-          <p className="text-light mt-2 text-sm">
+          {/* <p className="text-light mt-2 text-sm">
             <Trans>
               Collection median price: <span className="text-white">2.00 ETH</span>
             </Trans>
-          </p>
+          </p> */}
           <div className="relative mt-8">
             <span className="text-light">{defaultModal.labelInput}</span>
 
