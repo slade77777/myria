@@ -145,22 +145,48 @@ function HistoryTab({
   );
 
   const renderIcon = useCallback((item: any) => {
-    if (
-      !item.name &&
-      (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-        item.type === TRANSACTION_TYPE.TRANSFER ||
-        item.type === TRANSACTION_TYPE.SETTLEMENT ||
-        item.type === TRANSACTION_TYPE.ROYALTYTRANSFER)
-    ) {
-      return <WithdrawNFTIcon size={32} />;
-    }
+    const iconItem = (avatar: string) => {
+      //case avatar = null
+      if (!avatar) {
+        //type != sale + purchase
+        if (item.type !== TRANSACTION_TYPE.SETTLEMENT) {
+          return (
+            <img className="w-8 flex-none" src={item.ico} alt="token_icon" />
+          );
+        }
+        // type withdraw, transfer, sale, royalty
+        if (
+          item.type === TRANSACTION_TYPE.WITHDRAWAL ||
+          item.type === TRANSACTION_TYPE.TRANSFER ||
+          item.type === TRANSACTION_TYPE.SETTLEMENT ||
+          item.type === TRANSACTION_TYPE.ROYALTYTRANSFER
+        ) {
+          return <WithdrawNFTIcon size={32} />;
+        }
+      }
+      return (
+        <img
+          className="h-8 w-8 flex-none rounded-2xl"
+          src={avatar}
+          alt="token_icon"
+        />
+      );
+    };
 
+    if (!item.name && item.type === TRANSACTION_TYPE.TRANSFER) {
+      return iconItem(item.avatarUrl);
+    }
     if (item.type === TRANSACTION_TYPE.ROYALTYTRANSFER) {
-      return <WithdrawNFTIcon size={32} />;
+      return iconItem(item.tokenSellInfo.tokenAvatarUrl);
     }
-
-    if (item.type !== TRANSACTION_TYPE.SETTLEMENT) {
-      return <img className="w-8 flex-none" src={item.ico} alt="token_icon" />;
+    if (item.type === TRANSACTION_TYPE.MINT) {
+      return iconItem(item.avatarUrl);
+    }
+    if (item.type === TRANSACTION_TYPE.WITHDRAWAL) {
+      return iconItem(item.avatarUrl);
+    }
+    if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
+      return iconItem(item.sellTokenAvatarUrl);
     }
   }, []);
 

@@ -62,7 +62,7 @@ export default function DetailTransWithdraw({ transactionDetail }: TProps) {
               <Trans>Item</Trans>
             </span>
             <span className="text-primary/6 ml-1">
-              {transactionDetail.tokenName || 'NFT'}
+              {transactionDetail.tokenName ?? 'NFT'}
             </span>
           </div>
         )}
