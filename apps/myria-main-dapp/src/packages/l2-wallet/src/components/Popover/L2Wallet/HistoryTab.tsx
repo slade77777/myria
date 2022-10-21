@@ -172,10 +172,14 @@ function HistoryTab({
         />
       );
     };
+    if (item.type === TRANSACTION_TYPE.DEPOSIT) {
+      return <img className="w-8 flex-none" src={item.ico} alt="token_icon" />;
+    }
 
     if (!item.name && item.type === TRANSACTION_TYPE.TRANSFER) {
       return iconItem(item.avatarUrl);
     }
+
     if (item.type === TRANSACTION_TYPE.ROYALTYTRANSFER) {
       return iconItem(item.tokenSellInfo.tokenAvatarUrl);
     }
