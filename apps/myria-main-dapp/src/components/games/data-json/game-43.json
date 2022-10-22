@@ -1,0 +1,66 @@
+{
+  "kuma-punk": {
+    "shortcut": {
+      "image": "/images/partner-games-1/43-kuma-punk/logo.png",
+      "title": "Kuma Punk",
+      "feature": "Multi Player",
+      "genre": ["NFT PFP"],
+      "publisher": "Ecosystem Developer",
+      "id": "kuma-punk",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/kuma_punk",
+    "headerBg": "",
+    "title": "Kuma Punk",
+    "description": "",
+    "logo": "/images/partner-games-1/43-kuma-punk/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/43-kuma-punk/banner-1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/43-kuma-punk/banner-2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/43-kuma-punk/banner-3.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": ["A group of bears guard the forest #ourhomeforest"]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["kuma_punk@proton.me"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/kuma_punk"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["N/A"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Kuma Punk"
+      },
+      {
+        "label": "Platform",
+        "value": "N/A"
+      },
+      {
+        "label": "Genre",
+        "value": "NFT PFP"
+      }
+    ]
+  }
+}
