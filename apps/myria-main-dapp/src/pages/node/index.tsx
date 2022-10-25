@@ -3,6 +3,8 @@ import React from 'react';
 import { MyriaIcon } from '../../components/icons/MyriaIcon';
 import NodeIcon from '../../components/icons/NodeIcon';
 import KeyIcon from '../../components/icons/KeyIcon';
+import SemiCircleBar from '../../components/node/SemiCircleBar';
+import { Trans } from '@lingui/macro';
 
 const historyData = [
   {
@@ -187,9 +189,32 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="w-1/3">
-          <div className="bg-base/3 mt-6 w-full rounded-xl p-6">
+          <div className="bg-base/3 mt-6 w-full rounded-xl p-6 pb-12">
             <p className="text-base/9">Progress Toward Goal</p>
-            <div className="w-full mt-6"></div>
+            <div className="w-full mt-6">
+              <SemiCircleBar percentage={90} showPercentValue />
+              <div className="flex flex-row mt-8">
+                <div className="w-1/2 text-base/9">Current</div>
+                <div className="w-1/2 text-base/9">Time</div>
+              </div>
+              <div className="flex flex-row mt-2">
+                <div className="w-1/2 text-base/9">Distribution</div>
+                <div className="w-1/2 text-base/9">Active</div>
+              </div>
+              <div className="text-base/9 mt-2">Cycle</div>
+              <div className="flex flex-row mt-2">
+                <div className="w-1/2 text-4xl font-semibold">00:05</div>
+                <div className="w-1/2 text-4xl font-semibold">23:29</div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-base/3 mt-6 w-full rounded-xl bg-[url('/images/nodes/dashboard/network-bg_op.png')] bg-cover bg-center p-6 shadow-dark-panel">
+            <p className="text-[20px] font-medium leading-[1.25] text-brand-light-blue">
+              <Trans>Maximise your network</Trans>
+            </p>
+            <button className="btn-lg btn-white mt-6">
+              <Trans>GET MORE LICENSES</Trans>
+            </button>
           </div>
         </div>
       </div>
