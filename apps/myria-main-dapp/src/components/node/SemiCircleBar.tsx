@@ -47,7 +47,7 @@ const SemiCircleBar: FC<{
   }
 
   return (
-    <div className="semicircle-container" style={{ position: 'relative' }}>
+    <div className="w-fit" style={{ position: 'relative' }}>
       <svg
         width={diameter}
         height={diameter / 2}
