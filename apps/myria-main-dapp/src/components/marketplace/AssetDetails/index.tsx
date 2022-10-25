@@ -1077,7 +1077,7 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
           ) : assetDetails?.status == WithDrawStatus.COMPLETED ? (
             <>
               <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
-                <Trans>WITHDRAW COMPLETED</Trans>
+                <Trans>WITHDRAWAL COMPLETE</Trans>
               </div>
             </>
           ) : (
