@@ -13,6 +13,7 @@ import clsx from 'clsx';
 import Page from '../Page';
 import DashboardIcon from '../icons/node/DashboardIcon';
 import ThumbsupIcon from '../icons/node/ThumbsupIcon';
+import { useRouter } from 'next/router';
 
 const menus = [
   {
@@ -35,35 +36,43 @@ const menus = [
     icon: <ThumbsupIcon />,
     label: <Trans>Governance</Trans>,
     path: '/node/governance',
-    commingSoon: true
+    comingSoon: true
   }
 ];
 
 const NodeLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
+  const router = useRouter();
   return (
     <Page includeFooter={false}>
       <div className="flex flex-row h-[calc(100vh-120px)]">
         <div className="flex h-screen pt-24 flex-col bg-brand-deep-blue px-6 w-72">
           <div className="flex flex-col text-[16px] leading-[1.44] text-[#A1AFBA]">
-            {menus.map((menu, idx) => (
-              <Link href={menu.path} key={idx}>
-                <a
-                  className={clsx(
-                    'flex items-center space-x-2 rounded-lg p-4 hover:bg-[#0F2F45] hover:text-white',
-                    {
-                      ' pointer-events-none': menu.commingSoon
-                    }
-                  )}>
-                  <i className="w-6">{menu.icon}</i>
-                  <p>{menu.label}</p>
-                  {menu.commingSoon && (
-                    <p className="text-brand-yellow rounded-full bg-[#2B4C63] py-[2.5px] px-2 text-[9px] font-medium leading-[1.3] text-brand-light-blue">
-                      Comming soon
-                    </p>
-                  )}
-                </a>
-              </Link>
-            ))}
+            {menus.map((menu, idx) => {
+              const isActive =
+                menu.path === '/node'
+                  ? router.pathname === '/node'
+                  : router.pathname?.includes(menu.path);
+              return (
+                <Link href={menu.path} key={idx}>
+                  <a
+                    className={clsx(
+                      'flex items-center space-x-2 rounded-lg p-4 hover:bg-[#0F2F45] hover:text-white',
+                      {
+                        ' pointer-events-none': menu.comingSoon
+                      },
+                      isActive && 'bg-base/6'
+                    )}>
+                    <i className="w-6">{menu.icon}</i>
+                    <p>{menu.label}</p>
+                    {menu.comingSoon && (
+                      <p className="text-brand-yellow rounded-full bg-[#2B4C63] py-[2.5px] px-2 text-[9px] font-medium leading-[1.3] text-brand-light-blue">
+                        Comming soon
+                      </p>
+                    )}
+                  </a>
+                </Link>
+              );
+            })}
             <div></div>
           </div>
           <div className="mt-auto border-t border-[#1F2937] pb-8">
