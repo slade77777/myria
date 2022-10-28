@@ -22,7 +22,7 @@ export const linkSources: { [key: string]: NavItem } = {
   nodes: {
     id: 'nodes',
     text: <Trans>Nodes</Trans>,
-    url: '/nodes',
+    url: '/node',
     position: 'left',
     action: ['join-discord', 'login', 'mint', 'start-building']
   },
