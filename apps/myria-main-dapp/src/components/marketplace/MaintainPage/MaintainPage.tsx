@@ -8,7 +8,7 @@ const MaintainPage: FC<{}> = () => {
         <p className="mt-5 text-[34px] font-extrabold leading-[1.15]">
           Sorry, we're down for maintenance
         </p>
-        <p className="mt-5 text-2xl font-extrabold leading-[1.15]">We'll back to soon</p>
+        <p className="mt-5 text-2xl font-extrabold leading-[1.15]">We'll be back to soon</p>
         <Link href={`/`}>
           <button className="bg-primary/6 text-base/1 px-5 py-3 rounded-lg font-medium mt-6">
             Back to Home
