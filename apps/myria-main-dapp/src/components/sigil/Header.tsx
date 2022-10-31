@@ -9,9 +9,10 @@ import UserAvatar from '../Header/UserAvatar';
 
 type Props = {
   step: number;
+  isAirDrop?: boolean
 };
 
-const Header: React.FC<Props> = ({ step }) => {
+const Header: React.FC<Props> = ({ step, isAirDrop=false }) => {
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef);
 
@@ -33,7 +34,7 @@ const Header: React.FC<Props> = ({ step }) => {
             <Logo />
           </a>
         </Link>
-        <div className="flex items-center justify-end">{step > 1 && <ConnectL2WalletButton />}</div>
+        <div className="flex items-center justify-end">{step > 1 && <ConnectL2WalletButton isAirDrop = {isAirDrop}/>}</div>
       </div>
     </header>
   );

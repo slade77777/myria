@@ -27,7 +27,11 @@ import WithdrawNFTScreen from './marketplace/Withdraw-NFT/WithdrawNFTScreen';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { noCacheApiClient } from '../client';
 
-const ConnectL2WalletButton: React.FC = () => {
+interface Props {
+  isAirDrop? : boolean
+}
+
+const ConnectL2WalletButton: React.FC<Props> = ( { isAirDrop =false }) => {
   const { event } = useGA4();
   const { installedWallet } = useInstalledWallet();
   const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
@@ -263,7 +267,7 @@ const ConnectL2WalletButton: React.FC = () => {
             <WithdrawNFTScreen />
           </WthdrawNFTPopover>
         </div>
-        {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet && (
+        {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet && !isAirDrop && (
           <UserAvatar
             items={{
               loginByWalletMutation,

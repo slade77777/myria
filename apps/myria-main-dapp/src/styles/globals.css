@@ -132,7 +132,7 @@ input[type='number'] {
 }
 
 /* popover  */
-div[data-aria-hidden='true'] {
+div[data-radix-portal][data-aria-hidden='true'] {
   z-index: 10 !important;
 }
 
@@ -158,3 +158,15 @@ div[data-aria-hidden='true'] {
 .grid-two-col-auto {
   grid-template-columns: 16px auto;
 }
+
+.header-tabs button[data-state='active'] {
+  @apply text-white border-none font-extrabold;
+  opacity: 1;
+}
+.textShadow {
+  text-shadow: 0px 0px 10px rgba(154, 201, 227, 0.5);
+}
+.rotateY {
+  transform: rotateY(180deg);
+}
+
