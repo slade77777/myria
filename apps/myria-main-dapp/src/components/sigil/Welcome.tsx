@@ -9,12 +9,14 @@ import Link from 'next/link';
 import { t, Trans } from '@lingui/macro';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { useL2WalletContext } from 'src/context/l2-wallet';
+import { Step } from 'src/pages/airdrop';
 
 type Props = {
   onNext: () => void;
+  setCurrentStep?: React.Dispatch<React.SetStateAction<Step>> | undefined;
 };
 
-const Welcome: React.FC<Props> = ({ onNext }) => {
+const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
   const { address, onConnectCompaign, disconnect } = useWalletContext();
   const { connectL2Wallet } = useL2WalletContext();
   const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
@@ -34,6 +36,11 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
   // try to login via wallet
   React.useEffect(() => {
     if (userProfileQuery.isFetching) {
+      return;
+    }
+    if (user?.user_id && user?.user_name && setCurrentStep) {
+      // check Selected Alliance from user
+      setCurrentStep(2); // set Step to federatiton
       return;
     }
     if (user?.user_id) {
@@ -96,10 +103,16 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
     }
   }, [loginByWalletMutation?.isError]);
 
+  const handleClick = async () => {
+    await onConnectCompaign('Sigil');
+    await connectL2Wallet();
+    event('Connect Wallet Selected', { campaign: 'Sigil' });
+    loginByWalletMutation.mutate();
+  };
   return (
     <div
       className={
-        "relative h-screen min-h-[inherit] bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat"
+        "relative h-screen min-h-[inherit] bg-[url('/images/nodes/airdrop/background_airdrop.png')] bg-cover bg-bottom bg-no-repeat"
       }>
       <div className="mx-auto max-w-[408px] pt-[213px] text-center">
         <h1 className="text-[28px] font-bold leading-[1.2]">{content.title}</h1>
@@ -120,12 +133,7 @@ const Welcome: React.FC<Props> = ({ onNext }) => {
             <Button
               loading={loginByWalletMutation.isLoading}
               disabled={loginByWalletMutation.isLoading}
-              onClick={async () => {
-                await onConnectCompaign('Sigil');
-                await connectL2Wallet();
-                event('Connect Wallet Selected', { campaign: 'Sigil' });
-                loginByWalletMutation.mutate();
-              }}
+              onClick={handleClick}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
               {address ? <Trans>LOGGING IN</Trans> : <Trans>CONNECT WALLET</Trans>}
             </Button>

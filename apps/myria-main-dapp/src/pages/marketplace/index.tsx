@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import { OrderStatus, OrderType } from 'myria-core-sdk';
+import Link from 'next/link';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
@@ -78,6 +79,19 @@ const Marketplace: React.FC = () => {
       <Page includeFooter={false}>
         <div className={clsx(isMobile ? '' : paddingX, headerNavSpacingClassName)}>
           <div className="md:max-w-content md:mx-auto md:mt-10">
+            {/* Campaign Banner */}
+            {/* <section className="mb-10">
+              <div className="w-full bg-[#606060] rounded-xl h-[615px] flex items-end p-16">
+                <div>
+                  <p className="text-[40px] font-extrabold mb-10">Campaign Banner [TBC]</p>
+                  <Link href={'/airdrop'}>
+                    <button className="w-[174px] h-12 text-center bg-white rounded-lg text-black font-bold">
+                      <span>Go</span>
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </section> */}
             <section className={clsx(isMobile ? '' : negativeMarginXSm, 'md:mx-0')}>
               <h2 className="h5 md:h4 mb-10 px-6 md:px-0">
                 <Trans>Marketplace</Trans>

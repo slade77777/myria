@@ -7,6 +7,7 @@ import Big from 'big.js';
 
 const FORMAT_PRICE = 1000000;
 export const FORMAT_DATE = 'ddd Do MMM YYYY';
+export const FORMAT_DATE_BY_AIRDROP = 'DD MMM YYYY';
 export const formatNumber = (num: number) => {
   return new Intl.NumberFormat('en').format(num);
 };
@@ -241,4 +242,36 @@ export const generateUUID = () => {
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
     (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
   );
+};
+
+export const utilTaskId = {
+  verifyEmail: 'VERIFY YOUR EMAIL ADDRESS',
+  joinDiscord: 'JOIN OUR DISCORD COMMUNITY',
+  followMyriaTwitter: 'FOLLOW MYRIA ON TWITTER',
+  followBrendanTwitter: 'FOLLOW BRENDAN ON TWITTER',
+  inviteFriends: 'INVITE YOUR FRIENDS',
+  dailyLogAndPostDiscord: 'DAILY LOG IN and POST ON DISCORD',
+  sharePostTwitter: 'SHARE A POST ON TWITTER',
+  reachLevelDiscord: 'REACH LEVEL 40 ON DISCORD'
+};
+
+export const discordClientId =
+  process.env.REACT_APP_NODE_ENV === 'production' ? '981500931357175848' : '972191450290872391';
+export const urlMyriaMarketPlace =
+  process.env.REACT_APP_NODE_ENV === 'production'
+    ? 'https://myria.com/marketplace'
+    : 'https://staging.nonprod-myria.com/marketplace/';
+
+export const getLinkMission = (paramTaskId: string, homePage: string) => {
+  //Check utilTaskId to return link
+  switch (paramTaskId) {
+    case utilTaskId.followMyriaTwitter:
+      return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+
+    case utilTaskId.dailyLogAndPostDiscord:
+      return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+
+    default:
+      return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+  }
 };

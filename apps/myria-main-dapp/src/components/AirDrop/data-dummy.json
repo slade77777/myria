@@ -1,0 +1,58 @@
+[
+  {
+    "titleMission": "VERIFY YOUR EMAIL ADDRESS",
+    "description": "Earn 5 points by completing account creation and becoming a true Myrian",
+    "statuMisstion": "ACTIVE",
+    "point": 5,
+    "lableButton": "VERIFY"
+  },
+  {
+    "titleMission": "JOIN OUR DISCORD COMMUNITY",
+    "description": "Earn 5 points by joining the Myria Discord server",
+    "statuMisstion": "ACTIVE",
+    "point": 5,
+    "lableButton": "LAUNCH DISCORD"
+  },
+  {
+    "titleMission": "FOLLOW MYRIA ON TWITTER",
+    "description": "Earn 5 points by joining the Myria Discord server",
+    "statuMisstion": "COMPLETE",
+    "point": 5,
+    "lableButton": "COMPLETE"
+  },
+  {
+    "titleMission": "FOLLOW BRENDAN ON TWITTER",
+    "description": "Earn 5 points by joining the Myria Discord server",
+    "statuMisstion": "ACTIVE",
+    "point": 5,
+    "lableButton": "LAUNCH TWITTER"
+  },
+  {
+    "titleMission": "INVITE YOUR FRIENDS",
+    "description": "Earn  20 points for each successful friend invite. You will earn 20 points each time a friend completes  both Alliance selection and Myria account creation via your invite link",
+    "statuMisstion": "ACTIVE",
+    "point": 5,
+    "lableButton": "COPY INVITE LINK"
+  },
+  {
+    "titleMission": "DAILY LOG IN and POST ON DISCORD",
+    "description": "Earn 15 points for each day you log in to discord and post in the #general-chat channel",
+    "statuMisstion": "ACTIVE",
+    "point": 5,
+    "lableButton": "LAUNCH DISCORD"
+  },
+  {
+    "titleMission": "SHARE A POST ON TWITTER",
+    "description": "Earn 5 points when you send your first message on any Myria Discord channel",
+    "statuMisstion": "ACTIVE",
+    "point": 5,
+    "lableButton": "SHARE POST"
+  },
+  {
+    "titleMission": "REACH LEVEL 40 ON DISCORD",
+    "description": "Earn 100 points by reaching level 40 on Myria Discord server and acquiring the ‘Space Lord’ activity role",
+    "statuMisstion": "ACTIVE",
+    "point": 5,
+    "lableButton": "LAUNCH DISCORD"
+  }
+]
