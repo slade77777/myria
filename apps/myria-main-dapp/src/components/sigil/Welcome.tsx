@@ -10,6 +10,7 @@ import { t, Trans } from '@lingui/macro';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { Step } from 'src/pages/airdrop';
+import { callCampaignHealthCheck } from 'src/services/campaignService';
 
 type Props = {
   onNext: () => void;
@@ -31,6 +32,16 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
     } else {
       setInstalledWallet(false);
     }
+  }, []);
+
+  useEffect(() => {
+    callCampaignHealthCheck()
+      .then((statusResponse) => {
+        console.log('Campaign status', statusResponse);
+      })
+      .catch((error) => {
+        console.log(`Server is unavailable with error ${error}`);
+      });
   }, []);
 
   // try to login via wallet
