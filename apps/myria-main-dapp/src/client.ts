@@ -61,7 +61,7 @@ export const noCacheApiClient = axios.create({
 });
 
 export const campaignApiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_COMPAIGN_SERVICE_URL,
+  baseURL: process.env.NEXT_PUBLIC_CAMPAIGN_SERVICE_URL,
   timeout,
   headers: {
     accept: 'application/json',
