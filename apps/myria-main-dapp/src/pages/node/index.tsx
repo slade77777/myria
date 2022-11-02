@@ -5,69 +5,7 @@ import NodeIcon from '../../components/icons/NodeIcon';
 import KeyIcon from '../../components/icons/KeyIcon';
 import SemiCircleBar from '../../components/node/SemiCircleBar';
 import { Trans } from '@lingui/macro';
-
-const historyData = [
-  {
-    time: 'Today',
-    data: [
-      {
-        type: 'mine',
-        number: '13892',
-        time: '9:12am Thu 9th Nov 2022'
-      },
-      {
-        type: 'earn',
-        number: '10',
-        time: '9:10am Thu 9th Nov 2022'
-      }
-    ]
-  },
-  {
-    time: 'Wed 8th Nov 2022',
-    data: [
-      {
-        type: 'mine',
-        number: '13892',
-        time: '10:12am Wed 8th Nov 2022'
-      },
-      {
-        type: 'earn',
-        number: '10',
-        time: '9:12am Wed 8th Nov 2022'
-      }
-    ]
-  },
-  {
-    time: 'Wed 7th Nov 2022',
-    data: [
-      {
-        type: 'mine',
-        number: '13892',
-        time: '10:12am Wed 7th Nov 2022'
-      },
-      {
-        type: 'earn',
-        number: '10',
-        time: '9:12am Wed 7th Nov 2022'
-      }
-    ]
-  },
-  {
-    time: 'Wed 6th Nov 2022',
-    data: [
-      {
-        type: 'mine',
-        number: '13892',
-        time: '10:12am Wed 6th Nov 2022'
-      },
-      {
-        type: 'earn',
-        number: '10',
-        time: '9:12am Wed 6th Nov 2022'
-      }
-    ]
-  }
-];
+import Switch from '../../components/Switch';
 
 const nodesProgress = [
   {
@@ -139,40 +77,23 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="bg-base/3 mt-6 w-full rounded-xl p-6">
-            <div className="flex flex-row justify-between py-4">
-              <p className="text-base/9">Node History</p>
-              <p className="text-blue/6">View all history</p>
+          <div className="bg-base/3 mt-6 w-full rounded-xl p-6 pt-2">
+            <div className="flex flex-row justify-between gap-8 py-4 items-center">
+              <div>
+                <p className="text-base/9 font-semibold">Node progress (Current cycle)</p>
+                {/*<p className="text-base/9 mt-4">*/}
+                {/*  Myria team help them run your nodes for a specific time before Nodes software is*/}
+                {/*  available.<span className="text-primary/6"> Learn more</span>*/}
+                {/*</p>*/}
+              </div>
+              <div
+                className="border-base/9 h-fit w-fit cursor-pointer rounded-xl border-2 p-3"
+                onClick={() => {}}>
+                <p className="text-center font-bold text-white">TURN OFF ALL NODES</p>
+              </div>
             </div>
-            <div className="max-h-96 overflow-y-auto">
-              {historyData.map((day, index) => (
-                <div key={index} className="mt-6">
-                  <p>{day.time}</p>
-                  {day.data.map((i, z) => (
-                    <div key={z} className="mt-6 flex flex-row items-center gap-4">
-                      <div className="bg-success/8 flex h-8 w-8 items-center justify-center rounded-full">
-                        {i.type === 'mine' ? (
-                          <MyriaIcon className="h-4 w-4" fill="black" />
-                        ) : (
-                          <NodeIcon className="h-4 w-4 text-black" />
-                        )}
-                      </div>
-                      <div>
-                        <p className="font-semibold">
-                          You mined <span className="text-primary/6">{i.number}</span> $MYRIA
-                        </p>
-                        <p className="text-base/8 mt-2">{i.time}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="bg-base/3 mt-6 w-full rounded-xl p-6">
-            <p className="text-base/9">Node progress (Current cycle)</p>
             {nodesProgress.map((node, i) => (
-              <div key={i} className="flex flex-row gap-4 mt-4 items-center w-full">
+              <div key={i} className="mt-4 flex w-full flex-row items-center gap-4">
                 <NodeIcon className="text-success-8 h-4 w-4" />
                 <span className="w-40">{node.name}</span>
                 <div className="bg-base/2 h-2 w-1/2 rounded-[4px]">
@@ -181,9 +102,8 @@ const Dashboard = () => {
                     style={{ width: `${node.percent}%` }}
                   />
                 </div>
-                <div className="flex-1">
-                  <p className="text-right">{node.time}</p>
-                </div>
+                <p className="text-right">{node.time}</p>
+                <Switch defaultChecked={true} onChange={() => {}} />
               </div>
             ))}
           </div>
@@ -191,25 +111,25 @@ const Dashboard = () => {
         <div className="w-1/3">
           <div className="bg-base/3 mt-6 w-full rounded-xl p-6 pb-12">
             <p className="text-base/9">Progress Toward Goal</p>
-            <div className="w-full mt-6">
+            <div className="mt-6 w-full">
               <SemiCircleBar percentage={90} showPercentValue />
-              <div className="flex flex-row mt-8">
-                <div className="w-1/2 text-base/9">Current</div>
-                <div className="w-1/2 text-base/9">Time</div>
+              <div className="mt-8 flex flex-row">
+                <div className="text-base/9 w-1/2">Current</div>
+                <div className="text-base/9 w-1/2">Time</div>
               </div>
-              <div className="flex flex-row mt-2">
-                <div className="w-1/2 text-base/9">Distribution</div>
-                <div className="w-1/2 text-base/9">Active</div>
+              <div className="mt-2 flex flex-row">
+                <div className="text-base/9 w-1/2">Distribution</div>
+                <div className="text-base/9 w-1/2">Active</div>
               </div>
               <div className="text-base/9 mt-2">Cycle</div>
-              <div className="flex flex-row mt-2">
+              <div className="mt-2 flex flex-row">
                 <div className="w-1/2 text-4xl font-semibold">00:05</div>
                 <div className="w-1/2 text-4xl font-semibold">23:29</div>
               </div>
             </div>
           </div>
-          <div className="bg-base/3 mt-6 w-full rounded-xl bg-[url('/images/nodes/dashboard/network-bg_op.png')] bg-cover bg-center p-6 shadow-dark-panel">
-            <p className="text-[20px] font-medium leading-[1.25] text-brand-light-blue">
+          <div className="bg-base/3 shadow-dark-panel mt-6 w-full rounded-xl bg-[url('/images/nodes/dashboard/network-bg_op.png')] bg-cover bg-center p-6">
+            <p className="text-brand-light-blue text-[20px] font-medium leading-[1.25]">
               <Trans>Maximise your network</Trans>
             </p>
             <button className="btn-lg btn-white mt-6">

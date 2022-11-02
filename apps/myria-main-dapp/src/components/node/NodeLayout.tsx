@@ -45,7 +45,7 @@ const NodeLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <Page includeFooter={false}>
       <div className="flex flex-row h-[calc(100vh-120px)]">
-        <div className="flex h-screen pt-24 flex-col bg-brand-deep-blue px-6 w-72">
+        <div className="flex h-screen pt-24 flex-col bg-brand-deep-blue px-6 w-96">
           <div className="flex flex-col text-[16px] leading-[1.44] text-[#A1AFBA]">
             {menus.map((menu, idx) => {
               const isActive =
@@ -56,7 +56,7 @@ const NodeLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
                 <Link href={menu.path} key={idx}>
                   <a
                     className={clsx(
-                      'flex items-center space-x-2 rounded-lg p-4 hover:bg-[#0F2F45] hover:text-white',
+                      'flex items-center space-x-2 rounded-lg p-4 my-1 hover:bg-[#0F2F45] hover:text-white',
                       {
                         ' pointer-events-none': menu.comingSoon
                       },
