@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
+import { campaignApiClient } from 'src/client';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import TailSpin from 'src/components/icons/TailSpin';
 import AssetList from 'src/components/marketplace/AssetList';
@@ -18,6 +19,11 @@ import SelectOrderBy from 'src/components/select/SelectOrderBy';
 import { useFilterSortContext } from 'src/context/filter-sort-context';
 import useCheckMobileView from 'src/hooks/useCheckMobileView';
 import useCheckStatusMarketplacePage from 'src/hooks/useCheckStatusMarketplacePage';
+import {
+  getCampaignsDetailById,
+  getUserCampaigns,
+  missionComplete
+} from 'src/services/campaignService';
 import { assetModule } from 'src/services/myriaCore';
 import { getItemsPagination, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';
@@ -108,7 +114,7 @@ const Marketplace: React.FC = () => {
                 />
               </div>
             </div>
-            <section className="mb-20 px-6 mt-16 md:mt-[6px] md:px-0">
+            <section className="mb-20 mt-16 px-6 md:mt-[6px] md:px-0">
               <div className="overflow-x-auto overflow-y-hidden">
                 {isFetching && !result.data?.pages && !isFetchingNextPage ? (
                   <div className="mt-6 flex w-full items-center justify-center" key={0}>
