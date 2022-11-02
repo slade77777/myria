@@ -3,17 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { UseMutationResult } from 'react-query';
-import { useSelector } from 'react-redux';
-import { localStorageKeys } from 'src/configs';
 import { useAuthenticationContext, User } from 'src/context/authentication';
-import useLocalStorage from 'src/hooks/useLocalStorage';
-import useUserNodes from 'src/hooks/useUserNodes';
-import { RootState } from 'src/packages/l2-wallet/src/app/store';
 import DropdownMenu from '../DropdownMenu';
 import InventoryIcon from '../icons/InventoryIcon';
 import NodeIcon from '../icons/NodeIcon';
-import UserIcon from '../icons/UserIcon';
 import SettingAltIcon from '../icons/SettingAltIcon';
+import useNodeLicense from '../../hooks/useNodeLicense';
 
 interface IProps {
   items: {
@@ -29,7 +24,7 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
   const isLogin =
     !loginByWalletMutation.isError && walletAddress && showConnectedWallet && localStarkKey;
 
-  const nodes = useUserNodes();
+  const nodes = useNodeLicense();
   const { account } = useAuthenticationContext();
 
   return (
