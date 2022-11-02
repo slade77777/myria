@@ -12,7 +12,6 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import TreeIcon from '../../components/icons/TreeIcon';
 import TermsOfServiceModal from '../../components/Purchase/Modals/TermsOfServiceModal';
 import PrivacyPolicyModal from '../../components/Purchase/Modals/PrivacyPolicyModal';
-import useUserNodes from '../../hooks/useUserNodes';
 import MyNodeModal from '../../components/nodes/MyNodeModal';
 import { Trans } from '@lingui/macro';
 import Button from '../../components/core/Button';
@@ -31,9 +30,6 @@ const MyNode: React.FC = () => {
       router.push('/nodes');
     }
   }, [address, router, user, userProfileQuery.isFetching]);
-
-  const { data } = useUserNodes();
-  const successTrans = data?.filter((item) => item.purchaseStatus === 'SUCCESSFUL');
 
   return (
     <Page action="start-building">
