@@ -7,8 +7,7 @@ import { FORMAT_DATE_BY_AIRDROP } from 'src/utils';
 import moment from 'moment';
 
 const LeftSectionAirDrop: React.FC = () => {
-
-  const { user } = useAuthenticationContext();
+  const { userCampaign } = useAuthenticationContext();
 
   return (
     <div className={clsx('relative md:max-w-[266px] mx-auto px-4')}>
@@ -18,25 +17,25 @@ const LeftSectionAirDrop: React.FC = () => {
         )}>
         <div className={clsx('p-8 text-center')}>
           {
-            !user?.user_name ? (
+            !userCampaign?.user.user_name ? (
               <div className={clsx('text-2xl font-bold mb-6')}>Welcome</div>
-            ): (
-              <div className={clsx('text-2xl font-bold mb-6')}>{user.user_name}</div>
+            ) : (
+              <div className={clsx('text-2xl font-bold mb-6')}>{userCampaign.user.user_name}</div>
             )
           }
           <div className={clsx('flex justify-center')}>
-            <Image src="/images/nodes/airdrop/the_federation.png" width={'100%'} height= {'100%'}/>
+            <Image src="/images/nodes/airdrop/the_federation.png" width={'100%'} height={'100%'} />
           </div>
           <div className={clsx('text-xl font-nomarl mb-6')}>The Federation</div>
           {
-            user && user?.user_name && (
+            userCampaign && userCampaign?.user.user_name && (
               <>
-              <p className={clsx('text-sm font-medium text-[#97AAB5]')}>
-                Date Registered
-              </p>
-              <strong className={clsx('text-lg font-bold mt-1')}>
-                {moment(user?.date_registered).format(FORMAT_DATE_BY_AIRDROP)}
-              </strong>
+                <p className={clsx('text-sm font-medium text-[#97AAB5]')}>
+                  Date Registered
+                </p>
+                <strong className={clsx('text-lg font-bold mt-1')}>
+                  {moment(userCampaign?.user.date_registered || Date.now()).format(FORMAT_DATE_BY_AIRDROP)}
+                </strong>
               </>
             )
           }

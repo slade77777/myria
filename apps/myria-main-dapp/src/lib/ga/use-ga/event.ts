@@ -36,7 +36,8 @@ export type Campaign =
   | 'Nodes'
   | 'AB de Villers'
   | 'B2C Marketplace'
-  | 'B2B';
+  | 'B2B'
+  | 'AirDrop';
 
 export type NFTItemAction =
   | 'MKP Item Buy Now Selected'

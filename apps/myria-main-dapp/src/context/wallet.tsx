@@ -107,7 +107,7 @@ export const WalletProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     if (web3Modal.cachedProvider) {
-      // onConnect();
+      onConnect();
     }
   }, []);
 
