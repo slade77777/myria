@@ -15,12 +15,19 @@ import { callCampaignHealthCheck } from 'src/services/campaignService';
 type Props = {
   onNext: () => void;
   setCurrentStep?: React.Dispatch<React.SetStateAction<Step>> | undefined;
+  isAirDrop?: boolean;
 };
 
-const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
+const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false }) => {
   const { address, onConnectCompaign, disconnect } = useWalletContext();
   const { connectL2Wallet } = useL2WalletContext();
-  const { user, loginByWalletMutation, userProfileQuery } = useAuthenticationContext();
+  const { user,
+    loginByWalletMutation,
+    userCampaign,
+    loginCampaignByWalletMutation,
+    userProfileQuery,
+    nextChooseAlliance } = useAuthenticationContext();
+
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
   const [installedWallet, setInstalledWallet] = useState<'PENDING' | boolean>('PENDING');
@@ -49,16 +56,25 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
     if (userProfileQuery.isFetching) {
       return;
     }
-    if (user?.user_id && user?.user_name && setCurrentStep) {
-      // check Selected Alliance from user
-      setCurrentStep(2); // set Step to federatiton
-      return;
+    if (isAirDrop) {
+      if (nextChooseAlliance) {
+        onNext();
+        return;
+      }
+      if (setCurrentStep && isAirDrop && userCampaign) {
+        console.log(userCampaign, user, userProfileQuery.data);
+        // check Selected Alliance from user
+        setCurrentStep(2); // set Step to federatiton
+        return;
+      }
     }
-    if (user?.user_id) {
-      onNext();
-      return;
+    else {
+      if (user?.user_id) {
+        onNext();
+        return;
+      }
     }
-  }, [address, user, onNext, userProfileQuery]);
+  }, [address, user, onNext, userProfileQuery, nextChooseAlliance]);
 
   React.useEffect(() => {
     if (!onboarding.current) {
@@ -72,11 +88,11 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
       const isBraveBrowser = (navigator.brave && (await navigator.brave.isBrave())) || false;
       setIsSupportedBrowser(
         Boolean(browser) &&
-          (browser?.name === 'chrome' ||
-            browser?.name === 'edge-chromium' ||
-            browser?.name === 'edge' ||
-            browser?.name === 'firefox' ||
-            isBraveBrowser)
+        (browser?.name === 'chrome' ||
+          browser?.name === 'edge-chromium' ||
+          browser?.name === 'edge' ||
+          browser?.name === 'firefox' ||
+          isBraveBrowser)
       );
     }
 
@@ -115,10 +131,16 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
   }, [loginByWalletMutation?.isError]);
 
   const handleClick = async () => {
-    await onConnectCompaign('Sigil');
-    await connectL2Wallet();
+    onConnectCompaign('AirDrop');
+    connectL2Wallet();
     event('Connect Wallet Selected', { campaign: 'Sigil' });
-    loginByWalletMutation.mutate();
+    if (isAirDrop) {
+      loginCampaignByWalletMutation.mutate();
+    }
+    else {
+      loginByWalletMutation.mutate();
+    }
+
   };
   return (
     <div
@@ -142,8 +164,11 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
         <>
           {installedWallet === true && isSupportedBrowser && (
             <Button
-              loading={loginByWalletMutation.isLoading}
-              disabled={loginByWalletMutation.isLoading}
+              loading={loginByWalletMutation.isLoading ||
+                (loginCampaignByWalletMutation.isLoading) ||
+                (!userProfileQuery.data && loginCampaignByWalletMutation.isLoading)
+              }
+              disabled={loginByWalletMutation.isLoading || loginCampaignByWalletMutation.isLoading}
               onClick={handleClick}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
               {address ? <Trans>LOGGING IN</Trans> : <Trans>CONNECT WALLET</Trans>}

@@ -1,8 +1,62 @@
+import { SplitSignature } from 'myria-core-sdk/dist/types';
 export interface CampaignResponseType<T> {
   status: string;
   data: T;
 }
+export type RegisterData = {
+  starkKey: string;
+  walletAddress?: string;
+  userId?: string;
+  username?: string;
+  referrerId?: string | null;
+  email?: string;
+  signature?: SplitSignature;
+};
 
+export type Task = {
+  callToAction: string;
+  pk: string;
+  repetitionLimit: number;
+  sk: string;
+  starsValue: number;
+  taskDescription: number;
+  taskId: string;
+  taskStatus: string;
+  taskTitle: string;
+  totalStars: number;
+};
+
+export type Ticket = {
+  pk: string;
+  purchaseDate: string;
+  sk: string;
+  ticketNumber: number;
+  ticketStatus: string;
+  ticketType: string;
+  weekNumber: number;
+};
+
+export type UserAirDop = {
+  availableStars: number;
+  createdAt: string;
+  currentWeekTickets: Ticket[];
+  earnedStars: number;
+  pk: string;
+  referredPurchases: string[];
+  referredUsers: string[];
+  sk: string;
+  tasks: Task[];
+  date_registered?: Date;
+  updatedAt: string;
+  ticketCount: number;
+  ticketPrice: number;
+  walletAddress: string;
+};
+
+export type MyriaUser = {
+  user_id: string;
+  wallet_id: string;
+};
 export interface MissionProgressType {
   userId: number;
   campaignId: number;
@@ -116,10 +170,10 @@ export interface UserCampaignResponse extends UserType {}
 export interface RegisterUserCampaignPayload {
   starkKey: string;
   walletAddress: string;
-  userId: string;
-  username: string;
-  email: string;
-  referrerId: number;
+  accountId: string;
+  username: string | undefined;
+  email: string | undefined;
+  referrerId?: number;
 }
 
 export interface RegisterUserCampaignResponse extends UserType {}
@@ -155,18 +209,19 @@ export interface MissionCompletePayload {
 }
 
 export interface MissionCompleteResponse {
-  userId: number;
-  campaignId: number;
+  userId: string;
+  campaignId: string;
   referrerId: null;
   earnedPoints: number;
   availablePoints: number;
+  wallet_id: string;
   createdAt: string;
   updatedAt: string;
 }
 
 export interface RegisterCampaignPayload {
-  userId: number;
-  campaignId: number;
+  userId: string;
+  campaignId: string;
 }
 
 export interface RegisterCampaignResponse {

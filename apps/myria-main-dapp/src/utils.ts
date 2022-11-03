@@ -245,18 +245,18 @@ export const generateUUID = () => {
 };
 
 export const utilTaskId = {
-  verifyEmail: 'VERIFY YOUR EMAIL ADDRESS',
-  joinDiscord: 'JOIN OUR DISCORD COMMUNITY',
-  followMyriaTwitter: 'FOLLOW MYRIA ON TWITTER',
-  followBrendanTwitter: 'FOLLOW BRENDAN ON TWITTER',
-  inviteFriends: 'INVITE YOUR FRIENDS',
-  dailyLogAndPostDiscord: 'DAILY LOG IN and POST ON DISCORD',
-  sharePostTwitter: 'SHARE A POST ON TWITTER',
-  reachLevelDiscord: 'REACH LEVEL 40 ON DISCORD'
+  verifyEmail: 'CREATE_ACCOUNT',
+  joinDiscord: 'JOIN_DISCORD',
+  followMyriaTwitter: 'FOLLOW_TWITTER',
+  followBrendanTwitter: 'FOLLOW_BRENDAN',
+  inviteFriends: 'INVITE_FRIEND',
+  dailyLogAndPostDiscord: 'DAILY_DISCORD_MESSAGE',
+  sharePostTwitter: 'SHARE_TWITTER',
+  reachLevelDiscord: 'DISCORD_STAR_LORD'
 };
 
-export const discordClientId =
-  process.env.REACT_APP_NODE_ENV === 'production' ? '981500931357175848' : '972191450290872391';
+const discordClientId =
+  process.env.REACT_APP_NODE_ENV === 'production' ? '972191450290872391' : '972191450290872391';
 export const urlMyriaMarketPlace =
   process.env.REACT_APP_NODE_ENV === 'production'
     ? 'https://myria.com/marketplace'
@@ -278,3 +278,4 @@ export const getLinkMission = (paramTaskId: string, homePage: string) => {
       return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
   }
 };
+export const campaignCode = 'AIR_DROP';

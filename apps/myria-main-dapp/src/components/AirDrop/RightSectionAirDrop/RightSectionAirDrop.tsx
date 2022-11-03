@@ -4,8 +4,12 @@ import clsx from 'clsx';
 import IconPoint from 'src/components/icons/airdrop-campaign/IconPoint';
 import { NFTRewards } from '../NFTRewards';
 import { MyVaultComponent } from '../MyVault';
+import { useAuthenticationContext } from 'src/context/authentication';
 
 export const RightSectionAirDrop: React.FC = () => {
+
+  const { userCampaign } = useAuthenticationContext();
+
   return (
     <>
       <Tabs.Root defaultValue="NFTTab" className="h-full">
@@ -26,7 +30,7 @@ export const RightSectionAirDrop: React.FC = () => {
             <IconPoint styleClass={clsx('absolute')} />
             <span className={clsx('ml-[31px] text-sm text-[#97AAB5] uppercase')}>Point</span>
             <span className={clsx('ml-[14px] font-extrabold text-xl text-white textShadow')}>
-              1,245
+              {userCampaign?.availablePoints}
             </span>
           </div>
         </div>

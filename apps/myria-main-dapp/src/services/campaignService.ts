@@ -39,7 +39,7 @@ const callCampaignHealthCheck = async () => {
  * CampaignsDetailById
  * @Returns
  */
-const getCampaignsDetailById = async (
+const reqGetCampaignsDetailById = async (
   campaignId: number
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
   return await campaignApiClient.get(`/campaigns/${campaignId}`);
@@ -49,7 +49,7 @@ const getCampaignsDetailById = async (
  * CampaignsDetailByCode
  * @Returns
  */
-const getCampaignsDetailByCode = async (
+const reqGetCampaignsDetailByCode = async (
   campaignCode: string
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
   return await campaignApiClient.get(`/campaigns/code/${campaignCode}`);
@@ -59,7 +59,7 @@ const getCampaignsDetailByCode = async (
  * CreateCampaigns
  * @Returns
  */
-const createCampaigns = async (
+const reqCreateCampaigns = async (
   payload: CreateCampaignPayload
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
   return await campaignApiClient.post(`/campaigns`, payload);
@@ -69,7 +69,7 @@ const createCampaigns = async (
  * createSocialCampaigns
  * @Returns
  */
-const createSocialCampaigns = async (
+const reqCreateSocialCampaigns = async (
   payload: SocialCampaignPayload
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
   return await campaignApiClient.post(`/campaigns/social-event`, payload);
@@ -79,7 +79,7 @@ const createSocialCampaigns = async (
  * createTwitterCampaigns
  * @Returns
  */
-const createTwitterCampaigns = async (
+const reqCreateTwitterCampaigns = async (
   payload: TwitterCampaignPayload
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
   return await campaignApiClient.post(`/campaigns/twitter-events`, payload);
@@ -89,7 +89,7 @@ const createTwitterCampaigns = async (
  * Get User by Id
  * @Returns
  */
-const getUserCampaigns = async (
+const reqGetUserCampaigns = async (
   userId: number
 ): Promise<CampaignResponseType<UserCampaignResponse>> => {
   return await campaignApiClient.get(`/users/${userId}`);
@@ -99,7 +99,7 @@ const getUserCampaigns = async (
  * Get User Campaign by StarkKey
  * @Returns
  */
-const getUserCampaignsByStarkKey = async (
+const reqGetUserCampaignsByStarkKey = async (
   starkKey: number
 ): Promise<CampaignResponseType<UserCampaignResponse>> => {
   return await campaignApiClient.get(`/users/stark-key/${starkKey}`);
@@ -109,7 +109,7 @@ const getUserCampaignsByStarkKey = async (
  * register User
  * @Returns
  */
-const registerUserCampaign = async (
+const reqRegisterUserCampaign = async (
   payload: RegisterUserCampaignPayload
 ): Promise<CampaignResponseType<RegisterUserCampaignResponse>> => {
   return await campaignApiClient.post(`/users`, payload);
@@ -119,7 +119,7 @@ const registerUserCampaign = async (
  *  Alliances Of User
  * @Returns
  */
-const getUserAlliances = async (
+const reqGetUserAlliances = async (
   walletAddress: string
 ): Promise<CampaignResponseType<UserAlliancesResponse>> => {
   return await campaignApiClient.get(`/users/wallet-address/${walletAddress}`);
@@ -129,7 +129,7 @@ const getUserAlliances = async (
  * register User L2 Wallet
  * @Returns
  */
-const registerUserL2Wallet = async (
+const reqRegisterUserL2Wallet = async (
   payload: RegisterUserL2WalletPayload
 ): Promise<CampaignResponseType<RegisterUserL2WalletResponse>> => {
   return await campaignApiClient.post(`/users/l2/wallet`, payload);
@@ -139,7 +139,7 @@ const registerUserL2Wallet = async (
  * missionComplete
  * @Returns
  */
-const missionComplete = async (
+const reqMissionComplete = async (
   userId: number,
   payload: MissionCompletePayload
 ): Promise<CampaignResponseType<MissionCompleteResponse>> => {
@@ -150,7 +150,7 @@ const missionComplete = async (
  * register Campaign
  * @Returns
  */
-const registerCampaign = async (
+const reqRegisterCampaign = async (
   payload: RegisterCampaignPayload
 ): Promise<CampaignResponseType<MissionCompleteResponse>> => {
   return await campaignApiClient.post(`/users/register-campaign`, payload);
@@ -160,7 +160,7 @@ const registerCampaign = async (
  * Update alliances of user
  * @Returns
  */
-const updateUserAlliance = async (
+const reqUpdateUserAlliance = async (
   userId: number,
   payload: UpdateUserAlliancePayload
 ): Promise<CampaignResponseType<UpdateUserAllianceResponse>> => {
@@ -171,7 +171,7 @@ const updateUserAlliance = async (
  * Verify Email Of User
  * @Returns
  */
-const verifyEmailOfUser = async (
+const reqVerifyEmailOfUser = async (
   userId: number,
   missionCode: string
 ): Promise<CampaignResponseType<UpdateUserAllianceResponse>> => {
@@ -182,7 +182,7 @@ const verifyEmailOfUser = async (
  * getUserByWalletAddress
  * @Returns
  */
-const getUserByWalletAddress = async (
+const reqGetUserByWalletAddress = async (
   walletAddress: string
 ): Promise<CampaignResponseType<UserType>> => {
   return await campaignApiClient.get(`/users/wallet-address/${walletAddress}`);
@@ -192,7 +192,7 @@ const getUserByWalletAddress = async (
  * getUserProfileCampaign
  * @Returns
  */
-const getUserProfileCampaign = async (
+const reqGetUserProfileCampaign = async (
   userId: string,
   campaignId: string
 ): Promise<CampaignResponseType<UserProfileCampaignResponse>> => {
@@ -203,7 +203,7 @@ const getUserProfileCampaign = async (
  * getListAlliances
  * @Returns
  */
-const getListAlliances = async (): Promise<CampaignResponseType<ListAlliancesResponse>> => {
+const reqGetListAlliances = async (): Promise<CampaignResponseType<ListAlliancesResponse>> => {
   return await campaignApiClient.get(`/alliances`);
 };
 
@@ -211,7 +211,7 @@ const getListAlliances = async (): Promise<CampaignResponseType<ListAlliancesRes
  * getRewardByCampaignId
  * @Returns
  */
-const getRewardByCampaignId = async (
+const reqGetRewardByCampaignId = async (
   campaignId: string
 ): Promise<CampaignResponseType<RewardByCampaignIdResponse>> => {
   return await campaignApiClient.get(`/campaign-id/${campaignId}`);
@@ -221,7 +221,7 @@ const getRewardByCampaignId = async (
  * rewardClaimDiscord
  * @Returns
  */
-const rewardClaimDiscord = async (
+const reqRewardClaimDiscord = async (
   payload: RewardClaimDiscordPayload
 ): Promise<CampaignResponseType<RewardClaimDiscordResponse>> => {
   return await campaignApiClient.post(`/rewards/discord/claim`, payload);
@@ -231,7 +231,7 @@ const rewardClaimDiscord = async (
  * rewardUserClaim
  * @Returns
  */
-const rewardUserClaim = async (
+const reqRewardUserClaim = async (
   payload: RewardUserClaimPayload
 ): Promise<CampaignResponseType<RewardUserClaimResponse>> => {
   return await campaignApiClient.post(`/rewards/user-claim`, payload);
@@ -239,24 +239,24 @@ const rewardUserClaim = async (
 
 export {
   callCampaignHealthCheck,
-  getCampaignsDetailById,
-  getCampaignsDetailByCode,
-  createCampaigns,
-  createSocialCampaigns,
-  createTwitterCampaigns,
-  getUserCampaigns,
-  getUserCampaignsByStarkKey,
-  registerUserCampaign,
-  registerUserL2Wallet,
-  getUserAlliances,
-  missionComplete,
-  registerCampaign,
-  updateUserAlliance,
-  verifyEmailOfUser,
-  getUserProfileCampaign,
-  getListAlliances,
-  getRewardByCampaignId,
-  rewardClaimDiscord,
-  rewardUserClaim,
-  getUserByWalletAddress
+  reqGetCampaignsDetailById,
+  reqGetCampaignsDetailByCode,
+  reqCreateCampaigns,
+  reqCreateSocialCampaigns,
+  reqCreateTwitterCampaigns,
+  reqGetUserCampaigns,
+  reqGetUserCampaignsByStarkKey,
+  reqRegisterUserCampaign,
+  reqRegisterUserL2Wallet,
+  reqGetUserAlliances,
+  reqMissionComplete,
+  reqRegisterCampaign,
+  reqUpdateUserAlliance,
+  reqVerifyEmailOfUser,
+  reqGetUserProfileCampaign,
+  reqGetListAlliances,
+  reqGetRewardByCampaignId,
+  reqRewardClaimDiscord,
+  reqRewardUserClaim,
+  reqGetUserByWalletAddress
 };

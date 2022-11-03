@@ -22,7 +22,7 @@ const AirDropCampaign: React.FC = () => {
   const content = useMemo(() => {
     switch (currentStep) {
       case 0:
-        return <Welcome onNext={goToNextStep} setCurrentStep={setCurrentStep} />;
+        return <Welcome onNext={goToNextStep} setCurrentStep={setCurrentStep} isAirDrop={true} />;
       case 1:
         return <ChooseAlliance currentStep={currentStep} onNext={goToNextStep} />;
       default:

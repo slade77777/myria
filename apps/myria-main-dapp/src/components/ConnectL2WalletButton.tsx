@@ -28,10 +28,10 @@ import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { noCacheApiClient } from '../client';
 
 interface Props {
-  isAirDrop? : boolean
+  isAirDrop?: boolean
 }
 
-const ConnectL2WalletButton: React.FC<Props> = ( { isAirDrop =false }) => {
+const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
   const { event } = useGA4();
   const { installedWallet } = useInstalledWallet();
   const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
@@ -45,7 +45,14 @@ const ConnectL2WalletButton: React.FC<Props> = ( { isAirDrop =false }) => {
     handleDisplayPopover
   } = useL2WalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
-  const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
+  const {
+    user,
+    loginByWalletMutation,
+    userProfileQuery,
+    loginCampaignByWalletMutation,
+    logout
+  } = useAuthenticationContext();
+
   const { isShowLearnMore } = useWithDrawNFTContext();
 
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
@@ -66,7 +73,13 @@ const ConnectL2WalletButton: React.FC<Props> = ( { isAirDrop =false }) => {
     onConnectCompaign('B2C Marketplace');
     handleSetFirstPurchase(false);
     connectL2Wallet();
-    loginByWalletMutation.mutate();
+    if (isAirDrop) {
+      loginCampaignByWalletMutation.mutate();
+    }
+    else {
+      loginByWalletMutation.mutate();
+    }
+
   };
 
   useEffect(() => {
@@ -128,6 +141,7 @@ const ConnectL2WalletButton: React.FC<Props> = ( { isAirDrop =false }) => {
   }, [address, localStarkKey, user, walletAddress]);
 
   useEffect(() => {
+    if (isAirDrop) return;
     const emailRequestNumber = localStorage.getItem('emailRequestNumber');
     const emailRequestTime = emailRequestNumber ? parseInt(emailRequestNumber) : 0;
     noCacheApiClient.get('accounts/users').then((data) => {
@@ -189,80 +203,86 @@ const ConnectL2WalletButton: React.FC<Props> = ( { isAirDrop =false }) => {
       </Modal>
       <div className="flex items-center">
         <div>
-          {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet ? (
-            <div>
-              <Popover
-                modal
-                open={isDisplayPopover}
-                defaultOpen={openDropdown}
-                onOpenChange={(open) => {
-                  if (!open && !isShowLearnMore) {
-                    handleDisplayPopover(false);
-                  }
-                  setOpenDropdown(open);
-                }}>
-                <Popover.Trigger asChild>
-                  <span className="uppercase">
+          {
+            (
+              (!loginByWalletMutation?.isError && walletAddress && showConnectedWallet && !isAirDrop) || (
+                !loginCampaignByWalletMutation?.isError && walletAddress && showConnectedWallet && isAirDrop
+              )
+            )
+              ? (
+                <div>
+                  <Popover
+                    modal
+                    open={isDisplayPopover}
+                    defaultOpen={openDropdown}
+                    onOpenChange={(open) => {
+                      if (!open && !isShowLearnMore) {
+                        handleDisplayPopover(false);
+                      }
+                      setOpenDropdown(open);
+                    }}>
+                    <Popover.Trigger asChild>
+                      <span className="uppercase">
+                        <button
+                          className="body-14-bold border-base/4 bg-base/1 flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] text-sm font-medium"
+                          onClick={() => handleDisplayPopover(true)}>
+                          <WalletIcon width={24} height={24} />
+                          <span>{truncateString(walletAddress)}</span>
+                          <i className="w-4">
+                            <ChevronDownIcon size={24} />
+                          </i>
+                        </button>
+                      </span>
+                    </Popover.Trigger>
+                    <Popover.Content
+                      sideOffset={8}
+                      align="end"
+                      style={{
+                        boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
+                      }}
+                      className="text-base/3 wallet-popover h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-xl bg-current p-6">
+                      <Popover.Arrow
+                        width={24}
+                        height={13}
+                        style={{
+                          filter: `drop-shadow(0px 1px 0px #202230)`
+                        }}
+                        className="translate-x-8 fill-current"
+                      />
+                      <div className="h-full">
+                        {showClaimPopover ? (
+                          <ClaimWithdrawPopover
+                            abbreviationAddress={abbreviationAddress}
+                            onClosePopover={handleCloseDropdown}
+                          />
+                        ) : (
+                          <L2WalletPopover
+                            onClosePopover={handleCloseDropdown}
+                            abbreviationAddress={abbreviationAddress}
+                          />
+                        )}
+                      </div>
+                    </Popover.Content>
+                  </Popover>
+                </div>
+              ) : (
+                <MetamaskOnboarding>
+                  {!userProfileQuery?.isFetched ? (
+                    <button className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
+                      <Trans>Loading...</Trans>
+                    </button>
+                  ) : (
                     <button
                       className="body-14-bold border-base/4 bg-base/1 flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] text-sm font-medium"
                       onClick={() => handleDisplayPopover(true)}>
                       <WalletIcon width={24} height={24} />
-                      <span>{truncateString(walletAddress)}</span>
-                      <i className="w-4">
-                        <ChevronDownIcon size={24} />
-                      </i>
+                      <span className="text-base/10 text-sm">
+                        <Trans>Connect Wallet</Trans>
+                      </span>
                     </button>
-                  </span>
-                </Popover.Trigger>
-                <Popover.Content
-                  sideOffset={8}
-                  align="end"
-                  style={{
-                    boxShadow: '0 0 0 1px #202230, 0px 0px 40px 10px rgba(0, 0, 0, 0.5)'
-                  }}
-                  className="text-base/3 wallet-popover h-[565px] max-h-[80vh] w-[406px] overflow-auto rounded-xl bg-current p-6">
-                  <Popover.Arrow
-                    width={24}
-                    height={13}
-                    style={{
-                      filter: `drop-shadow(0px 1px 0px #202230)`
-                    }}
-                    className="translate-x-8 fill-current"
-                  />
-                  <div className="h-full">
-                    {showClaimPopover ? (
-                      <ClaimWithdrawPopover
-                        abbreviationAddress={abbreviationAddress}
-                        onClosePopover={handleCloseDropdown}
-                      />
-                    ) : (
-                      <L2WalletPopover
-                        onClosePopover={handleCloseDropdown}
-                        abbreviationAddress={abbreviationAddress}
-                      />
-                    )}
-                  </div>
-                </Popover.Content>
-              </Popover>
-            </div>
-          ) : (
-            <MetamaskOnboarding>
-              {!userProfileQuery?.isFetched ? (
-                <button className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4">
-                  <Trans>Loading...</Trans>
-                </button>
-              ) : (
-                <button
-                  onClick={onConnectWallet}
-                  className="border-base/5 bg-base/1  flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] font-medium">
-                  <WalletIcon width={24} height={24} />
-                  <span className="text-base/10 text-sm">
-                    <Trans>Connect Wallet</Trans>
-                  </span>
-                </button>
+                  )}
+                </MetamaskOnboarding>
               )}
-            </MetamaskOnboarding>
-          )}
           <WthdrawNFTPopover>
             <WithdrawNFTScreen />
           </WthdrawNFTPopover>
@@ -278,7 +298,9 @@ const ConnectL2WalletButton: React.FC<Props> = ( { isAirDrop =false }) => {
           />
         )}
       </div>
-      <MainL2Wallet ref={mainL2Ref} />
+      {
+        !isAirDrop && <MainL2Wallet ref={mainL2Ref} />
+      }
     </>
   );
 };

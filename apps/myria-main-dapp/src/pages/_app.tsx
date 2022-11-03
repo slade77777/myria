@@ -27,6 +27,7 @@ import { WithdrawNFT } from 'src/context/withdraw-nft';
 import { DepositProvider } from 'src/context/deposit-context';
 import { L2WalletProvider } from 'src/context/l2-wallet';
 import { FilterSortProvider } from 'src/context/filter-sort-context';
+import { CampaignProvider } from 'src/context/campaignContext';
 
 const WithLanguageStyle: React.FC<any> = ({ children }) => {
   const { language } = useLanguage();
@@ -38,6 +39,7 @@ export const queryClient = new QueryClient();
 function App({ Component, pageProps }: AppProps) {
   useGATrackPageview();
   const router = useRouter();
+  const isAirDrop = router.route === '/airdrop'
 
   useEffect(() => storePathValues, [router.asPath]);
 
@@ -85,23 +87,26 @@ function App({ Component, pageProps }: AppProps) {
         <WalletProvider>
           <WithdrawNFT>
             <DepositProvider>
-              <AuthenticationProvider>
-                <FilterSortProvider>
-                  <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
-                    <WithLanguageStyle>
-                      <TabProvider>
-                        <>
-                          <Provider store={store}>
-                            <L2WalletProvider>
-                              <Component {...pageProps} />
-                            </L2WalletProvider>
-                          </Provider>
-                        </>
-                      </TabProvider>
-                    </WithLanguageStyle>
-                  </Tooltip.Provider>
-                </FilterSortProvider>
-              </AuthenticationProvider>
+              <CampaignProvider isAirDrop={isAirDrop}>
+                <AuthenticationProvider isAirDrop={isAirDrop}>
+                  <FilterSortProvider>
+                    <Tooltip.Provider delayDuration={0} skipDelayDuration={0}>
+                      <WithLanguageStyle>
+                        <TabProvider>
+                          <>
+                            <Provider store={store}>
+                              <L2WalletProvider>
+                                <Component {...pageProps} />
+                              </L2WalletProvider>
+                            </Provider>
+                          </>
+                        </TabProvider>
+                      </WithLanguageStyle>
+                    </Tooltip.Provider>
+                  </FilterSortProvider>
+                </AuthenticationProvider>
+              </CampaignProvider>
+
             </DepositProvider>
           </WithdrawNFT>
         </WalletProvider>

@@ -77,10 +77,10 @@ const VerifyEmailModal: React.FC<{
             <button className="btn-lg btn-primary mt-6 w-full" disabled={isSubmitting}>
               {isLoading ? (
                 <div className="flex justify-center">
-                  <Loading />
+                  <Loading loadingSize={16} />
                 </div>
               ) : (
-                <span>SUBMIT</span>
+                <span className='leading-4'>SUBMIT</span>
               )}
             </button>
           </div>

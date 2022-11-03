@@ -4,10 +4,10 @@ import { TwitterShareButton } from 'react-share';
 import { toast } from 'react-toastify';
 import IconButton from 'src/components/icons/IconButton';
 import { localStorageKeys } from 'src/configs';
+import { ImissionProgress } from 'src/context/authentication';
 import useLocalStorage from 'src/hooks/useLocalStorage';
-import { createTwitterCampaigns } from 'src/services/campaignService';
+import { reqCreateTwitterCampaigns } from 'src/services/campaignService';
 import { getLinkMission, utilTaskId } from 'src/utils';
-import { Item } from '../../ItemMission';
 import VerifyEmailModal from '../../VerifyEmailModal';
 
 export const STATUS_MISSTION = {
@@ -39,7 +39,7 @@ const DF_STYLE_BUTTON = {
 
 interface Props {
   status: string;
-  item: Item;
+  item: ImissionProgress;
   id: string;
   enableClick: boolean;
 }
@@ -68,25 +68,16 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     [utilTaskId.followMyriaTwitter]: {
       name: utilTaskId.followMyriaTwitter,
       handler: (homePage: string) => {
-        window.open(getLinkMission(utilTaskId.followMyriaTwitter, homePage), '_blank');
-        createTwitterCampaigns({
-          missionCode: 'FOLLOW_TWITTER',
-          walletAddress: walletAddress
-        }).then((res: any) => {
-          console.log(res);
-        });
+        console.log(utilTaskId.followMyriaTwitter);
+        window.open(getLinkMission(utilTaskId.joinDiscord, homePage), '_blank');
       }
     },
     [utilTaskId.followBrendanTwitter]: {
       name: utilTaskId.followBrendanTwitter,
       handler: (homePage: string) => {
-        window.open(getLinkMission(utilTaskId.followBrendanTwitter, homePage), '_blank');
-        createTwitterCampaigns({
-          missionCode: 'FOLLOW_BRENDAN',
-          walletAddress: walletAddress
-        }).then((res: any) => {
-          console.log(res);
-        });
+        console.log(utilTaskId.followBrendanTwitter);
+        window.open(getLinkMission(utilTaskId.joinDiscord, homePage), '_blank');
+
       }
     },
     [utilTaskId.inviteFriends]: {
@@ -111,7 +102,7 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     },
     [utilTaskId.sharePostTwitter]: {
       name: utilTaskId.sharePostTwitter,
-      handler: async () => {}
+      handler: async () => { }
     },
     [utilTaskId.reachLevelDiscord]: {
       name: utilTaskId.reachLevelDiscord,
@@ -130,29 +121,15 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
 
   return (
     <>
-      {id === utilTaskId.sharePostTwitter ? (
-        <TwitterShareButton url={window.location.href} title="Wellcome Airdrop Campaign">
-          <div
-            className={clsx(
-              `group relative inline-block w-52 text-center leading-[50px] ${DF_STYLE_BUTTON[status].TEXT_COLOR}`,
-              enableClick && 'cursor-pointer'
-            )}
-            onClick={handleClick}>
-            {item.lableButton}
-            <IconButton status={DF_STYLE_BUTTON[status]} isActive={enableClick} />
-          </div>
-        </TwitterShareButton>
-      ) : (
-        <div
-          className={clsx(
-            `group relative inline-block w-52 text-center leading-[50px] ${DF_STYLE_BUTTON[status].TEXT_COLOR}`,
-            enableClick && 'cursor-pointer'
-          )}
-          onClick={handleClick}>
-          {item.lableButton}
-          <IconButton status={DF_STYLE_BUTTON[status]} isActive={enableClick} />
-        </div>
-      )}
+      <div
+        className={clsx(
+          `group relative inline-block w-52 text-center leading-[50px] ${DF_STYLE_BUTTON[status].TEXT_COLOR}`,
+          enableClick && 'cursor-pointer'
+        )}
+        onClick={handleClick}>
+        {item.missionCampaign.actionTitle}
+        <IconButton status={DF_STYLE_BUTTON[status]} isActive={enableClick} />
+      </div>
       {id === utilTaskId.verifyEmail && (
         <VerifyEmailModal
           onClose={() => {

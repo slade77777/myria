@@ -12,7 +12,8 @@ export const localStorageKeys = {
   firstTime: 'FIRST_TIME',
   referralCode: 'REFERRAL_CODE',
   starkKey: 'STARK_KEY',
-  walletAddress: 'WALLET_ADDRESS'
+  walletAddress: 'WALLET_ADDRESS',
+  firstTimeWallet: 'isFirstTime'
 };
 
 export const MARKETPLACE = 'marketplace';

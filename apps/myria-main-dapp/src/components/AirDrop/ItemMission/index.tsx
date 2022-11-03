@@ -1,26 +1,75 @@
 import clsx from 'clsx';
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import SubtractBottom from 'src/components/icons/SubtractBottom';
 import SubtractTop from 'src/components/icons/SubtractTop';
+import { useAuthenticationContext } from 'src/context/authentication'
 import { utilTaskId } from 'src/utils';
 import ButtonMission, { STATUS_MISSTION } from './ButtonMission';
-
-export interface Item {
-  titleMission: string;
-  description: string;
-  statuMisstion: string;
-  point: number;
-  lableButton: string;
-}
+import { ImissionProgress } from 'src/context/authentication'
 interface IProp {
   status: string;
-  item: Item;
+  item: ImissionProgress;
   id: string;
 }
+
+const initMissionPanel = {
+  [utilTaskId.verifyEmail]: {
+    name: utilTaskId.verifyEmail,
+    initFunction: () => {
+    }
+  },
+  [utilTaskId.joinDiscord]: {
+    name: utilTaskId.joinDiscord,
+    initFunction: (codeJoinDiscord: string) => {
+      //Call API code Join Discord
+      console.log("Call API code Join Discord", codeJoinDiscord);
+    }
+  },
+  [utilTaskId.followMyriaTwitter]: {
+    name: utilTaskId.followMyriaTwitter,
+    initFunction: (homePage: string) => {
+    }
+  },
+  [utilTaskId.followBrendanTwitter]: {
+    name: utilTaskId.followBrendanTwitter,
+    initFunction: (homePage: string) => {
+    }
+  },
+  [utilTaskId.inviteFriends]: {
+    name: utilTaskId.inviteFriends,
+    initFunction: (homePage?: string) => {
+
+    }
+  },
+  [utilTaskId.dailyLogAndPostDiscord]: {
+    name: utilTaskId.dailyLogAndPostDiscord,
+    initFunction: () => {
+    }
+  },
+  [utilTaskId.sharePostTwitter]: {
+    name: utilTaskId.sharePostTwitter,
+    initFunction: async () => {
+    }
+  },
+  [utilTaskId.reachLevelDiscord]: {
+    name: utilTaskId.reachLevelDiscord,
+    initFunction: (homePage: string) => {
+    }
+  }
+};
+
 
 const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
   const isLocked = status === STATUS_MISSTION.LOCKED;
   const enableClick = status === STATUS_MISSTION.ACTIVE;
+  const router = useRouter();
+
+  useEffect(() => {
+    const codeJoinDiscord = router.query.code?.toString();
+    codeJoinDiscord && initMissionPanel[id].initFunction(codeJoinDiscord)
+  }, [])
+
 
   return (
     <div
@@ -35,18 +84,18 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
       <div className="bg-base/3 border-base/3 flex min-h-[128px] w-full justify-between rounded-lg border p-6 pl-8">
         <div>
           <div className="flex items-center uppercase text-white">
-            <p className=" mr-2 text-xl font-bold">{item.titleMission}</p>
+            <p className=" mr-2 text-xl font-bold">{item.missionCampaign.title}</p>
             <span className="min-w-[74px] rounded-lg bg-[#0D273A] py-[6px] px-[10px] text-center text-xs font-medium leading-3">
-              {item.point} {item.point > 1 ? 'POINTS' : 'POINT'}
+              {item.missionCampaign.point} {item.missionCampaign.point > 1 ? 'POINTS' : 'POINT'}
             </span>
           </div>
           <div className="text-light mt-4 max-w-[65%] text-base">
-            <span>{item.description}</span>
+            <span>{item.missionCampaign.description}</span>
           </div>
         </div>
         <div className="text-center">
           <ButtonMission status={status} item={item} id={id} enableClick={enableClick} />
-          <p className="text-light mt-4 text-xs font-medium">{item.point} POINTS EARNED</p>
+          <p className="text-light mt-4 text-xs font-medium">{item.missionCampaign.point} POINTS EARNED</p>
         </div>
       </div>
       <div className="absolute -top-1 -right-1 z-[-1]">
