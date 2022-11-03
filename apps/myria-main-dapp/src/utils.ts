@@ -266,10 +266,13 @@ export const getLinkMission = (paramTaskId: string, homePage: string) => {
   //Check utilTaskId to return link
   switch (paramTaskId) {
     case utilTaskId.followMyriaTwitter:
-      return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+      return `https://twitter.com/intent/follow?screen_name=Myria`;
 
     case utilTaskId.dailyLogAndPostDiscord:
       return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+
+    case utilTaskId.followBrendanTwitter:
+      return `https://twitter.com/intent/follow?screen_name=brendan_duhamel`;
 
     default:
       return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
