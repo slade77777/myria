@@ -65,7 +65,8 @@ export const campaignApiClient = axios.create({
   timeout,
   headers: {
     accept: 'application/json',
-    'Content-type': 'application/json'
+    'Content-type': 'application/json',
+    'x-api-key': `${process.env.NEXT_PUBLIC_CAMPAIGN_API_KEY}`
   }
 });
 
