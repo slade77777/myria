@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import ItemMission from '../../ItemMission';
-<<<<<<< HEAD
 import { useAuthenticationContext } from 'src/context/authentication';
 
 export const MissionReward = () => {
 
   const { userCampaign } = useAuthenticationContext()
 
-=======
-import DATA from '../../data-dummy.json'; //Call API sau đó map
-import useGetUserMission from './useGetUserMission';
-
-export const MissionReward = () => {
-  const { data } = useGetUserMission();
-  console.log(data?.data);
->>>>>>> staging
   return (
     <>
       <div className="h-full pr-3">

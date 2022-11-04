@@ -61,8 +61,8 @@ const initMissionPanel = {
 
 
 const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
-  const isLocked = status === STATUS_MISSTION.LOCKED;
-  const enableClick = status === STATUS_MISSTION.ACTIVE;
+  const isLocked = status === STATUS_MISSTION.LOCKED && (id !== utilTaskId.verifyEmail);
+  const enableClick = status === STATUS_MISSTION.ACTIVE || (id === utilTaskId.verifyEmail);
   const router = useRouter();
 
   useEffect(() => {
