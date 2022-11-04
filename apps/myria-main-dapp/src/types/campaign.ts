@@ -117,18 +117,18 @@ export interface RewardType {
   id: number;
   campaignId: number;
   name: string;
-  metadata: null;
+  metadata: {} | null;
   allianceIds: {
-    2: string;
+    [id: number]: string;
   };
-  imageUrl: null;
+  imageUrl: string | null;
   description: string;
   threshold: number;
   point: number;
   detail: string;
   status: string;
   type: string;
-  expiredDate: null;
+  expiredDate: string | null;
   createdAt: string;
   updatedAt: string;
   rewardStatus: string;

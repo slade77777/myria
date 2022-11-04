@@ -9,7 +9,7 @@ interface Props {
   isBlur?: boolean;
   isBlurButton?: boolean;
   disableClaimingAnimation?: boolean;
-  onClaim?: () => Promise<void>;
+  onClaim?: () => void;
   onClaimSuccess?: () => void;
   titleText: string;
   buttonText: string;
@@ -166,7 +166,7 @@ export function NftBox({
 
         <Button
           loading={isClaiming}
-          onClick={handleClaim}
+          onClick={() => handleClaim()}
           className={`flex items-center justify-center h-6 w-fit rounded-[4px] px-[10px] py-[6px] text-xs font-bold transition-all ${option.buttonClass}`}>
           {!isClaiming && buttonText}
         </Button>
