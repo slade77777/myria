@@ -1,12 +1,14 @@
 import clsx from 'clsx';
-import React from 'react';
+import { useAuthenticationContext } from 'src/context/authentication';
+import { RewardType } from 'src/types/campaign';
+import { REWARD_STATUS } from 'src/utils';
 import { NftBox } from '../NFTRewards/NftReward';
-import { useNftRewardQuery } from '../NFTRewards/NftReward/useNftRewardQuery';
 
 export const MyVaultComponent = () => {
-  const { getRewardQuery, claimRewardMutation } = useNftRewardQuery();
-  const { data: rewards } = getRewardQuery;
-  const nextReward = React.useMemo(() => rewards?.find((r) => r.status === 'locked'), [rewards]);
+  const { userCampaign } = useAuthenticationContext();
+  const myVaultNFTClaimed: RewardType[] | undefined = userCampaign?.rewards.filter(
+    (item: RewardType) => item.rewardStatus === REWARD_STATUS.CLAIMED
+  );
 
   return (
     <div className={clsx('pr-7 h-full')}>
@@ -26,47 +28,16 @@ export const MyVaultComponent = () => {
         className={clsx(
           'flex gap-6 items-start justify-start flex-wrap py-3 overflow-auto h-[calc(100%-102px-32px)]'
         )}>
-        {rewards && rewards?.length > 0 ? (
-          rewards?.map((reward: any) => {
-            if (!reward || !reward.rewardId) {
-              return null;
-            }
-
-            let buttonText = '';
-            switch (reward.status) {
-              case 'claimed':
-                buttonText = 'CLAIMED';
-                break;
-              case 'locked':
-                buttonText = `${reward?.creditsRequired || '0'} POINTS`;
-                break;
-              case 'claimable':
-                buttonText = 'CLAIM NOW';
-                break;
-              case 'in_progress':
-                buttonText = `${reward?.progressPercentage || '0'}%`;
-            }
+        {myVaultNFTClaimed && myVaultNFTClaimed?.length > 0 ? (
+          myVaultNFTClaimed.map((reward: RewardType) => {
             return (
               <NftBox
-                key={reward.rewardId}
-                titleText={reward.title || ''}
-                imageUrl={reward.imageUrl || ''}
-                buttonText={buttonText}
-                onClaim={
-                  reward.status === 'claimable' && reward.rewardId
-                    ? () => claimRewardMutation.mutateAsync(reward.rewardId as number)
-                    : undefined
-                }
-                onClaimSuccess={() => getRewardQuery.refetch()}
-                containerClassname=""
-                isBlur={
-                  (reward.status === 'locked' || reward.status === 'claimed') &&
-                  nextReward?.rewardId !== reward.rewardId
-                }
-                isBlurButton={
-                  reward.status === 'locked' && nextReward?.rewardId !== reward.rewardId
-                }
-                isNextReward={nextReward?.rewardId === reward.rewardId}
+                key={reward.id}
+                imageUrl={reward.imageUrl || '/images/Common.png'}
+                titleText={reward.name}
+                buttonText={REWARD_STATUS.CLAIMED}
+                containerClassname="mr-6"
+                isBlur={reward.rewardStatus !== REWARD_STATUS.AVAILABLE}
               />
             );
           })

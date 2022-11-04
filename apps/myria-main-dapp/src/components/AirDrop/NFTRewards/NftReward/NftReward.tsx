@@ -1,53 +1,56 @@
-import React from 'react';
+import { useAuthenticationContext } from 'src/context/authentication';
+import { reqRewardUserClaim } from 'src/services/campaignService';
+import { RewardType } from 'src/types/campaign';
+import { REWARD_STATUS } from 'src/utils';
 import { NftBox } from './NftBox';
-import { useNftRewardQuery } from './useNftRewardQuery';
+
+const BUTTON_TEXT = {
+  [REWARD_STATUS.LOCKED]: '',
+  [REWARD_STATUS.AVAILABLE]: 'CLAIM',
+  [REWARD_STATUS.CLAIMED]: 'CLAIMED'
+};
 
 export function NftReward() {
-  const { getRewardQuery, claimRewardMutation } = useNftRewardQuery();
-  const { data: rewards } = getRewardQuery;
-  const nextReward = React.useMemo(() => rewards?.find((r) => r.status === 'locked'), [rewards]);
+  const { userCampaign, userProfileQuery } = useAuthenticationContext();
+
+  const nextReward: RewardType | undefined = userCampaign?.rewards.find(
+    (item: RewardType) => item.rewardStatus === REWARD_STATUS.AVAILABLE
+  );
+
+  const claimReward = (rewardId: number) => {
+    if (userCampaign) {
+      return reqRewardUserClaim({ rewardId: rewardId, userId: userCampaign?.userId });
+    }
+    return;
+  };
+
+  const buttonTextNFTReward = (status: string, point: number) => {
+    if (status === REWARD_STATUS.LOCKED) {
+      return `${point} POINT`;
+    }
+    return BUTTON_TEXT[status];
+  };
 
   return (
     <div className="overflow-x-auto py-3">
       <div className="flex w-full">
-        {rewards?.map((reward) => {
-          if (!reward || !reward.rewardId) {
-            return null;
-          }
-
-          let buttonText = '';
-          switch (reward.status) {
-            case 'claimed':
-              buttonText = 'CLAIMED';
-              break;
-            case 'locked':
-              buttonText = `${reward?.creditsRequired || '0'} POINTS`;
-              break;
-            case 'claimable':
-              buttonText = 'CLAIM NOW';
-              break;
-            case 'in_progress':
-              buttonText = `${reward?.progressPercentage || '0'}%`;
-          }
+        {userCampaign?.rewards.map((reward: RewardType) => {
+          const buttonText = buttonTextNFTReward(reward.rewardStatus, reward.point);
           return (
             <NftBox
-              key={reward.rewardId}
-              titleText={reward.title || ''}
-              imageUrl={reward.imageUrl || ''}
+              key={reward.id}
+              imageUrl={reward.imageUrl || '/images/Common.png'}
+              titleText={reward.name}
               buttonText={buttonText}
+              containerClassname="mr-6"
+              isBlur={reward.rewardStatus !== REWARD_STATUS.AVAILABLE}
               onClaim={
-                reward.status === 'claimable' && reward.rewardId
-                  ? () => claimRewardMutation.mutateAsync(reward.rewardId as number)
+                reward.rewardStatus === REWARD_STATUS.AVAILABLE
+                  ? () => claimReward(reward.id)
                   : undefined
               }
-              onClaimSuccess={() => getRewardQuery.refetch()}
-              containerClassname="mr-6"
-              isBlur={
-                (reward.status === 'locked' || reward.status === 'claimed') &&
-                nextReward?.rewardId !== reward.rewardId
-              }
-              isBlurButton={reward.status === 'locked' && nextReward?.rewardId !== reward.rewardId}
-              isNextReward={nextReward?.rewardId === reward.rewardId}
+              onClaimSuccess={() => userProfileQuery.refetch()}
+              isNextReward={nextReward && (nextReward as any as RewardType).id === reward.id}
             />
           );
         })}

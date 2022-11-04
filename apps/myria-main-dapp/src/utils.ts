@@ -245,7 +245,7 @@ export const generateUUID = () => {
 };
 
 export const utilTaskId = {
-  verifyEmail: 'CREATE_ACCOUNT',
+  verifyEmail: 'VERIFY_MAIL',
   joinDiscord: 'JOIN_DISCORD',
   followMyriaTwitter: 'FOLLOW_TWITTER',
   followBrendanTwitter: 'FOLLOW_BRENDAN',
@@ -282,3 +282,12 @@ export const getLinkMission = (paramTaskId: string, homePage: string) => {
   }
 };
 export const campaignCode = 'AIR_DROP';
+export const REWARD_TYPE = {
+  OFF_CHAIN_ASSET: 'OFF_CHAIN',
+  ON_CHAIN_ASSET: 'ON_CHAIN_ASSET'
+};
+export const REWARD_STATUS = {
+  LOCKED: 'LOCKED',
+  AVAILABLE: 'AVAILABLE',
+  CLAIMED: 'CLAIMED'
+};
