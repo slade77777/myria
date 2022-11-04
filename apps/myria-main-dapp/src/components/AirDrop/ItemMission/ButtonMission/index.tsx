@@ -46,6 +46,7 @@ interface Props {
 const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [userCampaignId,] = useLocalStorage(localStorageKeys.userCampaignId, '');
 
   const [openVerifyEmailModal, setOpenVerifyEmailModal] = useState(false);
 
@@ -90,7 +91,7 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       name: utilTaskId.inviteFriends,
       handler: (homePage?: string) => {
         console.log(utilTaskId.inviteFriends);
-        navigator.clipboard.writeText(homePage + '?referCode=0x' + localStarkKey).then(
+        navigator.clipboard.writeText(homePage + '?referCode=' + userCampaignId).then(
           function () {
             toast('Copied!', { type: 'success' });
           },

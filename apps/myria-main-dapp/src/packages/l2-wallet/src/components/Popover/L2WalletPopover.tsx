@@ -119,8 +119,8 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
     localStorageKeys.starkKey,
     '',
   );
-  const [, setIdCampaign] = useLocalStorage(
-    localStorageKeys.idCampaign,
+  const [, setUserCampaignId] = useLocalStorage(
+    localStorageKeys.userCampaignId,
     '',
   );
 
@@ -600,7 +600,7 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
               <button
                 className="body-14-medium flex items-center space-x-2.5 text-white"
                 onClick={() => {
-                  setIdCampaign('');
+                  setUserCampaignId('');
                   disconnect();
                   disconnectL2Wallet();
                   logout();
