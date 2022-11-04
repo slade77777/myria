@@ -71,10 +71,9 @@ export const L2WalletProvider: React.FC = ({ children }) => {
       if (user && user?.ethAddress?.toLowerCase() === metamaskAccount?.toLowerCase()) {
         setIsCheckFirstTimeUser(false);
         return false;
-      }
-      else {
+      } else {
         setIsCheckFirstTimeUser(true);
-        return true
+        return true;
       }
     } catch {
       setIsCheckFirstTimeUser(true);

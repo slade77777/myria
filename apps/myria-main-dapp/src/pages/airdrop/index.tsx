@@ -18,7 +18,6 @@ const AirDropCampaign: React.FC = () => {
     });
   }, []);
 
-
   const content = useMemo(() => {
     switch (currentStep) {
       case 0:

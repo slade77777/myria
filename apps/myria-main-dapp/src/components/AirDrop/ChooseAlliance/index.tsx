@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro';
-import axios from 'axios';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { Loading } from 'src/components/Loading';
 import { campaignApiClient } from 'src/client';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { useGA4 } from 'src/lib/ga';
@@ -10,6 +10,7 @@ import { AllianceName } from 'src/types/sigil';
 import { getAllianceInfo } from 'src/utils';
 import AllianceModal from './AllianceModal';
 import ChooseAllianceStepper from './Stepper';
+import { useAlliances } from './useAlliances';
 
 interface SigilProps {
   sigilImg: string;
@@ -157,15 +158,17 @@ const Sigil = ({
         }
         setIsFirstTimeActive(true);
       }}
-      className={`absolute bottom-[30%] flex flex-col items-center justify-center ${className || ''
-        }`}>
+      className={`absolute bottom-[30%] flex flex-col items-center justify-center ${
+        className || ''
+      }`}>
       <div
-        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b px-6 pb-[8px] pt-[24px] transition-all xl:px-8 ${isActive
-          ? 'z-20 max-w-full from-transparent via-[rgba(0,0,0,0.5)] to-transparent'
-          : 'z-0 max-w-[80%] from-transparent'
-          }`}>
+        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b px-6 pb-[8px] pt-[24px] transition-all xl:px-8 ${
+          isActive
+            ? 'z-20 max-w-full from-transparent via-[rgba(0,0,0,0.5)] to-transparent'
+            : 'z-0 max-w-[80%] from-transparent'
+        }`}>
         <div className="flex items-center">
-          <div className="h-[1px] flex-1 bg-border-blue opacity-20">
+          <div className="bg-border-blue h-[1px] flex-1 opacity-20">
             <div className="absolute top-0 left-0 translate-x-[-6px] translate-y-[-10px]">
               <svg
                 width="80"
@@ -182,11 +185,12 @@ const Sigil = ({
               </svg>
             </div>
             <div
-              className={`absolute top-0 left-0 w-[2px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent transition-all delay-100 ${isActive ? 'h-full' : 'h-0'
-                }`}
+              className={`from-border-blue absolute top-0 left-0 w-[2px] translate-y-4 bg-gradient-to-b to-transparent transition-all delay-100 ${
+                isActive ? 'h-full' : 'h-0'
+              }`}
             />
           </div>
-          <div className="h-[1px] flex-1 bg-border-blue opacity-20">
+          <div className="bg-border-blue h-[1px] flex-1 opacity-20">
             <div className="absolute top-0 right-0 translate-x-[6px] translate-y-[-10px]">
               <svg
                 width="80"
@@ -203,14 +207,16 @@ const Sigil = ({
               </svg>
             </div>
             <div
-              className={`absolute top-0 right-0 w-[2px] translate-y-4 bg-gradient-to-b from-border-blue to-transparent transition-all delay-100 ${isActive ? 'h-full' : 'h-0'
-                }`}
+              className={`from-border-blue absolute top-0 right-0 w-[2px] translate-y-4 bg-gradient-to-b to-transparent transition-all delay-100 ${
+                isActive ? 'h-full' : 'h-0'
+              }`}
             />
           </div>
         </div>
         <div
-          className={`absolute px-1 transition-all delay-100 ${isActive ? 'top-[-18px]' : 'top-[10px]'
-            }`}>
+          className={`absolute px-1 transition-all delay-100 ${
+            isActive ? 'top-[-18px]' : 'top-[10px]'
+          }`}>
           <span
             className="text-[16px] font-extrabold uppercase tracking-tight text-white"
             style={{ textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)' }}>
@@ -218,18 +224,20 @@ const Sigil = ({
           </span>
         </div>
         <div
-          className={`h-[70px] w-[260px] text-center transition-all delay-100 ${isActive ? 'opacity-100' : 'opacity-0'
-            }`}>
+          className={`h-[70px] w-[260px] text-center transition-all delay-100 ${
+            isActive ? 'opacity-100' : 'opacity-0'
+          }`}>
           <span
-            className="text-[13px] leading-5 font-normal text-light"
+            className="text-light text-[13px] font-normal leading-5"
             style={{ textShadow: '0px 0px 10px rgba(255, 255, 255, 0.2)' }}>
             {desc}
           </span>
         </div>
         <div
-          className={`flex w-[180px] flex-col items-center 2xl:w-[230px] ${order === 2 ? 'pt-[56px]' : 'pt-[40px]'
-            }`}>
-          <div className="flex w-full animate-float items-center justify-center">
+          className={`flex w-[180px] flex-col items-center 2xl:w-[230px] ${
+            order === 2 ? 'pt-[56px]' : 'pt-[40px]'
+          }`}>
+          <div className="animate-float flex w-full items-center justify-center">
             <Image src={sigilImg} alt="" layout="intrinsic" width={width} height={height} />
           </div>
 
@@ -238,10 +246,11 @@ const Sigil = ({
             <div
               className="absolute bottom-0 h-[100px] w-0"
               style={{
-                boxShadow: `0 0 60px 20px white, 25px 15px 50px 10px #fff, -5px -5px 30px 5px #fff ${isActive
-                  ? ',0 0 40px 10px white, 0px -100px 40px 10px white, 0px -180px 40px 40px rgba(255,255,255,0.2)'
-                  : ''
-                  }`
+                boxShadow: `0 0 60px 20px white, 25px 15px 50px 10px #fff, -5px -5px 30px 5px #fff ${
+                  isActive
+                    ? ',0 0 40px 10px white, 0px -100px 40px 10px white, 0px -180px 40px 40px rgba(255,255,255,0.2)'
+                    : ''
+                }`
               }}
             />
             {isActive && (
@@ -249,7 +258,7 @@ const Sigil = ({
                 {PARTICLES.map((particle) => (
                   <div
                     key={particle.id}
-                    className="absolute bottom-0 h-[4px] w-[4px] animate-starUp overflow-hidden rounded-full"
+                    className="animate-starUp absolute bottom-0 h-[4px] w-[4px] overflow-hidden rounded-full"
                     style={{
                       content: '',
                       animationDuration: particle.animationDuration,
@@ -264,10 +273,11 @@ const Sigil = ({
         </div>
 
         <div
-          className={`absolute  flex h-[116px] w-full items-end justify-center transition-all delay-100 ${isActive
-            ? 'bottom-[-70px] opacity-100 xl:bottom-[-75px] 2xl:bottom-[-100px]'
-            : 'bottom-0 opacity-0 pointer-events-none'
-            }`}>
+          className={`absolute  flex h-[116px] w-full items-end justify-center transition-all delay-100 ${
+            isActive
+              ? 'bottom-[-70px] opacity-100 xl:bottom-[-75px] 2xl:bottom-[-100px]'
+              : 'pointer-events-none bottom-0 opacity-0'
+          }`}>
           <button
             className="btn-md btn-primary flex w-[60%] items-center"
             onClick={() => {
@@ -284,7 +294,8 @@ const Sigil = ({
 };
 
 const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
-  const { userProfileQuery, idUserCampaign } = useAuthenticationContext();
+  const { userProfileQuery } = useAuthenticationContext();
+  const { data } = useAlliances();
   const [activeSigil, setActiveSigil] = useState<string | null>(null);
   const handleHoverSigil = (id: string | null) => {
     setActiveSigil(id);
@@ -292,22 +303,31 @@ const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
 
   const [selectedAlliance, setSelectedAlliance] = useState<Sigil['id'] | null>(null);
   const activeSigilData = React.useMemo(() => {
-    return SIGILS.find((sigil) => sigil.id === selectedAlliance);
-  }, [selectedAlliance]);
+    if (!data) {
+      return null;
+    }
+    const activeItem = SIGILS.find((sigil) => sigil.id === selectedAlliance);
 
-  const onJoinSuccess = React.useCallback(
-    (sigilId: string | undefined) => {
-      console.log(idUserCampaign);
-      console.log('res', selectedAlliance); //check to call API
-      idUserCampaign && campaignApiClient.patch(`/users/${idUserCampaign}/alliances`, {
-        allianceId: 3  // Call API will get aliances id
-      }).then(() => {
-        onNext?.(); // Check call API thành công sẽ chạy hàm on next to case Airdrop content
-        userProfileQuery.refetch();
-      });
-    },
-    [onNext, userProfileQuery, idUserCampaign]
-  );
+    return (
+      activeItem && {
+        ...activeItem,
+        externalId: data.find((item) => item.code === activeItem.id)!.id
+      }
+    );
+  }, [selectedAlliance, data]);
+
+  const onJoinSuccess = React.useCallback(() => {
+    userProfileQuery.refetch();
+    onNext?.();
+  }, [onNext, userProfileQuery]);
+
+  if (!data) {
+    return (
+      <div className="flex justify-center">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -319,7 +339,7 @@ const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
         }}
         sigilName={activeSigilData?.name}
         sigilDesc={activeSigilData?.joiningDesc}
-        sigilId={activeSigilData?.id}
+        sigilId={activeSigilData?.externalId}
         selectModalBgImg={activeSigilData?.selectModalBgImg}
       />
       <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[600px] min-w-[1300px] items-center justify-center overflow-hidden">
@@ -351,10 +371,11 @@ const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
               ))}
             </div>
             <div
-              className={`pointer-events-none fixed top-[80px] left-0 h-full w-full bg-gradient-to-t  transition-all delay-100 ${!!activeSigil
-                ? 'from-[rgba(0,0,0,0.5)] to-transparent backdrop-blur-[2px] '
-                : 'from-[rgba(0,0,0,0.3)] via-transparent to-transparent backdrop-blur-none'
-                }`}
+              className={`pointer-events-none fixed top-[80px] left-0 h-full w-full bg-gradient-to-t  transition-all delay-100 ${
+                !!activeSigil
+                  ? 'from-[rgba(0,0,0,0.5)] to-transparent backdrop-blur-[2px] '
+                  : 'from-[rgba(0,0,0,0.3)] via-transparent to-transparent backdrop-blur-none'
+              }`}
             />
           </div>
         </div>

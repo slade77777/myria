@@ -54,7 +54,7 @@ export type UserAirDop = {
 };
 
 export type MyriaUser = {
-  user_id: string;
+  user_id: number;
   wallet_id: string;
 };
 export interface MissionProgressType {

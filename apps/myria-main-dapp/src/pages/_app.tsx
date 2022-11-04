@@ -39,7 +39,7 @@ export const queryClient = new QueryClient();
 function App({ Component, pageProps }: AppProps) {
   useGATrackPageview();
   const router = useRouter();
-  const isAirDrop = router.route === '/airdrop'
+  const isAirDrop = router.route === '/airdrop';
 
   useEffect(() => storePathValues, [router.asPath]);
 
@@ -106,7 +106,6 @@ function App({ Component, pageProps }: AppProps) {
                   </FilterSortProvider>
                 </AuthenticationProvider>
               </CampaignProvider>
-
             </DepositProvider>
           </WithdrawNFT>
         </WalletProvider>
