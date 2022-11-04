@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import { TwitterShareButton } from 'react-share';
 import { toast } from 'react-toastify';
-import IconButton from 'src/components/icons/IconButton';
+import IconButton, { objectButton } from 'src/components/icons/IconButton';
 import { localStorageKeys } from 'src/configs';
 import { ImissionProgress } from 'src/context/authentication';
 import useLocalStorage from 'src/hooks/useLocalStorage';
@@ -118,17 +118,25 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     const homePage = window.location.origin + window.location.pathname;
     actionMission[id].handler(homePage);
   };
-
+  const StyleButton = () => {
+    if (id === utilTaskId.verifyEmail) {
+      if (status === STATUS_MISSTION.COMPLETE) {
+        return DF_STYLE_BUTTON[status]
+      }
+      else return DF_STYLE_BUTTON[STATUS_MISSTION.ACTIVE]
+    }
+    else return DF_STYLE_BUTTON[status]
+  }
   return (
     <>
       <div
         className={clsx(
-          `group relative inline-block w-52 text-center leading-[50px] ${DF_STYLE_BUTTON[status].TEXT_COLOR}`,
+          `group relative inline-block w-52 text-center leading-[50px] ${StyleButton()}`,
           enableClick && 'cursor-pointer'
         )}
         onClick={handleClick}>
         {item.missionCampaign.actionTitle}
-        <IconButton status={DF_STYLE_BUTTON[status]} isActive={enableClick} />
+        <IconButton status={StyleButton()} isActive={enableClick} />
       </div>
       {id === utilTaskId.verifyEmail && (
         <VerifyEmailModal
