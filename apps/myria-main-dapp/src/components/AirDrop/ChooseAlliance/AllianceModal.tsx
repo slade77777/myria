@@ -5,7 +5,9 @@ import Button from 'src/components/core/Button';
 import CloseIcon from 'src/components/icons/CloseIcon';
 import InfoIcon from 'src/components/icons/InfoIcon';
 import Modal from 'src/components/Modal';
+import { localStorageKeys } from 'src/configs';
 import { useAuthenticationContext } from 'src/context/authentication';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 import { useGA4 } from 'src/lib/ga';
 import { usePickSigilQuery } from './useChooseAllianceQuery';
 
@@ -28,7 +30,8 @@ const AllianceModal: React.FC<Props> = ({
   sigilId,
   selectModalBgImg
 }) => {
-  const { user, idUserCampaign } = useAuthenticationContext();
+  const [userCampaignId,] = useLocalStorage(localStorageKeys.userCampaignId, '');
+
   const { event } = useGA4();
   const { pickSigilMutation } = usePickSigilQuery({
     onPickSigilSuccess: onJoinSuccess,
@@ -38,7 +41,7 @@ const AllianceModal: React.FC<Props> = ({
   });
   const { mutate: handleJoin, isLoading } = pickSigilMutation;
 
-  if (!idUserCampaign) {
+  if (userCampaignId.length === 0) {
     return null;
   }
 
@@ -69,7 +72,7 @@ const AllianceModal: React.FC<Props> = ({
                   onClick={() => {
                     sigilId &&
                       handleJoin({
-                        userId: idUserCampaign,
+                        userId: +userCampaignId,
                         allianceId: sigilId
                       });
                     sigilName &&

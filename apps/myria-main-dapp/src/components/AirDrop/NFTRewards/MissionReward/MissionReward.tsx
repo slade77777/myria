@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import ItemMission from '../../ItemMission';
 import { useVerifyEmail } from './useVerifyEmail';
 import { useAuthenticationContext } from 'src/context/authentication';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { localStorageKeys } from 'src/configs';
 
 const MISSION_CODE = 'VERIFY_EMAIL';
 
 export const MissionReward = () => {
-  const { idUserCampaign } = useAuthenticationContext();
+  const [userCampaignId,] = useLocalStorage(localStorageKeys.userCampaignId, '');
 
   const { mutate: updateVerifyEmail } = useVerifyEmail({
     missionCode: MISSION_CODE,
@@ -14,10 +16,10 @@ export const MissionReward = () => {
   });
 
   useEffect(() => {
-    if (idUserCampaign) {
+    if (userCampaignId) {
       updateVerifyEmail();
     }
-  }, [idUserCampaign, updateVerifyEmail]);
+  }, [userCampaignId, updateVerifyEmail]);
 
   const { userCampaign } = useAuthenticationContext();
   return (

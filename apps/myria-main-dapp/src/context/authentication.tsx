@@ -31,6 +31,7 @@ import { MyriaUser, RegisterData, UserAirDop } from 'src/types/campaign';
 import { useL2WalletContext } from './l2-wallet';
 import { useAirdropCampaign } from './campaignContext';
 import { UserData } from 'myria-core-sdk/dist/types';
+import { useRouter } from 'next/router';
 
 export interface User {
   user_id: string;
@@ -238,7 +239,6 @@ interface IAuthenticationContext {
   user: User | undefined;
   userCampaign: UserCampaign | undefined;
   nextChooseAlliance: boolean;
-  idUserCampaign: number | undefined;
   login: () => void;
   register: () => void;
   forgotPassword: () => void;
@@ -282,9 +282,6 @@ interface IProps {
 export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }) => {
   const [referalCode] = useLocalStorage(localStorageKeys.referralCode, undefined);
   const [user, setUser] = React.useState<User | undefined>();
-  const [idUserCampaign, setIdUserCampaign] = React.useState<number | undefined>();
-  console.log(idUserCampaign);
-
   const [userCampaign, setUserCampaign] = React.useState<UserCampaign | undefined>();
   const [nextChooseAlliance, setNextChooseAlliance] = React.useState<boolean>(false);
   const [account, setAccount] = React.useState<Account | undefined>();
@@ -311,12 +308,13 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   const { signMessage, address } = useWalletContext();
 
   const { event } = useGA4();
+  const router = useRouter();
 
   const { campaignId } = useAirdropCampaign();
 
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
-  const [idCampaign, setIdCampaign] = useLocalStorage(localStorageKeys.idCampaign, '');
+  const [userCampaignId, setUserCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
 
   const { isLoading: isPostingLogin, mutate: postLogin } = useMutation(
     async () => {
@@ -440,15 +438,15 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   };
 
   //Regiter Campaign
-  const registerCampaignByWallet = async (userDataRegister: string) => {
+  const registerCampaignByWallet = async (userId: string) => {
     const message = JSON.stringify({ created_on: new Date(Date.now() + 60000) }); // add 1 minute to current time
     const signature = await signMessage(message);
 
     // Create user in campaign services
     if (signature && address) {
       const registerData = {
-        userId: userDataRegister,
-        campaignId: campaignId
+        userId: +userId,
+        campaignId: +campaignId
       };
       const userRes = await campaignApiClient
         .post(`/users/register-campaign`, registerData)
@@ -514,7 +512,6 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     if (address === undefined) throw new Error('Address cant be empty');
 
     let userRes: AxiosResponse | null;
-    let registerData: RegisterData;
 
     if (signature) {
       const isCheckFirstTimeUser =
@@ -548,18 +545,17 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
       };
       if (!isCheckFirstTimeUser) {
         // Normal users from wallet
-        return campaignApiClient.get(`/users/wallet-address/${address}?${campaignId}`).then((res) => {
+        return campaignApiClient.get(`/users/wallet-address/${address}?campaignId=${campaignId}`).then((res) => {
           //User registered campaign
           if (res.data.data.allianceId) {
-            setIdCampaign(res.data.data.id.toString());
-            setIdUserCampaign(res.data.data.id);
+            setUserCampaignId(res.data.data.id.toString());
             userProfileQuery.refetch();
             return res.data.data;
           }
           else {
             setNextChooseAlliance(true);
-            setIdCampaign(res.data.data.id.toString());
-            setIdUserCampaign(res.data.data.id);
+            setUserCampaignId(res.data.data.id.toString());
+            return res.data.data;
           }
         }).catch(async () => {      //No user in campaign
           //Create user in campaign service
@@ -577,8 +573,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.id);
 
           //Push user to select Alliance
-          setIdCampaign(dataRegisterCampaign.user_id.toString())
-          setIdUserCampaign(dataRegisterCampaign.user_id);
+          setUserCampaignId(dataRegisterCampaign.user_id.toString())
           setNextChooseAlliance(true);
         });
         // Normal user has registered campaign
@@ -612,17 +607,14 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         const starkSignature = await commonModule.generateStarkSignatureForRegisterUser(
           signatureData
         );
-        let isReferCode = '';
-        const paramsString = window.location.search;
-        const searchParams = new URLSearchParams(paramsString);
-        if (searchParams.get('referCode')) {
-          isReferCode = searchParams.get('referCode') || '';
-        }
+        const isReferCode = router.query.referCode
         if (userID) {
-          registerData = {
+          const registerNewData = {
             starkKey: '0x' + newStarkKey,
             walletAddress: address,
-            referrerId: isReferCode?.length ? isReferCode : undefined,
+            accountId: userID.user_id,
+            username: userID.user_name,
+            referrerId: isReferCode?.length ? +isReferCode : undefined,
             signature: starkSignature
           };
 
@@ -630,12 +622,11 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           // Register user in Campaign mutation
           // const user = await registerCampaignByWallet();
           userRes = await campaignApiClient
-            .post(`/users/l2/wallet`, registerData)
+            .post(`/users/l2/wallet`, registerNewData)
             .then((res) => res);
           const dataRegisterCampaign = await registerCampaignByWallet(userRes?.data.data.id || '');
           // set user choose alliance
-          setIdCampaign(dataRegisterCampaign.user_id.toString())
-          setIdUserCampaign(dataRegisterCampaign.user_id);
+          setUserCampaignId(dataRegisterCampaign.user_id.toString())
           setNextChooseAlliance(true);
         } else {
           userRes = null;
@@ -734,9 +725,9 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     'getUserProfile',
     () => {
       if (isAirDrop) {
-        if (!campaignId || !idCampaign) return null;
+        if (!campaignId || !userCampaignId) return null;
         return campaignApiClient
-          .get(`/users/${idCampaign}/campaign-id/${campaignId}`)
+          .get(`/users/${userCampaignId}/campaign-id/${campaignId}`)
           .then((res) => {
             const data = res.data?.data;
             if (data) {
@@ -777,7 +768,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     },
     {
       retry: false,
-      refetchInterval: isAirDrop ? (idUserCampaign ? 5000 : 2000) : false
+      refetchInterval: isAirDrop ? (userCampaignId.length > 0 ? 10000 : 2000) : false
     }
   );
 
@@ -802,7 +793,6 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         user,
         userCampaign,
         nextChooseAlliance,
-        idUserCampaign: idUserCampaign,
         login,
         register,
         forgotPassword,
