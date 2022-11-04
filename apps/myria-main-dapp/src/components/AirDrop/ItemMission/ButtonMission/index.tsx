@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import IconButton, { objectButton } from 'src/components/icons/IconButton';
+import IconButton from 'src/components/icons/IconButton';
 import { localStorageKeys } from 'src/configs';
 import { ImissionProgress } from 'src/context/authentication';
 import useLocalStorage from 'src/hooks/useLocalStorage';
@@ -142,7 +142,7 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     <>
       <div
         className={clsx(
-          `group relative inline-block w-52 text-center leading-[50px] ${StyleButton()}`,
+          `group relative inline-block w-52 text-center leading-[50px] ${StyleButton().TEXT_COLOR}`,
           enableClick && 'cursor-pointer'
         )}
         onClick={handleClick}>

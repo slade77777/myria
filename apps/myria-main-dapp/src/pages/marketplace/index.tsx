@@ -1,11 +1,9 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import { OrderStatus, OrderType } from 'myria-core-sdk';
-import Link from 'next/link';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
-import { campaignApiClient } from 'src/client';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import TailSpin from 'src/components/icons/TailSpin';
 import AssetList from 'src/components/marketplace/AssetList';
@@ -19,11 +17,6 @@ import SelectOrderBy from 'src/components/select/SelectOrderBy';
 import { useFilterSortContext } from 'src/context/filter-sort-context';
 import useCheckMobileView from 'src/hooks/useCheckMobileView';
 import useCheckStatusMarketplacePage from 'src/hooks/useCheckStatusMarketplacePage';
-import {
-  getCampaignsDetailById,
-  getUserCampaigns,
-  missionComplete
-} from 'src/services/campaignService';
 import { assetModule } from 'src/services/myriaCore';
 import { getItemsPagination, negativeMarginXSm, paddingX } from 'src/utils';
 import avatar from '../../../public/images/marketplace/avatar.png';

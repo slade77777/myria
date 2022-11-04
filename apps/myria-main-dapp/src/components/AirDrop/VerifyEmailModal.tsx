@@ -66,7 +66,7 @@ const VerifyEmailModal: React.FC<{
       <Modal.Content title="Verify your email address">
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="px-8 py-8">
-            <p className="body-sm">Enter your email address to complete the mission</p>
+            <p className="body-sm text-left">Enter your email address to complete the mission</p>
             <Input
               placeholder={`Enter your email`}
               {...register('email')}

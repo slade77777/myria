@@ -64,7 +64,6 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
         return;
       }
       if (setCurrentStep && isAirDrop && userCampaign) {
-        console.log(userCampaign, user, userProfileQuery.data);
         // check Selected Alliance from user
         setCurrentStep(2); // set Step to federatiton
         return;
@@ -89,11 +88,11 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
       const isBraveBrowser = (navigator.brave && (await navigator.brave.isBrave())) || false;
       setIsSupportedBrowser(
         Boolean(browser) &&
-          (browser?.name === 'chrome' ||
-            browser?.name === 'edge-chromium' ||
-            browser?.name === 'edge' ||
-            browser?.name === 'firefox' ||
-            isBraveBrowser)
+        (browser?.name === 'chrome' ||
+          browser?.name === 'edge-chromium' ||
+          browser?.name === 'edge' ||
+          browser?.name === 'firefox' ||
+          isBraveBrowser)
       );
     }
 
