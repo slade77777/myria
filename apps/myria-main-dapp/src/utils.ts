@@ -245,7 +245,7 @@ export const generateUUID = () => {
 };
 
 export const utilTaskId = {
-  verifyEmail: 'CREATE_ACCOUNT',
+  verifyEmail: 'VERIFY_MAIL',
   joinDiscord: 'JOIN_DISCORD',
   followMyriaTwitter: 'FOLLOW_TWITTER',
   followBrendanTwitter: 'FOLLOW_BRENDAN',
