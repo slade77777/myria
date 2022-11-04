@@ -103,8 +103,9 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     },
     [utilTaskId.dailyLogAndPostDiscord]: {
       name: utilTaskId.dailyLogAndPostDiscord,
-      handler: () => {
+      handler: (homePage: string) => {
         console.log(utilTaskId.dailyLogAndPostDiscord);
+        window.open(getLinkMission(utilTaskId.dailyLogAndPostDiscord, homePage), '_blank');
       }
     },
     [utilTaskId.sharePostTwitter]: {
