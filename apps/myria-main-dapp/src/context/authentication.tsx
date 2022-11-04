@@ -551,14 +551,14 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         return campaignApiClient.get(`/users/wallet-address/${address}?${campaignId}`).then((res) => {
           //User registered campaign
           if (res.data.data.allianceId) {
-            setIdCampaign(res.data.data.id);
+            setIdCampaign(res.data.data.id.toString());
             setIdUserCampaign(res.data.data.id);
             userProfileQuery.refetch();
             return res.data.data;
           }
           else {
             setNextChooseAlliance(true);
-            setIdCampaign(res.data.data.id);
+            setIdCampaign(res.data.data.id.toString());
             setIdUserCampaign(res.data.data.id);
           }
         }).catch(async () => {      //No user in campaign
@@ -577,6 +577,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.id);
 
           //Push user to select Alliance
+          setIdCampaign(dataRegisterCampaign.user_id.toString())
           setIdUserCampaign(dataRegisterCampaign.user_id);
           setNextChooseAlliance(true);
         });
@@ -633,6 +634,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
             .then((res) => res);
           const dataRegisterCampaign = await registerCampaignByWallet(userRes?.data.data.id || '');
           // set user choose alliance
+          setIdCampaign(dataRegisterCampaign.user_id.toString())
           setIdUserCampaign(dataRegisterCampaign.user_id);
           setNextChooseAlliance(true);
         } else {
@@ -775,7 +777,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     },
     {
       retry: false,
-      refetchInterval: 5000 // 5s
+      refetchInterval: isAirDrop ? (idUserCampaign ? 5000 : 2000) : false
     }
   );
 
