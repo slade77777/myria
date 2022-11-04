@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
-import { TwitterShareButton } from 'react-share';
 import { toast } from 'react-toastify';
 import IconButton, { objectButton } from 'src/components/icons/IconButton';
 import { localStorageKeys } from 'src/configs';
@@ -68,15 +67,23 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     [utilTaskId.followMyriaTwitter]: {
       name: utilTaskId.followMyriaTwitter,
       handler: (homePage: string) => {
-        console.log(utilTaskId.followMyriaTwitter);
-        window.open(getLinkMission(utilTaskId.joinDiscord, homePage), '_blank');
+        window.open(getLinkMission(utilTaskId.followMyriaTwitter, homePage), '_blank');
+        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
+          (res) => {
+            console.log(res);
+          }
+        );
       }
     },
     [utilTaskId.followBrendanTwitter]: {
       name: utilTaskId.followBrendanTwitter,
       handler: (homePage: string) => {
-        console.log(utilTaskId.followBrendanTwitter);
-        window.open(getLinkMission(utilTaskId.joinDiscord, homePage), '_blank');
+        window.open(getLinkMission(utilTaskId.followBrendanTwitter, homePage), '_blank');
+        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
+          (res) => {
+            console.log(res);
+          }
+        );
       }
     },
     [utilTaskId.inviteFriends]: {
@@ -101,7 +108,14 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     },
     [utilTaskId.sharePostTwitter]: {
       name: utilTaskId.sharePostTwitter,
-      handler: async () => {}
+      handler: () => {
+        window.open(getLinkMission(utilTaskId.sharePostTwitter, ''), '_blank');
+        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
+          (res) => {
+            console.log(res);
+          }
+        );
+      }
     },
     [utilTaskId.reachLevelDiscord]: {
       name: utilTaskId.reachLevelDiscord,
