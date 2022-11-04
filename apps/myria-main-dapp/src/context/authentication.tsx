@@ -43,13 +43,13 @@ export interface User {
   credits?: number;
   date_registered?: Date;
   access_token?: string;
-};
+}
 
 export interface UserWallet {
-  id: string,
-  starkKey: string,
-  walletAddress: string,
-  email: string,
+  id: string;
+  starkKey: string;
+  walletAddress: string;
+  email: string;
   verifiedAt: string;
   username: string;
   referrerId: string;
@@ -80,7 +80,7 @@ export interface ImissionProgress {
   earnedPoints: number;
   missionCampaign: ImissionCampaign;
   missionId: number;
-  performedTimes: number
+  performedTimes: number;
   remainingAction: number;
   status: string;
 
@@ -103,10 +103,9 @@ export interface UserCampaign extends User {
   campaignId: string;
   rewards: [];
   user: User;
-  userId: number
+  userId: number;
   availablePoints: number;
 }
-
 
 export type Account = {
   normalized_email: string;
@@ -126,10 +125,9 @@ export type Account = {
 };
 
 export type AccountRegister = {
-  user_id: string,
-  wallet_id: string,
+  user_id: string;
+  wallet_id: string;
 };
-
 
 const VerifyModal = ({
   open,
@@ -240,7 +238,7 @@ interface IAuthenticationContext {
   user: User | undefined;
   userCampaign: UserCampaign | undefined;
   nextChooseAlliance: boolean;
-  idUserCampaign: string | undefined;
+  idUserCampaign: number | undefined;
   login: () => void;
   register: () => void;
   forgotPassword: () => void;
@@ -284,9 +282,11 @@ interface IProps {
 export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }) => {
   const [referalCode] = useLocalStorage(localStorageKeys.referralCode, undefined);
   const [user, setUser] = React.useState<User | undefined>();
-  const [idUserCampaign, setIdUserCampaign] = React.useState<string | undefined>('');
+  const [idUserCampaign, setIdUserCampaign] = React.useState<number | undefined>();
+  console.log(idUserCampaign);
+
   const [userCampaign, setUserCampaign] = React.useState<UserCampaign | undefined>();
-  const [nextChooseAlliance, setNextChooseAlliance] = React.useState<boolean>(false)
+  const [nextChooseAlliance, setNextChooseAlliance] = React.useState<boolean>(false);
   const [account, setAccount] = React.useState<Account | undefined>();
   const [openSignIn, setOpenSignIn] = React.useState<boolean>(false);
   const [openRegister, setOpenRegister] = React.useState<boolean>(false);
@@ -341,7 +341,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   const logoutMutation = useMutation(async () => {
     try {
       await apiClient.post(`/accounts/logout`);
-    } catch (err) { }
+    } catch (err) {}
     window.location.reload();
   });
 
@@ -426,18 +426,17 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     userWallet_id: string,
     username: string | undefined,
     email: string | undefined,
-    userData: Promise<UserData>) => {
+    userData: Promise<UserData>
+  ) => {
     const reqUserData = {
       starkKey: (await userData).starkKey,
       walletAddress: address.toLowerCase(),
       accountId: userWallet_id,
       username: username || undefined,
-      email: email || undefined,
-    }
-    return await campaignApiClient
-      .post(`/users`, reqUserData)
-      .then((res) => res.data);
-  }
+      email: email || undefined
+    };
+    return await campaignApiClient.post(`/users`, reqUserData).then((res) => res.data);
+  };
 
   //Regiter Campaign
   const registerCampaignByWallet = async (userDataRegister: string) => {
@@ -448,7 +447,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     if (signature && address) {
       const registerData = {
         userId: userDataRegister,
-        campaignId: campaignId,
+        campaignId: campaignId
       };
       const userRes = await campaignApiClient
         .post(`/users/register-campaign`, registerData)
@@ -457,7 +456,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
       if (userRes?.status === 'success' && userRes?.data) {
         const user: MyriaUser = {
           user_id: userRes.data?.userId,
-          wallet_id: userRes.data?.wallet_id,
+          wallet_id: userRes.data?.wallet_id
         };
         toast('Register success', { type: 'success' });
         return user;
@@ -545,27 +544,37 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
             throw new Error('Failed to login user by wallet');
           }
         }
-      }
+      };
       if (!isCheckFirstTimeUser) {
         // Normal users from wallet
-        return campaignApiClient.get(`/users/wallet-address/${address.toLowerCase()}`).then((res) => {
-          //User registered campaign
-          setIdUserCampaign(res.data.data.id)
-          userProfileQuery.refetch();
-          return res.data.data;
-        }).catch(async () => {      //No user in campaign
-          //Create user in campaign service
-          const userID = await loginAccountWallet();
+        return campaignApiClient
+          .get(`/users/wallet-address/${address.toLowerCase()}`)
+          .then((res) => {
+            //User registered campaign
+            setIdUserCampaign(res.data.data.id);
+            userProfileQuery.refetch();
+            return res.data.data;
+          })
+          .catch(async () => {
+            //No user in campaign
+            //Create user in campaign service
+            const userID = await loginAccountWallet();
 
-          //Register user, userbyWallet
-          const userData = userModule.getUserByWalletAddress(address);
-          const dataUserCampaign = await registerUserCampaign(address, userID?.user_id || '', userID?.user_name || '', userID?.email || '', userData);
-          const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.id);
+            //Register user, userbyWallet
+            const userData = userModule.getUserByWalletAddress(address);
+            const dataUserCampaign = await registerUserCampaign(
+              address,
+              userID?.user_id || '',
+              userID?.user_name || '',
+              userID?.email || '',
+              userData
+            );
+            const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.id);
 
-          //Push user to select Alliance
-          setIdUserCampaign(dataRegisterCampaign.user_id);
-          setNextChooseAlliance(true);
-        })
+            //Push user to select Alliance
+            setIdUserCampaign(dataRegisterCampaign.user_id);
+            setNextChooseAlliance(true);
+          });
         // Normal user has registered campaign
         // getUserInCompaignByWalletAddress in campaign service
 
@@ -621,7 +630,6 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           // set user choose alliance
           setIdUserCampaign(dataRegisterCampaign.user_id);
           setNextChooseAlliance(true);
-
         } else {
           userRes = null;
         }
@@ -639,8 +647,6 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     }
     throw new Error('Signature and wallet address are required to login');
   });
-
-
 
   const { isLoading: isPostingResetPassword, mutate: postResetPassword } = useMutation(
     async () => {
@@ -723,23 +729,25 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     () => {
       if (isAirDrop) {
         if (!campaignId || !idUserCampaign) return null;
-        return campaignApiClient.get(`/users/${idUserCampaign}/campaign-id/${campaignId}`).then((res) => {
-          const data = res.data?.data;
-          if (data) {
-            const user: User = {
-              user_id: data.user_id,
-              alliance: data.alliance as AllianceName,
-              date_registered: new Date(data.date_registered),
-              wallet_id: data.walletAddress,
-              user_name: data.user_name,
-              email: data.email
-            };
-            const responseCampaign: UserCampaign = data;
-            setUserCampaign(responseCampaign);
-            return user;
-          }
-          return null;
-        });
+        return campaignApiClient
+          .get(`/users/${idUserCampaign}/campaign-id/${campaignId}`)
+          .then((res) => {
+            const data = res.data?.data;
+            if (data) {
+              const user: User = {
+                user_id: data.user_id,
+                alliance: data.alliance as AllianceName,
+                date_registered: new Date(data.date_registered),
+                wallet_id: data.walletAddress,
+                user_name: data.user_name,
+                email: data.email
+              };
+              const responseCampaign: UserCampaign = data;
+              setUserCampaign(responseCampaign);
+              return user;
+            }
+            return null;
+          });
       } else {
         return noCacheApiClient.get('sigil/users/profile').then((res) => {
           const data = res.data?.data;

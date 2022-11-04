@@ -80,7 +80,7 @@ const VerifyEmailModal: React.FC<{
                   <Loading loadingSize={16} />
                 </div>
               ) : (
-                <span className='leading-4'>SUBMIT</span>
+                <span className="leading-4">SUBMIT</span>
               )}
             </button>
           </div>

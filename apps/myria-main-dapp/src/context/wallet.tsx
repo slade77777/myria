@@ -172,8 +172,7 @@ export const WalletProvider: React.FC = ({ children }) => {
         balance,
         setAddress: onSetWalletAddress,
         subscribeProvider: initializeSubcribeProvider
-      }}
-    >
+      }}>
       {children}
     </WalletContext.Provider>
   );

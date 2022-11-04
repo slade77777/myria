@@ -77,7 +77,6 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       handler: (homePage: string) => {
         console.log(utilTaskId.followBrendanTwitter);
         window.open(getLinkMission(utilTaskId.joinDiscord, homePage), '_blank');
-
       }
     },
     [utilTaskId.inviteFriends]: {
@@ -102,7 +101,7 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     },
     [utilTaskId.sharePostTwitter]: {
       name: utilTaskId.sharePostTwitter,
-      handler: async () => { }
+      handler: async () => {}
     },
     [utilTaskId.reachLevelDiscord]: {
       name: utilTaskId.reachLevelDiscord,
@@ -121,12 +120,10 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
   const StyleButton = () => {
     if (id === utilTaskId.verifyEmail) {
       if (status === STATUS_MISSTION.COMPLETE) {
-        return DF_STYLE_BUTTON[status]
-      }
-      else return DF_STYLE_BUTTON[STATUS_MISSTION.ACTIVE]
-    }
-    else return DF_STYLE_BUTTON[status]
-  }
+        return DF_STYLE_BUTTON[status];
+      } else return DF_STYLE_BUTTON[STATUS_MISSTION.ACTIVE];
+    } else return DF_STYLE_BUTTON[status];
+  };
   return (
     <>
       <div

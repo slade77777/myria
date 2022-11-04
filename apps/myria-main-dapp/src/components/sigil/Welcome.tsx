@@ -21,12 +21,14 @@ type Props = {
 const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false }) => {
   const { address, onConnectCompaign, disconnect } = useWalletContext();
   const { connectL2Wallet } = useL2WalletContext();
-  const { user,
+  const {
+    user,
     loginByWalletMutation,
     userCampaign,
     loginCampaignByWalletMutation,
     userProfileQuery,
-    nextChooseAlliance } = useAuthenticationContext();
+    nextChooseAlliance
+  } = useAuthenticationContext();
 
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -67,8 +69,7 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
         setCurrentStep(2); // set Step to federatiton
         return;
       }
-    }
-    else {
+    } else {
       if (user?.user_id) {
         onNext();
         return;
@@ -88,11 +89,11 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
       const isBraveBrowser = (navigator.brave && (await navigator.brave.isBrave())) || false;
       setIsSupportedBrowser(
         Boolean(browser) &&
-        (browser?.name === 'chrome' ||
-          browser?.name === 'edge-chromium' ||
-          browser?.name === 'edge' ||
-          browser?.name === 'firefox' ||
-          isBraveBrowser)
+          (browser?.name === 'chrome' ||
+            browser?.name === 'edge-chromium' ||
+            browser?.name === 'edge' ||
+            browser?.name === 'firefox' ||
+            isBraveBrowser)
       );
     }
 
@@ -136,11 +137,9 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
     event('Connect Wallet Selected', { campaign: 'Sigil' });
     if (isAirDrop) {
       loginCampaignByWalletMutation.mutate();
-    }
-    else {
+    } else {
       loginByWalletMutation.mutate();
     }
-
   };
   return (
     <div
@@ -164,8 +163,9 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
         <>
           {installedWallet === true && isSupportedBrowser && (
             <Button
-              loading={loginByWalletMutation.isLoading ||
-                (loginCampaignByWalletMutation.isLoading) ||
+              loading={
+                loginByWalletMutation.isLoading ||
+                loginCampaignByWalletMutation.isLoading ||
                 (!userProfileQuery.data && loginCampaignByWalletMutation.isLoading)
               }
               disabled={loginByWalletMutation.isLoading || loginCampaignByWalletMutation.isLoading}

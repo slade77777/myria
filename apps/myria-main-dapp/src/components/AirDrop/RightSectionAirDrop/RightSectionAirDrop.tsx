@@ -7,7 +7,6 @@ import { MyVaultComponent } from '../MyVault';
 import { useAuthenticationContext } from 'src/context/authentication';
 
 export const RightSectionAirDrop: React.FC = () => {
-
   const { userCampaign } = useAuthenticationContext();
 
   return (

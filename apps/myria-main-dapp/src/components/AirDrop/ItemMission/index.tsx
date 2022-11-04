@@ -3,10 +3,10 @@ import React, { memo, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import SubtractBottom from 'src/components/icons/SubtractBottom';
 import SubtractTop from 'src/components/icons/SubtractTop';
-import { useAuthenticationContext } from 'src/context/authentication'
+import { useAuthenticationContext } from 'src/context/authentication';
 import { utilTaskId } from 'src/utils';
 import ButtonMission, { STATUS_MISSTION } from './ButtonMission';
-import { ImissionProgress } from 'src/context/authentication'
+import { ImissionProgress } from 'src/context/authentication';
 interface IProp {
   status: string;
   item: ImissionProgress;
@@ -16,60 +16,50 @@ interface IProp {
 const initMissionPanel = {
   [utilTaskId.verifyEmail]: {
     name: utilTaskId.verifyEmail,
-    initFunction: () => {
-    }
+    initFunction: () => {}
   },
   [utilTaskId.joinDiscord]: {
     name: utilTaskId.joinDiscord,
     initFunction: (codeJoinDiscord: string) => {
       //Call API code Join Discord
-      console.log("Call API code Join Discord", codeJoinDiscord);
+      console.log('Call API code Join Discord', codeJoinDiscord);
     }
   },
   [utilTaskId.followMyriaTwitter]: {
     name: utilTaskId.followMyriaTwitter,
-    initFunction: (homePage: string) => {
-    }
+    initFunction: (homePage: string) => {}
   },
   [utilTaskId.followBrendanTwitter]: {
     name: utilTaskId.followBrendanTwitter,
-    initFunction: (homePage: string) => {
-    }
+    initFunction: (homePage: string) => {}
   },
   [utilTaskId.inviteFriends]: {
     name: utilTaskId.inviteFriends,
-    initFunction: (homePage?: string) => {
-
-    }
+    initFunction: (homePage?: string) => {}
   },
   [utilTaskId.dailyLogAndPostDiscord]: {
     name: utilTaskId.dailyLogAndPostDiscord,
-    initFunction: () => {
-    }
+    initFunction: () => {}
   },
   [utilTaskId.sharePostTwitter]: {
     name: utilTaskId.sharePostTwitter,
-    initFunction: async () => {
-    }
+    initFunction: async () => {}
   },
   [utilTaskId.reachLevelDiscord]: {
     name: utilTaskId.reachLevelDiscord,
-    initFunction: (homePage: string) => {
-    }
+    initFunction: (homePage: string) => {}
   }
 };
 
-
 const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
-  const isLocked = status === STATUS_MISSTION.LOCKED && (id !== utilTaskId.verifyEmail);
-  const enableClick = status === STATUS_MISSTION.ACTIVE || (id === utilTaskId.verifyEmail);
+  const isLocked = status === STATUS_MISSTION.LOCKED && id !== utilTaskId.verifyEmail;
+  const enableClick = status === STATUS_MISSTION.ACTIVE || id === utilTaskId.verifyEmail;
   const router = useRouter();
 
   useEffect(() => {
     const codeJoinDiscord = router.query.code?.toString();
-    codeJoinDiscord && initMissionPanel[id].initFunction(codeJoinDiscord)
-  }, [])
-
+    codeJoinDiscord && initMissionPanel[id].initFunction(codeJoinDiscord);
+  }, []);
 
   return (
     <div
@@ -95,7 +85,9 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
         </div>
         <div className="text-center">
           <ButtonMission status={status} item={item} id={id} enableClick={enableClick} />
-          <p className="text-light mt-4 text-xs font-medium">{item.missionCampaign.point} POINTS EARNED</p>
+          <p className="text-light mt-4 text-xs font-medium">
+            {item.missionCampaign.point} POINTS EARNED
+          </p>
         </div>
       </div>
       <div className="absolute -top-1 -right-1 z-[-1]">

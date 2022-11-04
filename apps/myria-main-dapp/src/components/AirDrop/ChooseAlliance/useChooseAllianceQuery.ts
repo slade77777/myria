@@ -1,14 +1,14 @@
 import { useMutation } from 'react-query';
-import http from 'src/client';
+import { campaignApiClient } from 'src/client';
 
 interface UsePickSigilQueryParams {
   onPickSigilSuccess?: () => void;
   onPickSigilError?: () => void;
 }
 
-const pickAlliance = (allianceId: string) => {
-  return http.post(`sigil/users/alliance`, {
-    alliance_id: allianceId
+const pickAlliance = ({ allianceId, userId }: { allianceId: number; userId: number }) => {
+  return campaignApiClient.patch(`/users/${userId}/alliances`, {
+    allianceId: allianceId
   });
 };
 

@@ -297,7 +297,7 @@ module.exports = {
         '.dialog-content': {
           position: 'fixed',
           zIndex: 30,
-          top: 60,
+          top: 0,
           left: 0,
           width: '100%',
           height: '100%',
