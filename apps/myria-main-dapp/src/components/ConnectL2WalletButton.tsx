@@ -200,10 +200,10 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
             walletAddress &&
             showConnectedWallet &&
             !isAirDrop) ||
-          (!loginCampaignByWalletMutation?.isError &&
-            walletAddress &&
-            showConnectedWallet &&
-            isAirDrop) ? (
+            (!loginCampaignByWalletMutation?.isError &&
+              walletAddress &&
+              showConnectedWallet &&
+              isAirDrop) ? (
             <div>
               <Popover
                 modal
@@ -268,7 +268,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
               ) : (
                 <button
                   className="body-14-bold border-base/4 bg-base/1 flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] text-sm font-medium"
-                  onClick={() => handleDisplayPopover(true)}>
+                  onClick={() => onConnectWallet()}>
                   <WalletIcon width={24} height={24} />
                   <span className="text-base/10 text-sm">
                     <Trans>Connect Wallet</Trans>
