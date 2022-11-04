@@ -6,6 +6,8 @@ import KeyIcon from '../../components/icons/KeyIcon';
 import SemiCircleBar from '../../components/node/SemiCircleBar';
 import { Trans } from '@lingui/macro';
 import Switch from '../../components/Switch';
+import { NODE_LIMIT } from '../../configs';
+import useNodeLicense from '../../hooks/useNodeLicense';
 
 const nodesProgress = [
   {
@@ -41,6 +43,8 @@ const nodesProgress = [
 ];
 
 const Dashboard = () => {
+  const { data } = useNodeLicense();
+
   return (
     <NodeLayout>
       <p className="text-3xl font-semibold text-white">DashBoard</p>
@@ -128,14 +132,16 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="bg-base/3 shadow-dark-panel mt-6 w-full rounded-xl bg-[url('/images/nodes/dashboard/network-bg_op.png')] bg-cover bg-center p-6">
-            <p className="text-brand-light-blue text-[20px] font-medium leading-[1.25]">
-              <Trans>Maximise your network</Trans>
-            </p>
-            <button className="btn-lg btn-white mt-6">
-              <Trans>GET MORE LICENSES</Trans>
-            </button>
-          </div>
+          {data?.length < NODE_LIMIT && (
+            <div className="bg-base/3 shadow-dark-panel mt-6 w-full rounded-xl bg-[url('/images/nodes/dashboard/network-bg_op.png')] bg-cover bg-center p-6">
+              <p className="text-brand-light-blue text-[20px] font-medium leading-[1.25]">
+                <Trans>Maximise your network</Trans>
+              </p>
+              <button className="btn-lg btn-white mt-6">
+                <Trans>GET MORE LICENSES</Trans>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </NodeLayout>

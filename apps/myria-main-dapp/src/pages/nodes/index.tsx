@@ -1,6 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Subscribe from 'src/components/Subscribe';
 import CardWithIcon from 'src/components/CardWithIcon';
 import Collapse from 'src/components/Collapse';
@@ -20,11 +20,12 @@ import Header from 'src/components/nodes/Header';
 import { useAuthenticationContext } from 'src/context/authentication';
 import Link from 'next/link';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import { localStorageKeys } from '../../configs';
+import { localStorageKeys, NODE_LIMIT } from '../../configs';
 import useInstalledWallet from '../../hooks/useInstalledWallet';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import useNodePurchase from '../../hooks/useNodePurchase';
 import useUserNodes from '../../hooks/useUserNodes';
+import useNodeLicense from '../../hooks/useNodeLicense';
 
 const rewards = [
   {
@@ -182,47 +183,60 @@ const Nodes: React.FC = () => {
   const { event } = useGA4();
   const { address, onConnectCompaign } = useWalletContext();
   const { loginByWalletMutation, user } = useAuthenticationContext();
-  // const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
-  // const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
-  // const { installedWallet } = useInstalledWallet();
-  // const { connectL2Wallet } = useL2WalletContext();
-  // const { data: nodesLicense, isLoading: nodeLoading, refetch: refetchNodeLicense} = useNodeLicense();
-  //
-  // const onConnectWallet = async () => {
-  //   event('Connect Wallet Selected', { campaign: 'Nodes' });
-  //   await onConnectCompaign('B2C Marketplace');
-  //   await connectL2Wallet();
-  //   loginByWalletMutation.mutate();
-  // };
-  //
-  // const isWalletConnected = React.useMemo(() => {
-  //   if (
-  //     walletAddress &&
-  //     address &&
-  //     user &&
-  //     address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
-  //     localStarkKey
-  //   ) {
-  //     return true;
-  //   }
-  //
-  //   return false;
-  // }, [address, localStarkKey, user, walletAddress]);
+  const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const { installedWallet } = useInstalledWallet();
+  const { connectL2Wallet } = useL2WalletContext();
+  const { isLoading: nodeLoading } = useNodePurchase();
+  const { data: userNodes, isLoading: nodesLoading } = useUserNodes();
+  const { data: nodesLicense } = useNodeLicense();
 
-  // useEffect(() => {
-  //   if (loginByWalletMutation.isSuccess) {
-  //     refetchNodeLicense()
-  //   }
-  // }, [loginByWalletMutation.isSuccess, refetchNodeLicense])
-  //
-  // const totalNodes = nodesLicense?.length || 0;
-  //
-  // const purchaseLink = useMemo(() => {
-  //   if (totalNodes > 0) {
-  //     return '/nodes/dashboard';
-  //   }
-  //   return '/nodes/purchase';
-  // }, [totalNodes]);
+  const onConnectWallet = async () => {
+    event('Connect Wallet Selected', { campaign: 'Nodes' });
+    await onConnectCompaign('B2C Marketplace');
+    await connectL2Wallet();
+    if (loginByWalletMutation.isError) {
+      loginByWalletMutation.mutate();
+    }
+  };
+
+  const showConnectedWallet = React.useMemo(() => {
+    if (walletAddress && address && (!user || !user?.wallet_id)) {
+      return true;
+    }
+    if (
+      address &&
+      user &&
+      address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
+      localStarkKey
+    ) {
+      return true;
+    }
+    return false;
+  }, [address, localStarkKey, user, walletAddress]);
+
+  const totalNodes = nodesLicense?.length || 0;
+
+  const purchaseLink = useMemo(() => {
+    const hasPendingTransaction = userNodes.find(
+      (transaction) => transaction.purchaseStatus === 'PENDING'
+    );
+    const hasSuccessTransaction = userNodes.find(
+      (transaction) => transaction.purchaseStatus === 'SUCCESSFUL'
+    );
+    const showSuccess =
+      typeof window !== 'undefined' ? localStorage.getItem('showSuccess') : 'false';
+    if (hasPendingTransaction) {
+      return '/nodes/purchase-pending?tx=' + hasPendingTransaction.txHash;
+    }
+    if (hasSuccessTransaction && showSuccess === 'true') {
+      return '/nodes/purchase-complete';
+    }
+    if (totalNodes >= NODE_LIMIT) {
+      return '/nodes/my-nodes';
+    }
+    return '/nodes/purchase';
+  }, [totalNodes, userNodes]);
 
   return (
     <Page action="start-building">
@@ -244,27 +258,32 @@ const Nodes: React.FC = () => {
               <p className="heading-sm text-base/10 mx-auto mt-[32px] text-xl">
                 <Trans>Decentralize the network by providing computing resources</Trans>
               </p>
-              {/*{installedWallet && (*/}
-              {/*  <div>*/}
-              {/*    {isWalletConnected ? (*/}
-              {/*      <div>*/}
-              {/*        {!nodeLoading && (*/}
-              {/*          <Link href={purchaseLink}>*/}
-              {/*            <div className="btn-lg btn-primary mt-[38px] cursor-pointer">*/}
-              {/*              <Trans>{totalNodes > 0 ? 'View Dashboard' : 'Buy nodes'}</Trans>*/}
-              {/*            </div>*/}
-              {/*          </Link>*/}
-              {/*        )}*/}
-              {/*      </div>*/}
-              {/*    ) : (*/}
-              {/*      <div*/}
-              {/*        className="btn-lg btn-primary mt-[38px] cursor-pointer"*/}
-              {/*        onClick={onConnectWallet}>*/}
-              {/*        <Trans>Connect To Buy</Trans>*/}
-              {/*      </div>*/}
-              {/*    )}*/}
-              {/*  </div>*/}
-              {/*)}*/}
+              {installedWallet && (
+                <div>
+                  {!loginByWalletMutation.isError &&
+                  !loginByWalletMutation.isLoading &&
+                  walletAddress &&
+                  showConnectedWallet ? (
+                    <div>
+                      {!nodeLoading && !nodesLoading && (
+                        <Link href={purchaseLink}>
+                          <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
+                            <Trans>
+                              {totalNodes >= NODE_LIMIT ? 'View My Nodes' : 'Purchase Now'}
+                            </Trans>
+                          </div>
+                        </Link>
+                      )}
+                    </div>
+                  ) : (
+                    <div
+                      className="btn-lg btn-primary mt-[38px] cursor-pointer"
+                      onClick={onConnectWallet}>
+                      <Trans>Connect To Buy</Trans>
+                    </div>
+                  )}
+                </div>
+              )}
             </section>
             <section className="mt-[100px]">
               <div className="max-w-[715px]">

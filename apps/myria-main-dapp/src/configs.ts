@@ -19,3 +19,5 @@ export const localStorageKeys = {
 };
 
 export const MARKETPLACE = 'marketplace';
+
+export const NODE_LIMIT = 2;
