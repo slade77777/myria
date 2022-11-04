@@ -3,10 +3,12 @@ import React, { memo, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import SubtractBottom from 'src/components/icons/SubtractBottom';
 import SubtractTop from 'src/components/icons/SubtractTop';
-import { useAuthenticationContext } from 'src/context/authentication';
-import { utilTaskId } from 'src/utils';
+import { useAuthenticationContext } from 'src/context/authentication'
+import { campaignCode, utilTaskId } from 'src/utils';
 import ButtonMission, { STATUS_MISSTION } from './ButtonMission';
-import { ImissionProgress } from 'src/context/authentication';
+import { ImissionProgress } from 'src/context/authentication'
+import { reqRewardClaimDiscord } from 'src/services/campaignService';
+import { RewardClaimDiscordPayload } from 'src/types/campaign';
 interface IProp {
   status: string;
   item: ImissionProgress;
@@ -20,9 +22,16 @@ const initMissionPanel = {
   },
   [utilTaskId.joinDiscord]: {
     name: utilTaskId.joinDiscord,
-    initFunction: (codeJoinDiscord: string) => {
+    initFunction: async (codeJoinDiscord: string, userId: number | undefined, missionCode: string) => {
       //Call API code Join Discord
-      console.log('Call API code Join Discord', codeJoinDiscord);
+      console.log("Call API code Join Discord", codeJoinDiscord);
+      const payloadData: RewardClaimDiscordPayload = {
+        userId: userId || undefined,
+        discordAccessCode: codeJoinDiscord,
+        campaignCode: campaignCode,
+        missionCode: missionCode,
+      }
+      await reqRewardClaimDiscord(payloadData)
     }
   },
   [utilTaskId.followMyriaTwitter]: {
@@ -52,14 +61,18 @@ const initMissionPanel = {
 };
 
 const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
-  const isLocked = status === STATUS_MISSTION.LOCKED && id !== utilTaskId.verifyEmail;
-  const enableClick = status === STATUS_MISSTION.ACTIVE || id === utilTaskId.verifyEmail;
+  const { userCampaign } = useAuthenticationContext();
+
+  const isLocked = status === STATUS_MISSTION.LOCKED && (id !== utilTaskId.verifyEmail);
+  const enableClick = status === STATUS_MISSTION.ACTIVE || (id === utilTaskId.verifyEmail);
+
   const router = useRouter();
 
   useEffect(() => {
     const codeJoinDiscord = router.query.code?.toString();
-    codeJoinDiscord && initMissionPanel[id].initFunction(codeJoinDiscord);
-  }, []);
+    codeJoinDiscord && initMissionPanel[id].initFunction(codeJoinDiscord, userCampaign?.userId, id)
+  }, [])
+
 
   return (
     <div

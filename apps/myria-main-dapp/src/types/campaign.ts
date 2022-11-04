@@ -270,7 +270,7 @@ export interface ListAlliancesResponse {
 export interface RewardByCampaignIdResponse {}
 
 export interface RewardClaimDiscordPayload {
-  socialUserId: string;
+  userId: number | undefined;
   discordAccessCode: string;
   campaignCode: string;
   missionCode: string;

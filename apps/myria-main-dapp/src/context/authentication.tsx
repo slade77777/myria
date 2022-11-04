@@ -316,6 +316,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
 
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [idCampaign, setIdCampaign] = useLocalStorage(localStorageKeys.idCampaign, '');
 
   const { isLoading: isPostingLogin, mutate: postLogin } = useMutation(
     async () => {
@@ -341,7 +342,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   const logoutMutation = useMutation(async () => {
     try {
       await apiClient.post(`/accounts/logout`);
-    } catch (err) {}
+    } catch (err) { }
     window.location.reload();
   });
 
@@ -547,34 +548,38 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
       };
       if (!isCheckFirstTimeUser) {
         // Normal users from wallet
-        return campaignApiClient
-          .get(`/users/wallet-address/${address.toLowerCase()}`)
-          .then((res) => {
-            //User registered campaign
+        return campaignApiClient.get(`/users/wallet-address/${address}?${campaignId}`).then((res) => {
+          //User registered campaign
+          if (res.data.data.allianceId) {
+            setIdCampaign(res.data.data.id);
             setIdUserCampaign(res.data.data.id);
             userProfileQuery.refetch();
             return res.data.data;
-          })
-          .catch(async () => {
-            //No user in campaign
-            //Create user in campaign service
-            const userID = await loginAccountWallet();
-
-            //Register user, userbyWallet
-            const userData = userModule.getUserByWalletAddress(address);
-            const dataUserCampaign = await registerUserCampaign(
-              address,
-              userID?.user_id || '',
-              userID?.user_name || '',
-              userID?.email || '',
-              userData
-            );
-            const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.id);
-
-            //Push user to select Alliance
-            setIdUserCampaign(dataRegisterCampaign.user_id);
+          }
+          else {
             setNextChooseAlliance(true);
-          });
+            setIdCampaign(res.data.data.id);
+            setIdUserCampaign(res.data.data.id);
+          }
+        }).catch(async () => {      //No user in campaign
+          //Create user in campaign service
+          const userID = await loginAccountWallet();
+
+          //Register user, userbyWallet
+          const userData = userModule.getUserByWalletAddress(address);
+          const dataUserCampaign = await registerUserCampaign(
+            address,
+            userID?.user_id || '',
+            userID?.user_name || '',
+            userID?.email || '',
+            userData
+          );
+          const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.id);
+
+          //Push user to select Alliance
+          setIdUserCampaign(dataRegisterCampaign.user_id);
+          setNextChooseAlliance(true);
+        });
         // Normal user has registered campaign
         // getUserInCompaignByWalletAddress in campaign service
 
@@ -638,7 +643,6 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
       if (userRes && userRes.status === 201 && userRes.data.data) {
         const user: UserAirDop = userRes.data.data;
         toast('Login success', { type: 'success' });
-        userProfileQuery.refetch();
         return user;
       } else {
         toast('Login failed, please try again.', { type: 'error' });
@@ -728,9 +732,9 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     'getUserProfile',
     () => {
       if (isAirDrop) {
-        if (!campaignId || !idUserCampaign) return null;
+        if (!campaignId || !idCampaign) return null;
         return campaignApiClient
-          .get(`/users/${idUserCampaign}/campaign-id/${campaignId}`)
+          .get(`/users/${idCampaign}/campaign-id/${campaignId}`)
           .then((res) => {
             const data = res.data?.data;
             if (data) {
