@@ -20,7 +20,7 @@ const schema = yup
   .required();
 
 const verifyEmail = async (email: string) => {
-  return apiClient.post(`/accounts/email`, { email, redirect: 6 });
+  return apiClient.post(`/accounts/email`, { email, redirect: 5 });
 };
 
 const VerifyEmailModal: React.FC<{
