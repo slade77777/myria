@@ -9,7 +9,7 @@ interface Props {
   isBlur?: boolean;
   isBlurButton?: boolean;
   disableClaimingAnimation?: boolean;
-  onClaim?: () => void;
+  onClaim?: () => Promise<void>;
   onClaimSuccess?: () => void;
   titleText: string;
   buttonText: string;

@@ -283,4 +283,12 @@ export interface RewardUserClaimPayload {
   userId: number;
 }
 
-export interface RewardUserClaimResponse {}
+export interface RewardUserClaimResponse {
+  id: number;
+  rewardId: number;
+  userId: number;
+  metadata: {};
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}

@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { reqRewardUserClaim } from 'src/services/campaignService';
-import { RewardType } from 'src/types/campaign';
+import { CampaignResponseType, RewardUserClaimResponse, RewardType } from 'src/types/campaign';
 import { REWARD_STATUS } from 'src/utils';
 import { NftBox } from './NftBox';
 
@@ -17,9 +18,17 @@ export function NftReward() {
     (item: RewardType) => item.rewardStatus === REWARD_STATUS.AVAILABLE
   );
 
-  const claimReward = (rewardId: number) => {
+  const claimReward = async (rewardId: number) => {
     if (userCampaign) {
-      return reqRewardUserClaim({ rewardId: rewardId, userId: userCampaign?.userId });
+      const res: CampaignResponseType<RewardUserClaimResponse> = await reqRewardUserClaim({
+        rewardId: rewardId,
+        userId: userCampaign?.userId
+      });
+
+      if (res.status === 'success' && res.data.status === REWARD_STATUS.CLAIMED) {
+        /// refetch get new list reward
+        userProfileQuery.refetch();
+      }
     }
     return;
   };
@@ -46,10 +55,10 @@ export function NftReward() {
               isBlur={reward.rewardStatus !== REWARD_STATUS.AVAILABLE}
               onClaim={
                 reward.rewardStatus === REWARD_STATUS.AVAILABLE
-                  ? () => claimReward(reward.id)
+                  ? async () => await claimReward(reward.id)
                   : undefined
               }
-              onClaimSuccess={() => userProfileQuery.refetch()}
+              onClaimSuccess={() => {}}
               isNextReward={nextReward && (nextReward as any as RewardType).id === reward.id}
             />
           );

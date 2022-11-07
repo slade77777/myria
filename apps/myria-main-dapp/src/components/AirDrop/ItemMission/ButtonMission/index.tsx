@@ -10,13 +10,13 @@ import { getLinkMission, utilTaskId } from 'src/utils';
 import VerifyEmailModal from '../../VerifyEmailModal';
 
 export const STATUS_MISSTION = {
-  COMPLETE: 'COMPLETE',
+  COMPLETED: 'COMPLETED',
   ACTIVE: 'ACTIVE',
   LOCKED: 'LOCKED'
 };
 
 const DF_STYLE_BUTTON = {
-  [STATUS_MISSTION.COMPLETE]: {
+  [STATUS_MISSTION.COMPLETED]: {
     FILL: 'url(#paint0_linear_5081_99398)',
     COLOR: '#ACACAC',
     TEXT_COLOR: 'text-[#ACACAC]',
@@ -46,7 +46,7 @@ interface Props {
 const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
-  const [userCampaignId,] = useLocalStorage(localStorageKeys.userCampaignId, '');
+  const [userCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
 
   const [openVerifyEmailModal, setOpenVerifyEmailModal] = useState(false);
 
@@ -135,7 +135,7 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
   };
   const StyleButton = () => {
     if (id === utilTaskId.verifyEmail) {
-      if (status === STATUS_MISSTION.COMPLETE) {
+      if (status === STATUS_MISSTION.COMPLETED) {
         return DF_STYLE_BUTTON[status];
       } else return DF_STYLE_BUTTON[STATUS_MISSTION.ACTIVE];
     } else return DF_STYLE_BUTTON[status];

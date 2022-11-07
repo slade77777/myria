@@ -234,7 +234,8 @@ const reqRewardClaimDiscord = async (
 const reqRewardUserClaim = async (
   payload: RewardUserClaimPayload
 ): Promise<CampaignResponseType<RewardUserClaimResponse>> => {
-  return await campaignApiClient.post(`/rewards/user-claim`, payload);
+  const result = await campaignApiClient.post(`/rewards/user-claim`, payload);
+  return result.data;
 };
 
 export {
