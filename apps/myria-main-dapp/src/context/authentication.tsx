@@ -45,6 +45,7 @@ export interface User {
   credits?: number;
   date_registered?: Date;
   access_token?: string;
+  username?: string;
 }
 
 export interface UserWallet {
@@ -107,6 +108,9 @@ export interface UserCampaign extends User {
   user: User;
   userId: number;
   availablePoints: number;
+  earnedPoints: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type Account = {
