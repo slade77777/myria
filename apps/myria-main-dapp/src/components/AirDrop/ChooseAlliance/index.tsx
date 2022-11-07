@@ -168,7 +168,7 @@ const Sigil = ({
             : 'z-0 max-w-[80%] from-transparent'
         }`}>
         <div className="flex items-center">
-          <div className="bg-border-blue h-[1px] flex-1 opacity-20">
+          <div className="bg-border-blue h-[1px] flex-1 opacity-50">
             <div className="absolute top-0 left-0 translate-x-[-6px] translate-y-[-10px]">
               <svg
                 width="80"
@@ -190,7 +190,7 @@ const Sigil = ({
               }`}
             />
           </div>
-          <div className="bg-border-blue h-[1px] flex-1 opacity-20">
+          <div className="bg-border-blue h-[1px] flex-1 opacity-50">
             <div className="absolute top-0 right-0 translate-x-[6px] translate-y-[-10px]">
               <svg
                 width="80"
