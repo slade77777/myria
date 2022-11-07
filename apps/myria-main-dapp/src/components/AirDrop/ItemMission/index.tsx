@@ -5,7 +5,7 @@ import SubtractBottom from 'src/components/icons/SubtractBottom';
 import SubtractTop from 'src/components/icons/SubtractTop';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { campaignCode, utilTaskId } from 'src/utils';
-import ButtonMission, { STATUS_MISSTION } from './ButtonMission';
+import ButtonMission, { STATUS_MISSION } from './ButtonMission';
 import { ImissionProgress } from 'src/context/authentication';
 import { reqRewardClaimDiscord } from 'src/services/campaignService';
 import { RewardClaimDiscordPayload } from 'src/types/campaign';
@@ -67,8 +67,8 @@ const initMissionPanel = {
 const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
   const { userCampaign } = useAuthenticationContext();
 
-  const isLocked = status === STATUS_MISSTION.LOCKED && id !== utilTaskId.verifyEmail;
-  const enableClick = status === STATUS_MISSTION.AVAILABLE || id === utilTaskId.verifyEmail;
+  const isLocked = status === STATUS_MISSION.LOCKED && id !== utilTaskId.verifyEmail;
+  const enableClick = status === STATUS_MISSION.AVAILABLE || id === utilTaskId.verifyEmail;
 
   const router = useRouter();
 
@@ -87,16 +87,16 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
       <div className="absolute -left-1 -bottom-1 z-[-1]">
         <SubtractBottom />
       </div>
-      <div className="bg-base/3 border-base/3 flex min-h-[128px] w-full justify-between rounded-lg border p-6 pl-8">
-        <div>
+      <div className="bg-base/3 border-base/3 flex min-h-[128px] w-full rounded-lg border p-6 pl-8">
+        <div className="flex-1">
           <div className="flex items-center uppercase text-white">
             <p className=" mr-2 text-xl font-bold">{item.missionCampaign.title}</p>
             <span className="min-w-[74px] rounded-lg bg-[#0D273A] py-[6px] px-[10px] text-center text-xs font-medium leading-3">
               {item.missionCampaign.point} {item.missionCampaign.point > 1 ? 'POINTS' : 'POINT'}
             </span>
           </div>
-          <div className="text-light mt-4 max-w-[65%] text-base">
-            <span>{item.missionCampaign.description}</span>
+          <div className="text-light mt-4  max-w-[65%] text-base">
+            <p className="">{item.missionCampaign?.description}</p>
           </div>
         </div>
         <div className="text-center">

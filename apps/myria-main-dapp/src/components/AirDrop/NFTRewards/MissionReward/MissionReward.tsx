@@ -4,6 +4,8 @@ import { useVerifyEmail } from './useVerifyEmail';
 import { useAuthenticationContext } from 'src/context/authentication';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
+import IconMessageQuestion from 'src/components/icons/airdrop-campaign/iconMessageQuestion';
+import { Trans } from '@lingui/macro';
 
 const MISSION_CODE = 'VERIFY_EMAIL';
 
@@ -26,7 +28,15 @@ export const MissionReward = () => {
   return (
     <>
       <div className="h-full pr-3">
-        <p className="mb-6 mt-8">Complete the missions below to unlock your rewards</p>
+        <div className="mb-6 mt-8 flex items-center">
+          <span className="text-light">
+            <Trans>Complete the missions below to unlock your rewards</Trans>
+          </span>
+          <IconMessageQuestion styleClass="ml-4 mr-3" />
+          <span className="text-primary/6">
+            <Trans>How it works</Trans>
+          </span>
+        </div>
         <div className="h-[calc(100%-24px-32px)] overflow-auto pl-1 pt-1">
           <div className="grid grid-cols-1 gap-y-6 pr-4">
             {userCampaign &&
