@@ -18,7 +18,7 @@ interface IProp {
 const initMissionPanel = {
   [utilTaskId.verifyEmail]: {
     name: utilTaskId.verifyEmail,
-    initFunction: () => { }
+    initFunction: () => {}
   },
   [utilTaskId.joinDiscord]: {
     name: utilTaskId.joinDiscord,
@@ -40,27 +40,27 @@ const initMissionPanel = {
   },
   [utilTaskId.followMyriaTwitter]: {
     name: utilTaskId.followMyriaTwitter,
-    initFunction: (homePage: string) => { }
+    initFunction: (homePage: string) => {}
   },
   [utilTaskId.followBrendanTwitter]: {
     name: utilTaskId.followBrendanTwitter,
-    initFunction: (homePage: string) => { }
+    initFunction: (homePage: string) => {}
   },
   [utilTaskId.inviteFriends]: {
     name: utilTaskId.inviteFriends,
-    initFunction: (homePage?: string) => { }
+    initFunction: (homePage?: string) => {}
   },
   [utilTaskId.dailyLogAndPostDiscord]: {
     name: utilTaskId.dailyLogAndPostDiscord,
-    initFunction: () => { }
+    initFunction: () => {}
   },
   [utilTaskId.sharePostTwitter]: {
     name: utilTaskId.sharePostTwitter,
-    initFunction: async () => { }
+    initFunction: async () => {}
   },
   [utilTaskId.reachLevelDiscord]: {
     name: utilTaskId.reachLevelDiscord,
-    initFunction: (homePage: string) => { }
+    initFunction: (homePage: string) => {}
   }
 };
 
@@ -68,7 +68,7 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
   const { userCampaign } = useAuthenticationContext();
 
   const isLocked = status === STATUS_MISSTION.LOCKED && id !== utilTaskId.verifyEmail;
-  const enableClick = status === STATUS_MISSTION.ACTIVE || id === utilTaskId.verifyEmail;
+  const enableClick = status === STATUS_MISSTION.AVAILABLE || id === utilTaskId.verifyEmail;
 
   const router = useRouter();
 
