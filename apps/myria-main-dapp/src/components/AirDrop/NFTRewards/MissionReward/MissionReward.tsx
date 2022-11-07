@@ -5,10 +5,10 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 
-const MISSION_CODE = 'VERIFY_MAIL';
+const MISSION_CODE = 'VERIFY_EMAIL';
 
 export const MissionReward = () => {
-  const [userCampaignId,] = useLocalStorage(localStorageKeys.userCampaignId, '');
+  const [userCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
 
   const { mutate: updateVerifyEmail } = useVerifyEmail({
     missionCode: MISSION_CODE,

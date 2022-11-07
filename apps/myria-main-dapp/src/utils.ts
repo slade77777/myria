@@ -104,19 +104,19 @@ export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
     case 'equinox':
       return {
         id: allianceId,
-        name: 'EQUINOX',
+        name: 'Equinox',
         img: '/images/nodes/insignia/alliance_sigilC.png'
       };
     case 'federation':
       return {
         id: allianceId,
-        name: 'FEDERATION',
+        name: 'Federation',
         img: '/images/nodes/insignia/alliance_sigilA.png'
       };
     case 'vector_prime':
       return {
         id: allianceId,
-        name: 'VECTOR PRIME',
+        name: 'Vector Prime',
         img: '/images/nodes/insignia/alliance_sigilB.png'
       };
   }
@@ -245,7 +245,7 @@ export const generateUUID = () => {
 };
 
 export const utilTaskId = {
-  verifyEmail: 'VERIFY_MAIL',
+  verifyEmail: 'VERIFY_EMAIL',
   joinDiscord: 'JOIN_DISCORD',
   followMyriaTwitter: 'FOLLOW_TWITTER',
   followBrendanTwitter: 'FOLLOW_BRENDAN',

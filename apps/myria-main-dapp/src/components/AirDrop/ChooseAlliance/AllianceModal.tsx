@@ -30,7 +30,7 @@ const AllianceModal: React.FC<Props> = ({
   sigilId,
   selectModalBgImg
 }) => {
-  const [userCampaignId,] = useLocalStorage(localStorageKeys.userCampaignId, '');
+  const [userCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
 
   const { event } = useGA4();
   const { pickSigilMutation } = usePickSigilQuery({
@@ -50,7 +50,7 @@ const AllianceModal: React.FC<Props> = ({
       open={open}
       onOpenChange={onClose}
       overlayClassName="bg-[rgba(5,14,21,0.7)] backdrop-blur-[10px]">
-      <Modal.Content includingHeader={false} className="h-[497px] max-w-[616px]">
+      <Modal.Content includingHeader={false} className="h-[497px] !max-w-[616px]">
         <div className="relative h-full overflow-hidden rounded-lg">
           <Modal.Close asChild>
             <button className="absolute top-6 right-6 w-6 text-white">
