@@ -46,7 +46,7 @@ interface Props {
 const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
-  const [userCampaignId,] = useLocalStorage(localStorageKeys.userCampaignId, '');
+  const [userCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
 
   const [openVerifyEmailModal, setOpenVerifyEmailModal] = useState(false);
 

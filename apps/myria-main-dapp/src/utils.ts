@@ -245,7 +245,7 @@ export const generateUUID = () => {
 };
 
 export const utilTaskId = {
-  verifyEmail: 'VERIFY_MAIL',
+  verifyEmail: 'VERIFY_EMAIL',
   joinDiscord: 'JOIN_DISCORD',
   followMyriaTwitter: 'FOLLOW_TWITTER',
   followBrendanTwitter: 'FOLLOW_BRENDAN',
@@ -275,7 +275,11 @@ export const getLinkMission = (paramTaskId: string, homePage: string) => {
       return `https://twitter.com/intent/follow?screen_name=brendan_duhamel`;
 
     case utilTaskId.sharePostTwitter:
-      return `https://twitter.com/intent/tweet?text=Myria&url=https://twitter.com/Myria/status/1580445268100587521?s=20`;
+      const content =
+        'Myria is the leading Web3 gaming ecosystem with 0 gas fees, no NFT minting costs and over 1 million users. To celebrate the $MYRIA token launch, get a brand new Sigil NFT for free! Follow the steps 👇.';
+      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        content
+      )}&url=https://twitter.com/Myria/status/1580445268100587521?s=20`;
 
     case utilTaskId.joinDiscord:
       return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
