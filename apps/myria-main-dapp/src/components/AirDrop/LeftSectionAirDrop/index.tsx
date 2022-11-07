@@ -7,8 +7,7 @@ import { FORMAT_DATE_BY_AIRDROP } from 'src/utils';
 import moment from 'moment';
 
 const LeftSectionAirDrop: React.FC = () => {
-  const { userCampaign } = useAuthenticationContext();
-
+  const { userCampaign, account } = useAuthenticationContext();
   return (
     <div className={clsx('relative md:max-w-[266px] mx-auto px-4')}>
       <div
@@ -16,22 +15,25 @@ const LeftSectionAirDrop: React.FC = () => {
           'rounded-lg bg-gradient-to-b from-[rgba(8,24,36,0.9)] to-[rgba(8,24,36,0.17)] h-[calc(100vh-100px-8px)]'
         )}>
         <div className={clsx('p-8 text-center')}>
-          {!userCampaign?.user.user_name ? (
+          {!account?.username ? (
             <div className={clsx('text-2xl font-bold mb-6')}>Welcome</div>
           ) : (
-            <div className={clsx('text-2xl font-bold mb-6')}>{userCampaign.user.user_name}</div>
+            <div className={clsx('text-2xl font-bold mb-6')}>{account?.username}</div>
           )}
           <div className={clsx('flex justify-center')}>
-            <Image src="/images/nodes/airdrop/the_federation.png" width={'100%'} height={'100%'} />
+            <Image
+              src="/images/nodes/airdrop/the_federation.png"
+              width={'100%'}
+              height={'100%'}
+              alt=""
+            />
           </div>
           <div className={clsx('text-xl font-nomarl mb-6')}>The Federation</div>
-          {userCampaign && userCampaign?.user.user_name && (
+          {userCampaign && (
             <>
               <p className={clsx('text-sm font-medium text-[#97AAB5]')}>Date Registered</p>
               <strong className={clsx('text-lg font-bold mt-1')}>
-                {moment(userCampaign?.user.date_registered || Date.now()).format(
-                  FORMAT_DATE_BY_AIRDROP
-                )}
+                {moment(userCampaign?.createdAt || Date.now()).format(FORMAT_DATE_BY_AIRDROP)}
               </strong>
             </>
           )}
