@@ -45,7 +45,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
     handleDisplayPopover
   } = useL2WalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
-  const { user, loginByWalletMutation, userProfileQuery, loginCampaignByWalletMutation, logout } =
+  const { user, userCampaign, loginByWalletMutation, userProfileQuery, loginCampaignByWalletMutation, logout } =
     useAuthenticationContext();
 
   const { isShowLearnMore } = useWithDrawNFTContext();
@@ -58,8 +58,8 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
 
   const onConnectWallet = () => {
     if (
-      (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) ||
-      (!address && user?.wallet_id)
+      (!isAirDrop && address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) ||
+      (!address && user?.wallet_id) || (isAirDrop && address && userCampaign?.user.walletAddress && address.toLowerCase() !== userCampaign.user.walletAddress.toLowerCase())
     ) {
       setShowMismatchedWalletModal(true);
       return;
@@ -96,10 +96,14 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
   }, [walletAddress, localStarkKey, user?.wallet_id, address, installedWallet]);
 
   useEffect(() => {
-    if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
+    if (isAirDrop) {
+      if (address && userCampaign?.user.walletAddress && address.toLowerCase() !== userCampaign?.user.walletAddress.toLowerCase())
+        setShowMismatchedWalletModal(true);
+    }
+    else if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
       setShowMismatchedWalletModal(true);
     }
-  }, [address, user]);
+  }, [address, user, userCampaign]);
 
   let abbreviationAddress = '';
   if (address) {

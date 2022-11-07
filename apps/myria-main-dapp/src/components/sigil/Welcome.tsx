@@ -11,6 +11,8 @@ import MetaMaskOnboarding from '@metamask/onboarding';
 import { useL2WalletContext } from 'src/context/l2-wallet';
 import { Step } from 'src/pages/airdrop';
 import { callCampaignHealthCheck } from 'src/services/campaignService';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { localStorageKeys } from 'src/configs';
 
 type Props = {
   onNext: () => void;
@@ -29,6 +31,8 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
     userProfileQuery,
     nextChooseAlliance
   } = useAuthenticationContext();
+  const [walletAddress,] = useLocalStorage(localStorageKeys.walletAddress, '');
+
 
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -140,6 +144,20 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
       loginByWalletMutation.mutate();
     }
   };
+
+  const isLoadingLogin = () => {
+    if (isAirDrop) {
+      return loginByWalletMutation.isLoading ||
+        loginCampaignByWalletMutation.isLoading ||
+        (loginCampaignByWalletMutation.isSuccess && !walletAddress) ||
+        (!userProfileQuery.data && loginCampaignByWalletMutation.isLoading) ||
+        (userProfileQuery.isFetching)
+    }
+    else {
+      return loginByWalletMutation.isLoading
+    }
+  }
+
   return (
     <div
       className={
@@ -162,12 +180,8 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
         <>
           {installedWallet === true && isSupportedBrowser && (
             <Button
-              loading={
-                loginByWalletMutation.isLoading ||
-                loginCampaignByWalletMutation.isLoading ||
-                (!userProfileQuery.data && loginCampaignByWalletMutation.isLoading)
-              }
-              disabled={loginByWalletMutation.isLoading || loginCampaignByWalletMutation.isLoading}
+              loading={isLoadingLogin()}
+              disabled={isLoadingLogin()}
               onClick={handleClick}
               className="btn-lg btn-primary mx-auto mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
               {address ? <Trans>LOGGING IN</Trans> : <Trans>CONNECT WALLET</Trans>}
@@ -207,7 +221,7 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
           </Link>
         )}
       </div>
-    </div>
+    </div >
   );
 };
 
