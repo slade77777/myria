@@ -73,7 +73,7 @@ const SIGILS: Sigil[] = [
     width: 584 / 4,
     height: 748 / 4,
     className: 'w-[22%]',
-    name: 'VECTOR PRIME',
+    name: 'Vector Prime',
     desc: (
       <Trans>
         Vector Prime believe the Rift is the next step of evolution and will do anything in their
@@ -96,7 +96,7 @@ const SIGILS: Sigil[] = [
     width: 584 / 4,
     height: 748 / 4,
     className: 'right-[17%] w-[22%]',
-    name: 'EQUINOX',
+    name: 'Equinox',
     desc: (
       <Trans>
         Equinox pursue balance in the Myriaverse and believe perhaps humanity and the Rift can
@@ -218,7 +218,7 @@ const Sigil = ({
             isActive ? 'top-[-18px]' : 'top-[10px]'
           }`}>
           <span
-            className="text-[16px] font-extrabold uppercase tracking-tight text-white"
+            className="text-[20px] font-extrabold uppercase leading-[1.2] tracking-tight text-white"
             style={{ textShadow: '0px 0px 10px rgba(154, 201, 227, 0.5)' }}>
             {name}
           </span>
@@ -228,7 +228,7 @@ const Sigil = ({
             isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
-            className="text-light text-[13px] font-normal leading-5"
+            className="text-light text-[14px] font-normal leading-5"
             style={{ textShadow: '0px 0px 10px rgba(255, 255, 255, 0.2)' }}>
             {desc}
           </span>
@@ -343,7 +343,7 @@ const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
         selectModalBgImg={activeSigilData?.selectModalBgImg}
       />
       <div className="relative top-[55px] flex h-[calc(100vh-80px)] min-h-[600px] min-w-[1300px] items-center justify-center overflow-hidden">
-        <div className="absolute w-full max-w-[1300px]">
+        <div className="absolute w-full max-w-[1440px]">
           <div className="relative w-full object-cover">
             <Image
               src="/images/nodes/insignia/faded_scene_v3.png"
