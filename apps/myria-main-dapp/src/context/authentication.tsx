@@ -341,7 +341,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   const logoutMutation = useMutation(async () => {
     try {
       await apiClient.post(`/accounts/logout`);
-    } catch (err) { }
+    } catch (err) {}
     window.location.reload();
   });
 
@@ -545,54 +545,56 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         }
       };
       if (!isCheckFirstTimeUser) {
+        await loginAccountWallet();
         // Normal users from wallet
-        return campaignApiClient.get(`/users/wallet-address/${address}?campaignId=${campaignId}`).then((res) => {
-          //User registered campaign
-          if (res.data.data.userCampaign.length > 0) {
-            if (res.data.data.allianceId) {
-              setUserCampaignId(res.data.data.id.toString());
-              userProfileQuery.refetch();
-              return res.data.data;
-            }
-            else {
-              setNextChooseAlliance(true);
-              setUserCampaignId(res.data.data.id.toString());
-              return res.data.data;
-            }
-          }
-          else {
-            registerCampaignByWallet(campaignId).then(() => {
+        return campaignApiClient
+          .get(`/users/wallet-address/${address}?campaignId=${campaignId}`)
+          .then((res) => {
+            //User registered campaign
+            if (res.data.data.userCampaign.length > 0) {
               if (res.data.data.allianceId) {
                 setUserCampaignId(res.data.data.id.toString());
                 userProfileQuery.refetch();
                 return res.data.data;
-              }
-              else {
+              } else {
                 setNextChooseAlliance(true);
                 setUserCampaignId(res.data.data.id.toString());
                 return res.data.data;
               }
-            });
-          }
-        }).catch(async () => {      //No user in campaign
-          //Create user in campaign service
-          const userID = await loginAccountWallet();
+            } else {
+              registerCampaignByWallet(campaignId).then(() => {
+                if (res.data.data.allianceId) {
+                  setUserCampaignId(res.data.data.id.toString());
+                  userProfileQuery.refetch();
+                  return res.data.data;
+                } else {
+                  setNextChooseAlliance(true);
+                  setUserCampaignId(res.data.data.id.toString());
+                  return res.data.data;
+                }
+              });
+            }
+          })
+          .catch(async () => {
+            //No user in campaign
+            //Create user in campaign service
+            const userID = await loginAccountWallet();
 
-          //Register user, userbyWallet
-          const userData = userModule.getUserByWalletAddress(address);
-          const dataUserCampaign = await registerUserCampaign(
-            address,
-            userID?.user_id || '',
-            userID?.user_name || '',
-            userID?.email || '',
-            userData
-          );
-          const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.data.id);
+            //Register user, userbyWallet
+            const userData = userModule.getUserByWalletAddress(address);
+            const dataUserCampaign = await registerUserCampaign(
+              address,
+              userID?.user_id || '',
+              userID?.user_name || '',
+              userID?.email || '',
+              userData
+            );
+            const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.data.id);
 
-          //Push user to select Alliance
-          setUserCampaignId(dataRegisterCampaign.user_id.toString())
-          setNextChooseAlliance(true);
-        });
+            //Push user to select Alliance
+            setUserCampaignId(dataRegisterCampaign.user_id.toString());
+            setNextChooseAlliance(true);
+          });
         // Normal user has registered campaign
         // getUserInCompaignByWalletAddress in campaign service
 
@@ -624,7 +626,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         const starkSignature = await commonModule.generateStarkSignatureForRegisterUser(
           signatureData
         );
-        const isReferCode = router.query.referCode
+        const isReferCode = router.query.referCode;
         if (userID) {
           const registerNewData = {
             starkKey: '0x' + newStarkKey,
@@ -643,7 +645,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
             .then((res) => res);
           const dataRegisterCampaign = await registerCampaignByWallet(userRes?.data.data.id || '');
           // set user choose alliance
-          setUserCampaignId(dataRegisterCampaign.user_id.toString())
+          setUserCampaignId(dataRegisterCampaign.user_id.toString());
           setNextChooseAlliance(true);
         } else {
           userRes = null;

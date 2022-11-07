@@ -11,7 +11,7 @@ import VerifyEmailModal from '../../VerifyEmailModal';
 
 export const STATUS_MISSTION = {
   COMPLETED: 'COMPLETED',
-  ACTIVE: 'ACTIVE',
+  AVAILABLE: 'AVAILABLE',
   LOCKED: 'LOCKED'
 };
 
@@ -22,7 +22,7 @@ const DF_STYLE_BUTTON = {
     TEXT_COLOR: 'text-[#ACACAC]',
     ID: 'paint0_linear_5081_99398'
   },
-  [STATUS_MISSTION.ACTIVE]: {
+  [STATUS_MISSTION.AVAILABLE]: {
     FILL: 'url(#paint0_linear_5081_99428)',
     COLOR: '#9ECEAB',
     TEXT_COLOR: 'text-[#9ECEAB]',
@@ -137,7 +137,7 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     if (id === utilTaskId.verifyEmail) {
       if (status === STATUS_MISSTION.COMPLETED) {
         return DF_STYLE_BUTTON[status];
-      } else return DF_STYLE_BUTTON[STATUS_MISSTION.ACTIVE];
+      } else return DF_STYLE_BUTTON[STATUS_MISSTION.AVAILABLE];
     } else return DF_STYLE_BUTTON[status];
   };
   return (

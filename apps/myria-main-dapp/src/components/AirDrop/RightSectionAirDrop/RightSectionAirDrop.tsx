@@ -17,7 +17,7 @@ export const RightSectionAirDrop: React.FC = () => {
             <Tabs.Trigger
               value="NFTTab"
               className={clsx('border-none pr-6 uppercase font-extrabold opacity-50 textShadow')}>
-              NFT REWARDS
+              REWARDS
             </Tabs.Trigger>
             <Tabs.Trigger
               value="MyVault"

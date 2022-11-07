@@ -31,8 +31,7 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
     userProfileQuery,
     nextChooseAlliance
   } = useAuthenticationContext();
-  const [walletAddress,] = useLocalStorage(localStorageKeys.walletAddress, '');
-
+  const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
 
   const { event } = useGA4();
   const [isSupportedBrowser, setIsSupportedBrowser] = React.useState<boolean>(true);
@@ -92,11 +91,11 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
       const isBraveBrowser = (navigator.brave && (await navigator.brave.isBrave())) || false;
       setIsSupportedBrowser(
         Boolean(browser) &&
-        (browser?.name === 'chrome' ||
-          browser?.name === 'edge-chromium' ||
-          browser?.name === 'edge' ||
-          browser?.name === 'firefox' ||
-          isBraveBrowser)
+          (browser?.name === 'chrome' ||
+            browser?.name === 'edge-chromium' ||
+            browser?.name === 'edge' ||
+            browser?.name === 'firefox' ||
+            isBraveBrowser)
       );
     }
 
@@ -125,6 +124,16 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
       };
     }
 
+    if (isAirDrop) {
+      return {
+        title: (
+          <span>
+            {t`Connect to your wallet to`} <br /> {t` enter the Myriaverse`}
+          </span>
+        )
+      };
+    }
+
     return { title: t`Connect to your wallet to enter the Myriaverse` };
   })();
 
@@ -147,16 +156,17 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
 
   const isLoadingLogin = () => {
     if (isAirDrop) {
-      return loginByWalletMutation.isLoading ||
+      return (
+        loginByWalletMutation.isLoading ||
         loginCampaignByWalletMutation.isLoading ||
         (loginCampaignByWalletMutation.isSuccess && !walletAddress) ||
         (!userProfileQuery.data && loginCampaignByWalletMutation.isLoading) ||
-        (userProfileQuery.isFetching)
+        userProfileQuery.isFetching
+      );
+    } else {
+      return loginByWalletMutation.isLoading;
     }
-    else {
-      return loginByWalletMutation.isLoading
-    }
-  }
+  };
 
   return (
     <div
@@ -221,7 +231,7 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
           </Link>
         )}
       </div>
-    </div >
+    </div>
   );
 };
 
