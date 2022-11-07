@@ -3,32 +3,32 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import IconButton from 'src/components/icons/IconButton';
 import { localStorageKeys } from 'src/configs';
-import { ImissionProgress } from 'src/context/authentication';
+import { ImissionProgress, useAuthenticationContext } from 'src/context/authentication';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { reqCreateTwitterCampaigns } from 'src/services/campaignService';
 import { getLinkMission, utilTaskId } from 'src/utils';
 import VerifyEmailModal from '../../VerifyEmailModal';
 
-export const STATUS_MISSTION = {
+export const STATUS_MISSION = {
   COMPLETED: 'COMPLETED',
   AVAILABLE: 'AVAILABLE',
   LOCKED: 'LOCKED'
 };
 
 const DF_STYLE_BUTTON = {
-  [STATUS_MISSTION.COMPLETED]: {
+  [STATUS_MISSION.COMPLETED]: {
     FILL: 'url(#paint0_linear_5081_99398)',
     COLOR: '#ACACAC',
     TEXT_COLOR: 'text-[#ACACAC]',
     ID: 'paint0_linear_5081_99398'
   },
-  [STATUS_MISSTION.AVAILABLE]: {
+  [STATUS_MISSION.AVAILABLE]: {
     FILL: 'url(#paint0_linear_5081_99428)',
     COLOR: '#9ECEAB',
     TEXT_COLOR: 'text-[#9ECEAB]',
     ID: 'paint0_linear_5081_99428'
   },
-  [STATUS_MISSTION.LOCKED]: {
+  [STATUS_MISSION.LOCKED]: {
     FILL: 'url(#paint0_linear_5081_99565)',
     COLOR: '#D55E5E',
     TEXT_COLOR: 'text-[#D55E5E]',
@@ -49,6 +49,7 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
   const [userCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
 
   const [openVerifyEmailModal, setOpenVerifyEmailModal] = useState(false);
+  const { userCampaign } = useAuthenticationContext();
 
   const actionMission = {
     [utilTaskId.verifyEmail]: {
@@ -105,7 +106,11 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       name: utilTaskId.dailyLogAndPostDiscord,
       handler: (homePage: string) => {
         console.log(utilTaskId.dailyLogAndPostDiscord);
-        window.open(getLinkMission(utilTaskId.dailyLogAndPostDiscord, homePage), '_blank');
+        let urlLink = utilTaskId.dailyLogAndPostDiscord;
+        if (userCampaign?.campaign.status !== STATUS_MISSION.COMPLETED) {
+          urlLink = utilTaskId.joinDiscord;
+        }
+        window.open(getLinkMission(urlLink, homePage), '_blank');
       }
     },
     [utilTaskId.sharePostTwitter]: {
@@ -135,9 +140,9 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
   };
   const StyleButton = () => {
     if (id === utilTaskId.verifyEmail) {
-      if (status === STATUS_MISSTION.COMPLETED) {
+      if (status === STATUS_MISSION.COMPLETED) {
         return DF_STYLE_BUTTON[status];
-      } else return DF_STYLE_BUTTON[STATUS_MISSTION.AVAILABLE];
+      } else return DF_STYLE_BUTTON[STATUS_MISSION.AVAILABLE];
     } else return DF_STYLE_BUTTON[status];
   };
   return (
