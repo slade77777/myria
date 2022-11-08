@@ -5,6 +5,7 @@ import IconPoint from 'src/components/icons/airdrop-campaign/IconPoint';
 import { NFTRewards } from '../NFTRewards';
 import { MyVaultComponent } from '../MyVault';
 import { useAuthenticationContext } from 'src/context/authentication';
+import { Trans } from '@lingui/macro';
 
 export const RightSectionAirDrop: React.FC = () => {
   const { userCampaign } = useAuthenticationContext();
@@ -25,10 +26,12 @@ export const RightSectionAirDrop: React.FC = () => {
               MY VAULT
             </Tabs.Trigger>
           </Tabs.List>
-          <div className={clsx('w-[182px] align-center leading-10')}>
+          <div className={clsx('flex w-[182px] align-center leading-[41px]')}>
             <IconPoint styleClass={clsx('absolute')} />
-            <span className={clsx('ml-[31px] text-sm text-[#97AAB5] uppercase')}>Point</span>
-            <span className={clsx('ml-[14px] font-extrabold text-xl text-white textShadow')}>
+            <span className={clsx('ml-[31px] text-sm text-[#97AAB5] leading-[41px] uppercase')}>
+              {userCampaign && userCampaign?.availablePoints > 1 ? <Trans >Points</Trans> : <Trans>Point</Trans>}
+            </span>
+            <span className={clsx('ml-[14px] font-extrabold text-xl leading-[41px] text-white textShadow')}>
               {userCampaign?.availablePoints}
             </span>
           </div>
