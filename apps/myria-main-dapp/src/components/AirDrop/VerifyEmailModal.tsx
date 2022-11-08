@@ -46,7 +46,7 @@ const VerifyEmailModal: React.FC<{
       const message = err?.response?.data?.errors?.[0]?.detail;
       if (message === 'Invalid Role') {
         onClose();
-        toast("We've already got your email!", {
+        toast('Verification email should be sent to all the new emails', {
           type: 'success'
         });
       } else {
