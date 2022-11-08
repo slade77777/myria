@@ -4,7 +4,7 @@ import { useVerifyEmail } from './useVerifyEmail';
 import { useAuthenticationContext } from 'src/context/authentication';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
-import IconMessageQuestion from 'src/components/icons/airdrop-campaign/iconMessageQuestion';
+import IconMessageQuestion from 'src/components/icons/airdrop-campaign/IconMessageQuestion';
 import { Trans } from '@lingui/macro';
 
 const MISSION_CODE = 'VERIFY_EMAIL';
