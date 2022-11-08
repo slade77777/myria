@@ -1,12 +1,11 @@
-import React, { useMemo, useState } from 'react';
-import NodeLayout from '../../components/node/NodeLayout';
-import NodeIcon from '../../components/icons/NodeIcon';
-import AppleIcon from '../../components/icons/node/AppleIcon';
-import WindowIcon from '../../components/icons/node/WindowIcon';
-import LinuxIcon from '../../components/icons/node/LinuxIcon';
-import SupportIcon from '../../components/icons/SupportIcon';
-import NodesModal from '../../components/node/NodesModal';
-import useNodeLicense from '../../hooks/useNodeLicense';
+import React from 'react';
+import NodeIcon from '../../../components/icons/NodeIcon';
+import AppleIcon from '../../../components/icons/node/AppleIcon';
+import WindowIcon from '../../../components/icons/node/WindowIcon';
+import LinuxIcon from '../../../components/icons/node/LinuxIcon';
+import SupportIcon from '../../../components/icons/SupportIcon';
+import useNodeLicense from '../../../hooks/useNodeLicense';
+import NodeLayout from '../../../components/nodes/dashboard/NodeLayout';
 
 const Node = () => {
   const { data } = useNodeLicense();

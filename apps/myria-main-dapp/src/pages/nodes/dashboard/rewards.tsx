@@ -1,9 +1,9 @@
-import NodeLayout from '../../components/node/NodeLayout';
 import React from 'react';
-import { MyriaIcon } from '../../components/icons/MyriaIcon';
-import NodeIcon from '../../components/icons/NodeIcon';
-import RefreshIcon from '../../components/icons/RefreshIcon';
+import { MyriaIcon } from '../../../components/icons/MyriaIcon';
+import NodeIcon from '../../../components/icons/NodeIcon';
+import RefreshIcon from '../../../components/icons/RefreshIcon';
 import clsx from 'clsx';
+import NodeLayout from '../../../components/nodes/dashboard/NodeLayout';
 
 const historyData = [
   {

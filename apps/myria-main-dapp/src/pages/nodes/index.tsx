@@ -232,8 +232,8 @@ const Nodes: React.FC = () => {
     if (hasSuccessTransaction && showSuccess === 'true') {
       return '/nodes/purchase-complete';
     }
-    if (totalNodes >= NODE_LIMIT) {
-      return '/nodes/my-nodes';
+    if (totalNodes > 0) {
+      return '/nodes/dashboard';
     }
     return '/nodes/purchase';
   }, [totalNodes, userNodes]);
@@ -268,9 +268,7 @@ const Nodes: React.FC = () => {
                       {!nodeLoading && !nodesLoading && (
                         <Link href={purchaseLink}>
                           <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
-                            <Trans>
-                              {totalNodes >= NODE_LIMIT ? 'View My Nodes' : 'Purchase Now'}
-                            </Trans>
+                            <Trans>{totalNodes > 0 ? 'View My Nodes' : 'Purchase Now'}</Trans>
                           </div>
                         </Link>
                       )}

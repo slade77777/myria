@@ -1,11 +1,11 @@
 import React, { FC, memo, useMemo } from 'react';
-import Modal from '../Modal';
-import TreeIcon from '../icons/TreeIcon';
+import Modal from '../../Modal';
+import TreeIcon from '../../icons/TreeIcon';
 import { Trans } from '@lingui/macro';
-import Button from '../core/Button';
+import Button from '../../core/Button';
 import { useRouter } from 'next/router';
-import useNodeLicense from '../../hooks/useNodeLicense';
-import { NODE_LIMIT } from '../../configs';
+import useNodeLicense from '../../../hooks/useNodeLicense';
+import { NODE_LIMIT } from '../../../configs';
 
 const NodesModal: FC<{ open: boolean; onClose: () => void }> = ({ open, onClose }) => {
   const router = useRouter();
@@ -43,7 +43,7 @@ const NodesModal: FC<{ open: boolean; onClose: () => void }> = ({ open, onClose 
               <p className="text-base/9 mt-6">Maximise your network?</p>
               <Button
                 className="btn-lg bg-blue/7 mt-4 w-56 px-4 uppercase text-black"
-                onClick={() => router.push('nodes/purchase')}>
+                onClick={() => router.push('/nodes/purchase')}>
                 <Trans>GET MORE LICENSES</Trans>
               </Button>
             </div>
