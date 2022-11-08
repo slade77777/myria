@@ -52,6 +52,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
 
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [userCampaignId, setUserCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
   const [showMismatchedWalletModal, setShowMismatchedWalletModal] = React.useState(false);
   const [requestedEmail, setRequestedEmail] = React.useState(false);
   const mainL2Ref = useRef(null);
@@ -97,13 +98,19 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
 
   useEffect(() => {
     if (isAirDrop) {
-      if (address && userCampaign?.user.walletAddress && address.toLowerCase() !== userCampaign?.user.walletAddress.toLowerCase())
+      //Handle case logout normal
+      if (!walletAddress && !userCampaignId && !localStarkKey) return
+      if (address && userCampaign?.user.walletAddress && address.toLowerCase() !== userCampaign?.user.walletAddress.toLowerCase() ||
+        address && address.toLowerCase() !== walletAddress.toLowerCase() ||
+        address && userCampaign && userCampaign.userId.toString() !== userCampaignId ||
+        address && userCampaign && userCampaign.user.starkKey?.toLowerCase() !== ('0x' + localStarkKey).toLowerCase()
+      )
         setShowMismatchedWalletModal(true);
     }
     else if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
       setShowMismatchedWalletModal(true);
     }
-  }, [address, user, userCampaign]);
+  }, [address, user, userCampaign, localStarkKey, walletAddress, userCampaignId]);
 
   let abbreviationAddress = '';
   if (address) {
@@ -164,9 +171,11 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
       <Modal
         open={showMismatchedWalletModal}
         onOpenChange={() => {
-          setShowMismatchedWalletModal(false);
           disconnect();
           disconnectL2Wallet();
+          setUserCampaignId('');
+          isAirDrop && logout();
+          setShowMismatchedWalletModal(false);
         }}>
         <Modal.Content
           title={
@@ -190,6 +199,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
                 disconnect();
                 disconnectL2Wallet();
                 logout();
+                setUserCampaignId('');
                 setShowMismatchedWalletModal(false);
               }}
               className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
