@@ -5,20 +5,14 @@ import AppleIcon from '../../components/icons/node/AppleIcon';
 import WindowIcon from '../../components/icons/node/WindowIcon';
 import LinuxIcon from '../../components/icons/node/LinuxIcon';
 import SupportIcon from '../../components/icons/SupportIcon';
-import VPSIcon from '../../components/icons/node/VPSIcon';
-import TwitterIcon from '../../components/icons/TwitterIcon';
-import MediumIcon from '../../components/icons/MediumIcon';
-import InstagramIcon from '../../components/icons/InstagramIcon';
 import NodesModal from '../../components/node/NodesModal';
 import useNodeLicense from '../../hooks/useNodeLicense';
 
 const Node = () => {
-  const [showFullNode, setShowNode] = useState(false);
   const { data } = useNodeLicense();
 
   return (
     <NodeLayout>
-      <NodesModal open={showFullNode} onClose={() => setShowNode(false)} />
       <p className="text-3xl text-white">Setup Myria Node</p>
       <div className="bg-base/3 border-base/5 mt-6 flex w-fit flex-row items-center gap-4 rounded-xl border-2 py-4 pl-6 pr-12">
         <div className="bg-blue/6 flex h-8 w-8 items-center justify-center rounded-full">
@@ -38,7 +32,7 @@ const Node = () => {
           </p>
           <div
             className="bg-primary/6 rounded-xl py-4 px-8 my-8 w-fit cursor-pointer"
-            onClick={() => setShowNode(true)}>
+            onClick={() => {}}>
             <p className="font-bold text-black">GET STARTED</p>
           </div>
           <div className="flex flex-row gap-4 mt-12">

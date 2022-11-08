@@ -1,12 +1,10 @@
 import React, { FC, memo, useMemo } from 'react';
-import useUserNodes from '../../hooks/useUserNodes';
 import Modal from '../Modal';
 import TreeIcon from '../icons/TreeIcon';
 import { Trans } from '@lingui/macro';
 import Button from '../core/Button';
 import { useRouter } from 'next/router';
 import useNodeLicense from '../../hooks/useNodeLicense';
-import nodes from '../../pages/nodes/dashboard/nodes';
 import { NODE_LIMIT } from '../../configs';
 
 const NodesModal: FC<{ open: boolean; onClose: () => void }> = ({ open, onClose }) => {
@@ -39,7 +37,7 @@ const NodesModal: FC<{ open: boolean; onClose: () => void }> = ({ open, onClose 
             ))}
           </div>
 
-          {nodes?.length < NODE_LIMIT && (
+          {data?.length < NODE_LIMIT && (
             <div>
               <div className="bg-base/7 h-[1px] w-full" />
               <p className="text-base/9 mt-6">Maximise your network?</p>
