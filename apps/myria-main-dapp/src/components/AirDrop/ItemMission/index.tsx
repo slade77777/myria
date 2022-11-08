@@ -68,7 +68,9 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
   const { userCampaign } = useAuthenticationContext();
 
   const isLocked = status === STATUS_MISSION.LOCKED && id !== utilTaskId.verifyEmail;
-  const enableClick = status === STATUS_MISSION.AVAILABLE || id === utilTaskId.verifyEmail;
+  const enableClick =
+    status === STATUS_MISSION.AVAILABLE ||
+    (id === utilTaskId.verifyEmail && status !== STATUS_MISSION.COMPLETED);
 
   const router = useRouter();
 
