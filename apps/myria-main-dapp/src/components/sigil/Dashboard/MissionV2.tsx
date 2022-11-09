@@ -163,7 +163,7 @@ const MissionV2: React.FC = () => {
         onClose={() => setOpenInviteModal(false)}
         link={`${window.location.origin}/sigil/?code=${user?.user_id}`}
       />
-      <p className="mb-6 text-base font-medium text-light">
+      <p className="text-light mb-6 text-base font-medium">
         Complete the missions below to unlock your rewards
       </p>
       {!missions ? (
@@ -171,7 +171,7 @@ const MissionV2: React.FC = () => {
           <Loading />
         </div>
       ) : (
-        <div className={`max-h-[65vh] overflow-hide pr-[43px] pl-[3px] pt-[3px]`}>
+        <div className={`overflow-hide max-h-[65vh] pr-[43px] pl-[3px] pt-[3px]`}>
           {(missions || []).map((mission) => {
             const isRepeatable =
               mission.repetition_type == 'Daily' || mission.repetition_type == 'Unlimited';
@@ -205,7 +205,7 @@ const MissionV2: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="relative z-20 min-h-[128px] w-full rounded-lg bg-brand-deep-blue">
+                <div className="bg-brand-deep-blue relative z-20 min-h-[128px] w-full rounded-lg">
                   <div className="flex w-full px-8 py-6">
                     <div className="flex-1">
                       <div className="flex items-center">
@@ -216,7 +216,7 @@ const MissionV2: React.FC = () => {
                           {credits} POINTS
                         </div>
                       </div>
-                      <p className="mt-4 max-w-[70%] text-base font-normal text-light">
+                      <p className="text-light mt-4 max-w-[70%] text-base font-normal">
                         {ActionMap[mission.mission_id]?.description &&
                           typeof ActionMap[mission.mission_id]?.description === 'function' &&
                           ActionMap[mission.mission_id]?.description(credits)}
@@ -263,8 +263,8 @@ const MissionV2: React.FC = () => {
                           </span>
                         )}
                         {(status === 'completed' || isRepeatable) && (
-                          <span className="ml-1 text-xs font-medium leading-3 text-light">
-                            {earned_credits} POINTS EARNED
+                          <span className="text-light ml-1 text-xs font-medium leading-3">
+                            EARN {earned_credits} POINTS
                           </span>
                         )}
                       </div>
