@@ -1,0 +1,72 @@
+{
+  "space-war": {
+    "shortcut": {
+      "image": "/images/partner-games-1/40-space-war/banner-1.jpeg",
+      "title": "Space War",
+      "feature": "Multi Player",
+      "genre": ["Action", "Shooter"],
+      "publisher": "Ecosystem Developer",
+      "id": "space-war",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/The_Astroverse",
+    "headerBg": "",
+    "title": "Space War",
+    "description": "",
+    "logo": "/images/partner-games-1/40-space-war/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/40-space-war/banner-1.jpeg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/40-space-war/banner-2.jpeg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/40-space-war/banner-3.jpeg"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Space War is a war-themed 2d action game where players can play, progress, and earn in a single-player sci-fi-themed game in outer space."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["omar.bik@astroverse.cc"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/The_Astroverse"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://astroverse.cc/astroverse-season-1/",
+          "https://discord.gg/dpq8sc32mp",
+          "https://astroverseclub.medium.com/the-astroverse-club-june-2022-update-c4d01ed47479"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "The Astroverse Club"
+      },
+      {
+        "label": "Platform",
+        "value": "WebGL"
+      },
+      {
+        "label": "Genre",
+        "value": "Action, Shooter"
+      }
+    ]
+  }
+}

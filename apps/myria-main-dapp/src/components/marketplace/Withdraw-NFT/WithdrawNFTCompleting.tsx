@@ -112,7 +112,7 @@ const WithdrawNFTCompleting: FC<IProp> = ({}) => {
             <span>
               <Trans>Item</Trans>
             </span>
-            <span className="flex">{valueNFT.name}</span>
+            <span className="flex">{valueNFT.tokenName ?? valueNFT.name}</span>
           </div>
           <div className="mt-3 flex justify-between">
             <span className="flex items-center gap-1">

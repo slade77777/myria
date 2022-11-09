@@ -128,16 +128,14 @@ export const ModalEditListing: React.FC<Props> = ({
               </p>
             </div>
           </div>
-          <p className="text-light mt-2 text-sm">
+          {/* <p className="text-light mt-2 text-sm">
             <Trans>
               Collection median price: <span className="text-white">2.00 ETH</span>
             </Trans>
-          </p>
+          </p> */}
           <div className="relative mt-8">
             <span className="text-light">{defaultModal.labelInput}</span>
-            <div className="absolute top-10 left-2">
-              <DAOIcon />
-            </div>
+
             <Input
               max={10}
               type="text"
@@ -149,33 +147,40 @@ export const ModalEditListing: React.FC<Props> = ({
                 } else {
                   if (parseFloat(e.target.value) < INPUT_MAX_LIMIT)
                     setValue('price', e.target.value);
-                  if (parseFloat(e.target.value) >= INPUT_MAX_LIMIT) {
-                    setValue('price', `${INPUT_MAX_LIMIT}`);
-                  }
                   if (parseFloat(e.target.value) < MINIMUM_PRICE) {
                     setError('price', { message: `Minimum is ${MINIMUM_PRICE} price` });
                   } else {
                     clearErrors('price');
                   }
-                  if (e.target.value === '') {
-                    setValue('price', '');
-                  }
                 }
               }}
-              placeholder={'0.00'}
+              placeholder={ethPrice ? ethPrice : '0.00'}
               autoComplete="off"
               error={!!errors.price}
               errorText={errors.price?.message}
               className="bg-base/4 mt-1 rounded-lg border-none pr-[100px] pl-10"
             />
-            <div className="text-base/9 absolute top-10 right-3">
-              <span>${formatNumber2digits(ethPrice ? parseFloat(ethPrice) * ethereum : 0)}</span>
+            <div className="absolute top-10 left-2">
+              <DAOIcon />
+            </div>
+            <div className="text-base/9 bg-base/4 absolute top-10 right-3 flex w-1/4 justify-end pl-1 ">
+              <Tooltip>
+                <Tooltip.Trigger asChild className="cursor-pointer focus:outline-none">
+                  <p className="truncate text-ellipsis ">
+                    ${formatNumber2digits(ethPrice ? parseFloat(ethPrice) * ethereum : 0)}
+                  </p>
+                </Tooltip.Trigger>
+                <Tooltip.Content side="top" className="bg-base/5 ">
+                  <Tooltip.Arrow className="fill-base/5 " width={16} height={8} />
+                  {formatNumber2digits(ethPrice ? parseFloat(ethPrice) * ethereum : 0)}
+                </Tooltip.Content>
+              </Tooltip>
             </div>
           </div>
           {description && <p className="text-light mt-5">{description}</p>}
           <div className="my-2 flex flex-row items-center text-[#97AAB5]">
             <span className="mr-2">
-              <Trans>Proceeds from sale</Trans>
+              <Trans>Seller Proceeds</Trans>
             </span>
             <ETHWhite />
             <span className="ml-1 text-[#A1AFBA]">
@@ -215,8 +220,7 @@ export const ModalEditListing: React.FC<Props> = ({
             <Button
               onClick={handleSubmit(onHandleSubmit, onHandleError)}
               disabled={!canConfirm}
-              className={clsx('btn-lg  w-full px-10', BUTTON_BG)}
-            >
+              className={clsx('btn-lg  w-full px-10', BUTTON_BG)}>
               {isConfirmButton && <ProgressIcon size={23} />}
               <span className="ml-1">{defaultModal.titleConfirm}</span>
             </Button>

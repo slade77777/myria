@@ -1,0 +1,78 @@
+{
+  "open-world-the-lost-land": {
+    "shortcut": {
+      "image": "/images/partner-games-1/38-open-world-the-lost-land/logo.png",
+      "title": "Open World: The Lost Land",
+      "feature": "Multi Player",
+      "genre": ["MMORPG", "MOBA"],
+      "publisher": "Ecosystem Developer",
+      "id": "open-world-the-lost-land",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/TheLostLandNFT",
+    "headerBg": "",
+    "title": "Open World: The Lost Land",
+    "description": "",
+    "logo": "/images/partner-games-1/38-open-world-the-lost-land/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/38-open-world-the-lost-land/banner_01.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/38-open-world-the-lost-land/banner_02.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/38-open-world-the-lost-land/banner_03.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/38-open-world-the-lost-land/banner_04.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Players need to obtain land before they log into the game; they can get the land from the periodical airdrop activity and the mystery box. Players need to acquire land and construct their castle city.",
+          "There is a fixed number of land plots on each map area. When opening new areas on the world map, players who reach a certain required level/prosperity can move to areas where more resources can be obtained. The high-resource areas on the world map will open gradually.",
+          "Troops' combat power, buildings attribute, and rank on each piece of land are independent and different."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["nity@thelost.land"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/TheLostLandNFT"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://thelost.land/",
+          "https://discord.gg/zmY7jeXKFc",
+          "https://t.me/TheLostLandNFT"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Monster Labs"
+      },
+      {
+        "label": "Platform",
+        "value": "PC, IOS, Android"
+      },
+      {
+        "label": "Genre",
+        "value": "SLG, Tower Defence, Strategy Combat"
+      }
+    ]
+  }
+}

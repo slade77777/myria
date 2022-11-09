@@ -143,7 +143,7 @@ const CreateMyriaWalletModal = forwardRef<RefType, Props>((props, ref) => {
               onClick={onSendRequest}
               className="flex items-center justify-center rounded-[8px] bg-[#F5B941] py-[9px] px-[26px] text-[14px] font-bold uppercase text-[#040B10]"
             >
-              agree and sign
+              NEXT
             </button>
           </div>
         </div>

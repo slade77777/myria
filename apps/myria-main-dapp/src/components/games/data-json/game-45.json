@@ -1,0 +1,87 @@
+{
+  "fable-kingdoms": {
+    "shortcut": {
+      "image": "/images/partner-games-1/45-fable-kingdoms/logo.png",
+      "title": "Fable Kingdoms",
+      "feature": "Multi Player",
+      "genre": ["Strategy"],
+      "publisher": "Ecosystem Developer",
+      "id": "fable-kingdoms",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "http://twitter.com/fable_kingdoms",
+    "headerBg": "",
+    "title": "Fable Kingdoms",
+    "description": "",
+    "logo": "/images/partner-games-1/45-fable-kingdoms/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/45-fable-kingdoms/banner-1.gif"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/45-fable-kingdoms/banner-2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/45-fable-kingdoms/banner-3.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Fable Kingdoms is a massive multiplayer online strategy game. Hundreds of players compete on one map over multiple days. What sets Fable Kingdoms apart from most other Play2Earn games is that it's really a GAME!  Sadly right now the NFT games world revolves more around first figuring out the financial aspect and then trying to hack a “game” around it. Fable Kingdoms is through and through a game which you would also love to play if there was nothing to earn at all. The Play2Earn part of the game will not make the game worse, it will even improve the game because it will bring out the competitiveness in every player.",
+          "‎",
+          "GAME FEATURES OVERVIEW",
+          "- Massive multiplayer online strategy game played over multiple days with hundreds of player on one map",
+          "- Play via Web browser, iOS, Android",
+          "- Create guilds and team up with your friends",
+          "- Regularly tournaments with prizes",
+          "- In-Game messaging",
+          "- Tech trees. Outplay your enemies with technological advancements.",
+          "- Multiple playable races",
+          "‎",
+          "What will a typical game round look like?",
+          "You start the game with an empty village on a big map with hundreds of other players. Your village has a bunch of empty building plots where you can choose what you will build on them. First of all you need to get your economy running which means you should start with building a farm, a lumberjack and an ore mine. Those buildings will give you resources every second. Next step would be to build a barracks so that you can start building an army so you stop being defenceless. That’s quite important because every other player on the map can attack you at any time and loot your resources if you don’t defend them!",
+          "A match in Fable Kingdoms will be played over multiple days or even weeks depending on the server settings. So your empire will also still be in the game even when you log off, but don’t worry your troops will of course keep on defending your villages!",
+          "Actions in this game take time. If you for example attack another village that is a few tiles far away your troops need a few minutes to arrive there. Upgrading or building new buildings also can take quite some time (even several hours) depending on the level of the building.",
+          "There are different kinds of units each with their own strengths, some units are better in attacking, others are better in defending. Some units can travel faster on the map or loot more resources etc.           ",
+          "Having only one village is of course not really a Kingdom so you will of course also be able to conquer enemy villages and keep them, that's where the game will get really interesting and strategies become more and more important. Of course you also can create a guild and team up with other players!",
+          "There will be various win conditions for the game depending on the server settings. The most common one is that the last surviving player or guild wins the game.",
+          "So what makes Fable Kingdoms a Crypto game?",
+          "To gain access to the game you need to hold one of our Fable Kingdom NFTs in the wallet you connect with the game. That NFT will also be your avatar in the game. There will be various ways to earn our $FABLE coin in the game. Some you will get just for being active in the game, but of course the better you are the more you earn! We are also planning a series of tournaments where you can win $SOL or even NFTs from other communities."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["johnnyxcrane@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["http://twitter.com/fable_kingdoms"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["fablekingdoms.com"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Fable Studios"
+      },
+      {
+        "label": "Platform",
+        "value": "Web, PC, Mac, iOS, Android"
+      },
+      {
+        "label": "Genre",
+        "value": "Strategy"
+      }
+    ]
+  }
+}

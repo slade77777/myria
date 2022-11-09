@@ -18,7 +18,7 @@ const Arrow: React.FC<CustomArrowProps & { position: 'left' | 'right' }> = ({
   return (
     <button
       className={clsx(
-        'transition duration-300 opacity-0 group-hover:opacity-100 btn-dark-blue flex items-center justify-center absolute z-10 cursor-pointer top-1/2 -translate-y-1/2 w-[32px] h-[32px] rounded-[8px]',
+        'btn-dark-blue absolute top-1/2 z-10 flex h-[32px] w-[32px] -translate-y-1/2 cursor-pointer items-center justify-center rounded-[8px] opacity-0 transition duration-300 group-hover:opacity-100',
         {
           'right-[10px]': position === 'right',
           'left-[10px]': position === 'left'
@@ -65,11 +65,11 @@ const FirstSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets })
 
   return (
     <>
-      <Slider ref={sliderRef} {...settings} className="relative group">
+      <Slider ref={sliderRef} {...settings} className="group relative">
         {assets.map((a, idx) => (
-          <div key={idx} className="pt-[calc(9/16*100%)] relative rounded-[5px] overflow-hidden">
+          <div key={idx} className="relative overflow-hidden rounded-[5px] pt-[calc(9/16*100%)]">
             {a.type === 'video' ? (
-              <div className="absolute top-0 left-0 w-full h-full">
+              <div className="absolute top-0 left-0 h-full w-full">
                 <Video
                   options={{
                     aspectRatio: '16:9',

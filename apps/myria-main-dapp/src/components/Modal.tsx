@@ -20,6 +20,7 @@ type ModalType = React.FC<ModalProps & DialogPrimitive.DialogProps> & {
   Content: React.FC<Omit<DialogPrimitive.DialogContentProps, 'title'> & ModalContentProps>;
   Trigger: React.FC<DialogPrimitive.DialogTriggerProps>;
   Close: React.FC<DialogPrimitive.DialogCloseProps>;
+  Portal: React.FC<DialogPrimitive.DialogPortalProps>;
 };
 
 const Modal: ModalType = ({ children, overlayClassName, ...props }) => {
@@ -89,5 +90,6 @@ ModalContent.displayName = 'ModalContent';
 Modal.Content = ModalContent;
 Modal.Trigger = DialogPrimitive.Trigger;
 Modal.Close = DialogPrimitive.Close;
+Modal.Portal = DialogPrimitive.Portal;
 
 export default Modal;

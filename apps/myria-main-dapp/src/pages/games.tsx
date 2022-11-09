@@ -24,9 +24,6 @@ const Games: React.FC = () => {
           <section className="mt-4 md:mt-[88px]">
             <GameList />
           </section>
-          <section className={'mt-[54px] md:mt-[116px]'}>
-            <Program />
-          </section>
           <section className={clsx('mt-6 mb-[100px] md:mt-8')}>
             <Subscribe />
           </section>

@@ -1,0 +1,72 @@
+{
+  "legends-of-lairds": {
+    "shortcut": {
+      "image": "/images/partner-games-1/42-legends-of-lairds/logo.png",
+      "title": "Legends of Lairds",
+      "feature": "Multi Player",
+      "genre": ["Fantasy", "Roguelike", "Multiplayer"],
+      "publisher": "Ecosystem Developer",
+      "id": "legends-of-lairds",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/LegendsofLairds",
+    "headerBg": "",
+    "title": "Legends of Lairds",
+    "description": "",
+    "logo": "/images/partner-games-1/42-legends-of-lairds/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/42-legends-of-lairds/banner-1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/42-legends-of-lairds/banner-2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/42-legends-of-lairds/banner-3.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Legends of Lairds is a roguelike multiplayer game - where your Lander has to survive a dangerous world and has to depend on muscle, iron and heart! Fight trolls, banshees and dragons and explore the infinite seas finding new islands and adventures. Quest to unlock hidden treasures or join tribes to raid dungeons, while you gather resources to craft new weapons and quilts to trade with your fellow landers. Stake your coins as you save for your own crofts to become a Laird. And if you do this all right, Lander - its only a matter of time before you become a legend."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["info@legendsoflairds.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/LegendsofLairds"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://discord.gg/JMDs2yMbZb",
+          "www.legendsoflairds.com",
+          "https://t.me/LegendsofLairdsChat"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "WAGS"
+      },
+      {
+        "label": "Platform",
+        "value": "PC"
+      },
+      {
+        "label": "Genre",
+        "value": "Fantasy, Roguelike, Multiplayer"
+      }
+    ]
+  }
+}

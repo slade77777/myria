@@ -1,0 +1,72 @@
+{
+  "humbled-hippos": {
+    "shortcut": {
+      "image": "/images/partner-games-1/41-humbled-hippos/logo.jpeg",
+      "title": "Humbled Hippos",
+      "feature": "Multi Player",
+      "genre": ["Art"],
+      "publisher": "Ecosystem Developer",
+      "id": "humbled-hippos",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/humbledhippos",
+    "headerBg": "",
+    "title": "Humbled Hippos",
+    "description": "",
+    "logo": "/images/partner-games-1/41-humbled-hippos/logo.jpeg",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/41-humbled-hippos/banner-1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/41-humbled-hippos/banner-2.jpeg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/41-humbled-hippos/banner-3.jpeg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/41-humbled-hippos/banner-4.jpeg"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Humbled Hippos is a cross-chain brand that was founded with integrity and humbleness in mind. Humble Hippos aims to develop a dApp connector that filters access to the brand via NFT ownership."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["humbledhipposNFT@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/humbledhippos"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["HumbledHippos.com"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Antonio Guzman"
+      },
+      {
+        "label": "Platform",
+        "value": "N/A"
+      },
+      {
+        "label": "Genre",
+        "value": "Art"
+      }
+    ]
+  }
+}

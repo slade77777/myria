@@ -6,12 +6,14 @@ import { useStickyHeader } from 'src/hooks/useStickyHeader';
 import { Trans } from '@lingui/macro';
 import ConnectL2WalletButton from '../ConnectL2WalletButton';
 import UserAvatar from '../Header/UserAvatar';
+import clsx from 'clsx';
 
 type Props = {
   step: number;
+  isAirDrop?: boolean
 };
 
-const Header: React.FC<Props> = ({ step }) => {
+const Header: React.FC<Props> = ({ step, isAirDrop = false }) => {
   const headerRef = useRef<HTMLElement>(null);
   useStickyHeader(headerRef);
 
@@ -33,7 +35,7 @@ const Header: React.FC<Props> = ({ step }) => {
             <Logo />
           </a>
         </Link>
-        <div className="flex items-center justify-end">{step > 1 && <ConnectL2WalletButton />}</div>
+        <div className={clsx(`${isAirDrop ? 'hidden md:flex' : 'flex'} items-center justify-end `)}>{step > 1 && <ConnectL2WalletButton isAirDrop={isAirDrop} />}</div>
       </div>
     </header>
   );

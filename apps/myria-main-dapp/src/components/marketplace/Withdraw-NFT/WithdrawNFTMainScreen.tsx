@@ -12,7 +12,8 @@ import { validatedImage } from 'src/utils';
 import {
   ArrowIcon,
   ThreeDotsVerticalIcon,
-  ArrowUpLeftIcon
+  ArrowUpLeftIcon,
+  ProgressIcon
 } from 'src/packages/l2-wallet/src/components/Icons';
 import LogoutIcon from 'src/components/icons/LogoutIcon';
 import InventoryIcon from 'src/components/icons/InventoryIcon';
@@ -24,6 +25,7 @@ import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { WithdrawNftOffChainParams } from 'myria-core-sdk';
 import { Trans } from '@lingui/macro';
 import { useGA4 } from 'src/lib/ga';
+import InfoCircle2Icon from 'src/packages/l2-wallet/src/components/Icons/InfoCircle2Icon';
 interface IProp {
   valueNFT: any;
   onChangeStatus: () => void;
@@ -61,6 +63,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
 
   const handleConfirmWithdrawNftOffchain = async () => {
     /// call api confirm withdraw
+
     if (starkKey) {
       setIsPending(true);
       event('NFT Withdraw Selected', {
@@ -92,7 +95,7 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
         };
         await withdrawModule?.withdrawNftOffChain(payloadWithdrawNftOffchain);
         await queryClient.invalidateQueries(['assetDetail', +assetDetail.id]);
-        onChangeStatus();
+        handleDisplayPopoverWithdrawNFT(false);
         event('NFT Withdraw Completed', {
           myria_id: user?.user_id,
           wallet_address: `_${address}`,
@@ -160,24 +163,32 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
           </DropdownMenu>
         </div>
         <div className="mx-auto mt-8 flex h-16 w-16 justify-center">
-          <ArrowUpLeftIcon size={64} className="w-full text-[#9AC9E3]" />
+          <ProgressIcon
+            strokeWidth="2"
+            isNotAnimate={!isPending}
+            size={64}
+            className="text-blue/6 w-full"
+          />
         </div>
-        <div className="mt-6 text-center text-2xl text-white">Withdraw NFT to L1 wallet</div>
-        <div className="text-base/9 mt-4 px-7 text-center text-sm">
-          <Trans>Withdrawals are processed in batches every 20 hours. Click</Trans>{' '}
-          <span
-            onClick={() => {
-              handleLearnMore(true);
-            }}
-            className="text-primary/6 cursor-pointer">
-            <Trans>here</Trans>
-          </span>{' '}
-          <Trans>to learn more.</Trans>
+        <div className="mt-6 text-center text-2xl text-white">
+          <Trans>Withdraw NFT</Trans>
+        </div>
+        <div className="text-base/9 mt-4 px-4 text-center text-sm">
+          <Trans>
+            You are about to withdraw a NFT to your L1 wallet. Gas fees will apply once it’s ready
+            to claim.
+          </Trans>
         </div>
         <div className="bg-base/2/50 text-base/9 mt-4 rounded-lg p-4 text-sm">
           <div className="flex justify-between">
             <span className="text-base/9">Item</span>
             <span className="text-white">{valueNFT.name}</span>
+          </div>
+          <div className="mt-4 flex justify-between">
+            <span className="text-base/9">
+              <Trans>Estimated completion</Trans>
+            </span>
+            <span className="text-white">10-20 hours</span>
           </div>
           <div className="mt-4 flex justify-between">
             <span className="text-base/9">
@@ -189,8 +200,16 @@ const WithdrawNFTMainScreen: FC<IProp> = ({ valueNFT, onChangeStatus }) => {
             </span>
           </div>
         </div>
+        <div className="bg-brand-light-blue border-brand-light-blue text-base/9 grid-two-col-auto mt-4  grid grid-rows-2 items-center gap-x-2 rounded-lg border-[1px] border-opacity-20 bg-opacity-10 p-4">
+          <InfoCircle2Icon size={16} />
+          <span className="text-xs font-bold text-[#9AC9E3]">Heads up</span>
+          <span></span>
+          <p className="pt-1 text-[12px] font-normal  text-[#9AC9E3] text-opacity-[85%]">
+            This action is permanent and cannot be undone!
+          </p>
+        </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between  py-4">
         <button
           onClick={() => handleDisplayPopoverWithdrawNFT(false)}
           className="border-base/9 flex h-10 w-full max-w-[126px] items-center justify-center rounded-lg border text-base font-bold text-white">

@@ -3,17 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { UseMutationResult } from 'react-query';
-import { useSelector } from 'react-redux';
-import { localStorageKeys } from 'src/configs';
-import { User } from 'src/context/authentication';
-import useLocalStorage from 'src/hooks/useLocalStorage';
-import useUserNodes from 'src/hooks/useUserNodes';
-import { RootState } from 'src/packages/l2-wallet/src/app/store';
+import { useAuthenticationContext, User } from 'src/context/authentication';
 import DropdownMenu from '../DropdownMenu';
 import InventoryIcon from '../icons/InventoryIcon';
 import NodeIcon from '../icons/NodeIcon';
-import UserIcon from '../icons/UserIcon';
 import SettingAltIcon from '../icons/SettingAltIcon';
+import useNodeLicense from '../../hooks/useNodeLicense';
 
 interface IProps {
   items: {
@@ -29,15 +24,23 @@ const UserAvatar: React.FC<IProps> = ({ items }) => {
   const isLogin =
     !loginByWalletMutation.isError && walletAddress && showConnectedWallet && localStarkKey;
 
-  const nodes = useUserNodes();
-  const avatar = '/images/marketplace/user.png';
+  const nodes = useNodeLicense();
+  const { account } = useAuthenticationContext();
 
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger disabled={!isLogin}>
-        <div className="ml-6 h-9 w-9 overflow-hidden rounded-full">
-          <Image width={100} height={100} src="/images/marketplace/user-default.png" alt="" />
-        </div>
+        {account?.image_url ? (
+          <img
+            className="rounded-full object-cover w-10 h-10 ml-2"
+            src={account?.image_url}
+            alt=""
+          />
+        ) : (
+          <div className="ml-6 h-9 w-9 overflow-hidden rounded-full">
+            <Image width={100} height={100} src="/images/marketplace/user-default.png" alt="" />
+          </div>
+        )}
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
         aria-disabled

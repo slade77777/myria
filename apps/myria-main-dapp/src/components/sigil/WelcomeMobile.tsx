@@ -6,7 +6,7 @@ const WelcomeMobile: React.FC = () => {
   return (
     <div
       className={
-        "relative h-screen bg-[url('/images/nodes/sigil/header-bg.jpeg')] bg-cover bg-bottom bg-no-repeat px-4"
+        "relative h-screen bg-[url('/images/nodes/airdrop/background_airdrop.png')] bg-cover bg-bottom bg-no-repeat px-4"
       }>
       <div className="mx-auto mb-16 max-w-[408px] pt-[213px] text-center">
         <h1 className="text-[28px] font-bold leading-[1.2]">

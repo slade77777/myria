@@ -60,6 +60,16 @@ export const noCacheApiClient = axios.create({
   withCredentials: true
 });
 
+export const campaignApiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_CAMPAIGN_SERVICE_URL,
+  timeout,
+  headers: {
+    accept: 'application/json',
+    'Content-type': 'application/json',
+    'x-api-key': `${process.env.NEXT_PUBLIC_CAMPAIGN_API_KEY}`
+  }
+});
+
 export const devApiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_DEV_API_URL,
   timeout,

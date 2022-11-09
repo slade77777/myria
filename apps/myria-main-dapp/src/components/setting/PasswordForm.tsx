@@ -49,7 +49,7 @@ const schema = yup
   })
   .required();
 
-const PasswordForm: FC<{ onSuccess: () => void }> = ({ onSuccess }) => {
+const PasswordForm = () => {
   const { account, accountProfileQuery } = useAuthenticationContext();
   const [requestEmail, setRequestEmail] = useState(false);
   const [emailSent, setRequestSent] = useState(false);
@@ -62,15 +62,15 @@ const PasswordForm: FC<{ onSuccess: () => void }> = ({ onSuccess }) => {
     (data: any) => apiClient.post(`/accounts/password`, data),
     {
       onSuccess: (res) => {
-        onSuccess();
         toast('Update password successfully!', {
           type: 'success'
         });
         accountProfileQuery.refetch();
+        router.push('/');
       },
       onError: (err: any) => {
         const message = err?.response?.data?.errors?.[0]?.detail;
-        toast(message || 'Something error, please try later', {
+        toast(message || 'Error, please try later', {
           type: 'error'
         });
       }
@@ -85,7 +85,7 @@ const PasswordForm: FC<{ onSuccess: () => void }> = ({ onSuccess }) => {
       },
       onError: (err: any) => {
         const message = err?.response?.data?.errors?.[0]?.detail;
-        toast(message || 'Something error, please try later', {
+        toast(message || 'Error, please try later', {
           type: 'error'
         });
       }

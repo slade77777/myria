@@ -5,9 +5,13 @@ import { headerNavSpacingClassName } from 'src/components/Header/Header';
 type Props = {};
 
 export default function index({}: Props) {
+  function scrollToDefinitions() {
+    const element = document.getElementById('definitions');
+    element?.scrollIntoView();
+  }
   return (
     <Page action="mint">
-      <div className={`${headerNavSpacingClassName} mx-auto max-w-[832px]`}>
+      <div className={`${headerNavSpacingClassName} mx-auto max-w-[832px] terms-conditions`}>
         <div className="pt-[80px] pb-[160px]">
           <div>
             <h1 className="text-[40px] font-bold leading-[60px] text-white">
@@ -22,27 +26,35 @@ export default function index({}: Props) {
             <div className="text-base/9 mt-4 list-disc font-light leading-[24px]">
               <div className="space-y-1">
                 <p>
-                  Please read carefully the terms of this End User License Agreement (the “EULA”)
-                  and note that there may be specific terms or conditions applicable to You as a End
-                  User in a given jurisdiction, as detailed below.{' '}
+                  Please read carefully the terms of this End User License Agreement (the{' '}
+                  <span className="font-bold">“EULA”</span>) and note that there may be specific
+                  terms or conditions applicable to You as a End User in a given jurisdiction, as
+                  detailed below.{' '}
                 </p>
                 <p>
-                  All capitalised terms and expressions used in this EULA are defined in the last
-                  section of this page.
+                  All capitalised terms and expressions used in this EULA are defined{' '}
+                  <a href="https://myria.atlassian.net/wiki/spaces/LEG/pages/edit-v2/90898445?draftShareId=66a6e3d0-990b-40fe-9b02-6577e44af100">
+                    here.
+                  </a>
                 </p>
                 <p>
                   The licences and rights granted hereunder are so granted in consideration for your
                   continued compliance with all obligations set out herein.
                 </p>
                 <p>
-                  Please refer to our Privacy Notice for information about how we collect, use,
-                  share and otherwise process information about you.
+                  Please refer to our{' '}
+                  <a href="https://myria.atlassian.net/wiki/spaces/LEG/pages/93914497/Privacy+Notice+WIP?atlOrigin=eyJpIjoiNzMyNmEzNTcyODk5NGI5MTk5NTFiNjBjNTQ2MGRjMWIiLCJwIjoiYyJ9">
+                    Privacy Notice
+                  </a>{' '}
+                  for information about how we collect, use, share and otherwise process information
+                  about you.
                 </p>
                 <p>
                   This EULA is a binding contract between You and Myria concerning your use of
-                  Myria’s services (the “Service”) on www.myria.com, including the website as well
-                  as any other media form, media channel, or mobile website related, linked, or
-                  otherwise connected thereto) as operated by Myria and constituting the Myria
+                  Myria’s services (the “Service”) on{' '}
+                  <a href="https://solana.com/">www.myria.com</a>, including the website as well as
+                  any other media form, media channel, or mobile website related, linked, or
+                  otherwise connected thereto, as operated by Myria and constituting the Myria
                   ecosystem (collectively, the “Site”).
                 </p>
                 <p>
@@ -274,12 +286,12 @@ export default function index({}: Props) {
                     “Myria” and our logos, our product or service names, our slogans and the look
                     and feel of the Service are trademarks of Myria and may not be copied, imitated
                     or used, in whole or in part, without our prior written permission, which may be
-                    obtained by emailing x@myria.com. All other trademarks, registered trademarks,
-                    product names and company names or logos mentioned on the Service are the
-                    property of their respective owners. Reference to any products, services,
-                    processes or other information by trade name, trademark, manufacturer, supplier
-                    or otherwise does not constitute or imply endorsement, sponsorship or
-                    recommendation by us.
+                    obtained by emailing <a href="mailto:x@myria.com">x@myria.com</a>. All other
+                    trademarks, registered trademarks, product names and company names or logos
+                    mentioned on the Service are the property of their respective owners. Reference
+                    to any products, services, processes or other information by trade name,
+                    trademark, manufacturer, supplier or otherwise does not constitute or imply
+                    endorsement, sponsorship or recommendation by us.
                   </p>
                 </div>
               </div>
@@ -527,7 +539,10 @@ export default function index({}: Props) {
                 <p>
                   You must carefully read these terms (the “<span className="font-bold">Terms</span>
                   ”) before registering to use or using the Protocol. All capitalised terms and
-                  expressions used in these Terms are defined here.
+                  expressions used in these Terms are defined{' '}
+                  <a className="cursor-pointer" onClick={scrollToDefinitions}>
+                    here.
+                  </a>
                 </p>
                 <p>
                   By installing, copying or otherwise using the Protocol, You accept that these
@@ -1022,7 +1037,7 @@ export default function index({}: Props) {
                   <h4 className="text-[20px] font-bold text-white">6. Fees</h4>
                   <div className="space-y-2">
                     <div className="mt-2 space-y-2">
-                      <p className="font-bold">
+                      <p>
                         6.1 The Fees are payable in the currency (or cryptocurrency) in which a
                         transaction occurs involving the Protocol, including if occurring via the
                         Developer’s Platform.
@@ -1133,7 +1148,7 @@ export default function index({}: Props) {
                       <p>
                         These Terms commence when You are granted access to use the Protocol and
                         continue until either You cease using the Protocol or these Terms are
-                        terminated (Term).
+                        terminated (<span className="font-bold">Term</span>).
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
@@ -1287,7 +1302,7 @@ export default function index({}: Props) {
                     </div>
                     <div className="mt-2 space-y-2">
                       <p>
-                        10.6 Neither party will be liable to the other for any indirect, incidental,
+                        11.6 Neither party will be liable to the other for any indirect, incidental,
                         special, consequential, or punitive damages of any kind, under or in
                         connection with these Terms, or for any loss of profits, revenues, business
                         opportunity, goodwill or data, or for interruption of business or the cost
@@ -1324,11 +1339,11 @@ export default function index({}: Props) {
                       <p>
                         12.3 Myria will (a) give You reasonable written notice of the matter for
                         which it is seeking indemnification hereunder; (b) permit You to have sole
-                        control over the defense and settlement thereof, and © reasonably cooperate
-                        with You (at your expense) in the defense and settlement thereof. You will
-                        keep Myria fully informed of the status of any litigation or dispute
-                        resolution procedure, will give due consideration to the suggestions and
-                        requests of Myria concerning the conduct of the litigation or dispute
+                        control over the defense and settlement thereof, and &#169; reasonably
+                        cooperate with You (at your expense) in the defense and settlement thereof.
+                        You will keep Myria fully informed of the status of any litigation or
+                        dispute resolution procedure, will give due consideration to the suggestions
+                        and requests of Myria concerning the conduct of the litigation or dispute
                         resolution procedure, and will not settle any matter covered by this Section
                         without the prior written consent of Myria.
                       </p>
@@ -1398,7 +1413,7 @@ export default function index({}: Props) {
                         Except as otherwise permitted in these Terms, notices under these Terms will
                         be in writing and will be deemed to have been given (a) five (5) business
                         days after mailing if sent by registered mail, (b) when transmitted, if sent
-                        by email, provided that a delivery receipt notice is obtained, or © when
+                        by email, provided that a delivery receipt notice is obtained, or (c) when
                         delivered, if delivered personally or sent by courier service; in each case
                         to the address set forth below:
                       </p>
@@ -1462,14 +1477,14 @@ export default function index({}: Props) {
                         These Terms (including all Schedules and exhibits) contains the entire
                         agreement of the parties and supersedes all previous oral and written
                         communications by the parties concerning the subject matter of these Terms.
-                        these Terms may be amended solely in writing signed by both parties.
+                        These Terms may be amended solely in writing signed by both parties.
                       </p>
                     </div>
                     <div className="mt-2 space-y-2">
                       <p className="font-bold">14.10 Amendment</p>
                       <p>
                         Myria may amend the terms of these Terms from time to time and provide
-                        notice of the updated terms. Such terms take effect when You uses the
+                        notice of the updated terms. Such terms take effect when You use the
                         Protocol following the change.
                       </p>
                     </div>
@@ -1507,7 +1522,7 @@ export default function index({}: Props) {
                         terms take precedence to the extent of such inconsistency.
                       </p>
                     </div>
-                    <div className="mt-2 space-y-2">
+                    <div id="definitions" className="mt-2 space-y-2">
                       <p className="font-bold">14.15 Governing Law</p>
                       <p>
                         These Terms will be governed by and construed in accordance with the laws of
@@ -1692,6 +1707,10 @@ export default function index({}: Props) {
                 association, trust, unincorporated entity or other legal entity;
               </p>
               <p>
+                <b>Personnel</b> means any employee, contractor, subcontractor, supplier, agent,
+                partner, shareholder, ultimate beneficial owner, director or officer of a party;
+              </p>
+              <p>
                 <b>Platform</b> means any of the Myria Platform and the Developer’s Platform
               </p>
               <p>
@@ -1723,11 +1742,11 @@ export default function index({}: Props) {
                 to time in connection with the APIs;
               </p>
               <p>
-                <p>Smart Contract</p> means the system of software code running on the Ethereum
+                <b>Smart Contract</b> means the system of software code running on the Ethereum
                 Blockchain used as part of the Protocol;
               </p>
               <p>
-                <p>Term</p> has the meaning set out in Section 10.1;
+                <b>Term</b> has the meaning set out in Section 10.1;
               </p>
               <p>
                 <b>Trading</b> the trading of any Digital Asset on the Platform whether when minted

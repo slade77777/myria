@@ -62,7 +62,7 @@ const WhiteListSale = ({
           type: 'success'
         });
       } else {
-        toast(message || 'Something error, please try later', {
+        toast(message || 'Error, please try later', {
           type: 'error'
         });
       }

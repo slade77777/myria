@@ -20,7 +20,7 @@ const games = [
     link: '/game-detail/metarush/',
     name: 'Metarush',
     publisher: 'MYRIA STUDIOS',
-    image: '/images/home/game-3.png'
+    image: '/images/home/game_03.jpg'
   }
 ];
 const Item: React.FC<{ item: typeof games[number] }> = ({ item }) => {

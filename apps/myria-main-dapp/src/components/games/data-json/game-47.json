@@ -1,0 +1,73 @@
+{
+  "lost-scythers": {
+    "shortcut": {
+      "image": "/images/partner-games-1/47-lost-scythers/logo.png",
+      "title": "Lost Scythers",
+      "feature": "Multi Player",
+      "genre": ["PFP"],
+      "publisher": "Ecosystem Developer",
+      "id": "lost-scythers",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/LostScythersNFT",
+    "headerBg": "",
+    "title": "Lost Scythers",
+    "description": "",
+    "logo": "/images/partner-games-1/47-lost-scythers/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/47-lost-scythers/banner-1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/47-lost-scythers/banner-2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/47-lost-scythers/banner-3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/47-lost-scythers/banner-4.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "A collection of 8888 Cyborgs who have begun to malfunction and act autonomously. Coming from web 2.0 our vision is to build interesting/fun content and communities on web3 space. ",
+          "Initially, we wanted to experiment with the web3 and NFTs and our artist ended up with this cool idea of cyborgs and we thought this could be a great story. Lost Scythers has a unique cyberpunk theme with an interesting comic story behind it."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["lostscythers@solarts.io"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/LostScythersNFT"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": ["https://lostscythers.io", "https://discord.gg/lostscythers"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "SolArts"
+      },
+      {
+        "label": "Platform",
+        "value": "N/A"
+      },
+      {
+        "label": "Genre",
+        "value": "PFP"
+      }
+    ]
+  }
+}

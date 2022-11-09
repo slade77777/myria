@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { t, Trans } from '@lingui/macro';
@@ -10,14 +10,24 @@ import { useMutation } from 'react-query';
 import apiClient from '../../client';
 import { toast } from 'react-toastify';
 import { useAuthenticationContext } from '../../context/authentication';
+import axios from 'axios';
 
 const schema = yup
-  .object({
-    first_name: yup.string().optional(),
-    last_name: yup.string().optional(),
-    username: yup.string().optional()
+  .object()
+  .shape({
+    first_name: yup.string().required('First Name is a required field.'),
+    last_name: yup.string().required('Last Name is a required field.'),
+    username: yup
+      .string()
+      .required('Username is a required field.')
+      .matches(
+        /^(?=.{3,20}$)(?![.])(?!.*[.]{2})[a-zA-Z0-9.]+(?<![.])$/,
+        'Username should be 3-10 characters and not include special characters '
+      )
   })
   .required();
+
+const MAX_FILE_SIZE = 1024 ** 2 * 5;
 
 const ProfileSetting = () => {
   const { account, accountProfileQuery } = useAuthenticationContext();
@@ -27,24 +37,52 @@ const ProfileSetting = () => {
     reset,
     formState: { errors, isSubmitting, isValid, isDirty }
   } = useForm({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
     resolver: yupResolver(schema),
-    defaultValues: account
+    defaultValues: useMemo(() => {
+      return account;
+    }, [account])
   });
+  const inputFile = useRef<any>(null);
+  const [isUploading, setUpload] = useState(false);
+
+  useEffect(() => {
+    reset(account);
+  }, [account, reset]);
 
   const { mutate, isLoading } = useMutation((data: any) => apiClient.put(`/accounts/users`, data), {
     onSuccess: (res) => {
-      toast('Update information successfully!', {
+      toast('Settings updated', {
         type: 'success'
       });
       accountProfileQuery.refetch();
     },
     onError: (err: any) => {
       const message = err?.response?.data?.errors?.[0]?.detail;
-      toast(message || 'Something error, please try later', {
+      toast(message || 'Error, please try later', {
         type: 'error'
       });
     }
   });
+
+  const { mutate: deleteAvatar, isLoading: isRemoving } = useMutation(
+    (data: any) => apiClient.delete('/accounts/images'),
+    {
+      onSuccess: (res) => {
+        toast('Delete avatar successfully!', {
+          type: 'success'
+        });
+        accountProfileQuery.refetch();
+      },
+      onError: (err: any) => {
+        const message = err?.response?.data?.errors?.[0]?.detail;
+        toast(message || 'Error, please try later', {
+          type: 'error'
+        });
+      }
+    }
+  );
 
   const updateUser = useCallback(
     (data: any) => {
@@ -58,17 +96,80 @@ const ProfileSetting = () => {
   );
   const canUpdate = isValid && !isSubmitting && isDirty;
 
+  const updateAvatar = useCallback(() => {
+    inputFile.current?.click();
+  }, []);
+
+  const onChangeFile = useCallback(
+    async (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      const file = event.target.files[0];
+      if (!file) {
+        return;
+      }
+
+      const [type] = file.type.split('/');
+      if (!type || type !== 'image') {
+        return toast.error('You can only upload image file!');
+      }
+      if (file.size > MAX_FILE_SIZE) {
+        return toast.error('File is too large, maximum allowed size - 5 MB.');
+      }
+      try {
+        setUpload(true);
+        const preSignedRes = await apiClient.get(`/accounts/images/upload-url/${file.name}`);
+        const { presigned_url, image_name } = preSignedRes?.data?.data;
+        if (presigned_url && image_name) {
+          await axios.put(presigned_url, file);
+          const response = await apiClient.post('/accounts/images', {
+            image_name
+          });
+          if (response?.data?.data?.image_url) {
+            toast.success('Update avatar successfully!');
+            accountProfileQuery.refetch();
+          }
+        } else {
+          throw new Error('Presigned url is not valid!');
+        }
+      } catch (e) {
+        toast.error('Error, please try again later!');
+      }
+      // eslint-disable-next-line no-param-reassign
+      event.target.value = '';
+      setUpload(false);
+    },
+    [accountProfileQuery]
+  );
+
   return (
     <div className="w-full bg-base/3 p-8">
-      <p className="text-white text-3xl font-bold">Profile Setting</p>
+      <p className="text-white text-3xl font-bold">Profile Settings</p>
+      <input type="file" id="file" ref={inputFile} className="hidden" onChange={onChangeFile} />
       <div className="mt-8 flex flex-row gap-8 items-center">
-        <img width={200} height={200} src="/images/marketplace/user.png" alt="" />
-        <div className="py-2 border-white border-2 mt-8 rounded-lg w-48 cursor-pointer">
-          <p className="text-center font-bold">CHANGE</p>
-        </div>
-        <div className="py-2 border-white border-2 mt-8 rounded-lg w-48 cursor-pointer">
-          <p className="text-center font-bold">REMOVE</p>
-        </div>
+        <img
+          className="rounded-full object-cover w-48 h-48"
+          src={account?.image_url || '/images/marketplace/user.png'}
+          alt=""
+        />
+        {isUploading ? (
+          <Loading />
+        ) : (
+          <div
+            onClick={updateAvatar}
+            className="py-2 border-white border-2 rounded-lg w-48 cursor-pointer">
+            <p className="text-center font-bold">CHANGE</p>
+          </div>
+        )}
+        {isRemoving ? (
+          <Loading />
+        ) : (
+          <div
+            onClick={deleteAvatar}
+            className="py-2 border-white border-2 rounded-lg w-48 cursor-pointer">
+            <p className="text-center font-bold">REMOVE</p>
+          </div>
+        )}
       </div>
 
       <div className="w-1/2 mt-12">
@@ -88,7 +189,7 @@ const ProfileSetting = () => {
           errorText={errors.last_name?.message}
           className="mt-2"
         />
-        <p className="text-base/9 mt-4">username</p>
+        <p className="text-base/9 mt-4">Username</p>
         <Input
           placeholder={t`Your username`}
           {...registerForm('username')}
@@ -98,7 +199,7 @@ const ProfileSetting = () => {
         />
         <button
           className={clsx(
-            'btn-lg mt-6 w-56',
+            'btn-lg mt-6 w-56 h-12',
             canUpdate ? 'cursor-pointer btn-primary' : 'bg-gray/4'
           )}
           onClick={canUpdate ? handleSubmit(updateUser) : undefined}>

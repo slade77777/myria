@@ -38,9 +38,14 @@ function HistoryTab({
 
   const renderAmount = useCallback(
     (type: string, amount: number, item: any) => {
+      const starkKey = `0x${starkKeyUser}`;
       switch (type) {
         case TRANSACTION_TYPE.SETTLEMENT:
-          return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
+          if (item.partyAOrder && starkKey === item.partyAOrder.publicKey) {
+            return convertQuantizedAmountToEth(item.partyAOrder.amountBuy);
+          } else {
+            return convertQuantizedAmountToEth(item.partyBOrder.amountSell);
+          }
         case TRANSACTION_TYPE.ROYALTYTRANSFER:
           return convertQuantizedAmountToEth(item.quantizedAmount);
         default:
@@ -67,7 +72,12 @@ function HistoryTab({
       if (item.status === STATUS_HISTORY.FAILED) {
         return (
           <div className="text-error/6 mt-1 flex items-center">
-            Failed <CircleCloseIcon size={14} className="text-error/6 ml-1" />
+            Failed{' '}
+            <CircleCloseIcon
+              size={14}
+              className="text-error/6 ml-1"
+              border={5}
+            />
           </div>
         );
       }
@@ -135,22 +145,52 @@ function HistoryTab({
   );
 
   const renderIcon = useCallback((item: any) => {
-    if (
-      !item.name &&
-      (item.type === TRANSACTION_TYPE.WITHDRAWAL ||
-        item.type === TRANSACTION_TYPE.TRANSFER ||
-        item.type === TRANSACTION_TYPE.SETTLEMENT ||
-        item.type === TRANSACTION_TYPE.ROYALTYTRANSFER)
-    ) {
-      return <WithdrawNFTIcon size={32} />;
+    const iconItem = (avatar: string) => {
+      //case avatar = null
+      if (!avatar) {
+        //type != sale + purchase
+        if (item.type !== TRANSACTION_TYPE.SETTLEMENT) {
+          return (
+            <img className="w-8 flex-none" src={item.ico} alt="token_icon" />
+          );
+        }
+        // type withdraw, transfer, sale, royalty
+        if (
+          item.type === TRANSACTION_TYPE.WITHDRAWAL ||
+          item.type === TRANSACTION_TYPE.TRANSFER ||
+          item.type === TRANSACTION_TYPE.SETTLEMENT ||
+          item.type === TRANSACTION_TYPE.ROYALTYTRANSFER
+        ) {
+          return <WithdrawNFTIcon size={32} />;
+        }
+      }
+      return (
+        <img
+          className="h-8 w-8 flex-none rounded-2xl"
+          src={avatar}
+          alt="token_icon"
+        />
+      );
+    };
+    if (item.type === TRANSACTION_TYPE.DEPOSIT) {
+      return <img className="w-8 flex-none" src={item.ico} alt="token_icon" />;
+    }
+
+    if (!item.name && item.type === TRANSACTION_TYPE.TRANSFER) {
+      return iconItem(item.avatarUrl);
     }
 
     if (item.type === TRANSACTION_TYPE.ROYALTYTRANSFER) {
-      return <WithdrawNFTIcon size={32} />;
+      return iconItem(item.tokenSellInfo.tokenAvatarUrl);
     }
-
-    if (item.type !== TRANSACTION_TYPE.SETTLEMENT) {
-      return <img className="w-8 flex-none" src={item.ico} alt="token_icon" />;
+    if (item.type === TRANSACTION_TYPE.MINT) {
+      return iconItem(item.avatarUrl);
+    }
+    if (item.type === TRANSACTION_TYPE.WITHDRAWAL) {
+      return iconItem(item.avatarUrl);
+    }
+    if (item.type === TRANSACTION_TYPE.SETTLEMENT) {
+      return iconItem(item.sellTokenAvatarUrl);
     }
   }, []);
 
@@ -181,7 +221,7 @@ function HistoryTab({
   );
 
   return (
-    <div className="mt-3 max-h-[244px]">
+    <div className="transaction-popover mt-3 max-h-[290px] overflow-auto">
       {transactionListHistory?.length === 0 && <div>No data available yet</div>}
       {transactionListHistory?.map((item: any, index: number) => (
         <div

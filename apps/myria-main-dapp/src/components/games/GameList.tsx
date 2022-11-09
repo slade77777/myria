@@ -146,15 +146,15 @@ export const games: {
     id: 'block-royale',
     category: 'Games'
   },
-  {
-    image: '/images/our-games/starstrike_updated_card_op.png',
-    title: 'Starstrike Legends',
-    feature: 'Multi Player',
-    genre: ['Shooter'],
-    publisher: 'Myria Studios',
-    id: 'starstrike',
-    category: 'Games'
-  },
+  // {
+  //   image: '/images/our-games/starstrike_updated_card_op.png',
+  //   title: 'Starstrike Legends',
+  //   feature: 'Multi Player',
+  //   genre: ['Shooter'],
+  //   publisher: 'Myria Studios',
+  //   id: 'starstrike',
+  //   category: 'Games'
+  // },
   {
     image: '/images/our-games/moonville_op1.png',
     title: 'Moonville Farms',

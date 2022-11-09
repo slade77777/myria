@@ -21,6 +21,8 @@ import BottomSheet from '../MobileView/BottomSheet';
 import FilterAssetMobile from '../MobileView/FilterAssetMobile';
 import SortMobile from '../MobileView/SortMobile';
 import FilterAsset, { ActiveFilter } from './FilterAsset';
+import { NonMyriaIcon } from 'src/components/icons/NonMyriaIcon';
+
 interface Props {
   collection: AssetByCollectionIdResponse;
   collectionFetched: boolean;
@@ -35,14 +37,15 @@ export interface valueSort {
 
 export enum SortingFieldType {
   RECENT_SOLD = 'recent_sold',
+  AMOUNT_BUY = 'amount_buy',
   MOST_VIEWED = 'most_viewed',
-  AMOUNT_BUY = 'amount_buy'
+  CREATED_AT = 'created_at'
 }
 
 export const dataSorting: valueSort[] = [
   {
     id: 1,
-    sortingField: SortingFieldType.RECENT_SOLD,
+    sortingField: SortingFieldType.CREATED_AT,
     orderBy: AssetOrderBy.DESC,
     name: 'Recently listed'
   },
@@ -63,6 +66,12 @@ export const dataSorting: valueSort[] = [
     sortingField: SortingFieldType.MOST_VIEWED,
     orderBy: AssetOrderBy.DESC,
     name: 'Most Viewed'
+  },
+  {
+    id: 5,
+    sortingField: SortingFieldType.RECENT_SOLD,
+    orderBy: AssetOrderBy.DESC,
+    name: 'Recently Sold'
   }
 ];
 
@@ -92,6 +101,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
 
   const { items, totalItem } = getItemsPagination(result?.data?.pages || []); // using this "items" to render
   const [displayFilter, setDisplayFilter] = useState<boolean>(false);
+  const [isMyria, setIsMyria] = useState<boolean>(false);
   const [openFilterMobile, setOpenFilterMobile] = useState<boolean>(false);
   const [openSortMobile, setOpenSortMobile] = useState<boolean>(false);
   const [filterSummary, setFilterSummary] = useState<{ id: string; value: string }[]>([]);
@@ -139,6 +149,14 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
     ? collectionImageUrl
     : '/images/marketplace/collection-banner.png';
 
+  useEffect(() => {
+    if (project?.companyName && String(project.companyName).toLowerCase().includes('myria')) {
+      setIsMyria(true);
+    } else {
+      setIsMyria(false);
+    }
+  }, [project]);
+
   return (
     <>
       <Page includeFooter={false}>
@@ -148,7 +166,9 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
               src={
                 collectionImageUrl
                   ? collectionImageUrl
-                  : '/images/marketplace/collection-banner.png'
+                  : isMyria
+                  ? '/images/marketplace/collection-banner.png'
+                  : '/images/marketplace/default-background.svg'
               }
               alt=""
               className="absolute h-[327px] w-full object-cover"
@@ -157,13 +177,19 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
           <div className="max-w-content mx-auto mb-10 px-6 md:px-0">
             <div className="relative">
               <div className="border-base/2 absolute -bottom-12 md:-bottom-16 flex w-24 h-24 md:h-[120px] md:w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
-                {iconUrl ? <img src={iconUrl} alt="" /> : <MyriaIcon />}
+                {iconUrl ? (
+                  <img src={iconUrl} alt="" />
+                ) : isMyria ? (
+                  <MyriaIcon />
+                ) : (
+                  <NonMyriaIcon />
+                )}
               </div>
             </div>
             <div className="pt-16 md:pt-24">
               <div className="md:flex justify-between">
                 <div className="md:w-2/3">
-                  <p className="text-[28px] md:text-4xl font-bold text-white">{name}</p>
+                  <p className="text-[28px] md:text-4xl font-bold text-white break-all">{name}</p>
                   <p className="mt-2 text-[#97AAB5]">
                     Created By <span className="font-bold text-white">{project?.name}</span>
                   </p>
@@ -214,7 +240,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                     <BottomSheet
                       open={openFilterMobile}
                       setOpen={setOpenFilterMobile}
-                      snapPoints={[700, 0]}>
+                      snapPoints={[750, 0]}>
                       <div className="flex h-full flex-col">
                         {/* filter on Mobile */}
                         <FilterAssetMobile
@@ -239,7 +265,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                     <BottomSheet
                       open={openSortMobile}
                       setOpen={setOpenSortMobile}
-                      snapPoints={[240, 0]}>
+                      snapPoints={[280, 0]}>
                       <div className="flex h-full flex-col">
                         <SortMobile
                           data={dataSorting}

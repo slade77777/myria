@@ -8,6 +8,7 @@ import { Trans } from '@lingui/macro';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroller';
 import TailSpin from 'src/components/icons/TailSpin';
+import { useAuthenticationContext } from '../../../context/authentication';
 
 interface Props {
   userAvatar: string;
@@ -38,6 +39,7 @@ function Inventory({
     () => items.filter((item) => !!item.priceETH).length,
     [items]
   );
+  const { account } = useAuthenticationContext();
 
   return (
     <div className="bg-base/2 h-full w-full py-[58px] px-6 pt-[104px] text-white md:px-12 md:pt-[133px] xl:px-16">
@@ -45,9 +47,11 @@ function Inventory({
         <div className="max-w-content mx-auto h-full">
           <div className="mb-[58px] md:flex items-end justify-between">
             <div className="flex">
-              <div className="mr-[40px] w-[120px] overflow-hidden rounded-full">
-                <img width="100%" src={'/images/marketplace/user.png'} alt="" />
-              </div>
+              <img
+                className="rounded-full object-cover w-32 h-32 mr-8"
+                src={account?.image_url || '/images/marketplace/user.png'}
+                alt=""
+              />
               <div className="flex flex-col">
                 <span className="text-[40px] font-bold text-white">{userName}</span>
                 {userAddress && (
@@ -81,10 +85,14 @@ function Inventory({
             </div>
             <InfiniteScroll
               pageStart={1}
-              loadMore={async() => {setTimeout(()=>{fetchNextPage()}, 500)}}
+              loadMore={async () => {
+                setTimeout(() => {
+                  fetchNextPage();
+                }, 500);
+              }}
               hasMore={hasMore}
               loader={
-                <div className='flex items-center justify-center w-full mt-6' key={0}>
+                <div className="flex items-center justify-center w-full mt-6" key={0}>
                   <TailSpin />
                 </div>
               }

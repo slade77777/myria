@@ -27,7 +27,11 @@ import WithdrawNFTScreen from './marketplace/Withdraw-NFT/WithdrawNFTScreen';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
 import { noCacheApiClient } from '../client';
 
-const ConnectL2WalletButton: React.FC = () => {
+interface Props {
+  isAirDrop?: boolean;
+}
+
+const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
   const { event } = useGA4();
   const { installedWallet } = useInstalledWallet();
   const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
@@ -41,21 +45,35 @@ const ConnectL2WalletButton: React.FC = () => {
     handleDisplayPopover
   } = useL2WalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
-  const { user, loginByWalletMutation, userProfileQuery, logout } = useAuthenticationContext();
+  const { user, userCampaign, loginByWalletMutation, userProfileQuery, loginCampaignByWalletMutation, logout } =
+    useAuthenticationContext();
+
   const { isShowLearnMore } = useWithDrawNFTContext();
 
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
+  const [userCampaignId, setUserCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
   const [showMismatchedWalletModal, setShowMismatchedWalletModal] = React.useState(false);
   const [requestedEmail, setRequestedEmail] = React.useState(false);
   const mainL2Ref = useRef(null);
 
   const onConnectWallet = () => {
+    if (
+      (!isAirDrop && address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) ||
+      (!address && user?.wallet_id) || (isAirDrop && address && userCampaign?.user.walletAddress && address.toLowerCase() !== userCampaign.user.walletAddress.toLowerCase())
+    ) {
+      setShowMismatchedWalletModal(true);
+      return;
+    }
     event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
     onConnectCompaign('B2C Marketplace');
     handleSetFirstPurchase(false);
     connectL2Wallet();
-    loginByWalletMutation.mutate();
+    if (isAirDrop) {
+      loginCampaignByWalletMutation.mutate();
+    } else {
+      loginByWalletMutation.mutate();
+    }
   };
 
   useEffect(() => {
@@ -79,10 +97,20 @@ const ConnectL2WalletButton: React.FC = () => {
   }, [walletAddress, localStarkKey, user?.wallet_id, address, installedWallet]);
 
   useEffect(() => {
-    if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
+    if (isAirDrop) {
+      //Handle case logout normal
+      if (!walletAddress && !userCampaignId && !localStarkKey) return
+      if (address && userCampaign?.user.walletAddress && address.toLowerCase() !== userCampaign?.user.walletAddress.toLowerCase() ||
+        address && address.toLowerCase() !== walletAddress.toLowerCase() ||
+        address && userCampaign && userCampaign.userId.toString() !== userCampaignId ||
+        address && userCampaign && userCampaign.user.starkKey?.toLowerCase() !== ('0x' + localStarkKey).toLowerCase()
+      )
+        setShowMismatchedWalletModal(true);
+    }
+    else if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
       setShowMismatchedWalletModal(true);
     }
-  }, [address, user]);
+  }, [address, user, userCampaign, localStarkKey, walletAddress, userCampaignId]);
 
   let abbreviationAddress = '';
   if (address) {
@@ -117,6 +145,7 @@ const ConnectL2WalletButton: React.FC = () => {
   }, [address, localStarkKey, user, walletAddress]);
 
   useEffect(() => {
+    if (isAirDrop) return;
     const emailRequestNumber = localStorage.getItem('emailRequestNumber');
     const emailRequestTime = emailRequestNumber ? parseInt(emailRequestNumber) : 0;
     noCacheApiClient.get('accounts/users').then((data) => {
@@ -142,9 +171,11 @@ const ConnectL2WalletButton: React.FC = () => {
       <Modal
         open={showMismatchedWalletModal}
         onOpenChange={() => {
-          setShowMismatchedWalletModal(false);
           disconnect();
           disconnectL2Wallet();
+          setUserCampaignId('');
+          isAirDrop && logout();
+          setShowMismatchedWalletModal(false);
         }}>
         <Modal.Content
           title={
@@ -168,6 +199,7 @@ const ConnectL2WalletButton: React.FC = () => {
                 disconnect();
                 disconnectL2Wallet();
                 logout();
+                setUserCampaignId('');
                 setShowMismatchedWalletModal(false);
               }}
               className="body-14-bold hover:border-primary/7 rounded-lg border border-white py-[9px] px-4 uppercase">
@@ -178,7 +210,14 @@ const ConnectL2WalletButton: React.FC = () => {
       </Modal>
       <div className="flex items-center">
         <div>
-          {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet ? (
+          {(!loginByWalletMutation?.isError &&
+            walletAddress &&
+            showConnectedWallet &&
+            !isAirDrop) ||
+            (!loginCampaignByWalletMutation?.isError &&
+              walletAddress &&
+              showConnectedWallet &&
+              isAirDrop) ? (
             <div>
               <Popover
                 modal
@@ -242,8 +281,8 @@ const ConnectL2WalletButton: React.FC = () => {
                 </button>
               ) : (
                 <button
-                  onClick={onConnectWallet}
-                  className="border-base/5 bg-base/1  flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] font-medium">
+                  className="body-14-bold border-base/4 bg-base/1 flex items-center space-x-4 rounded-lg border py-3 pr-[18px] pl-[10px] text-sm font-medium"
+                  onClick={() => onConnectWallet()}>
                   <WalletIcon width={24} height={24} />
                   <span className="text-base/10 text-sm">
                     <Trans>Connect Wallet</Trans>
@@ -256,7 +295,7 @@ const ConnectL2WalletButton: React.FC = () => {
             <WithdrawNFTScreen />
           </WthdrawNFTPopover>
         </div>
-        {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet && (
+        {!loginByWalletMutation?.isError && walletAddress && showConnectedWallet && !isAirDrop && (
           <UserAvatar
             items={{
               loginByWalletMutation,
@@ -267,7 +306,7 @@ const ConnectL2WalletButton: React.FC = () => {
           />
         )}
       </div>
-      <MainL2Wallet ref={mainL2Ref} />
+      {!isAirDrop && <MainL2Wallet ref={mainL2Ref} />}
     </>
   );
 };
