@@ -133,7 +133,7 @@ const Solution: React.FC = () => {
             </p>
             <div className="mt-10 md:hidden">
               <Image
-                src="/images/solution/diagram-update.svg"
+                src="/images/solution/diagram-update-2.png"
                 width={380}
                 height={632}
                 layout="responsive"
@@ -142,7 +142,7 @@ const Solution: React.FC = () => {
             </div>
             <div className="mt-10 ml-auto mr-[288px] hidden max-w-[732px] md:mx-auto md:block">
               <Image
-                src="/images/solution/diagram-update.svg"
+                src="/images/solution/diagram-update-2.png"
                 width={732}
                 height={943}
                 layout="responsive"
