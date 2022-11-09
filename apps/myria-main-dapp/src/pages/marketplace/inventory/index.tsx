@@ -29,8 +29,9 @@ function InventoryPage() {
   const { fetchNextPage, hasNextPage, isFetchingNextPage, result } =
     useMarketplaceInventory(starkKey);
   const router = useRouter();
+
   useEffect(() => {
-    if (userProfileQuery.isFetched && !user?.wallet_id) {
+    if (userProfileQuery.isFetched && !user?.wallet_id && !userProfileQuery.isFetching) {
       router.push('/marketplace');
     }
   }, [router, user?.wallet_id, userProfileQuery.isFetched]);
