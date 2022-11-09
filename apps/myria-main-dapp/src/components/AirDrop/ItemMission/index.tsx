@@ -103,9 +103,9 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
         </div>
         <div className="text-center">
           <ButtonMission status={status} item={item} id={id} enableClick={enableClick} />
-          <p className="text-light mt-4 text-xs font-medium">
-            {item.missionCampaign.point} POINTS EARNED
-          </p>
+          {item.earnedPoints > 0 && (
+            <p className="text-light mt-4 text-xs font-medium">{item.earnedPoints} POINTS EARNED</p>
+          )}
         </div>
       </div>
       <div className="absolute -top-1 -right-1 z-[-1]">
