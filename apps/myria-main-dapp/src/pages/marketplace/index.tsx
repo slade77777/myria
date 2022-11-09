@@ -1,9 +1,11 @@
 import { Trans } from '@lingui/macro';
 import clsx from 'clsx';
 import { OrderStatus, OrderType } from 'myria-core-sdk';
+import Link from 'next/link';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useInfiniteQuery } from 'react-query';
+import Slider, { Settings } from 'react-slick';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import TailSpin from 'src/components/icons/TailSpin';
 import AssetList from 'src/components/marketplace/AssetList';
@@ -73,29 +75,75 @@ const Marketplace: React.FC = () => {
 
   if (data && data?.data.status !== STATUS_PAGE.AVAILABLE) return <MaintainPage />;
 
-  if (data && data.data.status === STATUS_PAGE.AVAILABLE)
+  if (data && data.data.status === STATUS_PAGE.AVAILABLE) {
+    const settings: Settings = {
+      arrows: false,
+      dots: true,
+      infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dotsClass: 'carousel-dots bottom-4 md:bottom-6',
+      autoplay: true,
+      autoplaySpeed: 30000,
+      pauseOnHover: true
+    };
+
     return (
       <Page includeFooter={false}>
-        <div className={clsx(isMobile ? '' : paddingX, headerNavSpacingClassName)}>
-          <div className="md:max-w-content md:mx-auto md:mt-10">
-            {/* Campaign Banner */}
-            {/* <section className="mb-10">
-              <div className="w-full bg-[#606060] rounded-xl h-[615px] flex items-end p-16">
-                <div>
-                  <p className="text-[40px] font-extrabold mb-10">Campaign Banner [TBC]</p>
+        <div className={headerNavSpacingClassName}>
+          <Slider {...settings}>
+            <div>
+              <div className="flex min-h-[615px] flex-col justify-end md:justify-center bg-[url('/images/nodes/airdrop/background_airdrop.png')] bg-cover px-8 pb-[65px] md:min-h-[calc(100vw/2.38)] md:rounded-xl md:bg-[url('/images/nodes/airdrop/background_airdrop.png')] md:pb-[91px] md:pl-[107px]">
+                <div className="text-center md:max-w-[654px] md:text-left">
+                  <p className="text-lg md:text-xl font-black leading-[1.15] text-[#93F6FF]">
+                    <Trans>NFT DROP</Trans>
+                  </p>
+                  <p className="mt-5 text-[34px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
+                    <Trans>The Sigil Key quest is now on.</Trans>
+                  </p>
                   <Link href={'/airdrop'}>
-                    <button className="w-[174px] h-12 text-center bg-white rounded-lg text-black font-bold">
-                      <span>Go</span>
-                    </button>
+                    <a
+                      className="text-base btn-sm btn-primary mt-6 md:mt-6 md:py-[15px] cursor-pointer"
+                      href={'/airdrop'}>
+                      <Trans>HUNT NOW</Trans>
+                    </a>
                   </Link>
                 </div>
               </div>
-            </section> */}
+            </div>
+            <div>
+              <div className="flex min-h-[615px] flex-col justify-end md:justify-center bg-[url('/images/nodes/airdrop/background_airdrop.png')] bg-cover px-8 pb-[65px] md:min-h-[calc(100vw/2.38)] md:rounded-xl md:bg-[url('/images/nodes/airdrop/background_airdrop.png')] md:pb-[91px] md:pl-[107px]">
+                <div className="text-center md:max-w-[654px] md:text-left">
+                  <p className="text-lg md:text-xl font-black leading-[1.15] text-[#93F6FF]">
+                    <Trans>NFT DROP</Trans>
+                  </p>
+                  <p className="mt-5 text-[34px] font-extrabold leading-[1.15] md:mt-4 md:text-[60px]">
+                    <Trans>The Sigil Key quest is now on.</Trans>
+                  </p>
+                  <Link href={'/airdrop'}>
+                    <a
+                      className="text-base btn-sm btn-primary mt-6 md:mt-6 md:py-[15px] cursor-pointer"
+                      href={'/airdrop'}>
+                      <Trans>HUNT NOW</Trans>
+                    </a>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Slider>
+        </div>
+        <div className={clsx(isMobile ? '' : paddingX, headerNavSpacingClassName)}>
+          <div className="md:max-w-content md:mx-auto md:mt-10">
             <section className={clsx(isMobile ? '' : negativeMarginXSm, 'md:mx-0')}>
               <h2 className="h5 md:h4 mb-10 px-6 md:px-0">
                 <Trans>Marketplace</Trans>
               </h2>
-              {isMobile ? <HotCollectionMobile /> : <HotCollection />}
+              <div className="md:block hidden">
+                <HotCollection />
+              </div>
+              <div className="md:hidden">
+                <HotCollectionMobile />
+              </div>
             </section>
             <div className="hidden items-center justify-between md:flex">
               <div></div>
@@ -154,6 +202,7 @@ const Marketplace: React.FC = () => {
         </div>
       </Page>
     );
+  }
 
   return <div className="bg-base/3 h-screen w-screen"></div>;
 };
