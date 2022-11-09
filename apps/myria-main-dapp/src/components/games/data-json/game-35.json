@@ -1,0 +1,65 @@
+{
+  "war-bunnys": {
+    "shortcut": {
+      "image": "/images/partner-games-1/35-war-bunnys/logo.png",
+      "title": "War Bunnys",
+      "feature": "Multi Player",
+      "genre": ["Action", "Platformer", "Play-to-earn"],
+      "publisher": "Ecosystem Developer",
+      "id": "war-bunnys",
+      "category": "Games"
+    },
+    "discord": "https://discord.gg/YGpPdzer8q",
+    "twitter": "https://twitter.com/WarBunnys",
+    "headerBg": "/images/partner-games-1/35-war-bunnys/header.jpg",
+    "title": "War Bunnys",
+    "description": "",
+    "logo": "/images/partner-games-1/35-war-bunnys/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/35-war-bunnys/banner_01.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/35-war-bunnys/banner_02.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/35-war-bunnys/banner_03.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "WarBunnys are a race of experimental bunnies developed by Bunny Labs. They were designed to exhibit supernatural abilities while simultaneously retaining the cuteness of ordinary bunnies. Bunny labs therefore designed obstacle courses to put their creations to the test.",
+          "Each Bunny holder will be able to import their bunny into the WarBunnys-Rush-To-Earn game, where players will compete to complete a variety of obstacle courses while being ranked according to time on the WarBunnys universal leaderboard and the best players rewarded at the end of each season. Players can increase chances of finishing on top by upgrading their bunny. Each upgrade will apply a certain superpower to the bunny that will enable it to bend some constraints in the game, e.g. freezing time momentarily, or teleporting forward. Holders of more than one bunny can opt to fuse their bunnys into one &#34;SuperBunny&#34; with extraordinary abilities. Another game mode will be battle royal with a countdown timer where players stake tokens to enter and the total staked tokens are divided among the last survivors. An ingame shop for costumes, weapons and accessories will also be available."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["warbunnysmeta@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/WarBunnys"]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "WarBunny Labs"
+      },
+      {
+        "label": "Platform",
+        "value": "Window, Mac, iOS, Android"
+      },
+      {
+        "label": "Genre",
+        "value": "Action, Platformer, Play-to-earn"
+      }
+    ]
+  }
+}

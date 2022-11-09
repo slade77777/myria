@@ -18,8 +18,9 @@ class SoundService {
     const audio = new Audio(sound);
     audio.id = Date.now().toString();
     audio.muted = this.mute;
-    audio.play();
+    // audio.play();
     audio.loop = loop;
+    audio.autoplay = true;
     audio.onended = () => {
       delete this.playing[audio.id];
     };

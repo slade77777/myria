@@ -41,7 +41,7 @@ export class Modal extends React.Component<IModalProps, IModalState> {
     };
   }
   public static propTypes = {
-    userOptions: PropTypes.object.isRequired,
+    userOptions: PropTypes.array.isRequired,
     onClose: PropTypes.func.isRequired,
     resetState: PropTypes.func.isRequired,
     lightboxOpacity: PropTypes.number.isRequired
@@ -82,7 +82,7 @@ export class Modal extends React.Component<IModalProps, IModalState> {
           title="Connect a wallet"
           className="w-[380px] shadow-[0_0_40px_10px_#0000004D] md:w-[576px]">
           <div className="mb-[50px] grid grid-cols-1 gap-8 px-8 pt-11 md:grid-cols-2">
-            {userOptions.map((provider) =>
+            {userOptions.map((provider, index) =>
               !!provider ? (
                 <Provider
                   name={provider.name}
@@ -90,6 +90,7 @@ export class Modal extends React.Component<IModalProps, IModalState> {
                   description={provider.description}
                   themeColors={themeColors}
                   onClick={provider.onClick}
+                  key={index}
                 />
               ) : null
             )}

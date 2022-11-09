@@ -110,7 +110,7 @@ export default function DepositScreen({
           <p>Estimated gas fee</p>
           <span className="flex items-center">
             <DAOIcon color={'#5A7486'} colorCenter="#5A7486" size={16} />
-            0.0431917
+            0.0000431917
           </span>
         </div>
       </div>

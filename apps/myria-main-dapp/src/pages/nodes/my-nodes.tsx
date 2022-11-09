@@ -12,7 +12,9 @@ import { useAuthenticationContext } from 'src/context/authentication';
 import TreeIcon from '../../components/icons/TreeIcon';
 import TermsOfServiceModal from '../../components/Purchase/Modals/TermsOfServiceModal';
 import PrivacyPolicyModal from '../../components/Purchase/Modals/PrivacyPolicyModal';
-import useUserNodes from '../../hooks/useUserNodes';
+import MyNodeModal from '../../components/nodes/MyNodeModal';
+import { Trans } from '@lingui/macro';
+import Button from '../../components/core/Button';
 
 const MyNode: React.FC = () => {
   const { address } = useWalletContext();
@@ -20,6 +22,7 @@ const MyNode: React.FC = () => {
   const router = useRouter();
   const [firstLicense, setFirstLicense] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showFullNode, setShowNode] = useState(false);
 
   useEffect(() => {
     // validate either wallet is connected
@@ -28,13 +31,11 @@ const MyNode: React.FC = () => {
     }
   }, [address, router, user, userProfileQuery.isFetching]);
 
-  const { data } = useUserNodes();
-  const successTrans = data?.filter((item) => item.purchaseStatus === 'SUCCESSFUL');
-
   return (
     <Page action="start-building">
       <TermsOfServiceModal open={firstLicense} onClose={() => setFirstLicense(false)} />
       <PrivacyPolicyModal open={showPrivacy} onClose={() => setShowPrivacy(false)} />
+      <MyNodeModal open={showFullNode} onClose={() => setShowNode(false)} />
       <div
         style={{
           paddingTop: headerHeight,
@@ -54,16 +55,11 @@ const MyNode: React.FC = () => {
                   your license/s may take up to 10 minutes to appear):
                 </p>
                 <div className="mt-4">
-                  {successTrans.map((transaction) => (
-                    <>
-                      {transaction?.nodes?.map((node) => (
-                        <div key={node.nodeId} className="flex flex-row items-center gap-4">
-                          <TreeIcon fill="white" width={20} height={20} />
-                          <span>{node.nodeId}</span>
-                        </div>
-                      ))}
-                    </>
-                  ))}
+                  <Button
+                    className="btn-lg w-full px-4 uppercase text-black bg-brand-gold"
+                    onClick={() => setShowNode(true)}>
+                    <Trans>View Node Licenses</Trans>
+                  </Button>
                 </div>
                 <div className="my-8 h-[0.5px] w-full bg-slate-200" />
                 <p>

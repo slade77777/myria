@@ -49,7 +49,7 @@ export default function useGamesData() {
         title: 'Metarush',
         description: t`A hilarious multiplayer game that will have your sides splitting as you bounce, tumble, and bowl over your friends and foes. Battle it out through increasingly wacky landscapes and claim your spot in the hall of glory.`,
         logo: '/images/game-detail/metarush1/logo1.png',
-        logoMobile: '/images/game-detail/metarush/logo-alt.png',
+        logoMobile: '/images/game-detail/metarush/logo-mobile.png',
         image: {
           src: '/images/game-detail/metarush1/5.png',
           width: 1854,
@@ -58,20 +58,24 @@ export default function useGamesData() {
         assets: [
           {
             type: 'image',
-            src: '/images/game-detail/metarush1/1.png'
+            src: '/images/game-detail/metarush1/01.png'
           },
           {
             type: 'image',
-            src: '/images/game-detail/metarush1/2.png'
+            src: '/images/game-detail/metarush1/02.png'
           },
 
           {
             type: 'image',
-            src: '/images/game-detail/metarush1/3.png'
+            src: '/images/game-detail/metarush1/03.png'
           },
           {
             type: 'image',
-            src: '/images/game-detail/metarush1/4.png'
+            src: '/images/game-detail/metarush1/04.png'
+          },
+          {
+            type: 'image',
+            src: '/images/game-detail/metarush1/05.png'
           }
         ],
         content: [
@@ -276,67 +280,67 @@ export default function useGamesData() {
           }
         ]
       },
-      starstrike: {
-        discord: socialLinks.discord,
-        twitter: socialLinks.twitter,
-        headerBg: '/images/game-detail/header-bg-4.png',
-        title: 'Starstrike Legends',
-        description: t`Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning.`,
-        logo: '/images/game-detail/starstrike/logo.png',
-        logoMobile: '/images/game-detail/starstrike/logo-alt.png',
-        assets: [
-          {
-            type: 'image',
-            src: '/images/game-detail/starstrike/1.png'
-          }
-        ],
-        content: [
-          {
-            heading: t`About the game`,
-            paragraph: [
-              t`Nobody lives forever, and these heroes sure as hell don’t care – they literally die for the sake of fun. Dive into a series of short combat rounds to win a match of 5 vs 5. The attacking team must activate a bomb on a specified location on the map. If you’re on the defending side…you know what you need to do, right?`,
-              t`Just make sure you’re still alive till the end of the round or you’ll be spectating from the sidelines. And that means nobody will be able to appreciate your cute hot-dog suit that you’ve just brought over from a zany skirmish in the Metarush world.
-          `
-            ]
-          },
-          {
-            heading: t`Think before you shoot!`,
-            paragraph: [
-              t`Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?`
-            ]
-          },
-          {
-            heading: t`Heroes don’t all wear capes`,
-            paragraph: [
-              t`Every hero has three unique abilities, each requiring charges, as well as one ultimate ability that requires charging through kills, deaths, collectibles, or objectives. It’s easier than it sounds, and even funnier…`
-            ]
-          },
-          {
-            heading: t`Not the face!`,
-            paragraph: [
-              t`Interoperability FTW! Yes, we’ve got you covered - you can bring those crazy skins, sprays, hats, and every other exclusive NFT you’ve gathered along your journey through the Myriaverse. The last thing I want to see on the battlefield is tie-dye tights, but hey – it’s your party after all!`
-            ]
-          }
-        ],
-        info: [
-          {
-            label: 'Developer',
-            value: 'MYRIA'
-          },
-          {
-            label: 'Platform',
-            value: 'PC, MAC'
-          },
-          {
-            label: 'Genre',
-            value: 'FPS'
-          },
-          {
-            label: 'Status',
-            value: 'IN DEVELOPMENT'
-          }
-        ]
-      },
+      // starstrike: {
+      //   discord: socialLinks.discord,
+      //   twitter: socialLinks.twitter,
+      //   headerBg: '/images/game-detail/header-bg-4.png',
+      //   title: 'Starstrike Legends',
+      //   description: t`Utilize your gunplay skills in a combination with your unique hero abilities to win a series of team battles or in other game modes. Manage your ability upgrades and weapons of choice to optimize your chances of winning.`,
+      //   logo: '/images/game-detail/starstrike/logo.png',
+      //   logoMobile: '/images/game-detail/starstrike/logo-alt.png',
+      //   assets: [
+      //     {
+      //       type: 'image',
+      //       src: '/images/game-detail/starstrike/1.png'
+      //     }
+      //   ],
+      //   content: [
+      //     {
+      //       heading: t`About the game`,
+      //       paragraph: [
+      //         t`Nobody lives forever, and these heroes sure as hell don’t care – they literally die for the sake of fun. Dive into a series of short combat rounds to win a match of 5 vs 5. The attacking team must activate a bomb on a specified location on the map. If you’re on the defending side…you know what you need to do, right?`,
+      //         t`Just make sure you’re still alive till the end of the round or you’ll be spectating from the sidelines. And that means nobody will be able to appreciate your cute hot-dog suit that you’ve just brought over from a zany skirmish in the Metarush world.
+      //     `
+      //       ]
+      //     },
+      //     {
+      //       heading: t`Think before you shoot!`,
+      //       paragraph: [
+      //         t`Carefully select the right equipment in the beginning of the round. You might want to shoot your enemies from a distance, or to burn the whole level to the ground – it’s your choice. Do you have what it takes to be master of destruction?`
+      //       ]
+      //     },
+      //     {
+      //       heading: t`Heroes don’t all wear capes`,
+      //       paragraph: [
+      //         t`Every hero has three unique abilities, each requiring charges, as well as one ultimate ability that requires charging through kills, deaths, collectibles, or objectives. It’s easier than it sounds, and even funnier…`
+      //       ]
+      //     },
+      //     {
+      //       heading: t`Not the face!`,
+      //       paragraph: [
+      //         t`Interoperability FTW! Yes, we’ve got you covered - you can bring those crazy skins, sprays, hats, and every other exclusive NFT you’ve gathered along your journey through the Myriaverse. The last thing I want to see on the battlefield is tie-dye tights, but hey – it’s your party after all!`
+      //       ]
+      //     }
+      //   ],
+      //   info: [
+      //     {
+      //       label: 'Developer',
+      //       value: 'MYRIA'
+      //     },
+      //     {
+      //       label: 'Platform',
+      //       value: 'PC, MAC'
+      //     },
+      //     {
+      //       label: 'Genre',
+      //       value: 'FPS'
+      //     },
+      //     {
+      //       label: 'Status',
+      //       value: 'IN DEVELOPMENT'
+      //     }
+      //   ]
+      // },
       'moonville-farms': {
         discord: socialLinks.discord,
         twitter: socialLinks.twitter,

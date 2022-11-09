@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "env-cmd -f env.staging next dev",
+    "dev": "env-cmd -f env.dev next dev",
     "build:dev": "env-cmd -f env.dev next build && next export -o out-dev",
     "build:staging": "env-cmd -f env.staging next build && next export -o out-staging",
     "build:prod": "env-cmd -f env.production next build && next export -o out-prod",
@@ -53,7 +53,7 @@
     "lodash": "^4.17.21",
     "make-plural": "7.1.0",
     "moment": "^2.29.4",
-    "myria-core-sdk": "0.0.164",
+    "myria-core-sdk": "0.0.164-staging-v4",
     "next": "12.0.8",
     "next-seo": "4.29.0",
     "node-klaviyo": "^1.1.3",

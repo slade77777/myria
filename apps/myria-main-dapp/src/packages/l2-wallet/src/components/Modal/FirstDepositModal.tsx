@@ -244,7 +244,7 @@ export default function FirstDepositModal({
                   </button>
                   <button
                     className={cn(
-                      'flex w-full max-w-[126px] items-center justify-center rounded-lg py-2 px-9 text-base font-bold text-white',
+                      'flex w-full max-w-[126px] items-center justify-center rounded-lg text-base font-bold',
                       isValidForm && amount != undefined
                         ? 'bg-primary/6 text-base/1'
                         : 'bg-gray/4 text-gray/6',

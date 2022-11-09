@@ -80,19 +80,23 @@ export default function FilterAssetMobile({
                       <div className="mt-4 space-y-4 pl-6 border-blue/3 border-b py-4 pt-2">
                         {item.options.map((option, idx) => (
                           <>
-                            <label
-                              key={idx}
-                              className="flex items-center justify-between space-x-2 text-sm text-light py-2 pr-2">
-                              <span>{option}</span>
-                              <Input
-                                className="h-4 w-4"
-                                type="checkbox"
-                                checked={
-                                  filter[item.id]?.findIndex((filter) => filter === option) >= 0
-                                }
-                                onChange={() => handleFilter(item.id, option)}
-                              />
-                            </label>
+                            {option ? (
+                              <label
+                                key={idx}
+                                className="flex items-center justify-between space-x-2 text-sm text-light py-2 pr-2">
+                                <span>{option}</span>
+                                <Input
+                                  className="h-4 w-4"
+                                  type="checkbox"
+                                  checked={
+                                    filter[item.id]?.findIndex((filter) => filter === option) >= 0
+                                  }
+                                  onChange={() => handleFilter(item.id, option)}
+                                />
+                              </label>
+                            ) : (
+                              <></>
+                            )}
                           </>
                         ))}
                       </div>

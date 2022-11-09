@@ -85,17 +85,16 @@ const QUANTUM = '10000000000';
 const INTERVAL_DURATION = 2 * 60 * 1000;
 
 const ItemAttribution = ({ keyword = 'RARITY', val = 'Ultra Rare' }) => {
+  const keywordHandle = lodash.startCase(keyword);
   return (
     <div className="border-base/6 bg-base/3 rounded-lg border p-4 text-center">
-      <p className="text-blue/6 text-xs font-normal uppercase">{keyword}</p>
+      <p className="text-blue/6 text-xs font-normal uppercase">{keywordHandle}</p>
       <Tooltip>
         <Tooltip.Trigger asChild className="cursor-pointer focus:outline-none">
           <p className="line-clamp-1 break-words text-sm font-medium">{val}</p>
         </Tooltip.Trigger>
         <Tooltip.Content side="top" className="bg-base/3  mt-[-4px] max-w-[256px]">
-          <p className="text-base/9">
-            <Trans>{val}</Trans>
-          </p>
+          <p className="text-base/9">{val}</p>
         </Tooltip.Content>
       </Tooltip>
     </div>
@@ -201,11 +200,18 @@ function AssetDetails({ id }: Props) {
   const attributes = useMemo(() => {
     const resultArray: any[] = [];
     if (assetDetails && !lodash.isEmpty(assetDetails.metadata)) {
-      lodash.map(assetDetails?.metadata, (val, key) => {
-        if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
-          resultArray.push({ key, val }); // remove all key what has 'url'.
-        }
-      });
+      if (Object.keys(assetDetails.metadata).includes('attributes')) {
+        const valueAtributes = (assetDetails.metadata as any).attributes;
+        valueAtributes.forEach((item: { trait_type: string; value: string }) => {
+          resultArray.push({ key: item.trait_type, val: item.value });
+        });
+      } else {
+        lodash.map(assetDetails?.metadata, (val, key) => {
+          if (!key.toLowerCase().includes('url') && !key.toLowerCase().includes('description')) {
+            resultArray.push({ key, val }); // remove all key what has 'url'.
+          }
+        });
+      }
     } else {
       // @ts-ignore
       lodash.map(assetDetails?.metadataOptional?.attributes, (val, key) => {
@@ -422,7 +428,6 @@ function AssetDetails({ id }: Props) {
           assetIdSell: signature.assetIdSell,
           fees: feeData
         };
-        console.log('CreateOrderParams -> ', paramCreateOrder);
         const res = await orderModule?.createOrder(paramCreateOrder);
         if (res) {
           setShowModal(false);
@@ -734,10 +739,10 @@ function AssetDetails({ id }: Props) {
       </button>
       <div className="flex-row gap-[104px] lg:flex">
         {/* container */}
-        <div className="w-[620px]">
-          <div className="relative flex h-[620px] w-full items-center justify-center rounded-[12px]  lg:h-[620px] ">
+        <div className="lg:w-[620px] w-full">
+          <div className="relative flex w-full items-center justify-center rounded-xl lg:h-[620px] pb-1/2 pt-1/2 overflow-hidden">
             <div
-              className="z-2 absolute h-full w-full max-w-[620px] max-h-[620px] rounded-[12px] bg-center bg-no-repeat bg-contain"
+              className="z-2 absolute h-full w-full max-w-[620px] max-h-[620px] rounded-xl bg-center bg-no-repeat bg-contain"
               style={{
                 backgroundImage: `url(${validatedImageAssets(
                   assetDetails?.imageUrl,
@@ -746,6 +751,20 @@ function AssetDetails({ id }: Props) {
               }}
             />
           </div>
+          {/* attribute on desktop */}
+          {attributes.length > 0 && (
+            <div className="text-white hidden lg:block">
+              {/* list stat */}
+              <div className="mt-10 mb-4 text-lg font-bold">
+                <Trans>Attributes</Trans>
+              </div>
+              <div className="grid grid-cols-4 gap-6">
+                {attributes.map(({ key, val }) => {
+                  return <ItemAttribution key={key} keyword={key} val={val} />;
+                })}
+              </div>
+            </div>
+          )}
         </div>
         <div className="lg:w-[540px] w-full mt-6 lg:mt-0">
           <div className="flex flex-row items-center justify-between">
@@ -837,14 +856,18 @@ function AssetDetails({ id }: Props) {
               currentPrice={currentPrice?.toString()}
               currentUSDPrice={currentUSDPrice}
               setStatus={() => {
-                onTrackingConnectWallet();
-                onConnectCompaign('B2C Marketplace');
-                // handle if the first purchase
-                handleSetFirstPurchase(true);
-                if (loginByWalletMutation.isError) {
-                  loginByWalletMutation.mutate();
+                if (isMobile) {
+                  setOpenSorryMobile(!openSorryMobile);
+                } else {
+                  onTrackingConnectWallet();
+                  onConnectCompaign('B2C Marketplace');
+                  // handle if the first purchase
+                  handleSetFirstPurchase(true);
+                  if (loginByWalletMutation.isError) {
+                    loginByWalletMutation.mutate();
+                  }
+                  connectL2Wallet();
                 }
-                connectL2Wallet();
               }}
             />
           )}
@@ -889,6 +912,7 @@ function AssetDetails({ id }: Props) {
             <SorryActionMobile onCloseModal={() => setOpenSorryMobile(false)} />
           </BottomSheet>
         </div>
+        {/* attributes on mobile */}
         {attributes.length > 0 && (
           <div className="text-white lg:hidden">
             {/* list stat */}
@@ -1053,7 +1077,7 @@ const ItemForSale: React.FC<IProp & { trackWithDraw?: () => void }> = ({
           ) : assetDetails?.status == WithDrawStatus.COMPLETED ? (
             <>
               <div className="btn-disabled mb-[10px] mt-[40px] flex h-[56px] w-full items-center justify-center rounded-[8px] text-[16px] font-bold">
-                <Trans>WITHDRAW COMPLETED</Trans>
+                <Trans>WITHDRAWAL COMPLETE</Trans>
               </div>
             </>
           ) : (

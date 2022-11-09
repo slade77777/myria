@@ -59,24 +59,24 @@ const data = [
     title: <Trans>A multiplayer go-kart racing game</Trans>,
     link: '/game-detail/metakart',
     layout: 'row'
-  },
-  {
-    logo: (
-      <div className="w-[187px] md:w-[245px]">
-        <Image
-          src="/images/our-games/starstrike_updated.png"
-          alt="metakart"
-          layout="responsive"
-          width={685}
-          height={153}
-        />
-      </div>
-    ),
-    background: '/images/our-games/starstrike-bg.png',
-    title: <Trans>An objective-based shooter game</Trans>,
-    link: '/game-detail/starstrike',
-    layout: 'row'
   }
+  // {
+  //   logo: (
+  //     <div className="w-[187px] md:w-[245px]">
+  //       <Image
+  //         src="/images/our-games/starstrike_updated.png"
+  //         alt="metakart"
+  //         layout="responsive"
+  //         width={685}
+  //         height={153}
+  //       />
+  //     </div>
+  //   ),
+  //   background: '/images/our-games/starstrike-bg.png',
+  //   title: <Trans>An objective-based shooter game</Trans>,
+  //   link: '/game-detail/starstrike',
+  //   layout: 'row'
+  // }
 ] as const;
 
 const OurGames: React.FC<{ btnLabel?: string }> = ({ btnLabel = 'Learn more' }) => {

@@ -7,6 +7,7 @@ import Big from 'big.js';
 
 const FORMAT_PRICE = 1000000;
 export const FORMAT_DATE = 'ddd Do MMM YYYY';
+export const FORMAT_DATE_BY_AIRDROP = 'DD MMM YYYY';
 export const formatNumber = (num: number) => {
   return new Intl.NumberFormat('en').format(num);
 };
@@ -23,9 +24,7 @@ export const formatPrice = (amountPrice: number) => {
     lenghtPrice = amountPrice.toString().length - 2;
   }
 
-  return amountPrice >= 1
-    ? formatNumber2digits(amountPrice)
-    : amountPrice.toFixed(Number(lenghtPrice));
+  return amountPrice >= 1 ? amountPrice.toFixed(4) : amountPrice.toFixed(Number(lenghtPrice));
 };
 export const formatUSDPrice = (amountPrice: number) => {
   if (!amountPrice) return `0.00`;
@@ -105,19 +104,19 @@ export const getAllianceInfo = (allianceId: AllianceName): AllianceInfo => {
     case 'equinox':
       return {
         id: allianceId,
-        name: 'EQUINOX',
+        name: 'Equinox',
         img: '/images/nodes/insignia/alliance_sigilC.png'
       };
     case 'federation':
       return {
         id: allianceId,
-        name: 'FEDERATION',
+        name: 'Federation',
         img: '/images/nodes/insignia/alliance_sigilA.png'
       };
     case 'vector_prime':
       return {
         id: allianceId,
-        name: 'VECTOR PRIME',
+        name: 'Vector Prime',
         img: '/images/nodes/insignia/alliance_sigilB.png'
       };
   }
@@ -236,4 +235,66 @@ export const roundingNumber = (amount: string, currency?: string, isAfter = true
   } catch (err) {
     return '';
   }
+};
+
+export const generateUUID = () => {
+  // @ts-ignore
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+    (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
+  );
+};
+
+export const utilTaskId = {
+  verifyEmail: 'VERIFY_EMAIL',
+  joinDiscord: 'JOIN_DISCORD',
+  followMyriaTwitter: 'FOLLOW_TWITTER',
+  followBrendanTwitter: 'FOLLOW_BRENDAN',
+  inviteFriends: 'INVITE_FRIEND',
+  dailyLogAndPostDiscord: 'DAILY_DISCORD_MESSAGE',
+  sharePostTwitter: 'SHARE_TWITTER',
+  reachLevelDiscord: 'DISCORD_STAR_LORD'
+};
+
+const discordClientId =
+  process.env.REACT_APP_NODE_ENV === 'production' ? '972191450290872391' : '972191450290872391';
+export const urlMyriaMarketPlace =
+  process.env.REACT_APP_NODE_ENV === 'production'
+    ? 'https://myria.com/marketplace'
+    : 'https://staging.nonprod-myria.com/marketplace/';
+
+export const getLinkMission = (paramTaskId: string, homePage: string) => {
+  //Check utilTaskId to return link
+  switch (paramTaskId) {
+    case utilTaskId.followMyriaTwitter:
+      return `https://twitter.com/intent/follow?screen_name=Myria`;
+
+    case utilTaskId.dailyLogAndPostDiscord:
+      return `https://discord.com`;
+
+    case utilTaskId.followBrendanTwitter:
+      return `https://twitter.com/intent/follow?screen_name=brendan_duhamel`;
+
+    case utilTaskId.sharePostTwitter:
+      const content =
+        'Myria is the leading Web3 gaming ecosystem with 0 gas fees, no NFT minting costs and over 1 million users. To celebrate the $MYRIA token launch, get a brand new Sigil NFT for free! Follow the steps 👇.';
+      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        content
+      )}&url=https://twitter.com/Myria/status/1580445268100587521?s=20`;
+
+    case utilTaskId.joinDiscord:
+      return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+
+    default:
+      return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+  }
+};
+export const campaignCode = 'AIR_DROP';
+export const REWARD_TYPE = {
+  OFF_CHAIN_ASSET: 'OFF_CHAIN',
+  ON_CHAIN_ASSET: 'ON_CHAIN_ASSET'
+};
+export const REWARD_STATUS = {
+  LOCKED: 'LOCKED',
+  AVAILABLE: 'AVAILABLE',
+  CLAIMED: 'CLAIMED'
 };

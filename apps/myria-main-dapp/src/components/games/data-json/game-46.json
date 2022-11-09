@@ -1,0 +1,84 @@
+{
+  "animus-regnum": {
+    "shortcut": {
+      "image": "/images/partner-games-1/46-animus-regnum/logo.png",
+      "title": "Animus Regnum",
+      "feature": "Multi Player",
+      "genre": ["MMORPG"],
+      "publisher": "Ecosystem Developer",
+      "id": "animus-regnum",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/AnimusRegnum",
+    "headerBg": "",
+    "title": "Animus Regnum",
+    "description": "",
+    "logo": "/images/partner-games-1/46-animus-regnum/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/46-animus-regnum/banner-1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/46-animus-regnum/banner-2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/46-animus-regnum/banner-3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/46-animus-regnum/banner-4.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/46-animus-regnum/banner-5.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Animus Regnum is the first game in the NFT space that presents the concepts of sovereignty and governance in an open world cosmos; where every asset is an NFT, utilising cryptocurrency as the medium of exchange. ",
+          "The entire game will be built on its own custom blockchain, allowing for cross-chain communication. You will be able to take ownership of planets, star systems, and even entire galaxies.",
+          "Land can be sold on the planets and space can be sold in star systems. You'll also as a sovereign, be able to create your own laws and governmental structures for people to follow in your society. If you want to create a world free of crime, or ruled by an iron fist, the choice is yours. With these structures, we will create one of the first interstellar space economies built on the blockchain, where commodities are NFTs.",
+          "This is an MMORPG, so you will be able to create your own character on our website in the future, which will be based on Ethereum until we migrate to our blockchain. The first 10,000 members that join our discord are locked in for a character template that will be airdropped later for free.",
+          "We are very community focused and a fully doxed team of artists and developers. We have a vast network of connections in the artist community and will be rapidly increasing the size of our team as we evolve."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["https://animusregnum.io/"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/AnimusRegnum"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "https://animusregnum.io/",
+          "https://discord.gg/animusregnum",
+          "https://www.instagram.com/animusregnum.eth/"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "Animus Regnum LLC"
+      },
+      {
+        "label": "Platform",
+        "value": "PC"
+      },
+      {
+        "label": "Genre",
+        "value": "MMORPG"
+      }
+    ]
+  }
+}

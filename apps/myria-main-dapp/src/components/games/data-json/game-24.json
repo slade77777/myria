@@ -19,19 +19,23 @@
     "assets": [
       {
         "type": "image",
-        "src": "/images/partner-games-1/24-psyber-x/banner_1.png"
+        "src": "/images/partner-games-1/24-psyber-x/gameplay-1.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games-1/24-psyber-x/banner_2.jpg"
+        "src": "/images/partner-games-1/24-psyber-x/gameplay-2.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games-1/24-psyber-x/banner_3.jpg"
+        "src": "/images/partner-games-1/24-psyber-x/gameplay-3.jpg"
       },
       {
         "type": "image",
-        "src": "/images/partner-games-1/24-psyber-x/banner_4.png"
+        "src": "/images/partner-games-1/24-psyber-x/gameplay-4.jpg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/24-psyber-x/gameplay-5.jpg"
       }
     ],
     "content": [

@@ -1,0 +1,80 @@
+{
+  "pulsar": {
+    "shortcut": {
+      "image": "/images/partner-games-1/44-pulsar/logo.png",
+      "title": "Pulsar",
+      "feature": "Multi Player",
+      "genre": ["RTS + MMO"],
+      "publisher": "Ecosystem Developer",
+      "id": "pulsar",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/PulsarGame",
+    "headerBg": "",
+    "title": "Pulsar",
+    "description": "",
+    "logo": "/images/partner-games-1/44-pulsar/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/44-pulsar/banner-1.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/44-pulsar/banner-2.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/44-pulsar/banner-3.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/44-pulsar/banner-4.png"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/44-pulsar/banner-5.png"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Pulsar is a Massively Multiplayer Real-Time Strategy Gaming Experience.Combine the mechanically and economically complex gaming experience of RTS titles like Starcraft with a truly massively multiplayer world and you have Pulsar. Mine, Build, and Conquer with hundreds of thousands of other players in real time to conquer both the alien inhabitants of Pulsar and your neighbouring empires."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["g@u13n.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/PulsarGame"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "Pulsar.12rw.io",
+          "https://t.co/bXbXubL3Wj",
+          "https://www.youtube.com/channel/UCG0LjOPFxiUMzq-KMadp10g/featured"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "12 Random Words"
+      },
+      {
+        "label": "Platform",
+        "value": "PC, OSX, iOS, Android (PC and OSX first)"
+      },
+      {
+        "label": "Genre",
+        "value": "RTS + MMO"
+      }
+    ]
+  }
+}

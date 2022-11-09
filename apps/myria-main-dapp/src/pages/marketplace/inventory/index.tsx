@@ -15,8 +15,12 @@ import MessageMobileView from 'src/components/marketplace/Modals/MessageMobileVi
 import { getItemsPagination } from 'src/utils';
 import { localStorageKeys } from 'src/configs';
 import useLocalStorage from 'src/hooks/useLocalStorage';
+import useCheckStatusMarketplacePage from 'src/hooks/useCheckStatusMarketplacePage';
+import MaintainPage from 'src/components/marketplace/MaintainPage/MaintainPage';
+import { STATUS_PAGE } from '..';
 
 function InventoryPage() {
+  const { isLoading, error, data } = useCheckStatusMarketplacePage();
   const { isMobile, isResolution, setIsSolution } = useCheckMobileView();
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const starkKey = `0x${localStarkKey}`;
@@ -48,34 +52,41 @@ function InventoryPage() {
       return 0;
     }
   }, [result.data?.pages]);
+
+  if (data && data?.data.status !== STATUS_PAGE.AVAILABLE) return <MaintainPage />;
+
   if (isMobile) {
     return <MessageMobileView isShow={isResolution} handleClose={() => setIsSolution(false)} />;
   }
-  return (
-    <Page includeFooter={false}>
-      <Inventory
-        userAddress={user?.wallet_id ? user?.wallet_id : address}
-        userAvatar={avatar.src}
-        userName={user?.user_name || 'Unknown'}
-        userJoinDate={user?.date_registered}
-        items={items.map((item: any) => ({
-          id: item.id,
-          rarity: item.metadata?.rarity,
-          collection: item.collection,
-          name: item.name || 'Untitled',
-          image_url: item.imageUrl,
-          creator: truncateString(item.collection.ownerPublicKey),
-          creatorImg: avatar.src, // MOCK
-          priceETH: +item?.order?.nonQuantizedAmountBuy
-        }))}
-        assetLoading={result.isFetched}
-        hasMore={!isFetchingNextPage && hasNextPage}
-        fetchNextPage={fetchNextPage}
-        totalItems={totalItems}
-        totalForSaleItems={totalForSaleItems}
-      />
-    </Page>
-  );
+
+  if (data && data?.data.status === STATUS_PAGE.AVAILABLE)
+    return (
+      <Page includeFooter={false}>
+        <Inventory
+          userAddress={user?.wallet_id ? user?.wallet_id : address}
+          userAvatar={avatar.src}
+          userName={user?.user_name || 'Unknown'}
+          userJoinDate={user?.date_registered}
+          items={items.map((item: any) => ({
+            id: item.id,
+            rarity: item.metadata?.rarity,
+            collection: item.collection,
+            name: item.name || 'Untitled',
+            image_url: item.imageUrl,
+            creator: truncateString(item.collection.ownerPublicKey),
+            creatorImg: avatar.src, // MOCK
+            priceETH: +item?.order?.nonQuantizedAmountBuy
+          }))}
+          assetLoading={result.isFetched}
+          hasMore={!isFetchingNextPage && hasNextPage}
+          fetchNextPage={fetchNextPage}
+          totalItems={totalItems}
+          totalForSaleItems={totalForSaleItems}
+        />
+      </Page>
+    );
+
+  return <div className="bg-base/3 h-screen w-screen"></div>;
 }
 
 export default InventoryPage;

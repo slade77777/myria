@@ -1,0 +1,74 @@
+{
+  "meta-nomads": {
+    "shortcut": {
+      "image": "/images/partner-games-1/36-meta-nomads/logo.jpg",
+      "title": "Meta Nomads",
+      "feature": "Multi Player",
+      "genre": ["Battle", "Royal", "MMO"],
+      "publisher": "Ecosystem Developer",
+      "id": "meta-nomads",
+      "category": "Games"
+    },
+    "discord": "",
+    "twitter": "https://twitter.com/meta_nomads",
+    "headerBg": "",
+    "title": "Meta Nomads",
+    "description": "",
+    "logo": "/images/partner-games-1/36-meta-nomads/logo.png",
+    "logoMobile": "",
+    "assets": [
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/36-meta-nomads/banner_01.jpeg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/36-meta-nomads/banner_02.jpeg"
+      },
+      {
+        "type": "image",
+        "src": "/images/partner-games-1/36-meta-nomads/banner_03.jpeg"
+      }
+    ],
+    "content": [
+      {
+        "heading": "About the game",
+        "paragraph": [
+          "Meta Nomads is one of the most unique web3 gaming and Metaverse exploration experiences you&#180;ll see right now, as you roam the vast Planet of Mars our team built on Unreal Engine. Set on post-apocalyptic Mars, 100 players fight for survival, using weapons and hoverboards as modes of transport.",
+          "Interact, speak and connect with fellow nomads, race and battle each other online in a P2E format harnessing the power of gravity-defying hoverboards, and smash your way through opponents with a brutal arsenal of outlandish weapons. When the day is done, head out to your own living compounds in the Metaverse to relax. A place where you can display your NFTs as decorations, listen to music, invite friends over and much more."
+        ]
+      },
+      {
+        "heading": "Email Address",
+        "paragraph": ["bcliff188@gmail.com"]
+      },
+      {
+        "heading": "Twitter",
+        "paragraph": ["https://twitter.com/meta_nomads"]
+      },
+      {
+        "heading": "Other Link",
+        "paragraph": [
+          "www.metanomads.world",
+          "discord.gg/meta-nomads",
+          "https://www.instagram.com/meta_nomads/",
+          "https://www.youtube.com/channel/UCgjiH1f9vjH6Q-0Th28IYzw/featured"
+        ]
+      }
+    ],
+    "info": [
+      {
+        "label": "Developer",
+        "value": "NMD Studios"
+      },
+      {
+        "label": "Platform",
+        "value": "PC"
+      },
+      {
+        "label": "Genre",
+        "value": "Battle, Royal, MMO"
+      }
+    ]
+  }
+}
