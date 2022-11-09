@@ -47,6 +47,7 @@ export interface User {
   access_token?: string;
   username?: string;
   starkKey?: string;
+  allianceId: number;
 }
 
 export interface UserWallet {
@@ -347,7 +348,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   const logoutMutation = useMutation(async () => {
     try {
       await apiClient.post(`/accounts/logout`);
-    } catch (err) { }
+    } catch (err) {}
     window.location.reload();
   });
 
