@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { SetStateAction, useContext, useState } from 'react';
 import Modal from 'src/components/Modal';
 import SignIn from 'src/components/SignIn';
 import Register from 'src/components/Register';
@@ -245,6 +245,7 @@ interface IAuthenticationContext {
   user: User | undefined;
   userCampaign: UserCampaign | undefined;
   nextChooseAlliance: boolean;
+  setNextChooseAlliance: React.Dispatch<SetStateAction<boolean>>
   login: () => void;
   register: () => void;
   forgotPassword: () => void;
@@ -445,11 +446,9 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
 
   //Regiter Campaign
   const registerCampaignByWallet = async (userId: string) => {
-    const message = JSON.stringify({ created_on: new Date(Date.now() + 60000) }); // add 1 minute to current time
-    const signature = await signMessage(message);
 
     // Create user in campaign services
-    if (signature && address) {
+    if (address) {
       const registerData = {
         userId: +userId,
         campaignId: +campaignId
@@ -463,7 +462,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           user_id: userRes.data?.userId,
           wallet_id: userRes.data?.wallet_id
         };
-        toast('Register success', { type: 'success' });
+        toast('Register Campaign success', { type: 'success' });
         return user;
       } else {
         toast('Register failed, please try again.', { type: 'error' });
@@ -562,7 +561,6 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
                 userProfileQuery.refetch();
                 return res.data.data;
               } else {
-                setNextChooseAlliance(true);
                 setUserCampaignId(res.data.data.id.toString());
                 return res.data.data;
               }
@@ -573,10 +571,11 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
                   userProfileQuery.refetch();
                   return res.data.data;
                 } else {
-                  setNextChooseAlliance(true);
                   setUserCampaignId(res.data.data.id.toString());
                   return res.data.data;
                 }
+              }).catch(() => {
+
               });
             }
           })
@@ -651,7 +650,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           const dataRegisterCampaign = await registerCampaignByWallet(userRes?.data.data.id || '');
           // set user choose alliance
           setUserCampaignId(dataRegisterCampaign.user_id.toString());
-          setNextChooseAlliance(true);
+          // setNextChooseAlliance(true);
         } else {
           userRes = null;
         }
@@ -817,6 +816,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         user,
         userCampaign,
         nextChooseAlliance,
+        setNextChooseAlliance,
         login,
         register,
         forgotPassword,
