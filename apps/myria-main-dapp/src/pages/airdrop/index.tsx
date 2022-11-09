@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import CamPaignBaseLayout from 'src/Layouts/CampaignBaseLayout';
 import AirDropContent from 'src/components/AirDrop/AirDropContent';
 import ChooseAlliance from 'src/components/AirDrop/ChooseAlliance';
-import Welcome from 'src/components/sigil/Welcome';
+import Welcome from 'src/components/AirDrop/Welcome';
 
 export type Step = 0 | 1 | 2;
 
