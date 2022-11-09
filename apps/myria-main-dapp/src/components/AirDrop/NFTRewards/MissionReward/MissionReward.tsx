@@ -32,10 +32,10 @@ export const MissionReward = () => {
           <span className="text-light">
             <Trans>Complete the missions below to unlock your rewards</Trans>
           </span>
-          <IconMessageQuestion styleClass="ml-4 mr-3" />
+          {/* <IconMessageQuestion styleClass="ml-4 mr-3" />
           <span className="text-primary/6">
             <Trans>How it works</Trans>
-          </span>
+          </span> */}
         </div>
         <div className="h-[calc(100%-24px-32px)] overflow-auto pl-1 pt-1">
           <div className="grid grid-cols-1 gap-y-6 pr-4">
