@@ -171,8 +171,8 @@ export interface RegisterUserCampaignPayload {
   starkKey: string;
   walletAddress: string;
   accountId: string;
-  username: string | undefined;
-  email: string | undefined;
+  username?: string | undefined;
+  email?: string | undefined;
   referrerId?: number;
 }
 
@@ -182,9 +182,9 @@ export interface RegisterUserL2WalletPayload {
   starkKey: string;
   walletAddress: string;
   accountId: string;
-  username: string;
-  email: string;
-  referrerId: number;
+  username?: string;
+  email?: string;
+  referrerId?: number;
   signature: {
     r: string;
     s: string;
@@ -221,7 +221,7 @@ export interface MissionCompleteResponse {
 
 export interface RegisterCampaignPayload {
   userId: string;
-  campaignId: string;
+  campaignId?: string;
 }
 
 export interface RegisterCampaignResponse {

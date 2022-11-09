@@ -32,7 +32,12 @@ import { campaignApiClient } from '../client';
  */
 
 const callCampaignHealthCheck = async () => {
-  return await campaignApiClient.get('/healthCheck');
+  try {
+    const result = await campaignApiClient.get('/healthCheck');
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -42,7 +47,15 @@ const callCampaignHealthCheck = async () => {
 const reqGetCampaignsDetailById = async (
   campaignId: number
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
-  return await campaignApiClient.get(`/campaigns/${campaignId}`);
+  try {
+    if (!campaignId) {
+      throw new Error('CampaignId is required');
+    }
+    const result = await campaignApiClient.get(`/campaigns/${campaignId}`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -52,7 +65,15 @@ const reqGetCampaignsDetailById = async (
 const reqGetCampaignsDetailByCode = async (
   campaignCode: string
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
-  return await campaignApiClient.get(`/campaigns/code/${campaignCode}`);
+  try {
+    if (!campaignCode) {
+      throw new Error('CampaignCode is required');
+    }
+    const result = await campaignApiClient.get(`/campaigns/code/${campaignCode}`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -62,7 +83,27 @@ const reqGetCampaignsDetailByCode = async (
 const reqCreateCampaigns = async (
   payload: CreateCampaignPayload
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
-  return await campaignApiClient.post(`/campaigns`, payload);
+  try {
+    if (!payload.code) {
+      throw new Error('Code is required');
+    }
+    if (!payload.name) {
+      throw new Error('Name is required');
+    }
+    if (!payload.status) {
+      throw new Error('Status is required');
+    }
+    if (!payload.endedAt) {
+      throw new Error('EndedAt is required');
+    }
+    if (!payload.startedAt) {
+      throw new Error('StartedAt is required');
+    }
+    const result = await campaignApiClient.post(`/campaigns`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -72,7 +113,24 @@ const reqCreateCampaigns = async (
 const reqCreateSocialCampaigns = async (
   payload: SocialCampaignPayload
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
-  return await campaignApiClient.post(`/campaigns/social-event`, payload);
+  try {
+    if (!payload.channelId) {
+      throw new Error('ChannelId is required');
+    }
+    if (!payload.missionCode) {
+      throw new Error('MissionCode is required');
+    }
+    if (!payload.provider) {
+      throw new Error('Provider is required');
+    }
+    if (!payload.socialUserId) {
+      throw new Error('SocialUserId is required');
+    }
+    const result = await campaignApiClient.post(`/campaigns/social-event`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -82,7 +140,18 @@ const reqCreateSocialCampaigns = async (
 const reqCreateTwitterCampaigns = async (
   payload: TwitterCampaignPayload
 ): Promise<CampaignResponseType<CampaignDetailResponse>> => {
-  return await campaignApiClient.post(`/campaigns/twitter-events`, payload);
+  try {
+    if (!payload.missionCode) {
+      throw new Error('MissionCode is required');
+    }
+    if (!payload.walletAddress) {
+      throw new Error('WalletAddress is required');
+    }
+    const result = await campaignApiClient.post(`/campaigns/twitter-events`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -92,7 +161,15 @@ const reqCreateTwitterCampaigns = async (
 const reqGetUserCampaigns = async (
   userId: number
 ): Promise<CampaignResponseType<UserCampaignResponse>> => {
-  return await campaignApiClient.get(`/users/${userId}`);
+  try {
+    if (!userId) {
+      throw new Error('UserId is required');
+    }
+    const result = await campaignApiClient.get(`/users/${userId}`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -102,7 +179,15 @@ const reqGetUserCampaigns = async (
 const reqGetUserCampaignsByStarkKey = async (
   starkKey: number
 ): Promise<CampaignResponseType<UserCampaignResponse>> => {
-  return await campaignApiClient.get(`/users/stark-key/${starkKey}`);
+  try {
+    if (!starkKey) {
+      throw new Error('StarkKey is required');
+    }
+    const result = await campaignApiClient.get(`/users/stark-key/${starkKey}`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -112,7 +197,21 @@ const reqGetUserCampaignsByStarkKey = async (
 const reqRegisterUserCampaign = async (
   payload: RegisterUserCampaignPayload
 ): Promise<CampaignResponseType<RegisterUserCampaignResponse>> => {
-  return await campaignApiClient.post(`/users`, payload);
+  try {
+    if (!payload.starkKey) {
+      throw new Error('StarkKey is required');
+    }
+    if (!payload.walletAddress) {
+      throw new Error('WalletAddress is required');
+    }
+    if (!payload.accountId) {
+      throw new Error('AccountId is required');
+    }
+    const result = await campaignApiClient.post(`/users`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -122,7 +221,15 @@ const reqRegisterUserCampaign = async (
 const reqGetUserAlliances = async (
   walletAddress: string
 ): Promise<CampaignResponseType<UserAlliancesResponse>> => {
-  return await campaignApiClient.get(`/users/wallet-address/${walletAddress}`);
+  try {
+    if (!walletAddress) {
+      throw new Error('WalletAddress is required');
+    }
+    const result = await campaignApiClient.get(`/users/wallet-address/${walletAddress}`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -132,7 +239,24 @@ const reqGetUserAlliances = async (
 const reqRegisterUserL2Wallet = async (
   payload: RegisterUserL2WalletPayload
 ): Promise<CampaignResponseType<RegisterUserL2WalletResponse>> => {
-  return await campaignApiClient.post(`/users/l2/wallet`, payload);
+  try {
+    if (!payload.starkKey) {
+      throw new Error('StarkKey is required');
+    }
+    if (!payload.walletAddress) {
+      throw new Error('WalletAddress is required');
+    }
+    if (!payload.accountId) {
+      throw new Error('AccountId is required');
+    }
+    if (!payload.signature) {
+      throw new Error('Signature is required');
+    }
+    const result = await campaignApiClient.post(`/users/l2/wallet`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -143,7 +267,21 @@ const reqMissionComplete = async (
   userId: number,
   payload: MissionCompletePayload
 ): Promise<CampaignResponseType<MissionCompleteResponse>> => {
-  return await campaignApiClient.patch(`/users/${userId}/completed-mission`, payload);
+  try {
+    if (!userId) {
+      throw new Error('UserId is required');
+    }
+    if (!payload.campaignId) {
+      throw new Error('CampaignId is required');
+    }
+    if (!payload.missionId) {
+      throw new Error('MissionId is required');
+    }
+    const result = await campaignApiClient.patch(`/users/${userId}/completed-mission`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -153,7 +291,15 @@ const reqMissionComplete = async (
 const reqRegisterCampaign = async (
   payload: RegisterCampaignPayload
 ): Promise<CampaignResponseType<MissionCompleteResponse>> => {
-  return await campaignApiClient.post(`/users/register-campaign`, payload);
+  try {
+    if (!payload.userId) {
+      throw new Error('UserId is required');
+    }
+    const result = await campaignApiClient.post(`/users/register-campaign`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -164,7 +310,18 @@ const reqUpdateUserAlliance = async (
   userId: number,
   payload: UpdateUserAlliancePayload
 ): Promise<CampaignResponseType<UpdateUserAllianceResponse>> => {
-  return await campaignApiClient.patch(`/users/${userId}/alliances`, payload);
+  try {
+    if (!userId) {
+      throw new Error('UserId is required');
+    }
+    if (!payload.allianceId) {
+      throw new Error('AllianceId is required');
+    }
+    const result = await campaignApiClient.patch(`/users/${userId}/alliances`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -172,10 +329,17 @@ const reqUpdateUserAlliance = async (
  * @Returns
  */
 const reqVerifyEmailOfUser = async (
-  userId: number,
-  missionCode: string
+  userId: number
 ): Promise<CampaignResponseType<UpdateUserAllianceResponse>> => {
-  return await campaignApiClient.patch(`/users/${userId}/verify-email`, missionCode);
+  try {
+    if (!userId) {
+      throw new Error('UserId is required');
+    }
+    const result = await campaignApiClient.patch(`/users/${userId}/verify-email`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -183,9 +347,20 @@ const reqVerifyEmailOfUser = async (
  * @Returns
  */
 const reqGetUserByWalletAddress = async (
-  walletAddress: string
+  walletAddress: string,
+  campaignId?: string
 ): Promise<CampaignResponseType<UserType>> => {
-  return await campaignApiClient.get(`/users/wallet-address/${walletAddress}`);
+  try {
+    if (!walletAddress) {
+      throw new Error('WalletAddress is required');
+    }
+    const result = await campaignApiClient.get(`/users/wallet-address/${walletAddress}`, {
+      params: { campaignId }
+    });
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -196,7 +371,18 @@ const reqGetUserProfileCampaign = async (
   userId: string,
   campaignId: string
 ): Promise<CampaignResponseType<UserProfileCampaignResponse>> => {
-  return await campaignApiClient.get(`/users/${userId}/campaign-id/${campaignId}`);
+  try {
+    if (!userId) {
+      throw new Error('UserId is required');
+    }
+    if (!campaignId) {
+      throw new Error('CampaignId is required');
+    }
+    const result = await campaignApiClient.get(`/users/${userId}/campaign-id/${campaignId}`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -204,7 +390,12 @@ const reqGetUserProfileCampaign = async (
  * @Returns
  */
 const reqGetListAlliances = async (): Promise<CampaignResponseType<ListAlliancesResponse>> => {
-  return await campaignApiClient.get(`/alliances`);
+  try {
+    const result = await campaignApiClient.get(`/alliances`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -214,7 +405,15 @@ const reqGetListAlliances = async (): Promise<CampaignResponseType<ListAlliances
 const reqGetRewardByCampaignId = async (
   campaignId: string
 ): Promise<CampaignResponseType<RewardByCampaignIdResponse>> => {
-  return await campaignApiClient.get(`/campaign-id/${campaignId}`);
+  try {
+    if (!campaignId) {
+      throw new Error('CampaignId is required');
+    }
+    const result = await campaignApiClient.get(`/rewards/campaign-id/${campaignId}`);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -224,7 +423,24 @@ const reqGetRewardByCampaignId = async (
 const reqRewardClaimDiscord = async (
   payload: RewardClaimDiscordPayload
 ): Promise<CampaignResponseType<RewardClaimDiscordResponse>> => {
-  return await campaignApiClient.post(`/rewards/discord/claim`, payload);
+  try {
+    if (!payload.campaignCode) {
+      throw new Error('CampaignCode is required');
+    }
+    if (!payload.discordAccessCode) {
+      throw new Error('Discord AccessCode is required');
+    }
+    if (!payload.missionCode) {
+      throw new Error('Mission Code is required');
+    }
+    if (!payload.userId) {
+      throw new Error('UserId is required');
+    }
+    const result = await campaignApiClient.post(`/rewards/discord/claim`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 /**
@@ -234,8 +450,18 @@ const reqRewardClaimDiscord = async (
 const reqRewardUserClaim = async (
   payload: RewardUserClaimPayload
 ): Promise<CampaignResponseType<RewardUserClaimResponse>> => {
-  const result = await campaignApiClient.post(`/rewards/user-claim`, payload);
-  return result.data;
+  try {
+    if (!payload.rewardId) {
+      throw new Error('RewardId is required');
+    }
+    if (!payload.userId) {
+      throw new Error('UserId is required');
+    }
+    const result = await campaignApiClient.post(`/rewards/user-claim`, payload);
+    return result.data;
+  } catch (error) {
+    throw new Error('Error:' + error);
+  }
 };
 
 export {
