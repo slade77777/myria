@@ -47,7 +47,7 @@ export interface User {
   access_token?: string;
   username?: string;
   starkKey?: string;
-  allianceId: number;
+  allianceId?: number;
 }
 
 export interface UserWallet {
@@ -246,7 +246,7 @@ interface IAuthenticationContext {
   user: User | undefined;
   userCampaign: UserCampaign | undefined;
   nextChooseAlliance: boolean;
-  setNextChooseAlliance: React.Dispatch<SetStateAction<boolean>>
+  setNextChooseAlliance: React.Dispatch<SetStateAction<boolean>>;
   login: () => void;
   register: () => void;
   forgotPassword: () => void;
@@ -447,7 +447,6 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
 
   //Regiter Campaign
   const registerCampaignByWallet = async (userId: string) => {
-
     // Create user in campaign services
     if (address) {
       const registerData = {
@@ -566,18 +565,18 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
                 return res.data.data;
               }
             } else {
-              registerCampaignByWallet(campaignId).then(() => {
-                if (res.data.data.allianceId) {
-                  setUserCampaignId(res.data.data.id.toString());
-                  userProfileQuery.refetch();
-                  return res.data.data;
-                } else {
-                  setUserCampaignId(res.data.data.id.toString());
-                  return res.data.data;
-                }
-              }).catch(() => {
-
-              });
+              registerCampaignByWallet(campaignId)
+                .then(() => {
+                  if (res.data.data.allianceId) {
+                    setUserCampaignId(res.data.data.id.toString());
+                    userProfileQuery.refetch();
+                    return res.data.data;
+                  } else {
+                    setUserCampaignId(res.data.data.id.toString());
+                    return res.data.data;
+                  }
+                })
+                .catch(() => {});
             }
           })
           .catch(async () => {
