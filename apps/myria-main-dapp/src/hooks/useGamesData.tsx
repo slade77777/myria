@@ -51,7 +51,7 @@ export default function useGamesData() {
         logo: '/images/game-detail/metarush1/logo1.png',
         logoMobile: '/images/game-detail/metarush/logo-mobile.png',
         image: {
-          src: '/images/game-detail/metarush1/5.png',
+          src: '/images/game-detail/metarush1/04.png',
           width: 1854,
           height: 1042
         },
@@ -64,14 +64,9 @@ export default function useGamesData() {
             type: 'image',
             src: '/images/game-detail/metarush1/02.png'
           },
-
           {
             type: 'image',
             src: '/images/game-detail/metarush1/03.png'
-          },
-          {
-            type: 'image',
-            src: '/images/game-detail/metarush1/04.png'
           },
           {
             type: 'image',
