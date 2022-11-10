@@ -3,7 +3,6 @@ const timeout = 60000;
 import get from 'lodash/get';
 import { web3Modal } from './context/wallet';
 import { localStorageKeys } from './configs';
-import apiClient from './client';
 
 export const createService = (baseURL?: string, headers?: object): AxiosInstance => {
   return interceptAuth(baseConfig(baseURL, headers));
@@ -36,10 +35,8 @@ const interceptAuth = (config: AxiosRequestConfig) => {
           localStorage.removeItem(localStorageKeys.walletAddress);
           localStorage.removeItem(localStorageKeys.starkKey);
           localStorage.removeItem(localStorageKeys.userCampaignId);
-          // window.location.replace('/');
         }
       }
-      // Do something with response error
       return Promise.reject(get(error, 'response.data.message') || get(error, 'message'));
     }
   );
