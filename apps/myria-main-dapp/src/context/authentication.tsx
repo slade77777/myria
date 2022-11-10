@@ -268,6 +268,7 @@ interface IAuthenticationContext {
   loginByWalletMutation: UseMutationResult<User, unknown, void, unknown>;
   loginCampaignByWalletMutation: UseMutationResult<UserAirDop, unknown, void, unknown>;
   userProfileQuery: UseQueryResult<User | null, unknown>;
+  firstCheckUserCampaign: UseQueryResult<User | null, unknown>;
   accountProfileQuery: UseQueryResult<Account | null, unknown>;
   account?: Account;
 }
@@ -348,7 +349,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   const logoutMutation = useMutation(async () => {
     try {
       await apiClient.post(`/accounts/logout`);
-    } catch (err) {}
+    } catch (err) { }
     window.location.reload();
   });
 
@@ -791,7 +792,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     },
     {
       retry: false,
-      refetchInterval: isAirDrop ? (userCampaignId.length > 0 ? 10000 : 2000) : false
+      refetchInterval: isAirDrop ? (userCampaignId.length > 0 ? 5000 : 2000) : false
     }
   );
 
@@ -809,6 +810,44 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
       }),
     { retry: 1 }
   );
+
+  const firstCheckUserCampaign = useQuery(
+    'firstCheckUserCampaign',
+    () => {
+      if (!userCampaignId) {
+        if (campaignId && address) {
+          return campaignApiClient
+            .get(`/users/wallet-address/${address}?campaignId=${campaignId}`)
+            .then((res) => {
+              //User registered campaign
+              if (res.data.data.userCampaign.length > 0) {
+                if (res.data.data.allianceId) {
+                  setUserCampaignId(res.data.data.id.toString());
+                  userProfileQuery.refetch();
+                  return res.data.data;
+                } else {
+                  setUserCampaignId(res.data.data.id.toString());
+                  return res.data.data;
+                }
+              } else {
+                registerCampaignByWallet(campaignId).then(() => {
+                  if (res.data.data.allianceId) {
+                    setUserCampaignId(res.data.data.id.toString());
+                    userProfileQuery.refetch();
+                    return res.data.data;
+                  } else {
+                    setUserCampaignId(res.data.data.id.toString());
+                    return res.data.data;
+                  }
+                }).catch(() => {
+
+                });
+              }
+            })
+        }
+      }
+    }
+  )
 
   return (
     <AuthenticationContext.Provider
@@ -838,6 +877,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         loginByWalletMutation,
         loginCampaignByWalletMutation,
         userProfileQuery,
+        firstCheckUserCampaign,
         accountProfileQuery,
         account
       }}>
