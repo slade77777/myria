@@ -15,7 +15,7 @@ export function NftReward() {
   const { userCampaign, userProfileQuery } = useAuthenticationContext();
 
   const nextReward: RewardType | undefined = userCampaign?.rewards.find(
-    (item: RewardType) => item.rewardStatus === REWARD_STATUS.AVAILABLE
+    (item: RewardType) => item.rewardStatus === REWARD_STATUS.LOCKED
   );
 
   const claimReward = async (rewardId: number) => {
@@ -52,7 +52,10 @@ export function NftReward() {
               titleText={reward.name}
               buttonText={buttonText}
               containerClassname="mr-6"
-              isBlur={reward.rewardStatus !== REWARD_STATUS.AVAILABLE}
+              isBlur={
+                reward.rewardStatus !== REWARD_STATUS.AVAILABLE &&
+                (nextReward as any as RewardType).id !== reward.id
+              }
               onClaim={
                 reward.rewardStatus === REWARD_STATUS.AVAILABLE
                   ? async () => await claimReward(reward.id)

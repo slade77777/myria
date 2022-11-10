@@ -70,22 +70,24 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       name: utilTaskId.followMyriaTwitter,
       handler: (homePage: string) => {
         window.open(getLinkMission(utilTaskId.followMyriaTwitter, homePage), '_blank');
-        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
-          (res) => {
-            console.log(res);
-          }
-        );
+        reqCreateTwitterCampaigns({
+          missionCode: item.code,
+          walletAddress: walletAddress.toLowerCase()
+        }).then((res) => {
+          console.log(res);
+        });
       }
     },
     [utilTaskId.followBrendanTwitter]: {
       name: utilTaskId.followBrendanTwitter,
       handler: (homePage: string) => {
         window.open(getLinkMission(utilTaskId.followBrendanTwitter, homePage), '_blank');
-        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
-          (res) => {
-            console.log(res);
-          }
-        );
+        reqCreateTwitterCampaigns({
+          missionCode: item.code,
+          walletAddress: walletAddress.toLowerCase()
+        }).then((res) => {
+          console.log(res);
+        });
       }
     },
     [utilTaskId.inviteFriends]: {
@@ -117,11 +119,12 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       name: utilTaskId.sharePostTwitter,
       handler: (homePage: string) => {
         window.open(getLinkMission(utilTaskId.sharePostTwitter, homePage), '_blank');
-        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
-          (res) => {
-            console.log(res);
-          }
-        );
+        reqCreateTwitterCampaigns({
+          missionCode: item.code,
+          walletAddress: walletAddress.toLowerCase()
+        }).then((res) => {
+          console.log(res);
+        });
       }
     },
     [utilTaskId.reachLevelDiscord]: {
