@@ -115,8 +115,8 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     },
     [utilTaskId.sharePostTwitter]: {
       name: utilTaskId.sharePostTwitter,
-      handler: () => {
-        window.open(getLinkMission(utilTaskId.sharePostTwitter, ''), '_blank');
+      handler: (homePage: string) => {
+        window.open(getLinkMission(utilTaskId.sharePostTwitter, homePage), '_blank');
         reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
           (res) => {
             console.log(res);

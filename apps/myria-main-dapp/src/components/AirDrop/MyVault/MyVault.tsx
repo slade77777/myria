@@ -37,7 +37,7 @@ export const MyVaultComponent = () => {
                 titleText={reward.name}
                 buttonText={REWARD_STATUS.CLAIMED}
                 containerClassname="mr-6"
-                isBlur={reward.rewardStatus !== REWARD_STATUS.AVAILABLE}
+                isMyVault={true}
               />
             );
           })
