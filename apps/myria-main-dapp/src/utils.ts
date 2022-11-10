@@ -275,11 +275,10 @@ export const getLinkMission = (paramTaskId: string, homePage: string) => {
       return `https://twitter.com/intent/follow?screen_name=brendan_duhamel`;
 
     case utilTaskId.sharePostTwitter:
-      const content =
-        'Myria is the leading Web3 gaming ecosystem with 0 gas fees, no NFT minting costs and over 1 million users. To celebrate the $MYRIA token launch, get a brand new Sigil NFT for free! Follow the steps 👇.';
-      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        content
-      )}&url=https://twitter.com/Myria/status/1580445268100587521?s=20`;
+      const content = `@Myria, the leading #Web3 gaming ecosystem, with over 1 million users, is celebrating the $MYRIA token launch and the Alliance Keys NFT Airdrop! 🚀
+Complete the most basic missions to win your Alliance Key NFT with in-game utility. 🤩
+✅ Find out how here`;
+      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(content)}&url=${homePage}`;
 
     case utilTaskId.joinDiscord:
       return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;

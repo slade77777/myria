@@ -107,7 +107,7 @@ const QUANTUM_CONSTANT = 10000000000;
 
 declare let window: any;
 
-export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
+export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
   const [screen, setScreen] = useState<number>(SCREENS.MAIN_SCREEN);
   const pKey = useSelector(
     (state: RootState) => state.account.starkPublicKeyFromPrivateKey,
@@ -204,6 +204,7 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
   }, [balanceList]);
 
   useEffect(() => {
+    let controller = new AbortController();
     const setBalanceFunc = async () => {
       if (screen !== SCREENS.WITHDRAW_SCREEN) {
         setBalance(balanceL1);
@@ -248,6 +249,9 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
     if (selectedToken) {
       setBalanceFunc();
     }
+    return () => {
+      controller.abort();
+    };
   }, [
     selectedToken,
     withdrawScreenMounted,
@@ -279,7 +283,8 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
     }
     if (amount * etheCost < 10) {
       setErrorAmount(
-        `${screen === SCREENS.DEPOSIT_SCREEN ? 'Deposit' : 'Withdraw'
+        `${
+          screen === SCREENS.DEPOSIT_SCREEN ? 'Deposit' : 'Withdraw'
         } amount cannot be less than ${(10 / etheCost).toFixed(6)} ETH.`,
       );
       return false;
@@ -483,9 +488,9 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
         ...(hide_balance
           ? {}
           : {
-            balance_eth: +balance,
-            balance_usd: +balance * etheCost,
-          }),
+              balance_eth: +balance,
+              balance_usd: +balance * etheCost,
+            }),
         ...(trx_url ? { trx_url } : {}),
         ...(error_code ? { error_code } : {}),
       });
@@ -529,11 +534,11 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
              */
             const transactionStatus =
               item.transactionType === 'WithdrawalRequest' ||
-                item.transactionType === 'TransferRequest'
+              item.transactionType === 'TransferRequest'
                 ? item.transactionStatus
                 : item.transactionStatus === 'Pending'
-                  ? STATUS_HISTORY.SUCCESS
-                  : item.transactionStatus;
+                ? STATUS_HISTORY.SUCCESS
+                : item.transactionStatus;
             return {
               ...item,
               id: index,
@@ -541,8 +546,8 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
               amount: item.partyAOrder
                 ? convertQuantizedAmountToEth(item.partyAOrder.amountSell)
                 : item.name === 'Ethereum'
-                  ? convertQuantizedAmountToEth(item.quantizedAmount)
-                  : item.quantizedAmount,
+                ? convertQuantizedAmountToEth(item.quantizedAmount)
+                : item.quantizedAmount,
               time: moment(item.createdAt).fromNow(),
               updatedAt: moment(item.updatedAt).fromNow(),
               status: transactionStatus,
@@ -811,5 +816,5 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
 }
 
 L2WalletPopover.defaultProps = {
-  onClosePopover: () => { },
+  onClosePopover: () => {},
 };
