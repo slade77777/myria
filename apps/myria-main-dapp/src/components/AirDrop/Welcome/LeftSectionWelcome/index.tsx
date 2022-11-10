@@ -105,15 +105,13 @@ const LeftSectionWelcome: React.FC<IProp> = ({ installedWallet, isSupportedBrows
             </div>
             {installedWallet === true && isSupportedBrowser && (
                 (userCampaignId && checkedInput) ? (<Button
-                    loading={isLoadingLogin()}
-                    disabled={isLoadingLogin()}
                     onClick={handleClickContinue}
                     className="btn-lg btn-primary mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
                     {walletAddress && userCampaignId && checkedInput && <Trans>CONTINUE</Trans>}
                 </Button>) :
                     (<Button
                         loading={isLoadingLogin() || (checkedInput && continueFunction)}
-                        disabled={isLoadingLogin() || (!checkedInput && continueFunction)}
+                        disabled={isLoadingLogin() || (continueFunction)}
                         onClick={handleClick}
                         className="btn-lg btn-primary mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
                         {<Trans>CONNECT WALLET</Trans>}
