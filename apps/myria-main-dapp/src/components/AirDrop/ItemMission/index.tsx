@@ -9,6 +9,8 @@ import ButtonMission, { STATUS_MISSION } from './ButtonMission';
 import { ImissionProgress } from 'src/context/authentication';
 import { reqRewardClaimDiscord } from 'src/services/campaignService';
 import { RewardClaimDiscordPayload } from 'src/types/campaign';
+import { errorCode } from 'src/errorCode';
+import { toast } from 'react-toastify';
 interface IProp {
   status: string;
   item: ImissionProgress;
@@ -18,7 +20,7 @@ interface IProp {
 const initMissionPanel = {
   [utilTaskId.verifyEmail]: {
     name: utilTaskId.verifyEmail,
-    initFunction: () => {}
+    initFunction: () => { }
   },
   [utilTaskId.joinDiscord]: {
     name: utilTaskId.joinDiscord,
@@ -28,39 +30,41 @@ const initMissionPanel = {
       missionCode: string
     ) => {
       //Call API code Join Discord
-      console.log('Call API code Join Discord', codeJoinDiscord);
       const payloadData: RewardClaimDiscordPayload = {
         userId: userId || undefined,
         discordAccessCode: codeJoinDiscord,
         campaignCode: campaignCode,
         missionCode: missionCode
       };
-      await reqRewardClaimDiscord(payloadData);
+      const responeClaimDiscord = await reqRewardClaimDiscord(payloadData);
+      if (responeClaimDiscord.errors?.[0].code === errorCode.users.discordCode.userExisted) {
+        toast('Discord User Existed', { type: 'error' })
+      }
     }
   },
   [utilTaskId.followMyriaTwitter]: {
     name: utilTaskId.followMyriaTwitter,
-    initFunction: (homePage: string) => {}
+    initFunction: (homePage: string) => { }
   },
   [utilTaskId.followBrendanTwitter]: {
     name: utilTaskId.followBrendanTwitter,
-    initFunction: (homePage: string) => {}
+    initFunction: (homePage: string) => { }
   },
   [utilTaskId.inviteFriends]: {
     name: utilTaskId.inviteFriends,
-    initFunction: (homePage?: string) => {}
+    initFunction: (homePage?: string) => { }
   },
   [utilTaskId.dailyLogAndPostDiscord]: {
     name: utilTaskId.dailyLogAndPostDiscord,
-    initFunction: () => {}
+    initFunction: () => { }
   },
   [utilTaskId.sharePostTwitter]: {
     name: utilTaskId.sharePostTwitter,
-    initFunction: async () => {}
+    initFunction: async () => { }
   },
   [utilTaskId.reachLevelDiscord]: {
     name: utilTaskId.reachLevelDiscord,
-    initFunction: (homePage: string) => {}
+    initFunction: (homePage: string) => { }
   }
 };
 

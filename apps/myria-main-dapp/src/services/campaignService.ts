@@ -1,5 +1,6 @@
 import {
   CampaignDetailResponse,
+  CampaignDiscordResponseType,
   CampaignResponseType,
   CreateCampaignPayload,
   ListAlliancesResponse,
@@ -11,6 +12,7 @@ import {
   RegisterUserL2WalletPayload,
   RegisterUserL2WalletResponse,
   RewardByCampaignIdResponse,
+  RewardClaimDiscordError,
   RewardClaimDiscordPayload,
   RewardClaimDiscordResponse,
   RewardUserClaimPayload,
@@ -422,7 +424,7 @@ const reqGetRewardByCampaignId = async (
  */
 const reqRewardClaimDiscord = async (
   payload: RewardClaimDiscordPayload
-): Promise<CampaignResponseType<RewardClaimDiscordResponse>> => {
+): Promise<CampaignDiscordResponseType<RewardClaimDiscordResponse, RewardClaimDiscordError[]>> => {
   try {
     if (!payload.campaignCode) {
       throw new Error('CampaignCode is required');
@@ -438,8 +440,8 @@ const reqRewardClaimDiscord = async (
     }
     const result = await campaignApiClient.post(`/rewards/discord/claim`, payload);
     return result.data;
-  } catch (error) {
-    throw new Error('Error:' + error);
+  } catch (error: any) {
+    return error?.response?.data;
   }
 };
 

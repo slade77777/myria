@@ -3,6 +3,12 @@ export interface CampaignResponseType<T> {
   status: string;
   data: T;
 }
+export interface CampaignDiscordResponseType<T, E> {
+  status: string;
+  data: T;
+  errors?: E;
+}
+
 export type RegisterData = {
   starkKey: string;
   walletAddress?: string;
@@ -277,6 +283,13 @@ export interface RewardClaimDiscordPayload {
 }
 
 export interface RewardClaimDiscordResponse {}
+export interface RewardClaimDiscordError {
+  code: number;
+  correlationId: string;
+  externalErrors: { error: string; error_description: string };
+  path: string;
+  timestamp: string;
+}
 
 export interface RewardUserClaimPayload {
   rewardId: number;

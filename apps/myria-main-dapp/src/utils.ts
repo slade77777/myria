@@ -255,13 +255,6 @@ export const utilTaskId = {
   reachLevelDiscord: 'DISCORD_STAR_LORD'
 };
 
-const discordClientId =
-  process.env.REACT_APP_NODE_ENV === 'production' ? '972191450290872391' : '972191450290872391';
-export const urlMyriaMarketPlace =
-  process.env.REACT_APP_NODE_ENV === 'production'
-    ? 'https://myria.com/marketplace'
-    : 'https://staging.nonprod-myria.com/marketplace/';
-
 export const getLinkMission = (paramTaskId: string, homePage: string) => {
   //Check utilTaskId to return link
   switch (paramTaskId) {
@@ -269,7 +262,7 @@ export const getLinkMission = (paramTaskId: string, homePage: string) => {
       return `https://twitter.com/intent/follow?screen_name=Myria`;
 
     case utilTaskId.dailyLogAndPostDiscord:
-      return `https://discord.com`;
+      return `https://discord.com/channels/${process.env.NEXT_PUBLIC_CAMPAIGN_SERVER_ID}/${process.env.NEXT_PUBLIC_CAMPAIGN_CHANNEL_ID}`;
 
     case utilTaskId.followBrendanTwitter:
       return `https://twitter.com/intent/follow?screen_name=brendan_duhamel`;
@@ -281,10 +274,13 @@ Complete the most basic missions to win your Alliance Key NFT with in-game utili
       return `https://twitter.com/intent/tweet?text=${encodeURIComponent(content)}&url=${homePage}`;
 
     case utilTaskId.joinDiscord:
-      return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+      return `https://discord.com/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_CAMPAIGN_DISCORD_CLIENT_ID}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+
+    case utilTaskId.reachLevelDiscord:
+      return `https://discord.com/channels/${process.env.NEXT_PUBLIC_CAMPAIGN_SERVER_ID}/${process.env.NEXT_PUBLIC_CAMPAIGN_CHANNEL_ID}`;
 
     default:
-      return `https://discord.com/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
+      return `https://discord.com/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_CAMPAIGN_DISCORD_CLIENT_ID}&redirect_uri=${homePage}&response_type=code&scope=identify%20guilds.join`;
   }
 };
 export const campaignCode = 'AIR_DROP';

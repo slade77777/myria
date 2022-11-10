@@ -107,7 +107,10 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       handler: (homePage: string) => {
         console.log(utilTaskId.dailyLogAndPostDiscord);
         let urlLink = utilTaskId.dailyLogAndPostDiscord;
-        if (userCampaign?.campaign.status !== STATUS_MISSION.COMPLETED) {
+        const joinDiscord = userCampaign?.campaign.missionProgress.filter((item) =>
+          item.code === utilTaskId.joinDiscord
+        )
+        if (joinDiscord?.[0].status !== STATUS_MISSION.COMPLETED) {
           urlLink = utilTaskId.joinDiscord;
         }
         window.open(getLinkMission(urlLink, homePage), '_blank');
@@ -127,8 +130,14 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     [utilTaskId.reachLevelDiscord]: {
       name: utilTaskId.reachLevelDiscord,
       handler: (homePage: string) => {
-        console.log(utilTaskId.reachLevelDiscord);
-        window.open(getLinkMission(utilTaskId.joinDiscord, homePage), '_blank');
+        let urlLink = utilTaskId.reachLevelDiscord;
+        const joinDiscord = userCampaign?.campaign.missionProgress.filter((item) =>
+          item.code === utilTaskId.joinDiscord
+        )
+        if (joinDiscord?.[0].status !== STATUS_MISSION.COMPLETED) {
+          urlLink = utilTaskId.joinDiscord;
+        }
+        window.open(getLinkMission(urlLink, homePage), '_blank');
       }
     }
   };
@@ -149,7 +158,7 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     <>
       <div
         className={clsx(
-          `group relative inline-block w-52 text-center leading-[50px] ${StyleButton().TEXT_COLOR}`,
+          `group relative inline-block w-52 text-center uppercase leading-[50px] ${StyleButton().TEXT_COLOR}`,
           enableClick && 'cursor-pointer'
         )}
         onClick={handleClick}>
