@@ -1,6 +1,5 @@
-import { useEffect } from '@storybook/addons';
 import clsx from 'clsx';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import IdleTimer from 'react-idle-timer';
 import { useTabContext } from 'src/context/tabContext';
 import DesktopHeader from './DesktopHeader';
@@ -13,6 +12,7 @@ import SessionTimeoutCountModal from '../SessionTimeoutCountModal';
 import BrowserNotSupportedModal from '../modals/BrowserNotSupportedModal';
 import { localStorageKeys } from 'src/configs';
 import useLocalStorage from 'src/hooks/useLocalStorage';
+import { useAuthenticationContext } from '../../context/authentication';
 
 export const links: NavItem[] = Object.values(linkSources);
 export const navHeight = 93;
@@ -28,7 +28,7 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
   className,
   stickyHeader = true
 }) => {
-  const [doc, setDoc] = useState<any>(null);
+  const { logout } = useAuthenticationContext();
   const { activatingTab } = useTabContext();
   const { disconnect, address } = useWalletContext();
   const { disconnectL2Wallet } = useL2WalletContext();
@@ -54,13 +54,13 @@ const Header: React.FC<{ action?: Action; className?: string; stickyHeader: bool
     setShowSessionTimeoutModal(false);
     disconnect();
     disconnectL2Wallet();
+    logout();
   };
 
   const cancel = () => {
     setShowSessionTimeoutModal(false);
     ref?.current?.reset();
   };
-
   return (
     <div className={clsx('absolute top-0 z-10 w-full', className)}>
       {walletAddress && (

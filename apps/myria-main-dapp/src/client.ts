@@ -1,4 +1,4 @@
-import { createService } from './myriaAuthRequiredInstance';
+import { createService } from './axios';
 
 const Klaviyo = require('node-klaviyo');
 
@@ -18,14 +18,31 @@ export function mapError(error: AxiosError): IResponseError {
   };
 }
 
-const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  timeout,
-  headers: {
-    accept: 'application/json',
-    'Content-type': 'application/json'
-  },
-  withCredentials: true
+// const apiClient = axios.create({
+//   baseURL: process.env.NEXT_PUBLIC_API_URL,
+//   timeout,
+//   headers: {
+//     accept: 'application/json',
+//     'Content-type': 'application/json'
+//   },
+//   withCredentials: true
+// });
+//
+// export const noCacheApiClient = axios.create({
+//   baseURL: process.env.NEXT_PUBLIC_API_URL,
+//   timeout,
+//   headers: {
+//     accept: 'application/json',
+//     'Content-type': 'application/json',
+//     'Cache-Control': 'no-cache'
+//   },
+//   withCredentials: true
+// });
+
+const apiClient = createService(process.env.NEXT_PUBLIC_API_URL);
+
+export const noCacheApiClient = createService(process.env.NEXT_PUBLIC_API_URL, {
+  'Cache-Control': 'no-cache'
 });
 
 export const salesforceAPIClient = axios.create({
@@ -61,6 +78,13 @@ export const campaignApiClient = axios.create({
   }
 });
 
-export const accountApiClient = createService(process.env.NEXT_PUBLIC_API_URL);
+// export const devApiClient = axios.create({
+//   baseURL: process.env.NEXT_PUBLIC_DEV_API_URL,
+//   timeout,
+//   headers: {
+//     accept: 'application/json',
+//     'Content-type': 'application/json'
+//   }
+// });
 
 export default apiClient;
