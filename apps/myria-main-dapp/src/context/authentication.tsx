@@ -577,7 +577,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
                     return res.data.data;
                   }
                 })
-                .catch(() => {});
+                .catch(() => { });
             }
           })
           .catch(async () => {
@@ -815,7 +815,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     'firstCheckUserCampaign',
     () => {
       if (!userCampaignId) {
-        if (campaignId && address) {
+        if (campaignId && walletAddress) {
           return campaignApiClient
             .get(`/users/wallet-address/${address}?campaignId=${campaignId}`)
             .then((res) => {

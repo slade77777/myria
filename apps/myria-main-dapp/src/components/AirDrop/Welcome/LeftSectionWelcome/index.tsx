@@ -51,6 +51,11 @@ const LeftSectionWelcome: React.FC<IProp> = ({ installedWallet, isSupportedBrows
         }
     }, [address, onNext, userProfileQuery, nextChooseAlliance]);
 
+    useEffect(() => {
+        if (continueFunction) {
+            setContinueFunction(false)
+        }
+    }, [loginCampaignByWalletMutation.error])
     const handleClick = async () => {
         onConnectCompaign('AirDrop');
         connectL2Wallet();
@@ -98,7 +103,7 @@ const LeftSectionWelcome: React.FC<IProp> = ({ installedWallet, isSupportedBrows
                     <span>
                         I have read and accept the &nbsp;
                     </span>
-                    <span onClick={() => router.push('/terms-conditions/')} className={clsx(`text-primary/6 cursor-pointer hover:opacity-90`)}>
+                    <span onClick={() => router.push('/airdrop/terms-conditions/')} className={clsx(`text-primary/6 cursor-pointer hover:opacity-90`)}>
                         terms and conditions
                     </span>
                 </p>
@@ -113,7 +118,9 @@ const LeftSectionWelcome: React.FC<IProp> = ({ installedWallet, isSupportedBrows
                         loading={isLoadingLogin() || (checkedInput && continueFunction)}
                         disabled={isLoadingLogin() || (continueFunction)}
                         onClick={handleClick}
-                        className="btn-lg btn-primary mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
+                        className={clsx(`btn-lg btn-primary mt-10 flex h-[40px] items-center justify-center px-7`)}
+                        pandingRight='pr-0'
+                    >
                         {<Trans>CONNECT WALLET</Trans>}
                     </Button>)
             )}
