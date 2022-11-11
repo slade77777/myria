@@ -16,6 +16,7 @@ interface Props {
   imageUrl: string;
   containerClassname?: string;
   isMyVault?: boolean;
+  isDisablePoint?: boolean;
 }
 
 export function NftBox({
@@ -29,7 +30,8 @@ export function NftBox({
   isBlurButton,
   disableClaimingAnimation,
   containerClassname,
-  isMyVault = false
+  isMyVault = false,
+  isDisablePoint = false
 }: Props) {
   const animationRef = React.useRef<HTMLDivElement>(null);
   const [isClaiming, setIsClaiming] = React.useState(false);
@@ -165,16 +167,16 @@ export function NftBox({
           <img width="auto" height="100%" src={imageUrl} alt="" />
         </div>
         <p className="text-xs font-medium text-white mt-6 mb-4">{titleText}</p>
-
-        <Button
-          loading={isClaiming}
-          onClick={() => handleClaim()}
-          className={`flex items-center justify-center h-6 w-fit rounded-[4px] px-[10px] py-[6px] text-xs font-bold transition-all ${
-            option.buttonClass
-          } ${isMyVault ? 'opacity-50 font-medium text-light' : ''}`}>
-          {!isClaiming && buttonText}
-        </Button>
       </div>
+      <Button
+        loading={isClaiming}
+        onClick={() => handleClaim()}
+        className={`flex absolute bottom-6 right-2/4 translate-x-2/4 transform items-center justify-center h-6 w-fit rounded-[4px] px-[10px] py-[6px] text-xs font-bold transition-all ${
+          option.buttonClass
+        } ${isMyVault ? 'opacity-50 font-medium text-light' : ''}
+          ${isDisablePoint ? 'opacity-50' : ''}`}>
+        {!isClaiming && buttonText}
+      </Button>
     </div>
   );
 }

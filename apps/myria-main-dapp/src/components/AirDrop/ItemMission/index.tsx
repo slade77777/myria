@@ -20,7 +20,7 @@ interface IProp {
 const initMissionPanel = {
   [utilTaskId.verifyEmail]: {
     name: utilTaskId.verifyEmail,
-    initFunction: () => { }
+    initFunction: () => {}
   },
   [utilTaskId.joinDiscord]: {
     name: utilTaskId.joinDiscord,
@@ -38,33 +38,33 @@ const initMissionPanel = {
       };
       const responeClaimDiscord = await reqRewardClaimDiscord(payloadData);
       if (responeClaimDiscord.errors?.[0].code === errorCode.users.discordCode.userExisted) {
-        toast('Discord User Existed', { type: 'error' })
+        toast('Discord User Existed', { type: 'error' });
       }
     }
   },
   [utilTaskId.followMyriaTwitter]: {
     name: utilTaskId.followMyriaTwitter,
-    initFunction: (homePage: string) => { }
+    initFunction: (homePage: string) => {}
   },
   [utilTaskId.followBrendanTwitter]: {
     name: utilTaskId.followBrendanTwitter,
-    initFunction: (homePage: string) => { }
+    initFunction: (homePage: string) => {}
   },
   [utilTaskId.inviteFriends]: {
     name: utilTaskId.inviteFriends,
-    initFunction: (homePage?: string) => { }
+    initFunction: (homePage?: string) => {}
   },
   [utilTaskId.dailyLogAndPostDiscord]: {
     name: utilTaskId.dailyLogAndPostDiscord,
-    initFunction: () => { }
+    initFunction: () => {}
   },
   [utilTaskId.sharePostTwitter]: {
     name: utilTaskId.sharePostTwitter,
-    initFunction: async () => { }
+    initFunction: async () => {}
   },
   [utilTaskId.reachLevelDiscord]: {
     name: utilTaskId.reachLevelDiscord,
-    initFunction: (homePage: string) => { }
+    initFunction: (homePage: string) => {}
   }
 };
 
@@ -108,8 +108,7 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
           <ButtonMission status={status} item={item} id={id} enableClick={enableClick} />
           {item.earnedPoints > 0 && (
             <p className="text-light mt-4 text-xs font-medium">
-              {status === STATUS_MISSION.COMPLETED ? 'EARNED ' : 'EARN '}
-              {item.earnedPoints} POINTS{' '}
+              EARNED {item.earnedPoints} POINTS{' '}
             </p>
           )}
         </div>
