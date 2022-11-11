@@ -10,7 +10,6 @@ import {
   RegisterUserCampaignPayload,
   RegisterUserCampaignResponse,
   RegisterUserL2WalletPayload,
-  RegisterUserL2WalletResponse,
   RewardByCampaignIdResponse,
   RewardClaimDiscordError,
   RewardClaimDiscordPayload,
@@ -240,7 +239,7 @@ const reqGetUserAlliances = async (
  */
 const reqRegisterUserL2Wallet = async (
   payload: RegisterUserL2WalletPayload
-): Promise<CampaignResponseType<RegisterUserL2WalletResponse>> => {
+): Promise<CampaignResponseType<UserType>> => {
   try {
     if (!payload.starkKey) {
       throw new Error('StarkKey is required');
