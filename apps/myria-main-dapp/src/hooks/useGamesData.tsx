@@ -70,6 +70,10 @@ export default function useGamesData() {
           },
           {
             type: 'image',
+            src: '/images/game-detail/metarush1/04.png'
+          },
+          {
+            type: 'image',
             src: '/images/game-detail/metarush1/05.png'
           }
         ],
