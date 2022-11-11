@@ -63,6 +63,10 @@ export function NftReward() {
               }
               onClaimSuccess={() => {}}
               isNextReward={nextReward && (nextReward as any as RewardType).id === reward.id}
+              isDisablePoint={
+                userCampaign.availablePoints < reward.threshold ||
+                (nextReward && (nextReward as any as RewardType).id === reward.id)
+              }
             />
           );
         })}
