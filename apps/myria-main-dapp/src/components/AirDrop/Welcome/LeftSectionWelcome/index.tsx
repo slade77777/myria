@@ -52,7 +52,7 @@ const LeftSectionWelcome: React.FC<IProp> = ({ installedWallet, isSupportedBrows
     }, [address, onNext, userProfileQuery, nextChooseAlliance]);
 
     useEffect(() => {
-        if (continueFunction) {
+        if (continueFunction && loginCampaignByWalletMutation.error) {
             setContinueFunction(false)
         }
     }, [loginCampaignByWalletMutation.error])
@@ -73,7 +73,7 @@ const LeftSectionWelcome: React.FC<IProp> = ({ installedWallet, isSupportedBrows
             loginCampaignByWalletMutation.isLoading ||
             (loginCampaignByWalletMutation.isSuccess && !walletAddress) ||
             (!userProfileQuery.data && loginCampaignByWalletMutation.isLoading) ||
-            userProfileQuery.isFetching
+            userProfileQuery.isFetching && !userProfileQuery.isFetched
         );
     };
 
@@ -109,14 +109,14 @@ const LeftSectionWelcome: React.FC<IProp> = ({ installedWallet, isSupportedBrows
                 </p>
             </div>
             {installedWallet === true && isSupportedBrowser && (
-                (userCampaignId && checkedInput) ? (<Button
+                (userCampaignId && checkedInput && address) ? (<Button
                     onClick={handleClickContinue}
                     className="btn-lg btn-primary mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
                     {walletAddress && userCampaignId && checkedInput && <Trans>CONTINUE</Trans>}
                 </Button>) :
                     (<Button
                         loading={isLoadingLogin() || (checkedInput && continueFunction)}
-                        disabled={isLoadingLogin() || (continueFunction)}
+                        disabled={isLoadingLogin() || (continueFunction) || (!continueFunction && !!userCampaignId)}
                         onClick={handleClick}
                         className={clsx(`btn-lg btn-primary mt-10 flex h-[40px] items-center justify-center px-7`)}
                         pandingRight='pr-0'

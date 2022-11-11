@@ -27,11 +27,11 @@ import { useWalletContext } from './wallet';
 import { toast } from 'react-toastify';
 import { AllianceName } from 'src/types/sigil';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
-import { MyriaUser, RegisterData, UserAirDop } from 'src/types/campaign';
-import { useL2WalletContext } from './l2-wallet';
+import { RegisterUserL2WalletPayload, UserType } from 'src/types/campaign';
 import { useAirdropCampaign } from './campaignContext';
 import { UserData } from 'myria-core-sdk/dist/types';
 import { useRouter } from 'next/router';
+import { reqGetUserByWalletAddress, reqRegisterCampaign, reqRegisterUserCampaign, reqRegisterUserL2Wallet } from 'src/services/campaignService';
 
 export interface User {
   user_id: string;
@@ -130,11 +130,6 @@ export type Account = {
   last_activity: string;
   hasPassword?: boolean;
   image_url?: string;
-};
-
-export type AccountRegister = {
-  user_id: string;
-  wallet_id: string;
 };
 
 const VerifyModal = ({
@@ -266,7 +261,7 @@ interface IAuthenticationContext {
   resetPasswordError: string;
   registerByWalletMutation: UseMutationResult<User, unknown, void, unknown>;
   loginByWalletMutation: UseMutationResult<User, unknown, void, unknown>;
-  loginCampaignByWalletMutation: UseMutationResult<UserAirDop, unknown, void, unknown>;
+  loginCampaignByWalletMutation: UseMutationResult<UserType, unknown, void, unknown>;
   userProfileQuery: UseQueryResult<User | null, unknown>;
   firstCheckUserCampaign: UseQueryResult<User | null, unknown>;
   accountProfileQuery: UseQueryResult<Account | null, unknown>;
@@ -443,25 +438,27 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
       username: username || undefined,
       email: email || undefined
     };
-    return await campaignApiClient.post(`/users`, reqUserData).then((res) => res.data);
+    const result = await reqRegisterUserCampaign(reqUserData)
+    return result.data
+    // return await campaignApiClient.post(`/users`, reqUserData).then((res) => res.data);
   };
 
   //Regiter Campaign
-  const registerCampaignByWallet = async (userId: string) => {
+  const registerCampaignByWallet = async (userId: number) => {
     // Create user in campaign services
     if (address) {
       const registerData = {
-        userId: +userId,
+        userId: userId,
         campaignId: +campaignId
       };
-      const userRes = await campaignApiClient
-        .post(`/users/register-campaign`, registerData)
-        .then((res) => res.data);
-
-      if (userRes?.status === 'success' && userRes?.data) {
-        const user: MyriaUser = {
-          user_id: userRes.data?.userId,
-          wallet_id: userRes.data?.wallet_id
+      // const userRes = await campaignApiClient
+      //   .post(`/users/register-campaign`, registerData)
+      //   .then((res) => res.data);
+      const resRegisterCampaign = await reqRegisterCampaign(registerData)
+      if (resRegisterCampaign?.status === 'success' && resRegisterCampaign?.data) {
+        const user: UserType = {
+          id: resRegisterCampaign.data?.userId,
+          walletAddress: resRegisterCampaign.data?.wallet_id
         };
         toast('Register Campaign success', { type: 'success' });
         return user;
@@ -517,7 +514,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
 
     if (address === undefined) throw new Error('Address cant be empty');
 
-    let userRes: AxiosResponse | null;
+    let userRes: UserType | null;
 
     if (signature) {
       const isCheckFirstTimeUser =
@@ -550,61 +547,32 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         }
       };
       if (!isCheckFirstTimeUser) {
-        await loginAccountWallet();
+        const userID = await loginAccountWallet();
         // Normal users from wallet
-        return campaignApiClient
-          .get(`/users/wallet-address/${address}?campaignId=${campaignId}`)
-          .then((res) => {
-            //User registered campaign
-            if (res.data.data.userCampaign.length > 0) {
-              if (res.data.data.allianceId) {
-                setUserCampaignId(res.data.data.id.toString());
-                userProfileQuery.refetch();
-                return res.data.data;
-              } else {
-                setUserCampaignId(res.data.data.id.toString());
-                return res.data.data;
-              }
-            } else {
-              registerCampaignByWallet(campaignId)
-                .then(() => {
-                  if (res.data.data.allianceId) {
-                    setUserCampaignId(res.data.data.id.toString());
-                    userProfileQuery.refetch();
-                    return res.data.data;
-                  } else {
-                    setUserCampaignId(res.data.data.id.toString());
-                    return res.data.data;
-                  }
-                })
-                .catch(() => { });
+        try {
+          const getUserByWallet = await reqGetUserByWalletAddress(address, campaignId);
+          return getUserByWallet.data
+        } catch (error) {
+          const userNoJoinCampagin = async () => {
+            {
+              //Register user, userbyWallet
+              const userData = userModule.getUserByWalletAddress(address);
+              const dataUserCampaign = await registerUserCampaign(
+                address,
+                userID?.user_id || '',
+                userID?.user_name || '',
+                userID?.email || '',
+                userData
+              );
+              const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign?.id);
+              //Push user to select Alliance
+              setUserCampaignId(dataRegisterCampaign.id.toString());
+              setNextChooseAlliance(true);
+              return dataRegisterCampaign;
             }
-          })
-          .catch(async () => {
-            //No user in campaign
-            //Create user in campaign service
-            const userID = await loginAccountWallet();
-
-            //Register user, userbyWallet
-            const userData = userModule.getUserByWalletAddress(address);
-            const dataUserCampaign = await registerUserCampaign(
-              address,
-              userID?.user_id || '',
-              userID?.user_name || '',
-              userID?.email || '',
-              userData
-            );
-            const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign.data.id);
-
-            //Push user to select Alliance
-            setUserCampaignId(dataRegisterCampaign.user_id.toString());
-            setNextChooseAlliance(true);
-          });
-        // Normal user has registered campaign
-        // getUserInCompaignByWalletAddress in campaign service
-
-        // Normal user has not register campaign
-        // registerCampaignByWallet
+          }
+          userRes = await userNoJoinCampagin();
+        }
       } else {
         // New fresh user
         // Step 1
@@ -623,17 +591,17 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         //Set LocalStorage Local StarkKey and WalletAddress
         setLocalStarkKey(newStarkKey);
         setWalletAddress(address);
-        const signatureData = {
+        const genarteDataSignature = {
           ethAddress: address,
           starkKey: '0x' + newStarkKey
         };
 
         const starkSignature = await commonModule.generateStarkSignatureForRegisterUser(
-          signatureData
+          genarteDataSignature
         );
         const isReferCode = router.query.referCode;
         if (userID) {
-          const registerNewData = {
+          const registerNewData: RegisterUserL2WalletPayload = {
             starkKey: '0x' + newStarkKey,
             walletAddress: address,
             accountId: userID.user_id,
@@ -645,20 +613,24 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           // Step 3
           // Register user in Campaign mutation
           // const user = await registerCampaignByWallet();
-          userRes = await campaignApiClient
-            .post(`/users/l2/wallet`, registerNewData)
-            .then((res) => res);
-          const dataRegisterCampaign = await registerCampaignByWallet(userRes?.data.data.id || '');
+          // userRes = await campaignApiClient
+          //   .post(`/users/l2/wallet`, registerNewData)
+          //   .then((res) => res);
+
+          const resRgisterL2Wallet = await reqRegisterUserL2Wallet(registerNewData)
+          userRes = resRgisterL2Wallet.data
+          //Can chec lai
+          const dataRegisterCampaign = await registerCampaignByWallet(userRes?.id);
           // set user choose alliance
-          setUserCampaignId(dataRegisterCampaign.user_id.toString());
+          setUserCampaignId(dataRegisterCampaign.id.toString());
           // setNextChooseAlliance(true);
         } else {
           userRes = null;
         }
       }
 
-      if (userRes && userRes.status === 201 && userRes.data.data) {
-        const user: UserAirDop = userRes.data.data;
+      if (userRes) {
+        const user: UserType = userRes;
         toast('Login success', { type: 'success' });
         return user;
       } else {
@@ -830,7 +802,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
                   return res.data.data;
                 }
               } else {
-                registerCampaignByWallet(campaignId).then(() => {
+                registerCampaignByWallet(+campaignId).then(() => {
                   if (res.data.data.allianceId) {
                     setUserCampaignId(res.data.data.id.toString());
                     userProfileQuery.refetch();

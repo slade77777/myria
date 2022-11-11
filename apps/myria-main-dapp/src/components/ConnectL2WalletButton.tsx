@@ -128,7 +128,10 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
 
   const showConnectedWallet = React.useMemo(() => {
     // First time registration
-    if (walletAddress && address && (!user || !user?.wallet_id)) {
+    if (walletAddress && address && (!user || !user?.wallet_id) && !isAirDrop) {
+      return true;
+    }
+    if (walletAddress && address && (!userCampaign || !userCampaign?.user.walletAddress) && isAirDrop) {
       return true;
     }
 
@@ -137,12 +140,20 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
       address &&
       user &&
       address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
-      localStarkKey
+      localStarkKey && !isAirDrop
+    ) {
+      return true;
+    }
+
+    if (
+      address &&
+      address?.toLowerCase() === userCampaign?.user.walletAddress?.toLowerCase() &&
+      localStarkKey && isAirDrop
     ) {
       return true;
     }
     return false;
-  }, [address, localStarkKey, user, walletAddress]);
+  }, [address, localStarkKey, user, walletAddress, userCampaign?.user.walletAddress]);
 
   useEffect(() => {
     if (isAirDrop) return;

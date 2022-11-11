@@ -42,23 +42,6 @@ export type Ticket = {
   weekNumber: number;
 };
 
-export type UserAirDop = {
-  availableStars: number;
-  createdAt: string;
-  currentWeekTickets: Ticket[];
-  earnedStars: number;
-  pk: string;
-  referredPurchases: string[];
-  referredUsers: string[];
-  sk: string;
-  tasks: Task[];
-  date_registered?: Date;
-  updatedAt: string;
-  ticketCount: number;
-  ticketPrice: number;
-  walletAddress: string;
-};
-
 export type MyriaUser = {
   user_id: number;
   wallet_id: string;
@@ -93,18 +76,18 @@ export interface MissionProgressType {
 
 export interface UserType {
   id: number;
-  starkKey: string;
-  accountId: null;
+  starkKey?: string;
+  accountId?: null;
   walletAddress: string;
-  email: string;
-  verifiedAt: null;
-  username: string;
-  referrerId: null;
-  allianceId: number;
-  earnedPoints: number;
-  availablePoints: number;
-  createdAt: string;
-  updatedAt: string;
+  email?: string;
+  verifiedAt?: null;
+  username?: string;
+  referrerId?: null;
+  allianceId?: number;
+  earnedPoints?: number;
+  availablePoints?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface CampaignType {
@@ -191,13 +174,8 @@ export interface RegisterUserL2WalletPayload {
   username?: string;
   email?: string;
   referrerId?: number;
-  signature: {
-    r: string;
-    s: string;
-  };
+  signature: SplitSignature | undefined;
 }
-
-export interface RegisterUserL2WalletResponse {}
 
 export interface UserAlliancesResponse {
   id: number;
@@ -215,9 +193,9 @@ export interface MissionCompletePayload {
 }
 
 export interface MissionCompleteResponse {
-  userId: string;
-  campaignId: string;
-  referrerId: null;
+  userId: number;
+  campaignId: number;
+  referrerId: number | null;
   earnedPoints: number;
   availablePoints: number;
   wallet_id: string;
@@ -226,8 +204,8 @@ export interface MissionCompleteResponse {
 }
 
 export interface RegisterCampaignPayload {
-  userId: string;
-  campaignId?: string;
+  userId: number;
+  campaignId?: number;
 }
 
 export interface RegisterCampaignResponse {
