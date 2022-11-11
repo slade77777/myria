@@ -7,7 +7,7 @@ import Input from '../Input';
 import clsx from 'clsx';
 import { Loading } from '../Loading';
 import { useMutation } from 'react-query';
-import apiClient from '../../client';
+import apiClient, { accountApiClient } from '../../client';
 import { toast } from 'react-toastify';
 import { useAuthenticationContext } from '../../context/authentication';
 import axios from 'axios';
@@ -51,20 +51,23 @@ const ProfileSetting = () => {
     reset(account);
   }, [account, reset]);
 
-  const { mutate, isLoading } = useMutation((data: any) => apiClient.put(`/accounts/users`, data), {
-    onSuccess: (res) => {
-      toast('Settings updated', {
-        type: 'success'
-      });
-      accountProfileQuery.refetch();
-    },
-    onError: (err: any) => {
-      const message = err?.response?.data?.errors?.[0]?.detail;
-      toast(message || 'Error, please try later', {
-        type: 'error'
-      });
+  const { mutate, isLoading } = useMutation(
+    (data: any) => accountApiClient.put(`/accounts/users`, data),
+    {
+      onSuccess: (res) => {
+        toast('Settings updated', {
+          type: 'success'
+        });
+        accountProfileQuery.refetch();
+      },
+      onError: (err: any) => {
+        const message = err?.response?.data?.errors?.[0]?.detail;
+        toast(message || 'Error, please try later', {
+          type: 'error'
+        });
+      }
     }
-  });
+  );
 
   const { mutate: deleteAvatar, isLoading: isRemoving } = useMutation(
     (data: any) => apiClient.delete('/accounts/images'),

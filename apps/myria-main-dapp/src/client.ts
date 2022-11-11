@@ -18,10 +18,33 @@ export function mapError(error: AxiosError): IResponseError {
   };
 }
 
-const apiClient = createService(process.env.NEXT_PUBLIC_API_URL);
+// const apiClient = createService(process.env.NEXT_PUBLIC_API_URL);
+//
+// export const noCacheApiClient = createService(process.env.NEXT_PUBLIC_API_URL, {
+//   'Cache-Control': 'no-cache'
+// });
 
-export const noCacheApiClient = createService(process.env.NEXT_PUBLIC_API_URL, {
-  'Cache-Control': 'no-cache'
+export const accountApiClient = createService(process.env.NEXT_PUBLIC_API_URL);
+
+const apiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  timeout,
+  headers: {
+    accept: 'application/json',
+    'Content-type': 'application/json'
+  },
+  withCredentials: true
+});
+
+export const noCacheApiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  timeout,
+  headers: {
+    accept: 'application/json',
+    'Content-type': 'application/json',
+    'Cache-Control': 'no-cache'
+  },
+  withCredentials: true
 });
 
 export const salesforceAPIClient = axios.create({
