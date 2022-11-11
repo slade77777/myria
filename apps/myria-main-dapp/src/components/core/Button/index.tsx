@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import { Loading } from 'src/components/Loading';
 
@@ -7,13 +8,14 @@ interface Props
     HTMLButtonElement
   > {
   loading?: boolean;
+  pandingRight?: string
 }
 
-function Button({ loading = false, children, disabled, ...rest }: Props) {
+function Button({ loading = false, children, disabled, pandingRight = 'pr-2', ...rest }: Props) {
   return (
     <button {...rest} disabled={disabled || loading}>
       {children}
-      {loading && <Loading loadingSize={16} className="px-2" />}
+      {loading && <Loading loadingSize={16} className={clsx(`pl-2 ${pandingRight}`)} />}
     </button>
   );
 }
