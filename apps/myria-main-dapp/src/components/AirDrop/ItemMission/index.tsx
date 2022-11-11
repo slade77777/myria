@@ -71,7 +71,6 @@ const initMissionPanel = {
 const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
   const { userCampaign } = useAuthenticationContext();
 
-  const isLocked = status === STATUS_MISSION.LOCKED && id !== utilTaskId.verifyEmail;
   const enableClick =
     status === STATUS_MISSION.AVAILABLE ||
     (id === utilTaskId.verifyEmail && status !== STATUS_MISSION.COMPLETED);
@@ -88,7 +87,7 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
       className={clsx(
         `relative`,
         `${id === utilTaskId.verifyEmail ? 'z-[2]' : 'z-[1]'}`,
-        `${isLocked ? 'opacity-50' : 'opacity-100'}`
+        `${enableClick ? 'opacity-100' : 'opacity-30'}`
       )}>
       <div className="absolute -left-1 -bottom-1 z-[-1]">
         <SubtractBottom />
