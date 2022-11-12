@@ -205,8 +205,19 @@ function HistoryTab({
           return 'NFT Purchase';
         }
       }
-      if (!item.name && item.type === TRANSACTION_TYPE.WITHDRAWAL) {
+      if (
+        !item.name &&
+        item.type === TRANSACTION_TYPE.WITHDRAWAL &&
+        (item.tokenType === 'MINTABLE_ERC721' || item.tokenType === 'ERC721')
+      ) {
         return 'NFT Withdraw';
+      }
+      if (
+        !item.name &&
+        item.type === TRANSACTION_TYPE.WITHDRAWAL &&
+        (item.tokenType === 'MINTABLE_ERC20' || item.tokenType === 'ERC20')
+      ) {
+        return 'Token ERC20 Withdraw';
       }
       if (item.type === TRANSACTION_TYPE.ROYALTYTRANSFER) {
         return 'Creator Earnings';
