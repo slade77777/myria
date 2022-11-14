@@ -228,7 +228,7 @@ const Sigil = ({
             isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
-            className="text-white text-[14px] font-normal leading-[21px]"
+            className="text-[14px] font-normal leading-[21px] text-white"
             style={{ textShadow: '0px 0px 10px rgba(255, 255, 255, 0.2)' }}>
             {desc}
           </span>
@@ -323,8 +323,8 @@ const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
 
   if (!data) {
     return (
-      <div className="flex justify-center">
-        <Loading />
+      <div className="flex h-[100vh] justify-center">
+        <Loading className="justify-center" />
       </div>
     );
   }
