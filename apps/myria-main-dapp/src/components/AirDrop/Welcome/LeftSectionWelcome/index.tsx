@@ -51,7 +51,7 @@ const LeftSectionWelcome: React.FC<IProp> = ({
     }
     if (setCurrentStep && userCampaign) {
       // check Selected Alliance from user
-      setCurrentStep(2); // set Step to federatiton
+      setCurrentStep(3); // set Step to federatiton
       return;
     }
   }, [address, onNext, userProfileQuery, nextChooseAlliance]);

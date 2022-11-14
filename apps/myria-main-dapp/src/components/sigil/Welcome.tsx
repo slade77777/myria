@@ -68,7 +68,7 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
       }
       if (setCurrentStep && isAirDrop && userCampaign) {
         // check Selected Alliance from user
-        setCurrentStep(2); // set Step to federatiton
+        setCurrentStep(3); // set Step to federatiton
         return;
       }
     } else {
