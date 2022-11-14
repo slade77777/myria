@@ -268,7 +268,7 @@ const Nodes: React.FC = () => {
                       {!nodeLoading && !nodesLoading && (
                         <Link href={purchaseLink}>
                           <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
-                            <Trans>{totalNodes > 0 ? 'View My Nodes' : 'Purchase Now'}</Trans>
+                            <Trans>{totalNodes > 0 ? 'View Dashboard' : 'Buy nodes'}</Trans>
                           </div>
                         </Link>
                       )}
