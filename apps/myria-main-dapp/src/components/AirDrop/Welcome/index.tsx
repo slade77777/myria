@@ -129,7 +129,7 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
             {
                 content ?
                     (
-                        <div className="mx-auto max-w-[408px] pt-[213px] text-center">
+                        <div className="mx-auto max-w-[408px] text-center h-[50vh] pt-20 flex flex-col justify-end">
                             {content && <h1 className="text-[28px] font-bold leading-[1.2]">{content.title}</h1>}
                             {(address || !isSupportedBrowser) && content && (
                                 <p className="text-light mt-8 text-[16px] leading-[1.5]">{content.message}</p>
@@ -145,8 +145,8 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep }) => {
                         </div>
                     ) :
                     (
-                        <div className="mx-auto max-w-[1110px] px-6 pt-[213px]">
-                            <div className={clsx(`flex justify-between items-center`)}>
+                        <div className="mx-auto max-w-[1110px] px-6">
+                            <div className="flex justify-between items-center h-[100vh] m-auto">
                                 <LeftSectionWelcome
                                     address={address || ''}
                                     installedWallet={installedWallet}

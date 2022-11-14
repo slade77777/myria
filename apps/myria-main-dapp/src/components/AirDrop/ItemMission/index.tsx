@@ -4,13 +4,14 @@ import { useRouter } from 'next/router';
 import SubtractBottom from 'src/components/icons/SubtractBottom';
 import SubtractTop from 'src/components/icons/SubtractTop';
 import { useAuthenticationContext } from 'src/context/authentication';
-import { campaignCode, utilTaskId } from 'src/utils';
+import { campaignCode, REPETION_TYPE, utilTaskId } from 'src/utils';
 import ButtonMission, { STATUS_MISSION } from './ButtonMission';
 import { ImissionProgress } from 'src/context/authentication';
 import { reqRewardClaimDiscord } from 'src/services/campaignService';
 import { RewardClaimDiscordPayload } from 'src/types/campaign';
 import { errorCode } from 'src/errorCode';
 import { toast } from 'react-toastify';
+import HistoryIcon from 'src/components/icons/HistoryIcon';
 interface IProp {
   status: string;
   item: ImissionProgress;
@@ -20,7 +21,7 @@ interface IProp {
 const initMissionPanel = {
   [utilTaskId.verifyEmail]: {
     name: utilTaskId.verifyEmail,
-    initFunction: () => {}
+    initFunction: () => { }
   },
   [utilTaskId.joinDiscord]: {
     name: utilTaskId.joinDiscord,
@@ -44,27 +45,27 @@ const initMissionPanel = {
   },
   [utilTaskId.followMyriaTwitter]: {
     name: utilTaskId.followMyriaTwitter,
-    initFunction: (homePage: string) => {}
+    initFunction: (homePage: string) => { }
   },
   [utilTaskId.followBrendanTwitter]: {
     name: utilTaskId.followBrendanTwitter,
-    initFunction: (homePage: string) => {}
+    initFunction: (homePage: string) => { }
   },
   [utilTaskId.inviteFriends]: {
     name: utilTaskId.inviteFriends,
-    initFunction: (homePage?: string) => {}
+    initFunction: (homePage?: string) => { }
   },
   [utilTaskId.dailyLogAndPostDiscord]: {
     name: utilTaskId.dailyLogAndPostDiscord,
-    initFunction: () => {}
+    initFunction: () => { }
   },
   [utilTaskId.sharePostTwitter]: {
     name: utilTaskId.sharePostTwitter,
-    initFunction: async () => {}
+    initFunction: async () => { }
   },
   [utilTaskId.reachLevelDiscord]: {
     name: utilTaskId.reachLevelDiscord,
-    initFunction: (homePage: string) => {}
+    initFunction: (homePage: string) => { }
   }
 };
 
@@ -106,10 +107,11 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
         </div>
         <div className="text-center">
           <ButtonMission status={status} item={item} id={id} enableClick={enableClick} />
-          {item.earnedPoints > 0 && (
-            <p className="text-light mt-4 text-xs font-medium">
-              EARNED {item.earnedPoints} POINTS{' '}
-            </p>
+          {item.missionCampaign.repetitionType !== REPETION_TYPE.ONCE as string && (
+            <div className="text-light mt-4 text-xs font-medium justify-center flex items-center ">
+              <HistoryIcon className='mr-1' width={20} height={18} />
+              <span>{item.earnedPoints} POINTS EARNED</span>
+            </div>
           )}
         </div>
       </div>

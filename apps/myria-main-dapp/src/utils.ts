@@ -293,3 +293,9 @@ export const REWARD_STATUS = {
   AVAILABLE: 'AVAILABLE',
   CLAIMED: 'CLAIMED'
 };
+
+export const REPETION_TYPE = {
+  ONCE: 'ONCE',
+  UNLIMITED: 'UNLIMITED',
+  DAILY: 'DAILY'
+};
