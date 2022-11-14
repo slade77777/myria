@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from 'react-query';
-import { accountApiClient, noCacheApiClient } from '../client';
+import { accountApiClient } from '../client';
 
 export type NodePurchase = {
   alreadyPurchasedCount: number;

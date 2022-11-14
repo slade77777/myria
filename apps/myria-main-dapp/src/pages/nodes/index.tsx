@@ -1,6 +1,6 @@
 import { t, Trans } from '@lingui/macro';
 import clsx from 'clsx';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Subscribe from 'src/components/Subscribe';
 import CardWithIcon from 'src/components/CardWithIcon';
 import Collapse from 'src/components/Collapse';
@@ -187,24 +187,22 @@ const Nodes: React.FC = () => {
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const { installedWallet } = useInstalledWallet();
   const { connectL2Wallet } = useL2WalletContext();
-  const { isLoading: nodeLoading } = useNodePurchase();
-  const { data: userNodes, isLoading: nodesLoading } = useUserNodes();
-  const { data: nodesLicense } = useNodeLicense();
+  const {
+    data: nodesLicense,
+    isLoading: nodeLoading,
+    refetch: refetchNodeLicense
+  } = useNodeLicense();
 
   const onConnectWallet = async () => {
     event('Connect Wallet Selected', { campaign: 'Nodes' });
     await onConnectCompaign('B2C Marketplace');
     await connectL2Wallet();
-    if (loginByWalletMutation.isError) {
-      loginByWalletMutation.mutate();
-    }
+    loginByWalletMutation.mutate();
   };
 
-  const showConnectedWallet = React.useMemo(() => {
-    if (walletAddress && address && (!user || !user?.wallet_id)) {
-      return true;
-    }
+  const isWalletConnected = React.useMemo(() => {
     if (
+      walletAddress &&
       address &&
       user &&
       address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
@@ -212,31 +210,24 @@ const Nodes: React.FC = () => {
     ) {
       return true;
     }
+
     return false;
   }, [address, localStarkKey, user, walletAddress]);
+
+  useEffect(() => {
+    if (loginByWalletMutation.isSuccess) {
+      refetchNodeLicense();
+    }
+  }, [loginByWalletMutation.isSuccess, refetchNodeLicense]);
 
   const totalNodes = nodesLicense?.length || 0;
 
   const purchaseLink = useMemo(() => {
-    const hasPendingTransaction = userNodes.find(
-      (transaction) => transaction.purchaseStatus === 'PENDING'
-    );
-    const hasSuccessTransaction = userNodes.find(
-      (transaction) => transaction.purchaseStatus === 'SUCCESSFUL'
-    );
-    const showSuccess =
-      typeof window !== 'undefined' ? localStorage.getItem('showSuccess') : 'false';
-    if (hasPendingTransaction) {
-      return '/nodes/purchase-pending?tx=' + hasPendingTransaction.txHash;
-    }
-    if (hasSuccessTransaction && showSuccess === 'true') {
-      return '/nodes/purchase-complete';
-    }
     if (totalNodes > 0) {
       return '/nodes/dashboard';
     }
     return '/nodes/purchase';
-  }, [totalNodes, userNodes]);
+  }, [totalNodes]);
 
   return (
     <Page action="start-building">
@@ -260,12 +251,9 @@ const Nodes: React.FC = () => {
               </p>
               {installedWallet && (
                 <div>
-                  {!loginByWalletMutation.isError &&
-                  !loginByWalletMutation.isLoading &&
-                  walletAddress &&
-                  showConnectedWallet ? (
+                  {isWalletConnected ? (
                     <div>
-                      {!nodeLoading && !nodesLoading && (
+                      {!nodeLoading && (
                         <Link href={purchaseLink}>
                           <div className="btn-lg btn-primary mt-[38px] cursor-pointer">
                             <Trans>{totalNodes > 0 ? 'View Dashboard' : 'Buy nodes'}</Trans>

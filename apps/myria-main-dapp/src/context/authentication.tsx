@@ -28,6 +28,7 @@ import { toast } from 'react-toastify';
 import { AllianceName } from 'src/types/sigil';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { RegisterUserL2WalletPayload, UserType } from 'src/types/campaign';
+import { MyriaUser, RegisterData, UserAirDop } from 'src/types/campaign';
 import { useAirdropCampaign } from './campaignContext';
 import { UserData } from 'myria-core-sdk/dist/types';
 import { useRouter } from 'next/router';
@@ -332,7 +333,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         login: loginData?.email,
         password: loginData?.password
       };
-      return await apiClient.post(`/accounts/login`, body);
+      return await accountApiClient.post(`/accounts/login`, body);
     },
     {
       onSuccess: (res) => {
@@ -366,7 +367,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         password: registerData?.password,
         email: registerData?.email
       };
-      return await apiClient.post(`/accounts/link`, body);
+      return await accountApiClient.post(`/accounts/link`, body);
     },
     {
       onSuccess: (res) => {
@@ -390,7 +391,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
 
   const { isLoading: isPostingForgotPassword, mutate: postForgotPassword } = useMutation(
     async () => {
-      return await apiClient.post(`/accounts/forgotPassword`, forgotPasswordData);
+      return await accountApiClient.post(`/accounts/forgotPassword`, forgotPasswordData);
     },
     {
       onSuccess: (res) => {
@@ -412,7 +413,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         signature,
         message
       };
-      const userRes = await apiClient
+      const userRes = await accountApiClient
         .post(`/accounts/register/wallet`, registerData)
         .then((res) => res.data);
 
@@ -534,7 +535,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
             signature,
             message
           };
-          const userRes = await apiClient
+          const userRes = await accountApiClient
             .post(`/accounts/login/wallet`, registerData)
             .then((res) => res.data);
 
@@ -650,7 +651,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
 
   const { isLoading: isPostingResetPassword, mutate: postResetPassword } = useMutation(
     async () => {
-      return await apiClient.post(`/accounts/resetPassword`, resetPasswordData);
+      return await accountApiClient.post(`/accounts/resetPassword`, resetPasswordData);
     },
     {
       onSuccess: (res) => {

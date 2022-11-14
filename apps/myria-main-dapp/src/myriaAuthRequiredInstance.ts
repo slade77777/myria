@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-const timeout = 60000;
 import get from 'lodash/get';
 import { web3Modal } from './context/wallet';
 import { localStorageKeys } from './configs';
-import apiClient from './client';
+
+const timeout = 60000;
 
 export const createService = (baseURL?: string, headers?: object): AxiosInstance => {
   return interceptAuth(baseConfig(baseURL, headers));
@@ -15,6 +15,7 @@ const baseConfig = (baseURL?: string, headers?: object) => {
     headers: {
       'Accept-Language': 'en-US',
       'Content-type': 'application/json',
+      'Cache-Control': 'no-cache',
       ...headers
     },
     withCredentials: true,
@@ -35,7 +36,7 @@ const interceptAuth = (config: AxiosRequestConfig) => {
         const refreshToken = localStorage.getItem(localStorageKeys.refreshToken);
         if (refreshToken) {
           try {
-            await apiClient.get('/accounts/token', { headers: { refresh_token: refreshToken } });
+            await instance.get('/accounts/token', { headers: { refresh_token: refreshToken } });
             return instance(prevRequest);
           } catch (e) {
             logout();
