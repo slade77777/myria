@@ -9,6 +9,7 @@ import useNodeLicense from '../../../hooks/useNodeLicense';
 import clsx from 'clsx';
 import NodesModal from '../../../components/nodes/dashboard/NodesModal';
 import SemiCircleBar from '../../../components/nodes/dashboard/SemiCircleBar';
+import { useRouter } from 'next/router';
 
 const nodesProgress = [
   {
@@ -68,6 +69,7 @@ const nodesProgress = [
 ];
 
 const Dashboard = () => {
+  const router = useRouter();
   const { data } = useNodeLicense();
   const [showFullNode, setShowNode] = useState(false);
 
@@ -188,7 +190,9 @@ const Dashboard = () => {
               <p className="text-brand-light-blue text-[20px] font-medium leading-[1.25]">
                 <Trans>Maximise your network</Trans>
               </p>
-              <button className="btn-lg btn-white mt-6">
+              <button 
+                onClick={() => router.push('/nodes/purchase') }
+                className="btn-lg btn-white mt-6">
                 <Trans>GET MORE LICENSES</Trans>
               </button>
             </div>

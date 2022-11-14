@@ -21,7 +21,6 @@ const menus = [
     label: <Trans>Get Started</Trans>,
     path: '/nodes/dashboard/get-started'
   },
-
   {
     icon: <DashboardIcon />,
     label: <Trans>Dashboard</Trans>,
