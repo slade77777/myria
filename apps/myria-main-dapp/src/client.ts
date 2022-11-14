@@ -1,4 +1,4 @@
-import { createService } from './axios';
+import { createService } from './myriaAuthRequiredInstance';
 
 const Klaviyo = require('node-klaviyo');
 

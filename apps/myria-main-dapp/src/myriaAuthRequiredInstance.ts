@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+const timeout = 60000;
 import get from 'lodash/get';
 import { web3Modal } from './context/wallet';
 import { localStorageKeys } from './configs';
-
-const timeout = 60000;
+import apiClient from './client';
 
 export const createService = (baseURL?: string, headers?: object): AxiosInstance => {
   return interceptAuth(baseConfig(baseURL, headers));
@@ -15,7 +15,6 @@ const baseConfig = (baseURL?: string, headers?: object) => {
     headers: {
       'Accept-Language': 'en-US',
       'Content-type': 'application/json',
-      'Cache-Control': 'no-cache',
       ...headers
     },
     withCredentials: true,
@@ -36,14 +35,14 @@ const interceptAuth = (config: AxiosRequestConfig) => {
         const refreshToken = localStorage.getItem(localStorageKeys.refreshToken);
         if (refreshToken) {
           try {
-            await instance.get('/accounts/token');
+            await apiClient.get('/accounts/token', { headers: { refresh_token: refreshToken } });
             return instance(prevRequest);
           } catch (e) {
-            clearStorage();
+            logout();
             throw new Error('Cannot refresh token');
           }
         } else {
-          clearStorage();
+          logout();
         }
       }
       return Promise.reject(get(error, 'response.data.message') || get(error, 'message'));
@@ -52,10 +51,12 @@ const interceptAuth = (config: AxiosRequestConfig) => {
   return instance;
 };
 
-export function clearStorage() {
-  web3Modal?.clearCachedProvider();
-  localStorage.removeItem(localStorageKeys.walletAddress);
-  localStorage.removeItem(localStorageKeys.starkKey);
-  localStorage.removeItem(localStorageKeys.userCampaignId);
-  localStorage.removeItem(localStorageKeys.refreshToken);
+function logout() {
+  if (localStorage?.getItem(localStorageKeys.walletAddress)) {
+    web3Modal?.clearCachedProvider();
+    localStorage.removeItem(localStorageKeys.walletAddress);
+    localStorage.removeItem(localStorageKeys.starkKey);
+    localStorage.removeItem(localStorageKeys.userCampaignId);
+    localStorage.removeItem(localStorageKeys.refreshToken);
+  }
 }
