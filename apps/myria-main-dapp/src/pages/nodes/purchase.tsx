@@ -45,9 +45,6 @@ const Purchase: React.FC = () => {
       } else if (!account?.normalized_email) {
         setShowWarning(true);
         setWarningType('not-email');
-      } else if (error?.status === 403) {
-        setShowWarning(true);
-        setWarningType('not-whitelist');
       }
     }
   }, [account, accountProfileQuery.isFetching, error?.status]);

@@ -46,6 +46,24 @@ const nodesProgress = [
     percent: 90,
     time: '01:00:12',
     active: false
+  },
+  {
+    name: 'My node dg34g3',
+    percent: 90,
+    time: '01:00:12',
+    active: false
+  },
+  {
+    name: 'My node dg34g3',
+    percent: 90,
+    time: '01:00:12',
+    active: false
+  },
+  {
+    name: 'My node dg34g3',
+    percent: 90,
+    time: '01:00:12',
+    active: false
   }
 ];
 
@@ -108,37 +126,41 @@ const Dashboard = () => {
                 <p className="text-center font-bold text-black">TURN ON ALL NODES</p>
               </div>
             </div>
-            {nodesProgress.map((node, i) => (
-              <div key={i} className="mt-4 flex w-full flex-row items-center gap-4">
-                <div
-                  className={clsx(
-                    'h-6 w-6 flex items-center justify-center rounded-full',
-                    node.active ? 'bg-success/2' : ''
-                  )}>
+            <div className="max-h-52 overflow-y-auto pr-4">
+              {nodesProgress.map((node, i) => (
+                <div key={i} className="mt-4 flex w-full flex-row items-center gap-4">
                   <div
                     className={clsx(
-                      'rounded-full w-3 h-3',
-                      node.active ? 'bg-success/8' : 'bg-gray/5'
-                    )}
-                  />
-                </div>
-                <NodeIcon className={clsx('h-4 w-4', node.active ? 'text-white' : 'text-gray/5')} />
-                <span className={clsx('w-40', node.active ? 'text-white' : 'text-gray/5')}>
-                  {node.name}
-                </span>
-                <div className="bg-base/2 h-2 w-1/2 rounded-[4px]">
-                  {node?.active && (
+                      'h-6 w-6 flex items-center justify-center rounded-full',
+                      node.active ? 'bg-success/2' : ''
+                    )}>
                     <div
-                      className="bg-blue/6 h-2 rounded-[4px]"
-                      style={{ width: `${node.percent}%` }}
+                      className={clsx(
+                        'rounded-full w-3 h-3',
+                        node.active ? 'bg-success/8' : 'bg-gray/5'
+                      )}
                     />
-                  )}
+                  </div>
+                  <NodeIcon
+                    className={clsx('h-4 w-4', node.active ? 'text-white' : 'text-gray/5')}
+                  />
+                  <span className={clsx('w-40', node.active ? 'text-white' : 'text-gray/5')}>
+                    {node.name}
+                  </span>
+                  <div className="bg-base/2 h-2 w-1/2 rounded-[4px]">
+                    {node?.active && (
+                      <div
+                        className="bg-blue/6 h-2 rounded-[4px]"
+                        style={{ width: `${node.percent}%` }}
+                      />
+                    )}
+                  </div>
+                  <p className={clsx('text-right', node.active ? 'text-white' : 'text-gray/5')}>
+                    {node.active ? node.time : '--:--:--'}
+                  </p>
                 </div>
-                <p className={clsx('text-right', node.active ? 'text-white' : 'text-gray/5')}>
-                  {node.active ? node.time : '--:--:--'}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
         <div className="w-1/3">

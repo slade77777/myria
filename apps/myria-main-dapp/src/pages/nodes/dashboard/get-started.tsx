@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NodeIcon from '../../../components/icons/NodeIcon';
 import AppleIcon from '../../../components/icons/node/AppleIcon';
 import WindowIcon from '../../../components/icons/node/WindowIcon';
@@ -6,12 +6,15 @@ import LinuxIcon from '../../../components/icons/node/LinuxIcon';
 import SupportIcon from '../../../components/icons/SupportIcon';
 import useNodeLicense from '../../../hooks/useNodeLicense';
 import NodeLayout from '../../../components/nodes/dashboard/NodeLayout';
+import NodesModal from '../../../components/nodes/dashboard/NodesModal';
 
 const Node = () => {
   const { data } = useNodeLicense();
+  const [showFullNode, setShowNode] = useState(false);
 
   return (
     <NodeLayout>
+      <NodesModal open={showFullNode} onClose={() => setShowNode(false)} />
       <p className="text-3xl text-white">Setup Myria Node</p>
       <div className="bg-base/3 border-base/5 mt-6 flex w-fit flex-row items-center gap-4 rounded-xl border-2 py-4 pl-6 pr-12">
         <div className="bg-blue/6 flex h-8 w-8 items-center justify-center rounded-full">
@@ -31,7 +34,7 @@ const Node = () => {
           </p>
           <div
             className="bg-primary/6 rounded-xl py-4 px-8 my-8 w-fit cursor-pointer"
-            onClick={() => {}}>
+            onClick={() => setShowNode(true)}>
             <p className="font-bold text-black">GET STARTED</p>
           </div>
           <div className="flex flex-row gap-4 mt-12">
