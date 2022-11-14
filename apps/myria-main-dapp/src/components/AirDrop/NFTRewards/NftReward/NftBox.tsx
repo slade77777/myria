@@ -1,7 +1,9 @@
+import clsx from 'clsx';
 import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Button from 'src/components/core/Button';
 import { soundService, SUPPORT_SOUND } from 'src/sound';
+import { rewardsDefaultImg, REWARD_IMG_DEFAULT, REWARD_STATUS } from 'src/utils';
 import style from './style.module.scss';
 
 interface Props {
@@ -17,6 +19,7 @@ interface Props {
   containerClassname?: string;
   isMyVault?: boolean;
   isDisablePoint?: boolean;
+  rewardStatus?: string
 }
 
 export function NftBox({
@@ -31,10 +34,12 @@ export function NftBox({
   disableClaimingAnimation,
   containerClassname,
   isMyVault = false,
-  isDisablePoint = false
+  isDisablePoint = false,
+  rewardStatus = "CLAIMED"
 }: Props) {
   const animationRef = React.useRef<HTMLDivElement>(null);
   const [isClaiming, setIsClaiming] = React.useState(false);
+
   const option = React.useMemo(() => {
     // default
     let borderColor = '#162B39';
@@ -154,9 +159,8 @@ export function NftBox({
         </div>
       </div>
       <div
-        className={`relative flex h-full w-full flex-col items-center  rounded-xl bg-base/3 px-1 pt-6 pb-6 ${
-          isBlur ? 'opacity-50' : ''
-        } ${isNextReward && style.nextRewardBox}`}
+        className={`relative flex h-full w-full flex-col items-center  rounded-xl bg-base/3 px-1 pt-6 pb-6 ${isBlur ? 'opacity-50' : ''
+          } ${isNextReward && style.nextRewardBox}`}
         style={{
           border: `1px solid ${option.borderColor}`
         }}>
@@ -166,14 +170,14 @@ export function NftBox({
         <div className="flex max-w-[96px] items-center justify-center">
           <img width="auto" height="100%" src={imageUrl} alt="" />
         </div>
-        <p className="text-xs font-medium text-white mt-6 mb-4">{titleText}</p>
+        <p className={clsx(`text-xs font-medium text-white mb-4 ${imageUrl === rewardsDefaultImg && 'mt-6'}`)}>{titleText}</p>
       </div>
       <Button
         loading={isClaiming}
         onClick={() => handleClaim()}
-        className={`flex absolute bottom-6 right-2/4 translate-x-2/4 transform items-center justify-center h-6 w-fit rounded-[4px] px-[10px] py-[6px] text-xs font-bold transition-all ${
-          option.buttonClass
-        } ${isMyVault ? 'opacity-50 font-medium text-light' : ''}
+        className={`flex absolute bottom-6 right-2/4 translate-x-2/4 transform items-center justify-center h-6 w-fit rounded-[4px] px-[10px] py-[6px] text-xs 
+          ${rewardStatus === REWARD_STATUS.LOCKED ? 'font-medium' : rewardStatus === REWARD_STATUS.CLAIMED ? (isMyVault ? 'font-medium' : 'font-normal') : 'font-bold'}
+          transition-all ${option.buttonClass} ${isMyVault ? 'opacity-50 font-medium text-light' : ''}
           ${isDisablePoint ? 'opacity-50' : ''}`}>
         {!isClaiming && buttonText}
       </Button>

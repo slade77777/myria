@@ -294,6 +294,18 @@ export const REWARD_STATUS = {
   CLAIMED: 'CLAIMED'
 };
 
+export const REWARD_IMG_DEFAULT = {
+  default: '/images/Common.png',
+  commonKey: '/images/Federation_Common_Key.svg',
+  rareFragmentKey1: '/images/Federation_Rare_Fragment_1.svg',
+  rareFragmentKey2: '/images/Federation_Rare_Fragment_2.svg',
+  ultraRareFragmentKey1: '/images/Federation_Ultra_fragment_1.svg',
+  ultraRareFragmentKey2: '/images/Federation_Ultra_fragment_2.svg',
+  ultraRareFragmentKey3: '/images/Federation_Ultra_fragment_3.svg'
+};
+
+export const rewardsDefaultImg = '/images/Common.png';
+
 export const REPETION_TYPE = {
   ONCE: 'ONCE',
   UNLIMITED: 'UNLIMITED',

@@ -1,7 +1,8 @@
 import clsx from 'clsx';
+import lodash from 'lodash';
 import { useAuthenticationContext } from 'src/context/authentication';
 import { RewardType } from 'src/types/campaign';
-import { REWARD_STATUS } from 'src/utils';
+import { REWARD_IMG_DEFAULT, REWARD_STATUS } from 'src/utils';
 import { NftBox } from '../NFTRewards/NftReward';
 
 export const MyVaultComponent = () => {
@@ -29,11 +30,12 @@ export const MyVaultComponent = () => {
           'flex gap-6 items-start justify-start flex-wrap py-3 overflow-auto h-[calc(100%-102px-32px)]'
         )}>
         {myVaultNFTClaimed && myVaultNFTClaimed?.length > 0 ? (
-          myVaultNFTClaimed.map((reward: RewardType) => {
+          myVaultNFTClaimed.map((reward: RewardType, index: number) => {
+            const nameImgObj: keyof typeof REWARD_IMG_DEFAULT = (lodash.camelCase(reward.name)) as keyof typeof REWARD_IMG_DEFAULT;
             return (
               <NftBox
                 key={reward.id}
-                imageUrl={reward.imageUrl || '/images/Common.png'}
+                imageUrl={reward.imageUrl || REWARD_IMG_DEFAULT[nameImgObj]}
                 titleText={reward.name}
                 buttonText={REWARD_STATUS.CLAIMED}
                 containerClassname="mr-6"
