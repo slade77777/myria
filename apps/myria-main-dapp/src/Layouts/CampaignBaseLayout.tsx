@@ -19,7 +19,7 @@ interface Props {
 }
 
 const CamPaignBaseLayout: React.FC<Props> = ({ children, currentStep, setCurrentStep }) => {
-  const { userProfileQuery, userCampaign } = useAuthenticationContext();
+  const { userProfileQuery, firstCheckUserCampaign, userCampaign } = useAuthenticationContext();
   const { address } = useWalletContext();
   const [userCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
@@ -42,6 +42,8 @@ const CamPaignBaseLayout: React.FC<Props> = ({ children, currentStep, setCurrent
       //Set User To Welcome when have address wallet starkkey but not userCampaign waiting 2s after call API or set UserCampaign Id
     } else if (address && walletAddress && starkKey && !userCampaign) {
       clearTimeOut = setTimeout(() => {
+        if ((userProfileQuery.isFetching || firstCheckUserCampaign.isFetching) && !userCampaign)
+          return clearTimeOut;
         setCurrentStep(1);
       }, 2000);
     }
