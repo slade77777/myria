@@ -31,7 +31,12 @@ import { RegisterUserL2WalletPayload, UserType } from 'src/types/campaign';
 import { useAirdropCampaign } from './campaignContext';
 import { UserData } from 'myria-core-sdk/dist/types';
 import { useRouter } from 'next/router';
-import { reqGetUserByWalletAddress, reqRegisterCampaign, reqRegisterUserCampaign, reqRegisterUserL2Wallet } from 'src/services/campaignService';
+import {
+  reqGetUserByWalletAddress,
+  reqRegisterCampaign,
+  reqRegisterUserCampaign,
+  reqRegisterUserL2Wallet
+} from 'src/services/campaignService';
 
 export interface User {
   user_id: string;
@@ -344,7 +349,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   const logoutMutation = useMutation(async () => {
     try {
       await apiClient.post(`/accounts/logout`);
-    } catch (err) { }
+    } catch (err) {}
     window.location.reload();
   });
 
@@ -438,8 +443,8 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
       username: username || undefined,
       email: email || undefined
     };
-    const result = await reqRegisterUserCampaign(reqUserData)
-    return result.data
+    const result = await reqRegisterUserCampaign(reqUserData);
+    return result.data;
     // return await campaignApiClient.post(`/users`, reqUserData).then((res) => res.data);
   };
 
@@ -454,7 +459,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
       // const userRes = await campaignApiClient
       //   .post(`/users/register-campaign`, registerData)
       //   .then((res) => res.data);
-      const resRegisterCampaign = await reqRegisterCampaign(registerData)
+      const resRegisterCampaign = await reqRegisterCampaign(registerData);
       if (resRegisterCampaign?.status === 'success' && resRegisterCampaign?.data) {
         const user: UserType = {
           id: resRegisterCampaign.data?.userId,
@@ -551,7 +556,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         // Normal users from wallet
         try {
           const getUserByWallet = await reqGetUserByWalletAddress(address, campaignId);
-          return getUserByWallet.data
+          return getUserByWallet.data;
         } catch (error) {
           const userNoJoinCampagin = async () => {
             {
@@ -565,12 +570,11 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
                 userData
               );
               const dataRegisterCampaign = await registerCampaignByWallet(dataUserCampaign?.id);
-              //Push user to select Alliance
+              //RegisterCampaign waiting user select checkbox
               setUserCampaignId(dataRegisterCampaign.id.toString());
-              setNextChooseAlliance(true);
               return dataRegisterCampaign;
             }
-          }
+          };
           userRes = await userNoJoinCampagin();
         }
       } else {
@@ -617,8 +621,8 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           //   .post(`/users/l2/wallet`, registerNewData)
           //   .then((res) => res);
 
-          const resRgisterL2Wallet = await reqRegisterUserL2Wallet(registerNewData)
-          userRes = resRgisterL2Wallet.data
+          const resRgisterL2Wallet = await reqRegisterUserL2Wallet(registerNewData);
+          userRes = resRgisterL2Wallet.data;
           //Can chec lai
           const dataRegisterCampaign = await registerCampaignByWallet(userRes?.id);
           // set user choose alliance
@@ -783,26 +787,25 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
     { retry: 1 }
   );
 
-  const firstCheckUserCampaign = useQuery(
-    'firstCheckUserCampaign',
-    () => {
-      if (!userCampaignId) {
-        if (campaignId && walletAddress) {
-          return campaignApiClient
-            .get(`/users/wallet-address/${address}?campaignId=${campaignId}`)
-            .then((res) => {
-              //User registered campaign
-              if (res.data.data.userCampaign.length > 0) {
-                if (res.data.data.allianceId) {
-                  setUserCampaignId(res.data.data.id.toString());
-                  userProfileQuery.refetch();
-                  return res.data.data;
-                } else {
-                  setUserCampaignId(res.data.data.id.toString());
-                  return res.data.data;
-                }
+  const firstCheckUserCampaign = useQuery('firstCheckUserCampaign', () => {
+    if (!userCampaignId) {
+      if (campaignId && walletAddress) {
+        return campaignApiClient
+          .get(`/users/wallet-address/${address}?campaignId=${campaignId}`)
+          .then((res) => {
+            //User registered campaign
+            if (res.data.data.userCampaign.length > 0) {
+              if (res.data.data.allianceId) {
+                setUserCampaignId(res.data.data.id.toString());
+                userProfileQuery.refetch();
+                return res.data.data;
               } else {
-                registerCampaignByWallet(+campaignId).then(() => {
+                setUserCampaignId(res.data.data.id.toString());
+                return res.data.data;
+              }
+            } else {
+              registerCampaignByWallet(+campaignId)
+                .then(() => {
                   if (res.data.data.allianceId) {
                     setUserCampaignId(res.data.data.id.toString());
                     userProfileQuery.refetch();
@@ -811,15 +814,13 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
                     setUserCampaignId(res.data.data.id.toString());
                     return res.data.data;
                   }
-                }).catch(() => {
-
-                });
-              }
-            })
-        }
+                })
+                .catch(() => {});
+            }
+          });
       }
     }
-  )
+  });
 
   return (
     <AuthenticationContext.Provider

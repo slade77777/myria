@@ -109,9 +109,9 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       handler: (homePage: string) => {
         console.log(utilTaskId.dailyLogAndPostDiscord);
         let urlLink = utilTaskId.dailyLogAndPostDiscord;
-        const joinDiscord = userCampaign?.campaign.missionProgress.filter((item) =>
-          item.code === utilTaskId.joinDiscord
-        )
+        const joinDiscord = userCampaign?.campaign.missionProgress.filter(
+          (item) => item.code === utilTaskId.joinDiscord
+        );
         if (joinDiscord?.[0].status !== STATUS_MISSION.COMPLETED) {
           urlLink = utilTaskId.joinDiscord;
         }
@@ -134,9 +134,9 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       name: utilTaskId.reachLevelDiscord,
       handler: (homePage: string) => {
         let urlLink = utilTaskId.reachLevelDiscord;
-        const joinDiscord = userCampaign?.campaign.missionProgress.filter((item) =>
-          item.code === utilTaskId.joinDiscord
-        )
+        const joinDiscord = userCampaign?.campaign.missionProgress.filter(
+          (item) => item.code === utilTaskId.joinDiscord
+        );
         if (joinDiscord?.[0].status !== STATUS_MISSION.COMPLETED) {
           urlLink = utilTaskId.joinDiscord;
         }
@@ -161,14 +161,16 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     <>
       <div
         className={clsx(
-          `group relative inline-block w-52 text-center uppercase leading-[50px] ${StyleButton().TEXT_COLOR}`,
+          `group relative inline-block w-52 text-center uppercase leading-[50px] ${
+            StyleButton().TEXT_COLOR
+          }`,
           enableClick && 'cursor-pointer'
         )}
         onClick={handleClick}>
         {item.missionCampaign.actionTitle}
         <IconButton status={StyleButton()} isActive={enableClick} />
       </div>
-      {id === utilTaskId.verifyEmail && (
+      {id === utilTaskId.verifyEmail && status !== STATUS_MISSION.COMPLETED && (
         <VerifyEmailModal
           onClose={() => {
             setOpenVerifyEmailModal(false);

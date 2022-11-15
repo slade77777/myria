@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { campaignApiClient } from 'src/client';
-import { campaignCode } from 'src/utils';
+import { campaignCode, FORMAT_DATE_BY_AIRDROP } from 'src/utils';
 
 interface AirfropCampaign {
   campaignId: string;
+  startDateCampaign: string;
+  endDateCampaign: string;
 }
 interface IProps {
   isAirDrop: boolean;
@@ -11,20 +13,39 @@ interface IProps {
 
 const AirdropCampaign = React.createContext<AirfropCampaign>({} as AirfropCampaign);
 export const CampaignProvider: React.FC<IProps> = ({ children, isAirDrop }) => {
-  const [campaignId, setCampaignId] = useState<string>('1');
+  const [dataCampaign, setDataCampaign] = useState<AirfropCampaign>({
+    campaignId: '1',
+    startDateCampaign: '',
+    endDateCampaign: ''
+  });
+
   useEffect(() => {
     campaignApiClient
       .get(`/campaigns/code/${encodeURIComponent(campaignCode)}`)
       .then((res) => {
-        if (res.data.status === 'success' && res.data.data)
-          setCampaignId(res.data.data.id.toString());
+        const resDataCampaign: AirfropCampaign = {
+          campaignId: res.data.data.id.toString(),
+          startDateCampaign: res.data.data.startedAt,
+          endDateCampaign: res.data.data.endedAt
+        };
+        if (res.data.status === 'success' && res.data.data) {
+          setDataCampaign((prevState) => ({
+            ...prevState,
+            ...resDataCampaign
+          }));
+        }
       })
       .catch((error) => {
         console.log(`Server is unavailable with error ${error}`);
       });
   }, []);
   return isAirDrop ? (
-    <AirdropCampaign.Provider value={{ campaignId }}>{children}</AirdropCampaign.Provider>
+    <AirdropCampaign.Provider
+      value={{
+        ...dataCampaign
+      }}>
+      {children}
+    </AirdropCampaign.Provider>
   ) : (
     <>{children}</>
   );

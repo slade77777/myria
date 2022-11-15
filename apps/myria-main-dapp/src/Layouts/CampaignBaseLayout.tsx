@@ -42,10 +42,17 @@ const CamPaignBaseLayout: React.FC<Props> = ({ children, currentStep, setCurrent
       //Set User To Welcome when have address wallet starkkey but not userCampaign waiting 2s after call API or set UserCampaign Id
     } else if (address && walletAddress && starkKey && !userCampaign) {
       clearTimeOut = setTimeout(() => {
-        if ((userProfileQuery.isFetching || firstCheckUserCampaign.isFetching) && !userCampaign)
+        if (
+          //Check fetching fistuserCampaign
+          (firstCheckUserCampaign.isFetched &&
+            firstCheckUserCampaign.data &&
+            userCampaignId &&
+            !userCampaign) ||
+          (userProfileQuery.isFetched && userProfileQuery.data && userCampaignId && !userCampaign) //Check fetched user and have userCampaignId on localstorage but not userCampain
+        )
           return clearTimeOut;
         setCurrentStep(1);
-      }, 2000);
+      }, 3000);
     }
     return () => {
       clearTimeOut && clearTimeout(clearTimeOut);
@@ -72,11 +79,11 @@ const CamPaignBaseLayout: React.FC<Props> = ({ children, currentStep, setCurrent
                   isLoading || currentStep === 0
               })}>
               {!isLoading && <div>{children}</div>}
-              {currentStep === 0 && <ChooseAllianceStepper currentStep={currentStep} />}
+              {currentStep === 1 && <ChooseAllianceStepper currentStep={currentStep - 1} />}
             </div>
           </div>
 
-          {currentStep === 0 && <Sound />}
+          {0 < currentStep && currentStep < 3 && <Sound />}
         </Page>
       </div>
     </>
