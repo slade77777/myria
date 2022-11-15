@@ -77,39 +77,24 @@ export default function index({}: Props) {
             <span className=" mb-1 text-xl font-bold leading-[26px]	">
               4.1. Tasks to be eligible:
             </span>
-            <div className="text-base/9  list-disc  space-y-1 pl-8 font-light leading-[24px] ">
-              <p>
-                <input type="radio" disabled className="mr-3" />
-                Follow Myria on Twitter,
-              </p>
-              <p>
-                <input type="radio" disabled className="mr-3" />
-                Follow Brendan
-                <a href="https://mobile.twitter.com/brendan_duhamel">
-                  &nbsp;[https://mobile.twitter.com/brendan_duhamel]&nbsp;
-                </a>
-                on Twitter,
-              </p>
-              <p>
-                <input type="radio" disabled className="mr-3" />
-                Invite Friends (Referrals), via referral link that will be provided by Myria,
-              </p>
-              <p>
-                <input type="radio" disabled className="mr-3" />
-                Join Discord,
-              </p>
-              <p>
-                <input type="radio" disabled className="mr-3" />
-                Daily log in to Discord
-              </p>
-              <p>
-                <input type="radio" disabled className="mr-3" />
-                Share a post on Twitter
-              </p>
-              <p>
-                <input type="radio" disabled className="mr-3" />
-                Reaching Citizen Status (Activity Status) on Discord
-              </p>
+            <div className="text-base/9  list-disc  space-y-1 pl-12 font-light leading-[24px] ">
+              <ul className="list-disc">
+                <li>Follow Myria on Twitter,</li>
+                <li>
+                  Follow Brendan
+                  <a href="https://mobile.twitter.com/brendan_duhamel">
+                    &nbsp;[https://mobile.twitter.com/brendan_duhamel]&nbsp;
+                  </a>
+                  on Twitter,
+                </li>
+                <li>
+                  Invite Friends (Referrals), via referral link that will be provided by Myria,
+                </li>
+                <li>Join Discord,</li>
+                <li>Daily log in to Discord</li>
+                <li>Share a post on Twitter</li>
+                <li>Reaching Citizen Status (Activity Status) on Discord</li>
+              </ul>
             </div>
           </div>
           {/* Prizes */}
