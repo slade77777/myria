@@ -86,17 +86,20 @@ const LeftSectionWelcome: React.FC<IProp> = ({
     <div className={clsx(`w-[480px]`)}>
       <h1 className="text-[28px] font-bold leading-[34px]">
         <Trans>
-          Welcome treasure hunter, <br />
-          your Sigil Key NFTs await
+          Space Hunters - get ready to find <br />
+          Alliance Keys scattered across the Myriaverse...
         </Trans>
       </h1>
-      <p className="mt-8 text-[16px] leading-6 text-[#9CA3AF]">
+      <p className="mt-4 text-[16px] leading-6 text-[#9AC9E3]">
+        <Trans>Complete Quests. Earn Points. Win Key NFTs. Unlock the loot!</Trans>
+      </p>
+
+      <p className="mt-5 text-[16px] leading-6 text-[#9CA3AF]">
         <Trans>
-          Choose your alliance and earn points to uncover Sigil key fragments hidden throughout the
-          Myriaverse. Only those who possess a key can unlock the mysterious Alliance boxes.
+          The Stargazer has been vaporized. Equinox and Vector Prime alliance members are now in a
+          race to subdue the Rift! Each must retrieve precious key fragments that, when combined,
+          unlock Alliance loot boxes. Only those with Keys will gain access. Who will be first?
         </Trans>
-        <br />
-        <span className={clsx(`text-primary/6`)}>Read more here</span>
       </p>
       <div className={clsx(`mt-[22px] flex align-middle`)}>
         <Input
@@ -118,7 +121,7 @@ const LeftSectionWelcome: React.FC<IProp> = ({
         (userCampaignId && checkedInput && address ? (
           <Button
             onClick={handleClickContinue}
-            className="btn-lg btn-primary mt-10 flex h-[40px] w-[194px] items-center justify-center p-0">
+            className="btn-lg btn-primary mt-8 flex h-[40px] w-[194px] items-center justify-center p-0">
             {walletAddress && userCampaignId && checkedInput && <Trans>CONTINUE</Trans>}
           </Button>
         ) : (
@@ -129,7 +132,7 @@ const LeftSectionWelcome: React.FC<IProp> = ({
             }
             onClick={handleClick}
             className={clsx(
-              `btn-lg btn-primary mt-10 flex h-[40px] items-center justify-center px-7`
+              `btn-lg btn-primary mt-8 flex h-[40px] items-center justify-center px-7`
             )}
             pandingRight="pr-0">
             {<Trans>CONNECT WALLET</Trans>}

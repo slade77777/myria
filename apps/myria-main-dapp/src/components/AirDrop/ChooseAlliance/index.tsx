@@ -380,7 +380,9 @@ const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
           </div>
         </div>
       </div>
-      {currentStep < 2 && <ChooseAllianceStepper currentStep={currentStep} />}
+      {currentStep > 0 && currentStep < 3 && (
+        <ChooseAllianceStepper currentStep={currentStep - 1} />
+      )}
     </>
   );
 };

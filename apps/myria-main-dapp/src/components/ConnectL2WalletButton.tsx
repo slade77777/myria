@@ -45,8 +45,14 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
     handleDisplayPopover
   } = useL2WalletContext();
   const showClaimPopover = useSelector((state: RootState) => state.ui.showClaimPopover);
-  const { user, userCampaign, loginByWalletMutation, userProfileQuery, loginCampaignByWalletMutation, logout } =
-    useAuthenticationContext();
+  const {
+    user,
+    userCampaign,
+    loginByWalletMutation,
+    userProfileQuery,
+    loginCampaignByWalletMutation,
+    logout
+  } = useAuthenticationContext();
 
   const { isShowLearnMore } = useWithDrawNFTContext();
 
@@ -59,8 +65,15 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
 
   const onConnectWallet = () => {
     if (
-      (!isAirDrop && address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) ||
-      (!address && user?.wallet_id) || (isAirDrop && address && userCampaign?.user.walletAddress && address.toLowerCase() !== userCampaign.user.walletAddress.toLowerCase())
+      (!isAirDrop &&
+        address &&
+        user?.wallet_id &&
+        address.toLowerCase() !== user.wallet_id.toLowerCase()) ||
+      (!address && user?.wallet_id) ||
+      (isAirDrop &&
+        address &&
+        userCampaign?.user.walletAddress &&
+        address.toLowerCase() !== userCampaign.user.walletAddress.toLowerCase())
     ) {
       setShowMismatchedWalletModal(true);
       return;
@@ -99,15 +112,23 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
   useEffect(() => {
     if (isAirDrop) {
       //Handle case logout normal
-      if (!walletAddress && !userCampaignId && !localStarkKey) return
-      if (address && userCampaign?.user.walletAddress && address.toLowerCase() !== userCampaign?.user.walletAddress.toLowerCase() ||
-        address && address.toLowerCase() !== walletAddress.toLowerCase() ||
-        address && userCampaign && userCampaign.userId.toString() !== userCampaignId ||
-        address && userCampaign && userCampaign.user.starkKey?.toLowerCase() !== ('0x' + localStarkKey).toLowerCase()
+      if (!walletAddress && !userCampaignId && !localStarkKey) return;
+      if (
+        (address &&
+          userCampaign?.user.walletAddress &&
+          address.toLowerCase() !== userCampaign?.user.walletAddress.toLowerCase()) ||
+        (address && address.toLowerCase() !== walletAddress.toLowerCase()) ||
+        (address && userCampaign && userCampaign.userId.toString() !== userCampaignId) ||
+        (address &&
+          userCampaign &&
+          userCampaign.user.starkKey?.toLowerCase() !== ('0x' + localStarkKey).toLowerCase())
       )
         setShowMismatchedWalletModal(true);
-    }
-    else if (address && user?.wallet_id && address.toLowerCase() !== user.wallet_id.toLowerCase()) {
+    } else if (
+      address &&
+      user?.wallet_id &&
+      address.toLowerCase() !== user.wallet_id.toLowerCase()
+    ) {
       setShowMismatchedWalletModal(true);
     }
   }, [address, user, userCampaign, localStarkKey, walletAddress, userCampaignId]);
@@ -131,7 +152,12 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
     if (walletAddress && address && (!user || !user?.wallet_id) && !isAirDrop) {
       return true;
     }
-    if (walletAddress && address && (!userCampaign || !userCampaign?.user.walletAddress) && isAirDrop) {
+    if (
+      walletAddress &&
+      address &&
+      (!userCampaign || !userCampaign?.user.walletAddress) &&
+      isAirDrop
+    ) {
       return true;
     }
 
@@ -140,7 +166,8 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
       address &&
       user &&
       address?.toLowerCase() === user?.wallet_id?.toLowerCase() &&
-      localStarkKey && !isAirDrop
+      localStarkKey &&
+      !isAirDrop
     ) {
       return true;
     }
@@ -148,7 +175,8 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
     if (
       address &&
       address?.toLowerCase() === userCampaign?.user.walletAddress?.toLowerCase() &&
-      localStarkKey && isAirDrop
+      localStarkKey &&
+      isAirDrop
     ) {
       return true;
     }
@@ -184,8 +212,8 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
         onOpenChange={() => {
           disconnect();
           disconnectL2Wallet();
-          setUserCampaignId('');
           isAirDrop && logout();
+          setUserCampaignId('');
           setShowMismatchedWalletModal(false);
         }}>
         <Modal.Content
@@ -225,10 +253,10 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
             walletAddress &&
             showConnectedWallet &&
             !isAirDrop) ||
-            (!loginCampaignByWalletMutation?.isError &&
-              walletAddress &&
-              showConnectedWallet &&
-              isAirDrop) ? (
+          (!loginCampaignByWalletMutation?.isError &&
+            walletAddress &&
+            showConnectedWallet &&
+            isAirDrop) ? (
             <div>
               <Popover
                 modal
