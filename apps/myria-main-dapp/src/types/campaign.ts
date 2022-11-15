@@ -264,6 +264,8 @@ export interface RewardClaimDiscordResponse {}
 export interface RewardClaimDiscordError {
   code: number;
   correlationId: string;
+  errorCode?: number;
+  detail?: string;
   externalErrors: { error: string; error_description: string };
   path: string;
   timestamp: string;

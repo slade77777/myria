@@ -38,7 +38,7 @@ const initMissionPanel = {
         missionCode: missionCode
       };
       const responeClaimDiscord = await reqRewardClaimDiscord(payloadData);
-      if (responeClaimDiscord.errors?.[0].code === errorCode.users.discordCode.userExisted) {
+      if (responeClaimDiscord.errors?.[0].errorCode === errorCode.users.discordCode.userExisted) {
         toast('Discord User Existed', { type: 'error' });
       }
     }
@@ -72,10 +72,26 @@ const initMissionPanel = {
 const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
   const { userCampaign } = useAuthenticationContext();
 
-  const enableClick =
-    status === STATUS_MISSION.AVAILABLE ||
-    (id === utilTaskId.verifyEmail && status !== STATUS_MISSION.COMPLETED);
+  const objJoinDiscord = userCampaign?.campaign.missionProgress.filter(
+    (itemMissionProgress: ImissionProgress) => {
+      return itemMissionProgress.code === utilTaskId.joinDiscord;
+    }
+  );
+  const isCompletedDiscord: boolean = objJoinDiscord
+    ? objJoinDiscord[0].status === STATUS_MISSION.COMPLETED
+    : false;
 
+  const handleCheckEnableClick = () => {
+    if (id === utilTaskId.dailyLogAndPostDiscord || id === utilTaskId.reachLevelDiscord) {
+      return isCompletedDiscord ? status === STATUS_MISSION.AVAILABLE : false;
+    } else {
+      return (
+        status === STATUS_MISSION.AVAILABLE ||
+        (id === utilTaskId.verifyEmail && status !== STATUS_MISSION.COMPLETED)
+      );
+    }
+  };
+  const enableClick = handleCheckEnableClick();
   const router = useRouter();
 
   useEffect(() => {
