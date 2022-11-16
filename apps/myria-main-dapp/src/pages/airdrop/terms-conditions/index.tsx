@@ -60,15 +60,15 @@ export default function index({}: Props) {
               <span className=" text-xl font-bold leading-[26px]	">4. How to Enter: </span>
               <span className="text-base/9 list-disc  space-y-1  text-justify font-light leading-[24px]">
                 The Campaign must be entered through either a dedicated link that will be provided
-                by Myria, so Users can Home Page banner and/or via direct copy-paste of its URL or
-                by tapping on the relevant Homepage Banner, implemented at Launch. The entry must
-                fulfill all Campaign requirements, as specified, to be eligible to win a prize.
-                Entries that are incomplete or do not adhere to the rules or specifications may be
-                disqualified at the sole discretion of Myria. You must provide the information
-                requested. You may not enter more times than indicated by using multiple email
-                addresses, identities, or devices in an attempt to circumvent the rules. If you use
-                fraudulent methods or otherwise attempt to circumvent the rules, your submission may
-                be removed from eligibility at the sole discretion of Myria.
+                by Myria, so Users can direct copy-paste its URL or by tapping on the relevant
+                Homepage Banner, implemented at Launch. The entry must fulfill all Campaign
+                requirements, as specified, to be eligible to win a prize. Entries that are
+                incomplete or do not adhere to the rules or specifications may be disqualified at
+                the sole discretion of Myria. You must provide the information requested. You may
+                not enter more times than indicated by using multiple email addresses, identities,
+                or devices in an attempt to circumvent the rules. If you use fraudulent methods or
+                otherwise attempt to circumvent the rules, your submission may be removed from
+                eligibility at the sole discretion of Myria.
               </span>
             </p>
           </div>
@@ -87,9 +87,7 @@ export default function index({}: Props) {
                   </a>
                   on Twitter,
                 </li>
-                <li>
-                  Invite Friends (Referrals), via referral link that will be provided by Myria,
-                </li>
+                <li>Invite Friends (via referral link that will be provided by Myria),</li>
                 <li>Join Discord,</li>
                 <li>Daily log in to Discord</li>
                 <li>Share a post on Twitter</li>

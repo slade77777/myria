@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import SubtractBottom from 'src/components/icons/SubtractBottom';
 import SubtractTop from 'src/components/icons/SubtractTop';
 import { useAuthenticationContext } from 'src/context/authentication';
-import { campaignCode, REPETION_TYPE, utilTaskId } from 'src/utils';
+import { campaignCode, REPETITION_TYPE, utilTaskId } from 'src/utils';
 import ButtonMission, { STATUS_MISSION } from './ButtonMission';
 import { ImissionProgress } from 'src/context/authentication';
 import { reqRewardClaimDiscord } from 'src/services/campaignService';
@@ -123,14 +123,12 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
         </div>
         <div className="text-center">
           <ButtonMission status={status} item={item} id={id} enableClick={enableClick} />
-          {item.earnedPoints > 0 &&
-          item.missionCampaign.repetitionType === (REPETION_TYPE.ONCE as string) ? (
+          {item.earnedPoints > 0 && item.missionCampaign.repetitionType === REPETITION_TYPE.ONCE ? (
             <div className="text-light mt-4 flex items-center justify-center text-xs font-medium ">
-              <HistoryIcon className="mr-1" width={20} height={18} />
               <span>{item.earnedPoints} POINTS EARNED</span>
             </div>
           ) : (
-            item.missionCampaign.repetitionType !== (REPETION_TYPE.ONCE as string) && (
+            item.missionCampaign.repetitionType !== REPETITION_TYPE.ONCE && (
               <div className="text-light mt-4 flex items-center justify-center text-xs font-medium ">
                 <HistoryIcon className="mr-1" width={20} height={18} />
                 <span>{item.earnedPoints} POINTS EARNED</span>

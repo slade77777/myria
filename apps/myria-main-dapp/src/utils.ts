@@ -305,8 +305,13 @@ export const REWARD_IMG_DEFAULT = {
 };
 
 export const rewardsDefaultImg = '/images/Common.png';
+interface I_REPETITION_TYPE {
+  ONCE: string;
+  UNLIMITED: string;
+  DAILY: string;
+}
 
-export const REPETION_TYPE = {
+export const REPETITION_TYPE: I_REPETITION_TYPE = {
   ONCE: 'ONCE',
   UNLIMITED: 'UNLIMITED',
   DAILY: 'DAILY'
