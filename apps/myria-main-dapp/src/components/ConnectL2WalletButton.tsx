@@ -63,7 +63,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
   const [requestedEmail, setRequestedEmail] = React.useState(false);
   const mainL2Ref = useRef(null);
 
-  const onConnectWallet = () => {
+  const onConnectWallet = async () => {
     if (
       (!isAirDrop &&
         address &&
@@ -79,7 +79,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
       return;
     }
     event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
-    onConnectCompaign('B2C Marketplace');
+    await onConnectCompaign('B2C Marketplace');
     handleSetFirstPurchase(false);
     connectL2Wallet();
     if (isAirDrop) {
@@ -90,6 +90,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
   };
 
   useEffect(() => {
+    const controller = new AbortController();
     if (installedWallet === true) {
       subscribeProvider();
     }
@@ -107,6 +108,9 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
       .catch((e) => {
         console.log('error', e);
       });
+    return () => {
+      controller.abort();
+    };
   }, [walletAddress, localStarkKey, user?.wallet_id, address, installedWallet]);
 
   useEffect(() => {

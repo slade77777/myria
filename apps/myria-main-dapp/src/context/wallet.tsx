@@ -17,7 +17,7 @@ interface IWalletContext {
   signerProviderApi?: ethers.providers.Web3Provider;
   readerProviderApi?: ReaderProvider;
   chainId?: number | string;
-  onConnect: () => void;
+  onConnect: () => Promise<void>;
   onConnectCompaign: (campaign: Campaign) => Promise<void>;
   ready: boolean;
   disconnect: () => void;
@@ -105,11 +105,11 @@ export const WalletProvider: React.FC = ({ children }) => {
     await subscribeProvider(w3provider);
   };
 
-  useEffect(() => {
-    if (web3Modal.cachedProvider) {
-      onConnect();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (web3Modal.cachedProvider) {
+  //     // onConnect();
+  //   }
+  // }, []);
 
   const onConnect = async () => {
     reset();

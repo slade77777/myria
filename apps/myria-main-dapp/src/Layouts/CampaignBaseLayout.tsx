@@ -1,4 +1,4 @@
-import React, { SetStateAction, useEffect, useState } from 'react';
+import React, { SetStateAction, useEffect } from 'react';
 import Page from 'src/components/Page';
 import Header from 'src/components/sigil/Header';
 import { LoadingStandBy } from 'src/components/Loading';
@@ -23,24 +23,25 @@ const CamPaignBaseLayout: React.FC<Props> = ({ children, currentStep, setCurrent
   const { address } = useWalletContext();
   const [userCampaignId] = useLocalStorage(localStorageKeys.userCampaignId, '');
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
-  const [starkKey] = useLocalStorage(localStorageKeys.starkKey, '');
+  const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
 
   const isLoading =
     !userProfileQuery.isFetched &&
     userProfileQuery.isFetching &&
     currentStep === 0 &&
     !userCampaign;
+
   useEffect(() => {
     let clearTimeOut: NodeJS.Timeout;
     //Set User to content
     if (userCampaign && userCampaignId && address && walletAddress) {
       setCurrentStep(3);
       //Set User To Welcome
-    } else if (!address && !walletAddress && !starkKey) {
+    } else if (!address && !walletAddress && !localStarkKey) {
       setCurrentStep(1);
 
       //Set User To Welcome when have address wallet starkkey but not userCampaign waiting 2s after call API or set UserCampaign Id
-    } else if (address && walletAddress && starkKey && !userCampaign) {
+    } else if (address && walletAddress && localStarkKey && !userCampaign) {
       clearTimeOut = setTimeout(() => {
         if (
           //Check fetching fistuserCampaign
