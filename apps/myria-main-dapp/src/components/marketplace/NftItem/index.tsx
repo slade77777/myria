@@ -62,6 +62,7 @@ const NftItem = ({ item }: Props) => {
   const price = parseFloat(item.priceETH + '');
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchAssetDetail = async () => {
       const result: any = await assetModule?.getAssetById(item.id);
       setAssetInfo(result?.data);
@@ -69,6 +70,9 @@ const NftItem = ({ item }: Props) => {
     if (item.id) {
       fetchAssetDetail();
     }
+    return () => {
+      controller.abort();
+    };
   }, [item.id]);
 
   const onClickItemTracking = useCallback(() => {
@@ -95,8 +99,8 @@ const NftItem = ({ item }: Props) => {
       <a onClick={onClickItemTracking}>
         <div className="cursor-pointer snap-start">
           <div className="bg-brand-deep-blue block w-full max-w-[298px] overflow-hidden rounded-[5px]">
-            <div className="relative flex h-[178px] md:h-[298px] w-full items-center justify-center lg:h-[248px]">
-              <div className="absolute h-full w-full bg-base/3" />
+            <div className="relative flex h-[178px] w-full items-center justify-center md:h-[298px] lg:h-[248px]">
+              <div className="bg-base/3 absolute h-full w-full" />
               <div
                 className="z-1 absolute h-full w-full opacity-[0.3]"
                 style={{ backgroundColor: rarityColor }}
@@ -110,7 +114,7 @@ const NftItem = ({ item }: Props) => {
               />
             </div>
             <div className="p-4">
-              <span className="block text-xs font-normal text-gray/6">
+              <span className="text-gray/6 block text-xs font-normal">
                 {item?.collection?.name || ''}
               </span>
               <span className="mb-4 block truncate text-[14px] font-medium text-white">
@@ -118,18 +122,18 @@ const NftItem = ({ item }: Props) => {
               </span>
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="mb-1 block text-xs font-normal text-gray/6">Creator</span>
-                  <span className="mb-1 block text-xs font-normal text-gray/6">Current price</span>
+                  <span className="text-gray/6 mb-1 block text-xs font-normal">Creator</span>
+                  <span className="text-gray/6 mb-1 block text-xs font-normal">Current price</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex w-1/5 md:w-3/5">
                     <img src={item.creatorImg} alt="creator" className="mr-1 h-5 w-5" />
-                    <p className="truncate break-words text-sm font-medium text-white hidden md:block">
+                    <p className="hidden truncate break-words text-sm font-medium text-white md:block">
                       {assetInfo?.creator?.name}
                     </p>
                   </div>
                   {price > 0 ? (
-                    <div className="flex w-4/5 md:w-2/5 items-center justify-end">
+                    <div className="flex w-4/5 items-center justify-end md:w-2/5">
                       <span>
                         <DAOIcon className="mr-1" />
                       </span>

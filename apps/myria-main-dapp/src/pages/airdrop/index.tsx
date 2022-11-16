@@ -3,7 +3,7 @@ import CamPaignBaseLayout from 'src/Layouts/CampaignBaseLayout';
 import AirDropContent from 'src/components/AirDrop/AirDropContent';
 import ChooseAlliance from 'src/components/AirDrop/ChooseAlliance';
 import Welcome from 'src/components/AirDrop/Welcome';
-import { LoadingStandBy } from 'src/components/Loading';
+import FirstLoadingCampaign from 'src/components/AirDrop/FirstLoading/FirstLoadingCampaign';
 
 export type Step = 0 | 1 | 2 | 3;
 
@@ -22,11 +22,7 @@ const AirDropCampaign: React.FC = () => {
   const content = useMemo(() => {
     switch (currentStep) {
       case 0:
-        return (
-          <div className="bg-dark/10 absolute inset-0 z-10 flex w-full items-center justify-center text-white">
-            <LoadingStandBy />
-          </div>
-        );
+        return <FirstLoadingCampaign />;
       case 1:
         return <Welcome onNext={goToNextStep} setCurrentStep={setCurrentStep} isAirDrop={true} />;
       case 2:
