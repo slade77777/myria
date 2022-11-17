@@ -794,26 +794,19 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
           .get(`/users/wallet-address/${address}?campaignId=${campaignId}`)
           .then((res) => {
             //User registered campaign
+            setUserCampaignId(res.data.data.id.toString());
             if (res.data.data.userCampaign.length > 0) {
               if (res.data.data.allianceId) {
-                setUserCampaignId(res.data.data.id.toString());
                 userProfileQuery.refetch();
-                return res.data.data;
-              } else {
-                setUserCampaignId(res.data.data.id.toString());
-                return res.data.data;
               }
+              return res.data.data;
             } else {
-              registerCampaignByWallet(+campaignId)
+              registerCampaignByWallet(+res.data.data.id)
                 .then(() => {
                   if (res.data.data.allianceId) {
-                    setUserCampaignId(res.data.data.id.toString());
                     userProfileQuery.refetch();
-                    return res.data.data;
-                  } else {
-                    setUserCampaignId(res.data.data.id.toString());
-                    return res.data.data;
                   }
+                  return res.data.data;
                 })
                 .catch(() => {});
             }
