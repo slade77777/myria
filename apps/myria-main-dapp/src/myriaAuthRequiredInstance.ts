@@ -36,14 +36,14 @@ const interceptAuth = (config: AxiosRequestConfig) => {
         const refreshToken = localStorage.getItem(localStorageKeys.refreshToken);
         if (refreshToken) {
           try {
-            await instance.get('/accounts/token', { headers: { refresh_token: refreshToken } });
+            await instance.get('/accounts/token');
             return instance(prevRequest);
           } catch (e) {
-            logout();
+            clearStorage();
             throw new Error('Cannot refresh token');
           }
         } else {
-          logout();
+          clearStorage();
         }
       }
       return Promise.reject(get(error, 'response.data.message') || get(error, 'message'));
@@ -52,12 +52,10 @@ const interceptAuth = (config: AxiosRequestConfig) => {
   return instance;
 };
 
-function logout() {
-  if (localStorage?.getItem(localStorageKeys.walletAddress)) {
-    web3Modal?.clearCachedProvider();
-    localStorage.removeItem(localStorageKeys.walletAddress);
-    localStorage.removeItem(localStorageKeys.starkKey);
-    localStorage.removeItem(localStorageKeys.userCampaignId);
-    localStorage.removeItem(localStorageKeys.refreshToken);
-  }
+export function clearStorage() {
+  web3Modal?.clearCachedProvider();
+  localStorage.removeItem(localStorageKeys.walletAddress);
+  localStorage.removeItem(localStorageKeys.starkKey);
+  localStorage.removeItem(localStorageKeys.userCampaignId);
+  localStorage.removeItem(localStorageKeys.refreshToken);
 }
