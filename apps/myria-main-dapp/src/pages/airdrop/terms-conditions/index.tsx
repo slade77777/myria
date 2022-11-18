@@ -91,7 +91,7 @@ export default function index({}: Props) {
                 <li>Join Discord,</li>
                 <li>Daily log in to Discord</li>
                 <li>Share a post on Twitter</li>
-                <li>Reaching Citizen Status (Activity Status) on Discord</li>
+                <li>Reaching Citizen Status (Activity Status) on Discord.</li>
               </ul>
             </div>
           </div>
