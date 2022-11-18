@@ -13,7 +13,7 @@ import { IFormResetPasswordInput } from 'src/components/ResetPassword/ResetPassw
 import apiClient, {
   mapError,
   IResponseError,
-  noCacheApiClient,
+  accountApiClient,
   campaignApiClient
 } from 'src/client';
 
@@ -37,6 +37,7 @@ import {
   reqRegisterUserCampaign,
   reqRegisterUserL2Wallet
 } from 'src/services/campaignService';
+import { clearStorage } from '../myriaAuthRequiredInstance';
 
 export interface User {
   user_id: string;
@@ -348,7 +349,8 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
 
   const logoutMutation = useMutation(async () => {
     try {
-      await apiClient.post(`/accounts/logout`);
+      await accountApiClient.post(`/accounts/logout`);
+      clearStorage();
     } catch (err) {}
     window.location.reload();
   });
@@ -487,9 +489,8 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
         signature,
         message
       };
-      const userRes = await apiClient
-        .post(`/accounts/login/wallet`, registerData)
-        .then((res) => res.data);
+      const userResData = await accountApiClient.post(`/accounts/login/wallet`, registerData);
+      const userRes = userResData.data;
 
       if (userRes?.status === 'success' && userRes?.data) {
         const user: User = {
@@ -746,7 +747,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
             return null;
           });
       } else {
-        return noCacheApiClient.get('sigil/users/profile').then((res) => {
+        return accountApiClient.get('sigil/users/profile').then((res) => {
           const data = res.data?.data;
           if (data) {
             const user: User = {
@@ -775,7 +776,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
   const accountProfileQuery = useQuery(
     'getAccount',
     () =>
-      noCacheApiClient.get('accounts/users').then((res) => {
+      accountApiClient.get('accounts/users').then((res) => {
         const data = res.data?.data;
         if (data) {
           setAccount(data);
@@ -784,12 +785,13 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
 
         return null;
       }),
+
     { retry: 1 }
   );
 
   const firstCheckUserCampaign = useQuery('firstCheckUserCampaign', () => {
     if (!userCampaignId) {
-      if (campaignId && walletAddress) {
+      if (campaignId && walletAddress && address) {
         return campaignApiClient
           .get(`/users/wallet-address/${address}?campaignId=${campaignId}`)
           .then((res) => {
@@ -801,14 +803,16 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
               }
               return res.data.data;
             } else {
-              registerCampaignByWallet(+res.data.data.id)
-                .then(() => {
-                  if (res.data.data.allianceId) {
-                    userProfileQuery.refetch();
-                  }
-                  return res.data.data;
-                })
-                .catch(() => {});
+              !userCampaignId &&
+                registerCampaignByWallet(+res.data.data.id)
+                  .then(() => {
+                    setUserCampaignId(res.data.data.id.toString());
+                    if (res.data.data.allianceId) {
+                      userProfileQuery.refetch();
+                    }
+                    return res.data.data;
+                  })
+                  .catch(() => {});
             }
           });
       }

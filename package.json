@@ -15,6 +15,7 @@
     "build": "turbo run build",
     "build:dev": "turbo run build:dev",
     "build:staging": "turbo run build:staging",
+    "build:preprod": "turbo run build:preprod",
     "build:prod": "turbo run build:prod",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",

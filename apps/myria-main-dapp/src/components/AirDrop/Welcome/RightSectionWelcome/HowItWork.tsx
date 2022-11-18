@@ -42,7 +42,7 @@ const HowItWorksComponent: React.FC = () => {
         </div>
         <div className="mt-3 flex text-[14px]">
           <span className="mr-[14px] min-w-[78px] uppercase">
-            {moment('03 FEB 2023' || Date.now()).format(FORMAT_DATE_BY_AIRDROP)}
+            {moment(new Date('03 FEB 2023') || Date.now()).format(FORMAT_DATE_BY_AIRDROP)}
           </span>
           <span className="text-base/9">Receive your key(s)</span>
         </div>

@@ -10,7 +10,7 @@ import { getAccounts } from 'src/services/myriaCoreSdk';
 const FirstLoadingCampaign: React.FC = () => {
   const { installedWallet } = useInstalledWallet();
   const { address, setAddress, subscribeProvider } = useWalletContext();
-  const { userCampaign } = useAuthenticationContext();
+  const { account } = useAuthenticationContext();
   const [walletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
   const [localStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
 
@@ -21,10 +21,11 @@ const FirstLoadingCampaign: React.FC = () => {
     getAccounts()
       .then((accounts) => {
         if (
-          userCampaign?.user.walletAddress &&
           localStarkKey &&
-          accounts[0]?.toLowerCase() === userCampaign?.user.walletAddress?.toLowerCase() &&
-          address?.toLowerCase() != userCampaign?.user.walletAddress.toLowerCase()
+          walletAddress &&
+          account &&
+          accounts[0]?.toLowerCase() === walletAddress.toLowerCase() &&
+          accounts[0]?.toLowerCase() === account?.wallet_id.toLowerCase()
         ) {
           setAddress(accounts[0]?.toLowerCase());
         }
@@ -32,7 +33,7 @@ const FirstLoadingCampaign: React.FC = () => {
       .catch((e) => {
         console.log('error', e);
       });
-  }, [walletAddress, localStarkKey, userCampaign?.walletAddress, address, installedWallet]);
+  }, [account, installedWallet]);
 
   return (
     <div className="bg-dark/10 absolute inset-0 z-10 flex w-full items-center justify-center text-white">

@@ -25,7 +25,7 @@ import { useL2WalletContext } from 'src/context/l2-wallet';
 import WthdrawNFTPopover from './marketplace/Withdraw-NFT/WthdrawNFTPopover';
 import WithdrawNFTScreen from './marketplace/Withdraw-NFT/WithdrawNFTScreen';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
-import { noCacheApiClient } from '../client';
+import { accountApiClient } from '../client';
 
 interface Props {
   isAirDrop?: boolean;
@@ -191,7 +191,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
     if (isAirDrop) return;
     const emailRequestNumber = localStorage.getItem('emailRequestNumber');
     const emailRequestTime = emailRequestNumber ? parseInt(emailRequestNumber) : 0;
-    noCacheApiClient.get('accounts/users').then((data) => {
+    accountApiClient.get('accounts/users').then((data) => {
       const userData = data?.data?.data;
       if (
         loginByWalletMutation.isSuccess &&

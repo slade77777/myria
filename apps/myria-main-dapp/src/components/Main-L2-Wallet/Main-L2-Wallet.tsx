@@ -22,7 +22,7 @@ import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { convertWeiToEth } from 'src/utils';
 import { useAuthenticationContext } from '../../context/authentication';
 import { useGA4 } from '../../lib/ga';
-import { noCacheApiClient } from '../../client';
+import { accountApiClient } from '../../client';
 const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 const { asset } = StarkwareLib;
 const QUANTUM_CONSTANT = 10000000000;
@@ -162,7 +162,7 @@ const MainL2Wallet = forwardRef((props, ref) => {
     if (user?.email) {
       setShowFirstDepositModal(true);
     } else {
-      noCacheApiClient.get('accounts/users').then((data) => {
+      accountApiClient.get('accounts/users').then((data) => {
         const userData = data?.data?.data;
         if (userData && !userData.normalized_email) {
           setRequestEmailModal('top-left');
