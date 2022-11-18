@@ -543,6 +543,7 @@ export const AuthenticationProvider: React.FC<IProps> = ({ children, isAirDrop }
               wallet_id: userRes.data?.wallet_id,
               access_token: userRes.data?.access_token
             };
+            localStorage.setItem(localStorageKeys.refreshToken, userRes.data?.refresh_token);
             setUser(user);
             toast('Login success', { type: 'success' });
             return user;
