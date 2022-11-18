@@ -9,7 +9,7 @@ import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import reporter from 'src/error-reporter';
 
-let web3Modal: Web3Modal;
+export let web3Modal: Web3Modal;
 export type ReaderProvider = ethers.providers.InfuraProvider;
 interface IWalletContext {
   address?: string;

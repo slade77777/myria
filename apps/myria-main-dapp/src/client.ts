@@ -1,3 +1,5 @@
+import { createService } from './myriaAuthRequiredInstance';
+
 const Klaviyo = require('node-klaviyo');
 
 import axios, { AxiosError } from 'axios';
@@ -49,17 +51,6 @@ export const additionalApiClient = axios.create({
   }
 });
 
-export const noCacheApiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  timeout,
-  headers: {
-    accept: 'application/json',
-    'Content-type': 'application/json',
-    'Cache-Control': 'no-cache'
-  },
-  withCredentials: true
-});
-
 export const campaignApiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_CAMPAIGN_SERVICE_URL,
   timeout,
@@ -70,13 +61,6 @@ export const campaignApiClient = axios.create({
   }
 });
 
-export const devApiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_DEV_API_URL,
-  timeout,
-  headers: {
-    accept: 'application/json',
-    'Content-type': 'application/json'
-  }
-});
+export const accountApiClient = createService(process.env.NEXT_PUBLIC_API_URL);
 
 export default apiClient;

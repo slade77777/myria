@@ -605,6 +605,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
               <button
                 className="body-14-medium flex items-center space-x-2.5 text-white"
                 onClick={() => {
+                  setUserCampaignId('');
                   disconnect();
                   disconnectL2Wallet();
                   logout();
