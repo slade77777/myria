@@ -113,9 +113,11 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
         <div className="flex-1">
           <div className="flex items-center uppercase text-white">
             <p className=" mr-2 text-xl font-bold">{item.missionCampaign.title}</p>
-            <span className="min-w-[74px] rounded-lg bg-[#0D273A] py-[6px] px-[10px] text-center text-xs font-medium leading-3">
-              {item.missionCampaign.point} {item.missionCampaign.point > 1 ? 'POINTS' : 'POINT'}
-            </span>
+            {item.missionCampaign.point > 0 && (
+              <span className="min-w-[74px] rounded-lg bg-[#0D273A] py-[6px] px-[10px] text-center text-xs font-medium leading-3">
+                {item.missionCampaign.point} {item.missionCampaign.point > 1 ? 'POINTS' : 'POINT'}
+              </span>
+            )}
           </div>
           <div className="text-light mt-4  max-w-[65%] text-base">
             <p className="">{item.missionCampaign?.description}</p>
