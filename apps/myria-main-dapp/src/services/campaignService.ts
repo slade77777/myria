@@ -437,7 +437,7 @@ const reqRewardClaimDiscord = async (
     if (!payload.userId) {
       throw new Error('UserId is required');
     }
-    const result = await campaignApiClient.post(`/rewards/discord/claim`, payload);
+    const result = await campaignApiClient.post(`/discord/join`, payload);
     return result.data;
   } catch (error: any) {
     return error?.response?.data;
