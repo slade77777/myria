@@ -7,7 +7,6 @@ import {
   MissionCompletePayload,
   MissionCompleteResponse,
   RegisterCampaignPayload,
-  RegisterUserCampaignPayload,
   RegisterUserCampaignResponse,
   RegisterUserL2WalletPayload,
   RewardByCampaignIdResponse,
@@ -196,7 +195,7 @@ const reqGetUserCampaignsByStarkKey = async (
  * @Returns
  */
 const reqRegisterUserCampaign = async (
-  payload: RegisterUserCampaignPayload
+  payload: RegisterUserL2WalletPayload
 ): Promise<CampaignResponseType<RegisterUserCampaignResponse>> => {
   try {
     if (!payload.starkKey) {

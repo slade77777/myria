@@ -74,6 +74,28 @@ export interface MissionProgressType {
   };
 }
 
+interface campaignActive {
+  id: number;
+  code: string;
+  name: string;
+  status: string;
+  startedAt: string;
+  endedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+interface userCampaignWalletAddress {
+  userId: number;
+  campaignId: number;
+  referrerId?: number | null;
+  earnedPoints?: number;
+  availablePoints?: number;
+  createdAt?: string;
+  updatedAt?: string;
+  campaign: campaignActive;
+}
+
 export interface UserType {
   id: number;
   starkKey?: string;
@@ -88,6 +110,7 @@ export interface UserType {
   availablePoints?: number;
   createdAt?: string;
   updatedAt?: string;
+  userCampaign?: userCampaignWalletAddress[];
 }
 
 export interface CampaignType {
@@ -155,15 +178,6 @@ export interface TwitterCampaignPayload {
 }
 
 export interface UserCampaignResponse extends UserType {}
-
-export interface RegisterUserCampaignPayload {
-  starkKey: string;
-  walletAddress: string;
-  accountId: string;
-  username?: string | undefined;
-  email?: string | undefined;
-  referrerId?: number;
-}
 
 export interface RegisterUserCampaignResponse extends UserType {}
 
