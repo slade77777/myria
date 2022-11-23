@@ -36,7 +36,7 @@ export function NftReward() {
 
   const buttonTextNFTReward = (status: string, point: number) => {
     if (status === REWARD_STATUS.LOCKED) {
-      return `${point} ${point > 1 ? "POINTS" : "POINT"}`;
+      return `${point} ${point > 1 ? 'POINTS' : 'POINT'}`;
     }
     return BUTTON_TEXT[status];
   };
@@ -46,7 +46,9 @@ export function NftReward() {
       <div className="flex w-full">
         {userCampaign?.rewards.map((reward: RewardType, index) => {
           const buttonText = buttonTextNFTReward(reward.rewardStatus, reward.point);
-          const nameImgObj: keyof typeof REWARD_IMG_DEFAULT = (lodash.camelCase(reward.name)) as keyof typeof REWARD_IMG_DEFAULT;
+          const nameImgObj: keyof typeof REWARD_IMG_DEFAULT = lodash.camelCase(
+            reward.name
+          ) as keyof typeof REWARD_IMG_DEFAULT;
           return (
             <NftBox
               key={reward.id}
@@ -56,6 +58,7 @@ export function NftReward() {
               containerClassname="mr-6"
               isBlur={
                 reward.rewardStatus !== REWARD_STATUS.AVAILABLE &&
+                nextReward &&
                 (nextReward as any as RewardType).id !== reward.id
               }
               onClaim={
@@ -63,7 +66,7 @@ export function NftReward() {
                   ? async () => await claimReward(reward.id)
                   : undefined
               }
-              onClaimSuccess={() => { }}
+              onClaimSuccess={() => {}}
               isNextReward={nextReward && (nextReward as any as RewardType).id === reward.id}
               isDisablePoint={
                 userCampaign.availablePoints < reward.threshold ||
