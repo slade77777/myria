@@ -224,7 +224,7 @@ export default function MainScreen({
         assetType = asset.getAssetType({
           type: 'ERC20',
           data: {
-            quantum: '1',
+            quantum: '10000000000',
             tokenAddress: option.tokenAddress,
           },
         });
@@ -234,14 +234,10 @@ export default function MainScreen({
       );
 
       if (matchedBalance && matchedBalance.length > 0) {
-        const balance =
-          option.name === 'Ethereum'
-            ? convertQuantizedAmountToEth(matchedBalance[0].quantizedAmount)
-            : matchedBalance[0].quantizedAmount;
-        const price =
-          option.name === 'Ethereum'
-            ? formatNumber2digits(etheCost * balance)
-            : 0;
+        const balance = convertQuantizedAmountToEth(
+          matchedBalance[0].quantizedAmount,
+        );
+        const price = formatNumber2digits(etheCost * Number(balance));
         tempOption = { ...tempOption, balance, price };
       } else tempOption = { ...tempOption, balance: 0 };
       temp.push(tempOption);
@@ -383,7 +379,7 @@ export default function MainScreen({
                   className={cn(
                     'flex cursor-pointer justify-between py-4',
                     index !== coinPrices.length - 1 &&
-                      'border-base/10 border-b',
+                      'border-b border-white/10',
                   )}
                   key={index}
                 >
