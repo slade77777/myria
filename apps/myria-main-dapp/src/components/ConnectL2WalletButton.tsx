@@ -10,7 +10,7 @@ import ChevronDownIcon from './icons/ChevronDownIcon';
 import Popover from './Popover';
 import MetamaskOnboarding from './InstallMetamaskButton';
 import { useAuthenticationContext } from '../context/authentication';
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import MainL2Wallet from './Main-L2-Wallet/Main-L2-Wallet';
 import { useGA4 } from '../lib/ga';
 import Modal from './Modal';
@@ -25,7 +25,10 @@ import { useL2WalletContext } from 'src/context/l2-wallet';
 import WthdrawNFTPopover from './marketplace/Withdraw-NFT/WthdrawNFTPopover';
 import WithdrawNFTScreen from './marketplace/Withdraw-NFT/WithdrawNFTScreen';
 import { useWithDrawNFTContext } from 'src/context/withdraw-nft';
+import ChangeNetworkModal from './ChangeNetworkModal';
 import { accountApiClient } from '../client';
+
+const ENV_CHAIN_ID = Number(process.env.NEXT_PUBLIC_CHAIN_ID);
 
 interface Props {
   isAirDrop?: boolean;
@@ -34,8 +37,15 @@ interface Props {
 const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
   const { event } = useGA4();
   const { installedWallet } = useInstalledWallet();
-  const { address, onConnectCompaign, disconnect, setAddress, subscribeProvider } =
-    useWalletContext();
+  const {
+    address,
+    onConnectCompaign,
+    disconnect,
+    setAddress,
+    subscribeProvider,
+    changeNetwork,
+    chainId
+  } = useWalletContext();
 
   const {
     connectL2Wallet,
@@ -79,13 +89,17 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
       return;
     }
     event('Connect Wallet Selected', { campaign: 'B2C Marketplace' });
-    await onConnectCompaign('B2C Marketplace');
-    handleSetFirstPurchase(false);
-    connectL2Wallet();
-    if (isAirDrop) {
-      loginCampaignByWalletMutation.mutate();
-    } else {
-      loginByWalletMutation.mutate();
+    try {
+      await onConnectCompaign('B2C Marketplace');
+      handleSetFirstPurchase(false);
+      connectL2Wallet();
+      if (isAirDrop) {
+        loginCampaignByWalletMutation.mutate();
+      } else {
+        loginByWalletMutation.mutate();
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -209,8 +223,16 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
     });
   }, [loginByWalletMutation?.isSuccess, user, requestedEmail, localStarkKey]);
 
+  const addressDisplayed =
+    (!loginByWalletMutation?.isError && walletAddress && showConnectedWallet && !isAirDrop) ||
+    (!loginCampaignByWalletMutation?.isError && walletAddress && showConnectedWallet && isAirDrop);
+
   return (
     <>
+      <ChangeNetworkModal
+        open={Boolean(addressDisplayed && chainId && chainId !== ENV_CHAIN_ID)}
+        onSwitchNetwork={() => changeNetwork()}
+      />
       <Modal
         open={showMismatchedWalletModal}
         onOpenChange={() => {
@@ -253,14 +275,7 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
       </Modal>
       <div className="flex items-center">
         <div>
-          {(!loginByWalletMutation?.isError &&
-            walletAddress &&
-            showConnectedWallet &&
-            !isAirDrop) ||
-          (!loginCampaignByWalletMutation?.isError &&
-            walletAddress &&
-            showConnectedWallet &&
-            isAirDrop) ? (
+          {addressDisplayed ? (
             <div>
               <Popover
                 modal
