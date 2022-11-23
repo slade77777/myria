@@ -61,12 +61,17 @@ const LeftSectionWelcome: React.FC<IProp> = ({
       setContinueFunction(false);
     }
   }, [loginCampaignByWalletMutation.error]);
+
   const handleClick = async () => {
-    await onConnectCompaign('AirDrop');
-    connectL2Wallet();
-    event('Connect Wallet Selected', { campaign: 'AirDrop' });
-    loginCampaignByWalletMutation.mutate();
-    setContinueFunction(true);
+    try {
+      await onConnectCompaign('AirDrop');
+      connectL2Wallet();
+      event('Connect Wallet Selected', { campaign: 'AirDrop' });
+      loginCampaignByWalletMutation.mutate();
+      setContinueFunction(true);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const handleClickContinue = () => {

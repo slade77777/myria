@@ -8,6 +8,7 @@ import { Campaign } from '../lib/ga/use-ga/event';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { localStorageKeys } from 'src/configs';
 import reporter from 'src/error-reporter';
+import { getNetworkId } from 'src/services/myriaCoreSdk';
 
 export let web3Modal: Web3Modal;
 export type ReaderProvider = ethers.providers.InfuraProvider;
@@ -24,6 +25,7 @@ interface IWalletContext {
   setAddress: (walletAddress: string) => void;
   signMessage: (message: string) => Promise<string> | undefined;
   subscribeProvider: () => void;
+  changeNetwork: () => void;
 }
 
 const WalletContext = React.createContext<IWalletContext>({} as IWalletContext);
@@ -44,6 +46,9 @@ if (typeof window !== 'undefined') {
     cacheProvider: true
   });
 }
+
+const ENV_CHAIN_ID = Number(process.env.NEXT_PUBLIC_CHAIN_ID);
+
 export const WalletProvider: React.FC = ({ children }) => {
   const [address, setAddress] = React.useState<string | undefined>(undefined);
   const [balance, setBalance] = React.useState<BigNumber>();
@@ -73,8 +78,17 @@ export const WalletProvider: React.FC = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    const setChainIdData = async () => {
+      const networkId = await getNetworkId();
+      setChainId(networkId);
+    };
+
     if (chainId) {
       setReaderProvider(createReaderProvider(chainId));
+      setChainId(chainId);
+    }
+    if (!chainId && (localStarkKey || walletAddress)) {
+      setChainIdData();
     }
   }, [chainId]);
 
@@ -140,15 +154,58 @@ export const WalletProvider: React.FC = ({ children }) => {
     const accounts = await providerApi.listAccounts();
     const address = accounts[0];
     const network = await providerApi.getNetwork();
-    setW3Provider(w3provider);
-    setSignerProviderApi(providerApi);
-    setChainId(network.chainId);
-    setAddress(address);
-    event('Wallet Connected', { wallet_address: address, campaign });
+    try {
+      if (network.chainId !== ENV_CHAIN_ID) {
+        await changeNetwork(w3provider);
+      }
+
+      setW3Provider(w3provider);
+      setSignerProviderApi(providerApi);
+      setChainId(ENV_CHAIN_ID);
+      setAddress(address);
+      event('Wallet Connected', { wallet_address: address, campaign });
+    } catch (e) {
+      throw new Error('Wrong network');
+    }
   };
 
   const signMessage = (message: string) => {
     return signerProviderApi?.getSigner().signMessage(message);
+  };
+
+  const changeNetwork = async (provider = w3Provider) => {
+    if (!provider) {
+      const w3provider = await web3Modal.connect();
+      provider = w3provider;
+    }
+    const chainId = ENV_CHAIN_ID;
+    const changeIdHex = '0x' + chainId.toString(16);
+    try {
+      await provider?.request({
+        method: 'wallet_switchEthereumChain',
+        params: [
+          {
+            chainId: changeIdHex
+          }
+        ]
+      });
+      setChainId(chainId);
+    } catch (err: any) {
+      // This error code indicates that the chain has not been added to MetaMask.
+      if (err.code === 4902) {
+        await provider?.request({
+          method: 'wallet_addEthereumChain',
+          params: [
+            {
+              chainId: changeIdHex
+            }
+          ]
+        });
+        setChainId(chainId);
+      } else {
+        throw err;
+      }
+    }
   };
 
   React.useEffect(() => {
@@ -171,7 +228,8 @@ export const WalletProvider: React.FC = ({ children }) => {
         signMessage,
         balance,
         setAddress: onSetWalletAddress,
-        subscribeProvider: initializeSubcribeProvider
+        subscribeProvider: initializeSubcribeProvider,
+        changeNetwork
       }}>
       {children}
     </WalletContext.Provider>
