@@ -23,8 +23,8 @@ export default function useTransactionList(starkKey: string) {
       );
 
       if (transactionHistoryResponse.status === 'success' && transactionHistoryResponse?.data) {
-        data = transactionHistoryResponse?.data;
-        setHistoryData(transactionHistoryResponse?.data);
+        data = transactionHistoryResponse?.data.data;
+        setHistoryData(transactionHistoryResponse?.data.data);
       }
 
       const result = data

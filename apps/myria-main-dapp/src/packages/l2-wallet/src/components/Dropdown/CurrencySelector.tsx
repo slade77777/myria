@@ -51,56 +51,64 @@ export default function CurrencySelector({ selectHandle, options }: TProp) {
     <div ref={setDropdownRef}>
       <div className="relative">
         <div
-          // onClick={() => {
-          //   toggleDropDown();
-          // }}
-          className="relative flex h-[52px] w-full items-center justify-between rounded-[8px] bg-[#132533] px-4"
+          onClick={() => {
+            toggleDropDown();
+          }}
+          className={`relative flex h-[52px] w-full cursor-pointer items-center justify-between bg-[#132533] px-4 ${
+            !isOpen ? 'rounded-lg' : 'rounded-t-lg'
+          }`}
         >
           <div>
-            {selectedItem ? (
-              <div className="flex items-center">
-                <img
-                  className="mr-[11px] w-[24px]"
-                  src={selectedItem.ico}
-                  alt="currency_avatar"
-                />
-                <span className="mr-2 text-[16px] text-white">
-                  {selectedItem.name}
-                </span>
-                <span className="flex h-[24px] w-[47px] items-center justify-center rounded-[4px] bg-[#0A1F2E] text-white">
-                  {selectedItem.short}
-                </span>
+            {!isOpen ? (
+              <div>
+                {selectedItem ? (
+                  <div className="flex items-center">
+                    <img
+                      className="mr-[11px] w-6"
+                      src={selectedItem.ico}
+                      alt="currency_avatar"
+                    />
+                    <span className="text-base/10 mr-2 text-base">
+                      {selectedItem.name}
+                    </span>
+                    <div className="text-base/9 flex items-center justify-center rounded-[4px] bg-[#0A1F2E] px-2 py-1">
+                      {selectedItem.short}
+                    </div>
+                  </div>
+                ) : (
+                  'Select Currency'
+                )}
               </div>
             ) : (
-              'Select Currency'
+              <span className="text-base/9 text-sm">Select an asset</span>
             )}
           </div>
-          {/* <button aria-label="toggle menu">
+          <button aria-label="toggle menu">
             <ChevronIcon />
-          </button> */}
+          </button>
         </div>
-        {/* {isOpen && (
-          <ul className="absolute z-[10] w-full rounded-[10px] border bg-[#132533]">
+        {isOpen && (
+          <ul className="absolute z-[10] w-full rounded-br-[10px] rounded-bl-[10px] bg-[#132533] pb-3">
             {options.map((item: any, index: number) => (
               <div
                 key={`${index}${JSON.stringify(item)}`}
-                className="cursor-pointer"
+                className="cursor-pointer pr-4 pl-2"
                 onClick={() => {
                   selectItem(item);
                 }}
               >
-                <li className="px-4 py-2">
-                  <div>
+                <li className="hover:bg-base/5 rounded-lg py-2 pl-3">
+                  <div className="font-normal">
                     <div className="flex items-center">
                       <img
                         className="mr-[11px] w-[24px]"
                         src={item.ico}
                         alt="currency_avatar_2"
                       />
-                      <span className="mr-2 text-[16px] text-white">
+                      <span className="text-base/10 mr-2 text-base">
                         {item.name}
                       </span>
-                      <span className="flex h-[24px] w-[47px] items-center justify-center rounded-[4px] bg-[#0A1F2E] text-white">
+                      <span className="text-base/9 flex items-center justify-center rounded-[4px] bg-[#0A1F2E] px-2 py-1">
                         {item.short}
                       </span>
                     </div>
@@ -110,7 +118,7 @@ export default function CurrencySelector({ selectHandle, options }: TProp) {
               </div>
             ))}
           </ul>
-        )} */}
+        )}
       </div>
     </div>
   );

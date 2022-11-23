@@ -219,6 +219,13 @@ function HistoryTab({
       ) {
         return 'Token ERC20 Withdraw';
       }
+      if (
+        !item.name &&
+        item.type === TRANSACTION_TYPE.DEPOSIT &&
+        (item.tokenType === 'MINTABLE_ERC721' || item.tokenType === 'ERC20')
+      ) {
+        return 'Token ERC20 Deposit';
+      }
       if (item.type === TRANSACTION_TYPE.ROYALTYTRANSFER) {
         return 'Creator Earnings';
       }

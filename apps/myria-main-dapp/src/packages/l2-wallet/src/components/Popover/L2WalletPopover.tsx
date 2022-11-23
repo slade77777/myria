@@ -85,6 +85,15 @@ export const options: Array<TOption> = [
     assetType:
       '0xb333e3142fe16b78628f19bb15afddaef437e72d6d7f5c6c20c6801a27fba6',
   },
+  {
+    id: 2,
+    name: 'MYRIA',
+    short: 'MYRIA',
+    ico: '/assets/images/myria.svg',
+    tokenAddress: '0xA06116D9E28AF403d6989c45EF8C0b9B971e5E12',
+    assetType:
+      '0xb333e3142fe16b78628f19bb15afddaef437e72d6d7f5c6c20c6801a27fba6',
+  },
 ];
 
 enum SCREENS {
@@ -307,7 +316,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
 
   const deposit = async () => {
     if (amount == undefined) return;
-    let resultDepoit: TxResult;
+    let resultDeposit: TxResult | any;
     trackWalletAction({
       eventName: 'Wallet Deposit Selected',
       hide_balance: true,
@@ -320,7 +329,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
       const depositModule = moduleFactory.getDepositModule();
 
       if (selectedToken.name === 'Ethereum') {
-        resultDepoit = await depositModule.depositEth(
+        resultDeposit = await depositModule.depositEth(
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
@@ -333,21 +342,22 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           },
         );
       } else {
-        resultDepoit = await depositModule.depositERC20Token(
+        resultDeposit = await depositModule.depositERC20(
           {
             starkKey: '0x' + pKey,
-            tokenAddress: selectedToken.tokenAddress,
-            tokenType: TokenType.ERC20,
-            quantizedAmount: amount.toString(),
+            contractAddress: selectedToken.tokenAddress,
+            amount: String(convertEthToWei(amount.toString())),
+            ethAddress: connectedAccount,
           },
           {
             from: connectedAccount,
             confirmationType: ConfirmationType.Confirmed,
           },
         );
+        resultDeposit = { transactionHash: resultDeposit.data.transactionHash };
       }
-      if (resultDepoit) {
-        setDepositResponse(resultDepoit);
+      if (resultDeposit) {
+        setDepositResponse(resultDeposit);
       }
       const isShowPopover = document.getElementById('deposit-in-progress');
       if (isShowPopover) {
@@ -387,10 +397,9 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
           senderPublicKey: `0x${pKey}`,
           senderEthAddress: address,
           receiverPublicKey: address,
-          quantizedAmount: String(
-            convertAmountToQuantizedAmount(amount.toString()),
-          ),
-          token: assetType,
+          amount: String(convertAmountToQuantizedAmount(amount.toString())),
+          tokenType: TokenType.ERC20,
+          quantum: QUANTUM_CONSTANT.toString(),
         };
         responseWithdraw = await withdrawModule.withdrawalOffchainV2(
           withdrawParamsV2,
@@ -403,21 +412,15 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
             tokenAddress: selectedToken.tokenAddress,
           },
         });
-        responseWithdraw = await withdrawModule.withdrawalOffchain(
-          {
-            starkKey: '0x' + pKey,
-            tokenType: TokenType.ERC20,
-            amount: amount.toString(),
-            vaultId: undefined,
-            assetId: assetType,
-            tokenAddress: selectedToken.tokenAddress,
-          },
-          {
-            from: connectedAccount,
-            nonce: new Date().getTime(),
-            confirmationType: ConfirmationType.Confirmed,
-          },
-        );
+        responseWithdraw = await withdrawModule.withdrawalOffchainV2({
+          tokenType: TokenType.ERC20,
+          amount: amount.toString(),
+          tokenAddress: selectedToken.tokenAddress,
+          senderPublicKey: `0x${pKey}`,
+          senderEthAddress: address,
+          receiverPublicKey: address,
+          quantum: QUANTUM_CONSTANT.toString(),
+        });
       }
       if (responseWithdraw) {
         setScreen(SCREENS.WITHDRAW_PENDING);
@@ -507,7 +510,7 @@ export default function L2WalletPopover({ onClosePopover = () => {} }: Props) {
         const { data } = await transactionModule.getTransactionList(
           '0x' + localStarkKey,
         );
-        const result = data
+        const result = data.data
           .filter((item: any, index: number) => {
             if (item.assetType || item.settlementInfo) return true;
             else return false;
