@@ -157,6 +157,7 @@ export default function FirstDepositModal({
             starkKey: '0x' + pKey,
             contractAddress: selectedToken.tokenAddress,
             amount: String(convertEthToWei(amount.toString())),
+            ethAddress: connectedAccount,
           },
           {
             from: connectedAccount,
