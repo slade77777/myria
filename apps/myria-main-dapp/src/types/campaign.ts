@@ -3,6 +3,12 @@ export interface CampaignResponseType<T> {
   status: string;
   data: T;
 }
+export interface CampaignDiscordResponseType<T, E> {
+  status: string;
+  data: T;
+  errors?: E;
+}
+
 export type RegisterData = {
   starkKey: string;
   walletAddress?: string;
@@ -34,23 +40,6 @@ export type Ticket = {
   ticketStatus: string;
   ticketType: string;
   weekNumber: number;
-};
-
-export type UserAirDop = {
-  availableStars: number;
-  createdAt: string;
-  currentWeekTickets: Ticket[];
-  earnedStars: number;
-  pk: string;
-  referredPurchases: string[];
-  referredUsers: string[];
-  sk: string;
-  tasks: Task[];
-  date_registered?: Date;
-  updatedAt: string;
-  ticketCount: number;
-  ticketPrice: number;
-  walletAddress: string;
 };
 
 export type MyriaUser = {
@@ -85,20 +74,43 @@ export interface MissionProgressType {
   };
 }
 
+interface campaignActive {
+  id: number;
+  code: string;
+  name: string;
+  status: string;
+  startedAt: string;
+  endedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+interface userCampaignWalletAddress {
+  userId: number;
+  campaignId: number;
+  referrerId?: number | null;
+  earnedPoints?: number;
+  availablePoints?: number;
+  createdAt?: string;
+  updatedAt?: string;
+  campaign: campaignActive;
+}
+
 export interface UserType {
   id: number;
-  starkKey: string;
-  accountId: null;
+  starkKey?: string;
+  accountId?: null;
   walletAddress: string;
-  email: string;
-  verifiedAt: null;
-  username: string;
-  referrerId: null;
-  allianceId: number;
-  earnedPoints: number;
-  availablePoints: number;
-  createdAt: string;
-  updatedAt: string;
+  email?: string;
+  verifiedAt?: null;
+  username?: string;
+  referrerId?: null;
+  allianceId?: number;
+  earnedPoints?: number;
+  availablePoints?: number;
+  createdAt?: string;
+  updatedAt?: string;
+  userCampaign?: userCampaignWalletAddress[];
 }
 
 export interface CampaignType {
@@ -167,31 +179,17 @@ export interface TwitterCampaignPayload {
 
 export interface UserCampaignResponse extends UserType {}
 
-export interface RegisterUserCampaignPayload {
-  starkKey: string;
-  walletAddress: string;
-  accountId: string;
-  username: string | undefined;
-  email: string | undefined;
-  referrerId?: number;
-}
-
 export interface RegisterUserCampaignResponse extends UserType {}
 
 export interface RegisterUserL2WalletPayload {
   starkKey: string;
   walletAddress: string;
   accountId: string;
-  username: string;
-  email: string;
-  referrerId: number;
-  signature: {
-    r: string;
-    s: string;
-  };
+  username?: string;
+  email?: string;
+  referrerId?: number;
+  signature: SplitSignature | undefined;
 }
-
-export interface RegisterUserL2WalletResponse {}
 
 export interface UserAlliancesResponse {
   id: number;
@@ -209,9 +207,9 @@ export interface MissionCompletePayload {
 }
 
 export interface MissionCompleteResponse {
-  userId: string;
-  campaignId: string;
-  referrerId: null;
+  userId: number;
+  campaignId: number;
+  referrerId: number | null;
   earnedPoints: number;
   availablePoints: number;
   wallet_id: string;
@@ -220,8 +218,8 @@ export interface MissionCompleteResponse {
 }
 
 export interface RegisterCampaignPayload {
-  userId: string;
-  campaignId: string;
+  userId: number;
+  campaignId?: number;
 }
 
 export interface RegisterCampaignResponse {
@@ -277,6 +275,15 @@ export interface RewardClaimDiscordPayload {
 }
 
 export interface RewardClaimDiscordResponse {}
+export interface RewardClaimDiscordError {
+  code: number;
+  correlationId: string;
+  errorCode?: number;
+  detail?: string;
+  externalErrors: { error: string; error_description: string };
+  path: string;
+  timestamp: string;
+}
 
 export interface RewardUserClaimPayload {
   rewardId: number;

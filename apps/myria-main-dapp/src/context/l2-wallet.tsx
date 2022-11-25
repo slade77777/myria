@@ -42,7 +42,6 @@ const L2WalletContext = React.createContext<IL2WalletContext>({} as IL2WalletCon
 export const L2WalletProvider: React.FC = ({ children }) => {
   const [localStarkKey, setLocalStarkKey] = useLocalStorage(localStorageKeys.starkKey, '');
   const [walletAddress, setWalletAddress] = useLocalStorage(localStorageKeys.walletAddress, '');
-  const [, setIsCheckFirstTimeUser] = useLocalStorage(localStorageKeys.firstTimeWallet, false);
   const [isFirstTimeWallet, setIsFirstTimeWallet] = React.useState(false);
   const [activeWalletTabs, setActiveWalletTabs] = useState<WalletTabs>(WalletTabs.HISTORY);
   const [isFirstPurchase, setIsFirstPurchase] = React.useState(false);
@@ -69,14 +68,11 @@ export const L2WalletProvider: React.FC = ({ children }) => {
     try {
       const user = await userModule.getUserByWalletAddress(metamaskAccount);
       if (user && user?.ethAddress?.toLowerCase() === metamaskAccount?.toLowerCase()) {
-        setIsCheckFirstTimeUser(false);
         return false;
       } else {
-        setIsCheckFirstTimeUser(true);
         return true;
       }
     } catch {
-      setIsCheckFirstTimeUser(true);
       return true;
     }
   };

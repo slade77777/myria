@@ -38,5 +38,10 @@ dist
 out-dev/
 out-staging/
 out-prod/
+out-preprod/
+apps/myria-main-dapp/out-preprod/
+apps/myria-main-dapp/out-dev/
+apps/myria-main-dapp/out-staging/
+apps/myria-main-dapp/out-prod/
 
 storybook-static

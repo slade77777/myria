@@ -9,6 +9,9 @@
     "build:prod": {
       "dependsOn": ["build", "^build:prod"]
     },
+    "build:preprod": {
+      "dependsOn": ["build", "^build:preprod"]
+    },
     "build": {
       "dependsOn": ["^build"]
     },

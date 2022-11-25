@@ -50,7 +50,7 @@ const SIGILS: Sigil[] = [
     selectModalBgImg: '/images/nodes/insignia/sigilA_modal_bg.png',
     width: 584 / 4,
     height: 748 / 4,
-    className: 'left-[17%] w-[22%]',
+    className: 'left-[17%] w-[23%]',
     desc: (
       <Trans>
         With ships equipped with technology both ancient and cutting edge, the Federation Alliance
@@ -72,7 +72,7 @@ const SIGILS: Sigil[] = [
     selectModalBgImg: '/images/nodes/insignia/sigilB_modal_bg.png',
     width: 584 / 4,
     height: 748 / 4,
-    className: 'w-[22%]',
+    className: 'w-[23%]',
     name: 'Vector Prime',
     desc: (
       <Trans>
@@ -95,7 +95,7 @@ const SIGILS: Sigil[] = [
     selectModalBgImg: '/images/nodes/insignia/sigilC_modal_bg.png',
     width: 584 / 4,
     height: 748 / 4,
-    className: 'right-[17%] w-[22%]',
+    className: 'right-[17%] w-[23%]',
     name: 'Equinox',
     desc: (
       <Trans>
@@ -162,7 +162,7 @@ const Sigil = ({
         className || ''
       }`}>
       <div
-        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b px-6 pb-[8px] pt-[24px] transition-all xl:px-8 ${
+        className={`relative flex h-full w-full flex-col items-center justify-end bg-gradient-to-b p-4 transition-all ${
           isActive
             ? 'z-20 max-w-full from-transparent via-[rgba(0,0,0,0.5)] to-transparent'
             : 'z-0 max-w-[80%] from-transparent'
@@ -224,11 +224,11 @@ const Sigil = ({
           </span>
         </div>
         <div
-          className={`h-[70px] w-[260px] text-center transition-all delay-100 ${
+          className={`h-[70px] w-[295px] text-center transition-all delay-100 ${
             isActive ? 'opacity-100' : 'opacity-0'
           }`}>
           <span
-            className="text-light text-[14px] font-normal leading-5"
+            className="text-[14px] font-normal leading-[21px] text-white"
             style={{ textShadow: '0px 0px 10px rgba(255, 255, 255, 0.2)' }}>
             {desc}
           </span>
@@ -323,8 +323,8 @@ const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
 
   if (!data) {
     return (
-      <div className="flex justify-center">
-        <Loading />
+      <div className="flex h-[100vh] justify-center">
+        <Loading className="justify-center" />
       </div>
     );
   }
@@ -380,7 +380,9 @@ const ChooseAlliance = ({ onNext, currentStep }: ChooseAllianceProps) => {
           </div>
         </div>
       </div>
-      {currentStep < 2 && <ChooseAllianceStepper currentStep={currentStep} />}
+      {currentStep > 0 && currentStep < 3 && (
+        <ChooseAllianceStepper currentStep={currentStep - 1} />
+      )}
     </>
   );
 };

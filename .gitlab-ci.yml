@@ -4,6 +4,7 @@ stages:
   - dev-deploy
   - staging-build
   - staging-deploy
+  - preprod-build
   - prod-build
   - prod-deploy
 
@@ -247,7 +248,7 @@ staging-deploy-d-legacy:
 
 prod-build:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "main-b"'
+    - if: '$CI_COMMIT_BRANCH == "prod" || $CI_COMMIT_BRANCH == "prod-b"'
   image: node:14
   stage: prod-build
   script:
@@ -256,6 +257,18 @@ prod-build:
   artifacts:
     paths:
       - apps/myria-main-dapp/out-prod
+
+preprod-build:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "main-b"'
+  image: node:14
+  stage: preprod-build
+  script:
+    - yarn
+    - yarn build:preprod
+  artifacts:
+    paths:
+      - apps/myria-main-dapp/out-preprod
 
 # Prod CD target 1 - a
 preprod-deploy-a:
@@ -279,10 +292,11 @@ preprod-deploy-a:
     account: myria-net-prod
     region: us-east-1
     bucket_name: myria-preprod.myria.com
-    artifacts_folder: apps/myria-main-dapp/out-prod
+    artifacts_folder: apps/myria-main-dapp/out-preprod
     cloudfront_id: E1SN30T2UKSLIF
   dependencies:
-    - prod-build
+    - preprod-build
+  when: manual
 
 # Prod CD target 1 - b
 preprod-deploy-b:
@@ -306,15 +320,15 @@ preprod-deploy-b:
     account: myria-net-prod
     region: us-east-1
     bucket_name: myria-preprod-b.myria.com
-    artifacts_folder: apps/myria-main-dapp/out-prod
+    artifacts_folder: apps/myria-main-dapp/out-preprod
     cloudfront_id: E1OZUTYN5YIVS8
   dependencies:
-    - prod-build
+    - preprod-build
 
 # Prod CD target 2
 prod-deploy-2:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "prod"'
   image:
     name: amazon/aws-cli
     entrypoint: ['']
@@ -342,7 +356,7 @@ prod-deploy-2:
 # The below is legacy using the previous manually created bucket
 prod-deploy-3-legacy:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "prod"'
   image:
     name: amazon/aws-cli
     entrypoint: ['']

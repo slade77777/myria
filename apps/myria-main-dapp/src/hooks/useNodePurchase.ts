@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from 'react-query';
-import { noCacheApiClient } from '../client';
+import { accountApiClient } from '../client';
 
 export type NodePurchase = {
   alreadyPurchasedCount: number;
@@ -12,7 +12,7 @@ export default function useNodePurchase() {
   const queryKey = 'nodePurchase';
   const { data, isLoading, error, refetch } = useQuery(
     queryKey,
-    () => noCacheApiClient.get('/nodes/purchase'),
+    () => accountApiClient.get('/nodes/purchase'),
     {
       refetchOnWindowFocus: false,
       retry: false

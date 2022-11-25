@@ -4,11 +4,14 @@ import { useRouter } from 'next/router';
 import SubtractBottom from 'src/components/icons/SubtractBottom';
 import SubtractTop from 'src/components/icons/SubtractTop';
 import { useAuthenticationContext } from 'src/context/authentication';
-import { campaignCode, utilTaskId } from 'src/utils';
+import { campaignCode, REPETITION_TYPE, utilTaskId } from 'src/utils';
 import ButtonMission, { STATUS_MISSION } from './ButtonMission';
 import { ImissionProgress } from 'src/context/authentication';
 import { reqRewardClaimDiscord } from 'src/services/campaignService';
 import { RewardClaimDiscordPayload } from 'src/types/campaign';
+import { errorCode } from 'src/errorCode';
+import { toast } from 'react-toastify';
+import HistoryIcon from 'src/components/icons/HistoryIcon';
 interface IProp {
   status: string;
   item: ImissionProgress;
@@ -28,14 +31,16 @@ const initMissionPanel = {
       missionCode: string
     ) => {
       //Call API code Join Discord
-      console.log('Call API code Join Discord', codeJoinDiscord);
       const payloadData: RewardClaimDiscordPayload = {
         userId: userId || undefined,
         discordAccessCode: codeJoinDiscord,
         campaignCode: campaignCode,
         missionCode: missionCode
       };
-      await reqRewardClaimDiscord(payloadData);
+      const responeClaimDiscord = await reqRewardClaimDiscord(payloadData);
+      if (responeClaimDiscord.errors?.[0].errorCode === errorCode.users.discordCode.userExisted) {
+        toast('Discord User Existed', { type: 'error' });
+      }
     }
   },
   [utilTaskId.followMyriaTwitter]: {
@@ -67,11 +72,26 @@ const initMissionPanel = {
 const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
   const { userCampaign } = useAuthenticationContext();
 
-  const isLocked = status === STATUS_MISSION.LOCKED && id !== utilTaskId.verifyEmail;
-  const enableClick =
-    status === STATUS_MISSION.AVAILABLE ||
-    (id === utilTaskId.verifyEmail && status !== STATUS_MISSION.COMPLETED);
+  const objJoinDiscord = userCampaign?.campaign.missionProgress.filter(
+    (itemMissionProgress: ImissionProgress) => {
+      return itemMissionProgress.code === utilTaskId.joinDiscord;
+    }
+  );
+  const isCompletedDiscord: boolean = objJoinDiscord
+    ? objJoinDiscord[0].status === STATUS_MISSION.COMPLETED
+    : false;
 
+  const handleCheckEnableClick = () => {
+    if (id === utilTaskId.dailyLogAndPostDiscord || id === utilTaskId.reachLevelDiscord) {
+      return isCompletedDiscord ? status === STATUS_MISSION.AVAILABLE : false;
+    } else {
+      return (
+        status === STATUS_MISSION.AVAILABLE ||
+        (id === utilTaskId.verifyEmail && status !== STATUS_MISSION.COMPLETED)
+      );
+    }
+  };
+  const enableClick = handleCheckEnableClick();
   const router = useRouter();
 
   useEffect(() => {
@@ -84,7 +104,7 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
       className={clsx(
         `relative`,
         `${id === utilTaskId.verifyEmail ? 'z-[2]' : 'z-[1]'}`,
-        `${isLocked ? 'opacity-50' : 'opacity-100'}`
+        `${enableClick ? 'opacity-100' : 'opacity-30'}`
       )}>
       <div className="absolute -left-1 -bottom-1 z-[-1]">
         <SubtractBottom />
@@ -93,9 +113,11 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
         <div className="flex-1">
           <div className="flex items-center uppercase text-white">
             <p className=" mr-2 text-xl font-bold">{item.missionCampaign.title}</p>
-            <span className="min-w-[74px] rounded-lg bg-[#0D273A] py-[6px] px-[10px] text-center text-xs font-medium leading-3">
-              {item.missionCampaign.point} {item.missionCampaign.point > 1 ? 'POINTS' : 'POINT'}
-            </span>
+            {item.missionCampaign.point > 0 && (
+              <span className="min-w-[74px] rounded-lg bg-[#0D273A] py-[6px] px-[10px] text-center text-xs font-medium leading-3">
+                {item.missionCampaign.point} {item.missionCampaign.point > 1 ? 'POINTS' : 'POINT'}
+              </span>
+            )}
           </div>
           <div className="text-light mt-4  max-w-[65%] text-base">
             <p className="">{item.missionCampaign?.description}</p>
@@ -103,8 +125,17 @@ const ItemMission: React.FC<IProp> = ({ status, item, id }) => {
         </div>
         <div className="text-center">
           <ButtonMission status={status} item={item} id={id} enableClick={enableClick} />
-          {item.earnedPoints > 0 && (
-            <p className="text-light mt-4 text-xs font-medium">{item.earnedPoints} POINTS EARNED</p>
+          {item.earnedPoints > 0 && item.missionCampaign.repetitionType === REPETITION_TYPE.ONCE ? (
+            <div className="text-light mt-4 flex items-center justify-center text-xs font-medium ">
+              <span>{item.earnedPoints} POINTS EARNED</span>
+            </div>
+          ) : (
+            item.missionCampaign.repetitionType !== REPETITION_TYPE.ONCE && (
+              <div className="text-light mt-4 flex items-center justify-center text-xs font-medium ">
+                <HistoryIcon className="mr-1" width={20} height={18} />
+                <span>{item.earnedPoints} POINTS EARNED</span>
+              </div>
+            )
           )}
         </div>
       </div>

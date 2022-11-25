@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import { minABI } from '../../common/abis/minABI';
 import { initialWeb3 } from '../../services/myriaCoreSdk';
+import { convertWeiToEth } from '../../utils/Converter';
 
 declare let window: any;
 
@@ -35,7 +36,8 @@ function useBalanceL1(token: any, account: string) {
         setBalanceL1(balance);
       } else {
         const result = await getBalance(token.tokenAddress, account);
-        setBalanceL1(result);
+        const resultConvert = convertWeiToEth(result);
+        setBalanceL1(`${parseFloat(resultConvert).toFixed(5)}`);
       }
     };
 

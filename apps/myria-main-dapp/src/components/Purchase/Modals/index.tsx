@@ -12,7 +12,7 @@ import { useWalletContext } from 'src/context/wallet';
 import { formatTransferTxRequest, transferEth } from 'src/lib/eth';
 import { formatCurrency } from 'src/lib/formatter';
 import { useGA4 } from 'src/lib/ga';
-import apiClient from '../../../client';
+import apiClient, { accountApiClient } from '../../../client';
 import useNodePurchase from '../../../hooks/useNodePurchase';
 
 export type PurchaseInformationProps = {
@@ -81,7 +81,7 @@ const ModalPurchase = ({
   const { mutateAsync: submitPurchase, isLoading: isSubmiting } = useMutation(
     async ({ txHash }: { txHash: string }) => {
       if (txHash) {
-        apiClient
+        accountApiClient
           .post('/nodes/purchase', { txHash })
           .then(() => {
             refetch();
@@ -172,8 +172,7 @@ const ModalPurchase = ({
         className={`btn-lg justify-end ${className}`}
         onClick={onPurchase}
         loading={isPurchasing || isSubmiting}
-        disabled={isPurchasing || isSubmiting || isInsufficientBalance}
-      >
+        disabled={isPurchasing || isSubmiting || isInsufficientBalance}>
         {label}
       </Button>
     );
@@ -183,8 +182,7 @@ const ModalPurchase = ({
     <Modal open={open} onOpenChange={isPurchasing || isSubmiting ? () => null : onClose}>
       <Modal.Content
         title="Complete your purchase"
-        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]"
-      >
+        className="z-20 shadow-[0_0_40px_10px_#0000004D] md:max-w-[832px]">
         <div className=" p-8">
           <div className="mt-10 mb-4 flex justify-between">
             <div>
@@ -198,7 +196,7 @@ const ModalPurchase = ({
                 <ETH />
                 <p className="heading-md ml-2">{totalPriceEth}</p>
               </div>
-              <p className="body-sm text-right text-light">~${formatCurrency(totalPriceUsd, 2)}</p>
+              <p className="body-sm text-light text-right">~${formatCurrency(totalPriceUsd, 2)}</p>
             </div>
           </div>
 
@@ -215,7 +213,7 @@ const ModalPurchase = ({
                   {(totalPriceEth * feeRate).toFixed(7).replace(/\.?0+$/, '')}
                 </p>
               </div>
-              <p className="body-sm text-right text-light">
+              <p className="body-sm text-light text-right">
                 ~${formatCurrency(totalPriceUsd * feeRate, 5)}
               </p>
             </div>
@@ -234,7 +232,7 @@ const ModalPurchase = ({
                   {(totalPriceEth * (1 + feeRate)).toFixed(7).replace(/\.?0+$/, '')}
                 </p>
               </div>
-              <p className="body-sm text-right text-light">
+              <p className="body-sm text-light text-right">
                 ~${formatCurrency(totalPriceUsd * (1 + feeRate), 2)}
               </p>
             </div>
@@ -247,7 +245,7 @@ const ModalPurchase = ({
               <div className="flex">
                 <ETH />
                 {balance && (
-                  <p className="body-sm ml-2 flex-1 text-light">
+                  <p className="body-sm text-light ml-2 flex-1">
                     {Number(ethers.utils.formatEther(balance)).toFixed(4)} ETH
                   </p>
                 )}
@@ -269,8 +267,7 @@ const ModalPurchase = ({
                     height: '0px'
                   }
                 : {})
-            }}
-          >
+            }}>
             <div className="mr-2 h-4 w-4 text-[#9AC9E3]">
               <InfoIcon />
             </div>

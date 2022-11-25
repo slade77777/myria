@@ -152,9 +152,12 @@ export const ModalEditListing: React.FC<Props> = ({
                   } else {
                     clearErrors('price');
                   }
+                  if (e.target.value === '') {
+                    setValue('price', '');
+                  }
                 }
               }}
-              placeholder={ethPrice ? ethPrice : '0.00'}
+              placeholder={'0.00'}
               autoComplete="off"
               error={!!errors.price}
               errorText={errors.price?.message}
