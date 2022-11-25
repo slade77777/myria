@@ -16,7 +16,7 @@ const LinkWalletConfirmModal: React.FC<Props> = ({ open, onClose, onLink }) => {
     <Modal open={open} onOpenChange={onClose}>
       <Modal.Content title="Link Wallet Confirmation">
         <div className="space-y-8 p-8 pt-10">
-          <p className="text-[20px] leading-[1.5] text-light">
+          <p className="text-light text-[20px] leading-[1.5]">
             {address ? (
               <Trans>
                 Do you want to link your wallet {address.substring(0, 5)} to your Myria account?
@@ -34,7 +34,7 @@ const LinkWalletConfirmModal: React.FC<Props> = ({ open, onClose, onLink }) => {
             </button>
           ) : (
             <button
-              onClick={() => onConnectCompaign('Sigil')}
+              onClick={() => onConnectCompaign('Sigil').catch((e) => console.error(e))}
               className="btn-lg btn-primary w-full">
               <Trans>CONNECT WALLET</Trans>
             </button>

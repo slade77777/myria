@@ -70,22 +70,24 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       name: utilTaskId.followMyriaTwitter,
       handler: (homePage: string) => {
         window.open(getLinkMission(utilTaskId.followMyriaTwitter, homePage), '_blank');
-        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
-          (res) => {
-            console.log(res);
-          }
-        );
+        reqCreateTwitterCampaigns({
+          missionCode: item.code,
+          walletAddress: walletAddress.toLowerCase()
+        }).then((res) => {
+          console.log(res);
+        });
       }
     },
     [utilTaskId.followBrendanTwitter]: {
       name: utilTaskId.followBrendanTwitter,
       handler: (homePage: string) => {
         window.open(getLinkMission(utilTaskId.followBrendanTwitter, homePage), '_blank');
-        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
-          (res) => {
-            console.log(res);
-          }
-        );
+        reqCreateTwitterCampaigns({
+          missionCode: item.code,
+          walletAddress: walletAddress.toLowerCase()
+        }).then((res) => {
+          console.log(res);
+        });
       }
     },
     [utilTaskId.inviteFriends]: {
@@ -107,7 +109,10 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
       handler: (homePage: string) => {
         console.log(utilTaskId.dailyLogAndPostDiscord);
         let urlLink = utilTaskId.dailyLogAndPostDiscord;
-        if (userCampaign?.campaign.status !== STATUS_MISSION.COMPLETED) {
+        const joinDiscord = userCampaign?.campaign.missionProgress.filter(
+          (item) => item.code === utilTaskId.joinDiscord
+        );
+        if (joinDiscord?.[0].status !== STATUS_MISSION.COMPLETED) {
           urlLink = utilTaskId.joinDiscord;
         }
         window.open(getLinkMission(urlLink, homePage), '_blank');
@@ -115,20 +120,27 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     },
     [utilTaskId.sharePostTwitter]: {
       name: utilTaskId.sharePostTwitter,
-      handler: () => {
-        window.open(getLinkMission(utilTaskId.sharePostTwitter, ''), '_blank');
-        reqCreateTwitterCampaigns({ missionCode: item.code, walletAddress: walletAddress }).then(
-          (res) => {
-            console.log(res);
-          }
-        );
+      handler: (homePage: string) => {
+        window.open(getLinkMission(utilTaskId.sharePostTwitter, homePage), '_blank');
+        reqCreateTwitterCampaigns({
+          missionCode: item.code,
+          walletAddress: walletAddress.toLowerCase()
+        }).then((res) => {
+          console.log(res);
+        });
       }
     },
     [utilTaskId.reachLevelDiscord]: {
       name: utilTaskId.reachLevelDiscord,
       handler: (homePage: string) => {
-        console.log(utilTaskId.reachLevelDiscord);
-        window.open(getLinkMission(utilTaskId.joinDiscord, homePage), '_blank');
+        let urlLink = utilTaskId.reachLevelDiscord;
+        const joinDiscord = userCampaign?.campaign.missionProgress.filter(
+          (item) => item.code === utilTaskId.joinDiscord
+        );
+        if (joinDiscord?.[0].status !== STATUS_MISSION.COMPLETED) {
+          urlLink = utilTaskId.joinDiscord;
+        }
+        window.open(getLinkMission(urlLink, homePage), '_blank');
       }
     }
   };
@@ -149,14 +161,16 @@ const ButtonMission: React.FC<Props> = ({ status, item, id, enableClick }) => {
     <>
       <div
         className={clsx(
-          `group relative inline-block w-52 text-center leading-[50px] ${StyleButton().TEXT_COLOR}`,
+          `group relative inline-block w-52 text-center uppercase leading-[50px] ${
+            StyleButton().TEXT_COLOR
+          }`,
           enableClick && 'cursor-pointer'
         )}
         onClick={handleClick}>
         {item.missionCampaign.actionTitle}
         <IconButton status={StyleButton()} isActive={enableClick} />
       </div>
-      {id === utilTaskId.verifyEmail && (
+      {id === utilTaskId.verifyEmail && status !== STATUS_MISSION.COMPLETED && (
         <VerifyEmailModal
           onClose={() => {
             setOpenVerifyEmailModal(false);

@@ -51,7 +51,7 @@ export default function useGamesData() {
         logo: '/images/game-detail/metarush1/logo1.png',
         logoMobile: '/images/game-detail/metarush/logo-mobile.png',
         image: {
-          src: '/images/game-detail/metarush1/5.png',
+          src: '/images/game-detail/metarush1/04.png',
           width: 1854,
           height: 1042
         },
@@ -64,7 +64,6 @@ export default function useGamesData() {
             type: 'image',
             src: '/images/game-detail/metarush1/02.png'
           },
-
           {
             type: 'image',
             src: '/images/game-detail/metarush1/03.png'
@@ -82,7 +81,7 @@ export default function useGamesData() {
           {
             heading: t`About the game`,
             paragraph: [
-              t`The objective is simple &#45; get to the finish line first and don’t fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing.`
+              t`The objective is simple &#45; get to the finish line first and don't fall to your doom while trying. Each match starts with a horde of players who get eliminated through a series of obstacles along the course to the final. The surviving players continue the battle in rounds with increasing difficulty until there is only one rushling standing.`
             ]
           },
           {

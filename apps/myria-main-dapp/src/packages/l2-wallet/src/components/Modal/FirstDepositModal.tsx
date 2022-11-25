@@ -130,7 +130,7 @@ export default function FirstDepositModal({
     return true;
   }, [amount, balanceL1, etheCost, selectedToken]);
   const deposit = async () => {
-    let resultDepoit: TxResult;
+    let resultDeposit: TxResult | any;
     if (amount == undefined) return;
     try {
       setDepositProgress(PROGRESS.PROCESSING);
@@ -139,7 +139,7 @@ export default function FirstDepositModal({
 
       const depositModule = moduleFactory.getDepositModule();
       if (selectedToken.name === 'Ethereum') {
-        resultDepoit = await depositModule.depositEth(
+        resultDeposit = await depositModule.depositEth(
           {
             starkKey: '0x' + pKey,
             tokenType: TokenType.ETH,
@@ -152,12 +152,12 @@ export default function FirstDepositModal({
           },
         );
       } else {
-        resultDepoit = await depositModule.depositERC20Token(
+        resultDeposit = await depositModule.depositERC20(
           {
             starkKey: '0x' + pKey,
-            tokenAddress: selectedToken.tokenAddress,
-            tokenType: TokenType.ERC20,
-            quantizedAmount: amount.toString(),
+            contractAddress: selectedToken.tokenAddress,
+            amount: String(convertEthToWei(amount.toString())),
+            ethAddress: connectedAccount,
           },
           {
             from: connectedAccount,
@@ -165,8 +165,8 @@ export default function FirstDepositModal({
           },
         );
       }
-      if (resultDepoit) {
-        setDepositResponse(resultDepoit);
+      if (resultDeposit) {
+        setDepositResponse(resultDeposit);
       }
       setDepositProgress(PROGRESS.COMPLETED);
     } catch (err) {

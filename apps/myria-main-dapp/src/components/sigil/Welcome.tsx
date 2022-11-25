@@ -68,7 +68,7 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
       }
       if (setCurrentStep && isAirDrop && userCampaign) {
         // check Selected Alliance from user
-        setCurrentStep(2); // set Step to federatiton
+        setCurrentStep(3); // set Step to federatiton
         return;
       }
     } else {
@@ -144,13 +144,17 @@ const Welcome: React.FC<Props> = ({ onNext, setCurrentStep, isAirDrop = false })
   }, [loginByWalletMutation?.isError]);
 
   const handleClick = async () => {
-    onConnectCompaign('AirDrop');
-    connectL2Wallet();
-    event('Connect Wallet Selected', { campaign: 'Sigil' });
-    if (isAirDrop) {
-      loginCampaignByWalletMutation.mutate();
-    } else {
-      loginByWalletMutation.mutate();
+    try {
+      await onConnectCompaign('AirDrop');
+      connectL2Wallet();
+      event('Connect Wallet Selected', { campaign: 'Sigil' });
+      if (isAirDrop) {
+        loginCampaignByWalletMutation.mutate();
+      } else {
+        loginByWalletMutation.mutate();
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 

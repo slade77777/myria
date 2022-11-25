@@ -1,7 +1,9 @@
+import clsx from 'clsx';
 import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Button from 'src/components/core/Button';
 import { soundService, SUPPORT_SOUND } from 'src/sound';
+import { rewardsDefaultImg, REWARD_IMG_DEFAULT, REWARD_STATUS } from 'src/utils';
 import style from './style.module.scss';
 
 interface Props {
@@ -15,6 +17,9 @@ interface Props {
   buttonText: string;
   imageUrl: string;
   containerClassname?: string;
+  isMyVault?: boolean;
+  isDisablePoint?: boolean;
+  rewardStatus?: string;
 }
 
 export function NftBox({
@@ -27,10 +32,14 @@ export function NftBox({
   imageUrl,
   isBlurButton,
   disableClaimingAnimation,
-  containerClassname
+  containerClassname,
+  isMyVault = false,
+  isDisablePoint = false,
+  rewardStatus = 'CLAIMED'
 }: Props) {
   const animationRef = React.useRef<HTMLDivElement>(null);
   const [isClaiming, setIsClaiming] = React.useState(false);
+
   const option = React.useMemo(() => {
     // default
     let borderColor = '#162B39';
@@ -150,27 +159,44 @@ export function NftBox({
         </div>
       </div>
       <div
-        className={`relative flex h-full w-full flex-col items-center  rounded-xl bg-base/3 px-1 pt-6 pb-6 ${
+        className={`bg-base/3 relative flex h-full w-full flex-col  items-center rounded-xl px-1 pt-6 pb-6 ${
           isBlur ? 'opacity-50' : ''
         } ${isNextReward && style.nextRewardBox}`}
         style={{
           border: `1px solid ${option.borderColor}`
         }}>
         {isNextReward && (
-          <span className="absolute -top-2 text-xs font-bold text-light-green">NEXT REWARD</span>
+          <span className="text-light-green absolute -top-2 text-xs font-bold">NEXT REWARD</span>
         )}
         <div className="flex max-w-[96px] items-center justify-center">
           <img width="auto" height="100%" src={imageUrl} alt="" />
         </div>
-        <p className="text-xs font-medium text-white mt-6 mb-4">{titleText}</p>
-
-        <Button
-          loading={isClaiming}
-          onClick={() => handleClaim()}
-          className={`flex items-center justify-center h-6 w-fit rounded-[4px] px-[10px] py-[6px] text-xs font-bold transition-all ${option.buttonClass}`}>
-          {!isClaiming && buttonText}
-        </Button>
+        <p
+          className={clsx(
+            `mb-4 text-xs font-medium text-white ${imageUrl === rewardsDefaultImg && 'mt-6'}`
+          )}>
+          {titleText}
+        </p>
       </div>
+      <Button
+        loading={isClaiming}
+        onClick={() => handleClaim()}
+        className={`absolute bottom-6 right-2/4 flex h-6 w-fit translate-x-2/4 transform items-center justify-center rounded-[4px] px-[10px] py-[6px] text-xs 
+          ${
+            rewardStatus === REWARD_STATUS.LOCKED
+              ? 'font-medium'
+              : rewardStatus === REWARD_STATUS.CLAIMED
+              ? isMyVault
+                ? 'font-medium'
+                : 'font-normal'
+              : 'font-bold'
+          }
+          transition-all ${option.buttonClass} ${
+          isMyVault ? 'text-light font-medium opacity-50' : ''
+        }
+          ${isDisablePoint ? 'opacity-50' : ''}`}>
+        {!isClaiming && buttonText}
+      </Button>
     </div>
   );
 }

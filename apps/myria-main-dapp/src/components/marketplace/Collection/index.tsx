@@ -47,7 +47,7 @@ export const dataSorting: valueSort[] = [
     id: 1,
     sortingField: SortingFieldType.CREATED_AT,
     orderBy: AssetOrderBy.DESC,
-    name: 'Recently listed'
+    name: 'Recently Listed'
   },
   {
     id: 2,
@@ -161,7 +161,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
     <>
       <Page includeFooter={false}>
         <div className="pt-[104px] md:pt-[93px]">
-          <div className="relative h-[172px] md:h-[327px] w-full overflow-hidden">
+          <div className="relative h-[172px] w-full overflow-hidden md:h-[327px]">
             <img
               src={
                 collectionImageUrl
@@ -176,7 +176,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
           </div>
           <div className="max-w-content mx-auto mb-10 px-6 md:px-0">
             <div className="relative">
-              <div className="border-base/2 absolute -bottom-12 md:-bottom-16 flex w-24 h-24 md:h-[120px] md:w-[120px] items-center justify-center rounded-full border-[4px] bg-[#0F2F45] overflow-hidden">
+              <div className="border-base/2 absolute -bottom-12 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-[4px] bg-[#0F2F45] md:-bottom-16 md:h-[120px] md:w-[120px]">
                 {iconUrl ? (
                   <img src={iconUrl} alt="" />
                 ) : isMyria ? (
@@ -187,9 +187,9 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
               </div>
             </div>
             <div className="pt-16 md:pt-24">
-              <div className="md:flex justify-between">
+              <div className="justify-between md:flex">
                 <div className="md:w-2/3">
-                  <p className="text-[28px] md:text-4xl font-bold text-white break-all">{name}</p>
+                  <p className="break-all text-[28px] font-bold text-white md:text-4xl">{name}</p>
                   <p className="mt-2 text-[#97AAB5]">
                     Created By <span className="font-bold text-white">{project?.name}</span>
                   </p>
@@ -197,18 +197,18 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                     {description && <ReadMoreText text={description || ''} />}
                   </div>
                 </div>
-                <div className="flex flex-row gap-12 mt-6 md:mt-0">
+                <div className="mt-6 flex flex-row gap-12 md:mt-0">
                   <div>
-                    <p className="text-left md:text-right text-[28px] font-bold text-white">
+                    <p className="text-left text-[28px] font-bold text-white md:text-right">
                       {totalAssets}
                     </p>
-                    <p className="mt-2 text-left md:text-right text-[#97AAB5]">Items</p>
+                    <p className="mt-2 text-left text-[#97AAB5] md:text-right">Items</p>
                   </div>
                   <div>
-                    <p className="text-left md:text-right text-[28px] font-bold text-white">
+                    <p className="text-left text-[28px] font-bold text-white md:text-right">
                       {totalAssetsForSale}
                     </p>
-                    <p className="mt-2 text-left md:text-right text-[#97AAB5]">For Sale</p>
+                    <p className="mt-2 text-left text-[#97AAB5] md:text-right">For Sale</p>
                   </div>
                 </div>
               </div>
@@ -216,9 +216,9 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     {/* for mobile */}
-                    <span className="text-2xl font-bold text-white block md:hidden">Items</span>
+                    <span className="block text-2xl font-bold text-white md:hidden">Items</span>
                     {/* for ipad and above */}
-                    <span className="text-2xl font-bold text-white hidden md:block">Filter</span>
+                    <span className="hidden text-2xl font-bold text-white md:block">Filter</span>
                     <button
                       className="ml-6 cursor-pointer rounded"
                       onClick={() =>
@@ -232,7 +232,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                       <div
                         className="relative md:hidden"
                         onClick={() => setOpenFilterMobile(!openFilterMobile)}>
-                        <span className="absolute -top-6 bg-primary/6 text-white text-xs py-1 px-2 -right-2 rounded-xl">
+                        <span className="bg-primary/6 absolute -top-6 -right-2 rounded-xl py-1 px-2 text-xs text-white">
                           {filterSummary.length}
                         </span>
                       </div>
@@ -253,7 +253,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                       </div>
                     </BottomSheet>
                   </div>
-                  <div className="max-w-[190px] flex items-center md:hidden">
+                  <div className="flex max-w-[190px] items-center md:hidden">
                     <button
                       className="bg-base/4 border-base/4 relative w-full cursor-default rounded-lg border-[1px] py-3 pl-4 pr-10 text-left text-[#A1AFBA] shadow-md focus:outline-none sm:text-[14px]"
                       onClick={() => setOpenSortMobile(!openSortMobile)}>
@@ -287,7 +287,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
                   </div>
                 </div>
                 {filterSummary.length > 0 && (
-                  <div className="md:hidden text-base font-normal text-light mt-6">
+                  <div className="text-light mt-6 text-base font-normal md:hidden">
                     <span>{totalItem} Items found</span>
                   </div>
                 )}

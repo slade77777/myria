@@ -1,10 +1,10 @@
-import { noCacheApiClient } from 'src/client';
+import { accountApiClient } from 'src/client';
 import { useQuery } from 'react-query';
 
 export default function useNodeLicense() {
   const { data, isLoading, error, refetch } = useQuery(
     'nodesLicense',
-    () => noCacheApiClient.get('/nodes/license'),
+    () => accountApiClient.get('/nodes/license'),
     {
       refetchOnWindowFocus: true,
       retry: 1

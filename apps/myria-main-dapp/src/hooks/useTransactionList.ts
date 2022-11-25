@@ -23,8 +23,8 @@ export default function useTransactionList(starkKey: string) {
       );
 
       if (transactionHistoryResponse.status === 'success' && transactionHistoryResponse?.data) {
-        data = transactionHistoryResponse?.data;
-        setHistoryData(transactionHistoryResponse?.data);
+        data = transactionHistoryResponse?.data.data;
+        setHistoryData(transactionHistoryResponse?.data.data);
       }
 
       const result = data
@@ -60,13 +60,14 @@ export default function useTransactionList(starkKey: string) {
                 item.transactionStatus === STATUS_HISTORY.PREPARE
               ? STATUS_HISTORY.SUCCESS
               : item.transactionStatus;
+
           return {
             ...item,
             id: index,
             type: item.transactionType,
             amount: item.partyAOrder
               ? convertQuantizedAmountToEth(item.partyAOrder.amountSell)
-              : item.name === 'Ethereum'
+              : item.tokenType === 'ETH' || item.tokenType === 'ERC20'
               ? convertQuantizedAmountToEth(item.quantizedAmount)
               : item.quantizedAmount,
             time: moment(item.createdAt).fromNow(),
