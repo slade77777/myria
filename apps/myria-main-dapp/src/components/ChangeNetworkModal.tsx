@@ -1,9 +1,8 @@
 import { Trans } from '@lingui/macro';
-import { useRouter } from 'next/router';
 import React from 'react';
-import { useWalletContext } from 'src/context/wallet';
 import ErrorIcon from './icons/ErrorIcon';
 import Modal from './Modal';
+import { getNetworkByChainId } from './Web3Modal';
 
 type Props = {
   open: boolean;
@@ -11,6 +10,9 @@ type Props = {
 };
 
 const ChangeNetworkModal: React.FC<Props> = ({ open, onSwitchNetwork }) => {
+  const chainId = process.env.NEXT_PUBLIC_CHAIN_ID || 0;
+  const network = getNetworkByChainId(+chainId);
+
   return (
     <Modal open={open}>
       <Modal.Content
@@ -25,11 +27,9 @@ const ChangeNetworkModal: React.FC<Props> = ({ open, onSwitchNetwork }) => {
         canClose={false}
         className="text-white shadow-[0_0_40px_10px_#0000004D]">
         <p className="body-16-regular p-6 px-8">
-          <Trans>
-            To proceed, switch network in your wallet to{' '}
-            <strong>{process.env.NEXT_PUBLIC_NETWORK_LABEL}</strong>, either manually or by clicking
-            the button below.
-          </Trans>
+          To proceed, switch network in your wallet to{' '}
+          <strong style={{ textTransform: 'capitalize' }}>{network?.network}</strong>, either
+          manually or by clicking the button below.
         </p>
         <p className="body-16-regular p-6 px-8">
           <button
