@@ -28,15 +28,12 @@ import { toast } from 'react-toastify';
 import { AllianceName } from 'src/types/sigil';
 import { getModuleFactory } from 'src/services/myriaCoreSdk';
 import { RegisterUserL2WalletPayload, UserType } from 'src/types/campaign';
-import { MyriaUser, RegisterData, UserAirDop } from 'src/types/campaign';
 import { useAirdropCampaign } from './campaignContext';
-import { UserData } from 'myria-core-sdk/dist/types';
 import { useRouter } from 'next/router';
 import {
   reqGetUserByWalletAddress,
   reqRegisterCampaign,
-  reqRegisterUserCampaign,
-  reqRegisterUserL2Wallet
+  reqRegisterUserCampaign
 } from 'src/services/campaignService';
 import { clearStorage } from '../myriaAuthRequiredInstance';
 
