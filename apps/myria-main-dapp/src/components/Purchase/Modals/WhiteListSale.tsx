@@ -120,18 +120,6 @@ const WhiteListSale = ({
         </div>
       );
     }
-    if (warningType === 'not-whitelist') {
-      return (
-        <div>
-          <p className="text-[16px] font-normal text-[#A1AFBA] text-center">
-            <Trans>
-              Oops, it looks like your wallet is not registered on our Whitelist, which means that
-              we can’t proceed with your purchase at the moment.
-            </Trans>
-          </p>
-        </div>
-      );
-    }
     if (warningType === 'not-valid') {
       return (
         <div>

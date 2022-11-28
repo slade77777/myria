@@ -1,41 +1,40 @@
 import { FC, memo } from 'react';
 import React from 'react';
-import Logo from '../icons/Logo';
+import Logo from '../../icons/Logo';
 import { Trans } from '@lingui/macro';
 import Link from 'next/link';
-import DiscordIcon from '../icons/DiscordIcon';
-import TwitterIcon from '../icons/TwitterIcon';
-import MediumIcon from '../icons/MediumIcon';
-import InstagramIcon from '../icons/InstagramIcon';
-import GetStartedIcon from '../icons/node/GetStartedIcon';
-import RewardIcon from '../icons/RewardIcon';
+import DiscordIcon from '../../icons/DiscordIcon';
+import TwitterIcon from '../../icons/TwitterIcon';
+import MediumIcon from '../../icons/MediumIcon';
+import InstagramIcon from '../../icons/InstagramIcon';
+import GetStartedIcon from '../../icons/node/GetStartedIcon';
+import RewardIcon from '../../icons/RewardIcon';
 import clsx from 'clsx';
-import Page from '../Page';
-import DashboardIcon from '../icons/node/DashboardIcon';
-import ThumbsupIcon from '../icons/node/ThumbsupIcon';
+import Page from '../../Page';
+import DashboardIcon from '../../icons/node/DashboardIcon';
+import ThumbsupIcon from '../../icons/node/ThumbsupIcon';
 import { useRouter } from 'next/router';
 
 const menus = [
   {
     icon: <GetStartedIcon />,
     label: <Trans>Get Started</Trans>,
-    path: '/node/get-started'
+    path: '/nodes/dashboard/get-started'
   },
-
   {
     icon: <DashboardIcon />,
     label: <Trans>Dashboard</Trans>,
-    path: '/node'
+    path: '/nodes/dashboard'
   },
   {
     icon: <RewardIcon />,
     label: <Trans>Rewards</Trans>,
-    path: '/node/rewards'
+    path: '/nodes/dashboard/rewards'
   },
   {
     icon: <ThumbsupIcon />,
     label: <Trans>Governance</Trans>,
-    path: '/node/governance',
+    path: '/nodes/dashboard/governance',
     comingSoon: true
   }
 ];
@@ -45,18 +44,18 @@ const NodeLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <Page includeFooter={false}>
       <div className="flex flex-row h-[calc(100vh-120px)]">
-        <div className="flex h-screen pt-24 flex-col bg-brand-deep-blue px-6 w-72">
+        <div className="flex h-screen pt-24 flex-col bg-brand-deep-blue px-6 w-96">
           <div className="flex flex-col text-[16px] leading-[1.44] text-[#A1AFBA]">
             {menus.map((menu, idx) => {
               const isActive =
-                menu.path === '/node'
-                  ? router.pathname === '/node'
+                menu.path === '/nodes/dashboard'
+                  ? router.pathname === '/nodes/dashboard'
                   : router.pathname?.includes(menu.path);
               return (
                 <Link href={menu.path} key={idx}>
                   <a
                     className={clsx(
-                      'flex items-center space-x-2 rounded-lg p-4 hover:bg-[#0F2F45] hover:text-white',
+                      'flex items-center space-x-2 rounded-lg p-4 my-1 hover:bg-[#0F2F45] hover:text-white',
                       {
                         ' pointer-events-none': menu.comingSoon
                       },
