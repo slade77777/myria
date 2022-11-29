@@ -32,7 +32,7 @@ const interceptAuth = (config: AxiosRequestConfig) => {
     async (error) => {
       const statusCode = get(error, 'response.status');
       const prevRequest = error?.config;
-      if (statusCode === 401) {
+      if (statusCode === 401 && prevRequest.url !== '/accounts/token') {
         const refreshToken = localStorage.getItem(localStorageKeys.refreshToken);
         if (refreshToken) {
           try {
