@@ -7,6 +7,9 @@ import Badge from '../Badge';
 import Filter, { ActiveFilter, FilterList } from '../Filter';
 import Overlay from '../overlay/Overlay';
 import dataJson from 'src/components/games/data-json';
+import { useQuery, UseQueryResult } from 'react-query';
+import axios from 'axios';
+import { IResGameDetail, LogoImg } from 'src/hooks/useDetailGames';
 
 const filters: FilterList = [
   // {
@@ -178,19 +181,56 @@ export const games: {
   ...Object.values(dataJson).map((item: any) => item.shortcut)
 ];
 
-const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
+async function fetchAPI(path: string, urlParamsObject = {}, options = {}) {
+  // Merge default and user options
+  const mergedOptions = {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    ...options
+  };
+
+  // Build request URL
+  const requestUrl = process.env.NEXT_PUBLIC_URL_GAME_ADMIN + `/api${path}&populate=*`;
+
+  // Trigger API call
+  const data: UseQueryResult<IResData | null, unknown> = await (
+    await axios.get(requestUrl, mergedOptions)
+  ).data;
+  return data;
+}
+
+const GameItem: React.FC<{ item: ResData }> = ({ item }) => {
   return (
-    <Link href={item.link ?? '/game-detail/' + item.id}>
+    <Link
+      href={
+        item.attributes.game_id.data
+          ? '/game-detail/' + item.attributes.game_id.data.attributes.game_id
+          : ''
+      }>
       <a
         className={clsx('block', {
-          'pointer-events-none': item.disabled
+          'pointer-events-none': item.attributes.disabled || !item.attributes.game_id.data
         })}>
         <Overlay className="h-[232px] overflow-hidden rounded-[5px] md:h-[344px]">
-          <Image src={item.image} alt="" layout="fill" objectFit="cover" />
+          {item.attributes.thumbnail.data && (
+            <Image
+              src={
+                item.attributes.thumbnail.data.attributes.formats.medium?.url ||
+                item.attributes.thumbnail.data.attributes.formats.small?.url ||
+                item.attributes.thumbnail.data.attributes.formats.large?.url ||
+                item.attributes.thumbnail.data.attributes.formats.thumbnail?.url
+              }
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
+          )}
         </Overlay>
         <p className="text-brand-light-blue mt-4 flex text-[14px] font-bold uppercase leading-[1.5]">
-          <span>{item.publisher}</span>
-          {item.comingsoon && (
+          <span>{item.attributes.publisher}</span>
+          {item.attributes.coming_soon && (
             <div className="ml-auto">
               <Badge>
                 <Trans>COMING SOON</Trans>
@@ -199,12 +239,45 @@ const GameItem: React.FC<{ item: typeof games[number] }> = ({ item }) => {
           )}
         </p>
         <p className="overflow-hidden text-ellipsis whitespace-nowrap text-[16px] font-medium leading-[1.5] md:text-[18px]">
-          {item.title}
+          {item.attributes.title}
         </p>
       </a>
     </Link>
   );
 };
+
+interface IGenre {
+  data: string[];
+}
+
+interface IGameIdAttributes {
+  attributes: IResGameDetail;
+}
+
+interface IGameId {
+  data: IGameIdAttributes;
+}
+interface IAttributes {
+  title: string;
+  publisher: string;
+  thumbnail: LogoImg;
+  feature: string;
+  category: string;
+  genre: IGenre;
+  link?: string;
+  disabled?: boolean;
+  coming_soon?: boolean;
+  game_id: IGameId;
+  game_detail_link: string;
+}
+
+interface ResData {
+  id: string;
+  attributes: IAttributes;
+}
+interface IResData {
+  data: ResData[];
+}
 
 const GameList: React.FC = () => {
   const [filter, setFilter] = useState<ActiveFilter>({
@@ -213,16 +286,26 @@ const GameList: React.FC = () => {
     Publisher: []
   });
 
-  const filteredGames = games.filter((game) => {
-    return (
-      (filter['Features']?.length == 0 || filter['Features']?.find((f) => f.id === game.feature)) &&
-      (filter['Genre']?.length == 0 ||
-        filter['Genre']?.find((f) => f.id === game.genre[0]) ||
-        filter['Genre']?.find((f) => f.id === game.genre[1])) &&
-      (filter['Publisher']?.length == 0 ||
-        filter['Publisher']?.find((f) => f.id === game.publisher))
-    );
+  const data: UseQueryResult<IResData | null, unknown> = useQuery('test', async () => {
+    return fetchAPI('/games-ecosystems?sort[0]=id%3Aasc');
   });
+  if (!data) {
+    return null;
+  }
+
+  const filteredGames = data.data
+    ? data.data.data.filter(({ attributes }) => {
+        return (
+          (filter['Features']?.length == 0 ||
+            filter['Features']?.find((f) => f.id === attributes.feature)) &&
+          (filter['Genre']?.length == 0 ||
+            filter['Genre']?.find((f) => f.id === attributes.genre.data[0]) ||
+            filter['Genre']?.find((f) => f.id === attributes.genre.data[1])) &&
+          (filter['Publisher']?.length == 0 ||
+            filter['Publisher']?.find((f) => f.id === attributes.publisher))
+        );
+      })
+    : null;
 
   return (
     <div className="grid w-full gap-0 md:grid-cols-[auto_1fr] md:gap-8">
@@ -236,11 +319,12 @@ const GameList: React.FC = () => {
       </div>
       <div className="w-full">
         <div className={clsx('mt-7 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4')}>
-          {filteredGames.map((item, idx) => (
-            <div key={idx} className="snap-start">
-              <GameItem item={item} />
-            </div>
-          ))}
+          {filteredGames &&
+            filteredGames.map((item, idx) => (
+              <div key={idx} className="snap-start">
+                <GameItem item={item} />
+              </div>
+            ))}
         </div>
       </div>
     </div>

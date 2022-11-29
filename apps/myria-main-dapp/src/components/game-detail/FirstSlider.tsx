@@ -10,6 +10,10 @@ import { Asset } from '../../pages/game-detail/[id]';
 import Video from '../Video';
 import { useAutoPlayInGameDetail } from '../../valtio/autoPlayInGameDetail';
 import Image from 'next/image';
+import { MediaData } from 'src/hooks/useDetailGames';
+
+export const arrayVideo = ['.mp4', '.avi', '.mpeg', '.flv', '.wmv'];
+export const arrayImage = ['.jpeg', '.jpg', '.png', '.gif', '.svg', '.ico', '.tiff', '.dvu'];
 
 const Arrow: React.FC<CustomArrowProps & { position: 'left' | 'right' }> = ({
   onClick,
@@ -35,7 +39,7 @@ const Arrow: React.FC<CustomArrowProps & { position: 'left' | 'right' }> = ({
 type Props = {
   currentSlide: number;
   setCurrentSlide: (slide: number) => void;
-  assets: Asset[];
+  assets: MediaData[];
 };
 
 const FirstSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets }) => {
@@ -68,17 +72,16 @@ const FirstSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets })
       <Slider ref={sliderRef} {...settings} className="group relative">
         {assets.map((a, idx) => (
           <div key={idx} className="relative overflow-hidden rounded-[5px] pt-[calc(9/16*100%)]">
-            {a.type === 'video' ? (
+            {arrayVideo.includes(a.attributes.ext) ? (
               <div className="absolute top-0 left-0 h-full w-full">
                 <Video
                   options={{
                     aspectRatio: '16:9',
                     autoplay: false,
                     muted: true,
-                    poster: a.image,
                     sources: [
                       {
-                        src: a.src
+                        src: process.env.NEXT_PUBLIC_URL_GAME_ADMIN + a.attributes.url
                       }
                     ]
                   }}
@@ -86,7 +89,17 @@ const FirstSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets })
                 />
               </div>
             ) : (
-              <Image src={a.src} alt="" objectFit="cover" layout="fill" />
+              <Image
+                src={
+                  a.attributes.formats.medium?.url ||
+                  a.attributes.formats.large?.url ||
+                  a.attributes.formats.small?.url ||
+                  a.attributes.formats.thumbnail?.url
+                }
+                alt=""
+                objectFit="cover"
+                layout="fill"
+              />
             )}
           </div>
         ))}

@@ -9,6 +9,8 @@ import ChevronRightIcon from '../icons/ChevronRightIcon';
 import { Asset } from '../../pages/game-detail/[id]';
 import PlayIcon from '../icons/PlayIcon';
 import Image from 'next/image';
+import { MediaData } from 'src/hooks/useDetailGames';
+import { arrayImage, arrayVideo } from './FirstSlider';
 
 const Arrow: React.FC<CustomArrowProps & { position: 'left' | 'right' }> = ({
   onClick,
@@ -34,10 +36,16 @@ const Arrow: React.FC<CustomArrowProps & { position: 'left' | 'right' }> = ({
 type Props = {
   currentSlide: number;
   setCurrentSlide: (slide: number) => void;
-  assets: Asset[];
+  assets: MediaData[];
+  assetsThumbnail: MediaData[];
 };
 
-const SecondSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets }) => {
+const SecondSlider: React.FC<Props> = ({
+  currentSlide,
+  setCurrentSlide,
+  assets,
+  assetsThumbnail
+}) => {
   const SLIDE_WIDTH = 126;
   const PADDING_X = 40;
   const sliderRef = useRef<Slider | null>(null);
@@ -105,18 +113,17 @@ const SecondSlider: React.FC<Props> = ({ currentSlide, setCurrentSlide, assets }
                 {currentSlide !== idx && (
                   <div className="absolute inset-0 z-[3] bg-black opacity-40 hover:opacity-0" />
                 )}
-                {a.type == 'video' && (
+                {arrayVideo.includes(a.attributes.ext) && (
                   <span className="absolute top-1/2 left-1/2 z-[2] w-[13px] -translate-x-1/2 -translate-y-1/2">
                     <PlayIcon />
                   </span>
                 )}
-                {/* <img
-                  className="absolute h-full w-full z-[1] object-cover top-0 left-0"
-                  src={a.type == 'video' ? a.image : a.src}
-                  alt=""
-                /> */}
                 <Image
-                  src={a.type == 'video' ? (a.image as string) : a.src}
+                  src={
+                    arrayImage.includes(assetsThumbnail[idx]?.attributes.ext)
+                      ? assetsThumbnail[idx].attributes.formats.thumbnail.url
+                      : '/images/defaultImg.jpp'
+                  }
                   alt=""
                   layout="fill"
                   objectFit="cover"
