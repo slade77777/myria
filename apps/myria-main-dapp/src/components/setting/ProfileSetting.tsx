@@ -146,12 +146,12 @@ const ProfileSetting = () => {
   );
 
   return (
-    <div className="bg-base/3 w-full p-8">
-      <p className="text-3xl font-bold text-white">Profile Settings</p>
+    <div className="w-full bg-base/3 p-8">
+      <p className="text-white text-3xl font-bold">Profile Settings</p>
       <input type="file" id="file" ref={inputFile} className="hidden" onChange={onChangeFile} />
-      <div className="mt-8 flex flex-row items-center gap-8">
+      <div className="mt-8 flex flex-row gap-8 items-center">
         <img
-          className="h-48 w-48 rounded-full object-cover"
+          className="rounded-full object-cover w-48 h-48"
           src={account?.image_url || '/images/marketplace/user.png'}
           alt=""
         />
@@ -160,7 +160,7 @@ const ProfileSetting = () => {
         ) : (
           <div
             onClick={updateAvatar}
-            className="w-48 cursor-pointer rounded-lg border-2 border-white py-2">
+            className="py-2 border-white border-2 rounded-lg w-48 cursor-pointer">
             <p className="text-center font-bold">CHANGE</p>
           </div>
         )}
@@ -169,13 +169,13 @@ const ProfileSetting = () => {
         ) : (
           <div
             onClick={deleteAvatar}
-            className="w-48 cursor-pointer rounded-lg border-2 border-white py-2">
+            className="py-2 border-white border-2 rounded-lg w-48 cursor-pointer">
             <p className="text-center font-bold">REMOVE</p>
           </div>
         )}
       </div>
 
-      <div className="mt-12 w-1/2">
+      <div className="w-1/2 mt-12">
         <p className="text-base/9">First Name</p>
         <Input
           placeholder={t`Your first name`}
@@ -202,8 +202,8 @@ const ProfileSetting = () => {
         />
         <button
           className={clsx(
-            'btn-lg mt-6 h-12 w-56',
-            canUpdate ? 'btn-primary cursor-pointer' : 'bg-gray/4'
+            'btn-lg mt-6 w-56 h-12',
+            canUpdate ? 'cursor-pointer btn-primary' : 'bg-gray/4'
           )}
           onClick={canUpdate ? handleSubmit(updateUser) : undefined}>
           {isLoading ? (

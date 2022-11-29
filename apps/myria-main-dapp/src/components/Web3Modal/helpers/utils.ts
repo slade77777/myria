@@ -222,3 +222,12 @@ export function isLocalStorageAvailable() {
     return false;
   }
 }
+
+export function getNetworkByChainId(chainId: number): { network: string; networkId: number } {
+  const chains: ChainData[] = Object.values(CHAIN_DATA_LIST);
+  const match = filterMatches<ChainData>(chains, (x) => x.chainId === chainId, undefined);
+  if (!match) {
+    throw new Error(`Not found any network match chain id ${chainId} `);
+  }
+  return { network: match.network, networkId: match.networkId };
+}

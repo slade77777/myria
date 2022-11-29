@@ -213,7 +213,7 @@ const ModalPurchase = ({
                   {(totalPriceEth * feeRate).toFixed(7).replace(/\.?0+$/, '')}
                 </p>
               </div>
-              <p className="body-sm text-light text-right">
+              <p className="body-sm text-right text-light">
                 ~${formatCurrency(totalPriceUsd * feeRate, 5)}
               </p>
             </div>
@@ -232,7 +232,7 @@ const ModalPurchase = ({
                   {(totalPriceEth * (1 + feeRate)).toFixed(7).replace(/\.?0+$/, '')}
                 </p>
               </div>
-              <p className="body-sm text-light text-right">
+              <p className="body-sm text-right text-light">
                 ~${formatCurrency(totalPriceUsd * (1 + feeRate), 2)}
               </p>
             </div>
