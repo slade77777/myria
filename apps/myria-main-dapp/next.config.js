@@ -24,11 +24,13 @@ const moduleExports = {
   images: isProd
     ? {
         loader: 'imgix',
-        path: 'https://myria.imgix.net',
-        domains: ['assets.myria.com']
+        path: 'https://frozen-temple-88132.herokuapp.com',
+        domains: ['frozen-temple-88132.herokuapp.com']
       }
     : {
-        domains: ['assets-dev.nonprod-myria.com']
+        loader: 'imgix',
+        path: 'https://frozen-temple-88132.herokuapp.com',
+        domains: ['assets-dev.nonprod-myria.com', 'frozen-temple-88132.herokuapp.com']
       },
   webpack: (config) => {
     config.module.rules.push({

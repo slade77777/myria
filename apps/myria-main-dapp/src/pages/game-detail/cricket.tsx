@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Page from '../components/Page';
+import Page from '../../components/Page';
 import 'aos/dist/aos.css';
 import { headerNavSpacingClassName } from 'src/components/Header/Header';
 import LogoSm from 'src/components/icons/LogoSm';
