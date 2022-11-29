@@ -4,6 +4,7 @@ import { AssetDetailsResponse } from 'myria-core-sdk';
 import { EXPLORE_LINKS } from './services/common-ethers';
 import { AllianceInfo, AllianceName, RarityType } from './types/sigil';
 import Big from 'big.js';
+import moment from 'moment';
 
 const FORMAT_PRICE = 1000000;
 export const FORMAT_DATE = 'ddd Do MMM YYYY';
@@ -316,3 +317,7 @@ export const REPETITION_TYPE: I_REPETITION_TYPE = {
   UNLIMITED: 'UNLIMITED',
   DAILY: 'DAILY'
 };
+
+export function formatTimeSecond(time: number, format?: string) {
+  return moment.utc(time * 1000).format(format || 'HH:mm');
+}

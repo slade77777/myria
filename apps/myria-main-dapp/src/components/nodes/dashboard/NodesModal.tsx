@@ -6,10 +6,13 @@ import Button from '../../core/Button';
 import { useRouter } from 'next/router';
 import useNodeLicense from '../../../hooks/useNodeLicense';
 import { NODE_LIMIT } from '../../../configs';
+import useNodeLicenseOperation from '../../../hooks/useNodeLicenseOperation';
+import { Loading } from '../../Loading';
 
 const NodesModal: FC<{ open: boolean; onClose: () => void }> = ({ open, onClose }) => {
   const router = useRouter();
   const { data } = useNodeLicense();
+  const { data: license, toggleMutation } = useNodeLicenseOperation();
 
   return (
     <Modal open={open} onOpenChange={onClose}>
@@ -24,9 +27,21 @@ const NodesModal: FC<{ open: boolean; onClose: () => void }> = ({ open, onClose 
             shutdown). The only action that will switch off your node operation would be to interact
             with the node operation button on myria.com to Turn Off All Nodes.
           </p>
-          <div className="bg-primary/6 my-8 w-fit cursor-pointer rounded-xl p-4" onClick={() => {}}>
-            <p className="font-bold text-black">TURN ON ALL NODES</p>
-          </div>
+          {!license.all_nodes_running && (
+            <div>
+              {toggleMutation.isLoading ? (
+                <div className="w-32 p-3 flex items-center justify-center">
+                  <Loading />
+                </div>
+              ) : (
+                <div
+                  className="bg-primary/6 my-8 w-fit cursor-pointer rounded-xl p-4"
+                  onClick={() => toggleMutation.mutate(true)}>
+                  <p className="font-bold text-black">TURN ON ALL NODES</p>
+                </div>
+              )}
+            </div>
+          )}
           <div className="bg-base/7 h-[1px] w-full" />
           <div className="my-6 max-h-56 overflow-y-auto">
             {data?.map((node) => (
