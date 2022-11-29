@@ -189,6 +189,15 @@ const ConnectL2WalletButton: React.FC<Props> = ({ isAirDrop = false }) => {
     ) {
       return true;
     }
+
+    if (
+      address &&
+      address?.toLowerCase() === userCampaign?.user.walletAddress?.toLowerCase() &&
+      localStarkKey &&
+      isAirDrop
+    ) {
+      return true;
+    }
     return false;
   }, [address, localStarkKey, user, walletAddress, userCampaign?.user.walletAddress]);
 
