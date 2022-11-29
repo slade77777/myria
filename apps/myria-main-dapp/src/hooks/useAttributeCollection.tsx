@@ -13,7 +13,7 @@ export default function useAttributeCollection(id: number) {
     }
   );
 
-  const dataFormat = formatDataAttributes(data?.data.attribute);
+  const dataFormat = formatDataAttributes(data?.data?.attribute);
 
   return {
     data: dataFormat,
@@ -33,14 +33,12 @@ const formatDataAttributes = (dataAttr: any) => {
         name: ''
       };
     }
-    //filterable === false not show UI
-    if (item[1].filterable) {
-      return {
-        id: item[0],
-        options: item[1].values.map((item: any) => upperCaseFirstText(item.toString())),
-        name: item[1].title ? upperCaseFirstText(item[1].title) : upperCaseFirstText(item[0])
-      };
-    }
+    return {
+      id: item[0],
+      filterable: item[1].filterable,
+      name: item[1].title ? upperCaseFirstText(item[1].title) : upperCaseFirstText(item[0]),
+      options: item[1].values.map((item: any) => upperCaseFirstText(item.toString()))
+    };
   });
 
   return listAttribute.filter((item) => item?.id);
