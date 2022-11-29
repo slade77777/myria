@@ -109,7 +109,7 @@ const Collection: FC<Props> = ({ collection, collectionFetched }) => {
   const { data: filterList, isLoading } = useAttributeCollection(id);
 
   const initialFilter = () => {
-    const obj = filterList.reduce((a, v) => ({ ...a, [v.id]: [] }), {});
+    const obj = filterList.reduce((a, v) => ({ ...a, [v?.id]: [] }), {});
     setFilter({ ...filter, ...obj });
   };
 

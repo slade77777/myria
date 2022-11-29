@@ -7,6 +7,7 @@ import Input from 'src/components/Input';
 
 export type FilterItem = {
   id: string;
+  filterable?: boolean;
   name: string;
   options: string[];
 };
@@ -64,47 +65,49 @@ export default function FilterAssetMobile({
       <div className="h-[calc(100%-80px)] overflow-auto text-white content-attributes">
         {filterList &&
           filterList.map((item: FilterItem, index: number) => {
-            return (
-              <Collapse defaultOpen key={index} asChild>
-                {({ open }) => (
-                  <>
-                    <div className="flex justify-between items-center mt-5">
-                      <span>{item.name}</span>
-                      <Collapse.Trigger asChild>
-                        <button className="w-8 h-8 flex justify-center items-center cursor-pointer font-medium bg-base/4 rounded text-white p-2">
-                          {open ? '-' : '+'}
-                        </button>
-                      </Collapse.Trigger>
-                    </div>
-                    <Collapse.Content>
-                      <div className="mt-4 space-y-4 pl-6 border-blue/3 border-b py-4 pt-2">
-                        {item.options.map((option, idx) => (
-                          <>
-                            {option ? (
-                              <label
-                                key={idx}
-                                className="flex items-center justify-between space-x-2 text-sm text-light py-2 pr-2">
-                                <span>{option}</span>
-                                <Input
-                                  className="h-4 w-4"
-                                  type="checkbox"
-                                  checked={
-                                    filter[item.id]?.findIndex((filter) => filter === option) >= 0
-                                  }
-                                  onChange={() => handleFilter(item.id, option)}
-                                />
-                              </label>
-                            ) : (
-                              <></>
-                            )}
-                          </>
-                        ))}
+            if (item.filterable) {
+              return (
+                <Collapse defaultOpen key={index} asChild>
+                  {({ open }) => (
+                    <>
+                      <div className="flex justify-between items-center mt-5">
+                        <span>{item.name}</span>
+                        <Collapse.Trigger asChild>
+                          <button className="w-8 h-8 flex justify-center items-center cursor-pointer font-medium bg-base/4 rounded text-white p-2">
+                            {open ? '-' : '+'}
+                          </button>
+                        </Collapse.Trigger>
                       </div>
-                    </Collapse.Content>
-                  </>
-                )}
-              </Collapse>
-            );
+                      <Collapse.Content>
+                        <div className="mt-4 space-y-4 pl-6 border-blue/3 border-b py-4 pt-2">
+                          {item.options.map((option, idx) => (
+                            <>
+                              {option ? (
+                                <label
+                                  key={idx}
+                                  className="flex items-center justify-between space-x-2 text-sm text-light py-2 pr-2">
+                                  <span>{option}</span>
+                                  <Input
+                                    className="h-4 w-4"
+                                    type="checkbox"
+                                    checked={
+                                      filter[item.id]?.findIndex((filter) => filter === option) >= 0
+                                    }
+                                    onChange={() => handleFilter(item.id, option)}
+                                  />
+                                </label>
+                              ) : (
+                                <></>
+                              )}
+                            </>
+                          ))}
+                        </div>
+                      </Collapse.Content>
+                    </>
+                  )}
+                </Collapse>
+              );
+            }
           })}
       </div>
 

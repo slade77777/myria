@@ -397,7 +397,7 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
           senderEthAddress: address,
           receiverPublicKey: address,
           amount: String(convertAmountToQuantizedAmount(amount.toString())),
-          tokenType: TokenType.ERC20,
+          tokenType: TokenType.ETH,
           quantum: QUANTUM_CONSTANT.toString(),
         };
         responseWithdraw = await withdrawModule.withdrawalOffchainV2(
@@ -413,7 +413,7 @@ export default function L2WalletPopover({ onClosePopover = () => { } }: Props) {
         });
         responseWithdraw = await withdrawModule.withdrawalOffchainV2({
           tokenType: TokenType.ERC20,
-          amount: amount.toString(),
+          amount: String(convertEthToWei(amount.toString())),
           tokenAddress: selectedToken.tokenAddress,
           senderPublicKey: `0x${pKey}`,
           senderEthAddress: address,
