@@ -86,8 +86,8 @@ const SemiCircleBar: FC<{
       </svg>
       {showPercentValue && (
         <div className="absolute left-0 right-0 bottom-0 ml-auto mr-auto w-fit">
-          <span className="font-bold text-4xl text-success/8">{percentage}%</span>
-          <p className="text-base/9 mt-2">Achieved</p>
+          <span className="font-bold text-4xl text-success/8">{percentage?.toFixed(2)}%</span>
+          <p className="text-base/9 mt-2 text-center">Achieved</p>
         </div>
       )}
     </div>

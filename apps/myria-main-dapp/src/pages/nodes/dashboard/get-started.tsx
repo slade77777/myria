@@ -7,10 +7,14 @@ import SupportIcon from '../../../components/icons/SupportIcon';
 import useNodeLicense from '../../../hooks/useNodeLicense';
 import NodeLayout from '../../../components/nodes/dashboard/NodeLayout';
 import NodesModal from '../../../components/nodes/dashboard/NodesModal';
+import useNodeLicenseOperation from '../../../hooks/useNodeLicenseOperation';
+import { Trans } from '@lingui/macro';
+import Link from 'next/link';
 
 const Node = () => {
   const { data } = useNodeLicense();
   const [showFullNode, setShowNode] = useState(false);
+  const { data: license } = useNodeLicenseOperation();
 
   return (
     <NodeLayout>
@@ -27,16 +31,26 @@ const Node = () => {
       <div className="mt-8 flex flex-col">
         <div>
           <p className="text-2xl font-medium text-white">Run your Nodes with Myria</p>
-          <p className="text-base/9 mt-4">
-            By clicking <span className="font-semibold text-white">Get Started</span> you’ll be able
-            to begin the operation of all your Myria Node license(s). At present, there is no
-            requirement for you as the user to download and operate Myria Node software.
-          </p>
-          <div
-            className="bg-primary/6 rounded-xl py-4 px-8 my-8 w-fit cursor-pointer"
-            onClick={() => setShowNode(true)}>
-            <p className="font-bold text-black">GET STARTED</p>
-          </div>
+          {license.all_nodes_running ? (
+            <Link href={'/nodes/dashboard'}>
+              <a href={'/nodes/dashboard'} className="btn-lg btn-primary mt-[38px] cursor-pointer">
+                <Trans>View Dashboard</Trans>
+              </a>
+            </Link>
+          ) : (
+            <>
+              <p className="text-base/9 mt-4">
+                By clicking <span className="font-semibold text-white">Get Started</span> you’ll be
+                able to begin the operation of all your Myria Node license(s). At present, there is
+                no requirement for you as the user to download and operate Myria Node software.
+              </p>
+              <div
+                className="bg-primary/6 rounded-xl py-4 px-8 my-8 w-fit cursor-pointer"
+                onClick={() => setShowNode(true)}>
+                <p className="font-bold text-black">GET STARTED</p>
+              </div>
+            </>
+          )}
           <div className="flex flex-row gap-4 mt-12">
             <p className="text-2xl font-medium text-white">Run Myria Node software</p>
             <p className="text-brand-yellow rounded-full bg-[#2B4C63] p-2 text-xs font-medium leading-[1.3] text-brand-light-blue">

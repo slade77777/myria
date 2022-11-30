@@ -31,11 +31,9 @@ const Purchase: React.FC = () => {
   const { error, data } = useNodePurchase();
 
   useEffect(() => {
-    router.push('/nodes');
-    // validate either wallet is connected
-    // if (!address || (!userProfileQuery.isFetching && !user)) {
-    //   router.push('/nodes');
-    // }
+    if (!address || (!userProfileQuery.isFetching && !user)) {
+      router.push('/nodes');
+    }
   }, [address, router, user, userProfileQuery.isFetching]);
 
   useEffect(() => {

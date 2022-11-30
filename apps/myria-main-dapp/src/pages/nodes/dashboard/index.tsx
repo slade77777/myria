@@ -123,7 +123,7 @@ const Dashboard = () => {
                       {active && (
                         <div
                           className="bg-blue/6 h-2 rounded-[4px]"
-                          style={{ width: `${percentLoaded}%` }}
+                          style={{ width: `${percentLoaded < 100 ? percentLoaded : 100}%` }}
                         />
                       )}
                     </div>
